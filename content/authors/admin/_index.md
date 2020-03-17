@@ -40,7 +40,7 @@ superuser: true
 user_groups:
 - Researchers
 - Visitors
-bio: After doing a research master's in Psycholinguistics, I'm now a PhD student and graduate teaching assistant in Cognitive Psychology. I'm investigating how conceptual processing is supported by linguistic and sensorimotor brain systems. I use methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. My [CV is available for download](https://osf.io/84ktq/download).
+bio: After doing a research master's in Psycholinguistics, I'm now a PhD student and graduate teaching assistant in Cognitive Psychology. I'm investigating how conceptual processing is supported by linguistic and sensorimotor brain systems. I use methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming.
 education:
   courses:
   - course: '[PhD Psychology](https://www.lancaster.ac.uk/study/postgraduate/postgraduate-courses/psychology-phd/)'
