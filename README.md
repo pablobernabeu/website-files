@@ -1,5 +1,5 @@
 # Website files
 
-Back-end files for pablobernabeu.github.io
+Back-end files for https://pablobernabeu.github.io
 
-pablobernabeu.github.io
+https://github.com/pablobernabeu/pablobernabeu.github.io
