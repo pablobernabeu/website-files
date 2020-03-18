@@ -51,13 +51,13 @@ subtitle = ""
 +++
 
 
-|          |                        |
-| -------- | ---------------------- |
-| Talk (to follow) | [*Open Data and Reproducibility v2.0.*](https://newcastle2020.satrdays.org/) SatRday, Newcastle University. |
-| Talk (Apr 2020) | [*Embedding open research and reproducibility in the UG and PGT curricula.*](https://www.software.ac.uk/cw20) With Phil McAleer and Andrew Stewart. SSI Collaborations Workshop. |
-| Talk (Dec 2018) | [*Presenting data interactively online using R Shiny.*](https://www.slideshare.net/PabloBernabeu/presenting-data-interactively-online-using-r-shiny-126064157) Research Software Forum, Lancaster University. |
-| Poster (Jan 2017 x2, Apr 2017, July 2017, Nov 2017) | [*Modality switch effects emerge early and increase throughout conceptual processing: Evidence from ERPs.*](https://www.researchgate.net/publication/318542811_Poster_Modality_switch_effects_emerge_early_and_increase_throughout_conceptual_processing_Evidence_from_ERPs) Presented at: (1) Event representations in episodic and semantic memory, U. York;  (2) Netherlands Graduate School of Linguistics, Radboud U.; (3) Juniorendag, Utrecht U.; (4) 39th Annual Conference of the Cognitive Science Society, London; (5) 58th Annual Meeting of the Psychonomic Society, Vancouver. |
-| Talk (June 2016) | *Conceptual processing at different speeds: probing linguistic and embodied systems.* Synapsium, Radboud University. |
-| Poster (May 2016) | *Norming study of modality exclusivity in Dutch, and an ongoing EEG study of linguistic and embodied conceptual processing.* Psycholinguistics in Flanders, University of Antwerp. Tilburg University travel scholarship. |
-| Talk (June 2015) | [*New reviews and insights on language evolution.*](https://www.researchgate.net/publication/278686035_New_reviews_and_insights_on_language_evolution_Slides) Tenth Language at the University of Essex (LangUE) Conference, University of Essex. |
-| Talk (Feb, May 2015) | *Shallow and deep conceptual representation: an ERP design.* Theme Meets., Radboud U.; Neurobiology of Language Lab meeting, MPI Psycholinguistics. |
+|          |                        |                        |                        |
+| -------- | ---------------------- | ---------------------- | ---------------------- |
+| Talk | To follow | [*Open Data and Reproducibility v2.0*](https://newcastle2020.satrdays.org/). | SatRday, Newcastle University. |
+| Talk | Apr 2020 | [*Embedding open research and reproducibility in the UG and PGT curricula*](https://www.software.ac.uk/cw20). With Phil McAleer and Andrew Stewart. | SSI Collaborations Workshop. |
+| Talk | Dec 2018 | [*Presenting data interactively online using R Shiny*](https://www.slideshare.net/PabloBernabeu/presenting-data-interactively-online-using-r-shiny-126064157). | Research Software Forum, Lancaster University. |
+| Poster | Jan 2017 x2, Apr 2017, July 2017, Nov 2017 | [*Modality switch effects emerge early and increase throughout conceptual processing: Evidence from ERPs*](https://www.researchgate.net/publication/318542811_Poster_Modality_switch_effects_emerge_early_and_increase_throughout_conceptual_processing_Evidence_from_ERPs). | (1) Event representations in episodic and semantic memory, U. York;  (2) Netherlands Graduate School of Linguistics, Radboud U.; (3) Juniorendag, Utrecht U.; (4) 39th Annual Conference of the Cognitive Science Society, London; (5) 58th Annual Meeting of the Psychonomic Society, Vancouver. |
+| Poster | June 2016 | *Conceptual processing at different speeds: probing linguistic and embodied systems.* | Synapsium, Radboud University. |
+| Poster | May 2016 | *Norming study of modality exclusivity in Dutch, and an ongoing EEG study of linguistic and embodied conceptual processing.* | Psycholinguistics in Flanders, University of Antwerp. Tilburg University travel scholarship. |
+| Talk | June 2015 | [*New reviews and insights on language evolution*](https://www.researchgate.net/publication/278686035_New_reviews_and_insights_on_language_evolution_Slides). | Tenth Language at the University of Essex (LangUE) Conference, University of Essex. |
+| Talk | Feb, May 2015 | *Shallow and deep conceptual representation: an ERP design.* | Theme Meetings, Radboud U.; Neurobiology of Language Lab meeting, MPI Psycholinguistics. |

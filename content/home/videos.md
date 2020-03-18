@@ -51,7 +51,7 @@ subtitle = ""
 +++
 
 
-### 2019. Part of the application for the [Gorilla Grant](#funding)
+### 2019. Part of application for [Gorilla Grant](#funding)
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/DTHFuC0Lw0Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -59,14 +59,14 @@ subtitle = ""
 <br>
 
 
-### 2019. Part of the application for the [Software Sustainability Institute Fellowship](#funding)
+### 2019. Part of application for [Software Sustainability Institute Fellowship](#funding)
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/F-MQ8BYwLn4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <br>
 <br>
 
-### 2019. Video demonstration of experimental procedure for [PSA study](/publication/chen-etal-inprep/)
+### 2019. Demonstration of procedure for [PSA experiments](/publication/chen-etal-inprep/)
 
 <a href='https://osf.io/h36wr/'><img src='https://cdn.pixabay.com/photo/2016/08/20/06/09/video-1606945_960_720.png' width=560></a>
 
