@@ -235,14 +235,12 @@ $(document).ready(function(){
 <li>if necessary, unlink data by splitting it into different sets, reducing computational demands;</li>
 <li>if necessary, use various apps (five are allowed in each free shinyapps.io account);</li>
 <li><p>if necessary, link from the app to a PDF with visualisations requiring heavy, interlinked data. High-resolution plots can be rendered into a PDF document in a snap, using code such as below.</p>
-<pre><code>```
-pdf(&#39;List of plots per page&#39;, width = 13, height = 5)
+<pre><code>df(&#39;List of plots per page&#39;, width = 13, height = 5)
 print(plot1)
 print(plot2)
 # ...
 print(plot150)
-dev.off()
-```</code></pre></li>
+dev.off()</code></pre></li>
 </ul>
 <p>Conveniently, all text in a PDF—even in plots—is indexed, so it can be searched [ Ctrl+f / Cmd+f / 🔍 ] (see <a href="https://osf.io/2tpxn/">example</a>). Furthermore, you may also <a href="http://www.ilovepdf.com/">merge the rendered PDF with any other documents</a>.</p>
 </div>
@@ -255,18 +253,18 @@ dev.off()
 </div>
 <div id="datathons-creating-reproducible-documents-and-dashboards" class="section level3">
 <h3>Datathons: creating reproducible documents and dashboards</h3>
-<p>In these coding meet-ups, participants collaborate to create reproducible documents or dashboards using the data and software they prefer (see <a href="https://github.com/pablobernabeu/Data-is-present/tree/master/examples-documents-dashboards">examples</a>). Since the work can be split across different people and sections, some nice products may be achieved within a session. Any programming languages may be used.</p>
+<p>In these coding meetups, participants collaborate to create reproducible documents or dashboards using the data and software they prefer (see <a href="https://github.com/pablobernabeu/Data-is-present/tree/master/examples-documents-dashboards">examples</a>). Since the work can be split across different people and sections, some nice products may be achieved within a session. Any programming languages may be used.</p>
 <ul>
-<li><p><strong>Data used</strong>: Academic or non-academic data of your own, or open-access data from sources such as <a href="https://osf.io">OSF</a>, scientific journals, governments, international institutions, NGOs, etc.</p>
+<li><p><strong>Data used:</strong> academic or non-academic data of your own or from open-access sources such as <a href="https://osf.io">OSF</a>, scientific journals, governments, international institutions, NGOs, etc.</p>
 <ul>
 <li>Inspired by the great <a href="https://reprohack.github.io/reprohack-hq/">Reprohacks</a>, content suggestions are encouraged. That is, if you’d like to have a reproducible document or dashboard created for a certain, open-access data set, please let us know, and some participants may take it on. Suggestions may be posted as <a href="https://github.com/pablobernabeu/Data-is-present/issues">issues</a> or emailed to <a href="mailto:p.bernabeu@lancaster.ac.uk" class="email">p.bernabeu@lancaster.ac.uk</a>.</li>
 </ul></li>
 <li><p><strong>Purposes</strong></p>
 <ul>
-<li><p>to visualise data in novel ways, collaboratively, and using reproducible documents or interactive dashboards. Sometimes, analysts may also draw on additional data to look at a bigger picture;</p></li>
-<li><p>to briefly reflect on the process by reviewing the techniques applied and challenges encountered.</p></li>
+<li><p>collaborating to visualise data in novel ways using reproducible documents or interactive dashboards. For this purpose, participants sometimes draw on additional data to look at a bigger picture;</p></li>
+<li><p>reflecting on the process by reviewing the techniques applied and challenges encountered.</p></li>
 </ul></li>
-<li><p><strong>Output</strong>: A key aspect of these meet-ups is the creation of output. Documents and dashboards are (co-)authored by the participants who work on them, who can then publish them on their websites, or on <a href="https://rpubs.com/">RPubs</a>, <a href="https://mybinder.org/">Binder</a>, <a href="https://www.shinyapps.io/">Shinyapps</a> or <a href="https://rstudio.com/products/shiny/shiny-server/">custom servers</a>. Time constraints notwithstanding, a lot of this output may be very enticing for further development by the same participants, or even by other people if the code is shared online. Just like with data, an attribution licence can be attached to the code.</p></li>
+<li><p><strong>Output:</strong> A key aspect of datathons is the creation of output. Documents and dashboards are (co-)authored by the participants who work on them, who can then publish them on their websites, or on <a href="https://rpubs.com/">RPubs</a>, <a href="https://mybinder.org/">Binder</a>, <a href="https://www.shinyapps.io/">Shinyapps</a> or <a href="https://rstudio.com/products/shiny/shiny-server/">custom servers</a>. Time constraints notwithstanding, a lot of this output may be very enticing for further development by the same participants, or even by other people if the code is shared online. Just like with data, an attribution licence can be attached to the code.</p></li>
 </ul>
 <div id="prerequisites-and-suggestions-for-participation-in-datathons" class="section level4">
 <h4>Prerequisites and suggestions for participation in datathons</h4>
