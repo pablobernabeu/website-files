@@ -9,7 +9,7 @@ active = true  # Activate this widget? true/false
 weight = 70  # Order that this section will appear.
 
 title = "R workshops"
-subtitle = 'Introduction to R, statistics, visualisation, reproducible documents, data dashboards, HTML, CSS, web hosting ([see programmes in detail](/2020/01/01/data-is-present-workshops-and-datathons/)).'
+subtitle = 'Introduction to R, statistics, visualisation, reproducible documents, data dashboards, HTML, CSS, web hosting ([further details](/2020/01/01/data-is-present-workshops-and-datathons/)).'
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.

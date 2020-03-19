@@ -27,7 +27,7 @@ date_format = "2006"
   certificate_url = ""
   date_start = "2020-01-01"
   date_end = ""
-  description = "Participating in RepliCATS, a meeting to assess the scientific support for multiple claims, hosted in Victoria, Canada. [&nbsp; <i class='fas fa-link'></i>](https://replicats.research.unimelb.edu.au/2020/01/09/replicats-workshop-at-sips2020/)"
+  description = "Participating in [RepliCATS](https://replicats.research.unimelb.edu.au/2020/01/09/replicats-workshop-at-sips2020/), a meeting to assess the scientific support for multiple claims, hosted in Victoria, Canada"
 
 [[item]]
   organization = "Gorilla Experiment Builder"
@@ -37,7 +37,7 @@ date_format = "2006"
   certificate_url = ""
   date_start = "2020-01-01"
   date_end = ""
-  description = "Funding from [Gorilla](https://gorilla.sc/) and [Prolific](https://prolific.co/) to conduct a large experiment on the internet."
+  description = "Funding from [Gorilla](https://gorilla.sc/) and [Prolific](https://prolific.co/) to conduct a large experiment on the internet"
 
 [[item]]
   organization = "Software Sustainability Institute"
@@ -47,7 +47,7 @@ date_format = "2006"
   certificate_url = ""
   date_start = "2020-01-01"
   date_end = "2021-01-01"
-  description = "Organising training and practice activities in research software. I focussed on data presentation using R. [&nbsp; <i class='fas fa-link'></i>](/2020/01/01/data-is-present-workshops-and-datathons/)"
+  description = "Organising [training and practice activities in research software](/2020/01/01/data-is-present-workshops-and-datathons/). I focussed on data presentation using R"
 
 [[item]]
   organization = "Lancaster University"
@@ -57,7 +57,7 @@ date_format = "2006"
   certificate_url = ""
   date_start = "2018-01-01"
   date_end = "2022-01-01"
-  description = "Carrying out a PhD project and serving as a teaching assistant in various undergraduate and postgraduate courses. [&nbsp; <i class='fas fa-link'></i>](http://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu)"
+  description = "Carrying out a [PhD project and serving as a teaching assistant](http://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu) in various undergraduate and postgraduate courses"
 
 [[item]]
   organization = "Psychonomic Society"
@@ -67,7 +67,7 @@ date_format = "2006"
   certificate_url = ""
   date_start = "2017-01-01"
   date_end = ""
-  description = "Presenting a research poster on [research from my master's](https://cogsci.mindmodeling.org/2017/papers/0318/index.html)."
+  description = "Presenting a research poster on [research from my master's](https://cogsci.mindmodeling.org/2017/papers/0318/index.html)"
   
 [[item]]
   organization = "Experimental Psychology Society"
@@ -77,7 +77,7 @@ date_format = "2006"
   certificate_url = ""
   date_start = "2017-01-01"
   date_end = ""
-  description = "Presenting a research poster on [research from my master's](https://cogsci.mindmodeling.org/2017/papers/0318/index.html) at two conferences in the UK."
+  description = "Presenting a research poster on [research from my master's](https://cogsci.mindmodeling.org/2017/papers/0318/index.html) at two conferences in the UK"
   
 [[item]]
   organization = "Cognitive Science Society"
@@ -87,7 +87,7 @@ date_format = "2006"
   certificate_url = ""
   date_start = "2017-01-01"
   date_end = ""
-  description = "Presenting a research poster on [research from my master's](https://cogsci.mindmodeling.org/2017/papers/0318/index.html)."
+  description = "Presenting a research poster on [research from my master's](https://cogsci.mindmodeling.org/2017/papers/0318/index.html)"
   
 [[item]]
   organization = "Tilburg University"
@@ -97,6 +97,6 @@ date_format = "2006"
   certificate_url = ""
   date_start = "2015-01-01"
   date_end = ""
-  description = "A one-year stipend during my master's. [&nbsp; <i class='fas fa-link'></i>](https://www.tilburguniversity.edu/education/bachelors-programs/liberal-arts-and-sciences/scholarships)"
+  description = "A [one-year stipend](https://www.tilburguniversity.edu/education/bachelors-programs/liberal-arts-and-sciences/scholarships) during my master's"
   
 +++

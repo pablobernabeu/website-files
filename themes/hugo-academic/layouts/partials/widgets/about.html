@@ -99,8 +99,12 @@
             <i class="fa-li fas fa-graduation-cap"></i>
             <div class="description">
               <p class="course">{{ .course | markdownify }}{{ with .year }}, {{ . }}{{ end }}</p>
-              <p class="institution">{{ .extra | markdownify }}</p>
               <p class="institution">{{ .institution | markdownify }}</p>
+              <p class="institution" style="padding-left:8px; text-indent:-1em; margin-left:1em;">{{ .extra | markdownify }}</p>
+              <p class="institution" style="padding-left:8px; text-indent:-1em; margin-left:1em;">{{ .extra2 | markdownify }}</p>
+              <p class="institution" style="padding-left:8px; text-indent:-1em; margin-left:1em;">{{ .extra3 | markdownify }}</p>
+              <p class="institution" style="padding-left:8px; text-indent:-1em; margin-left:1em;">{{ .extra4 | markdownify }}</p>
+              <p class="institution" style="padding-left:19px; text-indent:-1em; margin-left:1em;">{{ .extra_nohyphen | markdownify }}</p>
             </div>
           </li>
           {{ end }}
@@ -113,22 +117,30 @@
             <i class="fa-li fas fa-book-open"></i>
             <div class="description">
               <p class="course">{{ .course | markdownify }}{{ with .year }}, {{ . }}{{ end }}</p>
-              <p class="institution">{{ .extra | markdownify }}</p>
-              <p class="institution">{{ .institution }}</p>
+              <p class="institution">{{ .institution | markdownify }}</p>
+              <p class="institution" style="padding-left:8px; text-indent:-1em; margin-left:1em;">{{ .extra | markdownify }}</p>
+              <p class="institution" style="padding-left:8px; text-indent:-1em; margin-left:1em;">{{ .extra2 | markdownify }}</p>
+              <p class="institution" style="padding-left:8px; text-indent:-1em; margin-left:1em;">{{ .extra3 | markdownify }}</p>
+              <p class="institution" style="padding-left:8px; text-indent:-1em; margin-left:1em;">{{ .extra4 | markdownify }}</p>
+              <p class="institution" style="padding-left:19px; text-indent:-1em; margin-left:1em;">{{ .extra_nohyphen | markdownify }}</p>
             </div>
           </li>
           {{ end }}
         </ul>
 
-        <h3>{{ i18n "teachingqualifications" | markdownify }}</h3>
+        <h3>{{ i18n "teaching" | markdownify }}</h3>
         <ul class="ul-edu fa-ul">
-          {{ range .teachingqualifications }}
+          {{ range .teaching }}
           <li>
             <i class="fa-li fas fa-chalkboard-teacher"></i>
             <div class="description">
               <p class="course">{{ .course | markdownify }}{{ with .year }}, {{ . }}{{ end }}</p>
-              <p class="institution">{{ .extra | markdownify }}</p>
-              <p class="institution">{{ .institution }}</p>
+              <p class="institution">{{ .institution | markdownify }}</p>
+              <p class="institution" style="padding-left:8px; text-indent:-1em; margin-left:1em;">{{ .extra | markdownify }}</p>
+              <p class="institution" style="padding-left:8px; text-indent:-1em; margin-left:1em;">{{ .extra2 | markdownify }}</p>
+              <p class="institution" style="padding-left:8px; text-indent:-1em; margin-left:1em;">{{ .extra3 | markdownify }}</p>
+              <p class="institution" style="padding-left:8px; text-indent:-1em; margin-left:1em;">{{ .extra4 | markdownify }}</p>
+              <p class="institution" style="padding-left:19px; text-indent:-1em; margin-left:1em;">{{ .extra_nohyphen | markdownify }}</p>
             </div>
           </li>
           {{ end }}

@@ -52,9 +52,9 @@ subtitle = ""
 
 |     |     |
 | --- | --- |
-| May – July 2018 | Service analyst. [Onfido](https://onfido.com/), London, UK. |
+| May – July 2018 | Service analyst. [Onfido](https://onfido.com/), London, UK |
 | Dec 2015 – Feb 2016 | Part-time Data Science market research and student recruitment. [Tilburg U.](https://www.tilburguniversity.edu/) |
 | 2015 – 2016 | Student representative at master’s fairs in Spain. [Radboud U.](https://www.ru.nl/english/), [Tilburg U.](https://www.tilburguniversity.edu/) |
 | 2013 – 2016 | Presenter of my degree at open days for master’s degrees. [Tilburg U.](https://www.tilburguniversity.edu/) |
-| 2013 – 2016 | Communications and student recruitment. [Academia Bravosol](https://bravosol.net), Madrid, Spain. |
+| 2013 – 2016 | Communications and student recruitment. [Academia Bravosol](https://bravosol.net), Madrid, Spain |
 

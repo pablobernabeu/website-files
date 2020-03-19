@@ -81,8 +81,8 @@
 - id: furthercourses
   translation: Further courses
   
-- id: teachingqualifications
-  translation: Teaching experience and certifications
+- id: teaching
+  translation: Teaching experience and qualifications
   
 - id: skills
   translation: Skills
