@@ -1,0 +1,9 @@
+{
+    "path" : "/cloud/project/themes/hugo-academic/assets/scss/academic",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}
