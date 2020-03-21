@@ -225,4 +225,8 @@ An example of these analyses is [available in available in this RStudio environm
 
 References
 
+<div style = "text-indent:-2em; margin-left:2em;">
+
 Field, A. P., Miles, J., & Field, Z. (2012). *Discovering Statistics Using R*. London, UK: Sage.
+
+</div>

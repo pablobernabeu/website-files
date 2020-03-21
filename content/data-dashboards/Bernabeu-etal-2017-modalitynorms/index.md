@@ -219,4 +219,8 @@ RStudio Cloud: https://rstudio.cloud/project/941860
 
 ### Reference
 
+<div style = "text-indent:-2em; margin-left:2em;">
+
 Bernabeu, P., Willems, R. M., & Louwerse, M. M. (2017). Modality switch effects emerge early and increase throughout conceptual processing: Evidence from ERPs [Data dashboard for modality exclusivity norms]. Retrieved from https://pablobernabeu.shinyapps.io/ERP-waveform-visualization_CMS-experiment/.
+
+</div>

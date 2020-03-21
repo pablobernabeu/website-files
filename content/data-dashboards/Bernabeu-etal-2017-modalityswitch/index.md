@@ -188,4 +188,8 @@ tags$head(tags$link(rel="shortcut icon", href="https://image.ibb.co/fXUwzb/favic
 
 ### Reference
 
+<div style = "text-indent:-2em; margin-left:2em;">
+
 Bernabeu, P., Willems, R. M., & Louwerse, M. M. (2017). Modality switch effects emerge early and increase throughout conceptual processing: Evidence from ERPs [Data dashboard]. Retrieved from https://pablobernabeu.shinyapps.io/ERP-waveform-visualization_CMS-experiment/.
+
+</div>

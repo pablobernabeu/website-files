@@ -78,7 +78,7 @@ ERPs showed a CMS effect from time window 1 on, larger after 350 ms. It appeared
 
 <img style = "float: right; margin-left: 30px;" width = '50%' src='/post/2017-01-01-modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing-evidence-from-erps-a-summary_files/resultsERPs.jpg' />
 
-The analysis was done with Linear Mixed Effects models. Final models presented good fits, with R^2 ranging from .748 to .862. First, the CMS effect in time window 1 was confirmed significant. Such an early emergence is unprecedented in the CMS literature, and it may have been enabled by the time-locking of ERPs to the first word in target trials. In this time window, the only process not lexicosemantic is possibly working memory (Hauk, 2016), and therefore this early emergence adds support to the possibility that CMS was directly caused by perceptual simulation.
+The analysis was done with Linear Mixed Effects models. Final models presented good fits, with R<sup>2</sup> ranging from .748 to .862. First, the CMS effect in time window 1 was confirmed significant. Such an early emergence is unprecedented in the CMS literature, and it may have been enabled by the time-locking of ERPs to the first word in target trials. In this time window, the only process not lexicosemantic is possibly working memory (Hauk, 2016), and therefore this early emergence adds support to the possibility that CMS was directly caused by perceptual simulation.
 
 Whereas, in time window 1, the effect was circumscribed to an interaction with Brain Area, by time window 2 a main effect of CMS emerged, and in windows 3 and 4 the only critical effect was CMS.
 
@@ -99,6 +99,8 @@ Results broadly suggest that cognition may operate on qualitatively different sy
 
 ## References
 
+<div style = "text-indent:-2em; margin-left:2em;">
+
 Barsalou, L. W. (2016). On staying grounded and avoiding quixotic dead ends. *Psychonomic Bulletin & Review, 23*.
 
 Bernabeu, P., Louwerse, M. M., & Willems, R. M. (in prep.). Modality exclusivity norms for 747 properties and concepts in Dutch: a replication of English. Retrieved from https://osf.io/brkjw/
@@ -118,6 +120,8 @@ Mahon, B. Z., & Caramazza, A. (2008). A critical look at the Embodied Cognition 
 Scerrati, E., Lugli, L., Nicoletti, R., & Borghi, A. M. (2016). The Multilevel Modality-Switch Effect: What Happens When We See the Bees Buzzing and Hear the Diamonds Glistening. *Psychonomic Bulletin & Review*, doi:10.3758/s13423-016-1150-2.
 
 Vukovic, V., Feurra, M., Shpektor, A., Myachykov, A., & Shtyrov, Y. (2017). Primary motor cortex functionally contributes to language comprehension: An online rTMS study. *Neuropsychologia, 96*, 222-229.
+
+</div>
 
 
 ### Bonus: A conference poster with a few further analyses

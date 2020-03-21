@@ -49,5 +49,8 @@ url_video: 'https://osf.io/h36wr/'
 
 #### Reference
 
+<div style = "text-indent:-2em; margin-left:2em;">
+
 Chen, S., Szabelska, A., Chartier, C. R., Kekecs, Z., Lynott, D., Bernabeu, P., … Schmidt, K. (conditionally accepted). Investigating object orientation effects across 14 languages. *Psychonomic Bulletin and Review*. https://doi.org/10.31234/osf.io/t2pjv/
 
+</div>

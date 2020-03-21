@@ -42,6 +42,8 @@ The Landscape Model was applied to the context of discourse analysis by Yeari an
 
 ## References 
 
+<div style = "text-indent:-2em; margin-left:2em;">
+
 Bell, A. (2011). Re-constructing Babel: Discourse analysis, hermeneutics and the Interpretive Arc. *Discourse Studies, 13*(5), 519–568. https://doi.org/10.1177/1461445611412699. 
 
 Converse, N. E. (2018). The Use of Explicit Comprehension Strategies During Oral Instruction of Informational Text Structures and the Effect on First-graders' Listening Comprehension (Doctoral dissertation). Retrieved from https://digitalcommons.usu.edu/etd/7305. 
@@ -57,4 +59,6 @@ Singer, M., Graesser, A. C., & Trabasso, T. (1994). Minimal or global inference 
 van den Broek, P., Young, M., Tzeng, Y., & Linderholm, T. (1999). The landscape model of reading. In H. van Oostendorp & S. R. Goldman (Eds.), *The construction of mental representations during reading* (pp. 71-98). Mahwah, NJ: Erlbaum.
 
 Yeari, M., & van den Broek, P. (2011). A cognitive account of discourse understanding and discourse interpretation: The Landscape Model of reading. *Discourse Studies, 13*(5), 635-643. https://doi.org/10.1177/1461445611412748. 
+
+</div>
 
