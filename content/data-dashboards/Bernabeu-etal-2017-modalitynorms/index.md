@@ -16,6 +16,10 @@ links:
   url: 'https://pablobernabeu.shinyapps.io/Dutch-modality-exclusivity-norms/'
 - name: Research paper
   url: '/publication/bernabeu-etal-2017/'
+- name: Github
+  url: 'https://github.com/pablobernabeu/Modality-exclusivity-norms-Bernabeu-et-al'
+- name: RStudio Cloud
+  url: 'https://rstudio.cloud/project/941860'
 #  projects:
 # - internal-project
 publishDate: "2017-01-01"
@@ -44,9 +48,21 @@ url_dataset: 'https://github.com/pablobernabeu/Modality-exclusivity-norms-Bernab
 ---
 
 
-#### [Link to Flexdashboard version](/dashboards/Dutch-modality-exclusivity-norms/d.html)
-#### [Link to Flexdashboard-Shiny version](https://pablobernabeu.shinyapps.io/dutch-modality-exclusivity-norms/)
+<a href='/dashboards/Dutch-modality-exclusivity-norms/d.html'>
+      <button style = "background-color: white; color: black; border: 2px solid #4CAF50; border-radius: 12px;">
+      <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;"> 
+      <span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Flexdashboard
+      </h3></button>
+      </a>
+      
+<a href='https://pablobernabeu.shinyapps.io/Dutch-modality-exclusivity-norms'>
+      <button style = "background-color: white; color: black; border: 2px solid #196F27; border-radius: 12px;">
+      <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;"> 
+      <span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Flexdashboard-Shiny
+      </h3></button>
+      </a>
 
+<br>
 <br>
 
 This Flexdashboard-Shiny app presents linguistic data over several tabs. The code combines the great front-end of Flexdashboard—based on R Markdown and yielding an unmatched user interface—, with the great back-end of Shiny—allowing users to download sections of data they select, in various formats.
@@ -209,13 +225,6 @@ and disabled reactive features.
 # reactive(cat(paste0('Words selected below: ', nrow(selected_props()))))
 ```
 ````
-
-Category: Research
-Keywords: science, cognition, language, linguistics, modality, stimulus, experiment, norming
-Shiny app: https://pablobernabeu.shinyapps.io/dutch-modality-exclusivity-norms/
-Repo: https://github.com/pablobernabeu/Modality-exclusivity-norms-Bernabeu-et-al/tree/master/Shiny-app
-RStudio Cloud: https://rstudio.cloud/project/941860
-
 
 ### Reference
 

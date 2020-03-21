@@ -45,7 +45,7 @@ url_video: 'https://osf.io/h36wr/'
 ---
 
 
-- ### <a href='https://osf.io/h36wr/'>Video demonstration of the procedure followed in our lab</a>
+#### &nbsp; <i class="fas fa-eye"></i>&nbsp; <a href='https://osf.io/h36wr/'>Video demonstration of the procedure followed in our lab</a>
 
 #### Reference
 

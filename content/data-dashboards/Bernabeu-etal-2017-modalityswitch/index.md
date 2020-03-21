@@ -46,8 +46,14 @@ url_dataset: 'https://github.com/pablobernabeu/Modality-switch-effects-emerge-ea
 ---
 
 
-### [Link to dashboard](https://mybinder.org/v2/gh/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing/0a5542658914a6ed01cf8e96252c48bb5bcf8f18?urlpath=shiny/Shiny-app/)
+<a href='https://mybinder.org/v2/gh/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing/0a5542658914a6ed01cf8e96252c48bb5bcf8f18?urlpath=shiny/Shiny-app/'>
+      <button style = "background-color: white; color: black; border: 2px solid #196F27; border-radius: 12px;">
+      <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;"> 
+      <span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Dashboard
+      </h3></button>
+      </a>
 
+<br>
 <br>
 
 **Content**
@@ -57,7 +63,6 @@ The data is from a psychology experiment on the comprehension of words, in which
 **Shiny apps in science**
 
 By creating this app, I tried to reach beyond the scope of current _open science_, which is often confined to files shared on data repositories. I believe that Shiny apps will become general practice in science within a few years ([see blog post or slides for more information](http://www.research.lancs.ac.uk/portal/en/activities/presenting-data-interactively-online-using-r-shiny(c9ce06ac-987e-4141-9121-016f6ee6d16b).html)).
-
 
 **Technical details**
 
@@ -170,9 +175,9 @@ output$downloadPlot.1 <- downloadHandler(
 downloadButton('downloadPlot.1', 'Download HD plot')
 ```
 
-**_Easy to laugh now!_**
+**_Rising to the challenge_**
 
-My experience with Shiny has been so good I've been sharing my experience. Yet, on my first crawling days, I spent an eternity stuck with this elephant in my room: "μ". This _μ_ letter (micro-souvenir from hell, as I later knew it), was part of the labels of my plots. All I knew was that I could not deploy the app online, even while I could perfectly launch it locally in my laptop. So, I wondered what use was to deploy locally if I couldn't publish the app?! Eventually, I read about UTF-8 encoding in one forum. Bless them forums. All I had to do was use "Âμ" instead of the single "μ". A better option I found later was: `expression("\u03bc")`.
+My experience with Shiny has been so good I've been sharing [my experience](https://pablobernabeu.github.io/2017/01/01/the-case-for-data-dashboards.-first-steps-with-r-shiny/). Yet, on my first crawling days, I spent an eternity stuck with this elephant in my room: "μ". This _μ_ letter (micro-souvenir from hell, as I later knew it), was part of the labels of my plots. All I knew was that I could not deploy the app online, even while I could perfectly launch it locally in my laptop. So, I wondered what use was to deploy locally if I couldn't publish the app?! Eventually, I read about UTF-8 encoding in one forum. Bless them forums. All I had to do was use "Âμ" instead of the single "μ". A better option I found later was: `expression("\u03bc")`.
 
 Beyond encoding issues, I had a tough time embedding images. You know, the 'www' folder... To be honest, I still haven't handled the 'www' way--but where there's a will there's a way. I managed to include my images by uploading them to a website and then entering their URL in "img(src", avoiding the use of folder paths.
 
