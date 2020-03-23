@@ -21,15 +21,15 @@ social:
 - icon: google-scholar
   icon_pack: ai
   link: https://scholar.google.com/citations?user=DxD0QDoAAAAJ&hl=en
-- icon: orcid
-  icon_pack: fab
-  link: http://orcid.org/0000-0003-1083-2460
 - icon: osf
   icon_pack: ai
   link: https://osf.io/25u3x/
 - icon: github
   icon_pack: fab
   link: https://github.com/pablobernabeu
+- icon: linkedin-in
+  icon_pack: fab
+  link: 'https://www.linkedin.com/in/pablobernabeu/'
 - icon: envelope
   icon_pack: fas
   link: '#contact'
