@@ -7,8 +7,8 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 60  # Order that this section will appear.
 
-title = "Data dashboards"
-subtitle = '[<i class="fas fa-info-circle"></i>](/2017/01/01/the-case-for-data-dashboards.-first-steps-with-r-shiny/)'
+title = "Data dashboards [<i class='fas fa-info-circle fa-sm'></i>](/2017/01/01/the-case-for-data-dashboards.-first-steps-with-r-shiny/)"
+subtitle = ''
 
 [content]
   # Page type to display. E.g. post, talk, publication, or data dashboard.

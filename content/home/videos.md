@@ -6,7 +6,7 @@
 widget = "blank"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 90  # Order that this section will appear.
+weight = 42  # Order that this section will appear.
 
 title = "Videos"
 subtitle = ""
@@ -55,26 +55,16 @@ subtitle = ""
 
 <div style="position:relative;padding-top:56.25%;">
   <iframe src="https://www.youtube-nocookie.com/embed/DTHFuC0Lw0Y" frameborder="0" allowfullscreen
-    style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+    style="position:absolute;top:0;left:0;width:80%;height:80%;"></iframe>
 </div>
-
-<br>
-<br>
-
 
 ### 2019. Part of application for [Software Sustainability Institute Fellowship](#funding)
 
 <div style="position:relative;padding-top:56.25%;">
   <iframe src="https://www.youtube-nocookie.com/embed/F-MQ8BYwLn4" frameborder="0" allowfullscreen
-    style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+    style="position:absolute;top:0;left:0;width:80%;height:80%;"></iframe>
 </div>
-
-<br>
-<br>
 
 ### 2019. Demonstration of procedure for [PSA experiments](/publication/chen-etal-inprep/)
 
-<a href='https://osf.io/h36wr/'><img width=100% src='https://cdn.pixabay.com/photo/2016/08/20/06/09/video-1606945_960_720.png' width=560></a>
-
-
-
+<a href='https://osf.io/h36wr/'><img width=80% src='https://cdn.pixabay.com/photo/2016/08/20/06/09/video-1606945_960_720.png' width=560></a>

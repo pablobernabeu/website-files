@@ -51,14 +51,16 @@ education:
     institution: Tilburg University and Radboud University
     year: 2017
     extra: '\-&nbsp; Student member, Master’s curriculum and accreditation committee'
-    extra2: '\-&nbsp; [Thesis](/publication/Bernabeu2017/)'
-    extra3: '\-&nbsp; Average grade: 7.54 of 10 (Distinction)'
+    extra2: '\-&nbsp; Tilburg U. Scholarship for Academic Excellence, 2014/2015'
+    extra3: '\-&nbsp; [Thesis](/publication/Bernabeu2017/)'
+    extra4: '\-&nbsp; Grade: 7.54 out of 10 (Distinction)'
   - course: '[BA English Philology](http://www.uam.es/ss/Satellite/FilosofiayLetras/es/1242658506907/contenidoFinal/Grado_en_Estudios_Ingleses.htm)'
     institution: Autonomous University of Madrid
     year: 2013
     extra: '\-&nbsp; One-year Erasmus exchange at University of Jyv&auml;skyl&auml;, Finland'
-    extra2: '\-&nbsp; Six-month teaching placement in Kaunas, Lithuania'
-    extra3: '\-&nbsp; Average grade: 7.30 out of 10 (2:1 Hons)'
+    extra2: '\-&nbsp; One-year exchange at University of Barcelona, Spain'
+    extra3: '\-&nbsp; Six-month teaching placement in Kaunas, Lithuania'
+    extra4: '\-&nbsp; Grade: 7.30 out of 10 (2:1 Hons)'
   furthercourses:
   - course: '[Advanced R programming](https://www.coursera.org/account/accomplishments/verify/FMNADHCTXZEZ)'
     institution: Coursera / Johns Hopkins University
@@ -72,7 +74,7 @@ education:
   - course: '[Introduction to cognitive neuroscience](https://www.ru.nl/alumni/english/@1022468/registration-open-for-radboud-summer-school-2016/)'
     institution: Radboud University
     year: 2016
-  - course: Linear mixed effects models with R
+  - course: Linear mixed-effects models in R
     institution: Max Planck Institute for Psycholinguistics
     year: 2016
   - course: '[Statistics: analyzing in R](https://www.ru.nl/prospectus/2016/socsci/courses-osiris/bs/sow-bs82-statistics-analyzing/)'

@@ -42,17 +42,6 @@
   name = "Presentations"
   url = "#presentations"
   weight = 80
-  
-[[main]]
-  name = "Other work"
-  url = "#other-work"
-  weight = 90
-
-[[main]]
-  name = "Videos"
-  url = "#videos"
-  weight = 100
-
 
 [[main]]
   name = "Contact"
