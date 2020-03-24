@@ -13,7 +13,7 @@ interests:
 organizations:
 - name: Lancaster University
   url: "http://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu"
-role: PhD student and graduate teaching assistant in Psychology
+role: Psychology PhD student and teaching assistant
 social:
 - icon: cv
   icon_pack: ai
@@ -40,7 +40,7 @@ superuser: true
 user_groups:
 - Researchers
 - Visitors
-bio: After doing a research master's in Psycholinguistics, I'm now a PhD student and graduate teaching assistant in Cognitive Psychology. I'm investigating how conceptual processing is supported by linguistic and sensorimotor brain systems. I use methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming.
+bio: After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology. I'm investigating how conceptual processing is supported by linguistic and sensorimotor brain systems. I use methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming.
 education:
   courses:
   - course: '[PhD Psychology with graduate teaching scholarship](https://www.lancaster.ac.uk/study/postgraduate/postgraduate-courses/psychology-phd/)'
@@ -97,7 +97,7 @@ education:
     year: 2020 (expected)
 ---
 
-After doing a research master's in Psycholinguistics, I'm now a PhD student and graduate teaching assistant in Cognitive Psychology. I'm investigating how conceptual processing is supported by linguistic and sensorimotor brain systems. I use methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. My [CV may be downloaded](https://osf.io/84ktq/download).
+After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology. I'm investigating how conceptual processing is supported by linguistic and sensorimotor brain systems. I use methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. My [CV may be downloaded](https://osf.io/84ktq/download).
 
 How do we understand the meaning of words? My PhD focuses on conceptual processing, and how individual differences affect how people understand the meaning of words. 
 
