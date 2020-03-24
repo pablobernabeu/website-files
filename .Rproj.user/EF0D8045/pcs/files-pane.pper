@@ -1,13 +1,13 @@
 {
-    "path": "/cloud",
-    "sortOrder": [
+    "path" : "/cloud/project/content/post/at-greg-8-am",
+    "sortOrder" : [
         {
-            "columnIndex": 4,
-            "ascending": true
+            "ascending" : true,
+            "columnIndex" : 4
         },
         {
-            "columnIndex": 2,
-            "ascending": true
+            "ascending" : true,
+            "columnIndex" : 2
         }
     ]
 }
