@@ -29,6 +29,8 @@ tags:
 - open data
 - BioScan
 - iNaturalist
+- HTML
+- CSS
 title: 'Butterfly species richness in Los Angeles'
 url_code: 'https://github.com/pablobernabeu/Data-is-present/blob/master/examples-documents-dashboards/Dashboards/Flexdashboard/Butterfly-species-richness-in-LA.Rmd'
 url_dataset: 'https://github.com/jcoliver/bioscan'
@@ -43,7 +45,7 @@ url_dataset: 'https://github.com/jcoliver/bioscan'
 
 <a href='https://pablobernabeu.github.io/dashboards/Butterfly-species-richness-in-LA/d.html'>
       <button style = "background-color: white; color: black; border: 2px solid #196F27; border-radius: 12px;">
-      <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;"> 
+      <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;">
       <span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Dashboard
       </h3></button>
       </a>
@@ -51,9 +53,9 @@ url_dataset: 'https://github.com/jcoliver/bioscan'
 <br>
 <br>
 
-Dashboard with Open data</a> (<a href='https://github.com/jcoliver/bioscan/blob/master/data/iNaturalist-clean-reduced.csv' target="_blank">iNaturalist</a> and <a href='https://github.com/jcoliver/bioscan/blob/master/data/BioScanDataComplete.csv' target="_blank">BioScan</a>) from Prudic, K.L.; Oliver, J.C.; Brown, B.V.; Long, E.C. <a href='https://doi.org/10.3390/insects9040186' target="_blank"> **Comparisons of Citizen Science Data-Gathering Approaches to Evaluate Urban Butterfly Diversity**. *Insects* **2018**, *9*, 186</a>. Prudic and colleagues compared citizen science with traditional methods in the measurement of butterfly populations.
+This dashboard presents open data</a> (<a href='https://github.com/jcoliver/bioscan/blob/master/data/iNaturalist-clean-reduced.csv' target="_blank">iNaturalist</a> and <a href='https://github.com/jcoliver/bioscan/blob/master/data/BioScanDataComplete.csv' target="_blank">BioScan</a>) from Prudic, K.L.; Oliver, J.C.; Brown, B.V.; Long, E.C. <a href='https://doi.org/10.3390/insects9040186' target="_blank"> **Comparisons of Citizen Science Data-Gathering Approaches to Evaluate Urban Butterfly Diversity**. *Insects* **2018**, *9*, 186</a>. In their study, Prudic and colleagues compared citizen science with traditional methods in the measurement of butterfly populations.
 
-I developed this dashboard independently, after reproducing the [analyses of the original study](https://github.com/jcoliver/bioscan) in a [Reprohack session](https://github.com/reprohack/reprohack-hq/blob/master/README.md). 
+I developed this dashboard after reproducing the [analyses of the original study](https://github.com/jcoliver/bioscan) in a [Reprohack session](https://github.com/reprohack/reprohack-hq/blob/master/README.md). 
 
 My coding tasks included transforming the data to a long format,
 
