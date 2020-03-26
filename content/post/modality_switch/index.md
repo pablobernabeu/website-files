@@ -47,6 +47,11 @@ Research has extensively investigated whether conceptual processing is modality-
 <br>
 <br>
 
+- [Early discussion on ResearchGate](https://www.researchgate.net/post/Conceptual_modality_switch_effect_measured_at_first_word)
+- [Data and code](https://osf.io/97unm/)
+- [Analysis environment in RStudio](https://mybinder.org/v2/gh/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing/master?urlpath=rstudio)
+
+
 In the Conceptual Modality Switch (CMS) paradigm, participants perform a property verification task, deciding whether certain property words can reasonably describe concept words. Covertly, the conceptual modality of consecutive trials is manipulated in order to produce specific switches in conceptual modality. For instance, after the trial *Soundless Answer*, which is primarily auditory, the following trial may match in modality—*Loud Welcome*—or mismatch—*Fine Selection* (visual).
 
 ![](designoverview.png)
@@ -88,14 +93,6 @@ Although the interaction of Group and CMS was only significant in time windows 1
 ## Discussion
 
 Results broadly suggest that cognition may operate on qualitatively different systems for the same task. In conceptual processing, one of these systems appears to be modality-independent, potentially based on linguistic co-occurrences, whereas another system is modality-specific, linked to physical experience.
-
-## Resources
-
-- [Early discussion on ResearchGate](https://www.researchgate.net/post/Conceptual_modality_switch_effect_measured_at_first_word)
-- [Paper](https://psyarxiv.com/a5pcz/)
-- [Master's thesis](https://psyarxiv.com/5gjvk/)
-- [Data and code](https://osf.io/97unm/)
-- [Analysis environment in RStudio](https://mybinder.org/v2/gh/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing/master?urlpath=rstudio)
 
 ## References
 
