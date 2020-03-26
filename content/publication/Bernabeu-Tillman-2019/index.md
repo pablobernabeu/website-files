@@ -26,6 +26,7 @@ tags:
 - linguistic relativity
 - psycholinguistics
 - linguistics
+- nonverbal
 title: 'More refined typology and design in linguistic relativity: the case of motion event encoding'
 # url_code: '#'
 # url_dataset: '#'

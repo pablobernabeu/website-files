@@ -34,6 +34,9 @@ tags:
 - event-related potentials
 - cognition
 - psycholinguistics
+- statistics
+- linear mixed-effects models
+- replication
 - CogSci
 title: 'Modality switch effects emerge early and increase throughout conceptual processing: evidence from ERPs [Paper]'
 url_code: 'https://osf.io/97unm/wiki/home/'

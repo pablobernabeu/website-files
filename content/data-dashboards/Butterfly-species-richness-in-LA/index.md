@@ -31,6 +31,8 @@ tags:
 - iNaturalist
 - HTML
 - CSS
+- tidy
+- merge
 title: 'Butterfly species richness in Los Angeles'
 url_code: 'https://github.com/pablobernabeu/Data-is-present/blob/master/examples-documents-dashboards/Dashboards/Flexdashboard/Butterfly-species-richness-in-LA.Rmd'
 url_dataset: 'https://github.com/jcoliver/bioscan'

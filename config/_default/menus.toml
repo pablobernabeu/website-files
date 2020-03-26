@@ -44,6 +44,6 @@
   weight = 80
 
 [[main]]
-  name = "Contact"
+  name = "<i class='fas fa-envelope'></i>"
   url = "#contact"
   weight = 110

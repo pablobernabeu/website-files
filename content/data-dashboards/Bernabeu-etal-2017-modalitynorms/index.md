@@ -33,6 +33,9 @@ tags:
 - data dashboard
 - Flexdashboard
 - R Shiny
+- statistics
+- regression
+- principal component analysis
 - modality exclusivity norms
 - Dutch
 - linguistics

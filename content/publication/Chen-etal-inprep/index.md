@@ -31,6 +31,8 @@ tags:
 - reading
 - event-related potentials
 - cognition
+- crosslinguistic
+- replication
 - psycholinguistics
 - Psychological Science Accelerator
 title: "Investigating object orientation effects across 14 languages"
