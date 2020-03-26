@@ -19,6 +19,7 @@ tags:
   - reading
   - statistics
   - linear mixed-effects models
+  - ResearchGate
 subtitle: ''
 summary: ''
 authors: []
@@ -90,6 +91,7 @@ Results broadly suggest that cognition may operate on qualitatively different sy
 
 ## Resources
 
+- [Early discussion on ResearchGate](https://www.researchgate.net/post/Conceptual_modality_switch_effect_measured_at_first_word)
 - [Paper](https://psyarxiv.com/a5pcz/)
 - [Master's thesis](https://psyarxiv.com/5gjvk/)
 - [Data and code](https://osf.io/97unm/)
