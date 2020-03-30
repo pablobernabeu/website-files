@@ -154,7 +154,7 @@ With the myriad repeated measures involved in EEG, linear mixed-effects models a
 
 Event-related potentials fulfil an important role in cognitive neuroscience and psychology, only matched by magnetic electroencephalography (MEG), which unites high temporal and spatial resolution. Learning how to use this method is demanding but even more rewarding. It certainly does not make for fast science, but allows the measurement of experimental effects online, that is, as they unfold. 
 
-You can overcame multiple challenges, and learn a lot. One of the issues I faced once regarded some channels (electrodes) that appeared to be missing from the data. I posted a [question on ResearchGate](https://www.researchgate.net/post/EEG_error_datasets_missing_channels_Its_strange_because_they_were_recorded_well_and_faulty_files_are_quite_as_heavy_as_the_good_ones_Any_ideas), and emailed Brain Products, the makers of Brain Vision Recorder, which I was using.
+You can learn about and overcome multiple challenges. One of the issues I faced once regarded some channels (electrodes) that appeared to be missing from the data. I posted a [question on ResearchGate](https://www.researchgate.net/post/EEG_error_datasets_missing_channels_Its_strange_because_they_were_recorded_well_and_faulty_files_are_quite_as_heavy_as_the_good_ones_Any_ideas), and emailed Brain Products, the maker of Brain Vision Recorder, which I was using.
 
 > Hi everyone, 
 >
