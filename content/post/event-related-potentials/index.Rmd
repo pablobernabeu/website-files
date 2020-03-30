@@ -29,9 +29,17 @@ projects: []
 
 Event-related potentials (ERPs) offer a unique insight in the study of human cognition. Let's look at their reason-to-be for the purposes of research, and how they are defined and processed (this order follows the final relevance of things, although it is chronologically inverse). Most of this content is based on my [master's thesis](https://psyarxiv.com/5gjvk), which I could fortunately conduct at the Max Planck Institute for Psycholinguistics, hosted by Dr. Roel Willems, from the Neurobiology of Language Department.
 
-## What are ERPs
+## Electroencephalography
 
-ERPs are electrical responses in the brain that are elicited by a specific stimulus. They are constantly produced, for every one of our actions. These overlapping electrical pulses happen at extremely high frequencies. Indeed, the signal can be measured once per millisecond. Yeah—picture the electrical :fireworks: in your brain. The high frequency of this signal is very interesting for the study of some cognitive processes in particular, for which the time course is (or may be) critical. One such example is conceptual processing—that is, how people understand the meaning of words.
+The brain produces electrical activity all the time, which can be measured via electrodes on the scalp—a method known as electroencephalography (EEG). These pulses are constantly produced, for every one of our states and actions. These overlapping pulses happen at extremely high frequencies; indeed, the signal can be measured once per millisecond. Yes—picture the electrical :fireworks: in our brains. The high frequency of this signal is very interesting for the study of some cognitive processes in particular, for which the time course is (or may be) critical. One such example is conceptual processing—that is, how people understand the meaning of words.
+
+Research has revealed the relation between certain EEG patterns and cognitive states and functions. Brain activity includes dozens of types, but broadly, it can be divided into neural oscillations and event-related potentials. Neural oscillations (also known as brain waves) are linked to *states* such as wakefulness, sleep, arousal, relaxation, etc (Roohi-Azizi, Azimi, Heysieattalab, & Aamidfar, 2017). Event-related potentials are instead tied to more finite *events*, such as a stimulus, and are time-locked to a point in those events (often the onset point). In cognitive neuroscience, both waves and ERPs are studies, whereas in cognitive psychology, ERPs take the lion's share. Let's dive into ERPs.
+
+### Event-related potentials
+
+ERPs can be created in the lab, using experimental designs. In multiple trials, a series of stimuli are presented, and at one point in that series, a measurement of EEG begins, spanning for a certain period. In psycholinguistics, for instance, a typical scenario is the presentation of words, and ERPs are systematically *time-locked* to the same position in consecutive trials. By this means, the experimental manipulation is collected, and the non-experimental 'noise' is largely cancelled out through the aggregation of multiple, converging trials.
+
+The chief reason to employ the ERP method is the measurement of cognition online, that is, precisely as it unfolds. This is fitting in the context of language comprehension.
 
 ## Time course of word processing
 
@@ -65,7 +73,7 @@ Multiple components are known, each having been found to consistently peak aroun
 
 3. **amplitude:** the voltage reached at a given time or for a given period;
 
-4. **topographic scalp distribution:** the areas in the scalp (the scalp being a reasonable proxy for the brain) in which the component appears;
+4. **topographic scalp distribution:** the areas on the scalp (the scalp being a reasonable proxy for the brain) in which the component appears;
 
 5. **functional role:** the cognitive functions that have been consistently associated with the component.
 
@@ -109,7 +117,7 @@ For the Bernabeu et al. study, I used Brain Vision software, and followed the [t
 
 6. baseline correction, which is a standardisation based on a certain period immediately before the onset of the target manipulation;
 
-7. further correction of artifacts such as motor action potentials.
+7. further correction of artifacts such as motor action potentials (or lateralised readiness potentials) resulting from even the subtlest muscle activity.
 
 This pipeline is reflected in the [scripts exported from Brain Vision](https://osf.io/98fs6/).
 
@@ -207,6 +215,8 @@ Lebois, L. A. M., Wilson-Mendenhall, C. D., & Barsalou, L. W. (2014). Are automa
 
 Leonard, M. K., Baud, M. O., Sjerps, M. J., & Chang, E. F. (2016). Perceptual restoration of masked speech in human cortex. *Nature Communications, 7*, 13619.
 
+Luck, S. J. & Kappenman, E.S. (Eds.), *Oxford Handbook of Event-Related Potential Components*. New York: Oxford University Press
+
 Mahon, B.Z., & Caramazza, A. (2008). A critical look at the Embodied Cognition Hypothesis and a new proposal for grounding conceptual content. *Journal of Physiology - Paris, 102*, 59-70.
 
 Marques, J. F. (2006). Specialization and semantic organization: Evidence for multiple semantics linked to sensory modalities. **Memory & Cognition, 34*, 1, 60-67.
@@ -218,6 +228,8 @@ Pecher, D., Zeelenberg, R., & Barsalou, L. W. (2003). Verifying different-modali
 ____ (2004). Sensorimotor simulations underlie conceptual representations: Modality-specific effects of prior activation. *Psychonomic Bulletin & Review, 11*, 1, 164-167.
 
 Pulvermüller, F., Shtyrov, Y., & Hauk, O. (2009). Understanding in an instant: Neurophysiological evidence for mechanistic language circuits in the brain. *Brain and Language, 110*, 2, 81–94. 
+
+Roohi-Azizi, M., Azimi, L., Heysieattalab, S., & Aamidfar, M. (2017). Changes of the brain's bioelectrical activity in cognition, consciousness, and some mental disorders. *Medical journal of the Islamic Republic of Iran, 31*, 53. https://doi.org/10.14196/mjiri.31.53
 
 Sato, M., Mengarelli, M., Riggio, L., Gallese, V., & Buccino, G. (2008). Task related modulation of the motor system during language processing. *Brain and Language, 105*, 83–90.
 
