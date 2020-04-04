@@ -11,7 +11,7 @@ image:
   preview_only: false
 links:
 - name: Dashboard
-  url: 'https://rpubs.com/pcbernabeu/Butterfly-species-richness-in-LA'
+  url: '/dashboards/Butterfly-species-richness-in-LA/d.html'
 #  projects:
 # - internal-project
 publishDate: "2020-01-01"
@@ -109,6 +109,6 @@ Reference
 
 <div style = "text-indent:-2em; margin-left:2em;">
 
-Bernabeu, P. (2020). Dashboard with data from Prudic, Oliver, Brown, & Long (2018), Comparisons of Citizen Science Data-Gathering Approaches to Evaluate Urban Butterfly Diversity, *Insects*, *9*, 186. Retrieved from https://rpubs.com/pcbernabeu/Butterfly-species-richness-in-LA.
+Bernabeu, P. (2020). Dashboard with data from Prudic, Oliver, Brown, & Long (2018), Comparisons of Citizen Science Data-Gathering Approaches to Evaluate Urban Butterfly Diversity, *Insects*, *9*, 186. Retrieved from https://pablobernabeu.github.io/dashboards/Butterfly-species-richness-in-LA/d.html.
 
 </div>
