@@ -36,7 +36,7 @@ The 'naive' approach is characterized by a first stage that checks whether the P
 
 #### STAGE 1. Determine whether PCA is appropriate at all, considering the variables
 
-<img style = "float: right; margin-left: 30px;" width = "45%" src="https://media-exp1.licdn.com/dms/image/C5612AQE7vLkOVSIaVQ/article-inline_image-shrink_1500_2232/0?e=1585785600&v=beta&t=ABp_9l8pA-tyTuMANjTv7nCBPKXSBTm4c8X3ocX7yYs" />
+<img style = "float: right; margin-left: 30px;" width = "45%" src="1.jpg" />
 
 - Variables should be **inter-correlated enough but not too much.** Field et al. (2012) provide some thresholds, suggesting that no variable should have many correlations below .30, or *any* correlation at all above .90. Thus, in the example here, variable Q06 should probably be excluded from the PCA.
 
@@ -147,7 +147,7 @@ A more lenient alternative is Joliffe's criterion, SS loadings > .7.
 plot(pc1$values, type = 'b')
 ```
 
-<img style = "float: right; margin-left: 30px;" width = "35%" src="https://media-exp1.licdn.com/dms/image/C5612AQF7TVqF5FFS6Q/article-inline_image-shrink_1000_1488/0?e=1585785600&v=beta&t=bEdWqeoT08j0nSiERX2ZPAlEcyPjUhRsEiucZy3wvBM" />
+<img style = "float: right; margin-left: 30px;" width = "35%" src="2.jpg" />
 
 Imagine a straight line **from the first point on the right.** Once this line bends considerably, count the points after the bend and up to the last point on the left. The number of points is the number of components to select. The example here is probably the most complicated (two components were finally chosen), but normally it's [not difficult](https://www.google.nl/search?q=select+principal+components+scree+plot+point+inflexion&source=lnms&tbm=isch&sa=X&ved=0ahUKEwi00ujoto_WAhXJbVAKHbTCBAgQ_AUICigB&biw=1280&bih=619).
 
@@ -188,7 +188,7 @@ summary(dataset$RC1, dataset$RC2)
 
 #### STAGE 4. Determine ascription of each variable to components
 
-<img style = "float: right; margin-left: 30px;" width = "55%" src="https://media-exp1.licdn.com/dms/image/C5612AQH-p0mz8hnoqw/article-inline_image-shrink_1500_2232/0?e=1585785600&v=beta&t=TMS7L_jyaDzlTZ1nlxmJ5b_3CHbeIkKkQKerQww0DqA" />
+<img style = "float: right; margin-left: 30px;" width = "55%" src="3.jpg" />
 
 Check the main summary by just calling pc2, and see how each variable correlates with the rotated components. This is essential because it reveals how variables load on each component, or in other words, to which component a variable belongs. For instance, the table shown here belongs to a [study about meaning of words](https://www.linkedin.com/pulse/modality-exclusivity-norms-336-properties-411-dutch-english-bernabeu/?published=t&lipi=urn%3Ali%3Apage%3Ad_flagship3_pulse_read%3BRIskxEq5Rgq59xHemwzpdw%3D%3D). These results suggest that the visual and haptic modalities of words are quite related, whereas the auditory modality is relatively unique. When the analysis works out well, a cut-off point of *r* = .8 may be applied for considering a variable as part of a component.
 
@@ -219,7 +219,7 @@ ggplot(eng_props,
 
 Below is an example combining PCA plots with code similar to the above. These plots illustrate something further with regard to the relationships among modalities. In property words, the different modalities spread out more clearly than they do in concept words. This makes sense because in language, properties define concepts ([see more](https://www.linkedin.com/pulse/modality-exclusivity-norms-336-properties-411-dutch-english-bernabeu?published=t&lipi=urn%3Ali%3Apage%3Ad_flagship3_pulse_read%3BRIskxEq5Rgq59xHemwzpdw%3D%3D)).
 
-![](https://media-exp1.licdn.com/dms/image/C4D12AQF1aTAK4IAm9w/article-inline_image-shrink_1500_2232/0?e=1585785600&v=beta&t=3iXYQJBTSa0elkK9n0Qcnr9CzUt1xOySVsRqxp-XA9s)
+![](4.png]
 
 An example of these analyses is [available in available in this RStudio environment](https://mybinder.org/v2/gh/pablobernabeu/Modality-exclusivity-norms-747-Dutch-English-replication/master?urlpath=rstudio), in the `norms.R` script.
 

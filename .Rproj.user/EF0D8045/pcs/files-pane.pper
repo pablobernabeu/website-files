@@ -1,13 +1,13 @@
 {
-    "path" : "/cloud",
-    "sortOrder" : [
+    "path": "/cloud/project/content/post/event-related-potentials",
+    "sortOrder": [
         {
-            "ascending" : true,
-            "columnIndex" : 4
+            "columnIndex": 4,
+            "ascending": true
         },
         {
-            "ascending" : true,
-            "columnIndex" : 2
+            "columnIndex": 2,
+            "ascending": true
         }
     ]
 }
