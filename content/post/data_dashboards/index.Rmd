@@ -3,7 +3,7 @@
 
 title: "The case for data dashboards—first steps in R Shiny"
 subtitle: ""
-summary: "Dashboards for data visualisation, such as R Shiny and Tableau, allow the interactive exploration of data by means of drop-down lists and checkboxes, with no coding required from the final users. The apps can be useful for both the data analyst and the public. Visualisation apps run on internet browsers. This allows for three options: private viewing (useful during analysis), selective sharing (used within work groups), or internet publication. Among the available platforms, R Shiny and Tableau stand out due to being relatively accessible to new users. Apps serve a broad variety of purposes. In science and beyond, these apps allow us to go the extra mile in sharing data. Alongside files and code shared in repositories, we can present the data in a website, in the form of plots or tables. This facilitates the public exploration of each section of the data (groups, participants, trials...) to anyone interested, and allows researchers to account for their proceeding in the analysis."
+summary: "Dashboards for data visualisation, such as R Shiny and Tableau, allow the interactive exploration of data by means of drop-down lists and checkboxes, with no coding required from the final users. These web applications run on internet browsers, allowing for three viewing modes, catered to both analysts and the public at large: (1) private viewing (useful during analysis), (2) selective sharing (used within work groups), and (3) internet publication. Among the available platforms, R Shiny and Tableau stand out due to being relatively accessible to new users. Apps serve a broad variety of purposes. In science and beyond, these apps allow us to go the extra mile in sharing data. Alongside files and code shared in repositories, we can present the data in a website, in the form of plots or tables. This facilitates the public exploration of each section of the data (groups, participants, trials...) to anyone interested, and allows researchers to account for their proceeding in the analysis."
 authors: []
 tags: [data presentation, dashboard, reproducibility, open science, open data, R Shiny, Flexdashboard]
 categories: [R, data dashboards, open data]
@@ -30,7 +30,7 @@ projects: []
 ---
 
 
-#### Dashboards for data visualisation, such as [R Shiny](https://shiny.rstudio.com/) and [Tableau](https://www.tableau.com/), allow the interactive exploration of data by means of drop-down lists and checkboxes, with no coding required from the final users. The apps can be useful for both the data analyst and the public.
+#### Dashboards for data visualisation, such as [R Shiny](https://shiny.rstudio.com/) and [Tableau](https://www.tableau.com/), allow the interactive exploration of data by means of drop-down lists and checkboxes, with no coding required from the final users. These web applications can be useful for both the data analyst and the public at large.
 
 
 <img style = "float: right; margin-left: 30px;" width = "25%" src="1.jpg" />
@@ -41,9 +41,9 @@ Visualisation apps run on internet browsers. This allows for three options: priv
 
 <img style = "float: right; margin-left: 30px;" width = '60%' src='3.png' />
 
-Publishers and journals highly encourage authors to make the most of their data by facilitating its easy exploration by the readership--even though they don't normally offer options for hosting web visualisations yet.
+Publishers and journals highly encourage authors to make the most of their data by facilitating its easy exploration by the readership--even though they don't normally offer the possibility of hosting any web applications yet.
 
-Apps can also prove valuable to those analysing the data. For instance, my app helped me a lot in identifying the extent of noise in a section of the data. Instead of running through a heavy score of code, the drop-down lists of the app let me seamlessly surf through the different sections.
+Apps can also prove valuable to those analysing the data. For instance, my app helped me to identify the extent of noise in a section of the data. Instead of running through a heavy score of code, the drop-down lists of the app let me seamlessly surf through the different sections.
 
 ![](4.png)
 
@@ -61,7 +61,7 @@ There are several platforms for creating apps (e.g., Tableau, D3.js, and R Shiny
 
 Shiny apps draw on any standard R code that you may already have. This is most commonly plots or tables, but other stuff such as images or Markdown texts are valid too. This is a nice thing to keep in mind when having to create a new app. Part of the job may already be done! The app is distributed among five different areas.
 
-- Data file(s): These are whatever data files you're using (e.g., with csv or rds extensions).
+- Data file(s): These are any data files you're using (e.g., with csv or rds extensions).
 
 ##### 1a. `server.R` script
 
@@ -461,10 +461,11 @@ dev.off()
 
 High-resolution plots can be rendered into a PDF document in a snap. Conveniently, all text is indexed, so it can be searched (Ctrl+f / Cmd+f / 🔍) ([see example](https://osf.io/2tpxn/)). Furthermore, you may also [merge the rendered PDF](http://www.ilovepdf.com/) with any other documents.
 
-Summary in [slides available](https://www.slideshare.net/PabloBernabeu/presenting-data-interactively-online-using-r-shiny-126064157).
-
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/mDJ6IF1RGTiAR8" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/PabloBernabeu/presenting-data-interactively-online-using-r-shiny-126064157" title="Presenting data interactively online using R Shiny" target="_blank">Presenting data interactively online using R Shiny</a> </strong> from <strong><a href="https://www.slideshare.net/PabloBernabeu" target="_blank">Pablo Bernabeu</a></strong> </div>
+<style>.embed-responsive{position:relative;height:100%;}.embed-responsive iframe{position:absolute;height:100%;}</style><script>window.jQuery || document.write('<script src="//code.jquery.com/jquery-1.11.2.min.js">\x3C/script>') </script><link href="https://mfr.osf.io/static/css/mfr.css" media="all" rel="stylesheet"><div id="mfrIframe" class="mfr mfr-file"></div><script src="https://mfr.osf.io/static/js/mfr.js"></script> <script>var mfrRender = new mfr.Render("mfrIframe", "https://mfr.osf.io/render?url=https://osf.io/2tpxn/?direct%26mode=render%26action=download%26mode=render");</script>
 
 <br>
 
-Feel free to share any thoughts or questions in a comment below.
+### Summary in [slides](https://www.slideshare.net/PabloBernabeu/presenting-data-interactively-online-using-r-shiny-126064157)
+
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/mDJ6IF1RGTiAR8" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/PabloBernabeu/presenting-data-interactively-online-using-r-shiny-126064157" title="Presenting data interactively online using R Shiny" target="_blank">Presenting data interactively online using R Shiny</a> </strong> from <strong><a href="https://www.slideshare.net/PabloBernabeu" target="_blank">Pablo Bernabeu</a></strong> </div>
+
