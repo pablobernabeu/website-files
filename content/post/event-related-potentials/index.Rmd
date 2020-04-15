@@ -11,9 +11,12 @@ tags:
   - electrodes
   - preprocessing
   - methodology
-  - linear mixed-effects models
   - cognitive neuroscience
   - Brain Vision
+  - R
+  - visualisation
+  - statistics
+  - linear mixed-effects models
   - Max Planck Institute for Psycholinguistics
 subtitle: ''
 summary: ''
@@ -76,7 +79,7 @@ Multiple components are known, each having been found to consistently peak aroun
 
 3. **amplitude:** the voltage reached at a given time (e.g., the peak) or for a certain period (e.g., a time window);
 
-4. **topographic scalp distribution:** the areas on the scalp (the scalp being a reasonable proxy for the brain) in which the component appears;
+4. **scalp distribution, or topography:** the areas on the scalp (the scalp being a reasonable proxy for the brain) in which the component appears;
 
 5. **functional role:** the cognitive functions that have been consistently associated with the component.
 
@@ -151,7 +154,7 @@ This pipeline is reflected in the [scripts exported from Brain Vision](https://o
 
 <br>
 
-Word reading ERPs can look somewhat like this after the preprocessing.
+Word reading ERPs can look somewhat like this after the preprocessing ([plots made in R](https://osf.io/bz7ae/)).
 
 ![](/post/event-related-potentials/index_files/Four main waveform plots stacked.png){width=80%}
 
@@ -159,7 +162,7 @@ To visualise these waveforms throughout the different sections of the data, a [d
 
 ## Statistical analysis
 
-With the myriad repeated measures involved in EEG, linear mixed-effects models are a good option, allowing the registration of electrodes and time points in the error term per participant (and trial, too, if these are not aggregated). The analysis I carried out is [available here](https://osf.io/sx3nw/).
+With the myriad repeated measures involved in EEG, linear mixed-effects models are a good option, allowing the registration of electrodes and time points in the error term per participant (and trial, too, if these are not aggregated). The analysis I performed, in R, is [available](https://osf.io/sx3nw/).
 
 <style>.embed-responsive{position:relative;height:100%;}.embed-responsive iframe{position:absolute;height:100%;}</style><script>window.jQuery || document.write('<script src="//code.jquery.com/jquery-1.11.2.min.js">\x3C/script>') </script><link href="https://mfr.osf.io/static/css/mfr.css" media="all" rel="stylesheet"><div id="mfrIframe" class="mfr mfr-file"></div><script src="https://mfr.osf.io/static/js/mfr.js"></script> <script>var mfrRender = new mfr.Render("mfrIframe", "https://mfr.osf.io/render?url=https://osf.io/sx3nw/?direct%26mode=render%26action=download%26mode=render");</script>
 
