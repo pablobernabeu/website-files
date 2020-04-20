@@ -83,7 +83,7 @@ This workshop can serve as an introduction to R or a revision. It demonstrates w
 - [Plots with `ggplot2::ggplot()`](https://philmcaleer.github.io/ug2-practical/visualisation-through-ggplot2.html)
 - [Interactive plots with `plotly::ggplotly()`](https://plot.ly/ggplot2/)
 - [Statistics](https://learningstatisticswithr-bookdown.netlify.com/part-v-statistical-tools.html)
-  - [Linear mixed-effects models](https://psych.wisc.edu/Brauer/BrauerLab/wp-content/uploads/2014/04/Brauer_and_Curtin_LMEMs-2017-Psych_Methods.pdf) (see also [a review of practices](https://www.sciencedirect.com/science/article/pii/S0749596X20300061?dgcid=coauthor#b0670))
+- [Linear mixed-effects models](https://psych.wisc.edu/Brauer/BrauerLab/wp-content/uploads/2014/04/Brauer_and_Curtin_LMEMs-2017-Psych_Methods.pdf) (see also [a review of practices](https://www.sciencedirect.com/science/article/pii/S0749596X20300061?dgcid=coauthor#b0670))
 - [How functions work](https://swcarpentry.github.io/r-novice-inflammation/02-func-R/)
 - *Debugging*. Code errors are known as bugs. They can tiresome, but also interesting sometimes! :sweat_smile: Some tips for the first many years of experience include: reading and investigating error messages, in both source and console windows; controlling letter case and typos; closing parentheses and inverted commas; ensuring to have the necessary packages installed and loaded; following the format required by each function. To debug, break up code into subcomponents and test each of those to find out the source of the error. Once we act on that, the best outcome is seeing the code work, but sometimes different errors overlap, in which case we may see one error disappearing before another one appears. Debugging soon leads to proficient information seeking. The search process often begins on an internet search engine and extends to user communities, package documentation, tutorials, blogs... (see [video explanation](https://youtu.be/Nj9J5iCSMB0?t=2687)). [Advanced debugging tools are also available](https://adv-r.hadley.nz/debugging.html).
 - Vast availability of free resources on the internet, from [Coursera](https://www.coursera.org/courses?query=r%20programming) and other MOOC sites, [RStudio](https://education.rstudio.com/), [University of Glasgow](https://psyteachr.github.io/), [Carpentries](http://swcarpentry.github.io/r-novice-inflammation/), etc.
@@ -92,7 +92,7 @@ This workshop can serve as an introduction to R or a revision. It demonstrates w
 
 #### Workshop 2: R Markdown documents
 
-Set your input and output in stone with [R Markdown](https://rmarkdown.rstudio.com/). These reports may be enriched with website features (HTML/CSS) and published as websites, PDF, or Word. Moreover, with R packages such as `bookdown`, `bookdownplus`, `blogdown` and `flexdashboard`, documents can be formatted into [websites](https://awesome-blogdown.com/), [digital books](https://bookdown.org/) and [data dashboards](https://rmarkdown.rstudio.com/flexdashboard/). Other useful packages include `rmarkdown`, `knitr`, `kableExtra` and `ggplot2`.
+Set your input and output in stone using [R Markdown](https://rmarkdown.rstudio.com/). The analysis reports may be enriched with website features (HTML/CSS) and published as HTML, PDF or Word documents. Moreover, with R packages such as `bookdown`, `bookdownplus`, `blogdown` and `flexdashboard`, documents can be formatted as [websites](https://awesome-blogdown.com/), [digital papers and books](https://bookdown.org/) and [data dashboards](https://rmarkdown.rstudio.com/flexdashboard/). Other useful packages include `rmarkdown`, `knitr`, `kableExtra` and `ggplot2`.
 
 <p align = 'center'> <a href = 'https://bookdownplus.netlify.com/portfolio/'> <img width = '50%' src = 'https://github.com/pablobernabeu/bookdownplus/blob/master/inst2/copernicus/showcase/copernicus2.png?raw=true' alt = 'Example of paper created with bookdownplus (image retrieved from R bookdownplus package)'/> </a> <p align = 'center' style = 'text-align:center;'> Image from bookdownplus package (https://bookdownplus.netlify.com/portfolio/).</p></p>
 
@@ -118,7 +118,7 @@ We will practise how to improve the functionality of dashboards using some HTML,
 <!-- Javascript function to enable a hovering tooltip -->
 <script>
 $(document).ready(function(){
-    $('[data-toggle="tooltip1"]').tooltip();
+$('[data-toggle="tooltip1"]').tooltip();
 });
 </script>
 ```
@@ -130,15 +130,15 @@ $(document).ready(function(){
 Next, we will practise with three dashboard types—[Flexdashboard](https://rmarkdown.rstudio.com/flexdashboard/using.html), [Shiny](https://shiny.rstudio.com/tutorial/) and [Flexdashboard-Shiny](https://rmarkdown.rstudio.com/flexdashboard/shiny.html)—and with the suitable hosting platforms. Firstly, the strength of Flexdashboard ([example](http://rpubs.com/pcbernabeu/Dutch-modality-exclusivity-norms)) is its basis on R Markdown, yielding an unmatched user interface (*front-end*). Secondly, the strength of Shiny ([example](https://mybinder.org/v2/gh/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing/master?urlpath=shiny/Shiny-app/)) is the input reactivity (*back-end*) it offers, allowing users to download sections of data they select, in various formats. Last, Flexdashboard-Shiny ([example](https://pablobernabeu.shinyapps.io/dutch-modality-exclusivity-norms/)) combines the best of both worlds.
 
 <p align='center'>
-    &#x2605; <b> Flexdashboard </b> &#x2605;
+&#x2605; <b> Flexdashboard </b> &#x2605;
 </p>
 
 <p align='center'>
-    &#x2605; &#x2605; <b> Shiny </b> &#x2605; &#x2605;
+&#x2605; &#x2605; <b> Shiny </b> &#x2605; &#x2605;
 </p>
 
 <p align='center'>
-    &#x2605; &#x2605; &#x2605; <b> Flexdashboard-Shiny </b> &#x2605; &#x2605; &#x2605;
+&#x2605; &#x2605; &#x2605; <b> Flexdashboard-Shiny </b> &#x2605; &#x2605; &#x2605;
 </p>
 
 Flexdashboard types are rendered as an HTML document—simple websites—, and can therefore be easily published on personal sites or [RPubs](https://rpubs.com/). This is convenient because no special hosting is required. In contrast, Shiny and Flexdashboard-Shiny types offer greater features, but require Shiny servers. Fortunately, the shinyapps.io server is available for free, up to some [usage limit](https://www.shinyapps.io/). This server can host any of the three dashboards mentioned here. Another good option is presented by Binder environments, which can host the Shiny-type dashboards with no (explicit) limit. Yet, the Flexdashboard-Shiny type cannot be hosted in this server ([as of January 2020, at least](https://github.com/jupyter/repo2docker/issues/799)). Consequently, greater functionality may come at a cost for dashboards that have any considerable traffic, whereas dashboards with low traffic may do well on shinyapps.io. Knowing these trade-offs can help navigate [usage limits](https://support.rstudio.com/hc/en-us/articles/217592947-What-are-the-limits-of-the-shinyapps-io-Free-plan-), save on web hosting fees, and increase the availability of our dashboards online, as we can offer fall-back versions on different platforms, as in the example below:
@@ -149,7 +149,7 @@ Transforming dashboards into the different versions can be as easy as enabling o
 
 ```
 knit: (function(inputFile, encoding) {
-  rmarkdown::render(inputFile, encoding = encoding) })
+rmarkdown::render(inputFile, encoding = encoding) })
 ```
 
 and disable reactive features.
@@ -172,12 +172,12 @@ Memory and traffic limits of the free shinyapps.io account can sometimes present
 - if necessary, use various apps (five are allowed in each free shinyapps.io account);
 - if necessary, link from the app to a PDF with visualisations requiring heavy, interlinked data. High-resolution plots can be rendered into a PDF document in a snap, using code such as below.
 
-      df('List of plots per page', width = 13, height = 5)
-      print(plot1)
-      print(plot2)
-      # ...
-      print(plot150)
-      dev.off()
+df('List of plots per page', width = 13, height = 5)
+print(plot1)
+print(plot2)
+# ...
+print(plot150)
+dev.off()
 
 Conveniently, all text in a PDF—even in plots—is indexed, so it can be searched [ Ctrl+f / Cmd+f / 🔍 ] (see [example](https://osf.io/2tpxn/)). Furthermore, you may also [merge the rendered PDF with any other documents](http://www.ilovepdf.com/).
 
@@ -194,14 +194,14 @@ In these coding meetups, participants collaborate to create reproducible documen
 
 - **Data used:** academic or non-academic data of your own or from open-access sources such as [OSF](https://osf.io), scientific journals, governments, international institutions, NGOs, etc.
 
-  - Inspired by the great [Reprohacks](https://reprohack.github.io/reprohack-hq/), content suggestions are encouraged. That is, if you'd like to have a reproducible document or dashboard created for a certain, open-access data set, please let us know, and some participants may take it on. Suggestions may be posted as [issues](https://github.com/pablobernabeu/Data-is-present/issues) or emailed to p.bernabeu@lancaster.ac.uk.
+- Inspired by the great [Reprohacks](https://reprohack.github.io/reprohack-hq/), content suggestions are encouraged. That is, if you'd like to have a reproducible document or dashboard created for a certain, open-access data set, please let us know, and some participants may take it on. Suggestions may be posted as [issues](https://github.com/pablobernabeu/Data-is-present/issues) or emailed to p.bernabeu@lancaster.ac.uk.
 <br></br>
 
 - **Purposes**
 
-  - collaborating to visualise data in novel ways using reproducible documents or interactive dashboards. For this purpose, participants sometimes draw on additional data to look at a bigger picture;
+- collaborating to visualise data in novel ways using reproducible documents or interactive dashboards. For this purpose, participants sometimes draw on additional data to look at a bigger picture;
 
-  - reflecting on the process by reviewing the techniques applied and challenges encountered.
+- reflecting on the process by reviewing the techniques applied and challenges encountered.
 
 - **Output:** A key aspect of datathons is the creation of output. Documents and dashboards are (co-)authored by the participants who work on them, who can then publish them on their websites, or on [RPubs](https://rpubs.com/), [Binder](https://mybinder.org/), [Shinyapps](https://www.shinyapps.io/) or [custom servers](https://rstudio.com/products/shiny/shiny-server/). Time constraints notwithstanding, a lot of this output may be very enticing for further development by the same participants, or even by other people if the code is shared online. Just like with data, an attribution licence can be attached to the code.
 
