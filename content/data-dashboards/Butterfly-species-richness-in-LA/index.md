@@ -84,7 +84,7 @@ BioScan = BioScan %>% pivot_longer(
 merging three data sets, 
 
 ```
-# The iNaturalist data set presents a challenge slightly different from the pseudovariables found above.
+# The iNaturalist data set presents a slightly different challenge from the pseudovariables found above.
 # The number of animals of each species must be computed from repeated entries, per site.
 
 iNaturalist = merge(iNaturalist, iNaturalist %>% count(species, site, name = 'Number'))
