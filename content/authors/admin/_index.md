@@ -96,7 +96,7 @@ education:
   teaching:
   - course: '[Teaching assistantship for 180 hours per year throughout PhD](https://www.lancaster.ac.uk/psychology/)'
     institution: Lancaster University Department of Psychology
-    extra: '\-&nbsp; Seminars, labs, marking, representation of teaching assistants. BSc courses: Psychology 101 (seminars), Cognitive psychology (seminars and essay marking). MSc courses: Statistics (labs).'
+    extra: '\-&nbsp; Various duties amounting to 180 hours per year. BSc courses: Psychology 101 (seminars and essay marking), Analysis (labs), Cognitive psychology (seminars and essay marking). MSc courses: Statistics (labs).'
     year: 2018-2022
   - course: '[Carpentries Instructor certification](https://carpentries.github.io/instructor-training/)'
     institution: The Carpentries

@@ -53,7 +53,7 @@ subtitle = ""
 
 |      |                        |                        |
 | ---- | ---------------------- | ---------------------- |
-| 2020 | [RepliCATS Grant](https://replicats.research.unimelb.edu.au) | Grant for completing 20 [RepliCATS research assessments](https://replicats.research.unimelb.edu.au). U Melbourne |
+| 2020 | [RepliCATS Grant](https://replicats.research.unimelb.edu.au), U Melbourne | Grant for completing 20 [RepliCATS research assessments](https://replicats.research.unimelb.edu.au) |
 | 2020 | [Gorilla Grant](https://gorilla.sc/) | Funding from [Gorilla](https://gorilla.sc/) and [Prolific](https://prolific.co/) to conduct a large experiment on the internet. |
 | 2020-2021 | [Software Sustainability Institute Fellowship](/2020/data-is-present-workshops-and-datathons/) | Organising [training and practice activities in research software](/2020/data-is-present-workshops-and-datathons/). I focussed on data presentation using R. |
 | 2017 | [Psychonomic Society Graduate Travel Award for 58th Annual Meeting](https://www.psychonomic.org/page/2017GraduateTravelRecipients) | Presenting a research poster on [research from my master's](https://cogsci.mindmodeling.org/2017/papers/0318/index.html). |
