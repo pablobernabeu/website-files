@@ -98,9 +98,9 @@ education:
     institution: Lancaster University Department of Psychology
     extra: '\-&nbsp; Various duties amounting to 180 hours per year. BSc courses: Psychology 101 (seminars and essay marking), Analysis (labs), Cognitive psychology (seminars and essay marking). MSc courses: Statistics (labs).'
     year: 2018-2022
-  - course: '[Carpentries Instructor certification](https://carpentries.github.io/instructor-training/)'
+  - course: '[Carpentries Instructor certification](https://carpentries.org/become-instructor/)'
     institution: The Carpentries
-    year: 2020 (expected)
+    year: Expected 2020
 ---
 
 After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology. I'm investigating how conceptual processing (i.e., understanding the meaning of words) is supported by linguistic and sensorimotor brain systems. I use methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. My [CV is available](https://mfr.osf.io/render?url=https://osf.io/84ktq/?direct%26mode=render%26action=download%26mode=render).
