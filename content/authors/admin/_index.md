@@ -30,12 +30,12 @@ social:
 - icon: linkedin-in
   icon_pack: fab
   link: 'https://www.linkedin.com/in/pablobernabeu/'
-- icon: envelope
-  icon_pack: fas
-  link: '#contact'
 - icon: twitter
   icon_pack: fab
   link: https://twitter.com/pablobernabeu_
+- icon: envelope
+  icon_pack: fas
+  link: '#contact'
 superuser: true
 user_groups:
 - Researchers
@@ -71,6 +71,7 @@ education:
   - course: '[Big data in society](https://www.vu.nl/en/programmes/short/summer-school/courses/big-data-in-society/index.aspx)'
     institution: Vrije Universiteit Amsterdam
     year: 2016
+    extra: '\-&nbsp; [Coursework](/2016/the-louisiana-minnesota-dallas-crisis-across-media-and-time-a-big-data-exercise/)'
   - course: Linear mixed-effects models in R
     institution: Max Planck Institute for Psycholinguistics
     year: 2016

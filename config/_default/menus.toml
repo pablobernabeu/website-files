@@ -9,7 +9,7 @@
    weight = 10
 
 [[main]]
-  name = "Bio"
+  name = "<i class='fas fa-user'></i> Bio"
   url = "#bio"
   weight = 20
   
