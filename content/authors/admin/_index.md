@@ -11,10 +11,12 @@ interests:
 - open science
 - programming
 organizations:
-- name: Lancaster University
-  url: "http://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu"
+- name: Lancaster University, UK
 role: Psychology PhD student and teaching assistant
 social:
+- icon: university
+  icon_pack: fas
+  link: http://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu
 - icon: cv
   icon_pack: ai
   link: https://mfr.osf.io/render?url=https://osf.io/84ktq/?direct%26mode=render%26action=download%26mode=render
@@ -30,9 +32,6 @@ social:
 - icon: linkedin-in
   icon_pack: fab
   link: 'https://www.linkedin.com/in/pablobernabeu/'
-- icon: twitter
-  icon_pack: fab
-  link: https://twitter.com/pablobernabeu_
 - icon: envelope
   icon_pack: fas
   link: '#contact'
