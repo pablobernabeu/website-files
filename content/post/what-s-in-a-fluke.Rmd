@@ -1,7 +1,7 @@
 ---
 title: What's in a fluke?
 author: ''
-date: '2020-01-01'
+date: '2020-06-25'
 slug: what-s-in-a-fluke
 categories:
   - viewpoint
@@ -26,13 +26,15 @@ The label 'fluke' is ubiquitous where statistics is applied, from medicine to ps
 
 <br>
 
-## What's in the label 'fluke'?
+## What's in the label 'fluke'---or what could there be?
 
-AOC's tweet points at two main types of reactions to her results in the previous elections. The first type is dismissal, on the grounds of a fluke or a weak opposition. The other reaction is plain 'aberration'. So, around the statistical underpinning of 'fluke' lurks the shadow of bias. We may then have to ask: Why is a certain result perceived as a fluke? Could such a perception ever be influenced by the biases that pervade human thought? Ultimately, what are the consequences of labeling a result as a fluke?
+AOC's tweet points at two main types of reactions to her results in the previous elections. The first type is dismissal, on the grounds of a fluke or a weak opposition. The other reaction is plain 'aberration'. A few months earlier, Mark Leibovich had also delved into this issue in The New York Times (May 4, 2020, https://nyti.ms/2YsJ9fb):
 
-From perceptual to cognitive and historical biases, people's judgements  are susceptible to visual mistakes (Zamboni, Ledgeway, McGraw, & Schluppeck, 2016), confirmation bias (Rajsic, Taylor, & Pratt, 2018), and biased records (Hug, 2003).
+> She believed misconceptions had taken hold about her: that she was angry and strident. That she was naïve. “That I just don’t know how this town works,” she said. “That I’m stupid. Or I’m lucky. That was a big thing the Democrats were saying. That I was a fluke. Which is basically just 10 different ways of saying she’s not supposed to be here.”
 
-In summary, some of the ingredients that a *fluke* label is apt to contain are:
+The seemingly objective term 'fluke', with its statistical underpinning, seems to be susceptible to biased uses. We may then have to ask: Have other electoral results, comparable to AOC's, been equally studied for signs of a fluke? Why is a certain result perceived as a fluke in the first place? From perceptual to cognitive and historical biases, people's judgements  are susceptible to visual mistakes (Zamboni, Ledgeway, McGraw, & Schluppeck, 2016), confirmation bias (Rajsic, Taylor, & Pratt, 2018), and biased records (Hug, 2003).
+
+In summary, a 'fluke' label could in principle be skewed by:
 
 <div style = 'padding-left: 20px;'>
 
@@ -40,7 +42,7 @@ In summary, some of the ingredients that a *fluke* label is apt to contain are:
 
 <i class="fas fa-brain"></i> &nbsp; the mind of the perceiver
 
-<i class="fas fa-bullhorn"></i> &nbsp; the voice of the voiceful
+<i class="far fa-newspaper"></i> &nbsp; the availability or lack of data
 
 </div>
 

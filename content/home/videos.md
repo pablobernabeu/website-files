@@ -51,14 +51,14 @@ subtitle = ""
 +++
 
 
-### 2019. Part of application for [Gorilla Grant](#funding)
+### 2019. Part of application for [Gorilla Grant](#other-funding)
 
 <div style="position:relative;padding-top:56.25%;">
   <iframe src="https://www.youtube-nocookie.com/embed/DTHFuC0Lw0Y" frameborder="0" allowfullscreen
     style="position:absolute;top:0;left:0;width:80%;height:80%;"></iframe>
 </div>
 
-### 2019. Part of application for [Software Sustainability Institute Fellowship](#funding)
+### 2019. Part of application for [Software Sustainability Institute Fellowship](#other-funding)
 
 <div style="position:relative;padding-top:56.25%;">
   <iframe src="https://www.youtube-nocookie.com/embed/F-MQ8BYwLn4" frameborder="0" allowfullscreen
