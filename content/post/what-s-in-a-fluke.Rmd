@@ -28,13 +28,11 @@ The label 'fluke' is ubiquitous where statistics is applied, from medicine to ps
 
 ## What's in the label 'fluke'?
 
-AOC's tweet points at two main types of reactions to her results in the previous elections. The first type is dismissal, on the grounds of a fluke or a weak opposition. The other reaction is plain 'aberration'. So, around the statistical underpinning of 'fluke' lurks the shadow of bias. We may then have to ask: Why is a certain result perceived as a fluke? Could such as perception ever be influenced by the biases that pervade human thought? Ultimately, what are the consequences of labeling a result as a fluke?
-
-### Potential bias
+AOC's tweet points at two main types of reactions to her results in the previous elections. The first type is dismissal, on the grounds of a fluke or a weak opposition. The other reaction is plain 'aberration'. So, around the statistical underpinning of 'fluke' lurks the shadow of bias. We may then have to ask: Why is a certain result perceived as a fluke? Could such a perception ever be influenced by the biases that pervade human thought? Ultimately, what are the consequences of labeling a result as a fluke?
 
 From perceptual to cognitive and historical biases, people's judgements  are susceptible to visual mistakes (Zamboni, Ledgeway, McGraw, & Schluppeck, 2016), confirmation bias (Rajsic, Taylor, & Pratt, 2018), and biased records (Hug, 2003).
 
-Some of the ingredients that a fluke label is apt to contain are:
+In summary, some of the ingredients that a *fluke* label is apt to contain are:
 
 <div style = 'padding-left: 20px;'>
 
