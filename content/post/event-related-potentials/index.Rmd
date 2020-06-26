@@ -31,7 +31,7 @@ projects: []
 ---
 
 
-Event-related potentials (ERPs) offer a unique insight in the study of human cognition. Let's look at their reason-to-be for the purposes of research, and how they are defined and processed (this order follows the final relevance of things, although it is chronologically inverse). Most of this content is based on my [master's thesis](https://psyarxiv.com/5gjvk), which I could fortunately conduct at the Max Planck Institute for Psycholinguistics ([conference paper](https://psyarxiv.com/a5pcz/) also available).
+Event-related potentials (ERPs) offer a unique insight in the study of human cognition. Let's look at their reason-to-be for the purposes of research, and how they are defined and processed (this order follows the final relevance of things, although it is chronologically inverse). Most of this content is based on my master's thesis ([download](https://psyarxiv.com/5gjvk/download/)), which I could fortunately conduct at the Max Planck Institute for Psycholinguistics ([conference paper](https://psyarxiv.com/a5pcz/) also available).
 
 ## Electroencephalography
 

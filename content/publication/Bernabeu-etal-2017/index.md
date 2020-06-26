@@ -16,8 +16,8 @@ links:
   url: '/dashboards/Dutch-modality-exclusivity-norms/d.html'
 - name: Results data dashboard
   url: 'https://mybinder.org/v2/gh/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing/master?urlpath=shiny/Shiny-app/'# 
-- name: Master's thesis
-  url: 'https://psyarxiv.com/5gjvk/download'
+- name: Download master's thesis
+  url: 'https://psyarxiv.com/5gjvk/download/'
 projects:
 # - internal-project
 publishDate: "2017-01-01"
