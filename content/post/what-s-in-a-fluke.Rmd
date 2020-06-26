@@ -52,7 +52,7 @@ In summary, a 'fluke' label could in principle be skewed by:
 
 Hug, S. (2003). Selection Bias in Comparative Research: The Case of Incomplete Data Sets. *Political Analysis, 11*(3), 255-274. https://doi.org/10.1093/pan/mpg014.
 
-Rajsic, J., Taylor, J. E. T. & Pratt, J. (2018) Out of sight, out of mind: Matching bias underlies confirmatory visual search. *Attention, Perception, & Psychophysics, 79*, 498–507. https://doi.org/10.3758/s13414-016-1259-4.
+Rajsic, J., Taylor, J. E. T., & Pratt, J. (2018) Out of sight, out of mind: Matching bias underlies confirmatory visual search. *Attention, Perception, & Psychophysics, 79*, 498–507. https://doi.org/10.3758/s13414-016-1259-4.
 
 Zamboni, E., Ledgeway, T., McGraw, P. V., & Schluppeck, D. (2016). Do perceptual biases emerge early or late in visual processing? Decision-biases in motion perception. *Proceedings of the Royal Society B: Biological Sciences, 283*(1833), 20160263. https://doi.org/10.1098/rspb.2016.0263.
 
