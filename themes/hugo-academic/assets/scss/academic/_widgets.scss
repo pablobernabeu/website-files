@@ -266,17 +266,17 @@ a.hero-cta-alt:hover {
 }
 
 .avatar {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   margin: 0 auto;
   object-fit: cover;
 }
 
-// Use smaller avatar size in About widget on small devices.
+// Use smaller avatar size on small devices.
 @include media-breakpoint-down(sm) {
   .wg-about .avatar {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
   }
 }
 
@@ -298,8 +298,9 @@ a.hero-cta-alt:hover {
 .portrait-title h3 {
   font-size: 1rem;
   font-weight: 300;
-  color: rgba(0,0,0, 0.54);
+  color: #3D2828;
   margin: 0px 0 10px 0;
+  line-height: 1.7;
 }
 
 ul.network-icon {

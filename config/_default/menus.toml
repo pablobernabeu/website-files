@@ -4,46 +4,36 @@
 #   The weight parameter defines the order that the links will appear in.
 
 [[main]]
-   name = "Blog"
-   url = "#blog"
+   name = 'Blog'
+   url = '#blog'
    weight = 10
 
 [[main]]
-  name = "<i class='fas fa-user'></i> Bio"
-  url = "#bio"
+  name = 'Profile'
+  url = '#bio'
   weight = 20
   
-# [[main]]
-#   name = "Skills"
-#   url = "#skills"
-#   weight = 30
-  
-# [[main]]
-#   name = "Funding"
-#   url = "#funding"
-#   weight = 40
-
 [[main]]
-  name = "Publications"
-  url = "#publication"
+  name = 'Publications'
+  url = '#publication'
   weight = 50
   
 [[main]]
-  name = "Data dashboards"
-  url = "#data-dashboards"
+  name = 'Data dashboards'
+  url = '#data-dashboards'
   weight = 60
   
 [[main]]
-  name = "Workshops"
-  url = "#workshops"
+  name = 'Workshops'
+  url = '#workshops'
   weight = 70
 
 [[main]]
-  name = "Presentations"
-  url = "#presentations"
+  name = 'Presentations'
+  url = '#presentations'
   weight = 80
 
 [[main]]
-  name = "<i class='fas fa-envelope'></i>"
-  url = "#contact"
+  name = "<i class='far fa-envelope-open fa-lg' title='Contact'></i>"
+  url = '#contact'
   weight = 110

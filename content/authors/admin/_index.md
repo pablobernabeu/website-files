@@ -12,29 +12,32 @@ interests:
 - programming
 organizations:
 - name: Lancaster University, UK
-role: Psychology PhD student and teaching assistant
+role: Psychology PhD student<br>and teaching assistant
 social:
 - icon: university
   icon_pack: fas
+  name: University page
   link: http://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu
 - icon: cv
   icon_pack: ai
+  name: Download CV
   link: https://mfr.osf.io/render?url=https://osf.io/84ktq/?direct%26mode=render%26action=download%26mode=render
 - icon: google-scholar
   icon_pack: ai
+  name: Google Scholar page
   link: https://scholar.google.com/citations?user=DxD0QDoAAAAJ&hl=en
 - icon: osf
   icon_pack: ai
+  name: OSF page
   link: https://osf.io/25u3x/
 - icon: github
   icon_pack: fab
+  name: Github page
   link: https://github.com/pablobernabeu
 - icon: linkedin-in
   icon_pack: fab
+  name: LinkedIn page
   link: 'https://www.linkedin.com/in/pablobernabeu/'
-- icon: envelope
-  icon_pack: fas
-  link: '#contact'
 superuser: true
 user_groups:
 - Researchers
@@ -45,7 +48,7 @@ education:
   - course: '[PhD Psychology with graduate teaching scholarship](https://www.lancaster.ac.uk/study/postgraduate/postgraduate-courses/psychology-phd/)'
     institution: Lancaster University
     year: 2022 (expected)
-    extra: '\-&nbsp; Service: peer-review for Cognitive Science journal, Psychological Science Accelerator; internship facilitation; contribution to departmental PROSPR website.'
+    extra: '\-&nbsp; Service: peer-review for Cognitive Science journal, Psychological Science Accelerator; internship facilitation; contribution to departmental Prospr website.'
   - course: '[Research Master Language and Communication](https://www.tilburguniversity.edu/education/masters-programmes/research-master-linguistics-and-communication-sciences)'
     institution: Tilburg University and Radboud University
     year: 2017

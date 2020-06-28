@@ -5,7 +5,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 10  # Order that this section will appear.
 
-title = "**_Data is Present:_** workshops and datathons"
+title = "**_Data is present:_** workshops and datathons"
 
 # Hero image (optional). Enter filename of an image in the `static/img/` folder.
 hero_media = "dashboard gif.gif"
