@@ -7,7 +7,7 @@ categories:
   - viewpoint
 tags: [fluke, false positive, false negative, statistics, perception, bias]
 subtitle: ''
-summary: 'Some of the ingredients that an alleged fluke is apt to have are: the eye of the beholder, the mind of the perceiver, the voice of the voiceful.'
+summary: "The label 'fluke' may in principle be skewed by the eye of the beholder, the mind of the perceiver, and the availability or lack of data."
 authors: []
 featured: no
 image:
@@ -34,7 +34,7 @@ AOC's tweet points at two main types of reactions to her results in the previous
 
 The seemingly objective term 'fluke', with its statistical underpinning, seems to be susceptible to biased uses. We may then have to ask: Have other electoral results, comparable to AOC's, been equally studied for signs of a fluke? Why is a certain result perceived as a fluke in the first place? From perceptual to cognitive and historical biases, people's judgements  are susceptible to visual mistakes (Zamboni, Ledgeway, McGraw, & Schluppeck, 2016), confirmation bias (Rajsic, Taylor, & Pratt, 2018), and biased records (Hug, 2003).
 
-In summary, a 'fluke' label could in principle be skewed by:
+In summary, the label 'fluke' may in principle be skewed by:
 
 <div style = 'padding-left: 20px;'>
 
