@@ -71,7 +71,7 @@ privacy_pack = false
 
 # Enable visitors to edit pages?
 #   `repo` defines the repository URL. `editable` defines which page types can be edited.
-# edit_page = {repo_url = 'https://github.com/pablobernabeu/pablobernabeu.github.io', content_dir = '', repo_branch = 'master', editable = {docs = false, page = true, post = true}}
+# edit_page = {repo_url = 'https://github.com/pablobernabeu/website-files', content_dir = '', repo_branch = 'master', editable = {docs = false, page = true, post = true}}
 
 ############################
 ## Contact details
@@ -208,7 +208,7 @@ plugins_js  = []
   engine = 1
 
   # Which page types are commentable?
-  commentable = {page = true, post = true, docs = true, project = true, publication = true, data-dashboards = true, talk = true}
+  commentable = {page = true, post = true, docs = true, project = true, publication = true, applications-and-dashboards = true, talk = true}
 
   # Configuration of Disqus.
   [comments.disqus]

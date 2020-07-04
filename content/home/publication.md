@@ -7,7 +7,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 50  # Order that this section will appear.
 
-title = "Publications &nbsp;<a href='/publication/'><i class='fas fa-search fa-sm'></i></a>"
+title = "Publications &nbsp;<a href='/publication/'><i class='fas fa-search fa-xs'></i></a>"
 subtitle = ""
 
 [content]

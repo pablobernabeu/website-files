@@ -19,8 +19,8 @@
   weight = 50
   
 [[main]]
-  name = 'Data dashboards'
-  url = '#data-dashboards'
+  name = 'Applications & dashboards'
+  url = '#applications-and-dashboards'
   weight = 60
   
 [[main]]
