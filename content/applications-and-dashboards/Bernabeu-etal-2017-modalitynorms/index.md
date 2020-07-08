@@ -210,7 +210,7 @@ This Flexdashboard-Shiny app presents linguistic data over several tabs. The cod
 
 ## Non-Shiny version published on RPubs
 
-A reduced, non-Shiny version was also created to increase the availability of the content. Removing some reactivity features allows the dashboard to be published as a standard, static website (i.e., on a personal website, on [RPubs](rpubs.com), etc.), without the need for a back-end Shiny server. Note that this type of website is dubbed 'static', but it can retain multiple interactive features thanks to Javascript-based tools under the hood, as allowed by R packages such as `leaflet` for maps, `DT` for tables, `plotly` for plots, etc. 
+A reduced, non-Shiny version was also created to increase the availability of the content. Removing some reactivity features allows the dashboard to be published as a standard, static website (i.e., on a personal website, on [RPubs](rpubs.com), etc.), without the need for a back-end Shiny server. Note that this type of website is dubbed 'static', but it can retain multiple interactive features thanks to Javascript-based tools under the hood, allowed by R packages such as `leaflet` for maps, `DT` for tables, `plotly` for plots, etc. 
 
 To create the Flexdashboard-only version departing from the Flexdashboard-Shiny version, I added a setting in the header of the script
 
@@ -232,6 +232,8 @@ and disabled reactive features.
 
 <div style = "text-indent:-2em; margin-left:2em;">
 
-Bernabeu, P., Willems, R. M., & Louwerse, M. M. (2017). Modality switch effects emerge early and increase throughout conceptual processing: Evidence from ERPs [Data dashboard for modality exclusivity norms]. Retrieved from https://pablobernabeu.shinyapps.io/ERP-waveform-visualization_CMS-experiment/.
+Bernabeu, P. (2018). Dutch modality exclusivity norms for 336 properties and 411 concepts [Data dashboard]. Retrieved from https://pablobernabeu.shinyapps.io/Dutch-Modality-Exclusivity-Norms/.
 
 </div>
+
+<br>
