@@ -38,7 +38,7 @@ tags:
 - linear mixed-effects models
 - replication
 - CogSci
-title: 'Modality switch effects emerge early and increase throughout conceptual processing: evidence from ERPs [Paper]'
+title: 'Modality switch effects emerge early and increase throughout conceptual processing: evidence from ERPs'
 url_code: 'https://osf.io/97unm/wiki/home/'
 url_dataset: 'https://osf.io/97unm/wiki/home/'
 url_pdf: 'https://psyarxiv.com/a5pcz/download'

@@ -1,5 +1,5 @@
 ---
-title: 'Modality switch effects emerge early and increase throughout conceptual processing: evidence from ERPs [Blog]'
+title: 'Modality switch effects emerge early and increase throughout conceptual processing: evidence from ERPs'
 author: ''
 date: '2017-01-01'
 lastmod: ''
