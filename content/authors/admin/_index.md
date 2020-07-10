@@ -54,7 +54,7 @@ education:
     year: 2017
     extra: '\-&nbsp; Student member, Master’s curriculum and accreditation committee'
     extra2: '\-&nbsp; Tilburg U. Scholarship for Academic Excellence, 2014/2015'
-    extra3: '\-&nbsp; [Download thesis](https://psyarxiv.com/5gjvk/download/) &nbsp;**/**&nbsp; [see further research](https://scholar.google.com/citations?user=DxD0QDoAAAAJ&h=)'
+    extra3: '\-&nbsp; Download [thesis](https://psyarxiv.com/5gjvk/download/) or [stimulus norming study](https://psyarxiv.com/s2c5h/download) &nbsp;**/**&nbsp; [see further research](https://scholar.google.com/citations?user=DxD0QDoAAAAJ&h=)'
     extra4: '\-&nbsp; Grade: 7.54 out of 10 (Distinction)'
   - course: '[BA English Philology](http://www.uam.es/ss/Satellite/FilosofiayLetras/es/1242658506907/contenidoFinal/Grado_en_Estudios_Ingleses.htm)'
     institution: Autonomous University of Madrid

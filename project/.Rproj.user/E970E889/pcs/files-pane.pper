@@ -1,9 +1,0 @@
-{
-    "path" : "/cloud",
-    "sortOrder" : [
-        {
-            "ascending" : true,
-            "columnIndex" : 2
-        }
-    ]
-}
