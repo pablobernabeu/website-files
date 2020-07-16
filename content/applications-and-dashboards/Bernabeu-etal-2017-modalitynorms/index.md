@@ -211,9 +211,9 @@ This web application presents linguistic data over several tabs. The code combin
      sprintf("%.2f", round(mean(selected_words()$Exclusivity),2)))))
    ```
 
-## Non-Shiny version published on RPubs
+## Static version published on RPubs
 
-A reduced, non-Shiny version was also created to increase the availability of the content. Removing some reactivity features allows the dashboard to be published as a standard, static website (i.e., on a personal website, on [RPubs](rpubs.com), etc.), without the need for a back-end Shiny server. Note that this type of website is dubbed 'static', but it can retain multiple interactive features thanks to Javascript-based tools under the hood, allowed by R packages such as `leaflet` for maps, `DT` for tables, `plotly` for plots, etc. 
+A reduced, 'static' version was also created to increase the availability of the content. Removing some reactivity features allows the dashboard to be published as a standard website (i.e., on a personal website, on [RPubs](rpubs.com), etc.), without the need for a back-end Shiny server. Note that this type of website is dubbed 'static', but it can retain multiple interactive features thanks to Javascript-based tools under the hood, allowed by R packages such as `leaflet` for maps, `DT` for tables, `plotly` for plots, etc. 
 
 To create the Flexdashboard-only version departing from the Flexdashboard-Shiny version, I added a setting in the header of the script
 

@@ -3,7 +3,7 @@
 
 title: "Data is present: workshops and datathons"
 subtitle: ""
-summary: "This project offers free activities to learn and practise reproducible data presentation across the UK. Pablo Bernabeu organises these events thanks to a Software Sustainability Institute Fellowship that covers organisation costs on a budget basis, and thanks to further support from the N8 CIR. Programming languages such as R and Python offer free, powerful resources for data processing, visualisation and analysis. Experience in these programs is highly valued in data-intensive disciplines. Original data has become a public good in many research fields thanks to cultural and technological advances. On the internet, we can find innumerable data sets from sources such as scientific journals and repositories (e.g., OSF), local and national governments, non-governmental organisations (e.g., data.world), etc. Activities comprise free workshops and datathons."
+summary: "This project offers free activities to learn and practise reproducible data presentation. Pablo Bernabeu organises these events in the context of a Software Sustainability Institute Fellowship. Programming languages such as R and Python offer free, powerful resources for data processing, visualisation and analysis. Experience in these programs is highly valued in data-intensive disciplines. Original data has become a public good in many research fields thanks to cultural and technological advances. On the internet, we can find innumerable data sets from sources such as scientific journals and repositories (e.g., OSF), local and national governments, non-governmental organisations (e.g., data.world), etc. Activities comprise free workshops and datathons."
 authors: []
 tags: [workshop, datathon, data presentation, dashboard, reproducibility, open science, open data, statistics, R, R Shiny, Flexdashboard, HTML, CSS, Software Sustainability Institute Fellowship, N8 CIR]
 categories: [R, data presentation, open data]
@@ -33,20 +33,19 @@ projects: []
 
 ### Calendar
 
-| Date  | Title         | Event and location   | Registration   | Attendance funding | Organisation funding |
-| :---: | ------------- | -------------------- | :------------: | ------------------ |--------------------- |
-| To follow | [R is for Resources, Reproducibility and oppRtunities](http://wp.lancs.ac.uk/lcicd/programme/)    | [Lancaster Conference on Infant and Early Child Development](http://wp.lancs.ac.uk/lcicd/programme/), Lancaster University | [Link](http://wp.lancs.ac.uk/lcicd/registration/) |  |  |
-| To follow | [Data dashboards and Binder environments](https://github.com/pablobernabeu/Data-is-present/blob/master/N8-CIR-workshops.md/) | University of York | [Link](https://n8cir.org.uk/events/) | [N8 CIR](https://n8cir.org.uk/events/) | [N8 CIR](https://n8cir.org.uk/events/), <br> [SSI Fellowship](https://www.software.ac.uk/programmes-and-events/fellowship-programme) |
-| To follow | [Introduction to R and R Markdown](https://github.com/pablobernabeu/Data-is-present/blob/master/N8-CIR-workshops.md/) | Durham University | [Link](https://n8cir.org.uk/events/) | [N8 CIR](https://n8cir.org.uk/events/) | [N8 CIR](https://n8cir.org.uk/events/), <br> [SSI Fellowship](https://www.software.ac.uk/programmes-and-events/fellowship-programme) |
-| July 2020 | [Open data and reproducibility](https://www.ukclc2020.com/pre-conference) | [UK Cognitive Linguistics Conference](https://www.ukclc2020.com/), University of Birmingham | [Link](https://www.ukclc2020.com/registration) |  | [SSI Fellowship](https://www.software.ac.uk/programmes-and-events/fellowship-programme) |
-| To follow | [Data dashboards and Binder environments](https://github.com/pablobernabeu/Data-is-present/blob/master/N8-CIR-workshops.md) | University of Liverpool | [Link](https://n8cir.org.uk/events/) | [N8 CIR](https://n8cir.org.uk/events/) | [N8 CIR](https://n8cir.org.uk/events/), <br> [SSI Fellowship](https://www.software.ac.uk/programmes-and-events/fellowship-programme) |
-| To follow | [Introduction to R and R Markdown](https://github.com/pablobernabeu/Data-is-present/blob/master/N8-CIR-workshops.md/) | University of Manchester | [Link](https://n8cir.org.uk/events/) | [N8 CIR](https://n8cir.org.uk/events/) | [N8 CIR](https://n8cir.org.uk/events/), <br> [SSI Fellowship](https://www.software.ac.uk/programmes-and-events/fellowship-programme) |
-| 6 May 2020 | [R Markdown](#workshop-2-r-markdown-documents) | Lancaster University | | | |
-| Event cancelled | [Open data and reproducibility 2.0](https://newcastle2020.satrdays.org/) | [SatRday Newcastle upon Tyne](https://newcastle2020.satrdays.org/), Newcastle University | [Link](https://newcastle2020.satrdays.org/) |  | [SSI Fellowship](https://www.software.ac.uk/programmes-and-events/fellowship-programme) |
+| Date  | Title        | Event and location   | Registration   |
+| :---: | ------------ | -------------------- | :------------: |
+| To follow | [R is for Resources, Reproducibility and oppRtunities](http://wp.lancs.ac.uk/lcicd/programme/)  | [Lancaster Conference on Infant and Early Child Development](http://wp.lancs.ac.uk/lcicd/programme/), Lancaster University | [Link](http://wp.lancs.ac.uk/lcicd/registration/) |
+| To follow | [Data dashboards and Binder environments](https://github.com/pablobernabeu/Data-is-present/blob/master/N8-CIR-workshops.md/) |  [online] | [Link](https://n8cir.org.uk/events/) |
+| To follow | [Introduction to R and R Markdown](https://github.com/pablobernabeu/Data-is-present/blob/master/N8-CIR-workshops.md/) |  [online] | [Link](https://n8cir.org.uk/events/) |
+| 13 August 2020 | [Open data and reproducibility: R Markdown, data dashboards and Binder](https://github.com/carpentrycon/carpentryconhome-proposals/issues/18#issuecomment-632729462) | [CarpentryCon](https://github.com/carpentrycon/carpentryconhome-proposals), The Carpentries [online] | [Link](https://github.com/carpentrycon/carpentryconhome-proposals) |
+| 26 July 2020 | [Open data and reproducibility: R Markdown, data dashboards and Binder](https://www.ukclc2020.com/pre-conference) | [UK Cognitive Linguistics Conference](https://www.ukclc2020.com/), University of Birmingham [online] | [Link](https://www.ukclc2020.com/registration) |
+| 6 May 2020 | [R Markdown](https://github.com/pablobernabeu/Data-is-present/blob/master/N8-CIR-workshops.md/) | Lancaster University [online] | |
+| Event cancelled | [Open data and reproducibility 2.0](https://newcastle2020.satrdays.org/) | [SatRday Newcastle upon Tyne](https://newcastle2020.satrdays.org/), Newcastle University | [Link](https://newcastle2020.satrdays.org/) |
 
 ### Background
 
-This project offers free activities to learn and practise reproducible data presentation across the UK. [Pablo Bernabeu](https://www.software.ac.uk/about/fellows/pablo-bernabeu) organises these events thanks to a [Software Sustainability Institute Fellowship](https://www.software.ac.uk/programmes-and-events/fellowship-programme) that covers organisation costs on a [budget basis](https://www.software.ac.uk/fellowship-programme/2020/terms-and-conditions), and thanks to further support from the [N8 CIR](https://n8cir.org.uk/events/). If you would like to bring any of these events to your institution at no cost, please submit a request (see [Contact](#contact)).
+This project offers free activities to learn and practise reproducible data presentation. [Pablo Bernabeu](https://www.software.ac.uk/about/fellows/pablo-bernabeu) organises these events in the context of a [Software Sustainability Institute Fellowship](https://www.software.ac.uk/programmes-and-events/fellowship-programme).
 
 #### Open-source software
 
@@ -199,14 +198,14 @@ In these coding meetups, participants collaborate to create reproducible documen
 
 - **Data used:** academic or non-academic data of your own or from open-access sources such as [OSF](https://osf.io), scientific journals, governments, international institutions, NGOs, etc.
 
-- Inspired by the great [Reprohacks](https://reprohack.github.io/reprohack-hq/), content suggestions are encouraged. That is, if you'd like to have a reproducible document or dashboard created for a certain, open-access data set, please let us know, and some participants may take it on. Suggestions may be posted as [issues](https://github.com/pablobernabeu/Data-is-present/issues) or emailed to p.bernabeu@lancaster.ac.uk.
+  - Inspired by the great [Reprohacks](https://reprohack.github.io/reprohack-hq/), content suggestions are encouraged. That is, if you'd like to have a reproducible document or dashboard created for a certain, open-access data set, please let us know, and some participants may take it on. Suggestions may be posted as [issues](https://github.com/pablobernabeu/Data-is-present/issues) or emailed to p.bernabeu@lancaster.ac.uk.
 <br></br>
 
 - **Purposes**
 
-- collaborating to visualise data in novel ways using reproducible documents or interactive dashboards. For this purpose, participants sometimes draw on additional data to look at a bigger picture;
+  - collaborating to visualise data in novel ways using reproducible documents or interactive dashboards. For this purpose, participants sometimes draw on additional data to look at a bigger picture;
 
-- reflecting on the process by reviewing the techniques applied and challenges encountered.
+  - reflecting on the process by reviewing the techniques applied and challenges encountered.
 
 - **Output:** A key aspect of datathons is the creation of output. Documents and dashboards are (co-)authored by the participants who work on them, who can then publish them on their websites, or on [RPubs](https://rpubs.com/), [Binder](https://mybinder.org/), [Shinyapps](https://www.shinyapps.io/) or [custom servers](https://rstudio.com/products/shiny/shiny-server/). Time constraints notwithstanding, a lot of this output may be very enticing for further development by the same participants, or even by other people if the code is shared online. Just like with data, an attribution licence can be attached to the code.
 

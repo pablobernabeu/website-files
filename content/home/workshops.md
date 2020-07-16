@@ -9,7 +9,7 @@ active = true  # Activate this widget? true/false
 weight = 70  # Order that this section will appear.
 
 title = "Workshops"
-subtitle = 'Introduction to R, statistics, visualisation, reproducible documents, data dashboards, HTML, CSS, web hosting ([further details](/2020/data-is-present-workshops-and-datathons/)).'
+subtitle = 'Introduction to R, statistics, visualisation, reproducible documents, web applications and dashboards, HTML, CSS, web hosting ([further details](/2020/data-is-present-workshops-and-datathons/)).'
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
@@ -51,12 +51,11 @@ subtitle = 'Introduction to R, statistics, visualisation, reproducible documents
 +++
 
 
-| Date  | Title        | Event and location   | Registration   | Attendance funding | Organisation funding |
-| :---: | ------------ | -------------------- | :------------: | ------------------ |--------------------- |
-| To follow | [R is for Resources, Reproducibility and oppRtunities](http://wp.lancs.ac.uk/lcicd/programme/)    | [Lancaster Conference on Infant and Early Child Development](http://wp.lancs.ac.uk/lcicd/programme/), Lancaster University | [Link](http://wp.lancs.ac.uk/lcicd/registration/) |  |  |
-| To follow | [Data dashboards and Binder environments](https://github.com/pablobernabeu/Data-is-present/blob/master/N8-CIR-workshops.md/) | University of York | [Link](https://n8cir.org.uk/events/) | [N8 CIR](https://n8cir.org.uk/events/) | [N8 CIR](https://n8cir.org.uk/events/), <br> [SSI Fellowship](https://www.software.ac.uk/programmes-and-events/fellowship-programme) |
-| To follow | [Introduction to R and R Markdown](https://github.com/pablobernabeu/Data-is-present/blob/master/N8-CIR-workshops.md/) | Durham University | [Link](https://n8cir.org.uk/events/) | [N8 CIR](https://n8cir.org.uk/events/) | [N8 CIR](https://n8cir.org.uk/events/), <br> [SSI Fellowship](https://www.software.ac.uk/programmes-and-events/fellowship-programme) |
-| July 2020 | [Open data and reproducibility](https://www.ukclc2020.com/pre-conference) | [UK Cognitive Linguistics Conference](https://www.ukclc2020.com/), University of Birmingham | [Link](https://www.ukclc2020.com/registration) |  | [SSI Fellowship](https://www.software.ac.uk/programmes-and-events/fellowship-programme) |
-| To follow | [Data dashboards and Binder environments](https://github.com/pablobernabeu/Data-is-present/blob/master/N8-CIR-workshops.md) | University of Liverpool | [Link](https://n8cir.org.uk/events/) | [N8 CIR](https://n8cir.org.uk/events/) | [N8 CIR](https://n8cir.org.uk/events/), <br> [SSI Fellowship](https://www.software.ac.uk/programmes-and-events/fellowship-programme) |
-| To follow | [Introduction to R and R Markdown](https://github.com/pablobernabeu/Data-is-present/blob/master/N8-CIR-workshops.md/) | University of Manchester | [Link](https://n8cir.org.uk/events/) | [N8 CIR](https://n8cir.org.uk/events/) | [N8 CIR](https://n8cir.org.uk/events/), <br> [SSI Fellowship](https://www.software.ac.uk/programmes-and-events/fellowship-programme) |
-| May 2020 | [R Markdown](https://github.com/pablobernabeu/Data-is-present/blob/master/N8-CIR-workshops.md/) | Lancaster University | | | |
+| Date  | Title        | Event and location   | Registration   |
+| :---: | ------------ | -------------------- | :------------: |
+| To follow | [R is for Resources, Reproducibility and oppRtunities](http://wp.lancs.ac.uk/lcicd/programme/)  | [Lancaster Conference on Infant and Early Child Development](http://wp.lancs.ac.uk/lcicd/programme/), Lancaster University | [Link](http://wp.lancs.ac.uk/lcicd/registration/) |
+| To follow | [Data dashboards and Binder environments](https://github.com/pablobernabeu/Data-is-present/blob/master/N8-CIR-workshops.md/) | 	[online] | [Link](https://n8cir.org.uk/events/) |
+| To follow | [Introduction to R and R Markdown](https://github.com/pablobernabeu/Data-is-present/blob/master/N8-CIR-workshops.md/) | 	[online] | [Link](https://n8cir.org.uk/events/) |
+| 13 August 2020 | [Open data and reproducibility: R Markdown, data dashboards and Binder](https://github.com/carpentrycon/carpentryconhome-proposals/issues/18#issuecomment-632729462) | [CarpentryCon](https://github.com/carpentrycon/carpentryconhome-proposals), The Carpentries	[online] | [Link](https://github.com/carpentrycon/carpentryconhome-proposals) |
+| 26 July 2020 | [Open data and reproducibility: R Markdown, data dashboards and Binder](https://www.ukclc2020.com/pre-conference) | [UK Cognitive Linguistics Conference](https://www.ukclc2020.com/), University of Birmingham	[online] | [Link](https://www.ukclc2020.com/registration) |
+| 6 May 2020 | [R Markdown](https://github.com/pablobernabeu/Data-is-present/blob/master/N8-CIR-workshops.md/) | Lancaster University	[online] | |
