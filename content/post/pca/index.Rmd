@@ -219,7 +219,7 @@ ggplot(eng_props,
 
 Below is an example combining PCA plots with code similar to the above. These plots illustrate something further with regard to the relationships among modalities. In property words, the different modalities spread out more clearly than they do in concept words. This makes sense because in language, properties define concepts ([see more](https://www.linkedin.com/pulse/modality-exclusivity-norms-336-properties-411-dutch-english-bernabeu?published=t&lipi=urn%3Ali%3Apage%3Ad_flagship3_pulse_read%3BRIskxEq5Rgq59xHemwzpdw%3D%3D)).
 
-![](4.png]
+![](4.png)
 
 An example of these analyses is [available in available in this RStudio environment](https://mybinder.org/v2/gh/pablobernabeu/Modality-exclusivity-norms-747-Dutch-English-replication/master?urlpath=rstudio), in the `norms.R` script.
 
