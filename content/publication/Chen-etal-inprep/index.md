@@ -10,6 +10,10 @@ authors:
 - Schmidt, K.
 - et al.
 date: "2020-01-01"
+categories:
+  - conceptual processing
+  - individual differences
+  - conceptual replication
 doi: "10.31234/osf.io/t2pjv"
 featured: false
 image:

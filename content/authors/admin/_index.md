@@ -46,18 +46,18 @@ bio: After doing a research master's, I became a PhD student and graduate teachi
 education:
   courses:
   - course: '[PhD Psychology with graduate teaching scholarship](https://www.lancaster.ac.uk/study/postgraduate/postgraduate-courses/psychology-phd/)'
-    institution: Lancaster University
+    institution: Lancaster University (United Kingdom)
     year: 2022 (expected)
     extra: '\-&nbsp; Service: peer-review for Cognitive Science journal, Psychological Science Accelerator; internship facilitation; contribution to departmental Prospr website.'
   - course: '[Research Master Language and Communication](https://www.tilburguniversity.edu/education/masters-programmes/research-master-linguistics-and-communication-sciences)'
-    institution: Tilburg University and Radboud University
+    institution: Tilburg University and Radboud University (Netherlands)
     year: 2017
     extra: '\-&nbsp; Student member, Master’s curriculum and accreditation committee'
     extra2: '\-&nbsp; Tilburg U. Scholarship for Academic Excellence, 2014/2015'
     extra3: '\-&nbsp; Download [thesis](https://psyarxiv.com/5gjvk/download/) or [stimulus norming study](https://psyarxiv.com/s2c5h/download) &nbsp;**/**&nbsp; [see further research](https://scholar.google.com/citations?user=DxD0QDoAAAAJ&h=)'
     extra4: '\-&nbsp; Grade: 7.54 out of 10 (Distinction)'
   - course: '[BA English Philology](http://www.uam.es/ss/Satellite/FilosofiayLetras/es/1242658506907/contenidoFinal/Grado_en_Estudios_Ingleses.htm)'
-    institution: Autonomous University of Madrid
+    institution: Autonomous University of Madrid (Spain)
     year: 2013
     extra: '\-&nbsp; One-year Erasmus exchange at University of Jyv&auml;skyl&auml;, Finland'
     extra2: '\-&nbsp; One-year exchange at University of Barcelona, Spain'
@@ -99,8 +99,8 @@ education:
   teaching:
   - course: '[Teaching assistantship for 180 hours per year throughout PhD](https://www.lancaster.ac.uk/psychology/)'
     institution: Lancaster University Department of Psychology
-    extra: '\-&nbsp; Various duties amounting to 180 hours per year. BSc courses: Psychology 101 (seminars and essay marking), Analysis (labs), Cognitive psychology (seminars and essay marking). MSc courses: Statistics (labs).'
-    year: 2018-2022
+    extra: '\-&nbsp; Various duties, especially formed of teaching assistantship, and also including representation of assistants at department. BSc courses: Psychology 101 (seminars and essay marking), Analysis (labs), Cognitive psychology (seminars and essay marking). MSc courses: Statistics (labs).'
+    year: 2018-2022 (expected)
   - course: '[Carpentries Instructor certification](https://carpentries.org/become-instructor/)'
     institution: The Carpentries
     year: Expected 2020

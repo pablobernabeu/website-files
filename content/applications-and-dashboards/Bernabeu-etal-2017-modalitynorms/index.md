@@ -13,8 +13,8 @@ links:
   url: '/dashboards/Dutch-modality-exclusivity-norms/d.html'
 - name: Complete dashboard
   url: 'https://pablobernabeu.shinyapps.io/Dutch-modality-exclusivity-norms/'
-- name: Research paper
-  url: '/publication/bernabeu-etal-2017/'
+- name: Paper
+  url: '/publication/dutch-modality-exclusivity-norms-for-336-properties-and-411-concepts/'
 - name: Github
   url: 'https://github.com/pablobernabeu/Modality-exclusivity-norms-Bernabeu-et-al'
 - name: RStudio Cloud
