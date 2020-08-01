@@ -7,7 +7,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 60  # Order that this section will appear.
 
-title = "Web applications & dashboards &nbsp;[<i class='fas fa-info-circle fa-xs'></i>](/2017/the-case-for-data-dashboards-first-steps-in-r-shiny/)"
+title = "Web applications and dashboards &nbsp;[<i class='fas fa-info-circle fa-xs'></i>](/2017/the-case-for-data-dashboards-first-steps-in-r-shiny/)"
 subtitle = ''
 
 [content]

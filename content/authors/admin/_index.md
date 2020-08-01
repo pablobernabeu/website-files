@@ -4,15 +4,13 @@ authors:
 name: Pablo Bernabeu
 email: "p.bernabeu@lancaster.ac.uk"
 interests:
-- Cognitive psychology and neuroscience
+- cognitive psychology and neuroscience
 - psycholinguistics
 - semantic / conceptual processing
 - statistics
 - open science
 - programming
-organizations:
-- name: Lancaster University, UK
-role: Psychology PhD student<br>and teaching assistant
+role: Psychology PhD student and teaching assistant at Lancaster University
 social:
 - icon: university
   icon_pack: fas
@@ -20,8 +18,8 @@ social:
   link: http://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu
 - icon: cv
   icon_pack: ai
-  name: Download CV
-  link: https://mfr.osf.io/render?url=https://osf.io/84ktq/?direct%26mode=render%26action=download%26mode=render
+  name: Resume
+  link: https://osf.io/84ktq
 - icon: google-scholar
   icon_pack: ai
   name: Google Scholar page
@@ -54,7 +52,6 @@ education:
     year: 2017
     extra: '\-&nbsp; Student member, Master’s curriculum and accreditation committee'
     extra2: '\-&nbsp; Tilburg U. Scholarship for Academic Excellence, 2014/2015'
-    extra3: '\-&nbsp; Download [thesis](https://psyarxiv.com/5gjvk/download/) or [stimulus norming study](https://psyarxiv.com/s2c5h/download) &nbsp;**/**&nbsp; [see further research](https://scholar.google.com/citations?user=DxD0QDoAAAAJ&h=)'
     extra4: '\-&nbsp; Grade: 7.54 out of 10 (Distinction)'
   - course: '[BA English Philology](http://www.uam.es/ss/Satellite/FilosofiayLetras/es/1242658506907/contenidoFinal/Grado_en_Estudios_Ingleses.htm)'
     institution: Autonomous University of Madrid (Spain)
@@ -99,14 +96,14 @@ education:
   teaching:
   - course: '[Teaching assistantship for 180 hours per year throughout PhD](https://www.lancaster.ac.uk/psychology/)'
     institution: Lancaster University Department of Psychology
-    extra: '\-&nbsp; Various duties, especially formed of teaching assistantship, and also including representation of assistants at department. BSc courses: Psychology 101 (seminars and essay marking), Analysis (labs), Cognitive psychology (seminars and essay marking). MSc courses: Statistics (labs).'
-    year: 2018-2022 (expected)
+    extra: '\-&nbsp; Various duties, especially formed of teaching assistantship, and also including representation of teaching assistants. BSc courses: Psychology 101 (seminars and essay marking), Analysis (labs), Cognitive psychology (seminars and essay marking). MSc courses: Statistics (labs).'
+    year: 2018 - 2022 (expected)
   - course: '[Carpentries Instructor certification](https://carpentries.org/become-instructor/)'
     institution: The Carpentries
     year: Expected 2020
 ---
 
-After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology. I'm investigating how conceptual processing (i.e., understanding the meaning of words) is supported by linguistic and sensorimotor brain systems. I use methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. My [CV is available](https://mfr.osf.io/render?url=https://osf.io/84ktq/?direct%26mode=render%26action=download%26mode=render).
+After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology. I'm investigating how conceptual processing (i.e., understanding the meaning of words) is supported by linguistic and sensorimotor brain systems. I use methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. My [CV is available](https://osf.io/84ktq).
 
 ###### The linguistic and sensorimotor bases of semantic processing: an investigation into the role of individual differences
 

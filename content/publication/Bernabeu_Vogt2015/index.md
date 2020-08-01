@@ -18,9 +18,6 @@ publication: '*Tenth Language at the University of Essex (LangUE) Postgraduate C
 publication_short: 
 publication_types:
 - "1"
-links:
-- name: DOI
-  url: "https://researchgate.net/publication/280858062"
 # slides: example
 summary:
 tags:

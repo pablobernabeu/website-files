@@ -1,7 +1,7 @@
 ---
 abstract: 'This app presents linguistic data over several tabs. The code combines the great front-end of Flexdashboard—based on R Markdown and yielding an unmatched user interface—, with the great back-end of Shiny—allowing users to download sections of data they select, in various formats. The hardest nuts to crack included modifying the rows/columns orientation without affecting the functionality of tables. A cool, recent finding was the reactable package. A nice feature, allowed by Flexdashboard, was the use of quite different formats in different tabs.'
 authors:
-date: "2017-01-01"
+date: "2018-01-01"
 doi: "https://doi.org/10.31234/osf.io/a5pcz"
 featured: false
 image:
@@ -21,16 +21,19 @@ links:
   url: 'https://rstudio.cloud/project/941860'
 #  projects:
 # - internal-project
-publishDate: "2017-01-01"
 publication:
 publication_short:
 publication_types:
 - "1"
 # slides: example
 summary: 'This app presents linguistic data over several tabs. The code combines the great front-end of Flexdashboard—based on R Markdown and yielding an unmatched user interface—, with the great back-end of Shiny—allowing users to download sections of data they select, in various formats. The hardest nuts to crack included modifying the rows/columns orientation without affecting the functionality of tables. A cool, recent finding was the reactable package. A nice feature, allowed by Flexdashboard, was the use of quite different formats in different tabs.'
+categories:
+  - linguistic materials
+  - research methods
 tags:
 - data dashboard
 - Flexdashboard
+- R
 - R Shiny
 - statistics
 - regression

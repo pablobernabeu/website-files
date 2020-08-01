@@ -41,7 +41,7 @@
   translation: PDF
 
 - id: btn_cite
-  translation: Reference
+  translation: Reference (missing italics)
 
 - id: btn_slides
   translation: Slides

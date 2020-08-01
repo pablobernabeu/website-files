@@ -34,7 +34,7 @@ image:
 projects: []
 links:
 - name: Data dashboard
-  url: '/dashboards/Dutch-modality-exclusivity-norms/d.html'
+  url: '/applications-and-dashboards/Bernabeu-2018-modalitynorms/'
 url_code: 'https://osf.io/brkjw/'
 url_dataset: 'https://osf.io/brkjw/'
 url_pdf: 'https://psyarxiv.com/s2c5h'

@@ -34,22 +34,22 @@ projects: []
 
 Research has extensively investigated whether conceptual processing is modality-specific—that is, whether meaning is processed to a large extent on the basis of perceptual and motor affordances (Barsalou, 2016). This possibility challenges long-established theories. It suggests a strong link between physical experience and language which is not borne out of the paradigmatic arbitrariness of words (see Lockwood, Dingemanse, & Hagoort, 2016). Modality-specificity also clashes with models of language that have no link to sensory and motor systems (Barsalou, 2016).
 
-<a href='https://psyarxiv.com/a5pcz/download'>
+<a href='/publication/bernabeu-etal-2017/'>
       <button style = "background-color: white; color: black; border: 2px solid #4CAF50; border-radius: 12px;">
       <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;"> 
-      <span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Article </h3></button></a> &nbsp; 
+      <span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Conference paper </h3></button></a> &nbsp; 
       
-<a href='https://psyarxiv.com/5gjvk/download/'>
+<a href='/publication/bernabeu-2017-MPhil-thesis/'>
       <button style = "background-color: white; color: black; border: 2px solid #196F27; border-radius: 12px;">
       <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;"> 
-      <span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Download thesis </h3></button></a> &nbsp; 
+      <span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Master's thesis </h3></button></a> &nbsp; 
       
 <br>
 <br>
 
 - [Early discussion on ResearchGate](https://www.researchgate.net/post/Conceptual_modality_switch_effect_measured_at_first_word)
-- [data and code](https://osf.io/97unm/)
-- [analysis environment in RStudio](https://mybinder.org/v2/gh/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing/master?urlpath=rstudio)
+- [Data and code](https://osf.io/97unm/)
+- [Data dashboard](/applications-and-dashboards/bernabeu-etal-2017-modalityswitch/)
 
 
 In the Conceptual Modality Switch (CMS) paradigm, participants perform a property verification task, deciding whether certain property words can reasonably describe concept words. Covertly, the conceptual modality of consecutive trials is manipulated in order to produce specific switches in conceptual modality. For instance, after the trial *Soundless Answer*, which is primarily auditory, the following trial may match in modality—*Loud Welcome*—or mismatch—*Fine Selection* (visual).

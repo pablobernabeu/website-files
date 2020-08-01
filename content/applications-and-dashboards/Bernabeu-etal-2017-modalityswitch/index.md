@@ -9,12 +9,12 @@ image:
   focal_point: ""
   preview_only: false
 links:
-- name: Dashboard site
-  url: 'https://mybinder.org/v2/gh/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing/master?urlpath=shiny/Shiny-app/'
+- name: Dashboard
+  url: 'https://pablobernabeu.shinyapps.io/ERP-waveform-visualization_CMS-experiment/'
 - name: Research paper
   url: '/publication/bernabeu-etal-2017/'
 - name: Master's thesis
-  url: 'https://psyarxiv.com/5gjvk/download'
+  url: '/publication/Bernabeu-2017-MPhil-thesis/'
 #  projects:
 # - internal-project
 publishDate: "2017-01-01"
@@ -24,8 +24,11 @@ publication_types:
 - "1"
 # slides: example
 summary: 'We tested whether conceptual processing is modality-specific by tracking the time course of the Conceptual Modality Switch effect. Forty-six participants verified the relation between property words and concept words. The conceptual modality of consecutive trials was manipulated in order to produce an Auditory-to-visual switch condition, a Haptic-to-visual switch condition, and a Visual-to-visual, no-switch condition. Event-Related Potentials (ERPs) were time-locked to the onset of the first word (property) in the target trials so as to measure the effect online and to avoid a within-trial confound. A switch effect was found, characterized by more negative ERP amplitudes for modality switches than no-switches. It proved significant in four typical time windows from 160 to 750 milliseconds post word onset, with greater strength in the Slow group, in posterior brain regions, and in the N400 window. The earliest switch effect was located in the language brain region, whereas later it was more prominent in the visual region. In the N400 and Late Positive windows, the Quick group presented the effect especially in the language region, whereas the Slow had it rather in the visual region. These results suggest that contextual factors such as time resources modulate the engagement of linguistic and embodied systems in conceptual processing.'
+categories:
+- conceptual processing
 tags:
 - data dashboard
+- R
 - R Shiny
 - conceptual modality switch
 - conceptual processing
@@ -47,12 +50,15 @@ url_dataset: 'https://github.com/pablobernabeu/Modality-switch-effects-emerge-ea
 ---
 
 
+<a href='https://pablobernabeu.shinyapps.io/ERP-waveform-visualization_CMS-experiment/'>
+      <button style = "background-color: white; color: black; border: 2px solid #4CAF50; border-radius: 12px;">
+      <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;"> 
+      <span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Dashboard </h3></button></a> &nbsp; 
+      
 <a href='https://mybinder.org/v2/gh/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing/0a5542658914a6ed01cf8e96252c48bb5bcf8f18?urlpath=shiny/Shiny-app/'>
       <button style = "background-color: white; color: black; border: 2px solid #196F27; border-radius: 12px;">
-      <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;"> 
-      <span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Dashboard
-      </h3></button>
-      </a>
+      <h3 style = "font-size:90%; margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;"> 
+      <span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Alternative in case of downtime </h3></button></a> &nbsp; 
 
 <br>
 <br>
@@ -63,7 +69,7 @@ The data is from a psychology experiment on the comprehension of words, in which
 
 **Shiny apps in science**
 
-By creating this app, I tried to reach beyond the scope of current _open science_, which is often confined to files shared on data repositories. I believe that Shiny apps will become general practice in science within a few years ([see blog post or slides for more information](http://www.research.lancs.ac.uk/portal/en/activities/presenting-data-interactively-online-using-r-shiny(c9ce06ac-987e-4141-9121-016f6ee6d16b).html)).
+By creating this app, I tried to reach beyond the scope of current *open science*, which is often confined to files shared on data repositories. I believe that Shiny apps will become general practice in science within a few years ([see blog post or slides for more information](http://www.research.lancs.ac.uk/portal/en/activities/presenting-data-interactively-online-using-r-shiny(c9ce06ac-987e-4141-9121-016f6ee6d16b).html)).
 
 **Technical details**
 
