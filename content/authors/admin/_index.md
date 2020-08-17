@@ -46,7 +46,7 @@ education:
   - course: '[PhD Psychology with graduate teaching scholarship](https://www.lancaster.ac.uk/study/postgraduate/postgraduate-courses/psychology-phd/)'
     institution: Lancaster University (United Kingdom)
     year: 2022 (expected)
-    extra: '\-&nbsp; Service: peer-review for Cognitive Science journal, Psychological Science Accelerator; internship facilitation; contribution to departmental Prospr website.'
+    extra: "-&nbsp; Service: peer-review for Cognitive Science journal, Psychological Science Accelerator; internship facilitation; contribution to departmental 'Prospr' website."
   - course: '[Research Master Language and Communication](https://www.tilburguniversity.edu/education/masters-programmes/research-master-linguistics-and-communication-sciences)'
     institution: Tilburg University and Radboud University (Netherlands)
     year: 2017
@@ -98,9 +98,9 @@ education:
     institution: Lancaster University Department of Psychology
     extra: '\-&nbsp; Various duties, especially formed of teaching assistantship, and also including representation of teaching assistants. BSc courses: Psychology 101 (seminars and essay marking), Analysis (labs), Cognitive psychology (seminars and essay marking). MSc courses: Statistics (labs).'
     year: 2018 - 2022 (expected)
-  - course: '[Carpentries Instructor certification](https://carpentries.org/become-instructor/)'
+  - course: '[Software Carpentry Instructor certificate](https://carpentries.org/become-instructor/)'
     institution: The Carpentries
-    year: Expected 2020
+    year: 2020
 ---
 
 After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology. I'm investigating how conceptual processing (i.e., understanding the meaning of words) is supported by linguistic and sensorimotor brain systems. I use methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. My [CV is available](https://osf.io/84ktq).

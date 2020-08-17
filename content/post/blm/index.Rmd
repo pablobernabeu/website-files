@@ -5,8 +5,8 @@ title: "The Louisiana-Minnesota-Texas crisis across media and time: a big data e
 subtitle: ""
 summary: "Racism has long been ingrained in human societies. Ancient Greek Aristotle already claimed that non-Greeks were slaves by nature, as they easily submitted to despotic government (Reilly, Kaufman, & Bodino, 2002). This study focuses on racism in the United States, which extends from the foundation of the country, when black people were generally born into slavery, and were at any rate regarded as an inferior people. US racism stands out globally for two reasons. First, the country has played a hegemonic part in the World since soon after its foundation. Second, the US is regarded as the most advanced society technology-wise, as it sets the minutes for the technology sector worldwide. In spite of these advantages, the country has long suffered the plague of widespread racism. Indeed, the abolition of slavery in the mid-nineteenth century did not grant equal citizen rights to the black population. Over time, the black population started to confront this situation. Especially the mid-nineteenth century saw large uprisings and a patent division of different societal sectors, as reflected in literary works such as Ellison’s 'Invisible Man' (1952). Inequality and confrontation about racism has extended to date, and the costs thereof have been large in terms of lives and otherwise (Feagin, 2004)."
 authors: [Risto Hinno and Pablo Bernabeu]
-tags: [big data, racism, web scraping, R, API, social media, news media]
-categories: [data presentation, R, big data]
+tags: [big data, data mining, racism, web scraping, R, API, social media, news media]
+categories: [data mining, R, big data]
 date: '2016-01-01'
 featured: true
 draft: false
@@ -36,9 +36,9 @@ With the era of global communication, what happens in the World’s most powerfu
 
 [^1]: A later update: On July 17, 2016—days after the current analysis—, the LMT crisis was extended with the killing of two policemen in the same Louisiana city where Alton Sterling had been killed.
 
-In the welter of events in Louisiana, Minnesota and Texas, some journalists warned of the return of social divisions such as those from the mid-nineteenth century. Such divisions might lead some people to an incomplete perception of the situation, and thus hinder the achievement of any solutions. However, President Obama denied such divisions as he spoke at the funeral for the policemen killed. At the same time, he addressed each of the different groups in the problem, including Establishment institutions and black protesters, advising them all to exercise greater open-mindedness towards the other aspects and bands in the problem ([see statement](https://obamawhitehouse.archives.gov/the-press-office/2016/07/12/remarks-president-memorial-service-fallen-dallas-police-officers){target='_top'}).
+In the welter of events in Louisiana, Minnesota and Texas, some journalists warned of the return of social divisions such as those from the mid-nineteenth century. Such divisions might lead some people to an incomplete perception of the situation, and thus hinder the achievement of any solutions. However, President Obama denied such divisions as he spoke at the funeral for the policemen killed. At the same time, he addressed each of the different groups in the problem, including Establishment institutions and black protesters, advising them all to exercise greater open-mindedness towards the other aspects and bands in the problem ([see statement](https://obamawhitehouse.archives.gov/the-press-office/2016/07/12/remarks-president-memorial-service-fallen-dallas-police-officers)).
 
-It must be noted that this small study is primarily a way for us to practise data analysis at a [course](https://www.vu.nl/en/programmes/short/summer-school/courses/big-data-in-society/index.aspx){target='_top'}. Neither the background nor the analyses make a realistic study of racism or the LMT crisis.
+It must be noted that this small study is primarily a way for us to practise data analysis at a [course](https://www.vu.nl/en/programmes/short/summer-school/courses/big-data-in-society/index.aspx). Neither the background nor the analyses make a realistic study of racism or the LMT crisis.
 
 ## 2.  Goals
 
@@ -100,15 +100,15 @@ To start, it may stand out that different topics appear across sources, all the 
 
 For greater visualization, we also provide some captions from the interactive LDAvis tool below. Please click on the figure titles to enjoy the full visualization.
 
-![<br> [&uarr; LDAvis visualization of NYT articles (click to explore in detail)](http://rristo.github.io/NYT/index.html){target='_top'}](https://github.com/RRisto/Summer-school-course-project/raw/master/BLM/Untitled3.png)
+![<br> [&uarr; LDAvis visualization of NYT articles (click to explore in detail)](http://rristo.github.io/NYT/index.html)](https://github.com/RRisto/Summer-school-course-project/raw/master/BLM/Untitled3.png)
 
 <br>
 
-![<br> [&uarr; LDAvis visualization of Facebook comments (click to explore in detail)](http://rristo.github.io/Facebook/index.html#topic=0&lambda=1&term=){target='_top'}](https://github.com/RRisto/Summer-school-course-project/raw/master/BLM/Untitled1.png)
+![<br> [&uarr; LDAvis visualization of Facebook comments (click to explore in detail)](http://rristo.github.io/Facebook/index.html#topic=0&lambda=1&term=)](https://github.com/RRisto/Summer-school-course-project/raw/master/BLM/Untitled1.png)
 
 <br>
 
-![<br> [&uarr; LDAvis visualization of tweets (click to explore in detail)](http://rristo.github.io/Twitter/index.html#topic=0&lambda=1&term=){target='_top'}](https://github.com/RRisto/Summer-school-course-project/raw/master/BLM/Untitled.png)
+![<br> [&uarr; LDAvis visualization of tweets (click to explore in detail)](http://rristo.github.io/Twitter/index.html#topic=0&lambda=1&term=)](https://github.com/RRisto/Summer-school-course-project/raw/master/BLM/Untitled.png)
 
 <br>
 <br>
@@ -161,7 +161,7 @@ The data mass probed in these analyses could be described as medium-sized data i
 
 ## Additional materials
 
-All materials are made public on the [RRisto GitHub page](https://github.com/RRisto/Summer-school-course-project){target='_top'}.
+All materials are made public on the [RRisto GitHub page](https://github.com/RRisto/Summer-school-course-project).
 
 ## References
 

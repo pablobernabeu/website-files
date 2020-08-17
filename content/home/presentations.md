@@ -53,7 +53,7 @@ subtitle = ""
 
 |          |                        |                        |                        |
 | -------- | ---------------------- | ---------------------- | ---------------------- |
-| Apr 2020 | Talk | [Embedding open research and reproducibility in the UG and PGT curricula](https://www.software.ac.uk/cw20) (with Andrew Stewart and Phil McAleer) | Collaborations Workshop, Software Sustainability Institute |
+| Apr 2020 | Talk | [Embedding open research and reproducibility in the UG and PGT curricula](https://youtu.be/vzkDBZ1qWfY) (with Andrew Stewart and Phil McAleer) | [Collaborations Workshop, Software Sustainability Institute](https://www.software.ac.uk/cw20) |
 | Event cancelled | Talk | [Open Data and Reproducibility v2.0](https://newcastle2020.satrdays.org/) | SatRday, Newcastle University |
 | Dec 2018 | Talk | [Presenting data interactively online using R Shiny](https://www.slideshare.net/PabloBernabeu/presenting-data-interactively-online-using-r-shiny-126064157) | Research Software Forum, Lancaster University |
 | Jan 2017 x2, Apr 2017, July 2017, Nov 2017 | Poster | [Modality switch effects emerge early and increase throughout conceptual processing: evidence from ERPs](https://mfr.osf.io/render?url=https://osf.io/dj52n/?direct%26mode=render%26action=download%26mode=render) | (1) [Event representations in episodic and semantic memory, U. York](http://eventcognition.org/public_html/event_memory_workshop/); <br> (2) Netherlands Graduate School of Linguistics, Radboud U.; <br> (3) Juniorendag, Utrecht U.; <br> (4) [39th Annual Conference of the Cognitive Science Society, London](https://cogsci.mindmodeling.org/2017/); <br> (5) [58th Annual Meeting of the Psychonomic Society, Vancouver](https://www.psychonomic.org/page/2017program) |
