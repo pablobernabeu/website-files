@@ -4,12 +4,12 @@ authors:
 name: Pablo Bernabeu
 email: "p.bernabeu@lancaster.ac.uk"
 interests:
-- cognitive psychology and neuroscience
-- psycholinguistics
-- semantic / conceptual processing
-- statistics
-- open science
-- programming
+- Cognitive psychology and neuroscience
+- Psycholinguistics
+- Semantic / conceptual processing
+- Statistics
+- Open science
+- Programming
 role: Psychology PhD student and teaching assistant at Lancaster University
 social:
 - icon: university
@@ -93,14 +93,6 @@ education:
   - course: '[Psycholinguistics](https://lotschool.nl/wp-content/uploads/2019/06/LOT-Schools-1997-2019-2.pdf)'
     institution: Netherlands Graduate School of Linguistics
     year: 2015
-  teaching:
-  - course: '[Teaching assistantship for 180 hours per year throughout PhD](https://www.lancaster.ac.uk/psychology/)'
-    institution: Lancaster University Department of Psychology
-    extra: '\-&nbsp; Various duties, especially formed of teaching assistantship, and also including representation of teaching assistants. BSc courses: Psychology 101 (seminars and essay marking), Analysis (labs), Cognitive psychology (seminars and essay marking). MSc courses: Statistics (labs).'
-    year: 2018 - 2022 (expected)
-  - course: '[Software Carpentry Instructor certificate](https://carpentries.org/become-instructor/)'
-    institution: The Carpentries
-    year: 2020
 ---
 
 After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology. I'm investigating how conceptual processing (i.e., understanding the meaning of words) is supported by linguistic and sensorimotor brain systems. I use methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. My [CV is available](https://osf.io/84ktq).

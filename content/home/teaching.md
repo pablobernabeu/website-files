@@ -1,14 +1,14 @@
 +++
-# A Demo section created with the Blank widget.
+# A section created with the Blank widget.
 # Any elements can be added in the body: https://sourcethemes.com/academic/docs/writing-markdown-latex/
 # Add more sections by duplicating this file and customizing to your requirements.
 
 widget = "blank"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 42  # Order that this section will appear.
+weight = 29  # Order that this section will appear.
 
-title = "Videos"
+title = "Teaching"
 subtitle = ""
 
 [design]
@@ -51,27 +51,13 @@ subtitle = ""
 +++
 
 
-### [2020] Personal profile and experience at Lancaster U. Psychology Dept.
+As a graduate teaching assistant (GTA) during my PhD, I have contributed to seminars, labs, marking, invigilation and GTAs' representation, for a total of 180 hours per year. In addition, I'm a [certified Carpentries Instructor](https://carpentries.org/become-instructor/).
 
-<div style="position:relative;padding-top:56.25%;">
-  <iframe src="https://www.youtube-nocookie.com/embed/ZEoan5tWqFg" frameborder="0" allowfullscreen
-    style="position:absolute;top:0;left:0;width:80%;height:80%;"></iframe>
-</div>
-
-### [2019] Part of application for [Gorilla Grant](#other-funding)
-
-<div style="position:relative;padding-top:56.25%;">
-  <iframe src="https://www.youtube-nocookie.com/embed/DTHFuC0Lw0Y" frameborder="0" allowfullscreen
-    style="position:absolute;top:0;left:0;width:80%;height:80%;"></iframe>
-</div>
-
-### [2019] Part of application for [Software Sustainability Institute Fellowship](#other-funding)
-
-<div style="position:relative;padding-top:56.25%;">
-  <iframe src="https://www.youtube-nocookie.com/embed/F-MQ8BYwLn4" frameborder="0" allowfullscreen
-    style="position:absolute;top:0;left:0;width:80%;height:80%;"></iframe>
-</div>
-
-### [2019] Demonstration of procedure for [PSA experiments](/publication/chen-etal-inprep/)
-
-<a href='https://osf.io/h36wr/'><img width=80% src='https://cdn.pixabay.com/photo/2016/08/20/06/09/video-1606945_960_720.png' width=560></a>
+|             |                      |
+| :---------: | -------------------- |
+|             | **Course and remit** |
+| **2018–19** | Understanding psychology (101) — Seminars and essay marking |
+|             | Investigating psychology: Analysis (102) — Labs |
+| **2019–20** | Understanding psychology (101) — Seminars and essay marking
+|             | Cognitive psychology (201) — Seminars and essay marking
+|             | Master's statistics (401) — Labs
