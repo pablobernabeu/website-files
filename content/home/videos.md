@@ -51,7 +51,7 @@ subtitle = ""
 +++
 
 
-### [2020] Workshop on R Markdown, dashboards and Binder <br>[(see programme and materials)](https://github.com/pablobernabeu/CarpentryCon-2020-workshop-Open-Data-Reproducibility)
+### [2020] Workshop on R Markdown, dashboards and Binder <br>(see [programme and materials](https://github.com/pablobernabeu/CarpentryCon-2020-workshop-Open-Data-Reproducibility))
 
 <div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
   <iframe src="https://www.youtube-nocookie.com/embed/wZsPD7CgJC0" frameborder="0" allowfullscreen

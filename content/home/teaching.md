@@ -56,8 +56,8 @@ As a graduate teaching assistant (GTA) during my PhD, I have contributed to semi
 |             |                      |
 | :---------: | -------------------- |
 |             | **Course and remit** |
-| **2018–19** | Understanding psychology (101) — Seminars and essay marking |
-|             | Investigating psychology: Analysis (102) — Labs |
 | **2019–20** | Understanding psychology (101) — Seminars and essay marking
 |             | Cognitive psychology (201) — Seminars and essay marking
 |             | Master's statistics (401) — Labs
+| **2018–19** | Understanding psychology (101) — Seminars and essay marking |
+|             | Investigating psychology: Analysis (102) — Labs |
