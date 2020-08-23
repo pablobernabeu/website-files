@@ -51,27 +51,42 @@ subtitle = ""
 +++
 
 
+### [2020] Workshop on R Markdown, dashboards and Binder <br>[(see programme and materials)](https://github.com/pablobernabeu/CarpentryCon-2020-workshop-Open-Data-Reproducibility)
+
+<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
+  <iframe src="https://www.youtube-nocookie.com/embed/wZsPD7CgJC0" frameborder="0" allowfullscreen
+    style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
+</div>
+
+
 ### [2020] Personal profile and experience at Lancaster U. Psychology Dept.
 
-<div style="position:relative;padding-top:56.25%;">
+<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
   <iframe src="https://www.youtube-nocookie.com/embed/ZEoan5tWqFg" frameborder="0" allowfullscreen
-    style="position:absolute;top:0;left:0;width:80%;height:80%;"></iframe>
+    style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
 </div>
+
 
 ### [2019] Part of application for [Gorilla Grant](#other-funding)
 
-<div style="position:relative;padding-top:56.25%;">
+<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
   <iframe src="https://www.youtube-nocookie.com/embed/DTHFuC0Lw0Y" frameborder="0" allowfullscreen
-    style="position:absolute;top:0;left:0;width:80%;height:80%;"></iframe>
+    style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
 </div>
+
 
 ### [2019] Part of application for [Software Sustainability Institute Fellowship](#other-funding)
 
-<div style="position:relative;padding-top:56.25%;">
+<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
   <iframe src="https://www.youtube-nocookie.com/embed/F-MQ8BYwLn4" frameborder="0" allowfullscreen
-    style="position:absolute;top:0;left:0;width:80%;height:80%;"></iframe>
+    style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
 </div>
+
 
 ### [2019] Demonstration of procedure for [PSA experiments](/publication/chen-etal-inprep/)
 
-<a href='https://osf.io/h36wr/'><img width=80% src='https://cdn.pixabay.com/photo/2016/08/20/06/09/video-1606945_960_720.png' width=560></a>
+<div style = "position: relative; margin-top: 20px;">
+  <a href='https://osf.io/h36wr/'><img width=80% 
+    src='https://cdn.pixabay.com/photo/2016/08/20/06/09/video-1606945_960_720.png' 
+    width=560></a>
+</div>
