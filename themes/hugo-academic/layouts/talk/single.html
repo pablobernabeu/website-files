@@ -9,10 +9,9 @@
     {{ if .Params.abstract }}
       <h3>{{ i18n "abstract" }}</h3>
       <p class="pub-abstract">{{ .Params.abstract | markdownify | emojify }}</p>
-    {{ else }}
-      <br>
     {{ end }}
 
+    {{ if .Params.date }}
     <div class="row">
       <div class="col-md-1"></div>
       <div class="col-md-10">
@@ -26,6 +25,7 @@
       <div class="col-md-1"></div>
     </div>
     <div class="d-md-none space-below"></div>
+    {{ end }}
 
     {{ if .Params.event }}
     <div class="row">
@@ -62,8 +62,6 @@
     </div>
     <div class="d-md-none space-below"></div>
     {{ end }}
-
-    <div class="space-below"></div>
 
     <div class="article-style">
       {{ .Content }}

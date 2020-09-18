@@ -5,9 +5,9 @@ date: '2020-06-25'
 slug: what-s-in-a-fluke
 categories:
   - viewpoint
-tags: [fluke, false positive, false negative, statistics, perception, bias]
+tags: [fluke, false positive, false negative, statistics, perception, bias, discrimination]
 subtitle: ''
-summary: "The label 'fluke' may in principle be skewed by the eye of the beholder, the mind of the perceiver, and the availability or lack of data."
+summary: "The label 'fluke' may in principle be skewed by the eye of the beholder, the mind of the perceiver and the availability or lack of data."
 authors: []
 featured: no
 image:
@@ -32,7 +32,7 @@ AOC's tweet points at two main types of reactions to her results in the previous
 
 > She believed misconceptions had taken hold about her: that she was angry and strident. That she was naïve. “That I just don’t know how this town works,” she said. “That I’m stupid. Or I’m lucky. That was a big thing the Democrats were saying. That I was a fluke. Which is basically just 10 different ways of saying she’s not supposed to be here.”
 
-The seemingly objective term 'fluke', with its statistical underpinning, seems to be susceptible to biased uses. We may then have to ask: Have other electoral results, comparable to AOC's, been equally studied for signs of a fluke? Why is a certain result perceived as a fluke in the first place? From perceptual to cognitive and historical biases, people's judgements  are susceptible to visual mistakes (Zamboni, Ledgeway, McGraw, & Schluppeck, 2016), confirmation bias (Rajsic, Taylor, & Pratt, 2018), and biased records (Hug, 2003).
+The seemingly objective term 'fluke', with its statistical underpinning, seems to be susceptible to biased uses. We may then have to ask: Have other electoral results, comparable to AOC's, been equally studied for signs of a fluke? Why is a certain result perceived as a fluke in the first place? From perceptual to cognitive and historical biases, people's judgements  are susceptible to visual mistakes (Zamboni, Ledgeway, McGraw, & Schluppeck, 2016), confirmation bias (Rajsic, Taylor, & Pratt, 2018) and biased records (Hug, 2003). Incidentally, this holds even in institutions that are relatively regulated, such as higher education and academia (Barber, Hayes, Johnson, Márquez-Magaña, & 10,234 signatories, 2020; Milkman, Akinola, Chugh, 2012, 2015).
 
 In summary, the label 'fluke' may in principle be skewed by:
 
@@ -50,10 +50,20 @@ In summary, the label 'fluke' may in principle be skewed by:
 
 ## References
 
+<div style = "text-indent:-2em; margin-left:2em;">
+
+Barber, P. H., Hayes, T. B., Johnson, T. L., Márquez-Magaña, L., & 10,234 signatories (2020). Systemic racism in higher education. *Science, 369*, 6510, 1440-1441.
+
 Hug, S. (2003). Selection Bias in Comparative Research: The Case of Incomplete Data Sets. *Political Analysis, 11*(3), 255-274. https://doi.org/10.1093/pan/mpg014.
+
+Milkman, K. L., Akinola, M., & Chugh, D. (2012). Temporal distance and discrimination: an audit study in academia. *Psychological Science, 23*(7), 710–717. https://doi.org/10.1177/0956797611434539
+
+_____ (2015).  What happens before? A field experiment exploring how pay and representation differentially shape bias on the pathway into organizations. *Journal of Applied Psychology, 100*(6), 1678–1712. https://doi.org/10.1037/apl0000022
 
 Rajsic, J., Taylor, J. E. T., & Pratt, J. (2018) Out of sight, out of mind: Matching bias underlies confirmatory visual search. *Attention, Perception, & Psychophysics, 79*, 498–507. https://doi.org/10.3758/s13414-016-1259-4.
 
 Zamboni, E., Ledgeway, T., McGraw, P. V., & Schluppeck, D. (2016). Do perceptual biases emerge early or late in visual processing? Decision-biases in motion perception. *Proceedings of the Royal Society B: Biological Sciences, 283*(1833), 20160263. https://doi.org/10.1098/rspb.2016.0263.
+
+</div>
 
 <br>
