@@ -5,7 +5,7 @@ date: '2020-06-25'
 slug: what-s-in-a-fluke
 categories:
   - viewpoint
-tags: [fluke, false positive, false negative, statistics, perception, bias, discrimination]
+tags: [fluke, false positive, false negative, perception, bias, discrimination]
 subtitle: ''
 summary: "The label 'fluke' may in principle be skewed by the eye of the beholder, the mind of the perceiver and the availability or lack of data."
 authors: []
