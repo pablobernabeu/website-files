@@ -54,6 +54,7 @@ subtitle = ""
 |          |                        |                        |                        |
 | -------- | ---------------------- | ---------------------- | ---------------------- |
 | Nov 2020 | Talk | [Mixed-effects models in R, and a new tool for data simulation](/talk/2020-11-26-mixed-effects-models-in-r-and-a-new-tool-for-data-simulation/) | New Tricks Seminars, Dept. Psychology, Lancaster University |
+| Oct 2020 | Talk | Reproducibilidad entorno a una aplicación web | Reprohack at LatinR Conference |
 | Apr 2020 | Talk | [Embedding open research and reproducibility in the UG and PGT curricula](https://youtu.be/vzkDBZ1qWfY) (with Andrew Stewart and Phil McAleer) | [Collaborations Workshop, Software Sustainability Institute](https://www.software.ac.uk/cw20) |
 | Event cancelled | Talk | [Open Data and Reproducibility v2.0](https://newcastle2020.satrdays.org/) | SatRday, Newcastle University |
 | Dec 2018 | Talk | [Presenting data interactively online using R Shiny](https://www.slideshare.net/PabloBernabeu/presenting-data-interactively-online-using-r-shiny-126064157) | Research Software Forum, Lancaster University |
