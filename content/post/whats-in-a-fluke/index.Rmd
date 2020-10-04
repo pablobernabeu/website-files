@@ -18,6 +18,8 @@ projects: []
 ---
 
 
+<br>
+
 *Fluke* is a popular term for the statistical concepts of false positive or false negative results (more commonly used for false positives). A *false positive* occurs when a result that does not exist in reality is observed in an analysis due to a methodological error (be it experimental, statistical, or otherwise). Conversely, a *false negative* occurs when a genuine result is not observed in an analysis, due to the same kind of error. The concept of fluke is defined by its opposite: a truthful, accurate result.
 
 The label 'fluke' is ubiquitous where statistics is applied, from medicine to psychology and from sociology to politics.

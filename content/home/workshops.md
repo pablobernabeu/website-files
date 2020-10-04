@@ -53,6 +53,6 @@ subtitle = 'Introduction to R, statistics, visualisation, reproducible documents
 
 | Date  | Title        | Event and location   | Registration   |
 | :---: | ------------ | -------------------- | :------------: |
-| 13 Aug 2020 | [Open data and reproducibility: R Markdown, data dashboards and Binder v2.1](https://github.com/pablobernabeu/CarpentryCon-2020-workshop-Open-Data-Reproducibility) (co-led with Florencia D'Andrea) | [CarpentryCon@Home](https://2020.carpentrycon.org/schedule/), The Carpentries	[online] | [Link](https://2020.carpentrycon.org/schedule/) |
-| 26 July 2020 | [Open data and reproducibility: R Markdown, data dashboards and Binder](https://github.com/pablobernabeu/UKCLC2020-workshop-Open-data-and-reproducibility) (co-led with Eirini Zormpa) | [UK Cognitive Linguistics Conference](https://www.ukclc2020.com/pre-conference), University of Birmingham [online] | [Link](https://www.ukclc2020.com/registration) | 
-| 6 May 2020 | [R Markdown](https://github.com/pablobernabeu/Data-is-present/blob/master/N8-CIR-workshops.md/) | Lancaster University	[online] | |
+| Aug 2020 | [Open data and reproducibility: R Markdown, data dashboards and Binder v2.1](https://github.com/pablobernabeu/CarpentryCon-2020-workshop-Open-Data-Reproducibility) (co-led with Florencia D'Andrea) | [CarpentryCon@Home](https://2020.carpentrycon.org/schedule/), The Carpentries	[online] | [Link](https://2020.carpentrycon.org/schedule/) |
+| July 2020 | [Open data and reproducibility: R Markdown, data dashboards and Binder](https://github.com/pablobernabeu/UKCLC2020-workshop-Open-data-and-reproducibility) (co-led with Eirini Zormpa) | [UK Cognitive Linguistics Conference](https://www.ukclc2020.com/pre-conference), University of Birmingham [online] | [Link](https://www.ukclc2020.com/registration) | 
+| May 2020 | R Markdown | Lancaster University	[online] | |

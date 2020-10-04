@@ -2,22 +2,21 @@
 title: Mixed-effects models in R, and a new tool for data simulation
 author: Pablo
 date: ~
-slug: 2020-11-26-mixed-effects-models-in-r-and-a-new-tool-for-data-simulation
+slug: 2020-11-26-mixed-effects-models-in-R-and-a-new-tool-for-data-simulation
 categories:
   - statistics
   - research and teaching applications
 tags:
-  - data simulation
-  - data science
-  - R
-  - R Shiny
-  - R Markdown
-  - Flexdashboard
-  - web application
-  - tidy
   - statistics
+  - linear-mixed effects models
+  - regression
+  - R
+  - programming
+  - web application
+  - data simulation
+  - Software Sustainability Institute Fellowship
 subtitle: ''
-summary: "Linear mixed-effects models (LMEMs) are used to account for variation within factors with multiple observations, such as participants, trials, items, channels, etc. (for an earlier approach, see Clark, 1973). This variation is modelled in terms of random intercepts (e.g., overall variation per participant) as well as random slopes for the fixed effects (e.g., treatment effect per participant). These measures help reduce false positives and false negatives (Barr, Levy, Scheepers, & Tily, 2013). Use of LMEMs has grown over the past decade, under various implementation forms (Meteyard & Davies, 2020). In this talk, I will look over the rationale for LMEMs, and demonstrate how to fit them in R (Brauer, & Curtin, 2018; Luke, 2017; Schielzeth et al., 2020). Challenges will also be covered. With the widely-accepted 'maximal' approach, based on fitting all possible random effects for each fixed effect, models sometimes fail to find a solution, or 'convergence'. Advice for the problem of nonconvergence will be demonstrated, through the progressive lightening of the random effects structure (Singman & Kellen, 2017; for an alternative approach, especially with small samples, see Matuschek et al., 2017). At the end, on a different note, I will present a web application that facilitates data simulation for research and teaching (Bernabeu & Lynott, 2020)."
+summary: "Use of LMEMs has grown over the past decade, under various implementation forms (Meteyard & Davies, 2020). In this talk, I will look over the rationale for LMEMs, and demonstrate how to fit them in R (Brauer, & Curtin, 2018; Luke, 2017; Schielzeth et al., 2020). Challenges will also be covered. For instance, when using the widely-accepted 'maximal' approach, based on fitting all possible random effects for each fixed effect, models sometimes fail to find a solution, or 'convergence'. Advice for the problem of nonconvergence will be demonstrated, based on the progressive lightening of the random effects structure (Singman & Kellen, 2017; for an alternative approach, especially with small samples, see Matuschek, Kliegl, Vasishth, Baayen, & Bates, 2017). At the end, on a different note, I will present a web application that facilitates data simulation for research and teaching (Bernabeu & Lynott, 2020)."
 authors: []
 lastmod: ~
 featured: no
@@ -36,7 +35,7 @@ projects: []
 
 ### Abstract
 
-Linear mixed-effects models (LMEMs) are used to account for variation within factors with multiple observations, such as participants, trials, items, channels, etc. (for an earlier approach, see Clark, 1973). This variation is modelled in terms of random intercepts (e.g., overall variation per participant) as well as random slopes for the fixed effects (e.g., treatment effect per participant). These measures help reduce false positives and false negatives (Barr, Levy, Scheepers, & Tily, 2013). Use of LMEMs has grown over the past decade, under various implementation forms (Meteyard & Davies, 2020). In this talk, I will look over the rationale for LMEMs, and demonstrate how to fit them in R (Brauer, & Curtin, 2018; Luke, 2017; Schielzeth et al., 2020). Challenges will also be covered. With the widely-accepted 'maximal' approach, based on fitting all possible random effects for each fixed effect, models sometimes fail to find a solution, or 'convergence'. Advice for the problem of nonconvergence will be demonstrated, through the progressive lightening of the random effects structure (Singman & Kellen, 2017; for an alternative approach, especially with small samples, see Matuschek et al., 2017). At the end, on a different note, I will present a web application that facilitates data simulation for research and teaching (Bernabeu & Lynott, 2020).
+Linear mixed-effects models (LMEMs) are used to account for variation within factors with multiple observations, such as participants, trials, items, channels, etc (for an earlier approach, see Clark, 1973). This variation is modelled in terms of random intercepts (e.g., overall variation per participant) as well as random slopes for the fixed effects (e.g., treatment effect per participant). These measures help reduce false positives and false negatives (Barr, Levy, Scheepers, & Tily, 2013). Use of LMEMs has grown over the past decade, under various implementation forms (Meteyard & Davies, 2020). In this talk, I will look over the rationale for LMEMs, and demonstrate how to fit them in R (Brauer, & Curtin, 2018; Luke, 2017; Schielzeth et al., 2020). Challenges will also be covered. For instance, when using the widely-accepted 'maximal' approach, based on fitting all possible random effects for each fixed effect, models sometimes fail to find a solution, or 'convergence'. Advice for the problem of nonconvergence will be demonstrated, based on the progressive lightening of the random effects structure (Singman & Kellen, 2017; for an alternative approach, especially with small samples, see Matuschek, Kliegl, Vasishth, Baayen, & Bates, 2017). At the end, on a different note, I will present a web application that facilitates data simulation for research and teaching (Bernabeu & Lynott, 2020).
 
 
 ### References
