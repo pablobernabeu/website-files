@@ -15,7 +15,7 @@ subtitle = ""
   page_type = "post"
   
   # Choose how many pages you would like to display (0 = all pages)
-  count = 15
+  count = 50
   
   # Choose how many pages you would like to offset by
   offset = 0
