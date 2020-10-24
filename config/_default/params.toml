@@ -185,6 +185,12 @@ plugins_js  = []
 
   # Citation style ('apa' or 'mla')
   citation_style = 'apa'
+  
+# Configuration of publication pages.
+[talk]
+  # Date format (refer to https://sourcethemes.com/academic/docs/customization/#date-format )
+  # Examples: 'Mon, Jan 2, 2006' or '2006-01-02'
+  date_format = 'Mon, Jan 2, 2006'
 
 # Configuration of project pages.
 [projects]

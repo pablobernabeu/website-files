@@ -1,8 +1,9 @@
 ---
 title: Mixed-effects models in R, and a new tool for data simulation
 author: Pablo
-date: ~
-slug: 2020-11-26-mixed-effects-models-in-R-and-a-new-tool-for-data-simulation
+date: 2020-11-26
+event: New Tricks Seminars, Dept. Psychology, Lancaster University
+slug: ~
 categories:
   - statistics
   - research and teaching applications
@@ -28,14 +29,9 @@ projects: []
 ---
 
 
-:round_pushpin: New Tricks Seminars, Dept. Psychology, Lancaster University
-
-26 Nov 2020
-
-
 ### Abstract
 
-Linear mixed-effects models (LMEMs) are used to account for variation within factors with multiple observations, such as participants, trials, items, channels, etc (for an earlier approach, see Clark, 1973). This variation is modelled in terms of random intercepts (e.g., overall variation per participant) as well as random slopes for the fixed effects (e.g., treatment effect per participant). These measures help reduce false positives and false negatives (Barr, Levy, Scheepers, & Tily, 2013). Use of LMEMs has grown over the past decade, under various implementation forms (Meteyard & Davies, 2020). In this talk, I will look over the rationale for LMEMs, and demonstrate how to fit them in R (Brauer, & Curtin, 2018; Luke, 2017; Schielzeth et al., 2020). Challenges will also be covered. For instance, when using the widely-accepted 'maximal' approach, based on fitting all possible random effects for each fixed effect, models sometimes fail to find a solution, or 'convergence'. Advice for the problem of nonconvergence will be demonstrated, based on the progressive lightening of the random effects structure (Singman & Kellen, 2017; for an alternative approach, especially with small samples, see Matuschek, Kliegl, Vasishth, Baayen, & Bates, 2017). At the end, on a different note, I will present a web application that facilitates data simulation for research and teaching (Bernabeu & Lynott, 2020).
+Linear mixed-effects models (LMEMs) are used to account for variation within factors with multiple observations, such as participants, trials, items, channels, etc (for an earlier approach, see Clark, 1973). This variation is modelled in terms of random intercepts (e.g., overall variation per participant) as well as random slopes for the fixed effects (e.g., treatment effect per participant). These measures help reduce false positives and false negatives (Barr, Levy, Scheepers, & Tily, 2013), and the resulting models tend to be robust to violations of assumptions (Schielzeth et al., 2020). The use of LMEMs has grown over the past decade, under various implementation forms (Meteyard & Davies, 2020). In this talk, I will look over the rationale for LMEMs, and demonstrate how to fit them in R (Brauer, & Curtin, 2018; Luke, 2017). Challenges will also be covered. For instance, when using the widely-accepted 'maximal' approach, based on fitting all possible random effects for each fixed effect, models sometimes fail to find a solution, or 'convergence'. Advice for the problem of nonconvergence will be demonstrated, based on the progressive lightening of the random effects structure (Singman & Kellen, 2017; for an alternative approach, especially with small samples, see Matuschek, Kliegl, Vasishth, Baayen, & Bates, 2017). At the end, on a different note, I will present a web application that facilitates data simulation for research and teaching (Bernabeu & Lynott, 2020).
 
 
 ### References
@@ -52,7 +48,7 @@ Clark, H. H. (1973). The language-as-fixed-effect fallacy: A critique of languag
 
 Luke, S. G. (2017). Evaluating significance in linear mixed-effects models in R. *Behavior Research Methods, 49*(4), 1494–1502. https://doi.org/10.3758/s13428-016-0809-y  
 
-Matuschek, H., Kliegl, R., Vasishth, S., Baayen, H., & Bates, D. (2017). Balancing type 1 error and power in linear mixed models. *Journal of Memory and Language, 94*, 305–315. https://doi.org/10.1016/j.jml. 2017.01.001 
+Matuschek, H., Kliegl, R., Vasishth, S., Baayen, H., & Bates, D. (2017). Balancing type 1 error and power in linear mixed models. *Journal of Memory and Language, 94*, 305–315. https://doi.org/10.1016/j.jml.2017.01.001 
 
 Meteyard, L., & Davies, R. A. (2020). Best practice guidance for linear mixed-effects models in psychological science. *Journal of Memory and Language, 112*, 104092. https://doi.org/10.1016/j.jml.2020.104092  
 
