@@ -51,6 +51,14 @@ subtitle = ""
 +++
 
 
+### [2020] Reproducibilidad en torno a una aplicación web <br>([ver más](/talk/2020-10-08-reproducibilidad-en-torno-a-una-aplicacion-web/))
+
+<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
+  <iframe src="https://www.youtube-nocookie.com/embed/1njLOAWqLPM" frameborder="0" allowfullscreen
+    style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
+</div>
+
+
 ### [2020] Workshop on R Markdown, dashboards and Binder <br>(see [programme and materials](https://github.com/pablobernabeu/CarpentryCon-2020-workshop-Open-Data-Reproducibility))
 
 <div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
