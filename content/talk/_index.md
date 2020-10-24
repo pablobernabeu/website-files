@@ -2,6 +2,7 @@
 header:
   caption: ""
   image: ""
-title: Presentations
+title: Details on some presentations
+subtitle: See [general section](#presentations)
 view: 2
 ---
