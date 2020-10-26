@@ -48,7 +48,7 @@ url_dataset: 'https://github.com/jcoliver/bioscan'
 ---
 
 
-<a href='https://pablobernabeu.github.io/dashboards/Butterfly-species-richness-in-LA/d.html'>
+<a href='/dashboards/Butterfly-species-richness-in-LA/d.html'>
       <button style = "background-color: white; color: black; border: 2px solid #196F27; border-radius: 12px;">
       <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;">
       <span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Dashboard
@@ -113,7 +113,7 @@ Column {style="data-width:100%; position:static; height:1000px;"}
 
 <div style = "text-indent:-2em; margin-left:2em;">
 
-Bernabeu, P. (2020). Dashboard with data from Prudic, Oliver, Brown, & Long (2018), Comparisons of Citizen Science Data-Gathering Approaches to Evaluate Urban Butterfly Diversity, *Insects*, *9*, 186. Retrieved from https://pablobernabeu.github.io/dashboards/Butterfly-species-richness-in-LA/d.html.
+Bernabeu, P. (2020). Dashboard with data from Prudic, Oliver, Brown, & Long (2018), Comparisons of Citizen Science Data-Gathering Approaches to Evaluate Urban Butterfly Diversity, *Insects*, *9*, 186. https://pablobernabeu.github.io/dashboards/Butterfly-species-richness-in-LA/d.html.
 
 </div>
 
