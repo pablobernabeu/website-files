@@ -10,8 +10,45 @@
 
 [[main]]
   name = 'Profile'
+  identifier = 'profile'
   url = '#bio'
   weight = 20
+  
+[[main]]
+  name = 'Bio'
+  parent = 'profile'
+  url = '#bio'
+  weight = 21
+  
+[[main]]
+  name = 'Teaching'
+  parent = 'profile'
+  url = '#teaching'
+  weight = 22
+  
+[[main]]
+  name = 'Skills'
+  parent = 'profile'
+  url = '#skills'
+  weight = 23
+  
+[[main]]
+  name = 'Other funding'
+  parent = 'profile'
+  url = '#other-funding'
+  weight = 24
+  
+[[main]]
+  name = 'Other work'
+  parent = 'profile'
+  url = '#other-work'
+  weight = 25
+
+[[main]]
+  name = 'Videos'
+  parent = 'profile'
+  url = '#videos'
+  weight = 26
   
 [[main]]
   name = 'Publications'

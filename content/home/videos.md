@@ -75,6 +75,14 @@ subtitle = ""
 </div>
 
 
+### [2020] Embedding open research and reproducibility in the UG and PGT curricula
+
+<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
+  <iframe src="https://www.youtube-nocookie.com/embed/vzkDBZ1qWfY" frameborder="0" allowfullscreen
+    style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
+</div>
+
+
 ### [2019] Part of application for [Gorilla Grant](#other-funding)
 
 <div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
