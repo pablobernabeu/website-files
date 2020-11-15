@@ -1,7 +1,7 @@
 ---
 abstract: 'This open-source, R-based web application is suitable for educational or research purposes in experimental sciences. It allows the **creation of varied data sets with specified structures, such as between-group or within-participant variables, that can be categorical or continuous.** These features can be selected along the different tabs. In the penultimate tab, a custom summary of the current data set can be constructed. In the last tab, the list of parameters and the data set can be downloaded.'
 authors:
-- '**Bernabeu, P.**, & Lynott, D.'
+- Bernabeu, P., & Lynott, D.
 date: "2020-06-01"
 doi: ""
 featured: false
@@ -82,7 +82,7 @@ General guidelines include the following:
 
 More specific guidelines are available in each section.
 
-### :globe_with_meridians:&nbsp; The web application can be [launched here](https://pablo-bernabeu.shinyapps.io/experimental-data-simulation/).
+### :globe_with_meridians:&nbsp; The web application can be [launched here](https://pablo-bernabeu.shinyapps.io/experimental-data-simulation/) or [here](https://mybinder.org/v2/gh/pablobernabeu/Experimental-data-simulation/master?urlpath=shiny).
 
 <div style='padding-top:8px; padding-bottom:2px; margin-bottom:-20px; color:#665F5F;'> Screenshot of the *Dependent* tab ([view larger](https://github.com/pablobernabeu/Experimental-data-simulation/raw/master/Screenshot.png)) </div>
 
@@ -90,7 +90,7 @@ More specific guidelines are available in each section.
 
 ### Reference
 
-Bernabeu, P., & Lynott, D. (2020). Web application for the simulation of experimental data (Version `r sprintf("%.1f", app_version)`). [https://github.com/pablobernabeu/Experiment-simulation-app/](https://github.com/pablobernabeu/Experiment-simulation-app/).
+Bernabeu, P., & Lynott, D. (2020). *Web application for the simulation of experimental data* (Version `r sprintf("%.1f", app_version)`). [https://github.com/pablobernabeu/Experiment-simulation-app/](https://github.com/pablobernabeu/Experiment-simulation-app/)
 
 ### Code
 
@@ -98,9 +98,9 @@ This web application was developed in [R](https://www.r-project.org/about.html) 
 
 ### Options for development and local use of the app
 
-#### Option A) Using local R/RStudio or [RStudio Cloud project](https://rstudio.cloud/project/1739958)
+#### Option A) Using local R/RStudio or [RStudio Cloud project](https://rstudio.cloud/project/1739958) or [Binder RStudio environment](https://mybinder.org/v2/gh/pablobernabeu/Experimental-data-simulation/master?urlpath=rstudio)
 
-1. [In RStudio Cloud, this step can usually be skipped.] Install the packages in the versions used in the [latest release of this application](https://github.com/pablobernabeu/Experimental-data-simulation/releases), by running:
+1. [Step only necessary in R/RStudio Cloud] Install the packages in the versions used in the [latest release of this application](https://github.com/pablobernabeu/Experimental-data-simulation/releases), by running:
 
     ```
     install.packages('devtools')

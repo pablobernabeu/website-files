@@ -1,14 +1,7 @@
 ---
 abstract: 'Mental simulation theories of language comprehension propose that people automatically create mental representations of real objects. Evidence from sentence-picture verification tasks has shown that people mentally represent various visual properties such as shape, color, and size. However, the evidence for mental simulations of object orientation is limited. We report a study that investigates the match advantage of object orientation across speakers of different languages. This multi-laboratory project aims to achieve two objectives. First, we examine the replicability of the match advantage of object orientation across multiple languages and laboratories. Second, we will use a mental rotation task to measure participants’ mental imagery after the sentence-picture verification task. The relationship between the participants’ performance of the two tasks will provide a cross-linguistic examination of perceptual simulation processes. With the (broad) evaluation of individual mental imagery ability and potential linguistic moderators, we expect a robust estimation of match advantage of object orientation.'
 authors:
-- Chen, S.-C.
-- Szabelzka, A.
-- Chartier, C. R.
-- Kekecs, Z.
-- Lynott, D.
-- '**Bernabeu, P.**'
-- Schmidt, K.
-- et al.
+- Chen, S.-C., Szabelzka, A., Chartier, C. R., Kekecs, Z., Lynott, D., Bernabeu, P. ... Schmidt, K.
 date: "2020-01-01"
 categories:
   - conceptual processing

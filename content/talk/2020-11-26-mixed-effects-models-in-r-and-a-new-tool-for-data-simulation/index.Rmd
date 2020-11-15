@@ -55,7 +55,7 @@ Linear mixed-effects models (LMEMs) are used to account for variation within fac
 
 Barr, D. J., Levy, R., Scheepers, C., & Tily, H. J. (2013). Random effects structure for confirmatory hypothesis testing: Keep it maximal. *Journal of Memory and Language, 68*, 255–278. http://dx.doi.org/10.1016/j.jml.2012.11.001  
 
-Bernabeu, P., & Lynott, D. (2020). Web application for the simulation of experimental data (Version 1.1). https://github.com/pablobernabeu/Experimental-data-simulation
+Bernabeu, P., & Lynott, D. (2020). *Web application for the simulation of experimental data* (Version 1.2). https://github.com/pablobernabeu/Experimental-data-simulation/
 
 Brauer, M., & Curtin, J. J. (2018). Linear mixed-effects models and the analysis of nonindependent data: A unified framework to analyze categorical and continuous independent variables that vary within-subjects and/or within-items. *Psychological Methods, 23*(3), 389–411. https://doi.org/10.1037/met0000159  
 

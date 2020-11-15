@@ -763,5 +763,13 @@
       resizeTimer = setTimeout(fixScrollspy, 200);
     });
   });
+  
+  /* ---------------------------------------------------------------------------
+  * Enable a hovering tooltip
+  * --------------------------------------------------------------------------- */
+  
+  $(document).ready(function(){
+    $('[data-toggle="tooltip1"]').tooltip();
+  });
 
 })(jQuery);

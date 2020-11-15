@@ -9,47 +9,10 @@
    weight = 10
 
 [[main]]
-  name = 'Profile'
-  identifier = 'profile'
+  name = '<span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Experience | Teaching | Skills | Other funding | Other work &nbsp; " style="border-bottom: 0.9px dotted #CAD2DE">Profile</span>'
   url = '#bio'
   weight = 20
-  
-[[main]]
-  name = 'Bio'
-  parent = 'profile'
-  url = '#bio'
-  weight = 21
-  
-[[main]]
-  name = 'Teaching'
-  parent = 'profile'
-  url = '#teaching'
-  weight = 22
-  
-[[main]]
-  name = 'Skills'
-  parent = 'profile'
-  url = '#skills'
-  weight = 23
-  
-[[main]]
-  name = 'Other funding'
-  parent = 'profile'
-  url = '#other-funding'
-  weight = 24
-  
-[[main]]
-  name = 'Other work'
-  parent = 'profile'
-  url = '#other-work'
-  weight = 25
 
-[[main]]
-  name = 'Videos'
-  parent = 'profile'
-  url = '#videos'
-  weight = 26
-  
 [[main]]
   name = 'Publications'
   url = '#publication'

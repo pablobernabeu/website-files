@@ -59,7 +59,7 @@
         {{ end }}
         <li>
           <a href="{{ $link | safeURL }}" {{ $target | safeHTMLAttr }}>
-            <i class="{{ $pack }} {{ $pack_prefix }}-{{ .icon }} big-icon"></i>
+            <i class="{{ $pack }} {{ $pack_prefix }}-{{ .icon }} big-icon" style='color:#8AA3CD'></i>
           </a>
         </li>
         {{ end }}
@@ -72,6 +72,19 @@
         <ul class="ul-interests" style='text-align:left;'>
           {{ range . }}
           <li>{{ . | markdownify | emojify }}</li>
+          {{ end }}
+        </ul>
+      </div>
+      {{ end }}
+      </div>
+      
+      <div class="row">
+      {{ with $person.profilesections }}
+      <div>
+        <h3 style='color:#969BA4;'>{{ i18n "profilesections" | markdownify }}</h3>
+        <ul class="ul-interests" style='text-align:left;'>
+          {{ range . }}
+          <div>{{ . | markdownify | emojify }}</div>
           {{ end }}
         </ul>
       </div>

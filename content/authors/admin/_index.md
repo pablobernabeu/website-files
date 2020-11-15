@@ -3,13 +3,6 @@ authors:
 - admin
 name: Pablo Bernabeu
 email: "p.bernabeu@lancaster.ac.uk"
-interests:
-- Cognitive psychology and neuroscience
-- Psycholinguistics
-- Semantic / conceptual processing
-- Statistics
-- Open science
-- Programming
 role: Psychology PhD student and teaching assistant at Lancaster University
 social:
 - icon: university
@@ -35,7 +28,21 @@ social:
 - icon: linkedin-in
   icon_pack: fab
   name: LinkedIn page
-  link: 'https://www.linkedin.com/in/pablobernabeu/'
+  link: https://www.linkedin.com/in/pablobernabeu/
+interests:
+- Cognitive psychology and neuroscience
+- Psycholinguistics
+- Semantic / conceptual processing
+- Statistics
+- Open science
+- Programming
+profilesections:
+- '<i style="font-weight:bold; color:#5B6574" class="fas fa-arrow-right fa-xs"> &nbsp; </i><a href="/#bio" style="color:#5B6574">Experience</a>'
+- '<a href="/#teaching" style="color:#6F7B8E">Teaching</a>'
+- '<a href="/#skills" style="color:#6F7B8E">Skills</a>'
+- '<a href="/#other-funding" style="color:#6F7B8E">Other funding</a>'
+- '<a href="/#other-work" style="color:#6F7B8E">Other work</a>'
+- '<a href="/#videos" style="color:#6F7B8E">Videos</a>'
 superuser: true
 user_groups:
 - Researchers

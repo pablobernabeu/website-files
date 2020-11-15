@@ -74,6 +74,9 @@
 
 - id: interests
   translation: Interests
+  
+- id: profilesections
+  translation: '&nbsp;'
 
 - id: education
   translation: Degrees

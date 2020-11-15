@@ -2,7 +2,7 @@
 # Hero widget.
 widget = "hero"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
-active = true  # Activate this widget? true/false
+active = false  # Activate this widget? true/false
 weight = 10  # Order that this section will appear.
 
 title = "**_Data is present:_** workshops and datathons"
@@ -41,5 +41,5 @@ title = "**_Data is present:_** workshops and datathons"
   label = "Details"
 +++
 
-This project offers free activities to learn and practise reproducible data presentation.
+This project offered free activities to learn and practise reproducible data presentation.
 
