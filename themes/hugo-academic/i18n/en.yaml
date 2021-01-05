@@ -76,7 +76,7 @@
   translation: Interests
   
 - id: profilesections
-  translation: '&nbsp;'
+  translation: '<span style="padding-left:32px;">Subsections</span>'
 
 - id: education
   translation: Degrees

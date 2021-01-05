@@ -1,8 +1,8 @@
 ---
-title: Collaboration when using R Markdown
+title: Collaboration while using R Markdown
 author: Pablo
 date: '2020-10-03'
-slug: collaboration-when-using-R-markdown
+slug: collaboration-while-using-R-markdown
 categories:
   - research methods
 tags:

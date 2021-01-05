@@ -56,7 +56,7 @@ As a graduate teaching assistant (GTA) during my PhD, I have contributed to semi
 |             | **Course and remit** |
 | :---------: | -------------------- |
 | **2020–21** | Introduction to developmental psychology (115) — Seminars and essay marking  |
-|             | Introduction to neuroscience (112)— Seminars and essay marking  |
+|             | Introduction to neuroscience (112)— Seminars  |
 |             | Introduction to cognitive psychology (111) — Seminars and essay marking  |
 |             | Social psychology in the digital age (113) — Seminars  |
 |             | Statistics for psychologists I and II (121 and 122) — Labs  |

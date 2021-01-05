@@ -47,7 +47,7 @@ superuser: true
 user_groups:
 - Researchers
 - Visitors
-bio: After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology. I'm investigating how conceptual processing is supported by linguistic and sensorimotor brain systems. I use methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming.
+bio: After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology at Lancaster University. I'm investigating how conceptual processing is supported by linguistic and sensorimotor brain systems. I use methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming.
 education:
   courses:
   - course: '[PhD Psychology with graduate teaching scholarship](https://www.lancaster.ac.uk/study/postgraduate/postgraduate-courses/psychology-phd/)'
@@ -77,7 +77,7 @@ education:
   - course: '[Big data in society](https://www.vu.nl/en/programmes/short/summer-school/courses/big-data-in-society/index.aspx)'
     institution: Vrije Universiteit Amsterdam
     year: 2016
-    extra: '\-&nbsp; [Coursework](/2016/the-louisiana-minnesota-dallas-crisis-across-media-and-time-a-big-data-exercise/)'
+    extra: '\-&nbsp; [Coursework](/2016/the-louisiana-minnesota-texas-crisis-across-media-and-time-a-big-data-exercise/)'
   - course: Linear mixed-effects models in R
     institution: Max Planck Institute for Psycholinguistics
     year: 2016
@@ -90,7 +90,6 @@ education:
   - course: '[Language science: current methods and interdisciplinary perspectives](https://www.ru.nl/radboudsummerschool/)'
     institution: Radboud University Summer School
     year: 2015
-    extra: '\-&nbsp; [Group presentation](/PDF/Gestures-in-language-across-cultures.pdf)'
   - course: '[Transcranial brain stimulation](https://www.ru.nl/donders/agenda/donders-tool-kits/vm-tool-kits/donders-brain-stimulation-tool-kit-version-2/)'
     institution: Donders Institute, Radboud University
     year: 2015
@@ -102,7 +101,7 @@ education:
     year: 2015
 ---
 
-After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology. I'm investigating how conceptual processing (i.e., understanding the meaning of words) is supported by linguistic and sensorimotor brain systems. I use methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. My [CV is available](https://osf.io/84ktq).
+After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology at Lancaster University. I'm investigating how conceptual processing (i.e., understanding the meaning of words) is supported by linguistic and sensorimotor brain systems. I use methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. My [CV is available](https://osf.io/84ktq).
 
 ###### The linguistic and sensorimotor bases of semantic processing: an investigation into the role of individual differences
 
