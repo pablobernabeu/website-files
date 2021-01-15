@@ -9,11 +9,6 @@
   weight = 10
 
 [[main]]
-  name = '<span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Experience | Teaching | Skills | Other funding | Other work &nbsp; "><i class="fas fa-user fa-sm" style="color:#DFE0E5;"></i> Profile </span>'
-  url = '#bio'
-  weight = 20
-
-[[main]]
   name = 'Applications & dashboards'
   url = '#applications-and-dashboards'
   weight = 60
@@ -32,6 +27,11 @@
    name = 'Blog'
    url = '#blog'
    weight = 90
+
+[[main]]
+  name = '<span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Experience | Teaching | Skills | Other funding | Other work &nbsp; "><i class="fas fa-user fa-sm" style="color:#DFE0E5;"></i> Profile </span>'
+  url = '#bio'
+  weight = 100
 
 [[main]]
   name = "<span data-toggle='tooltip1' data-placement='bottom' title=' &nbsp; Contact &nbsp; '><i class='far fa-envelope-open fa-lg' title='Contact'></i></span>"
