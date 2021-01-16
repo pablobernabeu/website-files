@@ -59,11 +59,11 @@ Liu also refers to the issue of multiple tests related to the multiple time wind
 
 > It is typical for ERP studies to conduct multiple comparisons (e.g., running the same ANOVA repeatedly on different subsets of data like different time windows and different groups of electrodes). This would massively increase Type I error if no post hoc correction is conducted. However, if Bonferroni or other correction is conducted, it will render the study over-conservative, thus increasing the chance of Type II error. In the present thesis, 90 electrodes will be analysed individually, with 20 time slices in each trial. That results in 1800 NHSTs for each critical variable. A correction of multiple comparison will require a critical level of 2.78 x 10ˆ-5 for each test for a family-wise critical level of .05 (and an uncorrected test will almost definitely lead to false positive results). This stringent criterion could conceivably render it meaningless any p-values we can obtain from a statistical package.
 
-Arguably, the scenario presented by Liu (2018), in which a researcher could conduct a purely data-driven analysis of ERP data, is extreme. The field of psycholinguistics, in general, does not have a tradition of purely data-driven analysis. Instead, it blends a humanistic background with a scientific methodology. As a result, the hypotheses and methods tend to be largely driven by the available literature. For instance, Bernabeu et al. (2017, quoted below from p. 1632) based their time windows and regions of interest on the most relevant of the preceding studies (see also Bernabeu, 2017).
+Arguably, the scenario presented by Liu (2018), in which a researcher could conduct a purely data-driven analysis of ERP data, is extreme. The field of psycholinguistics, in general, does not have a tradition of purely data-driven analysis. Instead, it blends a humanistic background with a scientific methodology. As a result, the hypotheses and methods tend to be largely driven by the available literature. For instance, Bernabeu et al. (2017, quoted below from p. 1632) based their time windows and regions of interest on the most relevant of the preceding studies (also see Bernabeu, 2017).
 
 > Electrodes were divided into an anterior and a posterior area (also done in Hald et al., 2011). Albeit a superficial division, we found it sufficient for the research question. Time windows were selected as in Hald et al., except for the last window, which was extended up to 750 ms post word onset, instead of 700 ms, because the characteristic component of that latency tends to extend until then, as we confirmed by visual inspection of these results.
 
-The literature-based approach follows the advice from Luck and Gaspelin (2017, p. 149), who wrote: 'a researcher who wants to avoid significant but bogus effects would be advised to focus on testing a priori predictions without using the observed data to guide the selection of time windows or electrode sites' (see also Armstrong, 2014; for a more conservative stance, see Luck & Gaspelin, 2017). In addition, notice that the extension of the last window by 50 ms was informed by Swaab et al. (2012), who report results by which the P600 component (the main component occurring after the N400 in word reading) extended up to 800 ms.
+The literature-based approach follows the advice from Luck and Gaspelin (2017, p. 149), who wrote: 'a researcher who wants to avoid significant but bogus effects would be advised to focus on testing a priori predictions without using the observed data to guide the selection of time windows or electrode sites' (also see Armstrong, 2014; for a more conservative stance, see Luck & Gaspelin, 2017). In addition, notice that the extension of the last window by 50 ms was informed by Swaab et al. (2012), who report results by which the P600 component (the main component occurring after the N400 in word reading) extended up to 800 ms.
 
 Next, Liu et al. (2018, pp. 6--7) write:
 
@@ -106,7 +106,7 @@ The results of Bernabeu et al. (2017) were reanalysed after publication using a 
 
 ### Open questions
 
-Liu (2018) and Liu et al. (2018) raise interesting and important questions. Firstly, future research may be conducted to investigate what determines the variability of ERP results---in terms of ERP components, time windows and topographic regions of interest. This research could include a comparison with other measurements, such as response times, to test whether ERPs are less reliable---i.e., more variable across studies---than response times. Similarly, future research may investigate whether the ERP literature is more biased than literature employing other measures, such as response times. In addition, future research could investigate whether moving to exploratory, bayesian research designs is a necessary or sufficient condition to reduce bias in research and improve the precision of experimental measurements. Current alternatives to such an approach include direct (or conceptual) replications designed to achieve a higher power than previous studies (e.g., Chen et al., 2019). Arguably, policies determining funding decisions would need to change if we are to recognise the importance of direct replication. Last, future research may investigate whether 'clear picture' results are realistic, desirable or necessary, and whether unclear-picture results should be eschewed; or whether, on the contrary, clear-picture results are the product of publication bias---that is, the pressure to hide any aspects of a study that could challenge its acceptance by peer-reviewers or any other academics.
+Liu (2018) and Liu et al. (2018) raise interesting and important questions. Firstly, future research may be conducted to investigate what determines the variability of ERP results---in terms of ERP components, time windows and topographic regions of interest. This research could include a comparison with other measurements, such as response times, to test whether ERPs are less reliable---i.e., more variable across studies---than response times. Similarly, future research may investigate whether the ERP literature is more biased than literature employing other measures, such as response times. In addition, future research could investigate whether moving to exploratory, bayesian research designs is a necessary or sufficient condition to reduce bias in research and improve the precision of experimental measurements. Current alternatives to such an approach include direct (or conceptual) replications designed to achieve a higher power than previous studies (e.g., Chen et al., 2019). Arguably, policies determining funding decisions would need to change if we are to fully acknowledge the importance of *direct* replication (Howe & Perfors, 2018; Kunert, 2016; Simons, 2014; Zwaan et al., 2018). Last, future research may investigate whether 'clear picture' results are realistic, desirable or necessary, and whether unclear-picture results should be eschewed; or whether, on the contrary, clear-picture results may largely be the product of publication bias---that is, the pressure to hide or misreport those aspects of a study that could challenge its acceptance by peer-reviewers or any other academics.
 
 
 ### References
@@ -118,6 +118,8 @@ Albers, C., & Lakens, D. (2018). When power analyses based on pilot data are bia
 Amsel, B. D., Urbach, T. P., & Kutas, M. (2014). Empirically grounding grounded cognition: the case of color. *Neuroimage, 99*, 149-157. https://doi.org/10.1016/j.neuroimage.2014.05.025
 
 Barr, D. J., Levy, R., Scheepers, C., & Tily, H. J. (2013). Random effects structure for confirmatory hypothesis testing: Keep it maximal. *Journal of Memory and Language, 68*, 255–278. http://dx.doi.org/10.1016/j.jml.2012.11.001
+
+Barsalou, L. W. (2019). Establishing Generalizable Mechanisms. *Psychological Inquiry, 30*(4), 220-230. https://doi.org/10.1080/1047840X.2019.1693857
 
 Bernabeu, P. (2017). *Modality switches occur early and extend late in conceptual processing: evidence from ERPs* [Master's thesis]. School of Humanities, Tilburg University. https://psyarxiv.com/5gjvk
 
@@ -137,7 +139,11 @@ Hauk, O. (2016). Only time will tell–why temporal information is essential for
 
 Holm, S. (1979). A simple sequentially rejective multiple test procedure. *Scandinavian Journal of Statistics, 6*, 65-70. http://www.jstor.org/stable/4615733.
 
+Howe, P. D., & Perfors, A. (2018). An argument for how (and why) to incentivise replication. *Behavioral and Brain Sciences, 41*, e135-e135. http://dx.doi.org/10.1017/S0140525X18000705
+
 Kam, C. D., & Franzese, R. J. (2007). *Modeling and interpreting interactive hypotheses in regression analysis*. Ann Arbor, MI: University of Michigan Press.
+
+Kunert, R. (2016). Internal conceptual replications do not increase independent replication success. *Psychonomic Bulletin & Review, 23*(5), 1631-1638. https://doi.org/10.3758/s13423-016-1030-9
 
 Liu, P. (2018). *Embodied-linguistic conceptual representations during metaphor processing*. Doctoral thesis, Lancaster University, UK. https://doi.org/10.17635/lancaster/thesis/489
 
@@ -154,11 +160,15 @@ Meteyard, L., & Davies, R. A. (2020). Best practice guidance for linear mixed-ef
 
 Pecher, D., Zeelenberg, R., & Barsalou, L. W. (2003). Verifying different-modality properties for concepts produces switching costs. *Psychological Science, 14*, 2, 119-24. https://doi.org/10.1111/1467-9280.t01-1-01429
 
+Simons, D. J. (2014). The value of direct replication. *Perspectives on Psychological Science, 9*(1), 76–80. https://doi.org/10.1177/1745691613514755
+
 Swaab, T. Y., Ledoux, K., Camblin, C. C., & Boudewyn, M. A. (2012). Language-related ERP components. In S. J. Luck & E. S. Kappenman (Eds.), *Oxford handbook of event-related potential components* (pp. 397–440). Oxford University Press. https://doi.org/10.1093/oxfordhb/9780195374148.013.0197
 
 Van Dam, W. O., Brazil, I. A., Bekkering, H., & Rueschemeyer, S.-A. (2014). Flexibility in embodied language processing: context effects in lexical access. *Topics in Cognitive Science, 6*(3), 407–424. https://doi.org/10.1111/tops.12100
 
 Yarkoni, T. (2020). The generalizability crisis. *Behavioral and Brain Sciences*, 1-37. https://doi.org/10.1017/S0140525X20001685
+
+Zwaan, R., Etz, A., Lucas, R., & Donnellan, M. (2018). Making replication mainstream. *Behavioral and Brain Sciences, 41*, E120. https://doi.org/10.1017/S0140525X17001972
 
 </div>
 
