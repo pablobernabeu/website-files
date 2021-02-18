@@ -52,10 +52,10 @@ subtitle = ""
 
 |     |     |
 | --- | --- |
-| **Cognitive science** | Electroencephalography, event-related potentials, Brain Vision (e.g., [<i class="fas fa-link"></i>](https://osf.io/97unm/)), transcranial brain stimulation, eye tracking, internet-based experiments, basic E-Prime and Presentation |
+| **Cognitive science** | Electroencephalography, event-related potentials, Brain Vision (e.g., [<i class="fas fa-link"></i>](https://osf.io/97unm/)), transcranial brain stimulation, eye tracking, internet-based experiments, jsPsych, basic E-Prime and Presentation |
 | **Statistics** | Mainly frequentist and some Bayesian statistics. Linear Mixed Effects models, ANOVA, regression, t-test, Chi-Square, correlation, Principal Component Analysis, equivalence testing (e.g., [<i class="fas fa-link"></i>](https://osf.io/97unm/))  |
 | **R programming** | R Markdown; online data dashboards with Shiny, Flexdashboard, Plotly; Binder environments (e.g., [<i class="fas fa-link"></i>](https://osf.io/brkjw/)); mining, preprocessing, analysis of Big Data (language corpora, news and social media, through API or web scraping); statistics; visualisation; Natural Language Processing (regular expressions, word frequency and sentiment analysis, topic modelling; e.g., [<i class="fas fa-link"></i>](/2016/the-louisiana-minnesota-texas-crisis-across-media-and-time-a-big-data-exercise/)); Tidyverse (e.g., [<i class="fas fa-link"></i>](https://github.com/pablobernabeu/Experiment-simulation-app)) |
-| **Data management** | Version control Git, Binder environments (e.g., [<i class="fas fa-link"></i>](https://github.com/pablobernabeu)) |
+| **Data management** | Git version control, High-Performance Computing, Bash (command line), Binder environments, HTML, CSS (e.g., [<i class="fas fa-link"></i>](https://github.com/pablobernabeu)) |
 | **Web development** | HTML, CSS (e.g., [<i class="fas fa-link"></i>](https://github.com/pablobernabeu)) |
 | **Business and administration** | Quantitative and qualitative service analysis. Power BI, Zendesk, Jira, Confluence, Asana |
 | **Languages**  | English: C1. [IELTS 2018](https://www.dropbox.com/s/c33q0w4qv8z1mp6/IELTS%202018%20official%20report.pdf?dl=0) (out of 9): Writing, 7.5; Reading, 7.5; Speaking, 7.5; Listening, 8.5. Spanish: native. Catalan: B1. French: B1. Dutch: A2. Italian: A2 |
