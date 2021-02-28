@@ -51,7 +51,7 @@ subtitle = ""
 +++
 
 
-As a graduate teaching assistant (GTA) during my PhD, I have contributed to seminars, labs, marking, invigilation and GTAs' representation, for a total of 180 hours per year.
+As a graduate teaching assistant (GTA) during my PhD, I have contributed to seminars, statistics labs, essay marking, and GTAs' representation, for 180 hours per year.
 
 |             | **Course and remit** |
 | :---------: | -------------------- |
