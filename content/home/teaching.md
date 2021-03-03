@@ -51,7 +51,7 @@ subtitle = ""
 +++
 
 
-As a graduate teaching assistant (GTA) during my PhD, I have contributed to seminars, statistics labs, essay marking, and GTAs' representation, for 180 hours per year.
+As a graduate teaching assistant, each year I devote 180 hours to leading 30 seminars and marking 80 essays in developmental and cognitive psychology, as well as helping in 30 statistics labs, approximately. I was also a representative for graduate teaching assistants in the department for a year.
 
 |             | **Course and remit** |
 | :---------: | -------------------- |
