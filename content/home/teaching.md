@@ -51,7 +51,7 @@ subtitle = ""
 +++
 
 
-As a graduate teaching assistant, each year I devote 180 hours to leading 30 seminars and marking 80 essays in developmental and cognitive psychology, as well as helping in 30 statistics labs, approximately. I was also a representative for graduate teaching assistants in the department for a year.
+As a graduate teaching assistant, I devote 180 hours a year to leading 30 seminars and marking 80 essays in developmental, cognitive and social psychology, as well as helping in 30 statistics labs. I was also a representative for graduate teaching assistants in the department for a year.
 
 |             | **Course and remit** |
 | :---------: | -------------------- |
