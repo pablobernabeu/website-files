@@ -8,7 +8,7 @@ social:
 - icon: university
   icon_pack: fas
   name: University page
-  link: http://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu
+  link: https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109).html
 - icon: cv
   icon_pack: ai
   name: Resume
