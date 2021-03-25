@@ -4,7 +4,7 @@ author: Bernabeu, P., Lynott, D., & Connell, L.
 date: '2021-01-05'
 slug: the-interplay-between-linguistic-and-embodied-systems-in-conceptual-processing
 categories:
-  - psycholinguistics
+  - conceptual processing, individual differences, psycholinguistics
 tags:
   - conceptual processing
   - word recognition
@@ -12,7 +12,7 @@ tags:
   - linguistic distributional knowledge
   - embodied cognition
   - statistics
-  - linear-mixed effects models
+  - linear mixed-effects models
   - R
   - preregistration
 authors: ['Bernabeu, P., Lynott, D., & Connell, L.']
