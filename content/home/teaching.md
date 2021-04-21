@@ -59,11 +59,11 @@ As a graduate teaching assistant, I devote 180 hours a year to leading 30 semina
 |             | Introduction to neuroscience (112)— Seminars  |
 |             | Introduction to cognitive psychology (111) — Seminars and essay marking  |
 |             | Social psychology in the digital age (113) — Seminars  |
-|             | Statistics for psychologists I and II (121 and 122) — Labs  |
+|             | Statistics for psychologists I and II (121 and 122) using R — Labs  |
 | **2019–20** | Understanding psychology (101) — Seminars and essay marking |
 |             | Cognitive psychology (201) — Seminars and essay marking |
-|             | Master's statistics (401) — Labs |
+|             | Master's statistics (401) using R — Labs |
 | **2018–19** | Understanding psychology (101) — Seminars and essay marking |
-|             | Investigating psychology: Analysis (102) — Labs |
+|             | Investigating psychology: Analysis (102) using SPSS — Labs |
 
 Besides this experience, I have a [Carpentries Instructor certificate](https://carpentries.org/become-instructor/), I have run several [workshops and presentations](https://pablobernabeu.github.io/#workshops), and earlier I [taught English to secondary-education students, and Spanish to adults](https://osf.io/84ktq/).

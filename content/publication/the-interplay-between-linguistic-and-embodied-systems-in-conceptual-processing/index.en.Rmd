@@ -4,7 +4,9 @@ author: Bernabeu, P., Lynott, D., & Connell, L.
 date: '2021-01-05'
 slug: the-interplay-between-linguistic-and-embodied-systems-in-conceptual-processing
 categories:
-  - conceptual processing, individual differences, psycholinguistics
+  - conceptual processing
+  - individual differences
+  - psycholinguistics
 tags:
   - conceptual processing
   - word recognition
