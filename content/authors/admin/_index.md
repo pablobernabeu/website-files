@@ -54,6 +54,7 @@ education:
     institution: Lancaster University (United Kingdom)
     year: 2022 (expected)
     extra: "-&nbsp; Service: peer-review for Cognitive Science journal, Psychological Science Accelerator; internship facilitation; contribution to departmental 'Prospr' website."
+    extra2: '\-&nbsp; [Activities](https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109)/activities.html)'
   - course: '[Research Master Language and Communication](https://www.tilburguniversity.edu/education/masters-programmes/research-master-linguistics-and-communication-sciences)'
     institution: Tilburg University and Radboud University (Netherlands)
     year: 2017
