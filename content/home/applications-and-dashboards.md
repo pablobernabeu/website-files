@@ -14,7 +14,7 @@ subtitle = ''
   # Page type to display. E.g. post, talk, publication, or data dashboard.
   page_type = "applications-and-dashboards"
   
-  # Choose how much pages you would like to display (0 = all pages)
+  # Choose how many pages you would like to display (0 = all pages)
   count = 0
   
   # Choose how many pages you would like to offset by
