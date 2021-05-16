@@ -47,7 +47,7 @@ Research in conceptual processing has suggested that the comprehension of words 
 
 <div style = "text-indent:-2em; margin-left:2em;">
 
-Bernabeu, P., Lynott, D., & Connell, L. *Preregistration: The interplay between linguistic and embodied systems in conceptual processing*. OSF. https://osf.io/ftydw/
+Bernabeu, P., Lynott, D., & Connell, L. (2021). *Preregistration: The interplay between linguistic and embodied systems in conceptual processing*. OSF. https://osf.io/ftydw/
 
 Bolognesi, M., & Steen, G. (2018). Abstract concepts: Structure, processing, and modeling. *Topics in Cognitive Science, 10*(3), 490–500. https://doi.org/10.1111/tops.12354
 
