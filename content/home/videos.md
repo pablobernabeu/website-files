@@ -51,16 +51,14 @@ css_class = ""
 +++
 
 
-### [2021] Towards reproducibility and maximally-open data <br> (<a href='/talk/towards-reproducibility-and-maximally-open-data'>see video</a>)
+### [2021] Towards reproducibility and maximally-open data (<a href='/talk/towards-reproducibility-and-maximally-open-data'>see video</a>)
 
 <div style = "margin-top: 20px; margin-left: 20%;">
 <a href = '/talk/towards-reproducibility-and-maximally-open-data'>
 <img src = 'https://cdn.pixabay.com/photo/2016/08/20/06/09/video-1606945_960_720.png' width = 50%></a>
 </div>
 
-<br>
-
-<br>
+<div style = 'padding-bottom: 7%;'></div>
 
 ### [2020] Reproducibilidad en torno a una aplicación web (<a href='/talk/2020-10-08-reproducibilidad-en-torno-a-una-aplicacion-web/'>ver más</a>)
 
@@ -70,7 +68,7 @@ style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
 </div>
 
 
-### [2020] Workshop on R Markdown, dashboards and Binder <br>(see [programme and materials](https://github.com/pablobernabeu/CarpentryCon-2020-workshop-Open-Data-Reproducibility))
+### [2020] Workshop on R Markdown, dashboards and Binder (see [programme and materials](https://github.com/pablobernabeu/CarpentryCon-2020-workshop-Open-Data-Reproducibility))
 
 <div style = "position: relative; margin-top: 20px; padding-top: 56.25%; margin-bottom: -25px;">
 <iframe src="https://www.youtube-nocookie.com/embed/wZsPD7CgJC0" frameborder="0" allowfullscreen
@@ -110,7 +108,7 @@ style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
 </div>
 
 
-### [2019] Demonstration of procedure for [PSA experiments](/publication/chen-etal-inprep/) <br> (<a href='https://osf.io/h36wr/'>see video</a>)
+### [2019] Demonstration of procedure for [PSA experiments](/publication/chen-etal-inprep/) (<a href='https://osf.io/h36wr/'>see video</a>)
 
 <div style = "margin-top: 20px; margin-left: 20%;">
 <a href = 'https://osf.io/h36wr/'>

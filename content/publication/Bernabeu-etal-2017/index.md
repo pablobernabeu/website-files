@@ -14,11 +14,11 @@ image:
   preview_only: false
 links:
 - name: Stimulus data dashboard
-  url: '/applications-and-dashboards/Bernabeu-2018-modalitynorms/'
+  url: '/applications-and-dashboards/bernabeu-2018-modalitynorms/'
 - name: Results data dashboard
   url: '/applications-and-dashboards/bernabeu-etal-2017-modalityswitch/'
 - name: Master's thesis
-  url: '/publication/Bernabeu-2017-MPhil-thesis/'
+  url: '/publication/bernabeu-2017-mphil-thesis/'
 projects:
 # - internal-project
 publishDate: "2017-01-01"

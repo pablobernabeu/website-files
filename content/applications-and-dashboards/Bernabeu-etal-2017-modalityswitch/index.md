@@ -14,7 +14,7 @@ links:
 - name: Research paper
   url: '/publication/bernabeu-etal-2017/'
 - name: Master's thesis
-  url: '/publication/Bernabeu-2017-MPhil-thesis/'
+  url: '/publication/bernabeu-2017-mphil-thesis/'
 #  projects:
 # - internal-project
 publishDate: "2017-01-01"
@@ -184,9 +184,9 @@ downloadButton('downloadPlot.1', 'Download HD plot')
 
 **_Rising to the challenge_**
 
-My experience with Shiny has been so good I've been sharing [my experience](https://pablobernabeu.github.io/2017/01/01/the-case-for-data-dashboards.-first-steps-with-r-shiny/). Yet, on my first crawling days, I spent an eternity stuck with this elephant in my room: "μ". This _μ_ letter (micro-souvenir from hell, as I later knew it), was part of the labels of my plots. All I knew was that I could not deploy the app online, even while I could perfectly launch it locally in my laptop. So, I wondered what use was to deploy locally if I couldn't publish the app?! Eventually, I read about UTF-8 encoding in one forum. Bless them forums. All I had to do was use "Âμ" instead of the single "μ". A better option I found later was: `expression("\u03bc")`.
+My experience with R Shiny has been so good I've been [sharing it](https://pablobernabeu.github.io/2017/01/01/the-case-for-data-dashboards.-first-steps-with-r-shiny/). Yet, on my first crawling days, I spent an eternity stuck with this elephant in my room: "μ". This _μ_ letter (micro-souvenir from hell, as I later knew it), was part of the labels of my plots. All I knew was that I could not deploy the app online, even while I could perfectly launch it locally in my laptop. So, I wondered what use was to deploy locally if I couldn't publish the app?! Eventually, I read about UTF-8 encoding in one forum. Bless them forums. All I had to do was use "Âμ" instead of the single "μ". A better option I found later was: `expression("\u03bc")`.
 
-Beyond encoding issues, I had a tough time embedding images. You know, the 'www' folder... To be honest, I still haven't handled the 'www' way--but where there's a will there's a way. I managed to include my images by uploading them to a website and then entering their URL in "img(src", avoiding the use of folder paths.
+Beyond encoding issues, I had a tough time embedding images. You know, the 'www' folder... To be honest, I still haven't handled the 'www' way--but where there's a will, there's a way. I managed to include my images by uploading them to a website and then entering their URL in "img(src", avoiding the use of folder paths.
 
 ```
 img(src="https://preview.ibb.co/n7qiYR/EEG_montage.png 1", height=500, width=1000)

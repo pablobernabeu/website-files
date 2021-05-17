@@ -9,8 +9,8 @@ tags:
   - open science
   - open scholarship
   - open data
-event: Open Science Week 2021, Open Scholarship Community Galway
-event_url: https://nuigalway.mediaspace.kaltura.com/channel/Open+Science+and+Scholarship/121659351
+event: Open Scholarship Prize Competition 2021, Open Scholarship Community Galway
+event_url: https://nuigalway.mediaspace.kaltura.com/media/OSW2021A+OSCG+Open+Scholarship+Prize+-+The+Final!/1_d7ekd3d3/121659351
 location: 
 address:
   street: ~
@@ -39,7 +39,7 @@ projects: []
 
 <br>
 
-<p style='font-size:80%;'>Video embedded from: https://nuigalway.mediaspace.kaltura.com/media/OSW2021A+OSCG+Open+Scholarship+Prize+-+The+Final!/1_d7ekd3d3/121659351#t=56:08</p>
+<p style='font-size:80%;'>Embedded from: https://nuigalway.mediaspace.kaltura.com/media/OSW2021A+OSCG+Open+Scholarship+Prize+-+The+Final!/1_d7ekd3d3/121659351#t=56:08.</p>
 
 <iframe src="https://cdnapisec.kaltura.com/p/723092/sp/72309200/embedIframeJs/uiconf_id/31568551/partner_id/723092?flashvars[mediaProxy.mediaPlayFrom]=3368&iframeembed=true&playerId=kplayer&entry_id=1_d7ekd3d3&flashvars[streamerType]=auto" width="700" height="700" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
 

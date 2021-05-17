@@ -32,7 +32,7 @@
       <div class="portrait-title">
         <h2>{{ $person.name }}</h2>
         {{ with $person.role }}<h3>{{ . | markdownify | emojify }}</h3>{{ end }}
-        {{ with $person.email }}<h3>{{ . | markdownify | emojify }}</h3>{{ end }}
+        {{ with $person.email }}<h3 style="margin-top:5%;">{{ . | markdownify | emojify }}</h3>{{ end }}
 
         {{ range $person.organizations }}
         <h3>
@@ -42,29 +42,16 @@
         </h3>
         {{ end }}
       </div>
-
-      <ul class="network-icon" aria-hidden="true">
-        {{ range $person.social }}
-        {{ $pack := or .icon_pack "fas" }}
-        {{ $pack_prefix := $pack }}
-        {{ if in (slice "fab" "fas" "far" "fal") $pack }}
-          {{ $pack_prefix = "fa" }}
-        {{ end }}
-        {{ $link := .link }}
-        {{ $scheme := (urls.Parse $link).Scheme }}
-        {{ $target := "" }}
-        {{ if not $scheme }}
-          {{ $link = .link | relLangURL }}
-        {{ else if in (slice "http" "https") $scheme }}
-          {{ $target = "target=\"_blank\" rel=\"noopener\"" }}
-        {{ end }}
-        <li>
-          <a href="{{ $link | safeURL }}" {{ $target | safeHTMLAttr }}>
-            <i class="{{ $pack }} {{ $pack_prefix }}-{{ .icon }} big-icon" style='color:#8AA3CD'></i>
-          </a>
-        </li>
-        {{ end }}
-      </ul>
+      
+      <div style="margin-top:8%;">
+      {{ with $person.profileicons }}
+      <div>
+          {{ range . }}
+          <span>{{ . | markdownify | emojify }} &nbsp;</span>
+          {{ end }}
+      </div>
+      {{ end }}
+      </div>
       
       <div class="row" style='padding-top:10px;'>
       {{ with $person.interests }}

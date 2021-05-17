@@ -75,6 +75,9 @@
 - id: interests
   translation: Interests
   
+- id: profileicons
+  translation: ''
+  
 - id: profilesections
   translation: '<span style="padding-left:32px;">Subsections</span>'
 

@@ -2,33 +2,15 @@
 authors:
 - admin
 name: Pablo Bernabeu
-email: "p.bernabeu@lancaster.ac.uk"
+email: 'p.bernabeu@lancaster.ac.uk'
 role: Psychology PhD student and teaching assistant at Lancaster University
-social:
-- icon: university
-  icon_pack: fas
-  name: University page
-  link: https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109).html
-- icon: cv
-  icon_pack: ai
-  name: Resume
-  link: https://osf.io/84ktq
-- icon: google-scholar
-  icon_pack: ai
-  name: Google Scholar page
-  link: https://scholar.google.com/citations?user=DxD0QDoAAAAJ&hl=en
-- icon: osf
-  icon_pack: ai
-  name: OSF page
-  link: https://osf.io/25u3x/
-- icon: github
-  icon_pack: fab
-  name: Github page
-  link: https://github.com/pablobernabeu
-- icon: linkedin-in
-  icon_pack: fab
-  name: LinkedIn page
-  link: https://www.linkedin.com/in/pablobernabeu/
+profileicons:
+- '<span data-toggle="tooltip1" data-placement="bottom" title=" University page "><a href="https://osf.io/84ktq"><a href="https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109).html"><i style="color:#8AA3CD;" class="fas fa-university fa-2x"></i></a></span>'
+- '<span data-toggle="tooltip1" data-placement="bottom" title=" Curriculum vitae "><a href="https://osf.io/84ktq"><i style="color:#8AA3CD;" class="ai ai-cv ai-2x"></i></a></span>'
+- '<span data-toggle="tooltip1" data-placement="bottom" title=" Google Scholar "><a href="https://scholar.google.com/citations?user=DxD0QDoAAAAJ&hl=en"><i style="color:#8AA3CD;" class="ai ai-google-scholar ai-2x"></i></a></span>'
+- '<span data-toggle="tooltip1" data-placement="bottom" title=" OSF repositories "><a href="https://osf.io/25u3x/"><i style="color:#8AA3CD;" class="ai ai-osf ai-2x"></i></a></span>'
+- '<span data-toggle="tooltip1" data-placement="bottom" title=" Github "><a href="https://github.com/pablobernabeu"><i style="color:#8AA3CD;" class="fab fa-github fa-2x"></i></a></span>'
+- '<span data-toggle="tooltip1" data-placement="bottom" title=" LinkedIn "><a href="https://www.linkedin.com/in/pablobernabeu/"><i style="color:#8AA3CD;" class="fab fa-linkedin-in fa-2x"></i></a></span>'
 interests:
 - Cognitive psychology and neuroscience
 - Psycholinguistics
