@@ -2,7 +2,7 @@
 title: 'Event-related potentials: Why and how I used them'
 author: ''
 date: '2020-01-01'
-slug: event-related-potentials-why-and-how-I-used-them
+slug: event-related-potentials-why-and-how-i-used-them
 categories:
   - event-related potentials
 tags:
@@ -31,7 +31,7 @@ projects: []
 ---
 
 
-Event-related potentials (ERPs) offer a unique insight in the study of human cognition. Let's look at their reason-to-be for the purposes of research, and how they are defined and processed. Most of this content is based on my master's thesis ([download](https://psyarxiv.com/5gjvk/download/)), which I could fortunately conduct at the Max Planck Institute for Psycholinguistics ([conference paper](https://psyarxiv.com/a5pcz/) also available).
+Event-related potentials (ERPs) offer a unique insight in the study of human cognition. Let's look at their reason-to-be for the purposes of research, and how they are defined and processed. Most of this content is based on my master's thesis (<a href='https://psyarxiv.com/5gjvk/download/'>download</a>), which I could fortunately conduct at the Max Planck Institute for Psycholinguistics (<a href='https://psyarxiv.com/a5pcz/'>conference paper</a> also available).
 
 ## Electroencephalography
 
@@ -63,7 +63,7 @@ In demonstrating the relevance of embodied cognition, a sizeable series of studi
 
 Bernabeu, Willems and Louwerse (2017) addressed a caveat with the time course of the conceptual modality switch paradigm. In previous experiments, trials presented a concept word followed by a property word. ERPs were time-locked to the latter property word. This design may have left uncontrolled a switch produced already at the concept. Indeed, the property word was already supposed to be in the particular modality of the trial. That pitfall could have had two consequences: loss of power and loss of certainty on the time course of the effect. Thus, Bernabeu et al. created a design in which ERPs were time-locked to the first word in target trials (see some [early input from researchers online](https://www.researchgate.net/post/Conceptual_modality_switch_effect_measured_at_first_word)). The purpose of this relocation was not to completely annul the possibility of post-core sensory processes, but to increase the time accuracy by measuring the modality switch from the point at which it is elicited.
 
-![](/post/event-related-potentials/index_files/designoverview.png)
+![](designoverview.png)
 
 Implementing this design had an ancillary effect on the measurement of response times. A psycholinguistic experiment like this one requires controlling fundamental variables such as word frequency and length, by matching the means of these variables across experimental conditions. This must be controlled in the target words at least. As it is often the case, this control was only possible in the target words—the first one in target trials—, but it was not possible in the second word, which is the crucial one for response times. Response times could still be measured, but comparisons across conditions were not fully warranted. In sum, this was an ERP design. 
 
@@ -75,13 +75,13 @@ Multiple components are known, each having been found to consistently peak aroun
 
 1. **Polarity:** The component either peaks in the positive or the negative pole of the signal. This polarity is relative to the *baseline* point that is created in the preprocessing stage (see below);
 
-2. **latency:** the time course of the component, encompassing an onset, a peak and an overall duration. Time windows are normally set to match relevant components (e.g., the N400 window, etc.);
+2. **Latency:** the time course of the component, encompassing an onset, a peak and an overall duration. Time windows are normally set to match relevant components (e.g., the N400 window, etc.);
 
-3. **amplitude:** the voltage reached at a given time (e.g., the peak) or for a certain period (e.g., a time window);
+3. **Amplitude:** the voltage reached at a given time (e.g., the peak) or for a certain period (e.g., a time window);
 
-4. **scalp distribution, or topography:** the areas on the scalp (the scalp being a reasonable proxy for the brain) in which the component appears;
+4. **Scalp distribution, or topography:** the areas on the scalp (the scalp being a reasonable proxy for the brain) in which the component appears;
 
-5. **functional role:** the cognitive functions that have been consistently associated with the component.
+5. **Functional role:** the cognitive functions that have been consistently associated with the component.
 
 Examples of components in language processing include the N400, consistently linked to semantic processing, that is, seeking the meaning of words or sentences. The N400 is characterised by a large, negative amplitude peaking at around 400 ms post word onset, primarily found in central and posterior sites. N400 *effects*, which are comparisons of the N400 component in different experimental conditions, have consistently appeared under violations of semantic expectations, i.e., related to meaning and events (Kutas & Federmeier, 2011; Swaab, Ledoux, Camblin, & Boudewyn, 2012). Another well-known component in language is the P600, linked to syntactic processing, that is, the structure of sentences (Swaab et al., 2012). Other examples of components include lateralized readiness potentials, signalling motor preparation (Mordkoff & Gianaros, 2000), and the P3b component, which appears in the context of responses (van Vliet et al., 2014). Both the latter are relevant to researchers across domains, who often ward off contamination from these components in their experiments. In Bernabeu et al.'s experiment, for instance, time-locking ERPs to the first word in target trials was also useful to ward off contamination from these components. 
 
@@ -91,7 +91,7 @@ ERP data sets are large, being the product of the number of electrodes times the
 
 The electroencephalography (EEG) montage is an important factor. The options are broadly characterised by three parameters of the electrodes (also called channels).
 
-<p style="margin-left: 30px; line-height: 1.2; padding-bottom: 12px; padding-left: 15px; float: right; display: block;"><img src="/post/event-related-potentials/index_files/EEG MPI open day photo.jpg" alt="Pablo Bernabeu, 2015" width="200px" style='padding-bottom: 15px; margin-bottom: 0px;' /><span style="font-size: small; padding-left: 5px; padding-top: 0px; margin-top: 0px;">Brainwaves exposed for an open day.</span></p>
+<p style="margin-left: 30px; line-height: 1.2; padding-bottom: 12px; padding-left: 15px; float: right; display: block;"><img src="EEG MPI open day photo.jpg" alt="Pablo Bernabeu, 2015" width="200px" style='padding-bottom: 15px; margin-bottom: 0px;' /><span style="font-size: small; padding-left: 5px; padding-top: 0px; margin-top: 0px;">Brainwaves exposed for an open day.</span></p>
 
 - **Number:** Traditionally, montages with 32, 64 or 128 electrodes have been used. The larger the number, the higher the spatial resolution.
 
@@ -115,7 +115,7 @@ For the Bernabeu et al. study, I used Brain Vision software, and followed the [t
 
 3. re-referencing the signal offline to the right mastoid (RM), having referenced online to the left mastoid (Ref);
 
-![](/post/event-related-potentials/index_files/EEG montage.png){width=90%}
+<img src='EEG montage.png'></img>
 
 4. separating my three experimental conditions;
 
@@ -154,15 +154,15 @@ This pipeline is reflected in the [scripts exported from Brain Vision](https://o
 
 <br>
 
-Word reading ERPs can look somewhat like this after the preprocessing ([plots made in R](https://osf.io/bz7ae/)).
+Word reading ERPs can look somewhat like this after the preprocessing (<a href='https://osf.io/bz7ae/'>plots made in R</a>).
 
-![](/post/event-related-potentials/index_files/Four main waveform plots stacked.png){width=80%}
+<img src='Four main waveform plots stacked.png'></img>
 
 To visualise these waveforms throughout the different sections of the data, a [dashboard is available](https://mybinder.org/v2/gh/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing/master?urlpath=shiny/Shiny-app/).
 
 ## Statistical analysis
 
-With the myriad repeated measures involved in EEG, linear mixed-effects models are a good option, allowing the registration of electrodes and time points in the error term per participant (and trial, too, if these are not aggregated). The analysis I performed, in R, is [available](https://osf.io/sx3nw/).
+With the myriad repeated measures involved in EEG, linear mixed-effects models are a good option, allowing the registration of electrodes and time points in the error term per participant (and trial, too, if these are not aggregated). The analysis I performed, in R, is [available](https://osf.io/sx3nw/) (plots visible by downloading the file from the aforementioned link).
 
 <style>.embed-responsive{position:relative;height:100%;}.embed-responsive iframe{position:absolute;height:100%;}</style><script>window.jQuery || document.write('<script src="//code.jquery.com/jquery-1.11.2.min.js">\x3C/script>') </script><link href="https://mfr.osf.io/static/css/mfr.css" media="all" rel="stylesheet"><div id="mfrIframe" class="mfr mfr-file"></div><script src="https://mfr.osf.io/static/js/mfr.js"></script> <script>var mfrRender = new mfr.Render("mfrIframe", "https://mfr.osf.io/render?url=https://osf.io/sx3nw/?direct%26mode=render%26action=download%26mode=render");</script>
 
