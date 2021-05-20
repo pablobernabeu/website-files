@@ -9,6 +9,7 @@ tags:
   - open science
   - open scholarship
   - open data
+  - reproducibility
 event: Open Scholarship Prize Competition 2021, Open Scholarship Community Galway
 event_url: https://nuigalway.mediaspace.kaltura.com/media/OSW2021A+OSCG+Open+Scholarship+Prize+-+The+Final!/1_d7ekd3d3/121659351
 location: 
@@ -37,17 +38,16 @@ slides: ''
 projects: []
 ---
 
-<br>
 
 ### <i style="font-weight:bold; color:#5B6574" class="fas fa-arrow-down fa-xs"></i> Video below the slides
 
 <br>
 
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/qXQn84BXVwvCVg" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <a href="//www.slideshare.net/PabloBernabeu/towards-reproducibility-and-maximallyopen-data" title="Towards reproducibility and maximally-open data" target="_blank">Slideshare</a></div>
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/2zoozgIMfAMutu" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <a href="//www.slideshare.net/PabloBernabeu/towards-reproducibility-and-maximallyopen-data-248372286" title="Towards reproducibility and maximally-open data" target="_blank">Slideshare</a></div>
 
 <br>
 
-<p style='font-size:80%;'>Embedded from: https://nuigalway.mediaspace.kaltura.com/media/OSW2021A+OSCG+Open+Scholarship+Prize+-+The+Final!/1_d7ekd3d3/121659351#t=56:08.</p>
+<p style='font-size:80%;'>Video embedded from: <a href='https://nuigalway.mediaspace.kaltura.com/media/OSW2021A+OSCG+Open+Scholarship+Prize+-+The+Final!/1_d7ekd3d3/121659351#t=56:08'>https://nuigalway.mediaspace.kaltura.com/media/OSW2021A+OSCG+Open+Scholarship+Prize+-+The+Final!/1_d7ekd3d3/121659351#t=56:08</a>.</p>
 
 <iframe src="https://cdnapisec.kaltura.com/p/723092/sp/72309200/embedIframeJs/uiconf_id/31568551/partner_id/723092?flashvars[mediaProxy.mediaPlayFrom]=3368&iframeembed=true&playerId=kplayer&entry_id=1_d7ekd3d3&flashvars[streamerType]=auto" width="700" height="700" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
 
