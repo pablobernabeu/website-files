@@ -51,7 +51,7 @@ css_class = ""
 +++
 
 
-### [2021] Linguistic and embodied systems in conceptual processing: Variation across individuals and items (<a href='https://www.youtube.com/watch?v=y2bopgYWYvE&ab_channel=LancasterPsychology'>see video</a>)
+### <span style='color:grey; font-size:70%;'>2021 ·</span>&nbsp; Linguistic and embodied systems in conceptual processing: Variation across individuals and items (<a href='https://www.youtube.com/watch?v=y2bopgYWYvE&ab_channel=LancasterPsychology'>see video</a>)
 
 <div style = "margin-top: 20px; margin-left: 20%;">
 <a href = 'https://www.youtube.com/watch?v=y2bopgYWYvE&ab_channel=LancasterPsychology'>
@@ -61,7 +61,7 @@ css_class = ""
 <div style = 'padding-bottom: 7%;'></div>
 
 
-### [2021] Towards reproducibility and maximally-open data (<a href='/talk/towards-reproducibility-and-maximally-open-data'>see video</a>)
+### <span style='color:grey; font-size:70%;'>2021 ·</span>&nbsp; Towards reproducibility and maximally-open data (<a href='/talk/towards-reproducibility-and-maximally-open-data'>see video</a>)
 
 <div style = "margin-top: 20px; margin-left: 20%;">
 <a href = '/talk/towards-reproducibility-and-maximally-open-data'>
@@ -71,7 +71,7 @@ css_class = ""
 <div style = 'padding-bottom: 7%;'></div>
 
 
-### [2020] Reproducibilidad en torno a una aplicación web (<a href='/talk/2020-10-08-reproducibilidad-en-torno-a-una-aplicacion-web/'>ver más</a>)
+### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; Reproducibilidad en torno a una aplicación web (<a href='/talk/2020-10-08-reproducibilidad-en-torno-a-una-aplicacion-web/'>ver más</a>)
 
 <div style = "position: relative; margin-top: 20px; padding-top: 56.25%; margin-bottom: -25px;">
 <iframe src="https://www.youtube-nocookie.com/embed/1njLOAWqLPM" frameborder="0" allowfullscreen
@@ -79,7 +79,7 @@ style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
 </div>
 
 
-### [2020] Workshop on R Markdown, dashboards and Binder (see [programme and materials](https://github.com/pablobernabeu/CarpentryCon-2020-workshop-Open-Data-Reproducibility))
+### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; Workshop on R Markdown, dashboards and Binder (see [programme and materials](https://github.com/pablobernabeu/CarpentryCon-2020-workshop-Open-Data-Reproducibility))
 
 <div style = "position: relative; margin-top: 20px; padding-top: 56.25%; margin-bottom: -25px;">
 <iframe src="https://www.youtube-nocookie.com/embed/wZsPD7CgJC0" frameborder="0" allowfullscreen
@@ -87,7 +87,7 @@ style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
 </div>
 
 
-### [2020] Personal profile and experience at Lancaster U. Psychology Dept.
+### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; Personal profile and experience at Lancaster U. Psychology Dept.
 
 <div style = "position: relative; margin-top: 20px; padding-top: 56.25%; margin-bottom: -25px;">
 <iframe src="https://www.youtube-nocookie.com/embed/ZEoan5tWqFg" frameborder="0" allowfullscreen
@@ -95,7 +95,7 @@ style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
 </div>
 
 
-### [2020] Embedding open research and reproducibility in the UG and PGT curricula
+### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; Embedding open research and reproducibility in the UG and PGT curricula
 
 <div style = "position: relative; margin-top: 20px; padding-top: 56.25%; margin-bottom: -25px;">
 <iframe src="https://www.youtube-nocookie.com/embed/vzkDBZ1qWfY" frameborder="0" allowfullscreen
@@ -103,7 +103,7 @@ style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
 </div>
 
 
-### [2019] Part of application for [Gorilla Grant](#other-funding)
+### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Part of application for [Gorilla Grant](#other-funding)
 
 <div style = "position: relative; margin-top: 20px; padding-top: 56.25%; margin-bottom: -25px;">
 <iframe src="https://www.youtube-nocookie.com/embed/DTHFuC0Lw0Y" frameborder="0" allowfullscreen
@@ -111,7 +111,7 @@ style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
 </div>
 
 
-### [2019] Part of application for [Software Sustainability Institute Fellowship](#other-funding)
+### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Part of application for [Software Sustainability Institute Fellowship](#other-funding)
 
 <div style = "position: relative; margin-top: 20px; padding-top: 56.25%; margin-bottom: -25px;">
 <iframe src="https://www.youtube-nocookie.com/embed/F-MQ8BYwLn4" frameborder="0" allowfullscreen
@@ -119,7 +119,7 @@ style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
 </div>
 
 
-### [2019] Demonstration of procedure for [PSA experiments](/publication/chen-etal-inprep/) (<a href='https://osf.io/h36wr/'>see video</a>)
+### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Demonstration of procedure for [PSA experiments](/publication/chen-etal-inprep/) (<a href='https://osf.io/h36wr/'>see video</a>)
 
 <div style = "margin-top: 20px; margin-left: 20%;">
 <a href = 'https://osf.io/h36wr/'>
