@@ -11,7 +11,7 @@ tags:
   - language comprehension
   - statistics
   - power analysis
-event: 'Lancaster University Postgraduate Psychology Conference 2021'
+event: 'Lancaster University Postgraduate Psychology Conference 2021 ([see YouTube playlist](https://www.youtube.com/watch?v=qr9w9xvVeOs&list=PLT4E8k3PmUSYYyvcgeIpX4nP-26nEiu_j&ab_channel=LancasterPsychologyLancasterPsychology))'
 event_url: ~
 location: ~
 address:
@@ -39,24 +39,19 @@ projects: []
 ---
 
 
-##### [Slides](/talk/linguistic-and-embodied-systems-in-conceptual-processing-variation-across-individuals-and-items/slides)
+&nbsp; &nbsp; &nbsp;&nbsp; [**Video**](https://www.youtube.com/watch?v=y2bopgYWYvE&ab_channel=LancasterPsychology)
 
-```{r embed-xaringan, echo=FALSE}
+&nbsp; &nbsp; &nbsp;&nbsp; [**Slides**](/talk/linguistic-and-embodied-systems-in-conceptual-processing-variation-across-individuals-and-items/slides)
+
+<br>
+
+```{r embed-xaringan, echo = FALSE}
 
 library(xaringanExtra)
 
 xaringanExtra::embed_xaringan(url = "/talk/linguistic-and-embodied-systems-in-conceptual-processing-variation-across-individuals-and-items/slides", ratio = "4:3")
 
 ```
-
-<br>
-
-##### [Video](https://www.youtube.com/watch?v=y2bopgYWYvE&ab_channel=LancasterPsychology)
-
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
-<iframe src="https://www.youtube-nocookie.com/embed/y2bopgYWYvE" frameborder="0" allowfullscreen
-style = "position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
-</div>
 
 <br>
 

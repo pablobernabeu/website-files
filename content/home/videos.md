@@ -51,12 +51,14 @@ css_class = ""
 +++
 
 
-### [2021] Linguistic and embodied systems in conceptual processing: Variation across individuals and items (<a href='/talk/linguistic-and-embodied-systems-in-conceptual-processing-variation-across-individuals-and-items'>see more</a>)
+### [2021] Linguistic and embodied systems in conceptual processing: Variation across individuals and items (<a href='https://www.youtube.com/watch?v=y2bopgYWYvE&ab_channel=LancasterPsychology'>see video</a>)
 
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%; margin-bottom: -25px;">
-<iframe src="https://www.youtube-nocookie.com/embed/y2bopgYWYvE" frameborder="0" allowfullscreen
-style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
+<div style = "margin-top: 20px; margin-left: 20%;">
+<a href = 'https://www.youtube.com/watch?v=y2bopgYWYvE&ab_channel=LancasterPsychology'>
+<img src = 'https://cdn.pixabay.com/photo/2016/08/20/06/09/video-1606945_960_720.png' width = 50%></a>
 </div>
+
+<div style = 'padding-bottom: 7%;'></div>
 
 
 ### [2021] Towards reproducibility and maximally-open data (<a href='/talk/towards-reproducibility-and-maximally-open-data'>see video</a>)
