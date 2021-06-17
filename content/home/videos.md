@@ -51,6 +51,14 @@ css_class = ""
 +++
 
 
+### [2021] Linguistic and embodied systems in conceptual processing: Variation across individuals and items (<a href='/talk/linguistic-and-embodied-systems-in-conceptual-processing-variation-across-individuals-and-items'>see more</a>)
+
+<div style = "position: relative; margin-top: 20px; padding-top: 56.25%; margin-bottom: -25px;">
+<iframe src="https://www.youtube-nocookie.com/embed/y2bopgYWYvE" frameborder="0" allowfullscreen
+style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
+</div>
+
+
 ### [2021] Towards reproducibility and maximally-open data (<a href='/talk/towards-reproducibility-and-maximally-open-data'>see video</a>)
 
 <div style = "margin-top: 20px; margin-left: 20%;">
@@ -59,6 +67,7 @@ css_class = ""
 </div>
 
 <div style = 'padding-bottom: 7%;'></div>
+
 
 ### [2020] Reproducibilidad en torno a una aplicación web (<a href='/talk/2020-10-08-reproducibilidad-en-torno-a-una-aplicacion-web/'>ver más</a>)
 
