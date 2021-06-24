@@ -56,5 +56,5 @@ subtitle = ""
 | Dec 2015 – Feb 2016 | Part-time Data Science market research and student recruitment. [Tilburg U.](https://www.tilburguniversity.edu/) |
 | 2015 – 2016 | Student representative at master’s fairs in Spain. [Radboud U.](https://www.ru.nl/english/), [Tilburg U.](https://www.tilburguniversity.edu/) |
 | 2013 – 2016 | Presenter of my master's programme at open days. [Tilburg U.](https://www.tilburguniversity.edu/) |
-| 2013 – 2016 | Communications and student recruitment. [Academia Bravosol](https://bravosol.net), Madrid, Spain |
-
+| 2013 – 2016 | Communication and student recruitment. [Academia Bravosol](https://bravosol.net), Madrid, Spain |
+| 2011 – 2013 | Occasional teacher of English and Spanish. [Academia Bravosol](https://bravosol.net), Madrid, Spain |

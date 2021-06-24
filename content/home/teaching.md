@@ -66,4 +66,4 @@ As a graduate teaching assistant, I devote 180 hours a year to leading 30 semina
 | **2018–19** | Understanding psychology (101) — Seminars and essay marking |
 |             | Investigating psychology: Analysis (102) using SPSS — Labs |
 
-Besides this experience, I have a [Carpentries Instructor certificate](https://carpentries.org/become-instructor/), I have run several [workshops and presentations](https://pablobernabeu.github.io/#workshops), and earlier I [taught English to secondary-education students, and Spanish to adults](https://osf.io/84ktq/).
+Besides this experience, I have a [Carpentries Instructor certificate](https://carpentries.org/become-instructor/), I have run several [workshops and presentations](https://pablobernabeu.github.io/#workshops), and earlier I [taught English to secondary-education students, and Spanish to adults](/#other-work).
