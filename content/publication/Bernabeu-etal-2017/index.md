@@ -14,7 +14,7 @@ image:
   preview_only: false
 links:
 - name: Stimulus data dashboard
-  url: '/applications-and-dashboards/bernabeu-2018-modalitynorms/'
+  url: 'https://pablobernabeu.shinyapps.io/Dutch-modality-exclusivity-norms'
 - name: Results data dashboard
   url: '/applications-and-dashboards/bernabeu-etal-2017-modalityswitch/'
 - name: Master's thesis
