@@ -24,7 +24,9 @@ There is a lot of discrimination at European universities and in the correspondi
 
 Xenophobia is one of the types of discrimination that sometimes crop up in halls of residence, departments, panels, committees, offices. Xenophobia exists where you are now, as it does where you come from. It is intrinsic to human societies (Hinton, 2017). Who doesn't know the way in which their society tends to rank the different nationalities therein? The locals tend to be first. Through many everyday tricks, the locals often ensure that immigrants remain second to them. The first rank of immigrants is formed of one or two nationalities, perhaps aided by historical or cultural connections. The second rank is that of merely-tolerated immigrants. The third rank is formed of immigrants who are despised due to historical, political, cultural factors. 
 
-Sadly and dangerously enough, in competitive or onerous circumstances (when is that not the case, though!), *homo homini lupus*---that is, discrimination breaks loose (Abbink, & Harris, 2019; Mendes & Koslov, 2013). Ominous, historical references are unnecessary at this point. A hundred, or a few hundred, years is very little time: it's *yesterday*. I do hope HTML continues to display this blog post in a few hundred years' time.
+Sadly and dangerously enough, in competitive or onerous circumstances (when is that not the case, though!), *homo homini lupus*---that is, discrimination breaks loose (Abbink, & Harris, 2019; Meiring et al., 2014; Mendes & Koslov, 2013). 
+
+Ominous, historical references are unnecessary. A hundred, or a few hundred, years is very little time: it's *yesterday*. 
 
 
 ## Policies
@@ -69,6 +71,8 @@ If you are not a target but you think it is humane to act as an ally against dis
 Abbink, K., & Harris, D. (2019). In-group favouritism and out-group discrimination in naturally occurring groups. *PloS ONE, 14*(9), e0221616. https://doi.org/10.1371/journal.pone.0221616
 
 Hinton, P. (2017). Implicit stereotypes and the predictive brain: cognition and culture in “biased” person perception. *Palgrave Communications, 3*(1), 1-9. https://doi.org/10.1057/palcomms.2017.86
+
+Meiring, L., Subramoney, S., Thomas, K. G., Decety, J., & Fourie, M. M. (2014). Empathy and helping: Effects of racial group membership and cognitive load. *South African Journal of Psychology, 44*(4), 426-438. https://doi.org/10.1177/0081246314530280
 
 Mendes, W. B., & Koslov, K. (2013). Brittle smiles: Positive biases toward stigmatized and outgroup targets. *Journal of Experimental Psychology: General, 142*(3), 923–933. https://doi.org/10.1037/a0029663
 
