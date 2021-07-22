@@ -64,6 +64,60 @@ The discrimination can be well described by means of an extensive document that 
 
 Name it! Discrimination has precise names---for instance, *xenophobia*---, which must be used where relevant and necessary. People know the meaning: perpetrators are likely know it, and so will the authorities or mediators who are in charge of resolving the case. Whether these people like the word to be used or not is their own problem, not yours. Nonetheless, names are just that---labels. Another label for many common cases at university is 'unfairness'. It is less specific but often more objective.
 
+As an example, this year I was bullied by some of my flatmates. This bullying was finally underscored when they submitted false accusations about me to the Graduate College Accommodation Office at Lancaster University. The latter office initially embraced and acted upon these accusations. The College would not initially allow me to receive and respond in writing. They preferred a live meeting. As I argued, a written procedure would cause less stress, allow less bias, and allow a more accurate registration of every input for future reference. Finally, it required a 36-page response from me and a one-hour disciplinary hearing for me to motivate the way in which some of my flatmates had bullied me throughout the year, presumably due to legitimate differences in the way we were each concerned about the Covid-19 pandemic, along with differences in academic stage, age, nationality and physical appearance. I was acquitted on all accusations.
+
+It is important to express one's feeling of unfairness. I did so in an email to the College after the resolution (private information replaced with asterisks).
+
+<blockquote>
+
+Dear All,
+
+The Dean has produced a resolution to the disciplinary hearing that was organised due to complaints from some of my flatmates. This resolution considers my flatmates' complaints as well as the 36-page response that I submitted and the one-hour hearing that finally took place. In the resolution, I was acquitted of all three alleged violations (my response to the summons and the Dean's resolution are attached to the present email). 
+
+As part of a fair procedure, I received documents that reflected my flatmates' complaints, as well as the treatment of those complaints from the Graduate Accommodation Office. I would be grateful for your consideration of my views on the role of the Graduate Accommodation Office.
+
+
+**Biased treatment of accusations**
+
+I have considered the response from the Graduate Accommodation Office as the complaints were raised, and until I was summoned to a disciplinary hearing. In my view, the Graduate Accommodation Office failed to demonstrate enough impartiality, which resulted in unfairness towards me. The claims made by some of my flatmates via email were acted upon by the Accommodation Office without an important consideration--namely, that the accusations could be deliberately false or inaccurate. Indeed, the accusations happened to be so, as I extensively argued in my response to the summons by providing detailed descriptions of the events and documentary evidence. 
+
+Disappointingly, the embracement of my flatmates' accusations by the Graduate Accommodation Office contrasts with the caution that is rightly applied when one calls the porters. I have sometimes called over the past three years regarding residents smoking indoors. Every time, they made me aware of the need for them to catch any students as they are smoking indoors. In the absence of the witnessing by the porters, the students can only be informed about the complaint made, but no action can be taken against them. This is a correct precaution against any false or misinformed accusations. In contrast, I think that the Graduate Accommodation Office, in some of their emails with some of my flatmates, embraced the accusations on a one-sided manner, and finally passed on these accusations to the Dean without having had any input from me about the veracity thereof.
+
+
+**Biased provision of evidence**
+
+Among the documents included in the disciplinary case, the Graduate Accommodation Office included a complaint that I had raised regarding the persistent failures to prevent a Covid-19 infection by my flatmates and by the housekeeper. My complaint should by no means have been mixed with the complaints against me. Its inclusion is a demonstration of the bias with which I was treated.
+
+
+**Legitimate differences across flatmates contributing to discrimination**
+
+I think that the biased response from the response from the Graduate Accommodation Office failed to consider the legitimate differences across the residents in these flats. The Graduate Accommodation Office know (as indeed they should) that the seven-person flats in this college are bound to include residents who are legitimately different from each other. In my flat this year, for instance, we have had important differences regarding academic stage, age and country of origin. 
+
+- Academic stage: five master's students, one first-year PhD student and one third-year PhD student (I am the latter one).
+
+- Age: all my flatmates are under \*\*\*, whereas I am \*\*\*.
+
+- Country of origin: three \*\*\*, one \*\*\*, one \*\*\*, one \*\*\* and one \*\*\* (I am the latter one).
+
+These differences must always be considered, as they can contribute to ingroup-outgroup bias in flats. Some of this bias could stem from xenophobia. Unfortunately, Lancaster University has had infamous cases of xenophobia in the past (https://scan.lancastersu.co.uk/2013/05/27/editorial-anonymous-bullying-on-facebook-groups-is-pure-cowardice/).
+
+
+In conclusion, would you please consider the following remarks:
+
+- I think that the treatment of my flatmates' complaints was unfair and biased against me.  
+
+- I think my flatmates aimed to have me expelled from the flat. Their spite was due to me being the only one who has been properly concerned about the virus in this flat, and due to the legitimate differences that existed between me and my flatmates regarding academic stage, age and country of origin, as listed above. 
+
+- I think that this case demonstrates that it is extremely harmful to embrace and act upon accusations in a one-sided manner, as it can result in discrimination. The biased response from the Graduate Accommodation Office has instilled a fear from false accusations in me. As a result, I feel that henceforth I will have to monitor whether I or other residents are discriminated against by the Graduate Accommodation Office.
+
+I hope that the Graduate Accommodation Office can acknowledge my experience of the present issue, and consider it to allow a fair treatment towards every resident in the future. As such, henceforth, I will consider the present email as an integral part of this process, and I hope that the Graduate Accommodation Office does too.
+
+Thank you for your attention,
+
+Pablo
+
+</blockquote>
+
 
 ### Ceaseless awareness
 
