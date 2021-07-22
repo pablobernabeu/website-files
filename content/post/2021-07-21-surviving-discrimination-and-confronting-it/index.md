@@ -130,7 +130,7 @@ The creation of awareness does not have to fully depend on close relationships. 
 
 ## Take-home message
 
-If you have suffered discrimination, or you are a potential target for it, please ensure that you are aware of this plague÷. Regardless of the rank that is lent to types of discrimination such as xenophobia in social agendas (be that fair or wise, or very much otherwise), it must never be tolerated by the people who suffer or witness it. Discrimination breaches human and fundamental rights, national laws and institutional rules.
+If you have suffered discrimination, or you are a potential target for it, please ensure that you are aware of this plague. Regardless of the rank that a given type of discrimination occupies in the social agenda (be that fair or wise, or very much otherwise), discrimination should not be tolerated by the people who suffer or witness it. In addition to being unethical, discrimination breaches human and fundamental rights, national laws and institutional rules.
 
 If you are not a target but you think it is humane to act as an ally against discrimination, please try to confront it if you witness it, and to contribute to a widespread awareness.
 
