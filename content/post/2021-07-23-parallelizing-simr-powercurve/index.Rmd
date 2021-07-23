@@ -21,18 +21,18 @@ projects: []
 ---
 
 
-The `powercurve` function from the simr package in R often requires a very long running time when the method used for the calculation of p values is Kenward-Roger or Satterthwaite (see Luke, 2017). Here I suggest three ways for cutting down this time. 
+The `powercurve` function from the [simr package in R](https://cran.r-project.org/web/packages/simr/simr.pdf) (Green & MacLeod, 2016) can incur very long running times when the method used for the calculation of p values is Kenward-Roger or Satterthwaite (see Luke, 2017). Here I suggest three ways for cutting down this time. 
 
 1. Where possible, use a high-performance (or high-end) computing cluster. This removes the need to use personal computers for these long jobs.
 
 2. In case you're using the `fixed()` parameter of the `powercurve` function, and calculating the power for different effects, run these at the same time ('in parallel') on different machines, rather than one after another. 
 
-3. *Parallelize* the `breaks` argument. The `breaks` argument of the `powercurve` function allows the calculation of power for different levels of the factor passed to `along`. Some typical factors for `along` include *participant* (or *subject*), *trial* or *item*. The `breaks` argument sets the different numbers of participants, for instance, for which we want to calculate the power. Parallelizing `breaks` is done by running each number of levels in a separate function. When each has been run and saved, they are `c`ombined to allow the plotting.
+3. *Parallelize* the `breaks` argument. The `breaks` argument of the `powercurve` function allows the calculation of power for different levels of the factor passed to `along`. Some typical factors for `along` include *participant* (or *subject*), *trial* or *item*. The `breaks` argument sets the different numbers of participants, for instance, for which we want to calculate the power. Parallelizing `breaks` is done by running each number of levels in a separate function. When each has been run and saved, they are `c`ombined to allow the plotting. This procedure is  demonstrated below.
 
 
 ## Parallelizing `breaks`
 
-Let's do a minimal example using a handy, tiny model---it only serves to demonstrate the method. Whereas the power curves below run in a few minutes, the settings that are often used (e.g., a larger model; `fixed('x', 'sa')` instead of `fixed('x')`; `nsim = 500` instead of `nsim = 50`) require a much larger running time.^[The number of iterations set by `nsim` should be around 200 as a minimum (e.g., Brysbaert & Stevens, 2018) and preferably more than that (Green & MacLeod, 2016). In addition, the effect size for `x` should be adjusted to the value that best fits with the planned study (Kumle et al., 2021).] That is where parallel processing becomes useful; it can turn three months' running time into *just* a couple of weeks.
+Let's do a minimal example using a handy, tiny model---it only serves to demonstrate the method. Whereas the power curves below run in a few minutes, the settings that are often used (e.g., a larger model; `fixed('x', 'sa')` instead of `fixed('x')`; `nsim = 500` instead of `nsim = 50`) require a much longer running time.^[The number of iterations set by `nsim` should be around 200 as a minimum (e.g., Brysbaert & Stevens, 2018) and preferably more than that (Green & MacLeod, 2016). In addition, the effect size for `x` should be adjusted to the value that best fits with the planned study (Kumle et al., 2021).] That is where parallel processing becomes useful; it can turn three months' running time into *just* a couple of weeks.
 
 Notice that the six sections of the power curve below are serially arranged, one after another. In contrast, to enable parallel processing, each power curve would be placed in a single script, and they would all be run at the same time.
 
