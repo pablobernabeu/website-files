@@ -17,11 +17,10 @@ projects: []
 ---
 
 
-<div class="alert alert-secondary" role="alert" style='padding-bottom:0px; padding-bottom:15px;'>
+<div class = "alert alert-secondary" role = "alert" style = 'margin-top: 40px; margin-bottom: 40px; padding-bottom: 15px;'>
 This blog post does not provide a complete overview of the atmosphere at university or in academia, where I think that fairness is far more common than discrimination. Let's keep up the good work, and be mindful of the rest.
 </div>
 
-<br>
 
 There is discrimination at European universities and in the corresponding academia. Minorities are too often oppressed and abused through the use of casual remarks, concerted attacks, unequal respect towards different groups, unfair hiring decisions, and other negligent behaviours. Professional and personal negligence is the reason why this discrimination is tolerated and condoned by staff of higher authority. Cases of discrimination are not normally shared by the universities, but they are sometimes registered on the websites of student unions, other student forums, or in the press.
 
@@ -137,6 +136,8 @@ If you are not a target but you think it is humane to act as an ally against dis
 
 ## References
 
+<div style = "text-indent:-2em; margin-left:2em;">
+
 Abbink, K., & Harris, D. (2019). In-group favouritism and out-group discrimination in naturally occurring groups. *PloS ONE, 14*(9), e0221616. https://doi.org/10.1371/journal.pone.0221616
 
 Hinton, P. (2017). Implicit stereotypes and the predictive brain: cognition and culture in “biased” person perception. *Palgrave Communications, 3*(1), 1-9. https://doi.org/10.1057/palcomms.2017.86
@@ -145,6 +146,7 @@ Meiring, L., Subramoney, S., Thomas, K. G., Decety, J., & Fourie, M. M. (2014). 
 
 Mendes, W. B., & Koslov, K. (2013). Brittle smiles: Positive biases toward stigmatized and outgroup targets. *Journal of Experimental Psychology: General, 142*(3), 923–933. https://doi.org/10.1037/a0029663
 
+</div>
 
 <br>
 

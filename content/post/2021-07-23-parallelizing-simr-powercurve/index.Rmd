@@ -1,0 +1,156 @@
+---
+title: Parallelizing simr::powercurve() in R
+author: ~
+date: ~
+slug: parallelizing-simr-powercurve
+categories:
+  - R
+  - research methods
+tags:
+  - power analysis
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-07-23T16:46:54+01:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+The `powercurve` function from the simr package in R often requires a very long running time when the method used for the calculation of p values is Kenward-Roger or Satterthwaite (see Luke, 2017). Here I suggest three ways for cutting down this time. 
+
+1. Where possible, use a high-performance (or high-end) computing cluster. This removes the need to use personal computers for these long jobs.
+
+2. In case you're using the `fixed()` parameter of the `powercurve` function, and calculating the power for different effects, run these at the same time ('in parallel') on different machines, rather than one after another. 
+
+3. *Parallelize* the `breaks` argument. The `breaks` argument of the `powercurve` function allows the calculation of power for different levels of the factor passed to `along`. Some typical factors for `along` include *participant* (or *subject*), *trial* or *item*. The `breaks` argument sets the different numbers of participants, for instance, for which we want to calculate the power. Parallelizing `breaks` is done by running each number of levels in a separate function. When each has been run and saved, they are `c`ombined to allow the plotting.
+
+
+## Parallelizing `breaks`
+
+Let's do a minimal example using a handy, tiny model---it only serves to demonstrate the method. Whereas the power curves below run in a few minutes, the settings that are often used (e.g., a larger model; `fixed('x', 'sa')` instead of `fixed('x')`; `nsim = 500` instead of `nsim = 50`) require a much larger running time.^[The number of iterations set by `nsim` should be around 200 as a minimum (e.g., Brysbaert & Stevens, 2018) and preferably more than that (Green & MacLeod, 2016). In addition, the effect size for `x` should be adjusted to the value that best fits with the planned study (Kumle et al., 2021).] That is where parallel processing becomes useful; it can turn three months' running time into *just* a couple of weeks.
+
+Notice that the six sections of the power curve below are serially arranged, one after another. In contrast, to enable parallel processing, each power curve would be placed in a single script, and they would all be run at the same time.
+
+```{r message = FALSE, warning = FALSE}
+
+library(lme4)
+library(simr)
+
+fm = lmer(y ~ x + (1 | g), data = simdata)
+
+# Parallelizing `breaks` by running each number of levels in a separate function.
+
+# 4 levels of g
+pwcurve_4g = powerCurve(fm, fixed('x'), breaks = 4, nsim = 50, seed = 123)
+
+# 6 levels of g
+pwcurve_6g = powerCurve(fm, fixed('x'), breaks = 6, nsim = 50, seed = 123)
+
+# 8 levels of g
+pwcurve_8g = powerCurve(fm, fixed('x'), breaks = 8, nsim = 50, seed = 123)
+
+# 10 levels of g
+pwcurve_10g = powerCurve(fm, fixed('x'), breaks = 10, nsim = 50, seed = 123)
+
+# 12 levels of g
+pwcurve_12g = powerCurve(fm, fixed('x'), breaks = 12, nsim = 50, seed = 123)
+
+```
+
+<br>
+
+Having saved each section of the power curve, we must now combine them to be able to plot them together.
+
+```{r message = FALSE, warning = FALSE}
+
+# Create a destination object using any of the power curves above.
+all_pwcurve = pwcurve_4g
+
+# Combine results
+all_pwcurve$ps = c(pwcurve_4g$ps[1], pwcurve_6g$ps[1], pwcurve_8g$ps[1], pwcurve_10g$ps[1], pwcurve_12g$ps[1])
+
+# Combine the different numbers of levels.
+all_pwcurve$xval = c(pwcurve_4g$nlevels, pwcurve_6g$nlevels, pwcurve_8g$nlevels, pwcurve_10g$nlevels, pwcurve_12g$nlevels)
+
+print(all_pwcurve)
+
+plot(all_pwcurve, xlab = 'Levels of g')
+
+
+# For reproducibility purposes
+sessionInfo()
+
+```
+
+<br>
+
+### Just the code
+
+```
+
+library(lme4)
+library(simr)
+
+
+# Minimal mixed-effects model from https://cran.r-project.org/web/packages/simr/simr.pdf
+fm = lmer(y ~ x + (1 | g), data = simdata)
+
+
+# Parallelizing `breaks` by running each number of levels in a separate function.
+
+# 4 levels of g
+pwcurve_4g = powerCurve(fm, fixed('x'), breaks = 4, nsim = 50, seed = 123)
+
+# 6 levels of g
+pwcurve_6g = powerCurve(fm, fixed('x'), breaks = 6, nsim = 50, seed = 123)
+
+# 8 levels of g
+pwcurve_8g = powerCurve(fm, fixed('x'), breaks = 8, nsim = 50, seed = 123)
+
+# 10 levels of g
+pwcurve_10g = powerCurve(fm, fixed('x'), breaks = 10, nsim = 50, seed = 123)
+
+# 12 levels of g
+pwcurve_12g = powerCurve(fm, fixed('x'), breaks = 12, nsim = 50, seed = 123)
+
+
+# Create a destination object using any of the power curves above.
+all_pwcurve = pwcurve_4g
+
+# Combine results
+all_pwcurve$ps = c(pwcurve_4g$ps[1], pwcurve_6g$ps[1], pwcurve_8g$ps[1], pwcurve_10g$ps[1], pwcurve_12g$ps[1])
+
+# Combine the different numbers of levels.
+all_pwcurve$xval = c(pwcurve_4g$nlevels, pwcurve_6g$nlevels, pwcurve_8g$nlevels, pwcurve_10g$nlevels, pwcurve_12g$nlevels)
+
+
+print(all_pwcurve)
+
+plot(all_pwcurve, xlab = 'Levels of g')
+
+```
+
+
+<br>
+
+## References
+
+<div style = "text-indent:-2em; margin-left:2em;">
+
+Brysbaert, M., & Stevens, M. (2018). Power analysis and effect size in mixed effects models: A tutorial. *Journal of Cognition, 1*(1), 9. http://doi.org/10.5334/joc.10
+
+Green, P., & MacLeod, C. J. (2016). SIMR: An R package for power analysis of generalized linear mixed models by simulation. *Methods in Ecology and Evolution 7*(4), 493–498, https://doi.org/10.1111/2041-210X.12504
+
+Kumle, L., Vo, M. L. H., & Draschkow, D. (2021). Estimating power in (generalized) linear mixed models: An open introduction and tutorial in R. *Behavior Research Methods*, 1--16. <https://doi.org/10.3758/s13428-021-01546-0>
+
+Luke, S. G. (2017). Evaluating significance in linear mixed-effects models in R. *Behavior Research Methods, 49*(4), 1494--1502. <https://doi.org/10.3758/s13428-016-0809-y>
+
+</div>
+
+<br>
+
