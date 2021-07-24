@@ -120,7 +120,7 @@ Pablo
 
 ### Ceaseless awareness
 
-Lobbying, whether we like it or not, is one of the necessary ways to confront this plight. So, talk about it. Make sure that other potential targets of it know that it is not fair, that they should not have to put up with it, and that they might be able to confront it in one way or another. Ceaseless awareness will help those who exert discrimination, too, as arguably, they are often unaware of their own act.
+~~Lobbying, whether we like it or not,~~ **Activism** is one of the methods needed to confront this plight. So, talk about it. Make sure that other potential targets of it know that it is not fair, that they should not have to put up with it, and that they might be able to confront it in one way or another. A ceaseless awareness, fostered by a relentless activism, will also help those who exert discrimination themselves, as arguably, they are often unaware of their own act.
 
 #### The internet 
 
