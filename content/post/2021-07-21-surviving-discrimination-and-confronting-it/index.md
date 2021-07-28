@@ -17,7 +17,7 @@ projects: []
 ---
 
 
-<div class = "alert alert-secondary" role = "alert" style = 'margin-top: 40px; margin-bottom: 40px; padding-bottom: 15px;'>
+<div class = 'alert alert-secondary' role = 'alert' style = 'margin-top: 40px; margin-bottom: 40px; padding-bottom: 15px;'>
 This blog post does not provide a complete overview of the atmosphere at university or in academia, where I think that fairness is far more common than discrimination. Let's keep up the good work, and be mindful of the rest.
 </div>
 
@@ -61,11 +61,13 @@ Ironically, complaint cases are sometimes initiated by those who have exerted di
 
 The discrimination can be well described by means of an extensive document that recounts every relevant episode, with the applicable evidence being attached. Don't fret about *reading time*: the larger the document, the better.
 
-Name it! Discrimination has precise names---for instance, *xenophobia*---, which must be used where relevant and necessary. People know the meaning: perpetrators are likely know it, and so will the authorities or mediators who are in charge of resolving the case. Whether these people like the word to be used or not is their own problem, not yours. Nonetheless, names are just that---labels. Another label for many common cases at university is 'unfairness'. It is less specific but often more objective.
+Name it! Discrimination has precise names---for instance, *xenophobia*---, which must be used where relevant and necessary. People know the meaning: perpetrators are likely know it, and so will the authorities or mediators who are in charge of resolving the case. Whether these people like the word to be used or not is their own problem, not yours. Nonetheless, more general, and often objective, *hypernyms* are also available, such as 'discrimination' and 'unfairness'.
 
-As an example, this year I was bullied by some of my flatmates. This bullying was finally underscored when they submitted false accusations about me to the Graduate College Accommodation Office at Lancaster University. The latter office initially embraced and acted upon these accusations. The College would not initially allow me to receive the information in writing and respond likewise. On the contrary, they required a live meeting. As I repeatedly countered, I thought that a written procedure would cause less stress, yield less bias, and allow a more accurate registration of every input for future reference. Finally, it required a 36-page response from me and a one-hour disciplinary hearing to allow me to motivate the way in which some of my flatmates had bullied me throughout the year, presumably due to legitimate differences in the way we were each concerned about the Covid-19 pandemic, along with differences in academic stage, age, nationality and physical appearance. I was acquitted on all accusations.
+#### Case study
 
-It is important to express one's feeling of unfairness when it exists. I did so in an email to the College after the resolution (private information replaced with asterisks).
+This year, I was bullied by some of my flatmates. This bullying was finally underscored when they submitted false accusations about me to the Graduate College Accommodation Office at Lancaster University. The latter office initially embraced and acted upon these accusations. The College would not initially allow me to receive the information in writing and respond likewise. On the contrary, they required a live meeting. As I repeatedly countered, I thought that a written procedure would cause less stress, yield less bias, and allow a more accurate registration of every input for future reference. Finally, it required a 36-page response from me and a one-hour disciplinary hearing to allow me to motivate the way in which some of my flatmates had bullied me throughout the year, and finally through false accusations. I think this bullying was motivated by legitimate differences in the way we were each concerned about the Covid-19 pandemic, along with differences in academic stage, age, nationality and physical appearance. As a general rule, people tend to have difficulties to respect and tolerate other people who are different. In the present instance, this difficulty drove my flatmates to submit false accusations about me while forgetting crucial information about their own behaviour. The time-consuming, 36-page response that I composed helped clarify the state of affairs. Upon a formal review, I was acquitted on all accusations.
+
+It is important to express one's feeling of unfairness. I did so, following the resolution, through the below email below, which I sent to the College (private information replaced with asterisks).
 
 <blockquote>
 
@@ -75,18 +77,15 @@ The Dean has produced a resolution to the disciplinary hearing that was organise
 
 As part of a fair procedure, I received documents that reflected my flatmates' complaints, as well as the treatment of those complaints from the Graduate Accommodation Office. I would be grateful for your consideration of my views on the role of the Graduate Accommodation Office.
 
-
 **Biased treatment of accusations**
 
 I have considered the response from the Graduate Accommodation Office as the complaints were raised, and until I was summoned to a disciplinary hearing. In my view, the Graduate Accommodation Office failed to demonstrate enough impartiality, which resulted in unfairness towards me. The claims made by some of my flatmates via email were acted upon by the Accommodation Office without an important consideration--namely, that the accusations could be deliberately false or inaccurate. Indeed, the accusations happened to be so, as I extensively argued in my response to the summons by providing detailed descriptions of the events and documentary evidence. 
 
 Disappointingly, the embracement of my flatmates' accusations by the Graduate Accommodation Office contrasts with the caution that is rightly applied when one calls the porters. I have sometimes called over the past three years regarding residents smoking indoors. Every time, they made me aware of the need for them to catch any students as they are smoking indoors. In the absence of the witnessing by the porters, the students can only be informed about the complaint made, but no action can be taken against them. This is a correct precaution against any false or misinformed accusations. In contrast, I think that the Graduate Accommodation Office, in some of their emails with some of my flatmates, embraced the accusations on a one-sided manner, and finally passed on these accusations to the Dean without having had any input from me about the veracity thereof.
 
-
 **Biased provision of evidence**
 
 Among the documents included in the disciplinary case, the Graduate Accommodation Office included a complaint that I had raised regarding the persistent failures to prevent a Covid-19 infection by my flatmates and by the housekeeper. My complaint should by no means have been mixed with the complaints against me. Its inclusion is a demonstration of the bias with which I was treated.
-
 
 **Legitimate differences across flatmates contributing to discrimination**
 
@@ -99,7 +98,6 @@ I think that the biased response from the response from the Graduate Accommodati
 - Country of origin: three \*\*\*, one \*\*\*, one \*\*\*, one \*\*\* and one \*\*\* (I am the latter one).
 
 These differences must always be considered, as they can contribute to ingroup-outgroup bias in flats. Some of this bias could stem from xenophobia. Unfortunately, Lancaster University has had infamous cases of xenophobia in the past (https://scan.lancastersu.co.uk/2013/05/27/editorial-anonymous-bullying-on-facebook-groups-is-pure-cowardice/).
-
 
 In conclusion, would you please consider the following remarks:
 
@@ -118,6 +116,11 @@ Pablo
 </blockquote>
 
 
+### A design feature?
+
+Perhaps, societies are discriminatory by design (see, for instance, [John Bercow's comment on the Conservative Party](https://www.theguardian.com/politics/2021/jun/19/john-bercow-defects-to-labour-with-withering-attack-on-johnson)). Perhaps we are not doing enough about this. That might explain, for instance, why the death of an innocent Slovak citizen in police custody at Charleroi Airport (Brussels, Belgium) was barely and poorly covered by European media. In case that you tolerate graphic footage, please consider the informational value of the [unnecessary, illegal treatment given to Jozef Chovanec](https://www.youtube.com/watch?v=EtgAMcMZaq4&ab_channel=OralSk). Chovanec's case is but an example. Evidence-supported cases surely exist in every European country, as do cases without recorded evidence.
+
+
 ### Ceaseless awareness
 
 ~~Lobbying, whether we like it or not,~~ **Activism** is one of the methods needed to confront this plight. So, talk about it. Make sure that other potential targets of it know that it is not fair, that they should not have to put up with it, and that they might be able to confront it in one way or another. A ceaseless awareness, fostered by a relentless activism, will also help those who exert discrimination themselves, as arguably, they are often unaware of their own act.
@@ -127,16 +130,18 @@ Pablo
 The creation of awareness does not have to fully depend on close relationships. Email and social media allow safe activity where anonymity is necessary.
 
 
-## Take-home message
+## Conclusion
 
-If you have suffered discrimination, or you are a potential target for it, please ensure that you are aware of this plague. Regardless of the rank that a given type of discrimination occupies in the social agenda (be that fair or wise, or very much otherwise), discrimination should not be tolerated by the people who suffer or witness it. In addition to being unethical, discrimination breaches human and fundamental rights, national laws and institutional rules.
+The university and the academia are formed of members of society. Logically, therefore, care must taken to ward off discriminatory tendencies that exist in society.
 
-If you are not a target but you think it is humane to act as an ally against discrimination, please try to confront it if you witness it, and to contribute to a widespread awareness.
+If you have suffered discrimination, or you are a potential target for it, please ensure that you are aware of this plague. Regardless of the rank that a given type of discrimination occupies in the social agenda, no discrimination should be tolerated. In addition to being unethical, discrimination breaches human and fundamental rights, national laws and institutional rules.
+
+If you are not a target but an ally against discrimination, please continue to confront it where you witness it, and to facilitate a widespread awareness.
 
 
 ## References
 
-<div style = "text-indent:-2em; margin-left:2em;">
+<div style = 'text-indent:-2em; margin-left:2em;'>
 
 Abbink, K., & Harris, D. (2019). In-group favouritism and out-group discrimination in naturally occurring groups. *PloS ONE, 14*(9), e0221616. https://doi.org/10.1371/journal.pone.0221616
 
@@ -150,8 +155,9 @@ Mendes, W. B., & Koslov, K. (2013). Brittle smiles: Positive biases toward stigm
 
 <br>
 
-<div style = "position: relative; margin-top: 30px; padding-top: 56.25%; margin-bottom: 10%;">
-<iframe src="https://www.youtube-nocookie.com/embed/XaI5IRuS2aE" frameborder="0" allowfullscreen
-style = "position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+
+<div style = 'position: relative; margin-top: 30px; padding-top: 56.25%; margin-bottom: 10%;'>
+<iframe src = 'https://www.youtube-nocookie.com/embed/XaI5IRuS2aE' frameborder = '0' allowfullscreen
+style = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%;'></iframe>
 </div>
 
