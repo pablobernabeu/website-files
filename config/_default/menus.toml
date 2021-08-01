@@ -14,14 +14,9 @@
   weight = 60
   
 [[main]]
-  name = 'Workshops'
+  name = 'Workshops & presentations'
   url = '#workshops'
   weight = 70
-
-[[main]]
-  name = 'Presentations'
-  url = '#presentations'
-  weight = 80
 
 [[main]]
   name = '<span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Education &nbsp;|&nbsp; Teaching &nbsp;|&nbsp; Skills &nbsp;|&nbsp; Other funding &nbsp;|&nbsp; Other work &nbsp;|&nbsp; Videos &nbsp; "><i class="fas fa-plus fa-sm" style="color:#A6C2AE;"></i> Experience & CV </span>'
