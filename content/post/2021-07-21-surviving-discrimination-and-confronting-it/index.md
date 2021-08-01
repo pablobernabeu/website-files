@@ -18,13 +18,11 @@ projects: []
 
 
 <div class = 'alert alert-secondary' role = 'alert' style = 'margin-top: 40px; margin-bottom: 40px; padding-bottom: 15px;'>
-This blog post does not provide a complete overview of the atmosphere at university or in academia, where I think that fairness is far more common than discrimination. Let's keep up the good work, and be mindful of the rest.
+This blog post does not provide a complete overview of the atmosphere at university or in academia, where I think that fairness is far more common than discrimination. Let's keep up the good work and be mindful of the rest.
 </div>
 
 
-There is discrimination at European universities and in the corresponding academia. Minorities are too often oppressed and abused through the use of casual remarks, concerted attacks, unequal respect towards different groups, unfair hiring decisions, and other negligent behaviours. Professional and personal negligence is the reason why this discrimination is tolerated and condoned by staff of higher authority. Cases of discrimination are not normally shared by the universities, but they are sometimes registered on the websites of student unions, other student forums, or in the press.
-
-Discrimination cases would be unsurprising in some big-money industries. At university, on the contrary, they are striking---first, because there are mechanisms to tackle and resolve them (however rigged they will be sometimes); second, because the other conditions of the job---notably, the salary---do not compensate for the negligence in the social sphere (even if there are many applicants for a single post in academia).
+There is discrimination at European universities and in the corresponding academia. Minorities are too often oppressed and abused through the use of casual remarks, concerted attacks, unequal respect towards different groups, unfair hiring decisions and other negligent behaviours. Professional and personal negligence is the reason why this discrimination is tolerated and condoned by staff of higher authority. Cases of discrimination are not normally shared by the universities, but they are sometimes registered on the websites of student unions, other student forums, or in the press.
 
 
 ## *Homo homini lupus*
@@ -34,16 +32,16 @@ Xenophobia is one of the types of discrimination that sometimes crop up in halls
 
 ### Hierarchies among nationalities
 
-In society at large, the locals tend to be first. Through many everyday tricks, the locals often ensure that immigrants remain second to them. We must all remember that more people should not mean more rights. Each person is a person.
+In society at large, the locals tend to be first. Some locals sometimes utilise official devices and everyday tricks to ensure that immigrants are second to them. We must all remember that more people should not mean more rights. Each person is a person.
 
 The first rank of immigrants is formed of one or two nationalities, smiled at by the fortune of historical or cultural ties. The second rank of immigrants is that of merely-tolerated nationalities. The third rank is formed of immigrants who are despised due to historical, political, cultural factors.
 
-Sadly and dangerously enough, in competitive or onerous circumstances (*when is that not the case, though!*), *homo homini lupus est* (people are wolves unto others). Discrimination breaks loose (Abbink, & Harris, 2019; Meiring et al., 2014; Mendes & Koslov, 2013). Ominous, historical references are unnecessary. A hundred, or few hundred, years is very little time: it's *yesterday*.
+Sadly and dangerously enough, in competitive or onerous circumstances (*when is that not the case, though!*), *homo homini lupus est* (people are wolves unto people). Then, discrimination breaks loose (Abbink, & Harris, 2019; Meiring et al., 2014; Mendes & Koslov, 2013).
 
 
 ## Policies
 
-Policy statements are increasingly popular, and they give reasons for hope. For instance, the employment webpage of Duke University reads (on 21st July 2021; https://hr.duke.edu/policies/diversity/eeo):
+Policy statements are increasingly popular and they give reasons for hope. For instance, the employment webpage of Duke University reads (on 21st July 2021; https://hr.duke.edu/policies/diversity/eeo):
 
 > Duke University prohibits discrimination and harassment, and provides equal employment opportunity without regard to an individual's age, color, disability, gender, gender expression, gender identity, genetic information, national origin, race, religion, sex, sexual orientation, or veteran status.
 
@@ -52,22 +50,39 @@ Such statements, if indeed observed by the employees, constitute historical---wh
 
 ## Dealing with discrimination
 
-Discrimination takes many forms. Accordingly, surviving and confronting it requires various approaches. Stoicism, bravery, protection and ingenuity are all valuable against the xenophobia that lurks, and occasionally bites, in halls of residence, informal meetings, committees, offices, and decisions at universities across Europe. Inspiration for such approaches can be found in many places---even in popular literature. For instance, Harper Lee's *To Kill a Mockingbird* contains a passage in which a lawyer is mobbed by nostalgic townspeople who do not want a Black citizen to be treated as a human. The strategies for the defence from the lynch mob span from the lawyer's stoicism to his son's adolescent bravery, and from the invisible protection by an ally to the disarming ingenuity of the lawyer's eight-year-old daughter, who finds one of her neighbours in the mob.
+Discrimination takes many forms. Accordingly, surviving and confronting it requires various approaches. Stoicism, bravery, protection and ingenuity are all valuable against the xenophobia that lurks, and occasionally bites, in halls of residence, informal meetings, committees, offices, and other settings at universities across Europe. Inspiration for such approaches can be found in many places---even in popular literature. For instance, Harper Lee's *To Kill a Mockingbird* contains a passage in which a lawyer is mobbed by nostalgic townspeople who do not want a Black citizen to be treated as a human. The strategies for the defence from the lynch mob span from the lawyer's stoicism to his son's adolescent bravery, and from the invisible protection offered by a witness to the disarming ingenuity of the lawyer's eight-year-old daughter, who spots one of her neighbours in the mob.
 
 
 ### Collection and presentation of evidence
 
-Ironically, complaint cases are sometimes initiated by those who have exerted discrimination. If you receive a complaint and you feel you have been discriminated against before or through the complaint, it is important to note this in your response. 
+Ironically, complaint cases are sometimes initiated by those who have exerted discrimination. If you receive a complaint and you feel you have been discriminated against, whether before or through the said complaint, it is important to note this in your response. 
 
-The discrimination can be well described by means of an extensive document that recounts every relevant episode, with the applicable evidence being attached. Don't fret about *reading time*: the larger the document, the better.
+The discrimination can be well described by producing an extensive document that recounts every relevant episode, with the applicable evidence being attached. Don't fret about *reading time*: the larger the document, the better.
 
-Name it! Discrimination has precise names---for instance, *xenophobia*---, which must be used where relevant and necessary. People know the meaning: perpetrators are likely know it, and so will the authorities or mediators who are in charge of resolving the case. Whether these people like the word to be used or not is their own problem, not yours. Nonetheless, more general, and often objective, *hypernyms* are also available, such as 'discrimination' and 'unfairness'.
+Name it. Discrimination has precise names---for instance, *xenophobia*---, which must be used where relevant and necessary. People know the meaning: perpetrators are likely know it and so will the authorities or mediators who are in charge of resolving the case. Whether these people like the word to be used or not is their own problem, not yours. Nonetheless, more general, and often more objective, *hypernyms* are also available, such as 'discrimination' and 'unfairness'.
+
 
 #### Case study
 
-This year, I was bullied by some of my flatmates. This bullying was finally underscored when they submitted false accusations about me to the Graduate College Accommodation Office at Lancaster University. The latter office initially embraced and acted upon these accusations. The College would not initially allow me to receive the information in writing and respond likewise. On the contrary, they required a live meeting. As I repeatedly countered, I thought that a written procedure would cause less stress, yield less bias, and allow a more accurate registration of every input for future reference. Finally, it required a 36-page response from me and a one-hour disciplinary hearing to allow me to motivate the way in which some of my flatmates had bullied me throughout the year, and finally through false accusations. I think this bullying was motivated by legitimate differences in the way we were each concerned about the Covid-19 pandemic, along with differences in academic stage, age, nationality and physical appearance. As a general rule, people tend to have difficulties to respect and tolerate other people who are different. In the present instance, this difficulty drove my flatmates to submit false accusations about me while forgetting crucial information about their own behaviour. The time-consuming, 36-page response that I composed helped clarify the state of affairs. Upon a formal review, I was acquitted on all accusations.
+This year, I was bullied by some of my flatmates. This bullying was finally underscored when they submitted false accusations about me to the Graduate College Accommodation Office at Lancaster University. The latter office embraced and acted upon these accusations. As a result, a flat meeting was suggested by the Deanery. The Deanery would not initially allow me to receive information in writing and to respond likewise. On the contrary, they required a live meeting. As I repeatedly countered, I thought that a written procedure would cause less stress, yield less bias, and allow a more accurate registration of every input for future reference. 
 
-It is important to express one's feeling of unfairness. I did so, following the resolution, through the below email below, which I sent to the College (private information replaced with asterisks).
+> It is due to three reasons that I would prefer working on the basis of a brief written report, to which I could also respond in writing. These reasons are:
+>
+> - I think that the written mode helps remain more impartial than the oral mode.
+> - I think a written discussion would help in keeping a clear, written record of every part of the report.
+> - I think a written discussion causes less stress than an oral one.
+>
+> I am hopeful that, having presented my preference for responding in writing to a written report, you may acknowledge my personal preference, and perhaps allow me to proceed in that way.
+
+<br>
+
+A written discussion---e.g., via email--- is a valuable option in situations that could be unfair or abusive. 
+
+Finally, when I was presented with the necessary written information, I replied with a 36-page document, and participated in a one-hour disciplinary hearing. By those means, I described the way in which some of my flatmates had bullied me throughout the year, finally reinforced through the false accusations they had made. They had lied about their own behaviour, too, while they were at it.
+
+I think this bullying was motivated by the legitimate differences in the way we were each concerned about the Covid-19 pandemic, along with differences in academic stage, age, nationality and physical appearance. As a general rule, people tend to have difficulties to respect or tolerate others who are different from them. In the present instance, this difficulty drove my flatmates to submit false accusations about me while forgetting crucial information about their own behaviour. The time-consuming, 36-page response that I composed helped clarify the state of affairs. Upon a formal review, I was acquitted on all accusations.
+
+It is important to express one's feeling of unfairness where it exists. I did so, following the Dean's resolution, through the email below, which I sent to the College (private information replaced with asterisks).
 
 <blockquote>
 
@@ -118,12 +133,12 @@ Pablo
 
 ### A design feature?
 
-Perhaps, societies are discriminatory by design (see, for instance, [John Bercow's comment on the Conservative Party](https://www.theguardian.com/politics/2021/jun/19/john-bercow-defects-to-labour-with-withering-attack-on-johnson)). Perhaps we are not doing enough about this. That might explain, for instance, why the death of an innocent Slovak citizen in police custody at Charleroi Airport (Brussels, Belgium) was barely and poorly covered by European media. In case that you tolerate graphic footage, please consider the informational value of the [unnecessary, illegal treatment given to Jozef Chovanec](https://www.youtube.com/watch?v=EtgAMcMZaq4&ab_channel=OralSk). Chovanec's case is but an example. Evidence-supported cases surely exist in every European country, as do cases without recorded evidence.
+Perhaps societies are discriminatory by design (see, for instance, [John Bercow's comment on the Conservative Party](https://www.theguardian.com/politics/2021/jun/19/john-bercow-defects-to-labour-with-withering-attack-on-johnson)). Perhaps we are not doing enough about this. That might explain, for instance, why the death of an innocent Slovak citizen in police custody at Charleroi Airport (Brussels, Belgium) was barely and poorly covered by European media. In case that you tolerate graphic footage, please consider the informational value of the [unnecessary, illegal treatment given to Jozef Chovanec](https://www.youtube.com/watch?v=EtgAMcMZaq4&ab_channel=OralSk). Chovanec's case is but an example. Evidence-supported cases surely exist in every European country, as do cases without recorded evidence.
 
 
 ### Ceaseless awareness
 
-~~Lobbying, whether we like it or not,~~ **Activism** is one of the methods needed to confront this plight. So, talk about it. Make sure that other potential targets of it know that it is not fair, that they should not have to put up with it, and that they might be able to confront it in one way or another. A ceaseless awareness, fostered by a relentless activism, will also help those who exert discrimination themselves, as arguably, they are often unaware of their own act.
+~~Lobbying, whether we like it or not,~~ *Activism* is one of the methods needed to confront this plight. So, talk about it. Make sure that other potential targets of it know that it is not fair, that they should not have to put up with it, and that they might be able to confront it in one way or another. A ceaseless awareness, fostered by a relentless activism, will also help those who exert discrimination themselves, as arguably, they are often unaware of their own act.
 
 #### The internet 
 
@@ -132,7 +147,7 @@ The creation of awareness does not have to fully depend on close relationships. 
 
 ## Conclusion
 
-The university and the academia are formed of members of society. Logically, therefore, care must taken to ward off discriminatory tendencies that exist in society.
+The university and the academia are formed by members of society. Logically, therefore, care must taken to ward off discriminatory tendencies that exist in society.
 
 If you have suffered discrimination, or you are a potential target for it, please ensure that you are aware of this plague. Regardless of the rank that a given type of discrimination occupies in the social agenda, no discrimination should be tolerated. In addition to being unethical, discrimination breaches human and fundamental rights, national laws and institutional rules.
 
