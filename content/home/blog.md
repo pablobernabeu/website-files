@@ -8,7 +8,7 @@ active = true  # Activate this widget? true/false
 weight = 160  # Order that this section will appear.
 
 title = "Blog"
-subtitle = ""
+subtitle = "I also share the [posts dealing with R code](/categories/r/) at https://www.r-bloggers.com and some other sites."
 
 [content]
   # Page type to display. E.g. post, talk, or publication.
