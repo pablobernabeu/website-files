@@ -25,6 +25,7 @@ publication_types:
 summary: ''
 categories:
 - research and teaching applications
+- R
 tags:
 - web application
 - data simulation

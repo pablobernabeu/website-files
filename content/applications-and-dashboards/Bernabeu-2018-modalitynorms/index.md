@@ -30,6 +30,7 @@ summary: 'This app presents linguistic data over several tabs. The code combines
 categories:
   - linguistic materials
   - research methods
+  - R
 tags:
 - data dashboard
 - Flexdashboard
@@ -73,7 +74,7 @@ url_dataset: 'https://github.com/pablobernabeu/Modality-exclusivity-norms-Bernab
 
 This web application presents linguistic data over several tabs. The code combines the great front-end of Flexdashboard—based on R Markdown and yielding an unmatched user interface—, with the great back-end of Shiny—allowing users to download sections of data they select, in various formats.
 
-- A cool, recent finding was the reactable package, which puts Javascript into the cells, allowing coloured bars, etc.
+- A nice find was the 'reactable' package, which implements Javascript under the hood to allow the use of colours, bar charts, etc.
 
    ```
    

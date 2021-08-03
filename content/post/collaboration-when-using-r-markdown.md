@@ -5,6 +5,7 @@ date: '2020-10-03'
 slug: collaboration-while-using-R-markdown
 categories:
   - research methods
+  - R
 tags:
   - R
   - R Markdown

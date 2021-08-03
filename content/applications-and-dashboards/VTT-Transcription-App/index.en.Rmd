@@ -24,6 +24,7 @@ publication_types:
 summary: ''
 categories:
 - research and teaching applications
+- R
 tags:
 - subtitles
 - accessibility

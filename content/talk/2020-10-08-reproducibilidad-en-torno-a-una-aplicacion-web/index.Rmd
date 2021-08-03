@@ -6,6 +6,7 @@ event: Reprohack en español, LatinR Conference 2020
 slug: 2020-10-08-reproducibilidad-en-torno-a-una-aplicacion-web
 categories: 
   - research and teaching applications
+  - R
 tags:
   - programming
   - programación

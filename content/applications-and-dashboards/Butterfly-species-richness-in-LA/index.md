@@ -22,6 +22,7 @@ publication_types:
 summary: 
 categories:
 - data visualisation
+- R
 tags:
 - data dashboard
 - R
