@@ -6,7 +6,7 @@ subtitle: ""
 summary: "Racism has long been ingrained in human societies. Ancient Greek Aristotle already claimed that non-Greeks were slaves by nature, as they easily submitted to despotic government (Reilly, Kaufman, & Bodino, 2002). This study focuses on racism in the United States, which extends from the foundation of the country, when black people were generally born into slavery, and were at any rate regarded as an inferior people. US racism stands out globally for two reasons. First, the country has played a hegemonic part in the World since soon after its foundation. Second, the US is regarded as the most advanced society technology-wise, as it sets the minutes for the technology sector worldwide. In spite of these advantages, the country has long suffered the plague of widespread racism. Indeed, the abolition of slavery in the mid-nineteenth century did not grant equal citizen rights to the black population. Over time, the black population started to confront this situation. Especially the mid-nineteenth century saw large uprisings and a patent division of different societal sectors, as reflected in literary works such as Ellison’s 'Invisible Man' (1952). Inequality and confrontation about racism has extended to date, and the costs thereof have been large in terms of lives and otherwise (Feagin, 2004)."
 authors: [<span data-toggle="tooltip1" data-placement="bottom" title="Risto's Github page" style="border-bottom:2.9px dotted; color:#CAD2DE;"><a href='https://github.com/RRisto'>Risto Hinno</a></span> and Pablo Bernabeu]
 tags: [big data, data mining, racism, web scraping, R, API, social media, news media]
-categories: [data mining, R, big data]
+categories: [data mining, big data, R]
 date: '2016-01-01'
 featured: true
 draft: false
@@ -29,7 +29,7 @@ projects: []
 
 
 <div class="alert alert-success" role="alert" style='padding-bottom:0px; margin-bottom:30px;'>
-This is a slightly revised version of <a href="https://github.com/RRisto/Summer-school-course-project/blob/master/BLM/The%20Louisiana-Minnesota-Dallas%20crisis%20across%20media%20and%20time_%20a%20big%20data%20exercise.pdf" class="alert-link">a course project</a> done with <a href='https://github.com/RRisto' class='alert-link'>Risto Hinno</a>.
+This is a slightly revised version of <a href="https://github.com/RRisto/Summer-school-course-project/blob/master/BLM/The%20Louisiana-Minnesota-Dallas%20crisis%20across%20media%20and%20time_%20a%20big%20data%20exercise.pdf" class="alert-link">a course project</a> I shared with <a href='https://github.com/RRisto' class='alert-link'>Risto Hinno</a>.
 </div>
 
 ## 1.  Introduction
@@ -173,17 +173,17 @@ All materials are made public on the [RRisto GitHub page](https://github.com/RRi
 
 Ellison, R. (1952). _Invisible Man_. New York: Random House.
 
-Feagin, J. R. (2004). Documenting the Costs of Slavery, Segregation, and Contemporary Racism: Why Reparations Are in Order for African _Americans Harvard BlackLetter Law Journal, 20_, 49-81. 
+Feagin, J. R. (2004). Documenting the costs of slavery, segregation, and contemporary racism: Why reparations are in order for African Americans. _Harvard BlackLetter Law Journal, 20_, 49-81. 
 
-Josephson, S., & Miller, J. S. (2015). Just State the Facts on Twitter: Eye Tracking Shows That Readers May Ignore Questions Posted by News Organizations On Twitter But Not on Facebook. _Visual Communication Quarterly, 22_(2), 94-105. 
+Josephson, S., & Miller, J. S. (2015). Just state the facts on Twitter: Eye tracking shows that readers may ignore questions posted by news organizations on Twitter but not on Facebook. _Visual Communication Quarterly, 22_(2), 94-105. 
 
 Oh, S., & Syn, S. Y. (2015). Motivations for sharing information and social support in social media: A comparative analysis of Facebook, Twitter, Delicious, YouTube, and Flickr. _Journal Of The Association For Information Science And Technology, 66_(10), 2045-2060.
 
-Reilly, K., Kaufman, S., & Bodino, A. (2003). _Racism: A Global Reader_. London: M. E. Sharpe
+Reilly, K., Kaufman, S., & Bodino, A. (2003). _Racism: A global reader_. London: M. E. Sharpe
 
 Saif, H., He, Y., Fernandez, M., & Alani, H. (2016). Contextual semantics for sentiment analysis of Twitter. _Information Processing And Management, 52_(1), 5-19.
 
-Thelwall, M., Buckley, K., & Paltoglou, G. (2011). Sentiment in Twitter events. _Journal Of The American Society For Information Science And Technology, 62_(2), 406-418.
+Thelwall, M., Buckley, K., & Paltoglou, G. (2011). Sentiment in Twitter events. _Journal of the American Society for Information Science and Technology, 62_(2), 406-418.
 
 Wang, P., He, W., & Zhao, J. (2014). A Tale of Three Social Networks: User Activity Comparisons across Facebook, Twitter, and Foursquare. _IEEE Internet Computing, 18_(2), 10-15.
 
