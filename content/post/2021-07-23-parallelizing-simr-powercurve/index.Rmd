@@ -27,38 +27,45 @@ The `powercurve` function from the [simr package in R](https://cran.r-project.or
 
 2. In case you're using the `fixed()` parameter of the `powercurve` function, and calculating the power for different effects, run these at the same time ('in parallel') on different machines, rather than one after another. 
 
-3. *Parallelize* the `breaks` argument. The `breaks` argument of the `powercurve` function allows the calculation of power for different levels of the factor passed to `along`. Some typical factors for `along` include *participant* (or *subject*), *trial* or *item*. The `breaks` argument sets the different numbers of participants, for instance, for which we want to calculate the power. Parallelizing `breaks` is done by running each number of levels in a separate function. When each has been run and saved, they are `c`ombined to allow the plotting. This procedure is  demonstrated below.
+3. *Parallelize* the `breaks` argument. The `breaks` argument of the `powercurve` function allows the calculation of power for different levels of the grouping factor passed to `along`. Some grouping factors are *participant*, *trial* and *item*. The `breaks` argument sets the different sample sizes for which power will be calculated. Parallelizing `breaks` is done by running each number of levels in a separate function. When each has been run and saved, they are `c`ombined to allow the plotting. This procedure is  demonstrated below.
 
 
 ## Parallelizing `breaks`
 
-Let's do a minimal example using a handy, tiny model---it only serves to demonstrate the method. Whereas the power curves below run in a few minutes, the settings that are often used (e.g., a larger model; `fixed('x', 'sa')` instead of `fixed('x')`; `nsim = 500` instead of `nsim = 50`) require a much longer running time.^[The number of iterations set by `nsim` should be around 200 as a minimum (e.g., Brysbaert & Stevens, 2018) and preferably more than that (Green & MacLeod, 2016). In addition, the effect size for `x` should be adjusted to the value that best fits with the planned study (Kumle et al., 2021).] That is where parallel processing becomes useful; it can turn three months' running time into *just* a couple of weeks.
+Let's do a minimal example using a toy `lmer` model. A power curve will be craeted for the fixed effect of `x` along different sample sizes of the grouping factor `g`.
 
 Notice that the six sections of the power curve below are serially arranged, one after another. In contrast, to enable parallel processing, each power curve would be placed in a single script, and they would all be run at the same time.
+
+Although the power curves below run in a few minutes, the settings that are often used (e.g., a larger model; `fixed('x', 'sa')` instead of `fixed('x')`; `nsim = 500` instead of `nsim = 50`) take far longer. That is where parallel processing becomes useful.^[The number of simulations set by `nsim` should be larger (Brysbaert & Stevens, 2018; Green & MacLeod, 2016). In addition, the effect size for `x` should be adjusted to the value that best fits with the planned study (Kumle et al., 2021).]
 
 ```{r message = FALSE, warning = FALSE}
 
 library(lme4)
 library(simr)
 
-fm = lmer(y ~ x + (1 | g), data = simdata)
 
-# Parallelizing `breaks` by running each number of levels in a separate function.
+# Toy model
+fm = lmer(y ~ x + (x | g), data = simdata)
+
+# Extend sample size of `g`
+fm_extended_g = extend(fm, along = 'g', n = 12)
+
+# Parallelize `breaks` by running each number of levels in a separate function.
 
 # 4 levels of g
-pwcurve_4g = powerCurve(fm, fixed('x'), breaks = 4, nsim = 50, seed = 123)
+pwcurve_4g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 4, nsim = 50, seed = 123)
 
 # 6 levels of g
-pwcurve_6g = powerCurve(fm, fixed('x'), breaks = 6, nsim = 50, seed = 123)
+pwcurve_6g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 6, nsim = 50, seed = 123)
 
 # 8 levels of g
-pwcurve_8g = powerCurve(fm, fixed('x'), breaks = 8, nsim = 50, seed = 123)
+pwcurve_8g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 8, nsim = 50, seed = 123)
 
 # 10 levels of g
-pwcurve_10g = powerCurve(fm, fixed('x'), breaks = 10, nsim = 50, seed = 123)
+pwcurve_10g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 10, nsim = 50, seed = 123)
 
 # 12 levels of g
-pwcurve_12g = powerCurve(fm, fixed('x'), breaks = 12, nsim = 50, seed = 123)
+pwcurve_12g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 12, nsim = 50, seed = 123)
 
 ```
 
@@ -79,7 +86,7 @@ all_pwcurve$xval = c(pwcurve_4g$nlevels, pwcurve_6g$nlevels, pwcurve_8g$nlevels,
 
 print(all_pwcurve)
 
-plot(all_pwcurve, xlab = 'Levels of g')
+plot(all_pwcurve, xlab = 'g sample size')
 
 
 # For reproducibility purposes
@@ -89,6 +96,7 @@ sessionInfo()
 
 <br>
 
+
 ### Just the code
 
 ```
@@ -96,27 +104,28 @@ sessionInfo()
 library(lme4)
 library(simr)
 
+# Toy model
+fm = lmer(y ~ x + (x | g), data = simdata)
 
-# Minimal mixed-effects model from https://cran.r-project.org/web/packages/simr/simr.pdf
-fm = lmer(y ~ x + (1 | g), data = simdata)
+# Extend sample size of `g`
+fm_extended_g = extend(fm, along = 'g', n = 12)
 
-
-# Parallelizing `breaks` by running each number of levels in a separate function.
+# Parallelize `breaks` by running each number of levels in a separate function.
 
 # 4 levels of g
-pwcurve_4g = powerCurve(fm, fixed('x'), breaks = 4, nsim = 50, seed = 123)
+pwcurve_4g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 4, nsim = 50, seed = 123)
 
 # 6 levels of g
-pwcurve_6g = powerCurve(fm, fixed('x'), breaks = 6, nsim = 50, seed = 123)
+pwcurve_6g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 6, nsim = 50, seed = 123)
 
 # 8 levels of g
-pwcurve_8g = powerCurve(fm, fixed('x'), breaks = 8, nsim = 50, seed = 123)
+pwcurve_8g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 8, nsim = 50, seed = 123)
 
 # 10 levels of g
-pwcurve_10g = powerCurve(fm, fixed('x'), breaks = 10, nsim = 50, seed = 123)
+pwcurve_10g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 10, nsim = 50, seed = 123)
 
 # 12 levels of g
-pwcurve_12g = powerCurve(fm, fixed('x'), breaks = 12, nsim = 50, seed = 123)
+pwcurve_12g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 12, nsim = 50, seed = 123)
 
 
 # Create a destination object using any of the power curves above.
