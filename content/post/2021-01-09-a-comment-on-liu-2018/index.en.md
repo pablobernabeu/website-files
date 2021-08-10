@@ -117,6 +117,8 @@ Albers, C., & Lakens, D. (2018). When power analyses based on pilot data are bia
 
 Amsel, B. D., Urbach, T. P., & Kutas, M. (2014). Empirically grounding grounded cognition: the case of color. *Neuroimage, 99*, 149-157. https://doi.org/10.1016/j.neuroimage.2014.05.025
 
+Armstrong, R. A. (2014). When to use the Bonferroni correction. *Ophthalmic and Physiological Optics, 34*(5), 502-508. https://doi.org/10.1111/opo.12131
+
 Barr, D. J., Levy, R., Scheepers, C., & Tily, H. J. (2013). Random effects structure for confirmatory hypothesis testing: Keep it maximal. *Journal of Memory and Language, 68*, 255–278. http://dx.doi.org/10.1016/j.jml.2012.11.001
 
 Barsalou, L. W. (2019). Establishing Generalizable Mechanisms. *Psychological Inquiry, 30*(4), 220-230. https://doi.org/10.1080/1047840X.2019.1693857
