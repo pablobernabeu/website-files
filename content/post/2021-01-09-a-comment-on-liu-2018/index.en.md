@@ -121,7 +121,7 @@ Armstrong, R. A. (2014). When to use the Bonferroni correction. *Ophthalmic and 
 
 Barr, D. J., Levy, R., Scheepers, C., & Tily, H. J. (2013). Random effects structure for confirmatory hypothesis testing: Keep it maximal. *Journal of Memory and Language, 68*, 255–278. http://dx.doi.org/10.1016/j.jml.2012.11.001
 
-Barsalou, L. W. (2019). Establishing Generalizable Mechanisms. *Psychological Inquiry, 30*(4), 220-230. https://doi.org/10.1080/1047840X.2019.1693857
+Barsalou, L. W. (2019). Establishing generalizable mechanisms. *Psychological Inquiry, 30*(4), 220-230. https://doi.org/10.1080/1047840X.2019.1693857
 
 Bernabeu, P. (2017). *Modality switches occur early and extend late in conceptual processing: evidence from ERPs* [Master's thesis]. School of Humanities, Tilburg University. https://psyarxiv.com/5gjvk
 
