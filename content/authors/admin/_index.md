@@ -2,7 +2,7 @@
 authors:
 - admin
 name: Pablo Bernabeu
-email: 'p.bernabeu@lancaster.ac.uk'
+email: 'p.bernabeu@lancaster.ac.uk<br>pcbernabeu@gmail.com'
 role: Psychology PhD student and teaching assistant at Lancaster University
 profileicons:
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" University page "><a href="https://osf.io/84ktq"><a href="https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109).html"><i style="color:#8AA3CD;" class="fas fa-university fa-2x"></i></a></span>'
