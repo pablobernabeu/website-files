@@ -86,7 +86,7 @@ all_pwcurve$xval = c(pwcurve_4g$nlevels, pwcurve_6g$nlevels, pwcurve_8g$nlevels,
 
 print(all_pwcurve)
 
-plot(all_pwcurve, xlab = 'g sample size')
+plot(all_pwcurve, xlab = 'Levels of g')
 
 
 # For reproducibility purposes
