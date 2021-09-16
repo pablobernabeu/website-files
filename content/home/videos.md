@@ -6,7 +6,7 @@
 widget = "blank"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 150  # Order that this section will appear.
+weight = 130  # Order that this section will appear.
 
 title = "Videos"
 subtitle = ""
@@ -51,7 +51,7 @@ css_class = ""
 +++
 
 
-### <span style='color:grey; font-size:70%;'>2021 ·</span>&nbsp; Linguistic and embodied systems in conceptual processing: Variation across individuals and items (<a href='https://www.youtube.com/watch?v=y2bopgYWYvE&ab_channel=LancasterPsychology'>see video</a>)
+### <span style='color:grey; font-size:70%;'>2021 ·</span>&nbsp; Linguistic and embodied systems in conceptual processing: Variation across individuals and items (<a href='https://www.youtube.com/watch?v=y2bopgYWYvE&ab_channel=LancasterPsychology'>watch</a>)
 
 <div style = "margin-top: 20px; margin-left: 20%;">
 <a href = 'https://www.youtube.com/watch?v=y2bopgYWYvE&ab_channel=LancasterPsychology'>
@@ -61,7 +61,7 @@ css_class = ""
 <div style = 'padding-bottom: 7%;'></div>
 
 
-### <span style='color:grey; font-size:70%;'>2021 ·</span>&nbsp; Towards reproducibility and maximally-open data (<a href='/talk/towards-reproducibility-and-maximally-open-data'>see video</a>)
+### <span style='color:grey; font-size:70%;'>2021 ·</span>&nbsp; Towards reproducibility and maximally-open data (<a href='/talk/towards-reproducibility-and-maximally-open-data'>watch</a>)
 
 <div style = "margin-top: 20px; margin-left: 20%;">
 <a href = '/talk/towards-reproducibility-and-maximally-open-data'>
@@ -119,7 +119,7 @@ style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
 </div>
 
 
-### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Demonstration of procedure for [PSA experiments](/publication/chen-etal-inprep/) (<a href='https://osf.io/h36wr/'>see video</a>)
+### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Demonstration of procedure for [PSA experiments](/publication/chen-etal-inprep/) (<a href='https://osf.io/h36wr/'>watch</a>)
 
 <div style = "margin-top: 20px; margin-left: 20%;">
 <a href = 'https://osf.io/h36wr/'>
