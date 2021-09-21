@@ -44,7 +44,7 @@ tags:
 - linguistics
 - HTML
 - CSS
-title: 'Dutch modality exclusivity norms'
+title: 'Web application: Dutch modality exclusivity norms'
 url_code: 'https://github.com/pablobernabeu/Modality-exclusivity-norms-Bernabeu-et-al/blob/master/Shiny-app/Dutch-modality-exclusivity-norms.rmd'
 url_dataset: 'https://github.com/pablobernabeu/Modality-exclusivity-norms-Bernabeu-et-al'
 # url_pdf: ''

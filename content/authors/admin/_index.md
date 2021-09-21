@@ -43,12 +43,12 @@ education:
     extra: '\-&nbsp; Student member, Master’s curriculum and accreditation committee'
     extra2: '\-&nbsp; Tilburg U. Scholarship for Academic Excellence, 2014/2015'
     extra4: '\-&nbsp; Grade: 7.54 out of 10 (Distinction)'
-  - course: '[BA English Philology](http://www.uam.es/ss/Satellite/FilosofiayLetras/es/1242658506907/contenidoFinal/Grado_en_Estudios_Ingleses.htm)'
+  - course: '<a href="http://www.uam.es/ss/Satellite/FilosofiayLetras/es/1242658506907/contenidoFinal/Grado_en_Estudios_Ingleses.htm" id="BA-degree">BA English Philology<a>'
     institution: Autonomous University of Madrid (Spain)
     year: 2013
     extra: '\-&nbsp; One-year Erasmus exchange at University of Jyv&auml;skyl&auml;, Finland'
     extra2: '\-&nbsp; One-year exchange at University of Barcelona, Spain'
-    extra3: '\-&nbsp; Six-month teaching placement in Kaunas, Lithuania'
+    extra3: '\-&nbsp; Six-month Spanish teaching placement in Kaunas, Lithuania'
     extra4: '\-&nbsp; Grade: 7.30 out of 10 (2:1 Hons)'
   furthercourses:
   - course: '[Advanced R programming](https://www.coursera.org/account/accomplishments/verify/FMNADHCTXZEZ)'

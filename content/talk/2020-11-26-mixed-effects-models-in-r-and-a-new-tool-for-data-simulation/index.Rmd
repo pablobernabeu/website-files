@@ -6,7 +6,6 @@ event: New Tricks Seminars, Dept. Psychology, Lancaster University
 slug: 2020-11-26-mixed-effects-models-in-r-and-a-new-tool-for-data-simulation
 categories:
   - statistics
-  - R
 tags:
   - statistics
   - linear-mixed effects models

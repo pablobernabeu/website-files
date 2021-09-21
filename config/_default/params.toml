@@ -22,7 +22,7 @@ font = ''
 
 # Choose a font size.
 # Sizes: XS (extra small), S (small), M (medium), L (large - DEFAULT), XL (extra large)
-font_size = 'M'
+font_size = 'L'
 
 ############################
 ## Basic Info
@@ -44,7 +44,7 @@ local_business_type = ''
 org_name = ''
 
 # Description for social sharing and search engines. If undefined, superuser role is used in place.
-description = 'Pablo Bernabeu is a scientist with experience in cognitive psychology, data analysis, R programming, statistics and teaching.'
+description = 'Pablo Bernabeu is a scientist with experience in cognitive psychology, linguistics, data analysis, statistics, R programming and teaching.'
 
 ############################
 ## Site Features
@@ -117,10 +117,10 @@ appointment_url = ''
 ############################
 
 # Default image for social sharing and search engines. Place image in `static/img/` folder and specify image name here.
-sharing_image = 'pablobernabeu_image_sharing.png'
+sharing_image = 'default_preview_image.jpg'
 
 # Twitter username (without @). Used when a visitor shares your site on Twitter.
-twitter = 'pablobernabeu_'
+twitter = ''
 
 ############################
 ## Regional Settings

@@ -39,7 +39,7 @@ tags:
 - psycholinguistics
 - HTML
 - CSS
-title: 'Modality switch effects emerge early and increase throughout conceptual processing: evidence from ERPs'
+title: 'Web application: Modality switch effects emerge early and increase throughout conceptual processing'
 url_code: 'https://github.com/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing/tree/master/Shiny-app'
 url_dataset: 'https://github.com/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing/tree/master/Shiny-app'
 # url_pdf: 'https://psyarxiv.com/a5pcz/download'
