@@ -53,19 +53,34 @@ fm_extended_g = extend(fm, along = 'g', n = 12)
 # Parallelize `breaks` by running each number of levels in a separate function.
 
 # 4 levels of g
-pwcurve_4g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 4, nsim = 50, seed = 123)
+pwcurve_4g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 4, 
+                        nsim = 50, seed = 123, 
+                        # No progress bar
+                        progress = FALSE)
 
 # 6 levels of g
-pwcurve_6g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 6, nsim = 50, seed = 123)
+pwcurve_6g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 6, 
+                        nsim = 50, seed = 123, 
+                        # No progress bar
+                        progress = FALSE)
 
 # 8 levels of g
-pwcurve_8g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 8, nsim = 50, seed = 123)
+pwcurve_8g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 8, 
+                        nsim = 50, seed = 123, 
+                        # No progress bar
+                        progress = FALSE)
 
 # 10 levels of g
-pwcurve_10g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 10, nsim = 50, seed = 123)
+pwcurve_10g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 10, 
+                        nsim = 50, seed = 123, 
+                        # No progress bar
+                        progress = FALSE)
 
 # 12 levels of g
-pwcurve_12g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 12, nsim = 50, seed = 123)
+pwcurve_12g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 12, 
+                        nsim = 50, seed = 123, 
+                        # No progress bar
+                        progress = FALSE)
 
 ```
 
@@ -79,10 +94,12 @@ Having saved each section of the power curve, we must now combine them to be abl
 all_pwcurve = pwcurve_4g
 
 # Combine results
-all_pwcurve$ps = c(pwcurve_4g$ps[1], pwcurve_6g$ps[1], pwcurve_8g$ps[1], pwcurve_10g$ps[1], pwcurve_12g$ps[1])
+all_pwcurve$ps = c(pwcurve_4g$ps[1], pwcurve_6g$ps[1], pwcurve_8g$ps[1], 
+                   pwcurve_10g$ps[1], pwcurve_12g$ps[1])
 
 # Combine the different numbers of levels.
-all_pwcurve$xval = c(pwcurve_4g$nlevels, pwcurve_6g$nlevels, pwcurve_8g$nlevels, pwcurve_10g$nlevels, pwcurve_12g$nlevels)
+all_pwcurve$xval = c(pwcurve_4g$nlevels, pwcurve_6g$nlevels, pwcurve_8g$nlevels, 
+                     pwcurve_10g$nlevels, pwcurve_12g$nlevels)
 
 print(all_pwcurve)
 
@@ -113,29 +130,46 @@ fm_extended_g = extend(fm, along = 'g', n = 12)
 # Parallelize `breaks` by running each number of levels in a separate function.
 
 # 4 levels of g
-pwcurve_4g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 4, nsim = 50, seed = 123)
+pwcurve_4g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 4, 
+                        nsim = 50, seed = 123, 
+                        # No progress bar
+                        progress = FALSE)
 
 # 6 levels of g
-pwcurve_6g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 6, nsim = 50, seed = 123)
+pwcurve_6g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 6, 
+                        nsim = 50, seed = 123, 
+                        # No progress bar
+                        progress = FALSE)
 
 # 8 levels of g
-pwcurve_8g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 8, nsim = 50, seed = 123)
+pwcurve_8g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 8, 
+                        nsim = 50, seed = 123, 
+                        # No progress bar
+                        progress = FALSE)
 
 # 10 levels of g
-pwcurve_10g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 10, nsim = 50, seed = 123)
+pwcurve_10g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 10, 
+                        nsim = 50, seed = 123, 
+                        # No progress bar
+                        progress = FALSE)
 
 # 12 levels of g
-pwcurve_12g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 12, nsim = 50, seed = 123)
+pwcurve_12g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 12, 
+                        nsim = 50, seed = 123, 
+                        # No progress bar
+                        progress = FALSE)
 
 
 # Create a destination object using any of the power curves above.
 all_pwcurve = pwcurve_4g
 
 # Combine results
-all_pwcurve$ps = c(pwcurve_4g$ps[1], pwcurve_6g$ps[1], pwcurve_8g$ps[1], pwcurve_10g$ps[1], pwcurve_12g$ps[1])
+all_pwcurve$ps = c(pwcurve_4g$ps[1], pwcurve_6g$ps[1], pwcurve_8g$ps[1], 
+                   pwcurve_10g$ps[1], pwcurve_12g$ps[1])
 
 # Combine the different numbers of levels.
-all_pwcurve$xval = c(pwcurve_4g$nlevels, pwcurve_6g$nlevels, pwcurve_8g$nlevels, pwcurve_10g$nlevels, pwcurve_12g$nlevels)
+all_pwcurve$xval = c(pwcurve_4g$nlevels, pwcurve_6g$nlevels, pwcurve_8g$nlevels, 
+                     pwcurve_10g$nlevels, pwcurve_12g$nlevels)
 
 
 print(all_pwcurve)
