@@ -178,13 +178,11 @@ shinyUI(
 
    fluidPage(
 
-    tags$head(includeHTML('google-analytics.html')), 	# Google Analytics tag
     tags$head(tags$link(rel='shortcut icon', href='https://image.ibb.co/fXUwzb/favic.png')),  # web favicon
     tags$meta(charset='UTF-8'),
     tags$meta(name='description', content='This R Shiny visualisation dashboard presents data from a psycholinguistic ERP experiment (Bernabeu et al., 2017).'),
     tags$meta(name='keywords', content='R, Shiny, ggplot2, visualisation, data, psycholinguistics, conceptual processing, modality switch, embodied cognition'),
     tags$meta(name='viewport', content='width=device-width, initial-scale=1.0'),
-    tags$meta(name='google-site-verification', content='HgyhSO1YSk59r3mwlZU9XmouP5oSXmoICeRfH6ytF1k'),	# Google Search Console tag
 
     titlePanel(h3(strong('Waveforms in detail from an ERP experiment on the Conceptual Modality Switch'), a('(Bernabeu et al., 2017)',
     href='https://figshare.com/articles/EEG_study_on_conceptual_modality-switching_Bernabeu_et_al_in_prep_/4210863', target='_blank',
@@ -289,11 +287,7 @@ Managing to run the app locally is a great first step before launching online (w
 
 **3. Go for it.** After locally testing and saving the two main scripts (`ui.R` and `server.R`), run `deployApp()` to launch the app online.
 
-**4. Bugs and session logs.** Most often they won't be bugs actually, but fancies, as it were. For instance, some special characters have to get even more special (technically, UTF-8 encoding). For a character such as 'μ', Shiny prefers 'Âμ', or better, the Javascript code:
-
-```
-expression("\u03bc")
-```
+**4. Bugs and session logs.** Most often they won't be bugs actually, but fancies, as it were. For instance, some special characters have to get even more special (technically, UTF-8 encoding). For a character such as 'μ', Shiny prefers 'Âμ', or better, the Unicode `expression("\u03bc")`.
 
 Cling to your logs by calling the line below, which you may keep at hand in your 'Shiny deployer.R' script.
 
