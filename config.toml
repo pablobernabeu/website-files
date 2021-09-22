@@ -7,9 +7,6 @@
 # Site title
 title = "Pablo Bernabeu"
 
-# Required in RStudio Cloud (https://github.com/rstudio/blogdown/issues/124#issuecomment-354813158)
-relativeurls = true
-
 # The URL of your site.
 # End your URL with a `/` trailing slash, e.g. `https://example.com/`.
 baseurl = "https://pablobernabeu.github.io/"
