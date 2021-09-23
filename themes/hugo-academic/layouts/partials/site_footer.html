@@ -14,9 +14,7 @@
   <p class="powered-by">
     {{ with site.Copyright }}{{ replace . "{year}" now.Year | markdownify}} &middot; {{ end }}
 
-    Theme:
-    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic</a> for
-    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+    Website powered by the <a href="https://sourcethemes.com/academic/" rel="noopener">Academic theme</a> for <a href="https://gohugo.io" rel="noopener">Hugo</a>.
 
     {{ if not (in (slice "docs" "updates") .Type) }}
     <span class="float-right" aria-hidden="true">
