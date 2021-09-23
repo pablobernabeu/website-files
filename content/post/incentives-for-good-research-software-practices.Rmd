@@ -1,6 +1,6 @@
 ---
 title: Incentives for good research software practices
-author: Multiple authors
+authors: [Cooper et al.]
 date: '2020-05-29'
 slug: incentives-for-good-research-software-practices
 categories: [software]
@@ -9,7 +9,6 @@ tags:
   - best practices
 subtitle: ''
 summary: ''
-authors: [Multiple authors]
 external_link: 'https://software.ac.uk/blog/2020-05-19-cw20-speed-blog-incentives-good-research-software-practices'
 lastmod: ''
 featured: no
