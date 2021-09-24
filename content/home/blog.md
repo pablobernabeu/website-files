@@ -8,7 +8,7 @@ active = true  # Activate this widget? true/false
 weight = 160  # Order that this section will appear.
 
 title = "Blog"
-subtitle = "Some of the [posts involving R code](/categories/r/) are republished at [datasciencecentral](https://www.datasciencecentral.com/), [dev.to](https://dev.to/) and [R-bloggers](https://www.r-bloggers.com)."
+subtitle = "Some of the posts involving R code are republished at [datasciencecentral](https://www.datasciencecentral.com/), [dev.to](https://dev.to/) and [R-bloggers](https://www.r-bloggers.com)."
 
 [content]
   # Page type to display. E.g. post, talk, or publication.
