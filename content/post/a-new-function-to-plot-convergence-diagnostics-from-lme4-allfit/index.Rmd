@@ -1,0 +1,318 @@
+---
+title: 'A new function to plot convergence diagnostics from lme4::allFit()'
+author: R package build
+date: ~
+slug: a-new-function-to-plot-convergence-diagnostics-from-lme4-allfit
+categories:
+  - R
+  - linear mixed-effects models
+tags:
+  - R
+  - linear mixed-effects models
+  - visualisation
+  - statistics
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-10-20T18:46:08+01:00'
+featured: no
+draft: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+```{r setup, include = FALSE}
+
+# Basic knitr options
+knitr::opts_chunk$set(message = FALSE, warning = TRUE, error = TRUE, echo = TRUE, fig.align = 'center')
+
+# Enable copy of code blocks to clipboard
+library(xaringanExtra)
+xaringanExtra::use_clipboard()
+
+```
+
+
+Linear mixed-effects models (LMM) offer a consistent way of performing regression and analysis of variance tests which allows accounting for non-independence in the data. Over the past decades, LMMs have subsumed most of the General Linear Model, with a stead increase in popularity (Meteyard & Davies, 2020). Since their conception, LMMs have presented the challenge of model *convergence*. In essence, the issue of convergence boils down to the widespread tension between parsimony and completeness in data analysis. That is, on the one hand, a good model must allow the accurate, parsimonious analysis of each predictor. On the other hand, it must account for a sufficient amount of the variation in the data, so that it is complete enough. This poses a challenging for complete-enough LMMs, which often struggle to find enough information in the data to account for every predictor---especially, for every random effect (Brauer & Curtin, 2018; Singmann & Kellen, 2019). This insufficiency of data translates into convergence warnings. In this article, I review the issue of convergence before presenting a new plotting function in R that facilitates the visualisation of the fixed effects fitted by different optimization algorithms (also dubbed optimizers).
+
+Both fixed and random effects comprise intercepts and slopes. The pressure exerted by each of those types of effects on the model is determined by the number of data points involved by each. First, slopes are more demanding than intercepts, as they involve a (far) larger number of data points. Second, random effects are more demanding than fixed effects, as the former entail the number of estimates required for fixed effects *times* the number of levels in the grouping factor. Overall, on the most lenient end of the scale lies the fixed intercept, and on the heaviest end lie the random slopes. Convergence warnings in LMMs are often due to the random slopes alone. 
+
+Sounds easy, then! Not inviting the random slopes to the party should solve the problem. Indeed, since random slopes involve the highest number of estimates by far, removing them does often remove convergence warnings. This, however, leads to a different issue. Surrendering the information provided by random slopes can result in the violation of the assumption of independence. For years, the removal of random slopes due to convergence warnings was standard practice. Currently, in contrast, proposals increasingly consider other options, such as removing random effects if they do not significantly improve the fit of the model (Matuschek et al., 2017), and keeping the random slopes in spite of the convergence warnings (Brauer & Curtin, 2018; Singmann & Kellen, 2019).
+
+Tying in with the latter option is a proposal by the developers of the 'lme4' package that uses a part of the 'lme4' *engine* called optimizer. Each model can have one optimizer out of a range of options. The seven widely-available optimizers are:
+
+  - Bobyqa
+  - Nelder-Mead
+  - nlminbwrap
+  - nmkbw
+  - optimx.L-BFGS-B
+  - nloptwrap.NLOPT_LN_NELDERMEAD
+  - nloptwrap.NLOPT_LN_BOBYQA
+
+
+To assess whether convergence warnings render the results invalid, or on the contrary, the results can be deemed valid in spite of the warnings, Bates et al. (2021) suggest refitting models affected by convergence warnings with a variety of optimizers. The authors argue that if the different optimizers produce practically-equivalent results, the results are valid.
+
+The `allFit` function from the 'lme4' package allows the refitting of models using a number of optimizers. To use the seven optimizers listed above, two extra packages must be installed: 'dfoptim' and 'optimx' (see [lme4 manual](https://cran.r-project.org/web/packages/lme4/lme4.pdf)). The output from `allFit()` contains several statistics on the fixed and the random effects fitted by each optimizer (see [example](https://github.com/lme4/lme4/issues/512#issue-425198940)). 
+
+Several R users have ventured into [plotting this output](https://www.google.com/search?q=%22ggplot%22+%22allfit%22+optimizers) but there is not a function in 'lme4' yet at the time of writing (Oct 2021). I have just developed a function that takes the output from `allFit()`, tidies it, selects the fixed effects and plots them using 'ggplot2'. The function might be integrated in the 'lme4' package in the near future, but for now its available below.
+
+Below are the the optional arguments allowed by the function, with their default values:
+
+```
+
+# Set the same Y axis limits in every plot
+shared_y_axis_limits = TRUE,
+
+# Multiply Y axis limits by a factor (only 
+# available if `shared_y_axis_limits` = TRUE)
+multiply_y_axis_limits = 1, 
+
+# Select predictors
+select_predictors = NULL, 
+
+# Number of rows
+nrow = NULL, 
+
+# Y axis title
+y_title = 'Fixed effect',
+
+# Alignment of the Y axis title
+y_title_hjust = 0.81,
+
+# Add number to the names of optimizers
+number_optimizers = TRUE,
+
+# Replace colon in interactions with x
+interaction_symbol_x = TRUE) {
+
+```
+
+
+The argument `shared_y_axis_limits` deserves a comment. It allows using the same Y axis limits (i.e., range) in all plots or using plot-specific limits. It is `TRUE` by default to prevent overinterpretations of small differences across optimizers. In contrast, when `shared_y_axis_limits = FALSE`, plot-specific limits are used, which results in a narrower range of values in the Y axis. Since data points will span the entire Y axis in that case, any difference across optimizers---regardless of its relative importance---might be perceived as large unless the specific range of values in each plot is noticed.
+
+
+## The function and its use
+
+Below is the new `plot.fixef.allFit` function (of course it could be given any other name). The function can be copied by clicking on the button at the top right corner. 
+
+<div style = 'height: 800px; border: 0.5px dotted grey; padding: 10px; resize: both; overflow: auto;'>
+
+```{r}
+
+# Plot the results from the fixed effects produced by different optimizers. This function 
+# takes the output from lme4::allFit(), tidies it, selects fixed effects and plots them.
+
+plot.fixef.allFit = function(allFit_output, 
+                             # Set the same Y axis limits in every plot
+                             shared_y_axis_limits = TRUE,
+                             # Multiply Y axis limits by a factor (only 
+                             # available if `shared_y_axis_limits` = TRUE)
+                             multiply_y_axis_limits = 1, 
+                             # Select predictors
+                             select_predictors = NULL, 
+                             # Number of rows
+                             nrow = NULL, 
+                             # Y axis title
+                             y_title = 'Fixed effect',
+                             # Alignment of the Y axis title
+                             y_title_hjust = 0.81,
+                             # Add number to the names of optimizers
+                             number_optimizers = TRUE,
+                             # Replace colon in interactions with x
+                             interaction_symbol_x = TRUE) {
+  
+  # data wrangling
+  if (!requireNamespace('dplyr')) install.packages('dplyr')
+  if (!requireNamespace('reshape2')) install.packages('reshape2')
+  # text processing
+  if (!requireNamespace('stringr')) install.packages('stringr')
+  # plotting
+  if (!requireNamespace('ggplot2')) install.packages('ggplot2')
+  # matrix of plots
+  if (!requireNamespace('patchwork')) install.packages('patchwork')
+  
+  require(dplyr)
+  require(reshape2)
+  require(stringr)
+  require(ggplot2)
+  require(patchwork)
+  
+  # Tidy allFit output
+  
+  # Extract fixed effects from the allFit() output
+  allFit_fixef = summary(allFit_output)$fixef %>%  # Select fixed effects in the allFit results
+    reshape2::melt() %>%  # Structure the output as a data frame
+    rename('Optimizer' = 'Var1', 'fixed_effect' = 'Var2')  # set informative names
+  
+  # If `number_optimizers` = TRUE, assign number to each optimizer and place it before its name
+  if(number_optimizers == TRUE) {
+    allFit_fixef$Optimizer = paste0(as.numeric(allFit_fixef$Optimizer), '. ', allFit_fixef$Optimizer)
+  }
+  
+  # If `select_predictors` were specified, select them along with the intercept (the latter required)
+  if(!is.null(select_predictors)) {
+    allFit_fixef = allFit_fixef %>% filter(fixed_effect %in% c('(Intercept)', select_predictors))
+  }
+  
+  # Order variables
+  allFit_fixef = allFit_fixef[, c('Optimizer', 'fixed_effect', 'value')]
+  
+  # PLOT. The overall plot is formed of a first row containing the intercept and the legend 
+  # (`intercept_plot`), and a second row containing the predictors (`predictors_plot`), 
+  # which may in turn occupy several rows.
+  
+  # If `multiply_y_axis_limits` has been specified but `shared_y_axis_limits` = FALSE,
+  # warn that `shared_y_axis_limits` is required.
+  if(!multiply_y_axis_limits == 1 & shared_y_axis_limits == FALSE) {
+    message('The argument `multiply_y_axis_limits` has not been used because it requires `shared_y_axis_limits` set to TRUE.')
+  }
+  
+  # First row: intercept_plot
+  
+  # Select intercept data only
+  intercept = allFit_fixef %>% filter(fixed_effect == '(Intercept)')
+  
+  intercept_plot = intercept %>%
+    ggplot(., aes(fixed_effect, value, colour = Optimizer)) +
+    geom_point(position = position_dodge(1)) +
+    facet_wrap(~fixed_effect, scale = 'free') +
+    guides(colour = guide_legend(title.position = 'left')) +
+    theme_bw() + theme(axis.title = element_blank(), axis.ticks.x = element_blank(),
+                       axis.text.x = element_blank(), 
+                       strip.text = element_text(size = 10, margin = margin(t = 4, b = 6)),
+                       strip.background = element_rect(fill = 'grey96'),
+                       legend.margin = margin(0.3, 0, 0.8, 1, 'cm'), 
+                       legend.title = element_text(size = unit(15, 'pt'), angle = 90, hjust = 0.5))
+  
+  # Second row: predictors_plot
+  
+  # Select all predictors except intercept
+  predictors = allFit_fixef %>% filter(!fixed_effect == '(Intercept)')
+  
+  # If `interaction_symbol_x` = TRUE (default), replace colon with times symbol x between spaces
+  if(interaction_symbol_x == TRUE) {
+    # Replace colon in interactions with \u00D7, i.e., x; then set factor class
+    predictors$fixed_effect = predictors$fixed_effect %>% str_replace_all(':', ' \u00D7 ') %>% factor()
+  }
+  
+  # Order predictors as in the original output from lme4::allFit()
+  predictors$fixed_effect = factor(predictors$fixed_effect, levels = unique(predictors$fixed_effect))
+  
+  # Set number of rows for the predictors excluding the intercept.
+  # First, if `nrow` argument specified, use it
+  if(!is.null(nrow)) {
+    predictors_plot_nrow = nrow - 1  # Subtract 1 as intercept row not considered
+    
+    # Also, if more than 5 rows in predictors_plot_nrow, advise user to consider distributing predictors
+    # into several plots
+    if(!is.null(nrow) & nrow > 5) {
+      message('Many rows! Consider distributing predictors into several plots using argument `select_predictors`')
+    }
+    
+    # Else, if `nrow` argument not specified, calculate sensible number of rows: i.e., divide number of
+    # predictors (exc. intercept) by 2 and round up the result. For instance, 7 predictors --> 3 rows
+  } else predictors_plot_nrow = (length(unique(predictors$fixed_effect)) / 2) %>% ceiling()
+  
+  predictors_plot = ggplot(predictors, aes(fixed_effect, value, colour = Optimizer)) +
+    geom_point(position = position_dodge(1)) +
+    facet_wrap(~fixed_effect, scale = 'free',
+               # Note that predictors_plot_nrow was defined a few lines above
+               nrow = predictors_plot_nrow) +
+    labs(y = y_title) +
+    theme_bw() + theme(axis.title.x = element_blank(), axis.text.x = element_blank(),
+                       axis.ticks.x = element_blank(),
+                       axis.title.y = element_text(size = 14, margin = margin(0, 15, 0, 5, 'pt'),
+                                                   hjust = y_title_hjust),  # Move up axis title
+                       strip.text = element_text(size = 10, margin = margin(t = 4, b = 6)),
+                       strip.background = element_rect(fill = 'grey96'), legend.position = 'none')
+  
+  # If `shared_y_axis_limits` = TRUE, set the same Y axis limits in every plot. In this case, also
+  # expand limits by a factor of 1.3 and allow further multiplication of limits through
+  # `multiply_y_axis_limits` (default by 1). In contrast, if `shared_y_axis_limits` = FALSE,
+  # no action is taken, and the default, plot-specific Y axis limits are used.
+  if(shared_y_axis_limits == TRUE) {
+    
+    intercept_plot = intercept_plot + 
+      ylim(min(allFit_fixef$value) - allFit_fixef$value %>% abs %>% max / 7 * multiply_y_axis_limits,
+           max(allFit_fixef$value) + allFit_fixef$value %>% abs %>% max / 7 * multiply_y_axis_limits)
+    
+    predictors_plot = predictors_plot + 
+      ylim(min(allFit_fixef$value) - allFit_fixef$value %>% abs %>% max / 7 * multiply_y_axis_limits,
+           max(allFit_fixef$value) + allFit_fixef$value %>% abs %>% max / 7 * multiply_y_axis_limits)
+  }
+  
+  # Plot matrix: assign space to `intercept_plot` and `predictors_plot`
+  # depending on `predictors_plot_nrow`
+  layout = c(
+    area(t = 1.5, r = 8.9, b = 6.8, l = 0),  # intercept row
+    area(t = 7.3, r = 9, b = 26, l = 0)      # predictors row(s)
+  )
+  
+  # Return matrix of plots
+  wrap_plots(intercept_plot, predictors_plot, design = layout,
+             # The 2 below corresponds to intercept_plot and predictors_plot
+             nrow = 2)
+  
+}
+
+```
+
+</div>
+
+<br>
+
+Let's test the function on a new analysis of the English Lexicon Project (Balota et al., 2007; Yap et al., 2012) that I've conducted for a forthcoming study.
+
+```{r}
+
+# Read in allFit() output
+m1_allFit_convergence = readRDS('m1_allFit_convergence.rds')
+
+# To select specific predictors, first return their names
+colnames(summary(m1_allFit_convergence)$fixef)
+
+```
+
+
+Now, plot a subset of the effects. The intercept is always plotted on the first row, alongside the legend listing the optimizers. 
+
+```{r fig.width = 9, fig.height = 7}
+
+plot.fixef.allFit(m1_allFit_convergence, 
+                  select_predictors = c("z_vocabulary_age",
+                                        "z_recoded_participant_gender",
+                                        "z_word_frequency",
+                                        "z_vocabulary_age:z_word_frequency",
+                                        "z_recoded_participant_gender:z_word_frequency"), 
+                  multiply_y_axis_limits = 1.3,
+                  y_title = 'Fixed effect (\u03B2)')  # \u03B2 = beta letter
+
+```
+
+
+The plot produced by `plot.fixef.allFit()` by default replaces the colons in interaction effects (e.g., `z_vocabulary_age:z_word_frequency`) with ' &times; ' to facilitate the visibility (otherwise use `interaction_symbol_x = FALSE`). Yet, it is important to note that any interactions passed to `select_predictors` must have the colon, as that is the symbol present in the `lme4::allFit()` output.
+
+
+## References
+
+<div style = "text-indent:-2em; margin-left:2em;">
+
+Balota, D. A., Yap, M. J., Hutchison, K. A., Cortese, M. J., Kessler, B., Loftis, B., Neely, J. H., Nelson, D. L., Simpson, G. B., & Treiman, R. (2007). The English Lexicon Project. *Behavior Research Methods, 39*, 445–459. https://doi.org/10.3758/BF03193014
+
+Bates, D., Maechler, M., Bolker, B., Walker, S., Christensen, R. H. B., Singmann, H., Dai, B., Scheipl, F., Grothendieck, G., Green, P., Fox, J., Bauer, A., & Krivitsky, P. N. (2021). *Package 'lme4'.* CRAN. https://cran.r-project.org/web/packages/lme4/lme4.pdf
+
+Brauer, M., & Curtin, J. J. (2018). Linear mixed-effects models and the analysis of nonindependent data: A unified framework to analyze categorical and continuous independent variables that vary within-subjects and/or within-items. *Psychological Methods, 23*(3), 389–411. https://doi.org/10.1037/met0000159
+
+Matuschek, H., Kliegl, R., Vasishth, S., Baayen, H., & Bates, D. (2017). Balancing type 1 error and power in linear mixed models. *Journal of Memory and Language, 94*, 305–315. https://doi.org/10.1016/j.jml.2017.01.001
+
+Singmann, H., & Kellen, D. (2019). An introduction to mixed models for experimental psychology. In D. H. Spieler & E. Schumacher (Eds.), New methods in cognitive psychology (pp. 4–31). Psychology Press.
+
+Yap, M. J., Balota, D. A., Sibley, D. E., & Ratcliff, R. (2012). Individual differences in visual word recognition: Insights from the English Lexicon Project. *Journal of Experimental Psychology: Human Perception and Performance, 38*, 1, 53–79. https://doi.org/10.1037/a0024177
+
+</div>
+
+

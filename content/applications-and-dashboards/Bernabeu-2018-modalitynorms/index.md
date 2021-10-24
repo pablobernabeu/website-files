@@ -9,14 +9,14 @@ image:
   focal_point: ""
   preview_only: false
 links:
+- name: Complete web application
+  url: 'https://pablobernabeu.shinyapps.io/Dutch-modality-exclusivity-norms/'
 - name: Reduced dashboard
   url: '/dashboards/Dutch-modality-exclusivity-norms/d.html'
-- name: Complete dashboard
-  url: 'https://pablobernabeu.shinyapps.io/Dutch-modality-exclusivity-norms/'
 - name: Paper
   url: '/publication/dutch-modality-exclusivity-norms-for-336-properties-and-411-concepts/'
 - name: Github
-  url: 'https://github.com/pablobernabeu/Modality-exclusivity-norms-Bernabeu-et-al'
+  url: 'https://github.com/pablobernabeu/Dutch-modality-exclusivity-norms-Bernabeu-2018'
 - name: RStudio Cloud
   url: 'https://rstudio.cloud/project/941860'
 #  projects:
@@ -30,8 +30,10 @@ summary: 'This app presents linguistic data over several tabs. The code combines
 categories:
   - linguistic materials
   - research methods
+  - web-application
   - R
 tags:
+- web application
 - data dashboard
 - Flexdashboard
 - R
@@ -45,8 +47,8 @@ tags:
 - HTML
 - CSS
 title: 'Web application: Dutch modality exclusivity norms'
-url_code: 'https://github.com/pablobernabeu/Modality-exclusivity-norms-Bernabeu-et-al/blob/master/Shiny-app/Dutch-modality-exclusivity-norms.rmd'
-url_dataset: 'https://github.com/pablobernabeu/Modality-exclusivity-norms-Bernabeu-et-al'
+url_code: 'https://github.com/pablobernabeu/Dutch-modality-exclusivity-norms-Bernabeu-2018/blob/master/Shiny-app/index.Rmd'
+url_dataset: 'https://github.com/pablobernabeu/Dutch-modality-exclusivity-norms-Bernabeu-2018'
 # url_pdf: ''
 # url_poster: '#'
 # url_project: ""
@@ -56,18 +58,18 @@ url_dataset: 'https://github.com/pablobernabeu/Modality-exclusivity-norms-Bernab
 ---
 
 
-<a href='/dashboards/Dutch-modality-exclusivity-norms/d.html'>
-      <button style = "background-color: white; color: black; border: 2px solid #4CAF50; border-radius: 12px;">
+<a href='https://pablobernabeu.shinyapps.io/Dutch-modality-exclusivity-norms'>
+      <button style = "background-color: white; color: black; border: 2px solid #196F27; border-radius: 12px;">
       <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;"> 
-      <span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Reduced dashboard <font style='font-size:60%;'><i>Flexdashboard</i></font> </h3></button></a> &nbsp; 
+      <span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Complete web application <font style='font-size:60%;'><i>Flexdashboard-Shiny</i></font> </h3></button></a>
       
 <br>
 <br>
 
-<a href='https://pablobernabeu.shinyapps.io/Dutch-modality-exclusivity-norms'>
-      <button style = "background-color: white; color: black; border: 2px solid #196F27; border-radius: 12px;">
+<a href='/dashboards/Dutch-modality-exclusivity-norms/d.html'>
+      <button style = "background-color: white; color: black; border: 2px solid #4CAF50; border-radius: 12px;">
       <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;"> 
-      <span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Complete dashboard <font style='font-size:60%;'><i>Flexdashboard-Shiny</i></font> </h3></button></a>
+      <span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Reduced dashboard <font style='font-size:60%;'><i>Flexdashboard</i></font> </h3></button></a> &nbsp; 
 
 <br>
 <br>
