@@ -101,7 +101,7 @@ interaction_symbol_x = TRUE
 ```
 
 
-The argument `shared_y_axis_limits` deserves a comment. It allows using the same Y axis limits (i.e., range) in all plots or using plot-specific limits (see the second figure below). The parameter is `TRUE` by default to prevent overinterpretations of small differences across optimizers (see the first figure below). In contrast, when `shared_y_axis_limits = FALSE`, plot-specific limits are used, which results in a narrower range of values in the Y axis (see the second figure below). Since data points will span the entire Y axis in that case, any difference across optimizers---regardless of its relative importance---might be perceived as large, unless the specific range of values in each plot is noticed.
+The argument `shared_y_axis_limits` deserves a comment. It allows using the same Y axis limits (i.e., range) in all plots or, alternatively, using plot-specific limits. The parameter is `TRUE` by default to prevent overinterpretations of small differences across optimizers (see the first figure below). In contrast, when `shared_y_axis_limits = FALSE`, plot-specific limits are used, which results in a narrower range of values in the Y axis (see the second figure below). Since data points will span the entire Y axis in that case, any difference across optimizers---regardless of its relative importance---might be perceived as large, unless the specific range of values in each plot is noticed.
 
 
 ### The function and its use
