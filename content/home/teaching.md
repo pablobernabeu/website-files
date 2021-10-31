@@ -57,6 +57,8 @@ As a graduate teaching assistant, I devote 180 hours a year to leading 30 semina
 | :---------: | -------------------- |
 | **2021–22** | Introduction to developmental psychology (115) — Seminars and essay marking  |
 |             | Introduction to neuroscience (112)— Seminars  |
+|             | Introduction to cognitive psychology (111) — Seminars and essay marking  |
+|             | Social psychology in the digital age (113) — Seminars  |
 |             | Statistics for psychologists I (121) using R — Labs  |
 | **2020–21** | Introduction to developmental psychology (115) — Seminars and essay marking  |
 |             | Introduction to neuroscience (112)— Seminars  |
