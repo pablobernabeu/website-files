@@ -1,0 +1,42 @@
+---
+title: Tackling knitting errors in R Markdown
+author: ~
+date: ~
+slug: tackling-knitting-errors-in-r-markdown
+categories:
+  - R
+tags:
+  - R
+  - R Markdown
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-11-13T18:11:22Z'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+<script src="{{< blogdown/postref >}}index.en_files/header-attrs/header-attrs.js"></script>
+
+
+<p>When knitting an R Markdown document after the first time, errors may sometimes appear. Three tips are recommended below.</p>
+<div id="close-pdf-reader-window" class="section level2">
+<h2>1. Close PDF reader window</h2>
+<p>When the document is knitted through the ‘Knit’ button, a PDF reader window opens to present the result. Closing this window can help resolve knitting errors.</p>
+</div>
+<div id="delete-service-files" class="section level2">
+<h2>2. Delete service files</h2>
+<p>Every time the Rmd is knitted, some service files are created. Some of these files have the ‘.tex’ extension (e.g., index.tex, Appendix-B.tex), whereas others do not (e.g., index.log, ZHJhZnQtYXBhLlJtZA==.Rmd, index.synctex.gz). Deleting these files can help resolve knitting errors.</p>
+</div>
+<div id="delete-code-chunks-related-to-the-appendices" class="section level2">
+<h2>3. Delete code chunks related to the appendices</h2>
+<p>When knitting <a href="https://github.com/crsh/papaja">papaja</a> documents containing any appendices, some code chunks related to the appendices will automatically appear at the end of the primary Rmd file—e.g.:</p>
+<pre><code>```{r echo = FALSE, results = &#39;asis&#39;, cache = FALSE}
+papaja::render_appendix(&#39;Appendix-A.Rmd&#39;)
+```</code></pre>
+<p>Normally, these code chunks are automatically removed as the knitting finishes. However, if the chunks remain in place, deleting them manually can help resolve knitting errors.</p>
+</div>

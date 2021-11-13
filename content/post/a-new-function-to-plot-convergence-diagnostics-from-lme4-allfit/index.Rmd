@@ -51,8 +51,8 @@ Sounds easy, then! Not inviting the random slopes to the party should solve the 
 
 Framed within the drive to maintain random slopes wherever possible, the developers of the 'lme4' package propose a sanity check that uses a part of the 'lme4' *engine* called 'optimizer'. Every model has a default optimizer, unless a specific one is chosen through `control = lmerControl(optimizer = "...")` (in lmer models) or `control = glmerControl(optimizer = "...")` (in glmer models). The seven widely-available optimizers are:
 
-- Bobyqa
-- Nelder-Mead
+- bobyqa
+- Nelder_Mead
 - nlminbwrap
 - nmkbw
 - optimx.L-BFGS-B
@@ -64,7 +64,7 @@ To assess whether convergence warnings render the results invalid, or on the con
 
 ## Plotting the fixed effects from allFit()
 
-Several R users have ventured into [plotting the allFit() output](https://www.google.com/search?q=%22ggplot%22+%22allfit%22+optimizers) but there is not a function in 'lme4' yet at the time of writing (Oct 2021). I have just developed a function that takes the output from `allFit()`, tidies it, selects the fixed effects and plots them using 'ggplot2'. The function might be integrated in the 'lme4' package in the near future, but for now it is available below. It can be copied through the `Copy Code` button at the top right corner. It can be renamed by changing `plot.fixef.allFit` to another valid name.
+Several R users have ventured into [plotting the allFit() output](https://www.google.com/search?q=%22ggplot%22+%22allfit%22+optimizers) but there is not a function in 'lme4' yet at the time of writing (Oct 2021). I have just developed a function that takes the output from `allFit()`, tidies it, selects the fixed effects and plots them using 'ggplot2'. The function is shown below, and can be copied through the `Copy Code` button at the top right corner. It can be renamed by changing `plot.fixef.allFit` to another valid name.
 
 <div style = 'height: 800px; border: 0.5px dotted grey; padding: 10px; resize: both; overflow: auto;'>
 

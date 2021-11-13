@@ -1,0 +1,42 @@
+---
+title: 'Walking the line between reproducibility and efficiency in R Markdown:
+  Three methods'
+author: ~
+date: ~
+slug: walking-the-line-between-reproducibility-and-efficiency-in-r-markdown-three-methods
+categories:
+  - R
+tags:
+  - R
+  - R Markdown
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-11-13T18:18:38Z'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+As technology and research methods advance, the data sets tend to be larger and the methods more exhaustive. Consequently, the analyses take longer to run. This poses a challenge when the results are to be presented using [R Markdown](https://rmarkdown.rstudio.com/index.html). One has to walk the line between reproducibility and efficiency. On the one hand, it is desirable to keep the R Markdown document as self-contained as possible, so that those who may later examine the document can test and edit the code as easily as possible. Yet, on the other hand, it would be inefficient to create a document that is very slow to run or very long. Different methods can be used in each document to accommodate different types of code. Below, three methods are presented, ordered according to the amount of running time and the length of the code.
+
+1. Code present in the Rmd file, and run as the document is rendered: used for fast, concise code. Example:
+
+        nrow(myData)
+
+
+2. Code sourced from separate scripts, and run as the document is rendered: used for slower or longer code. Example:
+
+        source('results/model_2.R')
+
+
+3. Code run separately, with only the result being presented in the document: used for very slow or long code. Example:
+
+        model_1 = readRDS('results/model_1.rds')
+
+
+
