@@ -9,6 +9,7 @@ profileicons:
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" Curriculum vitae "><a href="https://osf.io/84ktq"><i style="color:#8AA3CD;" class="ai ai-cv ai-2x"></i></a></span>'
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" Google Scholar "><a href="https://scholar.google.com/citations?user=DxD0QDoAAAAJ&hl=en"><i style="color:#8AA3CD;" class="ai ai-google-scholar ai-2x"></i></a></span>'
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" OSF repositories "><a href="https://osf.io/25u3x/"><i style="color:#8AA3CD;" class="ai ai-osf ai-2x"></i></a></span>'
+- '<span data-toggle="tooltip1" data-placement="bottom" title=" Figshare "><a href="https://figshare.com/authors/Pablo_Bernabeu/820703"><i style="color:#8AA3CD;" class="ai ai-figshare ai-2x"></i></a></span>'
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" Github "><a href="https://github.com/pablobernabeu"><i style="color:#8AA3CD;" class="fab fa-github fa-2x"></i></a></span>'
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" LinkedIn "><a href="https://www.linkedin.com/in/pablobernabeu/"><i style="color:#8AA3CD;" class="fab fa-linkedin-in fa-2x"></i></a></span>'
 interests:

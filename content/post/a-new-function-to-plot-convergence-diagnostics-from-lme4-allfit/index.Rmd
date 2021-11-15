@@ -14,7 +14,7 @@ tags:
 subtitle: ''
 summary: 'When a model has struggled to find enough information in the data to account for every predictor---especially for every random effect---, convergence warnings appear (Brauer & Curtin, 2018; Singmann & Kellen, 2019). In this article, I review the issue of convergence before presenting a new plotting function in R that facilitates the visualisation of the fixed effects fitted by different optimization algorithms (also dubbed optimizers).'
 authors: []
-lastmod: '2021-10-20T18:46:08+01:00'
+lastmod: '2021-11-14T19:46:08+01:00'
 featured: no
 draft: no
 image:
@@ -182,12 +182,13 @@ plot.fixef.allFit = function(allFit_output,
     geom_point(position = position_dodge(1)) +
     facet_wrap(~fixed_effect, scale = 'free') +
     guides(colour = guide_legend(title.position = 'left')) +
-    theme_bw() + theme(axis.title = element_blank(), axis.ticks.x = element_blank(),
-                       axis.text.x = element_blank(), 
-                       strip.text = element_text(size = 10, margin = margin(t = 4, b = 6)),
-                       strip.background = element_rect(fill = 'grey96'),
-                       legend.margin = margin(0.3, 0, 0.8, 1, 'cm'), 
-                       legend.title = element_text(size = unit(15, 'pt'), angle = 90, hjust = 0.5))
+    theme_bw() + 
+    theme(axis.title = element_blank(), axis.ticks.x = element_blank(),
+          axis.text.x = element_blank(), 
+          strip.text = element_text(size = 10, margin = margin(t = 4, b = 6)),
+          strip.background = element_rect(fill = 'grey96'),
+          legend.margin = margin(0.3, 0, 0.8, 1, 'cm'), 
+          legend.title = element_text(size = unit(15, 'pt'), angle = 90, hjust = 0.5))
   
   # Second row: predictors_plot
   
