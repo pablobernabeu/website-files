@@ -1,5 +1,5 @@
 ---
-title: 'Review of the Landscape Model of reading: composition, dynamics and application'
+title: 'Review of the Landscape Model of reading: Composition, dynamics and application'
 author: ''
 date: '2018-01-01'
 slug: review-of-the-landscape-model-of-reading-composition-dynamics-and-application

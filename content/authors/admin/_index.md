@@ -65,13 +65,13 @@ education:
   - course: Linear mixed-effects models in R
     institution: Max Planck Institute for Psycholinguistics
     year: 2016
-  - course: '[Statistics: analyzing in R](https://www.ru.nl/prospectus/2016/socsci/courses-osiris/bs/sow-bs82-statistics-analyzing/)'
+  - course: '[Statistics: Analyzing in R](https://www.ru.nl/prospectus/2016/socsci/courses-osiris/bs/sow-bs82-statistics-analyzing/)'
     institution: Radboud University
     year: 2016
   - course: '[Introduction to cognitive neuroscience](https://www.ru.nl/radboudsummerschool/)'
     institution: Radboud University Summer School
     year: 2015
-  - course: '[Language science: current methods and interdisciplinary perspectives](https://www.ru.nl/radboudsummerschool/)'
+  - course: '[Language science: Current methods and interdisciplinary perspectives](https://www.ru.nl/radboudsummerschool/)'
     institution: Radboud University Summer School
     year: 2015
   - course: '[Transcranial brain stimulation](https://www.ru.nl/donders/agenda/donders-tool-kits/vm-tool-kits/donders-brain-stimulation-tool-kit-version-2/)'
@@ -87,7 +87,7 @@ education:
 
 After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology at Lancaster University. I'm investigating how conceptual processing (i.e., understanding the meaning of words) is supported by linguistic and sensorimotor brain systems. I use methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. My [CV is available](https://osf.io/84ktq).
 
-###### The linguistic and sensorimotor bases of semantic processing: an investigation into the role of individual differences
+###### The linguistic and sensorimotor bases of semantic processing: An investigation into the role of individual differences
 
 Conceptual processing has been found to draw on two cognitive systems. One is a linguistic system, which is based on knowledge of words and the relations among them. The other is a sensorimotor system, which draws on our perceptual, motor and affective experience. These two systems contribute to conceptual processing in a sequential manner: the linguistic system is activated first, providing more superficial semantic information, with the sensorimotor system slower to reach peak activation, but providing more refined meaning. We know that the relative importance of each system is modulated by contextual factors (e.g., linguistic context, processing goals, cognitive resources). However, we know much less about how people’s individual cognitive capacities and experience (reading experience, reasoning ability) interact with these systems, which has become a central theme in my work.
 
