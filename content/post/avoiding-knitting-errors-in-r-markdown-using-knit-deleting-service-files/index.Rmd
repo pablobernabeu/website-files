@@ -1,0 +1,30 @@
+---
+title: Avoiding knitting errors in (R) Markdown using knit-deleting-service-files()
+author: 
+date: ''
+slug: avoiding-knitting-errors-in-r-markdown-using-knit-deleting-service-files
+categories:
+  - R
+tags:
+  - R Markdown
+  - render
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-12-17T21:46:06Z'
+featured: no
+draft: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+This function is designed to avoid (R) Markdown [knitting errors caused by service files from previous knittings](2021/tackling-knitting-errors-in-r-markdown/) (e.g., manuscript.tex, ZHJhZnQtYXBhLlJtZA==.Rmd, manuscript.synctex.gz). The function first suggests deleting potential service files in the directory. A response from the user is required in the console. Next, the document is knitted. Last, the function offers deleting potential service files again, with a response being required as well. The only obligatory argument for this function is the name of an (R)md file. The optional argument is a path to a directory containing the file.
+
+NOTE: If the user accepts the deletion of the files, the function deletes them irreversibly using [`unlink()`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/unlink.html). Therefore, our familiar adage truly applies: this function comes with ABSOLUTELY NO WARRANTY. Please ensure you understand the [source code](https://github.com/pablobernabeu/knit-deleting-service-files/blob/main/knit_deleting_service_files.R) before using the function.
+
+![Screenshot of the function in use](images/Screenshot 2021-12-15 at 19.32.02.png)
+
