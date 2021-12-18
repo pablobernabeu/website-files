@@ -29,7 +29,7 @@ When the document is knitted through the 'Knit' button, a PDF reader window open
 
 ## 2. Delete service files
 
-Every time the Rmd is knitted, some service files are created. Some of these files have the '.tex' extension (e.g., index.tex, Appendix-B.tex), whereas others do not (e.g., index.log, ZHJhZnQtYXBhLlJtZA==.Rmd, index.synctex.gz). Deleting these files can help resolve errors.
+Every time the Rmd is knitted, some service files are created. Some of these files have the '.tex' extension (e.g., index.tex, Appendix-B.tex), whereas others do not (e.g., index.log, ZHJhZnQtYXBhLlJtZA==.Rmd, index.synctex.gz). Deleting these files can help resolve errors (see a [possible function](/2021/avoiding-knitting-errors-in-r-markdown-using-knit-deleting-service-files/)).
 
 ## 3. Delete code chunks related to the appendices
 
