@@ -56,5 +56,5 @@ subtitle = ""
 | <div style='white-space:nowrap;'>Dec 2015 – Feb 2016</div> | Part-time Data Science market research and student recruitment. [Tilburg U.](https://www.tilburguniversity.edu/). <br> <span style='color:#5A826F;'>I contributed to the elaboration of a leaflet, and informed prospective students at open days.</span> |
 | <div style='white-space:nowrap;'>2015 – 2016</div> | Student representative at master’s fairs in Spain. [Radboud U.](https://www.ru.nl/english/), [Tilburg U.](https://www.tilburguniversity.edu/) <br> <span style='color:#5A826F;'>I worked at three fairs with Radboud University, and at one with Tilburg University.</span> |
 | <div style='white-space:nowrap;'>2013 – 2016</div> | Presenter of my master's programme at open days. [Tilburg U.](https://www.tilburguniversity.edu/) |
-| <div style='white-space:nowrap;'>2013 – 2016</div> | Communication and student recruitment. [Academia Bravosol](https://bravosol.net), Madrid, Spain |
-| <div style='white-space:nowrap;'>2011 – 2013</div> | Occasional teacher of English and Spanish. [Academia Bravosol](https://bravosol.net), Madrid, Spain |
+| <div style='white-space:nowrap;'>2013 – 2016</div> | Communication, website and student recruitment. [Academia Bravosol](https://bravosol.net), Madrid, Spain |
+| <div style='white-space:nowrap;'>2011 – 2013</div> | I taught English and Spanish in the summers of 2011, 2012 and 2013. [Academia Bravosol](https://bravosol.net), Madrid, Spain |

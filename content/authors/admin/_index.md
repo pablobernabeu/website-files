@@ -58,10 +58,15 @@ education:
   - course: '[Improving your statistical inferences](https://www.coursera.org/account/accomplishments/verify/QET2VHFEHHEK)'
     institution: Coursera / Eindhoven University of Technology
     year: 2017
+  - course: '[Neurobiology of language](https://lotschool.nl/wp-content/uploads/2019/06/LOT-Schools-1997-2019-2.pdf)'
+    institution: Netherlands Graduate School of Linguistics
+    extra: \-&nbsp; Course focussed on multilingualism, including the interesting and hotly-debated topic of the cognitive benefits.
+    year: 2017
   - course: '[Big data in society](https://www.vu.nl/en/programmes/short/summer-school/courses/big-data-in-society/index.aspx)'
     institution: Vrije Universiteit Amsterdam
     year: 2016
-    extra: '\-&nbsp; [Coursework](/2016/the-louisiana-minnesota-texas-crisis-across-media-and-time-a-big-data-exercise/)'
+    extra: \-&nbsp; I honed my experience in R and learned about techniques such as topic modelling and crowdsourcing.
+    extra2: '\-&nbsp; [Coursework](/2016/the-louisiana-minnesota-texas-crisis-across-media-and-time-a-big-data-exercise/)'
   - course: Linear mixed-effects models in R
     institution: Max Planck Institute for Psycholinguistics
     year: 2016
@@ -71,18 +76,27 @@ education:
   - course: '[Introduction to cognitive neuroscience](https://www.ru.nl/radboudsummerschool/)'
     institution: Radboud University Summer School
     year: 2015
+    extra: \-&nbsp; I became acquainted with the cognitive neuroscience approach to language, perception and action.
   - course: '[Language science: Current methods and interdisciplinary perspectives](https://www.ru.nl/radboudsummerschool/)'
     institution: Radboud University Summer School
     year: 2015
+    extra: \-&nbsp; Psycholinguistic, neurobiological and computational approaches to language.
   - course: '[Transcranial brain stimulation](https://www.ru.nl/donders/agenda/donders-tool-kits/vm-tool-kits/donders-brain-stimulation-tool-kit-version-2/)'
     institution: Donders Institute, Radboud University
     year: 2015
+    extra: \-&nbsp; I gained theoretical and practical experience in the technique of transcranial brain stimulation. This technique occupies a privileged position in the area of conceptual processing (i.e., the comprehension of words in the brain), as it allows tapping into the causality of experimental effects with a greater precision than most other techniques.
   - course: '[Neurobiology of language](https://lotschool.nl/wp-content/uploads/2019/06/LOT-Schools-1997-2019-2.pdf)'
     institution: Netherlands Graduate School of Linguistics
     year: 2015
-  - course: '[Psycholinguistics](https://lotschool.nl/wp-content/uploads/2019/06/LOT-Schools-1997-2019-2.pdf)'
+    extra: \-&nbsp; I learned about the functional mapping of language in the brain, and the toolkit used for this research.
+  - course: '[Psycholinguistics: Self-monitoring](https://lotschool.nl/wp-content/uploads/2019/06/LOT-Schools-1997-2019-2.pdf)'
     institution: Netherlands Graduate School of Linguistics
     year: 2015
+    extra: \-&nbsp; I learned about how speech errors can serve as a window into the psychology of language.
+  - course: '[[Part of] Neuroimaging 1](https://www.ru.nl/courseguides/socsci/courses-osiris/cns/sow-dgcn02-neuroimaging/)'
+    institution: Radboud University
+    year: 2014
+    extra: \-&nbsp; I followed the first two months of this course as a listener to learn the principles of electroencephalography, event-related potentials, magnetoencephalography and functional magnetic resonance imaging.
 ---
 
 After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology at Lancaster University. I'm investigating how conceptual processing (i.e., understanding the meaning of words) is supported by linguistic and sensorimotor brain systems. I use methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. My [CV is available](https://osf.io/84ktq).

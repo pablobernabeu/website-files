@@ -14,7 +14,6 @@ tags:
   - cognitive neuroscience
   - Brain Vision
   - R
-  - visualisation
   - statistics
   - linear mixed-effects models
   - Max Planck Institute for Psycholinguistics
@@ -31,21 +30,21 @@ projects: []
 ---
 
 
-Event-related potentials (ERPs) offer a unique insight in the study of human cognition. Let's look at their reason-to-be for the purposes of research, and how they are defined and processed. Most of this content is based on my master's thesis (<a href='https://psyarxiv.com/5gjvk/download/'>download</a>), which I could fortunately conduct at the Max Planck Institute for Psycholinguistics (<a href='https://psyarxiv.com/a5pcz/'>conference paper</a> also available).
+Event-related potentials (ERPs) offer a unique insight in the study of human cognition. Let's look at their reason-to-be for the purposes of research, and how they are defined and processed. Most of this content is based on my master's thesis, which I could fortunately conduct at the Max Planck Institute for Psycholinguistics (see <a href='https://psyarxiv.com/5gjvk/'>thesis</a> or <a href='https://psyarxiv.com/a5pcz/'>conference paper</a>).
 
 ## Electroencephalography
 
-The brain produces electrical activity all the time, which can be measured via electrodes on the scalp—a method known as electroencephalography (EEG). These pulses are constantly produced, for every one of our states and actions. These overlapping pulses happen at extremely high frequencies; indeed, the signal can be measured once per millisecond. Of course, the voltage is in a micro (µ) scale, typically between 10 µV (0.000010) and 100 µV (0.000100) (Aurlien et al., 2004). The high frequency of this signal is very interesting for the study of some cognitive processes in particular, for which the time course is (or may be) critical. One such example is conceptual processing, namely, the process of understanding the meaning of words.
+The brain produces electrical activity all the time, which can be measured via electrodes on the scalp—a method known as electroencephalography (EEG). These pulses are produced for every one of our states and actions, in a voltage at a micro (µ) scale, typically between 10 µV (0.000010) and 100 µV (0.000100) (Aurlien et al., 2004). The overlapping pulses happen at extremely high frequencies; indeed, the signal can be measured once per millisecond. The high frequency of this signal is very interesting for the study of some cognitive processes in particular, for which the time course is (or may be) critical. One such example is conceptual processing, namely, the process of understanding the meaning of words.
 
-Research has revealed the relation between certain EEG patterns and cognitive states and functions. Brain activity includes dozens of types, but broadly, it can be divided into neural oscillations and event-related potentials. Specific oscillations (also known as brain waves) are associated to *states* such as wakefulness, sleep, arousal, relaxation, etc. (Roohi-Azizi, Azimi, Heysieattalab, & Aamidfar, 2017). Event-related potentials instead represent more finite *events*, such the presentation of as a stimulus. In cognitive neuroscience, both oscillations and ERPs are studied, whereas in cognitive psychology, ERPs are much more common than oscillations. Let's dive into ERPs below.
+Research has revealed the relation between certain EEG patterns and cognitive states and functions. Brain activity includes dozens of types, but broadly, it can be divided into neural oscillations and event-related potentials. Specific oscillations (also known as brain waves) are associated with *states* such as wakefulness, sleep, arousal, relaxation, etc. (Roohi-Azizi, Azimi, Heysieattalab, & Aamidfar, 2017). Event-related potentials instead represent more finite *events*, such as the presentation of as a stimulus. In cognitive neuroscience, both oscillations and ERPs are studied, whereas in cognitive psychology, ERPs are much more common than oscillations. Let's dive into ERPs below.
 
 ### Event-related potentials
 
-In the lab, ERPs are elicited using controlled designs. In each trial, a series of stimuli are presented. At a fixed point therein, an EEG measurement begins and spans for a certain period. This period is called *time window*. 
+In the lab, ERPs are elicited using controlled designs. In each trial, a series of stimuli are presented. At a fixed point therein, an EEG measurement begins and spans for a certain period. The various under analysis are known as *time windows*. 
 
 In psycholinguistics, for instance, a typical scenario is the presentation of words, and ERPs are systematically *time-locked* to the same position in consecutive trials, often the onset of a word. By this means, the experimental manipulation is collected, and the non-experimental variation—'noise'—is largely cancelled out by the aggregation of multiple trials that share the experimental manipulation.
 
-The chief reason to employ the ERP method is the measurement of cognitive processes online, that is, precisely as they unfold. This is fitting in the context of language comprehension, where important processes last for less than a second.
+The chief reason to employ the ERP method is the measurement of cognitive processes online, that is, precisely as they unfold. This is fitting in the context of language comprehension, where some important processes last for less than a second.
 
 ## Time course of word processing
 
@@ -83,13 +82,13 @@ Multiple components are known, each having been found to consistently peak aroun
 
 5. **Functional role:** the cognitive functions that have been consistently associated with the component.
 
-Examples of components in language processing include the N400, consistently linked to semantic processing, that is, seeking the meaning of words or sentences. The N400 is characterised by a large, negative amplitude peaking at around 400 ms post word onset, primarily found in central and posterior sites. N400 *effects*, which are comparisons of the N400 component in different experimental conditions, have consistently appeared under violations of semantic expectations, i.e., related to meaning and events (Kutas & Federmeier, 2011; Swaab, Ledoux, Camblin, & Boudewyn, 2012). Another well-known component in language is the P600, linked to syntactic processing, that is, the structure of sentences (Swaab et al., 2012). Other examples of components include lateralized readiness potentials, signalling motor preparation (Mordkoff & Gianaros, 2000), and the P3b component, which appears in the context of responses (van Vliet et al., 2014). Both the latter are relevant to researchers across domains, who often ward off contamination from these components in their experiments. In Bernabeu et al.'s experiment, for instance, time-locking ERPs to the first word in target trials was also useful to ward off contamination from these components. 
+Examples of components in language processing include the N400, consistently linked to semantic processing, that is, seeking the meaning of words or sentences. The N400 is characterised by a large, negative amplitude peaking at around 400 ms post word onset, primarily found in central and posterior sites. N400 *effects*, which are comparisons of the N400 component in different experimental conditions, have consistently appeared under violations of semantic expectations, i.e., related to meaning and events (Kutas & Federmeier, 2011; Swaab, Ledoux, Camblin, & Boudewyn, 2012). Another well-known component in language is the P600, linked to syntactic processing, which allows the comprehension of sentences (Swaab et al., 2012). Other examples of components include lateralized readiness potentials, signalling motor preparation (Mordkoff & Gianaros, 2000), and the P3b component, which appears in the context of responses (van Vliet et al., 2014). Both of the latter components are relevant to researchers across domains, who often need to ward off *contamination* from these components in their experiments. In Bernabeu et al.'s experiment, for instance, part of the reason why ERPs were time-locked to the first word in target trials was to prevent contamination from these components. 
 
-ERP data sets are large, being the product of the number of electrodes times the number of time points times the experimental conditions times the number participants. In recent studies, the number of trials often adds to that product, whereas in previous experiments, the trials tended to be aggregated in each condition.
+ERP data sets are large, being the product of the number of electrodes times the number of time points, times the number of experimental conditions, times the number of participants. In recent studies, the number of trials often adds to that product, whereas in previous experiments, the trials tended to be aggregated in each condition.
 
-## Electroencephalography montage
+## EEG montage
 
-The electroencephalography (EEG) montage is an important factor. The options are broadly characterised by three parameters of the electrodes (also called channels).
+The EEG montage is an important factor. The options are broadly characterised by three parameters of the electrodes (also called channels):
 
 <p style="margin-left: 30px; line-height: 1.2; padding-bottom: 12px; padding-left: 15px; float: right; display: block;"><img src="EEG MPI open day photo.jpg" alt="Pablo Bernabeu, 2015" width="200px" style='padding-bottom: 15px; margin-bottom: 0px;' /><span style="font-size: small; padding-left: 5px; padding-top: 0px; margin-top: 0px;">Brainwaves exposed for an open day.</span></p>
 
@@ -126,7 +125,6 @@ For the Bernabeu et al. study, I used Brain Vision software, and followed the [t
 7. further correction of artifacts such as motor action potentials (or lateralised readiness potentials) resulting from even the subtlest muscle activity.
 
 This pipeline is reflected in the [scripts exported from Brain Vision](https://osf.io/98fs6/).
-
 
 ```
   <Nodes>
@@ -170,7 +168,7 @@ With the myriad repeated measures involved in EEG, linear mixed-effects models a
 
 ## Conclusion
 
-Event-related potentials fulfil an important role in cognitive neuroscience and psychology, only matched by magnetic electroencephalography (MEG), which unites high temporal and spatial resolution. Learning how to use this method is demanding but even more rewarding. It certainly does not make for fast science, but allows the measurement of experimental effects online, that is, as they unfold. 
+Event-related potentials fulfil an important role in cognitive neuroscience and psychology, only surpassed by magnetic electroencephalography (MEG), which unites high temporal and spatial resolution. Learning how to use ERPs is demanding but even more rewarding. It certainly does not make for fast science, but allows the measurement of experimental effects online, that is, as they unfold. 
 
 You can learn about and overcome multiple challenges. One of the issues I faced once regarded some channels (electrodes) that appeared to be missing from the data. I posted a [question on ResearchGate](https://www.researchgate.net/post/EEG_error_datasets_missing_channels_Its_strange_because_they_were_recorded_well_and_faulty_files_are_quite_as_heavy_as_the_good_ones_Any_ideas), and emailed Brain Products, the maker of Brain Vision Recorder, which I was using.
 

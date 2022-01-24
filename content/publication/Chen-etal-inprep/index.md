@@ -10,7 +10,7 @@ categories:
 doi: "10.31234/osf.io/t2pjv"
 featured: false
 image:
-  caption: 'Paradigmatic example of the stimulus. &copy; Psychological Science Accelerator (https://psysciacc.org/2018/01/24/new-study-accepted-the-object-orientation-effect/)'
+  caption: 'Psychological Science Accelerator: https://psysciacc.org/2018/01/24/new-study-accepted-the-object-orientation-effect/'
   focal_point: ""
   preview_only: false
 # projects:
@@ -43,8 +43,15 @@ url_pdf: 'https://psyarxiv.com/5gjvk/download'
 url_video: 'https://osf.io/h36wr/'
 ---
 
+<br>
+
+#### &nbsp; <i class="fa fa-database"></i>&nbsp; <a href='https://osf.io/e428p/'>General project</a>
 
 #### &nbsp; <i class="fas fa-eye"></i>&nbsp; <a href='https://osf.io/h36wr/'>Video demonstration of the procedure followed in our lab</a>
+
+#### &nbsp; <i class="fa fa-database"></i>&nbsp; <a href='https://osf.io/waf48/'>Data from our lab</a>
+
+<br>
 
 #### Reference
 

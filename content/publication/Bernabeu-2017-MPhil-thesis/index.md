@@ -69,7 +69,7 @@ slides: ''
 <div style = "text-indent:-2em; margin-left:2em;">
 
 Bernabeu, P. (2017). *Modality switches occur early and extend late in conceptual 
-processing: evidence from ERPs* [Master's thesis]. School of Humanities, Tilburg University. https://psyarxiv.com/5gjvk
+processing: evidence from ERPs*. PsyArXiV. https://psyarxiv.com/5gjvk
 
 </div>
 
