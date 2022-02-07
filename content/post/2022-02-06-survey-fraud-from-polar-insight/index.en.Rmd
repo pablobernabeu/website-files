@@ -1,0 +1,233 @@
+---
+title: Deception in a survey from Polar Insight / Intelligence
+author: ''
+date: ''
+slug: []
+categories: []
+tags:
+  - survey
+  - business
+  - ethics
+  - deception
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2022-02-06T19:22:35Z'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+I recommend extreme caution when receiving an invitation from Polar Insight (also dubbed 'Polar Intelligence') to complete a survey. When I received one, it ended up in a deceptive change of the terms. The deception emerged after two emails exchanged with the company's managing director, James Tattersfield, and an employee, Emily Hopewell. Specifically, the director offered me to complete two tasks in exchange for a $125 USD voucher. The two tasks were the completion of a survey ('short form', in the director's words) and the participation in a one-hour-long interview. Once the company received the survey completed, they changed the terms: 'we have had a high volume of responses to our survey, so unfortunately, not everyone will be selected on this occasion'.
+
+------
+
+<br>
+
+It all began when I received the following email from the managing director, James Tattersfield.
+
+<blockquote>
+
+From: James Tattersfield <james@polarintelligence.com>
+Sent: Thursday, January 27, 2022 12:33:32 PM
+To: De Juan Bernabeu, Pablo <p.bernabeu@lancaster.ac.uk>
+Subject: [External] Research Interview Request
+
+This email originated outside the University. Check before clicking links or attachments.
+
+Hi Pablo,
+
+I'm emailing you to discuss your participation in a global research study that my organisation (Polar Insight, a research firm based in London) is conducting to better understand how academic researchers are discovering and accessing scholarly articles outside university campus.
+
+At this point in the project, we are particularly interested in hearing from those who have completed - or are currently completing - a PhD or post-doctorate degree.
+
+My research team has identified you as a potential respondent and asked me to reach out to see whether you may be interested in taking part in one of our online, paid research interviews in February. Does this sound like something you would be interested in?
+
+Details:
+
+Format: Online Video Interview
+Time required: 60 minutes
+When: February 2022
+Prep. required: None
+Reward for taking part: $125 USD (via our gifting partner, Tremendous)
+
+Next steps:
+
+1) If you'd like to take part, please reconfirm your suitability using this short form: https://polarinsight.typeform.com/res-dis
+
+2) Once we receive your answers, myself or a member of the team will be in contact to get you scheduled in.
+
+3) After the interview is completed, we'll be in touch to process your reward.
+
+If you have any questions, please do feel free to reply to this email and I'll do my best to answer them.
+
+Thanks,
+
+James
+
+\-\-
+James Tattersfield
+Managing Director
+
+69c3e46f-ced9-11eb-a3d0-06b4694bee2a%2F1624888239080-1624888238742.png
+UK - 68 Hanbury St, London, E1 5JL, United Kingdom
+
+Registered in England and Wales as a Private Limited Company.
+'Polar Insight' is a registered trademark owned by Polar Insight Limited.
+Company number: 10587770 VAT: GB 279 4939 34
+
+If you no longer want to receive emails regarding our research projects, you are welcome to unsubscribe from any future communications here
+
+</blockquote>
+
+<br>
+
+Here are some screenshots from the survey:
+
+![](images/Capture.PNG){width=500px}
+
+![](images/Capture2.PNG){width=500px}
+
+![](images/Capture3.PNG){width=500px}
+
+![](images/Capture4.PNG){width=500px}
+
+![](images/Capture5.PNG){width=500px}
+
+![](images/Capture6.PNG){width=500px}
+
+![](images/Capture7.PNG){width=500px}
+
+![](images/Capture8.PNG){width=500px}
+
+![](images/Capture9.PNG){width=500px}
+
+
+In this fashion, I and other researchers provided information that would certainly be useful for several stakeholders around the academia, such as those on the screenshots. 
+
+Next, I received the following email:
+
+<blockquote>
+
+From: support.131848.3a7ff01c149d2712@helpscout.net <support.131848.3a7ff01c149d2712@helpscout.net> on behalf of Emily Hopewell <james@polarintelligence.com>
+Sent: 01 February 2022 12:28
+To: De Juan Bernabeu, Pablo <p.bernabeu@lancaster.ac.uk>
+Subject: Re: [External] Research Interview Request
+ 
+Hi Pablo,
+
+Just picking this up on James' behalf. Thank you for completing the registration form we sent you, I can confirm we have received your submission. Once we have reviewed your answers and cross-checked that you are suitable for this study, we will get back in touch to arrange your paid interview. Please note we have had a high volume of responses to our survey, so unfortunately, not everyone will be selected on this occasion.
+
+If you have any questions in the meantime, please let me know.
+
+All the best,
+
+Emily
+Expert Engagement Associate
+
+Emily Hopewell
+
+How would you rate my reply?
+Great    Okay    Not Good
+
+</blockquote>
+
+<br>
+
+My rating for such an email was commensurate with the deception that had been uncovered. I replied:
+
+<blockquote>
+
+From: De Juan Bernabeu, Pablo <p.bernabeu@lancaster.ac.uk>
+Sent: 01 February 2022 13:46
+To: Emily Hopewell <james@polarintelligence.com>
+Subject: Re: [External] Research Interview Request
+ 
+Hi Emily,
+
+I am surprised. Nowhere in the email I received from the CEO of Polar Intelligence was there an indication of a selection procedure. On the contrary, the email indicated:
+
+> Next steps:
+>  
+> 1) If you'd like to take part, please reconfirm your suitability using this short form: https://polarinsight.typeform.com/res-dis
+> 
+> 2) Once we receive your answers, myself or a member of the team will be in contact to get you scheduled in.
+> 
+> 3) After the interview is completed, we'll be in touch to process your reward.
+
+I trust that the procedure outlined initially will be followed to ensure that respondents don't feel deceived.
+
+Best regards,
+Pablo
+
+</blockquote>
+
+<br>
+
+I followed this up with an email to the managing director. Receiving no reply from either person, I reached the director on Linkedin, and was met with evasive questions and with the reply that the voucher was bound to the interview only. Very cunningly, in this way, the director sidelined the fact that the interview was supposed to follow the initial survey, according to his email. Alas, the initial terms had been changed only after the company had received the data from the survey. 
+
+Next, I wrote a post about this deceptive activity on Linkedin, and then the managing director did email me as I had requested:
+
+<blockquote>
+
+From: James Tattersfield <james@polarinsight.com>
+Sent: 02 February 2022 17:15
+To: De Juan Bernabeu, Pablo <p.bernabeu@lancaster.ac.uk>
+Subject: [External] Posts / messages on LinkedIn
+ 
+This email originated outside the University. Check before clicking links or attachments.
+
+Hi Pablo, 
+
+Could you give me a call on the mobile number below when you have a moment? 
+
+We seem to have misunderstood one another somewhere in our communication and it would be good to resolve this so we're both clear. 
+
+James
+
+--
+James Tattersfield
+Managing Director
+
+
+
+Tel: +44 (0)2079711395
+Mob: +44 (0)7840 495891
+Visit our website
+Connect with me on LinkedIn
+Schedule a time to talk
+
+Registered in England and Wales as a Private Limited Company.
+'Polar Insight' is a registered trademark owned by Polar Insight Limited.
+Company number: 10587770
+
+</blockquote>
+
+<br>
+
+I replied:
+
+<blockquote>
+
+Hi James,
+
+There is no misunderstanding. There is only written documentation.
+
+Best regards,
+Pablo
+
+</blockquote>
+
+<br>
+
+## Changes of the terms and ethics
+
+Changes of the terms such as the one performed by this company are unethical, as they happen after the engagement has commenced, and they are disadvantageous to respondents. Instead, an example of an *ethical* change of the terms is to *add benefits* after respondents have been engaged. Of course, if the first email from this company had truthfully provided the information later disclosed by the employee, the company would not have received nearly as many surveys completed.
+
+Ethics is important in the distribution of surveys, and it is not difficult.
+
+

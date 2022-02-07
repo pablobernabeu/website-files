@@ -1,7 +1,9 @@
 
-.libPaths(c(.libPaths(), "/Library/Frameworks/R.framework/Versions/4.0/Resources/library"))
 
-options(blogdown.hugo.version = "0.61.0", blogdown.server.timeout = 600)
+source("renv/activate.R")
+
+
+options(blogdown.hugo.version = '0.61.0', blogdown.server.timeout = 600)
 
 # Enable copy of code blocks to clipboard
 library(xaringanExtra)
@@ -12,3 +14,4 @@ library(knitr)
 knitr::opts_chunk$set(
   # Improve quality of figures
   fig.retina = 4 )
+

@@ -19,7 +19,7 @@
   weight = 30
 
 [[main]]
-  name = '<span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; CV &nbsp;|&nbsp; Email &nbsp;|&nbsp; Education &nbsp;|&nbsp; Teaching &nbsp;|&nbsp; Skills &nbsp;|&nbsp; Other funding &nbsp;|&nbsp; Other work &nbsp;|&nbsp; Videos &nbsp; ">CV, skills, funding, videos, etc.</span>'
+  name = '<span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; CV &nbsp;|&nbsp; Email &nbsp;|&nbsp; Education &nbsp;|&nbsp; Teaching &nbsp;|&nbsp; Skills &nbsp;|&nbsp; Other funding &nbsp;|&nbsp; Other work &nbsp;|&nbsp; Videos &nbsp; ">Experience <sup style="color:grey;">CV, skills, videos, funding, etc.</sup></span>'
   url = '#bio'
   weight = 40
   

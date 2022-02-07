@@ -43,6 +43,6 @@ url_poster: 'https://www.researchgate.net/publication/271588734_Linguistic_relat
 
 <div style = "text-indent:-2em; margin-left:2em;">
 
-Bernabeu, P., & Tillman, R. (2019). More refined typology and design in linguistic relativity: The case of motion event encoding. *Dutch Journal of Applied Linguistics*. http://doi.org/10.1075/dujal.15019.ber/
+Bernabeu, P., & Tillman, R. (2019). More refined typology and design in linguistic relativity: The case of motion event encoding. *Dutch Journal of Applied Linguistics, 8*(2), 163-171. http://doi.org/10.1075/dujal.15019.ber/
 
 </div>
