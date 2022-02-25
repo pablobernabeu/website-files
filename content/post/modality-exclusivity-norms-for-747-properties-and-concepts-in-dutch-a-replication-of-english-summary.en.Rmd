@@ -6,6 +6,7 @@ slug: modality-exclusivity-norms-for-747-properties-and-concepts-in-dutch-a-repl
 categories:
   - linguistic materials
 tags:
+  - s
   - research methods
   - stimuli
   - linguistic norms

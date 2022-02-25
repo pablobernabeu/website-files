@@ -7,6 +7,7 @@ categories:
   - programming
   - R
 tags:
+  - s
   - R
   - R Markdown
   - CarpentryCon

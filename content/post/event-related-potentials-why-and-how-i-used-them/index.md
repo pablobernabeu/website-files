@@ -6,6 +6,7 @@ slug: event-related-potentials-why-and-how-i-used-them
 categories:
   - event-related potentials
 tags:
+  - s
   - event-related potentials
   - electroencephalography
   - electrodes

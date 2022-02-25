@@ -1,9 +1,6 @@
 
-
-source("renv/activate.R")
-
-
-options(blogdown.hugo.version = '0.61.0', blogdown.server.timeout = 600)
+options(blogdown.hugo.version = '0.61.0', 
+        blogdown.server.timeout = 600)
 
 # Enable copy of code blocks to clipboard
 library(xaringanExtra)

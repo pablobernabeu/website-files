@@ -6,6 +6,7 @@ slug: collaboration-while-using-R-markdown
 categories:
   - research methods
 tags:
+  - s
   - R
   - R Markdown
 subtitle: 'Advice based on a presentation by Michael Frank'

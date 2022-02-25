@@ -30,7 +30,7 @@ tags:
 - nonverbal
 # url_code: '#'
 # url_dataset: '#'
-url_pdf: 'https://www.jbe-platform.com/deliver/fulltext/10.1075/dujal.15019.ber/dujal.15019.ber.pdf?itemId=%2Fcontent%2Fjournals%2F10.1075%2Fdujal.15019.ber&mimeType=pdf&containerItemId=content/jbep'
+url_pdf: 'https://doi.org/10.1075/dujal.15019.ber'
 url_poster: 'https://www.researchgate.net/publication/271588734_Linguistic_relativity_in_motion_Poster'
 # url_project: ""
 # url_slides: ""
@@ -43,6 +43,6 @@ url_poster: 'https://www.researchgate.net/publication/271588734_Linguistic_relat
 
 <div style = "text-indent:-2em; margin-left:2em;">
 
-Bernabeu, P., & Tillman, R. (2019). More refined typology and design in linguistic relativity: The case of motion event encoding. *Dutch Journal of Applied Linguistics, 8*(2), 163-171. http://doi.org/10.1075/dujal.15019.ber/
+Bernabeu, P., & Tillman, R. (2019). More refined typology and design in linguistic relativity: The case of motion event encoding. *Dutch Journal of Applied Linguistics, 8*(2), 163-171. http://doi.org/10.1075/dujal.15019.ber
 
 </div>

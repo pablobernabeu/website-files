@@ -6,6 +6,7 @@ slug: formal-punctuation
 categories:
   - writing
 tags:
+  - s
   - writing
   - punctuation
 subtitle: ''
@@ -53,7 +54,7 @@ Possible alternative: see above.
 
 The Oxford, or serial, comma (namely, the comma preceding the word 'and' before the last item in a series) has the purpose of facilitating the reading and disambiguating. Where that purpose is not necessary, neither is the comma.
 
-![Fiver without Oxford comma](/post/formal-punctuation/formal-punctuation_files/fiver-without-Oxford-comma.jpg "Fiver without Oxford comma")
+![Fiver without Oxford comma](/post/formal-punctuation/fiver-without-Oxford-comma.jpg "Fiver without Oxford comma")
 
 Find out more:
 

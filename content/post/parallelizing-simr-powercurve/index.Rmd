@@ -7,6 +7,7 @@ categories:
   - R
   - research methods
 tags:
+  - s
   - power analysis
 subtitle: ''
 summary: ''
