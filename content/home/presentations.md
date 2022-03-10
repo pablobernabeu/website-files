@@ -53,6 +53,7 @@ subtitle = ""
 
 | Date     | Type                   | Title                  | Event and location     |
 | -------- | ---------------------- | ---------------------- | ---------------------- |
+| Feb 2022 | Talk | Linguistic and embodied systems in conceptual processing: Variation across individuals, words and tasks | Language and Cognition Seminars, Dept. Psychology, Lancaster University |
 | May 2021 | Talk | [Linguistic and embodied systems in conceptual processing: Variation across individuals and items](/talk/linguistic-and-embodied-systems-in-conceptual-processing-variation-across-individuals-and-items/) | Lancaster University Postgraduate Psychology Conference 2021 |
 | May 2021 | Talk | [Towards reproducibility and maximally-open data](/talk/towards-reproducibility-and-maximally-open-data/) | Open Science Week 2021, Open Scholarship Community Galway |
 | Nov 2020 | Talk | [Mixed-effects models in R, and a new tool for data simulation](/talk/2020-11-26-mixed-effects-models-in-r-and-a-new-tool-for-data-simulation/) | New Tricks Seminars, Dept. Psychology, Lancaster University |
@@ -66,3 +67,5 @@ subtitle = ""
 | May 2016 | Poster | Norming study of modality exclusivity in Dutch, and an ongoing EEG study of linguistic and embodied conceptual processing | Psycholinguistics in Flanders, University of Antwerp. Tilburg University travel scholarship |
 | June 2015 | Talk | [New reviews and insights on language evolution](https://www.researchgate.net/publication/278686035_New_reviews_and_insights_on_language_evolution_Slides) | Tenth Language at the University of Essex (LangUE) Conference, University of Essex |
 | Feb, May 2015 | Talk | Shallow and deep conceptual representation: An ERP design | Theme Meetings, Radboud U.; Neurobiology of Language Lab meeting, MPI Psycholinguistics |
+| Jan, Mar 2015 | Poster | [Linguistic relativity of motion events: Walking down the cline](http://dx.doi.org/10.13140/RG.2.1.3532.9122/2) | Netherlands Graduate School of Linguistics (U. Amsterdam), Juniorendag (Radboud U.) |
+
