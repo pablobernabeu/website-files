@@ -53,7 +53,7 @@ subtitle = ""
 
 | Date     | Type                   | Title                  | Event and location     |
 | -------- | ---------------------- | ---------------------- | ---------------------- |
-| Feb 2022 | Talk | [Linguistic and embodied systems in conceptual processing: Variation across individuals, words and tasks](https://doi.org/10.17605/OSF.IO/UERYQ) | Language and Cognition Seminars, Dept. Psychology, Lancaster University |
+| Feb 2022 | Talk | [Language and vision in conceptual processing: Multilevel analysis and statistical power](https://doi.org/10.17605/OSF.IO/UERYQ) | Language and Cognition Seminars, Dept. Psychology, Lancaster University |
 | May 2021 | Talk | [Linguistic and embodied systems in conceptual processing: Variation across individuals and items](/talk/linguistic-and-embodied-systems-in-conceptual-processing-variation-across-individuals-and-items/) | Lancaster University Postgraduate Psychology Conference 2021 |
 | May 2021 | Talk | [Towards reproducibility and maximally-open data](/talk/towards-reproducibility-and-maximally-open-data/) | Open Science Week 2021, Open Scholarship Community Galway |
 | Nov 2020 | Talk | [Mixed-effects models in R, and a new tool for data simulation](/talk/2020-11-26-mixed-effects-models-in-r-and-a-new-tool-for-data-simulation/) | New Tricks Seminars, Dept. Psychology, Lancaster University |

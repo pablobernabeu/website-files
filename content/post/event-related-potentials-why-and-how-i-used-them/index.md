@@ -91,7 +91,7 @@ ERP data sets are large, being the product of the number of electrodes times the
 
 The EEG montage is an important factor. The options are broadly characterised by three parameters of the electrodes (also called channels):
 
-<p style="margin-left: 30px; line-height: 1.2; padding-bottom: 12px; padding-left: 15px; float: right; display: block;"><img src="EEG MPI open day photo.jpg" alt="Pablo Bernabeu, 2015" width="200px" style='padding-bottom: 15px; margin-bottom: 0px;' /><span style="font-size: small; padding-left: 5px; padding-top: 0px; margin-top: 0px;">Brainwaves exposed for an open day.</span></p>
+<p style="margin-left: 30px; line-height: 1.2; padding-bottom: 12px; padding-left: 15px; float: right; display: block;"><img src="EEG MPI open day photo.jpg" alt="Pablo Bernabeu, 2015" width="200px" style='padding-bottom: 15px; margin-bottom: 0px;' /><span style="font-size: small; padding-left: 5px; padding-top: 0px; margin-top: 0px;">Brainwaves exposed at an open day.</span></p>
 
 - **Number:** Traditionally, montages with 32, 64 or 128 electrodes have been used. The larger the number, the higher the spatial resolution.
 
