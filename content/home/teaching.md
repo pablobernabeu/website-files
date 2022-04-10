@@ -51,17 +51,17 @@ subtitle = ""
 +++
 
 
-As a graduate teaching assistant, I devote 180 hours a year to leading 30 seminars and marking 80 essays in developmental, cognitive and social psychology, as well as helping in 30 statistics labs. I was also a representative for graduate teaching assistants in the department for a year.
+My PhD scholarship is teaching-based, which means that I contribute to my department’s curriculum for 180 hours a year. Each year, I have led 30 seminars and marked 80 essays in developmental, cognitive and social psychology, while also helping in 30 statistics labs. This activity is detailed below.
 
 |             | **Course and remit** |
 | :---------: | -------------------- |
 | **2021–22** | Introduction to developmental psychology (115) — Seminars and essay marking  |
-|             | Introduction to neuroscience (112)— Seminars  |
+|             | Introduction to neuroscience (112) — Seminars  |
 |             | Introduction to cognitive psychology (111) — Seminars and essay marking  |
 |             | Social psychology in the digital age (113) — Seminars  |
 |             | Statistics for psychologists I (121) using R — Labs  |
 | **2020–21** | Introduction to developmental psychology (115) — Seminars and essay marking  |
-|             | Introduction to neuroscience (112)— Seminars  |
+|             | Introduction to neuroscience (112) — Seminars  |
 |             | Introduction to cognitive psychology (111) — Seminars and essay marking  |
 |             | Social psychology in the digital age (113) — Seminars  |
 |             | Statistics for psychologists I and II (121 and 122) using R — Labs  |
@@ -71,4 +71,6 @@ As a graduate teaching assistant, I devote 180 hours a year to leading 30 semina
 | **2018–19** | Understanding psychology (101) — Seminars and essay marking |
 |             | Investigating psychology: Analysis (102) using SPSS — Labs |
 
-Besides this experience, I have a [Carpentries Instructor certificate](https://carpentries.org/become-instructor/), I have run several [workshops and presentations](https://pablobernabeu.github.io/#workshops), and earlier I [taught English to secondary-education students in Spain](/#other-work), and [Spanish to adults in Lithuania](/#BA-degree).
+In addition, I was a representative for graduate teaching assistants in my department for a year.
+
+I am also a [Certified Carpentries Instructor](https://carpentries.org/become-instructor/) and I have run several [workshops on data analysis using R](https://pablobernabeu.github.io/#workshops). Earlier in my career, I [taught English to secondary-education students in Spain](/#other-work), and [Spanish to adults in Lithuania](/#BA-degree).
