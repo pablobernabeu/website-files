@@ -52,7 +52,7 @@ subtitle = ""
 
 |     |     |
 | --- | --- |
-| <div style='white-space:nowrap;'>May – July 2018</div> | Service analyst. [Onfido](https://onfido.com/), London, UK. <br> <span style='color:#5A826F;'>I contributed to the verification of semi-automated identity checks. Besides examining samples of checks, I created a self-updating data dashboard in Excel that summarised the results through tables and plots.</span> |
+| <div style='white-space:nowrap;'>May – July 2018</div> | Service analyst. [Onfido](https://onfido.com/), London, UK. <br> <span style='color:#5A826F;'>I contributed to the verification of semi-automated identity checks. In addition to random sampling, I used Power BI to extract sections from a large data set, and created a self-updating data dashboard in Excel containing tables and plots that summarised the data.</span> |
 | <div style='white-space:nowrap;'>Dec 2015 – Feb 2016</div> | Part-time Data Science market research and student recruitment. [Tilburg U.](https://www.tilburguniversity.edu/). <br> <span style='color:#5A826F;'>I contributed to the elaboration of a leaflet, and informed prospective students at open days.</span> |
 | <div style='white-space:nowrap;'>2015 – 2016</div> | Student representative at master’s fairs in Spain. [Radboud U.](https://www.ru.nl/english/), [Tilburg U.](https://www.tilburguniversity.edu/) <br> <span style='color:#5A826F;'>I worked at three fairs with Radboud University, and at one with Tilburg University.</span> |
 | <div style='white-space:nowrap;'>2013 – 2016</div> | Presenter of my master's programme at open days. [Tilburg U.](https://www.tilburguniversity.edu/) |

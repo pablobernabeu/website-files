@@ -8,7 +8,7 @@ active = true  # Activate this widget? true/false
 weight = 60  # Order that this section will appear.
 
 title = "Web applications and dashboards &nbsp;<span data-toggle='tooltip1' data-placement='bottom' title=' &nbsp; Article: The case for data dashboards &nbsp; '><a href='/2017/the-case-for-data-dashboards-first-steps-in-r-shiny/'><i class='fas fa-info-circle fa-2xs' style='color:#D4D7E0'></i></a></span>"
-subtitle = ''
+subtitle = 'Articles republished on [R-bloggers](https://www.r-bloggers.com)'
 
 [content]
   # Page type to display. E.g. post, talk, publication, or data dashboard.

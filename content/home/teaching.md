@@ -73,4 +73,4 @@ My PhD scholarship is teaching-based, which means that I contribute to my depart
 
 In addition, I was a representative for graduate teaching assistants in my department for a year.
 
-I am also a [Certified Carpentries Instructor](https://carpentries.org/become-instructor/) and I have run several [workshops on data analysis using R](https://pablobernabeu.github.io/#workshops). Earlier in my career, I [taught English to secondary-education students in Spain](/#other-work), and [Spanish to adults in Lithuania](/#BA-degree).
+I am also a [Certified Carpentries Instructor](https://carpentries.org/become-instructor/) and I have led several [workshops on data analysis using R](https://pablobernabeu.github.io/#workshops). Earlier in my career, I [taught English to secondary-education students in Spain](/#other-work), and [Spanish to adults in Lithuania](/#BA-degree).

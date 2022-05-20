@@ -10,9 +10,9 @@ categories:
 doi: "10.31234/osf.io/t2pjv"
 featured: false
 image:
-  caption: 'Psychological Science Accelerator: https://psysciacc.org/2018/01/24/new-study-accepted-the-object-orientation-effect/'
+  caption: 'Public domain image from Openclipart, retrieved from https://openclipart.org/detail/5544/coloring-book-bald-eagle'
   focal_point: ""
-  preview_only: false
+  preview_only: true
 # projects:
 # - internal-project
 publishDate: "2020-01-01"
