@@ -35,7 +35,7 @@ tags:
 title: "Investigating object orientation effects across 14 languages"
 url_code: 'https://osf.io/e428p/'
 url_dataset: 'https://osf.io/e428p/'
-url_pdf: 'https://psyarxiv.com/5gjvk/download'
+url_pdf: 'https://doi.org/10.31234/osf.io/t2pjv'
 # url_poster: '#'
 # url_project: ""
 # url_slides: ""
