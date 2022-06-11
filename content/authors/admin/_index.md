@@ -22,10 +22,10 @@ interests:
 profilesections:
 - '<i style="font-weight:bold; color:#5B6574" class="fas fa-arrow-right fa-xs"> &nbsp; </i><a href="/#bio" style="color:#5B6574">Experience</a>'
 - '<a href="/#teaching" style="color:#6F7B8E">Teaching</a>'
-- '<a href="/#skills" style="color:#6F7B8E">Skills</a>'
-- '<a href="/#videos" style="color:#6F7B8E">Videos</a>'
 - '<a href="/#other-funding" style="color:#6F7B8E">Other funding</a>'
 - '<a href="/#other-work" style="color:#6F7B8E">Other work</a>'
+- '<a href="/#skills" style="color:#6F7B8E">Skills</a>'
+- '<a href="/#videos" style="color:#6F7B8E">Videos</a>'
 superuser: true
 user_groups:
 - Researchers

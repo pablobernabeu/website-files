@@ -25,7 +25,7 @@ tags:
   - statistics
   - stimuli
 subtitle: ''
-abstract: 'Part of the toolkit of language researchers is formed of stimuli that have been rated on various dimensions. The current study presents modality exclusivity norms for 336 properties and 411 concepts in Dutch. Forty-two respondents rated the auditory, haptic, and visual strength of these words. Mean scores were then computed, yielding acceptable reliability values. Measures of modality exclusivity and perceptual strength were also computed. Furthermore, the data includes psycholinguistic variables from other corpora, covering length (e.g., number of phonemes), frequency (e.g., contextual diversity), and distinctiveness (e.g., number of orthographic neighbours), along with concreteness and age of acquisition. To test these norms, Lynott and Connell???s (2009, 2013) analyses were replicated. First, unimodal, bimodal, and tri-modal words were found. Vision was the most prevalent modality. Vision and touch were relatively related, leaving a more independent auditory modality. Properties were more strongly perceptual than concepts. Last, sound symbolism was investigated using regression, which revealed that auditory strength predicted lexical properties of the words better than the other modalities did, or else with a different direction. All the data and analysis code, including a web application, are available from https://osf.io/brkjw/.'
+abstract: "Part of the toolkit of language researchers is formed of stimuli that have been rated on various dimensions. The current study presents modality exclusivity norms for 336 properties and 411 concepts in Dutch. Forty-two respondents rated the auditory, haptic, and visual strength of these words. Mean scores were then computed, yielding acceptable reliability values. Measures of modality exclusivity and perceptual strength were also computed. Furthermore, the data includes psycholinguistic variables from other corpora, covering length (e.g., number of phonemes), frequency (e.g., contextual diversity), and distinctiveness (e.g., number of orthographic neighbours), along with concreteness and age of acquisition. To test these norms, Lynott and Connell's (2009, 2013) analyses were replicated. First, unimodal, bimodal, and tri-modal words were found. Vision was the most prevalent modality. Vision and touch were relatively related, leaving a more independent auditory modality. Properties were more strongly perceptual than concepts. Last, sound symbolism was investigated using regression, which revealed that auditory strength predicted lexical properties of the words better than the other modalities did, or else with a different direction. All the data and analysis code, including a web application, are available from https://osf.io/brkjw."
 featured: no
 image:
   caption: ''
@@ -37,11 +37,11 @@ links:
   url: 'https://pablobernabeu.shinyapps.io/Dutch-modality-exclusivity-norms'
 url_code: 'https://osf.io/brkjw/'
 url_dataset: 'https://osf.io/brkjw/'
-url_pdf: 'https://psyarxiv.com/s2c5h'
+url_pdf: 'https://doi.org/10.31234/osf.io/s2c5h'
 # url_project: ""
 # url_slides: ""
-# url_source: '#'
-# url_video: '#'
+# url_source: ''
+# url_video: ''
 ---
 
 
@@ -49,7 +49,7 @@ url_pdf: 'https://psyarxiv.com/s2c5h'
 
 <div style = "text-indent:-2em; margin-left:2em;">
 
-Bernabeu, P. (2018). *Dutch modality exclusivity norms for 336 properties and 411 concepts* [Unpublished manuscript]. School of Humanities, Tilburg University, the Netherlands. https://psyarxiv.com/s2c5h.
+Bernabeu, P. (2018). *Dutch modality exclusivity norms for 336 properties and 411 concepts*. PsyArXiV. https://doi.org/10.31234/osf.io/s2c5h
 
 </div>
 

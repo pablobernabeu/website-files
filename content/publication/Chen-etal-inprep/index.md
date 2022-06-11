@@ -23,7 +23,7 @@ publication_types:
 # slides: example
 summary:
 tags:
-- conceptual modality switch
+- object orientation effect
 - conceptual processing
 - reading
 - event-related potentials
