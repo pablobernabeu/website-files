@@ -49,7 +49,7 @@ url_pdf: 'https://doi.org/10.31234/osf.io/s2c5h'
 
 <div style = "text-indent:-2em; margin-left:2em;">
 
-Bernabeu, P. (2018). *Dutch modality exclusivity norms for 336 properties and 411 concepts*. PsyArXiV. https://doi.org/10.31234/osf.io/s2c5h
+Bernabeu, P. (2018). *Dutch modality exclusivity norms for 336 properties and 411 concepts*. PsyArXiv. https://doi.org/10.31234/osf.io/s2c5h
 
 </div>
 

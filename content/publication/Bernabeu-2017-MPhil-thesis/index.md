@@ -62,7 +62,7 @@ slides: ''
 
 <div style = "text-indent:-2em; margin-left:2em;">
 
-Bernabeu, P. (2017). *Modality switches occur early and extend late in conceptual processing: Evidence from ERPs*. PsyArXiV. https://doi.org/10.31234/osf.io/5gjvk
+Bernabeu, P. (2017). *Modality switches occur early and extend late in conceptual processing: Evidence from ERPs*. PsyArXiv. https://doi.org/10.31234/osf.io/5gjvk
 
 </div>
 
