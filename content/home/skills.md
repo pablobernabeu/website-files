@@ -52,10 +52,10 @@ subtitle = ""
 
 |     |     |
 | --- | --- |
-| **Cognitive science** | Electroencephalography, event-related potentials, Brain Vision (e.g., [<i class="fas fa-link"></i>](https://osf.io/97unm/)), transcranial brain stimulation, eye tracking, internet-based experiments, jsPsych, basic E-Prime and Presentation |
+| **Cognitive science** | Electroencephalography, event-related potentials, Brain Vision (e.g., [<i class="fas fa-link"></i>](https://osf.io/97unm/)), transcranial brain stimulation, eye tracking, online experiments, jsPsych, E-Prime and Presentation |
 | **Statistics** | Frequentist and Bayesian statistics. Linear mixed-effects models (e.g., [<i class="fas fa-link"></i>](https://osf.io/ueryq)) and rest of General Linear Model (e.g., [<i class="fas fa-link"></i>](https://osf.io/97unm/)) |
 | **Programming in R** | Statistics, R Markdown, web applications, Binder environments (e.g., [<i class="fas fa-link"></i>](https://osf.io/brkjw/)), analysis of Big Data, natural language processing (e.g., [<i class="fas fa-link"></i>](/2016/the-louisiana-minnesota-texas-crisis-across-media-and-time-a-big-data-exercise/)), Tidyverse (e.g., [<i class="fas fa-link"></i>](https://github.com/pablobernabeu/Experiment-simulation-app)) |
-| **Data, web, typesetting** | Git, Bash, High-Performance Computing, HTML, CSS, LaTeX, Zotero (e.g., [<i class="fas fa-link"></i>](https://osf.io/ueryq)) |
+| **Data, web, typesetting** | Git, Bash, High-Performance Computing, HTML, CSS, Javascript, LaTeX, Zotero (e.g., [<i class="fas fa-link"></i>](https://github.com/pablobernabeu)) |
 | **Business and administration** | Quantitative and qualitative service analysis. Power BI, Zendesk, Jira, Confluence, Asana |
 | **Languages**  | English: C1. [IELTS 2018](https://www.dropbox.com/s/c33q0w4qv8z1mp6/IELTS%202018%20official%20report.pdf?dl=0) (out of 9): Writing, 7.5; Reading, 7.5; Speaking, 7.5; Listening, 8.5. Spanish: native. Catalan: B1. French: B1. Dutch: A2. Italian: A2 |
 
