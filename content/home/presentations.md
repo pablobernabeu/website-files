@@ -54,7 +54,7 @@ subtitle = ""
 | Date     | Type                   | Title                  | Event and location     |
 | -------- | ---------------------- | ---------------------- | ---------------------- |
 | Oct 2022 | Talk | [Language and sensorimotor simulation in conceptual processing: Multilevel analysis and statistical power](https://osf.io/4uwzc) | AcqVA Aurora Center, University of Tromsø, Norway |
-| Sept 2022 | Talk | [The interplay between linguistic and embodied systems in conceptual processing](https://osf.io/tn568) | Presented by Dr. Dermot Lynott at the 22^nd Meeting of the European Society for Cognitive Psychology (ESCOP), in Lille, France |
+| Sept 2022 | Talk | [The interplay between linguistic and embodied systems in conceptual processing](https://osf.io/tn568) | Presented by Dr. Dermot Lynott at the 22<sup>nd</sup> Meeting of the European Society for Cognitive Psychology (ESCOP), in Lille, France |
 | Feb 2022 | Talk | [Language and vision in conceptual processing: Multilevel analysis and statistical power](https://doi.org/10.17605/OSF.IO/UERYQ) | Language and Cognition Seminars, Dept. Psychology, Lancaster University |
 | May 2021 | Talk | [Linguistic and embodied systems in conceptual processing: Variation across individuals and items](/talk/linguistic-and-embodied-systems-in-conceptual-processing-variation-across-individuals-and-items/) | Lancaster University Postgraduate Psychology Conference 2021 |
 | May 2021 | Talk | [Towards reproducibility and maximally-open data](/talk/towards-reproducibility-and-maximally-open-data/) | Open Science Week 2021, Open Scholarship Community Galway |
