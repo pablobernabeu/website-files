@@ -53,7 +53,7 @@ subtitle = ""
 |     |     |
 | --- | --- |
 | **Cognitive science** | Electroencephalography, event-related potentials, Brain Vision (e.g., [<i class="fas fa-link"></i>](https://osf.io/97unm/)), transcranial brain stimulation, eye tracking, online experiments, jsPsych, E-Prime and Presentation |
-| **Statistics** | Frequentist and Bayesian statistics. Linear mixed-effects models and rest of the General Linear Model, e.g., principal component analysis ([<i class="fas fa-link"></i>](https://osf.io/25u3x)) |
+| **Statistics** | Frequentist and Bayesian statistics. Linear mixed-effects models (e.g., [<i class="fas fa-link"></i>](https://osf.io/gt5uf)), principal component analysis ([<i class="fas fa-link"></i>](https://osf.io/25u3x)), etc. |
 | **Programming in R** | Statistics, R Markdown, web applications, Binder environments (e.g., [<i class="fas fa-link"></i>](https://osf.io/brkjw/)), analysis of Big Data, natural language processing (e.g., [<i class="fas fa-link"></i>](/2016/the-louisiana-minnesota-texas-crisis-across-media-and-time-a-big-data-exercise/)), Tidyverse (e.g., [<i class="fas fa-link"></i>](https://github.com/pablobernabeu/Experiment-simulation-app)) |
 | **Data, web, typesetting** | Git, Bash, High-Performance Computing, HTML, CSS, Javascript, LaTeX, Zotero (e.g., [<i class="fas fa-link"></i>](https://github.com/pablobernabeu)) |
 | **Business and administration** | Quantitative and qualitative service analysis. Power BI, Zendesk, Jira, Confluence, Asana |

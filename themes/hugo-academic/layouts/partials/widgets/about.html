@@ -90,6 +90,28 @@
 
     <div class="row">
 
+      {{ with $person.work_since_PhD }}
+      <div>
+        <h3 style="padding-left:13px;">{{ i18n "work_since_PhD" | markdownify }}</h3>
+        <ul class="ul-edu fa-ul">
+          {{ range .jobs }}
+          <li>
+            <i class="fa-li fas fa-regular fa-briefcase fa-sm" style="padding-left:17px;"></i>
+            <div class="description" style="padding-left:14px;">
+              <p class="course" style="color:#515151">{{ .job | markdownify }}{{ with .year | markdownify }}, {{ . }}{{ end }}</p>
+              <p class="institution" style="color:#5B5B5B">{{ .institution | markdownify }}</p>
+              <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-left:1em;">{{ .extra | markdownify }}</p>
+              <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-left:1em;">{{ .extra2 | markdownify }}</p>
+              <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-left:1em;">{{ .extra3 | markdownify }}</p>
+              <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-left:1em;">{{ .extra4 | markdownify }}</p>
+              <p class="institution" style="max-width: 550px; padding-left:18px; text-indent:-0.8em; margin-left:1em;">{{ .extra_nohyphen | markdownify }}</p>
+            </div>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+      {{ end }}
+
       {{ with $person.education }}
       <div>
         

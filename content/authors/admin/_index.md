@@ -31,11 +31,21 @@ user_groups:
 - Researchers
 - Visitors
 bio: After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology at Lancaster University. I'm investigating how conceptual processing is supported by linguistic and sensorimotor brain systems. I use methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming.
+work_since_PhD:
+  jobs:
+  - job: "[Postdoctoral fellowship](https://en.uit.no/ansatte/person?p_document_id=789811)"
+    institution: 'UiT -- The Arctic University of Norway'
+    year: 'Nov 2022 -- *Nov 2024*'
+    extra: 'In my research within the [LESS Project (Language Economy through Transfer Source Selectivity)](https://uit.no/research/acqva/project?pid=743114), headed by Dr. Jorge González Alonso, I will investigate how language learners coordinate several languages early in the acquisition process, how this process is influenced by the characteristics of the languages, and how the process is reflected in the brain.'
+  - job: "Part-time data analysis contribution"
+    institution: 'UiT -- The Arctic University of Norway'
+    year: 'Nov 2022 -- *Dec 2022*'
+    extra: "I am working part-time on data analysis within Dr. Khadij Gharibi's [MSCA project](https://uit.no/research/acqva/project?pid=723990), which investigates multilingualism in heritage speakers."
 education:
   courses:
-  - course: '[PhD Psychology with graduate teaching scholarship](https://www.lancaster.ac.uk/study/postgraduate/postgraduate-courses/psychology-phd/)'
+  - course: '[PhD Psychology with graduate teaching scholarship](https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109).html)'
     institution: Lancaster University (United Kingdom)
-    year: 2022 (expected)
+    year: 2022
     extra: "-&nbsp; Service: peer-review for Cognitive Science journal, Psychological Science Accelerator; internship facilitation; development of website for open science group in my department ('Prospr')."
     extra2: '\-&nbsp; [Activities](https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109)/activities.html)'
   - course: '[Research Master Language and Communication](https://www.tilburguniversity.edu/education/masters-programmes/research-master-linguistics-and-communication-sciences)'
@@ -60,7 +70,7 @@ education:
     year: 2017
   - course: '[Neurobiology of language](https://lotschool.nl/wp-content/uploads/2019/06/LOT-Schools-1997-2019-2.pdf)'
     institution: Netherlands Graduate School of Linguistics
-    extra: \-&nbsp; Course focussed on multilingualism, including the interesting and hotly-debated topic of the cognitive benefits.
+    extra: \-&nbsp; Course focussed on multilingualism, including the interesting and hotly-debated topic of cognitive benefits.
     year: 2017
   - course: '[Big data in society](https://www.vu.nl/en/programmes/short/summer-school/courses/big-data-in-society/index.aspx)'
     institution: Vrije Universiteit Amsterdam
@@ -99,10 +109,7 @@ education:
     extra: \-&nbsp; I followed the first two months of this course as a listener to learn the principles of electroencephalography, event-related potentials, magnetoencephalography and functional magnetic resonance imaging.
 ---
 
-After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology at Lancaster University. I'm investigating how conceptual processing (i.e., understanding the meaning of words) is supported by linguistic and sensorimotor brain systems. I use methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. My [CV is available](https://osf.io/84ktq).
 
-###### The linguistic and sensorimotor bases of semantic processing: Variation across individuals, words and tasks
+After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology at Lancaster University, where I investigated how conceptual processing (i.e., understanding the meaning of words) is supported by linguistic and sensorimotor brain systems, and how research on this topic is influenced by methodological aspects such as the sample size. Currently, I am a postdoctoral fellow and I am investigating the behavioural and neural underpinnings of multilingualism. Throughout my research, I have used methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. My CV is available at [https://osf.io/84ktq](https://osf.io/84ktq).
 
-Conceptual processing has been found to draw on two cognitive systems. One is a linguistic system, which is based on knowledge of words and the relations among them. The other is a sensorimotor system, which draws on our perceptual, motor and affective experience. These two systems contribute to conceptual processing in a sequential manner: the linguistic system is activated first, providing more superficial semantic information, with the sensorimotor system slower to reach peak activation, but providing more refined meaning. We know that the relative importance of each system is modulated by contextual factors (e.g., linguistic context, processing goals, cognitive resources). However, we know much less about how people’s individual cognitive capacities and experience (reading experience, reasoning ability) interact with these systems, which has become a central theme in my work.
 
-Much evidence has been found in cognitive psychology for the role of linguistic systems (based on statistical regularities in how words co-occur in language) and sensorimotor systems (based on perceptual, motor, affective experience). The linguistic system is consistently linked to faster, more superficial processing, while the sensorimotor system is linked to slower, more cognitively demanding tasks (Connell & Lynott, 2013; Louwerse et al., 2015). Recent evidence suggests that individual differences, such as measures of reading experience (e.g., Pexman & Yap, 2018) and of sensorimotor experience (Beilock, et al., 2008; Vukovic & Williams, 2015), provide additional explanatory power for accounts of embodied cognition. For example, linguistic individual differences in vocabulary predict word recognition and information processing speed (Yap et al., 2012). Likewise, sensorimotor individual differences in spatial perspective-taking are also implicated in semantic processing, as participants who tend to naturally adopt an internal perspective in space are more likely to engage in perceptual simulation when reading, by identifying themselves as the protagonist (Vukovic & Williams, 2015).
