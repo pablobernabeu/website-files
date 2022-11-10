@@ -2,10 +2,10 @@
 authors:
 - admin
 name: Pablo Bernabeu
-email: 'p.bernabeu@lancaster.ac.uk<br>pcbernabeu@gmail.com'
-role: Psychology PhD student<br>and teaching assistant<br>at Lancaster University
+email: 'pablo.d.bernabeu@uit.no<br>pcbernabeu@gmail.com'
+role: Postdoctoral fellow at UiT -- <br>The Arctic University of Norway
 profileicons:
-- '<span data-toggle="tooltip1" data-placement="bottom" title=" University page "><a href="https://osf.io/84ktq"><a href="https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109).html"><i style="color:#8AA3CD;" class="fas fa-university fa-lg"></i></a></span>'
+- '<span data-toggle="tooltip1" data-placement="bottom" title=" University page "><a href="https://en.uit.no/ansatte/person?p_document_id=789811"><i style="color:#8AA3CD;" class="fas fa-university fa-lg"></i></a></span>'
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" Curriculum vitae "><a href="https://osf.io/84ktq"><i style="color:#8AA3CD;" class="ai ai-cv ai-lg"></i></a></span>'
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" Google Scholar "><a href="https://scholar.google.com/citations?user=DxD0QDoAAAAJ&hl=en"><i style="color:#8AA3CD;" class="ai ai-google-scholar ai-lg"></i></a></span>'
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" OSF repositories "><a href="https://osf.io/25u3x/"><i style="color:#8AA3CD;" class="ai ai-osf ai-lg"></i></a></span>'
@@ -15,6 +15,7 @@ profileicons:
 interests:
 - Cognitive psychology and neuroscience
 - Psycholinguistics
+- Multilingualism
 - Semantic / conceptual processing
 - Statistics
 - Open science
@@ -34,11 +35,11 @@ bio: After doing a research master's, I became a PhD student and graduate teachi
 work_since_PhD:
   jobs:
   - job: '[Postdoctoral fellowship](https://en.uit.no/ansatte/person?p_document_id=789811)'
-    institution: 'UiT -- The Arctic University of Norway'
+    institution: 'UiT The Arctic University of Norway'
     year: 'Nov 2022 -- *Nov 2024*'
     extra: 'In my research within the [LESS Project (Language Economy through Transfer Source Selectivity)](https://uit.no/research/acqva/project?pid=743114), headed by Dr. Jorge González Alonso, I will investigate how language learners coordinate several languages early in the acquisition process, how this process is influenced by the characteristics of the languages, and how the process is reflected in the brain.'
   - job: 'Part-time data analysis contribution'
-    institution: 'UiT -- The Arctic University of Norway'
+    institution: 'UiT The Arctic University of Norway'
     year: 'Nov -- *Dec 2022*'
     extra: "I am working part-time on data analysis within Dr. Khadij Gharibi's [MSCA project](https://uit.no/research/acqva/project?pid=723990), which investigates multilingualism in heritage speakers."
 education:
@@ -52,7 +53,7 @@ education:
     institution: Tilburg University and Radboud University (Netherlands)
     year: 2017
     extra: '\-&nbsp; Student member, Master’s curriculum and accreditation committee'
-    extra2: '\-&nbsp; Tilburg U. Scholarship for Academic Excellence, 2014/2015'
+    extra2: '\-&nbsp; Tilburg University Scholarship for Academic Excellence, 2014/2015'
     extra4: '\-&nbsp; Grade: 7.54 out of 10 (Distinction)'
   - course: '<a href="http://www.uam.es/ss/Satellite/FilosofiayLetras/es/1242658506907/contenidoFinal/Grado_en_Estudios_Ingleses.htm" id="BA-degree">BA English Philology<a>'
     institution: Autonomous University of Madrid (Spain)
@@ -110,6 +111,6 @@ education:
 ---
 
 
-After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology at Lancaster University, where I investigated how conceptual processing---that is, the comprehension of the meaning of words---is supported by linguistic and sensorimotor brain systems, and how research on this topic is influenced by methodological aspects such as the operationalisation of variables and the sample size of experiments. Currently, I am a postdoctoral fellow at UiT -- The Arctic University of Norway, where I am investigating the behavioural and neural underpinnings of multilingualism. Throughout my research, I have used methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. My CV is available at [https://osf.io/84ktq](https://osf.io/84ktq).
+After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology at Lancaster University, where I investigated how conceptual processing---that is, the comprehension of the meaning of words---is supported by linguistic and sensorimotor brain systems, and how research on this topic is influenced by methodological aspects such as the operationalisation of variables and the sample size of experiments. Currently, I am a postdoctoral fellow at UiT The Arctic University of Norway, where I am investigating the behavioural and neural underpinnings of multilingualism. Throughout my research, I have used methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. My CV is available at [https://osf.io/84ktq](https://osf.io/84ktq).
 
 
