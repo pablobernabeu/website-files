@@ -33,13 +33,13 @@ user_groups:
 bio: After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology at Lancaster University. I'm investigating how conceptual processing is supported by linguistic and sensorimotor brain systems. I use methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming.
 work_since_PhD:
   jobs:
-  - job: "[Postdoctoral fellowship](https://en.uit.no/ansatte/person?p_document_id=789811)"
+  - job: '[Postdoctoral fellowship](https://en.uit.no/ansatte/person?p_document_id=789811)'
     institution: 'UiT -- The Arctic University of Norway'
     year: 'Nov 2022 -- *Nov 2024*'
     extra: 'In my research within the [LESS Project (Language Economy through Transfer Source Selectivity)](https://uit.no/research/acqva/project?pid=743114), headed by Dr. Jorge González Alonso, I will investigate how language learners coordinate several languages early in the acquisition process, how this process is influenced by the characteristics of the languages, and how the process is reflected in the brain.'
-  - job: "Part-time data analysis contribution"
+  - job: 'Part-time data analysis contribution'
     institution: 'UiT -- The Arctic University of Norway'
-    year: 'Nov 2022 -- *Dec 2022*'
+    year: 'Nov -- *Dec 2022*'
     extra: "I am working part-time on data analysis within Dr. Khadij Gharibi's [MSCA project](https://uit.no/research/acqva/project?pid=723990), which investigates multilingualism in heritage speakers."
 education:
   courses:
@@ -110,6 +110,6 @@ education:
 ---
 
 
-After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology at Lancaster University, where I investigated how conceptual processing (i.e., understanding the meaning of words) is supported by linguistic and sensorimotor brain systems, and how research on this topic is influenced by methodological aspects such as the sample size. Currently, I am a postdoctoral fellow and I am investigating the behavioural and neural underpinnings of multilingualism. Throughout my research, I have used methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. My CV is available at [https://osf.io/84ktq](https://osf.io/84ktq).
+After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology at Lancaster University, where I investigated how conceptual processing---that is, the comprehension of the meaning of words---is supported by linguistic and sensorimotor brain systems, and how research on this topic is influenced by methodological aspects such as the operationalisation of variables and the sample size of experiments. Currently, I am a postdoctoral fellow at UiT -- The Arctic University of Norway, where I am investigating the behavioural and neural underpinnings of multilingualism. Throughout my research, I have used methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. My CV is available at [https://osf.io/84ktq](https://osf.io/84ktq).
 
 
