@@ -37,11 +37,12 @@ work_since_PhD:
   - job: '[Postdoctoral fellowship](https://en.uit.no/ansatte/person?p_document_id=789811)'
     institution: 'UiT The Arctic University of Norway'
     year: 'Nov 2022 -- *Nov 2024*'
-    extra: 'In my research within the [LESS Project (Language Economy through Transfer Source Selectivity)](https://uit.no/research/acqva/project?pid=743114), headed by Dr. Jorge González Alonso, I will investigate how language learners coordinate several languages early in the acquisition process, how this process is influenced by the characteristics of the languages, and how the process is reflected in the brain.'
+    extra: '-&nbsp; In my research within the [LESS Project (Language Economy through Transfer Source Selectivity)](https://uit.no/research/acqva/project?pid=743114), headed by Dr. Jorge González Alonso, I will investigate how language learners coordinate several languages early in the acquisition process, how this process is influenced by the characteristics of the languages, and how the process is reflected in the brain.'
+    extra2: "-&nbsp; Service: peer-review for Cognitive Science journal"
   - job: 'Part-time data analysis contribution'
     institution: 'UiT The Arctic University of Norway'
     year: 'Nov -- *Dec 2022*'
-    extra: "I am working part-time on data analysis within Dr. Khadij Gharibi's [MSCA project](https://uit.no/research/acqva/project?pid=723990), which investigates multilingualism in heritage speakers."
+    extra: "-&nbsp; I am working part-time on data analysis within Dr. Khadij Gharibi's [MSCA project](https://uit.no/research/acqva/project?pid=723990), which investigates multilingualism in heritage speakers."
 education:
   courses:
   - course: '[PhD Psychology with graduate teaching scholarship](https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109).html)'
