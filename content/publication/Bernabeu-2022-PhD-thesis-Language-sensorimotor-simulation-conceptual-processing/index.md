@@ -10,7 +10,6 @@ categories:
   - statistical power
   - research methods
   - statistics
-  - R
 tags:
   - object orientation effects
   - replication
@@ -34,6 +33,7 @@ tags:
   - sample size
   - simr
   - rstats
+  - R
 doi: 'https://doi.org/10.17635/lancaster/thesis/1795'
 publishDate: '2022-10-22'
 publication_types:
