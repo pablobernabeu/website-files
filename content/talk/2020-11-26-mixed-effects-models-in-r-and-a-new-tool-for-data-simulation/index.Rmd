@@ -9,7 +9,7 @@ categories:
   - linear mixed-effects models
 tags:
   - statistics
-  - linear-mixed effects models
+  - linear mixed-effects models
   - regression
   - R
   - programming

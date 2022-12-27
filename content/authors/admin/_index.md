@@ -2,7 +2,7 @@
 authors:
 - admin
 name: Pablo Bernabeu
-email: 'pablo.d.bernabeu@uit.no<br>pcbernabeu@gmail.com'
+email: 'p.bernabeu@uit.no<br>pcbernabeu@gmail.com'
 role: Postdoctoral fellow at UiT -- <br>The Arctic University of Norway
 profileicons:
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" University page "><a href="https://en.uit.no/ansatte/person?p_document_id=789811"><i style="color:#8AA3CD;" class="fas fa-university fa-lg"></i></a></span>'
