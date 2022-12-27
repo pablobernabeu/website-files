@@ -22,7 +22,7 @@ lastmod:
 featured: no
 draft: no
 image:
-  caption: ''
+  caption: '' 
   focal_point: ''
   preview_only: no
 projects: []
