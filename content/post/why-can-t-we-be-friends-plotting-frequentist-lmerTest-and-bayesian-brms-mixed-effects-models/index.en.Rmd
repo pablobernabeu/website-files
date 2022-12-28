@@ -1,24 +1,24 @@
 ---
-title: Why can't we be friends? Plotting frequentist (lme4) and Bayesian (brms) mixed-effects
+title: Why can't we be friends? Plotting frequentist (lmerTest) and Bayesian (brms) mixed-effects
   models
 author: ''
 date: '2022-12-23'
-slug: why-can-t-we-be-friends-plotting-frequentist-lme4-and-bayesian-brms-mixed-effects-models
+slug: why-can-t-we-be-friends-plotting-frequentist-lmerTest-and-bayesian-brms-mixed-effects-models
 categories: 
   - R
   - statistics
-tags:
+tags: 
   - statistics
   - Bayesian statistics
   - frequentist statistics
   - linear-mixed effects models
-  - lme4
+  - lmerTest
   - brms
   - plotting
   - data visualisation
   - s
 subtitle: ''
-summary: 'Frequentist and Bayesian statistics are sometimes regarded as fundamentally different philosophies. Indeed, can both qualify as philosophies or is one of them just a pointless ritual? Is frequentist statistics only about $p$ values? Are frequentist estimates diametrically opposed to Bayesian posterior distributions? Are confidence intervals and credible intervals irreconcilable? Will R crash if lme4 and brms are simultaneously loaded?'
+summary: 'Frequentist and Bayesian statistics are sometimes regarded as fundamentally different philosophies. Indeed, can both qualify as philosophies or is one of them just a pointless ritual? Is frequentist statistics only about $p$ values? Are frequentist estimates diametrically opposed to Bayesian posterior distributions? Are confidence intervals and credible intervals irreconcilable? Will R crash if lmerTest and brms are simultaneously loaded?'
 authors: []
 lastmod: 
 featured: no
@@ -44,7 +44,7 @@ xaringanExtra::use_clipboard()
 ```
 
  
-Frequentist and Bayesian statistics are sometimes regarded as fundamentally different philosophies. Indeed, can both methods qualify as philosophies, or is one of them just a pointless ritual? Is frequentist statistics about $p$ values only? Are frequentist estimates diametrically opposed to Bayesian posterior distributions? Are confidence intervals and credible intervals irreconcilable? Will R crash if [`lme4`](https://cran.r-project.org/web/packages/lme4/lme4.pdf) and [`brms`](https://cran.r-project.org/web/packages/brms/brms.pdf) are simultaneously loaded? If only we could fit frequentist and Bayesian models to the same data and plot the results together, we might get a glimpse into these puzzles.
+Frequentist and Bayesian statistics are sometimes regarded as fundamentally different philosophies. Indeed, can both methods qualify as philosophies, or is one of them just a pointless ritual? Is frequentist statistics about $p$ values only? Are frequentist estimates diametrically opposed to Bayesian posterior distributions? Are confidence intervals and credible intervals irreconcilable? Will R crash if [`lmerTest`](https://cran.r-project.org/web/packages/lmerTest/lmerTest.pdf) and [`brms`](https://cran.r-project.org/web/packages/brms/brms.pdf) are simultaneously loaded? If only we could fit frequentist and Bayesian models to the same data and plot the results together, we might get a glimpse into these puzzles.
 
 All the analyses shown below can be reproduced using the materials at https://osf.io/gt5uf. The combination of the frequentist and the Bayesian estimates in the same plot is achieved using the following custom function from [Bernabeu (2022)](/publication/pablo-bernabeu-2022-phd-thesis). 
 
@@ -201,7 +201,7 @@ Frequentist and Bayesian estimates are not so polar opposites, are they? What is
 
 Now it's time to consider in earnest:
 
-> Is frequentist statistics about $p$ values only? Are frequentist estimates diametrically opposed to Bayesian posterior distributions? Are confidence intervals and credible intervals irreconcilable? Will R crash if [`lme4`](https://cran.r-project.org/web/packages/lme4/lme4.pdf) and [`brms`](https://cran.r-project.org/web/packages/brms/brms.pdf) are simultaneously loaded?
+> Is frequentist statistics about $p$ values only? Are frequentist estimates diametrically opposed to Bayesian posterior distributions? Are confidence intervals and credible intervals irreconcilable? Will R crash if [`lmerTest`](https://cran.r-project.org/web/packages/lmerTest/lmerTest.pdf) and [`brms`](https://cran.r-project.org/web/packages/brms/brms.pdf) are simultaneously loaded?
 
 
 ### Session info
