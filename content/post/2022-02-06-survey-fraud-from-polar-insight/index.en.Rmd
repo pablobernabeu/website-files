@@ -1,14 +1,17 @@
 ---
-title: Deception in a survey from Polar Insight / Intelligence
+title: Deception in a survey from Polar Insight / Polar Intelligence
 author: ''
-date: ''
+date: '2022-03-15'
 slug: []
 categories: []
-tags:
+tags: 
+  - survey
+  - scam
+  - fraud
 subtitle: ''
 summary: ''
 authors: []
-lastmod: '2022-02-06T19:22:35Z'
+lastmod: 
 featured: no
 image:
   caption: ''
@@ -25,8 +28,11 @@ The case began when the managing director invited me to complete two tasks in ex
 <blockquote>
 
 From: James Tattersfield <james@polarintelligence.com>
+
 Sent: Thursday, January 27, 2022 12:33:32 PM
+
 To: De Juan Bernabeu, Pablo <p.bernabeu@lancaster.ac.uk>
+
 Subject: [External] Research Interview Request
 
 This email originated outside the University. Check before clicking links or attachments.
@@ -42,12 +48,16 @@ My research team has identified you as a potential respondent and asked me to re
 Details:
 
 Format: Online Video Interview
+
 Time required: 60 minutes
+
 When: February 2022
+
 Prep. required: None
+
 Reward for taking part: $125 USD (via our gifting partner, Tremendous)
 
-Next steps:
+Next steps: 
 
 1) If you'd like to take part, please reconfirm your suitability using this short form: https://lnkd.in/dG3Jw5d6
 
@@ -95,7 +105,23 @@ Following this invitation, I---and presumably many other researchers---responded
 <img src='images/Capture9.PNG' width=650px></img>
 
 
-Once the company had received my survey completed, an employee wrote back to change the original terms, on the grounds that 'we have had a high volume of responses to our survey, so unfortunately, not everyone will be selected on this occasion'. Such a change of the terms was unethical, as it happened after I had accepted the invitation from the company under the original terms. Crucially, if the company had truthfully specified the terms in the first email, they would not have received back anywhere as many surveys completed. Ethics is important in the distribution of surveys, even in business.
+Once the company had received my survey completed, an employee wrote back to change the original terms, on the grounds that 'we have had a high volume of responses to our survey, so unfortunately, not everyone will be selected on this occasion'. Such a change of the terms was unethical, as it happened after I had accepted the invitation from the company under the original terms. Crucially, if the company had truthfully specified the terms in the first email, they would not have received back anywhere as many surveys completed. Ethics is important in the distribution of surveys, even in business. It is noteworthy that Polar Insight boasts a portfolio of clients on its website that covers a range of private sectors as well as public bodies. It is, therefore, striking that this company decided to scam a PhD student.
 
-The present case incidentally demonstrates that the role of ethics committees---tasked with assessing surveys, among other things---goes beyond gross themes. Economic deception is one of the negligent acts that must be prevented.
+I emailed the company and the CEO James Tattersfield to request my reward. After they had ignored my emails, and then replied with evasive responses, I contacted the CEO on LinkedIn. Again, he yielded evasive responses only. 
+
+The present case incidentally demonstrates that the role of ethics committees---tasked with assessing surveys, among other things---goes beyond gross themes. Economic deception is one of the negligent acts that must be prevented. 
+
+Survey scams resembling the one I suffered have been documented:
+
+- https://moneydoneright.com/fast-money/online-work/surveys/surveys-for-money
+
+- https://www.accc.gov.au/media-release/watch-out-for-scam-surveys-and-fake-gift-card-offers
+
+<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fdollargeneral%2Fposts%2Fpfbid0xpHHnporfRQ9erLbafPpcTDCdXhpoQkL43x8dtXB4bA9eHRitKmBYyfzDMjEzWY3l&show_text=true&width=500" width="500" height="227" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+
+<br>
+
+Finally, the present case begs the following question: is James Tattersfield---a University of Ediburgh alumnus and the CEO of a profitable consulting company---also a scammer and a defaulter?
+
+<br>
 

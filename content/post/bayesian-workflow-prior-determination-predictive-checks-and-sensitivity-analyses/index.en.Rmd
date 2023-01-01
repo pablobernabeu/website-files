@@ -43,15 +43,19 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE, error = FALSE,
 library(xaringanExtra)
 xaringanExtra::use_clipboard()
 
-library(papaja)
+```
+
+
+```{r}
+
 library(dplyr)
 library(ggplot2)
 library(ggridges)
 library(ggtext)
 library(patchwork)
+library(papaja)
 
 ```
-
 
 
 This post presents a code-through of a Bayesian workflow in R, which can be reproduced using the materials at https://osf.io/gt5uf. The content is *closely* based on @bernabeu2022a, which was in turn based on lots of other references. In addition to those, you may wish to consider @nicenboim2023, a book in preparation that is already available online (https://vasishth.github.io/bayescogsci/book).
