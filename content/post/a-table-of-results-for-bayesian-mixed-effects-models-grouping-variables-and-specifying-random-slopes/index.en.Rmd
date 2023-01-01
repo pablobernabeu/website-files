@@ -75,7 +75,7 @@ First, to facilitate the understanding of the results, the original names of the
 # In the interactions below, word-level variables are presented 
 # first for the sake of consistency (the order does not affect 
 # the results in any way). Also in the interactions, double 
-# colons are used to inform the 'frequentist_model_table' 
+# colons are used to inform the 'bayesian_model_table' 
 # function that the two terms in the interaction must be split 
 # into two lines.
 
@@ -177,7 +177,7 @@ rownames(semanticpriming_summary_weaklyinformativepriors_exgaussian$fixed)[
 ```
 
 
-### `frequentist_model_table()`
+### `bayesian_model_table()`
 
 This [custom function](https://github.com/pablobernabeu/language-sensorimotor-simulation-PhD-thesis/blob/main/R_functions/bayesian_model_table.R) was used in Bernabeu (2022), with a PDF output. In the current scenario, however, we have an HTML output. In the above function, the code used for the $\widehat{R}$ tailored to the HTML output (`&Rcirc;`) does not render properly. 
 
