@@ -8,6 +8,8 @@ tags:
   - survey
   - scam
   - fraud
+  - unpaid
+  - s
 subtitle: ''
 summary: ''
 authors: []
@@ -93,16 +95,15 @@ If you no longer want to receive emails regarding our research projects, you are
 
 Following this invitation, I---and presumably many other researchers---responded to a survey (see some screenshots below) that  provided the company with data that might be used for business purposes.
 
-
-<img src='images/Capture.PNG' width=580px></img>
-<img src='images/Capture2.PNG' width=580px></img>
-<img src='images/Capture3.PNG' width=580px></img>
-<img src='images/Capture4.PNG' width=580px></img>
-<img src='images/Capture5.PNG' width=580px></img>
-<img src='images/Capture6.PNG' width=580px></img>
-<img src='images/Capture7.PNG' width=580px></img>
-<img src='images/Capture8.PNG' width=580px></img>
-<img src='images/Capture9.PNG' width=580px></img>
+<img src='images/Capture.PNG' width=500px></img>
+<img src='images/Capture2.PNG' width=500px></img>
+<img src='images/Capture3.PNG' width=500px></img>
+<img src='images/Capture4.PNG' width=500px></img>
+<img src='images/Capture5.PNG' width=500px></img>
+<img src='images/Capture6.PNG' width=500px></img>
+<img src='images/Capture7.PNG' width=500px></img>
+<img src='images/Capture8.PNG' width=500px></img>
+<img src='images/Capture9.PNG' width=500px></img>
 
 
 Once the company had received my survey completed, an employee wrote back to change the original terms, on the grounds that 'we have had a high volume of responses to our survey, so unfortunately, not everyone will be selected on this occasion'. Such a change of the terms was unethical, as it happened after I had accepted the invitation from the company under the original terms. Crucially, if the company had truthfully specified the terms in the first email, they would not have received back anywhere as many surveys completed. Ethics is important in the distribution of surveys, even in business. It is noteworthy that Polar Insight boasts a portfolio of clients on its website that covers a range of private sectors as well as public bodies. It is, therefore, striking that this company decided to scam a PhD student.
@@ -117,9 +118,7 @@ Survey scams resembling the one I suffered have been documented:
 
 - https://www.accc.gov.au/media-release/watch-out-for-scam-surveys-and-fake-gift-card-offers
 
-<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fdollargeneral%2Fposts%2Fpfbid0xpHHnporfRQ9erLbafPpcTDCdXhpoQkL43x8dtXB4bA9eHRitKmBYyfzDMjEzWY3l&show_text=true&width=500" width="500" height="227" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-
-<br>
+[![](images/Screenshot 2023-01-01 165246.png)](https://www.facebook.com/dollargeneral/posts/pfbid032BmUQrAUh7p9yuw8eQKavZZrUC7zsGeBiT2E4efDEASCFSsem7vLKNiipgWNqYjpl)
 
 Finally, the present case begs the following question: is James Tattersfield---a University of Ediburgh alumnus and the CEO of a profitable consulting company---also a scammer and a defaulter?
 
