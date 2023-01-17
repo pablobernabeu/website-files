@@ -36,29 +36,29 @@ work_since_PhD:
   jobs:
   - job: '[Postdoctoral fellowship](https://en.uit.no/ansatte/person?p_document_id=789811)'
     institution: 'UiT The Arctic University of Norway'
-    year: 'Nov 2022 -- *Nov 2024*'
+    year: 'Nov **2022** -- _Nov **2024**_'
     extra: '-&nbsp; In my research within the [LESS Project (Language Economy through Transfer Source Selectivity)](https://uit.no/research/acqva/project?pid=743114), I am investigating how language learners coordinate several languages early in the acquisition process, how this process is influenced by the characteristics of the languages, and how the process is reflected in the brain.'
-    extra2: '-&nbsp; Service: peer-review for Cognitive Science journal'
+    extra2: '-&nbsp; Service: peer-review for Cognition and Cognitive Science'
   - job: 'Part-time data analysis contribution'
     institution: 'UiT The Arctic University of Norway'
-    year: 'Nov -- *Dec 2022*'
+    year: 'Nov 2022 -- Jan 2023'
     extra: '-&nbsp; I worked part-time on data analysis within the [CLICK Project (Cross-Linguistic Influence of Competing Knowledge)](https://uit.no/research/acqva/project?pid=723990), which investigates multilingualism in heritage speakers.'
-education:
+education: 
   courses:
   - course: '[PhD Psychology with graduate teaching scholarship](https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109).html)'
     institution: Lancaster University (United Kingdom)
-    year: 2022
-    extra: "-&nbsp; Service: peer-review for Cognitive Science journal, Psychological Science Accelerator; internship facilitation; development of website for open science group in my department ('Prospr')."
+    year: '**2018--2022**'
+    extra: "-&nbsp; Service: peer-review for Cognitive Science, Psychological Science Accelerator; internship facilitation; development of website for open science group in my department ('Prospr')."
     extra2: '\-&nbsp; [Activities](https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109)/activities.html)'
   - course: '[Research Master Language and Communication](https://www.tilburguniversity.edu/education/masters-programmes/research-master-linguistics-and-communication-sciences)'
     institution: Tilburg University and Radboud University (Netherlands)
-    year: 2017
+    year: '**2013--2017**'
     extra: '\-&nbsp; Student member, Master’s curriculum and accreditation committee'
     extra2: '\-&nbsp; Tilburg University Scholarship for Academic Excellence, 2014/2015'
     extra4: '\-&nbsp; Grade: 7.54 out of 10 (Distinction)'
   - course: '<a href="http://www.uam.es/ss/Satellite/FilosofiayLetras/es/1242658506907/contenidoFinal/Grado_en_Estudios_Ingleses.htm" id="BA-degree">BA English Philology<a>'
     institution: Autonomous University of Madrid (Spain)
-    year: 2013
+    year: '**2007--2013**'
     extra: '\-&nbsp; One-year Erasmus exchange at University of Jyv&auml;skyl&auml;, Finland'
     extra2: '\-&nbsp; One-year exchange at University of Barcelona, Spain'
     extra3: '\-&nbsp; Six-month Spanish teaching placement in Kaunas, Lithuania'

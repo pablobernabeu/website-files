@@ -44,7 +44,7 @@ local_business_type = ''
 org_name = ''
 
 # Description for social sharing and search engines. If undefined, superuser role is used in place.
-description = 'Pablo Bernabeu is a scientist with experience in cognitive psychology, linguistics, data analysis, statistics, R programming and teaching.'
+description = 'Pablo Bernabeu is a scientist with experience in cognitive psychology and neuroscience, linguistics, data analysis, statistics, programming and teaching.'
 
 ############################
 ## Site Features
