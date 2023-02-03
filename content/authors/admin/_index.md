@@ -5,7 +5,7 @@ name: Pablo Bernabeu
 email: 'p.bernabeu@uit.no<br>pcbernabeu@gmail.com'
 role: Postdoctoral fellow at UiT -- <br>The Arctic University of Norway
 profileicons:
-- '<span data-toggle="tooltip1" data-placement="bottom" title=" University page "><a href="https://en.uit.no/ansatte/person?p_document_id=789811"><i style="color:#8AA3CD;" class="fas fa-university fa-lg"></i></a></span>'
+- '<span data-toggle="tooltip1" data-placement="bottom" title=" University page "><a href="https://en.uit.no/go/target/789811"><i style="color:#8AA3CD;" class="fas fa-university fa-lg"></i></a></span>'
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" Curriculum vitae "><a href="https://osf.io/84ktq"><i style="color:#8AA3CD;" class="ai ai-cv ai-lg"></i></a></span>'
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" Google Scholar "><a href="https://scholar.google.com/citations?user=DxD0QDoAAAAJ&hl=en"><i style="color:#8AA3CD;" class="ai ai-google-scholar ai-lg"></i></a></span>'
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" OSF repositories "><a href="https://osf.io/25u3x/"><i style="color:#8AA3CD;" class="ai ai-osf ai-lg"></i></a></span>'
@@ -34,7 +34,7 @@ user_groups:
 bio: After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology at Lancaster University, where I investigated how conceptual processing---that is, the comprehension of the meaning of words---is supported by linguistic and sensorimotor brain systems, and how research on this topic is influenced by methodological aspects such as the operationalisation of variables and the sample size of experiments. Currently, I am a postdoctoral fellow at UiT The Arctic University of Norway, where I am investigating the behavioural and neural underpinnings of multilingualism. Throughout my research, I have used methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. My CV is available at [https://osf.io/84ktq](https://osf.io/84ktq).
 work_since_PhD:
   jobs:
-  - job: '[Postdoctoral fellowship](https://en.uit.no/ansatte/person?p_document_id=789811)'
+  - job: '[Postdoctoral fellowship](https://en.uit.no/go/target/789811)'
     institution: 'UiT The Arctic University of Norway'
     year: 'Nov **2022** -- _Nov **2024**_'
     extra: '-&nbsp; In my research within the [LESS Project (Language Economy through Transfer Source Selectivity)](https://uit.no/research/acqva/project?pid=743114), I am investigating how language learners coordinate several languages early in the acquisition process, how this process is influenced by the characteristics of the languages, and how the process is reflected in the brain.'
