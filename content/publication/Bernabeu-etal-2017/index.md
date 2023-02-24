@@ -17,6 +17,8 @@ links:
   url: 'https://pablobernabeu.shinyapps.io/Dutch-modality-exclusivity-norms'
 - name: Results data dashboard
   url: '/applications-and-dashboards/bernabeu-etal-2017-modalityswitch/'
+- name: Conference proceedings
+  url: 'https://cognitivesciencesociety.org/wp-content/uploads/2019/01/cogsci17_proceedings.pdf'
 - name: Master's thesis
   url: '/publication/bernabeu-2017-mphil-thesis/'
 projects:
@@ -42,7 +44,7 @@ tags:
 title: 'Modality switch effects emerge early and increase throughout conceptual processing: Evidence from ERPs'
 url_code: 'https://osf.io/97unm/wiki/home/'
 url_dataset: 'https://osf.io/97unm/wiki/home/'
-url_pdf: 'https://psyarxiv.com/a5pcz'
+url_pdf: 'https://doi.org/10.31234/osf.io/a5pcz'
 url_poster: 'https://mfr.osf.io/render?url=https://osf.io/dj52n/?direct%26mode=render%26action=download%26mode=render'
 # url_project: ""
 # url_slides: ""
@@ -59,6 +61,6 @@ url_poster: 'https://mfr.osf.io/render?url=https://osf.io/dj52n/?direct%26mode=r
 
 <div style = "text-indent:-2em; margin-left:2em;">
 
-Bernabeu, P., Willems, R. M., & Louwerse, M. M. (2017). Modality switch effects emerge early and increase throughout conceptual processing: Evidence from ERPs. In G. Gunzelmann, A. Howes, T. Tenbrink, & E. J. Davelaar (Eds.), *Proceedings of the 39th Annual Conference of the Cognitive Science Society* (pp. 1629-1634). Austin, TX: Cognitive Science Society. https://mindmodeling.org/cogsci2017/papers/0318
+Bernabeu, P., Willems, R. M., & Louwerse, M. M. (2017). Modality switch effects emerge early and increase throughout conceptual processing: Evidence from ERPs. In G. Gunzelmann, A. Howes, T. Tenbrink, & E. J. Davelaar (Eds.), *Proceedings of the 39th Annual Conference of the Cognitive Science Society* (pp. 1629-1634). Austin, TX: Cognitive Science Society. https://doi.org/10.31234/osf.io/a5pcz
 
 </div>
