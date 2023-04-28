@@ -6,7 +6,7 @@ email: 'p.bernabeu@uit.no<br>pcbernabeu@gmail.com'
 role: Postdoctoral fellow at UiT -- <br>The Arctic University of Norway
 profileicons:
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" University page "><a href="https://en.uit.no/go/target/789811"><i style="color:#8AA3CD;" class="fas fa-university fa-lg"></i></a></span>'
-- '<span data-toggle="tooltip1" data-placement="bottom" title=" Curriculum vitae "><a href="https://osf.io/84ktq"><i style="color:#8AA3CD;" class="ai ai-cv ai-lg"></i></a></span>'
+- '<span data-toggle="tooltip1" data-placement="bottom" title=" Curriculum vitae "><a href="/cv.html"><i style="color:#8AA3CD;" class="ai ai-cv ai-lg"></i></a></span>'
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" Google Scholar "><a href="https://scholar.google.com/citations?user=DxD0QDoAAAAJ&hl=en"><i style="color:#8AA3CD;" class="ai ai-google-scholar ai-lg"></i></a></span>'
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" OSF repositories "><a href="https://osf.io/25u3x/"><i style="color:#8AA3CD;" class="ai ai-osf ai-lg"></i></a></span>'
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" Figshare "><a href="https://figshare.com/authors/Pablo_Bernabeu/820703"><i style="color:#8AA3CD;" class="ai ai-figshare ai-lg"></i></a></span>'
