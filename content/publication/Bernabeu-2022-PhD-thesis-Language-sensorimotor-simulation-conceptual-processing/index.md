@@ -45,7 +45,7 @@ summary: ''
 featured: no
 links:
 - name: Online book format
-  url: 'https://bookdown.org/pablobernabeu/language-sensorimotor-conceptual-processing-statistical-power'
+  url: '/thesis'
 url_pdf: https://eprints.lancs.ac.uk/id/eprint/177833/
 url_code: https://osf.io/gt5uf
 url_dataset: https://osf.io/gt5uf
@@ -65,7 +65,7 @@ slides: ''
 
 <br>
 
-<a href='https://bookdown.org/pablobernabeu/language-sensorimotor-conceptual-processing-statistical-power'>
+<a href='/thesis'>
 <button style = "background-color: white; color: black; border: 2px solid #DF2E2E; border-radius: 12px;">
 <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;">
 <span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Online book format </h3></button>
@@ -83,4 +83,5 @@ Bernabeu, P. (2022). *Language and sensorimotor simulation in conceptual process
 
 </div>
 
-<br>
+<br> 
+
