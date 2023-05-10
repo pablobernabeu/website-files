@@ -1,6 +1,6 @@
 ---
 title: 'More refined typology and design in linguistic relativity: The case of motion event encoding'
-abstract: 'Linguistic relativity is the influence of language on other realms of cognition. For instance, the way movement is expressed in a person’s native language may influence how they perceive movement. Motion event encoding (MEE) is usually framed as a typological dichotomy. Path-in-verb languages tend to encode path information within the verb (e.g., ‘leave’), whereas manner-in-verb languages encode manner (e.g., ‘jump’). The results of MEE-based linguistic relativity experiments range from no effect to effects on verbal and nonverbal cognition. Seeking a more definitive conclusion, we propose linguistic and experimental enhancements. First, we examine state-of-the-art typology, suggesting how a recent MEE classification across twenty languages ( Verkerk, 2014 ) may enable more powerful analyses. Second, we review procedural challenges such as the influence of verbal thought and second-guessing in experiments. To tackle these challenges, we propose distinguishing verbal and nonverbal subgroups, and having enough filler items. Finally we exemplify this in an experimental design.'
+abstract: 'Linguistic relativity is the influence of language on other realms of cognition. For instance, the way movement is expressed in a person’s native language may influence how they perceive movement. Motion event encoding (MEE) is usually framed as a typological dichotomy. Path-in-verb languages tend to encode path information within the verb (e.g., ‘leave’), whereas manner-in-verb languages encode manner (e.g., ‘jump’). The results of MEE-based linguistic relativity experiments range from no effect to effects on verbal and nonverbal cognition. Seeking a more definitive conclusion, we propose linguistic and experimental enhancements. First, we examine state-of-the-art typology, suggesting how a recent MEE classification across twenty languages (Verkerk, 2014) may enable more powerful analyses. Second, we review procedural challenges such as the influence of verbal thought and second-guessing in experiments. To tackle these challenges, we propose distinguishing verbal and nonverbal subgroups, and having enough filler items. Finally we exemplify this in an experimental design.'
 authors:
 - Bernabeu, P., & Tillman, R.
 date: "2019-01-01"
@@ -27,7 +27,7 @@ tags:
 - linguistic relativity
 - psycholinguistics
 - linguistics
-- nonverbal
+- motion events
 # url_code: '#'
 # url_dataset: '#'
 url_pdf: 'https://doi.org/10.1075/dujal.15019.ber'
@@ -45,4 +45,4 @@ url_poster: 'https://www.researchgate.net/publication/271588734_Linguistic_relat
 
 Bernabeu, P., & Tillman, R. (2019). More refined typology and design in linguistic relativity: The case of motion event encoding. *Dutch Journal of Applied Linguistics, 8*(2), 163-171. http://doi.org/10.1075/dujal.15019.ber
 
-</div>
+</div> 

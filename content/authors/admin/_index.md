@@ -13,16 +13,16 @@ profileicons:
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" Github "><a href="https://github.com/pablobernabeu"><i style="color:#8AA3CD;" class="fab fa-github fa-lg"></i></a></span>'
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" LinkedIn "><a href="https://www.linkedin.com/in/pablobernabeu/"><i style="color:#8AA3CD;" class="fab fa-linkedin-in fa-lg"></i></a></span>'
 interests:
-- Cognitive psychology and neuroscience
-- Psycholinguistics
-- Multilingualism
-- Semantic / conceptual processing
-- Statistics
-- Open science
-- Programming
+- cognitive psychology and neuroscience
+- psycholinguistics
+- multilingualism
+- semantic / conceptual processing
+- statistics
+- open science
+- programming
 profilesections:
 - '<i style="font-weight:bold; color:#5B6574" class="fas fa-arrow-right fa-xs"> &nbsp; </i><a href="/#bio" style="color:#5B6574">Experience</a>'
-- '<a href="/#teaching" style="color:#6F7B8E">Teaching</a>'
+- '<a href="/#teaching-supervision" style="color:#6F7B8E">Teaching and supervision</a>'
 - '<a href="/#other-funding" style="color:#6F7B8E">Other funding</a>'
 - '<a href="/#other-work" style="color:#6F7B8E">Other work</a>'
 - '<a href="/#skills" style="color:#6F7B8E">Skills</a>'

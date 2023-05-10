@@ -8,7 +8,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 110  # Order that this section will appear.
 
-title = "Teaching"
+title = "Teaching and supervision"
 subtitle = ""
 
 [design]
@@ -71,6 +71,8 @@ My PhD scholarship was teaching-based, so I contributed to my department’s cur
 | **2018–19** | Understanding psychology (101) — Seminars and essay marking |
 |             | Investigating psychology: Analysis (102) using SPSS — Labs |
 
-In addition, I was a representative for graduate teaching assistants in my department for a year.
 
-I am also a [Certified Carpentries Instructor](https://carpentries.org/become-instructor/) and I have led several [workshops on data analysis using R](https://pablobernabeu.github.io/#workshops). Earlier in my career, I [taught English to secondary-education students in Spain](/#other-work), and [Spanish to adults in Lithuania](/#BA-degree).
+I also supervised a lab-based internship during my PhD. In addition, I was a representative for graduate teaching assistants in my department for a year.
+
+Last, I am a [Certified Carpentries Instructor](https://carpentries.org/become-instructor/) and have led several [workshops on data analysis using R](https://pablobernabeu.github.io/#workshops). Earlier in my career, I [taught English to secondary-education students in Spain](/#other-work), and [Spanish to adults in Lithuania](/#BA-degree).
+
