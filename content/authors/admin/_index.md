@@ -105,7 +105,7 @@ education:
     institution: Netherlands Graduate School of Linguistics
     year: 2015
     extra: \-&nbsp; I learned about how speech errors can serve as a window into the psychology of language.
-  - course: '[[Part of] Neuroimaging 1](https://www.ru.nl/courseguides/socsci/courses-osiris/cns/sow-dgcn02-neuroimaging/)'
+  - course: 'Part of [Neuroimaging 1](https://www.ru.nl/courseguides/socsci/courses-osiris/cns/sow-dgcn02-neuroimaging/)'
     institution: Radboud University
     year: 2014
     extra: \-&nbsp; I followed the first two months of this course as a listener to learn the principles of electroencephalography, event-related potentials, magnetoencephalography and functional magnetic resonance imaging. 

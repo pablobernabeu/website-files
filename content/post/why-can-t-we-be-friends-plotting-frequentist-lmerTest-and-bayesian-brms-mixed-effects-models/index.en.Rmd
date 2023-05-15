@@ -217,6 +217,8 @@ sessionInfo()
 
 ### References
 
+<div style = 'text-indent:-2em; margin-left:2em;'>
+
 Bernabeu, P. (2022). *Language and sensorimotor simulation in conceptual processing: Multilevel analysis and statistical power*. Lancaster University. https://doi.org/10.17635/lancaster/thesis/1795
 
 Cumming, G. (2014). The new statistics: Why and how. *Psychological Science, 25*(1), 7–29. https://doi.org/10.1177/0956797613504966
@@ -238,4 +240,6 @@ Tendeiro, J. N., & Kiers, H. A. L. (2019). A review of issues about null hypothe
 Tendeiro, J. N., & Kiers, H. A. L. (2022). On the white, the black, and the many shades of gray in between: Our reply to van Ravenzwaaij and Wagenmakers (2021). *Psychological Methods, 27*(3), 466–475. https://doi.org/10.1037/met0000505
 
 van Ravenzwaaij, D., & Wagenmakers, E.-J. (2022). Advantages masquerading as “issues” in Bayesian hypothesis testing: A commentary on Tendeiro and Kiers (2019). *Psychological Methods, 27*(3), 451–465. https://doi.org/10.1037/met0000415
+
+</div> 
 

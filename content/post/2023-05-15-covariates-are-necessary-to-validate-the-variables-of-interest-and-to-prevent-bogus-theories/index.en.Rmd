@@ -1,0 +1,52 @@
+---
+title: Covariates are necessary to validate the variables of interest and to prevent
+  bogus theories
+author: ''
+date: '2023-05-15'
+slug: covariates-are-necessary-to-validate-the-variables-of-interest-and-to-prevent-bogus-theories
+categories:
+  - research methods
+  - statistics
+tags:
+  - research methods
+  - statistics
+  - conflation
+  - s
+subtitle: ''
+summary: ''
+authors: []
+lastmod: ''
+featured: no
+draft: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+The need for covariates in statistical analyses is twofold. The first need is purely statistical and the second reason is academic. 
+
+First, covariates are required when the variable(s) of interest in a study are connected to, and affected by, a set of ancillary variables (Bottini et al., 2022; Elze et al., 2017; Sassenhagen & Alday, 2016). This complex scenario is the most common one due to the multivariate, dynamic, interactive nature of the real world. 
+
+Second, covariates are necessary to prevent the development of bogus, redundant theories. Academics are strongly rewarded for developing theories and models. As we know, wherever there are strong rewards, there are serious risks. An academic could---consciously or not---produce a theory/model that is too closely related to an existing theory. So closely related are these theories that the second version hardly warrants a name of its own. In such a scenario, covariates are useful and indeed necessary to vet the unique nature of the second version. The first and the second versions must be tested in the same model. The variables corresponding to the first version can be construed as covariates, which can help evaluate the degree of separation between the original version of a theory and any subsequent approximations.
+
+The perverted use of covariates (Stefan & Schönbrodt, 2023)---frequent though it may be---is completely orthogonal to the correct usage of covariates, in the same way that a stethoscope can be used for good or for bad purposes. It would be poorly informed and misleading to conflate the correct and the incorrect uses of a method or a tool.
+
+
+### References
+
+<div style = 'text-indent:-2em; margin-left:2em;'>
+
+Bottini, R., Morucci, P., D'Urso, A., Collignon, O., & Crepaldi, D. (2022). The concreteness advantage in lexical decision does not depend on perceptual simulations. *Journal of Experimental Psychology: General, 151*(3), 731–738. https://doi.org/10.1037/xge0001090
+
+Elze, M. C., Gregson, J., Baber, U., Williamson, E., Sartori, S., Mehran, R., Nichols, M., Stone, G. W., & Pocock, S. J. (2017). Comparison of propensity score methods and covariate adjustment: Evaluation in 4 cardiovascular studies. *Journal of the American College of Cardiology, 69*(3), 345-357. 
+
+Sassenhagen, J., & Alday, P. M. (2016). A common misapplication of statistical inference: Nuisance control with null-hypothesis significance tests. *Brain and Language, 162*, 42-45. https://doi.org/10.1016/j.bandl.2016.08.001
+
+Stefan, A. M., & Schönbrodt, F. D. (2023). Big little lies: A compendium and simulation of p-hacking strategies. *Royal Society Open Science, 10*(2), 220346. https://doi.org/10.1098/rsos.220346
+
+</div>
+
+
