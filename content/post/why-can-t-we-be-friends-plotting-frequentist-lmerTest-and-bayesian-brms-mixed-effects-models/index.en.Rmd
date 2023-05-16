@@ -199,14 +199,14 @@ Frequentist and Bayesian estimates are not so polar opposites, are they? What is
 
 <script src='https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Flanguage-sensorimotor-simulation-PhD-thesis%2Fblob%2Fmain%2Fsemanticpriming%2Fbayesian_analysis%2Fsemanticpriming_brms_weaklyinformativepriors_exgaussian.R%23L16-L35&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on'></script>
 
-Now it's time to consider in earnest:
+Now it's time to consider in earnest: 
 
 > Is frequentist statistics about $p$ values only? Are frequentist estimates diametrically opposed to Bayesian posterior distributions? Are confidence intervals and credible intervals irreconcilable? Will R crash if [`lmerTest`](https://cran.r-project.org/web/packages/lmerTest/lmerTest.pdf) and [`brms`](https://cran.r-project.org/web/packages/brms/brms.pdf) are simultaneously loaded?
 
 
 ### Session info
 
-If you encounter any blockers while reproducing the above analyses using the materials at https://osf.io/gt5uf, my current session info may be useful. For instance, the legend on the plot may not show if the latest versions of the `ggplot2` and the `tidyverse` packages are used. Instead, `ggplot2 3.3.5` and `tidyverse 1.3.1` should be installed using `install_version('tidyverse', '1.3.1')` and `install_version('tidyverse', '1.3.1')`.
+If you encounter any blockers while reproducing the above analyses using the materials at https://osf.io/gt5uf, my current session info may be useful. For instance, the legend of the plot may not show if the latest versions of the `ggplot2` and the `tidyverse` packages are used. Instead, `ggplot2 3.3.5` and `tidyverse 1.3.1` should be installed using `install_version('ggplot2', '3.3.5')` and `install_version('tidyverse', '1.3.1')`.
 
 ```{r}
 
