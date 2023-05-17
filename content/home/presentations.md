@@ -9,7 +9,7 @@ active = true  # Activate this widget? true/false
 weight = 80  # Order that this section will appear.
 
 title = "Presentations"
-subtitle = "In addition, lectures and lab meeting presentations are available at https://osf.io/nuvby."
+subtitle = "In addition, some lab meeting presentations are available at https://osf.io/nuvby."
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.

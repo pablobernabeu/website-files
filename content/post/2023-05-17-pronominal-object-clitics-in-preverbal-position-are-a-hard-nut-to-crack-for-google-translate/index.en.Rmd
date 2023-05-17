@@ -1,0 +1,40 @@
+---
+title: Pronominal object clitics in preverbal position are a hard nut to crack for
+  Google Translate
+author: ''
+date: '2023-05-17'
+slug: pronominal-object-clitics-in-preverbal-position-are-a-hard-nut-to-crack-for-google-translate
+categories:
+  - linguistics
+tags:
+  - linguistics
+  - syntax
+  - translation
+  - s
+subtitle: ''
+summary: ''
+authors: []
+lastmod: ''
+featured: no
+draft: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+Many Romance languages allow the movement of pronominal object clitics to the preverbal position (Hanson & Carlson, 2014; Labotka et al., 2023). That is, instead of saying *La maestra lo ha detto* 'The teacher has said it', it is possible to say *Lo ha detto la maestra* 'It has said the teacher'. The latter is a marked phrasing that increases the attention to the subject of the sentence. While English syntax does not allow this movement of the clitic, the marked sentence could be translated as 'The teacher has said it herself' or "It's the teacher that has said it". How does Google Translate (GT) deal with this in May 2023? For this specific case, GT opts for 'The teacher said', which is a good, idiomatic option. When it comes to translating to Spanish, GT returns 'El profesor dijo', which is the direct equivalent of the English translation. This option is valid in some varieties of Spanish in America. Nonetheless, it must be noted that a more direct translation from the Italian form would have been very good.
+
+GT has a greater trouble when the content of the sentence is slightly more complex. For instance, *Lo cerca la maestra* 'Him is seeking the teacher' is stripped of its markedness in the translation to English---i.e., 'The teacher is looking for him'. The alternative option, to preserve the focus on the subject---e.g., "It's the teacher that's looking for him"---would require some syntactic liberties, and hence entail some risks. So, playing it safe is understandable. Our next step is checking the translation to some Romance languages that allow the same movement to preverbal position that is present in the original Italian sentence, *Lo cerca la maestra*. The natural translations would be *Îl caută profesorul* (Romanian) or *Lo busca la profesora* (Spanish). In contrast, GT returns the equivalents of the English translation---i.e., *Profesorul îl caută* and *El profesor lo busca*.^[GT had an error of gender in the translation to *El profesor*.] These options are problematic because the focus on the subject is lost---that is, unnecessarily lost. 
+
+In fairness, machine translation is an absolute feat overall, and it's only going to improve with the growth of language models. So, how much of a piece of cake will it be for GT to crack some of these syntactic details, and to preserve syntactic forms when the systems of both languages are alike?
+
+
+### References
+
+Labotka, D., Sabo, E., Bonais, R., Gelman, S. A., & Baptista, M. (2023). Testing the effects of congruence in adult multilingual acquisition with implications for creole genesis. *Cognition, 235*, 105387. https://doi-org.mime.uit.no/10.1016/j.cognition.2023.105387
+
+Hanson, A. E. S., & Carlson, M. T. (2014). The roles of first language and proficiency in L2 processing of Spanish clitics: Global effects. *Language Learning, 64*(2), 310-342. https://doi-org.mime.uit.no/10.1111/lang.12050
+
