@@ -39,7 +39,7 @@ OpenSesame offers options to counterbalance properties of the stimulus across pa
 Below is the corresponding inline script. The code `.iloc[0]` at the end of the lines is used to select a cell.
 
 
-```
+```{python, eval = FALSE, python.reticulate = FALSE}
 
 # Assigning participant-specific parameters automatically in OpenSesame
 
@@ -60,3 +60,4 @@ var.experiment_list = participant_parameters.loc[participant_parameters['partici
 
 ```
 
+ 
