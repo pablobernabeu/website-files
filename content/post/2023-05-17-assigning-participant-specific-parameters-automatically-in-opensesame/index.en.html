@@ -1,0 +1,121 @@
+---
+title: Assigning participant-specific parameters automatically in OpenSesame
+author: ''
+date: '2023-05-17'
+slug: assigning-participant-specific-parameters-automatically-in-opensesame
+categories:
+  - research methods
+tags:
+  - research methods
+  - s
+subtitle: ''
+summary: ''
+authors: []
+lastmod: ''
+featured: no
+draft: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+
+<p>OpenSesame offers options to counterbalance properties of the stimulus across participants. However, in cases of more involved assignments of session parameters across participants, it becomes necessary to write a bit of Python code in an inline script, which should be placed at the top of the timeline. In such a script, the participant-specific parameters are loaded in from a csv file. Below is a minimal example of the csv file.</p>
+<table>
+<colgroup>
+<col width="17%" />
+<col width="22%" />
+<col width="20%" />
+<col width="14%" />
+<col width="24%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">participant</th>
+<th>language</th>
+<th align="center">training_list</th>
+<th align="center">test_list</th>
+<th align="center">experiment_list</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td>Mini-English</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td>Mini-Norwegian</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td>Mini-English</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td>Mini-Norwegian</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td>Mini-English</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td>Mini-Norwegian</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td align="center">7</td>
+<td>Mini-English</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center">8</td>
+<td>Mini-Norwegian</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">2</td>
+</tr>
+</tbody>
+</table>
+<p>Below is the corresponding inline script. The code <code>.iloc[0]</code> at the end of the lines is used to select a cell.</p>
+<pre><code>
+# Assigning participant-specific parameters automatically in OpenSesame
+
+import csv  # handle csv file
+import pandas as pd  # handle data frames
+
+participant_parameters = pd.read_csv(exp.get_file(&#39;stimuli/parameters per participant.csv&#39;))
+
+var.participant = var.subject_nr
+
+var.language = participant_parameters.loc[participant_parameters[&#39;participant&#39;] == var.subject_nr][&#39;language&#39;].iloc[0]
+
+var.training_list = participant_parameters.loc[participant_parameters[&#39;participant&#39;] == var.subject_nr][&#39;training_list&#39;].iloc[0]
+
+var.test_list = participant_parameters.loc[participant_parameters[&#39;participant&#39;] == var.subject_nr][&#39;test_list&#39;].iloc[0]
+
+var.experiment_list = participant_parameters.loc[participant_parameters[&#39;participant&#39;] == var.subject_nr][&#39;experiment_list&#39;].iloc[0]
+</code></pre>
