@@ -81,8 +81,8 @@
 - id: profilesections
   translation: '<span style="padding-left:32px;">Subsections</span>'
 
-- id: work_since_PhD
-  translation: Work since PhD
+- id: recent_work
+  translation: Recent work
 
 - id: education
   translation: Education

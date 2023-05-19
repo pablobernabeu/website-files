@@ -90,9 +90,9 @@
 
     <div class="row">
 
-      {{ with $person.work_since_PhD }}
+      {{ with $person.recent_work }}
       <div>
-        <h3 style="padding-left:13px;">{{ i18n "work_since_PhD" | markdownify }}</h3>
+        <h3 style="padding-left:13px;">{{ i18n "recent_work" | markdownify }}</h3>
         <ul class="ul-edu fa-ul">
           {{ range .jobs }}
           <li>
