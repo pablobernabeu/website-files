@@ -37,7 +37,7 @@ recent_work:
   - job: '[Postdoctoral fellowship](https://en.uit.no/go/target/789811)'
     institution: 'UiT The Arctic University of Norway'
     year: 'Nov **2022** -- _Nov **2024**_'
-    extra: '-&nbsp; In my research within the [LESS Project (Language Economy through Transfer Source Selectivity)](https://uit.no/research/acqva/project?pid=743114), I am investigating how language learners coordinate several languages early in the acquisition process, how this process is influenced by the characteristics of the languages, and how the process is reflected in the brain.'
+    extra: '-&nbsp; As a member of the [LESS Project (Language Economy through Transfer Source Selectivity)](https://uit.no/research/acqva/project?pid=743114), I am investigating how language learners coordinate several languages early in the acquisition process, how this process is influenced by the characteristics of the languages, and how the process is reflected in the brain.'
     extra2: '-&nbsp; Service: peer-review for Cognition and Cognitive Science'
   - job: 'Part-time data analysis contribution'
     institution: 'UiT The Arctic University of Norway'
