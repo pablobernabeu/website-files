@@ -34,7 +34,7 @@ tags:
   - simr
   - rstats
   - R
-doi: 'https://doi.org/10.17635/lancaster/thesis/1795'
+doi: '10.17635/lancaster/thesis/1795'
 publishDate: '2022-10-22'
 publication_types:
   - '7'

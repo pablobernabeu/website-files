@@ -32,7 +32,7 @@ tags:
   - rstats
   - R
 authors: ['Bernabeu, P., Lynott, D., & Connell, L.']
-doi: https://doi.org/10.17605/OSF.IO/UERYQ
+doi: 10.17605/OSF.IO/UERYQ
 publishDate: '2022-10-22T09:10:27Z'
 publication_types:
   - '0'
