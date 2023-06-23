@@ -1,41 +1,42 @@
 ---
-abstract: 'Mental simulation theories of language comprehension propose that people automatically create mental representations of real objects. Evidence from sentence-picture verification tasks has shown that people mentally represent various visual properties such as shape, color, and size. However, the evidence for mental simulations of object orientation is limited. We report a study that investigates the match advantage of object orientation across speakers of different languages. This multi-laboratory project aims to achieve two objectives. First, we examine the replicability of the match advantage of object orientation across multiple languages and laboratories. Second, we will use a mental rotation task to measure participants’ mental imagery after the sentence-picture verification task. The relationship between the participants’ performance of the two tasks will provide a cross-linguistic examination of perceptual simulation processes. With the (broad) evaluation of individual mental imagery ability and potential linguistic moderators, we expect a robust estimation of match advantage of object orientation.'
+abstract: 'Mental simulation theories of language comprehension propose that people automatically create mental representations of objects mentioned in sentences. Mental representation is often measured with the sentence-picture verification task, wherein participants first read a sentence that implies the object property (i.e., shape and orientation). Participants then respond to an image of an object by indicating whether it was an object from the sentence or not. Previous studies have shown matching advantages for shape, but findings concerning object orientation have not been robust across languages. This registered report investigated the match advantage of object orientation across 18 languages in nearly 4,000 participants. The preregistered analysis revealed no compelling evidence for a match advantage across languages. Additionally, the match advantage was not predicted by mental rotation scores. Overall, the results did not support current mental simulation theories.'
 authors:
-- Chen, S.-C., Szabelzka, A., Chartier, C. R., Kekecs, Z., Lynott, D., Bernabeu, P. ... Schmidt, K.
-date: "2020-01-01"
+  - Chen, S., Buchanan, E. M., Kekecs, Z., Miller, J. K., Szabelska, A., Aczel, B., … Chartier, C. R.
+date: "2023-06-08"
 categories:
   - conceptual processing
-  - individual differences
-  - conceptual replication
-doi: "10.31234/osf.io/t2pjv"
+  - replication
+doi: "10.31219/osf.io/2qf6w"
 featured: false
 image:
-  caption: 'Public domain image from Openclipart, retrieved from https://openclipart.org/detail/5544/coloring-book-bald-eagle'
+  caption: ''
   focal_point: ""
   preview_only: true
 # projects:
 # - internal-project
-publishDate: "2020-01-01"
+publishDate: "2023-06-08"
 publication: "Conditionally accepted in *Psychonomic Bulletin & Review*"
 publication_short: 
 publication_types:
-- "2"
+  - "2"
 # slides: example
 summary:
 tags:
-- object orientation effect
-- conceptual processing
-- reading
-- event-related potentials
-- cognition
-- crosslinguistic
-- replication
-- psycholinguistics
-- Psychological Science Accelerator
-title: "Investigating object orientation effects across 14 languages"
+  - object orientation effect
+  - conceptual processing
+  - reading
+  - event-related potentials
+  - cognition
+  - mental rotation
+  - individual differences
+  - crosslinguistic
+  - replication
+  - psycholinguistics
+  - Psychological Science Accelerator
+title: "Investigating object orientation effects across 18 languages"
 url_code: 'https://osf.io/e428p/'
 url_dataset: 'https://osf.io/e428p/'
-url_pdf: 'https://doi.org/10.31234/osf.io/t2pjv'
+url_pdf: 'https://doi.org/10.31219/osf.io/2qf6w'
 # url_poster: '#'
 # url_project: ""
 # url_slides: ""
@@ -57,6 +58,6 @@ url_video: 'https://osf.io/h36wr/'
 
 <div style = "text-indent:-2em; margin-left:2em;">
 
-Chen, S., Szabelska, A., Chartier, C. R., Kekecs, Z., Lynott, D., Bernabeu, P., … Schmidt, K. (2018). *Investigating object orientation effects across 14 languages*. PsyArXiv. https://doi.org/10.31234/osf.io/t2pjv/
+Chen, S., Buchanan, E. M., Kekecs, Z., Miller, J. K., Szabelska, A., Aczel, B., … Chartier, C. R. (2023). *Investigating object orientation effects across 18 languages*. OSF. https://doi.org/10.31219/osf.io/2qf6w
 
 </div>
