@@ -1,0 +1,90 @@
+---
+title: Table joins with conditional "fuzzy" string matching in R
+author: ''
+date: '2023-06-24'
+slug: table-joins-with-conditional-fuzzy-string-matching-in-r
+categories:
+  - R
+tags:
+  - string matching
+  - s
+subtitle: ''
+summary: ''
+authors: []
+featured: no
+draft: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+
+<p>Here’s an example of fuzzy-matching strings in R, that I shared on <a href="https://stackoverflow.com/a/76368552/7050882">StackOverflow</a>. In <code>stringdist_join</code>, the <code>max_dist</code> argument is used to constrain the degree of fuzziness.</p>
+<pre class="r"><code>library(fuzzyjoin)
+library(dplyr)
+#&gt; 
+#&gt; Attaching package: &#39;dplyr&#39;
+#&gt; The following objects are masked from &#39;package:stats&#39;:
+#&gt; 
+#&gt;     filter, lag
+#&gt; The following objects are masked from &#39;package:base&#39;:
+#&gt; 
+#&gt;     intersect, setdiff, setequal, union
+library(knitr)
+
+
+small_tab = data.frame(Food.Name = c(&#39;Corn&#39;, &#39;Squash&#39;, &#39;Peppers&#39;), 
+                       Food.Code = c(NA, NA, NA))
+
+
+large_tab = data.frame(Food.Name = c(&#39;Sweet Corn&#39;, &#39;Red Corn&#39;, &#39;Baby Corns&#39;, 
+                                     &#39;Squash&#39;, &#39;Long Squash&#39;, &#39;Red Pepper&#39;, 
+                                     &#39;Green Pepper&#39;, &#39;Red Peppers&#39;), 
+                       Food.Code = c(532, 532, 944, 111, 123, 654, 655, 654))
+
+joined_tab = stringdist_join(small_tab, large_tab, by = &#39;Food.Name&#39;,
+                             ignore_case = TRUE, method = &#39;cosine&#39;, 
+                             max_dist = 0.5, distance_col = &#39;dist&#39;) %&gt;%
+  
+  # Tidy columns 
+  select(Food.Name = Food.Name.x, -Food.Name.y, 
+         Food.Code = Food.Code.y, -dist) %&gt;%
+  
+  # Only keep most frequent food code per food name
+  group_by(Food.Name) %&gt;% count(Food.Name, Food.Code) %&gt;% 
+  slice(which.max(n)) %&gt;% select(-n) %&gt;%
+  
+  # Order food names as in the small table
+  arrange(factor(Food.Name, levels = small_tab$Food.Name))
+
+# Show table with columns renamed
+joined_tab %&gt;%
+  rename(&#39;Food Name&#39; = Food.Name, 
+         &#39;Food Code&#39; = Food.Code) %&gt;%
+  kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Food Name</th>
+<th align="right">Food Code</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Corn</td>
+<td align="right">532</td>
+</tr>
+<tr class="even">
+<td align="left">Squash</td>
+<td align="right">111</td>
+</tr>
+<tr class="odd">
+<td align="left">Peppers</td>
+<td align="right">654</td>
+</tr>
+</tbody>
+</table>
+<p><sup>Created on 2023-05-31 with <a href="https://reprex.tidyverse.org">reprex v2.0.2</a></sup></p>

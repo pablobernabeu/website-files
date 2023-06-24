@@ -10,12 +10,12 @@ tags:
   - s
   - R
   - linear mixed-effects models
-  - data visualisation
+  - visualisation
   - statistics
 subtitle: ''
 summary: 'When a model has struggled to find enough information in the data to account for every predictor---especially for every random effect---, convergence warnings appear (Brauer & Curtin, 2018; Singmann & Kellen, 2019). In this article, I review the issue of convergence before presenting a new plotting function in R that facilitates the visualisation of the fixed effects fitted by different optimization algorithms (also dubbed optimizers).'
 authors: []
-lastmod: '2021-11-14T19:46:08+01:00'
+lastmod: '2023-06-22T15:46:08+01:00'
 featured: no
 draft: no
 image:
@@ -60,12 +60,12 @@ Framed within the drive to maintain random slopes wherever possible, the develop
 - nloptwrap.NLOPT_LN_NELDERMEAD
 - nloptwrap.NLOPT_LN_BOBYQA
 
-To assess whether convergence warnings render the results invalid, or on the contrary, the results can be deemed valid in spite of the warnings, Bates et al. (2021) suggest refitting models affected by convergence warnings with a variety of optimizers. The authors argue that if the different optimizers produce practically-equivalent results, the results are valid. The `allFit` function from the 'lme4' package allows the refitting of models using a number of optimizers. To use the seven optimizers listed above, two extra packages must be installed: 'dfoptim' and 'optimx' (see [lme4 manual](https://cran.r-project.org/web/packages/lme4/lme4.pdf)). The output from `allFit()` contains several statistics on the fixed and the random effects fitted by each optimizer (see [example](https://github.com/lme4/lme4/issues/512#issue-425198940)). 
+To assess whether convergence warnings render the results invalid, or on the contrary, the results can be deemed valid in spite of the warnings, Bates et al. (2022) suggest refitting models affected by convergence warnings with a variety of optimizers. The authors argue that if the different optimizers produce practically-equivalent results, the results are valid. The `allFit` function from the 'lme4' package allows the refitting of models using a number of optimizers. To use the seven optimizers listed above, two extra packages must be installed: 'dfoptim' and 'optimx' (see [lme4 manual](https://cran.r-project.org/web/packages/lme4/lme4.pdf)). The output from `allFit()` contains several statistics on the fixed and the random effects fitted by each optimizer (see [example](https://github.com/lme4/lme4/issues/512#issue-425198940)). 
 
 
 ## Plotting the fixed effects from allFit()
 
-Several R users have ventured into [plotting the allFit() output](https://www.google.com/search?q=%22ggplot%22+%22allfit%22+optimizers) but there is not a function in 'lme4' yet at the time of writing (Oct 2021). I have just developed a function that takes the output from `allFit()`, tidies it, selects the fixed effects and plots them using 'ggplot2'. The function is shown below, and can be copied through the `Copy Code` button at the top right corner. It can be renamed by changing `plot.fixef.allFit` to another valid name.
+Several R users have ventured into [plotting the allFit() output](https://www.google.com/search?q=%22ggplot%22+%22allfit%22+optimizers) but there is not a function in 'lme4' yet at the time of writing. I (Bernabeu, 2022) developed a [function](https://github.com/pablobernabeu/plot.fixef.allFit/blob/main/plot.fixef.allFit.R) that takes the output from `allFit()`, tidies it, selects the fixed effects and plots them using 'ggplot2'. The function is shown below, and can be copied through the `Copy Code` button at the top right corner. It can be renamed by changing `plot.fixef.allFit` to another valid name.
 
 <div style = 'height: 800px; border: 0.5px dotted grey; padding: 10px; resize: both; overflow: auto;'>
 
@@ -96,6 +96,8 @@ plot.fixef.allFit = function(allFit_output,
                              interaction_symbol_x = TRUE) {
   
   require(lme4)
+  require(dfoptim)
+  require(optimx)
   require(dplyr)
   require(reshape2)
   require(stringr)
@@ -428,49 +430,69 @@ The argument `shared_y_axis_limits` deserves a comment. It allows using the same
 
 ## Use case
 
-Let's test the function on a new analysis of the English Lexicon Project (Balota et al., 2007; Yap et al., 2012) that I've conducted for a forthcoming study.
+Let's test the function with a minimal model.
 
 ```{r}
 
-# Read in allFit() output
-m1_allFit_convergence = readRDS('m1_allFit_convergence.rds')
+# Create data using code by Ben Bolker from 
+# https://stackoverflow.com/a/38296264/7050882
 
-# To select specific predictors, first return their names
-colnames(summary(m1_allFit_convergence)$fixef)
+set.seed(101)
+spin = runif(600, 1, 24)
+reg = runif(600, 1, 15)
+ID = rep(c("1","2","3","4","5", "6", "7", "8", "9", "10"))
+day = rep(1:30, each = 10)
+testdata <- data.frame(spin, reg, ID, day)
+testdata$fatigue <- testdata$spin * testdata$reg/10 * rnorm(30, mean=3, sd=2)
+
+# Model
+
+library(lme4)
+
+fit = lmer(fatigue ~ spin * reg + (1|ID),
+           data = testdata, REML = TRUE)
+
+# Refit model using all available algorithms
+multi_fit = allFit(fit)
+
+summary(multi_fit)$fixef
 
 ```
 
 
-A subset of these effects is selected below using the argument `select_predictors`. Notice that the intercept is plotted by default on the first row, along with the legend that lists all the optimizers used.
+The effects to be visualised are selected below using the argument `select_predictors`. Notice that the intercept is plotted by default on the first row, along with the legend that lists all the optimizers used.
 
 ```{r demo-plot.fixef.allFit-function-1, fig.dim = c(9, 7)}
 
-plot.fixef.allFit(m1_allFit_convergence, 
+# Read in function from GitHub
+source('https://raw.githubusercontent.com/pablobernabeu/plot.fixef.allFit/main/plot.fixef.allFit.R')
+
+plot.fixef.allFit(multi_fit, 
                   
-                  select_predictors = c('z_vocabulary_age',
-                                        'z_recoded_participant_gender',
-                                        'z_word_frequency',
-                                        'z_vocabulary_age:z_word_frequency',
-                                        'z_recoded_participant_gender:z_word_frequency'), 
+                  select_predictors = c('spin', 'reg', 'spin:reg'), 
                   
                   # Increase padding at top and bottom of Y axis
-                  multiply_y_axis_limits = 1.3)
+                  multiply_y_axis_limits = 1.3,
+                  
+                  y_title = 'Fixed effect (*b*)',
+                  
+                  # Align y title
+                  y_title_hjust = .9)
 
 ```
 
 
-The plot produced by `plot.fixef.allFit()` by default replaces the colons in interaction effects (e.g., `z_vocabulary_age:z_word_frequency`) with ' &times; ' to facilitate the visibility (this can be overriden by setting `interaction_symbol_x = FALSE`). Yet, it is important to note that any interactions passed to `select_predictors` must have the colon, as that is the symbol present in the `lme4::allFit()` output.
+The plot produced by `plot.fixef.allFit()` by default replaces the colons in interaction effects (e.g., `spin:reg`) with ' &times; ' to facilitate the visibility (this can be overriden by setting `interaction_symbol_x = FALSE`). Yet, it is important to note that any interactions passed to `select_predictors` must have the colon, as that is the symbol present in the `lme4::allFit()` output.
 
 The output of `plot.fixef.allFit()` is a [ggplot2](https://ggplot2.tidyverse.org/) object that can be stored for further use, as in the example below, in which new parameters are used.
 
 ```{r demo-plot.fixef.allFit-function-2, fig.dim = c(9, 4)}
 
-plot_m1_allFit_convergence = 
+plot_fit_convergence = 
   
-  plot.fixef.allFit(m1_allFit_convergence, 
+  plot.fixef.allFit(multi_fit, 
                     
-                    select_predictors = c('z_vocabulary_age',
-                                          'z_vocabulary_age:z_word_frequency'), 
+                    select_predictors = c('spin', 'spin:reg'), 
                     
                     # Use plot-specific Y axis limits
                     shared_y_axis_limits = FALSE,
@@ -478,19 +500,19 @@ plot_m1_allFit_convergence =
                     decimal_points = 7, 
                     
                     # Move up Y axis title
-                    y_title_hjust = -11.8,
+                    y_title_hjust = -20,
                     
-                    y_title = 'Fixed effect (\u03B2)')  # \u03B2 = beta letter
+                    y_title = 'Fixed effect (*b*)')
 
 # Modify aspect further using `ggplot2::theme()`
-plot_m1_allFit_convergence =
-  plot_m1_allFit_convergence + theme(axis.title.y = element_text(size = 12))
+plot_fit_convergence =
+  plot_fit_convergence + theme(axis.title.y = element_text(size = 12))
 
 # Print plot
-plot_m1_allFit_convergence
+plot_fit_convergence
 
 # Plot can be saved to disk as pdf, png, etc. through `ggplot2::ggsave()`
-# ggsave('plot_m1_allFit_convergence.pdf', plot_m1_allFit_convergence, 
+# ggsave('plot_fit_convergence.pdf', plot_fit_convergence, 
 #        device = cairo_pdf, width = 9, height = 9, dpi = 900)
 
 ```
@@ -502,9 +524,9 @@ plot_m1_allFit_convergence
 
 <div style = 'text-indent:-2em; margin-left:2em;'>
 
-Balota, D. A., Yap, M. J., Hutchison, K. A., Cortese, M. J., Kessler, B., Loftis, B., Neely, J. H., Nelson, D. L., Simpson, G. B., & Treiman, R. (2007). The English Lexicon Project. *Behavior Research Methods, 39*, 445–459. https://doi.org/10.3758/BF03193014
+Bates, D., Maechler, M., Bolker, B., Walker, S., Christensen, R. H. B., Singmann, H., Dai, B., Scheipl, F., Grothendieck, G., Green, P., Fox, J., Bauer, A., & Krivitsky, P. N. (2022). *Package 'lme4'.* CRAN. https://cran.r-project.org/web/packages/lme4/lme4.pdf
 
-Bates, D., Maechler, M., Bolker, B., Walker, S., Christensen, R. H. B., Singmann, H., Dai, B., Scheipl, F., Grothendieck, G., Green, P., Fox, J., Bauer, A., & Krivitsky, P. N. (2021). *Package 'lme4'.* CRAN. https://cran.r-project.org/web/packages/lme4/lme4.pdf
+Bernabeu, P. (2022). Language and sensorimotor simulation in conceptual processing: Multilevel analysis and statistical power. Lancaster University. https://doi.org/10.17635/lancaster/thesis/1795
 
 Brauer, M., & Curtin, J. J. (2018). Linear mixed-effects models and the analysis of nonindependent data: A unified framework to analyze categorical and continuous independent variables that vary within-subjects and/or within-items. *Psychological Methods, 23*(3), 389–411. https://doi.org/10.1037/met0000159
 
@@ -514,8 +536,5 @@ Meteyard, L., & Davies, R. A. (2020). Best practice guidance for linear mixed-ef
 
 Singmann, H., & Kellen, D. (2019). An introduction to mixed models for experimental psychology. In D. H. Spieler & E. Schumacher (Eds.), *New methods in cognitive psychology* (pp. 4–31). Psychology Press.
 
-Yap, M. J., Balota, D. A., Sibley, D. E., & Ratcliff, R. (2012). Individual differences in visual word recognition: Insights from the English Lexicon Project. *Journal of Experimental Psychology: Human Perception and Performance, 38*, 1, 53–79. https://doi.org/10.1037/a0024177
-
 </div>
-
 
