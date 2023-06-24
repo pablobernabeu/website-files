@@ -32,29 +32,38 @@ Whereas the direction of main effects can be interpreted from the sign of the es
 library(lme4)
 #> Loading required package: Matrix
 library(sjPlot)
+#> Learn more about sjPlot with 'browseVignettes("sjPlot")'.
 library(ggplot2)
 
 theme_set(theme_sjplot())
 
-# Create data using code by Ben Bolker from 
-# https://stackoverflow.com/a/38296264/7050882
+# Create data partially based on code by Ben Bolker  
+# from https://stackoverflow.com/a/38296264/7050882
 
 set.seed(101)
-spin = runif(600, 1, 24)
-reg = runif(600, 1, 15)
-ID = rep(c("1","2","3","4","5", "6", "7", "8", "9", "10"))
-day = rep(1:30, each = 10)
-testdata <- data.frame(spin, reg, ID, day)
-testdata$fatigue <- testdata$spin * testdata$reg/10 * rnorm(30, mean=3, sd=2)
 
-fit = lmer(fatigue ~ spin * reg + (1|ID),
+spin = runif(800, 1, 24)
+
+trait = rep(1:40, each = 20)
+
+ID = rep(1:80, each = 10)
+
+testdata <- data.frame(spin, trait, ID)
+
+testdata$fatigue <- 
+  testdata$spin * testdata$trait / 
+  rnorm(800, mean = 6, sd = 2)
+
+# Model
+fit = lmer(fatigue ~ spin * trait + (1|ID),
            data = testdata, REML = TRUE)
+#> boundary (singular) fit: see help('isSingular')
 
-plot_model(fit, type = 'pred', terms = c('spin', 'reg'))
+plot_model(fit, type = 'pred', terms = c('spin', 'trait'))
 #> Warning: Ignoring unknown parameters: linewidth
 ```
 
-![](https://i.imgur.com/oSERpE5.png)<!-- -->
+![](https://i.imgur.com/7VTcfLu.png)<!-- -->
 
 <sup>Created on 2023-06-24 with [reprex v2.0.2](https://reprex.tidyverse.org)</sup>
 
@@ -69,26 +78,33 @@ Below is a solution using [custom functions called `deciles_interaction_plot` an
 library(lme4)
 #> Loading required package: Matrix
 library(sjPlot)
-#> Learn more about sjPlot with 'browseVignettes("sjPlot")'.
 library(ggplot2)
 
 theme_set(theme_sjplot())
 
-# Create data using code by Ben Bolker from 
-# https://stackoverflow.com/a/38296264/7050882
+# Create data partially based on code by Ben Bolker  
+# from https://stackoverflow.com/a/38296264/7050882
 
 set.seed(101)
-spin = runif(600, 1, 24)
-reg = runif(600, 1, 15)
-ID = rep(c("1","2","3","4","5", "6", "7", "8", "9", "10"))
-day = rep(1:30, each = 10)
-testdata <- data.frame(spin, reg, ID, day)
-testdata$fatigue <- testdata$spin * testdata$reg/10 * rnorm(30, mean=3, sd=2)
 
-fit = lmer(fatigue ~ spin * reg + (1|ID),
+spin = runif(800, 1, 24)
+
+trait = rep(1:40, each = 20)
+
+ID = rep(1:80, each = 10)
+
+testdata <- data.frame(spin, trait, ID)
+
+testdata$fatigue <- 
+  testdata$spin * testdata$trait / 
+  rnorm(800, mean = 6, sd = 2)
+
+# Model
+fit = lmer(fatigue ~ spin * trait + (1|ID),
            data = testdata, REML = TRUE)
+#> boundary (singular) fit: see help('isSingular')
 
-# plot_model(fit, type = 'pred', terms = c('spin', 'reg'))
+# plot_model(fit, type = 'pred', terms = c('spin', 'trait'))
 
 # Binning the colour variable into ten levels (deciles)
 
@@ -98,7 +114,7 @@ source('https://raw.githubusercontent.com/pablobernabeu/language-sensorimotor-si
 deciles_interaction_plot(
   model = fit, 
   x = 'spin',
-  fill = 'reg',
+  fill = 'trait',
   fill_nesting_factor = 'ID'
 )
 #> Loading required package: dplyr
@@ -122,7 +138,7 @@ deciles_interaction_plot(
 #> which will replace the existing scale.
 ```
 
-![](https://i.imgur.com/s50x4jc.png)<!-- -->
+![](https://i.imgur.com/niqWOzx.png)<!-- -->
 
 ``` r
 
@@ -135,7 +151,7 @@ source('https://raw.githubusercontent.com/pablobernabeu/language-sensorimotor-si
 sextiles_interaction_plot(
   model = fit, 
   x = 'spin',
-  fill = 'reg',
+  fill = 'trait',
   fill_nesting_factor = 'ID'
 )
 #> Warning: Ignoring unknown parameters: linewidth
@@ -145,7 +161,7 @@ sextiles_interaction_plot(
 #> which will replace the existing scale.
 ```
 
-![](https://i.imgur.com/MFQD6yQ.png)<!-- -->
+![](https://i.imgur.com/w8Ydo4F.png)<!-- -->
 
 <sup>Created on 2023-06-24 with [reprex v2.0.2](https://reprex.tidyverse.org)</sup>
 

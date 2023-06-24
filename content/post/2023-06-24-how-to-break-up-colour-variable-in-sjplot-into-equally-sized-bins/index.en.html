@@ -31,27 +31,36 @@ projects: []
 <pre class="r"><code>library(lme4)
 #&gt; Loading required package: Matrix
 library(sjPlot)
+#&gt; Learn more about sjPlot with &#39;browseVignettes(&quot;sjPlot&quot;)&#39;.
 library(ggplot2)
 
 theme_set(theme_sjplot())
 
-# Create data using code by Ben Bolker from 
-# https://stackoverflow.com/a/38296264/7050882
+# Create data partially based on code by Ben Bolker  
+# from https://stackoverflow.com/a/38296264/7050882
 
 set.seed(101)
-spin = runif(600, 1, 24)
-reg = runif(600, 1, 15)
-ID = rep(c(&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;, &quot;10&quot;))
-day = rep(1:30, each = 10)
-testdata &lt;- data.frame(spin, reg, ID, day)
-testdata$fatigue &lt;- testdata$spin * testdata$reg/10 * rnorm(30, mean=3, sd=2)
 
-fit = lmer(fatigue ~ spin * reg + (1|ID),
+spin = runif(800, 1, 24)
+
+trait = rep(1:40, each = 20)
+
+ID = rep(1:80, each = 10)
+
+testdata &lt;- data.frame(spin, trait, ID)
+
+testdata$fatigue &lt;- 
+  testdata$spin * testdata$trait / 
+  rnorm(800, mean = 6, sd = 2)
+
+# Model
+fit = lmer(fatigue ~ spin * trait + (1|ID),
            data = testdata, REML = TRUE)
+#&gt; boundary (singular) fit: see help(&#39;isSingular&#39;)
 
-plot_model(fit, type = &#39;pred&#39;, terms = c(&#39;spin&#39;, &#39;reg&#39;))
+plot_model(fit, type = &#39;pred&#39;, terms = c(&#39;spin&#39;, &#39;trait&#39;))
 #&gt; Warning: Ignoring unknown parameters: linewidth</code></pre>
-<p><img src="https://i.imgur.com/oSERpE5.png" /><!-- --></p>
+<p><img src="https://i.imgur.com/7VTcfLu.png" /><!-- --></p>
 <p><sup>Created on 2023-06-24 with <a href="https://reprex.tidyverse.org">reprex v2.0.2</a></sup></p>
 <p>However, I needed an extra feature, as sjPlot by default breaks up the colour variable into few levels that do not include the minimum or the maximum values in my variable. What I would like to do is to stratify the colour variable into equally-sized levels that include the minimum and the maximum values.</p>
 <p>Furthermore, in the legend, I would also like to display the number of levels of a grouping variable (<code>ID</code>) that are contained in each level of the colour variable.</p>
@@ -59,26 +68,33 @@ plot_model(fit, type = &#39;pred&#39;, terms = c(&#39;spin&#39;, &#39;reg&#39;))
 <pre class="r"><code>library(lme4)
 #&gt; Loading required package: Matrix
 library(sjPlot)
-#&gt; Learn more about sjPlot with &#39;browseVignettes(&quot;sjPlot&quot;)&#39;.
 library(ggplot2)
 
 theme_set(theme_sjplot())
 
-# Create data using code by Ben Bolker from 
-# https://stackoverflow.com/a/38296264/7050882
+# Create data partially based on code by Ben Bolker  
+# from https://stackoverflow.com/a/38296264/7050882
 
 set.seed(101)
-spin = runif(600, 1, 24)
-reg = runif(600, 1, 15)
-ID = rep(c(&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;, &quot;10&quot;))
-day = rep(1:30, each = 10)
-testdata &lt;- data.frame(spin, reg, ID, day)
-testdata$fatigue &lt;- testdata$spin * testdata$reg/10 * rnorm(30, mean=3, sd=2)
 
-fit = lmer(fatigue ~ spin * reg + (1|ID),
+spin = runif(800, 1, 24)
+
+trait = rep(1:40, each = 20)
+
+ID = rep(1:80, each = 10)
+
+testdata &lt;- data.frame(spin, trait, ID)
+
+testdata$fatigue &lt;- 
+  testdata$spin * testdata$trait / 
+  rnorm(800, mean = 6, sd = 2)
+
+# Model
+fit = lmer(fatigue ~ spin * trait + (1|ID),
            data = testdata, REML = TRUE)
+#&gt; boundary (singular) fit: see help(&#39;isSingular&#39;)
 
-# plot_model(fit, type = &#39;pred&#39;, terms = c(&#39;spin&#39;, &#39;reg&#39;))
+# plot_model(fit, type = &#39;pred&#39;, terms = c(&#39;spin&#39;, &#39;trait&#39;))
 
 # Binning the colour variable into ten levels (deciles)
 
@@ -88,7 +104,7 @@ source(&#39;https://raw.githubusercontent.com/pablobernabeu/language-sensorimoto
 deciles_interaction_plot(
   model = fit, 
   x = &#39;spin&#39;,
-  fill = &#39;reg&#39;,
+  fill = &#39;trait&#39;,
   fill_nesting_factor = &#39;ID&#39;
 )
 #&gt; Loading required package: dplyr
@@ -110,7 +126,7 @@ deciles_interaction_plot(
 #&gt; replace the existing scale.
 #&gt; Scale for &#39;colour&#39; is already present. Adding another scale for &#39;colour&#39;,
 #&gt; which will replace the existing scale.</code></pre>
-<p><img src="https://i.imgur.com/s50x4jc.png" /><!-- --></p>
+<p><img src="https://i.imgur.com/niqWOzx.png" /><!-- --></p>
 <pre class="r"><code>
 # If you wanted or needed to make six levels (sextiles) instead 
 # of ten, you could use the function sextiles_interaction_plot.
@@ -121,7 +137,7 @@ source(&#39;https://raw.githubusercontent.com/pablobernabeu/language-sensorimoto
 sextiles_interaction_plot(
   model = fit, 
   x = &#39;spin&#39;,
-  fill = &#39;reg&#39;,
+  fill = &#39;trait&#39;,
   fill_nesting_factor = &#39;ID&#39;
 )
 #&gt; Warning: Ignoring unknown parameters: linewidth
@@ -129,5 +145,5 @@ sextiles_interaction_plot(
 #&gt; replace the existing scale.
 #&gt; Scale for &#39;colour&#39; is already present. Adding another scale for &#39;colour&#39;,
 #&gt; which will replace the existing scale.</code></pre>
-<p><img src="https://i.imgur.com/MFQD6yQ.png" /><!-- --></p>
+<p><img src="https://i.imgur.com/w8Ydo4F.png" /><!-- --></p>
 <p><sup>Created on 2023-06-24 with <a href="https://reprex.tidyverse.org">reprex v2.0.2</a></sup></p>

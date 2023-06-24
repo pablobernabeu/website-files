@@ -488,6 +488,8 @@ The output of `plot.fixef.allFit()` is a [ggplot2](https://ggplot2.tidyverse.org
 
 ```{r demo-plot.fixef.allFit-function-2, fig.dim = c(9, 4)}
 
+library(ggplot2)
+
 plot_fit_convergence = 
   
   plot.fixef.allFit(multi_fit, 
@@ -504,11 +506,7 @@ plot_fit_convergence =
                     
                     y_title = 'Fixed effect (*b*)')
 
-# Modify aspect further using `ggplot2::theme()`
-plot_fit_convergence =
-  plot_fit_convergence + theme(axis.title.y = element_text(size = 12))
-
-# Print plot
+# Print
 plot_fit_convergence
 
 # Plot can be saved to disk as pdf, png, etc. through `ggplot2::ggsave()`
