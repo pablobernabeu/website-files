@@ -21,7 +21,7 @@ projects: []
 ---
 
 
-Here's an example of fuzzy-matching strings in R, that I shared on [StackOverflow](https://stackoverflow.com/a/76368552/7050882). In `stringdist_join`, the `max_dist` argument is used to constrain the degree of fuzziness. 
+Here's an example of fuzzy-matching strings in R that I shared on [StackOverflow](https://stackoverflow.com/a/76368552/7050882). In `stringdist_join`, the `max_dist` argument is used to constrain the degree of fuzziness. 
 
 ``` r
 library(fuzzyjoin)
