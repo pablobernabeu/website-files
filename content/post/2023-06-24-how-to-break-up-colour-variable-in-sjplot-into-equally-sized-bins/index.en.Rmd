@@ -26,7 +26,7 @@ projects: []
 ---
 
 
-Whereas the direction of main effects can be interpreted from the sign of the estimate, the interpretation of interaction effects often requires plots. This task is facilitated by the R package `sjPlot` (Lüdecke, 2022). For instance, using the `plot_model` function, I plotted the interaction between two continuous variables. 
+Whereas the direction of main effects can be interpreted from the sign of the estimate, the interpretation of interaction effects often requires plots. This task is facilitated by the R package [`sjPlot`](https://strengejacke.github.io/sjPlot). For instance, using the `plot_model` function, I plotted the interaction between two continuous variables. 
 
 ``` r
 library(lme4)
