@@ -56,7 +56,7 @@ plot_model(fit, type = 'pred', terms = c('temp', 'recipe_recoded'))
 <sup>Created on 2023-06-24 with [reprex v2.0.2](https://reprex.tidyverse.org)</sup>
 
 
-However, I needed an extra feature, as the categorical variable was not quite informative because it was a sum-coded transformation. Thus, I wanted the plot to show the values of the original variable (i.e., A, B and C), instead of those of the sum-coded variable that had been used in the model (i.e., -0.5, 0 and 0.5). 
+However, I needed an extra feature, as the categorical variable was not quite informative because it was a sum-coded transformation. Thus, I wanted the legend of the plot to show the values of the original variable (i.e., A, B and C), instead of those of the sum-coded variable that had been used in the model (i.e., -0.5, 0 and 0.5). 
 
 Below is a solution using a custom function called [`alias_interaction_plot`](/2022/plotting-two-way-interactions-from-mixed-effects-models-using-alias-variables).
 

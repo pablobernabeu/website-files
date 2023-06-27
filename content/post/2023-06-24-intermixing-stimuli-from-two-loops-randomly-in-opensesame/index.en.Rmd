@@ -29,5 +29,7 @@ I need to present stimuli randomly from either of two `loop`s within a `sequence
 
 I have searched for clues in the OpenSesame tutorials, in the OpenSesame forum, and elsewhere online, but to no avail. 
 
+## Solution
+
 Finally, I solved this by first distributing all the words in each sentence across different columns in the stimulus file, yielding 'word1', 'word2', etc. Next, in OpenSesame, I created a sketchpad for each word. Last, to prevent showing any words that were blank, I entered conditions such as `[word7] != NA` in the <kbd>Run if</kbd> field of the sequence. 
 

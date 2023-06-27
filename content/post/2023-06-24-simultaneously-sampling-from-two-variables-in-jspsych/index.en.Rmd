@@ -27,6 +27,8 @@ I have looked into several resources—such as [sampling without replacement](ht
 
 In addition to the parallel sampling, I wonder how I could save the same trial index in the `data` of both `primeWord` and `targetWord`.
 
+## Solution
+
 Finally I solved this using position indices in a for-of loop (see below: 'For loop that creates trial information iteratively over trials (3 steps)').
 
 ```

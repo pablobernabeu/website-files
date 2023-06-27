@@ -44,8 +44,7 @@ Although the power curves below run in a few minutes, the settings that are ofte
 library(lme4)
 library(simr)
 
-
-# Toy model
+# Toy model with data from 'simr' package
 fm = lmer(y ~ x + (x | g), data = simdata)
 
 # Extend sample size of `g`
@@ -87,7 +86,7 @@ pwcurve_12g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 12,
 
 <br>
 
-Having saved each section of the power curve, we must now combine them to be able to plot them together.
+Having saved each section of the power curve, we must now combine them to be able to plot them together (if you wish to automatise this procedure, consider [this function](https://github.com/pablobernabeu/Language-and-vision-in-conceptual-processing-Multilevel-analysis-and-statistical-power/blob/main/R_functions/combine_powercurve_chunks.R)).
 
 ```{r message = FALSE, warning = FALSE}
 
