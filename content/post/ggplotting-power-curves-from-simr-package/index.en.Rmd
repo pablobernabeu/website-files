@@ -30,7 +30,7 @@ The R package 'simr' has greatly facilitated power analysis for mixed-effects mo
 <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2FLanguage-and-vision-in-conceptual-processing-Multilevel-analysis-and-statistical-power%2Fblob%2Fmain%2FR_functions%2FpowercurvePlot.R&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></script>
 
 
-# A usage example
+# A usage example 
 
 ```{r message = FALSE, warning = FALSE}
 
