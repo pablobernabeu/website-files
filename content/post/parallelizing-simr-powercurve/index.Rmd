@@ -22,7 +22,7 @@ projects: []
 ---
 
 
-The `powercurve` function from the [simr package in R](https://cran.r-project.org/web/packages/simr/simr.pdf) (Green & MacLeod, 2016) can incur very long running times when the method used for the calculation of *p* values is Kenward-Roger or Satterthwaite (see Luke, 2017). Here I suggest three ways for cutting down this time. 
+The `powercurve` function from the R package ['simr'](https://cran.r-project.org/web/packages/simr/simr.pdf) (Green & MacLeod, 2016) can incur very long running times when the method used for the calculation of *p* values is Kenward-Roger or Satterthwaite (see Luke, 2017). Here I suggest three ways for cutting down this time. 
 
 1. Where possible, use a high-performance (or high-end) computing cluster. This removes the need to use personal computers for these long jobs.
 
