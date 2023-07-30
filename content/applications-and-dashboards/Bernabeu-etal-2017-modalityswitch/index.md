@@ -9,7 +9,7 @@ image:
   focal_point: ""
   preview_only: false
 links:
-- name: Dashboard
+- name: Web application
   url: 'https://pablobernabeu.shinyapps.io/ERP-waveform-visualization_CMS-experiment/'
 - name: Research paper
   url: '/publication/bernabeu-etal-2017/'
@@ -28,6 +28,7 @@ categories:
 - conceptual processing
 - R
 tags:
+- web application
 - data dashboard
 - R
 - R Shiny
@@ -54,14 +55,14 @@ url_pdf: 'https://psyarxiv.com/a5pcz'
 <a href='https://pablobernabeu.shinyapps.io/ERP-waveform-visualization_CMS-experiment/'>
       <button style = "background-color: white; color: black; border: 2px solid #4CAF50; border-radius: 12px;">
       <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;"> 
-      <span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Dashboard </h3></button></a> &nbsp;
+      <span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Web application </h3></button></a> &nbsp;
 
 <br>
 <br>
 
 **Content**
 
-The data is from a psychology experiment on the comprehension of words, in which electroencephalographic (EEG) responses were measured. The data are presented in plots spanning 800 milliseconds (the duration of word processing). The aim of this Shiny app is to facilitate the exploration of the data by researchers and the public. Users can delve into the different sections of the data. In a hierarchical order, these sections are groups of participants, individual participants, brain areas, and electrodes.
+The data is from a psychology experiment on the comprehension of words, in which electroencephalographic (EEG) responses were measured. The data are presented in plots spanning 800 milliseconds (the duration of word processing). The aim of this Shiny app is to facilitate the exploration of the data by researchers and the public. Users can delve into the different sections of the data. In a hierarchical order, these sections are groups of participants, individual participants, brain areas, and electrodes. 
 
 **Shiny apps in science**
 
@@ -69,7 +70,7 @@ By creating this app, I tried to reach beyond the scope of current *open science
 
 **Technical details**
 
-I made use of tabs on the top of the dashboard in order to keep the side bar from having too many widgets. I adjusted the appearance of these tabs, and by means of 'reactivity' conditions, also modified the inputs in the sidebar depending on the active tab.
+I used tabs on the upper area of the application page to avoid having cramming the side bar with widgets. I adjusted the appearance of these tabs, and by means of 'reactivity' conditions, modified the inputs in the side bar depending on the active tab.
 
 ```
 mainPanel(
@@ -198,6 +199,6 @@ tags$head(tags$link(rel="shortcut icon", href="https://image.ibb.co/fXUwzb/favic
 
 <div style = "text-indent:-2em; margin-left:2em;">
 
-Bernabeu, P., Willems, R. M., & Louwerse, M. M. (2017). Modality switch effects emerge early and increase throughout conceptual processing: Evidence from ERPs [Data dashboard]. Retrieved from https://pablobernabeu.shinyapps.io/ERP-waveform-visualization_CMS-experiment/.
+Bernabeu, P., Willems, R. M., & Louwerse, M. M. (2017). Modality switch effects emerge early and increase throughout conceptual processing: Evidence from ERPs [Web application]. Retrieved from https://pablobernabeu.shinyapps.io/ERP-waveform-visualization_CMS-experiment/.
 
 </div>

@@ -13,6 +13,7 @@ tags:
   - frequentist statistics
   - linear-mixed effects models
   - lmerTest
+  - lme4
   - brms
   - plotting
   - data visualisation
@@ -43,12 +44,13 @@ projects: []
 <p>Both frequentist and Bayesian statistics offer the options of hypothesis testing and parameter estimation (Cumming, 2014; Kruschke &amp; Liddell, 2018; Rouder et al., 2018; Schmalz et al., 2022; Tendeiro &amp; Kiers, 2019, 2022; van Ravenzwaaij &amp; Wagenmakers, 2022). In the statistical analyses conducted by Bernabeu (2022), hypothesis testing was performed within the frequentist framework, whereas parameter estimation was performed within both the frequentist and the Bayesian frameworks (for other examples of the <em>estimation</em> approach, see Milek et al., 2018; Pregla et al., 2021; Rodríguez-Ferreiro et al., 2020).</p>
 <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Flanguage-sensorimotor-simulation-PhD-thesis%2Fblob%2Fmain%2FR_functions%2Ffrequentist_bayesian_plot.R&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></script>
 <p><br></p>
-<p>We’ll load the function from GitHub.</p>
-<pre class="r"><code>source(&#39;https://raw.githubusercontent.com/pablobernabeu/language-sensorimotor-simulation-PhD-thesis/main/R_functions/frequentist_bayesian_plot.R&#39;)</code></pre>
+<p>Let’s load the function from GitHub and put it to the test.</p>
 <div style="height: 800px; border: 0.5px dotted grey; padding: 10px; resize: both; overflow: auto;">
 <pre class="r"><code># Presenting the frequentist and the Bayesian estimates in the same plot. 
 # For this purpose, the frequentist results are merged into a plot from 
 # brms::mcmc_plot()
+
+source(&#39;https://raw.githubusercontent.com/pablobernabeu/language-sensorimotor-simulation-PhD-thesis/main/R_functions/frequentist_bayesian_plot.R&#39;)
 
 # install.packages(&#39;devtools&#39;)
 # library(devtools)
@@ -160,7 +162,7 @@ plot_semanticpriming_frequentist_bayesian_plot_weaklyinformativepriors_exgaussia
 </div>
 <p><br></p>
 <pre class="r"><code>plot_semanticpriming_frequentist_bayesian_plot_weaklyinformativepriors_exgaussian</code></pre>
-<p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Frequentist and Bayesian estimates are not so polar opposites, are they? What is more, the larger differences between some estimates are the result of the priors that were set on the corresponding effects. With uninformative priors, the frequentist and the Bayesian estimates are virtually identical.</p>
 <script src='https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Flanguage-sensorimotor-simulation-PhD-thesis%2Fblob%2Fmain%2Fsemanticpriming%2Fbayesian_analysis%2Fsemanticpriming_brms_weaklyinformativepriors_exgaussian.R%23L16-L35&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on'></script>
 <p>Now it’s time to consider in earnest:</p>

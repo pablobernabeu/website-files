@@ -7,6 +7,8 @@ categories:
   - research methods
 tags:
   - research methods
+  - OpenSesame
+  - python
   - s
 subtitle: ''
 summary: ''
@@ -119,3 +121,6 @@ var.test_list = participant_parameters.loc[participant_parameters[&#39;participa
 
 var.experiment_list = participant_parameters.loc[participant_parameters[&#39;participant&#39;] == var.subject_nr][&#39;experiment_list&#39;].iloc[0]
 </code></pre>
+<p><br></p>
+<p>Finally, the variables created in the script can be used in <kbd>Run if</kbd> conditions (e.g., <code>[language] == 'Mini-English'</code>), as replacements inside file names (e.g., <code>[language] training, List [training_list].csv</code>), and as input in sketchpads (e.g., <code>Current list: [training_list]</code>).</p>
+<p><br></p>

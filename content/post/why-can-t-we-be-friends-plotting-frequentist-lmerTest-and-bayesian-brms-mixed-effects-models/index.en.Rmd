@@ -13,6 +13,7 @@ tags:
   - frequentist statistics
   - linear-mixed effects models
   - lmerTest
+  - lme4
   - brms
   - plotting
   - data visualisation
@@ -57,14 +58,7 @@ Both frequentist and Bayesian statistics offer the options of hypothesis testing
 
 <br>
 
-We'll load the function from GitHub.
-
-```{r}
-
-source('https://raw.githubusercontent.com/pablobernabeu/language-sensorimotor-simulation-PhD-thesis/main/R_functions/frequentist_bayesian_plot.R')
-
-```
-
+Let's load the function from GitHub and put it to the test.
 
 <div style = 'height: 800px; border: 0.5px dotted grey; padding: 10px; resize: both; overflow: auto;'>
 
@@ -73,6 +67,8 @@ source('https://raw.githubusercontent.com/pablobernabeu/language-sensorimotor-si
 # Presenting the frequentist and the Bayesian estimates in the same plot. 
 # For this purpose, the frequentist results are merged into a plot from 
 # brms::mcmc_plot()
+
+source('https://raw.githubusercontent.com/pablobernabeu/language-sensorimotor-simulation-PhD-thesis/main/R_functions/frequentist_bayesian_plot.R')
 
 # install.packages('devtools')
 # library(devtools)

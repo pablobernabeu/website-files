@@ -31,7 +31,7 @@ superuser: true
 user_groups:
 - Researchers
 - Visitors
-bio: "After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology at Lancaster University, where I investigated how conceptual processing---that is, the comprehension of the meaning of words---is supported by linguistic and sensorimotor brain systems, and how research on this topic is influenced by methodological aspects such as the operationalisation of variables and the sample size of experiments. Currently, I am a postdoctoral fellow at UiT The Arctic University of Norway, where I am investigating the behavioural and neural underpinnings of multilingualism. Throughout my research, I have used methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. Research materials at [https://osf.io/25u3x](https://osf.io/25u3x). CV [available here](/cv.html)."
+bio: ~
 recent_work:
   jobs:
   - job: '[Postdoctoral fellowship](https://en.uit.no/go/target/789811)'

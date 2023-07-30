@@ -7,6 +7,8 @@ categories:
   - research methods
 tags:
   - research methods
+  - OpenSesame
+  - python
   - s
 subtitle: ''
 summary: ''
@@ -60,4 +62,9 @@ var.experiment_list = participant_parameters.loc[participant_parameters['partici
 
 ```
 
- 
+<br>
+
+Finally, the variables created in the script can be used in <kbd>Run if</kbd> conditions (e.g., `[language] == 'Mini-English'`), as replacements inside file names (e.g., `[language] training, List [training_list].csv`), and as input in sketchpads (e.g., `Current list: [training_list]`). 
+
+<br>
+
