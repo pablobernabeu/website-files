@@ -116,6 +116,6 @@ After doing a research master's, I became a PhD student and graduate teaching as
 
 Currently, I am a postdoctoral fellow at UiT The Arctic University of Norway. I work at the [Department of Language and Culture](https://en.uit.no/enhet/isk), and specifically within the [PoLaR Lab](https://site.uit.no/polar) and the [AcqVA Aurora Centre](https://uit.no/research/acqva). As a member of the [LESS Project (Language Economy through Transfer Source Selectivity)](https://uit.no/research/acqva/project?pid=743114), I investigate how language learners coordinate several languages early in the acquisition process, how this process is influenced by the characteristics of the languages, and how the process is reflected in the brain. Earlier, I also worked part-time as a data analyst in the [CLICK Project (Cross-Linguistic Influence of Competing Knowledge)](https://uit.no/research/acqva/project?pid=723990), which investigates multilingualism in heritage speakers.
 
-Throughout my research, I have used methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. The materials from my research are available at [https://osf.io/25u3x](https://osf.io/25u3x), and my CV is [available here](/cv.html).
+Throughout my research, I have used methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. The materials from my research are available at [https://osf.io/25u3x](https://osf.io/25u3x) and my CV is [available here](/cv.html).
 
 
