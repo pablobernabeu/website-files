@@ -152,6 +152,9 @@ docs_section_pager = true  # Display pager in Docs layout (e.g. tutorials)?
 # Enable in-built social sharing buttons? (true/false)
 sharing = false
 
+# Show author box at bottom of pages? (true/false)
+profile = false
+
 # Link authors to their profile page? (true/false)
 link_authors = false
 
