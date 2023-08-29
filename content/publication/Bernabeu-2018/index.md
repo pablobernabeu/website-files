@@ -38,6 +38,7 @@ links:
 url_code: 'https://osf.io/brkjw/'
 url_dataset: 'https://osf.io/brkjw/'
 url_pdf: 'https://doi.org/10.31234/osf.io/s2c5h'
+doi: 10.31234/osf.io/s2c5h
 # url_project: ""
 # url_slides: ""
 # url_source: ''

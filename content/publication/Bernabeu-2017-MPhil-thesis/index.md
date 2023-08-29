@@ -23,7 +23,7 @@ tags:
   - linear mixed-effects models
   - psycholinguistics
   - reading
-doi: ''
+doi: 10.31234/osf.io/5gjvk
 publishDate: '2017-03-31'
 publication_types:
   - '7'

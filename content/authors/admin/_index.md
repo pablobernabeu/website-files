@@ -8,6 +8,7 @@ profileicons:
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" University page "><a href="https://en.uit.no/go/target/789811"><i style="color:#8AA3CD;" class="fas fa-university fa-lg"></i></a></span>'
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" Curriculum vitae "><a href="/cv.html"><i style="color:#8AA3CD;" class="ai ai-cv ai-lg"></i></a></span>'
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" Google Scholar "><a href="https://scholar.google.com/citations?user=DxD0QDoAAAAJ&hl=en"><i style="color:#8AA3CD;" class="ai ai-google-scholar ai-lg"></i></a></span>'
+- '<span data-toggle="tooltip1" data-placement="bottom" title=" ResearchGate "><a href="https://www.researchgate.net/profile/Pablo-Bernabeu"><i style="color:#8AA3CD;" class="fab fa-researchgate fa-lg"></i></a></span>'
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" OSF repositories "><a href="https://osf.io/25u3x/"><i style="color:#8AA3CD;" class="ai ai-osf ai-lg"></i></a></span>'
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" Figshare "><a href="https://figshare.com/authors/Pablo_Bernabeu/820703"><i style="color:#8AA3CD;" class="ai ai-figshare ai-lg"></i></a></span>'
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" Github "><a href="https://github.com/pablobernabeu"><i style="color:#8AA3CD;" class="fab fa-github fa-lg"></i></a></span>'
@@ -112,7 +113,7 @@ education:
 ---
 
 
-After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology at Lancaster University, where I investigated how conceptual processing—that is, the comprehension of the meaning of words—is supported by linguistic and sensorimotor brain systems, and how research on this topic is influenced by methodological aspects such as the operationalisation of variables and the sample size of experiments. 
+After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology at Lancaster University. In my [thesis](https://doi.org/10.17635/lancaster/thesis/1795), I investigated how conceptual processing—that is, the comprehension of the meaning of words—is supported by linguistic and sensorimotor brain systems, and how research on this topic is influenced by methodological aspects such as the operationalisation of variables and the sample size of experiments. 
 
 Currently, I am a postdoctoral fellow at UiT The Arctic University of Norway. I work at the [Department of Language and Culture](https://en.uit.no/enhet/isk), and specifically within the [PoLaR Lab](https://site.uit.no/polar) and the [AcqVA Aurora Centre](https://uit.no/research/acqva). As a member of the [LESS Project (Language Economy through Transfer Source Selectivity)](https://uit.no/research/acqva/project?pid=743114), I investigate how language learners coordinate several languages early in the acquisition process, how this process is influenced by the characteristics of the languages, and how the process is reflected in the brain. Earlier, I also worked part-time as a data analyst in the [CLICK Project (Cross-Linguistic Influence of Competing Knowledge)](https://uit.no/research/acqva/project?pid=723990), which investigates multilingualism in heritage speakers.
 

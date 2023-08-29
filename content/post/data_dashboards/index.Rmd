@@ -30,7 +30,9 @@ projects: []
 ---
 
 
-#### Dashboards for data visualisation, such as [R Shiny](https://shiny.rstudio.com/) and [Tableau](https://www.tableau.com/), allow the interactive exploration of data by means of drop-down lists and checkboxes, with no coding required from the final users. These web applications can be useful for both the data analyst and the public at large.
+<div style='font-size:110%;'><b> Dashboards for data visualisation, such as [R Shiny](https://shiny.rstudio.com/) and [Tableau](https://www.tableau.com/), allow the interactive exploration of data by means of drop-down lists and checkboxes, with no coding required from the final users. These web applications can be useful for both the data analyst and the public at large. </b></div>
+
+<br>
 
 
 <img style = "float: right; margin-left: 30px;" width = "25%" src="https://pablobernabeu.github.io/2017/the-case-for-data-dashboards-first-steps-in-r-shiny/1.jpg" />

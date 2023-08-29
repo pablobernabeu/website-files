@@ -1,5 +1,5 @@
 ---
-title: How to correctly encode triggers in Python and send them to BrainVision through serial port (useful for OpenSesame and Psychopy)
+title: How to correctly encode triggers in Python and send them to BrainVision through serial port (useful for OpenSesame and PsychoPy)
 authors: 
 date: '2023-08-17'
 slug: encode-triggers-in-python-and-send-them-to-brainvision-through-serial-port-useful-for-opensesame-and-psychopy
@@ -14,7 +14,7 @@ tags:
   - serial port
   - python
   - OpenSesame
-  - Psychopy
+  - PsychoPy
   - encoding
   - binary
 subtitle: 'Another StackOverflow victory'
