@@ -226,7 +226,7 @@ Below is an example combining PCA plots with code similar to the above. These pl
 
 ![](https://pablobernabeu.github.io/2018/naive-principal-component-analysis-in-r/4.png)
 
-An example of these analyses is [available in available in this RStudio environment](https://mybinder.org/v2/gh/pablobernabeu/Modality-exclusivity-norms-747-Dutch-English-replication/master?urlpath=rstudio), in the `norms.R` script.
+An example of these analyses is [available in available in this RStudio environment](https://pablobernabeu.shinyapps.io/Dutch-modality-exclusivity-norms), in the `norms.R` script.
 
 <br>
 
