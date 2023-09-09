@@ -33,7 +33,7 @@ The `powercurve` function from the R package ['simr'](https://cran.r-project.org
 
 ## Parallelizing `breaks`
 
-Let's do a minimal example using a toy `lmer` model. A power curve will be craeted for the fixed effect of `x` along different sample sizes of the grouping factor `g`.
+Let's do a minimal example using a toy `lmer` model. A power curve will be created for the fixed effect of `x` along different sample sizes of the grouping factor `g`.
 
 Notice that the six sections of the power curve below are serially arranged, one after another. In contrast, to enable parallel processing, each power curve would be placed in a single script, and they would all be run at the same time.
 

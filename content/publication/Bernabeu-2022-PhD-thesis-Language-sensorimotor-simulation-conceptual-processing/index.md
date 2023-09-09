@@ -44,7 +44,7 @@ abstract: "Research has suggested that conceptual processing depends on both lan
 summary: ''
 featured: no
 links:
-- name: Online book format
+- name: Online book
   url: '/thesis'
 url_pdf: https://eprints.lancs.ac.uk/id/eprint/177833/6/2022deJuanBernabeuPhD.pdf
 url_code: https://osf.io/gt5uf
@@ -68,7 +68,7 @@ slides: ''
 <a href='/thesis'>
 <button style = "background-color: white; color: black; border: 2px solid #DF2E2E; border-radius: 12px;">
 <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;">
-<span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Online book format </h3></button>
+<span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Online book </h3></button>
 </a>
       
 <br>
