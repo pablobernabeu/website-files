@@ -20,7 +20,7 @@ address:
   region: ~
   postcode: ~
   country: ~
-summary: ~
+summary: 'The first study (Bernabeu et al., 2021) will merge existing datasets (Lynott et al., 2020; Pexman et al., 2017; Pexman & Yap, 2018; Wingfield & Connell, 2019). The second study will collect novel data to investigate questions such as the unique roles of vocabulary size, sensorimotor experience and attentional control.'
 abstract: ~
 date_end: ~
 all_day: no

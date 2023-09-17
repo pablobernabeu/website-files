@@ -5,11 +5,11 @@ date: '2016-08-16'
 slug: eeg-error-datasets-missing-channels
 categories: [research-methods]
 tags:
-  - s
   - event-related potentials
   - EEG
   - electroencephalography
   - BrainVision
+  - s
 subtitle: ''
 summary: ''
 external_link: 'https://www.researchgate.net/post/EEG-error-datasets-missing-channels-Its-strange-because-they-were-recorded-well-and-faulty-files-are-quite-as-heavy-as-the-good-ones-Any-ideas'

@@ -7,7 +7,6 @@ slug: modality-exclusivity-norms-for-747-properties-and-concepts-in-dutch-a-repl
 categories:
   - linguistic materials
 tags:
-  - s
   - research methods
   - stimuli
   - linguistic norms
@@ -16,6 +15,7 @@ tags:
   - dimensionality reduction
   - conceptual replication
   - Dutch
+  - s
 subtitle: ''
 summary: ''
 external_link: 'https://www.linkedin.com/pulse/modality-exclusivity-norms-336-properties-411-dutch-english-bernabeu/'
