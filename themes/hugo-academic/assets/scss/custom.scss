@@ -8,7 +8,7 @@
 }
 
 // unvisited link
-h3 a:link, p a:link, ul a:link, li a:link, .article-container a:link, td a:link, a.dsq-brlink {
+p a:link, ul a:link, li a:link, .article-container a:link, td a:link, a.dsq-brlink {
   color: olive; 
 }
 
@@ -22,24 +22,34 @@ h3 a:visited, div a:visited, p a:visited, ul a:visited, li a:visited, .article-c
   color: #9E84B0; 
 }
 
+// active link
+
+h3 a:active, div a:active, p a:active, ul a:active, li a:active, .article-container a:active, td a:active, a.dsq-brlink:active {
+  color: #24494F; 
+}
+
+h3 a:hover, div a:hover, p a:hover, ul a:hover, li a:hover, .article-container a:hover, td a:hover, a.dsq-brlink:hover {
+  color: #24494F; 
+}
+
 // unvisited category and tag cloud links
 .article-categories a:link, .tag-cloud a:link {
-  color: darkgrey; 
+  color: #485B5F; 
 }
 
 // visited category and tag cloud links
 .article-categories a:visited, .tag-cloud a:visited {
-  color: darkgrey;
+  color: #9E84B0;
 }
 
 // unvisited tag and category links
 .article-tags a:link {
-  color: black; 
+  color: #485B5F; 
 }
 
 // visited tag and category links
 .article-tags a:visited {
-  color: black;
+  color: #9E84B0;
 }
 
 // mouse over link
@@ -50,7 +60,7 @@ p a:hover, ul a:hover, li a:hover, .article-container a:hover, td a:hover, a.dsq
 }
 
 .btn-links a, .btn-links a.btn.btn-outline-primary.my-1.mr-1.js-cite-modal, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > a {
-  color: darkgrey; 
+  color: #476E72; 
   border-color: lightgrey;
 }
 

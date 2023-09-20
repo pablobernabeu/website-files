@@ -9128,7 +9128,7 @@ div.mermaid {
 .nav-link.active span {
   color: #39A290; }
 
-h3 a:link, p a:link, ul a:link, li a:link, .article-container a:link, td a:link, a.dsq-brlink {
+p a:link, ul a:link, li a:link, .article-container a:link, td a:link, a.dsq-brlink {
   color: olive; }
 
 h3 a:link {
@@ -9137,17 +9137,23 @@ h3 a:link {
 h3 a:visited, div a:visited, p a:visited, ul a:visited, li a:visited, .article-container a:visited, td a:visited, a.dsq-brlink:visited {
   color: #9E84B0; }
 
+h3 a:active, div a:active, p a:active, ul a:active, li a:active, .article-container a:active, td a:active, a.dsq-brlink:active {
+  color: #24494F; }
+
+h3 a:hover, div a:hover, p a:hover, ul a:hover, li a:hover, .article-container a:hover, td a:hover, a.dsq-brlink:hover {
+  color: #24494F; }
+
 .article-categories a:link, .tag-cloud a:link {
-  color: darkgrey; }
+  color: #485B5F; }
 
 .article-categories a:visited, .tag-cloud a:visited {
-  color: darkgrey; }
+  color: #9E84B0; }
 
 .article-tags a:link {
-  color: black; }
+  color: #485B5F; }
 
 .article-tags a:visited {
-  color: black; }
+  color: #9E84B0; }
 
 p a:hover, ul a:hover, li a:hover, .article-container a:hover, td a:hover, a.dsq-brlink:hover {
   color: #759A55;
@@ -9155,7 +9161,7 @@ p a:hover, ul a:hover, li a:hover, .article-container a:hover, td a:hover, a.dsq
   text-decoration: none; }
 
 .btn-links a, .btn-links a.btn.btn-outline-primary.my-1.mr-1.js-cite-modal, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > a {
-  color: darkgrey;
+  color: #476E72;
   border-color: lightgrey; }
 
 #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > a:hover, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:hover, .btn-links a:hover, #top > div.pub > div:nth-child(2) > a > button:hover, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button:hover, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button:hover {
