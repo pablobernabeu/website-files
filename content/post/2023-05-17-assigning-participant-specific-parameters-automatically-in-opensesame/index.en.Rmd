@@ -43,7 +43,9 @@ Below is the corresponding inline script. The code `.iloc[0]` at the end of the 
 
 ```{python, eval = FALSE, python.reticulate = FALSE}
 
-# Assigning participant-specific parameters automatically in OpenSesame
+# Assign participant-specific parameters. For each participant-specific factor in the 
+# stimulus files, take the level corresponding to the index position specified in the 
+# participant parameters file.
 
 import csv  # handle csv file
 import pandas as pd  # handle data frames
@@ -63,6 +65,7 @@ var.experiment_list = participant_parameters.loc[participant_parameters['partici
 ```
 
 <br>
+
 
 Finally, the variables created in the script can be used in <kbd>Run if</kbd> conditions (e.g., `[language] == 'Mini-English'`), as replacements inside file names (e.g., `[language] training, List [training_list].csv`), and as input in sketchpads (e.g., `Current list: [training_list]`). 
 

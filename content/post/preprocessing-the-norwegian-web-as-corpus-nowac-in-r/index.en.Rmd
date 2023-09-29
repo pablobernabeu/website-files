@@ -1,0 +1,43 @@
+---
+title: Preprocessing the Norwegian Web as Corpus (NoWaC) in R
+author: ''
+date: '2023-09-28'
+slug: preprocessing-the-norwegian-web-as-corpus-nowac-in-r
+categories:
+  - R
+tags:
+  - R
+  - corpora
+  - corpus
+  - Norwegian
+  - NoWaC
+  - linguistics
+  - language
+  - research methods
+  - s
+subtitle: ''
+summary: ''
+authors: []
+lastmod: ''
+featured: no
+draft: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+### The present script can be used to pre-process data from a frequency list of the Norwegian as Web Corpus (NoWaC).
+
+Before using the script, the frequency list should be downloaded from https://www.hf.uio.no/iln/english/about/organization/text-laboratory/services/nowac-frequency.html. The list is described as 'frequency list sorted primary alphabetic and secondary by frequency within each character', and the direct URL is: https://www.tekstlab.uio.no/nowac/download/nowac-1.1.lemma.frek.sort_alf_frek.txt.gz. The download requires signing in to an institutional network. Last, the downloaded file should be unzipped.
+
+#### Reference of the corpus
+
+Guevara, E. R. (2010). NoWaC: A large web-based corpus for Norwegian. In *Proceedings of the NAACL HLT 2010 Sixth Web as Corpus Workshop* (pp. 1-7). https://aclanthology.org/W10-1501
+
+<br>
+
+<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Fpreprocessing-NoWaC-Corpus-in-R%2Fblob%2Fmain%2Fpreprocessing_NoWaC_Corpus.R&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></script>
+
