@@ -39,7 +39,7 @@ recent_work:
     institution: 'UiT The Arctic University of Norway'
     year: 'Nov **2022** -- _Nov **2024**_'
     extra: '-&nbsp; As a member of the [LESS Project (Language Economy through Transfer Source Selectivity)](https://uit.no/research/acqva/project?pid=743114), I am investigating how language learners coordinate several languages early in the acquisition process, how this process is influenced by the characteristics of the languages, and how the process is reflected in the brain.'
-    extra2: '-&nbsp; Service: peer-review for Cognition and Cognitive Science; facilitation of AcqVA Aurora Lunch Seminars.'
+    extra2: '-&nbsp; Service: peer-review for Cognition and Cognitive Science; co-organisation of AcqVA Aurora Lunch Seminars.'
   - job: 'Part-time data analysis contribution'
     institution: 'UiT The Arctic University of Norway'
     year: 'Nov 2022 -- Jan 2023'
@@ -57,7 +57,7 @@ education:
     extra: '\-&nbsp; Student member, Master’s curriculum and accreditation committee'
     extra2: '\-&nbsp; Tilburg University Scholarship for Academic Excellence, 2014/2015'
     extra4: '\-&nbsp; Grade: 7.54 out of 10 (Distinction)'
-  - course: '<a href="https://www.uam.es/uam/ingleses">BA English Philology<a>'
+  - course: '<span id="BA-degree">[BA English Philology](https://www.uam.es/uam/ingleses)</span>'
     institution: Autonomous University of Madrid (Spain)
     year: '**2007--2013**'
     extra: '\-&nbsp; One-year Erasmus exchange at University of Jyv&auml;skyl&auml;, Finland'

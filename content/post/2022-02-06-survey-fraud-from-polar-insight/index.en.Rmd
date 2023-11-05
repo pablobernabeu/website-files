@@ -8,7 +8,6 @@ tags:
   - survey
   - scam
   - fraud
-  - unpaid
   - s
 subtitle: ''
 summary: ''
@@ -112,7 +111,7 @@ I emailed the company and the CEO James Tattersfield to request my reward. After
 
 The present case incidentally demonstrates that the role of ethics committees---tasked with assessing surveys, among other things---goes beyond gross themes. Economic deception is one of the negligent acts that must be prevented. 
 
-Survey scams resembling the one I suffered have been documented:
+Similar survey scams have been documented:
 
 - https://moneydoneright.com/fast-money/online-work/surveys/surveys-for-money
 
@@ -120,8 +119,6 @@ Survey scams resembling the one I suffered have been documented:
 
 - https://www.facebook.com/dollargeneral/posts/pfbid032BmUQrAUh7p9yuw8eQKavZZrUC7zsGeBiT2E4efDEASCFSsem7vLKNiipgWNqYjpl
 
-
-Finally, the present case begs the following question: is James Tattersfield---a University of Ediburgh alumnus and the CEO of a profitable consulting company---also a scammer and a defaulter?
 
 <br>
 

@@ -74,7 +74,7 @@ My PhD scholarship was teaching-based, so I contributed to my department’s cur
 
 During my PhD, I was a representative for graduate teaching assistants in my department for a year.
 
-Furthermore, during my PhD and my postdoc, I advised some students and colleagues about conducting behavioural and EEG experiments, and about data processing and statistics. 
+Furthermore, during my PhD and my postdoc, I have advised various students and colleagues about conducting behavioural and EEG experiments, and about data processing and statistics. 
 
 Last, I am a [Certified Carpentries Instructor](https://carpentries.org/become-instructor) and have led several [workshops on data analysis using R](https://pablobernabeu.github.io/#workshops). Earlier in my career, I [taught English to secondary-education students in Spain](/#other-work), and [Spanish to adults in Lithuania](/#BA-degree).
 
