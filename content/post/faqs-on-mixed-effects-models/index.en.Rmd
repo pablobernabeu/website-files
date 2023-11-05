@@ -96,7 +96,7 @@ I have attached my code in a txt file and the data in excel for you to see, in c
 
 The multi-optimizer check is indeed a way (albeit tentative) to probe into the convergence. Convergence has long been a fuzzy subject, as there are different standpoints depending on the degree of conservativeness that is sought after by the analysts. 
 
-On Page 124 in my thesis (https://osf.io/97u5c), you can find this multi-optimizer check. Throughout my thesis I also discuss the convergence issue. All the code is available on OSF. Furthermore, there is also a [blog post](https://pablobernabeu.github.io/2021/a-new-function-to-plot-convergence-diagnostics-from-lme4-allfit).
+On Page 124 in my thesis (https://osf.io/97u5c), you can find this multi-optimizer check (also see this [blog post](https://pablobernabeu.github.io/2021/a-new-function-to-plot-convergence-diagnostics-from-lme4-allfit)). All the code is available on OSF. More generally, I discuss the issue of convergence throughout the thesis. 
 
 </blockquote>
 </div>
