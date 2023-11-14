@@ -1,0 +1,63 @@
+---
+title: Do you speak a Scandinavian language(s) and English, but no other languages? Delta i et EEG-eksperiment
+author: ''
+date: '2023-11-14'
+slug: do-you-speak-a-scandinavian-language-s-and-english-but-no-other-languages-delta-i-et-eeg-eksperiment
+categories:
+  - science
+tags:
+  - vitenskap
+  - tromso
+  - uit
+  - norges arktiske universitet
+  - arctic university of norway
+  - s
+subtitle: ''
+summary: ''
+authors: []
+lastmod: ''
+featured: no
+draft: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+#### Ved å delta i vårt eksperiment og gjøre noen enkle oppgaver på en datamaskin, kan du bidra til forskning og tjene 250 kr i timen (gavekort). EEG er helt smertefritt.
+
+##### Eksperimentet foregår i Tromsø, ved UiT Norges Arktiske Universitet.
+
+<img src='images/Human_EEG_artefacts.png' width='70%' alt='Electroencephalographic signal' style='margin-top:2px; margin-bottom:-2px;'></img>
+
+Vi ser etter deltakere med følgende egenskaper:
+
+<div style = 'text-indent:-1.2em; margin-left:2em;'>
+
+   ☑ Alder 18–45 år;
+
+   ☑ Snakker norsk som førstespråk og engelsk flytende. Utenom disse språkene, kan deltakerne også snakke svensk og dansk, men ikke andre språk (utover noen få ord);
+
+   ☑ Ingen språkrelaterte lidelser eller vansker, som f.eks. dysleksi;
+
+   ☑ Ingen oppmerksomhetssvikt
+   
+</div>
+
+
+I de fleste tilfeller vil deltakelse innebære å gjennomføre fem økter over en måned, med bonusutbetaling på slutten.
+
+Dersom du oppfyller disse kriteriene og ønsker å delta, vennligst kontakt Pablo på epost-adressen p.bernabeu@uit.no.
+
+Takk for din interesse i denne studien.
+
+<br>
+
+---
+
+<span style='color:darkgrey;'>Takk til Mona Kirknes Fossum for hjelpen med oversettelsen av denne annonsen.</span>
+
+<br>
+
