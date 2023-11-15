@@ -7,10 +7,14 @@ categories:
   - science
 tags:
   - vitenskap
+  - EEG
+  - eksperiment
+  - tromsø
   - tromso
   - uit
   - norges arktiske universitet
   - arctic university of norway
+  - universitet i tromsø
   - s
 subtitle: ''
 summary: ''
@@ -28,9 +32,9 @@ projects: []
 
 #### Ved å delta i vårt eksperiment og gjøre noen enkle oppgaver på en datamaskin, kan du bidra til forskning og tjene 250 kr i timen (gavekort). EEG er helt smertefritt.
 
-##### Eksperimentet foregår i Tromsø, ved UiT Norges Arktiske Universitet.
+<div style = "background-image: url('images/Human_EEG_artefacts.png'); background-color: rgba(255,255,224,0.95); background-blend-mode: color-dodge; background-repeat: repeat; background-size: contain;">
 
-<img src='images/Human_EEG_artefacts.png' width='70%' alt='Electroencephalographic signal' style='margin-top:2px; margin-bottom:-2px;'></img>
+##### Eksperimentet foregår i Tromsø, ved UiT Norges Arktiske Universitet.
 
 Vi ser etter deltakere med følgende egenskaper:
 
@@ -54,6 +58,8 @@ Dersom du oppfyller disse kriteriene og ønsker å delta, vennligst kontakt Pabl
 Takk for din interesse i denne studien.
 
 <br>
+
+</div>
 
 ---
 
