@@ -7,8 +7,8 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 60  # Order that this section will appear.
 
-title = "Web applications and dashboards &nbsp;<span style='font-size:60%;' data-toggle='tooltip1' data-placement='bottom' title=' &nbsp; Article: The case for data dashboards &nbsp; '><a href='/2017/the-case-for-data-dashboards-first-steps-in-r-shiny/'><i class='fas fa-info-circle fa-2xs' style='color:#ADADAD'></i></a></span>"
-subtitle = 'Articles republished on [R-bloggers](https://www.r-bloggers.com)'
+title = "Web applications and dashboards &nbsp;<span style='font-size:60%;' data-toggle='tooltip1' data-placement='bottom' title=' &nbsp; Article: The case for data dashboards &nbsp; '><a href='/2017/the-case-for-data-dashboards-first-steps-in-r-shiny/'><i class='fas fa-info-circle fa-2xs' style='color:#D4D4D4'></i></a></span>"
+subtitle = "<span style='font-size:80%;'>Articles republished on [R-bloggers](https://www.r-bloggers.com)</span>"
 
 [content]
   # Page type to display. E.g. post, talk, publication, or data dashboard.
