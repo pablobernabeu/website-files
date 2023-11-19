@@ -9139,8 +9139,26 @@ div.mermaid {
 #navbar-main > div > ul a:link {
   color: darkgrey; }
 
-code {
+#top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories > a, #profile > div:nth-child(5) > div > ul > div > a:link, code {
   background-color: transparent; }
+
+#profile > div:nth-child(5) > div > ul > div > div > a:link, #profile > div:nth-child(5) > div > ul > div > div > a:visited {
+  color: darkgrey;
+  background-color: transparent;
+  display: block;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  background: linear-gradient(#DDFFFA 0 0) var(--p, 0)/var(--p, 0) no-repeat;
+  transition: 0.4s, background-position 0s; }
+
+#profile > div:nth-child(5) > div > ul > div > div > a:hover {
+  color: black; }
+
+.profile-subsection:hover {
+  --p: 100%; }
+
+#profile > div:nth-child(4) > div {
+  color: darkgrey; }
 
 p a:link, ul a:link, li a:link, .article-container a:link, td a:link, a.dsq-brlink {
   color: olive;
@@ -9176,18 +9194,23 @@ p a:hover, ul a:hover, li a:hover, .article-container a:hover, td a:hover, a.dsq
   background-color: #F8FFE6;
   text-decoration: none; }
 
-.btn-links a, .btn-links a.btn.btn-outline-primary.my-1.mr-1.js-cite-modal, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > a {
-  color: #476E72;
-  background-color: transparent;
+#top > article > div.article-container.pt-3 > div.btn-links.mb-3 > a:link, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > a:link, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:link, .btn-links a:link, #top > div.pub > div:nth-child(2) > a > button:link, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button:link, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button:link {
+  color: black;
+  background-color: #F8F8F8;
   border-color: lightgrey; }
 
-#top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:visited, .btn-links a:visited, #top > div.pub > div:nth-child(2) > a > button:visited, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button:visited, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button:visited {
+#top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button, #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.btn-links > button {
+  color: black;
+  background-color: #F8F8F8;
+  border-color: lightgrey; }
+
+#top > article > div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:visited, .btn-links a:visited, #top > div.pub > div:nth-child(2) > a > button:visited, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button:visited, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button:visited {
   color: black;
   font-weight: bold;
-  background-color: #A9EFEA;
-  border-color: lightgrey; }
+  background-color: #F7F7F7;
+  border-color: black; }
 
-#top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > a:hover, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:hover, .btn-links a:hover, #top > div.pub > div:nth-child(2) > a > button:hover, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button:hover, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button:hover {
+#top > article > div.article-container.pt-3 > div.btn-links.mb-3 > a:hover, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > a:hover, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:hover, .btn-links a:hover, #top > div.pub > div:nth-child(2) > a > button:hover, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button:hover, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button:hover {
   color: black;
   font-weight: bold;
   background-color: #D4EEEA;

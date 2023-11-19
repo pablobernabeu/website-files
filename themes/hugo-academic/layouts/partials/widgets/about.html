@@ -56,7 +56,7 @@
       <div class="row" style='padding-top:10px;'>
       {{ with $person.interests }}
       <div>
-        <h3>{{ i18n "interests" | markdownify }}</h3>
+        <h3 style='color:darkgrey;'>{{ i18n "interests" | markdownify }}</h3>
         <ul class="ul-interests" style='text-align:left;'>
           {{ range . }}
           <li>{{ . | markdownify | emojify }}</li>
@@ -69,8 +69,8 @@
       <div class="row">
       {{ with $person.profilesections }}
       <div>
-        <h3 style='color:#969BA4;'>{{ i18n "profilesections" | markdownify }}</h3>
-        <ul class="ul-interests" style='text-align:left;'>
+        <h3 style='color:darkgrey; text-align:right;'>{{ i18n "profilesections" | markdownify }}</h3>
+        <ul class="ul-interests" style='color:darkgrey; text-align:right;'>
           {{ range . }}
           <div>{{ . | markdownify | emojify }}</div>
           {{ end }}

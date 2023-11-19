@@ -54,6 +54,10 @@ url_video: 'https://osf.io/h36wr/'
 
 <br>
 
+By contributing to this replication study at the beginning of my PhD, it turned out I followed a [**rule**](https://doi.org/10.1017/S0140525X18000730)!
+
+<br>
+
 #### Reference
 
 <div style = "text-indent:-2em; margin-left:2em;">

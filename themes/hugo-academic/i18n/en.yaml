@@ -79,7 +79,7 @@
   translation: ''
   
 - id: profilesections
-  translation: '<span style="padding-left:32px;">Subsections</span>'
+  translation: Subsections
 
 - id: recent_work
   translation: Recent work

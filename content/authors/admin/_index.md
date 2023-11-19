@@ -22,12 +22,12 @@ interests:
 - open science
 - programming
 profilesections:
-- '<i style="font-weight:bold; color:#5B6574" class="fas fa-arrow-right fa-xs"> &nbsp; </i><a href="/#bio" style="color:#5B6574">Experience</a>'
-- '<a href="/#teaching-supervision" style="color:#6F7B8E">Teaching and supervision</a>'
-- '<a href="/#other-funding" style="color:#6F7B8E">Other funding</a>'
-- '<a href="/#other-work" style="color:#6F7B8E">Other work</a>'
-- '<a href="/#skills" style="color:#6F7B8E">Skills</a>'
-- '<a href="/#videos" style="color:#6F7B8E">Videos</a>'
+- '<div class = "profile-subsection"><a href = "/#bio" class = "profile-subsection">Experience <i class="fas fa-arrow-right fa-xs" style="color:lightgrey;"></i></a></div>'
+- '<div class = "profile-subsection"><a href = "/#teaching-supervision" class = "profile-subsection">Teaching and supervision</a></div>'
+- '<div class = "profile-subsection"><a href = "/#other-funding" class = "profile-subsection">Other funding</a></div>'
+- '<div class = "profile-subsection"><a href = "/#other-work" class = "profile-subsection">Other work</a></div>'
+- '<div class = "profile-subsection"><a href = "/#skills" class = "profile-subsection">Skills</a></div>'
+- '<div class = "profile-subsection"><a href = "/#videos" class = "profile-subsection">Videos</a></div>'
 superuser: true
 user_groups:
 - Researchers
