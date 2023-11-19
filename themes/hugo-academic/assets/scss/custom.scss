@@ -22,7 +22,7 @@
   color: darkgrey;
 }
 
-#top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories > a, #profile > div:nth-child(5) > div > ul > div > a:link, code {
+#top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories > a, #profile > div:nth-child(5) > div > ul > div > a:link, #top > article > div.article-container.pt-3 > div.article-metadata > span.article-categories > a:link, code {
   background-color: transparent;
 }
 
@@ -131,15 +131,15 @@ p a:hover, ul a:hover, li a:hover, .article-container a:hover, td a:hover, a.dsq
   border-color: lightgrey;
 }
 
-#top > div.pub > div > div.article-tags > a:link {
+#top > div.pub > div > div.article-tags > a:link, #top > article > div > div.article-tags > a:link {
   background-color: #F3F3F3;
 }
 
-#top > div.pub > div > div.article-tags > a:hover {
+#top > div.pub > div > div.article-tags > a:hover, #top > article > div > div.article-tags > a:hover {
   background-color: #FFF0F0;
 }
 
-#top > div.pub > div > div.article-tags > a:visited {
+#top > div.pub > div > div.article-tags > a:visited, #top > article > div > div.article-tags > a:link {
   background-color: #FFF3F3;
 }
 
