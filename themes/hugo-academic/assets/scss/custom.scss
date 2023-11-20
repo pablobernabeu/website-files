@@ -2,6 +2,14 @@
 
 // Override this file to add your own SCSS styling.
 
+#navbar-main > div > div.d-none.d-lg-inline-flex > a {
+  color: darkgrey;
+}
+
+div.col-12.col-lg-4.section-heading > h1 {
+  color: darkgrey;
+}
+
 // Navigation bar link
 .nav-link.active span {
   color: #39A290;
@@ -9,7 +17,7 @@
 
 // Navigation bar link
 #navbar-main a:link {
-  color: #39A290;
+  color: #79A990;
   background-color: transparent;
 }
 
@@ -53,8 +61,8 @@
 
 // unvisited link
 p a:link, ul a:link, li a:link, .article-container a:link, td a:link, a.dsq-brlink {
-  color: olive; 
-  background-color: #FFF9F9;
+  color: #00032F; 
+  background-color: #FDFFEC;
 }
 
 // unvisited link
@@ -63,9 +71,22 @@ h3 a:link {
 }
 
 // visited link
+a:visited {
+  color: black; 
+  background-color: #F7F1FF;
+}
+
+// visited heading link
 h3 a:visited, div a:visited, p a:visited, ul a:visited, li a:visited, .article-container a:visited, td a:visited, a.dsq-brlink:visited {
-  color: #9E84B0; 
+  color: purple; 
   background-color: transparent;
+}
+
+// mouse over link
+p a:hover, ul a:hover, li a:hover, .article-container a:hover, td a:hover, a.dsq-brlink:hover {
+  color: black;
+  background-color: #D4EEEA;
+  text-decoration: none;
 }
 
 // active link
@@ -74,13 +95,13 @@ h3 a:active, div a:active, p a:active, ul a:active, li a:active, .article-contai
   color: #24494F; 
 }
 
-h3 a:hover, div a:hover, p a:hover, ul a:hover, li a:hover, .article-container a:hover, td a:hover, a.dsq-brlink:hover {
+h3 a:hover, div a:hover {
   color: #24494F; 
 }
 
 // unvisited category and tag cloud links
 .article-categories a:link, .tag-cloud a:link {
-  color: #485B5F; 
+  color: darkgrey; 
 }
 
 // visited category and tag cloud links
@@ -88,21 +109,9 @@ h3 a:hover, div a:hover, p a:hover, ul a:hover, li a:hover, .article-container a
   color: #9E84B0;
 }
 
-// unvisited tag and category links
-.article-tags a:link {
-  color: #485B5F; 
-}
-
-// visited tag and category links
-.article-tags a:visited {
-  color: #9E84B0;
-}
-
-// mouse over link
-p a:hover, ul a:hover, li a:hover, .article-container a:hover, td a:hover, a.dsq-brlink:hover {
-  color: #759A55;
-  background-color: #F8FFE6;
-  text-decoration: none;
+// hovered category and tag cloud links
+.article-categories a:hover, .tag-cloud a:hover {
+  color: #24494F;
 }
 
 #top > article > div.article-container.pt-3 > div.btn-links.mb-3 > a:link, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > a:link, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:link, .btn-links a:link, #top > div.pub > div:nth-child(2) > a > button:link, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button:link, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button:link {
@@ -131,16 +140,21 @@ p a:hover, ul a:hover, li a:hover, .article-container a:hover, td a:hover, a.dsq
   border-color: lightgrey;
 }
 
-#top > div.pub > div > div.article-tags > a:link, #top > article > div > div.article-tags > a:link {
+// unvisited tag and category links
+#top > div.pub > div > div.article-tags > a:link, #top > article > div > div.article-tags > a:link, .article-tags a:link {
+  color: black;
   background-color: #F3F3F3;
 }
 
-#top > div.pub > div > div.article-tags > a:hover, #top > article > div > div.article-tags > a:hover {
-  background-color: #FFF0F0;
+// visited tag and category links
+#top > div.pub > div > div.article-tags > a:visited, #top > article > div > div.article-tags > a:visited, .article-tags a:visited {
+  color: black;
+  background-color: #F7F1FF;
 }
 
-#top > div.pub > div > div.article-tags > a:visited, #top > article > div > div.article-tags > a:link {
-  background-color: #FFF3F3;
+// hovered tag and category links
+#top > div.pub > div > div.article-tags > a:hover, #top > article > div > div.article-tags > a:hover, .article-tags a:hover {
+  color: black;
+  background-color: #D4EEEA;
 }
-
 
