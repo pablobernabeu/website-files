@@ -9234,3 +9234,7 @@ h3 a:hover, div a:hover {
 #top > div.pub > div > div.article-tags > a:hover, #top > article > div > div.article-tags > a:hover, .article-tags a:hover {
   color: black;
   background-color: #D4EEEA; }
+
+#references {
+  text-indent: -2em;
+  margin-left: 2em; }
