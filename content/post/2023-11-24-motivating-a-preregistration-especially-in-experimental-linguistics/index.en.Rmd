@@ -26,7 +26,7 @@ projects: []
 
 ## The disorder
 
-Studies in the cognitive sciences often feature multiple experimental conditions. Once the study progresses, the analytical liberties associated with so many experimental conditions are compounded by the myriad possible steps in data processing and analysis (*the garden of forking paths*). As a result, the researcher degrees of freedom often soar to unexpected highs. The system of professional incentives in academia largely ignores the issue of researcher degrees of freedom. When CVs are assessed, quantity weighs more than quality of research. When studies are assessed, statistical significance weighs more than methodological rigour. Thus, it's hardly surprising that studies don't replicate (Kobrock & Roettger, 2023). 
+Studies in the cognitive sciences often feature multiple experimental conditions. Once the study progresses, the analytical liberties associated with so many experimental conditions are compounded by the myriad possible steps in data processing and analysis (*the garden of forking paths*). As a result, the researcher degrees of freedom often soar to unexpected highs. The system of professional incentives in academia largely ignores the issue of researcher degrees of freedom. When CVs are assessed, quantity weighs more than quality of research. When studies are assessed, statistical significance weighs more than methodological rigour. Thus, the low replication rates in various fields, including linguistics (Kobrock & Roettger, 2023), are hardly surprising (cf. Barsalou, 2019). 
 
 ## The treatment
 
@@ -49,6 +49,8 @@ Rules are made to be broken---at least as and when necessary. That is, deviation
 ## References
 
 Bakker, M., Veldkamp, C. L. S., Assen, M. A. L. M. van, Crompvoets, E. A. V., Ong, H. H., Nosek, B. A., Soderberg, C. K., Mellor, D., & Wicherts, J. M. (2020). Ensuring the quality and specificity of preregistrations. *PLOS Biology, 18*(12), e3000937. https://doi.org/10.1371/journal.pbio.3000937
+
+Barsalou, L. W. (2019). Establishing generalizable mechanisms. *Psychological Inquiry, 30*(4), 220–230. https://doi.org/10.1080/1047840X.2019.1693857
 
 Kobrock, K., & Roettger, T. B. (2023). Assessing the replication landscape in experimental linguistics. *Glossa Psycholinguistics, 2*(1). https://doi.org/10.5070/G6011135
 
