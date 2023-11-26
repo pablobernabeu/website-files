@@ -32,9 +32,13 @@ The system of professional incentives in academia largely ignores the issue of r
 
 ## The treatment
 
-The purpose of a preregistration is to reduce the number of researcher degrees of freedom. Yet, the best argument to motivate a preregistration may be that preregistering a study incurs no extra time. It just requires frontloading an important portion of the work. As a reward, those analyses that have been preregistered are received with greater trust by peer-reviewers and other readers. Preregistration is not perfect, but is a lesser evil that reduces the misuse of statistical analysis in science (Mertzen et al., 2021; Roettger, 2023).
+The number of researcher degrees of freedom, and their unforeseen influence, can be reduced a priori by publishing a preregistration before data collection begins (or before the analysis has begun, in the case of meta-analyses and secondary-data analyes). The preregistration takes a bit of time, which poses a challenge because funding systems often require *doing things* as soon and as fast as possible, driven by a questionable notion of scientific productivity. 
 
-The preregistration takes a bit of time, which poses a challenge because funding mandates often require *doing things* as soon as possible (i.e., academic capitalism). However, if any contributors of a project can gather just enough time and interest to initiate a preregistration before data collection (or before the analysis, in the case of meta-analyses and secondary-data analyes), then the researchers can attempt to pocket the important asset of preregistration for their study. They will reap the reward in time, and so will their field of research at large.
+### How to gather the strength
+
+The best argument to motivate a preregistration may be that does not incur any extra time. It only requires frontloading an important portion of the work. This effort will be rewarded when the study is published, as preregistered analyses are received with greater trust by peer-reviewers and other readers. 
+
+If any contributors of a project can gather just enough time and interest to initiate a preregistration in time, the researchers can attempt to pocket this important asset for their study. They will reap the reward in time, and so will their field of research at large.
 
 ### What to do
 
@@ -44,9 +48,11 @@ The degree of detail in the preregistration can be determined by the researchers
 
 ### Solace
 
-Rules are made to be broken---at least as and when necessary. That is, deviations from the preregistration are possible, and indeed very frequent (Bakker et al., 2020; van den Akker et al., 2023).
+Preregistration is not perfect, but is a lesser evil that reduces the misuse of statistical analysis in science (Mertzen et al., 2021; Roettger, 2023).
 
 > Even the strongest blizzards start with a single snowflake. (Sara Raasch) 
+
+Rules are made to be broken---at least as and when necessary. That is, deviations from the preregistration are possible, and indeed very frequent (Bakker et al., 2020; van den Akker et al., 2023).
 
 ## References
 

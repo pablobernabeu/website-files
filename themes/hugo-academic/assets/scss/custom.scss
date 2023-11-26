@@ -164,3 +164,17 @@ h3 a:hover, div a:hover {
   margin-left:2em;
 }
 
+// Icons on the right-hand side of the the bio section
+#bio > div > div > div.col-12.col-lg-8 > div > div > ul > li > i {
+  color: lightgrey;
+}
+
+// Folder icon for categories
+span.article-categories > i {
+  color: lightgrey;
+}
+
+// Icons
+i {
+  background-color: transparent;
+}

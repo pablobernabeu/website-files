@@ -9238,3 +9238,12 @@ h3 a:hover, div a:hover {
 #references {
   text-indent: -2em;
   margin-left: 2em; }
+
+#bio > div > div > div.col-12.col-lg-8 > div > div > ul > li > i {
+  color: lightgrey; }
+
+span.article-categories > i {
+  color: lightgrey; }
+
+i {
+  background-color: transparent; }
