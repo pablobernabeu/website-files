@@ -51,7 +51,7 @@ css_class = ""
 +++
 
 
-### <span style='color:grey; font-size:70%;'>2021 ·</span>&nbsp; Linguistic and embodied systems in conceptual processing: Variation across individuals and items (<a href='https://www.youtube.com/watch?v=y2bopgYWYvE&ab_channel=LancasterPsychology'>watch</a>)
+### <span style='color:grey; font-size:70%;'>2021 ·</span>&nbsp; Linguistic and embodied systems in conceptual processing: Variation across individuals and items
 
 <div style = "margin-top: 20px; margin-left: 20%;">
 <a href = 'https://www.youtube.com/watch?v=y2bopgYWYvE&ab_channel=LancasterPsychology'>
@@ -61,17 +61,14 @@ css_class = ""
 <div style = 'padding-bottom: 7%;'></div>
 
 
-### <span style='color:grey; font-size:70%;'>2021 ·</span>&nbsp; Towards reproducibility and maximally-open data (<a href='/talk/towards-reproducibility-and-maximally-open-data'>watch</a>)
+### <span style='color:grey; font-size:70%;'>2021 ·</span>&nbsp; [Towards reproducibility and maximally-open data](/talk/towards-reproducibility-and-maximally-open-data)
 
-<div style = "margin-top: 20px; margin-left: 20%;">
-<a href = '/talk/towards-reproducibility-and-maximally-open-data'>
-<img src = 'https://cdn.pixabay.com/photo/2016/08/20/06/09/video-1606945_960_720.png' width = 50%></a>
+<div style = "position: relative; margin-top: 20px;">
+<iframe src="https://cdnapisec.kaltura.com/p/723092/sp/72309200/embedIframeJs/uiconf_id/31568551/partner_id/723092?flashvars[mediaProxy.mediaPlayFrom]=3368&iframeembed=true&playerId=kplayer&entry_id=1_d7ekd3d3&flashvars[streamerType]=auto" width="700" height="700" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
 </div>
 
-<div style = 'padding-bottom: 7%;'></div>
 
-
-### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; Reproducibilidad en torno a una aplicación web (<a href='/talk/2020-10-08-reproducibilidad-en-torno-a-una-aplicacion-web/'>ver más</a>)
+### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; [Reproducibilidad en torno a una aplicación web](/talk/2020-10-08-reproducibilidad-en-torno-a-una-aplicacion-web)
 
 <div style = "position: relative; margin-top: 20px; padding-top: 56.25%; margin-bottom: -25px;">
 <iframe src="https://www.youtube-nocookie.com/embed/1njLOAWqLPM" frameborder="0" allowfullscreen
@@ -119,9 +116,35 @@ style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
 </div>
 
 
-### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Demonstration of procedure for [PSA experiments](/publication/chen-etal-inprep/) (<a href='https://osf.io/h36wr/'>watch</a>)
+### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Demonstration of procedure for [PSA experiments](/publication/chen-etal-inprep/)
 
-<div style = "margin-top: 20px; margin-left: 20%;">
-<a href = 'https://osf.io/h36wr/'>
-<img src = 'https://cdn.pixabay.com/photo/2016/08/20/06/09/video-1606945_960_720.png' width = 50%></a>
+<div style = "margin-top: 20px;">
+  <style>
+      .embed-responsive {
+          position:relative;
+          height:100%;
+      }
+      .embed-responsive iframe {
+          position:absolute;
+          height:100%;
+      }
+  </style>
+  <link href="https://mfr.osf.io/static/css/mfr.css" media="all" rel="stylesheet">
+  <div id="mfrIframe" class="mfr mfr-file"></div>
+  <script src="https://mfr.osf.io/static/js/mfr.js"></script>
+  <script>
+      function renderMfr() {
+          var mfrRender = new mfr.Render("mfrIframe", "https://mfr.de-1.osf.io/render?url=https://osf.io/download/h36wr/?direct%26mode=render");
+      }
+      if (window.$) {
+          renderMfr();
+      } else {
+          var jq = document.createElement('script');
+          document.head.appendChild(jq);
+          jq.onload = function() {
+              renderMfr();
+          }
+          jq.src = 'http://code.jquery.com/jquery-1.11.2.min.js';
+      }
+  </script>
 </div>

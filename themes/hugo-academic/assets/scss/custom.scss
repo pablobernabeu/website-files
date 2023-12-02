@@ -178,3 +178,14 @@ span.article-categories > i {
 i {
   background-color: transparent;
 }
+
+// Full text button
+#top > div.pub > div > a > button:hover {
+  background-color: #F1FAFF !important;
+}
+
+// Open dashboard/application button
+#top > article > div > div.article-style > a > button:hover {
+  background-color: #F1FAFF !important;
+}
+

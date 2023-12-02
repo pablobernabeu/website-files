@@ -9247,3 +9247,9 @@ span.article-categories > i {
 
 i {
   background-color: transparent; }
+
+#top > div.pub > div > a > button:hover {
+  background-color: #F1FAFF !important; }
+
+#top > article > div > div.article-style > a > button:hover {
+  background-color: #F1FAFF !important; }

@@ -50,13 +50,40 @@ url_video: 'https://osf.io/h36wr/'
 
 #### &nbsp; <i class="fas fa-eye"></i>&nbsp; <a href='https://osf.io/h36wr/'>Video demonstration of the procedure followed in our lab</a>
 
+<style>
+    .embed-responsive {
+        position:relative;
+        height:100%;
+    }
+    .embed-responsive iframe {
+        position:absolute;
+        height:100%;
+    }
+</style>
+<link href="https://mfr.osf.io/static/css/mfr.css" media="all" rel="stylesheet">
+<div id="mfrIframe" class="mfr mfr-file"></div>
+<script src="https://mfr.osf.io/static/js/mfr.js"></script>
+<script>
+    function renderMfr() {
+        var mfrRender = new mfr.Render("mfrIframe", "https://mfr.de-1.osf.io/render?url=https://osf.io/download/h36wr/?direct%26mode=render");
+    }
+    if (window.$) {
+        renderMfr();
+    } else {
+        var jq = document.createElement('script');
+        document.head.appendChild(jq);
+        jq.onload = function() {
+            renderMfr();
+        }
+        jq.src = 'http://code.jquery.com/jquery-1.11.2.min.js';
+    }
+</script>
+ 
 #### &nbsp; <i class="fa fa-database"></i>&nbsp; <a href='https://osf.io/waf48/'>Data from our lab</a>
 
 <br>
 
-By contributing to this replication study at the beginning of my PhD, it turned out I followed a [**rule**](https://doi.org/10.1017/S0140525X18000730)!
-
-<br>
+By contributing to this replication study at the beginning of my PhD, it turned out I followed a [**rule**](https://doi.org/10.1017/S0140525X18000730).
 
 #### Reference
 
