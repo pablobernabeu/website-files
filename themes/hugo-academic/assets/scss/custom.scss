@@ -62,7 +62,7 @@ div.col-12.col-lg-4.section-heading > h1 {
 // unvisited link
 p a:link, ul a:link, li a:link, .article-container a:link, td a:link, a.dsq-brlink {
   color: #00032F; 
-  background-color: #FDFFEC;
+  background-color: #FEFFDF;
 }
 
 // unvisited link
@@ -187,5 +187,30 @@ i {
 // Open dashboard/application button
 #top > article > div > div.article-style > a > button:hover {
   background-color: #F1FAFF !important;
+}
+
+// Keyboard buttons
+kbd {
+  outline: 0;
+  vertical-align: baseline;
+  background: transparent;
+  border-style: solid;
+  border-width: 1px 3px 4px;
+  -moz-border-radius: 3px;
+  -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px #fff inset;
+  -webkit-border-radius: 3px;
+  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px #fff inset;
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px #fff inset;
+  color: #333;
+  display: inline-block;
+  font-family: monospace, sans-serif;
+  font-size: 95%;
+  line-height: 1.2;
+  margin: 0 0.1em;
+  padding: 0.09em 0.4em 0.11em 0.4em;
+  text-shadow: 0 1px 0 #fff;
 }
 
