@@ -29,7 +29,7 @@ projects: []
 
 Longitudinal studies consist of several sessions, and often involve session session conductors. To facilitate the planning, registration and tracking of sessions, a session logbook becomes even more necessary than usual. To this end, an Excel workbook with conditional formatting can help automatise some formats and visualise the progress. 
 
-Below is an example that is fully [available on OneDrive](https://1drv.ms/x/s!AouK9kQQrXKooGKVLbdBzz-DStmj?e=mbNZE4). To fully access the workbook, it may be downloaded via <kbd>File</kbd> > <kbd>Save as</kbd> > <kbd>Download a copy</kbd>. Alternatively, the workbook can be exported to one's own account on OneDrive.
+Below is an example that is [available on OneDrive](https://1drv.ms/x/s!AouK9kQQrXKooGKVLbdBzz-DStmj?e=mbNZE4). To fully access this workbook, it may be downloaded via <kbd>File</kbd> > <kbd>Save as</kbd> > <kbd>Download a copy</kbd>. Alternatively, the workbook can be exported to one's own account on OneDrive.
 
 The conditional formats include:
 
@@ -39,7 +39,7 @@ The conditional formats include:
 
 - fill in any notes columns to highlight them in red
 
-<iframe src='https://onedrive.live.com/embed?resid=A872AD1044F68A8B%214194&authkey=!ABsHnSAl4C4iZLc&em=2' width='100%' height='500px' frameborder='0' scrolling='no' style='margin-top: 4%; margin-bottom: 5%;'></iframe>
+<iframe src='https://onedrive.live.com/embed?resid=A872AD1044F68A8B%214194&authkey=!ABsHnSAl4C4iZLc&em=2' width='100%' height='500px' frameborder='0' scrolling='no' style='margin-top: 1.5%; margin-bottom: 4%;'></iframe>
 
 These conditional formats can be consulted (and edited) from the <kbd>Home</kbd> tab by opening <kbd>Conditional Formatting</kbd> > <kbd>Manage Rules</kbd>. At the top, the option <kbd>This Worksheet</kbd> should be selected to view all formulas.
 
