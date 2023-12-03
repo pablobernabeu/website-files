@@ -64,7 +64,7 @@ css_class = ""
 ### <span style='color:grey; font-size:70%;'>2021 ·</span>&nbsp; [Towards reproducibility and maximally-open data](/talk/towards-reproducibility-and-maximally-open-data)
 
 <div style = "position: relative; margin-top: 20px;">
-<iframe src="https://cdnapisec.kaltura.com/p/723092/sp/72309200/embedIframeJs/uiconf_id/31568551/partner_id/723092?flashvars[mediaProxy.mediaPlayFrom]=3368&iframeembed=true&playerId=kplayer&entry_id=1_d7ekd3d3&flashvars[streamerType]=auto" width="700" height="700" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
+<iframe src="https://cdnapisec.kaltura.com/p/723092/sp/72309200/embedIframeJs/uiconf_id/31568551/partner_id/723092?flashvars[mediaProxy.mediaPlayFrom]=3368&iframeembed=true&playerId=kplayer&entry_id=1_d7ekd3d3&flashvars[streamerType]=auto" width="80%" height="660" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
 </div>
 
 <div style = 'padding-bottom: 4%;'></div>
@@ -122,9 +122,9 @@ style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
 
 <iframe src="https://mfr.de-1.osf.io/render?url=https://osf.io/download/h36wr/?direct%26mode=render"
     style="margin-top:10px"
-    width="80%"
+    width="85%"
     scrolling="yes"
-    height="370px"
+    height="350px"
     marginheight="0"
     frameborder="0"
     allowfullscreen
