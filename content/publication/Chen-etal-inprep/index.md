@@ -54,7 +54,7 @@ url_video: 'https://osf.io/h36wr/'
 <iframe src="https://mfr.de-1.osf.io/render?url=https://osf.io/download/h36wr/?direct%26mode=render"
     width="80%"
     scrolling="yes"
-    height="300px"
+    height="320px"
     marginheight="0"
     frameborder="0"
     allowfullscreen
