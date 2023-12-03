@@ -48,16 +48,20 @@ url_video: 'https://osf.io/h36wr/'
 
 #### &nbsp; <i class="fa fa-database"></i>&nbsp; <a href='https://osf.io/e428p/'>General project</a>
 
+
 #### &nbsp; <i class="fas fa-eye"></i>&nbsp; <a href='https://osf.io/h36wr/'>Video demonstration of the procedure followed in our lab</a>
 
 <style>
     .embed-responsive {
         position:relative;
-        height:100%;
+        width:640px;
+        height:300px;
     }
     .embed-responsive iframe {
         position:absolute;
-        height:100%;
+        width:640px;
+        height:300px;
+        margin-top: 12px;
     }
 </style>
 <link href="https://mfr.osf.io/static/css/mfr.css" media="all" rel="stylesheet">
@@ -78,7 +82,8 @@ url_video: 'https://osf.io/h36wr/'
         jq.src = 'http://code.jquery.com/jquery-1.11.2.min.js';
     }
 </script>
- 
+
+
 #### &nbsp; <i class="fa fa-database"></i>&nbsp; <a href='https://osf.io/waf48/'>Data from our lab</a>
 
 <br>
