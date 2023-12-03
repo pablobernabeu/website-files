@@ -9235,7 +9235,7 @@ h3 a:hover, div a:hover {
   color: black;
   background-color: #D4EEEA; }
 
-#references {
+div#references {
   text-indent: -2em;
   margin-left: 2em; }
 
