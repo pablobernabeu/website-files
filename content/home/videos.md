@@ -67,6 +67,8 @@ css_class = ""
 <iframe src="https://cdnapisec.kaltura.com/p/723092/sp/72309200/embedIframeJs/uiconf_id/31568551/partner_id/723092?flashvars[mediaProxy.mediaPlayFrom]=3368&iframeembed=true&playerId=kplayer&entry_id=1_d7ekd3d3&flashvars[streamerType]=auto" width="700" height="700" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
 </div>
 
+<div style = 'padding-bottom: 4%;'></div>
+
 
 ### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; [Reproducibilidad en torno a una aplicación web](/talk/2020-10-08-reproducibilidad-en-torno-a-una-aplicacion-web)
 
@@ -118,35 +120,14 @@ style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
 
 ### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Demonstration of procedure for [PSA experiments](/publication/chen-etal-inprep/)
 
-<style>
-    .embed-responsive {
-        position:relative;
-        width:640px;
-        height:300px;
-    }
-    .embed-responsive iframe {
-        position:absolute;
-        width:640px;
-        height:300px;
-        margin-top: 12px;
-    }
-</style>
-<link href="https://mfr.osf.io/static/css/mfr.css" media="all" rel="stylesheet">
-<div id="mfrIframe" class="mfr mfr-file"></div>
-<script src="https://mfr.osf.io/static/js/mfr.js"></script>
-<script>
-    function renderMfr() {
-        var mfrRender = new mfr.Render("mfrIframe", "https://mfr.de-1.osf.io/render?url=https://osf.io/download/h36wr/?direct%26mode=render");
-    }
-    if (window.$) {
-        renderMfr();
-    } else {
-        var jq = document.createElement('script');
-        document.head.appendChild(jq);
-        jq.onload = function() {
-            renderMfr();
-        }
-        jq.src = 'http://code.jquery.com/jquery-1.11.2.min.js';
-    }
-</script>
+<iframe src="https://mfr.de-1.osf.io/render?url=https://osf.io/download/h36wr/?direct%26mode=render"
+    style="margin-top:10px"
+    width="80%"
+    scrolling="yes"
+    height="300px"
+    marginheight="0"
+    frameborder="0"
+    allowfullscreen
+    webkitallowfullscreen>
+</iframe>
 

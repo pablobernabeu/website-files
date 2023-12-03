@@ -51,37 +51,15 @@ url_video: 'https://osf.io/h36wr/'
 
 #### &nbsp; <i class="fas fa-eye"></i>&nbsp; <a href='https://osf.io/h36wr/'>Video demonstration of the procedure followed in our lab</a>
 
-<style>
-    .embed-responsive {
-        position:relative;
-        width:640px;
-        height:300px;
-    }
-    .embed-responsive iframe {
-        position:absolute;
-        width:640px;
-        height:300px;
-        margin-top: 12px;
-    }
-</style>
-<link href="https://mfr.osf.io/static/css/mfr.css" media="all" rel="stylesheet">
-<div id="mfrIframe" class="mfr mfr-file"></div>
-<script src="https://mfr.osf.io/static/js/mfr.js"></script>
-<script>
-    function renderMfr() {
-        var mfrRender = new mfr.Render("mfrIframe", "https://mfr.de-1.osf.io/render?url=https://osf.io/download/h36wr/?direct%26mode=render");
-    }
-    if (window.$) {
-        renderMfr();
-    } else {
-        var jq = document.createElement('script');
-        document.head.appendChild(jq);
-        jq.onload = function() {
-            renderMfr();
-        }
-        jq.src = 'http://code.jquery.com/jquery-1.11.2.min.js';
-    }
-</script>
+<iframe src="https://mfr.de-1.osf.io/render?url=https://osf.io/download/h36wr/?direct%26mode=render"
+    width="80%"
+    scrolling="yes"
+    height="300px"
+    marginheight="0"
+    frameborder="0"
+    allowfullscreen
+    webkitallowfullscreen>
+</iframe>
 
 
 #### &nbsp; <i class="fa fa-database"></i>&nbsp; <a href='https://osf.io/waf48/'>Data from our lab</a>
