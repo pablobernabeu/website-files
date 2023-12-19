@@ -164,7 +164,12 @@ div#references {
   margin-left: 2em;
 }
 
-// Icons on the right-hand side of the the bio section
+// Icons on the left-hand side of the bio section
+#profile > div > div > span > span > a > i:hover {
+  color: #379E8A !important;
+}
+
+// Icons on the right-hand side of the bio section
 #bio > div > div > div.col-12.col-lg-8 > div > div > ul > li > i {
   color: lightgrey;
 }
@@ -179,8 +184,8 @@ i {
   background-color: transparent;
 }
 
-// Full text button
-#top > div.pub > div > a > button:hover {
+// Full text buttons
+#top > div.pub > div > a > button:hover, #top > div.pub > div > div.article-style > a > button:hover {
   background-color: #F1FAFF !important;
 }
 

@@ -9239,6 +9239,9 @@ div#references {
   text-indent: -2em;
   margin-left: 2em; }
 
+#profile > div > div > span > span > a > i:hover {
+  color: #379E8A !important; }
+
 #bio > div > div > div.col-12.col-lg-8 > div > div > ul > li > i {
   color: lightgrey; }
 
@@ -9248,7 +9251,7 @@ span.article-categories > i {
 i {
   background-color: transparent; }
 
-#top > div.pub > div > a > button:hover {
+#top > div.pub > div > a > button:hover, #top > div.pub > div > div.article-style > a > button:hover {
   background-color: #F1FAFF !important; }
 
 #top > article > div > div.article-style > a > button:hover {
