@@ -21,11 +21,9 @@ projects: []
 ---
 
 
-I'm developing a slightly tricky design in [OpenSesame](https://osdoc.cogsci.nl) (a Python-based experiment builder).
+I'm developing a slightly tricky design in [OpenSesame](https://osdoc.cogsci.nl) (a Python-based experiment builder). My stimuli comprise two kinds of sentences that contain different elements, and different numbers of elements. These sentences must be presented word by word. Furthermore, I need to attach triggers to some words in the first kind of sentences but not in the second kind. Last, these kinds of sentences must be intermixed within a block (or a `sequence`) of trials, because the first kind are targets and the second kind are fillers.
 
-My stimuli comprise two kinds of sentences that contain different elements, and different numbers of elements. These sentences must be presented word by word. Furthermore, I need to attach triggers to some words in the first kind of sentences but not in the second kind. Last, these kinds of sentences must be intermixed within a block (or a `sequence`) of trials, because the first kind are targets and the second kind are fillers.
-
-I need to present stimuli randomly from either of two `loop`s within a `sequence`. Currently, when I try this arrangement using the interface, the resulting script ends up with `run loop1` followed by `run loop2`, but I can't find a way to ensure that the overarching sequence pulls randomly from either loop over successive trials. In other words, my goal is to intermix the stimuli from both loops.
+I need to present stimuli randomly from either of two `loop`s within a `sequence`. Currently, when I try this arrangement using the interface, the resulting script ends up with `run loop1` followed by `run loop2`, but I can't find a way to ensure that the overarching sequence pulls randomly from either loop over successive trials. In other words, my goal is to intermix the stimuli from both loops. 
 
 I have searched for clues in the OpenSesame tutorials, in the OpenSesame forum, and elsewhere online, but to no avail. 
 

@@ -51,6 +51,8 @@ subtitle = ""
 +++
 
 
+Since my PhD, I have advised several students and colleagues about conducting behavioural and EEG experiments, and about data processing and statistics. Furthermore, during my postdoc, I have co-supervised a master's thesis. 
+
 My PhD scholarship was teaching-based, so I contributed to my department’s curriculum for 180 hours a year. Each year, I led 30 seminars and marked 80 essays in developmental, cognitive and social psychology, while also helping in 30 statistics labs. This activity is detailed below.
 
 |             | **Course and remit** |
@@ -72,9 +74,7 @@ My PhD scholarship was teaching-based, so I contributed to my department’s cur
 |             | Investigating psychology: Analysis (102) using SPSS — Labs |
 
 
-During my PhD, I was a representative for graduate teaching assistants in my department for a year.
-
-Since my PhD, I have advised several students and colleagues about conducting behavioural and EEG experiments, and about data processing and statistics. Furthermore, during my postdoc, I have co-supervised a master's thesis. 
+Furthermore, during my PhD, I was a representative for graduate teaching assistants in my department for a year.
 
 Last, I am a [Certified Carpentries Instructor](https://carpentries.org/become-instructor) and have led several [workshops on data analysis using R](https://pablobernabeu.github.io/#workshops). Earlier in my career, I [taught English to secondary-education students in Spain](/#other-work), and [Spanish to adults in Lithuania](/#BA-degree).
 

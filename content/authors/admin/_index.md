@@ -6,7 +6,7 @@ email: 'p.bernabeu@uit.no<br>pcbernabeu@gmail.com'
 role: Postdoctoral fellow at UiT -- <br>The Arctic University of Norway
 profileicons:
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" University page "><a href="https://en.uit.no/go/target/789811"><i style="color:#8AA3CD;" class="fas fa-university fa-lg"></i></a></span>'
-- '<span data-toggle="tooltip1" data-placement="bottom" title=" Curriculum vitae "><a href="/cv.html"><i style="color:#8AA3CD;" class="ai ai-cv ai-lg"></i></a></span>'
+- '<span data-toggle="tooltip1" data-placement="bottom" title=" Curriculum vitae "><a href="/cv"><i style="color:#8AA3CD;" class="ai ai-cv ai-lg"></i></a></span>'
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" Google Scholar "><a href="https://scholar.google.com/citations?user=DxD0QDoAAAAJ&hl=en"><i style="color:#8AA3CD;" class="ai ai-google-scholar ai-lg"></i></a></span>'
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" ResearchGate "><a href="https://www.researchgate.net/profile/Pablo-Bernabeu"><i style="color:#8AA3CD;" class="fab fa-researchgate fa-lg"></i></a></span>'
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" OSF repositories "><a href="https://osf.io/25u3x/"><i style="color:#8AA3CD;" class="ai ai-osf ai-lg"></i></a></span>'
@@ -117,6 +117,6 @@ After doing a research master's, I became a PhD student and graduate teaching as
 
 Currently, I am a postdoctoral fellow at UiT The Arctic University of Norway. I work at the [Department of Language and Culture](https://en.uit.no/enhet/isk), and specifically within the [PoLaR Lab](https://site.uit.no/polar) and the [AcqVA Aurora Centre](https://uit.no/research/acqva). As a member of the [LESS Project (Language Economy through Transfer Source Selectivity)](https://uit.no/research/acqva/project?pid=743114), I investigate how language learners coordinate several languages early in the acquisition process, how this process is influenced by the characteristics of the languages, and how the process is reflected in the brain. Earlier, I also worked part-time as a data analyst in the [CLICK Project (Cross-Linguistic Influence of Competing Knowledge)](https://uit.no/research/acqva/project?pid=723990), which investigates multilingualism in heritage speakers.
 
-Throughout my research, I have used methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. The materials from my research are available at [https://osf.io/25u3x](https://osf.io/25u3x) and my CV is [available here](/cv.html).
+Throughout my research, I have used methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. The materials from my research are available at [https://osf.io/25u3x](https://osf.io/25u3x) and my CV is [available here](/cv).
 
 

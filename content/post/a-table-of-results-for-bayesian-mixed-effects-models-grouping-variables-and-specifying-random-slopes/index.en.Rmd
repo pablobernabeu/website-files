@@ -181,7 +181,7 @@ rownames(semanticpriming_summary_weaklyinformativepriors_exgaussian$fixed)[
 
 This [custom function](https://github.com/pablobernabeu/language-sensorimotor-simulation-PhD-thesis/blob/main/R_functions/bayesian_model_table.R) was used in Bernabeu (2022), with a PDF output. In the current scenario, however, we have an HTML output. In the above function, the code used for the $\widehat{R}$ tailored to the HTML output (`&Rcirc;`) does not render properly. 
 
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Flanguage-sensorimotor-simulation-PhD-thesis%2Fblob%2Fmain%2FR_functions%2Fbayesian_model_table.R%23L119-L121&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></script>
+<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Flanguage-sensorimotor-simulation-PhD-thesis%2Fblob%2Fmain%2FR_functions%2Fbayesian_model_table.R%23L119-L121&style=a11y-dark&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></script>
 
 
 Instead, the LaTeX code `$\\widehat{R}$` must be used. Therefore, we'll correct this error and load the function below.
@@ -438,7 +438,7 @@ bayesian_model_table(
 
 Shading specific rows is done differently when the output is PDF, as shown below (see p. 170 in [Bernabeu, 2022](https://eprints.lancs.ac.uk/id/eprint/177833/6/2022deJuanBernabeuPhD.pdf)).
 
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Flanguage-sensorimotor-simulation-PhD-thesis%2Fblob%2Fmain%2Fthesis%2Fappendix-E-Bayesian-analysis-results.Rmd%23L164-L165&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></script>
+<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Flanguage-sensorimotor-simulation-PhD-thesis%2Fblob%2Fmain%2Fthesis%2Fappendix-E-Bayesian-analysis-results.Rmd%23L164-L165&style=a11y-dark&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></script>
 
 
 ### Session info

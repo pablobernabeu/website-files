@@ -62,7 +62,7 @@ div.col-12.col-lg-4.section-heading > h1 {
 // unvisited link
 p a:link, ul a:link, li a:link, .article-container a:link, td a:link, a.dsq-brlink {
   color: #00032F; 
-  background-color: #FEFFDF;
+  background-color: #FEFFE5;
 }
 
 // unvisited link
@@ -85,7 +85,7 @@ h3 a:visited, div a:visited, p a:visited, ul a:visited, li a:visited, .article-c
 // mouse over link
 p a:hover, ul a:hover, li a:hover, .article-container a:hover, td a:hover, a.dsq-brlink:hover {
   color: black;
-  background-color: #D4EEEA;
+  background-color: #EAFFE8;
   text-decoration: none;
 }
 
@@ -217,5 +217,13 @@ kbd {
   margin: 0 0.1em;
   padding: 0.09em 0.4em 0.11em 0.4em;
   text-shadow: 0 1px 0 #fff;
+}
+
+
+// code chunks from emgithub
+
+div.emgithub-file.emgithub-file-dark > div.file-data.hljs-style-a11y-dark > div > pre > code > table > tbody > tr > td.hljs-ln-line.hljs-ln-code, div.emgithub-file.emgithub-file-dark > div.file-data.hljs-style-a11y-dark > div > pre > code > table > tbody > tr > td.hljs-ln-line.hljs-ln-numbers, div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark, div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > a {
+  
+  background: none;
 }
 

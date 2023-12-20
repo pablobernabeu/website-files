@@ -37,5 +37,5 @@ NOTE: The deletions, if accepted, are irreversible as they are made through [`un
 
 ## The function
 
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Fknit_deleting_service_files%2Fblob%2Fmain%2Fknit_deleting_service_files.R&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></script>
+<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Fknit_deleting_service_files%2Fblob%2Fmain%2Fknit_deleting_service_files.R&style=a11y-dark&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></script>
 
