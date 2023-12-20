@@ -42,7 +42,7 @@ div.col-12.col-lg-4.section-heading > h1 {
   display: block;
   padding-left: 0.5em;
   padding-right: 0.5em;
-  background: linear-gradient(#DDFFFA 0 0) var(--p, 0) / var(--p, 0) no-repeat;
+  background: linear-gradient(#E6FFE3 0 0) var(--p, 0) / var(--p, 0) no-repeat;
   transition: 0.4s, background-position 0s;
 }
 
@@ -136,7 +136,7 @@ h3 a:hover, div a:hover {
 #top > article > div.article-container.pt-3 > div.btn-links.mb-3 > a:hover, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > a:hover, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:hover, .btn-links a:hover, #top > div.pub > div:nth-child(2) > a > button:hover, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button:hover, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button:hover {
   color: black; 
   font-weight: bold;
-  background-color: #D4EEEA;
+  background-color: #E6FFE3;
   border-color: lightgrey;
 }
 
@@ -155,7 +155,7 @@ h3 a:hover, div a:hover {
 // hovered tag and category links
 #top > div.pub > div > div.article-tags > a:hover, #top > article > div > div.article-tags > a:hover, .article-tags a:hover {
   color: black;
-  background-color: #D4EEEA;
+  background-color: #E6FFE3;
 }
 
 // References sections
@@ -186,12 +186,12 @@ i {
 
 // Full text buttons
 #top > div.pub > div > a > button:hover, #top > div.pub > div > div.article-style > a > button:hover {
-  background-color: #F1FAFF !important;
+  background-color: #E6FFE3 !important;
 }
 
 // Open dashboard/application button
 #top > article > div > div.article-style > a > button:hover {
-  background-color: #F1FAFF !important;
+  background-color: #E6FFE3 !important;
 }
 
 // Keyboard buttons
