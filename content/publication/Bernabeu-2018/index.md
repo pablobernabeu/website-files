@@ -48,19 +48,18 @@ doi: 10.31234/osf.io/s2c5h
 
 ### Reference
 
-<div style = "text-indent:-2em; margin-left:2em;">
+<div style = 'text-indent:-2em; margin-left:2em; margin-bottom: 3em;'>
 
 Bernabeu, P. (2018). *Dutch modality exclusivity norms for 336 properties and 411 concepts*. PsyArXiv. https://doi.org/10.31234/osf.io/s2c5h
 
 </div>
 
-<br>
 
 ### Related references
 
-<div style='border-color: lightgrey; overflow: auto; color: darkblue; font-size: 90%; height: 700px; overflow-wrap: normal; padding-right: 1em;'>
+<div style = 'border-color: lightgrey; overflow: auto; font-size: 90%; height: 700px; overflow-wrap: normal; padding-right: 1em; margin-top: 1em; margin-bottom: 1.5em;'>
 
-<div style='text-indent: -2em; margin-left: 2em; color: darkgrey;'>
+<div style = 'text-indent: -2em; margin-left: 2em; color: #787878;'>
 
 Anderson, A. J., Binder, J. R., Fernandino, L., Humphries, C. J., Conant, L. L., Aguilar, M., Wang, X., Doko, D., & Raizada, R. D. S. (2016). Predicting Neural Activity Patterns Associated with Sentences Using a Neurobiologically Motivated Model of Semantic Representation. *Cerebral Cortex*, cercor;bhw240v1. <https://doi.org/10.1093/cercor/bhw240>
 

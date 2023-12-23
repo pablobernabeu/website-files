@@ -56,23 +56,20 @@ slides: ''
 ---
 
       
-<br>
-
 ### Reference
 
-<div style = "text-indent:-2em; margin-left:2em;">
+<div style = 'text-indent:-2em; margin-left:2em; margin-bottom: 3em;'>
 
 Bernabeu, P. (2017). *Modality switches occur early and extend late in conceptual processing: Evidence from ERPs*. PsyArXiv. https://doi.org/10.31234/osf.io/5gjvk
 
 </div>
 
-<br>
 
 ### Related references
 
-<div style='border-color: lightgrey; overflow: auto; font-size: 90%; height: 700px; overflow-wrap: normal; padding-right: 1em;'>
+<div style = 'border-color: lightgrey; overflow: auto; font-size: 90%; height: 700px; overflow-wrap: normal; padding-right: 1em; margin-top: 1em; margin-bottom: 1.5em;'>
 
-<div style='text-indent: -2em; margin-left: 2em; color: darkgrey;'>
+<div style = 'text-indent: -2em; margin-left: 2em; color: #787878;'>
 
 Ali Qurbi, E. (2022). Ambiguous Word Processing among Second Language Learners. *The Canadian Modern Language Review*, *78*(2), 151--173. <https://doi.org/10.3138/cmlr-2020-0115>
 

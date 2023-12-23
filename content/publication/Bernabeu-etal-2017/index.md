@@ -53,25 +53,27 @@ url_poster: 'https://mfr.osf.io/render?url=https://osf.io/dj52n/?direct%26mode=r
 ---
 
 
-### Bonus: a conference poster with further analyses &nbsp;<a href='https://mfr.osf.io/render?url=https://osf.io/dj52n/?direct%26mode=render%26action=download%26mode=render'><i class="fas fa-external-link-alt"></i></a>
-
-<style>.embed-responsive{position:relative;height:100%;}.embed-responsive iframe{position:absolute;height:100%;}</style><script>window.jQuery || document.write('<script src="//code.jquery.com/jquery-1.11.2.min.js">\x3C/script>') </script><link href="https://mfr.osf.io/static/css/mfr.css" media="all" rel="stylesheet"><div id="mfrIframe" class="mfr mfr-file"></div><script src="https://mfr.osf.io/static/js/mfr.js"></script> <script>var mfrRender = new mfr.Render("mfrIframe", "https://mfr.osf.io/render?url=https://osf.io/dj52n/?direct%26mode=render%26action=download%26mode=render");</script>
-
 ### Reference
 
-<div style = "text-indent: -2em; margin-left: 2em;">
+<div style = 'text-indent:-2em; margin-left:2em; margin-bottom: 3em;'>
 
 Bernabeu, P., Willems, R. M., & Louwerse, M. M. (2017). Modality switch effects emerge early and increase throughout conceptual processing: Evidence from ERPs. In G. Gunzelmann, A. Howes, T. Tenbrink, & E. J. Davelaar (Eds.), *Proceedings of the 39th Annual Conference of the Cognitive Science Society* (pp. 1629-1634). Austin, TX: Cognitive Science Society. https://doi.org/10.31234/osf.io/a5pcz
 
 </div>
 
+
+### Bonus: a conference poster with further analyses &nbsp;<a href='https://mfr.osf.io/render?url=https://osf.io/dj52n/?direct%26mode=render%26action=download%26mode=render'><i class="fas fa-external-link-alt"></i></a>
+
+<style>.embed-responsive{position:relative;height:100%;}.embed-responsive iframe{position:absolute;height:100%;}</style><script>window.jQuery || document.write('<script src="//code.jquery.com/jquery-1.11.2.min.js">\x3C/script>') </script><link href="https://mfr.osf.io/static/css/mfr.css" media="all" rel="stylesheet"><div id="mfrIframe" class="mfr mfr-file"></div><script src="https://mfr.osf.io/static/js/mfr.js"></script> <script>var mfrRender = new mfr.Render("mfrIframe", "https://mfr.osf.io/render?url=https://osf.io/dj52n/?direct%26mode=render%26action=download%26mode=render");</script>
+
 <br>
+
 
 ### Related references
 
-<div style='border-color: lightgrey; overflow: auto; color: darkblue; font-size: 90%; height: 700px; overflow-wrap: normal; padding-right: 1em;'>
+<div style = 'border-color: lightgrey; overflow: auto; font-size: 90%; height: 700px; overflow-wrap: normal; padding-right: 1em; margin-top: 1em; margin-bottom: 1.5em;'>
 
-<div style='text-indent: -2em; margin-left: 2em; color: darkgrey;'>
+<div style = 'text-indent: -2em; margin-left: 2em; color: #787878;'>
 
 Ali Qurbi, E. (2022). Ambiguous Word Processing among Second Language Learners. *The Canadian Modern Language Review*, *78*(2), 151--173. <https://doi.org/10.3138/cmlr-2020-0115>
 
