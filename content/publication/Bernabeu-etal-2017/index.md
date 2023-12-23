@@ -71,7 +71,7 @@ Bernabeu, P., Willems, R. M., & Louwerse, M. M. (2017). Modality switch effects 
 
 ### Related references
 
-<div style = 'border-color: lightgrey; overflow: auto; font-size: 90%; height: 700px; overflow-wrap: normal; padding-right: 1em; margin-top: 1em; margin-bottom: 1.5em;'>
+<div style = 'border-color: lightgrey; overflow: auto; font-size: 90%; height: 700px; overflow-wrap: normal; padding-right: 1em; margin-top: 1em; margin-bottom: 3em;'>
 
 <div style = 'text-indent: -2em; margin-left: 2em; color: #787878;'>
 
