@@ -58,7 +58,9 @@ Bernabeu, P. (2018). *Dutch modality exclusivity norms for 336 properties and 41
 
 ### Related references
 
-<div style = "text-indent: -2em; margin-left: 2em; color: darkgrey;">
+<div style='border-color: lightgrey; overflow: auto; color: darkblue; font-size: 90%; height: 700px; overflow-wrap: normal; padding-right: 1em;'>
+
+<div style='text-indent: -2em; margin-left: 2em; color: darkgrey;'>
 
 Anderson, A. J., Binder, J. R., Fernandino, L., Humphries, C. J., Conant, L. L., Aguilar, M., Wang, X., Doko, D., & Raizada, R. D. S. (2016). Predicting Neural Activity Patterns Associated with Sentences Using a Neurobiologically Motivated Model of Semantic Representation. *Cerebral Cortex*, cercor;bhw240v1. <https://doi.org/10.1093/cercor/bhw240>
 
@@ -339,6 +341,8 @@ Zhong, Y., Huang, C.-R., & Dong, S. (2022). Bodily sensation and embodiment: A c
 Zhong, Y., Wan, M., Ahrens, K., & Huang, C.-R. (2022). Sensorimotor norms for Chinese nouns and their relationship with orthographic and semantic variables. *Language, Cognition and Neuroscience*, *37*(8), 1000--1022. <https://doi.org/10.1080/23273798.2022.2035416>
 
 Zhu, S., Wang, X., & Liu, P. (2021). Who Killed Sanmao and Virginia Woolf? A Comparative Study of Writers with Suicidal Attempt Based on a Quantitative Linguistic Method. In M. Liu, C. Kit, & Q. Su (Eds.), *Chinese Lexical Semantics* (Vol. 12278, pp. 408--420). Springer International Publishing. <https://doi.org/10.1007/978-3-030-81197-6_34>
+
+</div>
 
 </div>
 

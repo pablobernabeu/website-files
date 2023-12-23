@@ -87,7 +87,9 @@ Bernabeu, P. (2022). *Language and sensorimotor simulation in conceptual process
 
 ### Related references
 
-<div style = "text-indent: -2em; margin-left: 2em; color: darkgrey;">
+<div style='border-color: lightgrey; overflow: auto; color: darkblue; font-size: 90%; height: 700px; overflow-wrap: normal;'>
+
+<div style='text-indent: -2em; margin-left: 2em; color: darkgrey;'>
 
 Abrams, M. B., Bjaalie, J. G., Das, S., Egan, G. F., Ghosh, S. S., Goscinski, W. J., Grethe, J. S., Kotaleski, J. H., Ho, E. T. W., Kennedy, D. N., Lanyon, L. J., Leergaard, T. B., Mayberg, H. S., Milanesi, L., Mouček, R., Poline, J. B., Roy, P. K., Strother, S. C., Tang, T. B., ... Martone, M. E. (2022). A Standards Organization for Open and FAIR Neuroscience: The International Neuroinformatics Coordinating Facility. *Neuroinformatics*, *20*(1), 25--36. <https://doi.org/10.1007/s12021-020-09509-0>
 
@@ -2100,6 +2102,8 @@ Zou, J., Gopalakrishnan, S., Parker, C. C., Nicod, J., Mott, R., Cai, N., Lionik
 Zuraida, Z., & Husin, A. (2022). Sustainability, Sharī'ah Governance and Financial Performance: Evidence from Companies Listed on the Jakarta Islamic Index. In T. Azid, M. Mukhlisin, & O. Altwijry (Eds.), *Wealth Management and Investment in Islamic Settings* (pp. 249--282). Springer Nature Singapore. <https://doi.org/10.1007/978-981-19-3686-9_16>
 
 Zwet, E. V., & Gelman, A. (2022). A Proposal for Informative Default Priors Scaled by the Standard Error of Estimates. *The American Statistician*, *76*(1), 1--9. <https://doi.org/10.1080/00031305.2021.1938225>
+
+</div>
 
 </div>
 

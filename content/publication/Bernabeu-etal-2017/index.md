@@ -69,7 +69,9 @@ Bernabeu, P., Willems, R. M., & Louwerse, M. M. (2017). Modality switch effects 
 
 ### Related references
 
-<div style = "text-indent: -2em; margin-left: 2em; color: darkgrey;">
+<div style='border-color: lightgrey; overflow: auto; color: darkblue; font-size: 90%; height: 700px; overflow-wrap: normal; padding-right: 1em;'>
+
+<div style='text-indent: -2em; margin-left: 2em; color: darkgrey;'>
 
 Ali Qurbi, E. (2022). Ambiguous Word Processing among Second Language Learners. *The Canadian Modern Language Review*, *78*(2), 151--173. <https://doi.org/10.3138/cmlr-2020-0115>
 
@@ -586,6 +588,8 @@ Zhong, Y., Wan, M., Ahrens, K., & Huang, C.-R. (2022). Sensorimotor norms for Ch
 Zhu, S., Wang, X., & Liu, P. (2021). Who Killed Sanmao and Virginia Woolf? A Comparative Study of Writers with Suicidal Attempt Based on a Quantitative Linguistic Method. In M. Liu, C. Kit, & Q. Su (Eds.), *Chinese Lexical Semantics* (Vol. 12278, pp. 408--420). Springer International Publishing. <https://doi.org/10.1007/978-3-030-81197-6_34>
 
 Гарах, Ж. В., Ребрейкина, А. Б., Стрелец, В. Б., Голикова, А. В., & Зайцева, Ю. С. (2019). НЕЙРОФИЗИОЛОГИЧЕСКИЕ МЕХАНИЗМЫ ЧТЕНИЯ. *Журнал высшей нервной деятельности им И П Павлова*, *69*(3), 294--313. <https://doi.org/10.1134/S0044467719030055>
+
+</div>
 
 </div>
 

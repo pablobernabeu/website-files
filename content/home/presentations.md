@@ -53,7 +53,7 @@ subtitle = ""
 
 | Date     | Type | Title                  | Event and location     |
 | -------- | ---- | ---------------------- | ---------------------- |
-| Oct, Nov 2023 | Talk | Study in preparation (information and slides available upon request while study in progress) | (1) AcqVA Aurora Centre, UiT The Arctic University of Norway; <br> PoLaR Lab, UiT The Arctic University of Norway |
+| Oct, Nov 2023 | Talk | Study in preparation (information and slides available upon request while study in progress) | (1) AcqVA Aurora Centre, UiT The Arctic University of Norway; <br> (2) PoLaR Lab, UiT The Arctic University of Norway |
 | May 2023 | Reading group discussion | [Discussion of Labotka et al. (2023): Testing the effects of congruence in adult multilingual acquisition with implications for creole genesis](/talk/discussion-of-labotka-et-al-2023) | Reading group of the PoLaR Lab, UiT The Arctic University of Norway |
 | Jan 2023 | Reading group discussion | [Discussion of Jost et al. (2019): Input complexity affects long-term retention of statistically learned regularities in an artificial language learning task](/talk/discussion-of-jost-et-al-2019) | Reading group of the PoLaR Lab, UiT The Arctic University of Norway |
 | Oct 2022 | Talk | [Language and sensorimotor simulation in conceptual processing: Multilevel analysis and statistical power](https://osf.io/4uwzc) | AcqVA Aurora Centre, UiT The Arctic University of Norway |

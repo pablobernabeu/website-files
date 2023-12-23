@@ -12,7 +12,7 @@ links:
 - name: Complete web application
   url: 'https://pablobernabeu.shinyapps.io/Dutch-modality-exclusivity-norms/'
 - name: Reduced dashboard
-  url: '/dashboards/Dutch-modality-exclusivity-norms/d.html'
+  url: '/dashboards/Dutch-modality-exclusivity-norms'
 - name: Paper
   url: '/publication/dutch-modality-exclusivity-norms-for-336-properties-and-411-concepts/'
 - name: Github
@@ -66,7 +66,7 @@ url_dataset: 'https://github.com/pablobernabeu/Dutch-modality-exclusivity-norms-
 <br>
 <br>
 
-<a href='/dashboards/Dutch-modality-exclusivity-norms/d.html'>
+<a href='/dashboards/Dutch-modality-exclusivity-norms'>
       <button style = "background-color: white; color: black; border: 2px solid #4CAF50; border-radius: 12px;">
       <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;"> 
       <span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Reduced dashboard <font style='font-size:60%;'><i>Flexdashboard</i></font> </h3></button></a> &nbsp; 

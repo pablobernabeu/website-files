@@ -56,7 +56,9 @@ Bernabeu, P., Lynott, D., & Connell, L. (2021). *Preregistration: The interplay 
 
 ### Related references
 
-<div style = "text-indent: -2em; margin-left: 2em; color: darkgrey;">
+<div style='border-color: lightgrey; overflow: auto; color: darkblue; font-size: 90%; height: 700px; overflow-wrap: normal; padding-right: 1em;'>
+
+<div style='text-indent: -2em; margin-left: 2em; color: darkgrey;'>
 
 Aadland, E., Okely, A. D., & Nilsen, A. K. O. (2022). Trajectories of physical activity and sedentary time in Norwegian children aged 3--9 years: A 5-year longitudinal study. *International Journal of Behavioral Nutrition and Physical Activity*, *19*(1), 67. <https://doi.org/10.1186/s12966-022-01286-0>
 
@@ -2019,6 +2021,8 @@ Zou, W., & Bhatia, S. (2021). Judgment errors in naturalistic numerical estimati
 Zühlsdorff, K., López-Cruz, L., Dutcher, E. G., Jones, J. A., Pama, C., Sawiak, S., Khan, S., Milton, A. L., Robbins, T. W., Bullmore, E. T., & Dalley, J. W. (2023). Sex-dependent effects of early life stress on reinforcement learning and limbic cortico-striatal functional connectivity. *Neurobiology of Stress*, *22*, 100507. <https://doi.org/10.1016/j.ynstr.2022.100507>
 
 Колмогорова, А. В., & Натпит, А. А. (2023). Нейросемантические характеристики употребительных слов тувинского языка через призму комплексного психолингвистического эксперимента. *The New Research of Tuva*, *1*, 170--185. <https://doi.org/10.25178/nit.2023.1.10>
+
+</div>
 
 </div>
 
