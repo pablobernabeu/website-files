@@ -65,11 +65,11 @@ div.col-12.col-lg-4.section-heading > h1, #navbar-content > ul > li > a {
 
 // unvisited link
 
-p a:link, ul a:link, li a:link, .article-container a:link, td a:link, a.dsq-brlink {
+p a:link, ul a:link, li a:link, .article-container a:link, td a:link, a.dsq-brlink, div.grid-sizer > div > a {
   color: #00032F; 
 }
 
-p a:link, td a:link {
+p a:link, td a:link, div.grid-sizer > div > a {
   background-image: linear-gradient(180deg, #D1FFE3, #FEFFE5, #FEFFE5, #FEFFE5, #FEFFE5, #FEFFE5, #FEFFE5, #D1FFE3);
 }
 
@@ -91,7 +91,7 @@ h3 a:visited, div a:visited, p a:visited, ul a:visited, li a:visited, .article-c
 }
 
 // mouse over link
-p a:hover, ul a:hover, li a:hover, .article-container a:hover, td a:hover, a.dsq-brlink:hover {
+p a:hover, ul a:hover, li a:hover, .article-container a:hover, td a:hover, a.dsq-brlink:hover, div.grid-sizer > div > a:hover {
   background-image: none; // necessary to override `p a:link` property
   color: black;
   background-color: #EAFFE8;
@@ -123,26 +123,23 @@ h3 a:hover, div a:hover {
   color: #24494F;
 }
 
-#top > article > div.article-container.pt-3 > div.btn-links.mb-3 > a:link, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > a:link, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:link, .btn-links a:link, #top > div.pub > div:nth-child(2) > a > button:link, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button:link, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button:link {
+#top > article > div.article-container.pt-3 > div.btn-links.mb-3 > a:link, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > a:link, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:link, .btn-links a:link, #top > div.pub > div:nth-child(2) > a > button:link, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button:link, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button:link, div.grid-sizer > div > p > button, div.grid-sizer > div > p > a:link, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button, #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.btn-links > button {
+  background-image: none;
   color: black; 
   background-color: #F8F8F8;
   border-color: lightgrey;
 }
 
-#top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button, #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.btn-links > button {
-  color: black; 
-  background-color: #F8F8F8;
-  border-color: lightgrey;
-}
-
-#top > article > div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:visited, .btn-links a:visited, #top > div.pub > div:nth-child(2) > a > button:visited, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button:visited, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button:visited {
-  color: black; 
+#top > article > div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:visited, .btn-links a:visited, #top > div.pub > div:nth-child(2) > a > button:visited, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button:visited, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button:visited, div.grid-sizer > div > p > button:visited, div.grid-sizer > div > p > a:visited {
+  background-image: none;
+  color: purple; 
   font-weight: bold;
   background-color: #F7F7F7;
-  border-color: black;
+  border-color: purple;
 }
 
-#top > article > div.article-container.pt-3 > div.btn-links.mb-3 > a:hover, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > a:hover, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:hover, .btn-links a:hover, #top > div.pub > div:nth-child(2) > a > button:hover, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button:hover, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button:hover {
+#top > article > div.article-container.pt-3 > div.btn-links.mb-3 > a:hover, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > a:hover, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:hover, .btn-links a:hover, div.grid-sizer > div > p > button:hover, div.grid-sizer > div > p > a:hover, div.media-body > h3 > a:hover {
+  background-image: none;
   color: black; 
   font-weight: bold;
   background-color: #E6FFE3;
