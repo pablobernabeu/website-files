@@ -61,7 +61,7 @@ Research in conceptual processing has suggested that the comprehension of words 
 
 ### References
 
-<div style = "text-indent:-2em; margin-left:2em;">
+<div style = 'text-indent: -2em; margin-left: 2em'>
 
 Bernabeu, P., Lynott, D., & Connell, L. (2021). *Preregistration: The interplay between linguistic and embodied systems in conceptual processing*. OSF. https://osf.io/ftydw/
 

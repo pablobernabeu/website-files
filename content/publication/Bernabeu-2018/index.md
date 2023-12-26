@@ -5,7 +5,8 @@ authors:
 date: "2018-01-01"
 slug: Dutch-modality-exclusivity-norms-for-336-properties-and-411-concepts
 publication_types:
-- "0"
+- "3"
+publication: PsyArXiv Preprints
 categories:
   - linguistic materials
   - conceptual replication
@@ -48,7 +49,7 @@ doi: 10.31234/osf.io/s2c5h
 
 ### Reference
 
-<div style = 'text-indent:-2em; margin-left:2em; margin-bottom: 3em;'>
+<div class = 'hanging-indent' style = 'margin-bottom: 3em;'>
 
 Bernabeu, P. (2018). *Dutch modality exclusivity norms for 336 properties and 411 concepts*. PsyArXiv. https://doi.org/10.31234/osf.io/s2c5h
 
@@ -57,9 +58,9 @@ Bernabeu, P. (2018). *Dutch modality exclusivity norms for 336 properties and 41
 
 ### Related references
 
-<div style = 'border-color: lightgrey; overflow: auto; font-size: 90%; height: 700px; overflow-wrap: normal; padding-right: 1em; margin-top: 1em; margin-bottom: 3em;'>
+<div class = 'related-references'>
 
-<div style = 'text-indent: -2em; margin-left: 2em; color: #787878;'>
+<div class = 'hanging-indent'>
 
 Anderson, A. J., Binder, J. R., Fernandino, L., Humphries, C. J., Conant, L. L., Aguilar, M., Wang, X., Doko, D., & Raizada, R. D. S. (2016). Predicting Neural Activity Patterns Associated with Sentences Using a Neurobiologically Motivated Model of Semantic Representation. *Cerebral Cortex*, cercor;bhw240v1. <https://doi.org/10.1093/cercor/bhw240>
 

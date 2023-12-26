@@ -519,8 +519,6 @@ plot_fit_convergence
 
 ## References
 
-<div style = 'text-indent:-2em; margin-left:2em;'>
-
 Bates, D., Maechler, M., Bolker, B., Walker, S., Christensen, R. H. B., Singmann, H., Dai, B., Scheipl, F., Grothendieck, G., Green, P., Fox, J., Bauer, A., & Krivitsky, P. N. (2022). *Package 'lme4'.* CRAN. https://cran.r-project.org/web/packages/lme4/lme4.pdf
 
 Bernabeu, P. (2022). Language and sensorimotor simulation in conceptual processing: Multilevel analysis and statistical power. Lancaster University. https://doi.org/10.17635/lancaster/thesis/1795
@@ -532,6 +530,4 @@ Matuschek, H., Kliegl, R., Vasishth, S., Baayen, H., & Bates, D. (2017). Balanci
 Meteyard, L., & Davies, R. A. (2020). Best practice guidance for linear mixed-effects models in psychological science. *Journal of Memory and Language, 112*, 104092. https://doi.org/10.1016/j.jml.2020.104092
 
 Singmann, H., & Kellen, D. (2019). An introduction to mixed models for experimental psychology. In D. H. Spieler & E. Schumacher (Eds.), *New methods in cognitive psychology* (pp. 4–31). Psychology Press.
-
-</div>
 

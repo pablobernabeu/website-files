@@ -39,8 +39,6 @@ In conclusion, the effects of interest in correlational/observational studies ca
 
 ### References
 
-<div style = 'text-indent:-2em; margin-left:2em;'>
-
 Bottini, R., Morucci, P., D'Urso, A., Collignon, O., & Crepaldi, D. (2022). The concreteness advantage in lexical decision does not depend on perceptual simulations. *Journal of Experimental Psychology: General, 151*(3), 731–738. https://doi.org/10.1037/xge0001090
 
 Elze, M. C., Gregson, J., Baber, U., Williamson, E., Sartori, S., Mehran, R., Nichols, M., Stone, G. W., & Pocock, S. J. (2017). Comparison of propensity score methods and covariate adjustment: Evaluation in 4 cardiovascular studies. *Journal of the American College of Cardiology, 69*(3), 345-357. 
@@ -48,8 +46,6 @@ Elze, M. C., Gregson, J., Baber, U., Williamson, E., Sartori, S., Mehran, R., Ni
 Sassenhagen, J., & Alday, P. M. (2016). A common misapplication of statistical inference: Nuisance control with null-hypothesis significance tests. *Brain and Language, 162*, 42-45. https://doi.org/10.1016/j.bandl.2016.08.001
 
 Stefan, A. M., & Schönbrodt, F. D. (2023). Big little lies: A compendium and simulation of p-hacking strategies. *Royal Society Open Science, 10*(2), 220346. https://doi.org/10.1098/rsos.220346
-
-</div>
 
 <br>
 

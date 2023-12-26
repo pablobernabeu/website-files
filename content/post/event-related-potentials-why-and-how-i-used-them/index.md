@@ -198,7 +198,7 @@ At any rate, never getting out of the comfort workspace again... :D
 
 ## References
 
-<div style = "text-indent:-2em; margin-left:2em;">
+<div style = 'text-indent: -2em; margin-left: 2em'>
 
 Ambrosi, S., Kalenine, S., Blaye, A., & Bonthoux, F. (2011). Modality switching cost during property verification by 7 years of age. *International Journal of Behavioral Development, 35*, 1, 78-83.
 

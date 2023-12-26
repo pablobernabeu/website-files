@@ -169,8 +169,6 @@ If you are not a target but an ally against discrimination, please continue to c
 
 ## References
 
-<div style = 'text-indent:-2em; margin-left:2em;'>
-
 Abbink, K., & Harris, D. (2019). In-group favouritism and out-group discrimination in naturally occurring groups. *PloS ONE, 14*(9), e0221616. https://doi.org/10.1371/journal.pone.0221616
 
 Hinton, P. (2017). Implicit stereotypes and the predictive brain: cognition and culture in “biased” person perception. *Palgrave Communications, 3*(1), 1-9. https://doi.org/10.1057/palcomms.2017.86
@@ -178,8 +176,6 @@ Hinton, P. (2017). Implicit stereotypes and the predictive brain: cognition and 
 Meiring, L., Subramoney, S., Thomas, K. G., Decety, J., & Fourie, M. M. (2014). Empathy and helping: Effects of racial group membership and cognitive load. *South African Journal of Psychology, 44*(4), 426-438. https://doi.org/10.1177/0081246314530280
 
 Mendes, W. B., & Koslov, K. (2013). Brittle smiles: Positive biases toward stigmatized and outgroup targets. *Journal of Experimental Psychology: General, 142*(3), 923–933. https://doi.org/10.1037/a0029663
-
-</div>
 
 <br>
 

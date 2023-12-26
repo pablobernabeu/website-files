@@ -169,7 +169,7 @@ All materials are made public on the [RRisto GitHub page](https://github.com/RRi
 
 ## References
 
-<div style = "text-indent:-2em; margin-left:2em;">
+<div style = 'text-indent: -2em; margin-left: 2em'>
 
 Ellison, R. (1952). _Invisible Man_. New York: Random House.
 

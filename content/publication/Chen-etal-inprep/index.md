@@ -15,10 +15,10 @@ image:
 # projects:
 # - internal-project
 publishDate: "2023-06-08"
-publication: "Conditionally accepted in *Psychonomic Bulletin & Review*"
+publication: OSF Preprints
 publication_short: 
 publication_types:
-  - "2"
+  - "3"
 # slides: example
 summary:
 tags:
@@ -46,8 +46,9 @@ url_video: 'https://osf.io/h36wr/'
 
 <br>
 
-#### &nbsp; <i class="fa fa-database"></i>&nbsp; <a href='https://osf.io/e428p/'>General project</a>
+#### &nbsp; <i class="fa fa-folder"></i>&nbsp; <a href='https://osf.io/e428p/'>General project</a>
 
+#### &nbsp; <i class="fa fa-database"></i>&nbsp; <a href='https://osf.io/waf48/'>Data from our lab</a>
 
 #### &nbsp; <i class="fas fa-eye"></i>&nbsp; <a href='https://osf.io/h36wr/'>Video demonstration of the procedure followed in our lab</a>
 
@@ -61,16 +62,14 @@ url_video: 'https://osf.io/h36wr/'
     webkitallowfullscreen>
 </iframe>
 
-
-#### &nbsp; <i class="fa fa-database"></i>&nbsp; <a href='https://osf.io/waf48/'>Data from our lab</a>
-
+<br>
 <br>
 
-By contributing to this replication study at the beginning of my PhD, it turned out I followed a [**rule**](https://doi.org/10.1017/S0140525X18000730).
+**Related:** [replication studies during PhD](https://doi.org/10.1017/S0140525X18000730).
 
 #### Reference
 
-<div style = "text-indent:-2em; margin-left:2em;">
+<div style = 'text-indent: -2em; margin-left: 2em'>
 
 Chen, S.-C., Buchanan, E. M., Kekecs, Z., Miller, J. K., Szabelska, A., Aczel, B., Bernabeu, P., Forscher, P. S., Szuts, A., Vally, D. Z., Al-Hoorie, A. H., Helmy, M., Silva, C. S. A. da, Silva, L. O. da, Moraes, Y. L. de, Hsu, R. M. C. S., Mafra, A. L., Valentova, J. V., Varella, M. A. C., … Chartier, C. R. (2023). *Investigating object orientation effects across 18 languages*. OSF Preprints. https://doi.org/10.31219/osf.io/2qf6w
 

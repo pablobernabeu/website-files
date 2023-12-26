@@ -76,7 +76,7 @@ slides: ''
 
 ### Reference
 
-<div style = 'text-indent:-2em; margin-left:2em; margin-bottom: 3em;'>
+<div class = 'hanging-indent' style = 'margin-bottom: 3em;'>
 
 Bernabeu, P. (2022). *Language and sensorimotor simulation in conceptual processing: Multilevel analysis and statistical power*. Lancaster University. https://doi.org/10.17635/lancaster/thesis/1795
 
@@ -85,9 +85,9 @@ Bernabeu, P. (2022). *Language and sensorimotor simulation in conceptual process
 
 ### Related references
 
-<div style = 'border-color: lightgrey; overflow: auto; font-size: 90%; height: 700px; overflow-wrap: normal; padding-right: 1em; margin-top: 1em; margin-bottom: 3em;'>
+<div class = 'related-references'>
 
-<div style = 'text-indent: -2em; margin-left: 2em; color: #787878;'>
+<div class = 'hanging-indent'>
 
 Abrams, M. B., Bjaalie, J. G., Das, S., Egan, G. F., Ghosh, S. S., Goscinski, W. J., Grethe, J. S., Kotaleski, J. H., Ho, E. T. W., Kennedy, D. N., Lanyon, L. J., Leergaard, T. B., Mayberg, H. S., Milanesi, L., Mouček, R., Poline, J. B., Roy, P. K., Strother, S. C., Tang, T. B., ... Martone, M. E. (2022). A Standards Organization for Open and FAIR Neuroscience: The International Neuroinformatics Coordinating Facility. *Neuroinformatics*, *20*(1), 25--36. <https://doi.org/10.1007/s12021-020-09509-0>
 

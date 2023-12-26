@@ -78,7 +78,7 @@
 - id: profileicons
   translation: ''
   
-- id: profilesections
+- id: subsections
   translation: Subsections
 
 - id: recent_work

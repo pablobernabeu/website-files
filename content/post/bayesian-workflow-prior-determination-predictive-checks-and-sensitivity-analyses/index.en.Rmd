@@ -312,7 +312,7 @@ source('https://raw.githubusercontent.com/pablobernabeu/language-sensorimotor-si
 # install.packages('devtools')
 # library(devtools)
 # install_version('tidyverse', '1.3.1')  # Due to breaking changes, Version 1.3.1 is required.
-# install_version('ggplot2', '5.3.5')  # Due to breaking changes, Version 5.3.5 is required.
+# install_version('ggplot2', '3.3.5')  # Due to breaking changes, Version 3.3.5 is required.
 library(tidyverse)
 library(ggplot2)
 library(Cairo)
@@ -487,10 +487,6 @@ sessionInfo()
 
 ### References
 
-<div style = 'text-indent:-2em; margin-left:2em;'>
-
 ::: {#refs}
 :::
-
-</div>
 

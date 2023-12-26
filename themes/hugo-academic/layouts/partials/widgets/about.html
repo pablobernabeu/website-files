@@ -67,9 +67,9 @@
       </div>
       
       <div class="row">
-      {{ with $person.profilesections }}
+      {{ with $person.subsections }}
       <div>
-        <h3 style='color:darkgrey; text-align:right;'>{{ i18n "profilesections" | markdownify }}</h3>
+        <h3 style='color:darkgrey; text-align:right;'>{{ i18n "subsections" | markdownify }}</h3>
         <ul class="ul-interests" style='color:darkgrey; text-align:right;'>
           {{ range . }}
           <div>{{ . | markdownify | emojify }}</div>

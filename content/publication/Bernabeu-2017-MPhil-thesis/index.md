@@ -27,7 +27,7 @@ doi: 10.31234/osf.io/5gjvk
 publishDate: '2017-03-31'
 publication_types:
   - '7'
-publication: ''
+publication: PsyArXiV Preprints
 publication_short: ''
 abstract: "The engagement of sensory brain regions during word recognition is widely documented, yet its precise relevance is less clear. It would constitute perceptual simulation only if it has a functional role in conceptual processing. We investigated this in an Event-Related Potential (ERP) experiment implementing the conceptual modality switch paradigm. In each trial, participants verified the relation between a property word and a concept word. Orthogonally, we manipulated the conceptual modality of successive trials, and tested whether switching modalities incurred any processing costs at different stages of word recognition. Unlike previous studies, we time-locked ERPs to the first word of target trials, in order to measure the modality transitions from the beginning, and also to reduce confounds within the target trial. Further, we included different types of switch&mdash;one from auditory to visual modality, and one from haptic to visual&mdash;, which were compared to the non-switch&mdash;visual to visual. Also, one group of participants was asked to respond quickly (*n* = 21), and another group to respond self-paced (*n* = 21), whilst a few others received no constraints (*n* = 5). We found ERP effects in four typical time windows from 160 to 750 ms post word onset. The overall effect is characterized by a negativity for modality-switching relative to not switching, and it increases over time. Further, the effect arises with both types of switch, and influences both participant groups within anterior and posterior brain regions. The emergence of this effect in the first time window particularly suggests that sensory regions may have a functional role in conceptual processing. The increased effect later on converges with previous studies in supporting the compatibility of distributional and embodied processing. On a less conclusive note, more research may be necessary to ascertain the nature of the effect at late stages."
 summary: ''
@@ -58,7 +58,7 @@ slides: ''
       
 ### Reference
 
-<div style = 'text-indent:-2em; margin-left:2em; margin-bottom: 3em;'>
+<div class = 'hanging-indent' style = 'margin-bottom: 3em;'>
 
 Bernabeu, P. (2017). *Modality switches occur early and extend late in conceptual processing: Evidence from ERPs*. PsyArXiv. https://doi.org/10.31234/osf.io/5gjvk
 
@@ -67,9 +67,9 @@ Bernabeu, P. (2017). *Modality switches occur early and extend late in conceptua
 
 ### Related references
 
-<div style = 'border-color: lightgrey; overflow: auto; font-size: 90%; height: 700px; overflow-wrap: normal; padding-right: 1em; margin-top: 1em; margin-bottom: 3em;'>
+<div class = 'related-references'>
 
-<div style = 'text-indent: -2em; margin-left: 2em; color: #787878;'>
+<div class = 'hanging-indent'>
 
 Ali Qurbi, E. (2022). Ambiguous Word Processing among Second Language Learners. *The Canadian Modern Language Review*, *78*(2), 151--173. <https://doi.org/10.3138/cmlr-2020-0115>
 

@@ -43,7 +43,7 @@ The Landscape Model was applied to the context of discourse analysis by Yeari an
 
 ## References 
 
-<div style = "text-indent:-2em; margin-left:2em;">
+<div style = 'text-indent: -2em; margin-left: 2em'>
 
 Bell, A. (2011). Re-constructing Babel: Discourse analysis, hermeneutics and the Interpretive Arc. *Discourse Studies, 13*(5), 519–568. https://doi.org/10.1177/1461445611412699. 
 

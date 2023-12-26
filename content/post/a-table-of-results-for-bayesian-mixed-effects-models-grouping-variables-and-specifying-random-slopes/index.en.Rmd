@@ -454,8 +454,6 @@ sessionInfo()
 
 ## References
 
-<div style = 'text-indent:-2em; margin-left:2em;'>
-
 Bernabeu, P. (2022). *Language and sensorimotor simulation in conceptual processing: Multilevel analysis and statistical power*. Lancaster University. https://doi.org/10.17635/lancaster/thesis/1795
 
 Brauer, M., & Curtin, J. J. (2018). Linear mixed-effects models and the analysis of nonindependent data: A unified framework to analyze categorical and continuous independent variables that vary within-subjects and/or within-items. *Psychological Methods, 23*(3), 389–411. https://doi.org/10.1037/met0000159
@@ -463,6 +461,4 @@ Brauer, M., & Curtin, J. J. (2018). Linear mixed-effects models and the analysis
 Bürkner, P.-C., Gabry, J., Weber, S., Johnson, A., Modrak, M., Badr, H. S., Weber, F., Ben-Shachar, M. S., & Rabel, H. (2022). *Package ’brms’*. CRAN. https://cran.r-project.org/web/packages/brms/brms.pdf
 
 Zhu, H. (2022). *Package ’kableExtra’*. CRAN. https://cran.r-project.org/web/packages/kableExtra/kableExtra.pdf
-
-</div>
 

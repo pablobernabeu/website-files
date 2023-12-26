@@ -239,7 +239,7 @@ To create the Flexdashboard-only version departing from the Flexdashboard-Shiny 
 
 ## Reference
 
-<div style = "text-indent:-2em; margin-left:2em;">
+<div style = 'text-indent: -2em; margin-left: 2em'>
 
 Bernabeu, P. (2018). Dutch modality exclusivity norms for 336 properties and 411 concepts [Web application]. Retrieved from https://pablobernabeu.shinyapps.io/Dutch-Modality-Exclusivity-Norms
 

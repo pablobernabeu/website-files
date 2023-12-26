@@ -112,7 +112,7 @@ Column {style="data-width:100%; position:static; height:1000px;"}
 
 #### Reference
 
-<div style = "text-indent:-2em; margin-left:2em;">
+<div style = 'text-indent: -2em; margin-left: 2em'>
 
 Bernabeu, P. (2020). Dashboard with data from Prudic, Oliver, Brown, & Long (2018), Comparisons of Citizen Science Data-Gathering Approaches to Evaluate Urban Butterfly Diversity, *Insects*, *9*, 186. https://pablobernabeu.github.io/dashboards/Butterfly-species-richness-in-LA.
 

@@ -55,7 +55,7 @@ url_poster: 'https://mfr.osf.io/render?url=https://osf.io/dj52n/?direct%26mode=r
 
 ### Reference
 
-<div style = 'text-indent:-2em; margin-left:2em; margin-bottom: 3em;'>
+<div class = 'hanging-indent' style = 'margin-bottom: 3em;'>
 
 Bernabeu, P., Willems, R. M., & Louwerse, M. M. (2017). Modality switch effects emerge early and increase throughout conceptual processing: Evidence from ERPs. In G. Gunzelmann, A. Howes, T. Tenbrink, & E. J. Davelaar (Eds.), *Proceedings of the 39th Annual Conference of the Cognitive Science Society* (pp. 1629-1634). Austin, TX: Cognitive Science Society. https://doi.org/10.31234/osf.io/a5pcz
 
@@ -71,9 +71,9 @@ Bernabeu, P., Willems, R. M., & Louwerse, M. M. (2017). Modality switch effects 
 
 ### Related references
 
-<div style = 'border-color: lightgrey; overflow: auto; font-size: 90%; height: 700px; overflow-wrap: normal; padding-right: 1em; margin-top: 1em; margin-bottom: 3em;'>
+<div class = 'related-references'>
 
-<div style = 'text-indent: -2em; margin-left: 2em; color: #787878;'>
+<div class = 'hanging-indent'>
 
 Ali Qurbi, E. (2022). Ambiguous Word Processing among Second Language Learners. *The Canadian Modern Language Review*, *78*(2), 151--173. <https://doi.org/10.3138/cmlr-2020-0115>
 

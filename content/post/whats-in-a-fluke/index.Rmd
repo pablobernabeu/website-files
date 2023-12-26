@@ -58,7 +58,7 @@ Problems associated with the reliance on trust and distrust have become patent e
 
 ## References
 
-<div style = "text-indent:-2em; margin-left:2em;">
+<div style = 'text-indent: -2em; margin-left: 2em'>
 
 Barber, P. H., Hayes, T. B., Johnson, T. L., Márquez-Magaña, L., & 10,234 signatories (2020). Systemic racism in higher education. *Science, 369*, 6510, 1440-1441. https://doi.org/10.1126/science.abd7140
 

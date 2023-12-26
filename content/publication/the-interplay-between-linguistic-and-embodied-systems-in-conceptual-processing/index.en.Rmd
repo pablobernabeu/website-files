@@ -21,8 +21,8 @@ authors: ['Bernabeu, P., Lynott, D., & Connell, L.']
 doi: 10.17605/OSF.IO/NP6HY
 publishDate: '2021-01-05T09:10:27Z'
 publication_types:
-  - '0'
-publication: ''
+  - '3'
+publication: OSF
 publication_short: ''
 abstract: 'This preregistration outlines a study that will investigate the dynamic nature of conceptual processing by examining the interplay between linguistic distributional systems—comprising word co-occurrence and word association—and embodied systems—comprising sensorimotor and emotional information. A set of confirmatory research questions are addressed using data from the Calgary Semantic Decision project, along with additional measures for the stimuli corresponding to distributional language statistics, embodied information, and individual differences in vocabulary size.'
 summary: 'This preregistration outlines a study that will investigate the dynamic nature of conceptual processing by examining the interplay between linguistic distributional systems—comprising word co-occurrence and word association—and embodied systems—comprising sensorimotor and emotional information. A set of confirmatory research questions are addressed using data from the Calgary Semantic Decision project, along with additional measures for the stimuli corresponding to distributional language statistics, embodied information, and individual differences in vocabulary size.'
@@ -46,7 +46,7 @@ slides: ''
 
 ### Reference
 
-<div style = 'text-indent:-2em; margin-left:2em; margin-bottom: 3em;'>
+<div class = 'hanging-indent' style = 'margin-bottom: 3em;'>
 
 Bernabeu, P., Lynott, D., & Connell, L. (2021). *Preregistration: The interplay between linguistic and embodied systems in conceptual processing*. OSF. https://osf.io/ftydw
 
@@ -55,9 +55,9 @@ Bernabeu, P., Lynott, D., & Connell, L. (2021). *Preregistration: The interplay 
 
 ### Related references
 
-<div style = 'border-color: lightgrey; overflow: auto; font-size: 90%; height: 700px; overflow-wrap: normal; padding-right: 1em; margin-top: 1em; margin-bottom: 3em;'>
+<div class = 'related-references'>
 
-<div style = 'text-indent: -2em; margin-left: 2em; color: #787878;'>
+<div class = 'hanging-indent'>
 
 Aadland, E., Okely, A. D., & Nilsen, A. K. O. (2022). Trajectories of physical activity and sedentary time in Norwegian children aged 3--9 years: A 5-year longitudinal study. *International Journal of Behavioral Nutrition and Physical Activity*, *19*(1), 67. <https://doi.org/10.1186/s12966-022-01286-0>
 

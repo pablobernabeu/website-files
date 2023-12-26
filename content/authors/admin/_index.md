@@ -21,7 +21,7 @@ interests:
 - statistics
 - open science
 - programming
-profilesections:
+subsections:
 - '<div class = "profile-subsection"><a href = "/#bio" class = "profile-subsection">Experience <i class="fas fa-arrow-right fa-xs" style="color:lightgrey;"></i></a></div>'
 - '<div class = "profile-subsection"><a href = "/#teaching-supervision" class = "profile-subsection">Teaching and supervision</a></div>'
 - '<div class = "profile-subsection"><a href = "/#other-funding" class = "profile-subsection">Other funding</a></div>'
@@ -38,7 +38,7 @@ recent_work:
   - job: '[Postdoctoral fellowship](https://en.uit.no/go/target/789811)'
     institution: 'UiT The Arctic University of Norway'
     year: 'Nov **2022** -- _Nov **2024**_'
-    extra: '-&nbsp; As a member of the [LESS Project (Language Economy through Transfer Source Selectivity)](https://uit.no/research/acqva/project?pid=743114), I am investigating how language learners coordinate several languages early in the acquisition process, how this process is influenced by the characteristics of the languages, and how the process is reflected in the brain.'
+    extra: '-&nbsp; As a member of the [LESS Project (Language Economy through Transfer Source Selectivity)](https://app.cristin.no/projects/show.jsf?id=2559611), I am investigating how language learners coordinate several languages early in the acquisition process, how this process is influenced by the characteristics of the languages, and how the process is reflected in the brain.'
     extra2: '-&nbsp; Service: peer-review for Cognition and Cognitive Science; co-organisation of weekly AcqVA Aurora Lunch Seminars.'
   - job: 'Part-time data analysis contribution'
     institution: 'UiT The Arctic University of Norway'
