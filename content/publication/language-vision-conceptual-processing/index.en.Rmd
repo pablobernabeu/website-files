@@ -60,7 +60,7 @@ slides: ''
 
 ### Reference
 
-<div style = 'text-indent: -2em; margin-left: 2em'>
+<div class = 'hanging-indent'>
 
 Bernabeu, P., Lynott, D., & Connell, L. (2022). *Language and vision in conceptual processing: Multilevel analysis and statistical power*. OSF. https://osf.io/dnskh
 

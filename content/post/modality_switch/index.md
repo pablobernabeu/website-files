@@ -103,7 +103,7 @@ A conference poster with further analyses is [also available](https://mfr.osf.io
 
 ## References
 
-<div style = 'text-indent: -2em; margin-left: 2em'>
+<div class = 'hanging-indent'>
 
 Barsalou, L. W. (2016). On staying grounded and avoiding quixotic dead ends. *Psychonomic Bulletin & Review, 23*.
 

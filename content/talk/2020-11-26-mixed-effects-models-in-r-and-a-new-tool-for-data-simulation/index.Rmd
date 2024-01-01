@@ -54,8 +54,6 @@ Linear mixed-effects models (LMEMs) are used to account for variation within fac
 
 ### References
 
-<div style = 'text-indent: -2em; margin-left: 2em'>
-
 Barr, D. J., Levy, R., Scheepers, C., & Tily, H. J. (2013). Random effects structure for confirmatory hypothesis testing: Keep it maximal. *Journal of Memory and Language, 68*, 255–278. http://dx.doi.org/10.1016/j.jml.2012.11.001  
 
 Bernabeu, P., & Lynott, D. (2020). *Web application for the simulation of experimental data* (Version 1.2). https://github.com/pablobernabeu/Experimental-data-simulation/
@@ -73,8 +71,6 @@ Meteyard, L., & Davies, R. A. (2020). Best practice guidance for linear mixed-ef
 Schielzeth, H., Dingemanse, N. J., Nakagawa, S., Westneat, D. F., Allegue, H, Teplitsky, C., Reale, D., Dochtermann, N. A., Garamszegi, L. Z., & Araya-Ajoy, Y. G. (2020). Robustness of linear mixed-effects models to violations of distributional assumptions. *Methods in Ecology and Evolution, 00*, 1– 12. https://doi.org/10.1111/2041-210X.13434
 
 Singmann, H., & Kellen, D. (2019). An Introduction to Mixed Models for Experimental Psychology. In D. H. Spieler & E. Schumacher (Eds.), *New Methods in Cognitive Psychology* (pp. 4–31). Hove, UK: Psychology Press. http://singmann.org/download/publications/singmann_kellen-introduction-mixed-models.pdf 
-
-</div>
 
 <br>
 

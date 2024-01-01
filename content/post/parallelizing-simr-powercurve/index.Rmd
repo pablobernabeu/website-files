@@ -183,7 +183,7 @@ plot(all_pwcurve, xlab = 'Levels of g')
 
 ## References
 
-<div style = 'text-indent: -2em; margin-left: 2em'>
+<div class = 'hanging-indent'>
 
 Brysbaert, M., & Stevens, M. (2018). Power analysis and effect size in mixed effects models: A tutorial. *Journal of Cognition, 1*(1), 9. http://doi.org/10.5334/joc.10
 

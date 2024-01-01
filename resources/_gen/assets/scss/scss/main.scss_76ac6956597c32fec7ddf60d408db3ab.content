@@ -9289,7 +9289,7 @@ kbd {
 div.emgithub-file.emgithub-file-dark > div.file-data.hljs-style-a11y-dark > div > pre > code > table > tbody > tr > td.hljs-ln-line.hljs-ln-code, div.emgithub-file.emgithub-file-dark > div.file-data.hljs-style-a11y-dark > div > pre > code > table > tbody > tr > td.hljs-ln-line.hljs-ln-numbers, div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark, div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > a {
   background: none; }
 
-div#references, .hanging-indent {
+#references, .hanging-indent {
   text-indent: -2em;
   margin-left: 2em; }
 

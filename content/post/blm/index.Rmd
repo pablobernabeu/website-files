@@ -169,8 +169,6 @@ All materials are made public on the [RRisto GitHub page](https://github.com/RRi
 
 ## References
 
-<div style = 'text-indent: -2em; margin-left: 2em'>
-
 Ellison, R. (1952). _Invisible Man_. New York: Random House.
 
 Feagin, J. R. (2004). Documenting the costs of slavery, segregation, and contemporary racism: Why reparations are in order for African Americans. _Harvard BlackLetter Law Journal, 20_, 49-81. 
@@ -187,4 +185,3 @@ Thelwall, M., Buckley, K., & Paltoglou, G. (2011). Sentiment in Twitter events. 
 
 Wang, P., He, W., & Zhao, J. (2014). A Tale of Three Social Networks: User Activity Comparisons across Facebook, Twitter, and Foursquare. _IEEE Internet Computing, 18_(2), 10-15.
 
-</div>

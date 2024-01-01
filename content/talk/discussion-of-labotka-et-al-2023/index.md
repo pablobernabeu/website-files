@@ -46,7 +46,7 @@ projects: []
 
 <hr>
 
-<div style = 'text-indent: -2em; margin-left: 2em'>
+<div class = 'hanging-indent'>
 
 Labotka, D., Sabo, E., Bonais, R., Gelman, S. A., & Baptista, M. (2023). Testing the effects of congruence in adult multilingual acquisition with implications for creole genesis. *Cognition, 235*, 105387. https://doi.org/10.1016/j.cognition.2023.105387
 

@@ -46,7 +46,7 @@ projects: []
 
 <hr>
 
-<div style = 'text-indent: -2em; margin-left: 2em'>
+<div class = 'hanging-indent'>
 
 Jost, E., Brill-Schuetz, K., Morgan-Short, K., & Christiansen, M. H. (2019). Input complexity affects long-term retention of statistically learned regularities in an artificial language learning task. *Frontiers in Human Neuroscience, 13*, 358. https://www.frontiersin.org/articles/10.3389/fnhum.2019.00358
 

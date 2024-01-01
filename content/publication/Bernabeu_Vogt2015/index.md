@@ -37,7 +37,7 @@ url_pdf: 'https://www.researchgate.net/profile/Pablo_Bernabeu3/publication/28085
 
 ### Reference
 
-<div style = 'text-indent: -2em; margin-left: 2em'>
+<div class = 'hanging-indent'>
 
 Bernabeu, P., & Vogt, P. (2015). Language evolution: Current status and future directions. *Tenth Language at the University of Essex (LangUE) Postgraduate Conference*. https://researchgate.net/publication/280858062/
 
