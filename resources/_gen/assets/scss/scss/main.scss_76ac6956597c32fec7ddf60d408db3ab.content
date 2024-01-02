@@ -9128,6 +9128,9 @@ div.mermaid {
 #navbar-main > div > div.d-none.d-lg-inline-flex > a, #navbar-content > ul > li > a {
   color: darkgrey; }
 
+div > div > div.col-12.col-lg-4.section-heading > h1::first-letter {
+  color: #8FABA6; }
+
 div.col-12.col-lg-4.section-heading > h1, #navbar-content > ul > li > a {
   color: darkgrey; }
 
@@ -9320,6 +9323,8 @@ div.emgithub-file.emgithub-file-dark > div.file-data.hljs-style-a11y-dark > div 
     top: 120px;
     margin-bottom: 20px; }
   div.col-12.col-lg-4.section-heading > h1 {
-    border-bottom: 0.4px solid #BADDD5; }
+    border-bottom: 0.4px solid;
+    border-image-source: linear-gradient(to right, #BADDD5, #BADDD5, lightgrey);
+    border-image-slice: 1; }
   #profile > div:nth-child(5) > div > ul > div:nth-child(1) {
     display: none; } }
