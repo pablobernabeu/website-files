@@ -179,7 +179,11 @@ rownames(semanticpriming_summary_weaklyinformativepriors_exgaussian$fixed)[
 
 ### `bayesian_model_table()`
 
-This [custom function](https://github.com/pablobernabeu/language-sensorimotor-simulation-PhD-thesis/blob/main/R_functions/bayesian_model_table.R) was used in Bernabeu (2022), with a PDF output. In the current scenario, however, we have an HTML output. In the above function, the code used for the $\widehat{R}$ tailored to the HTML output (`&Rcirc;`) does not render properly. 
+In Bernabeu (2022), the following custom function was used. 
+
+<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Flanguage-sensorimotor-simulation-PhD-thesis%2Fblob%2Fmain%2FR_functions%2Fbayesian_model_table.R%23L3-L181&style=a11y-dark&type=code&showLineNumbers=on&showFileMeta=on&showCopy=on&fetchFromJsDelivr=on"></script>
+
+The above function was used to render a PDF output. In the current scenario, however, we have an HTML output. In the above function, the code used for the $\widehat{R}$ tailored to the HTML output (`&Rcirc;`) does not render properly. 
 
 <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Flanguage-sensorimotor-simulation-PhD-thesis%2Fblob%2Fmain%2FR_functions%2Fbayesian_model_table.R%23L119-L121&style=a11y-dark&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></script>
 
