@@ -279,7 +279,7 @@ In contrast to the above results, the figures below demonstrate that, when an ex
 
 Based on the results from the prior predictive checks, the ex-Gaussian distribution was used in the final models. Next, posterior predictive checks were performed to assess the consistency between the observed data and new data predicted by the posterior distributions [@schootBayesianStatisticsModelling2021]. The figure below presents the posterior predictive checks for the latter models. The interpretation of these plots is simple: the distributions of the observed ($y$) and the predicted data ($y_{rep}$) should be as similar as possible. As such, the plots below suggest that the results are trustworthy.
 
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Flanguage-sensorimotor-simulation-PhD-thesis%2Fblob%2Fmain%2Fsemanticpriming%2Fbayesian_analysis%2Fposterior_predictive_checks%2Fsemanticpriming_posteriorpredictivechecks.R&style=a11y-dark&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></script>
+<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Flanguage-sensorimotor-simulation-PhD-thesis%2Fblob%2Fmain%2Fsemanticpriming%2Fbayesian_analysis%2Fposterior_predictive_checks%2Fsemanticpriming_posteriorpredictivechecks.R%23L3-L68&style=a11y-dark&type=code&showLineNumbers=on&showFileMeta=on&showCopy=on&fetchFromJsDelivr=on"></script>
 
 [See plot on GitHub](https://github.com/pablobernabeu/language-sensorimotor-simulation-PhD-thesis/blob/main/semanticpriming/bayesian_analysis/posterior_predictive_checks/plots/semanticpriming_posteriorpredictivechecks_allpriors_exgaussian.pdf)
 
