@@ -236,20 +236,21 @@ The adequacy of each of these priors was assessed by performing prior predictive
 
 The figures below show the prior predictive checks for the Gaussian models. These plots show the maximum, mean and minimum values of the observed data ($y$) and those of the predicted distribution ($y_{rep}$, which stands for *rep*lications of the outcome). The way of interpreting these plots is by comparing the observed data to the predicted distribution. The specifics of this comparison vary across the three plots. First, in the upper plot, which shows the maximum values, the ideal scenario would show the observed maximum value ($y$) overlapping with the maximum value of the predicted distribution ($y_{rep}$). Second, in the middle plot, showing the mean values, the ideal scenario would show the observed mean value ($y$) overlapping with the mean value of the predicted distribution ($y_{rep}$). Last, in the lower plot, which shows the minimum values, the ideal scenario would have the observed minimum value ($y$) overlapping with the minimum value of the predicted distribution ($y_{rep}$). While the overlap need not be absolute, the closer the observed and the predicted values are on the X axis, the better. As such, the three predictive checks below---corresponding to models that used the default Gaussian distribution---show that the priors fitted the data acceptably but not very well.
 
+<embed src="https://pablobernabeu.github.io/language-sensorimotor-simulation-PhD-thesis/semanticpriming/bayesian_analysis/prior_predictive_checks/plots/semanticpriming_priorpredictivecheck_informativepriors.pdf" width="100%" height="740" type="application/pdf">
 
-[See plot on GitHub](https://github.com/pablobernabeu/language-sensorimotor-simulation-PhD-thesis/blob/main/semanticpriming/bayesian_analysis/prior_predictive_checks/plots/semanticpriming_priorpredictivecheck_informativepriors.pdf)
+> Prior predictive checks for the Gaussian, informative-prior model from the semantic priming study. $y$ = observed data; $y_{rep}$ = predicted data.
 
-> Prior predictive checks for the Gaussian, informative prior model from the semantic priming study. $y$ = observed data; $y_{rep}$ = predicted data.
+<br>
 
+<embed src="https://pablobernabeu.github.io/language-sensorimotor-simulation-PhD-thesis/semanticpriming/bayesian_analysis/prior_predictive_checks/plots/semanticpriming_priorpredictivecheck_weaklyinformativepriors.pdf" width="100%" height="740" type="application/pdf">
 
-[See plot on GitHub](https://github.com/pablobernabeu/language-sensorimotor-simulation-PhD-thesis/blob/main/semanticpriming/bayesian_analysis/prior_predictive_checks/plots/semanticpriming_priorpredictivecheck_weaklyinformativepriors.pdf)
+> Prior predictive checks for the Gaussian, weakly-informative-prior model from the semantic priming study. $y$ = observed data; $y_{rep}$ = predicted data.
 
-> Prior predictive checks for the Gaussian, weakly-informative prior model from the semantic priming study. $y$ = observed data; $y_{rep}$ = predicted data.
+<br>
 
+<embed src="https://pablobernabeu.github.io/language-sensorimotor-simulation-PhD-thesis/semanticpriming/bayesian_analysis/prior_predictive_checks/plots/semanticpriming_priorpredictivecheck_diffusepriors.pdf" width="100%" height="740" type="application/pdf">
 
-[See plot on GitHub](https://github.com/pablobernabeu/language-sensorimotor-simulation-PhD-thesis/blob/main/semanticpriming/bayesian_analysis/prior_predictive_checks/plots/semanticpriming_priorpredictivecheck_diffusepriors.pdf)
-
-> Prior predictive checks for the Gaussian, diffuse prior model from the semantic priming study. $y$ = observed data; $y_{rep}$ = predicted data.
+> Prior predictive checks for the Gaussian, diffuse-prior model from the semantic priming study. $y$ = observed data; $y_{rep}$ = predicted data.
 
 
 
@@ -258,19 +259,21 @@ The figures below show the prior predictive checks for the Gaussian models. Thes
 In contrast to the above results, the figures below demonstrate that, when an ex-Gaussian distribution was used, the priors fitted the data far better, which converged with the results of a similar comparison performed by Rodríguez-Ferreiro et al. (2020; see supplementary materials of the latter study).
 
 
-[See plot on GitHub](https://github.com/pablobernabeu/language-sensorimotor-simulation-PhD-thesis/blob/main/semanticpriming/bayesian_analysis/prior_predictive_checks/plots/semanticpriming_priorpredictivecheck_informativepriors_exgaussian.pdf)
+<embed src="https://pablobernabeu.github.io/language-sensorimotor-simulation-PhD-thesis/semanticpriming/bayesian_analysis/prior_predictive_checks/plots/semanticpriming_priorpredictivecheck_informativepriors_exgaussian.pdf" width="100%" height="740" type="application/pdf">
 
-> Prior predictive checks for the ex-Gaussian, informative prior model from the semantic priming study. $y$ = observed data; $y_{rep}$ = predicted data.
+> Prior predictive checks for the ex-Gaussian, informative-prior model from the semantic priming study. $y$ = observed data; $y_{rep}$ = predicted data.
 
+<br>
 
-[See plot on GitHub](https://github.com/pablobernabeu/language-sensorimotor-simulation-PhD-thesis/blob/main/semanticpriming/bayesian_analysis/prior_predictive_checks/plots/semanticpriming_priorpredictivecheck_weaklyinformativepriors_exgaussian.pdf)
+<embed src="https://pablobernabeu.github.io/language-sensorimotor-simulation-PhD-thesis/semanticpriming/bayesian_analysis/prior_predictive_checks/plots/semanticpriming_priorpredictivecheck_weaklyinformativepriors_exgaussian.pdf" width="100%" height="740" type="application/pdf">
 
-> Prior predictive checks for the ex-Gaussian, weakly-informative prior model from the semantic priming study. $y$ = observed data; $y_{rep}$ = predicted data.
+> Prior predictive checks for the ex-Gaussian, weakly-informative-prior model from the semantic priming study. $y$ = observed data; $y_{rep}$ = predicted data.
 
+<br>
 
-[See plot on GitHub](https://github.com/pablobernabeu/language-sensorimotor-simulation-PhD-thesis/blob/main/semanticpriming/bayesian_analysis/prior_predictive_checks/plots/semanticpriming_priorpredictivecheck_diffusepriors_exgaussian.pdf)
+<embed src="https://pablobernabeu.github.io/language-sensorimotor-simulation-PhD-thesis/semanticpriming/bayesian_analysis/prior_predictive_checks/plots/semanticpriming_priorpredictivecheck_diffusepriors_exgaussian.pdf" width="100%" height="740" type="application/pdf">
 
-> Prior predictive checks for the ex-Gaussian, diffuse prior model from the semantic priming study. $y$ = observed data; $y_{rep}$ = predicted data.
+> Prior predictive checks for the ex-Gaussian, diffuse-prior model from the semantic priming study. $y$ = observed data; $y_{rep}$ = predicted data.
 
 <br>
 
@@ -281,7 +284,7 @@ Based on the results from the prior predictive checks, the ex-Gaussian distribut
 
 <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Flanguage-sensorimotor-simulation-PhD-thesis%2Fblob%2Fmain%2Fsemanticpriming%2Fbayesian_analysis%2Fposterior_predictive_checks%2Fsemanticpriming_posteriorpredictivechecks.R%23L3-L68&style=a11y-dark&type=code&showLineNumbers=on&showFileMeta=on&showCopy=on&fetchFromJsDelivr=on"></script>
 
-[See plot on GitHub](https://github.com/pablobernabeu/language-sensorimotor-simulation-PhD-thesis/blob/main/semanticpriming/bayesian_analysis/posterior_predictive_checks/plots/semanticpriming_posteriorpredictivechecks_allpriors_exgaussian.pdf)
+<embed src="https://pablobernabeu.github.io/language-sensorimotor-simulation-PhD-thesis/semanticpriming/bayesian_analysis/posterior_predictive_checks/plots/semanticpriming_posteriorpredictivechecks_allpriors_exgaussian.pdf" width="100%" height="360" type="application/pdf">
 
 > Posterior predictive checks for the (ex-Gaussian) models from the semantic priming study. The observed data ($y$) and the predicted data ($y_{rep}$) almost entirely overlap with each other, demonstrating a very good fit.
 
