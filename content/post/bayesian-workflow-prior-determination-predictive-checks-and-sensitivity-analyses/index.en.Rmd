@@ -474,7 +474,7 @@ plot_semanticpriming_frequentist_bayesian_plot_informativepriors_exgaussian +
 
 <br>
 
-A blog post on the [frequentist-Bayesian plots is also available](/2022/why-can-t-we-be-friends-plotting-frequentist-lme4-and-bayesian-brms-mixed-effects-models). 
+A blog post on the [frequentist-Bayesian plots is also available](/2022/why-can-t-we-be-friends-plotting-frequentist-lmertest-and-bayesian-brms-mixed-effects-models). 
 
 
 ### Session info
