@@ -14,7 +14,7 @@ tags:
   - R
   - s
 subtitle: ''
-summary: "In the fast-paced world of scientific research, establishing minimum standards for the creation of research materials is essential. Whether it's stimuli, custom software for data collection, or scripts for statistical analysis, the quality and transparency of these materials significantly impact the reproducibility and credibility of research. This blog post explores the importance of adhering to FAIR (Findable, Accessible, Interoperable, Reusable) principles and offers practical examples for researchers, with a focus on cognitive sciences."
+summary: "In the fast-paced world of scientific research, establishing minimum standards for the creation of research materials is essential. Whether it's stimuli, custom software for data collection, or scripts for statistical analysis, the quality and transparency of these materials significantly impact the reproducibility and credibility of research. This blog post explores the importance of adhering to FAIR (Findable, Accessible, Interoperable, Reusable) principles and offers practical examples for researchers, with a focus on the cognitive sciences."
 authors: []
 lastmod: ''
 featured: no
@@ -27,9 +27,11 @@ projects: []
 ---
 
 
-In the fast-paced world of scientific research, establishing minimum standards for the creation of research materials is essential. Whether it's stimuli, custom software for data collection, or scripts for statistical analysis, the quality and transparency of these materials significantly impact the reproducibility and credibility of research. This blog post explores the importance of adhering to FAIR (Findable, Accessible, Interoperable, Reusable) principles and offers practical examples for researchers, with a focus on cognitive sciences.
+<div class='alert alert-info' role='alert' style='padding-bottom: 0; margin-bottom: 6%;'>
 
----
+In the fast-paced world of scientific research, establishing minimum standards for the creation of research materials is essential. Whether it's stimuli, custom software for data collection, or scripts for statistical analysis, the quality and transparency of these materials significantly impact the reproducibility and credibility of research. This blog post explores the importance of adhering to FAIR (Findable, Accessible, Interoperable, Reusable) principles and offers practical examples for researchers, with a focus on the cognitive sciences.
+
+</div>
 
 
 Notwithstanding the need for speed in most scientific projects, what should be the **minimum acceptable standards** in the **creation of research materials** such as stimuli, custom software for data collection (e.g., experiment in jsPsych, OpenSesame or psychoPy), or scripts for statistical analysis? 
@@ -53,7 +55,7 @@ One of the reasons why sharing is so important is to prevent wrong assumptions b
 
 ## Reproducibility
 
-It is convenient to allow others, and our future selves, to reproduce the materials throughout their preparation and at any time thereafter. For this purpose, **R** can be used to register in scripts as many as possible of the steps followed throughout the preparation of the materials. Far from being only a software for data analysis, R allows the preparation of texts, images, audios, etc. Humans err, by definition. That can be counted on. Conveniently, registering the steps followed during weeks or months of preparation allows us to offload part of the documentation efforts. It's a way of video-recording, as it were, all the additions, subtractions, replacements, transformations and calculations performed with the raw materials.
+It is convenient to allow others, and our future selves, to reproduce the materials throughout their preparation and at any time thereafter. For this purpose, **R** can be used to register in scripts as many as possible of the steps followed throughout the preparation of the materials. Far from being only a software for data analysis, R allows the preparation of texts, images, audios, etc. Humans err, by definition. That can be counted on. Conveniently, registering the steps followed during weeks or months of preparation allows us to offload part of the documentation efforts. It's a way of video-recording, as it were, all the additions, subtractions, replacements, transformations and calculations performed with the raw materials, for the creation of the final materials.
 
 
 ## Generous documentation
@@ -214,9 +216,9 @@ The key to the triggers is provided below.
 
 It is helpful for our future selves, for our collaborators, and for any other stakeholders associated with a project---which includes any fellow researchers worldwide---to include comments in code scripts. These comments should introduce the purpose of the script at the top, and the purpose of various components of the code. Some excerpts are shown below as examples.
 
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Flanguage-sensorimotor-simulation-PhD-thesis%2Fblob%2Fmain%2FR_functions%2Ffrequentist_bayesian_plot.R%23L3-L35&style=a11y-dark&type=code&showFullPath=on&showCopy=on&showLineNumbers=on&showFileMeta=on"></script>
+<script src='https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Flanguage-sensorimotor-simulation-PhD-thesis%2Fblob%2Fmain%2FR_functions%2Ffrequentist_bayesian_plot.R%23L3-L35&style=a11y-dark&type=code&showFullPath=on&showCopy=on&showLineNumbers=on&showFileMeta=on'></script>
 
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Flanguage-sensorimotor-simulation-PhD-thesis%2Fblob%2Fmain%2Fsemanticpriming%2Fdata%2Fsemanticpriming_data_preparation.R%23L29-L60&style=a11y-dark&type=code&showFullPath=on&showCopy=on&showLineNumbers=on&showFileMeta=on"></script>
+<script src='https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Flanguage-sensorimotor-simulation-PhD-thesis%2Fblob%2Fmain%2Fsemanticpriming%2Fdata%2Fsemanticpriming_data_preparation.R%23L29-L60&style=a11y-dark&type=code&showFullPath=on&showCopy=on&showLineNumbers=on&showFileMeta=on'></script>
 
 
 ## Open-source software
@@ -297,6 +299,6 @@ The output will look like the following (excerpt from https://osf.io/gt5uf/wiki)
 
 ## Conclusion
 
-Adhering to best practices---including FAIR principles---in the creation of research materials enhances transparency, accessibility and reproducibility in scientific research. Embracing these standards not only benefits individual researchers but also contributes to the collective advancement of knowledge in the scientific community.
+Adhering to best practices---including the FAIR principles---in the creation of research materials enhances transparency, accessibility and reproducibility in scientific research. Embracing these standards not only benefits individual researchers but---more importantly---contributes to the collective advancement of knowledge in the scientific community.
 
 
