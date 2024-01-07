@@ -7,12 +7,14 @@ categories:
   - research methods
   - R
 tags:
+  - research materials
+  - experimental stimuli
   - research methods
   - programming
   - R
   - s
 subtitle: ''
-summary: "Notwithstanding the need for speed in most scientific projects, what should be the minimum acceptable standards in the creation of research materials such as stimuli, custom software for data collection (e.g., experiment in jsPsych, OpenSesame or psychoPy), or scripts for statistical analysis?"
+summary: "In the fast-paced world of scientific research, establishing minimum standards for the creation of research materials is essential. Whether it's stimuli, custom software for data collection, or scripts for statistical analysis, the quality and transparency of these materials significantly impact the reproducibility and credibility of research. This blog post explores the importance of adhering to FAIR (Findable, Accessible, Interoperable, Reusable) principles and offers practical examples for researchers, with a focus on cognitive sciences."
 authors: []
 lastmod: ''
 featured: no
@@ -22,6 +24,11 @@ image:
   focal_point: ''
   preview_only: no
 projects: []
+---
+
+
+In the fast-paced world of scientific research, establishing minimum standards for the creation of research materials is essential. Whether it's stimuli, custom software for data collection, or scripts for statistical analysis, the quality and transparency of these materials significantly impact the reproducibility and credibility of research. This blog post explores the importance of adhering to FAIR (Findable, Accessible, Interoperable, Reusable) principles and offers practical examples for researchers, with a focus on cognitive sciences.
+
 ---
 
 
@@ -216,9 +223,9 @@ It is helpful for our future selves, for our collaborators, and for any other st
 
 Where possible, open-source software should be used. Open-source software is free, and hence more accessible. Open-source software can be classified in various dimensions, such as the size of the user base. The more users, the greater the support, because the core developers have more resources, and the users will often help each other in public forums such as Stack Exchange. For instance, a programming language such as R boasts millions of users worldwide who count on support in public forums and in R-specific forums such as the [Posit Community](https://community.rstudio.com). 
 
-Other software are not as large. For instance, open-source software for psychological research (e.g., [OpenSesame](https://osdoc.cogsci.nl/), [psychoPy](https://www.psychopy.org/)) are far smaller than R in terms of community. Yet, these software too can count on substantial support. For the more basic uses, most of the way has already been paved, and the existing documentation suffices. For more advanced uses, the smaller size of the community can become more obvious, as one needs to spend more time researching on solutions for their needs. 
+Other software are not as large. For instance, open-source software for psychological research (e.g., [OpenSesame](https://osdoc.cogsci.nl/), [psychoPy](https://www.psychopy.org/)) are far smaller than R in terms of community. Yet, these software too can count on substantial support. For the more basic uses, most of the way has already been paved, and the existing documentation suffices. For more advanced uses, the smaller size of the community can become more obvious, as one needs to spend more time looking for solutions. 
 
-Regardless of the size of the community, all else being equal, open-source software is the right choice to ensure access to one's work for all (potential) stakeholders in the future. The other option, proprietory software, entails dependence on the services of a private company.
+Regardless of the size of the community, all else being equal, open-source software is the right choice to ensure access to one's work for all (potential) stakeholders in the future. The other option, proprietary software, entails dependence on the services of a private company.
 
 
 ## Tidiness and parsimony in computer code
@@ -286,5 +293,10 @@ The output will look like the following (excerpt from https://osf.io/gt5uf/wiki)
   |  |  | - results
   |  |  | - plots
 ```
+
+
+## Conclusion
+
+Adhering to best practices---including FAIR principles---in the creation of research materials enhances transparency, accessibility and reproducibility in scientific research. Embracing these standards not only benefits individual researchers but also contributes to the collective advancement of knowledge in the scientific community.
 
 
