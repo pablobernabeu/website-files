@@ -299,6 +299,6 @@ The output will look like the following (excerpt from https://osf.io/gt5uf/wiki)
 
 ## Conclusion
 
-Adhering to best practices---including the FAIR principles---in the creation of research materials enhances transparency, accessibility and reproducibility in scientific research. Embracing these standards not only benefits individual researchers but---more importantly---contributes to the collective advancement of knowledge in the scientific community.
+Adhering to best practices---including the FAIR principles---in the creation of research materials enhances transparency, accessibility and reproducibility in scientific research. These standards facilitate researchers' work beyond the short term, and increase the reliability of scientific work, thus contributing to the best use of resources.
 
 
