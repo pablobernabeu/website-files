@@ -24,6 +24,6 @@
   weight = 40
   
 [[main]]
-   name = '<span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Short essays &nbsp; | &nbsp; Tutorials &nbsp; | &nbsp; Functions for the implementation of experiments and for data analysis &nbsp; ">Blog and resources</span>'
+   name = '<span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Short essays &nbsp; | &nbsp; Tutorials &nbsp; | &nbsp; Functions for the implementation of experiments and for data analysis &nbsp; ">Blog & resources</span>'
    url = '#blog'
    weight = 50
