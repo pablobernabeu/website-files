@@ -16,7 +16,7 @@ query =
     '"Modality exclusivity norms for 400 nouns: The relationship between perceptual experience and surface word form"'
   )
 
-period = '2017-2023'
+search_period = '2017-2023'
 
 # Enable as many searches as necessary given the search quota
 

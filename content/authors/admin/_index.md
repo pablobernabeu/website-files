@@ -18,9 +18,8 @@ interests:
 - psycholinguistics
 - multilingualism
 - semantic / conceptual processing
-- statistics
 - open science
-- programming
+- research methods
 subsections:
 - '<div class = "profile-subsection"><a href = "/#bio" class = "profile-subsection">Experience <i class="fas fa-arrow-right fa-xs" style="color:lightgrey;"></i></a></div>'
 - '<div class = "profile-subsection"><a href = "/#teaching-supervision" class = "profile-subsection">Teaching and supervision</a></div>'

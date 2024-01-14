@@ -103,6 +103,8 @@ Adams, H., Stefanucci, J., Creem-Regehr, S., & Bodenheimer, B. (2022). Depth Per
 
 Adeleke, R., Iyanda, A. E., Osayomi, T., & Alabede, O. (2022). Tackling female digital exclusion: Drivers and constraints of female Internet use in Nigeria. *African Geographical Review*, *41*(4), 531--544. <https://doi.org/10.1080/19376812.2021.1963296>
 
+Aggarwal, N., Williams, L. E., Tromp, D. P. M., Pine, D. S., & Kalin, N. H. (2022). A dynamic relation between whole-brain white matter microstructural integrity and anxiety symptoms in preadolescent females with pathological anxiety. *Translational Psychiatry*, *12*(1), 57. <https://doi.org/10.1038/s41398-022-01827-y>
+
 Agmon, G., Loewenstein, Y., & Grodzinsky, Y. (2022). Negative sentences exhibit a sustained effect in delayed verification tasks. *Journal of Experimental Psychology: Learning, Memory, and Cognition*, *48*(1), 122--141. <https://doi.org/10.1037/xlm0001059>
 
 Agrawal, A., Nag, S., Hari, K. V. S., & Arun, S. P. (2022). Letter processing in upright bigrams predicts reading fluency variations in children. *Journal of Experimental Psychology: General*, *151*(9), 2237--2249. <https://doi.org/10.1037/xge0001175>
@@ -110,6 +112,8 @@ Agrawal, A., Nag, S., Hari, K. V. S., & Arun, S. P. (2022). Letter processing in
 Akil, A. M., Ujhelyi, A., & Logemann, H. N. A. (2022). Exposure to Depression Memes on Social Media Increases Depressive Mood and It Is Moderated by Self-Regulation: Evidence From Self-Report and Resting EEG Assessments. *Frontiers in Psychology*, *13*, 880065. <https://doi.org/10.3389/fpsyg.2022.880065>
 
 Al-Azary, H., Yu, T., & McRae, K. (2022). Can you touch the N400? The interactive effects of body-object interaction and task demands on N400 amplitudes and decision latencies. *Brain and Language*, *231*, 105147. <https://doi.org/10.1016/j.bandl.2022.105147>
+
+Albert, D. A., Claude Ouimet, M., & Brown, T. G. (2022). Negative mood mind wandering and unsafe driving in young male drivers. *Accident Analysis & Prevention*, *178*, 106867. <https://doi.org/10.1016/j.aap.2022.106867>
 
 Alcántara, I., Somma, A., Chalar, G., Fabre, A., Segura, A., Achkar, M., Arocena, R., Aubriot, L., Baladán, C., Barrios, M., Bonilla, S., Burwood, M., Calliari, D. L., Calvo, C., Capurro, L., Carballo, C., Céspedes-Payret, C., Conde, D., Corrales, N., ... García-Rodríguez, F. (2022). A reply to "Relevant factors in the eutrophication of the Uruguay River and the Río Negro." *Science of The Total Environment*, *818*, 151854. <https://doi.org/10.1016/j.scitotenv.2021.151854>
 
@@ -148,6 +152,8 @@ Antony, J. W., Romero, A., Vierra, A. H., Luenser, R. S., Hawkins, R. D., & Benn
 Appelqvist-Dalton, M., Wilmott, J. P., He, M., & Simmons, A. M. (2022). Time perception in film is modulated by sensory modality and arousal. *Attention, Perception, & Psychophysics*, *84*(3), 926--942. <https://doi.org/10.3758/s13414-022-02464-9>
 
 Arina, G. A., Dobrushina, O. R., Shvetsova, E. T., Osina, E. D., Meshkov, G. A., Aziatskaya, G. A., Trofimova, A. K., Efremova, I. N., Martunov, S. E., & Nikolaeva, V. V. (2022). Infra-Low Frequency Neurofeedback in Tension-Type Headache: A Cross-Over Sham-Controlled Study. *Frontiers in Human Neuroscience*, *16*, 891323. <https://doi.org/10.3389/fnhum.2022.891323>
+
+Aristei, S., Knoop, C. A., Lubrich, O., Nehrlich, T., Enge, A., Stark, K., Sommer, W., & Abdel Rahman, R. (2023). Affect as Anaesthetic: How emotional contexts modulate the processing of counterintuitive concepts. *Language, Cognition and Neuroscience*, *38*(10), 1514--1530. <https://doi.org/10.1080/23273798.2022.2085312>
 
 Arjmand, S., Wegener, G., Landau, A. M., & Eskelund, A. (2022). Tips and traps for behavioural animal experimentation. *Acta Neuropsychiatrica*, *34*(5), 240--252. <https://doi.org/10.1017/neu.2022.4>
 
@@ -205,13 +211,19 @@ Batista, L. G., Mello, V. H., Souza, A. P., & Margarido, G. R. A. (2022). Genomi
 
 Bauer, A., Kagedal, M., & Wolfsegger, M. J. (2022). Assessment of pharmacokinetic linearity after repeated drug administration. *Pharmaceutical Statistics*, *21*(5), 932--943. <https://doi.org/10.1002/pst.2206>
 
+Bausenhart, K. M., Ulrich, R., & Kaup, B. (2023). Association between abstraction level and time: Are future and past more abstract than the present? *Quarterly Journal of Experimental Psychology*, 17470218231217732. <https://doi.org/10.1177/17470218231217732>
+
 Baxter, P., Bekkering, H., Dijkstra, T., Droop, M., Van Den Hurk, M., & Leoné, F. (2022). Contrasting orthographically similar words facilitates adult second language vocabulary learning. *Learning and Instruction*, *80*, 101582. <https://doi.org/10.1016/j.learninstruc.2022.101582>
+
+Behr, H., Ho, A. S., Yang, Q., Mitchell, E. S., DeLuca, L., Greenstein, N., & Michaelides, A. (2023). Men's Weight Loss Outcomes, Behaviors, and Perceptions in a Self-Directed Commercial Mobile Program: Retrospective Analysis. *Health Education & Behavior*, *50*(1), 70--83. <https://doi.org/10.1177/10901981211055467>
 
 Beier, E. J., & Ferreira, F. (2022). Replication of Cutler, A., & Fodor, J. A. (1979). Semantic focus and sentence comprehension. Cognition, 7(1), 49--59. *Journal of Memory and Language*, *126*, 104339. <https://doi.org/10.1016/j.jml.2022.104339>
 
 Bell, T. R., Sprague, B. N., & Ross, L. A. (2022). Longitudinal associations of pain and cognitive decline in community-dwelling older adults. *Psychology and Aging*, *37*(6), 715--730. <https://doi.org/10.1037/pag0000699>
 
 Benabdallah, F. Z., Drissi El Maliani, A., Lotfi, D., Jennane, R., & El Hassouni, M. (2022). An autism spectrum disorder adaptive identification based on the Elimination of brain connections: A proof of long-range underconnectivity. *Soft Computing*, *26*(10), 4701--4711. <https://doi.org/10.1007/s00500-022-06890-7>
+
+Benson, T., Bucher, T., Oughton, R., McCloat, A., Mooney, E., Farrell, S., & Dean, M. (2022). The effects of nutrition and health claims on the nutrient composition of single and subsequent meal servings. *Appetite*, *176*, 106105. <https://doi.org/10.1016/j.appet.2022.106105>
 
 Bernardez, B., Duran, A., Parejo, J. A., Juristo, N., & RuizCortes, A. (2022). Effects of Mindfulness on Conceptual Modeling Performance: A Series of Experiments. *IEEE Transactions on Software Engineering*, *48*(2), 432--452. <https://doi.org/10.1109/TSE.2020.2991699>
 
@@ -229,6 +241,10 @@ Bitter, A. N., Wondra, T., McCrea, S. M., Darzi, A., & Novak, V. D. (2022). Does
 
 Black, B., Hollingsworth, A., Nunes, L., & Simon, K. (2022). Simulated power analyses for observational studies: An application to the Affordable Care Act Medicaid expansion. *Journal of Public Economics*, *213*, 104713. <https://doi.org/10.1016/j.jpubeco.2022.104713>
 
+Bloch, C., Tepest, R., Jording, M., Vogeley, K., & Falter-Wagner, C. M. (2022). Intrapersonal synchrony analysis reveals a weaker temporal coherence between gaze and gestures in adults with autism spectrum disorder. *Scientific Reports*, *12*(1), 20417. <https://doi.org/10.1038/s41598-022-24605-8>
+
+Bloch, C., Viswanathan, S., Tepest, R., Jording, M., Falter-Wagner, C. M., & Vogeley, K. (2023). Differentiated, rather than shared, strategies for time-coordinated action in social and non-social domains in autistic individuals. *Cortex*, *166*, 207--232. <https://doi.org/10.1016/j.cortex.2023.05.008>
+
 Blockley, A., Ogle, D., Woodrow, C., Montealegre-Z, F., & Warren, B. (2022). Physiological changes throughout an insect ear due to age and noise---A longitudinal study. *iScience*, *25*(9), 104746. <https://doi.org/10.1016/j.isci.2022.104746>
 
 Bloom, P. A., VanTieghem, M., Gabard‐Durnam, L., Gee, D. G., Flannery, J., Caldera, C., Goff, B., Telzer, E. H., Humphreys, K. L., Fareri, D. S., Shapiro, M., Algharazi, S., Bolger, N., Aly, M., & Tottenham, N. (2022). Age‐related change in task‐evoked amygdala---prefrontal circuitry: A multiverse approach with an accelerated longitudinal cohort aged 4--22 years. *Human Brain Mapping*, *43*(10), 3221--3244. <https://doi.org/10.1002/hbm.25847>
@@ -241,7 +257,11 @@ Bogdány, T., Perakakis, P., Bódizs, R., & Simor, P. (2022). The heartbeat evok
 
 Bögge, L., Colás-Blanco, I., & Piolino, P. (2022). Respiratory sinus arrhythmia during biofeedback is linked to persistent improvements in attention, short-term memory, and positive self-referential episodic memory. *Frontiers in Neuroscience*, *16*, 791498. <https://doi.org/10.3389/fnins.2022.791498>
 
+Bohmann, A. (2023). Future‐time reference in world Englishes. *World Englishes*, weng.12634. <https://doi.org/10.1111/weng.12634>
+
 Bolens, G. (2022). Kinesic intelligence, medieval illuminated psalters, and the poetics of the psalms. *Studia Neophilologica*, 1--24. <https://doi.org/10.1080/00393274.2022.2051733>
+
+Bollini, A., Cocchi, E., Salvagno, V., & Gori, M. (2023). The causal role of vision in the development of spatial coordinates: Evidence from visually impaired children. *Journal of Experimental Psychology: Human Perception and Performance*, *49*(7), 1042--1052. <https://doi.org/10.1037/xhp0001122>
 
 Bonin, P., Laroche, B., & Méot, A. (2021). Psycholinguistic norms for a set of 506 French compound words. *Behavior Research Methods*, *54*(1), 393--413. <https://doi.org/10.3758/s13428-021-01601-w>
 
@@ -267,7 +287,11 @@ Bračić, M., Bohn, L., Siewert, V., Von Kortzfleisch, V. T., Schielzeth, H., Ka
 
 Braid, J., & Richlan, F. (2022). The Functional Neuroanatomy of Reading Intervention. *Frontiers in Neuroscience*, *16*, 921931. <https://doi.org/10.3389/fnins.2022.921931>
 
+Breadmore, H. L., Côté, E., & Deacon, S. H. (2023). The Timing Tells the Tale: Multiple Morphological Processes in Children's and Adults' Spelling. *Scientific Studies of Reading*, *27*(5), 408--427. <https://doi.org/10.1080/10888438.2023.2186233>
+
 Bredemeyer, O., Patel, S., FitzGerald, J. J., & Antoniades, C. A. (2022). Oculomotor deficits in Parkinson's disease: Increasing sensitivity using multivariate approaches. *Frontiers in Digital Health*, *4*, 939677. <https://doi.org/10.3389/fdgth.2022.939677>
+
+Breitfeld, E., & Saffran, J. R. (2023). Early word learning is influenced by physical environments. *Child Development*, cdev.14046. <https://doi.org/10.1111/cdev.14046>
 
 Brewster, G. S., Wang, D., McPhillips, M. V., Epps, F., & Yang, I. (2022). Correlates of Sleep Disturbance Experienced by Informal Caregivers of Persons Living with Dementia: A Systematic Review. *Clinical Gerontologist*, 1--28. <https://doi.org/10.1080/07317115.2022.2139655>
 
@@ -357,6 +381,10 @@ Chandler-Campbell, I. L., Ghossainy, M. E., Mills, C. M., & Corriveau, K. H. (20
 
 Chang, L.-Y., Tseng, C.-C., Perfetti, C. A., & Chen, H.-C. (2022). Development and validation of a Chinese pseudo-character/non-character producing system. *Behavior Research Methods*, *54*(2), 632--648. <https://doi.org/10.3758/s13428-021-01611-8>
 
+Chaouch-Orozco, A., González Alonso, J., Duñabeitia, J. A., & Rothman, J. (2023a). Are translation equivalents really equivalent? Evidence from concreteness effects in translation priming. *International Journal of Bilingualism*, 136700692211466. <https://doi.org/10.1177/13670069221146641>
+
+Chaouch-Orozco, A., González Alonso, J., Duñabeitia, J. A., & Rothman, J. (2023b). The elusive impact of L2 immersion on translation priming. *Studies in Second Language Acquisition*, *45*(2), 393--415. <https://doi.org/10.1017/S0272263122000249>
+
 Chapman, C. A., & Martin, R. C. (2022). Effects of semantic diversity and word frequency on single word processing. *Journal of Experimental Psychology: General*, *151*(5), 1035--1068. <https://doi.org/10.1037/xge0001123>
 
 Charalampaki, A., Ninija Karabanov, A., Ritterband-Rosenbaum, A., Bo Nielsen, J., Roman Siebner, H., & Schram Christensen, M. (2022). Sense of agency as synecdoche: Multiple neurobiological mechanisms may underlie the phenomenon summarized as sense of agency. *Consciousness and Cognition*, *101*, 103307. <https://doi.org/10.1016/j.concog.2022.103307>
@@ -366,6 +394,8 @@ Charitonidis, C. (2022). Context concreteness for the second constituent slows d
 Chen, G., Lewis, V. A., Gottlieb, D. J., & O'Malley, A. J. (2022). Using a mixed‐effect model with a parameter‐space of heterogenous dimension to evaluate whether accountable care organizations are associated with greater uniformity across constituent practices. *Statistics in Medicine*, *41*(21), 4215--4226. <https://doi.org/10.1002/sim.9506>
 
 Chen, X., Chen, H. Y. H., & Chang, S. X. (2022). Meta-analysis shows that plant mixtures increase soil phosphorus availability and plant productivity in diverse ecosystems. *Nature Ecology & Evolution*, *6*(8), 1112--1121. <https://doi.org/10.1038/s41559-022-01794-z>
+
+Chen, Y. A., & Toma, C. L. (2023). To Text or Talk in Person? Social Anxiety, Media Affordances, and Preferences for Texting Over Face-To-Face Communication in Dating Relationships. *Media Psychology*, 1--27. <https://doi.org/10.1080/15213269.2023.2246895>
 
 Chen, Y., Ou, Y., Lv, D., Yu, Z., Shang, T., Ma, J., Zhan, C., Ding, Z., Yang, X., Xiao, J., Yang, R., Sun, Z., Zhang, G., Wang, X., Guo, W., & Li, P. (2022). Altered Regional Activity and Network Homogeneity within the Fronto-Limbic Network at Rest in Medicine-Free Obsessive--Compulsive Disorder. *Brain Sciences*, *12*(7), 857. <https://doi.org/10.3390/brainsci12070857>
 
@@ -377,6 +407,8 @@ Chiappetta, B., Patel, A. D., & Thompson, C. K. (2022). Musical and linguistic s
 
 Ching, C. R. K., Hibar, D. P., Gurholt, T. P., Nunes, A., Thomopoulos, S. I., Abé, C., Agartz, I., Brouwer, R. M., Cannon, D. M., De Zwarte, S. M. C., Eyler, L. T., Favre, P., Hajek, T., Haukvik, U. K., Houenou, J., Landén, M., Lett, T. A., McDonald, C., Nabulsi, L., ... ENIGMA Bipolar Disorder Working Group. (2022). What we learn about bipolar disorder from large‐scale neuroimaging: Findings and future directions from the ENIGMA Bipolar Disorder Working Group. *Human Brain Mapping*, *43*(1), 56--82. <https://doi.org/10.1002/hbm.25098>
 
+Chuquichambi, E. G., Sarria, D., Corradi, G. B., & Munar, E. (2023). Humans Prefer to See and Imagine Drawing Curved Objects. *Empirical Studies of the Arts*, *41*(1), 135--156. <https://doi.org/10.1177/02762374221084212>
+
 Churchill, N. W. (2022). Neuroimaging of Concussion. In T. A. Schweizer & A. J. Baker (Eds.), *Tackling the Concussion Epidemic* (pp. 43--70). Springer International Publishing. <https://doi.org/10.1007/978-3-030-93813-0_3>
 
 Cirillo, G., Runnqvist, E., Strijkers, K., Nguyen, N., & Baus, C. (2022). Conceptual alignment in a joint picture-naming task performed with a social robot. *Cognition*, *227*, 105213. <https://doi.org/10.1016/j.cognition.2022.105213>
@@ -384,6 +416,8 @@ Cirillo, G., Runnqvist, E., Strijkers, K., Nguyen, N., & Baus, C. (2022). Concep
 Clariana, R. B., Tang, H., & Chen, X. (2022). Corroborating a sorting task measure of individual and of local collective knowledge structure. *Educational Technology Research and Development*, *70*(4), 1195--1219. <https://doi.org/10.1007/s11423-022-10123-x>
 
 Clark, E. L., Daley, R. T., Deason, R. G., O'Connor, M. K., Budson, A. E., & DeCaro, R. E. (2022). Cue-utilization in the imagination inflation effect paradigm in older adults with mild cognitive impairment. *Neuropsychology*, *36*(4), 297--313. <https://doi.org/10.1037/neu0000801>
+
+Clayton, M., Renna, M. E., Klemanski, D. H., Kerns, C., McLaughlin, K. A., & Mennin, D. S. (2023). The Impact of Emotion Regulation on the Relationship Between Momentary Negative Affect and End-of-Day Worry and Rumination. *Cognitive Therapy and Research*, *47*(1), 94--108. <https://doi.org/10.1007/s10608-022-10339-4>
 
 Clements, L. J. (2022). Cooperation between preschool peers in relation to their math learning. *The Journal of Educational Research*, *115*(3), 199--208. <https://doi.org/10.1080/00220671.2022.2089087>
 
@@ -396,6 +430,8 @@ Coker, D. C. (2022). Multiverses, Myths, and the Big Bang: Problems in Education
 Coles, N. A., Gaertner, L., Frohlich, B., Larsen, J. T., & Basnight-Brown, D. M. (2023). Fact or artifact? Demand characteristics and participants' beliefs can moderate, but do not fully account for, the effects of facial feedback on emotional experience. *Journal of Personality and Social Psychology*, *124*(2), 287--310. <https://doi.org/10.1037/pspa0000316>
 
 Colizoli, O., De Gee, J. W., Van Der Zwaag, W., & Donner, T. H. (2022). Functional magnetic resonance imaging responses during perceptual decision‐making at 3 and 7 T in human cortex, striatum, and brainstem. *Human Brain Mapping*, *43*(4), 1265--1279. <https://doi.org/10.1002/hbm.25719>
+
+Colom-Cadena, M., Davies, C., Sirisi, S., Lee, J.-E., Simzer, E. M., Tzioras, M., Querol-Vilaseca, M., Sánchez-Aced, É., Chang, Y. Y., Holt, K., McGeachan, R. I., Rose, J., Tulloch, J., Wilkins, L., Smith, C., Andrian, T., Belbin, O., Pujals, S., Horrocks, M. H., ... Spires-Jones, T. L. (2023). Synaptic oligomeric tau in Alzheimer's disease---A potential culprit in the spread of tau pathology through the brain. *Neuron*, *111*(14), 2170-2183.e6. <https://doi.org/10.1016/j.neuron.2023.04.020>
 
 Combrisson, E., Allegra, M., Basanisi, R., Ince, R. A. A., Giordano, B. L., Bastin, J., & Brovelli, A. (2022). Group-level inference of information-based measures for the analyses of cognitive brain networks from neurophysiological data. *NeuroImage*, *258*, 119347. <https://doi.org/10.1016/j.neuroimage.2022.119347>
 
@@ -421,6 +457,10 @@ Cosper, S. H., Männel, C., & Mueller, J. L. (2022). Mechanisms of associative w
 
 Coulter, K., & Phillips, N. A. (2022). Conflict-based speech error monitoring in bilinguals: Differences between first and second language monitoring. *Journal of Neurolinguistics*, *63*, 101061. <https://doi.org/10.1016/j.jneuroling.2022.101061>
 
+Cracco, E., Bernardet, U., Sevenhant, R., Vandenhouwe, N., Copman, F., Durnez, W., Bombeke, K., & Brass, M. (2022). Evidence for a two-step model of social group influence. *iScience*, *25*(9), 104891. <https://doi.org/10.1016/j.isci.2022.104891>
+
+Crespo, K., Vlach, H., & Kaushanskaya, M. (2023). The effects of bilingualism on children's cross-situational word learning under different variability conditions. *Journal of Experimental Child Psychology*, *229*, 105621. <https://doi.org/10.1016/j.jecp.2022.105621>
+
 Cring, M. R., Meyer, K. J., Searby, C. C., Hedberg-Buenz, A., Cave, M., Anderson, M. G., Wang, K., & Sheffield, V. C. (2022). Ectopic expression of BBS1 rescues male infertility, but not retinal degeneration, in a BBS1 mouse model. *Gene Therapy*, *29*(5), 227--235. <https://doi.org/10.1038/s41434-021-00241-1>
 
 Cristea, I. A., Georgescu, R., & Ioannidis, J. P. A. (2022). Effect Sizes Reported in Highly Cited Emotion Research Compared With Larger Studies and Meta-Analyses Addressing the Same Questions. *Clinical Psychological Science*, *10*(4), 786--800. <https://doi.org/10.1177/21677026211049366>
@@ -428,6 +468,8 @@ Cristea, I. A., Georgescu, R., & Ioannidis, J. P. A. (2022). Effect Sizes Report
 Cui, C., Raslan, R., & Korolija, I. (2021, September 1). *A bootstrap method to investigate the variability of overheating risk against the future climate uncertainty in dwellings*. 2021 Building Simulation Conference. <https://doi.org/10.26868/25222708.2021.30862>
 
 Cui, L., & Liu, J. (2022). Recognition of Studied Words in Perceptual Disfluent Sans Forgetica Font. *Vision*, *6*(3), 52. <https://doi.org/10.3390/vision6030052>
+
+Currie, N. K., & Cain, K. (2023). Developmental differences in children's generation of knowledge-based inferences. *Discourse Processes*, *60*(6), 440--456. <https://doi.org/10.1080/0163853X.2023.2225980>
 
 Cutter, M. G., Filik, R., & Paterson, K. B. (2022). Do readers maintain word-level uncertainty during reading? A pre-registered replication study. *Journal of Memory and Language*, *125*, 104336. <https://doi.org/10.1016/j.jml.2022.104336>
 
@@ -442,6 +484,8 @@ Darmasetiyawan, I. M. S., Messenger, K., & Ambridge, B. (2022). Is Passive Primi
 Das, S., Abou-Haidar, R., Rabalais, H., Sun, S. D. L. W., Rosli, Z., Chatpar, K., Boivin, M.-N., Tabatabaei, M., Rogers, C., Legault, M., Lo, D., Degroot, C., Dagher, A., Dyke, S. O. M., Durcan, T. M., Seyller, A., Doyon, J., Poupon, V., Fon, E. A., ... Evans, A. C. (2022). The C-BIG Repository: An Institution-Level Open Science Platform. *Neuroinformatics*, *20*(1), 139--153. <https://doi.org/10.1007/s12021-021-09516-9>
 
 Datson, N., Lolli, L., Drust, B., Atkinson, G., Weston, M., & Gregson, W. (2022). Inter-methodological quantification of the target change for performance test outcomes relevant to elite female soccer players. *Science and Medicine in Football*, *6*(2), 248--261. <https://doi.org/10.1080/24733938.2021.1942538>
+
+D'Aurizio, N., Ramundo, T., Baldi, T. L., Moscatelli, A., & Prattichizzo, D. (2023). On the Correlation Between Tactile Stimulation and Pleasantness. *IEEE Transactions on Haptics*, *16*(4), 861--867. <https://doi.org/10.1109/TOH.2023.3322557>
 
 Davies, A. E., Burnette, C. B., Ravyts, S. G., & Mazzeo, S. E. (2022). A randomized control trial of Expand Your Horizon: An intervention for women with weight bias internalization. *Body Image*, *40*, 138--145. <https://doi.org/10.1016/j.bodyim.2021.12.006>
 
@@ -465,11 +509,17 @@ De León Rodríguez, D., Mouthon, M., Annoni, J.-M., & Khateb, A. (2022). Curren
 
 De Looff, P. C., Cornet, L. J. M., De Kogel, C. H., Fernández-Castilla, B., Embregts, P. J. C. M., Didden, R., & Nijman, H. L. I. (2022). Heart rate and skin conductance associations with physical aggression, psychopathy, antisocial personality disorder and conduct disorder: An updated meta-analysis. *Neuroscience & Biobehavioral Reviews*, *132*, 553--582. <https://doi.org/10.1016/j.neubiorev.2021.11.003>
 
+De Prada Pérez, A., Feroce, N., & Kennedy, L. (2023). The use of default forms in codeswitching: Mood selection in Spanish. *Linguistic Approaches to Bilingualism*, *13*(4), 439--467. <https://doi.org/10.1075/lab.20107.dep>
+
 De Ridder, J. (2022). How to trust a scientist. *Studies in History and Philosophy of Science*, *93*, 11--20. <https://doi.org/10.1016/j.shpsa.2022.02.003>
 
 De Varda, A. G., & Strapparava, C. (2022). A Cross‐Modal and Cross‐lingual Study of Iconicity in Language: Insights From Deep Learning. *Cognitive Science*, *46*(6), e13147. <https://doi.org/10.1111/cogs.13147>
 
 Deady, M., Glozier, N., Calvo, R., Johnston, D., Mackinnon, A., Milne, D., Choi, I., Gayed, A., Peters, D., Bryant, R., Christensen, H., & Harvey, S. B. (2022). Preventing depression using a smartphone app: A randomized controlled trial. *Psychological Medicine*, *52*(3), 457--466. <https://doi.org/10.1017/S0033291720002081>
+
+Dean, M. C., Cherian, N. J., McBroom, T. J., Eberlin, C. T., Torabian, K. A., Dowley, K. S., LaPorte, Z. L., Kucharik, M. P., & Martin, S. D. (2023). Preoperative Paralabral Cysts Predict More Significant Chondral Damage but Not 2-Year Functional Outcomes Following Arthroscopic Labral Repair. *Arthroscopy: The Journal of Arthroscopic & Related Surgery*, S0749806323008332. <https://doi.org/10.1016/j.arthro.2023.10.009>
+
+Defayette, A. B., Esposito‐Smythers, C., Cero, I., Kleiman, E. M., López, R., Harris, K. M., & Whitmyre, E. D. (2023). Examination of proinflammatory activity as a moderator of the relation between momentary interpersonal stress and suicidal ideation. *Suicide and Life-Threatening Behavior*, *53*(6), 922--939. <https://doi.org/10.1111/sltb.12993>
 
 Del Popolo Cristaldi, F., Gambarota, F., & Oosterwijk, S. (2023). Does your past define you? The role of previous visual experience in subjective reactions to new affective pictures and sounds. *Emotion*, *23*(5), 1317--1333. <https://doi.org/10.1037/emo0001168>
 
@@ -497,6 +547,8 @@ Dillon, D. G., Lazarov, A., Dolan, S., Bar-Haim, Y., Pizzagalli, D. A., & Schnei
 
 Distiller, N. (2022). Uncomfortable Territory: Coming to Terms With LGBTQ+ Rights. In I. R. Management Association (Ed.), *Research Anthology on Inclusivity and Equity for the LGBTQ+ Community* (pp. 233--250). IGI Global. <https://doi.org/10.4018/978-1-6684-3674-5.ch013>
 
+Do, H. J., Kong, H.-K., Lee, J., & Bailey, B. P. (2022). How Should the Agent Communicate to the Group? Communication Strategies of a Conversational Agent in Group Chat Discussions. *Proceedings of the ACM on Human-Computer Interaction*, *6*(CSCW2), 1--23. <https://doi.org/10.1145/3555112>
+
 Doan, T., Stonehouse, E., Denison, S., & Friedman, O. (2022). The odds tell children what people favor. *Developmental Psychology*, *58*(9), 1759--1766. <https://doi.org/10.1037/dev0001395>
 
 Dobbs, C. L., Caselli, N. K., Hartzell, E., Flanagan, C., & Yan, Y. (2022). Understanding middle graders' language borrowing: How lexical and demographic characteristics predict similarity. *Reading and Writing*, *35*(4), 971--994. <https://doi.org/10.1007/s11145-021-10210-0>
@@ -506,6 +558,8 @@ Dokovova, M., Scobbie, J. M., & Lickley, R. (2022). Matched-accent processing: B
 Donahoo, S. A., Pfeifer, V., & Lai, V. T. (2022). Cursed Concepts: New insights on combinatorial processing from ERP correlates of swearing in context. *Brain and Language*, *226*, 105079. <https://doi.org/10.1016/j.bandl.2022.105079>
 
 Dong, Y., Briaire, J. J., Christiaan Stronks, H., & Frijns, J. H. M. (2022). Short- and long-latency components of the eCAP reveal different refractory properties. *Hearing Research*, *420*, 108522. <https://doi.org/10.1016/j.heares.2022.108522>
+
+Dong, Y., Briaire, J. J., Stronks, H. C., & Frijns, J. H. M. (2023). Speech Perception Performance in Cochlear Implant Recipients Correlates to the Number and Synchrony of Excited Auditory Nerve Fibers Derived From Electrically Evoked Compound Action Potentials. *Ear & Hearing*, *44*(2), 276--286. <https://doi.org/10.1097/AUD.0000000000001279>
 
 Donoghue, T., Schaworonkow, N., & Voytek, B. (2022). Methodological considerations for studying neural oscillations. *European Journal of Neuroscience*, *55*(11--12), 3502--3527. <https://doi.org/10.1111/ejn.15361>
 
@@ -519,6 +573,8 @@ Dragomanova, S., Pavlov, S., Marinova, D., Hodzev, Y., Petralia, M. C., Fagone, 
 
 Drieghe, D., & Chan Seem, R. (2022). Parafoveal processing of repeated words during reading. *Psychonomic Bulletin & Review*, *29*(4), 1451--1460. <https://doi.org/10.3758/s13423-021-02054-0>
 
+Dubois, T., Grafmiller, J., Paquot, M., & Szmrecsanyi, B. (2023). Animacy effects in the English genitive alternation: Comparing native speakers and EFL learner judgments with corpus data. *Language and Cognition*, 1--23. <https://doi.org/10.1017/langcog.2023.51>
+
 Dubova, M. (2022). Building human-like communicative intelligence: A grounded perspective. *Cognitive Systems Research*, *72*, 63--79. <https://doi.org/10.1016/j.cogsys.2021.12.002>
 
 Dubreucq, J., Haesebaert, F., Plasse, J., Dubreucq, M., & Franck, N. (2022). A Systematic Review and Meta-analysis of Social Skills Training for Adults with Autism Spectrum Disorder. *Journal of Autism and Developmental Disorders*, *52*(4), 1598--1609. <https://doi.org/10.1007/s10803-021-05058-w>
@@ -526,6 +582,8 @@ Dubreucq, J., Haesebaert, F., Plasse, J., Dubreucq, M., & Franck, N. (2022). A S
 Duffy, K. A., & Epperson, C. N. (2022). Evaluating the evidence for sex differences: A scoping review of human neuroimaging in psychopharmacology research. *Neuropsychopharmacology*, *47*(2), 430--443. <https://doi.org/10.1038/s41386-021-01162-8>
 
 Dujardin, E., Jobard, G., Vahine, T., & Mathey, S. (2021). Norms of vocabulary, reading, and spelling tests in French university students. *Behavior Research Methods*, *54*(4), 1611--1625. <https://doi.org/10.3758/s13428-021-01684-5>
+
+Duncan, C., Tölch, U., Walter, H., & Dziobek, I. (2023). Ethnic discrimination unlearned: Experience in the repeated Trust Game reduces trust bias. *Frontiers in Psychology*, *14*, 1139128. <https://doi.org/10.3389/fpsyg.2023.1139128>
 
 Durand-López, E. M. (2022). L2 within-language morphological competition during spoken word recognition. *Language Acquisition*, *29*(2), 165--181. <https://doi.org/10.1080/10489223.2021.1982948>
 
@@ -535,11 +593,15 @@ Edeh, N. I., Ugwoke, E. O., Anaele, E. N., Madusaba, B. M., Naboth-Odums, A., Is
 
 Edwards, A. A., Steacy, L. M., Siegelman, N., Rigobon, V. M., Kearns, D. M., Rueckl, J. G., & Compton, D. L. (2022). Unpacking the unique relationship between set for variability and word reading development: Examining word- and child-level predictors of performance. *Journal of Educational Psychology*, *114*(6), 1242--1256. <https://doi.org/10.1037/edu0000696>
 
+Edwards, V. L. L., & Hammond, S. I. (2023). Mothers' communicative cues and the development of infants' helping: Linking participation and problem solving in the first year of life. *Social Development*, *32*(4), 1302--1317. <https://doi.org/10.1111/sode.12693>
+
 Effron, D. A. (2022). The moral repetition effect: Bad deeds seem less unethical when repeatedly encountered. *Journal of Experimental Psychology: General*, *151*(10), 2562--2585. <https://doi.org/10.1037/xge0001214>
 
 Egger, M., Florack, A., & Hübel, C. (2022). How placement affects brand preferences in advergames: A test of inhibition and facilitation processes during search. *Computers in Human Behavior*, *134*, 107328. <https://doi.org/10.1016/j.chb.2022.107328>
 
 Eguchi, M., Suzuki, S., & Suzuki, Y. (2022). LEXICAL COMPETENCE UNDERLYING SECOND LANGUAGE WORD ASSOCIATION TASKS: EXAMINING THE CONSTRUCT VALIDITY OF RESPONSE TYPE AND RESPONSE TIME MEASURES. *Studies in Second Language Acquisition*, *44*(1), 112--142. <https://doi.org/10.1017/S0272263121000164>
+
+Ehrhart, T., & Lindner, M. A. (2023). Computer-based multimedia testing: Effects of static and animated representational pictures and text modality. *Contemporary Educational Psychology*, *73*, 102151. <https://doi.org/10.1016/j.cedpsych.2023.102151>
 
 Eising, E., Mirza-Schreiber, N., De Zeeuw, E. L., Wang, C. A., Truong, D. T., Allegrini, A. G., Shapland, C. Y., Zhu, G., Wigg, K. G., Gerritse, M. L., Molz, B., Alagöz, G., Gialluisi, A., Abbondanza, F., Rimfeld, K., Van Donkelaar, M., Liao, Z., Jansen, P. R., Andlauer, T. F. M., ... Fisher, S. E. (2022). Genome-wide analyses of individual differences in quantitatively assessed reading- and language-related skills in up to 34,000 people. *Proceedings of the National Academy of Sciences*, *119*(35), e2202764119. <https://doi.org/10.1073/pnas.2202764119>
 
@@ -583,6 +645,10 @@ Fauville, G., Queiroz, A. C. M., Luo, M., Hancock, J., & Bailenson, J. N. (2022)
 
 Fazio, L. K., Pillai, R. M., & Patel, D. (2022). The effects of repetition on belief in naturalistic settings. *Journal of Experimental Psychology: General*, *151*(10), 2604--2613. <https://doi.org/10.1037/xge0001211>
 
+Fedeli, R., Vannini, A., Celletti, S., Maresca, V., Munzi, S., Cruz, C., Alexandrov, D., Guarnieri, M., & Loppi, S. (2023). Foliar application of wood distillate boosts plant yield and nutritional parameters of chickpea. *Annals of Applied Biology*, *182*(1), 57--64. <https://doi.org/10.1111/aab.12794>
+
+Feldman, M. J., Jolink, T. A., Alvarez, G. M., Fendinger, N. J., Gaudier-Diaz, M. M., Lindquist, K. A., & Muscatell, K. A. (2023). The roles of inflammation, affect, and interoception in predicting social perception. *Brain, Behavior, and Immunity*, *112*, 246--253. <https://doi.org/10.1016/j.bbi.2023.05.011>
+
 Feng, C., Damian, M. F., & Qu, Q. (2022). A joint investigation of facilitation and interference effects of semantic and phonological similarity in a continuous naming task. *Journal of Experimental Psychology: Learning, Memory, and Cognition*, *48*(8), 1193--1201. <https://doi.org/10.1037/xlm0001139>
 
 Feng, C., Thompson, W. K., & Paulus, M. P. (2022). Effect sizes of associations between neuroimaging measures and affective symptoms: A meta‐analysis. *Depression and Anxiety*, *39*(1), 19--25. <https://doi.org/10.1002/da.23215>
@@ -602,6 +668,8 @@ Fini, N. A., Holland, A. E., Bernhardt, J., & Burge, A. T. (2022). How Many Hour
 Fiocchi, F. R., Dijkhuizen, S., Koekkoek, S. K. E., De Zeeuw, C. I., & Boele, H. J. (2022). Stimulus Generalization in Mice during Pavlovian Eyeblink Conditioning. *Eneuro*, *9*(2), ENEURO.0400-21.2022. <https://doi.org/10.1523/ENEURO.0400-21.2022>
 
 Fischer, S., Schumacher, S., & Daniels, J. (2022). Neurobiological Changes in Posttraumatic Stress Disorder and Their Reversibility by Psychotherapy: A Narrative Review. *Zeitschrift für Klinische Psychologie und Psychotherapie*, *51*(2), 77--86. <https://doi.org/10.1026/1616-3443/a000650>
+
+Fitzsimmons, C. J., Morehead, K., Thompson, C. A., Buerke, M., & Dunlosky, J. (2023). Can feedback, correct, and incorrect worked examples improve numerical magnitude estimation precision? *The Journal of Experimental Education*, *91*(1), 20--45. <https://doi.org/10.1080/00220973.2021.1891009>
 
 Folwarczny, M., Otterbring, T., Sigurdsson, V., & Gasiorowska, A. (2022). Seasonal cues to food scarcity and calorie cravings: Winter cues elicit preferences for energy-dense foods. *Food Quality and Preference*, *96*, 104379. <https://doi.org/10.1016/j.foodqual.2021.104379>
 
@@ -651,11 +719,15 @@ Gao, X., Xu, J., Yao, T., Liu, X., Zhang, H., & Zhan, C. (2022). Peptide-decorat
 
 Gao, Y., Chao, H., Cavuoto, L., Yan, P., Kruger, U., Norfleet, J. E., Makled, B. A., Schwaitzberg, S., De, S., & Intes, X. (2022). Deep learning-based motion artifact removal in functional near-infrared spectroscopy. *Neurophotonics*, *9*(04). <https://doi.org/10.1117/1.NPh.9.4.041406>
 
+Garcia-Guerrero, S., O'Hora, D., Zgonnikov, A., & Scherbaum, S. (2023). The action dynamics of approach-avoidance conflict during decision-making. *Quarterly Journal of Experimental Psychology*, *76*(1), 160--179. <https://doi.org/10.1177/17470218221087625>
+
 Garcia‐Pelegrin, E., Clark, F., & Miller, R. (2022). Increasing animal cognition research in zoos. *Zoo Biology*, *41*(4), 281--291. <https://doi.org/10.1002/zoo.21674>
 
 Garofalo, G., & Riggio, L. (2022). Influence of colour on object motor representation. *Neuropsychologia*, *164*, 108103. <https://doi.org/10.1016/j.neuropsychologia.2021.108103>
 
 Garrison, K. E., & Schmeichel, B. J. (2022). Getting over it: Working memory capacity and affective responses to stressful events in daily life. *Emotion*, *22*(3), 418--429. <https://doi.org/10.1037/emo0000755>
+
+Garza, R., & Byrd-Craven, J. (2023). The role of hormones in attraction and visual attention to facial masculinity. *Frontiers in Psychology*, *14*, 1067487. <https://doi.org/10.3389/fpsyg.2023.1067487>
 
 Gatti, D., Marelli, M., & Rinaldi, L. (2023a). Out-of-vocabulary but not meaningless: Evidence for semantic-priming effects in pseudoword processing. *Journal of Experimental Psychology: General*, *152*(3), 851--863. <https://doi.org/10.1037/xge0001304>
 
@@ -673,6 +745,8 @@ Gerdemann, S. C., McAuliffe, K., Blake, P. R., Haun, D. B. M., & Hepach, R. (202
 
 Gerdemann, S. C., Tippmann, J., Dietrich, B., Engelmann, J. M., & Hepach, R. (2022). Young children show negative emotions after failing to help others. *PLOS ONE*, *17*(4), e0266539. <https://doi.org/10.1371/journal.pone.0266539>
 
+Ghiglino, D., Floris, F., De Tommaso, D., Kompatsiari, K., Chevalier, P., Priolo, T., & Wykowska, A. (2023). Artificial scaffolding: Augmenting social cognition by means of robot technology. *Autism Research*, *16*(5), 997--1008. <https://doi.org/10.1002/aur.2906>
+
 Ghijselings, I., Taylan, O., Delport, H. P., Slane, J., Van Den Wyngaert, H., Demurie, A., & Scheys, L. (2022). Using a patella reduced technique while balancing a TKA results in restored physiological strain in the collateral ligaments: An ex vivo kinematic analysis. *Archives of Orthopaedic and Trauma Surgery*, *142*(7), 1633--1644. <https://doi.org/10.1007/s00402-021-04010-y>
 
 Ghosh, S., & Dasgupta, R. (2022). *Machine Learning in Biological Sciences: Updates and Future Prospects*. Springer Nature Singapore. <https://doi.org/10.1007/978-981-16-8881-2>
@@ -681,17 +755,23 @@ Gintant, G. (2022). Assessing the fidelity of translation of non‐clinical assa
 
 Girard, C., & Prado, J. (2022). Prior home learning environment is associated with adaptation to homeschooling during COVID lockdown. *Heliyon*, *8*(4), e09294. <https://doi.org/10.1016/j.heliyon.2022.e09294>
 
+Glück, V. M., Boschet-Lange, J. M., Pittig, R., & Pittig, A. (2023). Persistence of extensively trained avoidance is not elevated in anxiety disorders in an outcome devaluation paradigm. *Behaviour Research and Therapy*, *170*, 104417. <https://doi.org/10.1016/j.brat.2023.104417>
+
 Goette, W. F., Schaffert, J., Carlew, A., Rossetti, H., Lacritz, L. H., De Boeck, P., & Cullum, C. M. (2023). Impact of word properties on list learning: An explanatory item analysis. *Neuropsychology*, *37*(3), 268--283. <https://doi.org/10.1037/neu0000810>
 
 Goldberg, S. B., Riordan, K. M., Sun, S., & Davidson, R. J. (2022). The Empirical Status of Mindfulness-Based Interventions: A Systematic Review of 44 Meta-Analyses of Randomized Controlled Trials. *Perspectives on Psychological Science*, *17*(1), 108--130. <https://doi.org/10.1177/1745691620968771>
 
 Goldstein-Piekarski, A. N., Ball, T. M., Samara, Z., Staveland, B. R., Keller, A. S., Fleming, S. L., Grisanzio, K. A., Holt-Gosselin, B., Stetz, P., Ma, J., & Williams, L. M. (2022). Mapping Neural Circuit Biotypes to Symptoms and Behavioral Dimensions of Depression and Anxiety. *Biological Psychiatry*, *91*(6), 561--571. <https://doi.org/10.1016/j.biopsych.2021.06.024>
 
+Golicz, K., Piepho, H.-P., Minarsch, E.-M. L., Niether, W., Große-Stoltenberg, A., Oldeland, J., Breuer, L., Gattinger, A., & Jacobs, S. (2023). Highlighting the potential of multilevel statistical models for analysis of individual agroforestry systems. *Agroforestry Systems*, *97*(8), 1481--1489. <https://doi.org/10.1007/s10457-023-00871-x>
+
 Golparvar, S. E., & Abolhasani, H. (2022). Unpacking the contribution of linguistic features to graph writing quality: An analytic scoring approach. *Assessing Writing*, *53*, 100644. <https://doi.org/10.1016/j.asw.2022.100644>
 
 Gołyszny, M., Zieliński, M., Paul-Samojedny, M., Pałasz, A., & Obuchowicz, E. (2022). Chronic treatment with escitalopram and venlafaxine affects the neuropeptide S pathway differently in adult Wistar rats exposed to maternal separation. *AIMS Neuroscience*, *9*(3), 395--422. <https://doi.org/10.3934/Neuroscience.2022022>
 
 Gomez Rueda, H., & Bustillo, J. (2022). Brain differential gene expression and blood cross-validation of a molecular signature of patients with major depressive disorder. *Psychiatric Genetics*, *32*(3), 105--115. <https://doi.org/10.1097/YPG.0000000000000309>
+
+Gong, T., Gerstenberg, T., Mayrhofer, R., & Bramley, N. R. (2023). Active causal structure learning in continuous time. *Cognitive Psychology*, *140*, 101542. <https://doi.org/10.1016/j.cogpsych.2022.101542>
 
 Gonzalez, C., Jiang, X., Gonzalez-Martinez, J., & Halgren, E. (2022). Human Spindle Variability. *The Journal of Neuroscience*, *42*(22), 4517--4537. <https://doi.org/10.1523/JNEUROSCI.1786-21.2022>
 
@@ -701,6 +781,8 @@ Goodridge, C. M., Mole, C. D., Billington, J., Markkula, G., & Wilkie, R. M. (20
 
 Götz, F. M., Gosling, S. D., & Rentfrow, P. J. (2022). Small Effects: The Indispensable Foundation for a Cumulative Psychological Science. *Perspectives on Psychological Science*, *17*(1), 205--215. <https://doi.org/10.1177/1745691620984483>
 
+Gouret, F., & Pfeuffer, C. U. (2023). Anticipatory Saccades Towards the Future Consequences of One's Actions -- an Online Eye Tracking Study. *Journal of Cognition*, *6*(1), 15. <https://doi.org/10.5334/joc.261>
+
 Grainger, J. (2022). Word Recognition I: Visual and Orthographic Processing. In M. J. Snowling, C. Hulme, & K. Nation (Eds.), *The Science of Reading* (1st ed., pp. 60--78). Wiley. <https://doi.org/10.1002/9781119705116.ch3>
 
 Grasso, C. L., Ziegler, J. C., Coull, J. T., & Montant, M. (2022). Space--Time Congruency Effects Using Eye Movements During Processing of Past- and Future-Related Words. *Experimental Psychology*, *69*(4), 210--217. <https://doi.org/10.1027/1618-3169/a000559>
@@ -708,6 +790,8 @@ Grasso, C. L., Ziegler, J. C., Coull, J. T., & Montant, M. (2022). Space--Time C
 Gravier, M. L., Hula, W. D., Johnson, J. P., Autenreith, A., & Dickey, M. W. (2022). Is There a Relationship Between Cortisol and Treatment Response in Chronic Aphasia? *Topics in Language Disorders*, *42*(3), 193--211. <https://doi.org/10.1097/TLD.0000000000000291>
 
 Greeley, B., Barnhoorn, J. S., Verwey, W. B., & Seidler, R. D. (2022). Anodal Transcranial Direct Current Stimulation Over Prefrontal Cortex Slows Sequence Learning in Older Adults. *Frontiers in Human Neuroscience*, *16*, 814204. <https://doi.org/10.3389/fnhum.2022.814204>
+
+Grießbach, E., Raßbach, P., Herbort, O., & Cañal-Bruland, R. (2023). Embodied decision biases: Individually stable across different tasks? *Experimental Brain Research*, *241*(4), 1053--1064. <https://doi.org/10.1007/s00221-023-06591-z>
 
 Grossmann, F., Flueck, J. L., Roelands, B., Meeusen, R., Mason, B., & Perret, C. (2022). Characteristics of Official Wheelchair Basketball Games in Hot and Temperate Conditions. *International Journal of Environmental Research and Public Health*, *19*(3), 1250. <https://doi.org/10.3390/ijerph19031250>
 
@@ -759,6 +843,8 @@ Hautala, J., Hawelka, S., & Aro, M. (2022). Dual-stage and dual-deficit? Word re
 
 He, C., Rathbun, Z., Buonauro, D., Meyerhoff, H. S., Franconeri, S. L., Stieff, M., & Hegarty, M. (2022). Symmetry and spatial ability enhance change detection in visuospatial structures. *Memory & Cognition*, *50*(6), 1186--1200. <https://doi.org/10.3758/s13421-022-01332-z>
 
+He, X. (Stella), & Loewen, S. (2023). How to present L2 Chinese words effectively for learning: Exploring learning outcomes and learner perceptions. *Studies in Second Language Acquisition*, 1--23. <https://doi.org/10.1017/S0272263123000335>
+
 Hecksteden, A., Kellner, R., & Donath, L. (2022). Dealing with small samples in football research. *Science and Medicine in Football*, *6*(3), 389--397. <https://doi.org/10.1080/24733938.2021.1978106>
 
 Heffernan, K. S., Samonds, K. E., Godfrey, L. R., Raharison, J.-L., Ranaivoarisoa, J. F., & Irwin, M. T. (2022). Diademed sifakas (Propithecus diadema) in intact and degraded forest habitat at Tsinjoarivo, Madagascar, show high reproductive success and no evidence that dental senescence or rainfall affects reproductive output. *Folia Primatologica*, *93*(1), 21--40. <https://doi.org/10.1163/14219980-20210403>
@@ -793,13 +879,19 @@ Hoeboer, C. M., Oprel, D. A. C., Kooistra, M. J., Schoorl, M., Van Der Does, W.,
 
 Hoffman, P., Lambon Ralph, M. A., & Rogers, T. T. (2021). Semantic diversity is best measured with unscaled vectors: Reply to Cevoli, Watkins and Rastle (2020). *Behavior Research Methods*, *54*(4), 1688--1700. <https://doi.org/10.3758/s13428-021-01693-4>
 
+Hofmann, M. J., Mokros, A., & Schneider, S. (2023). The joy of being frightened: Fear experience in psychopathy. *Journal of Personality*, jopy.12890. <https://doi.org/10.1111/jopy.12890>
+
 Hofmann, M. J., Remus, S., Biemann, C., Radach, R., & Kuchinke, L. (2022). Language Models Explain Word Reading Times Better Than Empirical Predictability. *Frontiers in Artificial Intelligence*, *4*, 730570. <https://doi.org/10.3389/frai.2021.730570>
 
 Hogue, O., Harvey, T., Crozier, D., Sonneborn, C., Postle, A., Block-Beach, H., Somasundaram, E., May, F. J., Snyder Braun, M., Pasadyn, F. L., King, K., Johnson, C., Dolansky, M. A., Obuchowski, N. A., Machado, A. G., Baker, K. B., & Barnholtz-Sloan, J. S. (2022). Statistical practice and transparent reporting in the neurosciences: Preclinical motor behavioral experiments. *PLOS ONE*, *17*(3), e0265154. <https://doi.org/10.1371/journal.pone.0265154>
 
+Honert, E. C., Harrison, K., & Feeney, D. (2023). Evaluating wrapping alpine ski boots during on-snow carving. *Frontiers in Sports and Active Living*, *5*, 1192737. <https://doi.org/10.3389/fspor.2023.1192737>
+
 Honeycutt, D., DelBello, M., Strawn, J., Ramsey, L., Patino, L., Hinman, K., Welge, J., Miklowitz, D., Jo, B., Blom, T., Bruns, K., Hamill Skoch, S., Starace, N., Tallman, M., & Singh, M. (2022). A Double-Blind Randomized Trial to Investigate Mechanisms of Antidepressant-Related Dysfunctional Arousal in Depressed or Anxious Youth at Familial Risk for Bipolar Disorder. *Journal of Personalized Medicine*, *12*(6), 1006. <https://doi.org/10.3390/jpm12061006>
 
 Hong, I., Kim, M.-S., & Jeong, S. K. (2022). Flexibility and stability of habit learning depend on temporal signal variation. *Journal of Experimental Psychology: Learning, Memory, and Cognition*, *48*(1), 1--12. <https://doi.org/10.1037/xlm0001113>
+
+Horchak, O. V., & Garrido, M. V. (2022). Simulating background settings during spoken and written sentence comprehension. *Psychonomic Bulletin & Review*, *29*(4), 1426--1439. <https://doi.org/10.3758/s13423-022-02061-9>
 
 Horstman, L. I., Riem, M. M. E., Alyousefi-van Dijk, K., Lotz, A. M., & Bakermans-Kranenburg, M. J. (2022). Fathers' involvement in early childcare is associated with amygdala resting-state connectivity. *Social Cognitive and Affective Neuroscience*, *17*(2), 198--205. <https://doi.org/10.1093/scan/nsab086>
 
@@ -826,6 +918,10 @@ Hull, K. E., Overbeck, J. R., Smillie, L. D., & Howe, P. D. L. (2022). The P‐W
 Hullman, J., Kapoor, S., Nanayakkara, P., Gelman, A., & Narayanan, A. (2022). The Worst of Both Worlds: A Comparative Analysis of Errors in Learning from Data in Psychology and Machine Learning. *Proceedings of the 2022 AAAI/ACM Conference on AI, Ethics, and Society*, 335--348. <https://doi.org/10.1145/3514094.3534196>
 
 Hulme, R. C., Shapiro, L. R., & Taylor, J. S. H. (2022). Learning new words through reading: Do robust spelling--sound mappings boost learning of word forms and meanings? *Royal Society Open Science*, *9*(12), 210555. <https://doi.org/10.1098/rsos.210555>
+
+Ianì, F., Limata, T., Bucciarelli, M., & Mazzoni, G. (2023). The implicit effect of action mental simulation on action evaluation. *Quarterly Journal of Experimental Psychology*, *76*(2), 257--270. <https://doi.org/10.1177/17470218221091096>
+
+Ianì, F., Schaeken, W., Ras, I. N., & Bucciarelli, M. (2023). Motor imagery and engagement favour spatial reasoning. *Memory & Cognition*, *51*(5), 1103--1114. <https://doi.org/10.3758/s13421-022-01383-2>
 
 Iddi, S., & C Donohue, M. (2022). Power and Sample Size for Longitudinal Models in R -- The longpower Package and Shiny App. *The R Journal*, *14*(1), 264--282. <https://doi.org/10.32614/RJ-2022-022>
 
@@ -877,13 +973,21 @@ Johnson, B. P., Dayan, E., Censor, N., & Cohen, L. G. (2022). Crowdsourcing in C
 
 Jones, L. L., Kmiecik, M. J., Irwin, J. L., & Morrison, R. G. (2022). Differential effects of semantic distance, distractor salience, and relations in verbal analogy. *Psychonomic Bulletin & Review*, *29*(4), 1480--1491. <https://doi.org/10.3758/s13423-022-02062-8>
 
+Jost, L., & Jansen, P. (2022). Using linear mixed models to analyze learning processes within sessions improves detection of treatment effects: An exemplary study of chronometric mental rotation. *Methods in Psychology*, *6*, 100092. <https://doi.org/10.1016/j.metip.2022.100092>
+
 Juhasz, B. J. (2022). Using Eye Movements to Investigate the Impact of Childhood and Recent Frequency of Occurrence on Word Identification During Reading in College. *Scientific Studies of Reading*, *26*(5), 409--416. <https://doi.org/10.1080/10888438.2021.2021206>
 
+Jung, W., Peck, J., Palmeira, M., & Kim, K. (2022). An Unintended Consequence of Product Upgrades: How Upgrades Can Make Current Consumers Feel Left Behind. *Journal of Marketing Research*, *59*(5), 1019--1039. <https://doi.org/10.1177/00222437221078551>
+
 Kainec, K. A., Paracha, A. W., Ali, S., Bussa, R., Mantua, J., & Spencer, R. (2022). Age-related changes in sleep-dependent novel word consolidation. *Acta Psychologica*, *222*, 103478. <https://doi.org/10.1016/j.actpsy.2021.103478>
+
+Kajimura, S., Hoshino, T., & Murayama, K. (2023). Stimulus-specific random effects inflate false-positive classification accuracy in multivariate-voxel-pattern-analysis: A solution with generalized mixed-effects modelling. *NeuroImage*, *269*, 119901. <https://doi.org/10.1016/j.neuroimage.2023.119901>
 
 Kalashnikova, M., Onsuwan, C., & Burnham, D. (2022). Infants' Sensitivity to Lexical Tone and Word Stress in Their First Year: A Thai and English Cross-Language Study. *Language Learning and Development*, *18*(3), 278--293. <https://doi.org/10.1080/15475441.2021.1954928>
 
 Kalbe, F., & Schwabe, L. (2022). Prediction errors for aversive events shape long-term memory formation through a distinct neural mechanism. *Cerebral Cortex*, *32*(14), 3081--3097. <https://doi.org/10.1093/cercor/bhab402>
+
+Kalénine, S., & Decroix, J. (2023). The pain hidden in your hands: Facial expression of pain reduces the influence of goal-related information in action recognition. *Neuropsychologia*, *189*, 108658. <https://doi.org/10.1016/j.neuropsychologia.2023.108658>
 
 Kalra, H., Tran, T., Romero, L., Chandra, P., & Fisher, J. (2022). Burden of severe maternal peripartum mental disorders in low- and middle-income countries: A systematic review. *Archives of Women's Mental Health*, *25*(2), 267--275. <https://doi.org/10.1007/s00737-021-01201-9>
 
@@ -898,6 +1002,8 @@ Kang, S., Lu, M., Black, J. B., & Kim, S. (2022). Mindful movements matter: Diff
 Kang, X., & Ge, H. (2022). Tracking Object-State Representations During Real-Time Language Comprehension by Native and Non-native Speakers of English. *Frontiers in Psychology*, *13*, 819243. <https://doi.org/10.3389/fpsyg.2022.819243>
 
 Kanovský, M., Halamová, J., Strnádelová, B., Moro, R., & Bielikova, M. (2022). Pupil size variation in primary facial expressions--testing potential biomarker of self-criticism. *Artificial Intelligence Review*, *55*(3), 2001--2022. <https://doi.org/10.1007/s10462-021-10057-5>
+
+Karaduman, A., Karoglu-Eravsar, E. T., Kaya, U., Aydin, A., Adams, M. M., & Kafaligonul, H. (2023). Zebrafish optomotor response to second-order motion illustrates that age-related changes in motion detection depend on the activated motion system. *Neurobiology of Aging*, *130*, 12--21. <https://doi.org/10.1016/j.neurobiolaging.2023.06.005>
 
 Kardas, M., Schroeder, J., & O'Brien, E. (2022). Keep talking: (Mis)understanding the hedonic trajectory of conversation. *Journal of Personality and Social Psychology*, *123*(4), 717--740. <https://doi.org/10.1037/pspi0000379>
 
@@ -916,6 +1022,8 @@ Kelly, R. E., Ahmed, A. O., & Hoptman, M. J. (2022). What Do These Findings Tell
 Kelly, R. E., & Hoptman, M. J. (2022). Replicability in Brain Imaging. *Brain Sciences*, *12*(3), 397. <https://doi.org/10.3390/brainsci12030397>
 
 Kenny, B., Fuller-Tyszkiewicz, M., Moodie, M., Brown, V., & Williams, J. (2022). Bi-directional associations between depressive symptoms and eating disorder symptoms in early adolescence. *Body Image*, *42*, 246--256. <https://doi.org/10.1016/j.bodyim.2022.06.012>
+
+Kent, M. G., Huynh, N. K., Mishra, A. K., Tartarini, F., Lipczynska, A., Li, J., Sultan, Z., Goh, E., Karunagaran, G., Natarajan, A., Indrajith, A., Hendri, I., Narendra, K. I., Wu, V., Chin, N., Gao, C. P., Sapar, M., Seoh, A., Shuhadah, N., ... Schiavon, S. (2023). Energy savings and thermal comfort in a zero energy office building with fans in Singapore. *Building and Environment*, *243*, 110674. <https://doi.org/10.1016/j.buildenv.2023.110674>
 
 Kenwood, M. M., Kalin, N. H., & Barbas, H. (2022). The prefrontal cortex, pathological anxiety, and anxiety disorders. *Neuropsychopharmacology*, *47*(1), 260--275. <https://doi.org/10.1038/s41386-021-01109-z>
 
@@ -937,11 +1045,15 @@ Kim, M. J., Theriault, J., Hirschfeld-Kroen, J., & Young, L. (2022). Reframing o
 
 Kim, S., Elam, L., Johnson, V., Hess, A., Webb, T., Dow, S., & Duerr, F. (2022). Intra-Articular Injections of Allogeneic Mesenchymal Stromal Cells vs. High Molecular Weight Hyaluronic Acid in Dogs With Osteoarthritis: Exploratory Data From a Double-Blind, Randomized, Prospective Clinical Trial. *Frontiers in Veterinary Science*, *9*, 890704. <https://doi.org/10.3389/fvets.2022.890704>
 
+Kim, S., Shin, Y., Jeong, Y., Na, S., & Han, C. E. (2023). Autonomy support encourages use of more-affected arm post-stroke. *Journal of NeuroEngineering and Rehabilitation*, *20*(1), 116. <https://doi.org/10.1186/s12984-023-01238-0>
+
 Kim, Y., Richards, J. S., & Oldehinkel, A. J. (2022). Self-control, Mental Health Problems, and Family Functioning in Adolescence and Young Adulthood: Between-person Differences and Within-person Effects. *Journal of Youth and Adolescence*, *51*(6), 1181--1195. <https://doi.org/10.1007/s10964-021-01564-3>
 
 Kim, Y., Sommet, N., Na, J., & Spini, D. (2022). Social Class---Not Income Inequality---Predicts Social and Institutional Trust. *Social Psychological and Personality Science*, *13*(1), 186--198. <https://doi.org/10.1177/1948550621999272>
 
 Kim, Y.-S., Hofman, J. M., & Goldstein, D. G. (2022). Putting scientific results in perspective: Improving the communication of standardized effect sizes. *CHI Conference on Human Factors in Computing Systems*, 1--14. <https://doi.org/10.1145/3491102.3502053>
+
+Kimmet, F., Pedersen, S., Cardenas, V., Rubiera, C., Johnson, G., Sans, A., Baldwin, M., & Odegaard, B. (2023). Metacognition and Causal Inference in Audiovisual Speech. *Multisensory Research*, *36*(3), 289--311. <https://doi.org/10.1163/22134808-bja10094>
 
 King, D., & Gentner, D. (2022). Verb Metaphoric Extension Under Semantic Strain. *Cognitive Science*, *46*(5), e13141. <https://doi.org/10.1111/cogs.13141>
 
@@ -967,9 +1079,13 @@ Kong, X., Postema, M. C., Guadalupe, T., De Kovel, C., Boedhoe, P. S. W., Hoogma
 
 Kong, X.-Z., Zhang, C., Liu, Y., & Pu, Y. (2022). Scanning reproducible brain-wide associations: Sample size is all you need? *Psychoradiology*, *2*(3), 67--68. <https://doi.org/10.1093/psyrad/kkac010>
 
+Koo, H., Kataoka, R., Swan, J. T., & Tzeng, C. Y. (2023). Effects of lexical frequency on the post-exposure magnitude of recalibration in lexically guided perceptual learning: An explorative analysis. *JASA Express Letters*, *3*(8), 085201. <https://doi.org/10.1121/10.0020515>
+
 Körner, A., Castillo, M., Drijvers, L., Fischer, M. H., Günther, F., Marelli, M., Platonova, O., Rinaldi, L., Shaki, S., Trujillo, J. P., Tsaregorodtseva, O., & Glenberg, A. M. (2023). Embodied Processing at Six Linguistic Granularity Levels: A Consensus Paper. *Journal of Cognition*, *6*(1), 60. <https://doi.org/10.5334/joc.231>
 
 Korom, M., Camacho, M. C., Filippi, C. A., Licandro, R., Moore, L. A., Dufford, A., Zöllei, L., Graham, A. M., Spann, M., Howell, B., Shultz, S., & Scheinost, D. (2022). Dear reviewers: Responses to common reviewer critiques about infant neuroimaging studies. *Developmental Cognitive Neuroscience*, *53*, 101055. <https://doi.org/10.1016/j.dcn.2021.101055>
+
+Kovacs, P., & Ashby, F. G. (2022). On what it means to automatize a rule. *Cognition*, *226*, 105168. <https://doi.org/10.1016/j.cognition.2022.105168>
 
 Kowalczyk, O. S., Mehta, M. A., O'Daly, O. G., & Criaud, M. (2022). Task-Based Functional Connectivity in Attention-Deficit/Hyperactivity Disorder: A Systematic Review. *Biological Psychiatry Global Open Science*, *2*(4), 350--367. <https://doi.org/10.1016/j.bpsgos.2021.10.006>
 
@@ -991,6 +1107,8 @@ Kruijne, W., Galli, R. M., & Los, S. A. (2022). Implicitly learning when to be r
 
 Ku, L.-C., Allen, J. J. B., & Lai, V. T. (2022). Attention and regulation during emotional word comprehension in older adults: Evidence from event-related potentials and brain oscillations. *Brain and Language*, *227*, 105086. <https://doi.org/10.1016/j.bandl.2022.105086>
 
+Kuhl, U., Artelt, A., & Hammer, B. (2023). For Better or Worse: The Impact of Counterfactual Explanations' Directionality on User Behavior in xAI. In L. Longo (Ed.), *Explainable Artificial Intelligence* (Vol. 1903, pp. 280--300). Springer Nature Switzerland. <https://doi.org/10.1007/978-3-031-44070-0_14>
+
 Kuhlen, A. K., & Abdel Rahman, R. (2022). Mental chronometry of speaking in dialogue: Semantic interference turns into facilitation. *Cognition*, *219*, 104962. <https://doi.org/10.1016/j.cognition.2021.104962>
 
 Kulkarni, R. U., Wang, C. L., & Bertozzi, C. R. (2022). Analyzing nested experimental designs---A user-friendly resampling method to determine experimental significance. *PLOS Computational Biology*, *18*(5), e1010061. <https://doi.org/10.1371/journal.pcbi.1010061>
@@ -1007,6 +1125,8 @@ Kunst, J. R., Onyeador, I. N., & Dovidio, J. F. (2022). Knowledge About Individu
 
 Kutscheid, S., Zahner-Ritter, K., Leemann, A., & Braun, B. (2022). How prior experience with pitch accents shapes the perception of word and sentence stress. *Language, Cognition and Neuroscience*, *37*(1), 103--119. <https://doi.org/10.1080/23273798.2021.1946109>
 
+Kuzmina, Y., Marakshina, J., Lobaskova, M., Zakharov, I., Tikhomirova, T., & Malykh, S. (2023). The Interaction between Congruency and Numerical Ratio Effects in the Nonsymbolic Comparison Test. *Behavioral Sciences*, *13*(12), 983. <https://doi.org/10.3390/bs13120983>
+
 Kweon, H., Aydogan, G., Dagher, A., Bzdok, D., Ruff, C. C., Nave, G., Farah, M. J., & Koellinger, P. D. (2022). Human brain anatomy reflects separable genetic and environmental components of socioeconomic status. *Science Advances*, *8*(20), eabm2923. <https://doi.org/10.1126/sciadv.abm2923>
 
 Lador-Weizman, Y., & Deutsch, A. (2022). The contribution of consonants and vowels to auditory word recognition is shaped by language-specific properties: Evidence from Hebrew. *Journal of Experimental Psychology: Human Perception and Performance*, *48*(5), 401--426. <https://doi.org/10.1037/xhp0001000>
@@ -1019,6 +1139,8 @@ Lam, B. P. W., & Marquardt, T. P. (2022). Factors Predicting Mental Effort Assoc
 
 Lam, S. S. L., Liu, T. W., Ng, S. S. M., Lai, C. W. K., & Woo, J. (2022). Bilateral Movement-based Computer Games Improve Sensorimotor Functions in Subacute Stroke Survivors. *Journal of Rehabilitation Medicine*, *54*, jrm00307. <https://doi.org/10.2340/jrm.v54.913>
 
+Landau, B., Davis, E. E., Gürcanlı, Ö., & Wilson, C. (2023). How Does English Encode 'Tight' Vs. 'Loose-fit' Motion Events? It's Complicated. *Language Learning and Development*, 1--24. <https://doi.org/10.1080/15475441.2023.2196531>
+
 Landers, M. J. F., Meesters, S. P. L., Van Zandvoort, M., De Baene, W., & Rutten, G.-J. M. (2022). The frontal aslant tract and its role in executive functions: A quantitative tractography study in glioma patients. *Brain Imaging and Behavior*, *16*(3), 1026--1039. <https://doi.org/10.1007/s11682-021-00581-x>
 
 Landry, É. R., Guitard, D., & Saint-Aubin, J. (2022). Arousal affects short-term serial recall. *Canadian Journal of Experimental Psychology / Revue Canadienne de Psychologie Expérimentale*, *76*(2), 99--110. <https://doi.org/10.1037/cep0000272>
@@ -1026,6 +1148,10 @@ Landry, É. R., Guitard, D., & Saint-Aubin, J. (2022). Arousal affects short-ter
 Lang, M., Chvaja, R., Grant Purzycki, B., Václavík, D., & Staněk, R. (2022). Advertising cooperative phenotype through costly signals facilitates collective action. *Royal Society Open Science*, *9*(5), 202202. <https://doi.org/10.1098/rsos.202202>
 
 Lang, X., Wang, D., Chen, D., Xiu, M., Zhou, H., Wang, L., Cao, B., & Zhang, X. (2022). Association Between Hippocampal Subfields and Clinical Symptoms of First-Episode and Drug Naive Schizophrenia Patients During 12 Weeks of Risperidone Treatment. *Neurotherapeutics*, *19*(1), 399--407. <https://doi.org/10.1007/s13311-021-01174-8>
+
+Larson, C., Crespo, K., Kaushanskaya, M., & Ellis Weismer, S. (2022). Are items actively removed from working memory during *free time* in children with developmental language disorder? *International Journal of Language & Communication Disorders*, *57*(5), 1006--1022. <https://doi.org/10.1111/1460-6984.12735>
+
+Larson, C., Mathée-Scott, J., Kaplan, D., & Weismer, S. E. (2023). Cognitive processes associated with working memory in children with developmental language disorder. *Journal of Experimental Child Psychology*, *234*, 105709. <https://doi.org/10.1016/j.jecp.2023.105709>
 
 Larson, C., Rivera-Figueroa, K., Thomas, H. R., Fein, D., Stevens, M. C., & Eigsti, I.-M. (2022). Structural language impairment in Autism Spectrum Disorder versus Loss of Autism Diagnosis: Behavioral and neural characteristics. *NeuroImage: Clinical*, *34*, 103043. <https://doi.org/10.1016/j.nicl.2022.103043>
 
@@ -1041,7 +1167,11 @@ Lawrence, J. F., Knoph, R., McIlraith, A., Kulesz, P. A., & Francis, D. J. (2022
 
 Leblanc, É., Dégeilh, F., Beauchamp, M. H., & Bernier, A. (2022). Disorganized attachment behaviors in infancy as predictors of brain morphology and peer rejection in late childhood. *Cognitive, Affective, & Behavioral Neuroscience*, *22*(4), 833--848. <https://doi.org/10.3758/s13415-022-00987-0>
 
+Lee, J., & Yoon, S.-Y. (2023). Nature and patient waiting: Mediating effects of anxiety and perceived wait time on the association between nature and service perception. *Journal of Environmental Psychology*, *91*, 102113. <https://doi.org/10.1016/j.jenvp.2023.102113>
+
 Lee, Y., & Warneken, F. (2022). Does third-party punishment in children aim at equality? *Developmental Psychology*, *58*(5), 866--873. <https://doi.org/10.1037/dev0001331>
+
+Lees, J., Todd, H., & Barranti, M. (2023). Women, the intellectually humble, and liberals write more persuasive political arguments. *PNAS Nexus*, *2*(5), pgad143. <https://doi.org/10.1093/pnasnexus/pgad143>
 
 Lees, J., Young, L., & Waytz, A. (2022). Morally questionable actors' meta-perceptions are accurate but overly positive. *Journal of Experimental Social Psychology*, *102*, 104371. <https://doi.org/10.1016/j.jesp.2022.104371>
 
@@ -1051,7 +1181,13 @@ Levari, D. E. (2022). Range-frequency effects can explain and eliminate prevalen
 
 Lewis, G., Towlson, C., Roversi, P., Domogalla, C., Herrington, L., & Barrett, S. (2022). Quantifying volume and high-speed technical actions of professional soccer players using foot-mounted inertial measurement units. *PLOS ONE*, *17*(2), e0263518. <https://doi.org/10.1371/journal.pone.0263518>
 
+Lewis, M. A., Zhou, Z., Fairlie, A. M., Litt, D. M., Kannard, E., Resendiz, R., Walker, T., Seamster, M., Garcia, T., & Lee, C. M. (2023). Occasion-level investigation of playing drinking games: Associations with cognitions, situational factors, alcohol use, and negative consequences among adolescents and young adults. *Addictive Behaviors*, *137*, 107497. <https://doi.org/10.1016/j.addbeh.2022.107497>
+
+Li, J., Chu, Y., & Xu, J. (2023). Impression transference from AI to human: The impact of AI's fairness on interpersonal perception in AI-Mediated communication. *International Journal of Human-Computer Studies*, *179*, 103119. <https://doi.org/10.1016/j.ijhcs.2023.103119>
+
 Li, L.-L., He, R., Pansini, R., & Quan, R.-C. (2022). Prolonged proximity to humans ensures better performance of semi-captive Asian elephants at discriminating between human individuals by voice. *Frontiers in Ecology and Evolution*, *10*, 963052. <https://doi.org/10.3389/fevo.2022.963052>
+
+Li, N., Dimigen, O., Sommer, W., & Wang, S. (2022). Parafoveal words can modulate sentence meaning: Electrophysiological evidence from an RSVP ‐with‐flanker task. *Psychophysiology*, *59*(9), e14053. <https://doi.org/10.1111/psyp.14053>
 
 Li, N.-X., Hu, Y.-R., Chen, W.-N., & Zhang, B. (2022). Dose effect of psilocybin on primary and secondary depression: A preliminary systematic review and meta-analysis. *Journal of Affective Disorders*, *296*, 26--34. <https://doi.org/10.1016/j.jad.2021.09.041>
 
@@ -1059,17 +1195,25 @@ Li, W., Germine, L. T., Mehr, S. A., Srinivasan, M., & Hartshorne, J. (2022). De
 
 Li, X., Luo, D., Wang, C., Xia, Y., & Jin, H. (2022). Motor features of abstract verbs determine their representations in the motor system. *Frontiers in Psychology*, *13*, 957426. <https://doi.org/10.3389/fpsyg.2022.957426>
 
+Li, X., & Qu, Q. (2023). Verbal working memory capacity modulates semantic and phonological prediction in spoken comprehension. *Psychonomic Bulletin & Review*. <https://doi.org/10.3758/s13423-023-02348-5>
+
 Li, Y., & Bi, H.-Y. (2022). Comparative research on neural dysfunction in children with dyslexia under different writing systems: A meta-analysis study. *Neuroscience & Biobehavioral Reviews*, *137*, 104650. <https://doi.org/10.1016/j.neubiorev.2022.104650>
+
+Li, Y., Luo, P., Song, Y., Zhang, L., Qu, Y., & Hou, Z. (2023). A locally explained heterogeneity model for examining wetland disparity. *International Journal of Digital Earth*, *16*(2), 4533--4552. <https://doi.org/10.1080/17538947.2023.2271883>
 
 Li, Y., & Siew, C. S. Q. (2022). Diachronic semantic change in language is constrained by how people use and learn language. *Memory & Cognition*, *50*(6), 1284--1298. <https://doi.org/10.3758/s13421-022-01331-0>
 
 Li, Z., Crinnion, A. M., & Magnuson, J. S. (2021). LexFindR: A fast, simple, and extensible R package for finding similar words in a lexicon. *Behavior Research Methods*, *54*(3), 1388--1402. <https://doi.org/10.3758/s13428-021-01667-6>
+
+Li, Z., Wu, S., & Liu, D. (2023). The effects of context, story-type, and language proficiency on EFL word learning and retention from reading. *International Review of Applied Linguistics in Language Teaching*, *0*(0). <https://doi.org/10.1515/iral-2023-0155>
 
 Liang, M., Ahmad, F., & Dickinson, R. (2022). Neuroprotection by the noble gases argon and xenon as treatments for acquired brain injury: A preclinical systematic review and meta-analysis. *British Journal of Anaesthesia*, *129*(2), 200--218. <https://doi.org/10.1016/j.bja.2022.04.016>
 
 Liang, Y., Xu, G., & Ur Rehman, S. (2022). Multi-Scale Attention-Based Deep Neural Network for Brain Disease Diagnosis. *Computers, Materials & Continua*, *72*(3), 4645--4661. <https://doi.org/10.32604/cmc.2022.026999>
 
 Liao, X., & Ni, C. (2022). The effects of emotionality and lexical category on L2 word processing in different tasks: Evidence from late Chinese--English bilinguals. *Quarterly Journal of Experimental Psychology*, *75*(5), 907--923. <https://doi.org/10.1177/17470218211041833>
+
+Libersky, E., Crespo, K., Reppe, A., & Kaushanskaya, M. (2023). Effects of bilingualism on autobiographical memory: Variation in idea density and retrieval speed. *Memory*, *31*(4), 491--501. <https://doi.org/10.1080/09658211.2023.2171435>
 
 Liceralde, V. R. T., Loukina, A., Beigman Klebanov, B., & Lockwood, J. R. (2022). Beyond text complexity: Production-related sources of text-based variability in oral reading fluency. *Journal of Educational Psychology*, *114*(1), 16--36. <https://doi.org/10.1037/edu0000532>
 
@@ -1080,6 +1224,8 @@ Lim, S. M., Shiau, C. W. C., Cheng, L. J., & Lau, Y. (2022). Chatbot-Delivered P
 Limumpornpetch, P., Morgan, A. W., Tiganescu, A., Baxter, P. D., Nyawira Nyaga, V., Pujades-Rodriguez, M., & Stewart, P. M. (2022). The Effect of Endogenous Cushing Syndrome on All-cause and Cause-specific Mortality. *The Journal of Clinical Endocrinology & Metabolism*, *107*(8), 2377--2388. <https://doi.org/10.1210/clinem/dgac265>
 
 Lin, E., & Schmid, P. C. (2022). Does power increase attention to rewards? Examining the brain and behavior. *Journal of Experimental Social Psychology*, *101*, 104332. <https://doi.org/10.1016/j.jesp.2022.104332>
+
+Lin, Y., Peng, G., Bruner, D. W., Miller, A. H., Saba, N. F., Higgins, K. A., Shin, D. M., Claussen, H., Johnston, H. R., Houser, M. C., Wommack, E. C., & Xiao, C. (2023). Associations of differentially expressed genes with psychoneurological symptoms in patients with head and neck cancer: A longitudinal study. *Journal of Psychosomatic Research*, *175*, 111518. <https://doi.org/10.1016/j.jpsychores.2023.111518>
 
 Lindell, T. A. E., Zickfeld, J. H., & Reber, R. (2022). The role of affect in late perceptual processes: Evidence from bi-stable illusions, object identification, and mental rotation. *Journal of Experimental Psychology: Human Perception and Performance*, *48*(12), 1347--1361. <https://doi.org/10.1037/xhp0001059>
 
@@ -1097,6 +1243,8 @@ Liu, M. (2022). Mental Imagery and Polysemy Processing. *Journal of Consciousnes
 
 Liu, S., Hong, D., Huang, J., Wang, S., Liu, X., Branigan, H. P., & Pickering, M. J. (2022). Syntactic priming across highly similar languages is not affected by language proficiency. *Language, Cognition and Neuroscience*, *37*(4), 469--480. <https://doi.org/10.1080/23273798.2021.1994620>
 
+Liu, Z., Wang, Y., Ata-UI-Karim, S. T., Liu, X., Tian, Y., Zhu, Y., Cao, W., & Cao, Q. (2023). Developing a nitrogen application estimation model for diverse wheat fields: A user-friendly approach for smallholder nitrogen fertilizer recommendations. *European Journal of Agronomy*, *151*, 126984. <https://doi.org/10.1016/j.eja.2023.126984>
+
 Livingston, N., Leviyah, X., Ameral, V., Hocking, E., & Timko, C. (2022). Scoping review of intervention studies to improve opioid and alcohol use outcomes and links to care following inpatient detoxification. *Addiction Research & Theory*, *30*(2), 134--148. <https://doi.org/10.1080/16066359.2021.1955356>
 
 Lluesma-Vidal, M., Carcelén González, R., García-Garcés, L., Sánchez-López, M. I., Peyro, L., & Ruiz-Zaldibar, C. (2022). Effect of Virtual Reality on Pediatric Pain and Fear During Procedures Involving Needles: Systematic Review and Meta-analysis. *JMIR Serious Games*, *10*(3), e35008. <https://doi.org/10.2196/35008>
@@ -1112,6 +1260,8 @@ Lu, L., Phua, Q. S., Bacchi, S., Goh, R., Gupta, A. K., Kovoor, J. G., Ovenden, 
 Lucas, R. E. (2022). Editorial. *Journal of Personality and Social Psychology*, *122*(1), 102--105. <https://doi.org/10.1037/pspp0000403>
 
 Ludwig, B., Wölfel, P., Greenberg, I., Piepho, H., & Spörlein, P. (2022). Application of mixed‐effects modelling and rule‐based models to explain copper variation in soil profiles of southern Germany. *European Journal of Soil Science*, *73*(3), e13258. <https://doi.org/10.1111/ejss.13258>
+
+Lundqvist, S., Cider, Å., Larsson, M. E. H., Hagberg, L., Björk, M. P., & Börjesson, M. (2022). The effects of a 5-year physical activity on prescription (PAP) intervention in patients with metabolic risk factors. *PLOS ONE*, *17*(10), e0276868. <https://doi.org/10.1371/journal.pone.0276868>
 
 Łuniewska, M., Wójcik, M., Kołak, J., Mieszkowska, K., Wodniecka, Z., & Haman, E. (2022). Word knowledge and lexical access in monolingual and bilingual migrant children: Impact of word properties. *Language Acquisition*, *29*(2), 135--164. <https://doi.org/10.1080/10489223.2021.1973475>
 
@@ -1129,6 +1279,8 @@ Macêdo, M. A., Sato, J. R., Bressan, R. A., & Pan, P. M. (2022). Adolescent dep
 
 MacGregor, K. A., Rodriguez-Sanchez, N., Di Virgilio, T. G., Barwell, N. D., Gallagher, I. J., & Moran, C. N. (2022). Changes in adipose tissue microRNA expression across the menstrual cycle in regularly menstruating females: A pilot study. *Physiological Genomics*, *54*(1), 1--10. <https://doi.org/10.1152/physiolgenomics.00088.2021>
 
+Mackie, D. M., Smith, E. R., Banerji, I., & Munasinghe, A. (2023). Group-based emotion processes generalize across group exemplars and types. *Group Processes & Intergroup Relations*, 13684302231166856. <https://doi.org/10.1177/13684302231166856>
+
 MacMillan, M. B., Field, H. R., Neath, I., & Surprenant, A. M. (2022). Valence does not affect recognition. *Canadian Journal of Experimental Psychology / Revue Canadienne de Psychologie Expérimentale*, *76*(2), 111--121. <https://doi.org/10.1037/cep0000275>
 
 Madan, C. R. (2022). Scan Once, Analyse Many: Using Large Open-Access Neuroimaging Datasets to Understand the Brain. *Neuroinformatics*, *20*(1), 109--137. <https://doi.org/10.1007/s12021-021-09519-6>
@@ -1145,11 +1297,17 @@ Malbec, M., Hindmarsh, J. N., Jongerling, J., Franken, I. H., & Wieser, M. J. (2
 
 Malén, T., Karjalainen, T., Isojärvi, J., Vehtari, A., Bürkner, P.-C., Putkinen, V., Kaasinen, V., Hietala, J., Nuutila, P., Rinne, J., & Nummenmaa, L. (2022). Atlas of type 2 dopamine receptors in the human brain: Age and sex dependent variability in a large PET cohort. *NeuroImage*, *255*, 119149. <https://doi.org/10.1016/j.neuroimage.2022.119149>
 
+Malloy, C. S., Hughes, C., & Cassidy, B. S. (2023). Perceiver and target partisanship shift facial trustworthiness effects on likability. *Scientific Reports*, *13*(1), 6130. <https://doi.org/10.1038/s41598-023-33307-8>
+
+Malykh, S., Tarasov, S., Baeva, I., Nikulchev, E., Kolyasnikov, P., Ilin, D., Marnevskaia, I., Malykh, A., Ismatullina, V., & Kuzmina, Y. (2023). Large-scale study of the precision of the approximate number system: Differences between formats, heterogeneity and congruency effects. *Heliyon*, *9*(4), e14912. <https://doi.org/10.1016/j.heliyon.2023.e14912>
+
 Maneejuk, P., Yamaka, W., & Sriboonchitta, S. (2022). Entropy inference in smooth transition kink regression. *Communications in Statistics - Simulation and Computation*, *51*(12), 7366--7389. <https://doi.org/10.1080/03610918.2020.1836214>
 
 Maneejuk, P., Yamaka, W., & Srichaikul, W. (2022). Tourism Development and Economic Growth in Southeast Asian Countries under the Presence of Structural Break: Panel Kink with GME Estimator. *Mathematics*, *10*(5), 723. <https://doi.org/10.3390/math10050723>
 
 Marek, S., Tervo-Clemmens, B., Calabro, F. J., Montez, D. F., Kay, B. P., Hatoum, A. S., Donohue, M. R., Foran, W., Miller, R. L., Hendrickson, T. J., Malone, S. M., Kandala, S., Feczko, E., Miranda-Dominguez, O., Graham, A. M., Earl, E. A., Perrone, A. J., Cordova, M., Doyle, O., ... Dosenbach, N. U. F. (2022). Reproducible brain-wide association studies require thousands of individuals. *Nature*, *603*(7902), 654--660. <https://doi.org/10.1038/s41586-022-04492-9>
+
+Mari, M. A., & Müller, M.-L. (2023). Social cognition and Relevance: How stereotypes impact the processing of definite and indefinite descriptions. *Frontiers in Communication*, *8*, 1088861. <https://doi.org/10.3389/fcomm.2023.1088861>
 
 Marinucci, M., Pancani, L., Aureli, N., & Riva, P. (2022). Online social connections as surrogates of face-to-face interactions: A longitudinal study under Covid-19 isolation. *Computers in Human Behavior*, *128*, 107102. <https://doi.org/10.1016/j.chb.2021.107102>
 
@@ -1159,7 +1317,15 @@ Marozzi, M., & Marmolejo-Ramos, F. (2022). Composite indicators in experimental 
 
 Marris, J., Barrett, S., Abt, G., & Towlson, C. (2022). Quantifying technical actions in professional soccer using foot-mounted inertial measurement units. *Science and Medicine in Football*, *6*(2), 203--214. <https://doi.org/10.1080/24733938.2021.1910333>
 
+Masia, V., Garassino, D., Brocca, N., & De Saussure, L. (2023). Recalling presupposed information: Evidence from the online processing of presuppositions in political tweets. *Pragmatics & Cognition*, *30*(1), 92--119. <https://doi.org/10.1075/pc.22011.mas>
+
+Maskor, M., Fladerer, M. P., Fong, P., Steffens, N. K., & Haslam, S. A. (2023). The fish can rot from the heart, not just the head: Exploring the detrimental impact of transgressions by leaders at multiple levels of an organization. *British Journal of Social Psychology*, *62*(1), 431--455. <https://doi.org/10.1111/bjso.12551>
+
+Masuccio, F. G., Grange, E., Di Giovanni, R., Marengo, D., Prosperini, L., & Solaro, C. (2023). Evaluation of mild-to-moderate COVID-19 through dual-task paradigm: A longitudinal case-controlled study. *Neurological Sciences*, *44*(12), 4167--4177. <https://doi.org/10.1007/s10072-023-07137-5>
+
 Mateu, V., & Sundara, M. (2022). Spanish input accelerates bilingual infants' segmentation of English words. *Cognition*, *218*, 104936. <https://doi.org/10.1016/j.cognition.2021.104936>
+
+Mathis, A., & Papafragou, A. (2022). Agents' goals affect construal of event endpoints. *Journal of Memory and Language*, *127*, 104373. <https://doi.org/10.1016/j.jml.2022.104373>
 
 Mattfeld, A. T. (2022). Comparative Tasks for Comparative Neurophysiology. In R. P. Vertes & T. Allen (Eds.), *Electrophysiological Recording Techniques* (Vol. 192, pp. 193--220). Springer US. <https://doi.org/10.1007/978-1-0716-2631-3_9>
 
@@ -1177,7 +1343,11 @@ May, R. J., Tyndall, I., McTiernan, A., Roderique‐Davies, G., & McLoughlin, S.
 
 Mayer, M., & Heck, D. W. (2022). Sequential collaboration: The accuracy of dependent, incremental judgments. *Decision*. <https://doi.org/10.1037/dec0000193>
 
+Mazzei, R., Emery, Y., Soares, M. C., & Bshary, R. (2023). Dominance is associated with reduced cleaning activity in group-living Elacatinus prochilos gobies. *Animal Behaviour*, *206*, 29--38. <https://doi.org/10.1016/j.anbehav.2023.09.001>
+
 McClannahan, K. S., Mainardi, A., Luor, A., Chiu, Y.-F., Sommers, M. S., & Peelle, J. E. (2022). Spoken Word Recognition in Listeners with Mild Dementia Symptoms. *Journal of Alzheimer's Disease*, *90*(2), 749--759. <https://doi.org/10.3233/JAD-215606>
+
+McFadden, B. A., Vincenty, C. S., Chandler, A. J., Cintineo, H. P., Lints, B. S., Mastrofini, G. F., & Arent, S. M. (2023). Effects of fucoidan supplementation on inflammatory and immune response after high-intensity exercise. *Journal of the International Society of Sports Nutrition*, *20*(1), 2224751. <https://doi.org/10.1080/15502783.2023.2224751>
 
 McFeaters, C. D., & Voyer, D. (2022). Identifying spatial effects in a lateralized duration estimation task. *Laterality*, *27*(2), 190--220. <https://doi.org/10.1080/1357650X.2021.1966436>
 
@@ -1203,13 +1373,21 @@ Mehrabi, S., Muñoz, J. E., Basharat, A., Boger, J., Cao, S., Barnett-Cowan, M.,
 
 Meier, K. J., Song, M., Davis, J. A., & Amirkhanyan, A. A. (2022). Sector Bias and the Credibility of Performance Information: An Experimental Study of Elder Care Provision. *Public Administration Review*, *82*(1), 69--82. <https://doi.org/10.1111/puar.13425>
 
+Meijer, D., & Noppeney, U. (2023). Metacognition in the audiovisual McGurk illusion: Perceptual and causal confidence. *Philosophical Transactions of the Royal Society B: Biological Sciences*, *378*(1886), 20220348. <https://doi.org/10.1098/rstb.2022.0348>
+
 Mellinger, C. D., & Hanson, T. A. (2022). Research data. In F. Zanettin & C. Rundle, *The Routledge Handbook of Translation and Methodology* (1st ed., pp. 307--323). Routledge. <https://doi.org/10.4324/9781315158945-23>
 
 Mendes, A. J., Pacheco-Barrios, K., Lema, A., Gonçalves, Ó. F., Fregni, F., Leite, J., & Carvalho, S. (2022). Modulation of the cognitive event-related potential P3 by transcranial direct current stimulation: Systematic review and meta-analysis. *Neuroscience & Biobehavioral Reviews*, *132*, 894--907. <https://doi.org/10.1016/j.neubiorev.2021.11.002>
 
 Mendes, P. S., & Undorf, M. (2022). On the pervasive effect of word frequency in metamemory. *Quarterly Journal of Experimental Psychology*, *75*(8), 1411--1427. <https://doi.org/10.1177/17470218211053329>
 
+Menendez, D., Brown, S. A., & Alibali, M. W. (2023). Some Correct Strategies Are Better Than Others: Individual Differences in Strategy Evaluations Are Related to Strategy Adoption. *Cognitive Science*, *47*(3), e13269. <https://doi.org/10.1111/cogs.13269>
+
+Menendez, D., Sabbagh, N. F., Alibali, M. W., & Rosengren, K. S. (2023). Timelines or time cycles: Exposure to different spatial representations of time influences sketching and diagram preferences. *Educational Research for Policy and Practice*. <https://doi.org/10.1007/s10671-023-09331-w>
+
 Meng, D., Wang, S., Wong, P. C. M., & Feng, G. (2022). Generalizable predictive modeling of semantic processing ability from functional brain connectivity. *Human Brain Mapping*, *43*(14), 4274--4292. <https://doi.org/10.1002/hbm.25953>
+
+Merck, C., Noël, A., Jamet, E., Robert, M., Salmon, A., Belliard, S., & Kalénine, S. (2023). Nonspecific Effects of Normal Aging on Taxonomic and Thematic Semantic Processing. *Experimental Aging Research*, *49*(1), 18--40. <https://doi.org/10.1080/0361073X.2022.2046948>
 
 Mertens, G., & Krypotos, A.-M. (2022). Preregistration of Studies with Existing Data. In J. Faintuch & S. Faintuch (Eds.), *Integrity of Scientific Research* (pp. 361--370). Springer International Publishing. <https://doi.org/10.1007/978-3-030-99680-2_36>
 
@@ -1241,6 +1419,10 @@ Miller, J. D. (2022). Editorial for Personality Disorders: Theory, Research, and
 
 Miller, J., & Ulrich, R. (2022). Optimizing Research Output: How Can Psychological Research Methods Be Improved? *Annual Review of Psychology*, *73*(1), 691--718. <https://doi.org/10.1146/annurev-psych-020821-094927>
 
+Miller-Goldwater, H. E., Cronin-Golomb, L. M., Hanft, M. H., & Bauer, P. J. (2023). The influence of books' textual features and caregivers' extratextual talk on children's science learning in the context of shared book reading. *Developmental Psychology*, *59*(2), 390--411. <https://doi.org/10.1037/dev0001480>
+
+Miller-Goldwater, H. E., Hanft, M. H., Miller, A. G., & Bauer, P. J. (2023). Young Children's Science Learning from Narrative Books: The Role of Text Cohesion and Caregivers' Extratextual Talk. *Journal of Cognition and Development*, 1--27. <https://doi.org/10.1080/15248372.2023.2267229>
+
 Milleville, S. C., Gotts, S. J., Wittig, J. H., Inati, S. K., Zaghloul, K. A., & Martin, A. (2022). Distinct deficits of repetition priming following lateral versus anteromedial frontal cortex damage. *Neuropsychologia*, *170*, 108212. <https://doi.org/10.1016/j.neuropsychologia.2022.108212>
 
 Milligan, S., Antúnez, M., Barber, H. A., & Schotter, E. R. (2023). Are eye movements and EEG on the same page?: A coregistration study on parafoveal preview and lexical frequency. *Journal of Experimental Psychology: General*, *152*(1), 188--210. <https://doi.org/10.1037/xge0001278>
@@ -1265,6 +1447,8 @@ Molenmaker, W. E., Lelieveld, G., De Kwaadsteniet, E. W., & Van Dijk, E. (2022).
 
 Molina-García, J., Menescardi, C., Estevan, I., & Queralt, A. (2021). Associations between Park and Playground Availability and Proximity and Children's Physical Activity and Body Mass Index: The BEACH Study. *International Journal of Environmental Research and Public Health*, *19*(1), 250. <https://doi.org/10.3390/ijerph19010250>
 
+Monaco, E., Mouthon, M., Britz, J., Sato, S., Stefanos-Yakoub, I., Annoni, J. M., & Jost, L. B. (2023). Embodiment of action-related language in the native and a late foreign language -- An fMRI-study. *Brain and Language*, *244*, 105312. <https://doi.org/10.1016/j.bandl.2023.105312>
+
 Monson, C. M., Wagner, A. C., Crenshaw, A. O., Whitfield, K. M., Newnham, C. M., Valela, R., Varma, S., Di Bartolomeo, A. A., Fulham, L., Collins, A., Donkin, V., Mensah, D. H., Landy, M. S. H., Samonas, C., Morland, L., Doss, B. D., & Fitzpatrick, S. (2022). An uncontrolled trial of couple HOPES: A guided online couple intervention for PTSD and relationship enhancement. *Journal of Family Psychology*, *36*(6), 1036--1042. <https://doi.org/10.1037/fam0000976>
 
 Monster, I., Tellings, A., Burk, W. J., Keuning, J., Segers, E., & Verhoeven, L. (2022). Word Properties Predicting Children's Word Recognition. *Scientific Studies of Reading*, *26*(5), 373--389. <https://doi.org/10.1080/10888438.2021.2020795>
@@ -1281,17 +1465,25 @@ Morin, E. L., Garza, K. M., Aoued, H., Sannigrahi, S., Siebert, E. R., Howell, B
 
 Moroshkina, N. V., Savina, A. I., Ammalainen, A. V., Gershkovich, V. A., Zverev, I. V., & Lvova, O. V. (2022). How Difficult Was It? Metacognitive Judgments About Problems and Their Solutions After the Aha Moment. *Frontiers in Psychology*, *13*, 911904. <https://doi.org/10.3389/fpsyg.2022.911904>
 
+Morris, A., O'Connor, B. B., & Cushman, F. (2022). The role of episodic simulation in motivating commonplace harms. *Cognition*, *225*, 105104. <https://doi.org/10.1016/j.cognition.2022.105104>
+
+Morris, M., Coste, G. I., Redding-Ochoa, J., Guo, H., Graves, A. R., Troncoso, J. C., & Huganir, R. L. (2023). Hippocampal synaptic alterations associated with tau pathology in primary age-related tauopathy. *Journal of Neuropathology & Experimental Neurology*, *82*(10), 836--844. <https://doi.org/10.1093/jnen/nlad064>
+
 Morys, F., Shishikura, M., & Dagher, A. (2022). Population-based research in obesity -- An overview of neuroimaging studies using big data approach. *Current Opinion in Endocrine and Metabolic Research*, *23*, 100323. <https://doi.org/10.1016/j.coemr.2022.100323>
 
 Mostoufi, S. L., & Singh, N. D. (2022). Diet-induced changes in titer support a discrete response of *Wolbachia* -associated plastic recombination in *Drosophila melanogaster*. *G3 Genes|Genomes|Genetics*, *12*(1), jkab375. <https://doi.org/10.1093/g3journal/jkab375>
 
 Motoki, K., Saito, T., & Velasco, C. (2022). Spontaneous crossmodal correspondences grounded in contexts. *Food Quality and Preference*, *100*, 104619. <https://doi.org/10.1016/j.foodqual.2022.104619>
 
+Mueller, S. A. L., Oler, J. A., Roseboom, P. H., Aggarwal, N., Kenwood, M. M., Riedel, M. K., Elam, V. R., Olsen, M. E., DiFilippo, A. H., Christian, B. T., Hu, X., Galvan, A., Boehm, M. A., Michaelides, M., & Kalin, N. H. (2023). DREADD-mediated amygdala activation is sufficient to induce anxiety-like responses in young nonhuman primates. *Current Research in Neurobiology*, *5*, 100111. <https://doi.org/10.1016/j.crneur.2023.100111>
+
 Muhr, P. (2022). *From Photography to fMRI: Epistemic Functions of Images in Medical Research on Hysteria* (1st ed., Vol. 209). transcript Verlag. <https://doi.org/10.14361/9783839461761>
 
 Mukai, T., Nishio, K., Komatsu, H., & Sasaki, M. (2022). What effect does feedback have on energy conservation? Comparing previous household usage, neighbourhood usage, and social norms in Japan. *Energy Research & Social Science*, *86*, 102430. <https://doi.org/10.1016/j.erss.2021.102430>
 
 Müller, N., Nagels, A., & Kauschke, C. (2022). Metaphorical expressions originating from human senses: Psycholinguistic and affective norms for German metaphors for internal state terms (MIST database). *Behavior Research Methods*, *54*(1), 365--377. <https://doi.org/10.3758/s13428-021-01639-w>
+
+Müller, T., Husain, M., & Apps, M. A. J. (2022). Preferences for seeking effort or reward information bias the willingness to work. *Scientific Reports*, *12*(1), 19486. <https://doi.org/10.1038/s41598-022-21917-7>
 
 Mulligan, N. W., Buchin, Z. L., & Zhang, A. L. (2022). The testing effect with free recall: Organization, attention, and order effects. *Journal of Memory and Language*, *125*, 104333. <https://doi.org/10.1016/j.jml.2022.104333>
 
@@ -1304,6 +1496,8 @@ Murphy, D. H., & Castel, A. D. (2022a). Differential effects of proactive and re
 Murphy, D. H., & Castel, A. D. (2022b). Selective remembering and directed forgetting are influenced by similar stimulus properties. *Memory*, *30*(9), 1130--1147. <https://doi.org/10.1080/09658211.2022.2092152>
 
 Murphy, D. H., Huckins, S. C., Rhodes, M. G., & Castel, A. D. (2022). The effect of perceptual processing fluency and value on metacognition and remembering. *Psychonomic Bulletin & Review*, *29*(3), 910--921. <https://doi.org/10.3758/s13423-021-02030-8>
+
+Murray, S., Jiménez‐Leal, W., & Amaya, S. (2023). Within your rights: Dissociating wrongness and permissibility in moral judgement. *British Journal of Social Psychology*, bjso.12680. <https://doi.org/10.1111/bjso.12680>
 
 Musslick, S., Cherkaev, A., Draut, B., Butt, A. S., Darragh, P., Srikumar, V., Flatt, M., & Cohen, J. D. (2021). SweetPea: A standard language for factorial experimental design. *Behavior Research Methods*, *54*(2), 805--829. <https://doi.org/10.3758/s13428-021-01598-2>
 
@@ -1330,6 +1524,10 @@ Nemati, F., Westbury, C., Hollis, G., & Haghbin, H. (2022). The Persian Lexicon 
 Neo, H. S., Tan, J. H., Ang, W. H. D., & Lau, Y. (2022). Internet-delivered psychological interventions for reducing depressive, anxiety symptoms and fear of childbirth in pregnant women: A meta-analysis and meta-regression. *Journal of Psychosomatic Research*, *157*, 110790. <https://doi.org/10.1016/j.jpsychores.2022.110790>
 
 Neudorf, J., Gould, L., Mickleborough, M. J. S., Ekstrand, C., & Borowsky, R. (2022). Unique, Shared, and Dominant Brain Activation in Visual Word Form Area and Lateral Occipital Complex during Reading and Picture Naming. *Neuroscience*, *481*, 178--196. <https://doi.org/10.1016/j.neuroscience.2021.11.022>
+
+Neveu, A., & Kaushanskaya, M. (2023). Paired-associate versus cross-situational: How do verbal working memory and word familiarity affect word learning? *Memory & Cognition*, *51*(7), 1670--1682. <https://doi.org/10.3758/s13421-023-01421-7>
+
+Neveu, A., & Kaushanskaya, M. (2024). The role of bilingualism in paired-associate and cross-situational word learning. *Bilingualism: Language and Cognition*, *27*(1), 41--56. <https://doi.org/10.1017/S1366728923000524>
 
 Neville, V., Mounty, J., Benato, L., Hunter, K., Mendl, M., & Paul, E. S. (2022). Thinking outside the lab: Can studies of pet rats inform pet and laboratory rat welfare? *Applied Animal Behaviour Science*, *246*, 105507. <https://doi.org/10.1016/j.applanim.2021.105507>
 
@@ -1401,6 +1599,8 @@ Ociepka, M., Kałamała, P., & Chuderski, A. (2022). High individual alpha frequ
 
 O'Connor, B. P., & Khattar, N. (2022). Controversies Regarding Null Hypothesis Significance Testing. In W. O'Donohue, A. Masuda, & S. Lilienfeld (Eds.), *Avoiding Questionable Research Practices in Applied Psychology* (pp. 147--174). Springer International Publishing. <https://doi.org/10.1007/978-3-031-04968-2_7>
 
+O'Connor, C., Relihan, D., Thomas, A., Ditto, P. H., Stanford, P. K., & Weatherall, J. O. (2023). Moral Judgments Impact Perceived Risks From COVID-19 Exposure. *Collabra: Psychology*, *9*(1), 74793. <https://doi.org/10.1525/collabra.74793>
+
 O'Connor, D. B., Abele, A. E., Baguley, T., Daly, M., Doherty, N., Grange, J. A., Leman, P. J., Pressman, S. D., Rossit, S., & Simms, V. (2022). Improving psychological science: Further thoughts, reflections and ways forward. *Cogent Psychology*, *9*(1), 2103248. <https://doi.org/10.1080/23311908.2022.2103248>
 
 O'Day, C., Finkelstein, D. I., Diwakarla, S., & McQuade, R. M. (2022). A Critical Analysis of Intestinal Enteric Neuron Loss and Constipation in Parkinson's Disease. *Journal of Parkinson's Disease*, *12*(6), 1841--1861. <https://doi.org/10.3233/JPD-223262>
@@ -1408,6 +1608,10 @@ O'Day, C., Finkelstein, D. I., Diwakarla, S., & McQuade, R. M. (2022). A Critica
 O'Dea, R. E., Noble, D. W. A., & Nakagawa, S. (2022). Unifying individual differences in personality, predictability and plasticity: A practical guide. *Methods in Ecology and Evolution*, *13*(2), 278--293. <https://doi.org/10.1111/2041-210X.13755>
 
 Ogbuewu, I. P., Mokolopi, B. G., & Mbajiorgu, C. A. (2022). Meta-analysis of growth performance indices of broiler chickens in response to turmeric (Curcuma longa L.) supplementation. *Animal Feed Science and Technology*, *283*, 115155. <https://doi.org/10.1016/j.anifeedsci.2021.115155>
+
+Oliveira, G. A., Remondes, M., & Garcia-Marques, T. (2023). Easy to process, hard to control: Transient and sustained processing fluency impairs cognitive control adjustments to conflict. *Quarterly Journal of Experimental Psychology*, *76*(11), 2524--2534. <https://doi.org/10.1177/17470218231159787>
+
+Olkoniemi, H., Halonen, S., Pexman, P. M., & Häikiö, T. (2023). Children's processing of written irony: An eye-tracking study. *Cognition*, *238*, 105508. <https://doi.org/10.1016/j.cognition.2023.105508>
 
 Olson, J. M., Rosenfeld, J. P., Ward, A. C., Sitar, E. J., Gandhi, A., Hernandez, J., & Fanesi, B. (2022). The effects of practicing a novel countermeasure on both the semantic and episodic memory-based complex trial protocols. *International Journal of Psychophysiology*, *173*, 82--92. <https://doi.org/10.1016/j.ijpsycho.2022.01.009>
 
@@ -1437,6 +1641,8 @@ Palana, J., Schwartz, S., & Tager-Flusberg, H. (2022). Evaluating the use of cor
 
 Palmer, A. M., Tomko, R. L., Squeglia, L. M., Gray, K. M., Carpenter, M. J., Smith, T. T., Dahne, J., Toll, B. A., & McClure, E. A. (2022). A pilot feasibility study of a behavioral intervention for nicotine vaping cessation among young adults delivered via telehealth. *Drug and Alcohol Dependence*, *232*, 109311. <https://doi.org/10.1016/j.drugalcdep.2022.109311>
 
+Pan, J., Yan, M., Richter, E. M., Shu, H., & Kliegl, R. (2021). The Beijing Sentence Corpus: A Chinese sentence corpus with eye movement data and predictability norms. *Behavior Research Methods*, *54*(4), 1989--2000. <https://doi.org/10.3758/s13428-021-01730-2>
+
 Papadimitriou, V., & Argyropoulos, V. (2022). The Word Length Effect on Text Reading Via the Braille Code. *Scientific Studies of Reading*, *26*(5), 432--447. <https://doi.org/10.1080/10888438.2022.2047691>
 
 Papagno, C. (2022). The neural correlates of abstract and concrete words. In *Handbook of Clinical Neurology* (Vol. 187, pp. 263--275). Elsevier. <https://doi.org/10.1016/B978-0-12-823493-8.00018-3>
@@ -1449,9 +1655,13 @@ Park, H., Klishko, A. N., Oh, K., Zhang, C., Grenga, G., Herrin, K. R., Dalton, 
 
 Park, J., Woolley, J., & Mendes, W. B. (2022). The effects of intranasal oxytocin on black participants' responses to outgroup acceptance and rejection. *Frontiers in Psychology*, *13*, 916305. <https://doi.org/10.3389/fpsyg.2022.916305>
 
+Patel, T. A., Wilver, N. L., & Cougle, J. R. (2023). Appearance-related safety behaviors predict symptoms of body dysmorphic disorder following internet-based treatment. *Body Image*, *46*, 84--90. <https://doi.org/10.1016/j.bodyim.2023.05.004>
+
 Pathan, S., Ford, C., Benson, S., Illingworth, C., Jackson, C., Trickey, D., Mallak, L., & O'Curry, S. (2022). The impact of a hospital staff supervision group on well-being, sense-making, and compassion fatigue. *Traumatology*. <https://doi.org/10.1037/trm0000405>
 
 Pathania, A., Euler, M. J., Clark, M., Cowan, R. L., Duff, K., & Lohse, K. R. (2022). Resting EEG spectral slopes are associated with age-related differences in information processing speed. *Biological Psychology*, *168*, 108261. <https://doi.org/10.1016/j.biopsycho.2022.108261>
+
+Patra, A., Kirkwood, J., Middleton, E. L., & Thothathiri, M. (2023). Variation in how cognitive control modulates sentence processing. *Royal Society Open Science*, *10*(4), 211969. <https://doi.org/10.1098/rsos.211969>
 
 Patterson, A. (2022). The shape of a word: Single word characteristics' effect on novice L2 listening comprehension. *Applied Linguistics Review*, *0*(0). <https://doi.org/10.1515/applirev-2021-0157>
 
@@ -1464,6 +1674,8 @@ Peelle, J. E., Spehar, B., Jones, M. S., McConkey, S., Myerson, J., Hale, S., So
 Pek, J., Hoisington-Shaw, K. J., & Wegener, D. T. (2022). Avoiding Questionable Research Practices Surrounding Statistical Power Analysis. In W. O'Donohue, A. Masuda, & S. Lilienfeld (Eds.), *Avoiding Questionable Research Practices in Applied Psychology* (pp. 243--267). Springer International Publishing. <https://doi.org/10.1007/978-3-031-04968-2_11>
 
 Pellas, J., Renner, F., Ji, J. L., & Damberg, M. (2022). Telephone‐based behavioral activation with mental imagery for depression: A pilot randomized clinical trial in isolated older adults during the Covid‐19 pandemic. *International Journal of Geriatric Psychiatry*, *37*(1), gps.5646. <https://doi.org/10.1002/gps.5646>
+
+Peng, D.-C., Moreau, D., Cowie, S., & Addis, D. R. (2023). Cross-national replication of prosocial simulation effect using cumulative link mixed modelling. *Journal of Applied Research in Memory and Cognition*. <https://doi.org/10.1037/mac0000117>
 
 Peng, S., Xu, P., Jiang, Y., & Gong, G. (2022). Activation network mapping for integration of heterogeneous fMRI findings. *Nature Human Behaviour*, *6*(10), 1417--1429. <https://doi.org/10.1038/s41562-022-01371-1>
 
@@ -1507,6 +1719,12 @@ Pintos, A. S., Hui, C. L.-M., De Deyne, S., Cheung, C., Ko, W. T., Nam, S. Y., C
 
 Pirnau, M., Priescu, I., Joita, D., & Priescu, C. (2022). The correlation between Internet user searches and Blockchain technology. *2022 14th International Conference on Electronics, Computers and Artificial Intelligence (ECAI)*, 1--6. <https://doi.org/10.1109/ECAI54874.2022.9847447>
 
+Pittrich, K., & Schroeder, S. (2023). Reading vertically and horizontally mirrored text: An eye movement investigation. *Quarterly Journal of Experimental Psychology*, *76*(2), 271--283. <https://doi.org/10.1177/17470218221085943>
+
+Plank, I. S., Traiger, L. S., Nelson, A. M., Koehler, J. C., Lang, S. F., Tepest, R., Vogeley, K., Georgescu, A. L., & Falter-Wagner, C. M. (2023). The role of interpersonal synchrony in forming impressions of autistic and non-autistic adults. *Scientific Reports*, *13*(1), 15306. <https://doi.org/10.1038/s41598-023-42006-3>
+
+Plate, R. C., Woodard, K., & Pollak, S. D. (2023). Category Flexibility in Emotion Learning. *Affective Science*, *4*(4), 722--730. <https://doi.org/10.1007/s42761-023-00192-3>
+
 Plate, R. C., Zhao, S., Katz, C., Graber, E., Daley, G., Corbett, N., All, K., Neumann, C. S., & Waller, R. (2022). Are you laughing with me or at me? Psychopathic traits and the ability to distinguish between affiliation and dominance laughter cues. *Journal of Personality*, *90*(4), 631--644. <https://doi.org/10.1111/jopy.12687>
 
 Podrekar Loredan, N., Lipovac, D., Jordan, S., Burnard, M. D., & Šarabon, N. (2022). Thermal effusivity of different tabletop materials in relation to users' perception. *Applied Ergonomics*, *100*, 103664. <https://doi.org/10.1016/j.apergo.2021.103664>
@@ -1521,7 +1739,11 @@ Popova, K. (2022). Reproducibility and Instruction Following in the Shop Floor L
 
 Popović Stijačić, M., & Filipović Đurđević, D. (2022). Perceptual richness of words and its role in free and cued recall. *Primenjena Psihologija*, *15*(3), 355--381. <https://doi.org/10.19090/pp.v15i3.2400>
 
+Porter, T., & Cimpian, A. (2023). A context's emphasis on intellectual ability discourages the expression of intellectual humility. *Motivation Science*, *9*(2), 120--130. <https://doi.org/10.1037/mot0000289>
+
 Pott, C. (2022). Das Konstrukt der »Außerhäuslichen Gehfähigkeit von Personen in der chronischen Phase nach Schlaganfall« -- Scoping Review. *Neurologie & Rehabilitation*, *28*(03), 147--163. <https://doi.org/10.14624/NR2203001>
+
+Potts, C. A., & Kantak, S. S. (2023). Post-stroke deficits in the anticipatory control and bimanual coordination during naturalistic cooperative bimanual action. *Journal of NeuroEngineering and Rehabilitation*, *20*(1), 153. <https://doi.org/10.1186/s12984-023-01257-x>
 
 Prentice, P. M., Mnatzaganian, C., Houslay, T. M., Thornton, A., & Wilson, A. J. (2022). Individual differences in spatial learning are correlated across tasks but not with stress response behaviour in guppies. *Animal Behaviour*, *188*, 133--146. <https://doi.org/10.1016/j.anbehav.2022.04.009>
 
@@ -1529,7 +1751,11 @@ Priede, A., Rodríguez‐Pérez, N., Hoyuela, F., Cordero‐Andrés, P., Umaran�
 
 Prochazka, A., Charvatova, H., & Vysata, O. (2022). The Effect of Face Masks on Physiological Data and the Classification of Rehabilitation Walking. *IEEE Transactions on Neural Systems and Rehabilitation Engineering*, *30*, 2467--2473. <https://doi.org/10.1109/TNSRE.2022.3201487>
 
+Prystauka, Y., Altmann, G. T. M., & Rothman, J. (2023). Online eye tracking and real-time sentence processing: On opportunities and efficacy for capturing psycholinguistic effects of different magnitudes and diversity. *Behavior Research Methods*. <https://doi.org/10.3758/s13428-023-02176-4>
+
 Puiu, A. A., Votinov, M., Habel, U., & Konrad, K. (2022). Testosterone administration does not alter the brain activity supporting cognitive and affective empathy. *Comprehensive Psychoneuroendocrinology*, *10*, 100134. <https://doi.org/10.1016/j.cpnec.2022.100134>
+
+Pulido, M. F. (2023). Generalizing Knowledge of Second Language Collocations: The Roles of Within‐ and Cross‐Language Similarity on Acceptability and Event‐Related Potentials. *Language Learning*, *73*(2), 578--612. <https://doi.org/10.1111/lang.12543>
 
 Puścian, A., & Knapska, E. (2022). Blueprints for measuring natural behavior. *iScience*, *25*(7), 104635. <https://doi.org/10.1016/j.isci.2022.104635>
 
@@ -1543,11 +1769,15 @@ Quique, Y. M., Evans, W. S., Ortega-Llebaría, M., Zipse, L., & Dickey, M. W. (2
 
 Raccah, O., Doelling, K. B., Davachi, L., & Poeppel, D. (2023). Acoustic features drive event segmentation in speech. *Journal of Experimental Psychology: Learning, Memory, and Cognition*, *49*(9), 1494--1504. <https://doi.org/10.1037/xlm0001150>
 
+Radovanovic, M., Chao, T. W.-T., Onyshko, E., Huynh, Q. D. T., Liu, Y. L., & Sommerville, J. A. (2023). Not just if, but how much: Children and adults use cost and need to make evaluations about generosity across contexts. *Cognition*, *238*, 105533. <https://doi.org/10.1016/j.cognition.2023.105533>
+
 Radtke Caneppele, N., Ribeiro Serra, F. A., Contreras Pinochet, L. H., & Ramos Ribeiro, I. M. (2022). Potential and challenges for using neuroscientific tools in strategic management studies. *RAUSP Management Journal*, *57*(3), 235--263. <https://doi.org/10.1108/RAUSP-01-2021-0014>
 
 Raduga, M. (2022). Predicting the efficiency of lucid dreaming practice. *Dreaming*, *32*(4), 382--392. <https://doi.org/10.1037/drm0000223>
 
 Rajtmajer, S. M., Errington, T. M., & Hillary, F. G. (2022). How failure to falsify in high-volume science contributes to the replication crisis. *eLife*, *11*, e78830. <https://doi.org/10.7554/eLife.78830>
+
+Ramos, J., Grant, M. D., Dickert, S., Eom, K., Flores, A., Jiga-Boy, G. M., Kogut, T., Mayorga, M., Pedersen, E. J., Pereira, B., Rubaltelli, E., Sherman, D. K., Slovic, P., Västfjäll, D., & Van Boven, L. (2022). Structured reflection increases intentions to reduce other people's health risks during COVID-19. *PNAS Nexus*, *1*(5), pgac218. <https://doi.org/10.1093/pnasnexus/pgac218>
 
 Rane, R. P., De Man, E. F., Kim, J., Görgen, K., Tschorn, M., Rapp, M. A., Banaschewski, T., Bokde, A. L., Desrivieres, S., Flor, H., Grigis, A., Garavan, H., Gowland, P. A., Brühl, R., Martinot, J.-L., Martinot, M.-L. P., Artiges, E., Nees, F., Papadopoulos Orfanos, D., ... IMAGEN consortium. (2022). Structural differences in adolescent brains can predict alcohol misuse. *eLife*, *11*, e77545. <https://doi.org/10.7554/eLife.77545>
 
@@ -1575,11 +1805,17 @@ Ren, D., Wesselmann, E. D., Loh, W. W., Van Beest, I., Van Leeuwen, F., & Sleege
 
 Ren, W., Ji, B., Guan, Y., Cao, L., & Ni, R. (2022). Recent Technical Advances in Accelerating the Clinical Translation of Small Animal Brain Imaging: Hybrid Imaging, Deep Learning, and Transcriptomics. *Frontiers in Medicine*, *9*, 771982. <https://doi.org/10.3389/fmed.2022.771982>
 
+Renard Triché, L., Futier, E., De Carvalho, M., Piñol-Domenech, N., Bodet-Contentin, L., Jabaudon, M., & Pereira, B. (2023). Sample size estimation in clinical trials using ventilator-free days as the primary outcome: A systematic review. *Critical Care*, *27*(1), 303. <https://doi.org/10.1186/s13054-023-04562-y>
+
+Renna, M. E., Spaeth, P. E., Quintero, J. M., O'Toole, M. S., Sandman, C. F., Fresco, D. M., & Mennin, D. S. (2023). A randomized controlled trial comparing two doses of emotion regulation therapy: Preliminary evidence that gains in attentional and metacognitive regulation reduce worry, rumination, and distress. *Behaviour Research and Therapy*, *170*, 104420. <https://doi.org/10.1016/j.brat.2023.104420>
+
 Repetti, C., Eskenazi, M., & Garcia, S. (2022). You feel me? A randomized trial of tDCS on pain empathy. *International Journal of Psychophysiology*, *179*, 1--5. <https://doi.org/10.1016/j.ijpsycho.2022.06.012>
 
 Rethlefsen, M. L., Norton, H. F., Meyer, S. L., MacWilkinson, K. A., Smith, P. L., & Ye, H. (2022). Interdisciplinary Approaches and Strategies from Research Reproducibility 2020: Educating for Reproducibility. *Journal of Statistics and Data Science Education*, *30*(3), 219--227. <https://doi.org/10.1080/26939169.2022.2104767>
 
 Reverte-Pagola, G., Sánchez-Trigo, H., Saxton, J., & Sañudo, B. (2022). Supervised and Non-Supervised Exercise Programs for the Management of Cancer-Related Fatigue in Women with Breast Cancer: A Systematic Review and Meta-Analysis. *Cancers*, *14*(14), 3428. <https://doi.org/10.3390/cancers14143428>
+
+Rey, L., Désoche, C., Saive, A.-L., Thévenet, M., Garcia, S., Tillmann, B., & Plailly, J. (2023). Episodic memory and recognition are influenced by cues' sensory modality: Comparing odours, music and faces using virtual reality. *Memory*, *31*(9), 1113--1133. <https://doi.org/10.1080/09658211.2023.2208793>
 
 Rhodes, S., Buchsbaum, B. R., & Hasher, L. (2022). The influence of long-term memory on working memory: Age-differences in proactive facilitation and interference. *Psychonomic Bulletin & Review*, *29*(1), 191--202. <https://doi.org/10.3758/s13423-021-01981-2>
 
@@ -1587,9 +1823,13 @@ Riccardi, N., Rorden, C., Fridriksson, J., & Desai, R. H. (2022). Canonical Sent
 
 Richards, A., Inslicht, S. S., Yack, L. M., Metzler, T. J., Russell Huie, J., Straus, L. D., Dukes, C., Hubachek, S. Q., Felmingham, K. L., Mathalon, D. H., Woodward, S. H., & Neylan, T. C. (2022). The relationship of fear-potentiated startle and polysomnography-measured sleep in trauma-exposed men and women with and without PTSD: Testing REM sleep effects and exploring the roles of an integrative measure of sleep, PTSD symptoms, and biological sex. *Sleep*, *45*(1), zsab271. <https://doi.org/10.1093/sleep/zsab271>
 
+Richards, S. E., Sumner, P. J., Tan, E. J., Meyer, D., Rossell, S. L., & Carruthers, S. P. (2023). A detailed examination of pitch discrimination deficits associated with auditory verbal hallucinations in schizophrenia. *Schizophrenia Research*, *257*, 19--24. <https://doi.org/10.1016/j.schres.2023.05.013>
+
 Richie, R., Aka, A., & Bhatia, S. (2023). Free association in a neural network. *Psychological Review*, *130*(5), 1360--1382. <https://doi.org/10.1037/rev0000396>
 
 Rickard, T. C., Pan, S. C., & Gupta, M. W. (2022). Severe publication bias contributes to illusory sleep consolidation in the motor sequence learning literature. *Journal of Experimental Psychology: Learning, Memory, and Cognition*, *48*(12), 1787--1796. <https://doi.org/10.1037/xlm0001090>
+
+Ridley, B. J., Cornelissen, P. L., Maalin, N., Mohamed, S., Kramer, R. S. S., McCarty, K., & Tovée, M. J. (2022). The degree to which the cultural ideal is internalized predicts judgments of male and female physical attractiveness. *Frontiers in Psychology*, *13*, 980277. <https://doi.org/10.3389/fpsyg.2022.980277>
 
 Riedel, L., Van Den Heuvel, M. P., & Markett, S. (2022). Trajectory of rich club properties in structural brain networks. *Human Brain Mapping*, *43*(14), 4239--4253. <https://doi.org/10.1002/hbm.25950>
 
@@ -1598,6 +1838,8 @@ Riesthuis, P., Mangiulli, I., Broers, N., & Otgaar, H. (2022). Expert opinions o
 Righetti, F., Faure, R., Zoppolat, G., Meltzer, A., & McNulty, J. (2022). Factors that contribute to the maintenance or decline of relationship satisfaction. *Nature Reviews Psychology*, *1*(3), 161--173. <https://doi.org/10.1038/s44159-022-00026-2>
 
 Ritter, L. A., Maldarelli, M., McCurdy, M. T., Yamane, D. P., Davison, D., Parrino, C., Yim, D. N., Lee, M., Mazzeffi, M. A., & Chow, J. H. (2022). Effects of a single bolus of hydroxocobalamin on hemodynamics in vasodilatory shock. *Journal of Critical Care*, *67*, 66--71. <https://doi.org/10.1016/j.jcrc.2021.09.024>
+
+Rivero-Contreras, M., Engelhardt, P. E., Delgado, P., & Saldaña, D. (2023). Does the Timing of Visual Support Affect Sentence Comprehension? An Eye-Tracking Study. *The Journal of Experimental Education*, 1--20. <https://doi.org/10.1080/00220973.2023.2287444>
 
 Roberto Cubelli. (2022). Embodied cognition: Nessuna rivoluzione. *Giornale italiano di psicologia*, *2*, 437--443. <https://doi.org/10.1421/105154>
 
@@ -1615,6 +1857,8 @@ Romano, F. (2022). Task effects and the yes-bias in heritage language bilinguali
 
 Rootes-Murdy, K., Gazula, H., Verner, E., Kelly, R., DeRamus, T., Plis, S., Sarwate, A., Turner, J., & Calhoun, V. (2022). Federated Analysis of Neuroimaging Data: A Review of the Field. *Neuroinformatics*, *20*(2), 377--390. <https://doi.org/10.1007/s12021-021-09550-7>
 
+Rösch, S. A., Schmidt, R., Wimmer, J., Lührs, M., Ehlis, A.-C., & Hilbert, A. (2023). Mechanisms underlying fNIRS-neurofeedback over the prefrontal cortex for participants with binge-eating disorder. *Clinical Neurophysiology*, *156*, 57--68. <https://doi.org/10.1016/j.clinph.2023.09.011>
+
 Rosenberg, L., & Kruk, R. S. (2022). Coarse or fine? Grain size and morpho-orthographic segmentation in struggling readers. *Annals of Dyslexia*, *72*(1), 28--55. <https://doi.org/10.1007/s11881-021-00240-2>
 
 Rosenblat, M. A., Granata, C., & Thomas, S. G. (2022). Effect of Interval Training on the Factors Influencing Maximal Oxygen Consumption: A Systematic Review and Meta-Analysis. *Sports Medicine*, *52*(6), 1329--1352. <https://doi.org/10.1007/s40279-021-01624-5>
@@ -1631,6 +1875,10 @@ Rubin, M., Bhattacharya, N., Gwizdka, J., Griffin, Z., & Telch, M. (2022). The i
 
 Russell, A. A. M., Sutherland, B. A., Landowski, L. M., Macleod, M., & Howells, D. W. (2022). What has preclinical systematic review ever done for us? *BMJ Open Science*, *6*(1). <https://doi.org/10.1136/bmjos-2021-100219>
 
+Russo, D., Hanel, P. H. P., Altnickel, S., & Van Berkel, N. (2023). Satisfaction and performance of software developers during enforced work from home in the COVID-19 pandemic. *Empirical Software Engineering*, *28*(2), 53. <https://doi.org/10.1007/s10664-023-10293-z>
+
+Ruwe, T., & Mayweg-Paus, E. (2023). "Your argumentation is good", says the AI vs humans -- The role of feedback providers and personalised language for feedback effectiveness. *Computers and Education: Artificial Intelligence*, *5*, 100189. <https://doi.org/10.1016/j.caeai.2023.100189>
+
 Ryeland, J., Magrath, M. J. L., & Weston, M. A. (2022). Day--night cycle influences the division of incubation in the Hooded Dotterel ( *Thinornis cucullatus* ). *Ibis*, *164*(3), 785--792. <https://doi.org/10.1111/ibi.13040>
 
 Saberi, A., Mohammadi, E., Zarei, M., Eickhoff, S. B., & Tahmasian, M. (2022). Structural and functional neuroimaging of late-life depression: A coordinate-based meta-analysis. *Brain Imaging and Behavior*, *16*(1), 518--531. <https://doi.org/10.1007/s11682-021-00494-9>
@@ -1643,13 +1891,21 @@ Saito, T., Almaraz, S. M., & Hugenberg, K. (2022). Happy = Human: A Feeling of B
 
 Saito, T., Motoki, K., & Takano, Y. (2023). Cultural differences in recognizing emotions of masked faces. *Emotion*, *23*(6), 1648--1657. <https://doi.org/10.1037/emo0001181>
 
+Salcedo, J. C., & Jimenez‐Leal, W. (2023). Severity and deservedness determine signalled trustworthiness in third party punishment. *British Journal of Social Psychology*, bjso.12687. <https://doi.org/10.1111/bjso.12687>
+
 Salminen, L. E., Tubi, M. A., Bright, J., Thomopoulos, S. I., Wieand, A., & Thompson, P. M. (2022). Sex is a defining feature of neuroimaging phenotypes in major brain disorders. *Human Brain Mapping*, *43*(1), 500--542. <https://doi.org/10.1002/hbm.25438>
+
+Salvalaggio, S., Cacciante, L., Maistrello, L., & Turolla, A. (2023). Clinical Predictors for Upper Limb Recovery after Stroke Rehabilitation: Retrospective Cohort Study. *Healthcare*, *11*(3), 335. <https://doi.org/10.3390/healthcare11030335>
+
+Sandgren, O., Andersson, K., Lyberg Åhlander, V., Rosqvist, I., Hansson, K., & Sahlén, B. (2023). A randomized controlled trial of the effectiveness of teacher continued professional development on student language outcomes. *International Journal of Language & Communication Disorders*, *58*(3), 879--891. <https://doi.org/10.1111/1460-6984.12829>
 
 Santana, A. P., Korn, L., Betsch, C., & Böhm, R. (2022). Lessons learned about willingness to adopt various protective measures during the early COVID-19 pandemic in three countries. *PLOS ONE*, *17*(3), e0265892. <https://doi.org/10.1371/journal.pone.0265892>
 
 Santos, B. F. E., Costa, F. O., Vasconcelos, A. M. A., Cyrino, R. M., & Cota, L. O. M. (2022). Preemptive effects of ibuprofen and nimesulide on postoperative pain control after open flap periodontal surgeries: A randomized placebo‐controlled split‐mouth clinical trial. *Journal of Periodontology*, *93*(2), 300--309. <https://doi.org/10.1002/JPER.20-0887>
 
 Sáringer, S., Fehér, Á., Sáry, G., & Kaposvári, P. (2022). Online measurement of learning temporal statistical structure in categorization tasks. *Memory & Cognition*, *50*(7), 1530--1545. <https://doi.org/10.3758/s13421-022-01302-5>
+
+Satchell, L., Jaeger, B., Jones, A., López, B., & Schild, C. (2023). Beyond reliability in first impressions research: Considering validity and the need to "Mix it up with folks." *Social Psychological Bulletin*, *18*, e10211. <https://doi.org/10.32872/spb.10211>
 
 Saunders, T. J., McIsaac, T., Campbell, J., Douillette, K., Janssen, I., Tomasone, J. R., Ross-White, A., Prince, S. A., & Chaput, J.-P. (2022). Timing of sedentary behaviour and access to sedentary activities in the bedroom and their association with sleep quality and duration in children and youth: A systematic review. *Health Promotion and Chronic Disease Prevention in Canada*, *42*(4), 139--149. <https://doi.org/10.24095/hpcdp.42.4.03>
 
@@ -1671,6 +1927,8 @@ Schmidtke, D., Rahmanian, S., & Moro, A. L. (2023). Tracking reading development
 
 Schnur, T. T., & Lei, C.-M. (2022). Assessing naming errors using an automated machine learning approach. *Neuropsychology*, *36*(8), 709--718. <https://doi.org/10.1037/neu0000860>
 
+Schoenlein, M. A., Campos, J., Lande, K. J., Lessard, L., & Schloss, K. B. (2022). Unifying Effects of Direct and Relational Associations for Visual Communication. *IEEE Transactions on Visualization and Computer Graphics*, 1--11. <https://doi.org/10.1109/TVCG.2022.3209443>
+
 Schoknecht, P., Roehm, D., Schlesewsky, M., & Bornkessel-Schlesewsky, I. (2022). The interaction of predictive processing and similarity-based retrieval interference: An ERP study. *Language, Cognition and Neuroscience*, *37*(7), 883--901. <https://doi.org/10.1080/23273798.2022.2026421>
 
 Schubert, E. (2023). Unexpected Aspects of Expectancy in Music: A Spreading Activation Explanation. *Psihologijske Teme*, *32*(1), 35--55. <https://doi.org/10.31820/pt.32.1.3>
@@ -1678,6 +1936,8 @@ Schubert, E. (2023). Unexpected Aspects of Expectancy in Music: A Spreading Acti
 Schuler, M., Mohnke, S., Amelung, T., Beier, K. M., Walter, M., Ponseti, J., Schiffer, B., Kruger, T. H. C., & Walter, H. (2022). Neural processing associated with cognitive empathy in pedophilia and child sexual offending. *Social Cognitive and Affective Neuroscience*, *17*(8), 712--722. <https://doi.org/10.1093/scan/nsab133>
 
 Schulte Im Walde, S., & Frassinelli, D. (2022). Distributional Measures of Semantic Abstraction. *Frontiers in Artificial Intelligence*, *4*, 796756. <https://doi.org/10.3389/frai.2021.796756>
+
+Schultz, H., Stoffregen, H., & Benoit, R. G. (2023). A reward effect on memory retention, consolidation, and generalization? *Learning & Memory*, *30*(8), 169--174. <https://doi.org/10.1101/lm.053842.123>
 
 Schulz, R., Langen, G., Prill, R., Cassel, M., & Weissgerber, T. L. (2022). Reporting and transparent research practices in sports medicine and orthopaedic clinical trials: A meta-research study. *BMJ Open*, *12*(8), e059347. <https://doi.org/10.1136/bmjopen-2021-059347>
 
@@ -1689,7 +1949,11 @@ Schwab, J., Xiang, M., & Liu, M. (2022). Antilocality effect without head-final 
 
 Schwab, S., Janiaud, P., Dayan, M., Amrhein, V., Panczak, R., Palagi, P. M., Hemkens, L. G., Ramon, M., Rothen, N., Senn, S., Furrer, E., & Held, L. (2022). Ten simple rules for good research practice. *PLOS Computational Biology*, *18*(6), e1010139. <https://doi.org/10.1371/journal.pcbi.1010139>
 
+Schwalm, L., & Radach, R. (2023). Parafoveal syntactic processing from word N + 2 during reading: The case of gender-specific German articles. *Psychological Research*, *87*(8), 2511--2532. <https://doi.org/10.1007/s00426-023-01833-9>
+
 Schweppe, J., Schütte, F., Machleb, F., & Hellfritsch, M. (2022). Syntax, morphosyntax, and serial recall: How language supports short-term memory. *Memory & Cognition*, *50*(1), 174--191. <https://doi.org/10.3758/s13421-021-01203-z>
+
+Schwering, S. C., Jacobs, C. L., Montemayor, J., & MacDonald, M. C. (2023). Lexico-syntactic constraints influence verbal working memory in sentence-like lists. *Memory & Cognition*. <https://doi.org/10.3758/s13421-023-01496-2>
 
 Scott, D., Vangsness, L., & Suss, J. (2022). Perceptual--Cognitive Expertise in Law Enforcement: An Object-Identification Task. *Journal of Cognitive Engineering and Decision Making*, *16*(3), 157--176. <https://doi.org/10.1177/15553434221104600>
 
@@ -1700,6 +1964,8 @@ Seidenberg, M. S., Farry‐Thorn, M., & Zevin, J. D. (2022). Models of Word Read
 Sellbom, M., Lilienfeld, S. O., Latzman, R. D., & Wygant, D. B. (2022). Assessment of Psychopathy: Addressing Myths, Misconceptions, and Fallacies. In L. Malatesti, J. McMillan, & P. Šustar (Eds.), *Psychopathy* (Vol. 27, pp. 143--168). Springer International Publishing. <https://doi.org/10.1007/978-3-030-82454-9_9>
 
 Sendek, K., Herzmann, G., Pfeifer, V., & Lai, V. T. (2022). Social acquisition context matters: Increased neural responses for native but not nonnative taboo words. *Cognitive, Affective, & Behavioral Neuroscience*, *22*(2), 362--382. <https://doi.org/10.3758/s13415-021-00951-4>
+
+Severijnen, G. G. A., Di Dona, G., Bosker, H. R., & McQueen, J. M. (2023). Tracking talker-specific cues to lexical stress: Evidence from perceptual learning. *Journal of Experimental Psychology: Human Perception and Performance*, *49*(4), 549--565. <https://doi.org/10.1037/xhp0001105>
 
 Shader, M. J., Kwon, B. J., Gordon-Salant, S., & Goupell, M. J. (2022). Open-Set Phoneme Recognition Performance With Varied Temporal Cues in Younger and Older Cochlear Implant Users. *Journal of Speech, Language, and Hearing Research*, *65*(3), 1196--1211. <https://doi.org/10.1044/2021_JSLHR-21-00299>
 
@@ -1717,17 +1983,29 @@ Shen, G., Wang, R., Yang, M., & Xie, J. (2022). Chinese Children with Congenital
 
 Sheppard, J., & Von Stein, J. (2022). Attitudes and Action in International Refugee Policy: Evidence from Australia. *International Organization*, *76*(4), 929--956. <https://doi.org/10.1017/S0020818322000133>
 
+Shi, J., Peng, G., & Li, D. (2023). Figurativeness Matters in the Second Language Processing of Collocations: Evidence From a Self‐Paced Reading Experiment. *Language Learning*, *73*(1), 47--83. <https://doi.org/10.1111/lang.12516>
+
 Shibuya, K., Kasuga, R., Sato, N., Santa, R., Homma, C., & Miyamoto, M. (2022). Preliminary findings: Preferences of right-handed people for food images oriented to the left vs. right side. *Food Quality and Preference*, *97*, 104502. <https://doi.org/10.1016/j.foodqual.2021.104502>
 
 Short, J. C., Freeman, M. T., & McKechnie, A. E. (2022). Respirometry protocols for avian thermoregulation at high air temperatures: Stepped and steady-state profiles yield similar results. *Journal of Experimental Biology*, *225*(13), jeb244166. <https://doi.org/10.1242/jeb.244166>
 
+Shrout, M. R., Black, A. E., Wilson, S. J., Renna, M. E., Madison, A. D., Kiecolt-Glaser, J. K., & Reis, H. T. (2023). How aging couples' emotional and physiological associations change across positive, supportive, and conflictual discussions: Roles of capitalization and responsive behaviors. *Biological Psychology*, *177*, 108500. <https://doi.org/10.1016/j.biopsycho.2023.108500>
+
+Sidhu, D. M., Athanasopoulou, A., Archer, S. L., Czarnecki, N., Curtin, S., & Pexman, P. M. (2023). The maluma/takete effect is late: No longitudinal evidence for shape sound symbolism in the first year. *PLOS ONE*, *18*(11), e0287831. <https://doi.org/10.1371/journal.pone.0287831>
+
 Siegelman, N., Rueckl, J. G., Lo, J. C. M., Kearns, D. M., Morris, R. D., & Compton, D. L. (2022). Quantifying the regularities between orthography and semantics and their impact on group- and individual-level behavior. *Journal of Experimental Psychology: Learning, Memory, and Cognition*, *48*(6), 839--855. <https://doi.org/10.1037/xlm0001109>
+
+Sierksma, J. (2023). Children perpetuate competence-based inequality when they help peers. *Npj Science of Learning*, *8*(1), 41. <https://doi.org/10.1038/s41539-023-00192-9>
 
 Siew, C. S. Q., Engelthaler, T., & Hills, T. T. (2022). Nymph piss and gravy orgies: Local and global contrast effects in relational humor. *Journal of Experimental Psychology: Learning, Memory, and Cognition*, *48*(7), 1047--1063. <https://doi.org/10.1037/xlm0001120>
 
 Silletti, F., Salvadori, E. A., Presaghi, F., Fasolo, M., Aureli, T., & Coppola, G. (2022). Maternal mind-mindedness during the first year of life: Developmental trajectories and moderators. *Developmental Psychology*, *58*(9), 1615--1628. <https://doi.org/10.1037/dev0001389>
 
 Silvestri, V., Arioli, M., Baccolo, E., & Macchi Cassia, V. (2022). Sensitivity to trustworthiness cues in own- and other-race faces: The role of spatial frequency information. *PLOS ONE*, *17*(9), e0272256. <https://doi.org/10.1371/journal.pone.0272256>
+
+Simmering, V. R., Andrews, C. M., Leuenberger, R., & Kovack-Lesh, K. A. (2022). Inconsistent flanker congruency effects across stimulus types and age groups: A cautionary tale. *Behavior Research Methods*, *55*(4), 1778--1817. <https://doi.org/10.3758/s13428-022-01889-2>
+
+Simpson, E., Lee, K., & Bauer, P. J. (2023). Event characteristics help to explain the distribution of autobiographical memories over the first decade of life. *Memory*, *31*(7), 962--977. <https://doi.org/10.1080/09658211.2023.2212924>
 
 Singh, D., Wasan, H., & Reeta, K. H. (2022). Preclinical Stroke Research and Translational Failure: A Bird's Eye View on Preventable Variables. *Cellular and Molecular Neurobiology*, *42*(7), 2003--2017. <https://doi.org/10.1007/s10571-021-01083-6>
 
@@ -1736,6 +2014,8 @@ Sio, U. N., Kotovsky, K., & Cagan, J. (2022). Determinants of creative thinking:
 Siraji, M. A., Kalavally, V., Schaefer, A., & Haque, S. (2022). Effects of Daytime Electric Light Exposure on Human Alertness and Higher Cognitive Functions: A Systematic Review. *Frontiers in Psychology*, *12*, 765750. <https://doi.org/10.3389/fpsyg.2021.765750>
 
 Sisson, N. M., Wang, G. A., Le, B. M., Stellar, J. E., & Impett, E. A. (2022). When We're Asked to Change: The Role of Suppression and Reappraisal in Partner Change Outcomes. *Journal of Social and Personal Relationships*, *39*(8), 2388--2407. <https://doi.org/10.1177/02654075221078881>
+
+Siwiec, S., Bodhy, S., Lotfi, S., & Lee, H.-J. (2023). Cognitive bias modification for thought-action fusion: A placebo-controlled randomized experimental trial. *Journal of Obsessive-Compulsive and Related Disorders*, *37*, 100787. <https://doi.org/10.1016/j.jocrd.2023.100787>
 
 Skipper, J. I. (2022). A voice without a mouth no more: The neurobiology of language and consciousness. *Neuroscience & Biobehavioral Reviews*, *140*, 104772. <https://doi.org/10.1016/j.neubiorev.2022.104772>
 
@@ -1746,6 +2026,8 @@ Slattery, E. J., O'Callaghan, E., Ryan, P., Fortune, D. G., & McAvinue, L. P. (2
 Smart, K. M., Ferraro, M. C., Wand, B. M., & O'Connell, N. E. (2022). Physiotherapy for pain and disability in adults with complex regional pain syndrome (CRPS) types I and II. *Cochrane Database of Systematic Reviews*, *2022*(8). <https://doi.org/10.1002/14651858.CD010853.pub3>
 
 Smith, L. N. (2022). What's Right and Wrong in Preclinical Science: A Matter of Principled Investigation. *Frontiers in Behavioral Neuroscience*, *16*, 805661. <https://doi.org/10.3389/fnbeh.2022.805661>
+
+Smith, M. E., Kurby, C. A., & Bailey, H. R. (2023). Events shape long-term memory for story information. *Discourse Processes*, *60*(2), 141--161. <https://doi.org/10.1080/0163853X.2023.2185408>
 
 Soh, Y. Q., Lee, J., & Tan, Y.-Y. (2022). Ethnicity and Tone Production on Singlish Particles. *Languages*, *7*(3), 243. <https://doi.org/10.3390/languages7030243>
 
@@ -1765,9 +2047,13 @@ Spitzer, M. W. H., Kiesel, A., & Dignath, D. (2022). Performance errors influenc
 
 Spivey, M. J. (2022). Language happens. In H. L. Colston, T. Matlock, & G. J. Steen (Eds.), *Metaphor in Language, Cognition, and Communication* (Vol. 9, pp. 341--356). John Benjamins Publishing Company. <https://doi.org/10.1075/milcc.9.18spi>
 
+Spix, M., Schutzeichel, F., & Jansen, A. (2023). Can you learn to starve yourself? Inducing food avoidance in the laboratory. *Behaviour Research and Therapy*, *166*, 104340. <https://doi.org/10.1016/j.brat.2023.104340>
+
 Srisurapanont, M., Suttajit, S., Kosachunhanun, N., Likhitsathian, S., Suradom, C., & Maneeton, B. (2022). Antidepressants for depressed patients with type 2 diabetes mellitus: A systematic review and network meta-analysis of short-term randomized controlled trials. *Neuroscience & Biobehavioral Reviews*, *139*, 104731. <https://doi.org/10.1016/j.neubiorev.2022.104731>
 
 St. Germain, L., Williams, A., Balbaa, N., Poskus, A., Leshchyshen, O., Lohse, K. R., & Carter, M. J. (2022). Increased perceptions of autonomy through choice fail to enhance motor skill retention. *Journal of Experimental Psychology: Human Perception and Performance*, *48*(4), 370--379. <https://doi.org/10.1037/xhp0000992>
+
+Stajkovic, K., & Stajkovic, A. D. (2023). Ethics of Care Leadership, Racial Inclusion, and Economic Health in the Cities: Is There a Female Leadership Advantage? *Journal of Business Ethics*. <https://doi.org/10.1007/s10551-023-05564-0>
 
 Stärk, K., Kidd, E., & Frost, R. L. A. (2022). The effect of children's prior knowledge and language abilities on their statistical learning. *Applied Psycholinguistics*, *43*(5), 1045--1071. <https://doi.org/10.1017/S0142716422000273>
 
@@ -1776,6 +2062,8 @@ Stavrova, O., Reitz, A. K., & Evans, A. M. (2022). Temporal dynamics of interper
 Steacy, L. M., Rigobon, V. M., Edwards, A. A., Abes, D. R., Marencin, N. C., Smith, K., Elliott, J. D., Wade-Woolley, L., & Compton, D. L. (2022). Modeling Complex Word Reading: Examining Influences at the Level of the Word and Child on Mono- and Polymorphemic Word Reading. *Scientific Studies of Reading*, *26*(6), 527--544. <https://doi.org/10.1080/10888438.2022.2077109>
 
 Stead, J. E., Boucher, V. L., Moyle, P. B., & Rypel, A. L. (2022). Growth of Lahontan cutthroat trout from multiple sources re-introduced into Sagehen Creek, CA. *PeerJ*, *10*, e13322. <https://doi.org/10.7717/peerj.13322>
+
+Stein, T., Ciorli, T., & Otten, M. (2023). Guns Are Not Faster to Enter Awareness After Seeing a Black Face: Absence of Race-Priming in a Gun/Tool Task During Continuous Flash Suppression. *Personality and Social Psychology Bulletin*, *49*(3), 405--414. <https://doi.org/10.1177/01461672211067068>
 
 Steinhilber, B., Seibt, R., Gabriel, J., Brountsou, J., Muljono, M., Downar, T., Bär, M., Bonsch, R., Brandt, A., Martus, P., & Rieger, M. A. (2022). Effects of Face Masks on Physical Performance and Physiological Response during a Submaximal Bicycle Ergometer Test. *International Journal of Environmental Research and Public Health*, *19*(3), 1063. <https://doi.org/10.3390/ijerph19031063>
 
@@ -1786,6 +2074,10 @@ Stevens, M., White, S., Robertson, A. M., & Cruwys, T. (2022a). Repeated exercis
 Stevens, M., White, S., Robertson, A. M., & Cruwys, T. (2022b). Understanding exercise class attendees' in-class behaviors, experiences, and future class attendance: The role of class leaders' identity entrepreneurship. *Sport, Exercise, and Performance Psychology*, *11*(4), 494--508. <https://doi.org/10.1037/spy0000305>
 
 Stirner, M., Gurevitch, G., Lubianiker, N., Hendler, T., Schmahl, C., & Paret, C. (2022). An Investigation of Awareness and Metacognition in Neurofeedback with the Amygdala Electrical Fingerprint. *Consciousness and Cognition*, *98*, 103264. <https://doi.org/10.1016/j.concog.2021.103264>
+
+Stoehr, A., Jevtović, M., De Bruin, A., & Martin, C. D. (2023). Phonetic and Lexical Crosslinguistic Influence in Early Spanish--Basque--English Trilinguals. *Language Learning*, lang.12598. <https://doi.org/10.1111/lang.12598>
+
+Stoehr, A., Souganidis, C., Thomas, T. B., Jacobsen, J., & Martin, C. D. (2023). Voice onset time and vowel formant measures in online testing and laboratory-based testing with(out) surgical face masks. *The Journal of the Acoustical Society of America*, *154*(1), 152--166. <https://doi.org/10.1121/10.0020064>
 
 Straßer, T., Leinberger, D. T., Hillerkuss, D., Zrenner, E., & Zobor, D. (2022). Comparison of CRT and LCD monitors for objective estimation of visual acuity using the sweep VEP. *Documenta Ophthalmologica*, *145*(2), 133--145. <https://doi.org/10.1007/s10633-022-09883-x>
 
@@ -1815,7 +2107,11 @@ Ta, V. P., Boyd, R. L., Seraj, S., Keller, A., Griffith, C., Loggarakis, A., & M
 
 Tamati, T. N., & Moberly, A. C. (2022). Talker Adaptation and Lexical Difficulty Impact Word Recognition in Adults with Cochlear Implants. *Audiology and Neurotology*, *27*(3), 260--270. <https://doi.org/10.1159/000518643>
 
+Tamayo, J. M., Osman, H. C., Schwartzer, J. J., Pinkerton, K. E., & Ashwood, P. (2023). Characterizing the neuroimmune environment of offspring in a novel model of maternal allergic asthma and particulate matter exposure. *Journal of Neuroinflammation*, *20*(1), 252. <https://doi.org/10.1186/s12974-023-02930-7>
+
 Tan, J. S. I., Cheng, L. J., Chan, E. Y., Lau, Y., & Lau, S. T. (2022). Light therapy for sleep disturbances in older adults with dementia: A systematic review, meta-analysis and meta-regression. *Sleep Medicine*, *90*, 153--166. <https://doi.org/10.1016/j.sleep.2022.01.013>
+
+Tancoš, M., Chvojka, E., Jabůrek, M., & Portešová, Š. (2023). Faster ≠ Smarter: Children with Higher Levels of Ability Take Longer to Give Incorrect Answers, Especially When the Task Matches Their Ability. *Journal of Intelligence*, *11*(4), 63. <https://doi.org/10.3390/jintelligence11040063>
 
 Tani, M., Manuguerra, M., & Khan, S. (2022). Can videos affect learning outcomes? Evidence from an actual learning environment. *Educational Technology Research and Development*, *70*(5), 1675--1693. <https://doi.org/10.1007/s11423-022-10147-3>
 
@@ -1830,6 +2126,10 @@ Teo, E., Hassan, N., Tam, W., & Koh, S. (2022). Effectiveness of continuous gluc
 Tham, Y. J., Hashimoto, T., & Karasawa, K. (2022). Social rewards in the volunteer's dilemma in everyday life. *Asian Journal of Social Psychology*, *25*(1), 117--125. <https://doi.org/10.1111/ajsp.12472>
 
 Thibault, R. T., & Pedder, H. (2022). Excess significance and power miscalculations in neurofeedback research. *NeuroImage: Clinical*, *35*, 103008. <https://doi.org/10.1016/j.nicl.2022.103008>
+
+Thierry, K. L., Page, A., Currie, C., Posamentier, J., Liu, Y., Choi, J., Randall, H., Rajanbabu, P., Kim, T. E., & Widen, S. C. (2022). How are schools implementing a universal social--emotional learning program? Macro- and school-level factors associated with implementation approach. *Frontiers in Education*, *7*, 1044835. <https://doi.org/10.3389/feduc.2022.1044835>
+
+Thompson, P., Owen, K., & Hastings, R. P. (2024). Examining heterogeneity of education intervention effects using quantile mixed models: A re-analysis of a cluster-randomized controlled trial of a fluency-based mathematics intervention. *International Journal of Research & Method in Education*, *47*(1), 49--64. <https://doi.org/10.1080/1743727X.2023.2215699>
 
 Tian, X. (2022). Construction of a Multimodal Corpus of College Students' Spoken English Based on Semantic Concepts. *Mobile Information Systems*, *2022*, 1--10. <https://doi.org/10.1155/2022/5270408>
 
@@ -1847,9 +2147,13 @@ Torres, F., Khan, S., Fernandez‐Kim, S. O., Spann, R., Albarado, D., Wagner, T
 
 Trabucchi, P., Savoldelli, A., Mourot, L., Vacher, P., Pellegrini, B., & Schena, F. (2022). Relationship Between Cognitive Appraisal of Control and Cardiac Vagal Regulation During an Unsupported Ski Crossing of Greenland. *Frontiers in Physiology*, *13*, 804710. <https://doi.org/10.3389/fphys.2022.804710>
 
+Travaglino, G. A., d'Aniello, C., Pacilli, M. G., & Poppi, F. I. M. (2023). Naming the threat: Lay prototypes of organized crime in Italy and the US. *Psychology, Crime & Law*, 1--23. <https://doi.org/10.1080/1068316X.2023.2239425>
+
 Truhan, T. E., Gianniou, F.-M., & Papageorgiou, K. A. (2022). Differences in psychiatric symptoms between the UK and Greece prior to and during COVID-19: The roles of subclinical narcissism and mental toughness. *Personality and Individual Differences*, *185*, 111308. <https://doi.org/10.1016/j.paid.2021.111308>
 
 Truhan, T. E., Sedikides, C., McIlvenna, M., Andrae, L., Turner, R. N., & Papageorgiou, K. A. (2022). A Tri-Directional Examination of Parental Personality, Parenting Behaviors, and Contextual Factors in Influencing Adolescent Behavioral Outcomes. *Journal of Youth and Adolescence*, *51*(8), 1536--1551. <https://doi.org/10.1007/s10964-022-01602-8>
+
+Truzman, T., Biran, M., Soroker, N., Levy, T., & Bitan, T. (2023). A Novel Morphology-Based Naming Therapy for People with Aphasia. *Aphasiology*, 1--31. <https://doi.org/10.1080/02687038.2023.2257354>
 
 Tse, C., & Altarriba, J. (2022). Independent effects of word concreteness and word valence on immediate serial recall. *British Journal of Psychology*, *113*(3), 820--834. <https://doi.org/10.1111/bjop.12566>
 
@@ -1880,6 +2184,8 @@ Van As, S., Veling, H., Beckers, D. G. J., Earle, F., McMaster, S., Kompier, M. 
 Van Der Sluis, I., Matoušková, G., Niemeier, H., Popp, S., & Carstens, J. (2022). The clarity and correctness of visualized thrust actions: A description and insights from users and experts. *Visual Communication*, 147035722211352. <https://doi.org/10.1177/14703572221135240>
 
 Van Der Wijk, G., Harris, J. K., Hassel, S., Davis, A. D., Zamyadi, M., Arnott, S. R., Milev, R., Lam, R. W., Frey, B. N., Hall, G. B., Müller, D. J., Rotzinger, S., Kennedy, S. H., Strother, S. C., MacQueen, G. M., & Protzner, A. B. (2022). Baseline Functional Connectivity in Resting State Networks Associated with Depression and Remission Status after 16 Weeks of Pharmacotherapy: A CAN-BIND Report. *Cerebral Cortex*, *32*(6), 1223--1243. <https://doi.org/10.1093/cercor/bhab286>
+
+Van Doorn, J., Haaf, J. M., Stefan, A. M., Wagenmakers, E.-J., Cox, G. E., Davis-Stober, C. P., Heathcote, A., Heck, D. W., Kalish, M., Kellen, D., Matzke, D., Morey, R. D., Nicenboim, B., Van Ravenzwaaij, D., Rouder, J. N., Schad, D. J., Shiffrin, R. M., Singmann, H., Vasishth, S., ... Aust, F. (2023). Bayes Factors for Mixed Models: A Discussion. *Computational Brain & Behavior*, *6*(1), 140--158. <https://doi.org/10.1007/s42113-022-00160-3>
 
 Van Kleef, L. A., & De Knegt, R. J. (2022). Reply to: "Ipragliflozin improves the hepatic outcomes of patients with diabetes with NAFLD." *Hepatology Communications*, *6*(9), 2605--2606. <https://doi.org/10.1002/hep4.2006>
 
@@ -1917,6 +2223,8 @@ Vogt, A., Hauber, R., Kuhlen, A. K., & Rahman, R. A. (2021). Internet-based lang
 
 Von Bastian, C. C., Belleville, S., Udale, R. C., Reinhartz, A., Essounni, M., & Strobach, T. (2022). Mechanisms underlying training-induced cognitive change. *Nature Reviews Psychology*, *1*(1), 30--41. <https://doi.org/10.1038/s44159-021-00001-3>
 
+Von Hoyer, J., Bientzle, M., Cress, U., Grosser, J., Kimmerle, J., & Peter Holtz. (2022). False certainty in the acquisition of anatomical and physiotherapeutic knowledge. *BMC Medical Education*, *22*(1), 765. <https://doi.org/10.1186/s12909-022-03820-x>
+
 Von Soest, T., Kozák, M., Rodríguez-Cano, R., Fluit, D. H., Cortés-García, L., Ulset, V. S., Haghish, E. F., & Bakken, A. (2022). Adolescents' psychosocial well-being one year after the outbreak of the COVID-19 pandemic in Norway. *Nature Human Behaviour*, *6*(2), 217--228. <https://doi.org/10.1038/s41562-021-01255-w>
 
 Wagner, A. R., Kobel, M. J., & Merfeld, D. M. (2022). Impacts of Rotation Axis and Frequency on Vestibular Perceptual Thresholds. *Multisensory Research*, *35*(3), 259--287. <https://doi.org/10.1163/22134808-bja10069>
@@ -1924,6 +2232,8 @@ Wagner, A. R., Kobel, M. J., & Merfeld, D. M. (2022). Impacts of Rotation Axis a
 Wagner, D., & Pearcey, S. M. (2022). Perceived stress and salivary biomarkers in educators: Comparison among three stress reduction activities. *Health Psychology and Behavioral Medicine*, *10*(1), 617--631. <https://doi.org/10.1080/21642850.2022.2102016>
 
 Wainwright, J. B., & Montgomery, S. H. (2022). Neuroanatomical shifts mirror patterns of ecological divergence in three diverse clades of mimetic butterflies. *Evolution*, *76*(8), 1806--1820. <https://doi.org/10.1111/evo.14547>
+
+Waldron, K. A., Lewis, M. A., Fairlie, A. M., Litt, D. M., Zhou, Z., & Bryant, D. (2023). Daily-level associations between alcohol use cognitions and normative perceptions among adolescents: An intensive longitudinal study. *Addictive Behaviors*, *143*, 107697. <https://doi.org/10.1016/j.addbeh.2023.107697>
 
 Walker, J. B., Rinehart, S., Greenberg‐Pines, G., White, W. K., DeSantiago, R., Lipson, D. A., & Long, J. D. (2022). Aboveground competition influences density‐dependent effects of cordgrass on sediment biogeochemistry. *Ecology and Evolution*, *12*(3), e8722. <https://doi.org/10.1002/ece3.8722>
 
@@ -1933,11 +2243,19 @@ Walsh, D., & Foster, J. (2022). Where does research design fall short? Mental he
 
 Wang, H., Jiang, X., De Leone, R., Zhang, Y., Qiao, L., & Zhang, L. (2022). Extracting BOLD signals based on time-constrained multiset canonical correlation analysis for brain functional network estimation and classification. *Brain Research*, *1775*, 147745. <https://doi.org/10.1016/j.brainres.2021.147745>
 
+Wang, L., Ong, J. H., Ponsot, E., Hou, Q., Jiang, C., & Liu, F. (2023). Mental representations of speech and musical pitch contours reveal a diversity of profiles in autism spectrum disorder. *Autism*, *27*(3), 629--646. <https://doi.org/10.1177/13623613221111207>
+
 Wang, S., & De Boeck, P. (2022). Understanding the role of subpopulations and reliability in between-group studies. *Behavior Research Methods*, *54*(5), 2162--2177. <https://doi.org/10.3758/s13428-021-01700-8>
 
 Wang, T., & Xu, X. (2023). The good, the bad, and the ambivalent: Extrapolating affective values for 38,000+ Chinese words via a computational model. *Behavior Research Methods*. <https://doi.org/10.3758/s13428-023-02274-3>
 
 Wang, T., Xu, X., Xie, X., & Ng, M. L. (2023). Probing Lexical Ambiguity in Chinese Characters via Their Word Formations: Convergence of Perceived and Computed Metrics. *Cognitive Science*, *47*(11), e13379. <https://doi.org/10.1111/cogs.13379>
+
+Wang, Y. A., Simpson, A. J., & Todd, A. R. (2023). Egocentric anchoring-and-adjustment underlies social inferences about known others varying in similarity and familiarity. *Journal of Experimental Psychology: General*, *152*(4), 1011--1029. <https://doi.org/10.1037/xge0001313>
+
+Wang, Y., Tian, X., Song, Q., Wang, W., Guo, X., Cui, T., Pan, Z., Chen, Y., Chen, W., Tan, L., & Zhang, W. (2023). Application and Comparison of Different Regression Models in Iodine Balance Experiment on Women of Childbearing Age and Pregnant Women. *Biological Trace Element Research*. <https://doi.org/10.1007/s12011-023-03867-x>
+
+Wang, Y., Wang, Q., Wang, L., Li, F., Weschler, L. B., Huang, J., & Zhang, Y. (2023). Potential benefits of short-term indoor exposure to sweet orange essential oil for relaxation during mental work breaks. *Journal of Building Engineering*, *78*, 107602. <https://doi.org/10.1016/j.jobe.2023.107602>
 
 Wang, Y., & Zeng, Y. (2022a). Multisensory Concept Learning Framework Based on Spiking Neural Networks. *Frontiers in Systems Neuroscience*, *16*, 845177. <https://doi.org/10.3389/fnsys.2022.845177>
 
@@ -1945,9 +2263,19 @@ Wang, Y., & Zeng, Y. (2022b). Statistical Analysis of Multisensory and Text-Deri
 
 Wang, Z. (2022). Application of Semantics Analysis in Text Classification of Computer Technology. In B. J. Jansen, H. Liang, & J. Ye (Eds.), *International Conference on Cognitive based Information Processing and Applications (CIPA 2021)* (Vol. 85, pp. 643--650). Springer Singapore. <https://doi.org/10.1007/978-981-16-5854-9_82>
 
+Wannagat, W., Steinicke, V., Tibken, C., & Nieding, G. (2022). Same topic, different genre: Elementary school children's mental representations of information embedded in narrative and expository texts. *Learning and Instruction*, *80*, 101559. <https://doi.org/10.1016/j.learninstruc.2021.101559>
+
 Wanner-Kawahara, J., Yoshihara, M., Lupker, S. J., Verdonschot, R. G., & Nakayama, M. (2022). Morphological Priming Effects in L2 English Verbs for Japanese-English Bilinguals. *Frontiers in Psychology*, *13*, 742965. <https://doi.org/10.3389/fpsyg.2022.742965>
 
+Warmuth, K. A., DeCapua, A. M., & Fielding, A. M. (2023). Emerging Adults' Perceptions of and Responses to Interparental Conflict. *Journal of Child and Family Studies*. <https://doi.org/10.1007/s10826-023-02582-4>
+
 Warner, L., Bach-Hagemann, A., Albanna, W., Clusmann, H., Schubert, G. A., Lindauer, U., & Conzen-Dilger, C. (2022). Vascular Reactivity to Hypercapnia Is Impaired in the Cerebral and Retinal Vasculature in the Acute Phase After Experimental Subarachnoid Hemorrhage. *Frontiers in Neurology*, *12*, 757050. <https://doi.org/10.3389/fneur.2021.757050>
+
+Wasserman, J. S., & Holtzer, R. (2023). Depressive Symptoms are Associated with Decline Over Time in Verbal Fluency Performance in Female but Not Male Community-Dwelling Older Adults. *Experimental Aging Research*, 1--16. <https://doi.org/10.1080/0361073X.2023.2195295>
+
+Weakley, J., McCosker, C., Chalkley, D., Johnston, R., Munteanu, G., & Morrison, M. (2022). Comparison of Sprint Timing Methods on Performance, and Displacement and Velocity at Timing Initiation. *Journal of Strength and Conditioning Research*, *Publish Ahead of Print*. <https://doi.org/10.1519/JSC.0000000000004223>
+
+Weaving, M., Haslam, N., & Fine, C. (2023). Himpathy and status: Attitudes to social hierarchy predict reactions to sexual harassment. *PLOS ONE*, *18*(12), e0292953. <https://doi.org/10.1371/journal.pone.0292953>
 
 Webb, C. J. R., Bennett, D. L., & Bywaters, P. (2022). Austerity, Poverty, and Children's Services Quality in England: Consequences for Child Welfare and Public Services. *Social Policy and Society*, 1--22. <https://doi.org/10.1017/S147474642200001X>
 
@@ -1960,6 +2288,8 @@ Weigand, R., & Jacobsen, T. (2022). Interruption, work rumination, and stress as
 Weil, R., Pillay, N., & Rochais, C. (2022). Characteristics influencing local enhancement in free-living striped mice. *Behavioural Processes*, *197*, 104621. <https://doi.org/10.1016/j.beproc.2022.104621>
 
 Weinreuter, H., Strelau, N.-R., Qiu, K., Jiang, Y., Deml, B., & Heizmann, M. (2022). Intersection Complexity and Its Influence on Human Drivers. *IEEE Access*, *10*, 74059--74070. <https://doi.org/10.1109/ACCESS.2022.3189017>
+
+Weiss, L. (2022). Egocentric Processing: The Advantages of Person-Related Features in Consumers' Product Decisions. *Journal of Consumer Research*, *49*(2), 288--311. <https://doi.org/10.1093/jcr/ucab070>
 
 Westbury, C., & Wurm, L. H. (2022). Is it you you're looking for?: Personal relevance as a principal component of semantics. *The Mental Lexicon*, *17*(1), 1--33. <https://doi.org/10.1075/ml.20031.wes>
 
@@ -1987,11 +2317,23 @@ Wilson, A. C., & Bishop, D. V. M. (2022). Stage 2 registered report: Investigati
 
 Wilson, B. M., Harris, C. R., & Wixted, J. T. (2022). Theoretical false positive psychology. *Psychonomic Bulletin & Review*, *29*(5), 1751--1775. <https://doi.org/10.3758/s13423-022-02098-w>
 
+Wilson, J. T., & Bauer, P. J. (2023). Generative processes and knowledge revision. *Learning and Motivation*, *84*, 101936. <https://doi.org/10.1016/j.lmot.2023.101936>
+
+Wilson, J. T., Miller-Goldwater, H. E., Porter, B. M., & Bauer, P. J. (2023). Learning neuroscience: Investigating influences of notetaking materials and individual differences. *Learning and Individual Differences*, *101*, 102243. <https://doi.org/10.1016/j.lindif.2022.102243>
+
+Wimmer, J., Rösch, S. A., Schmidt, R., & Hilbert, A. (2023). Neurofeedback strategies in binge-eating disorder as predictors of EEG-neurofeedback regulation success. *Frontiers in Human Neuroscience*, *17*, 1234085. <https://doi.org/10.3389/fnhum.2023.1234085>
+
 Windhager, P. F., Marcu, A. V., Trinka, E., Bathke, A., & Höller, Y. (2022). Are High Frequency Oscillations in Scalp EEG Related to Age? *Frontiers in Neurology*, *12*, 722657. <https://doi.org/10.3389/fneur.2021.722657>
 
 Wingfield, C., & Connell, L. (2022). Understanding the role of linguistic distributional knowledge in cognition. *Language, Cognition and Neuroscience*, *37*(10), 1220--1270. <https://doi.org/10.1080/23273798.2022.2069278>
 
 Winter, B., & Srinivasan, M. (2022). Why is Semantic Change Asymmetric? The Role of Concreteness and Word Frequency and Metaphor and Metonymy. *Metaphor and Symbol*, *37*(1), 39--54. <https://doi.org/10.1080/10926488.2021.1945419>
+
+Wong, A. H. K., & Pittig, A. (2023). Reducing avoidance of learnt fear: Extinction of an imminent threat signal partly decreases costly avoidance to a distal threat signal. *Journal of Experimental Psychopathology*, *14*(2), 204380872311751. <https://doi.org/10.1177/20438087231175147>
+
+Wong, A. H. K., Van Dis, E. A. M., Pittig, A., Hagenaars, M. A., & Engelhard, I. M. (2023). The degree of safety behaviors to a safety stimulus predicts development of threat beliefs. *Behaviour Research and Therapy*, *170*, 104423. <https://doi.org/10.1016/j.brat.2023.104423>
+
+Wong, Alex. H. K., Lee, J. C., Engelke, P., & Pittig, A. (2023). Reduction of costly safety behaviors after extinction with a generalization stimulus is determined by individual differences in generalization rules. *Behaviour Research and Therapy*, *160*, 104233. <https://doi.org/10.1016/j.brat.2022.104233>
 
 Wong, F., Diamant, E. S., Walters, M., & Yeh, P. J. (2022). No evidence of repeated song divergence across multiple urban and non-urban populations of dark-eyed juncos ( *Junco hyemalis* ) in Southern California. *Royal Society Open Science*, *9*(8), 220178. <https://doi.org/10.1098/rsos.220178>
 
@@ -2021,9 +2363,17 @@ Xia, T., Lopes, S., Chen, L., Roth, R., Zinzow, H., Jones, K., Zhang, L., Shi, L
 
 Xiang, K., Chang, H., & Sun, L. (2022). When the independence of syntactic representation meets the sentence processing of Mandarin: Evidence from syntactic priming. *Quarterly Journal of Experimental Psychology*, *75*(6), 1041--1055. <https://doi.org/10.1177/17470218211044987>
 
+Xie, D., Chen, S., & Wu, Y. (2023). Focusing on the positive or the negative: Self‐construal moderates negativity bias in impression updating. *PsyCh Journal*, *12*(4), 547--560. <https://doi.org/10.1002/pchj.651>
+
+Xie, H., & Deng, S. (2023). Drawing as a strategy for children to learn ancient Chinese poetry. *Acta Psychologica*, *240*, 104039. <https://doi.org/10.1016/j.actpsy.2023.104039>
+
 Xirocostas, Z. A., Debono, S. A., Slavich, E., & Moles, A. T. (2022). The ZAX Herbivory Trainer---Free software for training researchers to visually estimate leaf damage. *Methods in Ecology and Evolution*, *13*(3), 596--602. <https://doi.org/10.1111/2041-210X.13785>
 
+Xu, X., Yu, H., Gao, X., Shen, B., Feng, W., & Zhou, X. (2022). Understanding an implicated causality: The brain network for processing concessive relations. *Brain and Language*, *234*, 105177. <https://doi.org/10.1016/j.bandl.2022.105177>
+
 Xu, Z., & Liu, D. (2022). Perceptual simulation in language comprehension and Chinese character reading among third-grade Hong Kong children. *Educational Psychology*, *42*(5), 587--606. <https://doi.org/10.1080/01443410.2022.2031891>
+
+Yamada, K., & Toda, K. (2022). Pupillary dynamics of mice performing a Pavlovian delay conditioning task reflect reward-predictive signals. *Frontiers in Systems Neuroscience*, *16*, 1045764. <https://doi.org/10.3389/fnsys.2022.1045764>
 
 Yamaguchi, M., & Moriguchi, Y. (2022). Developmental change in attachment objects during childhood. *Early Child Development and Care*, *192*(7), 1119--1132. <https://doi.org/10.1080/03004430.2020.1841756>
 
@@ -2034,6 +2384,8 @@ Yang, J., Shao, Y., Li, B., Yu, Q.-Y., Ge, Q.-M., Li, B., Pan, Y.-C., Liang, R.-
 Yang, Y., Hillebrand, H., Lagisz, M., Cleasby, I., & Nakagawa, S. (2022). Low statistical power and overestimated anthropogenic impacts, exacerbated by publication bias, dominate field studies in global change biology. *Global Change Biology*, *28*(3), 969--989. <https://doi.org/10.1111/gcb.15972>
 
 Yavne, Y., Edel, Y., Berman, J., Eviatar, T., & Shepshelovich, D. (2021). Quality evaluation of the underlying evidence in the updated treatment recommendations for systemic lupus erythematosus. *Rheumatology*, *61*(1), 240--248. <https://doi.org/10.1093/rheumatology/keab306>
+
+Yavuz, M., Küntay, A. C., & Brouwer, S. (2023). The effect of foreign language and psychological distance on moral judgment in Turkish--English bilinguals. *Bilingualism: Language and Cognition*, 1--13. <https://doi.org/10.1017/S1366728923000706>
 
 Yi, W., Lu, S., & Dekeyser, R. (2022). Orthographic, Semantic, and Contextual Influences on Initial Processing and Learning of Novel Words During Reading: Evidence From Eye Movements. *Chinese Journal of Applied Linguistics*, *45*(2), 194--219. <https://doi.org/10.1515/CJAL-2022-0203>
 
@@ -2046,6 +2398,8 @@ Yoshimoto, T., Okazaki, S., Sumiya, M., Takahashi, H. K., Nakagawa, E., Koike, T
 Young, R. C., Westneat, D. F., Vangorder-Braid, J., Sirman, A. E., Siller, S. J., Kittilson, J., Ghimire, A., & Heidinger, B. J. (2022). Stressors interact across generations to influence offspring telomeres and survival. *Proceedings of the Royal Society B: Biological Sciences*, *289*(1982), 20220868. <https://doi.org/10.1098/rspb.2022.0868>
 
 Yovel, I., Aviram, G., Kahana, N., & Katz, B. A. (2022). Testing a new indirect measure of general self‐worth: The Self‐esteem Questionnaire‐based Implicit Association Test. *British Journal of Social Psychology*, *61*(1), 100--120. <https://doi.org/10.1111/bjso.12472>
+
+Yu, W., Ni, L., Zhang, Z., Zheng, W., & Liu, Y. (2023). No need to integrate action information during coarse semantic processing of man-made tools. *Psychonomic Bulletin & Review*, *30*(6), 2230--2239. <https://doi.org/10.3758/s13423-023-02301-6>
 
 Yu, Z., Guindani, M., Grieco, S. F., Chen, L., Holmes, T. C., & Xu, X. (2022). Beyond t test and ANOVA: Applications of mixed-effects models for more rigorous statistical analysis in neuroscience research. *Neuron*, *110*(1), 21--35. <https://doi.org/10.1016/j.neuron.2021.10.030>
 
@@ -2069,11 +2423,17 @@ Zhang, X., Lu, X., & Li, W. (2022). Beyond Differences: Assessing Effects of Sha
 
 Zhang, Y., Chang, M., & Wang, J. (2022). Increasing intercharacter spacing reduces the transposed-character effect in Chinese reading: Evidence from eye movements. *Visual Cognition*, *30*(5), 371--377. <https://doi.org/10.1080/13506285.2022.2074181>
 
+Zhang, Y., Nash, R. A., & Otgaar, H. (2023). Preference for cheap-and-easy memory verification strategies is strongest among people with high memory distrust. *Memory*, *31*(7), 978--988. <https://doi.org/10.1080/09658211.2023.2216910>
+
 Zhang, Y., Peng, S., Chen, X., & Chen, H. Y. H. (2022). Plant diversity increases the abundance and diversity of soil fauna: A meta-analysis. *Geoderma*, *411*, 115694. <https://doi.org/10.1016/j.geoderma.2022.115694>
 
 Zhang, Z., & Peng, P. (2022). Reading real words versus pseudowords: A meta-analysis of research in developmental dyslexia. *Developmental Psychology*, *58*(6), 1035--1050. <https://doi.org/10.1037/dev0001340>
 
+Zhang, Z., & Sun, L. (2023). The hidden factor: Accounting for covariate effects in power and sample size computation for a binary trait. *Bioinformatics*, *39*(4), btad139. <https://doi.org/10.1093/bioinformatics/btad139>
+
 Zhao, Q., Ahrens, K., & Huang, C.-R. (2022). Linguistic synesthesia is metaphorical: A lexical-conceptual account. *Cognitive Linguistics*, *33*(3), 553--583. <https://doi.org/10.1515/cog-2021-0098>
+
+Zhao, R., Jiao, L., Wang, M., & Wei, H. (2023). The influence of L2 experience on L1 speech perception: Evidence from Mandarin--English bilinguals. *International Journal of Bilingualism*, *27*(5), 533--547. <https://doi.org/10.1177/13670069221104964>
 
 Zhong, Y., Huang, C.-R., & Ahrens, K. (2022). Embodied Grounding of Concreteness/Abstractness: A Sensory-Perceptual Account of Concrete and Abstract Concepts in Mandarin Chinese. In M. Dong, Y. Gu, & J.-F. Hong (Eds.), *Chinese Lexical Semantics* (Vol. 13250, pp. 72--83). Springer International Publishing. <https://doi.org/10.1007/978-3-031-06547-7_5>
 
@@ -2091,15 +2451,21 @@ Zhozhikashvili, N., Zakharov, I., Ismatullina, V., Feklicheva, I., Malykh, S., &
 
 Zhu, C., Liu, Z., Pei, M., & Su, Y. (2022). Effects of photographer physical attractiveness on photograph aesthetic value assessment. *Perception*, *51*(7), 505--513. <https://doi.org/10.1177/03010066221098158>
 
+Zhu, C., & Wu, F. (2023). To stress or not to stress: What can Mandarin pronouns inform us of the accessibility of topic and focus? *Phonetica*, *0*(0). <https://doi.org/10.1515/phon-2023-0002>
+
 Ziv, G., Lidor, R., & Levin, O. (2022). Providing choice of feedback affects perceived choice but does not affect performance. *PeerJ*, *10*, e13631. <https://doi.org/10.7717/peerj.13631>
 
 Zivony, A., & Eimer, M. (2022). Expectation-based blindness: Predictions about object categories gate awareness of focally attended objects. *Psychonomic Bulletin & Review*, *29*(5), 1879--1889. <https://doi.org/10.3758/s13423-022-02116-x>
+
+Zoppolat, G., Righetti, F., Balzarini, R. N., Alonso-Ferres, M., Urganci, B., Rodrigues, D. L., Debrot, A., Wiwattanapantuwong, J., Dharma, C., Chi, P., Karremans, J. C., Schoebi, D., & Slatcher, R. B. (2022). Relationship difficulties and "technoference" during the COVID-19 pandemic. *Journal of Social and Personal Relationships*, *39*(11), 3204--3227. <https://doi.org/10.1177/02654075221093611>
 
 Zou, J., Gopalakrishnan, S., Parker, C. C., Nicod, J., Mott, R., Cai, N., Lionikas, A., Davies, R. W., Palmer, A. A., & Flint, J. (2022). Analysis of independent cohorts of outbred CFW mice reveals novel loci for behavioral and physiological traits and identifies factors determining reproducibility. *G3 Genes|Genomes|Genetics*, *12*(1), jkab394. <https://doi.org/10.1093/g3journal/jkab394>
 
 Zuraida, Z., & Husin, A. (2022). Sustainability, Sharī'ah Governance and Financial Performance: Evidence from Companies Listed on the Jakarta Islamic Index. In T. Azid, M. Mukhlisin, & O. Altwijry (Eds.), *Wealth Management and Investment in Islamic Settings* (pp. 249--282). Springer Nature Singapore. <https://doi.org/10.1007/978-981-19-3686-9_16>
 
 Zwet, E. V., & Gelman, A. (2022). A Proposal for Informative Default Priors Scaled by the Standard Error of Estimates. *The American Statistician*, *76*(1), 1--9. <https://doi.org/10.1080/00031305.2021.1938225>
+
+Кузьмина, Ю. (2023). Psychometrics and Cognitive Research: Contradictions and Possibility for Cooperation. *Voprosy Obrazovaniya / Educational Studies Moscow*, *3*. <https://doi.org/10.17323/vo-2023-16875>
 
 </div>
 
