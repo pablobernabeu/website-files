@@ -8,7 +8,7 @@ active = true  # Activate this widget? true/false
 weight = 160  # Order that this section will appear.
 
 title = "Blog and resources"
-subtitle = "Short essays, tutorials, and functions for the implementation of experiments and for data analysis.<br><span style='font-size:80%;'>Some of the [posts involving R code](/categories/r/) were republished on [R-bloggers](https://www.r-bloggers.com), [R Weekly](https://rweekly.org/), [Data Science Central](https://www.datasciencecentral.com/) and [dev.to](https://dev.to/).</span>"
+subtitle = "Short essays, tutorials, and functions for the implementation of experiments, data analysis and other purposes.<br><span style='font-size:80%;'>Some of the [posts involving R code](/categories/r/) were republished on [R-bloggers](https://www.r-bloggers.com), [R Weekly](https://rweekly.org/), [Data Science Central](https://www.datasciencecentral.com/) and [dev.to](https://dev.to/).</span>"
 
 [content]
   # Page type to display. E.g. post, talk, or publication.
