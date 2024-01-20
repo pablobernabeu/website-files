@@ -85,7 +85,7 @@
   translation: Recent work
 
 - id: education
-  translation: Education
+  translation: '<span id="education">Education</span>'
   
 - id: furthercourses
   translation: Further courses

@@ -8,12 +8,12 @@
   color: darkgrey;
 }
 
-#navbar-main > div > div.d-none.d-lg-inline-flex > a:hover, #navbar-content > ul > li > a:hover, #navbar-main > div > div.navbar-brand-mobile-wrapper.d-inline-flex.d-lg-none > a:hover {
-  color: #31A290;
+#navbar-main > div > div.d-none.d-lg-inline-flex > a::first-letter, #navbar-main > div > div.navbar-brand-mobile-wrapper.d-inline-flex.d-lg-none > a::first-letter, div > div > div.col-12.col-lg-4.section-heading > h1::first-letter {
+  color: #8FABA6;
 }
 
-div > div > div.col-12.col-lg-4.section-heading > h1::first-letter {
-  color: #8FABA6;
+#navbar-main > div > div.d-none.d-lg-inline-flex > a:hover, #navbar-content > ul > li > a:hover, #navbar-main > div > div.navbar-brand-mobile-wrapper.d-inline-flex.d-lg-none > a:hover, #navbar-main > div > div.d-none.d-lg-inline-flex > a:hover::first-letter, #navbar-main > div > div.navbar-brand-mobile-wrapper.d-inline-flex.d-lg-none > a:hover::first-letter {
+  color: #31A290;
 }
 
 div.col-12.col-lg-4.section-heading > h1, #navbar-content > ul > li > a {
