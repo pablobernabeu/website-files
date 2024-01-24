@@ -29,10 +29,9 @@ In addition to the parallel sampling, I wonder how I could save the same trial i
 
 ## Solution
 
-Finally I solved this using position indices in a for-of loop (see below: 'For loop that creates trial information iteratively over trials (3 steps)').
+Finally I solved this using position indices in a for-of loop (see below: `For loop that creates trial information iteratively over trials (3 steps)`).
 
 ```
-
 <!DOCTYPE html>
 <html>
 
