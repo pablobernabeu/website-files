@@ -9128,7 +9128,7 @@ div.mermaid {
 #navbar-main > div > div.d-none.d-lg-inline-flex > a, #navbar-content > ul > li > a, #navbar-main > div > div.navbar-brand-mobile-wrapper.d-inline-flex.d-lg-none > a {
   color: darkgrey; }
 
-#navbar-main > div > div.d-none.d-lg-inline-flex > a::first-letter, #navbar-main > div > div.navbar-brand-mobile-wrapper.d-inline-flex.d-lg-none > a::first-letter, div > div > div.col-12.col-lg-4.section-heading > h1::first-letter {
+div > div > div.col-12.col-lg-4.section-heading > h1::first-letter {
   color: #8FABA6; }
 
 #navbar-main > div > div.d-none.d-lg-inline-flex > a:hover, #navbar-content > ul > li > a:hover, #navbar-main > div > div.navbar-brand-mobile-wrapper.d-inline-flex.d-lg-none > a:hover, #navbar-main > div > div.d-none.d-lg-inline-flex > a:hover::first-letter, #navbar-main > div > div.navbar-brand-mobile-wrapper.d-inline-flex.d-lg-none > a:hover::first-letter {
@@ -9331,3 +9331,6 @@ div.emgithub-file.emgithub-file-dark > div.file-data.hljs-style-a11y-dark > div 
     border-image-slice: 1; }
   #profile > div:nth-child(5) > div > ul > div:nth-child(1) {
     display: none; } }
+
+a[href$="/tags/s/"] {
+  display: none; }
