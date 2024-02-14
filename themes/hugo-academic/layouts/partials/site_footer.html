@@ -10,7 +10,6 @@
     {{ end }}
   </p>
   {{ end }}
-
   <p class="powered-by">
     {{ with site.Copyright }}{{ replace . "{year}" now.Year | markdownify}} &middot; {{ end }}
 
@@ -18,9 +17,9 @@
 
     {{ if not (in (slice "docs" "updates") .Type) }}
     <span class="float-right" aria-hidden="true">
-      <a href="#" class="back-to-top">
-        <span class="button_icon">
-          <i class="fas fa-chevron-up fa-2x"></i>
+      <a href="#" class="back-to-top" style="background-image:none;">
+        <span class="button_icon" style="background-image:none;">
+          <i class="fas fa-chevron-up fa-2x" style="background-image:none;"></i>
         </span>
       </a>
     </span>

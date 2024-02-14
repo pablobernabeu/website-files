@@ -51,12 +51,15 @@ subtitle = ""
 +++
 
 
-| Date     | Type | Title                  | Event and location     |
-| -------- | ---- | ---------------------- | ---------------------- |
-| Oct, Nov 2023 | Talk | Study in preparation (information and slides available upon request while study in progress) | (1) AcqVA Aurora Centre, UiT The Arctic University of Norway; <br> (2) PoLaR Lab, UiT The Arctic University of Norway |
+| Date     | Type   | Title                  | Event and location     |
+| -------- | ------ | ---------------------- | ---------------------- |
+| Mar 2024 | Poster | [Making research materials Findable, Accessible, Interoperable and Reusable (FAIR)](/talk/making-research-materials-findable-accessible-interoperable-reusable-fair) | [AcqVA Aurora Closing Event](https://site.uit.no/acqvalab/acqva-aurora-closing-event-8th-march-2024), UiT The Arctic University of Norway |
+| Mar 2024 | Poster | Is third language learning associated with working memory and implicit learning? (Ngoc Giang My Hoang et al.) <span style = 'color: grey;'>[further information available upon request while study in progress]</span> | [AcqVA Aurora Closing Event](https://site.uit.no/acqvalab/acqva-aurora-closing-event-8th-march-2024), UiT The Arctic University of Norway |
+| Mar 2024 | Poster | Effects of cognitive individual differences on cross-linguistic effects in L3 acquisition (Gabriella Silva et al.) <span style = 'color: grey;'>[further information available upon request while study in progress]</span> | [AcqVA Aurora Closing Event](https://site.uit.no/acqvalab/acqva-aurora-closing-event-8th-march-2024), UiT The Arctic University of Norway |
+| Oct, Nov 2023 | Talk | Implementation of a longitudinal, artificial language study to investigate morphosyntactic transfer <span style = 'color: grey;'>[information and slides available upon request while study in progress]</span> | (1) [AcqVA Aurora Centre](https://uit.no/research/acqva), UiT The Arctic University of Norway; <br> (2) [PoLaR Lab](https://site.uit.no/polar), UiT The Arctic University of Norway |
 | May 2023 | Reading group discussion | [Discussion of Labotka et al. (2023): Testing the effects of congruence in adult multilingual acquisition with implications for creole genesis](/talk/discussion-of-labotka-et-al-2023) | Reading group of the PoLaR Lab, UiT The Arctic University of Norway |
 | Jan 2023 | Reading group discussion | [Discussion of Jost et al. (2019): Input complexity affects long-term retention of statistically learned regularities in an artificial language learning task](/talk/discussion-of-jost-et-al-2019) | Reading group of the PoLaR Lab, UiT The Arctic University of Norway |
-| Oct 2022 | Talk | [Language and sensorimotor simulation in conceptual processing: Multilevel analysis and statistical power](https://osf.io/4uwzc) | AcqVA Aurora Centre, UiT The Arctic University of Norway |
+| Oct 2022 | Talk | [Language and sensorimotor simulation in conceptual processing: Multilevel analysis and statistical power](https://osf.io/4uwzc) | [AcqVA Aurora Centre](https://uit.no/research/acqva), UiT The Arctic University of Norway |
 | Sept 2022 | Talk | [The interplay between linguistic and embodied systems in conceptual processing](https://osf.io/tn568) | Presented by Dr. Dermot Lynott at the 22<sup>nd</sup> Meeting of the European Society for Cognitive Psychology (ESCOP), in Lille, France |
 | Feb 2022 | Talk | [Language and vision in conceptual processing: Multilevel analysis and statistical power](https://doi.org/10.17605/OSF.IO/UERYQ) | Language and Cognition Seminars, Dept. Psychology, Lancaster University |
 | May 2021 | Talk | [Linguistic and embodied systems in conceptual processing: Variation across individuals and items](/talk/linguistic-and-embodied-systems-in-conceptual-processing-variation-across-individuals-and-items) | Lancaster University Postgraduate Psychology Conference 2021 |

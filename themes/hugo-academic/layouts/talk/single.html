@@ -6,11 +6,6 @@
 
   <div class="article-container">
 
-    {{ if .Params.abstract }}
-      <h3>{{ i18n "abstract" }}</h3>
-      <p class="pub-abstract">{{ .Params.abstract | markdownify | emojify }}</p>
-    {{ end }}
-
     {{ if .Params.date }}
     <div class="row">
       <div class="col-md-1" style="margin-left:-30px;"></div>
@@ -61,6 +56,11 @@
       <div class="col-md-1"></div>
     </div>
     <div class="d-md-none space-below"></div>
+    {{ end }}
+
+    {{ if .Params.abstract }}
+      <h3>{{ i18n "abstract" }}</h3>
+      <p class="pub-abstract">{{ .Params.abstract | markdownify | emojify }}</p>
     {{ end }}
 
     <div class="article-style">

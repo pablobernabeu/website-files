@@ -9178,8 +9178,13 @@ div.col-12.col-lg-4.section-heading > h1, #navbar-content > ul > li > a {
 p a:link, ul a:link, li a:link, .article-container a:link, td a:link, a.dsq-brlink, div.grid-sizer > div > a {
   color: #00032F; }
 
-p a:link, td a:link, div.grid-sizer > div > a {
-  background-image: linear-gradient(180deg, #E7FFEA, #FEFFE5, #FEFFE5, #FEFFE5, #FEFFE5, #FEFFE5, #FEFFE5, #E7FFEA); }
+p a:link, td a:link, div.grid-sizer > div > a, #top > div.pub > div > div > div.col-md-10 > div > div.col-12.col-md-9 > a, h3 > a {
+  background-image: linear-gradient(180deg, #FFFFF3, #FEFFE5, #FEFFE5, #FEFFE5, #FEFFE5, #FEFFE5, #FEFFE5, #BAF1B7); }
+
+/* Remove link highlight from general links in home 
+and from bio portrait information. */
+.article-title > a, #profile > div.portrait-title > h3 > a {
+  background-image: none; }
 
 h3 a:link {
   color: #4F6C89; }
@@ -9192,7 +9197,7 @@ h3 a:visited, div a:visited, p a:visited, ul a:visited, li a:visited, .article-c
   color: purple;
   background-color: transparent; }
 
-p a:hover, ul a:hover, li a:hover, .article-container a:hover, td a:hover, a.dsq-brlink:hover, div.grid-sizer > div > a:hover {
+p a:hover, ul a:hover, li a:hover, .article-container a:hover, td a:hover, a.dsq-brlink:hover, div.grid-sizer > div > a:hover, #top > div.pub > div > div > div.col-md-10 > div > div.col-12.col-md-9 > a:hover, h3 > a:hover {
   background-image: none;
   color: black;
   background-color: #EAFFE8;

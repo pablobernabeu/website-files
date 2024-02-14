@@ -1,0 +1,56 @@
+---
+title: Making research materials Findable, Accessible, Interoperable and Reusable (FAIR)
+authors: ['<span style="font-size:140%;">Pablo Bernabeu, Gabriella Silva, Ngoc Giang My Hoang, Vincent DeLuca, Iva Ivanova, Jason Rothman, Jorge González Alonso</span>']
+date: '2024-03-08'
+slug: making-research-materials-findable-accessible-interoperable-reusable-fair
+categories:
+  - research methods
+tags:
+  - open science
+  - open data
+  - reproducibility
+  - research methods
+event: AcqVA Aurora Closing Event, UiT The Arctic University of Norway
+event_url: https://site.uit.no/acqvalab/acqva-aurora-closing-event-8th-march-2024
+location: ~
+address:
+  street: ~
+  city: ~
+  region: ~
+  postcode: ~
+  country: ~
+summary: ~
+abstract: To err is human, but when it comes to creating research materials, mistakes can be reduced by sharing more of our work and by using some helpful tools. These practices can make our research materials FAIRer—that is, more Findable, Accessible, Interoperable and Reusable (Wilkinson et al., 2016). In this presentation, I will describe the use of documentation and open-source software (namely, R and OpenSesame) in the creation of materials for an artificial language study (for precedents, see Cross et al., 2021; González Alonso et al., 2020; Morgan-Short et al., 2012; Pereira Soares et al., 2022). This process enables the reproducibility, revision, modification and extension of the materials by ourselves or by other researchers, at any point. <br><br> R allows the reliable preparation of texts, images, audios, etc. This programming language was used to create the linguistic and the graphic stimuli for three artificial languages. The preparation of the stimuli drew on a modular framework formed of interoperable components. First, the minimal components of each language are contained in a base file in the ‘stimulus_preparation’ folder (see Figure 1). Second, the linguistic and the visual stimuli finally presented were created by assembling minimal components. Several controls were exerted on the stimuli to prevent spurious effects. For instance, gender and number were counterbalanced across experimental conditions, words were rotated across grammatical properties and sessions, and frequency of occurrence was controlled (see Figure 2). The final stimuli are (re)created through the script 'compile_all_stimuli.R', and the resulting stimuli are saved to the 'session_materials' folder. <br><br> OpenSesame is a Python-based software for stimulus presentation and data collection. I will describe the implementation of several complex sessions involving conditions for controlling the engagement of specific items (see Figure 3). Furthermore, I will describe a custom script for sending triggers in OpenSesame to support the registration of event-related potentials (see Figure 4).
+date_end: ~
+all_day: no
+publishDate: ~
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+url_slides: ~
+url_code: ~
+url_pdf: ~
+url_video: ~
+projects: []
+---
+
+<hr>
+
+
+The poster is available upon request while the study is in progress. Afterwards, it will be made public.
+
+
+### References
+
+Cross, Z. R., Zou-Williams, L., Wilkinson, E. M., Schlesewsky, M., & Bornkessel-Schlesewsky, I. (2021). Mini Pinyin: A modified miniature language for studying language learning and incremental sentence processing. *Behavior Research Methods, 53(3)*, 1218–1239. https://doi.org/10.3758/s13428-020-01473-6
+
+González Alonso, J., Alemán Bañón, J., DeLuca, V., Miller, D., Pereira Soares, S. M., Puig-Mayenco, E., Slaats, S., & Rothman, J. (2020). Event related potentials at initial exposure in third language acquisition: Implications from an artificial mini-grammar study. *Journal of Neurolinguistics, 56*, 100939. https://doi.org/10.1016/j.jneuroling.2020.100939
+
+Morgan-Short, K., Finger, I., Grey, S., & Ullman, M. T. (2012). Second language processing shows increased native-like neural responses after months of no exposure. *PLOS ONE, 7*(3), e32974. https://doi.org/10.1371/journal.pone.0032974
+
+Pereira Soares, S. M., Kupisch, T., & Rothman, J. (2022). Testing potential transfer effects in heritage and adult L2 bilinguals acquiring a mini grammar as an additional language: An ERP approach. *Brain Sciences, 12*(5), Article 5. https://doi.org/10.3390/brainsci12050669
+
+Wilkinson, M. D., Dumontier, M., Aalbersberg, Ij. J., Appleton, G., Axton, M., Baak, A., Blomberg, N., Boiten, J.-W., da Silva Santos, L. B., Bourne, P. E., Bouwman, J., Brookes, A. J., Clark, T., Crosas, M., Dillo, I., Dumon, O., Edmunds, S., Evelo, C. T., Finkers, R., … Mons, B. (2016). The FAIR Guiding Principles for scientific data management and stewardship. *Scientific Data, 3*(1), Article 1. https://doi.org/10.1038/sdata.2016.18
+
