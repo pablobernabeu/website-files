@@ -34,15 +34,15 @@ user_groups:
 bio: ~
 recent_work:
   jobs:
-  - job: '[Postdoctoral fellowship](https://en.uit.no/go/target/789811)'
+  - job: '[Postdoctoral fellow](https://en.uit.no/go/target/789811)'
     institution: 'UiT The Arctic University of Norway'
     year: 'Nov **2022** -- _Nov **2024**_'
-    extra: '-&nbsp; As a member of the [LESS Project (Language Economy through Transfer Source Selectivity)](https://app.cristin.no/projects/show.jsf?id=2559611), I am investigating how language learners coordinate several languages early in the acquisition process, how this process is influenced by the characteristics of the languages, and how the process is reflected in the brain.'
+    extra: '-&nbsp; As a member of the [LESS Project (Language Economy through Transfer Source Selectivity)](https://app.cristin.no/projects/show.jsf?id=2559611), I investigate how language learners coordinate several languages early in the acquisition process, how this process is influenced by the characteristics of the languages, and how the process is reflected in the brain.'
     extra2: '-&nbsp; Service: peer-review for Cognition and Cognitive Science; co-organisation of weekly lunch seminars of [AcqVA Aurora / C-LaBL](https://uit.no/research/clabl).'
-  - job: 'Part-time data analysis contribution'
+  - job: 'Statistical consultant'
     institution: 'UiT The Arctic University of Norway'
     year: 'Nov 2022 -- Jan 2023'
-    extra: '-&nbsp; I worked part-time on data analysis within the [CLICK Project (Cross-Linguistic Influence of Competing Knowledge)](https://uit.no/research/acqva/project?pid=723990), which investigates multilingualism in heritage speakers.'
+    extra: '-&nbsp; I worked as a statistical consultant for the [CLICK Project (Cross-Linguistic Influence of Competing Knowledge)](https://uit.no/research/acqva/project?pid=723990), which investigates multilingualism in heritage speakers.'
 education: 
   courses:
   - course: '[PhD Psychology with graduate teaching scholarship](https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109).html)'
@@ -114,8 +114,8 @@ education:
 
 After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology at Lancaster University. In my [thesis](/publication/pablo-bernabeu-2022-phd-thesis), I investigated how conceptual processing—that is, the comprehension of the meaning of words—is supported by linguistic and sensorimotor brain systems, and how research on this topic is influenced by methodological aspects such as the operationalisation of variables and the sample size of experiments. 
 
-Currently, I am a postdoctoral fellow at UiT The Arctic University of Norway. I work at the [Department of Language and Culture](https://en.uit.no/enhet/isk), and specifically within the [PoLaR Lab](https://site.uit.no/polar) and [C-LaBL](https://uit.no/research/clabl). As a member of the [LESS Project (Language Economy through Transfer Source Selectivity)](https://app.cristin.no/projects/show.jsf?id=2559611), I investigate how language learners coordinate several languages early in the acquisition process, how this process is influenced by the characteristics of the languages, and how the process is reflected in the brain. Earlier, I also worked part-time as a data analyst in the [CLICK Project (Cross-Linguistic Influence of Competing Knowledge)](https://uit.no/research/acqva/project?pid=723990), which investigates multilingualism in heritage speakers.
+Currently, I am a postdoctoral fellow at UiT The Arctic University of Norway. I work at the [Department of Language and Culture](https://en.uit.no/enhet/isk), and specifically within the [PoLaR Lab](https://site.uit.no/polar) and [C-LaBL](https://uit.no/research/clabl). As a member of the [LESS Project (Language Economy through Transfer Source Selectivity)](https://app.cristin.no/projects/show.jsf?id=2559611), I investigate how language learners coordinate several languages early in the acquisition process, how this process is influenced by the characteristics of the languages, and how the process is reflected in the brain. Earlier, I worked as a statistical consultant for the [CLICK Project (Cross-Linguistic Influence of Competing Knowledge)](https://uit.no/research/acqva/project?pid=723990), which investigates multilingualism in heritage speakers.
 
-Throughout my research, I have used methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. The materials from my research are available at [https://osf.io/25u3x](https://osf.io/25u3x) and my CV is [available here](/cv).
+Throughout my research, I have used methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. The materials from my research are available at [https://osf.io/25u3x](https://osf.io/25u3x), and my CV is [available here](/cv).
 
 

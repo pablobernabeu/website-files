@@ -14,7 +14,7 @@ tags:
   - R
   - s
 subtitle: ''
-summary: "In the fast-paced world of scientific research, establishing minimum standards for the creation of research materials is essential. Whether it's stimuli, custom software for data collection, or scripts for statistical analysis, the quality and transparency of these materials significantly impact the reproducibility and credibility of research. This blog post explores the importance of adhering to FAIR (Findable, Accessible, Interoperable, Reusable) principles and offers practical examples for researchers, with a focus on the cognitive sciences."
+summary: "In the fast-paced world of scientific research, establishing minimum standards for the creation of research materials is essential. Whether it's stimuli, custom software for data collection, or scripts for statistical analysis, the quality and transparency of these materials significantly impact the reproducibility and credibility of research. This blog post explores the importance of adhering to FAIR (Findable, Accessible, Interoperable, Reusable) principles, and offers practical examples for researchers, with a focus on the cognitive sciences."
 authors: []
 lastmod: ''
 featured: no
@@ -29,7 +29,7 @@ projects: []
 
 <div class='alert alert-info' role='alert' style='padding-bottom: 0; margin-bottom: 6%;'>
 
-In the fast-paced world of scientific research, establishing minimum standards for the creation of research materials is essential. Whether it's stimuli, custom software for data collection, or scripts for statistical analysis, the quality and transparency of these materials significantly impact the reproducibility and credibility of research. This blog post explores the importance of adhering to FAIR (Findable, Accessible, Interoperable, Reusable) principles and offers practical examples for researchers, with a focus on the cognitive sciences.
+In the fast-paced world of scientific research, establishing minimum standards for the creation of research materials is essential. Whether it's stimuli, custom software for data collection, or scripts for statistical analysis, the quality and transparency of these materials significantly impact the reproducibility and credibility of research. This blog post explores the importance of adhering to FAIR (Findable, Accessible, Interoperable, Reusable) principles, and offers practical examples for researchers, with a focus on the cognitive sciences.
 
 </div>
 
