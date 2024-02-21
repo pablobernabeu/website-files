@@ -77,8 +77,6 @@ The `brms::get_prior` function can be used to check what effects in the model ca
 
 <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Flanguage-sensorimotor-simulation-PhD-thesis%2Fblob%2Fmain%2Fsemanticpriming%2Fbayesian_analysis%2Fprior_predictive_checks%2Fsemanticpriming_priorpredictivecheck_informativepriors.R%23L28-L100&style=a11y-dark&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></script>
 
-<br>
-
 
 ## 2. Determining the priors
 

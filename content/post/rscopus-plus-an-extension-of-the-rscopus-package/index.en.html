@@ -1,0 +1,161 @@
+---
+title: 'rscopus_plus: An extension of the rscopus package'
+author: ''
+date: '2024-02-21'
+slug: rscopus-plus-an-extension-of-the-rscopus-package
+categories:
+  - R
+  - bibliometrics
+tags:
+  - bibliometrics
+  - R
+  - research methods
+  - research software
+  - second language
+  - third language
+  - executive functions
+  - working memory
+  - inhibition
+  - implicit learning
+  - s
+subtitle: ''
+summary: ''
+authors: []
+lastmod: ~
+featured: no
+draft: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+
+<p>Sometimes it’s useful to do a bibliometric analysis. To this end, the <a href="https://github.com/pablobernabeu/rscopus_plus"><code>rscopus_plus</code></a> functions (Bernabeu, 2024) extend the R package <a href="https://github.com/muschellij2/rscopus"><code>rscopus</code></a> (Muschelli, 2022) to administer the search quota and to enable specific searches and comparisons.</p>
+<ul>
+<li><p><a href="https://github.com/pablobernabeu/rscopus_plus/blob/main/scopus_search_plus.R"><code>scopus_search_plus</code></a> runs <code>rscopus::scopus_search</code> as many times as necessary based on the number of results and the search quota.</p></li>
+<li><p><a href="https://github.com/pablobernabeu/rscopus_plus/blob/main/scopus_search_DOIs.R"><code>scopus_search_DOIs</code></a> gets DOIs from <code>scopus_search_plus</code>, which can then be imported into a reference manager, such as Zotero, to create a list of references.</p></li>
+<li><p><a href="https://github.com/pablobernabeu/rscopus_plus/blob/main/scopus_search_additional_DOIs.R"><code>scopus_search_additional_DOIs</code></a> searches for additional DOIs.</p></li>
+<li><p><a href="https://github.com/pablobernabeu/rscopus_plus/blob/main/scopus_comparison.R"><code>scopus_comparison</code></a> compares counts of publications on various topics during a certain period.</p></li>
+<li><p><a href="https://github.com/pablobernabeu/rscopus_plus/blob/main/plot_scopus_comparison.R"><code>plot_scopus_comparison</code></a> draws a line plot with the output from <code>scopus_comparison</code>.</p></li>
+</ul>
+<div class="alert alert-warning" role="alert" style="padding-bottom: 0; margin-top: 6%; margin-bottom: 6%;">
+<p><em>Note.</em> Before using any of these functions, the user must read in their Scopus API key confidentially (see <a href="https://cran.r-project.org/web/packages/rscopus/vignettes/api_key.html">rscopus guidelines</a>).</p>
+</div>
+<div id="example-of-use" class="section level2">
+<h2>Example of use</h2>
+<p>As an example (also available <a href="https://github.com/pablobernabeu/L2_L3_EF/blob/main/biblio_analysis.R">on GitHub</a>), we’ll visualise the prevalence of three executive functions in the literatures on second and third language throughout the past two decades.</p>
+<p>First, we’ll use the <a href="https://github.com/pablobernabeu/rscopus_plus/blob/main/scopus_comparison.R"><code>scopus_comparison</code> function</a> (fragment shown below).</p>
+<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Frscopus_plus%2Fblob%2Fmain%2Fscopus_comparison.R%23L2-L23&style=a11y-dark&type=code&showLineNumbers=on&showFileMeta=on&showCopy=on&fetchFromJsDelivr=on"></script>
+<p>Next, we’ll use the <a href="https://github.com/pablobernabeu/rscopus_plus/blob/main/plot_scopus_comparison.R"><code>plot_scopus_comparison</code> function</a> (fragment shown below).</p>
+<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Frscopus_plus%2Fblob%2Fmain%2Fplot_scopus_comparison.R%23L4-L14&style=a11y-dark&type=code&showLineNumbers=on&showFileMeta=on&showCopy=on&fetchFromJsDelivr=on"></script>
+<pre class="r"><code>library(rscopus)
+# set_api_key(&#39;your_key_here&#39;)  # (see https://cran.r-project.org/web/packages/rscopus/vignettes/api_key.html)
+
+# I&#39;ll read in mine from a file. If you do this, make sure not to share your file.
+api_key = readLines(&#39;scopus_key.txt&#39;)
+set_api_key(api_key)
+
+library(dplyr)
+library(patchwork)
+
+
+# Load in Scopus search functions from https://github.com/pablobernabeu/rscopus_plus
+source(&#39;https://raw.githubusercontent.com/pablobernabeu/rscopus_plus/main/scopus_comparison.R&#39;)
+source(&#39;https://raw.githubusercontent.com/pablobernabeu/rscopus_plus/main/plot_scopus_comparison.R&#39;)
+
+
+# General parameters
+search_period = 2000:2023
+quota = 20
+
+
+# Prevalence of three executive functions in second language studies from 2000 to 2023. 
+
+# In addition to &quot;second language&quot;, the reference query includes the terms 
+# &quot;learning&quot; and &quot;cognition&quot; to make the scope of the search more relevant to 
+# the topic of interest. 
+
+reference_query = &#39;&quot;second language&quot;&#39;
+
+comparison_terms = c( &#39;&quot;working memory&quot;&#39;, &#39;inhibition&#39;, &#39;&quot;implicit learning&quot;&#39; )
+
+N_comparison_terms = length(comparison_terms)
+
+L2_EF = 
+  scopus_comparison(reference_query, comparison_terms, 
+                    search_period, quota, verbose = FALSE, 
+                    reference_query_field_tag = &#39;TITLE-ABS-KEY&#39;)
+
+saveRDS(L2_EF, &#39;L2_EF.rds&#39;)
+
+L2_EF = readRDS(&#39;L2_EF.rds&#39;)  # it&#39;s possible to load results directly
+
+plot_L2_EF = 
+  plot_scopus_comparison(L2_EF, 
+                         pub_count_in_legend = FALSE, 
+                         pub_count_in_lines = TRUE) +
+  scale_color_manual(
+    values = c( &quot;[ref.] + &#39;\&quot;working memory\&quot;&#39;&quot; = scales::hue_pal()(N_comparison_terms)[1],
+                &quot;[ref.] + &#39;inhibition&#39;&quot; = scales::hue_pal()(N_comparison_terms)[2], 
+                &quot;[ref.] + &#39;\&quot;implicit learning\&quot;&#39;&quot; = scales::hue_pal()(N_comparison_terms)[3] )
+  ) + 
+  guides(colour = guide_legend(override.aes = list(alpha = 1))) +
+  # Prepare layout for the multi-plot combination
+  theme(axis.text.x = element_blank(), axis.title.x = element_blank(), 
+        legend.position = &#39;none&#39;, plot.margin = margin(0, 0, 15, 0))
+
+
+# Prevalence of three executive functions in third language studies from 2000 to 2023. 
+
+# In addition to &quot;third language&quot;, the reference query includes the terms &quot;learning&quot; 
+# and &quot;cognition&quot; to make the scope of the search more relevant to the topic of 
+# interest. 
+
+reference_query = &#39;&quot;third language&quot;&#39;
+
+L3_EF = 
+  scopus_comparison(reference_query, comparison_terms, 
+                    search_period, quota, verbose = FALSE, 
+                    reference_query_field_tag = &#39;TITLE-ABS-KEY&#39;)
+
+saveRDS(L3_EF, &#39;L3_EF.rds&#39;)
+
+L3_EF = readRDS(&#39;L3_EF.rds&#39;)  # it&#39;s possible to load results directly
+
+plot_L3_EF = 
+  plot_scopus_comparison(L3_EF, 
+                         pub_count_in_legend = FALSE, 
+                         pub_count_in_lines = TRUE) +
+  scale_color_manual(
+    values = c( &quot;[ref.] + &#39;\&quot;working memory\&quot;&#39;&quot; = scales::hue_pal()(N_comparison_terms)[1],
+                &quot;[ref.] + &#39;inhibition&#39;&quot; = scales::hue_pal()(N_comparison_terms)[2], 
+                &quot;[ref.] + &#39;\&quot;implicit learning\&quot;&#39;&quot; = scales::hue_pal()(N_comparison_terms)[3] )
+  ) + 
+  guides(colour = guide_legend(override.aes = list(alpha = 1))) +
+  # Prepare layout for the multi-plot combination
+  theme(axis.text.x = element_text(margin = margin(7, 0, 0, 0, &#39;pt&#39;)),
+        axis.title.x = element_text(margin = margin(8, 0, 0, 0, &#39;pt&#39;)),
+        legend.justification = &#39;right&#39;, plot.margin = margin(0, 0, 0, 0))
+
+
+# Combine plots
+
+plot_L2_EF + plot_L3_EF + 
+  plot_layout(ncol = 1, axes = &#39;collect&#39;) &amp;
+  theme(axis.text = element_text(size = 10),
+        axis.title = element_text(vjust = 0.5, size = 13), 
+        plot.title = element_markdown(hjust = 0.5, size = 12),
+        legend.text = element_text(size = 12),
+        legend.background = element_rect(color = &#39;grey70&#39;), 
+        legend.margin = margin(-5, 5, 2, 0)) </code></pre>
+<p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-1-1.png" width="720" /></p>
+<p>The total number of publications over the current period is shown between brackets after each query.</p>
+</div>
+<div id="references" class="section level2">
+<h2>References</h2>
+<p>Bernabeu, P. (2024). <em>rscopus_plus (v1.1.5)</em>. Zenodo. <a href="https://doi.org/10.5281/zenodo.10689747" class="uri">https://doi.org/10.5281/zenodo.10689747</a></p>
+<p>Muschelli, J. (2022). <em>Package ’rscopus’</em>. CRAN. <a href="https://cran.r-project.org/web/packages/rscopus/rscopus.pdf" class="uri">https://cran.r-project.org/web/packages/rscopus/rscopus.pdf</a></p>
+</div>

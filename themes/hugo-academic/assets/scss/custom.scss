@@ -252,12 +252,20 @@ div.emgithub-file.emgithub-file-dark > div.file-data.hljs-style-a11y-dark > div 
 
 }
 
+// add margin under emgithub code chunks
+
+.emgithub-container {
+  margin-bottom: 6%;
+}
+
 
 // Hanging indentation for references
+
 #references, .hanging-indent {
   text-indent: -2em; 
   margin-left: 2em;
 }
+
 
 // related references 
 
