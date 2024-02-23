@@ -45,9 +45,35 @@ projects: []
 <hr>
 
 
+#### Figure 1
+
+The minimal components of each language are contained in a base file.
+
+<img style = 'margin-top: 0; margin-bottom: 6%;' src = 'images/Picture1.png' width = '95%'></img>
 
 
-This poster is available to researchers upon request while the study is in progress. Afterwards, it will be made public.
+#### Figure 2
+
+Frequency of occurrence was controlled.
+
+<img style = 'margin-top: 0; margin-bottom: 6%;' src = 'images/Picture2.png' width = '95%'></img>
+
+
+#### Figure 3
+
+Complex sessions involving conditions for controlling the engagement of specific items.
+
+<img style = 'margin-top: 0; margin-bottom: 6%;' src = 'images/Picture3.png' width = '95%'></img>
+
+
+#### Figure 4
+
+Custom script for sending triggers in OpenSesame to support registration of ERPs.
+
+<img style = 'margin-top: 0; margin-bottom: 6%;' src = 'images/Picture4.png' width = '95%'></img>
+
+
+The full poster is available to researchers upon request while the study is in progress. Afterwards, it will be made public.
 
 
 ### References
