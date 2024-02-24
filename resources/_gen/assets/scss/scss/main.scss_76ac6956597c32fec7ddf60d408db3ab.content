@@ -8664,9 +8664,9 @@ ul.ul-edu li .description p.institution {
   background-color: #2962ff !important; }
 
 /*************************************************
- * Talks
+ * Presentations
  **************************************************/
-.talk-metadata {
+.presentation-metadata {
   color: #4b4f56;
   font-size: 0.8rem; }
 
@@ -9079,7 +9079,7 @@ body.dark,
 .dark .pub-icon {
   color: rgba(255, 255, 255, 0.54); }
 
-.dark .talk-metadata {
+.dark .presentation-metadata {
   color: rgba(255, 255, 255, 0.54); }
 
 .dark .pagination li > a, .pagination li > span {

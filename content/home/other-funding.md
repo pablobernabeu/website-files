@@ -53,7 +53,7 @@ subtitle = ""
 
 |      |                        |                        |
 | ---- | ---------------------- | ---------------------- |
-| 2021 | Joint second place in the [Open Scholarship Prize Competition](https://osc-galway.ie/competition/) organised by [Open Scholarship Community Galway](https://osc-galway.ie/) | Prize awarded after [a final series of presentations](/talk/towards-reproducibility-and-maximally-open-data/), and used in PhD research. |
+| 2021 | Joint second place in the [Open Scholarship Prize Competition](https://osc-galway.ie/competition/) organised by [Open Scholarship Community Galway](https://osc-galway.ie/) | Prize awarded after [a final series of presentations](/presentation/towards-reproducibility-and-maximally-open-data/), and used in PhD research. |
 | 2020 | [RepliCATS Grant](https://replicats.research.unimelb.edu.au), University of Melbourne | Awarded for completing 20 [RepliCATS research assessments](https://replicats.research.unimelb.edu.au), and used in PhD research. |
 | 2020 | Gorilla Grant from [Gorilla](https://gorilla.sc/) and [Prolific](https://prolific.co/) | Conducting a large-sample experiment on the internet. |
 | 2020 | [Software Sustainability Institute Fellowship](https://www.software.ac.uk/programmes-and-events/fellowship-programme) | Organising [training and practice activities in research software](/2020/data-is-present-workshops-and-datathons/). I focussed on data presentation using R. |

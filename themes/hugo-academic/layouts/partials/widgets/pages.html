@@ -57,8 +57,8 @@
 {{ $i18n := "" }}
 {{ if eq $items_type "post" }}
   {{ $i18n = "more_posts" }}
-{{ else if eq $items_type "talk" }}
-  {{ $i18n = "more_talks" }}
+{{ else if eq $items_type "presentation" }}
+  {{ $i18n = "more_presentations" }}
 {{ else if eq $items_type "publication" }}
   {{ $i18n = "more_publications" }}
 {{ else }}

@@ -1,5 +1,5 @@
 ---
-title: Example Talk
+title: Example Presentation
 event: Academic Theme Conference
 event_url: https://example.org
 
@@ -11,22 +11,22 @@ address:
   postcode: '94305'
   country: United States
 
-summary: An example talk using Academic's Markdown slides feature.
+summary: An example presentation using Academic's Markdown slides feature.
 abstract: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellusac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam."
 
-# Talk start and end times.
+# Presentation start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
 date: "2030-06-01T13:00:00Z"
 date_end: "2030-06-01T15:00:00Z"
 all_day: false
 
-# Schedule page publish date (NOT talk date).
+# Schedule page publish date (NOT presentation date).
 publishDate: "2017-01-01T00:00:00Z"
 
 authors: []
 tags: []
 
-# Is this a featured talk? (true/false)
+# Is this a featured presentation? (true/false)
 featured: false
 
 image:
@@ -44,7 +44,7 @@ url_slides: ""
 url_video: ""
 
 # Markdown Slides (optional).
-#   Associate this talk with Markdown slides.
+#   Associate this presentation with Markdown slides.
 #   Simply enter your slide deck's filename without extension.
 #   E.g. `slides = "example-slides"` references `content/slides/example-slides.md`.
 #   Otherwise, set `slides = ""`.
@@ -68,8 +68,8 @@ Click on the **Slides** button above to view the built-in slides feature.
 
 Slides can be added in a few ways:
 
-- **Create** slides using Academic's [*Slides*](https://sourcethemes.com/academic/docs/managing-content/#create-slides) feature and link using `slides` parameter in the front matter of the talk file
-- **Upload** an existing slide deck to `static/` and link using `url_slides` parameter in the front matter of the talk file
+- **Create** slides using Academic's [*Slides*](https://sourcethemes.com/academic/docs/managing-content/#create-slides) feature and link using `slides` parameter in the front matter of the presentation file
+- **Upload** an existing slide deck to `static/` and link using `url_slides` parameter in the front matter of the presentation file
 - **Embed** your slides (e.g. Google Slides) or presentation video on this page using [shortcodes](https://sourcethemes.com/academic/docs/writing-markdown-latex/).
 
-Further talk details can easily be added to this page using *Markdown* and $\rm \LaTeX$ math code.
+Further presentation details can easily be added to this page using *Markdown* and $\rm \LaTeX$ math code.

@@ -114,8 +114,8 @@
 - id: more_posts
   translation: See all posts
 
-- id: more_talks
-  translation: See all talks
+- id: more_presentations
+  translation: See all presentations
 
 - id: more_publications
   translation: See all publications
@@ -137,7 +137,7 @@
 - id: book_appointment
   translation: Book an appointment
 
-# Publication/Talk details
+# Publication/Presentation details
 
 - id: abstract
   translation: Abstract
@@ -147,6 +147,9 @@
 
 - id: publication_type
   translation: Type
+
+- id: presentation_format
+  translation: Format
 
 - id: date
   translation: Date
@@ -200,9 +203,9 @@
 - id: publications
   translation: Publications
 
-- id: talks
-  translation: Talks
-
+- id: presentations
+  translation: Presentations
+  
 - id: projects
   translation: Projects
 

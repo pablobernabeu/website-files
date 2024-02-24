@@ -13,7 +13,7 @@
 {{ end }}
 {{ if eq $item.Type "post" }}
   {{ $icon = "fa-newspaper" }}
-{{ else if eq $item.Type "talk" }}
+{{ else if eq $item.Type "presentation" }}
   {{ $icon = "fa-calendar-alt" }}
 {{ else if eq $item.Type "publication" }}
   {{ $show_authors = true }}
@@ -29,7 +29,7 @@
   <i class="{{$icon_pack}} {{$icon}} pub-icon" aria-hidden="true"></i>
   <a href="{{$link}}" {{ $target | safeHTMLAttr }}>{{ $item.Title }}</a>
 
-  {{ if eq $item.Type "talk" }}
+  {{ if eq $item.Type "presentation" }}
   <div class="article-metadata">
     <span>
       {{ partial "functions/get_event_dates" $item }}

@@ -3,7 +3,7 @@
 
 {{/* Dynamic view adjusts to content type. */}}
 {{ $show_buttons := false }}
-{{ if eq $item.Type "talk" }}
+{{ if eq $item.Type "presentation" }}
   {{ $show_buttons = true }}
 {{ else if eq $item.Type "publication" }}
   {{ $show_buttons = true }}
@@ -23,7 +23,7 @@
 
 <div class="card-simple">
 
-  {{ if eq $item.Type "talk" }}
+  {{ if eq $item.Type "presentation" }}
   <div class="article-metadata">
     {{ if $item.Params.authors }}
     <div>

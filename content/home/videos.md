@@ -61,7 +61,7 @@ css_class = ""
 <div style = 'padding-bottom: 7%;'></div>
 
 
-### <span style='color:grey; font-size:70%;'>2021 ·</span>&nbsp; [Towards reproducibility and maximally-open data](/talk/towards-reproducibility-and-maximally-open-data)
+### <span style='color:grey; font-size:70%;'>2021 ·</span>&nbsp; [Towards reproducibility and maximally-open data](/presentation/towards-reproducibility-and-maximally-open-data)
 
 <div style = "position: relative; margin-top: 20px;">
 <iframe src="https://cdnapisec.kaltura.com/p/723092/sp/72309200/embedIframeJs/uiconf_id/31568551/partner_id/723092?flashvars[mediaProxy.mediaPlayFrom]=3368&iframeembed=true&playerId=kplayer&entry_id=1_d7ekd3d3&flashvars[streamerType]=auto" width="80%" height="660" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
@@ -70,7 +70,7 @@ css_class = ""
 <div style = 'padding-bottom: 4%;'></div>
 
 
-### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; [Reproducibilidad en torno a una aplicación web](/talk/2020-10-08-reproducibilidad-en-torno-a-una-aplicacion-web)
+### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; [Reproducibilidad en torno a una aplicación web](/presentation/2020-10-08-reproducibilidad-en-torno-a-una-aplicacion-web)
 
 <div style = "position: relative; margin-top: 20px; padding-top: 56.25%; margin-bottom: -25px;">
 <iframe src="https://www.youtube-nocookie.com/embed/1njLOAWqLPM" frameborder="0" allowfullscreen

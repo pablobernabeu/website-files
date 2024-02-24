@@ -189,8 +189,8 @@ plugins_js  = []
   # Citation style ('apa' or 'mla')
   citation_style = 'apa'
   
-# Configuration of publication pages.
-[talk]
+# Configuration of presentation pages.
+[presentation]
   # Date format (refer to https://sourcethemes.com/academic/docs/customization/#date-format )
   # Examples: 'Mon, Jan 2, 2006' or '2006-01-02'
   date_format = '2 January 2006'
@@ -204,7 +204,7 @@ plugins_js  = []
   #   4: Citation (publications only)
   post_view = 2
   publication_view = 3
-  talk_view = 2
+  presentation_view = 2
 
 ############################
 ## Comments
@@ -217,7 +217,7 @@ plugins_js  = []
   engine = 1
 
   # Which page types are commentable?
-  commentable = {page = true, post = true, docs = true, project = true, publication = true, applications-and-dashboards = true, talk = true}
+  commentable = {page = true, post = true, docs = true, project = true, publication = true, applications-and-dashboards = true, presentation = true}
 
   # Configuration of Disqus.
   [comments.disqus]
