@@ -49,28 +49,28 @@ projects: []
 
 #### Figure 1
 
-The minimal components of each language are contained in a base file.
+*The minimal components of each language are contained in a base file.*
 
 <img style = 'margin-top: 0; margin-bottom: 6%;' src = 'images/Picture1.png' width = '95%'></img>
 
 
 #### Figure 2
 
-Frequency of occurrence was controlled.
+*Frequency of occurrence was controlled.*
 
 <img style = 'margin-top: 0; margin-bottom: 6%;' src = 'images/Picture2.png' width = '95%'></img>
 
 
 #### Figure 3
 
-Complex sessions involving conditions for controlling the engagement of specific items.
+*Complex sessions involving conditions for controlling the engagement of specific items.*
 
 <img style = 'margin-top: 0; margin-bottom: 6%;' src = 'images/Picture3.png' width = '95%'></img>
 
 
 #### Figure 4
 
-Custom script for sending triggers in OpenSesame to support registration of ERPs.
+*Custom script for sending triggers in OpenSesame to support registration of ERPs.*
 
 <img style = 'margin-top: 0; margin-bottom: 6%;' src = 'images/Picture4.png' width = '95%'></img>
 

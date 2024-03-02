@@ -38,7 +38,7 @@ recent_work:
     institution: 'UiT The Arctic University of Norway'
     year: 'Nov **2022** -- _Nov **2024**_'
     extra: '-&nbsp; As a member of the [LESS Project (Language Economy through Transfer Source Selectivity)](https://app.cristin.no/projects/show.jsf?id=2559611), I investigate how language learners coordinate several languages early in the acquisition process, how this process is influenced by the characteristics of the languages, and how the process is reflected in the brain.'
-    extra2: '-&nbsp; Service: peer-review for Cognition and Cognitive Science; co-organisation of weekly lunch seminars of [AcqVA Aurora / C-LaBL](https://uit.no/research/clabl).'
+    extra2: '-&nbsp; Service: peer-review for Cognition and Cognitive Science; co-organisation of weekly Lunch Seminars of [AcqVA Aurora](https://uit.no/research/acqva#747906_buttoncont1) and [C-LaBL](https://uit.no/research/clabl#836271_buttoncont2).'
   - job: 'Statistical consultant'
     institution: 'UiT The Arctic University of Norway'
     year: 'Nov 2022 -- Jan 2023'
@@ -48,7 +48,7 @@ education:
   - course: '[PhD Psychology with graduate teaching scholarship](https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109).html)'
     institution: Lancaster University (United Kingdom)
     year: '**2018--2022**'
-    extra: "-&nbsp; Service: peer-review for Cognitive Science and for Psychological Science Accelerator; development of website for open science group in my department ('Prospr')."
+    extra: "-&nbsp; Service: peer-review for Cognitive Science and for Psychological Science Accelerator; development of website for open science group in my department."
     extra2: '\-&nbsp; [Activities](https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109)/activities.html)'
   - course: '[Research Master Language and Communication](https://www.tilburguniversity.edu/education/masters-programmes/research-master-linguistics-and-communication-sciences)'
     institution: Tilburg University and Radboud University (Netherlands)
