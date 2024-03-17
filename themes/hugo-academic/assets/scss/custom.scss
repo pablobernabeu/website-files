@@ -244,6 +244,14 @@ kbd {
 }
 
 
+// Bootstraop warning alert messages
+
+div.alert.alert-warning {
+  color: #4A4D10;
+  background-color: #F6F7E4;
+  border-color: #6B6F0F;
+}
+
 // links in the footer of code chunks from emgithub
 
 div.emgithub-file.emgithub-file-dark > div.file-data.hljs-style-a11y-dark > div > pre > code > table > tbody > tr > td.hljs-ln-line.hljs-ln-code, div.emgithub-file.emgithub-file-dark > div.file-data.hljs-style-a11y-dark > div > pre > code > table > tbody > tr > td.hljs-ln-line.hljs-ln-numbers, div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark, div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > a {

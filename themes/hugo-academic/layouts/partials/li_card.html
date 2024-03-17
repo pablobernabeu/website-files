@@ -52,7 +52,7 @@
   {{end}}
 
   <h3 class="article-title mb-1 mt-3">
-    <a href="{{ $item.RelPermalink }}">{{ $item.Title }}</a>
+    <a href="{{ $item.RelPermalink }}">{{ $item.Title | markdownify }}</a>
   </h3>
 
   {{ with $summary }}

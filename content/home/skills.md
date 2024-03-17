@@ -52,7 +52,7 @@ subtitle = ""
 
 |     |     |
 | --- | --- |
-| **Cognitive science** | Electroencephalography, event-related potentials, BrainVision (e.g., [<i class="fas fa-link"></i>](https://osf.io/97unm/)), transcranial brain stimulation, eye tracking, online experiments, jsPsych, OpenSesame, Gorilla |
+| **Science** | Electroencephalography, BrainVision (e.g., [<i class="fas fa-link"></i>](https://osf.io/97unm/)), transcranial brain stimulation, eye tracking, open science, online experiments, jsPsych, OpenSesame, Gorilla |
 | **Statistics** | Frequentist and Bayesian statistics. Linear mixed-effects models (e.g., [<i class="fas fa-link"></i>](https://osf.io/gt5uf)), principal component analysis ([<i class="fas fa-link"></i>](https://osf.io/25u3x)), etc. |
 | **Programming in R** | Statistics, R Markdown, web applications, bibliometrics, Binder environments (e.g., [<i class="fas fa-link"></i>](https://github.com/pablobernabeu)), analysis of Big Data, natural language processing (e.g., [<i class="fas fa-link"></i>](https://github.com/pablobernabeu/VTT-Transcription-App/blob/main/index.Rmd)), Tidyverse (e.g., [<i class="fas fa-link"></i>](https://github.com/pablobernabeu/Experiment-simulation-app)) |
 | **Data, web, typesetting** | Basic Python, Git, Unix, high-performance computing, HTML, CSS, Javascript, LaTeX, Zotero (e.g., [<i class="fas fa-link"></i>](https://github.com/pablobernabeu)) |

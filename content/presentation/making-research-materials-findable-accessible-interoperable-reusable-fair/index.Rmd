@@ -1,5 +1,5 @@
 ---
-title: Making research materials Findable, Accessible, Interoperable and Reusable (FAIR)
+title: Making research materials <b>F</b>indable, <b>A</b>ccessible, <b>I</b>nteroperable and <b>R</b>eusable
 authors: ['<span style="font-size:140%;">Pablo Bernabeu, Gabriella Silva, Ngoc Giang My Hoang, Vincent DeLuca, Iva Ivanova, Jason Rothman, Jorge González Alonso</span>']
 author: ~
 date: '2024-03-08'
@@ -27,7 +27,11 @@ address:
   postcode: ~
   country: ~
 summary: ~
-abstract: "To err is human, but when it comes to creating research materials, mistakes can be reduced by sharing more of our work and by using some helpful tools. These practices can make our research materials FAIRer—that is, more Findable, Accessible, Interoperable and Reusable (Wilkinson et al., 2016). In this presentation, I will describe the use of documentation and open-source software (namely, R and OpenSesame) in the creation of materials for an artificial language study (for precedents, see Cross et al., 2021; González Alonso et al., 2020; Morgan-Short et al., 2012; Pereira Soares et al., 2022). This process enables the reproducibility, revision, modification and extension of the materials by ourselves or by other researchers, at any point. <br><br> R allows the reliable preparation of texts, images, audios, etc. This programming language was used to create the linguistic and the graphic stimuli for three artificial languages. The preparation of the stimuli drew on a modular framework formed of interoperable components. First, the minimal components of each language are contained in a base file in the ‘stimulus_preparation’ folder (see Figure 1). Second, the linguistic and the visual stimuli finally presented were created by assembling minimal components. Several controls were exerted on the stimuli to prevent spurious effects. For instance, gender and number were counterbalanced across experimental conditions, words were rotated across grammatical properties and sessions, and frequency of occurrence was controlled (see Figure 2). The final stimuli are (re)created through the script 'compile_all_stimuli.R', and the resulting stimuli are saved to the 'session_materials' folder. <br><br> OpenSesame is a Python-based software for stimulus presentation and data collection. I will describe the implementation of several complex sessions involving conditions for controlling the engagement of specific items (see Figure 3). Furthermore, I will describe a custom script for sending triggers in OpenSesame to support the registration of event-related potentials (see Figure 4)."
+abstract: "To err is human, but when it comes to creating research materials, mistakes can be reduced by sharing more of our work and by using some helpful tools. These practices can make our research materials FAIRer—that is, more Findable, Accessible, Interoperable and Reusable (Wilkinson et al., 2016). In this presentation, I will describe the use of documentation and open-source software (namely, R and OpenSesame) in the creation of materials for an artificial language study (for precedents, see Cross et al., 2021; González Alonso et al., 2020; Morgan-Short et al., 2012; Pereira Soares et al., 2022). This process enables the reproducibility, revision, modification and extension of the materials by ourselves or by other researchers, at any point. 
+
+<p style='margin-top:-1%;'> R allows the reliable preparation of texts, images, audios, etc. This programming language was used to create the linguistic and the graphic stimuli for three artificial languages. The preparation of the stimuli drew on a modular framework formed of interoperable components. First, the minimal components of each language are contained in a base file in the ‘stimulus_preparation’ folder (see Figure 1). Second, the linguistic and the visual stimuli finally presented were created by assembling minimal components. Several controls were exerted on the stimuli to prevent spurious effects. For instance, gender and number were counterbalanced across experimental conditions, words were rotated across grammatical properties and sessions, and frequency of occurrence was controlled (see Figure 2). The final stimuli are (re)created through the script 'compile_all_stimuli.R', and the resulting stimuli are saved to the 'session_materials' folder. </p>
+
+<p style='margin-top:-1%;'> OpenSesame is a Python-based software for stimulus presentation and data collection. I will describe the implementation of several complex sessions involving conditions for controlling the engagement of specific items (see Figure 3). Furthermore, I will describe a custom script for sending triggers in OpenSesame to support the registration of event-related potentials (see Figure 4). </p>"
 date_end: ~
 all_day: no
 publishDate: '2024-02-15T08:26:33+01:00'
@@ -77,7 +81,7 @@ projects: []
 
 <div class='alert alert-warning' role='alert' style='padding-bottom: 0; margin-top: 6%; margin-bottom: 6%;'>
 
-The poster is available to researchers upon request while the study is in progress. Afterwards, it will be made public.
+The poster is available to researchers and research students upon request while the study is in progress. Afterwards, it will be made public.
 
 </div>
 

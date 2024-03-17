@@ -15,7 +15,7 @@
 
   <link rel="canonical" href="{{ .Permalink }}">
 
-  <title>{{ .Title }} | {{ site.Title }}</title>
+  <title>{{ .Title | markdownify }} | {{ site.Title }}</title>
 
   <link rel="stylesheet" href="{{ $cdn_url_reveal }}/css/reveal.min.css">
   {{- $theme := $.Param "slides.theme" | default "black" -}}
