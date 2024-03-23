@@ -27,11 +27,7 @@ address:
   postcode: ~
   country: ~
 summary: ~
-abstract: "To err is human, but when it comes to creating research materials, mistakes can be reduced by sharing more of our work and by using some helpful tools. These practices can make our research materials FAIRer—that is, more Findable, Accessible, Interoperable and Reusable (Wilkinson et al., 2016). In this presentation, I will describe the use of documentation and open-source software (namely, R and OpenSesame) in the creation of materials for an artificial language study (for precedents, see Cross et al., 2021; González Alonso et al., 2020; Morgan-Short et al., 2012; Pereira Soares et al., 2022). This process enables the reproducibility, revision, modification and extension of the materials by ourselves or by other researchers, at any point. 
-
-<p style='margin-top:-1%;'> R allows the reliable preparation of texts, images, audios, etc. This programming language was used to create the linguistic and the graphic stimuli for three artificial languages. The preparation of the stimuli drew on a modular framework formed of interoperable components. First, the minimal components of each language are contained in a base file in the ‘stimulus_preparation’ folder (see Figure 1). Second, the linguistic and the visual stimuli finally presented were created by assembling minimal components. Several controls were exerted on the stimuli to prevent spurious effects. For instance, gender and number were counterbalanced across experimental conditions, words were rotated across grammatical properties and sessions, and frequency of occurrence was controlled (see Figure 2). The final stimuli are (re)created through the script 'compile_all_stimuli.R', and the resulting stimuli are saved to the 'session_materials' folder. </p>
-
-<p style='margin-top:-1%;'> OpenSesame is a Python-based software for stimulus presentation and data collection. I will describe the implementation of several complex sessions involving conditions for controlling the engagement of specific items (see Figure 3). Furthermore, I will describe a custom script for sending triggers in OpenSesame to support the registration of event-related potentials (see Figure 4). </p>"
+abstract: "To err is human, but when it comes to creating research materials, mistakes can be reduced by sharing more of our work and by using some helpful tools. These practices can make our research materials FAIRer—that is, more Findable, Accessible, Interoperable and Reusable (Wilkinson et al., 2016). In this presentation, I will describe how documentation practices and open-source software (namely, R and OpenSesame) were used in the preparation of materials for an artificial language study (for precedents, see Cross et al., 2021; González Alonso et al., 2020; Morgan-Short et al., 2012; Pereira Soares et al., 2022). Specifically, the use of documentation and open-source software facilitates the reproducibility, revision, modification and extension of the materials, both by the creators of the materials and by other researchers, at any point in time. I will describe how R was used during the preparation of linguistic and graphic stimuli for an experimental paradigm involving three artificial languages. The preparation of the stimuli drew on a modular framework formed of interoperable components (Figure 1). First, the minimal components of each language are contained in a base file in the ‘stimulus_preparation’ folder (Figure 2). Second, for the creation of the final stimuli, several controls were exerted to prevent spurious effects. For instance, gender and number were counterbalanced across experimental conditions, words were rotated across grammatical properties and sessions, and frequency of occurrence was controlled (Figure 3). The final stimuli can be recreated using the script 'compile_all_stimuli.R', and the resulting stimuli are saved to the 'session_materials' folder. Furthermore, I will describe how the current stimuli were presented using OpenSesame, which is a free-of-charge software program supporting experiments in the social sciences. I will describe the implementation of several complex sessions using OpenSesame, which involved the use of conditions for controlling the engagement of specific items (Figure 4). Last, I will describe a custom script that enables time-locking the EEG signal to the onset of specific stimuli, to measure event-related potentials (Figure 5)."
 date_end: ~
 all_day: no
 publishDate: '2024-02-15T08:26:33+01:00'
@@ -48,45 +44,104 @@ projects: []
 ---
 
 
-<hr>
-
-
 #### Figure 1
 
-*The minimal components of each language are contained in a base file.*
+*Use of free, open-source, script-based software, such as R and OpenSesame, augments credibility and reliability of research.*
 
-<img style = 'margin-top: 0; margin-bottom: 6%;' src = 'images/Picture1.png' width = '95%'></img>
+<div style = 'margin-top: 0; margin-bottom: 6%;'>
+
+```{r, eval = FALSE, echo = TRUE}
+
+└── stimulus_preparation
+    ├── Norway site, base stimuli.csv
+    ├── Spain site, base stimuli.csv
+    ├── base_images.R
+    ├── R_functions
+    │   ├── Session2_Pretraining_vocabulary.R
+    │   ├── Session2_Training_gender_agreement.R
+    │   ├── Session2_Test_gender_agreement.R
+    │   ├── Session2_Experiment_gender_agreement.R
+    ...
+    ├── compile_all_stimuli.R
+
+```
+
+</div>
 
 
 #### Figure 2
 
-*Frequency of occurrence was controlled.*
+*The minimal components of each language are contained in a base file.*
 
-<img style = 'margin-top: 0; margin-bottom: 6%;' src = 'images/Picture2.png' width = '95%'></img>
+<div style = 'margin-top: 0; margin-bottom: 6%;'>
+
+| verb_ID | verb_type   | verb       | verb_contrast_ID |
+| ------- | ----------- | ---------- | ---------------- |
+| 1       | copula_be   | is         |                  |
+| 2       | copula_be   | are        |                  |
+| 3       | copula_look | looks      |                  |
+| 4       | copula_look | look       |                  |
+| 5       | transitive  | remembered | A                |
+| 6       | transitive  | forgot     | A                |
+| 7       | transitive  | chose      | B                |
+| 8       | transitive  | refused    | B                |
+
+</div>
 
 
 #### Figure 3
 
-*Complex sessions involving conditions for controlling the engagement of specific items.*
+*Frequency of occurrence was controlled.*
 
-<img style = 'margin-top: 0; margin-bottom: 6%;' src = 'images/Picture3.png' width = '95%'></img>
+<div style = 'margin-top: 0; margin-bottom: 6%;'>
+
+```{r, eval = FALSE, echo = TRUE}
+
+columns_to_check = c('noun1_gender', 'number', 'person', 
+                     'verb', 'noun1', 'wrapup_noun')
+for(i in seq_along(columns_to_check)) {
+  column = columns_to_check[i]
+  number_of_unique_frequencies = 
+    combinations %>% 
+    filter(complete.cases(get(column)), get(column) != '') %>% 
+    group_by(get(column)) %>% tally() %>% select(n) %>% 
+    n_distinct()
+  if(number_of_unique_frequencies != 1) {
+    warning(paste0('Some elements in the column `', column, 
+                   '` appear more often than others.'))
+    } }
+
+```
+
+</div>
 
 
 #### Figure 4
 
+*Complex sessions involving conditions for controlling the engagement of specific items.*
+
+<div style = 'margin-top: 0; margin-bottom: 6%;'>
+  <img style = 'margin-top: 0; margin-bottom: 6%;' src = 'images/Picture3.png' width = '95%'></img>
+</div>
+
+
+#### Figure 5
+
 *Custom script for sending triggers in OpenSesame to support registration of ERPs.*
 
-<img style = 'margin-top: 0; margin-bottom: 6%;' src = 'images/Picture4.png' width = '95%'></img>
+<div style = 'margin-top: 0; margin-bottom: 6%;'>
+  <img style = 'margin-top: 0; margin-bottom: 6%;' src = 'images/Picture4.png' width = '95%'></img>
+</div>
 
 
-<div class='alert alert-warning' role='alert' style='padding-bottom: 0; margin-top: 6%; margin-bottom: 6%;'>
+<div class='alert alert-warning' role='alert' style='padding-bottom: 0; margin-top: 7.5%; margin-bottom: 6%;'>
 
 The poster is available to researchers and research students upon request while the study is in progress. Afterwards, it will be made public.
 
 </div>
 
 
-### References
+#### References
 
 Cross, Z. R., Zou-Williams, L., Wilkinson, E. M., Schlesewsky, M., & Bornkessel-Schlesewsky, I. (2021). Mini Pinyin: A modified miniature language for studying language learning and incremental sentence processing. *Behavior Research Methods, 53(3)*, 1218–1239. https://doi.org/10.3758/s13428-020-01473-6
 

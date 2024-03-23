@@ -74,5 +74,5 @@ subtitle = ""
 | May 2016 | Poster | Norming study of modality exclusivity in Dutch, and an ongoing EEG study of linguistic and embodied conceptual processing | Psycholinguistics in Flanders, University of Antwerp. Tilburg University travel scholarship |
 | June 2015 | Talk | [New reviews and insights on language evolution](https://www.researchgate.net/publication/278686035_New_reviews_and_insights_on_language_evolution_Slides) | Tenth Language at the University of Essex (LangUE) Conference, University of Essex |
 | Feb, May 2015 | Talk | Shallow and deep conceptual representation: An ERP design | Theme Meetings, Radboud U.; Neurobiology of Language Lab meeting, MPI Psycholinguistics |
-| Jan, Mar 2015 | Poster | [Linguistic relativity of motion events: Walking down the cline](http://dx.doi.org/10.13140/RG.2.1.3532.9122/2) | Netherlands Graduate School of Linguistics (U. Amsterdam), Juniorendag (Radboud U.) |
+| Jan, Mar 2015 | Poster | [Linguistic relativity in motion](http://dx.doi.org/10.13140/RG.2.1.3532.9122/2) | Netherlands Graduate School of Linguistics (U. Amsterdam), Juniorendag (Radboud U.) |
 
