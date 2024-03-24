@@ -27,7 +27,7 @@ address:
   postcode: ~
   country: ~
 summary: ~
-abstract: "To err is human, but when it comes to creating research materials, mistakes can be reduced by sharing more of our work and by using some helpful tools. These practices can make our research materials FAIRer—that is, more Findable, Accessible, Interoperable and Reusable (Wilkinson et al., 2016). In this presentation, I will describe how documentation practices and open-source software (namely, R and OpenSesame) were used in the preparation of materials for an artificial language study (for precedents, see Cross et al., 2021; González Alonso et al., 2020; Morgan-Short et al., 2012; Pereira Soares et al., 2022). Specifically, the use of documentation and open-source software facilitates the reproducibility, revision, modification and extension of the materials, both by the creators of the materials and by other researchers, at any point in time. I will describe how R was used during the preparation of linguistic and graphic stimuli for an experimental paradigm involving three artificial languages. The preparation of the stimuli drew on a modular framework formed of interoperable components (Figure 1). First, the minimal components of each language are contained in a base file in the ‘stimulus_preparation’ folder (Figure 2). Second, for the creation of the final stimuli, several controls were exerted to prevent spurious effects. For instance, gender and number were counterbalanced across experimental conditions, words were rotated across grammatical properties and sessions, and frequency of occurrence was controlled (Figure 3). The final stimuli can be recreated using the script 'compile_all_stimuli.R', and the resulting stimuli are saved to the 'session_materials' folder. Furthermore, I will describe how the current stimuli were presented using OpenSesame, which is a free-of-charge software program supporting experiments in the social sciences. I will describe the implementation of several complex sessions using OpenSesame, which involved the use of conditions for controlling the engagement of specific items (Figure 4). Last, I will describe a custom script that enables time-locking the EEG signal to the onset of specific stimuli, to measure event-related potentials (Figure 5)."
+abstract: "To err is human, but when it comes to creating research materials, mistakes can be reduced by sharing more of our work and by using some helpful tools. These practices can make our research materials FAIRer—that is, more Findable, Accessible, Interoperable and Reusable (Wilkinson et al., 2016). In this presentation, I will describe how documentation practices and open-source software (namely, R and OpenSesame) were used in the preparation of materials for an artificial language study (for precedents, see Cross et al., 2021; González Alonso et al., 2020; Morgan-Short et al., 2012; Pereira Soares et al., 2022). Specifically, the use of documentation and open-source software facilitates the reproducibility, revision, modification and extension of the materials, both by the creators of the materials and by other researchers, at any point in time. I will describe how R was used during the preparation of linguistic and graphic stimuli for an experimental paradigm involving three artificial languages. The preparation of the stimuli drew on a modular framework formed of interoperable components (Snippet 1). First, the minimal components of each language are contained in a base file in the ‘stimulus_preparation’ folder (Table 1). Second, for the creation of the final stimuli, several controls were exerted to prevent spurious effects. For instance, gender and number were counterbalanced across experimental conditions, words were rotated across grammatical properties and sessions, and frequency of occurrence was controlled (Snippet 2). The final stimuli can be recreated using the script 'compile_all_stimuli.R', and the resulting stimuli are saved to the 'session_materials' folder. Furthermore, I will describe how the current stimuli were presented using OpenSesame, which is a free-of-charge software program supporting experiments in the social sciences. I will describe the implementation of several complex sessions using OpenSesame, which involved the use of conditions for controlling the engagement of specific items (Snippet 3). Last, I will describe a custom script in OpenSesame that enables the measurement of event-related potentials by time-locking electroencephalographic measures to the onset of specific stimuli (Snippet 4)."
 date_end: ~
 all_day: no
 publishDate: '2024-02-15T08:26:33+01:00'
@@ -44,9 +44,9 @@ projects: []
 ---
 
 
-#### Figure 1
+#### Snippet 1
 
-*Use of free, open-source, script-based software, such as R and OpenSesame, augments credibility and reliability of research.*
+*The use of code scripts facilitates the reproducibility, testability and expandability of materials.*
 
 <div style = 'margin-top: 0; margin-bottom: 6%;'>
 
@@ -69,7 +69,7 @@ projects: []
 </div>
 
 
-#### Figure 2
+#### Table 1
 
 *The minimal components of each language are contained in a base file.*
 
@@ -89,7 +89,7 @@ projects: []
 </div>
 
 
-#### Figure 3
+#### Snippet 2
 
 *Frequency of occurrence was controlled.*
 
@@ -99,6 +99,7 @@ projects: []
 
 columns_to_check = c('noun1_gender', 'number', 'person', 
                      'verb', 'noun1', 'wrapup_noun')
+
 for(i in seq_along(columns_to_check)) {
   column = columns_to_check[i]
   number_of_unique_frequencies = 
@@ -109,28 +110,58 @@ for(i in seq_along(columns_to_check)) {
   if(number_of_unique_frequencies != 1) {
     warning(paste0('Some elements in the column `', column, 
                    '` appear more often than others.'))
-    } }
+  }
+}
 
 ```
 
 </div>
 
 
-#### Figure 4
+#### Snippet 3
 
 *Complex sessions involving conditions for controlling the engagement of specific items.*
 
 <div style = 'margin-top: 0; margin-bottom: 6%;'>
-  <img style = 'margin-top: 0; margin-bottom: 6%;' src = 'images/Picture3.png' width = '95%'></img>
+
+```{python, python.reticulate = FALSE, eval = FALSE, echo = TRUE}
+participant_parameters = 
+  pd.read_csv(exp.get_file('../parameters per participant/' + 
+              var.study_site + 
+              ' site, parameters per participant.csv'))
+
+var.resting_state_order = 
+  participant_parameters.loc[participant_parameters['participant'] ==
+                             var.subject_nr]['Session2_resting_state_order'].iloc[0]
+
+var.language = 
+  participant_parameters.loc[participant_parameters['participant'] == 
+                             var.subject_nr]['language'].iloc[0]
+
+```
+
 </div>
 
 
-#### Figure 5
+#### Snippet 4
 
 *Custom script for sending triggers in OpenSesame to support registration of ERPs.*
 
 <div style = 'margin-top: 0; margin-bottom: 6%;'>
-  <img style = 'margin-top: 0; margin-bottom: 6%;' src = 'images/Picture4.png' width = '95%'></img>
+
+```{python, python.reticulate = FALSE, eval = FALSE, echo = TRUE}
+# Open the first serial port available
+serialport = serial.Serial(serial.tools.list_ports.comports()[0].device)
+
+# Send triggers to the port
+def send_trigger(trigger):
+    serialport.write(trigger.to_bytes(length = 1, byteorder = 'big'))
+    time.sleep(0.01) # 10 ms separation from next trigger (see manual of BrainVision Recorder)
+    serialport.write(int(0).to_bytes(length = 1, byteorder = 'big')) # reset port
+    return;
+
+```
+
 </div>
 
 
