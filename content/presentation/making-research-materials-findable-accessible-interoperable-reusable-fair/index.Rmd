@@ -120,7 +120,7 @@ for(i in seq_along(columns_to_check)) {
 
 #### Snippet 3
 
-*OpenSesame setup involved conditions to adjust parameters in each session (Python code).*
+*Seamless adjustment of parameters in each OpenSesame session (Python code).*
 
 <div style = 'margin-top: 0; margin-bottom: 6%;'>
 
@@ -131,8 +131,9 @@ participant_parameters =
               ' site, parameters per participant.csv'))
 
 var.resting_state_order = 
-  participant_parameters.loc[participant_parameters['participant'] ==
-                             var.subject_nr]['Session2_resting_state_order'].iloc[0]
+  participant_parameters.loc[
+    participant_parameters['participant'] ==
+    var.subject_nr]['Session2_resting_state_order'].iloc[0]
 
 var.language = 
   participant_parameters.loc[participant_parameters['participant'] == 
@@ -145,7 +146,7 @@ var.language =
 
 #### Snippet 4
 
-*Custom script for sending triggers in OpenSesame to support registration of ERPs.*
+*Sending serial-port triggers in OpenSesame to record ERPs (Python code).*
 
 <div style = 'margin-top: 0; margin-bottom: 6%;'>
 
@@ -156,8 +157,10 @@ serialport = serial.Serial(serial.tools.list_ports.comports()[0].device)
 # Send triggers to the port
 def send_trigger(trigger):
     serialport.write(trigger.to_bytes(length = 1, byteorder = 'big'))
-    time.sleep(0.01) # 10 ms separation from next trigger (see manual of BrainVision Recorder)
-    serialport.write(int(0).to_bytes(length = 1, byteorder = 'big')) # reset port
+    # 10 ms separation from next trigger (see BrainVision Recorder manual)
+    time.sleep(0.01) 
+    # reset port
+    serialport.write(int(0).to_bytes(length = 1, byteorder = 'big')) 
     return;
 
 ```
