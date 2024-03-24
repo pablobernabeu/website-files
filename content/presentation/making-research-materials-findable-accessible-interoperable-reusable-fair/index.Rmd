@@ -91,7 +91,7 @@ projects: []
 
 #### Snippet 2
 
-*Frequency of occurrence was controlled.*
+*Tests were set throughout the workflow to control the frequency of some categories (R code).*
 
 <div style = 'margin-top: 0; margin-bottom: 6%;'>
 
@@ -120,7 +120,7 @@ for(i in seq_along(columns_to_check)) {
 
 #### Snippet 3
 
-*Complex sessions involving conditions for controlling the engagement of specific items.*
+*OpenSesame setup involved conditions to adjust parameters in each session (Python code).*
 
 <div style = 'margin-top: 0; margin-bottom: 6%;'>
 
