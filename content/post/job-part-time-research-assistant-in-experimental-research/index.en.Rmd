@@ -29,7 +29,7 @@ projects: []
 
 We are seeking to appoint a part-time research assistant to help us recruit participants and conduct an experiment. In the current project, led by Jorge González Alonso and funded by the Research Council of Norway, we investigate language learning and the neurophysiological basis of multilingualism. To this end, we are conducting an **electroencephalography (EEG) experiment**.
 
-Your work as a research assistant will be mentored and supervised primarily by Pablo Bernabeu, and secondarily by the head of our project and the directors of our lab. The role involves **20 hours a week** of in-person work in the Department of Language and Culture at UiT The Arctic University of Norway. The appointment should begin in early April 2024, or soon thereafter, and will span until mid-August (an extension thereafter might be possible).
+Your work as a research assistant will be mentored and supervised primarily by Pablo Bernabeu, and secondarily by the head of our project and the directors of our lab. The role involves **20 hours a week** of on-site work in the Department of Language and Culture at UiT The Arctic University of Norway. The appointment should begin in early April 2024, or soon thereafter, and will span until mid-August (an extension thereafter might be possible).
 
 By the end of your appointment, you will be able to conduct EEG sessions on your own, and will have a better understanding of EEG, experimental research and the psychology of language. This experience will be most useful for subsequent work in academic research; for instance, in a PhD. Yet, the post also involves more general skills, such as planning, documentation and data management.
 
@@ -41,7 +41,7 @@ Please consider the essential (required) criteria and the desirable criteria lis
 
 -	not being currently enrolled in an on-site degree programme at UiT or any other university;
 
--	availability for the in-person work at UiT throughout the appointment;
+-	availability for the on-site work at UiT throughout the appointment;
 
 -	attention to detail;
 
