@@ -30,7 +30,7 @@
 {{ else if .Params.abstract }}
   {{ $summary = .Params.abstract | markdownify | emojify }}
 {{ else if $item.Truncated }}
-  {{ $summary = $item.Summary }}
+  {{ $summary = $item.Summary | markdownify | emojify }}
 {{ end }}
 
 <div class="media stream-item">

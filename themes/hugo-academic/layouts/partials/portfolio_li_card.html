@@ -29,7 +29,7 @@
     {{ end }}
     <div class="card-text">
       <h4><a href="{{ $link }}" {{ $target | safeHTMLAttr }}>{{ $item.Title | markdownify | emojify }}</a></h4>
-      {{ with $summary }}
+      {{ with $summary | markdownify | emojify }}
       <div class="article-style">
         <p>{{ . | truncate 135 }}</p>
       </div>

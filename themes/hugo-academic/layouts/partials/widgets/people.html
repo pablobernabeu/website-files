@@ -7,10 +7,10 @@
 {{ $show_interests := $page.Params.design.show_interests | default true }}
 
 <div class="row justify-content-center people-widget">
-  {{ with $page.Title }}
+  {{ with $page.Title | markdownify | emojify }}
   <div class="col-md-12 section-heading">
     <h1>{{ . | markdownify | emojify }}</h1>
-    {{ if $page.Params.subtitle }}<p>{{ $page.Params.subtitle | markdownify | emojify }}</p>{{ end }}
+    {{ if $page.Params.subTitle | markdownify | emojify }}<p>{{ $page.Params.subtitle | markdownify | emojify }}</p>{{ end }}
   </div>
   {{ end }}
 

@@ -24,7 +24,7 @@
     ;">
     <div class="container" style="text-align: {{$item.align | default "left"}};">
         <h1 class="hero-title">
-          {{ with $item.title }}{{ . | markdownify | emojify }}{{ end }}
+          {{ with $item.Title | markdownify | emojify }}{{ . | markdownify | emojify }}{{ end }}
         </h1>
 
         {{ with $item.content }}

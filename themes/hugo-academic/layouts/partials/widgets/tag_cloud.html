@@ -20,8 +20,8 @@
 
 <div class="row">
   <div class="col-12 col-lg-4 section-heading">
-    <h1>{{ with $st.Title }}{{ . | markdownify | emojify }}{{ end }}</h1>
-    {{ with $st.Params.subtitle }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
+    <h1>{{ with $st.Title | markdownify | emojify }}{{ . | markdownify | emojify }}{{ end }}</h1>
+    {{ with $st.Params.subTitle | markdownify | emojify }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
   </div>
   <div class="col-12 col-lg-8">
     {{ with $st.Content }}{{ . }}{{ end }}
@@ -40,7 +40,7 @@
           {{ $tagCount := len $term.Pages }}
           {{ $weight := div (sub (math.Log $tagCount) (math.Log $min)) (sub (math.Log $max) (math.Log $min)) }}
           {{ $fontSize := add $fontSmall (mul (sub $fontBig $fontSmall) $weight) }}
-          <a href="{{ .Page.RelPermalink }}" style="font-size:{{ $fontSize }}rem">{{ .Page.Title }}</a>
+          <a href="{{ .Page.RelPermalink }}" style="font-size:{{ $fontSize }}rem">{{ .Page.Title | markdownify | emojify }}</a>
         {{ end }}
       </div>
     {{ end }}

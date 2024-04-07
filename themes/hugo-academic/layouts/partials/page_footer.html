@@ -17,7 +17,7 @@
     <h3>{{ i18n "related" }}</h3>
     <ul>
       {{ range . }}
-      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+      <li><a href="{{ .RelPermalink }}">{{ .Title | markdownify | emojify }}</a></li>
       {{ end }}
     </ul>
   </div>

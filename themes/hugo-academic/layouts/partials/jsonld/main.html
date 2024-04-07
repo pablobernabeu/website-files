@@ -1,5 +1,5 @@
 {{ $page := .page }}
-{{ $summary := .summary }}
+{{ $summary := .summary | markdownify | emojify }}
 {{ $site_type := site.Params.site_type | default "Person" }}
 
 {{- if $page.IsHome -}}

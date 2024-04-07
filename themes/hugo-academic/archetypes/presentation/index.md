@@ -1,7 +1,7 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "{{ replace .Name "-" " " | title }}"
+title: "{{ replace .Name "-" " " | Title | markdownify | emojify }}"
 presentation_format:
 event:
 event_url:

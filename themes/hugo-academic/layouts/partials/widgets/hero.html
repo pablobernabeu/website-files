@@ -8,7 +8,7 @@
 {{ end }}
 
     <h1 class="hero-title">
-      {{ with $page.Title }}{{ . | markdownify }}{{ end }}
+      {{ with $page.Title | markdownify | emojify }}{{ . | markdownify }}{{ end }}
     </h1>
 
     {{ with $page.Content }}

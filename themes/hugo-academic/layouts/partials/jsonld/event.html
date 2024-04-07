@@ -1,5 +1,5 @@
 {{ $page := .page }}
-{{ $summary := .summary }}
+{{ $summary := .summary | markdownify | emojify }}
 {{ $featured_image := ($page.Resources.ByType "image").GetMatch "*featured*" }}
 {{ $author := partial "functions/get_author_name" $page }}
 

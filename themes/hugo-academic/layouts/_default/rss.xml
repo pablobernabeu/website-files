@@ -9,12 +9,12 @@
 {{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\" ?>" | safeHTML }}
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>{{ if ne .Title site.Title }}{{ with .Title }}{{.}} | {{ end }}{{end}}{{ site.Title }}</title>
+    <title>{{ if ne .Title site.Title | markdownify | emojify }}{{ with .Title | markdownify | emojify }}{{.}} | {{ end }}{{end}}{{ site.Title | markdownify | emojify }}</title>
     <link>{{ .Permalink }}</link>
     {{- with .OutputFormats.Get "RSS" }}
       {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
     {{ end -}}
-    <description>{{ .Title | default site.Title }}</description>
+    <description>{{ .Title | default site.Title | markdownify | emojify }}</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     {{- with site.LanguageCode }}<language>{{.}}</language>{{end -}}
     {{- with site.Copyright }}<copyright>{{ replace (replace . "{year}" now.Year) "&copy;" "©" | plainify }}</copyright>{{end -}}
@@ -22,13 +22,13 @@
     {{- if .Scratch.Get "og_image" }}
     <image>
       <url>{{ .Scratch.Get "og_image" }}</url>
-      <title>{{ .Title | default site.Title }}</title>
+      <title>{{ .Title | default site.Title | markdownify | emojify }}</title>
       <link>{{ .Permalink }}</link>
     </image>
     {{end -}}
     {{ range $pages }}
     <item>
-      <title>{{ .Title }}</title>
+      <title>{{ .Title | markdownify | emojify }}</title>
       <link>{{ .Permalink }}</link>
       <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
       <guid>{{ .Permalink }}</guid>

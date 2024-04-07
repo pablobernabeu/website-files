@@ -23,11 +23,11 @@
   {{/* Generate page description. */}}
   {{ $desc := "" }}
   {{ if .Params.summary }}
-    {{ $desc = .Params.summary }}
+    {{ $desc = .Params.summary | markdownify | emojify }}
   {{ else if .Params.abstract }}
-    {{ $desc = .Params.abstract }}
+    {{ $desc = .Params.abstract | markdownify | emojify }}
   {{ else if .IsPage }}
-    {{ $desc = .Summary }}
+    {{ $desc = .Summary | markdownify | emojify }}
   {{ else if site.Params.description }}
     {{ $desc = site.Params.description }}
   {{ else }}
@@ -173,9 +173,9 @@
   <meta property="twitter:site" content="@{{ . }}">
   <meta property="twitter:creator" content="@{{ . }}">
   {{ end }}
-  <meta property="og:site_name" content="{{ site.Title }}">
+  <meta property="og:site_name" content="{{ site.Title | markdownify | emojify }}">
   <meta property="og:url" content="{{ .Permalink }}">
-  <meta property="og:title" content="{{ if not .IsHome }}{{ .Params.name | default .Title }} | {{ end }}{{ site.Title }}">
+  <meta property="og:title" content="{{ if not .IsHome }}{{ .Params.name | default .Title | markdownify | emojify }} | {{ end }}{{ site.Title | markdownify | emojify }}">
   <meta property="og:description" content="{{ $desc }}">
   {{- with $og_image -}}
   <meta property="og:image" content="{{.}}">
@@ -199,6 +199,6 @@
 
   {{ partial "custom_head" . }}
 
-  <title>{{ if not .IsHome }}{{ .Params.name | default .Title }} | {{ end }}{{ site.Title }}</title>
+  <title>{{ if not .IsHome }}{{ .Params.name | default .Title | markdownify | emojify }} | {{ end }}{{ site.Title | markdownify | emojify }}</title>
 
 </head>

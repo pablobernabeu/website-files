@@ -18,7 +18,7 @@
 {{ else if .Params.abstract }}
   {{ $summary = .Params.abstract | markdownify | emojify }}
 {{ else if $item.Truncated }}
-  {{ $summary = $item.Summary }}
+  {{ $summary = $item.Summary | markdownify | emojify }}
 {{ else }}
   {{ $summary = $item.Content }}
 {{ end }}
@@ -39,7 +39,7 @@
         {{- if $do_link}}</a>{{end -}}
       </h3>
 
-      {{ with $summary }}
+      {{ with $summary | markdownify | emojify }}
       <div class="article-style">
         {{ . }}
       </div>

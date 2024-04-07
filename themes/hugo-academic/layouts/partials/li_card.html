@@ -16,7 +16,7 @@
 {{ else if .Params.abstract }}
   {{ $summary = .Params.abstract | markdownify | emojify }}
 {{ else if $item.Truncated }}
-  {{ $summary = $item.Summary }}
+  {{ $summary = $item.Summary | markdownify | emojify }}
 {{ else }}
   {{ $summary = $item.Content }}
 {{ end }}
@@ -55,7 +55,7 @@
     <a href="{{ $item.RelPermalink }}">{{ $item.Title | markdownify }}</a>
   </h3>
 
-  {{ with $summary }}
+  {{ with $summary | markdownify | emojify }}
   <div class="article-style">
     <p>{{.}}</p>
   </div>
