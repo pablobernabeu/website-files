@@ -38,7 +38,7 @@ recent_work:
     institution: 'UiT The Arctic University of Norway'
     year: 'Nov **2022** -- _Nov **2024**_'
     extra: '-&nbsp; As a member of the [LESS Project (Language Economy through Transfer Source Selectivity)](https://app.cristin.no/projects/show.jsf?id=2559611), I investigate how language learners coordinate several languages early in the acquisition process, how this process is influenced by the characteristics of the languages, and how the process is reflected in the brain.'
-    extra2: '-&nbsp; Service: peer-review for Cognition and Cognitive Science; co-organisation of weekly Lunch Seminars of [AcqVA Aurora](https://uit.no/research/acqva#747906_buttoncont1) and [C-LaBL](https://uit.no/research/clabl#836271_buttoncont2).'
+    extra2: '-&nbsp; Service: peer-review for Cognition and Cognitive Science; co-organisation of weekly Lunch Seminars of [AcqVA Aurora](https://uit.no/research/acqva#747906_buttoncont1) and [<span style = "white-space: nowrap;">C-LaBL</span>](https://uit.no/research/clabl#836271_buttoncont2).'
   - job: 'Statistical consultant'
     institution: 'UiT The Arctic University of Norway'
     year: 'Nov 2022 -- Jan 2023'
@@ -114,7 +114,7 @@ education:
 
 After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology at Lancaster University. In my [thesis](/publication/pablo-bernabeu-2022-phd-thesis), I investigated how conceptual processing—that is, the comprehension of the meaning of words—is supported by linguistic and sensorimotor brain systems, and how research on this topic is influenced by methodological aspects such as the operationalisation of variables and the sample size of experiments. 
 
-Currently, I am a postdoctoral fellow at UiT The Arctic University of Norway. I work at the [Department of Language and Culture](https://en.uit.no/enhet/isk), and specifically within the [PoLaR Lab](https://site.uit.no/polar) and [C-LaBL](https://uit.no/research/clabl). 
+Currently, I am a postdoctoral fellow at UiT The Arctic University of Norway. I work at the [Department of Language and Culture](https://en.uit.no/enhet/isk), and specifically within the [PoLaR Lab](https://site.uit.no/polar) and [<span style = "white-space: nowrap;">C-LaBL</span>](https://uit.no/research/clabl). 
 
 Throughout my research, I have used methods such as behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. The materials from my research are available at [https://osf.io/25u3x](https://osf.io/25u3x), and my CV is [available here](/cv).
 
