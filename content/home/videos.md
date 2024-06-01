@@ -51,6 +51,14 @@ css_class = ""
 +++
 
 
+### <span style='color:grey; font-size:70%;'>2024 ·</span>&nbsp; [Instructions to participants to prevent muscle artifacts in electroencephalography sessions](/2024/preventing-muscle-artifacts-in-electroencephalography-sessions)
+
+<div style = "position: relative; margin-top: 20px; padding-top: 56.25%; margin-bottom: -25px;">
+<iframe src="https://www.youtube-nocookie.com/embed/9Mbv6bUZlqY" frameborder="0" allowfullscreen
+style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
+</div>
+
+
 ### <span style='color:grey; font-size:70%;'>2021 ·</span>&nbsp; Linguistic and embodied systems in conceptual processing: Variation across individuals and items
 
 <div style = "margin-top: 20px; margin-left: 20%;">
