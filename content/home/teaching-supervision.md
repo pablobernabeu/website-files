@@ -51,7 +51,7 @@ subtitle = ""
 +++
 
 
-Since my PhD, I have advised several students and colleagues about conducting behavioural and EEG experiments, and about data processing and statistics. Furthermore, during my postdoc, I have co-supervised a master's thesis. 
+Since my PhD, I have advised several students and colleagues about conducting behavioural and EEG experiments, and about data management, preprocessing and analysis. Furthermore, during my postdoc, I have co-supervised a master's thesis. 
 
 My PhD scholarship was teaching-based, so I contributed to my department’s curriculum for 180 hours a year. Each year, I led 30 seminars and marked 80 essays in developmental, cognitive and social psychology, while also helping in 30 statistics labs. This activity is detailed below.
 

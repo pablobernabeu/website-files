@@ -59,7 +59,7 @@ style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
 </div>
 
 
-### <span style='color:grey; font-size:70%;'>2021 ·</span>&nbsp; Linguistic and embodied systems in conceptual processing: Variation across individuals and items
+### <span style='color:grey; font-size:70%;'>2021 ·</span>&nbsp; [Linguistic and embodied systems in conceptual processing: Variation across individuals and items](/presentation/linguistic-and-embodied-systems-in-conceptual-processing-variation-across-individuals-and-items)
 
 <div style = "margin-top: 20px; margin-left: 20%;">
 <a href = 'https://www.youtube.com/watch?v=y2bopgYWYvE&ab_channel=LancasterPsychology'>
