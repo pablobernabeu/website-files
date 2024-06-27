@@ -156,7 +156,7 @@ plot_L3_EF =
   # Prepare layout for the multi-plot combination
   theme(axis.text.x = element_text(margin = margin(7, 0, 0, 0, 'pt')),
         axis.title.x = element_text(margin = margin(8, 0, 0, 0, 'pt')),
-        legend.position = 'inside', legend.position.inside = c(.85, .8))
+        legend.position = 'inside', legend.position.inside = c(.82, .8))
 
 
 # Combine plots
