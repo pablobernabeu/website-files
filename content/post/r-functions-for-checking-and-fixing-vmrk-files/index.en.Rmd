@@ -95,5 +95,9 @@ source('https://raw.githubusercontent.com/pablobernabeu/EEG-tools-and-tips/main/
 count_markers(file = 'https://raw.githubusercontent.com/pablobernabeu/EEG-tools-and-tips/main/example.vmrk', 
               marker = 'S  2')
 
+count_markers(file = 'https://raw.githubusercontent.com/pablobernabeu/EEG-tools-and-tips/main/example.vmrk', 
+              marker = 'S  3')
+
 ```
 
+<br>
