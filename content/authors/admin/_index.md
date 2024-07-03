@@ -39,7 +39,7 @@ recent_work:
     year: 'Nov **2022** -- _Nov **2024**_'
     extra: '-&nbsp; As a member of the [LESS Project (Language Economy through Transfer Source Selectivity)](https://app.cristin.no/projects/show.jsf?id=2559611), I investigate how language learners coordinate several languages early in the acquisition process, how this process is influenced by the characteristics of the languages, and how the process is reflected in the brain.'
     extra2: '-&nbsp; As part of this work, I also set up an EEG lab, and doubled as a lab manager for months.'
-    extra3: '-&nbsp; Service: peer-review for Cognition and Cognitive Science; co-organisation of weekly Lunch Seminars of [AcqVA Aurora](https://uit.no/research/acqva#747906_buttoncont1) and [<span style = "white-space: nowrap;">C-LaBL</span>](https://uit.no/research/clabl#836271_buttoncont2).'
+    extra3: '-&nbsp; Service: co-organisation of weekly Lunch Seminars of [AcqVA Aurora](https://uit.no/research/acqva#747906_buttoncont1) and [<span style = "white-space: nowrap;">C-LaBL</span>](https://uit.no/research/clabl#836271_buttoncont2); peer-review for *Cognition* and *Cognitive Science*.'
   - job: 'Statistical consultant'
     institution: 'UiT The Arctic University of Norway'
     year: 'Nov 2022 -- Jan 2023'
