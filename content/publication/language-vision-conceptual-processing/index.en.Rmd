@@ -47,6 +47,8 @@ url_dataset: https://osf.io/ueryq
 links:
 - name: Online book
   url: '/thesis/chapter-3-study-2.-language-and-vision-in-conceptual-processing-multilevel-analysis-and-statistical-power.html'
+- name: Poster
+  url: 'https://osf.io/t5baf'
 url_poster: ~
 url_project: ~ 
 url_slides: ~
@@ -67,7 +69,7 @@ slides: ''
 <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;">
 <span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Online book </h3></button>
 </a>
-      
+
 
 ### Reference
 
