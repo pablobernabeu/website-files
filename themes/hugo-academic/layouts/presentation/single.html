@@ -47,7 +47,9 @@
           <div class="col-12 col-md-9">
             {{ with .Params.event_url }}<a href="{{ . }}" target="_blank" rel="noopener">{{ end }}
             {{ .Params.event | markdownify }}
-            {{ if .Params.event_url }}</a>{{ end }}
+            {{ if .Params.event_url }}</a> <br>
+            <p style="font-size:80%; color:Gray; line-height:150%; font-style:italic;">This presentation may have taken place at more events.<br>See list in <a href="/#presentations">Presentations</a>.</p> 
+            {{ end }}
           </div>
         </div>
       </div>
