@@ -94,7 +94,7 @@ style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
 </div>
 
 
-### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; Personal profile and experience at Lancaster U. Psychology Dept.
+### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; Personal profile and experience at Lancaster University Department of Psychology
 
 <div style = "position: relative; margin-top: 20px; padding-top: 56.25%; margin-bottom: -25px;">
 <iframe src="https://www.youtube-nocookie.com/embed/ZEoan5tWqFg" frameborder="0" allowfullscreen

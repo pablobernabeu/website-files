@@ -38,10 +38,16 @@ image:
   preview_only: no
 url_slides: ~
 url_code: ~
-url_pdf: ~
+url_pdf: https://osf.io/h83yq
 url_video: ~
 projects: []
 ---
+
+
+<a href='https://mfr.osf.io/render?url=https://osf.io/h83yq/?direct%26mode=render%26action=download%26mode=render'>
+      <button style = "background-color: white; color: black; border: 2px solid #196F27; border-radius: 12px;">
+      <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;"> 
+      <span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Poster </h3></button></a> &nbsp; 
 
 
 #### Snippet 1
@@ -164,13 +170,6 @@ def send_trigger(trigger):
     return;
 
 ```
-
-</div>
-
-
-<div class='alert alert-warning' role='alert' style='padding-bottom: 0; margin-top: 7.5%; margin-bottom: 6%;'>
-
-The poster is available to researchers and research students upon request while the study is in progress. Afterwards, it will be made public.
 
 </div>
 
