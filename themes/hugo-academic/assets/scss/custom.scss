@@ -179,12 +179,80 @@ h3 a:hover, div a:hover {
   background-color: #E6FFE3;
 }
 
-// Icons on the left-hand side of the bio section
+
+// On scroll, highlight section headings, article titles and bio info (name, title, email, socials) [code involves both CSS in custom.scss and JS in academic.js].
+
+div.col-12.col-lg-4.section-heading h1, div.article-container.pt-3 > h1, .portrait-title h3, .social-icon {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease-in-out;
+}
+
+
+div.col-12.col-lg-4.section-heading h1.visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: color-transition1 0.5s forwards;
+}
+
+@keyframes color-transition1 {
+  0% {
+    color: aquamarine;
+  }
+  50% {
+    color: #088F8F;
+  }
+  100% {
+    color: darkgrey;
+  }
+}
+
+
+.portrait-title h3.visible, .social-icon.visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: color-transition2 0.5s forwards;
+}
+
+@keyframes color-transition2 {
+  0% {
+    color: aquamarine;
+  }
+  50% {
+    color: #088F8F;
+  }
+  100% {
+    color: #8AA3CD;
+  }
+}
+
+
+div.article-container.pt-3 > h1.visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: color-transition3 0.5s forwards;
+}
+
+@keyframes color-transition3 {
+  0% {
+    color: aquamarine;
+  }
+  50% {
+    color: #088F8F;
+  }
+  100% {
+    color: black;
+  }
+}
+
+
+// Social icons on the left-hand side of the bio section
+
 #profile > div > div > span > span > a > i:hover {
   color: #379E8A !important;
 }
 
-// Icons on the right-hand side of the bio section
+// Icons on the body of the bio section
 #bio > div > div > div.col-12.col-lg-8 > div > div > ul > li > i {
   color: lightgrey;
 }
@@ -255,15 +323,19 @@ div.alert.alert-warning {
 // links in the footer of code chunks from emgithub
 
 div.emgithub-file.emgithub-file-dark > div.file-data.hljs-style-a11y-dark > div > pre > code > table > tbody > tr > td.hljs-ln-line.hljs-ln-code, div.emgithub-file.emgithub-file-dark > div.file-data.hljs-style-a11y-dark > div > pre > code > table > tbody > tr > td.hljs-ln-line.hljs-ln-numbers, div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark, div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > a {
-  
   background: none;
-
 }
 
 // add margin under emgithub code chunks
 
 .emgithub-container {
   margin-bottom: 6%;
+}
+
+// remove love icon from emgithub chunk footnote
+
+div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > span {
+  display: none;
 }
 
 
@@ -304,7 +376,7 @@ div.emgithub-file.emgithub-file-dark > div.file-data.hljs-style-a11y-dark > div 
   .section-heading, #bio > div > div > div.col-12.col-lg-4 {
     margin: 0;
     height: 100%;
-    overflow-y: auto;
+    overflow-y: hidden;
     position: sticky; 
     top: 120px;
     margin-bottom: 20px;

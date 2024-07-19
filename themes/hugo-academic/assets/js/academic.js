@@ -771,5 +771,61 @@
   $(document).ready(function(){
     $('[data-toggle="tooltip1"]').tooltip();
   });
+  
+  // On scroll, highlight section headings, article titles and bio info (name, title, email, socials) (code involves both CSS in custom.scss and JS in academic.js).
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    const sectionHeading = document.querySelectorAll('div.col-12.col-lg-4.section-heading h1');
+    const articleContainer = document.querySelectorAll('.article-container.pt-3 h1');
+    const portraitInfo = document.querySelectorAll('.portrait-title h3');
+    const icons = document.querySelectorAll('.social-icon');
+    
+    function checkElements() {
+        const triggerBottom = window.innerHeight / 1.2;
+
+        sectionHeading.forEach((text, index) => {
+          const textTop = text.getBoundingClientRect().top;
+          
+          if (textTop < triggerBottom) {
+              setTimeout(() => {
+                  text.classList.add('visible');
+              }, index * 20); // Delay for text appearance
+          }
+        });
+
+        articleContainer.forEach((text, index) => {
+          const textTop = text.getBoundingClientRect().top;
+          
+          if (textTop < triggerBottom) {
+              setTimeout(() => {
+                  text.classList.add('visible');
+              }, index * 0); // Delay for text appearance
+          }
+        });
+        
+        portraitInfo.forEach((text, index) => {
+          const textTop = text.getBoundingClientRect().top;
+          
+          if (textTop < triggerBottom) {
+              setTimeout(() => {
+                  text.classList.add('visible');
+              }, index * 30); // Delay for text appearance
+          }
+        });
+
+        icons.forEach((icon, index) => {
+          const iconTop = icon.getBoundingClientRect().top;
+
+          if (iconTop < triggerBottom) {
+              setTimeout(() => {
+                  icon.classList.add('visible');
+              }, index * 90); // Delay for icon appearance
+          }
+        });
+    }
+
+    window.addEventListener('scroll', checkElements);
+    checkElements(); // Check on page load
+  });
 
 })(jQuery);
