@@ -182,7 +182,7 @@ h3 a:hover, div a:hover {
 
 // On scroll, highlight section headings, article titles and bio info (name, title, email, socials) [code involves both CSS in custom.scss and JS in academic.js].
 
-div.col-12.col-lg-4.section-heading h1, div.article-container.pt-3 > h1, .portrait-title h3, .social-icon {
+div.col-12.col-lg-4.section-heading h1, .portrait-title h3, .social-icon {
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.3s ease-in-out;
@@ -208,6 +208,25 @@ div.col-12.col-lg-4.section-heading h1.visible {
 }
 
 
+/*div.article-container.pt-3 > h1.visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: color-transition3 0.5s forwards;
+}
+
+@keyframes color-transition3 {
+  0% {
+    color: aquamarine;
+  }
+  50% {
+    color: #088F8F;
+  }
+  100% {
+    color: black;
+  }
+}
+*/
+
 .portrait-title h3.visible, .social-icon.visible {
   opacity: 1;
   transform: translateY(0);
@@ -223,25 +242,6 @@ div.col-12.col-lg-4.section-heading h1.visible {
   }
   100% {
     color: #8AA3CD;
-  }
-}
-
-
-div.article-container.pt-3 > h1.visible {
-  opacity: 1;
-  transform: translateY(0);
-  animation: color-transition3 0.5s forwards;
-}
-
-@keyframes color-transition3 {
-  0% {
-    color: aquamarine;
-  }
-  50% {
-    color: #088F8F;
-  }
-  100% {
-    color: black;
   }
 }
 

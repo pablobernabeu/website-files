@@ -776,7 +776,7 @@
   
   document.addEventListener("DOMContentLoaded", function() {
     const sectionHeading = document.querySelectorAll('div.col-12.col-lg-4.section-heading h1');
-    const articleContainer = document.querySelectorAll('.article-container.pt-3 h1');
+    /*const articleContainer = document.querySelectorAll('.article-container.pt-3 h1');*/
     const portraitInfo = document.querySelectorAll('.portrait-title h3');
     const icons = document.querySelectorAll('.social-icon');
     
@@ -793,7 +793,7 @@
           }
         });
 
-        articleContainer.forEach((text, index) => {
+        /*articleContainer.forEach((text, index) => {
           const textTop = text.getBoundingClientRect().top;
           
           if (textTop < triggerBottom) {
@@ -801,7 +801,7 @@
                   text.classList.add('visible');
               }, index * 0); // Delay for text appearance
           }
-        });
+        });*/
         
         portraitInfo.forEach((text, index) => {
           const textTop = text.getBoundingClientRect().top;
