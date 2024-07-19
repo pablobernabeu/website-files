@@ -789,7 +789,7 @@
           if (textTop < triggerBottom) {
               setTimeout(() => {
                   text.classList.add('visible');
-              }, index * 20); // Delay for text appearance
+              }, index * 0); // Delay for text appearance
           }
         });
 
