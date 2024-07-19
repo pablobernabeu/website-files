@@ -9154,6 +9154,63 @@ div.col-12.col-lg-4.section-heading > h1, #navbar-content > ul > li > a {
 #top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories > a, #profile > div > div > ul > div > a:link, #top > article > div.article-container.pt-3 > div.article-metadata > span.article-categories > a:link, code {
   background-color: transparent; }
 
+div.col-12.col-lg-4.section-heading > h1, div.article-container.pt-3 > div.btn-links.mb-3 > a:link, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button, h3.full-text, #top > div.pub > div:nth-child(3) > div.article-style > a > button > h3, .portrait-title > h3, .social-icon, .tag-cloud a:link {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease-in-out; }
+
+div.col-12.col-lg-4.section-heading > h1.visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: color-transition1 1s forwards; }
+
+@keyframes color-transition1 {
+  0% {
+    color: aquamarine; }
+  50% {
+    color: #088F8F; }
+  100% {
+    color: darkgrey; } }
+
+div.article-container.pt-3 > div.btn-links.mb-3 > a:link.visible, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button.visible, h3.full-text.visible, #top > div.pub > div:nth-child(3) > div.article-style > a > button > h3.visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: color-transition2 1.5s forwards; }
+
+@keyframes color-transition2 {
+  0% {
+    color: aquamarine; }
+  50% {
+    color: #088F8F; }
+  100% {
+    color: black; } }
+
+.portrait-title > h3.visible, .social-icon.visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: color-transition3 1s forwards; }
+
+@keyframes color-transition3 {
+  0% {
+    color: aquamarine; }
+  50% {
+    color: #088F8F; }
+  100% {
+    color: #8AA3CD; } }
+
+.tag-cloud > a:link.visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: color-transition4 5s forwards; }
+
+@keyframes color-transition4 {
+  0% {
+    color: aquamarine; }
+  50% {
+    color: #088F8F; }
+  100% {
+    color: darkgrey; } }
+
 #profile > div:nth-child(5) > div > ul > div > div > a:link, #profile > div:nth-child(5) > div > ul > div > div > a {
   margin-right: -10px; }
 
@@ -9218,20 +9275,20 @@ h3 a:hover, div a:hover {
 .article-categories a:hover, .tag-cloud a:hover {
   color: #24494F; }
 
-#top > article > div.article-container.pt-3 > div.btn-links.mb-3 > a:link, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > a:link, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:link, .btn-links a:link, #top > div.pub > div > a > button:link, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button:link, div.grid-sizer > div > p > button, div.grid-sizer > div > p > a:link, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button, #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.btn-links > button {
+div.article-container.pt-3 > div.btn-links.mb-3 > a:link, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:link, .btn-links a:link, #top > div.pub > div > a > button:link, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button:link, div.grid-sizer > div > p > button, div.grid-sizer > div > p > a:link, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button, #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.btn-links > button {
   background-image: none;
   color: black;
   background-color: #F8F8F8;
   border-color: lightgrey; }
 
-#top > article > div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:visited, .btn-links a:visited, #top > div.pub > div > a > button:visited, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button:visited, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button:visited, div.grid-sizer > div > p > button:visited, div.grid-sizer > div > p > a:visited, #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.btn-links > button:visited {
+div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:visited, .btn-links a:visited, #top > div.pub > div > a > button:visited, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button:visited, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button:visited, div.grid-sizer > div > p > button:visited, div.grid-sizer > div > p > a:visited, #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.btn-links > button:visited {
   background-image: none;
   color: purple;
   font-weight: bold;
   background-color: #F7F7F7;
   border-color: purple; }
 
-#top > article > div.article-container.pt-3 > div.btn-links.mb-3 > a:hover, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > a:hover, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:hover, .btn-links a:hover, div.grid-sizer > div > p > button:hover, div.grid-sizer > div > p > a:hover, div.media-body > h3 > a:hover, #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.btn-links > button:hover, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button:hover {
+div.article-container.pt-3 > div.btn-links.mb-3 > a:hover, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > a:hover, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:hover, .btn-links a:hover, div.grid-sizer > div > p > button:hover, div.grid-sizer > div > p > a:hover, div.media-body > h3 > a:hover, #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.btn-links > button:hover, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button:hover {
   background-image: none;
   color: black;
   font-weight: bold;
@@ -9249,55 +9306,6 @@ h3 a:hover, div a:hover {
 #top > div.pub > div > div.article-tags > a:hover, #top > article > div > div.article-tags > a:hover, .article-tags a:hover {
   color: black;
   background-color: #E6FFE3; }
-
-div.col-12.col-lg-4.section-heading h1, .portrait-title h3, .social-icon {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.3s ease-in-out; }
-
-div.col-12.col-lg-4.section-heading h1.visible {
-  opacity: 1;
-  transform: translateY(0);
-  animation: color-transition1 0.5s forwards; }
-
-@keyframes color-transition1 {
-  0% {
-    color: aquamarine; }
-  50% {
-    color: #088F8F; }
-  100% {
-    color: darkgrey; } }
-
-/*div.article-container.pt-3 > h1.visible {
-  opacity: 1;
-  transform: translateY(0);
-  animation: color-transition3 0.5s forwards;
-}
-
-@keyframes color-transition3 {
-  0% {
-    color: aquamarine;
-  }
-  50% {
-    color: #088F8F;
-  }
-  100% {
-    color: black;
-  }
-}
-*/
-.portrait-title h3.visible, .social-icon.visible {
-  opacity: 1;
-  transform: translateY(0);
-  animation: color-transition2 0.5s forwards; }
-
-@keyframes color-transition2 {
-  0% {
-    color: aquamarine; }
-  50% {
-    color: #088F8F; }
-  100% {
-    color: #8AA3CD; } }
 
 #profile > div > div > span > span > a > i:hover {
   color: #379E8A !important; }

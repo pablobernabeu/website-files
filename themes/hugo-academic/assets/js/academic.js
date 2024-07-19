@@ -772,60 +772,104 @@
     $('[data-toggle="tooltip1"]').tooltip();
   });
   
-  // On scroll, highlight section headings, article titles and bio info (name, title, email, socials) (code involves both CSS in custom.scss and JS in academic.js).
+  // On scroll, highlight section headings, tags in articles, bio info (name, title, email, socials), and the tag cloud at the bottom of the site. This work     depends on CSS code in custom.scss, and JS code in academic.js.
   
   document.addEventListener("DOMContentLoaded", function() {
-    const sectionHeading = document.querySelectorAll('div.col-12.col-lg-4.section-heading h1');
-    /*const articleContainer = document.querySelectorAll('.article-container.pt-3 h1');*/
-    const portraitInfo = document.querySelectorAll('.portrait-title h3');
+    const sectionHeading = document.querySelectorAll('div.col-12.col-lg-4.section-heading > h1');
+    const articleTags = document.querySelectorAll('div.article-container.pt-3 > div.btn-links.mb-3 > a:link');
+    const citationButton = document.querySelectorAll('#top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button');
+    const fullText = document.querySelectorAll('h3.full-text');
+    const pubButton2 = document.querySelectorAll('#top > div.pub > div:nth-child(3) > div.article-style > a > button > h3');
+    const portraitInfo = document.querySelectorAll('.portrait-title > h3');
     const icons = document.querySelectorAll('.social-icon');
+    const cloudTags = document.querySelectorAll('.tag-cloud > a:link');
     
     function checkElements() {
-        const triggerBottom = window.innerHeight / 1.2;
+      const triggerBottom = window.innerHeight / 1.2;
 
-        sectionHeading.forEach((text, index) => {
-          const textTop = text.getBoundingClientRect().top;
-          
-          if (textTop < triggerBottom) {
-              setTimeout(() => {
-                  text.classList.add('visible');
-              }, index * 0); // Delay for text appearance
-          }
-        });
-
-        /*articleContainer.forEach((text, index) => {
-          const textTop = text.getBoundingClientRect().top;
-          
-          if (textTop < triggerBottom) {
-              setTimeout(() => {
-                  text.classList.add('visible');
-              }, index * 0); // Delay for text appearance
-          }
-        });*/
+      sectionHeading.forEach((text, index) => {
+        const textTop = text.getBoundingClientRect().top;
         
-        portraitInfo.forEach((text, index) => {
-          const textTop = text.getBoundingClientRect().top;
-          
-          if (textTop < triggerBottom) {
-              setTimeout(() => {
-                  text.classList.add('visible');
-              }, index * 30); // Delay for text appearance
-          }
-        });
+        if (textTop < triggerBottom) {
+            setTimeout(() => {
+                text.classList.add('visible');
+            }, index * 0); // Delay for text appearance
+        }
+      });
+      
+      articleTags.forEach((tag, index) => {
+        const textTop = tag.getBoundingClientRect().top;
+        
+        if (textTop < triggerBottom) {
+            setTimeout(() => {
+                tag.classList.add('visible');
+            }, index * 5); // Delay for text appearance
+        }
+      });
+      
+      citationButton.forEach((button, index) => {
+        const textTop = button.getBoundingClientRect().top;
+        
+        if (textTop < triggerBottom) {
+            setTimeout(() => {
+                button.classList.add('visible');
+            }, index * 5); // Delay for text appearance
+        }
+      });
+      
+      fullText.forEach((button, index) => {
+        const textTop = button.getBoundingClientRect().top;
+        
+        if (textTop < triggerBottom) {
+            setTimeout(() => {
+                button.classList.add('visible');
+            }, index * 0); // Delay for text appearance
+        }
+      });
+      
+      pubButton2.forEach((button, index) => {
+        const textTop = button.getBoundingClientRect().top;
+        
+        if (textTop < triggerBottom) {
+            setTimeout(() => {
+                button.classList.add('visible');
+            }, index * 0); // Delay for text appearance
+        }
+      });
+      
+      portraitInfo.forEach((text, index) => {
+        const textTop = text.getBoundingClientRect().top;
+        
+        if (textTop < triggerBottom) {
+            setTimeout(() => {
+                text.classList.add('visible');
+            }, index * 30); // Delay for text appearance
+        }
+      });
 
-        icons.forEach((icon, index) => {
-          const iconTop = icon.getBoundingClientRect().top;
+      icons.forEach((icon, index) => {
+        const iconTop = icon.getBoundingClientRect().top;
 
-          if (iconTop < triggerBottom) {
-              setTimeout(() => {
-                  icon.classList.add('visible');
-              }, index * 90); // Delay for icon appearance
-          }
-        });
-    }
+        if (iconTop < triggerBottom) {
+            setTimeout(() => {
+                icon.classList.add('visible');
+            }, index * 90); // Delay for icon appearance
+        }
+      });
+      
+      cloudTags.forEach((tag, index) => {
+        const textTop = tag.getBoundingClientRect().top;
+        
+        if (textTop < triggerBottom) {
+            setTimeout(() => {
+                tag.classList.add('visible');
+            }, index * 0); // Delay for text appearance
+        }
+      });
+  }
 
-    window.addEventListener('scroll', checkElements);
-    checkElements(); // Check on page load
+  window.addEventListener('scroll', checkElements);
+  checkElements(); // Check on page load
   });
 
 })(jQuery);
