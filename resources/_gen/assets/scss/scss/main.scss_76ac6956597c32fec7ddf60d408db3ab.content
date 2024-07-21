@@ -9355,6 +9355,13 @@ div.alert.alert-warning {
 div.emgithub-file.emgithub-file-dark > div.file-data.hljs-style-a11y-dark > div > pre > code > table > tbody > tr > td.hljs-ln-line.hljs-ln-code, div.emgithub-file.emgithub-file-dark > div.file-data.hljs-style-a11y-dark > div > pre > code > table > tbody > tr > td.hljs-ln-line.hljs-ln-numbers, div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark, div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > a {
   background: none; }
 
+div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > a:nth-child(2) {
+  font-size: 130%;
+  margin-right: 4px; }
+
+div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > a:nth-child(1) {
+  font-size: 130%; }
+
 .emgithub-container {
   margin-bottom: 6%; }
 

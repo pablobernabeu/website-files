@@ -350,6 +350,17 @@ div.emgithub-file.emgithub-file-dark > div.file-data.hljs-style-a11y-dark > div 
   background: none;
 }
 
+// main GitHub code
+div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > a:nth-child(2) {
+  font-size: 130%;
+  margin-right: 4px;
+}
+
+// raw GitHub code
+div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > a:nth-child(1) {
+  font-size: 130%;
+}
+
 // add margin under emgithub code chunks
 
 .emgithub-container {
