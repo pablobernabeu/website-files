@@ -107,7 +107,7 @@ ERPs are not the first signal collected in experiments. They are obtained after 
 
 <a href='https://www.researchgate.net/post/EEG_error_datasets_missing_channels_Its_strange_because_they_were_recorded_well_and_faulty_files_are_quite_as_heavy_as_the_good_ones_Any_ideas'><img src="https://www.researchgate.net/profile/Nikolay_Novitskiy/post/EEG_error_datasets_missing_channels_Its_strange_because_they_were_recorded_well_and_faulty_files_are_quite_as_heavy_as_the_good_ones_Any_ideas/attachment/59d6391b79197b8077996520/AS%3A400433085468672%401472482095219/image/41_64ch.png" alt="Brain Vision waveforms" width='70%'></a>
 
-For the Bernabeu et al. study, I used Brain Vision software, and followed the [tutorials from the well-known ERP Boot Camp](https://erpinfo.org/resources) of Steve Luck and Emily Kappenman. I applied the following pipeline separately for each participant:
+For Bernabeu et al. (2017), I used Brain Vision software, and followed the [tutorials from the well-known ERP Boot Camp](https://erpinfo.org/resources) of Steve Luck and Emily Kappenman. I applied the following pipeline for each participant:
 
 1. labeling channels (64 electrodes);
 

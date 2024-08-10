@@ -778,7 +778,8 @@
     
     document.addEventListener("DOMContentLoaded", function() {
       
-      const sectionHeading = document.querySelectorAll('div.col-12.col-lg-4.section-heading > h1');
+      const sectionHeading = document.querySelectorAll('div.col-12.col-lg-4.section-heading');
+      const sectionHeadingH1 = document.querySelectorAll('div.col-12.col-lg-4.section-heading > h1');
       const articleTags = document.querySelectorAll('div.article-container.pt-3 > div.btn-links.mb-3 > a:link');
       const citationButton = document.querySelectorAll('#top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button');
       const pubButton1 = document.querySelectorAll('#top > div.pub > div:nth-child(3) > a > button');
@@ -791,6 +792,16 @@
         const triggerBottom = window.innerHeight / 1.2;
   
         sectionHeading.forEach((text, index) => {
+          const textTop = text.getBoundingClientRect().top;
+          
+          if (textTop < triggerBottom) {
+              setTimeout(() => {
+                  text.classList.add('visible');
+              }, index * 0); // Delay for text appearance
+          }
+        });
+  
+        sectionHeadingH1.forEach((text, index) => {
           const textTop = text.getBoundingClientRect().top;
           
           if (textTop < triggerBottom) {

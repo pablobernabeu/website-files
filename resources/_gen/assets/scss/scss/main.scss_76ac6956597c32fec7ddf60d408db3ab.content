@@ -9125,6 +9125,56 @@ div.mermaid {
   text-align: center;
   margin-bottom: 1rem; }
 
+@media (min-width: 1000px) {
+  div.col-12.col-lg-4.section-heading, div.col-12.col-lg-4.section-heading > h1, div.article-container.pt-3 > div.btn-links.mb-3 > a:link, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button, #top > div.pub > div:nth-child(3) > a > button, #top > div.pub > div:nth-child(3) > div.article-style > a > button, .portrait-title > h3, .social-icon, .tag-cloud a:link {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.03s ease-in-out; }
+  div.col-12.col-lg-4.section-heading.visible, div.col-12.col-lg-4.section-heading > h1.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: color-transition1 1.5s forwards; }
+  @keyframes color-transition1 {
+    0% {
+      color: aquamarine; }
+    50% {
+      color: #088F8F; }
+    100% {
+      color: darkgrey; } }
+  div.article-container.pt-3 > div.btn-links.mb-3 > a:link.visible, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button.visible, #top > div.pub > div:nth-child(3) > a > button.visible, #top > div.pub > div:nth-child(3) > div.article-style > a > button.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: color-transition2 1.5s forwards; }
+  @keyframes color-transition2 {
+    0% {
+      color: aquamarine; }
+    50% {
+      color: #088F8F; }
+    100% {
+      color: black; } }
+  .portrait-title > h3.visible, .social-icon.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: color-transition3 1.5s forwards; }
+  @keyframes color-transition3 {
+    0% {
+      color: aquamarine; }
+    50% {
+      color: #088F8F; }
+    100% {
+      color: #8AA3CD; } }
+  .tag-cloud > a:link.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: color-transition4 5s forwards; }
+  @keyframes color-transition4 {
+    0% {
+      color: aquamarine; }
+    50% {
+      color: #088F8F; }
+    100% {
+      color: darkgrey; } } }
+
 #navbar-main > div > div.d-none.d-lg-inline-flex > a, #navbar-content > ul > li > a, #navbar-main > div > div.navbar-brand-mobile-wrapper.d-inline-flex.d-lg-none > a {
   color: darkgrey; }
 
@@ -9153,56 +9203,6 @@ div.col-12.col-lg-4.section-heading > h1, #navbar-content > ul > li > a {
 
 #top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories > a, #profile > div > div > ul > div > a:link, #top > article > div.article-container.pt-3 > div.article-metadata > span.article-categories > a:link, code {
   background-color: transparent; }
-
-@media (min-width: 1000px) {
-  div.col-12.col-lg-4.section-heading > h1, div.article-container.pt-3 > div.btn-links.mb-3 > a:link, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button, #top > div.pub > div:nth-child(3) > a > button, #top > div.pub > div:nth-child(3) > div.article-style > a > button, .portrait-title > h3, .social-icon, .tag-cloud a:link {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.1s ease-in-out; }
-  div.col-12.col-lg-4.section-heading > h1.visible {
-    opacity: 1;
-    transform: translateY(0);
-    animation: color-transition1 1s forwards; }
-  @keyframes color-transition1 {
-    0% {
-      color: aquamarine; }
-    50% {
-      color: #088F8F; }
-    100% {
-      color: darkgrey; } }
-  div.article-container.pt-3 > div.btn-links.mb-3 > a:link.visible, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button.visible, #top > div.pub > div:nth-child(3) > a > button.visible, #top > div.pub > div:nth-child(3) > div.article-style > a > button.visible {
-    opacity: 1;
-    transform: translateY(0);
-    animation: color-transition2 1.5s forwards; }
-  @keyframes color-transition2 {
-    0% {
-      color: aquamarine; }
-    50% {
-      color: #088F8F; }
-    100% {
-      color: black; } }
-  .portrait-title > h3.visible, .social-icon.visible {
-    opacity: 1;
-    transform: translateY(0);
-    animation: color-transition3 1s forwards; }
-  @keyframes color-transition3 {
-    0% {
-      color: aquamarine; }
-    50% {
-      color: #088F8F; }
-    100% {
-      color: #8AA3CD; } }
-  .tag-cloud > a:link.visible {
-    opacity: 1;
-    transform: translateY(0);
-    animation: color-transition4 5s forwards; }
-  @keyframes color-transition4 {
-    0% {
-      color: aquamarine; }
-    50% {
-      color: #088F8F; }
-    100% {
-      color: darkgrey; } } }
 
 #profile > div:nth-child(5) > div > ul > div > div > a:link, #profile > div:nth-child(5) > div > ul > div > div > a {
   margin-right: -10px; }
