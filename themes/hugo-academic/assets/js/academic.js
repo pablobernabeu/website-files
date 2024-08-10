@@ -781,8 +781,8 @@
       const sectionHeading = document.querySelectorAll('div.col-12.col-lg-4.section-heading > h1');
       const articleTags = document.querySelectorAll('div.article-container.pt-3 > div.btn-links.mb-3 > a:link');
       const citationButton = document.querySelectorAll('#top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button');
-      const fullText = document.querySelectorAll('h3.full-text');
-      const pubButton2 = document.querySelectorAll('#top > div.pub > div:nth-child(3) > div.article-style > a > button > h3');
+      const pubButton1 = document.querySelectorAll('#top > div.pub > div:nth-child(3) > a > button');
+      const pubButton2 = document.querySelectorAll('#top > div.pub > div:nth-child(3) > div.article-style > a > button');
       const portraitInfo = document.querySelectorAll('.portrait-title > h3');
       const icons = document.querySelectorAll('.social-icon');
       const cloudTags = document.querySelectorAll('.tag-cloud > a:link');
@@ -820,7 +820,7 @@
           }
         });
         
-        fullText.forEach((button, index) => {
+        pubButton1.forEach((button, index) => {
           const textTop = button.getBoundingClientRect().top;
           
           if (textTop < triggerBottom) {
