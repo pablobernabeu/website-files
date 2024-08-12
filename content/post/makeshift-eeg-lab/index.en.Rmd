@@ -11,7 +11,7 @@ tags:
   - EEG lab
   - s
 subtitle: ''
-summary: ''
+summary: 'Say, you need to set up a makeshift EEG lab in an office? Easy-peasy---only, try to move the hardware as little as possible, especially laptops with dongles sticking out. The rest is a trail of snapshots devoid of captions, clutter, a sink and a shower room, as this is only a little ancillary, temporary, extraordinary lab.'
 authors: []
 lastmod: 
 featured: no
@@ -23,7 +23,7 @@ projects: []
 ---
 
 
-Say, you need to set up a makeshift EEG lab in an office? Easy-peasy: just move hardware as little as possible, especially laptops with dongles sticking out. The rest is a trail of snapshots devoid of captions, clutter, a sink and a shower room, as this is only a little ancillary, temporary, extraordinary lab.
+Say, you need to set up a makeshift EEG lab in an office? Easy-peasy---only, try to move the hardware as little as possible, especially laptops with dongles sticking out. The rest is a trail of snapshots devoid of captions, clutter, a sink and a shower room, as this is only a little ancillary, temporary, extraordinary lab.
 
 <img src='images/1.jpg' alt='makeshift EEG lab in an office' style='margin-top:2px;'></img>
 <img src='images/2.jpg' alt='makeshift EEG lab in an office' style='margin-top:2px;'></img>
