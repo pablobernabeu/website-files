@@ -9378,7 +9378,7 @@ div.lds-ring {
   /* Needed to position the pseudo-element */ }
 
 div.lds-ring:after {
-  content: '⟳ Please reload page to show this code.';
+  content: '⟳ Please reload page a couple of times to view this snippet.';
   display: inline-block;
   /* Allows the text to be centered */
   font-size: 1.2em;
