@@ -3,29 +3,69 @@
 // Override this file to add your own SCSS styling.
 
 
+// Navigation bar
+
+#navbar-main > div > div.d-none.d-lg-inline-flex > a, #navbar-content > ul > li > a, #navbar-main > div > div.navbar-brand-mobile-wrapper.d-inline-flex.d-lg-none > a {
+  color: darkgrey;
+}
+
+#navbar-main > div > div.d-none.d-lg-inline-flex > a:hover, #navbar-content > ul > li > a:hover, #navbar-main > div > div.navbar-brand-mobile-wrapper.d-inline-flex.d-lg-none > a:hover, #navbar-main > div > div.d-none.d-lg-inline-flex > a:hover::first-letter, #navbar-main > div > div.navbar-brand-mobile-wrapper.d-inline-flex.d-lg-none > a:hover::first-letter {
+  color: #31A290;
+}
+
+div.col-12.col-lg-4.section-heading > h1, #navbar-content > ul > li > a {
+  color: darkgrey;
+}
+
+.nav-link.active span {
+  color: #39A290;
+}
+
+#navbar-main a:link {
+  color: #79A990;
+  background-color: transparent;
+}
+
+#navbar-content > ul > li > a:hover > span {
+  color: #31A290;
+  font-weight: bold;
+}
+
+#navbar-main > div > ul a:link {
+  color: darkgrey;
+}
+
+#top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories > a, #profile > div > div > ul > div > a:link, #top > article > div.article-container.pt-3 > div.article-metadata > span.article-categories > a:link, code {
+  background-color: transparent;
+}
+
+
 // On scroll and only in desktop view, highlight section headings, tags in articles, bio info (name, title, email, socials), and the tag cloud at the bottom of the site. This work depends on CSS code in custom.scss, and JS code in academic.js.
 
 @media (min-width: 1000px) {
   
-  div.col-12.col-lg-4.section-heading, div.col-12.col-lg-4.section-heading > h1, div.article-container.pt-3 > div.btn-links.mb-3 > a:link, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button, #top > div.pub > div:nth-child(3) > a > button, #top > div.pub > div:nth-child(3) > div.article-style > a > button > h3, #top > div.pub > div:nth-child(3) > div.article-style > a > button, #top > div.pub > div:nth-child(3) > a > button > h3, .portrait-title > h3, .social-icon, .tag-cloud a:link {
+  div.col-12.col-lg-4.section-heading, div.col-12.col-lg-4.section-heading > h1, div.col-12.col-lg-4.section-heading > h1::first-letter, div.article-container.pt-3 > div.btn-links.mb-3 > a:link, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button, #top > div.pub > div:nth-child(3) > a > button, #top > div.pub > div:nth-child(3) > div.article-style > a > button > h3, #top > div.pub > div:nth-child(3) > div.article-style > a > button, #top > div.pub > div:nth-child(3) > a > button > h3, .portrait-title > h3, .social-icon, .tag-cloud a:link {
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.03s ease-in-out;
   }
   
   
-  div.col-12.col-lg-4.section-heading.visible, div.col-12.col-lg-4.section-heading > h1.visible {
+  div.col-12.col-lg-4.section-heading.visible, div.col-12.col-lg-4.section-heading > h1.visible, div.col-12.col-lg-4.section-heading > h1.visible::first-letter {
     opacity: 1;
     transform: translateY(0);
-    animation: color-transition1 1.5s forwards;
+    animation: color-transition1 1s forwards;
   }
   
   @keyframes color-transition1 {
     0% {
+      color: #088F8F;
+    }
+    33% {
       color: aquamarine;
     }
-    50% {
-      color: #088F8F;
+    66% {
+      color: #8FABA6;
     }
     100% {
       color: darkgrey;
@@ -89,47 +129,6 @@
     }
   }
 
-}
-
-
-// Navigation bar
-
-#navbar-main > div > div.d-none.d-lg-inline-flex > a, #navbar-content > ul > li > a, #navbar-main > div > div.navbar-brand-mobile-wrapper.d-inline-flex.d-lg-none > a {
-  color: darkgrey;
-}
-
-div > div > div.col-12.col-lg-4.section-heading > h1::first-letter {
-  color: #8FABA6;
-}
-
-#navbar-main > div > div.d-none.d-lg-inline-flex > a:hover, #navbar-content > ul > li > a:hover, #navbar-main > div > div.navbar-brand-mobile-wrapper.d-inline-flex.d-lg-none > a:hover, #navbar-main > div > div.d-none.d-lg-inline-flex > a:hover::first-letter, #navbar-main > div > div.navbar-brand-mobile-wrapper.d-inline-flex.d-lg-none > a:hover::first-letter {
-  color: #31A290;
-}
-
-div.col-12.col-lg-4.section-heading > h1, #navbar-content > ul > li > a {
-  color: darkgrey;
-}
-
-.nav-link.active span {
-  color: #39A290;
-}
-
-#navbar-main a:link {
-  color: #79A990;
-  background-color: transparent;
-}
-
-#navbar-content > ul > li > a:hover > span {
-  color: #31A290;
-  font-weight: bold;
-}
-
-#navbar-main > div > ul a:link {
-  color: darkgrey;
-}
-
-#top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories > a, #profile > div > div > ul > div > a:link, #top > article > div.article-container.pt-3 > div.article-metadata > span.article-categories > a:link, code {
-  background-color: transparent;
 }
 
 
@@ -363,16 +362,46 @@ div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > a:nth-chil
 }
 
 // add margin under emgithub code chunks
-
 .emgithub-container {
   margin-bottom: 6%;
 }
 
 // remove love icon from emgithub chunk footnote
-
 div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > span {
   display: none;
 }
+
+/* Hide the rotating animation shown when emgithub won't load up, 
+and instead, display a message. */
+
+// Hide the rotating animation
+div.lds-ring > div:nth-child(4) {
+  display: none;
+}
+
+// Ensure the parent container is positioned correctly
+div.lds-ring {
+  position: relative; /* Needed to position the pseudo-element */
+}
+
+// Create a pseudo-element to display the message
+div.lds-ring:after {
+  content: '⟳ Please reload page to show this code.';
+  display: inline-block; /* Allows the text to be centered */
+  font-size: 1.2em;
+  color: red;
+  margin-top: 20px; /* Adjust as needed for positioning */
+  white-space: nowrap; /* Prevents the text from wrapping */
+  box-sizing: border-box; /* Ensures padding and border are included in width */
+  position: absolute; /* Absolute positioning within the parent */
+  top: 50%; /* Vertically center within the parent */
+  left: 50%; /* Horizontally center starting from the left */
+  transform: translate(-50%, -50%); /* Adjust the element to be centered */
+  text-align: center; /* Centers the text within the element */
+  width: fit-content; /* Adjust the width to the text content */
+}
+
+
 
 
 // Hanging indentation for references

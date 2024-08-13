@@ -113,7 +113,7 @@ education:
 ---
 
 
-After doing a research master's, I became a PhD student and graduate teaching assistant in Psychology at Lancaster University. In my [thesis](/publication/pablo-bernabeu-2022-phd-thesis), I investigated how conceptual processing—that is, the comprehension of the meaning of words—is supported by linguistic and sensorimotor brain systems, and how research on this topic is influenced by methodological aspects such as the operationalisation of variables and the sample size of experiments. 
+After completing a research master's, I became a PhD student and graduate teaching assistant in Psychology at Lancaster University. In my [thesis](/publication/pablo-bernabeu-2022-phd-thesis), I investigated how conceptual processing—that is, the comprehension of the meaning of words—is supported by linguistic and sensorimotor brain systems, and how research on this topic is influenced by methodological aspects such as the operationalisation of variables and the sample size of experiments. 
 
 Currently, I am a postdoctoral fellow at UiT The Arctic University of Norway. I work at the [Department of Language and Culture](https://en.uit.no/enhet/isk), and specifically within the [PoLaR Lab](https://site.uit.no/polar) and [<span style = "white-space: nowrap;">C-LaBL</span>](https://uit.no/research/clabl). 
 

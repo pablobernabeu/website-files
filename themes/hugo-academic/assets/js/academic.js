@@ -780,6 +780,7 @@
       
       const sectionHeading = document.querySelectorAll('div.col-12.col-lg-4.section-heading');
       const sectionHeadingH1 = document.querySelectorAll('div.col-12.col-lg-4.section-heading > h1');
+      const sectionHeadingH1FirstLetter = document.querySelectorAll('div.col-12.col-lg-4.section-heading > h1::first-letter');
       const articleTags = document.querySelectorAll('div.article-container.pt-3 > div.btn-links.mb-3 > a:link');
       const citationButton = document.querySelectorAll('#top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button');
       const pubButton1 = document.querySelectorAll('#top > div.pub > div:nth-child(3) > a > button');
@@ -791,6 +792,7 @@
       const cloudTags = document.querySelectorAll('.tag-cloud > a:link');
       
       function checkElements() {
+        
         const triggerBottom = window.innerHeight / 1.05;
   
         sectionHeading.forEach((text, index) => {
@@ -804,6 +806,16 @@
         });
   
         sectionHeadingH1.forEach((text, index) => {
+          const textTop = text.getBoundingClientRect().top;
+          
+          if (textTop < triggerBottom) {
+              setTimeout(() => {
+                  text.classList.add('visible');
+              }, index * 0); // Delay for text appearance
+          }
+        });
+  
+        sectionHeadingH1FirstLetter.forEach((text, index) => {
           const textTop = text.getBoundingClientRect().top;
           
           if (textTop < triggerBottom) {
