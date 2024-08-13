@@ -54,15 +54,15 @@ div.col-12.col-lg-4.section-heading > h1, #navbar-content > ul > li > a {
   div.col-12.col-lg-4.section-heading.visible, div.col-12.col-lg-4.section-heading > h1.visible, div.col-12.col-lg-4.section-heading > h1.visible::first-letter {
     opacity: 1;
     transform: translateY(0);
-    animation: color-transition1 1s forwards;
+    animation: color-transition1 2s forwards;
   }
   
   @keyframes color-transition1 {
     0% {
-      color: #088F8F;
+      color: aquamarine;
     }
     33% {
-      color: aquamarine;
+      color: #088F8F;
     }
     66% {
       color: #8FABA6;
