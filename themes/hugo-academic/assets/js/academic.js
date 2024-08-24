@@ -923,4 +923,49 @@
     
   }
 
+  
+  // Enable modal windows for images
+  
+  document.addEventListener('DOMContentLoaded', function() {
+      // Get the modal
+      var modal = document.getElementById("modal");
+  
+      // Get the image and insert it inside the modal - use its "alt" text as a caption
+      var modalImg = document.getElementById("modalImg");
+  
+      // Get all images in the gallery
+      var images = document.getElementsByClassName('modal-image');
+  
+      // Add click event listener to each image to open the modal
+      Array.from(images).forEach(function(image) {
+          image.addEventListener('click', function() {
+              modal.style.display = "block";
+              modalImg.src = this.src;
+          });
+      });
+  
+      // Get the <span> element that closes the modal
+      var closeBtn = document.getElementsByClassName("close")[0];
+  
+      // When the user clicks on <span> (x), close the modal
+      closeBtn.onclick = function() {
+          modal.style.display = "none";
+      }
+  
+      // When the user presses the ESC key, close the modal
+      document.addEventListener('keydown', function(event) {
+          if (event.key === "Escape") {
+              modal.style.display = "none";
+          }
+      });
+  
+      // When the user clicks anywhere outside of the modal content, close it
+      window.onclick = function(event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+          }
+      }
+  });
+
+  
 })(jQuery);
