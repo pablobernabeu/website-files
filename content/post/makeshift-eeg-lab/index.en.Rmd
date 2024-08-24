@@ -63,6 +63,17 @@ Say, you need to set up a makeshift EEG lab in an office? Easy-peasy---only, try
   <span class="expand-icon">&#x1F50E;</span>
   </div>
   
+</div>
+
+
+<div class='alert alert-info' role='alert' style='margin-top: 3%; padding-bottom: 0; margin-bottom: 0;'>
+<i class="fas fa-smile"></i>&nbsp; The syringes below are blunt---that is, they do not pierce the skin. You can watch the non-invasive, painless procedure of EEG [here](https://www.youtube.com/watch?v=-5djHvFo7IQ). 
+</div>
+
+
+<!-- Images -->
+<div class="image-gallery">
+  
   <div class="image-container">
   <img src="images/8.jpg" alt="makeshift EEG lab in an office" class="modal-image">
   <span class="expand-icon">&#x1F50E;</span>
@@ -122,6 +133,9 @@ Say, you need to set up a makeshift EEG lab in an office? Easy-peasy---only, try
   <img src="images/16.jpg" alt="makeshift EEG lab in an office" class="modal-image">
   <span class="expand-icon">&#x1F50E;</span>
   </div>
+  
+</div>
+
 
 <!-- Modal Structure -->
 <div id="modal" class="modal">
