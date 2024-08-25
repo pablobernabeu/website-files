@@ -782,11 +782,8 @@
       const sectionHeadingH1 = document.querySelectorAll('div.col-12.col-lg-4.section-heading > h1');
       const sectionHeadingH1FirstLetter = document.querySelectorAll('div.col-12.col-lg-4.section-heading > h1::first-letter');
       const articleTags = document.querySelectorAll('div.article-container.pt-3 > div.btn-links.mb-3 > a:link');
-      const citationButton = document.querySelectorAll('#top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button');
-      const pubButton1 = document.querySelectorAll('#top > div.pub > div:nth-child(3) > a > button');
-      const pubButton1H3 = document.querySelectorAll('#top > div.pub > div:nth-child(3) > a > button > h3');
-      const pubButton2 = document.querySelectorAll('#top > div.pub > div:nth-child(3) > div.article-style > a > button');
-      const pubButton2H3 = document.querySelectorAll('#top > div.pub > div:nth-child(3) > div.article-style > a > button > h3');
+      const button = document.querySelectorAll('button');
+      const buttonH3 = document.querySelectorAll('button > h3');
       const portraitInfo = document.querySelectorAll('.portrait-title > h3');
       const icons = document.querySelectorAll('.social-icon');
       const cloudTags = document.querySelectorAll('.tag-cloud > a:link');
@@ -835,17 +832,7 @@
           }
         });
         
-        citationButton.forEach((button, index) => {
-          const textTop = button.getBoundingClientRect().top;
-          
-          if (textTop < triggerBottom) {
-              setTimeout(() => {
-                  button.classList.add('visible');
-              }, index * 5); // Delay for text appearance
-          }
-        });
-        
-        pubButton1.forEach((button, index) => {
+        button.forEach((button, index) => {
           const textTop = button.getBoundingClientRect().top;
           
           if (textTop < triggerBottom) {
@@ -855,27 +842,7 @@
           }
         });
         
-        pubButton1H3.forEach((button, index) => {
-          const textTop = button.getBoundingClientRect().top;
-          
-          if (textTop < triggerBottom) {
-              setTimeout(() => {
-                  button.classList.add('visible');
-              }, index * 0); // Delay for text appearance
-          }
-        });
-        
-        pubButton2.forEach((button, index) => {
-          const textTop = button.getBoundingClientRect().top;
-          
-          if (textTop < triggerBottom) {
-              setTimeout(() => {
-                  button.classList.add('visible');
-              }, index * 0); // Delay for text appearance
-          }
-        });
-        
-        pubButton2H3.forEach((button, index) => {
+        buttonH3.forEach((button, index) => {
           const textTop = button.getBoundingClientRect().top;
           
           if (textTop < triggerBottom) {
@@ -966,6 +933,6 @@
           }
       }
   });
-
+  
   
 })(jQuery);

@@ -44,7 +44,6 @@ url_pdf: 'https://doi.org/10.31219/osf.io/2qf6w'
 url_video: 'https://osf.io/h36wr/'
 ---
 
-<br>
 
 #### &nbsp; <i class="fa fa-folder"></i>&nbsp; <a href='https://osf.io/e428p/'>General project</a>
 
