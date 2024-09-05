@@ -782,7 +782,7 @@
       const sectionHeadingH1 = document.querySelectorAll('div.col-12.col-lg-4.section-heading > h1');
       const sectionHeadingH1FirstLetter = document.querySelectorAll('div.col-12.col-lg-4.section-heading > h1::first-letter');
       const articleTags = document.querySelectorAll('div.article-container.pt-3 > div.btn-links.mb-3 > a:link');
-      const button = document.querySelectorAll('button');
+      const citationButton = document.querySelectorAll('div.btn-links.mb-3 > button');
       const buttonH3 = document.querySelectorAll('button > h3');
       const portraitInfo = document.querySelectorAll('.portrait-title > h3');
       const icons = document.querySelectorAll('.social-icon');
@@ -832,7 +832,7 @@
           }
         });
         
-        button.forEach((button, index) => {
+        citationButton.forEach((button, index) => {
           const textTop = button.getBoundingClientRect().top;
           
           if (textTop < triggerBottom) {
