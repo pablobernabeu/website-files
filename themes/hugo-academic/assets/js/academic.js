@@ -893,45 +893,97 @@
   
   // Enable modal windows for images
   
-  document.addEventListener('DOMContentLoaded', function() {
-      // Get the modal
-      var modal = document.getElementById("modal");
+  document.addEventListener("DOMContentLoaded", function () {
+      const modal = document.getElementById('myModal');
+      const images = document.querySelectorAll('.image-container img'); // Main article images
+      const modalImageWrapper = document.querySelector('.modal-content-wrapper'); // Wrapper for modal images
+      const prev = document.querySelector('.prev'); // Previous arrow
+      const next = document.querySelector('.next'); // Next arrow
+      const close = document.querySelector('.close'); // Close button
+      let currentIndex = 0;
+      let modalImages = [];
   
-      // Get the image and insert it inside the modal - use its "alt" text as a caption
-      var modalImg = document.getElementById("modalImg");
+      // Function to create modal images only once
+      function initializeModalImages() {
+          if (modalImages.length === 0) { // Check if modal images are already initialized
+              images.forEach((img, index) => {
+                  const modalImg = document.createElement('img');
+                  modalImg.src = img.src;
+                  modalImg.classList.add('modal-content');
+                  modalImg.style.display = 'none'; // Hide all modal images initially
+                  modalImageWrapper.appendChild(modalImg);
+                  modalImages.push(modalImg); // Push to modalImages array
+              });
+          }
+      }
   
-      // Get all images in the gallery
-      var images = document.getElementsByClassName('modal-image');
+      // Function to display the clicked image in the modal
+      function showImage(index) {
+          currentIndex = index;
+          modalImages.forEach((img) => {
+              img.style.display = 'none'; // Hide all images
+          });
+          modalImages[currentIndex].style.display = 'block'; // Show the current image
+      }
   
-      // Add click event listener to each image to open the modal
-      Array.from(images).forEach(function(image) {
-          image.addEventListener('click', function() {
-              modal.style.display = "block";
-              modalImg.src = this.src;
+      // Open modal and display clicked image
+      images.forEach((img, index) => {
+          img.addEventListener('click', () => {
+              initializeModalImages(); // Initialize the modal images only once
+              modal.style.display = 'block'; // Show modal
+              showImage(index); // Display the clicked image
           });
       });
   
-      // Get the <span> element that closes the modal
-      var closeBtn = document.getElementsByClassName("close")[0];
+      // Close modal
+      close.onclick = function () {
+          modal.style.display = 'none';
+      };
   
-      // When the user clicks on <span> (x), close the modal
-      closeBtn.onclick = function() {
-          modal.style.display = "none";
-      }
-  
-      // When the user presses the ESC key, close the modal
-      document.addEventListener('keydown', function(event) {
-          if (event.key === "Escape") {
-              modal.style.display = "none";
+      // Close modal on ESC key
+      window.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+              modal.style.display = 'none';
           }
       });
   
-      // When the user clicks anywhere outside of the modal content, close it
-      window.onclick = function(event) {
-          if (event.target == modal) {
-              modal.style.display = "none";
+      // Navigation for next and previous images
+      next.onclick = function () {
+          currentIndex = (currentIndex + 1) % modalImages.length; // Wrap around to first image
+          showImage(currentIndex);
+      };
+  
+      prev.onclick = function () {
+          currentIndex = (currentIndex - 1 + modalImages.length) % modalImages.length; // Wrap around to last image
+          showImage(currentIndex);
+      };
+  
+      // Arrow key navigation
+      window.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowRight') {
+              next.click();
+          } else if (e.key === 'ArrowLeft') {
+              prev.click();
           }
-      }
+      });
+  
+      // Swipe gestures for mobile devices
+      let startX = 0;
+      let endX = 0;
+  
+      modalImageWrapper.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX;
+      });
+  
+      modalImageWrapper.addEventListener('touchend', (e) => {
+          endX = e.changedTouches[0].clientX;
+  
+          if (startX > endX + 50) {
+              next.click(); // Swipe left to move to next image
+          } else if (startX < endX - 50) {
+              prev.click(); // Swipe right to move to previous image
+          }
+      });
   });
   
   
