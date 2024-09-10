@@ -496,7 +496,7 @@ a[href$="/tags/s/"] {
 }
 
 /* Modal Styling */
-.modal {
+.image-modal {
     display: none;
     position: fixed;
     z-index: 2;
@@ -508,21 +508,21 @@ a[href$="/tags/s/"] {
     overflow: hidden;
 }
 
-.modal-wrapper {
+.image-modal-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
 
-.modal-content-wrapper {
+.image-modal-content-wrapper {
     display: flex;
     max-width: 80%;
     max-height: 90vh;
     position: relative;
 }
 
-.modal-content {
+.image-modal-content {
     max-width: 100%;
     max-height: 90vh;
     object-fit: contain;
@@ -571,7 +571,7 @@ a[href$="/tags/s/"] {
     z-index: 5; /* Ensure close button is on top of everything */
 }
 
-.modal-text {
+.image-modal-text {
     position: sticky;
     text-align: right;
     top: 90px; /* Move text higher to ensure visibility */
@@ -591,7 +591,7 @@ a[href$="/tags/s/"] {
 }
 
 @media only screen and (max-width: 700px) {
-    .modal-content {
+    .image-modal-content {
         width: 100%;
     }
 
@@ -600,7 +600,7 @@ a[href$="/tags/s/"] {
         width: 100%; /* Full width on smaller screens */
     }
     
-    .modal-text {
+    .image-modal-text {
       display: none;
     }
 }
