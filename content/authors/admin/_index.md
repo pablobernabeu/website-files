@@ -37,13 +37,12 @@ recent_work:
   - job: '[Postdoctoral fellow](https://en.uit.no/go/target/789811)'
     institution: 'UiT The Arctic University of Norway'
     year: 'Nov **2022** -- _Feb **2025**_'
-    extra: '-&nbsp; As a member of the [LESS Project (Language Economy through Transfer Source Selectivity)](https://app.cristin.no/projects/show.jsf?id=2559611), I have worked on a longitudinal study investigating how language learners coordinate several languages early in the acquisition process, how this process is influenced by characteristics of the learners and of the languages, and how the process is instantiated in the brain.'
-    extra2: '-&nbsp; As part of this work, I also set up an EEG lab and doubled as a lab manager for months.'
+    extra: '-&nbsp; As the full-time member of the [LESS Project (Language Economy through Transfer Source Selectivity)](https://app.cristin.no/projects/show.jsf?id=2559611), I have worked on a longitudinal study investigating how language learners coordinate several languages early in the acquisition process, how this process is influenced by the characteristics of the languages, and how the process is instantiated in the brain. As part of this work thus far, I have contributed to the design of the study, developed the majority of the materials for this study and for a partner study in Spain, documented the creation of the materials and pretested them, written a preregistration, conducted EEG sessions, trained students and research assistants in EEG, set up an additional EEG lab, doubled as a lab manager, and supervised the preprocessing and the analysis of the data by research assistants. '
     extra3: '-&nbsp; Service: co-organisation of weekly Lunch Seminars of [AcqVA Aurora](https://uit.no/research/acqva#747906_buttoncont1) and [<span style = "white-space: nowrap;">C-LaBL</span>](https://uit.no/research/clabl#836271_buttoncont2); peer-review for *Cognition* and *Cognitive Science*.'
   - job: 'Statistical consultant'
     institution: 'UiT The Arctic University of Norway'
-    year: 'Nov 2022 -- Jan 2023'
-    extra: '-&nbsp; I worked as a statistical consultant for the [CLICK Project (Cross-Linguistic Influence of Competing Knowledge)](https://uit.no/research/acqva/project?pid=723990), which investigates multilingualism in heritage speakers.'
+    year: 'Nov 2022'
+    extra: '-&nbsp; I worked as a statistical consultant for the [CLICK Project (Cross-Linguistic Influence of Competing Knowledge)](https://uit.no/research/acqva/project?pid=723990), which investigated multilingualism in heritage speakers. Specifically, I preprocessed, visualised and analysed eye-tracking data.'
 education: 
   courses:
   - course: '[PhD Psychology with graduate teaching scholarship](https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109).html)'
@@ -57,7 +56,7 @@ education:
     extra: '\-&nbsp; Student member, Master’s curriculum and accreditation committee'
     extra2: '\-&nbsp; Tilburg University Scholarship for Academic Excellence, 2014/2015'
     extra4: '\-&nbsp; Grade: 7.54 out of 10 (Distinction)'
-  - course: '<span id="BA-degree">[BA English Philology](https://www.uam.es/uam/ingleses)</span>'
+  - course: '<span id="BA-degree">[BA English](https://www.uam.es/uam/ingleses)</span>'
     institution: Autonomous University of Madrid (Spain)
     year: '**2007--2013**'
     extra: '\-&nbsp; One-year Erasmus exchange at University of Jyv&auml;skyl&auml;, Finland'
