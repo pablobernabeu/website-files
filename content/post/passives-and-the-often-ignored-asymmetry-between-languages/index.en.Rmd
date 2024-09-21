@@ -25,7 +25,7 @@ projects: []
 
 <div class='alert alert-info' role='alert' style='padding-bottom: 0; margin-bottom: 6%;'>
 
-Given all of the data that E&L cite, how could anyone maintain the notion of a universal grammar with linguistic content? Traditionally, there have been three basic strategies. First, just as we may force English grammar into the Procrustean bed of Latin grammar – that is how I was taught the structure of English in grade school – the grammars of the world’s so-called exotic languages may be forced into an abstract scheme based mainly on European languages.
+Given all of the data that E&L [Evans and Levinson] cite, how could anyone maintain the notion of a universal grammar with linguistic content? Traditionally, there have been three basic strategies. First, just as we may force English grammar into the Procrustean bed of Latin grammar – that is how I was taught the structure of English in grade school – the grammars of the world’s so-called exotic languages may be forced into an abstract scheme based mainly on European languages.
 
 --- Tomasello (2009)
 
@@ -56,9 +56,9 @@ This seems a good opportunity to reflect on the asymmetries that exist across la
 
 ### References
 
-Serratrice, L. (2022). What can syntactic priming tell us about crosslinguistic influence? In Messenger, K. (Ed.), *Syntactic Priming in Language Acquisition: Representations, mechanisms and applications* (pp. 129–156). Amsterdam: John Benjamins
+Serratrice, L. (2022). What can syntactic priming tell us about crosslinguistic influence? In Messenger, K. (Ed.), *Syntactic priming in language acquisition: Representations, mechanisms and applications* (pp. 129–156). Amsterdam: John Benjamins. https://doi.org/10.1075/tilar.31
 
-Takagaki, T. (2005). On the productivity of the Spanish passive constructions. In Takagaki et al. (Eds.), *Corpus-Based Approaches to Sentence Structures* (pp. 289–309). Amsterdam: John Benjamins
+Takagaki, T. (2005). On the productivity of the Spanish passive constructions. In Takagaki et al. (Eds.), *Corpus-based approaches to sentence structures* (pp. 289–309). Amsterdam: John Benjamins
 
 Tomasello, M. (2009). Universal grammar is dead. *Behavioral and Brain Sciences, 32*(5), 470–471. https://doi.org/10.1017/S0140525X09990744
 
