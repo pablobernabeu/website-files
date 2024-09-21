@@ -1,8 +1,8 @@
 ---
-title: Passives and the often-ignored asymmetries between languages
+title: Passive constructions and asymmetries between languages
 author: ''
 date: '2024-09-21'
-slug: passives-and-the-often-ignored-asymmetry-between-languages
+slug: passive-constructions-and-asymmetries-between-languages
 categories:
   - linguistics
 tags:
