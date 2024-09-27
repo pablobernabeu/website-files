@@ -41,7 +41,7 @@ recent_work:
   - job: 'Statistical consultant'
     institution: 'UiT The Arctic University of Norway'
     year: 'Nov 2022'
-    extra: '-&nbsp; I worked as a statistical consultant for the [CLICK Project (Cross-Linguistic Influence of Competing Knowledge)](https://uit.no/research/acqva/project?pid=723990), which investigated multilingualism in heritage speakers. Specifically, I preprocessed, visualised and analysed eye-tracking data.'
+    extra: '-&nbsp; I worked as a statistical consultant for the [CLICK Project (Cross-Linguistic Influence of Competing Knowledge)](https://uit.no/research/acqva/project?pid=723990), which investigated multilingualism in heritage speakers. I worked with questionnaire and eye-tracking data.'
 education: 
   courses:
   - course: '[PhD Psychology with graduate teaching scholarship](https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109).html)'

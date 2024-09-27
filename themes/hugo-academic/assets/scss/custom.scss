@@ -461,7 +461,7 @@ a[href$="/tags/s/"] {
 }
 
 
-// Enable gallery with modal windows for images
+/* Enable gallery with modal windows for images */
 
 .image-gallery {
     display: flex;
@@ -472,13 +472,13 @@ a[href$="/tags/s/"] {
     margin-top: -4%;
 }
 
-.image-container {
+.imageContainer {
     position: relative; /* Relative positioning for overlay */
     width: 48%; /* Each image container takes up 45% of the width */
     margin-bottom: -4%; /* Reduced margin above the container */
 }
 
-.image-container img {
+.imageContainer img {
     width: 100%; 
     border-radius: 4px;
     cursor: pointer;
@@ -496,7 +496,7 @@ a[href$="/tags/s/"] {
 }
 
 /* Modal Styling */
-.image-modal {
+.imageModal {
     display: none;
     position: fixed;
     z-index: 2;
@@ -508,26 +508,38 @@ a[href$="/tags/s/"] {
     overflow: hidden;
 }
 
-.image-modal-wrapper {
+.imageModal-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
+    overflow: auto; /* Allow scrolling for tall images */
 }
 
-.image-modal-content-wrapper {
+.imageModal-content-wrapper {
     display: flex;
-    max-width: 80%;
-    max-height: 90vh;
+    justify-content: center;
+    align-items: flex-start; /* Align image to start at the top */
+    max-width: 100%; /* Ensure full width usage */
+    max-height: 100%; /* Ensure full height usage */
+    overflow: hidden; /* Prevents content overflow */
     position: relative;
+    padding-top: 20px; /* Add padding to create space from the top */
+    box-sizing: border-box; /* Ensure padding doesn't add to total height */
 }
 
-.image-modal-content {
-    max-width: 100%;
-    max-height: 90vh;
-    object-fit: contain;
-    display: none; /* Initially hide all modal images */
+.imageModal-content {
+    width: auto; /* Ensure the image maintains its aspect ratio */
+    height: auto; /* Ensure the image maintains its aspect ratio */
+    max-width: calc(100% - 20px); /* Image should not exceed the screen's width, accounting for margin */
+    max-height: calc(100vh - 40px); /* Image should not exceed the screen's height, accounting for top margin */
+    object-fit: contain; /* Ensures image is fully visible within the modal */
+    display: block;
+    margin: auto 10px; /* Add a 10px margin to the sides, auto for vertical centering */
+    position: relative; /* Use relative positioning to create top spacing */
+    top: 10px; /* Ensure top margin is visible */
 }
+
 
 /* Navigation Arrows */
 .prev, .next {
@@ -559,9 +571,9 @@ a[href$="/tags/s/"] {
     color: #000; /* Even darker color on hover */
 }
 
-.close {
-    position: sticky;
-    top: 60px;
+.imageClose {
+    position: absolute;
+    top: 20px;
     right: 35px;
     color: white;
     font-size: 40px;
@@ -571,8 +583,14 @@ a[href$="/tags/s/"] {
     z-index: 5; /* Ensure close button is on top of everything */
 }
 
-.image-modal-text {
-    position: sticky;
+.imageClose:hover, .imageClose:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.imageModal-text {
+    position: absolute;
     text-align: right;
     top: 90px; /* Move text higher to ensure visibility */
     right: 20px;
@@ -583,25 +601,22 @@ a[href$="/tags/s/"] {
     padding-right: 25px; /* Add padding for better text visibility */
     z-index: 4; /* Higher z-index to appear above the modal content */
 }
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
 
 @media only screen and (max-width: 700px) {
-    .image-modal-content {
-        width: 100%;
+    .imageModal-content {
+        width: 100%; /* Full width for small screens */
+        height: auto; /* Maintain aspect ratio */
     }
 
     /* Adjust grid to be single column on small screens */
-    .image-container {
+    .imageContainer {
         width: 100%; /* Full width on smaller screens */
     }
     
-    .image-modal-text {
+    .imageModal-text {
       display: none;
     }
 }
+
+
 

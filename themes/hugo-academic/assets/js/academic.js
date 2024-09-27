@@ -679,6 +679,13 @@
       });
       modal.modal('show');
     });
+    
+    // Close modal on ESC key press
+    $(document).keydown(function (e) {
+      if (e.key === "Escape") { // Check if the ESC key is pressed
+        $('#modal').modal('hide');
+      }
+    });
 
     // Copy citation text on 'Copy' click.
     $('.js-copy-cite').click(function (e) {
@@ -890,101 +897,100 @@
     
   }
 
-  
-  // Enable modal windows for images
-  
   document.addEventListener("DOMContentLoaded", function () {
-      const modal = document.getElementById('myModal');
-      const images = document.querySelectorAll('.image-container img'); // Main article images
-      const modalImageWrapper = document.querySelector('.modal-content-wrapper'); // Wrapper for modal images
-      const prev = document.querySelector('.prev'); // Previous arrow
-      const next = document.querySelector('.next'); // Next arrow
-      const close = document.querySelector('.close'); // Close button
-      let currentIndex = 0;
-      let modalImages = [];
-  
-      // Function to create modal images only once
-      function initializeModalImages() {
-          if (modalImages.length === 0) { // Check if modal images are already initialized
-              images.forEach((img, index) => {
-                  const modalImg = document.createElement('img');
-                  modalImg.src = img.src;
-                  modalImg.classList.add('modal-content');
-                  modalImg.style.display = 'none'; // Hide all modal images initially
-                  modalImageWrapper.appendChild(modalImg);
-                  modalImages.push(modalImg); // Push to modalImages array
-              });
-          }
-      }
-  
-      // Function to display the clicked image in the modal
-      function showImage(index) {
-          currentIndex = index;
-          modalImages.forEach((img) => {
-              img.style.display = 'none'; // Hide all images
-          });
-          modalImages[currentIndex].style.display = 'block'; // Show the current image
-      }
-  
-      // Open modal and display clicked image
-      images.forEach((img, index) => {
-          img.addEventListener('click', () => {
-              initializeModalImages(); // Initialize the modal images only once
-              modal.style.display = 'block'; // Show modal
-              showImage(index); // Display the clicked image
-          });
-      });
-  
-      // Close modal
-      close.onclick = function () {
-          modal.style.display = 'none';
-      };
-  
-      // Close modal on ESC key
-      window.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape') {
-              modal.style.display = 'none';
-          }
-      });
-  
-      // Navigation for next and previous images
-      next.onclick = function () {
-          currentIndex = (currentIndex + 1) % modalImages.length; // Wrap around to first image
-          showImage(currentIndex);
-      };
-  
-      prev.onclick = function () {
-          currentIndex = (currentIndex - 1 + modalImages.length) % modalImages.length; // Wrap around to last image
-          showImage(currentIndex);
-      };
-  
-      // Arrow key navigation
-      window.addEventListener('keydown', (e) => {
-          if (e.key === 'ArrowRight') {
-              next.click();
-          } else if (e.key === 'ArrowLeft') {
-              prev.click();
-          }
-      });
-  
-      // Swipe gestures for mobile devices
-      let startX = 0;
-      let endX = 0;
-  
-      modalImageWrapper.addEventListener('touchstart', (e) => {
-          startX = e.touches[0].clientX;
-      });
-  
-      modalImageWrapper.addEventListener('touchend', (e) => {
-          endX = e.changedTouches[0].clientX;
-  
-          if (startX > endX + 50) {
-              next.click(); // Swipe left to move to next image
-          } else if (startX < endX - 50) {
-              prev.click(); // Swipe right to move to previous image
-          }
-      });
-  });
+    const imageModal = document.getElementById('myModal');
+    const images = document.querySelectorAll('.imageContainer img'); // Main article images
+    const modalImageWrapper = document.querySelector('.imageModal-content-wrapper'); // Wrapper for modal images
+    const prev = document.querySelector('.prev'); // Previous arrow
+    const next = document.querySelector('.next'); // Next arrow
+    const imageClose = document.querySelector('.imageClose'); // Close button
+    let currentIndex = 0;
+    let modalImages = [];
+
+    // Function to create modal images only once
+    function initializeModalImages() {
+        if (modalImages.length === 0) { // Check if modal images are already initialized
+            images.forEach((img, index) => {
+                const modalImg = document.createElement('img');
+                modalImg.src = img.src;
+                modalImg.classList.add('imageModal-content');
+                modalImg.style.display = 'none'; // Hide all modal images initially
+                modalImageWrapper.appendChild(modalImg);
+                modalImages.push(modalImg); // Push to modalImages array
+            });
+        }
+    }
+
+    // Function to display the clicked image in the modal
+    function showImage(index) {
+        currentIndex = index;
+        modalImages.forEach((img) => {
+            img.style.display = 'none'; // Hide all images
+        });
+        modalImages[currentIndex].style.display = 'block'; // Show the current image
+    }
+
+    // Open modal and display clicked image
+    images.forEach((img, index) => {
+        img.addEventListener('click', () => {
+            initializeModalImages(); // Initialize the modal images only once
+            imageModal.style.display = 'block'; // Show modal
+            showImage(index); // Display the clicked image
+        });
+    });
+
+    // Close modal
+    imageClose.onclick = function () {
+        imageModal.style.display = 'none';
+    };
+
+    // Close modal on ESC key
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            imageModal.style.display = 'none';
+        }
+    });
+
+    // Navigation for next and previous images
+    next.onclick = function () {
+        currentIndex = (currentIndex + 1) % modalImages.length; // Wrap around to first image
+        showImage(currentIndex);
+    };
+
+    prev.onclick = function () {
+        currentIndex = (currentIndex - 1 + modalImages.length) % modalImages.length; // Wrap around to last image
+        showImage(currentIndex);
+    };
+
+    // Arrow key navigation
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+            next.click();
+        } else if (e.key === 'ArrowLeft') {
+            prev.click();
+        }
+    });
+
+    // Swipe gestures for mobile devices
+    let startX = 0;
+    let endX = 0;
+
+    modalImageWrapper.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    });
+
+    modalImageWrapper.addEventListener('touchend', (e) => {
+        endX = e.changedTouches[0].clientX;
+
+        if (startX > endX + 50) {
+            next.click(); // Swipe left to move to next image
+        } else if (startX < endX - 50) {
+            prev.click(); // Swipe right to move to previous image
+        }
+    });
+});
+
   
   
 })(jQuery);
+
