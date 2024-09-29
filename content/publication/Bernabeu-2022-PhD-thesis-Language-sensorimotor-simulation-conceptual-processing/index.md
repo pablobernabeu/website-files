@@ -7,7 +7,7 @@ slug: Pablo-Bernabeu-2022-PhD-thesis
 categories:
   - conceptual processing
   - embodied cognition
-  - statistical power
+  - statistical power`
   - research methods
   - statistics
 tags:
@@ -46,7 +46,9 @@ featured: no
 links:
 - name: Online book
   url: '/thesis'
-url_pdf: https://eprints.lancs.ac.uk/id/eprint/177833/6/2022deJuanBernabeuPhD.pdf
+- name: PDF at university
+  url: https://eprints.lancs.ac.uk/id/eprint/177833/6/2022deJuanBernabeuPhD.pdf
+url_pdf: https://osf.io/download/97u5c
 url_code: https://osf.io/gt5uf
 url_dataset: https://osf.io/gt5uf
 url_poster: ~
