@@ -9357,21 +9357,21 @@ div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > a:nth-chil
   font-size: 130%;
   margin-right: 4px;
   background: #3f3f3f;
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 5px 9px;
   color: #dfffe0; }
 
 div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > a:nth-child(1) {
   font-size: 130%;
   background: #3f3f3f;
-  border-radius: 15px;
-  padding: 0px 9px;
+  border-radius: 10px;
+  padding: 3px 9px;
   color: #fff0ea;
-  margin-top: -1px; }
+  margin-top: -3px; }
 
 div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > a:nth-child(1):hover, div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > a:nth-child(2):hover {
   font-size: 130%;
-  background-image: linear-gradient(180deg, #FFFFF3, #FEFFE5, #FEFFE5, #FEFFE5, #FEFFE5, #FEFFE5, #BAF1B7);
+  background-image: linear-gradient(180deg, #FFFFF3, #FFFFF3, #FFFFF3, #FEFFE5, #FEFFE5, #FEFFE5, #FEFFE5, #FEFFE5, #BAF1B7);
   color: black; }
 
 .emgithub-container {
