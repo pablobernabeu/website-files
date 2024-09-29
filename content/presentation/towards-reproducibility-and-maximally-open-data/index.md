@@ -31,18 +31,13 @@ image:
   caption: ''
   focal_point: ''
   preview_only: no
-url_slides: ~
-url_code: ~
+url_slides: https://slideshare.net/slideshow/embed_code/key/btTmVtxioR1Ru0
 url_pdf: ~
-url_video: https://nuigalway.mediaspace.kaltura.com/media/OSW2021%3A%20OSCG%20Open%20Scholarship%20Prize%20-%20The%20Final!/1_d7ekd3d3/121659351
+url_video: ~
 slides: ''
 projects: []
 ---
 
 
-### Slides
-
-<br>
-
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/btTmVtxioR1Ru0" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <a href="//www.slideshare.net/PabloBernabeu/towards-reproducibility-and-maximallyopen-data-248393658" title="Towards reproducibility and maximally-open data" target="_blank">Slideshare</a></div>
+<iframe src="https://slideshare.net/slideshow/embed_code/key/btTmVtxioR1Ru0" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <a href="https://slideshare.net/PabloBernabeu/towards-reproducibility-and-maximallyopen-data-248393658" title="Towards reproducibility and maximally-open data" target="_blank">Slideshare</a></div>
 

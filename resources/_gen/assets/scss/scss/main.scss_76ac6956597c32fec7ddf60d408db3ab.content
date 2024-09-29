@@ -9350,14 +9350,29 @@ div.alert.alert-warning {
   border-color: #6B6F0F; }
 
 div.emgithub-file.emgithub-file-dark > div.file-data.hljs-style-a11y-dark > div > pre > code > table > tbody > tr > td.hljs-ln-line.hljs-ln-code, div.emgithub-file.emgithub-file-dark > div.file-data.hljs-style-a11y-dark > div > pre > code > table > tbody > tr > td.hljs-ln-line.hljs-ln-numbers, div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark, div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > a {
-  background: none; }
+  background: none;
+  margin: 5px 0px; }
 
 div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > a:nth-child(2) {
   font-size: 130%;
-  margin-right: 4px; }
+  margin-right: 4px;
+  background: #3f3f3f;
+  border-radius: 15px;
+  padding: 5px 9px;
+  color: #dfffe0; }
 
 div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > a:nth-child(1) {
-  font-size: 130%; }
+  font-size: 130%;
+  background: #3f3f3f;
+  border-radius: 15px;
+  padding: 0px 9px;
+  color: #fff0ea;
+  margin-top: -1px; }
+
+div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > a:nth-child(1):hover, div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > a:nth-child(2):hover {
+  font-size: 130%;
+  background-image: linear-gradient(180deg, #FFFFF3, #FEFFE5, #FEFFE5, #FEFFE5, #FEFFE5, #FEFFE5, #BAF1B7);
+  color: black; }
 
 .emgithub-container {
   margin-bottom: 6%; }
@@ -9375,7 +9390,7 @@ div.lds-ring {
   /* Needed to position the pseudo-element */ }
 
 div.lds-ring:after {
-  content: '⟳ Please reload page a couple of times to view this snippet.';
+  content: '⟳ Please wait or reload page to view this snippet.';
   display: inline-block;
   /* Allows the text to be centered */
   font-size: 1.2em;

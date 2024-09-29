@@ -56,11 +56,11 @@ Sometimes it's useful to do a bibliometric analysis. To this end, the [`rscopus_
 
 As an example (also available [on GitHub](https://github.com/pablobernabeu/L2_L3_EF/blob/main/biblio_analysis.R)), we'll visualise the prevalence of three executive functions in the literatures on second and third language throughout the past two decades. 
 
-First, we'll use the [`scopus_comparison` function](https://github.com/pablobernabeu/rscopus_plus/blob/main/scopus_comparison.R) (fragment shown below).
+First, we'll use [`scopus_comparison()`](https://github.com/pablobernabeu/rscopus_plus/blob/main/scopus_comparison.R) (fragment shown below).
 
 <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Frscopus_plus%2Fblob%2Fmain%2Fscopus_comparison.R%23L2-L23&style=a11y-dark&type=code&showLineNumbers=on&showFileMeta=on&showCopy=on&fetchFromJsDelivr=on"></script>
 
-Next, we'll use the [`plot_scopus_comparison` function](https://github.com/pablobernabeu/rscopus_plus/blob/main/plot_scopus_comparison.R) (fragment shown below).
+Next, we'll use [`plot_scopus_comparison()`](https://github.com/pablobernabeu/rscopus_plus/blob/main/plot_scopus_comparison.R) (fragment shown below).
 
 <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Frscopus_plus%2Fblob%2Fmain%2Fplot_scopus_comparison.R%23L4-L14&style=a11y-dark&type=code&showLineNumbers=on&showFileMeta=on&showCopy=on&fetchFromJsDelivr=on"></script>
 
