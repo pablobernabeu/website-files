@@ -414,8 +414,6 @@ div.lds-ring:after {
 }
 
 
-
-
 // Hanging indentation for references
 
 #references, .hanging-indent {
@@ -423,14 +421,15 @@ div.lds-ring:after {
   margin-left: 2em;
 }
 
-
-// related references 
+// Related references 
 
 .related-references {
   color: #787878;
+  scrollbar-color: #57a292 #edf5f4;
   border-style: solid; 
   border-width: 0.2px;
-  border-left-color: #D5EEE9;
+  border-left-color: aquamarine;
+  border-left-width: thin;
   border-top: none;
   border-right: none;
   border-bottom: none;
@@ -443,6 +442,20 @@ div.lds-ring:after {
   margin-bottom: 3em;
   padding-right: 0.4em; 
   padding-left: 0.7em;
+}
+
+
+// scroll bar for textarea
+
+textarea {
+  scrollbar-color: #57a292 #edf5f4;
+}
+
+
+// margin after code snippets
+
+pre {
+  margin-bottom: 5%;
 }
 
 
