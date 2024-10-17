@@ -988,9 +988,8 @@
             prev.click(); // Swipe right to move to previous image
         }
     });
-});
+  });
 
-  
-  
+
 })(jQuery);
 

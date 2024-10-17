@@ -125,7 +125,7 @@ div.col-12.col-lg-4.section-heading > h1, #navbar-content > ul > li > a {
       color: #088F8F;
     }
     100% {
-      color: darkgrey;
+      color: #96666f;
     }
   }
 
@@ -213,20 +213,41 @@ h3 a:hover, div a:hover {
   color: #24494F; 
 }
 
-// unvisited category and tag cloud links
-.article-categories a:link, .tag-cloud a:link {
+// category links
+.article-categories a:link {
   color: darkgrey; 
 }
 
 // visited category and tag cloud links
-.article-categories a:visited, .tag-cloud a:visited {
-  color: #9E84B0;
+.article-categories a:visited, .tag-cloud > a:visited {
+  color: #9E84B0 !important;
 }
 
 // hovered category and tag cloud links
-.article-categories a:hover, .tag-cloud a:hover {
-  color: #24494F;
+.article-categories a:hover, .tag-cloud > a:hover {
+  background: #3f3f3f;
+  border-radius: 10px;
+  padding: 3px 9px;
+  color: #fff0ea !important;
+  text-decoration: none;
 }
+
+// Hide tags in general home page, along with the preceding divider
+:is(#publication, #applications-and-dashboards, #blog) span.article-categories, :is(#publication, #applications-and-dashboards, #blog) span.middot-divider:has(+ span.article-categories) {
+  display: none;
+}
+
+// Hide categories in general home page
+:is(#publication, #applications-and-dashboards, #blog) .btn-links {
+  display: none;
+}
+
+
+// Remove 's' tag from tag cloud
+a[href$="/tags/s/"] {
+  display: none;
+}
+
 
 div.article-container.pt-3 > div.btn-links.mb-3 > a:link, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:link, .btn-links a:link, #top > div.pub > div > a > button:link, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button:link, div.grid-sizer > div > p > button, div.grid-sizer > div > p > a:link, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button, #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.btn-links > button {
   background-image: none;
@@ -415,7 +436,6 @@ div.lds-ring:after {
 
 
 // Hanging indentation for references
-
 #references, .hanging-indent {
   text-indent: -2em; 
   margin-left: 2em;
@@ -446,14 +466,12 @@ div.lds-ring:after {
 
 
 // scroll bar for textarea
-
 textarea {
   scrollbar-color: #57a292 #edf5f4;
 }
 
 
 // margin after code snippets
-
 pre {
   margin-bottom: 5%;
 }
@@ -482,12 +500,6 @@ pre {
   #profile > div:nth-child(5) > div > ul > div:nth-child(1) {
     display: none;
   }
-}
-
-// Remove 's' tag from tag cloud
-
-a[href$="/tags/s/"] {
-  display: none;
 }
 
 

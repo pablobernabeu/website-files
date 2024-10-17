@@ -51,7 +51,7 @@ subtitle = ""
 +++
 
 
-| Date     | Type   | Title                  | Event and location     |
+| Date     | Format   | Title                  | Event     |
 | -------- | ------ | ---------------------- | ---------------------- |
 | Oct, Nov 2023; June, July, Aug, Sept 2024 | Posters and speed talk | Investigating language learning and morphosyntactic transfer longitudinally using artificial languages<br><span style = 'color: darkgreen; font-style: italic;'>Presentation materials available to researchers and research students upon request while study in progress, before they are made public.</span> | (1) [AcqVA Aurora Centre](https://uit.no/research/acqva), UiT The Arctic University of Norway; <br> (2) [PoLaR Lab](https://site.uit.no/polar), UiT The Arctic University of Norway; <br> (3) [9th Conference of the Scandinavian Association for Language and Cognition](https://www.ntnu.edu/langdevlab/salc9), Norwegian University of Science and Technology; <br> (4) [Highlights in the Language Sciences 2024](https://hils2024.nl), Radboud University; <br> (5) [13th International Conference on Third Language Acquisition and Multilingualism](https://sites.google.com/rug.nl/iaml3conference2024), University of Groningen; <br> (6) [30th Conference on Architectures and Mechanisms for Language Processing (AMLaP)](https://amlap2024.ed.ac.uk), University of Edinburgh |
 | July 2024 | Poster | [Language and vision in conceptual processing: Multilevel analysis and statistical power](https://osf.io/t5baf) | [Highlights in the Language Sciences 2024](https://hils2024.nl), Radboud University |
