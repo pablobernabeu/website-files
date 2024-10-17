@@ -223,12 +223,14 @@ h3 a:hover, div a:hover {
   color: #9E84B0 !important;
 }
 
-// hovered category and tag cloud links
-.article-categories a:hover, .tag-cloud > a:hover {
-  background: #3f3f3f;
-  border-radius: 10px;
-  padding: 3px 9px;
-  color: #fff0ea !important;
+// hovered category links
+.article-categories a:hover {
+  color: #24494F;
+}
+
+// hovered tag cloud links
+.tag-cloud > a:hover {
+  color: #24494F !important;
   text-decoration: none;
 }
 

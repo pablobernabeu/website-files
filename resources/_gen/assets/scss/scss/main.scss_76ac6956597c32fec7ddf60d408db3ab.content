@@ -9265,11 +9265,11 @@ h3 a:hover, div a:hover {
 .article-categories a:visited, .tag-cloud > a:visited {
   color: #9E84B0 !important; }
 
-.article-categories a:hover, .tag-cloud > a:hover {
-  background: #3f3f3f;
-  border-radius: 10px;
-  padding: 3px 9px;
-  color: #fff0ea !important;
+.article-categories a:hover {
+  color: #24494F; }
+
+.tag-cloud > a:hover {
+  color: #24494F !important;
   text-decoration: none; }
 
 :is(#publication, #applications-and-dashboards, #blog) span.article-categories, :is(#publication, #applications-and-dashboards, #blog) span.middot-divider:has(+ span.article-categories) {

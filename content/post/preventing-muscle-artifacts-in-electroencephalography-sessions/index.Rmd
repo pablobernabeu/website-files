@@ -7,7 +7,7 @@ categories:
   - research methods
   - electroencephalography
 tags:
-  - eeg
+  - EEG
   - electroencephalography
   - BrainVision
   - muscle artifacts
