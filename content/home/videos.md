@@ -54,7 +54,7 @@ css_class = ""
 ### <span style='color:grey; font-size:70%;'>2024 ·</span>&nbsp; Lowering impedance in electroencephalography using a blunt needle, electrolyte gel and wiggling
 
 <div style = "position: relative; margin-top: 20px; padding-top: 56.25%; margin-bottom: -25px;">
-<iframe src="https://www.youtube-nocookie.com/embed/y061dT2hEbY" frameborder="0" allowfullscreen
+<iframe src="https://www.youtube-nocookie.com/embed/4KLtp-WnOOo" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
 </div>
 
