@@ -11,7 +11,7 @@ tags:
   - impedance
   - s
 subtitle: ~
-summary: Reducing impedance in electroencephalography (EEG) is crucial for capturing high-quality brain activity signals. This process involves ensuring that electrodes make optimal contact with the scalp without harming the participant. Below is a step-by-step guide to using a blunt needle, electrolyte gel, and gentle wiggling to achieve this.
+summary: Reducing impedance in electroencephalography (EEG) is crucial for capturing high-quality brain activity signals. This process involves ensuring that electrodes make optimal contact with the scalp without harming the participant. Below are a few tips to achieve this using a blunt needle, electrolyte gel and gentle wiggling.
 external_link: ~
 lastmod: ''
 featured: no
@@ -23,7 +23,7 @@ projects: []
 ---
 
 
-Reducing impedance in electroencephalography (EEG) is crucial for capturing high-quality brain activity signals. This process involves ensuring that electrodes make optimal contact with the scalp without harming the participant. Below is a step-by-step guide to using a blunt needle, electrolyte gel and gentle wiggling to achieve this.
+Reducing impedance in electroencephalography (EEG) is crucial for capturing high-quality brain activity signals. This process involves ensuring that electrodes make optimal contact with the scalp without harming the participant. Below are a few tips to achieve this using a blunt needle, electrolyte gel and gentle wiggling.
 
 <div>
   <div style="position: relative; padding-top: 56.25%; margin-top: 7%;">
@@ -35,25 +35,25 @@ Reducing impedance in electroencephalography (EEG) is crucial for capturing high
 <br>
 
 
-## 1. First, Do No Harm
+## First, Do No Harm
 
 Your primary goal is to improve impedance without damaging the skin or causing discomfort. Only use blunt needles. While wiggling under each electrode, do not any apply any force down on the skin. To achieve this, hold the syringe with the minimum grip needed to prevent it from falling off. 
 
-## 2. Control the Swing of the Electrode
-
-Place your finger on the electrode throughout the wiggling to feel and control its movement. This helps prevent excess gel from forming a bump under the electrode, which could lead to inaccurate readings. 
-
-## 3. Manage Needle Depth
+## Manage Needle Depth
 
 Be cautious about the depth of the needle. The goal is to make contact with the skin but not scratch it. Gently wiggle the needle to maximize electrode contact with the skin, which helps lower impedance.
 
-## 4. Apply Gel Strategically
+## Apply Gel Strategically
 
 Use just enough electrolyte gel to reduce impedance, but avoid creating bridges between adjacent electrodes. A small amount of gel should be visible on the opening of each electrode, and any large lumps should be carefully removed. This ensures that each electrode maintains a distinct connection with the scalp.
 
-## 5. Wiggle with Precision
+## Control the Swing of the Electrode
+
+Place your finger on the electrode throughout the wiggling to feel and control its movement. This helps prevent excess gel from forming a bump under the electrode, which could lead to inaccurate readings. 
+
+## Wiggle with Precision
 
 Wiggle the electrode in small circular motions to move hair aside and ensure good scalp contact. Be careful not to scratch the scalp in the process. Position yourself comfortably to access each electrode, allowing for precise movements and minimising participant discomfort.
 
-By following these steps, you’ll achieve lower impedance without causing harm, ensuring high-quality EEG data and a better experience for the participant.
+By following these tips, you’ll achieve lower impedance without causing harm, ensuring high-quality EEG data and a better experience for the participant.
 
