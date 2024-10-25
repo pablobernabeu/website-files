@@ -69,7 +69,6 @@ Several R users have ventured into [plotting the allFit() output](https://www.go
 <div style = 'height: 800px; border: 0.5px dotted grey; padding: 10px; resize: both; overflow: auto;'>
 
 ```{r}
-
 # Plot the results from the fixed effects produced by different optimizers. This function 
 # takes the output from lme4::allFit(), tidies it, selects fixed effects and plots them.
 
@@ -385,15 +384,12 @@ plot.fixef.allFit = function(allFit_output,
 
 </div>
 
-<br>
-
 
 ### Optional arguments
 
 Below are the optional arguments allowed by the function, with their default values.
 
 ```
-
 # Set the same Y axis limits in every plot
 shared_y_axis_limits = TRUE,
 
@@ -432,7 +428,6 @@ The argument `shared_y_axis_limits` deserves a comment. It allows using the same
 Let's test the function with a minimal model.
 
 ```{r}
-
 # Create data using code by Ben Bolker from 
 # https://stackoverflow.com/a/38296264/7050882
 
@@ -462,7 +457,6 @@ summary(multi_fit)$fixef
 The effects to be visualised are selected below using the argument `select_predictors`. Notice that the intercept is plotted by default on the first row, along with the legend that lists all the optimizers used.
 
 ```{r demo-plot.fixef.allFit-function-1, fig.dim = c(9, 7)}
-
 # Read in function from GitHub
 source('https://raw.githubusercontent.com/pablobernabeu/plot.fixef.allFit/main/plot.fixef.allFit.R')
 
@@ -486,7 +480,6 @@ The plot produced by `plot.fixef.allFit()` by default replaces the colons in int
 The output of `plot.fixef.allFit()` is a [ggplot2](https://ggplot2.tidyverse.org/) object that can be stored for further use, as in the example below, in which new parameters are used.
 
 ```{r demo-plot.fixef.allFit-function-2, fig.dim = c(9, 4)}
-
 library(ggplot2)
 
 plot_fit_convergence = 
@@ -514,8 +507,6 @@ plot_fit_convergence
 
 ```
 
-
-<br>
 
 ## References
 
