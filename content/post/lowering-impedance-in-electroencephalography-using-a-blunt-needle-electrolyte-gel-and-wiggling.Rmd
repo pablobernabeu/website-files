@@ -28,15 +28,13 @@ Reducing the impedance in electroencephalography (EEG) is crucial for capturing 
 
 ## First, Do No Harm
 
-The primary goal is to reduce the impedance without damaging the skin or causing discomfort. Only use disposable, blunt needles, and never let the needle pierce the skin. While wiggling the needle under each electrode, do not any apply any force down on the skin. To achieve this, hold the syringe with the minimum grip force needed to keep under control. 
+The primary goal is to reduce the impedance without damaging the skin or causing discomfort. Only use disposable, blunt needles, and never let the needle pierce the skin. While wiggling the needle under each electrode, do not any apply any force down on the skin. To achieve this, hold the syringe with the minimum grip force needed to control it. 
 
-## Manage the Angle of the Needle
+## Manage the Angle and Depth of the Needle
 
-The needle should be positioned at an angle of around 20--50 degrees relative to the participant's skin. To attain such an angle, electrodes may be rotated, and the researcher may adjust their own position around the participant.
+The needle should be positioned at an angle of around 20--50 degrees relative to the participant's skin. To attain such an angle, you may rotate the electrodes, move yourself or move the participant.
 
-## Manage the Depth of the Needle
-
-Be cautious about the depth of the needle. The goal is to make contact with the skin but not scratch it. Gently wiggle the needle to maximize electrode contact with the skin, which helps lower the impedance.
+Control the depth of the needle to prevent scratching the skin. Usually, only half of the needle has to be inside, as the key work area is right under the electrode. 
 
 
 <div>

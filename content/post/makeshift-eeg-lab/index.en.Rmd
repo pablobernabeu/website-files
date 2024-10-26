@@ -3,7 +3,7 @@ title: A makeshift EEG lab
 author: ''
 date: '2024-08-12'
 slug: 'makeshift-EEG-lab'
-categories: [electroencephalography]
+categories: [research methods]
 tags:
   - electroencephalography
   - EEG
@@ -22,7 +22,6 @@ projects: []
 
 
 Say, you need to set up a makeshift EEG lab in an office? Easy-peasy---only, try to move the hardware as little as possible, especially laptops with dongles sticking out. The rest is a trail of snapshots devoid of captions, a sink, a shower room and other paraphernalia, as this is only an ancillary, temporary, extraordinary little lab, and all those staples are within reach in our mainstream lab (see [Ledwidge et al., 2018](#reference)).
-
 
 
 <!-- Main Article Images (clickable to Open Modal) -->
@@ -65,7 +64,7 @@ Say, you need to set up a makeshift EEG lab in an office? Easy-peasy---only, try
 
 
 <div class='alert alert-info' role='alert' style='margin-top: 4%; margin-bottom: 2%; padding-bottom: 0;'>
-<i class="fas fa-smile"></i>  The needles below are *blunt*---that is, they do not pierce the skin. They're just used to put some gel into the cap to enable the detection of electrical activity in the brain. You can watch the non-invasive, painless procedure of EEG here. 
+<i class="fas fa-smile"></i>  The needles below are *blunt*---that is, they do not pierce the skin. They're just used to put some gel into the cap to enable the detection of electrical activity in the brain. You can explore the non-invasive, painless procedure of EEG [here](/2024/lowering-impedance-in-electroencephalography-using-a-blunt-needle-electrolyte-gel-and-wiggling). 
 </div>
 
 
@@ -138,7 +137,6 @@ Say, you need to set up a makeshift EEG lab in an office? Easy-peasy---only, try
 <a class="prev">❮</a>
 <a class="next">❯</a>
 </div>
-
 
 
 # Reference
