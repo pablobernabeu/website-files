@@ -9228,22 +9228,7 @@ div.col-12.col-lg-4.section-heading > h1, #navbar-content > ul > li > a {
 p a:link, ul a:link, li a:link, .article-container a:link, td a:link, a.dsq-brlink, div.grid-sizer > div > a {
   color: #00032F; }
 
-p a:link, td a:link, div.grid-sizer > div > a, #top > div.pub > div > div > div.col-md-10 > div > div.col-12.col-md-9 > a, h3 > a {
-  background-image: linear-gradient(180deg, #FFFFF3, #FEFFE5, #FEFFE5, #FEFFE5, #FEFFE5, #FEFFE5, #FEFFE5, #BAF1B7); }
-
-/* Remove link highlight from general links in home 
-and from bio portrait information. */
-.article-title > a, #profile > div.portrait-title > h3 > a {
-  background-image: none; }
-
-h3 a:link {
-  color: #4F6C89; }
-
-a:visited {
-  color: black;
-  background-color: #F7F1FF; }
-
-h3 a:visited, div a:visited, p a:visited, ul a:visited, li a:visited, .article-container a:visited, td a:visited, a.dsq-brlink:visited {
+h3 a:visited, div a:visited, p a:visited, ul a:visited, li a:visited, .article-container a:visited, td a:visited, a.dsq-brlink:visited, a:visited > code {
   color: purple;
   background-color: transparent; }
 
@@ -9255,6 +9240,17 @@ p a:hover, ul a:hover, li a:hover, .article-container a:hover, td a:hover, a.dsq
 
 h3 a:active, div a:active, p a:active, ul a:active, li a:active, .article-container a:active, td a:active, a.dsq-brlink:active {
   color: #24494F; }
+
+p a:link, td a:link, div.grid-sizer > div > a, #top > div.pub > div > div > div.col-md-10 > div > div.col-12.col-md-9 > a, h3 > a {
+  background-image: linear-gradient(180deg, #ffffe2, #ffffeb, #fffff5, #fffff5, #fffff5, #fffff5, #BAF1B7); }
+
+/* Remove link highlight from general links in home 
+and from bio portrait information. */
+.article-title > a, #profile > div.portrait-title > h3 > a {
+  background-image: none; }
+
+h3 a:link {
+  color: #4F6C89; }
 
 h3 a:hover, div a:hover {
   color: #24494F; }
@@ -9384,7 +9380,7 @@ div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > a:nth-chil
 
 div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > a:nth-child(1):hover, div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > a:nth-child(2):hover {
   font-size: 130%;
-  background-image: linear-gradient(180deg, #FFFFF3, #FFFFF3, #FFFFF3, #FEFFE5, #FEFFE5, #FEFFE5, #FEFFE5, #FEFFE5, #BAF1B7);
+  background-image: linear-gradient(180deg, #FEFFE5, #FFFFF3, #FFFFF3, #FFFFF3, #FFFFF3, #FFFFF3, #FFFFF3, #FFFFF3, #FEFFE5);
   color: black; }
 
 .emgithub-container {
