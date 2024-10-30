@@ -321,10 +321,10 @@ div.col-12.col-lg-4.section-heading > h1 > span > a > i {
   background-image: none;
 }
 
-a > i:hover, #profile > div > div > span > span > a:hover, #navbar-main > div > button > span > i:hover, #applications-and-dashboards i:hover, #applications-and-dashboards a:hover {
+a > i:hover, #profile > div > div > span > span > a:hover, #navbar-main > div > button > span > i:hover, :is(#navbar-main, #publication, #applications-and-dashboards, #blog) :is(a:has(i), i:hover, button:hover), #navbar-main > div > button:hover, #navbar-main > div > button > span:hover {
   color: #379E8A;
-  background-color: transparent;
-  background-image: none;
+  background-color: transparent !important;
+  background-image: none !important;
 }
 
 // Buttons, full text buttons, dashboard/application button
