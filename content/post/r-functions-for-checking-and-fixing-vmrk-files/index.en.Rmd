@@ -9,7 +9,6 @@ categories:
 tags:
   - research methods
   - electroencephalography
-  - EEG
   - BrainVision
   - event-related potentials
   - s

@@ -7,7 +7,7 @@ categories:
   - science
 tags:
   - vitenskap
-  - EEG
+  - electroencephalography
   - eksperiment
   - tromsø
   - tromso

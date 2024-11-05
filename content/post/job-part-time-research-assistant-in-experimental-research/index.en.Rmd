@@ -8,7 +8,6 @@ categories:
 tags:
   - job
   - research assistant
-  - EEG
   - UIT The Arctic University of Norway
   - Tromsø
   - electroencephalography
