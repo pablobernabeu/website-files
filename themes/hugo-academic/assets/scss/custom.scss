@@ -311,7 +311,7 @@ span.article-categories > i {
 
 // Icons
 
-i {
+i, #fn1 > p > a.footnote-back {
   background-color: transparent;
   background-image: none;
 }
@@ -442,7 +442,7 @@ div.lds-ring:after {
 
 
 // Hanging indentation for references
-#references, .hanging-indent {
+#reference, #references, .hanging-indent {
   text-indent: -2em; 
   margin-left: 2em;
 }

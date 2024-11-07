@@ -9324,7 +9324,7 @@ span.article-categories > i {
   background-color: transparent;
   background-image: none; }
 
-i {
+i, #fn1 > p > a.footnote-back {
   background-color: transparent;
   background-image: none; }
 
@@ -9433,7 +9433,7 @@ div.lds-ring:after {
   width: fit-content;
   /* Adjust the width to the text content */ }
 
-#references, .hanging-indent {
+#reference, #references, .hanging-indent {
   text-indent: -2em;
   margin-left: 2em; }
 
