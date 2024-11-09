@@ -7,9 +7,9 @@
   {{ if $page.Params.authors }}
   {{ $authorLen := len $page.Params.authors }}
   {{ if gt $authorLen 0 }}
-  <div>
+  <span>
     {{ partial "page_metadata_authors" $page }}
-  </div>
+  </span>
   {{ end }}
   {{ end }}
 
@@ -23,12 +23,12 @@
           {{ i18n "last_updated" }}
       {{ end }}
     {{ end }}
-    {{ $date }}
+    ({{ $date }})
   </span>
   {{ end }}
 
   {{ if (eq $page.Type "publication") }}
-  <span class="middot-divider"></span>
+  —
   <span class="pub-publication">
     {{ if $page.Params.publication_short }}
       {{ $page.Params.publication_short | markdownify }}
