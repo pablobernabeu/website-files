@@ -239,8 +239,12 @@ h3 a:hover, div a:hover {
 }
 
 // Increase size of article metadata
-#publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.stream-meta.article-metadata > div, #top > div.pub > div.article-container.pt-3 > div.article-metadata {
+#publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.stream-meta.article-metadata > div {
   font-size: 120%;
+}
+
+#top > div.pub > div.article-container.pt-3 > div.article-metadata {
+  font-size: 105%;
 }
 
 // Decrease size of article categories
