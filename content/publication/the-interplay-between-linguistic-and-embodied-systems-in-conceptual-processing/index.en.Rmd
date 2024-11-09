@@ -46,11 +46,7 @@ slides: ''
 
 ### Reference
 
-<div class = 'hanging-indent' style = 'margin-bottom: 3em;'>
-
 Bernabeu, P., Lynott, D., & Connell, L. (2021). *Preregistration: The interplay between linguistic and embodied systems in conceptual processing*. OSF. https://osf.io/ftydw
-
-</div>
 
 
 ### Related references

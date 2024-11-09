@@ -58,7 +58,7 @@ slides: ''
       
 ### Reference
 
-<div class = 'hanging-indent' style = 'margin-bottom: 3em;'>
+<div class = 'hanging-indent'>
 
 Bernabeu, P. (2017). *Modality switches occur early and extend late in conceptual processing: Evidence from ERPs*. PsyArXiv. https://doi.org/10.31234/osf.io/5gjvk
 

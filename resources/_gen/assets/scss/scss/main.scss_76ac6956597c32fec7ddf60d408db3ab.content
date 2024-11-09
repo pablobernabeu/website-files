@@ -9274,6 +9274,9 @@ h3 a:hover, div a:hover {
 :is(#publication, #applications-and-dashboards, #blog) .btn-links {
   display: none; }
 
+#publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.stream-meta.article-metadata > div, #top > div.pub > div.article-container.pt-3 > div.article-metadata {
+  font-size: 110%; }
+
 a[href$="/tags/s/"] {
   display: none; }
 
@@ -9451,7 +9454,7 @@ div.lds-ring:after {
   font-size: 90%;
   height: 700px;
   overflow-wrap: normal;
-  margin-top: 0.9em;
+  margin-top: 1.3em;
   margin-left: -0.7em;
   margin-bottom: 3em;
   padding-right: 0.4em;

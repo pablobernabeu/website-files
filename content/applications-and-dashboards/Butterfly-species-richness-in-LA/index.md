@@ -80,10 +80,8 @@ BioScan = BioScan %>% pivot_longer(
 #str(dat)
 # 928 rows now; the result of 29 pseudo-variables being transposed into
 # rows, interacting with 32 previous rows, i.e., 29 * 32 = 928.
-
 ```
 
-<br>
 
 merging three data sets, 
 
@@ -92,10 +90,8 @@ merging three data sets,
 # The number of animals of each species must be computed from repeated entries, per site.
 
 iNaturalist = merge(iNaturalist, iNaturalist %>% count(species, site, name = 'Number'))
-
 ```
 
-<br>
 
 and, as ever, wrangling with the format of the dashboard pages to preserve the format of a table.
 
@@ -105,10 +101,7 @@ Species details {style="background-color: #FCFCFC;"}
 
 Column {style="data-width:100%; position:static; height:1000px;"}
 -----------------------------------------------------------------------
-
 ```
-
-<br>
 
 ### Reference
 
@@ -118,4 +111,3 @@ Bernabeu, P. (2020). Dashboard with data from Prudic, Oliver, Brown, & Long (201
 
 </div>
 
-<br>

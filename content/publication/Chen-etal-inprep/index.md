@@ -64,7 +64,9 @@ url_video: 'https://osf.io/h36wr/'
 <br>
 <br>
 
+
 **Related:** [the value of a replication study during PhD](https://doi.org/10.1017/S0140525X18000730).
+
 
 ### Reference
 

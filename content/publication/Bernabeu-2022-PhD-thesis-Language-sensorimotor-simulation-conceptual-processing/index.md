@@ -78,7 +78,7 @@ slides: ''
 
 ### Reference
 
-<div class = 'hanging-indent' style = 'margin-bottom: 3em;'>
+<div class = 'hanging-indent'>
 
 Bernabeu, P. (2022). *Language and sensorimotor simulation in conceptual processing: Multilevel analysis and statistical power*. Lancaster University. https://doi.org/10.17635/lancaster/thesis/1795
 

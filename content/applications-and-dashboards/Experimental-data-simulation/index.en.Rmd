@@ -132,8 +132,6 @@ Thank you to RStudio for the free hosting server used by this application, [shin
 
 ### References
 
-<div style = "text-indent:-1.5em; margin-left:1.5em;">
-
 Chang, W., Cheng, J., Allaire, J., Xie, Y., & McPherson, J. (2020). shiny: Web Application Framework for R. R package version 1.4.0. Available at [http://CRAN.R-project.org/package=shiny](http://CRAN.R-project.org/package=shiny).
 
 Crump, M. J. C. (2017). Programming for Psychologists: Data Creation and Analysis (Version 1.1). [https://crumplab.github.io/programmingforpsych/](https://crumplab.github.io/programmingforpsych/).
@@ -148,10 +146,8 @@ Wickham, H., François, R., Henry, L., & Müller, K. (2018). dplyr: A Grammar of
 
 Xie, Y. (2020). DT: A Wrapper of the JavaScript Library "DataTables". R package version 0.14. Available at [https://CRAN.R-project.org/package=DT](https://CRAN.R-project.org/package=DT).
 
-</div>
 
 ### Contact
 
 To submit any questions or feedback, please post [an issue](https://github.com/pablobernabeu/Experimental-data-simulation/issues), or email Pablo Bernabeu at [pcbernabeu@gmail.com](mailto:pcbernabeu@gmail.com).
 
-<br>
