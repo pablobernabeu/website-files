@@ -9664,3 +9664,9 @@ pre {
     /* Full width on smaller screens */ }
   .imageModal-text {
     font-size: 70%; } }
+
+#favorite-button > div > div > a > span.label.label-favorited > span::before {
+  content: "✯"; }
+
+#favorite-button > div > div > a > span.label.label-favorited > span {
+  visibility: hidden; }
