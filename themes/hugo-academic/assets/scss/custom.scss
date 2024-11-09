@@ -240,7 +240,12 @@ h3 a:hover, div a:hover {
 
 // Increase size of article metadata
 #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.stream-meta.article-metadata > div, #top > div.pub > div.article-container.pt-3 > div.article-metadata {
-  font-size: 110%;
+  font-size: 120%;
+}
+
+// Decrease size of article categories
+#top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories {
+  font-size: 70%;
 }
 
 
