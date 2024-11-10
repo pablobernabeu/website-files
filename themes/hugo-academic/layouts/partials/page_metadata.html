@@ -7,13 +7,23 @@
   {{ if $page.Params.authors }}
   {{ $authorLen := len $page.Params.authors }}
   {{ if gt $authorLen 0 }}
+  {{ if (in (slice "presentation" "page") $page.Type) }}
+  <span style='font-size:75%;'>
+    {{ partial "page_metadata_authors" $page }}
+  </span>
+  {{ else if (in (slice "applications-and-dashboards" "page") $page.Type) }}
+  <span style='font-size:135%;'>
+    {{ partial "page_metadata_authors" $page }}
+  </span>
+  {{ else }}
   <span>
     {{ partial "page_metadata_authors" $page }}
   </span>
   {{ end }}
   {{ end }}
+  {{ end }}
 
-  {{ if not (in (slice "presentation" "page") $page.Type) }}
+  {{ if (in (slice "publication" "page") $page.Type) }}
   <span class="article-date">
     {{ $date := $page.Lastmod.Format site.Params.date_format }}
     {{ if eq $page.Type "publication" }}
@@ -24,6 +34,31 @@
       {{ end }}
     {{ end }}
     ({{ $date }})
+  </span>
+  {{ else if (in (slice "presentation" "page") $page.Type) }}
+  <span class="article-date">
+    {{ $date := $page.Lastmod.Format site.Params.date_format }}
+    {{ if eq $page.Type "publication" }}
+      {{ $date = $page.Date.Format (site.Params.publications.date_format | default "January, 2006") }}
+    {{ else }}
+      {{ if ne $page.Params.Lastmod $page.Params.Date }}
+          {{ i18n "last_updated" }}
+      {{ end }}
+    {{ end }}
+    <span class="middot-divider"></span>
+    {{ $date }}
+  </span>
+  {{ else }}
+  <span class="article-date" style='font-size:130%;'>
+    {{ $date := $page.Lastmod.Format site.Params.date_format }}
+    {{ if eq $page.Type "publication" }}
+      {{ $date = $page.Date.Format (site.Params.publications.date_format | default "January, 2006") }}
+    {{ else }}
+      {{ if ne $page.Params.Lastmod $page.Params.Date }}
+          {{ i18n "last_updated" }}
+      {{ end }}
+    {{ end }}
+    {{ $date }}
   </span>
   {{ end }}
 

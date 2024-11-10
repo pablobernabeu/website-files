@@ -9262,7 +9262,7 @@ h3 a:hover, div a:hover {
   color: #9E84B0 !important; }
 
 .article-categories a:hover {
-  color: #24494F; }
+  color: #24494F !important; }
 
 .tag-cloud > a:hover {
   color: #24494F !important;
@@ -9275,13 +9275,13 @@ h3 a:hover, div a:hover {
   display: none; }
 
 #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.stream-meta.article-metadata > div {
-  font-size: 120%; }
+  font-size: 115%; }
 
 #top > div.pub > div.article-container.pt-3 > div.article-metadata {
-  font-size: 105%; }
+  font-size: 90%; }
 
 #top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories {
-  font-size: 70%; }
+  font-size: 80%; }
 
 a[href$="/tags/s/"] {
   display: none; }

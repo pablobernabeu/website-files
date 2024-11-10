@@ -219,7 +219,7 @@ h3 a:hover, div a:hover {
 
 // hovered category links
 .article-categories a:hover {
-  color: #24494F;
+  color: #24494F !important;
 }
 
 // hovered tag cloud links
@@ -239,17 +239,18 @@ h3 a:hover, div a:hover {
 }
 
 // Increase size of article metadata
+
 #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.stream-meta.article-metadata > div {
-  font-size: 120%;
+  font-size: 115%;
 }
 
 #top > div.pub > div.article-container.pt-3 > div.article-metadata {
-  font-size: 105%;
+  font-size: 90%;
 }
 
 // Decrease size of article categories
 #top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories {
-  font-size: 70%;
+  font-size: 80%;
 }
 
 

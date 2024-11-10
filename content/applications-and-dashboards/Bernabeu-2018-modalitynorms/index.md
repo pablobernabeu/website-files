@@ -79,7 +79,6 @@ This web application presents linguistic data over several tabs. The code combin
 - A nice find was the 'reactable' package, which implements Javascript under the hood to allow the use of colours, bar charts, etc.
 
    ```
-   
    Auditory = colDef(header = with_tooltip('Auditory Rating',
                                            'Mean rating of each word on the auditory modality across participants.'),
                      cell = function(value) {
@@ -108,7 +107,6 @@ This web application presents linguistic data over several tabs. The code combin
    and by also adjusting the reactable settings.
    
    ```
-   
    renderReactable({
      reactable(selected_words(),
                defaultSorted = list(cat = 'desc', word = 'asc'),
