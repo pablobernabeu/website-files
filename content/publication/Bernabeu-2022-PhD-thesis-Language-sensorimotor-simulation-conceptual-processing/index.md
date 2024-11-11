@@ -44,10 +44,10 @@ abstract: "Research has suggested that conceptual processing depends on both lan
 summary: ''
 featured: no
 links:
+- name: PDF at Lancaster U.
+  url: https://eprints.lancs.ac.uk/id/eprint/177833/6/2022deJuanBernabeuPhD.pdf
 - name: Online book
   url: '/thesis'
-- name: PDF at university
-  url: https://eprints.lancs.ac.uk/id/eprint/177833/6/2022deJuanBernabeuPhD.pdf
 url_pdf: https://osf.io/download/97u5c
 url_code: https://osf.io/gt5uf
 url_dataset: https://osf.io/gt5uf
