@@ -233,8 +233,14 @@ h3 a:hover, div a:hover {
   display: none;
 }
 
-// Hide categories in general home page
+// Reduce margin above button links in home page
 :is(#publication, #applications-and-dashboards, #blog) .btn-links {
+  margin-top: -2%;
+}
+
+// Remove abstracts from home page
+
+#publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.article-style {
   display: none;
 }
 

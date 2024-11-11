@@ -12,7 +12,11 @@
     {{ partial "page_metadata_authors" $page }}
   </span>
   {{ else if (in (slice "applications-and-dashboards" "page") $page.Type) }}
-  <span style='font-size:135%;'>
+  <span style='font-size:112%;'>
+    {{ partial "page_metadata_authors" $page }}
+  </span>
+  {{ else if (in (slice "post" "page") $page.Type) }}
+  <span style='font-size:115%;'>
     {{ partial "page_metadata_authors" $page }}
   </span>
   {{ else }}
@@ -33,7 +37,7 @@
           {{ i18n "last_updated" }}
       {{ end }}
     {{ end }}
-    ({{ $date }})
+    ({{ $date }}).
   </span>
   {{ else if (in (slice "presentation" "page") $page.Type) }}
   <span class="article-date">
@@ -49,7 +53,6 @@
     {{ $date }}
   </span>
   {{ else }}
-  <span class="article-date" style='font-size:130%;'>
     {{ $date := $page.Lastmod.Format site.Params.date_format }}
     {{ if eq $page.Type "publication" }}
       {{ $date = $page.Date.Format (site.Params.publications.date_format | default "January, 2006") }}
@@ -58,8 +61,15 @@
           {{ i18n "last_updated" }}
       {{ end }}
     {{ end }}
-    {{ $date }}
-  </span>
+    {{ if $page.Params.authors }}
+    <span class="article-date" style='font-size:105%;'>
+      ({{ $date }})
+    </span>
+    {{ else }}
+    <span style='font-size:100%;'>
+      {{ $date }}
+    <span >
+    {{ end }}
   {{ end }}
 
   {{ if (eq $page.Type "publication") }}

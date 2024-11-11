@@ -9272,6 +9272,9 @@ h3 a:hover, div a:hover {
   display: none; }
 
 :is(#publication, #applications-and-dashboards, #blog) .btn-links {
+  margin-top: -2%; }
+
+#publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.article-style {
   display: none; }
 
 #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.stream-meta.article-metadata > div {
