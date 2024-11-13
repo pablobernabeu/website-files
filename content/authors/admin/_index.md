@@ -37,7 +37,7 @@ recent_work:
   - job: '[Postdoctoral fellow](https://en.uit.no/go/target/789811)'
     institution: 'UiT The Arctic University of Norway'
     year: 'Nov **2022** -- _Feb **2025**_'
-    extra: '-&nbsp; **Service:** co-organisation of multiple events, including the lunch meetings of [AcqVA Aurora](https://uit.no/research/acqva#747906_buttoncont1) and [<span style = "white-space: nowrap;">C-LaBL</span>](https://uit.no/research/clabl#836271_buttoncont2), and a public outreach event of C-LaBL. Peer-review for *Cognition*, *Cognitive Science* and EuroSLA conference.'
+    extra: '-&nbsp; Additional service: co-organisation of multiple events, including the lunch meetings of [AcqVA Aurora](https://uit.no/research/acqva#747906_buttoncont1) and [<span style = "white-space: nowrap;">C-LaBL</span>](https://uit.no/research/clabl#836271_buttoncont2), and a public outreach event of C-LaBL. Peer-review for *Cognition*, *Cognitive Science* and EuroSLA conference.'
   - job: 'Statistical consultant'
     institution: 'UiT The Arctic University of Norway'
     year: 'Nov 2022'
@@ -47,7 +47,7 @@ education:
   - course: '[PhD Psychology with graduate teaching scholarship](https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109).html)'
     institution: Lancaster University (United Kingdom)
     year: '**2018--2022**'
-    extra: "-&nbsp; Service: peer-review for Cognitive Science and for Psychological Science Accelerator; development of website for open science group in my department."
+    extra: "-&nbsp; Additional service: peer-review for Cognitive Science and for Psychological Science Accelerator; development of website for open science group in my department."
     extra2: '\-&nbsp; [Activities](https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109)/activities.html)'
   - course: '[Research Master Language and Communication](https://www.tilburguniversity.edu/education/masters-programmes/research-master-linguistics-and-communication-sciences)'
     institution: Tilburg University and Radboud University (Netherlands)
