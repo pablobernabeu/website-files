@@ -61,7 +61,7 @@ Documentation practices and open-source software (namely, R and OpenSesame) were
 
 #### Acknowledgements
 
-Below, we gratefully acknowledge the help and advice we received from many of our colleagues and students.
+Below, we gratefully acknowledge some of the invaluable help and advice we received.
 
 * Mona Kirkness Fossum (translation of stimuli)
 Gaute Berglund, Anders Gabrielsen, Tekabe Legesse Feleke, My Ngoc Giang Hoang (piloting of sessions)
