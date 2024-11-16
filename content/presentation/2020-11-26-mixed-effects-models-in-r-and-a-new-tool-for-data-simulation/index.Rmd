@@ -73,5 +73,3 @@ Schielzeth, H., Dingemanse, N. J., Nakagawa, S., Westneat, D. F., Allegue, H, Te
 
 Singmann, H., & Kellen, D. (2019). An Introduction to Mixed Models for Experimental Psychology. In D. H. Spieler & E. Schumacher (Eds.), *New Methods in Cognitive Psychology* (pp. 4–31). Hove, UK: Psychology Press. http://singmann.org/download/publications/singmann_kellen-introduction-mixed-models.pdf 
 
-<br>
-
