@@ -11,7 +11,7 @@
       <div class="col-md-1" style="margin-left:-30px;"></div>
       <div class="col-md-10">
         <div class="row">
-          <div class="col-12 col-md-3 pub-row-heading" style="margin-right:-80px;">{{ i18n "presentation_format" }}</div>
+          <div class="col-12 col-md-3 pub-row-heading" style="margin-right:-70px;">{{ i18n "presentation_format" }}</div>
           <div class="col-12 col-md-9">
             {{ .Params.presentation_format | markdownify | emojify }}
           </div>
@@ -27,7 +27,7 @@
       <div class="col-md-1" style="margin-left:-30px;"></div>
       <div class="col-md-10">
         <div class="row">
-          <div class="col-12 col-md-3 pub-row-heading" style="margin-right:-80px;">{{ i18n "date" }}</div>
+          <div class="col-12 col-md-3 pub-row-heading" style="margin-right:-70px;">{{ i18n "date" }}</div>
           <div class="col-12 col-md-9">
             {{ partial "functions/get_event_dates" . }}
           </div>
@@ -43,7 +43,7 @@
       <div class="col-md-1" style="margin-left:-35px;"></div>
       <div class="col-md-10">
         <div class="row">
-          <div class="col-12 col-md-3 pub-row-heading" style="margin-right:-93px;">{{ i18n "event" }}</div>
+          <div class="col-12 col-md-3 pub-row-heading" style="margin-right:-84px;">{{ i18n "event" }}</div>
           <div class="col-12 col-md-9">
             {{ with .Params.event_url }}<a href="{{ . }}" target="_blank" rel="noopener">{{ end }}
             {{ .Params.event | markdownify }}
