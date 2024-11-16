@@ -1,6 +1,6 @@
 ---
 title: Making research materials Findable, Accessible, Interoperable and Reusable
-authors: ['<span style="font-size:140%;">Pablo Bernabeu, Gabriella Silva, Ngoc Giang My Hoang, Vincent DeLuca, Claudia Poch, Iva Ivanova, Jason Rothman, Jorge González Alonso</span>']
+authors: ['<span style="font-size:140%;">Pablo Bernabeu, Gabriella Silva, My Ngoc Giang Hoang, Vincent DeLuca, Claudia Poch, Iva Ivanova, Jason Rothman, Jorge González Alonso</span>']
 author: ~
 date: '2024-09-05'
 slug: making-research-materials-findable-accessible-interoperable-reusable-fair
