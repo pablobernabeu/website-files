@@ -53,7 +53,7 @@ subtitle = ""
 
 Since my PhD, I have advised several students and colleagues about conducting behavioural and EEG experiments, and about data management, preprocessing and analysis. Furthermore, during my postdoc, I have co-supervised a master's thesis. 
 
-My PhD scholarship was teaching-based, so I contributed to my department’s curriculum for 180 hours a year. Each year, I led 30 seminars and marked 80 essays in developmental, cognitive and social psychology, while also helping in 30 statistics labs. This activity is detailed below.
+My PhD scholarship was teaching-based, so I contributed to the curriculum of the Lancaster University Department of Psychology for 180 hours a year. Specifically, each year, I led 30 seminars and marked 80 essays in developmental, cognitive and social psychology, while also helping in 30 statistics lab sessions. This activity is detailed below.
 
 |             | **Course and remit** |
 | :---------: | -------------------- |
@@ -61,17 +61,17 @@ My PhD scholarship was teaching-based, so I contributed to my department’s cur
 |             | Introduction to neuroscience (112) — Seminars  |
 |             | Introduction to cognitive psychology (111) — Seminars and essay marking  |
 |             | Social psychology in the digital age (113) — Seminars  |
-|             | Statistics for psychologists I (121) using R — Labs  |
+|             | Statistics for psychologists I (121) using R — Lab sessions  |
 | **2020–21** | Introduction to developmental psychology (115) — Seminars and essay marking  |
 |             | Introduction to neuroscience (112) — Seminars  |
 |             | Introduction to cognitive psychology (111) — Seminars and essay marking  |
 |             | Social psychology in the digital age (113) — Seminars  |
-|             | Statistics for psychologists I and II (121 and 122) using R — Labs  |
+|             | Statistics for psychologists I and II (121 and 122) using R — Lab sessions  |
 | **2019–20** | Understanding psychology (101) — Seminars and essay marking |
 |             | Cognitive psychology (201) — Seminars and essay marking |
-|             | Master's statistics (401) using R — Labs |
+|             | Master's statistics (401) using R — Lab sessions |
 | **2018–19** | Understanding psychology (101) — Seminars and essay marking |
-|             | Investigating psychology: Analysis (102) using SPSS — Labs |
+|             | Investigating psychology: Analysis (102) using SPSS — Lab sessions |
 
 
 Furthermore, during my PhD, I was a representative for graduate teaching assistants in my department for a year.
