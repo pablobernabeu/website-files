@@ -53,7 +53,7 @@ education:
     institution: Tilburg University and Radboud University (Netherlands)
     year: '**2013--2017**'
     extra: '\-&nbsp; Grade: 7.54 out of 10 (Distinction)'
-    extra2: '\-&nbsp; Thesis project involving electroencephalography, conducted at the Max Planck Institute for Psycholinguistics.'
+    extra2: '\-&nbsp; Electroencephalography study conducted at the Max Planck Institute for Psycholinguistics'
     extra3: '\-&nbsp; Tilburg University Scholarship for Academic Excellence, 2014/2015'
     extra4: '\-&nbsp; Student member, Master’s curriculum and accreditation committee'
   - course: '<span id="BA-degree">[BA English](https://www.uam.es/uam/ingleses)</span>'

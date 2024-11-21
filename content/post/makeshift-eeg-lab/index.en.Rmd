@@ -142,7 +142,7 @@ Say, you need to set up a makeshift EEG lab in an office? Easy-peasy---only, try
 </div>
 
 
-# References
+### References
 
 Ledwidge, P., Foust, J., & Ramsey, A. (2018). Recommendations for developing an EEG laboratory at a primarily undergraduate institution. *Journal of Undergraduate Neuroscience Education, 17*(1), A10. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6312138
 

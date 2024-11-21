@@ -51,7 +51,7 @@ subtitle = ""
 +++
 
 
-Since my PhD, I have advised several students and colleagues about conducting behavioural and EEG experiments, and about data management, preprocessing and analysis. Furthermore, during my postdoc, I have co-supervised a master's thesis. 
+Since my PhD, I have advised several students and colleagues about conducting behavioural and EEG experiments, and about data management, preprocessing and analysis. Furthermore, during my postdoc, I have co-supervised a master's thesis. Finally, I am a [Certified Carpentries Instructor](https://carpentries.org/instructors), and have led several [workshops on data analysis using R](https://pablobernabeu.github.io/#workshops). 
 
 My PhD scholarship was teaching-based, so I contributed to the curriculum of the Lancaster University Department of Psychology for 180 hours a year. Specifically, each year, I led 30 seminars and marked 80 essays in developmental, cognitive and social psychology, while also helping in 30 statistics lab sessions. This activity is detailed below.
 
@@ -74,7 +74,7 @@ My PhD scholarship was teaching-based, so I contributed to the curriculum of the
 |             | Investigating psychology: Analysis (102) using SPSS — Lab sessions |
 
 
-Furthermore, during my PhD, I was a representative for graduate teaching assistants in my department for a year.
+During my PhD, I was also a representative for graduate teaching assistants in my department for a year.
 
-Finally, I am a [Certified Carpentries Instructor](https://carpentries.org/instructors), and have led several [workshops on data analysis using R](https://pablobernabeu.github.io/#workshops). Earlier in my career, I [taught English to secondary-education students in Spain](/#other-work), and [Spanish to adults in Lithuania](/#BA-degree).
+Earlier in my career, I [taught English to secondary-education students in Spain](/#other-work), and [taught Spanish to adults in Lithuania](/#BA-degree).
 
