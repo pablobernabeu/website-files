@@ -51,9 +51,11 @@ subtitle = ""
 +++
 
 
-Since my PhD, I have advised several students and colleagues about conducting behavioural and EEG experiments, and about data management, preprocessing and analysis. Furthermore, during my postdoc, I have co-supervised a master's thesis. Finally, I am a [Certified Carpentries Instructor](https://carpentries.org/instructors), and have led several [workshops on data analysis using R](https://pablobernabeu.github.io/#workshops). 
+Since my PhD, I have advised several students and colleagues about conducting behavioural and EEG experiments, and about data management, preprocessing and analysis. For instance, during my postdoc, I have co-supervised a master's thesis and three research assistantships. Furthermore, I am a [Certified Carpentries Instructor](https://carpentries.org/instructors), and have led several [workshops on data analysis using R](https://pablobernabeu.github.io/#workshops). 
 
-My PhD scholarship was teaching-based, so I contributed to the curriculum of the Lancaster University Department of Psychology for 180 hours a year. Specifically, each year, I led 30 seminars and marked 80 essays in developmental, cognitive and social psychology, while also helping in 30 statistics lab sessions. This activity is detailed below.
+My PhD scholarship was teaching-based, so I contributed to the curriculum of the Lancaster University Department of Psychology for 180 hours a year. Specifically, each year, I led 30 seminars and marked 80 essays in developmental, cognitive and social psychology, while also helping in 30 statistics lab sessions. Furthermore, I was a representative for graduate teaching assistants in my department for a year. Earlier in my career, I [taught English to secondary-education students in Spain](/#other-work), and [taught Spanish to adults in Lithuania](/#BA-degree).
+
+My educational engagement throughout my PhD is detailed below. 
 
 |             | **Course and remit** |
 | :---------: | -------------------- |
@@ -72,9 +74,4 @@ My PhD scholarship was teaching-based, so I contributed to the curriculum of the
 |             | Master's statistics (401) using R — Lab sessions |
 | **2018–19** | Understanding psychology (101) — Seminars and essay marking |
 |             | Investigating psychology: Analysis (102) using SPSS — Lab sessions |
-
-
-During my PhD, I was also a representative for graduate teaching assistants in my department for a year.
-
-Earlier in my career, I [taught English to secondary-education students in Spain](/#other-work), and [taught Spanish to adults in Lithuania](/#BA-degree).
 
