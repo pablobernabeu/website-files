@@ -1,7 +1,7 @@
 ---
 title: Dutch modality exclusivity norms for 336 properties and 411 concepts
 authors:
-- 'Bernabeu, P.'
+- '**Bernabeu, P.**'
 date: "2018-01-01"
 slug: Dutch-modality-exclusivity-norms-for-336-properties-and-411-concepts
 publication_types:

@@ -118,8 +118,7 @@ Currently, I am a postdoctoral fellow at UiT The Arctic University of Norway. I 
 
 I am also interested in the relationships between language and other cognitive domains, as well as in the origins and evolution of language.
 
-I employ a range of tools, including behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. The materials, the data and the analyses produced in my research are available at [https://osf.io/25u3x](https://osf.io/25u3x).
+I employ a range of tools, including behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. The materials, the data and the analyses used in my research are available at [https://osf.io/25u3x](https://osf.io/25u3x).
 
 My CV is [available here](/cv). 
-
 
