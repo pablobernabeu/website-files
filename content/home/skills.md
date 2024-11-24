@@ -57,5 +57,5 @@ subtitle = ""
 | **Programming in R** | Statistics, R Markdown, web applications, bibliometrics, Binder environments (e.g., [<i class="fas fa-link"></i>](https://github.com/pablobernabeu)), analysis of Big Data, natural language processing (e.g., [<i class="fas fa-link"></i>](https://github.com/pablobernabeu/VTT-Transcription-App/blob/main/index.Rmd)), Tidyverse (e.g., [<i class="fas fa-link"></i>](https://github.com/pablobernabeu/Experiment-simulation-app)) |
 | **Data, web, typesetting** | Basic Python, Git, Unix, high-performance computing, HTML, CSS, Javascript, LaTeX, Zotero (e.g., [<i class="fas fa-link"></i>](https://github.com/pablobernabeu)) |
 | **Business and administration** | Documentation, quantitative and qualitative service analysis. Power BI, Zendesk, Jira, Confluence, Asana |
-| **Languages**  | English: C1. Spanish: native. Catalan: B1. French: B1. Dutch: A2. Italian: A2, Norwegian: A1 |
+| **Languages**  | *Proficient*: English, Spanish. *Intermediate*: Catalan, French. *Basic*: Dutch, Italian, Norwegian |
 

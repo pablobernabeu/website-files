@@ -76,7 +76,7 @@ Pereira Soares, S. M., Kupisch, T., & Rothman, J. (2022). Testing potential tran
 
 Below, we gratefully acknowledge some of the invaluable help and advice we received in various areas.
 
-* My Ngoc Giang Hoang (piloting of sessions, recruitment of participants and collection of data)
+* My Ngoc Giang Hoang (recruitment of participants and piloting of sessions)
 
 * Mona Kirkness Fossum (translation of materials)
 
@@ -84,9 +84,9 @@ Below, we gratefully acknowledge some of the invaluable help and advice we recei
 
 * Teodóra Vékony (alternating serial reaction time task)
 
-* Björn Lundquist (creation of task in OpenSesame)
+* Björn Lundquist (implementation in OpenSesame)
 
-* Antonio Fábregas, Natalia Mitrofanova, Yulia Rodina, Marit Westergaard (design of study, translation of materials and recruitment of participants)
+* Antonio Fábregas, Natalia Mitrofanova, Yulia Rodina, Marit Westergaard (design and translation of materials and recruitment of participants)
 
 * Merete Anderssen, Fatih Bayram (recruitment of participants)
 
