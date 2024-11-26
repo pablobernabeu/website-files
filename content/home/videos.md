@@ -51,7 +51,7 @@ css_class = ""
 +++
 
 
-### <span style='color:grey; font-size:70%;'>2024 ·</span>&nbsp; Naming Gorilla files in the LESS Project
+### <span style='color:grey; font-size:70%;'>2024 ·</span>&nbsp; [Naming results files exported from Gorilla Experiment Builder](https://youtu.be/zkaSoP4jKHU)
 
 <div style = "position: relative; margin-top: 20px; padding-top: 56.25%; margin-bottom: -25px;">
 <iframe src="https://www.youtube-nocookie.com/embed/zkaSoP4jKHU" frameborder="0" allowfullscreen

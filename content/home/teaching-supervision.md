@@ -51,9 +51,9 @@ subtitle = ""
 +++
 
 
-Since completing my PhD, I have advised numerous students and colleagues on designing and conducting behavioral and EEG experiments, as well as on data management, preprocessing, and analysis. For instance, during my PhD, I supervised an undergraduate internship. During my postdoc, I have supervised three research assistantships and co-supervised a master's thesis. Furthermore, I am a [certified Carpentries Instructor](https://carpentries.org/instructors), and have led several [workshops on data analysis using R](https://pablobernabeu.github.io/#workshops). 
+Since 2018, I have advised numerous students and colleagues on designing and conducting behavioural and EEG experiments, as well as on data management, preprocessing, and analysis. For instance, during my PhD, I supervised an undergraduate internship. During my postdoc, I have supervised three research assistantships and co-supervised a master's thesis. Furthermore, I am a [certified Carpentries Instructor](https://carpentries.org/instructors), and have designed and led several [workshops on data analysis using R](https://pablobernabeu.github.io/#workshops). 
 
-My PhD scholarship was teaching-based, so I contributed to the curriculum of the Lancaster University Department of Psychology for 180 hours a year. Specifically, each year, I led 30 seminars and marked 80 essays in developmental, cognitive and social psychology, while also helping in 30 statistics lab sessions. Furthermore, I was a representative for graduate teaching assistants in my department for a year. Earlier in my career, I [taught English to secondary-education students in Spain](/#other-work), and [taught Spanish to adults in Lithuania](/#BA-degree).
+During my PhD, I held a graduate teaching assistantship that involved 180 hours of teaching annually, covering seminars, essay marking and lab sessions. Each year, I led 30 seminars and marked 80 essays in developmental, cognitive and social psychology, while also helping in 30 statistics lab sessions. Furthermore, I was a representative for graduate teaching assistants in the department for a year. Earlier in my career, I [taught English to secondary-education students in Spain](/#other-work), and [taught Spanish to adults in Lithuania](/#BA-degree).
 
 My educational engagement throughout my PhD is detailed below. 
 
