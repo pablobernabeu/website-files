@@ -87,13 +87,10 @@ This web application presents linguistic data over several tabs. The code combin
                        bar_chart(value, width = width, fill = '#ff3030')
                        },
                      align = 'left'),
-   
    ```
 
 
 - One of the hardest nuts to crack was allowing the full functionality of tables—i.e, scaling to screen, frozen header, and vertical and horizontal scrolling—whilst having tweaked the vertical/horizontal orientation of the dashboard sections. Initial clashes were sorted by adjusting the section's CSS styles
-
-
 
       
       Table {#table style="background-color:#FCFCFC;"}
@@ -101,7 +98,6 @@ This web application presents linguistic data over several tabs. The code combin
       
       Inputs {.sidebar style='position:fixed; padding-top: 65px; padding-bottom:30px;'}
       -----------------------------------------------------------------------
-      
 
 
    and by also adjusting the reactable settings.
@@ -112,7 +108,6 @@ This web application presents linguistic data over several tabs. The code combin
                defaultSorted = list(cat = 'desc', word = 'asc'),
                defaultColDef = colDef(footerStyle = list(fontWeight = "bold")),
                height = 840, striped = TRUE, pagination = FALSE, highlight = TRUE,
-   
    ```
 
 
