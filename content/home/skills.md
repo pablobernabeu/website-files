@@ -55,7 +55,7 @@ subtitle = ""
 | **Science** | Electroencephalography (lab setup, recording, preprocessing, analysis), BrainVision (e.g., [<i class="fas fa-link"></i>](https://osf.io/97unm/)), transcranial brain stimulation, eye tracking, open science, online experiments, jsPsych, OpenSesame, Gorilla |
 | **Statistics** | Frequentist and Bayesian statistics. Linear mixed-effects models (e.g., [<i class="fas fa-link"></i>](https://osf.io/gt5uf)), principal component analysis ([<i class="fas fa-link"></i>](https://osf.io/25u3x)), etc. |
 | **Programming in R** | Statistics, R Markdown, web applications, bibliometrics, Binder environments (e.g., [<i class="fas fa-link"></i>](https://github.com/pablobernabeu)), analysis of Big Data, natural language processing (e.g., [<i class="fas fa-link"></i>](https://github.com/pablobernabeu/VTT-Transcription-App/blob/main/index.Rmd)), Tidyverse (e.g., [<i class="fas fa-link"></i>](https://github.com/pablobernabeu/Experiment-simulation-app)) |
-| **Data, web, typesetting** | Basic Python, Git, Unix, high-performance computing, HTML, CSS, Javascript, LaTeX, Zotero (e.g., [<i class="fas fa-link"></i>](https://github.com/pablobernabeu)) |
+| **Data, web, typesetting** | Basic Python and SQL, Git, Unix, high-performance computing, HTML, CSS, Javascript, LaTeX, Zotero (e.g., [<i class="fas fa-link"></i>](https://github.com/pablobernabeu)) |
 | **Business and administration** | Documentation, quantitative and qualitative service analysis. Power BI, Zendesk, Jira, Confluence, Asana |
 | **Languages**  | *Proficient*: English, Spanish. *Intermediate*: Catalan, French. *Basic*: Dutch, Italian, Norwegian |
 

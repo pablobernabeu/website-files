@@ -51,11 +51,9 @@ subtitle = ""
 +++
 
 
-Since 2018, I have advised numerous students and colleagues on designing and conducting behavioural and EEG experiments, as well as on the management, preprocessing and analysis of data. For instance, during my PhD, I supervised an undergraduate internship. During my postdoc, I have supervised three research assistantships and co-supervised a master's thesis. Furthermore, I am a [certified Carpentries Instructor](https://carpentries.org/instructors), and have designed and led several [workshops on data analysis using R](https://pablobernabeu.github.io/#workshops). 
+Since 2018, I have advised numerous students and colleagues on designing and conducting behavioural and EEG experiments, as well as on the management, preprocessing and analysis of data. For instance, during my PhD, I supervised an undergraduate internship. During my postdoc, I have supervised three research assistantships and co-supervised a master's thesis. Furthermore, I am a [certified Carpentries Instructor](https://carpentries.org/instructors), and have designed and led several [workshops on data analysis using R](https://pablobernabeu.github.io/#workshops). Earlier in my career, I [taught English to secondary-education students in Spain](/#other-work), and [taught Spanish to adults in Lithuania](/#BA-degree). 
 
-During my PhD, I held a graduate teaching assistantship that involved 180 hours of teaching annually, covering seminars, essay marking and lab sessions. Each year, I led 30 seminars and marked 80 essays in developmental, cognitive and social psychology, while also helping in 30 statistics lab sessions. Furthermore, I was a representative for graduate teaching assistants in the department for a year. Earlier in my career, I [taught English to secondary-education students in Spain](/#other-work), and [taught Spanish to adults in Lithuania](/#BA-degree).
-
-My educational engagement throughout my PhD is detailed below. 
+During my PhD, I held a graduate teaching assistantship that involved 180 hours of teaching annually, covering seminars, essay marking and lab sessions. Each year, I led 30 seminars and marked 80 essays in developmental, cognitive and social psychology, while also helping in 30 statistics lab sessions (see list below). Furthermore, I was a representative for graduate teaching assistants in the department for a year. 
 
 |             | **Course and remit** |
 | :---------: | -------------------- |

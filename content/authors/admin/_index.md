@@ -15,11 +15,10 @@ profileicons:
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" LinkedIn "><a href="https://www.linkedin.com/in/pablobernabeu/"><i style="color:#8AA3CD;" class="social-icon fab fa-linkedin-in fa-lg"></i></a></span>'
 interests:
 - cognitive psychology and neuroscience
-- psycholinguistics
-- multilingualism
-- semantic / conceptual processing
-- open science
-- research methods
+- psycholinguistics and multilingualism
+- semantic/conceptual processing
+- research methods and open science
+- data analysis and programming
 subsections:
 - '<div class = "profile-subsection"><a href = "/#bio" class = "profile-subsection">Experience <i class="fas fa-arrow-right fa-xs" style="color:lightgrey;"></i></a></div>'
 - '<div class = "profile-subsection"><a href = "/#teaching-supervision" class = "profile-subsection">Teaching and supervision</a></div>'
