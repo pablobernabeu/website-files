@@ -2,8 +2,8 @@
 authors:
 - admin
 name: Pablo Bernabeu
-email: 'p.bernabeu@uit.no<br>pcbernabeu@gmail.com'
-role: Postdoctoral fellow at UiT -- <br>The Arctic University of Norway
+email: 'pcbernabeu@gmail.com'
+role: Researcher and data scientist with 10+ years of experience
 profileicons:
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" University page "><a href="https://en.uit.no/go/target/789811"><i style="color:#8AA3CD;" class="social-icon fas fa-university fa-lg"></i></a></span>'
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" Curriculum vitae "><a href="/cv"><i style="color:#8AA3CD;" class="social-icon ai ai-cv ai-lg"></i></a></span>'
@@ -14,11 +14,9 @@ profileicons:
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" Figshare "><a href="https://figshare.com/authors/Pablo_Bernabeu/820703"><i style="color:#8AA3CD;" class="social-icon ai ai-figshare ai-lg"></i></a></span>'
 - '<span data-toggle="tooltip1" data-placement="bottom" title=" LinkedIn "><a href="https://www.linkedin.com/in/pablobernabeu/"><i style="color:#8AA3CD;" class="social-icon fab fa-linkedin-in fa-lg"></i></a></span>'
 interests:
-- cognitive psychology and neuroscience
-- psycholinguistics and multilingualism
-- semantic/conceptual processing
-- research methods and open science
-- data analysis and programming
+- Cognitive psychology and neuroscience
+- Data science and programming
+- Research methods and open science
 subsections:
 - '<div class = "profile-subsection"><a href = "/#bio" class = "profile-subsection">Experience <i class="fas fa-arrow-right fa-xs" style="color:lightgrey;"></i></a></div>'
 - '<div class = "profile-subsection"><a href = "/#teaching-supervision" class = "profile-subsection">Teaching and supervision</a></div>'
@@ -35,7 +33,7 @@ recent_work:
   jobs:
   - job: '[Postdoctoral fellow](https://en.uit.no/go/target/789811)'
     institution: 'UiT The Arctic University of Norway'
-    year: 'Nov **2022** -- _Feb **2025**_'
+    year: 'Nov **2022** -- 14 Feb **2025**'
     extra: '-&nbsp; Additional service: co-organisation of multiple events, including the lunch meetings of [AcqVA Aurora](https://uit.no/research/acqva#747906_buttoncont1) and [<span style = "white-space: nowrap;">C-LaBL</span>](https://uit.no/research/clabl#836271_buttoncont2), and a public outreach event of C-LaBL. Peer-review for *Cognition*, *Cognitive Science* and EuroSLA Conference.'
   - job: 'Statistical consultant'
     institution: 'UiT The Arctic University of Norway'
@@ -111,13 +109,15 @@ education:
 ---
 
 
+Looking for an exciting opportunity in research, data science, project management, etc. With more than 10 years of international experience, I bring expertise in psychology, neuroscience, linguistics and data science, along with strong skills in R, statistics, open science, project management and mentorship. I'm eager to contribute analytical and problem-solving skills to data-driven projects.
+
 After completing a research master's, I became a PhD student and graduate teaching assistant in Psychology at Lancaster University. In my [thesis](/publication/pablo-bernabeu-2022-phd-thesis), I investigated how conceptual processing—that is, the comprehension of the meaning of words—is supported by linguistic and sensorimotor brain systems, and how research on this topic is influenced by methodological aspects such as the operationalisation of variables and the sample size of experiments. 
 
-Currently, I am a postdoctoral fellow at UiT The Arctic University of Norway. I work at the [Department of Language and Culture](https://en.uit.no/enhet/isk), and specifically within the [PoLaR Lab](https://site.uit.no/polar) and [<span style = "white-space: nowrap;">C-LaBL</span>](https://uit.no/research/clabl). As the local manager of the [**LESS Project** (Language Economy through Transfer Source Selectivity)](https://app.cristin.no/projects/show.jsf?id=2559611), I work on a longitudinal study that investigates how bilingual people acquire an additional language, how this process is influenced by the characteristics of the languages, and how the process is instantiated in the brain. As part of this work so far, I contributed to the design of our main study and to the development of materials for said study and for a partner study in Spain. These materials involved English, Norwegian and Spanish. Furthermore, I documented the creation of the materials and pretested them, wrote a preregistration, recruited participants, designed the protocol for the electroencephalography (EEG) sessions, trained students and research assistants in this protocol and in EEG more generally, set up and managed an EEG lab, conducted many of the sessions and oversaw those conducted by the research assistants, monitored the longitudinal progress per participant, presented the design of the project at conferences, preprocessed the EEG and behavioural data in collaboration with research assistants, and performed the statistical analysis.
+Next, I completed a postdoctoral fellowship at UiT The Arctic University of Norway. I worked at the [Department of Language and Culture](https://en.uit.no/enhet/isk), and specifically within the [PoLaR Lab](https://site.uit.no/polar) and [<span style = "white-space: nowrap;">C-LaBL</span>](https://uit.no/research/clabl). As the local manager of the [**LESS Project** (Language Economy through Transfer Source Selectivity)](https://app.cristin.no/projects/show.jsf?id=2559611), I worked on a longitudinal study that investigates how bilingual people acquire an additional language, how this process is influenced by the characteristics of the languages, and how the process is instantiated in the brain. As part of this work, I contributed to the design of our main study and the development of materials for said study and for a partner study in Spain. These materials involved English, Norwegian and Spanish. Furthermore, I documented the creation of the materials and pretested them, wrote a preregistration, recruited participants, designed the protocol for the electroencephalography (EEG) sessions, trained students and research assistants in this protocol and in EEG more generally, set up and managed an EEG lab, conducted many of the sessions and oversaw those conducted by the research assistants, monitored the longitudinal progress per participant, presented the design of the project at conferences, preprocessed the EEG and behavioural data in collaboration with research assistants, and performed the statistical analysis.
 
 I am also interested in the relationships between language and other cognitive domains, as well as in the origins and evolution of language.
 
 I employ a range of tools, including behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. The materials, data and analyses used in my research are available at [https://osf.io/25u3x](https://osf.io/25u3x).
 
-My CV is [available here](/cv). 
+My [**CV** is available here](/cv). Finally, an AI chat based on my portfolio and interests is available [here](https://chatgpt.com/g/g-67b0b84a30588191aeff5991b6eb1c15-pb-core). 
 
