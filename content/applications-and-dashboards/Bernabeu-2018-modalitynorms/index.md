@@ -61,7 +61,7 @@ url_dataset: 'https://github.com/pablobernabeu/Dutch-modality-exclusivity-norms-
 <a href='https://pablobernabeu.shinyapps.io/Dutch-modality-exclusivity-norms'>
       <button style = "background-color: white; color: black; border: 2px solid #196F27; border-radius: 12px;">
       <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;"> 
-      <span style="color:#DBE6DA;"></span>&nbsp; Complete web application <font style='font-size:60%;'><i>Flexdashboard-Shiny</i></font> </h3></button></a>
+      <span style="color:#DBE6DA;"></span> Complete web application <font style='font-size:60%;'><i>Flexdashboard-Shiny</i></font> </h3></button></a>
       
 <br>
 <br>
@@ -69,7 +69,7 @@ url_dataset: 'https://github.com/pablobernabeu/Dutch-modality-exclusivity-norms-
 <a href='/dashboards/Dutch-modality-exclusivity-norms'>
       <button style = "background-color: white; color: black; border: 2px solid #4CAF50; border-radius: 12px;">
       <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;"> 
-      <span style="color:#DBE6DA;"></span>&nbsp; Reduced dashboard <font style='font-size:60%;'><i>Flexdashboard</i></font> </h3></button></a> &nbsp; 
+      <span style="color:#DBE6DA;"></span> Reduced dashboard <font style='font-size:60%;'><i>Flexdashboard</i></font> </h3></button></a> &nbsp; 
 
 <br>
 <br>

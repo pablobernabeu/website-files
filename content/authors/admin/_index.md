@@ -109,7 +109,7 @@ education:
 
 
 <div class='alert alert-info' role='alert' style='margin-bottom: 6%;'>
-<i class="fa-solid fa-user-doctor" style="color:darkblue;"></i>&nbsp; Looking for an exciting opportunity in <b>research, data science, project management</b>, etc. With more than <b>10 years</b> of international experience, I bring expertise in <b>psychology, neuroscience, linguistics</b> and <b>data science</b>, along with strong skills in <i class="fa-brands fa-r-project" aria-label="R"></i>, statistics, web development, open science, project management and mentorship. I'm eager to contribute analytical and problem-solving skills to data-driven projects.
+<i class="fa-solid fa-user-doctor" style="color:darkblue;"></i> Looking for an exciting opportunity in <b>research, data science, project management</b>, etc. With more than <b>10 years</b> of international experience, I bring expertise in <b>psychology, neuroscience, linguistics</b> and <b>data science</b>, along with strong skills in <i class="fa-brands fa-r-project" aria-label="R"></i>, statistics, web development, open science, project management and mentorship. I'm eager to contribute analytical and problem-solving skills to data-driven projects.
 </div>
 
 After completing a research master's, I became a PhD student and graduate teaching assistant in Psychology at Lancaster University. In my [thesis](/publication/pablo-bernabeu-2022-phd-thesis), I investigated how conceptual processing—that is, the comprehension of the meaning of words—is supported by linguistic and sensorimotor brain systems, and how research on this topic is influenced by methodological aspects such as the operationalisation of variables and the sample size of experiments. 

@@ -52,7 +52,7 @@ url_dataset: 'https://github.com/jcoliver/bioscan'
 <a href='/dashboards/Butterfly-species-richness-in-LA'>
       <button style = "background-color: white; color: black; border: 2px solid #196F27; border-radius: 12px;">
       <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;">
-      <span style="color:#DBE6DA;"></span>&nbsp; Dashboard
+      <span style="color:#DBE6DA;"></span> Dashboard
       </h3></button>
       </a>
 
