@@ -106,7 +106,7 @@ Fuhs, M. W., Nesbitt, K. T., Farran, D. C., & Dong, N. (2014). Longitudinal asso
 
 González Alonso, J., Alemán Bañón, J., DeLuca, V., Miller, D., Pereira Soares, S. M., Puig-Mayenco, E., Slaats, S., & Rothman, J. (2020). Event related potentials at initial exposure in third language acquisition: Implications from an artificial mini-grammar study. *Journal of Neurolinguistics*, *56*, 100939. <https://doi.org/10.1016/j.jneuroling.2020.100939>
 
-González Alonso, J., Bernabeu, P., Silva, G., DeLuca, V., Poch, C., Ivanova, I., & Rothman, J. (2025). Starting from the very beginning: Unraveling Third Language (L3) Development with Longitudinal Data from Artificial Language Learning and EEG. *International Journal of Multilingualism*, *22*(1), 119--142. <https://doi.org/10.1080/14790718.2024.2415993>
+González Alonso, J., Bernabeu, P., Silva, G., DeLuca, V., Poch, C., Ivanova, I., & Rothman, J. (2025). Starting from the very beginning: Unraveling third language (L3) development with longitudinal data from artificial language learning and EEG. *International Journal of Multilingualism*, *22*(1), 119--142. <https://doi.org/10.1080/14790718.2024.2415993>
 
 Grossmann, J. A., Aschenbrenner, S., Teichmann, B., & Meyer, P. (2023). Foreign language learning can improve response inhibition in individuals with lower baseline cognition: Results from a randomized controlled superiority trial. *Frontiers in Aging Neuroscience*, *15*. <https://doi.org/10.3389/fnagi.2023.1123185>
 
