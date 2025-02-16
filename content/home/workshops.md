@@ -9,7 +9,7 @@ active = true  # Activate this widget? true/false
 weight = 70  # Order that this section will appear.
 
 title = "Workshops"
-subtitle = "<span style='font-size:80%;'>Introduction to <iclass='fa-brands fa-r-project' aria-label='R'>></i>, statistics, visualisation, reproducible documents, web applications and dashboards, HTML, CSS, web hosting ([further details](/2020/data-is-present-workshops-and-datathons/)).</span>"
+subtitle = "<span style='font-size:80%;'>Introduction to <i class='fa-brands fa-r-project' aria-label='R'></i>, statistics, visualisation, reproducible documents, web applications and dashboards, HTML, CSS, web hosting ([further details](/2020/data-is-present-workshops-and-datathons/)).</span>"
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
@@ -55,4 +55,4 @@ subtitle = "<span style='font-size:80%;'>Introduction to <iclass='fa-brands fa-r
 | :---: | ------------ | -------------------- | :------------: |
 | Aug 2020 | [Open data and reproducibility: <i class="fa-brands fa-r-project" aria-label="R"></i> Markdown, data dashboards and Binder v2.1](https://github.com/pablobernabeu/CarpentryCon-2020-workshop-Open-Data-Reproducibility) (co-led with Florencia D'Andrea) | [CarpentryCon@Home](https://2020.carpentrycon.org/schedule/), The Carpentries	[online] | [Link](https://2020.carpentrycon.org/schedule/) |
 | July 2020 | [Open data and reproducibility: <i class="fa-brands fa-r-project" aria-label="R"></i> Markdown, data dashboards and Binder](https://github.com/pablobernabeu/UKCLC2020-workshop-Open-data-and-reproducibility) (co-led with Eirini Zormpa) | [UK Cognitive Linguistics Conference](https://www.ukclc2020.com/pre-conference), University of Birmingham [online] | [Link](https://www.ukclc2020.com/registration) | 
-| May 2020 | [R Markdown](/PDF/LU-May-Markdown-workshop-programme.pdf) | Lancaster University	[online] | |
+| May 2020 | [<i class='fa-brands fa-r-project' aria-label='R'></i> Markdown](/PDF/LU-May-Markdown-workshop-programme.pdf) | Lancaster University	[online] | |
