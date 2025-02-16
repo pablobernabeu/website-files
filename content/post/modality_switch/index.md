@@ -38,12 +38,12 @@ Research has extensively investigated whether conceptual processing is modality-
 <a href='/publication/bernabeu-etal-2017/'>
       <button style = "background-color: white; color: black; border: 2px solid #4CAF50; border-radius: 12px;">
       <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;"> 
-      <span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Conference paper </h3></button></a> &nbsp; 
+      <span style="color:#DBE6DA;"></span>&nbsp; Conference paper </h3></button></a> &nbsp; 
       
 <a href='/publication/bernabeu-2017-mphil-thesis/'>
       <button style = "background-color: white; color: black; border: 2px solid #196F27; border-radius: 12px;">
       <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;"> 
-      <span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Master's thesis </h3></button></a> &nbsp; 
+      <span style="color:#DBE6DA;"></span>&nbsp; Master's thesis </h3></button></a> &nbsp; 
       
 <br>
 <br>

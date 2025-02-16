@@ -55,7 +55,7 @@ url_pdf: 'https://psyarxiv.com/a5pcz'
 <a href='https://pablobernabeu.shinyapps.io/ERP-waveform-visualization_CMS-experiment/'>
       <button style = "background-color: white; color: black; border: 2px solid #4CAF50; border-radius: 12px;">
       <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;"> 
-      <span style="color:#DBE6DA;"><i class="fas fa-mouse-pointer"></i></span>&nbsp; Web application </h3></button></a> &nbsp;
+      <span style="color:#DBE6DA;"></span>&nbsp; Web application </h3></button></a> &nbsp;
 
 <br>
 <br>
