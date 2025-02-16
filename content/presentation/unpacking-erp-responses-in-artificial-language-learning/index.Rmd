@@ -94,7 +94,7 @@ Alday, P. M. (2019). How much baseline correction do we need in ERP research? Ex
 
 Bardel, C., & Falk, Y. (2012). The L2 status factor and the declarative/procedural distinction. In J. Cabrelli, S. Flynn, & J. Rothman (Eds.), *Third Language Acquisition in Adulthood* (pp. 61--78). John Benjamins Publishing Company. <https://doi.org/10.1075/sibil.46.06bar>
 
-Brauer, M., & Curtin, J. J. (2018). Linear Mixed-Effects Models and the Analysis of Nonindependent Data: A Unified Framework to Analyze Categorical and Continuous Independent Variables That Vary within-Subjects and/or within-Items. *Psychological Methods*, *23*(3), 389--411. <https://doi.org/10.1037/met0000159>
+Brauer, M., & Curtin, J. J. (2018). Linear mixed-effects models and the analysis of nonindependent data: A unified framework to analyze categorical and continuous independent variables that vary within-subjects and/or within-items. *Psychological Methods*, *23*(3), 389--411. <https://doi.org/10.1037/met0000159>
 
 Desbordes, T., Lakretz, Y., Chanoine, V., Oquab, M., Badier, J.-M., Trébuchon, A., Carron, R., Bénar, C.-G., Dehaene, S., & King, J.-R. (2023). Dimensionality and ramping: Signatures of sentence integration in the dynamics of brains and deep language models. *Journal of Neuroscience*, *43*(29), 5350--5364. <https://doi.org/10.1523/JNEUROSCI.1163-22.2023>
 
