@@ -43,7 +43,7 @@ tags:
 - CogSci
 title: 'Modality switch effects emerge early and increase throughout conceptual processing: Evidence from ERPs'
 url_code: 'https://osf.io/97unm'
-url_dataset: 'https://osf.io/97unm'
+url_data: 'https://osf.io/97unm'
 url_pdf: 'https://doi.org/10.31234/osf.io/a5pcz'
 url_poster: 'https://mfr.osf.io/render?url=https://osf.io/dj52n/?direct%26mode=render%26action=download%26mode=render'
 # url_project: ""

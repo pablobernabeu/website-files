@@ -29,7 +29,7 @@ tags:
 - linguistics
 - motion events
 # url_code: '#'
-# url_dataset: '#'
+# url_data: '#'
 url_pdf: 'https://doi.org/10.1075/dujal.15019.ber'
 url_poster: 'https://www.researchgate.net/publication/271588734_Linguistic_relativity_in_motion_Poster'
 # url_project: ""

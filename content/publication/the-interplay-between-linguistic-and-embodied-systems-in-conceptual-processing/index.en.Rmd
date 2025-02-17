@@ -29,7 +29,7 @@ summary: 'This preregistration outlines a study that will investigate the dynami
 featured: no
 url_pdf: https://osf.io/ftydw/
 url_code: ~
-url_dataset: ~
+url_data: ~
 url_poster: ~
 url_project: ~
 url_slides: ~

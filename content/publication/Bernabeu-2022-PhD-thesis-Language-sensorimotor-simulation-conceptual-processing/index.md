@@ -50,7 +50,7 @@ links:
   url: '/thesis'
 url_pdf: https://osf.io/download/97u5c
 url_code: https://osf.io/gt5uf
-url_dataset: https://osf.io/gt5uf
+url_data: https://osf.io/gt5uf
 url_poster: ~
 url_project: ~
 url_slides: ~

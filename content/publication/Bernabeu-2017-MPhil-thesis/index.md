@@ -34,7 +34,7 @@ summary: ''
 featured: no
 url_pdf: https://doi.org/10.31234/osf.io/5gjvk
 url_code: https://osf.io/97unm/
-url_dataset: https://osf.io/97unm/
+url_data: https://osf.io/97unm/
 url_poster: https://mfr.osf.io/render?url=https://osf.io/ajgq3/?direct%26mode=render%26action=download%26mode=render
 url_project: ~
 url_slides: ~
