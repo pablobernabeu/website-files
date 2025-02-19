@@ -53,25 +53,25 @@ css_class = ""
 
 ### <span style='color:grey; font-size:70%;'>2024 ·</span>&nbsp; [Naming results files exported from Gorilla Experiment Builder](https://youtu.be/nVidNO8xcxE)
 
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%; margin-bottom: -25px;">
+<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/nVidNO8xcxE" frameborder="0" allowfullscreen
-style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
+style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 
 ### <span style='color:grey; font-size:70%;'>2024 ·</span>&nbsp; [Lowering impedance in electroencephalography using a blunt needle, electrolyte gel and wiggling](/2024/lowering-impedance-in-electroencephalography-using-a-blunt-needle-electrolyte-gel-and-wiggling)
 
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%; margin-bottom: -25px;">
+<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/4KLtp-WnOOo" frameborder="0" allowfullscreen
-style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
+style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 
 ### <span style='color:grey; font-size:70%;'>2024 ·</span>&nbsp; [Briefing participants to prevent muscle artifacts in electroencephalography sessions](/2024/preventing-muscle-artifacts-in-electroencephalography-sessions)
 
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%; margin-bottom: -25px;">
+<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/9Mbv6bUZlqY" frameborder="0" allowfullscreen
-style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
+style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 
@@ -87,49 +87,49 @@ style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
 
 ### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; [Reproducibilidad en torno a una aplicación web](/presentation/2020-10-08-reproducibilidad-en-torno-a-una-aplicacion-web)
 
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%; margin-bottom: -25px;">
+<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/1njLOAWqLPM" frameborder="0" allowfullscreen
-style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
+style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 
 ### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; Workshop on <i class="fa-brands fa-r-project" aria-label="R"></i> Markdown, dashboards and Binder (see [programme and materials](https://github.com/pablobernabeu/CarpentryCon-2020-workshop-Open-Data-Reproducibility))
 
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%; margin-bottom: -25px;">
+<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/wZsPD7CgJC0" frameborder="0" allowfullscreen
-style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
+style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 
 ### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; Personal profile and experience at Lancaster University Department of Psychology
 
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%; margin-bottom: -25px;">
+<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/ZEoan5tWqFg" frameborder="0" allowfullscreen
-style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
+style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 
 ### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; Embedding open research and reproducibility in the UG and PGT curricula
 
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%; margin-bottom: -25px;">
+<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/vzkDBZ1qWfY" frameborder="0" allowfullscreen
-style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
+style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 
 ### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Part of application for [Gorilla Grant](#other-funding)
 
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%; margin-bottom: -25px;">
+<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/DTHFuC0Lw0Y" frameborder="0" allowfullscreen
-style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
+style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 
 ### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Part of application for [Software Sustainability Institute Fellowship](#other-funding)
 
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%; margin-bottom: -25px;">
+<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/F-MQ8BYwLn4" frameborder="0" allowfullscreen
-style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
+style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 
@@ -137,9 +137,9 @@ style = "position:absolute; top:0; left:0; width:80%; height:80%;"></iframe>
 
 <iframe src="https://mfr.de-1.osf.io/render?url=https://osf.io/download/h36wr/?direct%26mode=render"
     style="margin-top:10px"
-    width="85%"
+    width="95%"
     scrolling="yes"
-    height="350px"
+    height="394px"
     marginheight="0"
     frameborder="0"
     allowfullscreen
