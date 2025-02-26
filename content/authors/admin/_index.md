@@ -15,11 +15,11 @@ profileicons:
 interests:
 - Cognitive psychology & neuroscience
 - Data science and programming
-- Research methods and open science
+- Research methods & open science
 subsections:
 - '<div class = "profile-subsection"><a href = "/#bio" class = "profile-subsection">Experience <i class="fas fa-arrow-right fa-xs" style="color:lightgrey;"></i></a></div>'
 - '<div class = "profile-subsection"><a href = "/#teaching-supervision" class = "profile-subsection">Teaching and supervision</a></div>'
-- '<div class = "profile-subsection"><a href = "/#other-funding" class = "profile-subsection">Other funding</a></div>'
+- '<div class = "profile-subsection"><a href = "/#funding-awards" class = "profile-subsection">Funding and awards</a></div>'
 - '<div class = "profile-subsection"><a href = "/#other-work" class = "profile-subsection">Other work</a></div>'
 - '<div class = "profile-subsection"><a href = "/#skills" class = "profile-subsection">Skills</a></div>'
 - '<div class = "profile-subsection"><a href = "/#videos" class = "profile-subsection">Videos</a></div>'

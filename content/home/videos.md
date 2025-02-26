@@ -117,7 +117,7 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 
-### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Part of application for [Gorilla Grant](#other-funding)
+### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Part of application for [Gorilla Grant](#funding-awards)
 
 <div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/DTHFuC0Lw0Y" frameborder="0" allowfullscreen
@@ -125,7 +125,7 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 
-### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Part of application for [Software Sustainability Institute Fellowship](#other-funding)
+### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Part of application for [Software Sustainability Institute Fellowship](#funding-awards)
 
 <div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/F-MQ8BYwLn4" frameborder="0" allowfullscreen
