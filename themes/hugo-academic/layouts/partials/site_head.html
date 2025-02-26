@@ -201,4 +201,9 @@
 
   <title>{{ if not .IsHome }}{{ .Params.name | default .Title | markdownify | emojify }} | {{ end }}{{ site.Title | markdownify | emojify }}</title>
 
+  {{/* Load libraries required for slides viewer */}}
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+  <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+
 </head>

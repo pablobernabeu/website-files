@@ -989,6 +989,18 @@
         }
     });
   });
+  
+  
+  
+  document.addEventListener('click', function (event) {
+    let target = event.target.closest('#player-toolbar-left-actions > a');
+    if (target) {
+        event.preventDefault();
+        let url = target.getAttribute('href') || target.dataset.href;
+        if (url) window.open(url, '_blank', 'noopener,noreferrer');
+    }
+  });
+
 
 
 })(jQuery);

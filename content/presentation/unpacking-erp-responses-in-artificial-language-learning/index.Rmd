@@ -56,6 +56,9 @@ projects: []
 ---
 
 
+<script src="script.js"></script>
+
+
 <a href='https://mfr.osf.io/render?url=https://osf.io/xevr9/?direct%26mode=render%26action=download%26mode=render'>
       <button style = "background-color: white; color: black; border: 2px solid #196F27; border-radius: 12px;">
       <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;"> 
@@ -63,6 +66,13 @@ projects: []
 
 <iframe src="https://www.slideshare.net/slideshow/embed_code/key/ur348cDVAKalBC?startSlide=1" width="700" height="394" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px;max-width: 100%;" allowfullscreen></iframe>
 
+
+<div id="my-slide-viewer"></div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        initPDFViewer("pdf-viewer", "https://osf.io/download/xevr9");
+    });
+</script>
 
 ## Longer summary
 
@@ -86,7 +96,7 @@ Next, we will describe the ERP results for the various grammaticality conditions
 
 The mixed-effects models for gender agreement suggested that grammaticality interacted with session number, working memory and implicit learning. Cross-linguistic differences were also evident, with the Mini-English group displaying more robust effects than the Mini-Norwegian group.
 
-These preliminary findings suggest that morphosyntactic transfer may be influenced by attentional mechanisms. Overall, the results highlight the dynamic nature of transfer during third language acquisition, with individual differences in executive functions playing a role. The P600 effects associated with the control condition of article misplacement provides a useful point of reference. Audience feedback on the methods and interpretations will be welcomed to guide the next stages of this research.
+These preliminary findings suggest that language learning is influenced by attentional mechanisms, with individual differences in executive functions playing a role. The P600 effects associated with the control condition of article misplacement provides a useful point of reference. Audience feedback on the methods and interpretations will be welcomed to guide the next stages of this research.
 
 
 ### References
