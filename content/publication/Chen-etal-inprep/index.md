@@ -52,9 +52,9 @@ url_video: 'https://osf.io/h36wr/'
 #### &nbsp; <i class="fas fa-eye"></i>&nbsp; <a href='https://osf.io/h36wr/'>Video demonstration of the procedure followed in our lab</a>
 
 <iframe src="https://mfr.de-1.osf.io/render?url=https://osf.io/download/h36wr/?direct%26mode=render"
-    width="80%"
+    width="100%"
     scrolling="yes"
-    height="320px"
+    height="394px"
     marginheight="0"
     frameborder="0"
     allowfullscreen

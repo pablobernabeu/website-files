@@ -137,7 +137,7 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 
 <iframe src="https://mfr.de-1.osf.io/render?url=https://osf.io/download/h36wr/?direct%26mode=render"
     style="margin-top:10px"
-    width="95%"
+    width="100%"
     scrolling="yes"
     height="394px"
     marginheight="0"
