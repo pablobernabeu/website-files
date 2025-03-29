@@ -9199,7 +9199,7 @@ div.mermaid {
 #profile > div:nth-child(4) > div {
   color: darkgrey; }
 
-p a:link, ul a:link, li a:link, .article-container a:link, td a:link, a.dsq-brlink, div.grid-sizer > div > a, a > code {
+p a:link, ul a:link, li a:link, .article-container a:link, td a:link, a.dsq-brlink, div.grid-sizer > div > a {
   color: #00032F; }
 
 h3 a:visited, div a:visited, p a:visited, ul a:visited, li a:visited, .article-container a:visited, td a:visited, a.dsq-brlink:visited, div.grid-sizer > div > a:visited, a:visited > code {
@@ -9215,7 +9215,7 @@ p a:hover, ul a:hover, li a:hover, .article-container a:hover, td a:hover, a.dsq
 h3 a:active, div a:active, p a:active, ul a:active, li a:active, .article-container a:active, td a:active, a.dsq-brlink:active {
   color: #24494F; }
 
-p a:link, td a:link, div.grid-sizer > div > a, #top > div.pub > div > div > div.col-md-10 > div > div.col-12.col-md-9 > a, h3 > a {
+p a:link, td a:link, div.grid-sizer > div > a, #top > div.pub > div > div > div.col-md-10 > div > div.col-12.col-md-9 > a, h3 > a, a > code {
   background-image: linear-gradient(180deg, #ffffe2, #ffffeb, #fffff5, #fffff5, #fffff5, #fffff5, #BAF1B7); }
 
 /* Remove link highlight from general links in home 

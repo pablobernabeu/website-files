@@ -46,6 +46,3 @@ url_video: ~
 projects: []
 ---
 
-
-## *The poster will follow shortly.*
-

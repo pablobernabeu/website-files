@@ -1,5 +1,5 @@
 ---
-title: Cannot open plots created with brms::mcmc_plot due to lack of `discrete_range` function
+title: Cannot open plots created with `brms::mcmc_plot` due to lack of `discrete_range` function
 authors: 
 date: '2023-04-11'
 slug: cannot-open-plots-created-with-brms-mcmc-plot-due-to-lack-of-discrete-range-function

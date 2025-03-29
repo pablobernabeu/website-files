@@ -125,7 +125,7 @@
 }
 
 // unvisited link
-p a:link, ul a:link, li a:link, .article-container a:link, td a:link, a.dsq-brlink, div.grid-sizer > div > a, a > code {
+p a:link, ul a:link, li a:link, .article-container a:link, td a:link, a.dsq-brlink, div.grid-sizer > div > a {
   color: #00032F; 
 }
 
@@ -149,7 +149,7 @@ h3 a:active, div a:active, p a:active, ul a:active, li a:active, .article-contai
 }
 
 // background colour for links
-p a:link, td a:link, div.grid-sizer > div > a, #top > div.pub > div > div > div.col-md-10 > div > div.col-12.col-md-9 > a, h3 > a {
+p a:link, td a:link, div.grid-sizer > div > a, #top > div.pub > div > div > div.col-md-10 > div > div.col-12.col-md-9 > a, h3 > a, a > code {
   background-image: linear-gradient(180deg, #ffffe2, #ffffeb, #fffff5, #fffff5, #fffff5, #fffff5, #BAF1B7);
 }
 

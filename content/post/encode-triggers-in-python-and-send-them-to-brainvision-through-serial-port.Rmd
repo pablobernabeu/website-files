@@ -10,7 +10,7 @@ tags:
   - BrainVision
   - triggers
   - serial port
-  - python
+  - Python
   - OpenSesame
   - PsychoPy
   - encoding
