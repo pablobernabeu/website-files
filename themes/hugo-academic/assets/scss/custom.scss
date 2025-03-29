@@ -136,7 +136,7 @@ h3 a:visited, div a:visited, p a:visited, ul a:visited, li a:visited, .article-c
 }
 
 // mouse over link
-p a:hover, ul a:hover, li a:hover, .article-container a:hover, td a:hover, a.dsq-brlink:hover, div.grid-sizer > div > a:hover, , #top > div.pub > div > div > div.col-md-10 > div > div.col-12.col-md-9 > a:hover, h3 > a:hover, #top a:hover {
+p a:hover, ul a:hover, li a:hover, .article-container a:hover, td a:hover, a.dsq-brlink:hover, div.grid-sizer > div > a:hover, , #top > div.pub > div > div > div.col-md-10 > div > div.col-12.col-md-9 > a:hover, h3 > a:hover, #top a:hover, a:hover > code {
   background-image: none; // necessary to override `p a:link` property
   color: black;
   background-color: #EAFFE8;

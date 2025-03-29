@@ -108,8 +108,20 @@ education:
 
 
 <div class='alert alert-info' role='alert' style='margin-bottom: 6%;'>
-<i class="fa-solid fa-user-doctor" style="color:darkblue;"></i> Now looking for an exciting opportunity in <b>research, data science, project management</b>, etc. With more than <b>10 years</b> of international experience, I bring expertise in <b>psychology, neuroscience, linguistics</b> and <b>data science</b>, along with strong skills in <i class="fa-brands fa-r-project" aria-label="R"></i>, statistics, web development, open science, project management and mentorship. I'm eager to contribute analytical and problem-solving skills to empirically grounded projects.
+<i class="fa-solid fa-briefcase" style="color:darkgrey;"></i> Looking for an exciting opportunity in <b>research, data science, project management</b>, etc. With more than <b>10 years</b> of international experience, I bring expertise in <b>psychology, neuroscience, linguistics</b> and <b>data science</b>, along with strong skills in <i class="fa-brands fa-r-project" aria-label="R"></i>, statistics, web development, open science, project management and mentorship. I'm eager to contribute analytical and problem-solving skills to empirically grounded projects.
 </div>
+
+<div style="display: flex; justify-content: center; margin-bottom: 5%;">
+    <a href='/cv' style="display: block; width: 70%;">
+        <button style="background-color: #fff7ec; color: black; border: 2px solid #196F27; border-radius: 12px; width: 100%; padding: 6px;">
+            <h3 style="font-size: 140%; margin: 7px 9px !important; display: flex; align-items: center; justify-content: center;">
+                <i class="fa-regular fa-file" style="color:darkgrey;"></i> 
+                <span style="color: black; margin-left: 8px;">View CV</span>
+            </h3>
+        </button>
+    </a>
+</div>
+
 
 After completing a research master's, I became a PhD student and graduate teaching assistant in Psychology at Lancaster University. In my [thesis](/publication/pablo-bernabeu-2022-phd-thesis), I investigated how conceptual processing—that is, the comprehension of the meaning of words—is supported by linguistic and sensorimotor brain systems, and how research on this topic is influenced by methodological aspects such as the operationalisation of variables and the sample size of experiments. 
 
@@ -119,5 +131,5 @@ I am also interested in the relationships between language and other cognitive d
 
 I employ a range of tools, including behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. The materials, data and analyses used in my research are available at [https://osf.io/25u3x](https://osf.io/25u3x).
 
-My [**CV** is available here](/cv). Finally, an AI chat based on my portfolio and interests is available [here](https://chatgpt.com/g/g-67b0b84a30588191aeff5991b6eb1c15-pb-core). 
+Finally, an AI chat based on my portfolio and interests is available [here](https://chatgpt.com/g/g-67b0b84a30588191aeff5991b6eb1c15-pb-core). 
 
