@@ -991,7 +991,6 @@
   });
   
   
-  
   document.addEventListener('click', function (event) {
     let target = event.target.closest('#player-toolbar-left-actions > a');
     if (target) {
@@ -1000,7 +999,61 @@
         if (url) window.open(url, '_blank', 'noopener,noreferrer');
     }
   });
+  
+  
+  document.addEventListener('click', function (event) {
+      if (event.target.classList.contains('toggle-script')) {
+          let container = event.target.closest('.script-container');
+          let scriptWrapper = container.querySelector('.script-wrapper');
+          let existingEmbed = scriptWrapper.querySelector('.toggle-github-embed');
+          let scriptSrc = container.dataset.src;
 
+          if (existingEmbed) {
+              // Remove existing embed
+              existingEmbed.remove();
+              event.target.textContent = "Show script";
+              console.log("Script removed");
+          } else {
+              // Create and insert a new embed
+              let embedContainer = document.createElement('div');
+              embedContainer.className = "toggle-github-embed";
+
+              let newScript = document.createElement('script');
+              newScript.src = scriptSrc;
+
+              embedContainer.appendChild(newScript);
+              scriptWrapper.appendChild(embedContainer);
+
+              event.target.textContent = "Hide script";
+              console.log("Script added");
+          }
+      }
+  });
+  
+  
+  // Fold code chunks
+  
+  document.querySelectorAll(`
+    pre[class]:not(.emgithub-container pre),
+    pre > code[class]:not(.emgithub-container code)
+  `).forEach(el => {
+    const d = document.createElement('details');
+    const summary = document.createElement('summary');
+    
+    // Style the summary text
+    summary.style.color = 'darkgrey';
+    summary.textContent = 'Hide';
+    d.open = true;
+    
+    d.addEventListener('toggle', () => {
+      summary.textContent = d.open ? 'Hide' : 'Show code';
+    });
+  
+    const pre = el.tagName === 'CODE' ? el.parentNode : el;
+    d.appendChild(summary);
+    pre.before(d);
+    d.append(pre);
+  });
 
 
 })(jQuery);

@@ -697,3 +697,35 @@ pre {
     visibility: hidden;
 }
 
+
+// External script toggling
+
+.script-container {
+  padding: 0px 1px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+  margin-bottom: 5%;
+}
+
+.toggle-script {
+  background: linear-gradient(135deg, #d7e3e0);
+  color: black;
+  border: none;
+  padding: 8px 16px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.toggle-script:hover {
+  background: linear-gradient(135deg, #d3f3e9, #a9e3c9);
+  transform: scale(1.05);
+}
+
+.toggle-script:active {
+  transform: scale(0.95);
+}
+

@@ -59,11 +59,23 @@ This command processes the data and stores results in the designated output dire
 
 - Outputs include a plain text transcript and a WebVTT subtitle file.
 
+<div class="script-container" data-src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Fprototype-process-pronouns-gestures%2Fblob%2Fmain%2Faudio_processing.py&style=a11y-dark&type=code&showFullPath=on&showCopy=on&showLineNumbers=on&showFileMeta=on">
+  <button class="toggle-script">Show script</button>
+  <div class="script-wrapper"></div>
+</div>
+
+
 #### 2. Gesture Detection ([`video_processing.py`](https://github.com/pablobernabeu/prototype-process-pronouns-gestures/blob/main/video_processing.py))
 
 - [MediaPipe’s hand landmark estimation](https://ai.google.dev/edge/mediapipe/solutions/vision/hand_landmarker) detects pointing gestures based on the position of the wrist (landmark `0`) and the tip of the index finger (landmark `8`). The [online demonstration](https://mediapipe-studio.webapps.google.com/demo/hand_landmarker) is worth a check.
 
 - A pointing gesture is recognised at the moment when these landmarks are maximally distant from each other.
+
+<div class="script-container" data-src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Fprototype-process-pronouns-gestures%2Fblob%2Fmain%2Fvideo_processing.py&style=a11y-dark&type=code&showFullPath=on&showCopy=on&showLineNumbers=on&showFileMeta=on">
+  <button class="toggle-script">Show script</button>
+  <div class="script-wrapper"></div>
+</div>
+
 
 #### 3. Alignment Analysis ([`alignment_analysis.py`](https://github.com/pablobernabeu/prototype-process-pronouns-gestures/blob/main/alignment_analysis.py))
 
@@ -75,6 +87,12 @@ This command processes the data and stores results in the designated output dire
 
 - Visualisations, including histograms and scatter plots, illustrate alignment patterns.
 
+<div class="script-container" data-src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Fprototype-process-pronouns-gestures%2Fblob%2Fmain%2Falignment_analysis.py&style=a11y-dark&type=code&showFullPath=on&showCopy=on&showLineNumbers=on&showFileMeta=on">
+  <button class="toggle-script">Show script</button>
+  <div class="script-wrapper"></div>
+</div>
+
+
 #### 4. Video Processing and Annotation ([`video_editing.py`](https://github.com/pablobernabeu/prototype-process-pronouns-gestures/blob/main/video_editing.py))
 
 - The system overlays the transcribed speech as subtitles.
@@ -83,6 +101,12 @@ This command processes the data and stores results in the designated output dire
 
 - The original audio is merged into the video for reference.
 
+<div class="script-container" data-src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Fprototype-process-pronouns-gestures%2Fblob%2Fmain%2Fvideo_editing.py&style=a11y-dark&type=code&showFullPath=on&showCopy=on&showLineNumbers=on&showFileMeta=on">
+  <button class="toggle-script">Show script</button>
+  <div class="script-wrapper"></div>
+</div>
+
+
 #### 5. Automated Execution ([`main.py`](https://github.com/pablobernabeu/prototype-process-pronouns-gestures/blob/main/main.py))
 
 - The main script coordinates the entire process.
@@ -90,6 +114,11 @@ This command processes the data and stores results in the designated output dire
 - Multiple audio-video file pairs can be processed simultaneously.
 
 - Results are systematically organised in the output directory.
+
+<div class="script-container" data-src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Fprototype-process-pronouns-gestures%2Fblob%2Fmain%2Fmain.py&style=a11y-dark&type=code&showFullPath=on&showCopy=on&showLineNumbers=on&showFileMeta=on">
+  <button class="toggle-script">Show script</button>
+  <div class="script-wrapper"></div>
+</div>
 
 
 ## Current Challenges and Next Steps
