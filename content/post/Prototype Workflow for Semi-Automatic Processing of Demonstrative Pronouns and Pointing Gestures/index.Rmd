@@ -1,8 +1,8 @@
 ---
-title: "Prototype Workflow for Semi-Automatic Processing of Demonstrative Pronouns and Pointing Gestures"
+title: "Prototype Workflow for Semi-Automatic Processing of Speech and Co-Speech Gestures"
 author: ''
 date: '2025-03-28'
-slug: prototype-workflow-for-semi-automatic-processing-of-demonstrative-pronouns-and-pointing-gestures
+slug: prototype-workflow-for-semi-automatic-processing-of-speech-and-cospeech-gestures
 categories:
   - programming
 tags:
@@ -29,7 +29,9 @@ projects: []
 
 Understanding the interplay between speech and gesture is crucial for linguistic and cognitive research. The current prototype, available [on GitHub](https://github.com/pablobernabeu/prototype-process-pronouns-gestures), aims to automate the analysis of temporal alignment between spoken demonstrative pronouns and pointing gestures in video recordings. By integrating computer vision (via Google's [MediaPipe](https://ai.google.dev/edge/mediapipe/solutions/guide)) and speech recognition (using [language-specific Vosk models](https://alphacephei.com/vosk/models)) using Python, the workflow provides enriched video annotations and alignment data, offering valuable insights into deictic communication.
 
-For reference, the GitHub repository includes an [*ELAN*](https://github.com/pablobernabeu/prototype-process-pronouns-gestures/blob/main/ELAN) folder containing output from a traditional annotation process using the [*ELAN* program](https://archive.mpi.nl/tla/elan). Ultimately, the performance of the semi-automated prototype must be validated against these ELAN-based annotations.
+For reference, the GitHub repository includes an [*ELAN* folder](https://github.com/pablobernabeu/prototype-process-pronouns-gestures/blob/main/ELAN) containing output from a traditional annotation process using the [ELAN program](https://archive.mpi.nl/tla/elan). Ultimately, the performance of the semi-automated prototype must be validated against manual annotations created using ELAN or a similar program. For reference, below is a plot of manually-annotated data for the alignment between demonstrative pronouns and pointing gestures (see [R code for the plot](https://github.com/pablobernabeu/prototype-process-pronouns-gestures/blob/main/ELAN/plot_alignment.R)).
+
+<img src='https://github.com/pablobernabeu/prototype-process-pronouns-gestures/blob/main/ELAN/plots/1_scatterplot.png?raw=true' alt='Plot of manually-annotated data for the alignment between demonstrative pronouns and pointing gestures.' style='margin-top:2px; margin-bottom:-2px;'></img>
 
 ## How It Works: Running the Program
 
@@ -85,7 +87,9 @@ This command processes the data and stores results in the designated output dire
 
 - A CSV file containing word-gesture alignment data is generated.
 
-- Visualisations, including histograms and scatter plots, illustrate alignment patterns.
+- A scatter plot is created for each recording to illustrate the alignment between the words of interest and the closest pointing gesture within the `max_time_diff` window.
+
+<img src='https://github.com/pablobernabeu/prototype-process-pronouns-gestures/blob/main/mnt/output/1_scatterplot.png?raw=true' alt='Plot of data for the alignment between demonstrative pronouns and pointing gestures, obtained using a semi-automated workflow in Python.' style='margin-top:2px; margin-bottom:-2px;'></img>
 
 <div class="script-container" data-src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2Fprototype-process-pronouns-gestures%2Fblob%2Fmain%2Falignment_analysis.py&style=a11y-dark&type=code&showFullPath=on&showCopy=on&showLineNumbers=on&showFileMeta=on">
   <button class="toggle-script">Show script</button>
