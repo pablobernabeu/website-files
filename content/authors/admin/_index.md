@@ -32,7 +32,7 @@ recent_work:
   jobs:
   - job: '[Postdoctoral fellow](https://en.uit.no/go/target/789811)'
     institution: 'UiT The Arctic University of Norway'
-    year: 'Nov **2022** -- 14 Feb **2025**'
+    year: 'Nov **2022** -- Feb **2025**'
     extra: '-&nbsp; Additional service: co-organisation of multiple events, including the lunch meetings of [AcqVA Aurora](https://uit.no/research/acqva#747906_buttoncont1) and [<span style = "white-space: nowrap;">C-LaBL</span>](https://uit.no/research/clabl#836271_buttoncont2), and a public outreach event of C-LaBL. Peer-review for *Cognition*, *Cognitive Science* and EuroSLA Conference.'
   - job: 'Statistical consultant'
     institution: 'UiT The Arctic University of Norway'

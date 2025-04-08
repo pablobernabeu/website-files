@@ -9384,6 +9384,9 @@ div.emgithub-file.emgithub-file-dark > div.file-data.hljs-style-a11y-dark > div 
   background: none;
   margin: 5px 0px; }
 
+div.emgithub-file.emgithub-file-dark > div.file-data.hljs-style-a11y-dark > div > pre > code > table > tbody > * > td.hljs-ln-line.hljs-ln-code > span > span {
+  color: white; }
+
 div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > a:nth-child(2) {
   font-size: 130%;
   margin-right: 4px;
