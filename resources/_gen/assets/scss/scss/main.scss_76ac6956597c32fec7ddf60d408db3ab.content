@@ -9384,9 +9384,6 @@ div.emgithub-file.emgithub-file-dark > div.file-data.hljs-style-a11y-dark > div 
   background: none;
   margin: 5px 0px; }
 
-div.emgithub-file.emgithub-file-dark > div.file-data.hljs-style-a11y-dark > div > pre > code > table > tbody > * > td.hljs-ln-line.hljs-ln-code > span > span {
-  color: white; }
-
 div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > a:nth-child(2) {
   font-size: 130%;
   margin-right: 4px;
@@ -9407,6 +9404,9 @@ div.emgithub-file.emgithub-file-dark > div.file-meta.file-meta-dark > a:nth-chil
   font-size: 130%;
   background-image: linear-gradient(180deg, #FEFFE5, #FFFFF3, #FFFFF3, #FFFFF3, #FFFFF3, #FFFFF3, #FFFFF3, #FFFFF3, #FEFFE5);
   color: black; }
+
+div.emgithub-file.emgithub-file-dark > div.file-data.hljs-style-a11y-dark > div > pre > code > table > tbody > * > td.hljs-ln-line.hljs-ln-code > span > span {
+  color: white; }
 
 .emgithub-container {
   margin-bottom: 6%; }
