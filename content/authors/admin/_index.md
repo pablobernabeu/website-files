@@ -30,17 +30,17 @@ user_groups:
 bio: ~
 recent_work:
   jobs:
-  - job: '[Postdoctoral fellow](https://en.uit.no/go/target/789811)'
+  - job: '[Postdoctoral Fellow](https://en.uit.no/go/target/789811)'
     institution: 'UiT The Arctic University of Norway'
     year: 'Nov **2022** -- Feb **2025**'
     extra: '-&nbsp; Additional service: co-organisation of multiple events, including the lunch meetings of [AcqVA Aurora](https://uit.no/research/acqva#747906_buttoncont1) and [<span style = "white-space: nowrap;">C-LaBL</span>](https://uit.no/research/clabl#836271_buttoncont2), and a public outreach event of C-LaBL. Peer-review for *Cognition*, *Cognitive Science* and EuroSLA Conference.'
-  - job: 'Statistical consultant'
+  - job: 'Statistical Consultant (25%)'
     institution: 'UiT The Arctic University of Norway'
-    year: 'Nov 2022'
+    year: 'Nov -- Dec **2022**'
     extra: '-&nbsp; I worked as a statistical consultant for the [CLICK Project (Cross-Linguistic Influence of Competing Knowledge)](https://uit.no/research/acqva/project?pid=723990), which investigated multilingualism in heritage speakers. I worked with questionnaire and eye-tracking data.'
 education: 
   courses:
-  - course: '[PhD Psychology with graduate teaching assistantship](https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109).html)'
+  - course: '[PhD Psychology with Graduate Teaching Assistantship](https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109).html)'
     institution: Lancaster University (United Kingdom)
     year: '**2018--2022**'
     extra: "-&nbsp; Additional service: peer-review for Cognitive Science and for Psychological Science Accelerator; development of website for open science group in my department."
