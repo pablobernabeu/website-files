@@ -7,14 +7,14 @@
 
 @media (min-width: 1000px) {
   
-  div.col-12.col-lg-4.section-heading, div.col-12.col-lg-4.section-heading > h1, div.col-12.col-lg-4.section-heading > h1::first-letter, div.article-container.pt-3 > div.btn-links.mb-3 > a:link, div.btn-links.mb-3 > button, button > h3, .portrait-title > h3, .social-icon, .tag-cloud a:link {
+  div.col-12.col-lg-4.section-heading, div.col-12.col-lg-4.section-heading > h1, div.article-container.pt-3 > div.btn-links.mb-3 > a:link, div.btn-links.mb-3 > button, button > h3, .portrait-title > h3, .social-icon, .tag-cloud a:link {
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.03s ease-in-out;
   }
   
-  
-  div.col-12.col-lg-4.section-heading.visible, div.col-12.col-lg-4.section-heading > h1.visible, div.col-12.col-lg-4.section-heading > h1.visible::first-letter {
+
+  div.col-12.col-lg-4.section-heading.visible, div.col-12.col-lg-4.section-heading > h1.visible {
     opacity: 1;
     transform: translateY(0);
     animation: color-transition1 2s forwards;
@@ -162,7 +162,7 @@ and from bio portrait information. */
   color: darkgrey;
 }
 
-#navbar-main > div > div.d-none.d-lg-inline-flex > a:hover, #navbar-content > ul > li > a:hover, #navbar-main > div > div.navbar-brand-mobile-wrapper.d-inline-flex.d-lg-none > a:hover, #navbar-main > div > div.d-none.d-lg-inline-flex > a:hover::first-letter, #navbar-main > div > div.navbar-brand-mobile-wrapper.d-inline-flex.d-lg-none > a:hover::first-letter {
+#navbar-main > div > div.d-none.d-lg-inline-flex > a:hover, #navbar-content > ul > li > a:hover, #navbar-main > div > div.navbar-brand-mobile-wrapper.d-inline-flex.d-lg-none > a:hover {
   color: #31A290;
 }
 
