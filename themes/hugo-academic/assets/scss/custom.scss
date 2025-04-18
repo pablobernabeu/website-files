@@ -690,14 +690,9 @@ pre {
 }
 
 
-// Replace heart icon in Disqus section with star
-
-#favorite-button > div > div > a > span.label.label-favorited > span::before {
-    content: "✯";
-}
-
-#favorite-button > div > div > a > span.label.label-favorited > span {
-    visibility: hidden;
+// Remove Disqus heart icon and count
+#favorite-button > div {
+  visibility: hidden;
 }
 
 

@@ -984,13 +984,25 @@
     
     // Style the summary text
     summary.style.color = 'darkgrey';
+    summary.style.fontSize = '90%';
     summary.textContent = 'Hide';
+    summary.style.fontWeight = 'normal';
     d.open = true;
-    
-    d.addEventListener('toggle', () => {
-      summary.textContent = d.open ? 'Hide' : 'Show code';
-    });
   
+    d.addEventListener('toggle', () => {
+      if (d.open) {
+        summary.textContent = 'Hide';
+        summary.style.fontWeight = 'normal';
+        summary.style.fontSize = '90%';
+        summary.style.color = 'darkgrey';
+      } else {
+        summary.textContent = 'Show source code';
+        summary.style.fontWeight = 'bold';
+        summary.style.fontSize = '105%';
+        summary.style.color = '#379E8A';
+      }
+    });
+    
     const pre = el.tagName === 'CODE' ? el.parentNode : el;
     d.appendChild(summary);
     pre.before(d);
