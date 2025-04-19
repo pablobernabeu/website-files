@@ -5,7 +5,7 @@ name: Pablo Bernabeu
 email: 'pcbernabeu@gmail.com'
 role: Researcher and data scientist with 10+ years of experience
 profileicons:
-- '<span aria-label="Curriculum vitae" data-toggle="tooltip1" data-placement="bottom" title=" Curriculum vitae "><a href="/cv"><i style="color:#8AA3CD;" class="social-icon ai ai-cv ai-lg"></i></a></span>'
+- '<span aria-label="Curriculum vitae" data-toggle="tooltip1" data-placement="bottom" title=" Curriculum vitae "><a href="/cv-pablo-bernabeu.pdf"><i style="color:#8AA3CD;" class="social-icon ai ai-cv ai-lg"></i></a></span>'
 - '<span aria-label="Google Scholar" data-toggle="tooltip1" data-placement="bottom" title=" Google Scholar "><a href="https://scholar.google.com/citations?user=DxD0QDoAAAAJ&hl=en"><i style="color:#8AA3CD;" class="social-icon ai ai-google-scholar ai-lg"></i></a></span>'
 - '<span aria-label="Github" data-toggle="tooltip1" data-placement="bottom" title=" Github "><a href="https://github.com/pablobernabeu"><i style="color:#8AA3CD;" class="social-icon fab fa-github fa-lg"></i></a></span>'
 - '<span aria-label="OSF repositories" data-toggle="tooltip1" data-placement="bottom" title=" OSF repositories "><a href="https://osf.io/25u3x/"><i style="color:#8AA3CD;" class="social-icon ai ai-osf ai-lg"></i></a></span>'
@@ -14,7 +14,7 @@ profileicons:
 - '<span aria-label="LinkedIn" data-toggle="tooltip1" data-placement="bottom" title=" LinkedIn "><a href="https://www.linkedin.com/in/pablobernabeu/"><i style="color:#8AA3CD;" class="social-icon fab fa-linkedin-in fa-lg"></i></a></span>'
 interests:
 - Cognitive psychology & neuroscience
-- Data science and programming
+- Data science & programming
 - Research methods & open science
 subsections:
 - '<div class = "profile-subsection"><a href = "/#bio" class = "profile-subsection">Experience <i class="fas fa-arrow-right fa-xs" style="color:lightgrey;"></i></a></div>'
@@ -40,7 +40,7 @@ recent_work:
     extra: '-&nbsp; I worked as a statistical consultant for the [CLICK Project (Cross-Linguistic Influence of Competing Knowledge)](https://uit.no/research/acqva/project?pid=723990), which investigated multilingualism in heritage speakers. I worked with questionnaire and eye-tracking data.'
 education: 
   courses:
-  - course: '[PhD Psychology with Graduate Teaching Assistantship](https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109).html)'
+  - course: '[PhD Psychology](https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109).html)'
     institution: Lancaster University (United Kingdom)
     year: '**2018--2022**'
     extra: "-&nbsp; Additional service: peer-review for Cognitive Science and for Psychological Science Accelerator; development of website for open science group in my department."
@@ -112,7 +112,7 @@ education:
 </div>
 
 <div style="display: flex; justify-content: center; margin-bottom: 5%;">
-    <a href='/cv' style="display: block; width: 70%;">
+    <a href='/cv-pablo-bernabeu.pdf' style="display: block; width: 70%;">
         <button style="background-color: #fff7ec; color: black; border: 2px solid #196F27; border-radius: 12px; width: 100%; padding: 6px;">
             <h3 style="font-size: 140%; margin: 7px 9px !important; display: flex; align-items: center; justify-content: center;">
                 <i class="fa-regular fa-file" style="color:darkgrey;"></i> 
