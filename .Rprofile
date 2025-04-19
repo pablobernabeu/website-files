@@ -13,3 +13,9 @@ knitr::opts_chunk$set(
   # Improve quality of figures
   fig.retina = 4 )
 
+# DOWNLOAD CV FROM OSF
+download.file(
+  url = 'https://osf.io/download/84ktq',
+  destfile = 'static/cv.pdf',
+  mode = 'wb'
+)

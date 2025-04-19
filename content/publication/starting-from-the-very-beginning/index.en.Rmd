@@ -41,6 +41,9 @@ url_project: https://osf.io/974k8
 url_slides: https://osf.io/4wfvb
 url_source: ~
 url_video: ~
+links:
+- name: Preregistration
+  url: https://osf.io/6pxj4
 image:
   caption: ''
   focal_point: ''
@@ -54,13 +57,15 @@ slides: ''
 
 González Alonso, J., Bernabeu, P., Silva, G., DeLuca, V., Poch, C., Ivanova, I., & Rothman, J. (2024). Starting from the very beginning: Unraveling third language (L3) development with longitudinal data from artificial language learning and related epistemology. *International Journal of Multilingualism, 1*(22). https://doi.org/10.1080/14790718.2024.2415993
 
-### Addendum
+### Preregistration
 
-#### Materials
+Available at https://osf.io/6pxj4.
+
+### Materials
 
 Documentation practices and open-source software (namely, R and OpenSesame) were used to prepare the materials for the current study. In previous similar studies, the materials have not generally been very Findable, Accessible, Interoperable or Reusable (Cross et al., 2021; González Alonso et al., 2020; Mitrofanova et al., 2023; Morgan-Short et al., 2012; Pereira Soares et al., 2022). In contrast, in our current study, the stimuli were prepared in R using a modular framework that consisted of interoperable components (see https://osf.io/974k8). The modularity of this method facilitates the expansion of the materials within the same languages and to other languages. Specifically, the minimal components of each language were contained in a base file in the ‘stimulus_preparation’ folder. Furthermore, for the creation of the final stimuli, several controls were exerted to prevent spurious effects. For instance, gender and number were counterbalanced across experimental conditions, words were rotated across grammatical properties and sessions, and frequency of occurrence was controlled. The final stimuli can be recreated using the script ‘compile_all_stimuli.R’, and the resulting stimuli are saved to the ‘session_materials’ folder. Furthermore, the final stimuli were presented using OpenSesame, which is a free-of-charge software supporting experiments in the social sciences. The implementation of the four lab-based sessions in OpenSesame involved the use of conditions for controlling the engagement of certain items. In conclusion, the materials of the current study are accessible, and the workflow is reproducible. As a result, the final materials are testable, modifiable and expandable, improving long-term efficiency.
 
-##### References
+#### References
 
 Cross, Z. R., Zou-Williams, L., Wilkinson, E. M., Schlesewsky, M., & Bornkessel-Schlesewsky, I. (2021). Mini Pinyin: A modified miniature language for studying language learning and incremental sentence processing. *Behavior Research Methods, 53*(3), 1218–1239. https://doi.org/10.3758/s13428-020-01473-6
 
@@ -73,7 +78,7 @@ Morgan-Short, K., Finger, I., Grey, S., & Ullman, M. T. (2012). Second language 
 Pereira Soares, S. M., Kupisch, T., & Rothman, J. (2022). Testing potential transfer effects in heritage and adult L2 bilinguals acquiring a mini grammar as an additional language: An ERP approach. *Brain Sciences, 12*(5), Article 5. https://doi.org/10.3390/brainsci12050669
 
 
-#### Contributors and acknowledgements
+### Contributors and acknowledgements
 
 The present materials were created, documented and curated by Pablo Bernabeu, Gabriella Silva, Jorge González Alonso, My Ngoc Giang Hoang, Jason Rothman, Vincent DeLuca, Claudia Poch and Iva Ivanova.
 
