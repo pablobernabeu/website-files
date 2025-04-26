@@ -44,7 +44,7 @@ url_pdf: 'https://doi.org/10.31219/osf.io/2qf6w'
 url_video: 'https://osf.io/h36wr/'
 links:
 - name: Preregistration
-  url: https://osf.io/6pxj4
+  url: https://osf.io/preprints/psyarxiv/t2pjv_v1
 ---
 
 
