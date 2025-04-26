@@ -54,10 +54,10 @@ education:
   - course: '<span id="BA-degree">[BA English](https://www.uam.es/uam/ingleses)</span>'
     institution: Autonomous University of Madrid (Spain)
     year: '**2007--2013**'
-    extra: '\-&nbsp; One-year Erasmus exchange at University of Jyv&auml;skyl&auml;, Finland'
-    extra2: '\-&nbsp; One-year exchange at University of Barcelona, Spain'
-    extra3: '\-&nbsp; Six-month Spanish teaching placement in Kaunas, Lithuania'
-    extra4: '\-&nbsp; Grade: 7.30 out of 10 (2:1 Hons)'
+    extra: '\-&nbsp; Grade: 7.30 out of 10 (2:1 Hons)'
+    extra2: '\-&nbsp; One-year Erasmus exchange at University of Jyv&auml;skyl&auml;, Finland'
+    extra3: '\-&nbsp; One-year exchange at University of Barcelona, Spain'
+    extra4: '\-&nbsp; Six-month Spanish teaching placement in Kaunas, Lithuania'
   furthercourses:
   - course: '[Advanced R programming](https://www.coursera.org/account/accomplishments/verify/FMNADHCTXZEZ)'
     institution: Johns Hopkins University via Coursera

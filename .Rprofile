@@ -14,8 +14,9 @@ knitr::opts_chunk$set(
   fig.retina = 4 )
 
 # DOWNLOAD CV FROM OSF
+message('Downloading CV from OSF to /static...')
 download.file(
   url = 'https://osf.io/download/84ktq',
   destfile = 'static/cv-pablo-bernabeu.pdf',
-  mode = 'wb'
+  mode = 'wb',
 )

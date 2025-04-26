@@ -53,13 +53,11 @@ slides: ''
 ---
 
 
+### &nbsp; <i class="fa fa-file"></i>&nbsp; <a href='https://osf.io/6pxj4'>Read the preregistration</a>
+
 ### Reference
 
 González Alonso, J., Bernabeu, P., Silva, G., DeLuca, V., Poch, C., Ivanova, I., & Rothman, J. (2024). Starting from the very beginning: Unraveling third language (L3) development with longitudinal data from artificial language learning and related epistemology. *International Journal of Multilingualism, 1*(22). https://doi.org/10.1080/14790718.2024.2415993
-
-### Preregistration
-
-Available at https://osf.io/6pxj4.
 
 ### Materials
 

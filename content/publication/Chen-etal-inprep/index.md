@@ -42,10 +42,15 @@ url_pdf: 'https://doi.org/10.31219/osf.io/2qf6w'
 # url_slides: ""
 # url_source: '#'
 url_video: 'https://osf.io/h36wr/'
+links:
+- name: Preregistration
+  url: https://osf.io/6pxj4
 ---
 
 
 #### &nbsp; <i class="fa fa-folder"></i>&nbsp; <a href='https://osf.io/e428p/'>General project</a>
+
+#### &nbsp; <i class="fa fa-file"></i>&nbsp; <a href='https://doi.org/10.31234/osf.io/t2pjv'>Preregistration</a>
 
 #### &nbsp; <i class="fa fa-database"></i>&nbsp; <a href='https://osf.io/waf48/'>Data from our lab</a>
 
