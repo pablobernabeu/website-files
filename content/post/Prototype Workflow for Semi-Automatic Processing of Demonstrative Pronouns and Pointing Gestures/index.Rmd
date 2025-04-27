@@ -43,7 +43,7 @@ Running the following command initiates the processing pipeline:
 python main.py --audio_folder "mnt/primary data/audio" \
                --video_folder "mnt/primary data/video" \
                --model "mnt/primary data/vosk-model-de-0.21" \
-               --demonstratives "der,die,das,den,dem,denen,dessen,deren,dieser,diese,dieses,diesen,diesem" \
+               --words_of_interest "der,die,das,den,dem,denen,dessen,deren,dieser,diese,dieses,diesen,diesem" \
                --output "mnt/output" \
                --max_time_diff 800
 ```
