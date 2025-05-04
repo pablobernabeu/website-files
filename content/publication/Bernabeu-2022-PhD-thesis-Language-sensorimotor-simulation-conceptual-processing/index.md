@@ -48,7 +48,7 @@ links:
   url: https://eprints.lancs.ac.uk/id/eprint/177833/6/2022deJuanBernabeuPhD.pdf
 - name: Online book
   url: '/thesis'
-url_pdf: https://osf.io/download/97u5c
+url_pdf: '/Pablo_Bernabeu_PhD_thesis_2022.pdf'
 url_code: https://osf.io/gt5uf
 url_data: https://osf.io/gt5uf
 url_poster: ~

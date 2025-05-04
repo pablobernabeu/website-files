@@ -51,7 +51,17 @@ css_class = ""
 +++
 
 
-### <span style='color:grey; font-size:70%;'>2024 ·</span>&nbsp; [Naming results files exported from Gorilla Experiment Builder](https://youtu.be/nVidNO8xcxE)
+### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; [Visualising EEG effects with topographic mapping in BrainVision Analyzer](https://youtu.be/FI9FO7oJj_o)
+
+This tutorial walks through the key steps: creating grand averages across participants, computing difference waves between experimental conditions, selecting appropriate map types, and defining time windows for visualisation. 
+
+<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
+<iframe src="https://www.youtube-nocookie.com/embed/FI9FO7oJj_o" frameborder="0" allowfullscreen
+style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
+</div>
+
+
+### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; [Naming results files exported from Gorilla Experiment Builder](https://youtu.be/nVidNO8xcxE)
 
 <div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/nVidNO8xcxE" frameborder="0" allowfullscreen
