@@ -64,7 +64,7 @@ To assess whether convergence warnings render the results invalid, or on the con
 
 ## Plotting the fixed effects from allFit()
 
-Several R users have ventured into [plotting the allFit() output](https://www.google.com/search?q=%22ggplot%22+%22allfit%22+optimizers) but there is not a function in 'lme4' yet at the time of writing. I (Bernabeu, 2022) developed a [function](https://github.com/pablobernabeu/plot.fixef.allFit/blob/main/plot.fixef.allFit.R) that takes the output from `allFit()`, tidies it, selects the fixed effects and plots them using 'ggplot2'. The function is shown below, and can be copied through the `Copy Code` button at the top right corner. It can be renamed by changing `plot.fixef.allFit` to another valid name.
+Several R users have ventured into [plotting the allFit() output](https://www.google.com/search?q=%22ggplot%22+%22allfit%22+optimizers) but there is not a function in 'lme4' yet at the time of writing. Bernabeu (2022) developed a [function](https://github.com/pablobernabeu/plot.fixef.allFit/blob/main/plot.fixef.allFit.R) that takes the output from `allFit()`, tidies it, selects the fixed effects and plots them using 'ggplot2'. The function is shown below, and can be copied through the `Copy Code` button at the top right corner. It can be renamed by changing `plot.fixef.allFit` to another valid name.
 
 <div style = 'height: 800px; border: 0.5px dotted grey; padding: 10px; resize: both; overflow: auto;'>
 

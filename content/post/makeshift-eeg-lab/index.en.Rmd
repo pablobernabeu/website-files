@@ -154,6 +154,29 @@ Say, you need to set up a makeshift EEG lab in an office? Easy-peasy---only, try
 
 </div>
 
+
+<br>
+
+
+Need to return to the main lab? No problem! The tidyverse has got your back. 
+
+```{r eval=FALSE}
+
+library(tidyr)
+
+makeshift_lab %>%
+  pivot_longer(!superfluous, names_to = 'registrar', values_to = 'Mephis') %>%
+  filter(view == 'outside') %>%
+  pull(leg)
+
+```
+
+<div class='imageContainer'>
+  <img src='images/cosy EEG booth.jpg' alt='cosy EEG booth'>
+  <i class='expand-icon fas fa-expand-alt'></i>
+</div>
+
+
 <!-- Modal -->
 <div id='myModal' class='imageModal'>
 <div class='imageModal-text imageClose'>Click here or press <kbd style='font-size: 90%; color:white; background-color:#303030;'>Esc</kbd> to close</div>
@@ -165,6 +188,9 @@ Say, you need to set up a makeshift EEG lab in an office? Easy-peasy---only, try
 <a class='prev'>❮</a>
 <a class='next'>❯</a>
 </div>
+
+
+<br>
 
 
 ### References

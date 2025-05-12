@@ -107,10 +107,6 @@ education:
 ---
 
 
-<div class='alert alert-info' role='alert' style='margin-bottom: 6%;'>
-<i class="fa-solid fa-briefcase" style="color:darkgrey;"></i> Looking for an exciting opportunity in <b>research, data science, project management</b>, etc. With more than <b>10 years</b> of international experience, I bring expertise in <b>psychology, neuroscience, linguistics</b> and <b>data science</b>, along with strong skills in <i class="fa-brands fa-r-project" aria-label="R"></i>, statistics, web development, open science, project management and mentorship. I'm eager to contribute analytical and problem-solving skills to empirically grounded projects.
-</div>
-
 <div style="display: flex; justify-content: center; margin-bottom: 5%;">
     <a href='/cv-pablo-bernabeu.pdf' style="display: block; width: 70%;">
         <button style="background-color: #fff7ec; color: black; border: 2px solid #196F27; border-radius: 12px; width: 100%; padding: 6px;">
@@ -131,5 +127,5 @@ I am also interested in the relationships between language and other cognitive d
 
 I employ a range of tools, including behavioural and electroencephalographic experiments, corpus analysis, statistics and programming. The materials, data and analyses used in my research are available at [https://osf.io/25u3x](https://osf.io/25u3x).
 
-Finally, an AI chat based on my portfolio and interests is available [here](https://chatgpt.com/g/g-67b0b84a30588191aeff5991b6eb1c15-pb-core). 
+Finally, an AI chatbot based on my portfolio and interests is available [here](https://chatgpt.com/g/g-67b0b84a30588191aeff5991b6eb1c15-pb-core). 
 
