@@ -8,7 +8,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 120  # Order that this section will appear.
 
-title = "Funding and awards"
+title = "Funding and Awards"
 subtitle = ""
 
 [design]
@@ -59,9 +59,9 @@ subtitle = ""
 | 2020 | [Software Sustainability Institute Fellowship](https://www.software.ac.uk/programmes-and-events/fellowship-programme) | Organising [training and practice activities in research software](/2020/data-is-present-workshops-and-datathons/), focussed on data presentation using R. |
 | Apr 2019 | Travel grant, UK Open Science Working Group. Aston University, UK | Attendance at first meeting of the UK Open Science Working Group. |
 | 2018 -- 2022 | Scholarship for PhD and graduate teaching assistantship, Lancaster University, UK | See [research and other activities](https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109).html). |
-| Nov 2017 | [Psychonomic Society Graduate Travel Award for 58th Annual Meeting](https://www.psychonomic.org/page/2017GraduateTravelRecipients) | Presenting a poster on [research from my master's](/publication/bernabeu-etal-2017/). |
-| July 2017 | [Student Volunteer, Cognitive Science Society Conference](https://cognitivesciencesociety.org/wp-content/uploads/2019/01/cogsci17_proceedings.pdf) | Presenting a poster on [research from my master's](/publication/bernabeu-etal-2017/). |
-| July 2017 | [Grindley Grant from Experimental Psychology Society](https://eps.ac.uk/grindley-grant/) | Presenting a poster on [research from my master's](/publication/bernabeu-etal-2017/) at [Cognitive Science Society Conference](https://cognitivesciencesociety.org/wp-content/uploads/2019/01/cogsci17_proceedings.pdf). |
-| Jan 2017 | [Grindley Grant from Experimental Psychology Society](https://eps.ac.uk/grindley-grant/) | Presenting a poster on [research from my master's](/publication/bernabeu-etal-2017/) at conference ['Event representations in episodic and semantic memory'](http://eventcognition.org/event_memory_workshop/). |
+| Nov 2017 | [Psychonomic Society Graduate Travel Award for 58th Annual Meeting](https://www.psychonomic.org/page/2017GraduateTravelRecipients) | Presenting a poster on [research from my master's degree](/publication/bernabeu-etal-2017/). |
+| July 2017 | [Student Volunteer, Cognitive Science Society Conference](https://cognitivesciencesociety.org/wp-content/uploads/2019/01/cogsci17_proceedings.pdf) | Presenting a poster on [research from my master's degree](/publication/bernabeu-etal-2017/). |
+| July 2017 | [Grindley Grant from Experimental Psychology Society](https://eps.ac.uk/grindley-grant/) | Presenting a poster on [research from my master's degree](/publication/bernabeu-etal-2017/) at [Cognitive Science Society Conference](https://cognitivesciencesociety.org/wp-content/uploads/2019/01/cogsci17_proceedings.pdf). |
+| Jan 2017 | [Grindley Grant from Experimental Psychology Society](https://eps.ac.uk/grindley-grant/) | Presenting a poster on [research from my master's degree](/publication/bernabeu-etal-2017/) at conference ['Event representations in episodic and semantic memory'](http://eventcognition.org/event_memory_workshop/). |
 | May -- June 2016 | Funding for experiment from [Neurobiology of Language Dept., Max Planck Institute for Psycholinguistics](https://www.mpi.nl/department/neurobiology-language/4) | Conducting an EEG experiment for my [master's thesis](https://psyarxiv.com/5gjvk/). |
 

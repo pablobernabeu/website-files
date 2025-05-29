@@ -107,16 +107,10 @@ education:
 ---
 
 
-<div style="display: flex; justify-content: center; margin-bottom: 5%;">
-    <a href='/cv-pablo-bernabeu.pdf' style="display: block; width: 70%;">
-        <button style="background-color: #fff7ec; color: black; border: 2px solid #196F27; border-radius: 12px; width: 100%; padding: 6px;">
-            <h3 style="font-size: 140%; margin: 7px 9px !important; display: flex; align-items: center; justify-content: center;">
-                <i class="fa-regular fa-file" style="color:darkgrey;"></i> 
-                <span style="color: black; margin-left: 8px;">View CV</span>
-            </h3>
-        </button>
-    </a>
-</div>
+<a href="/cv-pablo-bernabeu.pdf" class="cv-btn">
+  <i class="fa fa-file"></i> &nbsp;
+  <span>View <b>CV</b></span>
+</a>
 
 
 After completing a research master's, I became a PhD student and graduate teaching assistant in Psychology at Lancaster University. In my [thesis](/publication/pablo-bernabeu-2022-phd-thesis), I investigated how conceptual processing—that is, the comprehension of the meaning of words—is supported by linguistic and sensorimotor brain systems, and how research on this topic is influenced by methodological aspects such as the operationalisation of variables and the sample size of experiments. 

@@ -8,7 +8,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 110  # Order that this section will appear.
 
-title = "Teaching, supervision and advice"
+title = "Teaching, Supervision and Advice"
 subtitle = ""
 
 [design]
@@ -74,6 +74,9 @@ During my PhD, I held a graduate teaching assistantship that involved 180 hours 
 |             | Investigating psychology: Analysis (102) using SPSS — Lab sessions |
 
 
+<div style="margin-top: 50px;"></div>
+
+
 ## **Teaching Philosophy**
 
 My teaching experiences have honed my ability to create a collaborative and engaging learning environment, where students are encouraged to think critically and apply their knowledge effectively. As a result, my teaching approach ensures that students not only acquire foundational knowledge but also develop the skills necessary to excel in their academic and professional endeavours. To this end, I draw on a range of applications that foster participation and collaboration, including Miro, Vevox, MS Teams, Google Docs, etc.
@@ -90,7 +93,7 @@ I strive to connect theoretical concepts to the methods that are used for their 
 
 ### Promoting Scientific Rigour and Reproducibility
 
-My commitment to open science and reproducibility informs my teaching. By embedding these principles into research workflows, I help students produce reliable and sustainable scholarship that is can withstand the test of time. In practical terms, these standards are designed to (1) enhance the quality of research, (2) optimise the use of academic resources in the medium and long term by allowing the reuse of materials, and (3) enhance students’ professional prospects by equipping them with a high-value, translatable set of skills. 
+My commitment to open science and reproducibility informs my teaching. By embedding these principles into research workflows, I help students produce reliable and sustainable scholarship that is can withstand the test of time. In practical terms, these standards are designed to (1) enhance the quality of research, (2) optimise the use of academic resources in the medium and long term by facilitating access to and reuse of research materials, and (3) enhance students’ professional prospects by equipping them with a high-value, translatable set of skills. 
 
 I would like to continue honing these principles, aided by the advice and inspiration from more experienced colleagues and by the regular feedback from students.
 

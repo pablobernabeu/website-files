@@ -81,7 +81,7 @@ This command processes the data and stores results in the designated output dire
 
 #### 3. Alignment Analysis ([`alignment_analysis.py`](https://github.com/pablobernabeu/prototype-process-pronouns-gestures/blob/main/alignment_analysis.py))
 
-- The extracted demonstrative pronoun onsets are compared with detected gesture apexes. Both categories are paired on a case-by-case basis if the distance between them is smaller than the maximum gap (`max_time_diff`).
+- The extracted demonstrative pronoun onsets are compared with detected gesture apices. Both categories are paired on a case-by-case basis if the distance between them is smaller than the maximum gap (`max_time_diff`).
 
 - Temporal differences between speech and gesture events are calculated.
 
