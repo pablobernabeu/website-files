@@ -61,17 +61,17 @@ During my PhD, I held a graduate teaching assistantship that involved 180 hours 
 |             | Introduction to neuroscience (112) — Seminars  |
 |             | Introduction to cognitive psychology (111) — Seminars and essay marking  |
 |             | Social psychology in the digital age (113) — Seminars  |
-|             | Statistics for psychologists I (121) using R — Lab sessions  |
+|             | Statistics for psychologists I (121) — Lab sessions  |
 | **2020–21** | Introduction to developmental psychology (115) — Seminars and essay marking  |
 |             | Introduction to neuroscience (112) — Seminars  |
 |             | Introduction to cognitive psychology (111) — Seminars and essay marking  |
 |             | Social psychology in the digital age (113) — Seminars  |
-|             | Statistics for psychologists I and II (121 and 122) using R — Lab sessions  |
+|             | Statistics for psychologists I and II (121 and 122) — Lab sessions  |
 | **2019–20** | Understanding psychology (101) — Seminars and essay marking |
 |             | Cognitive psychology (201) — Seminars and essay marking |
-|             | Master's statistics (401) using R — Lab sessions |
+|             | Master's statistics (401) — Lab sessions |
 | **2018–19** | Understanding psychology (101) — Seminars and essay marking |
-|             | Investigating psychology: Analysis (102) using SPSS — Lab sessions |
+|             | Investigating psychology: Analysis (102) — Lab sessions |
 
 
 <div style="margin-top: 50px;"></div>
@@ -110,25 +110,25 @@ This course explores the intricate relationship between language, cognition and 
 
 Focusing on the methodological challenges and opportunities in studying language and cognition, this course provides students with the tools to design and conduct world-class crosslinguistic research. Students will tackle issues such as overcoming biases inherent in WEIRD (Western, Educated, Industrialised, Rich and Democratic) samples and identifying meaningful crosslinguistic patterns. The curriculum integrates theoretical frameworks, such as modularity versus holism, with practical training in experimental paradigms and methods that have become essential. Emphasis is placed on the use of psychophysical and neuroimaging techniques, including electroencephalography, magnetoencephalography, functional magnetic resonance imaging, eye-tracking and pupillometry, to provide a comprehensive understanding of the methods driving the field forward.
 
-### 3. Electroencephalography for Linguistic and Psychological Research
+### 3. Electroencephalography
 
-This course immerses students in the theory and application of electroencephalography (EEG) for studying cognitive processes, with a focus on language and decision-making. Students will gain a historical perspective on EEG research and a practical understanding of its implementation in Linguistics and Psychology. Key topics include event-related potentials, time-frequency analysis and experimental designs. Through a combination of lectures and laboratory sessions, students will gain the theoretical and technical skills needed to design and conduct EEG studies. As part of this work, students will practice how to search for solutions reliably and responsibly by drawing on community forums, business support services and artificial intelligence applications.
+This course immerses students in the theory and application of electroencephalography (EEG) for studying cognitive processes, with a focus on language and decision-making. Students will gain a historical perspective on EEG research and a practical understanding of its implementation in Psychology and Linguistics. Key topics include event-related potentials, time-frequency analysis and experimental designs. Through a combination of lectures and laboratory sessions, students will gain the theoretical and technical skills needed to design and conduct EEG studies. As part of this work, students will practice how to search for solutions reliably and responsibly by drawing on community forums, business support services and artificial intelligence applications.
 
 ### 4. Increasing Reproducibility Throughout the Workflow of a Study
 
 Reproducibility is a cornerstone of scientific integrity, and this course empowers students to embed reproducible practices in their research workflows. Grounded in open science principles, students will examine the role of Psychology in the replication crisis, and become familiar with methodological frameworks like FAIR, which helps create more Findable, Accessible, Interoperable and Reusable data. Practical sessions will focus on implementing tools such as the Open Science Framework and R Markdown, while providing training in reproducible experiment design, data analysis and manuscript preparation. As part of this work, students will practice how to search for solutions reliably and responsibly by drawing on community forums and artificial intelligence applications. By the end of the course, students will be equipped to produce transparent, replicable research that meets the highest standards of scientific rigour. 
 
-### 5. Visualising Linguistic and Psychological Data Using R
+### 5. Data Visualisation
 
-Effective data visualisation is crucial for interpreting and communicating linguistic and psychological research, and this course teaches students how to achieve this using R. With an emphasis on clarity and accessibility, students will learn to create a variety of visualisations, from static plots to interactive web applications. The course covers best practices for summarising data, combining plots and integrating tables into reports. Practical sessions provide experience with advanced visualisation techniques, ensuring students can present complex data in an engaging and professional manner. As part of this work, students will practice how to search for solutions reliably and responsibly by drawing on community forums and artificial intelligence applications.
+Effective data visualisation is crucial for interpreting and communicating our research, and this course teaches students how to achieve this using R. With an emphasis on clarity and accessibility, students will learn to create a variety of visualisations, from static plots to interactive web applications. The course covers best practices for summarising data, combining plots and integrating tables into reports. Practical sessions provide experience with advanced visualisation techniques, ensuring students can present complex data in an engaging and professional manner. As part of this work, students will practice how to search for solutions reliably and responsibly by drawing on community forums and artificial intelligence applications.
 
 These courses collectively emphasise the integration of theory and practice, reproducibility and methodological innovation. My academic experience in linguistics, psychology, statistics and research methods directly informs the design of these courses, ensuring that students gain both foundational knowledge and practical skills to excel in their academic and professional endeavours.
 
-### 6. Introduction to Statistical Analysis in Linguistic and Psychological Research
+### 6. Introduction to Statistical Analysis
 
-This course provides a foundational understanding of statistical reasoning and methods for analysing linguistic and psychological data, with an emphasis on transparent and defensible research practices. Using R as the primary tool, students will explore key concepts such as descriptive statistics, probability theory, hypothesis testing, correlation and basic linear models. Emphasis is placed on integrating statistical considerations into the early stages of research design, ensuring that methods are appropriately aligned with research questions and data structures. Through a combination of theoretical instruction and practical exercises, students will learn to justify their analytical choices and interpret statistical results with care and precision.
+This course provides a foundational understanding of statistical reasoning and methods, with an emphasis on transparent and defensible research practices. Using R as the primary tool, students will explore key concepts such as descriptive statistics, probability theory, hypothesis testing, correlation and basic linear models. Emphasis is placed on integrating statistical considerations into the early stages of research design, ensuring that methods are appropriately aligned with research questions and data structures. Through a combination of theoretical instruction and practical exercises, students will learn to justify their analytical choices and interpret statistical results with care and precision.
 
-### 7. Advanced Statistical Modelling for Linguistic and Psychological Research
+### 7. Advanced Statistical Modelling
 
 Building on introductory concepts, this course equips students with the skills to conduct sophisticated statistical analyses using R. Topics include generalised linear models, multilevel (mixed-effects) modelling, model selection and comparison, approaches to handling non-normal and hierarchical data, and dimensionality reduction techniques such as principal component analysis and factor analysis. Throughout, students will be encouraged to consider statistical design and analysis as an integrated part of the research workflow, making principled methodological decisions in response to the specific demands of their data and hypotheses. The course also addresses challenges such as overfitting, multicollinearity and multiple comparisons, with a strong focus on transparent reporting and justification of analytical strategies. Practical sessions will provide hands-on experience with real-world data and complex experimental designs.
 
