@@ -84,7 +84,6 @@ pwcurve_12g = powerCurve(fm_extended_g, fixed('x'), along = 'g', breaks = 12,
 
 ```
 
-<br>
 
 Having saved each section of the power curve, we must now combine them to be able to plot them together (if you wish to automatise this procedure, consider [this function](https://github.com/pablobernabeu/Language-and-vision-in-conceptual-processing-Multilevel-analysis-and-statistical-power/blob/main/R_functions/combine_powercurve_chunks.R)).
 
@@ -110,8 +109,6 @@ plot(all_pwcurve, xlab = 'Levels of g')
 sessionInfo()
 
 ```
-
-<br>
 
 
 ### Just the code
@@ -179,8 +176,6 @@ plot(all_pwcurve, xlab = 'Levels of g')
 ```
 
 
-<br>
-
 ## References
 
 <div class = 'hanging-indent'>
@@ -194,6 +189,4 @@ Kumle, L., Vo, M. L. H., & Draschkow, D. (2021). Estimating power in (generalize
 Luke, S. G. (2017). Evaluating significance in linear mixed-effects models in R. *Behavior Research Methods, 49*(4), 1494--1502. <https://doi.org/10.3758/s13428-016-0809-y>
 
 </div>
-
-<br>
 
