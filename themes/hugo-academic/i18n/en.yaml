@@ -82,13 +82,13 @@
   translation: Subsections
 
 - id: recent_work
-  translation: Recent work
+  translation: Recent Work
 
 - id: education
   translation: '<span id="education">Education</span>'
   
 - id: furthercourses
-  translation: Further courses
+  translation: Further Courses
   
 - id: skills
   translation: Skills

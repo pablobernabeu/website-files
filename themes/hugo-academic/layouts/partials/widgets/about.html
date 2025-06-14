@@ -100,11 +100,19 @@
             <div class="description" style="padding-left:14px;">
               <p class="course" style="color:#515151">{{ .job | markdownify }}{{ with .year | markdownify }}, {{ . }}{{ end }}</p>
               <p class="institution" style="color:#5B5B5B">{{ .institution | markdownify }}</p>
-              <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-left:1em;">{{ .extra | markdownify }}</p>
-              <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-left:1em;">{{ .extra2 | markdownify }}</p>
-              <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-left:1em;">{{ .extra3 | markdownify }}</p>
-              <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-left:1em;">{{ .extra4 | markdownify }}</p>
+              <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-top:0.3em; margin-left:1em;">{{ .extra | markdownify }}</p>
+              {{ with .extra2 }}
+                <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-top:0.3em; margin-left:1em;">{{ . | markdownify }}</p>
+              {{ end }}
+              {{ with .extra3 }}
+                <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-top:0.3em; margin-left:1em;">{{ . | markdownify }}</p>
+              {{ end }}
+              {{ with .extra4 }}
+                <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-top:0.3em; margin-left:1em;">{{ . | markdownify }}</p>
+              {{ end }}
+              {{ with .extra_nohyphen }}
               <p class="institution" style="max-width: 550px; padding-left:18px; text-indent:-0.8em; margin-left:1em;">{{ .extra_nohyphen | markdownify }}</p>
+              {{ end }}
             </div>
           </li>
           {{ end }}
@@ -123,11 +131,19 @@
             <div class="description" style="padding-left:14px;">
               <p class="course" style="color:#515151">{{ .course | markdownify }}{{ with .year | markdownify }}, {{ . }}{{ end }}</p>
               <p class="institution" style="color:#5B5B5B">{{ .institution | markdownify }}</p>
-              <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-left:1em;">{{ .extra | markdownify }}</p>
-              <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-left:1em;">{{ .extra2 | markdownify }}</p>
-              <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-left:1em;">{{ .extra3 | markdownify }}</p>
-              <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-left:1em;">{{ .extra4 | markdownify }}</p>
+              <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-top:0.3em; margin-left:1em;">{{ .extra | markdownify }}</p>
+              {{ with .extra2 }}
+                <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-top:0.3em; margin-left:1em;">{{ . | markdownify }}</p>
+              {{ end }}
+              {{ with .extra3 }}
+                <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-top:0.3em; margin-left:1em;">{{ . | markdownify }}</p>
+              {{ end }}
+              {{ with .extra4 }}
+                <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-top:0.3em; margin-left:1em;">{{ . | markdownify }}</p>
+              {{ end }}
+              {{ with .extra_nohyphen }}
               <p class="institution" style="max-width: 550px; padding-left:18px; text-indent:-0.8em; margin-left:1em;">{{ .extra_nohyphen | markdownify }}</p>
+              {{ end }}
             </div>
           </li>
           {{ end }}
@@ -141,11 +157,19 @@
             <div class="description" style="padding-left:14px;">
               <p class="course" style="color:#515151">{{ .course | markdownify }}{{ with .year | markdownify }}, {{ . }}{{ end }}</p>
               <p class="institution" style="color:#5B5B5B">{{ .institution | markdownify }}</p>
-              <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-left:1em;">{{ .extra | markdownify }}</p>
-              <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-left:1em;">{{ .extra2 | markdownify }}</p>
-              <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-left:1em;">{{ .extra3 | markdownify }}</p>
-              <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-left:1em;">{{ .extra4 | markdownify }}</p>
+              <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-top:0.3em; margin-left:1em;">{{ .extra | markdownify }}</p>
+              {{ with .extra2 }}
+                <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-top:0.3em; margin-left:1em;">{{ . | markdownify }}</p>
+              {{ end }}
+              {{ with .extra3 }}
+                <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-top:0.3em; margin-left:1em;">{{ . | markdownify }}</p>
+              {{ end }}
+              {{ with .extra4 }}
+                <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-top:0.3em; margin-left:1em;">{{ . | markdownify }}</p>
+              {{ end }}
+              {{ with .extra_nohyphen }}
               <p class="institution" style="max-width: 550px; padding-left:18px; text-indent:-0.8em; margin-left:1em;">{{ .extra_nohyphen | markdownify }}</p>
+              {{ end }}
             </div>
           </li>
           {{ end }}
