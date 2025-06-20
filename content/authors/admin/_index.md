@@ -2,8 +2,8 @@
 authors:
 - admin
 name: Pablo Bernabeu
+role: '<span style="font-size:115%;"><b>Researcher</b><br>University of Oxford</span>'
 email: '<span style="font-size:90%;">pablo.bernabeu@education.ox.ac.uk</span><br>pcbernabeu@gmail.com'
-role: <b>Researcher</b><br>University of Oxford
 profileicons:
 - '<span aria-label="Curriculum vitae" data-toggle="tooltip1" data-placement="bottom" title=" Curriculum vitae "><a href="/cv-pablo-bernabeu.pdf"><i style="color:#8AA3CD;" class="social-icon ai ai-cv ai-lg"></i></a></span>'
 - '<span aria-label="Google Scholar" data-toggle="tooltip1" data-placement="bottom" title=" Google Scholar "><a href="https://scholar.google.com/citations?user=DxD0QDoAAAAJ&hl=en"><i style="color:#8AA3CD;" class="social-icon ai ai-google-scholar ai-lg"></i></a></span>'
@@ -89,7 +89,7 @@ education:
   - course: '[Introduction to cognitive neuroscience](https://www.ru.nl/radboudsummerschool/)'
     institution: Radboud University Summer School
     year: 2015
-    extra: \-&nbsp; I became acquainted with the cognitive neuroscience approach to language, perception and action.
+    extra: \-&nbsp; I developed a foundational understanding of the cognitive neuroscience of language, perception and action.
   - course: '[Language science: Current methods and interdisciplinary perspectives](https://www.ru.nl/radboudsummerschool/)'
     institution: Radboud University Summer School
     year: 2015
@@ -119,7 +119,7 @@ education:
 </a>
 
 
-I contribute to research on the role of digital technology in childhood learning, within the [Learning in Families through Technology (LiFT) project](https://www.education.ox.ac.uk/project/lift-learning-in-families-through-technology) at the Department of Education at the University of Oxford.
+I conduct research and data analysis on digitally-enhanced childhood learning as part of the [Learning in Families through Technology (LiFT) project](https://www.education.ox.ac.uk/project/lift-learning-in-families-through-technology) at the Department of Education at the University of Oxford.
 
 Previously, I held a postdoctoral fellowship at UiT The Arctic University of Norway, contributing to a project on language learning, crosslinguistic influence and executive functions. Prior to that, I completed a PhD in Psychology at Lancaster University, having previously earned a research master’s in Language and Communication from Tilburg University.
 
@@ -127,7 +127,7 @@ Beyond education and digital technologies, my interests include cognitive psycho
 
 I have worked with a wide range of research methods, including behavioural and EEG experiments, corpus analysis and computational modelling.
 
-I have advised numerous students and colleagues on designing and conducting behavioral and EEG experiments, as well as on data management, preprocessing and analysis. Furthermore, I have led several workshops on data analysis using R.
+Materials from my research are available at [osf.io/25u3x](https://osf.io/25u3x).
 
-Want to find out more? Please drop me an [email](mailto:pcbernabeu@gmail.com), or try this [chatbot](https://chatgpt.com/g/g-67b0b84a30588191aeff5991b6eb1c15-pb-core) for fun. 
+Want to find out more? Please drop me an [email](mailto:pcbernabeu@gmail.com) or try this [chatbot](https://chatgpt.com/g/g-67b0b84a30588191aeff5991b6eb1c15-pb-core) for fun. 
 

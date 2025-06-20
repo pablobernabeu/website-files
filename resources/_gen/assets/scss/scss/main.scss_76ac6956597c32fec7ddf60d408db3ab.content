@@ -9737,7 +9737,7 @@ pre {
   border: 2px solid #196F27;
   border-radius: 12px;
   width: 100%;
-  padding: 10px 0;
+  padding: 6px 0;
   font-size: 1.4em;
   text-decoration: none;
   transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;

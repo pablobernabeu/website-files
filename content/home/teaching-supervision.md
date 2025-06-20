@@ -79,7 +79,7 @@ During my PhD, I held a graduate teaching assistantship that involved 180 hours 
 
 ## **Teaching Philosophy**
 
-My teaching experiences have honed my ability to create a collaborative and engaging learning environment, where students are encouraged to think critically and apply their knowledge effectively. As a result, my teaching approach ensures that students not only acquire foundational knowledge but also develop the skills necessary to excel in their academic and professional endeavours. To this end, I draw on a range of applications that foster participation and collaboration, including Miro, Vevox, MS Teams, Google Docs, etc.
+My teaching experiences have honed my ability to create a collaborative and engaging learning environment, where students are encouraged to think critically and apply their knowledge effectively. As a result, my teaching approach ensures that students not only acquire foundational knowledge but also develop the skills necessary to excel in their academic and professional endeavours. To this end, I draw on a range of applications that foster participation and collaboration, including MS Teams, Google Docs, GitHub, Mentimeter, Miro, Vevox, etc.
 
 I have been guided by a few core principles that are outlined below. 
 
