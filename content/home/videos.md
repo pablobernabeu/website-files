@@ -9,7 +9,7 @@ active = true  # Activate this widget? true/false
 weight = 150  # Order that this section will appear.
 
 title = "Videos"
-subtitle = ""
+subtitle = "A leading candidate for YouTube's Most Boring Channel.<br><div style = 'position: relative; margin-top: 20px; padding-top: 56.25%;'><iframe src='https://www.youtube-nocookie.com/embed/nh7E1L8Evc8' frameborder='0' allowfullscreen style = 'position:absolute; top:0; left:0; width:95%; height:95%;'></iframe></div>"
 
 [design]
 # Choose how many columns the section has. Valid values: 1 or 2.
@@ -49,6 +49,16 @@ css_style = ""
 # CSS class.
 css_class = ""
 +++
+
+
+### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; [Segmentation of ERPs involving several markers and time adjustments in BrainVision Analyzer](https://youtu.be/FI9FO7oJj_o)
+
+This live demonstration guides you through the process of segmenting event-related potentials (ERPs) in BrainVision Analyzer. The events of interest are represented by several markers, requiring some thought to time-lock each segmentation to the event onset.
+
+<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
+<iframe src="https://www.youtube-nocookie.com/embed/QXOpa-uOBVc" frameborder="0" allowfullscreen
+style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
+</div>
 
 
 ### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; [Visualising EEG effects with topographic mapping in BrainVision Analyzer](https://youtu.be/FI9FO7oJj_o)

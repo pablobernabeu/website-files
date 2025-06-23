@@ -2,18 +2,18 @@
 title: Visualising EEG effects with topographic mapping in BrainVision Analyzer
 authors: 
 date: '2025-05-04'
-slug: encode-triggers-in-python-and-send-them-to-brainvision-through-serial-port-useful-for-opensesame-and-psychopy
 categories:
   - research methods
 tags:
   - electroencephalography
+  - event-related potentials
   - BrainVision
   - triggers
   - markers
   - topography
   - visualisation
   - s
-subtitle: 'Tutorial ideal for researchers analysing ERP data.'
+subtitle: ''
 summary: "This tutorial walks through the key steps: creating grand averages across participants, computing difference waves between experimental conditions, selecting appropriate map types, and defining time windows for visualisation."
 external_link: 'https://www.youtube.com/watch?v=FI9FO7oJj_o'
 lastmod: ''

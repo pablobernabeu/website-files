@@ -5,7 +5,6 @@ name: Pablo Bernabeu
 role: '<span style="font-size:115%;"><b>Researcher</b><br>University of Oxford</span>'
 email: '<span style="font-size:90%;">pablo.bernabeu@education.ox.ac.uk</span><br>pcbernabeu@gmail.com'
 profileicons:
-- '<span aria-label="Curriculum vitae" data-toggle="tooltip1" data-placement="bottom" title=" Curriculum vitae "><a href="/cv-pablo-bernabeu.pdf"><i style="color:#8AA3CD;" class="social-icon ai ai-cv ai-lg"></i></a></span>'
 - '<span aria-label="Google Scholar" data-toggle="tooltip1" data-placement="bottom" title=" Google Scholar "><a href="https://scholar.google.com/citations?user=DxD0QDoAAAAJ&hl=en"><i style="color:#8AA3CD;" class="social-icon ai ai-google-scholar ai-lg"></i></a></span>'
 - '<span aria-label="Github" data-toggle="tooltip1" data-placement="bottom" title=" Github "><a href="https://github.com/pablobernabeu"><i style="color:#8AA3CD;" class="social-icon fab fa-github fa-lg"></i></a></span>'
 - '<span aria-label="OSF repositories" data-toggle="tooltip1" data-placement="bottom" title=" OSF repositories "><a href="https://osf.io/25u3x/"><i style="color:#8AA3CD;" class="social-icon ai ai-osf ai-lg"></i></a></span>'

@@ -53,10 +53,10 @@ subtitle = ""
 
 Since 2018, I have advised numerous students and colleagues on designing and conducting behavioural and EEG experiments, as well as on the management, preprocessing and analysis of data. For instance, during my PhD, I supervised an undergraduate internship. During my postdoc, I have supervised three research assistantships and co-supervised a master's thesis. Furthermore, I am a [certified Carpentries Instructor](https://carpentries.org/instructors), and have designed and led several [workshops on data analysis using <i class="fa-brands fa-r-project" aria-label="R"></i>](https://pablobernabeu.github.io/#workshops). Earlier in my career, I [taught English to secondary-education students in Spain](/#other-work), and [taught Spanish to adults in Lithuania](/#BA-degree). 
 
-During my PhD, I held a graduate teaching assistantship that involved 180 hours of teaching annually, covering seminars, essay marking and lab sessions. Each year, I led 30 seminars and marked 80 essays in developmental, cognitive and social psychology, while also helping in 30 statistics lab sessions (see list below). Furthermore, I was a representative for graduate teaching assistants in the department for a year. 
+During my PhD, I held a graduate teaching assistantship that involved 180 hours of teaching annually, covering seminars, essay marking and lab sessions. Each year, I led 30 seminars and marked 80 essays in developmental, cognitive and social psychology, while also helping in 30 statistics lab sessions (activities summarised below). Furthermore, I was a representative for graduate teaching assistants in the department for a year. 
 
-|             | **Course and remit** |
-| :---------: | -------------------- |
+|             | **Course and remit**                                                             |
+| :---------: | -------------------------------------------------------------------------------- |
 | **2021–22** | Introduction to developmental psychology (115) — Seminars and essay marking  |
 |             | Introduction to neuroscience (112) — Seminars  |
 |             | Introduction to cognitive psychology (111) — Seminars and essay marking  |
@@ -73,13 +73,15 @@ During my PhD, I held a graduate teaching assistantship that involved 180 hours 
 | **2018–19** | Understanding psychology (101) — Seminars and essay marking |
 |             | Investigating psychology: Analysis (102) — Lab sessions |
 
-
 <div style="margin-top: 50px;"></div>
+
+
+Lastly, I have created two web applications intended for educational contexts. One supports the [simulation of data](/applications-and-dashboards/experimental-data-simulation), enhancing the teaching of statistical principles, while the other streamlines the [transcription of video captions](/applications-and-dashboards/vtt-transcription-app) for use in multimedia learning environments.
 
 
 ## **Teaching Philosophy**
 
-My teaching experiences have honed my ability to create a collaborative and engaging learning environment, where students are encouraged to think critically and apply their knowledge effectively. As a result, my teaching approach ensures that students not only acquire foundational knowledge but also develop the skills necessary to excel in their academic and professional endeavours. To this end, I draw on a range of applications that foster participation and collaboration, including MS Teams, Google Docs, GitHub, Mentimeter, Miro, Vevox, etc.
+My teaching experiences have honed my ability to create a collaborative and engaging learning environment, where students are encouraged to think critically and apply their knowledge effectively. As a result, my teaching approach ensures that students not only acquire foundational knowledge but also develop the skills necessary to excel in their academic and professional endeavours. To this end, I draw on a range of applications that foster participation and collaboration, including MS Teams, Google Docs, GitHub, Mentimeter, Vevox, Miro, etc.
 
 I have been guided by a few core principles that are outlined below. 
 
