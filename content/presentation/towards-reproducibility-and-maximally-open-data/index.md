@@ -32,7 +32,7 @@ image:
   focal_point: ''
   preview_only: no
 url_slides: https://slideshare.net/slideshow/embed_code/key/btTmVtxioR1Ru0
-url_pdf: ~
+url_fulltext: ~
 url_video: ~
 slides: ''
 projects: []

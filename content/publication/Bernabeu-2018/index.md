@@ -38,7 +38,7 @@ links:
   url: 'https://pablobernabeu.shinyapps.io/Dutch-modality-exclusivity-norms'
 url_code: 'https://osf.io/brkjw/'
 url_data: 'https://osf.io/brkjw/'
-url_pdf: 'https://doi.org/10.31234/osf.io/s2c5h'
+url_fulltext: 'https://doi.org/10.31234/osf.io/s2c5h'
 doi: 10.31234/osf.io/s2c5h
 # url_project: ""
 # url_slides: ""

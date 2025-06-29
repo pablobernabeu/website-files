@@ -11,8 +11,8 @@
     <p class="pub-abstract">{{ .Params.abstract | markdownify }}</p>
     {{ end }}
 
-    {{ if .Params.url_pdf }}
-    <a href={{ .Params.url_pdf }}>
+    {{ if .Params.url_fulltext }}
+    <a href={{ .Params.url_fulltext }}>
       <button class="full-text-btn">
         <i class="fa fa-file" style='color:grey;'></i> &nbsp;&nbsp; 
         <span>View <b>full text</b></span>

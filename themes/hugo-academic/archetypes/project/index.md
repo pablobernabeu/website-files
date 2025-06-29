@@ -28,7 +28,7 @@ image:
 #   icon: twitter
 
 url_code: ""
-url_pdf: ""
+url_fulltext: ""
 url_slides: ""
 url_video: ""
 

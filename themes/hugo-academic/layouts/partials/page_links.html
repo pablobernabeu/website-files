@@ -2,7 +2,7 @@
 {{ $page := .page }}
 {{ $link := "" }}
 
-{{/* ***** TODO: Deprecate `url_preprint` in favour of `url_pdf` given there's now a dedicated "Preprint" pub. type. ***** */}}
+{{/* ***** TODO: Deprecate `url_preprint` in favour of `url_fulltext` given there's now a dedicated "Preprint" pub. type. ***** */}}
 {{ with $page.Params.url_preprint }}
   {{ $resource := $page.Resources.GetMatch . }}
   {{ if $resource }}
@@ -19,14 +19,14 @@
 {{ with $resource }}
   {{ $pdf = .RelPermalink }}
 {{ else }}
-  {{ if $page.Params.url_pdf }}
-    {{ $pdf = $page.Params.url_pdf | relURL }}
+  {{ if $page.Params.url_fulltext }}
+    {{ $pdf = $page.Params.url_fulltext | relURL }}
   {{ end }}
 {{ end }}
 
 {{ with $pdf }}
 <a class="btn btn-outline-primary my-1 mr-1{{ if $is_list }} btn-sm{{end}}" href="{{ . }}" target="_blank" rel="noopener">
-  {{ i18n "btn_pdf" | markdownify }}
+  {{ i18n "btn_fulltext" | markdownify }}
 </a>
 {{ end }}
 {{ $resource := $page.Resources.GetMatch "cite.bib" }}

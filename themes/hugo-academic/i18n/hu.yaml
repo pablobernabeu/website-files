@@ -18,7 +18,7 @@
   translation: '%d. ábra:'
 - id: btn_preprint
   translation: Megjelenés előtt
-- id: btn_pdf
+- id: btn_fulltext
   translation: PDF
 - id: btn_cite
   translation: Idézet

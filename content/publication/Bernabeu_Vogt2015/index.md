@@ -26,7 +26,7 @@ tags:
 - linguistics
 # url_code: '#'
 # url_data: '#'
-url_pdf: 'https://www.researchgate.net/profile/Pablo_Bernabeu3/publication/280858062_Language_evolution_Current_status_and_future_directions/links/59309ba2a6fdcc89e784596c/Language-evolution-Current-status-and-future-directions.pdf'
+url_fulltext: 'https://www.researchgate.net/profile/Pablo_Bernabeu3/publication/280858062_Language_evolution_Current_status_and_future_directions/links/59309ba2a6fdcc89e784596c/Language-evolution-Current-status-and-future-directions.pdf'
 # url_poster: '#'
 # url_project: ""
 # url_slides: ""

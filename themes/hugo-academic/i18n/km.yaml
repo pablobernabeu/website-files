@@ -37,7 +37,7 @@
 - id: btn_preprint
   translation: ប៊ូតុងបោះពុម្ព
 
-- id: btn_pdf
+- id: btn_fulltext
   translation: ប៊ូតុងPDF
 
 - id: btn_cite

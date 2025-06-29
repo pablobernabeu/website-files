@@ -31,7 +31,7 @@ featured: false
 # links:
 # - name: ""
 #   url: ""
-url_pdf: http://arxiv.org/pdf/1512.04133v1
+url_fulltext: http://arxiv.org/pdf/1512.04133v1
 url_code: ''
 url_data: ''
 url_poster: ''

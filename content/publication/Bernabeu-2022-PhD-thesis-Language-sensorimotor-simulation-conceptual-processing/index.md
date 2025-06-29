@@ -23,6 +23,7 @@ tags:
   - cognition
   - psycholinguistics
   - reading
+  - individual differences
   - linear mixed-effects models
   - frequentist statistics
   - lme4
@@ -48,7 +49,7 @@ links:
   url: https://eprints.lancs.ac.uk/id/eprint/177833/6/2022deJuanBernabeuPhD.pdf
 - name: Online book
   url: '/thesis'
-url_pdf: '/Pablo_Bernabeu_PhD_thesis_2022.pdf'
+url_fulltext: '/Pablo_Bernabeu_PhD_thesis_2022.pdf'
 url_code: https://osf.io/gt5uf
 url_data: https://osf.io/gt5uf
 url_poster: ~

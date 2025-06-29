@@ -30,7 +30,7 @@ featured: false
 links:
 - name: Custom Link
   url: http://example.org
-url_pdf: http://arxiv.org/pdf/1512.04133v1
+url_fulltext: http://arxiv.org/pdf/1512.04133v1
 url_code: '#'
 url_data: '#'
 url_poster: '#'

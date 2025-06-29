@@ -18,7 +18,7 @@
   translation: '그림 %d:'
 - id: btn_preprint
   translation: 출판 전 논문
-- id: btn_pdf
+- id: btn_fulltext
   translation: PDF
 - id: btn_cite
   translation: 인용

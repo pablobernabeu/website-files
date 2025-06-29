@@ -50,7 +50,7 @@ image:
 url_slides:
 
 url_code:
-url_pdf:
+url_fulltext:
 url_video:
 
 # Markdown Slides (optional).

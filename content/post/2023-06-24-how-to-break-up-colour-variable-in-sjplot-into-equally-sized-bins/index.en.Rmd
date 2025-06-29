@@ -11,6 +11,7 @@ tags:
   - interactions
   - binning
   - sjPlot
+  - individual differences
   - s
 subtitle: ''
 summary: ''

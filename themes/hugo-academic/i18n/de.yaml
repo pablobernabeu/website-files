@@ -20,7 +20,7 @@
   translation: Seite editieren
 - id: btn_preprint
   translation: Vorabdruck
-- id: btn_pdf
+- id: btn_fulltext
   translation: PDF
 - id: btn_cite
   translation: Zitieren

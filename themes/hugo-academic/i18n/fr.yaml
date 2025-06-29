@@ -18,7 +18,7 @@
   translation: 'Figure %d:'
 - id: btn_preprint
   translation: Preprint
-- id: btn_pdf
+- id: btn_fulltext
   translation: PDF
 - id: btn_cite
   translation: Citation

@@ -14,6 +14,7 @@ tags:
   - sextiles
   - sjPlot
   - linear mixed-effects models
+  - individual differences
   - statistics
   - s
 subtitle: ''
@@ -39,7 +40,7 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE, error = FALSE,
 ```
 
 
-Whereas the direction of main effects can be interpreted from the sign of the estimate, the interpretation of interaction effects often requires plots. This task is facilitated by the R package [`sjPlot`](https://cran.r-project.org/web/packages/sjPlot/sjPlot.pdf) (Lüdecke, 2022). In Bernabeu (2022), the sjPlot function called `plot_model` served as the basis for the creation of some [custom functions](https://github.com/pablobernabeu/language-sensorimotor-simulation-PhD-thesis/tree/main/R_functions). Two of these functions are [`deciles_interaction_plot`](https://github.com/pablobernabeu/language-sensorimotor-simulation-PhD-thesis/blob/main/R_functions/deciles_interaction_plot.R) and [`sextiles_interaction_plot`](https://github.com/pablobernabeu/language-sensorimotor-simulation-PhD-thesis/blob/main/R_functions/sextiles_interaction_plot.R). These functions allow the plotting of interactions between two continuous variables. In the case of `deciles_interaction_plot`, one of the variables is divided into ten bins, known as deciles, and the other variable is unchanged. In the case of `sextiles_interaction_plot`, one of the variables is divided into six bins, or sextiles, and the other variable is unchanged.
+Whereas the direction of main effects can be interpreted from the sign of the estimate, the interpretation of interaction effects often requires plots. This task is facilitated by the R package [`sjPlot`](https://cran.r-project.org/web/packages/sjPlot/sjPlot.pdf) (Lüdecke, 2022). In Bernabeu (2022), the sjPlot function called `plot_model` served as the basis for the creation of some [custom functions](https://github.com/pablobernabeu/language-sensorimotor-simulation-PhD-thesis/tree/main/R_functions). Two of these functions are [`deciles_interaction_plot`](https://github.com/pablobernabeu/language-sensorimotor-simulation-PhD-thesis/blob/main/R_functions/deciles_interaction_plot.R) and [`sextiles_interaction_plot`](https://github.com/pablobernabeu/language-sensorimotor-simulation-PhD-thesis/blob/main/R_functions/sextiles_interaction_plot.R). These functions allow the plotting of interactions between two continuous variables. In the case of `deciles_interaction_plot`, one of the variables is divided into ten bins, known as deciles, and the other variable is unchanged. In the case of `sextiles_interaction_plot`, one of the variables is divided into six bins, or sextiles, and the other variable is unchanged. Sample size per bin can be printed in the legend, which is particularly useful for research involving individual differences. 
 
 Below, we'll use these functions with models fitted using [`lmerTest`](https://cran.r-project.org/web/packages/lmerTest/lmerTest.pdf) (Kuznetsova et al., 2022), although the functions also work with several other models (see [sjPlot manual](https://cran.r-project.org/web/packages/sjPlot/sjPlot.pdf)). The plots can be reproduced using the materials at https://osf.io/gt5uf.
 

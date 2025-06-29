@@ -36,7 +36,7 @@ featured: false
 #   icon_pack: fab
 #   icon: twitter
 
-url_pdf:
+url_fulltext:
 url_code:
 url_data:
 url_poster:

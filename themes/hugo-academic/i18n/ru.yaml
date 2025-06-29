@@ -18,7 +18,7 @@
   translation: 'Схема № %d:'
 - id: btn_preprint
   translation: Предварительная печать
-- id: btn_pdf
+- id: btn_fulltext
   translation: PDF
 - id: btn_cite
   translation: Процитировать
