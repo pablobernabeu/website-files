@@ -9,7 +9,7 @@ active = true  # Activate this widget? true/false
 weight = 150  # Order that this section will appear.
 
 title = "Videos"
-subtitle = "A leading candidate for YouTube's Most Boring Channel.<br><div style = 'position: relative; margin-top: 20px; padding-top: 56.25%;'><iframe src='https://www.youtube-nocookie.com/embed/nh7E1L8Evc8' frameborder='0' allowfullscreen style = 'position:absolute; top:0; left:0; width:95%; height:95%;'></iframe></div>"
+subtitle = "A leading candidate for YouTube's Most Boring Channel.<br><div style = 'position: relative; margin-top: 20px; padding-top: 56.25%;'><iframe src='https://www.youtube-nocookie.com/embed/nh7E1L8Evc8' frameborder='0' allowfullscreen style = 'position:absolute; top:0; left:0; width:87%; height:95%;'></iframe></div>"
 
 [design]
 # Choose how many columns the section has. Valid values: 1 or 2.

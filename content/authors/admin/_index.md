@@ -10,6 +10,8 @@ profileicons:
 - '<span aria-label="OSF" data-toggle="tooltip1" data-placement="bottom" title=" OSF "><a href="https://osf.io/25u3x/"><i style="color:#8AA3CD;" class="social-icon ai ai-osf ai-lg"></i></a></span>'
 - '<span aria-label="ResearchGate" data-toggle="tooltip1" data-placement="bottom" title=" ResearchGate "><a href="https://www.researchgate.net/profile/Pablo-Bernabeu"><i style="color:#8AA3CD;" class="social-icon fab fa-researchgate fa-lg"></i></a></span>'
 - '<span aria-label="Figshare" data-toggle="tooltip1" data-placement="bottom" title=" Figshare "><a href="https://figshare.com/authors/Pablo_Bernabeu/820703"><i style="color:#8AA3CD;" class="social-icon ai ai-figshare ai-lg"></i></a></span>'
+- '<span aria-label="YouTube" data-toggle="tooltip1" data-placement="bottom" title=" YouTube "><a href="https://www.youtube.com/@pablo-bernabeu"><i style="color:#8AA3CD;" class="social-icon fa-brands fa-youtube ai-lg"></i></a></span>'
+- '<span aria-label="Spotify" data-toggle="tooltip1" data-placement="bottom" title=" Spotify "><a href="https://open.spotify.com/show/4QXENVjprdaGkTvOexGvD3?si=5b23e1eb4aef4f08"><i style="color:#8AA3CD;" class="social-icon fa-brands fa-spotify ai-lg"></i></a></span>'
 - '<span aria-label="LinkedIn" data-toggle="tooltip1" data-placement="bottom" title=" LinkedIn "><a href="https://www.linkedin.com/in/pablobernabeu/"><i style="color:#8AA3CD;" class="social-icon fab fa-linkedin-in fa-lg"></i></a></span>'
 interests:
 - Education & digital technologies
