@@ -905,6 +905,11 @@
       function revealOnScroll(elements, delayFactor = 0) {
         const triggerBottom = window.innerHeight / 1.05;
         elements.forEach((el, index) => {
+          // Skip elements that are already visible to avoid re-triggering animations
+          if (el.classList.contains("visible")) {
+            return;
+          }
+          
           const elTop = el.getBoundingClientRect().top;
           // Show elements that are in view or have already passed the trigger point
           if (elTop < triggerBottom) {
@@ -914,10 +919,17 @@
           }
         });
       }
+        });
+      }
 
       function checkAllElementsOnLoad(elements, delayFactor = 0) {
         const triggerBottom = window.innerHeight / 1.05;
         elements.forEach((el, index) => {
+          // Skip elements that are already visible to avoid re-triggering animations
+          if (el.classList.contains("visible")) {
+            return;
+          }
+          
           const elTop = el.getBoundingClientRect().top;
           const elBottom = el.getBoundingClientRect().bottom;
           // Show elements that are currently visible or above the viewport
@@ -926,6 +938,8 @@
               el.classList.add("visible");
             }, index * delayFactor);
           }
+        });
+      }
         });
       }
 
@@ -953,11 +967,26 @@
         }
       }
 
+      // Debounce function to limit how often resize events trigger
+      function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      }
+
       // Bind to scroll
       window.addEventListener("scroll", () => checkElements(false));
 
       // Also trigger on resize and when fragment identifiers change (e.g., #section)
-      window.addEventListener("resize", () => checkElements(true));
+      // Also trigger on resize with debouncing to prevent excessive calls
+      const debouncedResizeCheck = debounce(() => checkElements(true), 150);
+      window.addEventListener("resize", debouncedResizeCheck);
       window.addEventListener("hashchange", () => {
         setTimeout(() => checkElements(true), 100);
       });
