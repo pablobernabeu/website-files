@@ -1148,4 +1148,51 @@
       pre.before(d);
       d.append(pre);
     });
+    
+    
+  // Collapsible content for "Continue reading" links
+
+  // Get the necessary elements from the DOM
+  const wrapper = document.getElementById('collapsible-wrapper');
+  const content = document.getElementById('collapsible-content');
+  const textParagraph = document.getElementById('main-text');
+  const readMoreBtn = document.getElementById('read-more-btn');
+  // Single button toggle approach - no separate showLessBtn needed
+
+  // This will hold our ResizeObserver instance
+  let resizeObserver;
+
+  // --- Main Logic ---
+
+  // Debug logging
+  console.log("Collapsible elements found:");
+  console.log("wrapper:", wrapper);
+  console.log("content:", content);
+  console.log("textParagraph:", textParagraph);
+  console.log("readMoreBtn:", readMoreBtn);
+  if (wrapper && content && textParagraph && readMoreBtn) {
+    
+    // Function to set the container to the full height of the text
+    const setExpandedHeight = () => {
+      // scrollHeight gives us the true height of the content, even when hidden
+      const scrollHeight = content.scrollHeight;
+      content.style.maxHeight = scrollHeight + 'px';
+    };
+
+    // Event listener for the "Continue reading" button
+    readMoreBtn.addEventListener('click', () => {
+      // 1. Immediately set the height to expand the content
+      setExpandedHeight();
+      
+      // 2. Add the 'is-expanded' class to toggle button visibility
+      wrapper.classList.add('is-expanded');
+
+      // 3. Create and attach a ResizeObserver to the PARAGRAPH.
+      //    This watches for size changes (like from a window resize)
+      //    and recalculates the height to prevent cropping.
+      resizeObserver = new ResizeObserver(setExpandedHeight);
+      resizeObserver.observe(textParagraph);
+    });
+  }
+    
 })(jQuery);
