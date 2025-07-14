@@ -70,10 +70,10 @@ links:
 <br>
 
 
-**Related:** [the value of a replication study during PhD](https://doi.org/10.1017/S0140525X18000730).
+**Related:** [the value of a replication study during a PhD](https://doi.org/10.1017/S0140525X18000730).
 
 
-### Related AI-assisted podcast
+### Related AI-enhanced podcast
 
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/32uBJncddvl04ID4WlSkhm?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 

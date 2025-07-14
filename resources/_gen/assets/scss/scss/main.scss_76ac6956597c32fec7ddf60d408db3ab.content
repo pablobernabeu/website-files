@@ -9216,7 +9216,7 @@ p a:hover, ul a:hover, li a:hover, .article-container a:hover, td a:hover, a.dsq
 h3 a:active, div a:active, p a:active, ul a:active, li a:active, .article-container a:active, td a:active, a.dsq-brlink:active {
   color: #24494F; }
 
-p a:link, td a:link, div.grid-sizer > div > a, #top > div.pub > div > div > div.col-md-10 > div > div.col-12.col-md-9 > a, h3 > a, a > code {
+p a:link, td a:link, div.grid-sizer > div > a, #top > div.pub > div > div > div.col-md-10 > div > div.col-12.col-md-9 > a, h3 > a, h4 > a, h5 > a, a > code {
   background-image: linear-gradient(180deg, #ffffe2, #ffffeb, #fffff5, #fffff5, #fffff5, #fffff5, #BAF1B7); }
 
 /* Remove link highlight from general links in home 
@@ -9755,3 +9755,39 @@ pre {
 .cv-btn i {
   color: darkgrey;
   margin-right: 8px; }
+
+/* The content container starts collapsed.
+* Height is calculated for 3 lines (3 * 1.5rem line-height = 4.5rem) */
+.collapsible-text-content {
+  max-height: 4.5rem;
+  overflow: hidden;
+  /* Smooth transition for the max-height property */
+  transition: max-height 0.4s ease-in-out; }
+
+/* --- State-based visibility for buttons --- */
+/* By default, the "Show less" button is hidden */
+.show-less-btn {
+  display: none; }
+
+/* When the wrapper is expanded... */
+.collapsible-text-wrapper.is-expanded .read-more-btn {
+  display: none;
+  /* ...hide the "Continue reading" button */ }
+
+.collapsible-text-wrapper.is-expanded .show-less-btn {
+  display: block;
+  /* ...and show the "Show less" button */ }
+
+/* A utility class to make a button look like a link */
+.link-style-button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #2563eb;
+  /* text-blue-600 */
+  font-weight: 500;
+  /* font-medium */
+  cursor: pointer; }
+
+.link-style-button:hover {
+  text-decoration: underline; }

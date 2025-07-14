@@ -25,7 +25,6 @@ subsections:
 - '<div class = "profile-subsection"><a href = "/#funding-awards" class = "profile-subsection">Funding and awards</a></div>'
 - '<div class = "profile-subsection"><a href = "/#other-work" class = "profile-subsection">Other work</a></div>'
 - '<div class = "profile-subsection"><a href = "/#skills" class = "profile-subsection">Skills</a></div>'
-- '<div class = "profile-subsection"><a href = "/#videos" class = "profile-subsection">Videos</a></div>'
 superuser: true
 user_groups:
 - Researchers
