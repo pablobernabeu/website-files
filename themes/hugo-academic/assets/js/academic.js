@@ -883,94 +883,163 @@
 
   // On scroll and only in desktop view, highlight section headings, tags in articles, bio info (name, title, email, socials), and the tag cloud at the bottom of the site. This work depends on CSS code in custom.scss, and JS code in academic.js.
 
-  if (window.innerWidth > 1000) {
-    document.addEventListener("DOMContentLoaded", function () {
-      const sectionHeading = document.querySelectorAll(
-        "div.col-12.col-lg-4.section-heading"
-      );
-      const sectionHeadingH1 = document.querySelectorAll(
-        "div.col-12.col-lg-4.section-heading > h1"
-      );
-      const articleTags = document.querySelectorAll(
-        "div.article-container.pt-3 > div.btn-links.mb-3 > a:link"
-      );
-      const citationButton = document.querySelectorAll(
-        "div.btn-links.mb-3 > button"
-      );
-      const buttonH3 = document.querySelectorAll("button > h3");
-      const portraitInfo = document.querySelectorAll(".portrait-title > h3");
-      const icons = document.querySelectorAll(".social-icon");
-      const cloudTags = document.querySelectorAll(".tag-cloud > a:link");
+  // Make scroll animations responsive to viewport changes
+  let scrollAnimationsInitialized = false;
+  let scrollEventListeners = [];
 
-      function revealOnScroll(elements, delayFactor = 0) {
-        const triggerBottom = window.innerHeight / 1.05;
-        elements.forEach((el, index) => {
-          const elTop = el.getBoundingClientRect().top;
-          // Show elements that are in view or have already passed the trigger point
-          if (elTop < triggerBottom) {
-            setTimeout(() => {
-              el.classList.add("visible");
-            }, index * delayFactor);
-          }
-        });
-      }
-
-      function checkAllElementsOnLoad(elements, delayFactor = 0) {
-        const triggerBottom = window.innerHeight / 1.05;
-        elements.forEach((el, index) => {
-          const elTop = el.getBoundingClientRect().top;
-          const elBottom = el.getBoundingClientRect().bottom;
-          // Show elements that are currently visible or above the viewport
-          if (elTop < triggerBottom || elBottom < 0) {
-            setTimeout(() => {
-              el.classList.add("visible");
-            }, index * delayFactor);
-          }
-        });
-      }
-
-      function checkElements(isInitialLoad = false) {
-        if (isInitialLoad) {
-          // On initial load or hash change, check all elements including those already above viewport
-          checkAllElementsOnLoad(sectionHeading);
-          checkAllElementsOnLoad(sectionHeadingH1);
-          checkAllElementsOnLoad(articleTags, 5);
-          checkAllElementsOnLoad(citationButton);
-          checkAllElementsOnLoad(buttonH3);
-          checkAllElementsOnLoad(portraitInfo, 30);
-          checkAllElementsOnLoad(icons, 90);
-          checkAllElementsOnLoad(cloudTags);
-        } else {
-          // Regular scroll behavior
-          revealOnScroll(sectionHeading);
-          revealOnScroll(sectionHeadingH1);
-          revealOnScroll(articleTags, 5);
-          revealOnScroll(citationButton);
-          revealOnScroll(buttonH3);
-          revealOnScroll(portraitInfo, 30);
-          revealOnScroll(icons, 90);
-          revealOnScroll(cloudTags);
-        }
-      }
-
-      // Bind to scroll
-      window.addEventListener("scroll", () => checkElements(false));
-
-      // Also trigger on resize and when fragment identifiers change (e.g., #section)
-      window.addEventListener("resize", () => checkElements(true));
-      window.addEventListener("hashchange", () => {
-        setTimeout(() => checkElements(true), 100);
-      });
-
-      // Ensure check runs after all content (e.g., images) is fully loaded
-      window.addEventListener("load", () => {
-        setTimeout(() => checkElements(true), 100);
-      });
-
-      // Initial check on DOM ready
-      checkElements(true);
+  function initializeScrollAnimations() {
+    // Clean up existing event listeners
+    scrollEventListeners.forEach((listener) => {
+      window.removeEventListener(listener.type, listener.handler);
     });
+    scrollEventListeners = [];
+
+    // Initialize scroll animations for desktop view
+    if (window.innerWidth > 1000) {
+      function setupScrollAnimations() {
+        const sectionHeading = document.querySelectorAll(
+          "div.col-12.col-lg-4.section-heading"
+        );
+        const sectionHeadingH1 = document.querySelectorAll(
+          "div.col-12.col-lg-4.section-heading > h1"
+        );
+        const articleTags = document.querySelectorAll(
+          "div.article-container.pt-3 > div.btn-links.mb-3 > a:link"
+        );
+        const citationButton = document.querySelectorAll(
+          "div.btn-links.mb-3 > button"
+        );
+        const buttonH3 = document.querySelectorAll("button > h3");
+        const portraitInfo = document.querySelectorAll(".portrait-title > h3");
+        const icons = document.querySelectorAll(".social-icon");
+        const cloudTags = document.querySelectorAll(".tag-cloud > a:link");
+
+        function revealOnScroll(elements, delayFactor = 0) {
+          const triggerBottom = window.innerHeight / 1.05;
+          elements.forEach((el, index) => {
+            const elTop = el.getBoundingClientRect().top;
+            // Show elements that are in view or have already passed the trigger point
+            if (elTop < triggerBottom) {
+              setTimeout(() => {
+                el.classList.add("visible");
+              }, index * delayFactor);
+            }
+          });
+        }
+
+        function checkAllElementsOnLoad(elements, delayFactor = 0) {
+          const triggerBottom = window.innerHeight / 1.05;
+          elements.forEach((el, index) => {
+            const elTop = el.getBoundingClientRect().top;
+            const elBottom = el.getBoundingClientRect().bottom;
+            // Show elements that are currently visible or above the viewport
+            if (elTop < triggerBottom || elBottom < 0) {
+              setTimeout(() => {
+                el.classList.add("visible");
+              }, index * delayFactor);
+            }
+          });
+        }
+
+        function checkElements(isInitialLoad = false) {
+          if (isInitialLoad) {
+            // On initial load or hash change, check all elements including those already above viewport
+            checkAllElementsOnLoad(sectionHeading);
+            checkAllElementsOnLoad(sectionHeadingH1);
+            checkAllElementsOnLoad(articleTags, 5);
+            checkAllElementsOnLoad(citationButton);
+            checkAllElementsOnLoad(buttonH3);
+            checkAllElementsOnLoad(portraitInfo, 30);
+            checkAllElementsOnLoad(icons, 90);
+            checkAllElementsOnLoad(cloudTags);
+          } else {
+            // Regular scroll behavior
+            revealOnScroll(sectionHeading);
+            revealOnScroll(sectionHeadingH1);
+            revealOnScroll(articleTags, 5);
+            revealOnScroll(citationButton);
+            revealOnScroll(buttonH3);
+            revealOnScroll(portraitInfo, 30);
+            revealOnScroll(icons, 90);
+            revealOnScroll(cloudTags);
+          }
+        }
+
+        // Create event handlers
+        const scrollHandler = () => checkElements(false);
+        const resizeHandler = () => {
+          // When resizing, reinitialize animations
+          setTimeout(() => {
+            initializeScrollAnimations();
+          }, 100);
+        };
+        const hashChangeHandler = () => {
+          setTimeout(() => checkElements(true), 100);
+        };
+        const loadHandler = () => {
+          setTimeout(() => checkElements(true), 100);
+        };
+
+        // Bind to scroll
+        window.addEventListener("scroll", scrollHandler);
+        scrollEventListeners.push({ type: "scroll", handler: scrollHandler });
+
+        // Also trigger on resize and when fragment identifiers change (e.g., #section)
+        window.addEventListener("resize", resizeHandler);
+        scrollEventListeners.push({ type: "resize", handler: resizeHandler });
+
+        window.addEventListener("hashchange", hashChangeHandler);
+        scrollEventListeners.push({
+          type: "hashchange",
+          handler: hashChangeHandler,
+        });
+
+        // Ensure check runs after all content (e.g., images) is fully loaded
+        window.addEventListener("load", loadHandler);
+        scrollEventListeners.push({ type: "load", handler: loadHandler });
+
+        // Initial check - this handles both initial load and resize from mobile to desktop
+        checkElements(true);
+      }
+
+      // Check if DOM is already loaded
+      if (document.readyState === "loading") {
+        // DOM is still loading, wait for it
+        document.addEventListener("DOMContentLoaded", setupScrollAnimations);
+      } else {
+        // DOM is already loaded, run immediately
+        setupScrollAnimations();
+      }
+
+      scrollAnimationsInitialized = true;
+    } else {
+      // For mobile/tablet screens, ensure all elements are visible
+      const allAnimatedElements = document.querySelectorAll(
+        `div.col-12.col-lg-4.section-heading, 
+       div.col-12.col-lg-4.section-heading > h1,
+       div.article-container.pt-3 > div.btn-links.mb-3 > a:link,
+       div.btn-links.mb-3 > button,
+       button > h3,
+       .portrait-title > h3,
+       .social-icon,
+       .tag-cloud > a:link`
+      );
+
+      allAnimatedElements.forEach((el) => {
+        el.classList.add("visible");
+      });
+
+      scrollAnimationsInitialized = false;
+    }
   }
+
+  // Initialize scroll animations on DOM ready
+  document.addEventListener("DOMContentLoaded", initializeScrollAnimations);
+
+  // Re-initialize on window resize to handle mobile/desktop transitions
+  window.addEventListener("resize", () => {
+    setTimeout(initializeScrollAnimations, 100);
+  });
 
   // CARDS FOR IMAGES
 
@@ -1148,51 +1217,80 @@
       pre.before(d);
       d.append(pre);
     });
-    
-    
-  // Collapsible content for "Continue reading" links
 
-  // Get the necessary elements from the DOM
-  const wrapper = document.getElementById('collapsible-wrapper');
-  const content = document.getElementById('collapsible-content');
-  const textParagraph = document.getElementById('main-text');
-  const readMoreBtn = document.getElementById('read-more-btn');
-  // Single button toggle approach - no separate showLessBtn needed
+  // Simple and direct collapsible functionality
+  $(window).on("load", function () {
+    console.log("Window loaded - setting up collapsible...");
 
-  // This will hold our ResizeObserver instance
-  let resizeObserver;
+    // Wait a bit more for everything to be ready
+    setTimeout(function () {
+      // Direct approach - find any button with "Continue reading" text
+      $("button").each(function () {
+        const $btn = $(this);
+        const btnText = $btn.text().trim().toLowerCase();
 
-  // --- Main Logic ---
+        if (btnText.includes("continue") && btnText.includes("reading")) {
+          console.log("Found Continue reading button:", $btn[0]);
 
-  // Debug logging
-  console.log("Collapsible elements found:");
-  console.log("wrapper:", wrapper);
-  console.log("content:", content);
-  console.log("textParagraph:", textParagraph);
-  console.log("readMoreBtn:", readMoreBtn);
-  if (wrapper && content && textParagraph && readMoreBtn) {
-    
-    // Function to set the container to the full height of the text
-    const setExpandedHeight = () => {
-      // scrollHeight gives us the true height of the content, even when hidden
-      const scrollHeight = content.scrollHeight;
-      content.style.maxHeight = scrollHeight + 'px';
-    };
+          // Remove any existing click handlers
+          $btn.off("click");
 
-    // Event listener for the "Continue reading" button
-    readMoreBtn.addEventListener('click', () => {
-      // 1. Immediately set the height to expand the content
-      setExpandedHeight();
-      
-      // 2. Add the 'is-expanded' class to toggle button visibility
-      wrapper.classList.add('is-expanded');
+          // Add our click handler
+          $btn.on("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log("Continue reading clicked via direct method!");
 
-      // 3. Create and attach a ResizeObserver to the PARAGRAPH.
-      //    This watches for size changes (like from a window resize)
-      //    and recalculates the height to prevent cropping.
-      resizeObserver = new ResizeObserver(setExpandedHeight);
-      resizeObserver.observe(textParagraph);
-    });
-  }
-    
+            // Find the content to expand
+            const $wrapper = $btn.closest(
+              "#collapsible-wrapper, .collapsible-text-wrapper"
+            );
+            const $content = $wrapper.find(
+              "#collapsible-content, .collapsible-text-content"
+            );
+
+            if ($content.length) {
+              // Get the natural height
+              const originalMaxHeight = $content.css("max-height");
+              $content.css("max-height", "none");
+              const fullHeight = $content.height();
+              $content.css("max-height", originalMaxHeight);
+
+              // Animate to full height
+              $content.css("max-height", fullHeight + "px");
+              $wrapper.addClass("is-expanded");
+
+              console.log(
+                "Expansion successful! Height set to:",
+                fullHeight + "px"
+              );
+            } else {
+              console.log("Could not find content to expand");
+            }
+          });
+
+          console.log("Click handler attached to Continue reading button");
+        }
+      });
+
+      // Also try the original approach as backup
+      const btn = document.getElementById("read-more-btn");
+      if (btn) {
+        console.log("Found read-more-btn by ID:", btn);
+        btn.onclick = function (e) {
+          e.preventDefault();
+          console.log("read-more-btn clicked via onclick!");
+
+          const wrapper = document.getElementById("collapsible-wrapper");
+          const content = document.getElementById("collapsible-content");
+
+          if (wrapper && content) {
+            content.style.maxHeight = content.scrollHeight + "px";
+            wrapper.classList.add("is-expanded");
+            console.log("Expansion via onclick successful!");
+          }
+        };
+      }
+    }, 2000); // Wait 2 seconds for everything to load
+  });
 })(jQuery);

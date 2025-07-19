@@ -266,6 +266,24 @@ a[href$="/tags/s/"] {
 }
 
 
+// Increase padding under h3 headings
+h3 {
+  padding-bottom: 0.3%;
+}
+
+// Reduce margin between paragraphs
+p {
+  margin-bottom: 2%;
+}
+
+// Reduce padding between list items
+ul > li {
+  margin-bottom: -0.5%;
+}
+
+
+// LINKS
+
 #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.btn-links > a, div.article-container.pt-3 > div.btn-links.mb-3 > a:link, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:link, .btn-links a:link, #top > div.pub > div > a > button:link, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button:link, div.grid-sizer > div > p > button, div.grid-sizer > div > p > a:link, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button, #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.btn-links > button {
   background-image: none;
   color: black; 
@@ -795,7 +813,7 @@ pre {
 /* The content container starts collapsed.
 * Height is calculated for 3 lines (3 * 1.5rem line-height = 4.5rem) */
 .collapsible-text-content {
-  max-height: 4.5rem; 
+  max-height: 4.7rem; 
   overflow: hidden;
   /* Smooth transition for the max-height property */
   transition: max-height 0.4s ease-in-out;
@@ -810,7 +828,16 @@ pre {
 
 /* When the wrapper is expanded... */
 .collapsible-text-wrapper.is-expanded .read-more-btn {
-  display: none; /* ...hide the "Continue reading" button */
+  display: none !important; /* ...hide the "Continue reading" button */
+}
+
+/* More specific selectors to ensure button hiding works */
+#collapsible-wrapper.is-expanded #read-more-btn,
+#collapsible-wrapper.is-expanded .read-more-btn,
+.collapsible-text-wrapper.is-expanded #read-more-btn,
+.collapsible-text-wrapper.is-expanded button.read-more-btn {
+  display: none !important;
+  visibility: hidden !important;
 }
 
 .collapsible-text-wrapper.is-expanded .show-less-btn {
@@ -819,14 +846,61 @@ pre {
 
 /* A utility class to make a button look like a link */
 .link-style-button {
-  background: none;
-  border: none;
-  padding: 0;
-  color: #2563eb; /* text-blue-600 */
-  font-weight: 500; /* font-medium */
-  cursor: pointer;
+  border: none !important;
+  padding: 0 !important;
+  color: #6b7280 !important; /* grey-500 - more subdued grey color */
+  font-weight: 400 !important; /* normal font weight */
+  font-style: italic !important; 
+  cursor: pointer !important;
+  font-size: 0.95rem !important; /* slightly smaller text */
+  transition: color 0.2s ease-in-out !important;
+  display: inline-block !important;
+  margin-top: 0.5rem !important;
 }
 .link-style-button:hover {
-  text-decoration: underline;
+  color: #4b5563 !important; /* darker grey on hover */
+  text-decoration: underline !important;
+  background: none !important;
+}
+
+/* Ensure the read-more button is visible and clickable */
+.read-more-btn {
+  display: inline-block !important;
+  position: relative !important;
+  z-index: 10 !important;
+  pointer-events: auto !important;
+}
+
+/* Very specific selector to override any conflicting styles */
+#read-more-btn.read-more-btn.link-style-button,
+button#read-more-btn,
+#collapsible-wrapper #read-more-btn,
+.collapsible-text-wrapper #read-more-btn {
+  border: none !important;
+  padding: 0 !important;
+  background: none !important;
+  color: #57a292 !important;
+  font-style: italic !important; 
+  font-weight: 400 !important;
+  cursor: pointer !important;
+  font-size: 0.95rem !important;
+  outline: none !important;
+  display: inline-block !important;
+  margin-top: 0.5rem !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+#read-more-btn.read-more-btn.link-style-button:hover,
+button#read-more-btn:hover,
+#collapsible-wrapper #read-more-btn:hover,
+.collapsible-text-wrapper #read-more-btn:hover {
+  color: #4b5563 !important;
+  text-decoration: underline !important;
+  background: none !important;
+  opacity: 1 !important;
+  transform: none !important;
 }
 
