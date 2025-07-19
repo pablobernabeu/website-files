@@ -9128,7 +9128,7 @@ div.mermaid {
   margin-bottom: 1rem; }
 
 @media (min-width: 1000px) {
-  div.col-12.col-lg-4.section-heading, div.col-12.col-lg-4.section-heading > h1, div.article-container.pt-3 > div.btn-links.mb-3 > a:link, div.btn-links.mb-3 > button, button > h3, .portrait-title > h3, .social-icon, .tag-cloud a:link {
+  div.col-12.col-lg-4.section-heading, div.col-12.col-lg-4.section-heading > h1, div.article-container.pt-3 > div.btn-links.mb-3 > a:link, div.btn-links.mb-3 > button, button > h3, .portrait-title > h3, .social-icon, .tag-cloud a:link, #top > div.pub > div > a > button {
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.03s ease-in-out; }
@@ -9145,7 +9145,7 @@ div.mermaid {
       color: #8FABA6; }
     100% {
       color: darkgrey; } }
-  div.article-container.pt-3 > div.btn-links.mb-3 > a:link.visible, button.visible, button > h3.visible, div.btn-links.mb-3 > button {
+  div.article-container.pt-3 > div.btn-links.mb-3 > a:link.visible, button.visible, button > h3.visible, div.btn-links.mb-3 > button.visible, #top > div.pub > div > a > button.visible {
     opacity: 1;
     transform: translateY(0);
     animation: color-transition2 1.5s forwards; }

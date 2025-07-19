@@ -906,6 +906,9 @@
         const articleTags = document.querySelectorAll(
           "div.article-container.pt-3 > div.btn-links.mb-3 > a:link"
         );
+        const fullText = document.querySelectorAll(
+          "#top > div.pub > div > a > button"
+        );
         const citationButton = document.querySelectorAll(
           "div.btn-links.mb-3 > button"
         );
@@ -947,6 +950,7 @@
             checkAllElementsOnLoad(sectionHeading);
             checkAllElementsOnLoad(sectionHeadingH1);
             checkAllElementsOnLoad(articleTags, 5);
+            checkAllElementsOnLoad(fullText);
             checkAllElementsOnLoad(citationButton);
             checkAllElementsOnLoad(buttonH3);
             checkAllElementsOnLoad(portraitInfo, 30);
@@ -957,6 +961,7 @@
             revealOnScroll(sectionHeading);
             revealOnScroll(sectionHeadingH1);
             revealOnScroll(articleTags, 5);
+            revealOnScroll(fullText);
             revealOnScroll(citationButton);
             revealOnScroll(buttonH3);
             revealOnScroll(portraitInfo, 30);
@@ -1018,6 +1023,7 @@
         `div.col-12.col-lg-4.section-heading, 
        div.col-12.col-lg-4.section-heading > h1,
        div.article-container.pt-3 > div.btn-links.mb-3 > a:link,
+       #top > div.pub > div > a > button,
        div.btn-links.mb-3 > button,
        button > h3,
        .portrait-title > h3,
