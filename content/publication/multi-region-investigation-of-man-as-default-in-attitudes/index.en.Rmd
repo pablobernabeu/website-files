@@ -44,8 +44,21 @@ projects: []
 slides: ''
 ---
 
-
 #### &nbsp; <i class="fa fa-file"></i>&nbsp; <a href='https://osf.io/w4q6t'>Read the preregistration</a>
+
+<div style='margin-top:5%;'></div>
+
+##### <a href='https://osf.io/h36wr/'>Video demonstration of the procedure followed in our lab</a>
+
+<iframe src="https://mfr.de-1.osf.io/render?url=https://osf.io/download/h36wr/?direct%26mode=render"
+    width="100%"
+    scrolling="yes"
+    height="394px"
+    marginheight="0"
+    frameborder="0"
+    allowfullscreen
+    webkitallowfullscreen>
+</iframe>
 
 ### Reference
 

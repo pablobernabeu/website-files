@@ -158,12 +158,12 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 
 ### <span style='color:grey; font-size:70%;'>2021 ·</span>&nbsp; [Linguistic and embodied systems in conceptual processing: Variation across individuals and items](/presentation/linguistic-and-embodied-systems-in-conceptual-processing-variation-across-individuals-and-items)
 
-<div style = "margin-top: 20px; margin-left: 20%;">
+<div style = "position: relative; margin-top: 20px;">
 <a href = 'https://www.youtube.com/watch?v=y2bopgYWYvE&ab_channel=LancasterPsychology'>
-<img src = 'https://cdn.pixabay.com/photo/2016/08/20/06/09/video-1606945_960_720.png' width = 50%></a>
+<img src = '/presentation/linguistic-and-embodied-systems-in-conceptual-processing-variation-across-individuals-and-items/img/thumbnail.png'></a>
 </div>
 
-<div style = 'padding-bottom: 7%;'></div>
+<div style = 'padding-bottom: 3.5%;'></div>
 
 ### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; [Reproducibilidad en torno a una aplicación web](/presentation/2020-10-08-reproducibilidad-en-torno-a-una-aplicacion-web)
 
@@ -207,7 +207,7 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
-### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Demonstration of procedure for [PSA experiments](/publication/chen-etal-inprep/)
+### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Demonstration of procedure for PSA experiments [1](/publication/chen-etal-inprep) and [2](/publication/multi-region-investigation-of-man-as-default-in-attitudes)
 
 <iframe src="https://mfr.de-1.osf.io/render?url=https://osf.io/download/h36wr/?direct%26mode=render"
     style="margin-top:10px"
