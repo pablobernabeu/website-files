@@ -65,6 +65,10 @@ education:
     extra3: '\-&nbsp; One-year exchange at University of Barcelona, Spain'
     extra4: '\-&nbsp; Six-month Spanish teaching placement in Kaunas, Lithuania'
   furthercourses:
+  - course: '[Professional integrity](https://staff.admin.ox.ac.uk/working-at-oxford/new-to-the-university/when-you-start#/)'
+    institution: University of Oxford
+    year: 2025
+    extra: \-&nbsp; I completed seven online courses on professional integrity, which is a requirement for all new staff at the University of Oxford. The courses comprise [Anti Bribery and Corruption](/course-certificates/Anti-Bribery-and-Corruption-certificate-for-Pablo-Bernabeu.pdf), [Conflicts of Interest](/course-certificates/Conflicts-of-Interest-certificate-for-Pablo-Bernabeu.pdf), [Equality and Diversity](/course-certificates/Equality-and-Diversity-Briefing-certificate-for-Pablo-Bernabeu.pdf), [Harassment in Higher Education](/course-certificates/Harassment-in-Higher-Education-certificate-for-Pablo-Bernabeu.pdf), [Health and Safety](/course-certificates/Health-and-Safety-Basics-certificate-for-Pablo-Bernabeu.pdf), [Information Security and Data Protection](/course-certificates/Information-Security-and-Data-Protection-certificate-for-Pablo-Bernabeu.pdf), [Research Integrity](/course-certificates/Research-Integrity-certificate-for-Pablo-Bernabeu.pdf).
   - course: '[Advanced R programming](https://www.coursera.org/account/accomplishments/verify/FMNADHCTXZEZ)'
     institution: Johns Hopkins University via Coursera
     year: 2017
