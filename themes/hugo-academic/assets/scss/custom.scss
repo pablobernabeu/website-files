@@ -772,6 +772,20 @@ body.dark .navbar-toggler {
   background-color: #1f2937 !important;
 }
 
+// Make navbar toggler more visible in dark theme
+body.dark .navbar-toggler {
+  color: #94a3b8 !important;
+}
+
+// Additional specific rule for navbar-collapse to ensure dark theme styling
+body.dark .navbar-collapse,
+body.dark .navbar-collapse *,
+body.dark .navbar-collapse .nav-link,
+body.dark .navbar-collapse .navbar-nav .nav-link {
+  color: var(--nav-text) !important;
+  background-color: #1f2937 !important;
+}
+
 // Dark theme navbar toggler icon
 body.dark .navbar-toggler-icon {
   filter: invert(1);

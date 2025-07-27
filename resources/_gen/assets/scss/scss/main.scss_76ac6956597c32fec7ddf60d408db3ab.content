@@ -9702,6 +9702,16 @@ body.dark #navbar-main,
 body.dark .navbar-toggler {
   background-color: #1f2937 !important; }
 
+body.dark .navbar-toggler {
+  color: #94a3b8 !important; }
+
+body.dark .navbar-collapse,
+body.dark .navbar-collapse *,
+body.dark .navbar-collapse .nav-link,
+body.dark .navbar-collapse .navbar-nav .nav-link {
+  color: var(--nav-text) !important;
+  background-color: #1f2937 !important; }
+
 body.dark .navbar-toggler-icon {
   filter: invert(1); }
 
