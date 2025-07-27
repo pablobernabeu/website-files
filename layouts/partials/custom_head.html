@@ -1,0 +1,45 @@
+{{/* Custom head additions */}} {{/* Prevent white flash on dark theme load */}}
+<script>
+  (function () {
+    "use strict";
+
+    // Get saved theme preference or default to auto
+    function getThemeMode() {
+      return parseInt(localStorage.getItem("dark_mode") || 2);
+    }
+
+    function shouldUseDarkTheme() {
+      let currentThemeMode = getThemeMode();
+      switch (currentThemeMode) {
+        case 0:
+          return false; // Light mode
+        case 1:
+          return true; // Dark mode
+        default:
+          // Auto mode - only apply if user has explicitly chosen auto mode
+          // Otherwise, default to light theme for new visitors
+          if (localStorage.getItem("dark_mode") === null) {
+            return false; // No preference saved, use light theme by default
+          }
+          return (
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+          );
+      }
+    }
+
+    // Apply theme immediately before page renders
+    if (shouldUseDarkTheme()) {
+      document.documentElement.style.backgroundColor = "#0f172a";
+      document.documentElement.style.color = "#e2e8f0";
+    }
+  })();
+</script>
+
+<style>
+  /* Ensure smooth transitions */
+  html,
+  body {
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+</style>

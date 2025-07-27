@@ -2,6 +2,593 @@
 
 // Override this file to add your own SCSS styling.
 
+// Prevent white flash on dark theme load
+html {
+  // Immediate dark theme application (used by theme-init.js)
+  &.dark-theme-loading {
+    background-color: #0f172a !important;
+    color: #e2e8f0 !important;
+    
+    body {
+      background-color: #0f172a !important;
+      color: #e2e8f0 !important;
+    }
+  }
+}
+
+// Smooth transition for theme switching
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+// Ensure immediate dark theme application only when dark class is present
+body.dark {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+// CSS Custom Properties for Light/Dark Theme Support
+:root {
+  // Light theme colors (default)
+  --text-primary: #00032F;
+  --text-secondary: darkgrey;
+  --text-tertiary: #4F6C89;
+  --text-quaternary: #24494F;
+  --text-visited: purple;
+  --text-hover: black;
+  --text-active: #24494F;
+  
+  // Navigation colors
+  --nav-text: darkgrey;
+  --nav-hover: #31A290;
+  --nav-active: #39A290;
+  --nav-link: #79A990;
+  
+  // Background colors
+  --bg-highlight: #EAFFE8;
+  --bg-button: #F8F8F8;
+  --bg-button-secondary: #F7F7F7;
+  --bg-button-hover: #E6FFE3;
+  --bg-tag: #F3F3F3;
+  --bg-tag-visited: #F7F1FF;
+  --bg-tag-hover: #E6FFE3;
+  --bg-profile-gradient: #E6FFE3;
+  --bg-warning: #F6F7E4;
+  --bg-script-container: white;
+  --bg-full-text: white;
+  --bg-full-text-hover: #f0fdf4;
+  --bg-cv: #fff7ec;
+  --bg-cv-hover: #f0e6d2;
+  
+  // Border colors
+  --border-color: lightgrey;
+  --border-warning: #6B6F0F;
+  --border-full-text: #4CAF50;
+  --border-full-text-hover: #388e3c;
+  --border-cv: #196F27;
+  --border-cv-hover: #145a20;
+  
+  // Accent colors
+  --accent-primary: #379E8A;
+  --accent-secondary: #57a292;
+  --accent-tertiary: #8AA3CD;
+  --accent-quaternary: #96666f;
+  --accent-visited-categories: #9E84B0;
+  
+  // Special backgrounds and gradients
+  --gradient-light: linear-gradient(180deg, #ffffe2, #ffffeb, #fffff5, #fffff5, #fffff5, #fffff5, #BAF1B7);
+  --gradient-section-border: linear-gradient(to right, #BADDD5, #BADDD5, #EAF7F3, #F2FBF8);
+  --gradient-script: linear-gradient(135deg, #d7e3e0);
+  --gradient-script-hover: linear-gradient(135deg, #d3f3e9, #a9e3c9);
+  
+  // Animation colors
+  --anim-start: aquamarine;
+  --anim-mid: #088F8F;
+  --anim-end-1: #8FABA6;
+  --anim-end-2: #8AA3CD;
+  --anim-end-3: #96666f;
+  
+  // Utility colors
+  --color-red: red;
+  --color-white: white;
+  --color-black: black;
+  --text-warning: #4A4D10;
+  --related-references: #787878;
+  --scrollbar-thumb: #57a292;
+  --scrollbar-track: #edf5f4;
+}
+
+// Dark theme color overrides
+body.dark {
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-tertiary: #a0b3cc;
+  --text-quaternary: #cbd5e1;
+  --text-visited: #d8b4fe;
+  --text-hover: #f1f5f9;
+  --text-active: #cbd5e1;
+  
+  // Navigation colors for dark theme
+  --nav-text: #94a3b8;
+  --nav-hover: #22d3ee;
+  --nav-active: #06b6d4;
+  --nav-link: #67e8f9;
+  
+  // Background colors for dark theme
+  --bg-highlight: rgba(72, 187, 120, 0.2);
+  --bg-button: #374151;
+  --bg-button-secondary: #4b5563;
+  --bg-button-hover: rgba(72, 187, 120, 0.3);
+  --bg-tag: #374151;
+  --bg-tag-visited: #4c1d95;
+  --bg-tag-hover: rgba(72, 187, 120, 0.25);
+  --bg-profile-gradient: rgba(72, 187, 120, 0.2);
+  --bg-warning: #422006;
+  --bg-script-container: #1f2937;
+  --bg-full-text: #374151;
+  --bg-full-text-hover: rgba(72, 187, 120, 0.15);
+  --bg-cv: #422006;
+  --bg-cv-hover: #451a03;
+  
+  // Border colors for dark theme
+  --border-color: #4b5563;
+  --border-warning: #a16207;
+  --border-full-text: #22c55e;
+  --border-full-text-hover: #16a34a;
+  --border-cv: #22c55e;
+  --border-cv-hover: #16a34a;
+  
+  // Accent colors for dark theme
+  --accent-primary: #22d3ee;
+  --accent-secondary: #06b6d4;
+  --accent-tertiary: #60a5fa;
+  --accent-quaternary: #f472b6;
+  --accent-visited-categories: #c084fc;
+  
+  // Special backgrounds and gradients for dark theme
+  --gradient-light: linear-gradient(180deg, rgba(72, 187, 120, 0.12), rgba(72, 187, 120, 0.08), rgba(72, 187, 120, 0.05));
+  --gradient-section-border: linear-gradient(to right, #374151, #4b5563, #6b7280);
+  --gradient-script: linear-gradient(135deg, #374151);
+  --gradient-script-hover: linear-gradient(135deg, rgba(72, 187, 120, 0.25), rgba(72, 187, 120, 0.15));
+  
+  // Animation colors for dark theme (elegant aquamarine to dark red)
+  --anim-start: #7dd3fc;
+  --anim-mid: #0891b2;
+  --anim-end-1: #0e7490;
+  --anim-end-2: #60a5fa;
+  --anim-end-3: #8b5a3c;
+  
+  // Utility colors for dark theme
+  --color-red: #ef4444;
+  --color-white: #1f2937;
+  --color-black: #f8fafc;
+  --text-warning: #fbbf24;
+  --related-references: #94a3b8;
+  --scrollbar-thumb: #06b6d4;
+  --scrollbar-track: #374151;
+}
+
+// General dark theme color overrides for custom colors and classes
+body.dark {
+  // Override common custom colors used in content
+  * {
+    // Override specific hex colors commonly used for TEXT
+    &[style*="#665F5F"], &[style*="#665f5f"] {
+      color: #94a3b8 !important;
+    }
+    &[style*="#333"], &[style*="#333333"] {
+      color: #cbd5e1 !important;
+    }
+    &[style*="#666"], &[style*="#666666"] {
+      color: #94a3b8 !important;
+    }
+    &[style*="#000"], &[style*="#000000"] {
+      color: #f1f5f9 !important;
+    }
+    &[style*="color: black"] {
+      color: #f1f5f9 !important;
+    }
+    &[style*="color: grey"], &[style*="color: gray"] {
+      color: #94a3b8 !important;
+    }
+    &[style*="color: darkgrey"], &[style*="color: darkgray"] {
+      color: #64748b !important;
+    }
+    
+    // Override BACKGROUND colors for nesting elements
+    &[style*="background-color: white"], &[style*="background-color: #ffffff"], &[style*="background-color: #fff"], &[style*="background: white"], &[style*="background: #ffffff"], &[style*="background: #fff"] {
+      background-color: #1f2937 !important;
+    }
+    &[style*="background-color: #f"], &[style*="background: #f"] {
+      background-color: #374151 !important;
+    }
+    &[style*="background-color: #e"], &[style*="background: #e"] {
+      background-color: #4b5563 !important;
+    }
+    &[style*="background-color: #d"], &[style*="background: #d"] {
+      background-color: #6b7280 !important;
+    }
+    &[style*="background-color: lightgray"], &[style*="background-color: lightgrey"], &[style*="background: lightgray"], &[style*="background: lightgrey"] {
+      background-color: #4b5563 !important;
+    }
+    &[style*="background-color: gray"], &[style*="background-color: grey"], &[style*="background: gray"], &[style*="background: grey"] {
+      background-color: #6b7280 !important;
+    }
+    
+    // Override common light background colors
+    &[style*="background-color: #F8F8F8"], &[style*="background: #F8F8F8"] {
+      background-color: #374151 !important;
+    }
+    &[style*="background-color: #F0F0F0"], &[style*="background: #F0F0F0"] {
+      background-color: #4b5563 !important;
+    }
+    &[style*="background-color: #EEEEEE"], &[style*="background: #EEEEEE"] {
+      background-color: #4b5563 !important;
+    }
+    &[style*="background-color: #E0E0E0"], &[style*="background: #E0E0E0"] {
+      background-color: #6b7280 !important;
+    }
+    
+    // Override border colors for nesting elements
+    &[style*="border-color: #"], &[style*="border: 1px solid #"] {
+      border-color: #6b7280 !important;
+    }
+    &[style*="border-color: lightgray"], &[style*="border-color: lightgrey"] {
+      border-color: #6b7280 !important;
+    }
+  }
+  
+  // Specific class overrides
+  .course {
+    color: #cbd5e1 !important;
+  }
+  
+  .institution {
+    color: #94a3b8 !important;
+  }
+  
+  // Override any remaining dark colors
+  [class*="text-dark"], .text-dark {
+    color: #f1f5f9 !important;
+  }
+  
+  [class*="text-black"], .text-black {
+    color: #f1f5f9 !important;
+  }
+  
+  [class*="text-grey"], .text-grey, [class*="text-gray"], .text-gray {
+    color: #94a3b8 !important;
+  }
+  
+  // Override background classes for nesting elements
+  [class*="bg-white"], .bg-white {
+    background-color: #1f2937 !important;
+  }
+  
+  [class*="bg-light"], .bg-light {
+    background-color: #374151 !important;
+  }
+  
+  [class*="bg-gray"], .bg-gray, [class*="bg-grey"], .bg-grey {
+    background-color: #4b5563 !important;
+  }
+  
+  // Common Bootstrap and utility classes
+  .card {
+    background-color: #374151 !important;
+    border-color: #6b7280 !important;
+  }
+  
+  .table {
+    background-color: #1f2937 !important;
+    color: #e2e8f0 !important;
+  }
+  
+  .table td, .table th {
+    border-color: #6b7280 !important;
+  }
+  
+  // Override any remaining problematic backgrounds
+  div[style*="background"], span[style*="background"], p[style*="background"] {
+    // Only override if it contains light colors
+    &[style*="#f"], &[style*="#e"], &[style*="#d"], &[style*="white"] {
+      background-color: #374151 !important;
+    }
+  }
+  
+  // Smart link color adaptation based on parent background
+  // For dark backgrounds (now converted), use light links
+  [style*="background-color: #1"], [style*="background-color: #2"], [style*="background-color: #3"], [style*="background-color: #4"],
+  [style*="background: #1"], [style*="background: #2"], [style*="background: #3"], [style*="background: #4"],
+  .bg-dark a, .bg-primary a, .bg-secondary a, .alert-dark a, [class*="bg-dark"] a,
+  .card a, .table a {
+    color: #bfdbfe !important;
+    
+    &:hover {
+      color: #dbeafe !important;
+      background-color: rgba(59, 130, 246, 0.2) !important;
+    }
+    
+    &:visited {
+      color: #c7d2fe !important;
+    }
+  }
+  
+  // For elements that still have light backgrounds (edge cases), use darker links  
+  [style*="background-color: #f"], 
+  [style*="background-color: #e"],
+  [style*="background: #f"],
+  [style*="background: #e"] {
+    // Only apply if the background wasn't already converted
+    &:not([style*="background-color: #374151"]):not([style*="background-color: #4b5563"]) {
+      a {
+        color: #1e40af !important;
+        
+        &:hover {
+          color: #1d4ed8 !important;
+          background-color: rgba(59, 130, 246, 0.1) !important;
+        }
+        
+        &:visited {
+          color: #6366f1 !important;
+        }
+      }
+    }
+  }
+  
+  // For colored alert boxes and special containers
+  .alert a,
+  .card a,
+  .badge a,
+  [class*="bg-"] a:not([class*="bg-transparent"]) {
+    // High contrast links for any colored background
+    color: #bfdbfe !important;
+    text-decoration: underline;
+    
+    &:hover {
+      color: #dbeafe !important;
+      opacity: 0.9;
+      text-decoration: none;
+    }
+    
+    &:visited {
+      color: #c7d2fe !important;
+    }
+  }
+  
+  // Additional conversions for common problematic elements
+  // Code blocks and pre elements
+  code, pre {
+    background-color: #1e293b !important;
+    color: #e2e8f0 !important;
+    border-color: #6b7280 !important;
+  }
+  
+  // Blockquotes and quotes
+  blockquote {
+    background-color: #374151 !important;
+    border-left-color: #6b7280 !important;
+    color: #e2e8f0 !important;
+  }
+  
+  // Form elements
+  input, textarea, select {
+    background-color: #374151 !important;
+    color: #e2e8f0 !important;
+    border-color: #6b7280 !important;
+  }
+  
+  // Bootstrap Alert components
+  .alert {
+    background-color: #374151 !important;
+    color: #e2e8f0 !important;
+    border-color: #6b7280 !important;
+  }
+  
+  .alert-success {
+    background-color: #065f46 !important;
+    color: #d1fae5 !important;
+    border-color: #10b981 !important;
+  }
+  
+  .alert-info {
+    background-color: #1e3a8a !important;
+    color: #dbeafe !important;
+    border-color: #3b82f6 !important;
+  }
+  
+  .alert-warning {
+    background-color: #92400e !important;
+    color: #fef3c7 !important;
+    border-color: #f59e0b !important;
+  }
+  
+  .alert-danger {
+    background-color: #991b1b !important;
+    color: #fecaca !important;
+    border-color: #ef4444 !important;
+  }
+  
+  .alert-light {
+    background-color: #374151 !important;
+    color: #e2e8f0 !important;
+    border-color: #6b7280 !important;
+  }
+  
+  .alert-dark {
+    background-color: #1f2937 !important;
+    color: #f3f4f6 !important;
+    border-color: #4b5563 !important;
+  }
+  
+  // Alert links should be properly styled
+  .alert a, .alert .alert-link {
+    color: inherit !important;
+    text-decoration: underline !important;
+    font-weight: bold !important;
+    
+    &:hover {
+      opacity: 0.8 !important;
+      text-decoration: none !important;
+    }
+  }
+  
+  // Any remaining light-colored divs or spans with text
+  div, span, p {
+    // Override if they have inline styles with light backgrounds
+    &[style*="background-color: #F"] {
+      background-color: #374151 !important;
+    }
+    &[style*="background-color: #E"] {
+      background-color: #4b5563 !important;
+    }
+    &[style*="background-color: #D"] {
+      background-color: #6b7280 !important;
+    }
+  }
+  
+  // Enhanced link visibility for dark theme with green underlines
+  // Only apply to content areas, exclude navigation, buttons, and UI elements
+  .article-container p a:link, 
+  .article-container ul a:link, 
+  .article-container li a:link, 
+  .article-container div a:link:not(.btn):not(.badge), 
+  .article-container td a:link, 
+  .article-style a:link,
+  .pub-abstract a:link,
+  .hanging-indent a:link,
+  .related-references a:link,
+  main p a:link,
+  main ul a:link,
+  main li a:link,
+  main div a:link:not(.btn):not(.badge),
+  section p a:link,
+  section ul a:link, 
+  section li a:link,
+  section div a:link:not(.btn):not(.badge),
+  a.dsq-brlink {
+    text-decoration: underline;
+    text-decoration-color: #bbf7d0;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+
+  .article-container h3 a:visited, 
+  .article-container div a:visited:not(.btn):not(.badge), 
+  .article-container p a:visited, 
+  .article-container ul a:visited, 
+  .article-container li a:visited, 
+  .article-container td a:visited, 
+  .article-style a:visited,
+  .pub-abstract a:visited,
+  .hanging-indent a:visited,
+  .related-references a:visited,
+  main p a:visited,
+  main ul a:visited,
+  main li a:visited,
+  main div a:visited:not(.btn):not(.badge),
+  section p a:visited,
+  section ul a:visited, 
+  section li a:visited,
+  section div a:visited:not(.btn):not(.badge),
+  a.dsq-brlink:visited, 
+  a:visited > code {
+    text-decoration: underline;
+    text-decoration-color: #bbf7d0;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+
+  .article-container p a:hover, 
+  .article-container ul a:hover, 
+  .article-container li a:hover, 
+  .article-container div a:hover:not(.btn):not(.badge), 
+  .article-container td a:hover, 
+  .article-style a:hover,
+  .pub-abstract a:hover,
+  .hanging-indent a:hover,
+  .related-references a:hover,
+  main p a:hover,
+  main ul a:hover,
+  main li a:hover,
+  main div a:hover:not(.btn):not(.badge),
+  section p a:hover,
+  section ul a:hover, 
+  section li a:hover,
+  section div a:hover:not(.btn):not(.badge),
+  a.dsq-brlink:hover, 
+  .article-container h3 > a:hover, 
+  a:hover > code {
+    text-decoration: underline;
+    text-decoration-color: #22c55e;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+  }
+
+  // Content area headings - remove green underlines since they're now excluded above
+  // (These were previously styled but are now explicitly excluded)
+
+  // Category links removed from green underlining - now handled by exclusion rules above
+
+  // Tag cloud links only in content areas (like at bottom of site)
+  .tag-cloud > a:hover {
+    text-decoration: underline;
+    text-decoration-color: #22c55e;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+  }
+
+  // Explicitly remove green underlines from navigation, buttons, and UI elements
+  .navbar a, 
+  .nav a, 
+  .btn, 
+  .badge,
+  .btn-links a,
+  .navbar-nav a,
+  #navbar-main a,
+  #navbar-content a,
+  .section-heading a,
+  .portrait-title a,
+  .social-icon a,
+  .btn-outline-primary,
+  button,
+  .js-dark-toggle a,
+  h2 a,
+  h3 a,
+  h4 a,
+  .cv-btn,
+  .cv-btn a,
+  .article-categories a {
+    text-decoration: none !important;
+    text-decoration-color: transparent !important;
+  }
+
+  // Remove green underlines from button hover states too
+  .navbar a:hover, 
+  .nav a:hover, 
+  .btn:hover, 
+  .badge:hover,
+  .btn-links a:hover,
+  .navbar-nav a:hover,
+  #navbar-main a:hover,
+  #navbar-content a:hover,
+  .section-heading a:hover,
+  .portrait-title a:hover,
+  .social-icon a:hover,
+  .btn-outline-primary:hover,
+  button:hover,
+  .js-dark-toggle a:hover,
+  h2 a:hover,
+  h3 a:hover,
+  h4 a:hover,
+  .cv-btn:hover,
+  .cv-btn a:hover,
+  .article-categories a:hover {
+    text-decoration: none !important;
+    text-decoration-color: transparent !important;
+  }
+}
+
 
 // On scroll and only in desktop view, highlight section headings, tags in articles, bio info (name, title, email, socials), and the tag cloud at the bottom of the site. This work depends on CSS code in custom.scss, and JS code in academic.js.
 
@@ -22,16 +609,16 @@
   
   @keyframes color-transition1 {
     0% {
-      color: aquamarine;
+      color: var(--anim-start);
     }
     33% {
-      color: #088F8F;
+      color: var(--anim-mid);
     }
     66% {
-      color: #8FABA6;
+      color: var(--anim-end-1);
     }
     100% {
-      color: darkgrey;
+      color: var(--text-secondary);
     }
   }
   
@@ -44,13 +631,13 @@
   
   @keyframes color-transition2 {
     0% {
-      color: aquamarine;
+      color: var(--anim-start);
     }
     50% {
-      color: #088F8F;
+      color: var(--anim-mid);
     }
     100% {
-      color: black;
+      color: var(--text-hover);
     }
   }
   
@@ -63,13 +650,13 @@
   
   @keyframes color-transition3 {
     0% {
-      color: aquamarine;
+      color: var(--anim-start);
     }
     50% {
-      color: #088F8F;
+      color: var(--anim-mid);
     }
     100% {
-      color: #8AA3CD;
+      color: var(--accent-tertiary);
     }
   }
   
@@ -82,13 +669,13 @@
   
   @keyframes color-transition4 {
     0% {
-      color: aquamarine;
+      color: var(--anim-start);
     }
     50% {
-      color: #088F8F;
+      color: var(--anim-mid);
     }
     100% {
-      color: #96666f;
+      color: var(--accent-quaternary);
     }
   }
 
@@ -102,17 +689,17 @@
 }
 
 #profile > div:nth-child(5) > div > ul > div> div > a:link, #profile > div:nth-child(5) > div > ul > div> div > a:visited {
-  color: darkgrey;
+  color: var(--text-secondary);
   background-color: transparent;
   display: block;
   padding-left: 0.5em;
   padding-right: 0.5em;
-  background: linear-gradient(#E6FFE3 0 0) var(--p, 0) / var(--p, 0) no-repeat;
+  background: linear-gradient(var(--bg-profile-gradient) 0 0) var(--p, 0) / var(--p, 0) no-repeat;
   transition: 0.4s, background-position 0s;
 }
 
 #profile > div:nth-child(5) > div > ul > div> div > a:hover {
-  color: black;
+  color: var(--text-hover);
 }
 
 .profile-subsection:hover {
@@ -121,36 +708,36 @@
 
 // Interests
 #profile > div:nth-child(4) > div {
-  color: darkgrey;
+  color: var(--text-secondary);
 }
 
 // unvisited link
 p a:link, ul a:link, li a:link, .article-container a:link, td a:link, a.dsq-brlink, div.grid-sizer > div > a {
-  color: #00032F; 
+  color: var(--text-primary);
 }
 
 // visited link
 h3 a:visited, div a:visited, p a:visited, ul a:visited, li a:visited, .article-container a:visited, td a:visited, a.dsq-brlink:visited, div.grid-sizer > div > a:visited, a:visited > code {
-  color: purple; 
+  color: var(--text-visited); 
   background-color: transparent;
 }
 
 // mouse over link
-p a:hover, ul a:hover, li a:hover, .article-container a:hover, td a:hover, a.dsq-brlink:hover, div.grid-sizer > div > a:hover, , #top > div.pub > div > div > div.col-md-10 > div > div.col-12.col-md-9 > a:hover, h3 > a:hover, #top a:hover, a:hover > code {
+p a:hover, ul a:hover, li a:hover, .article-container a:hover, td a:hover, a.dsq-brlink:hover, div.grid-sizer > div > a:hover, #top > div.pub > div > div > div.col-md-10 > div > div.col-12.col-md-9 > a:hover, h3 > a:hover, #top a:hover, a:hover > code {
   background-image: none; // necessary to override `p a:link` property
-  color: black;
-  background-color: #EAFFE8;
+  color: var(--text-hover);
+  background-color: var(--bg-highlight);
   text-decoration: none;
 }
 
 // active link
 h3 a:active, div a:active, p a:active, ul a:active, li a:active, .article-container a:active, td a:active, a.dsq-brlink:active {
-  color: #24494F; 
+  color: var(--text-active); 
 }
 
 // background colour for links
 p a:link, td a:link, div.grid-sizer > div > a, #top > div.pub > div > div > div.col-md-10 > div > div.col-12.col-md-9 > a, h3 > a, h4 > a, h5 > a, a > code {
-  background-image: linear-gradient(180deg, #ffffe2, #ffffeb, #fffff5, #fffff5, #fffff5, #fffff5, #BAF1B7);
+  background-image: var(--gradient-light);
 }
 
 /* Remove link highlight from general links in home 
@@ -158,34 +745,66 @@ and from bio portrait information. */
 
 // Navigation bar
 
+// Light theme navbar background
+.navbar {
+  background-color: var(--color-white) !important;
+  border-bottom: 1px solid var(--border-color);
+}
+
+// Dark theme navbar background
+body.dark .navbar {
+  background-color: #1f2937 !important;
+  border-bottom: 1px solid #4b5563;
+}
+
+// Dark theme navbar brand and text
+body.dark .navbar-brand,
+body.dark .navbar-nav .nav-link,
+body.dark #navbar-main,
+body.dark #navbar-content,
+body.dark .navbar-collapse {
+  color: var(--nav-text) !important;
+}
+
+// Ensure navbar elements have proper dark background
+body.dark #navbar-main,
+body.dark .navbar-toggler {
+  background-color: #1f2937 !important;
+}
+
+// Dark theme navbar toggler icon
+body.dark .navbar-toggler-icon {
+  filter: invert(1);
+}
+
 #navbar-main > div > div.d-none.d-lg-inline-flex > a, #navbar-content > ul > li > a, #navbar-main > div > div.navbar-brand-mobile-wrapper.d-inline-flex.d-lg-none > a {
-  color: darkgrey;
+  color: var(--nav-text);
 }
 
 #navbar-main > div > div.d-none.d-lg-inline-flex > a:hover, #navbar-content > ul > li > a:hover, #navbar-main > div > div.navbar-brand-mobile-wrapper.d-inline-flex.d-lg-none > a:hover {
-  color: #31A290;
+  color: var(--nav-hover);
 }
 
 div.col-12.col-lg-4.section-heading > h1, #navbar-content > ul > li > a {
-  color: darkgrey;
+  color: var(--text-secondary);
 }
 
 .nav-link.active span {
-  color: #39A290;
+  color: var(--nav-active);
 }
 
 #navbar-main a:link {
-  color: #79A990;
+  color: var(--nav-link);
   background-color: transparent;
 }
 
 #navbar-content > ul > li > a:hover > span {
-  color: #31A290;
+  color: var(--nav-hover);
   font-weight: bold;
 }
 
 #navbar-main > div > ul a:link {
-  color: darkgrey;
+  color: var(--text-secondary);
 }
 
 #top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories > a, #profile > div > div > ul > div > a:link, #top > article > div.article-container.pt-3 > div.article-metadata > span.article-categories > a:link, code {
@@ -198,33 +817,33 @@ div.col-12.col-lg-4.section-heading > h1, #navbar-content > ul > li > a {
 
 // unvisited link
 h3 a:link {
-  color: #4F6C89; 
+  color: var(--text-tertiary);
 }
 
 // active link
 
 h3 a:hover, div a:hover {
-  color: #24494F; 
+  color: var(--text-quaternary); 
 }
 
 // category links
 .article-categories a:link {
-  color: darkgrey; 
+  color: var(--text-secondary);
 }
 
 // visited category and tag cloud links
 .article-categories a:visited, .tag-cloud > a:visited {
-  color: #9E84B0 !important;
+  color: var(--accent-visited-categories) !important;
 }
 
 // hovered category links
 .article-categories a:hover {
-  color: #24494F !important;
+  color: var(--text-quaternary) !important;
 }
 
 // hovered tag cloud links
 .tag-cloud > a:hover {
-  color: #24494F !important;
+  color: var(--text-quaternary) !important;
   text-decoration: none;
 }
 
@@ -282,67 +901,93 @@ ul > li {
 }
 
 
+// STICKY TABLE HEADERS - DISABLED
+
+// Sticky table headers disabled due to layout conflicts
+// Uncomment and adjust if needed in the future
+/*
+table th, table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--color-white);
+  border-bottom: 2px solid var(--border-color);
+}
+
+body.dark table th, body.dark table thead th {
+  background-color: #1f2937;
+  border-bottom-color: #6b7280;
+}
+
+@media (min-width: 1000px) {
+  table th, table thead th {
+    top: 70px;
+  }
+}
+*/
+
+
 // LINKS
 
 #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.btn-links > a, div.article-container.pt-3 > div.btn-links.mb-3 > a:link, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:link, .btn-links a:link, #top > div.pub > div > a > button:link, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button:link, div.grid-sizer > div > p > button, div.grid-sizer > div > p > a:link, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button, #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.btn-links > button {
   background-image: none;
-  color: black; 
-  background-color: #F8F8F8 !important;
-  border-color: lightgrey;
+  color: var(--text-hover); 
+  background-color: var(--bg-button) !important;
+  border-color: var(--border-color);
 }
 
-div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:visited, .btn-links a:visited, #top > div.pub > div > a > button:visited, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button:visited, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button:visited, div.grid-sizer > div > p > button:visited, div.grid-sizer > div > p > a:visited, , #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.btn-links > button:visited {
+div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:visited, .btn-links a:visited, #top > div.pub > div > a > button:visited, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button:visited, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button:visited, div.grid-sizer > div > p > button:visited, div.grid-sizer > div > p > a:visited, #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.btn-links > button:visited {
   background-image: none;
-  color: purple; 
+  color: var(--text-visited);
   font-weight: bold;
-  background-color: #F7F7F7;
-  border-color: purple;
+  background-color: var(--bg-button-secondary);
+  border-color: var(--text-visited);
 }
 
 #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.btn-links > a:hover, div.article-container.pt-3 > div.btn-links.mb-3 > a:hover, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > a:hover, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:hover, .btn-links a:hover, div.grid-sizer > div > p > button:hover, div.grid-sizer > div > p > a:hover, div.media-body > h3 > a:hover, #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.btn-links > button:hover, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button:hover {
   background-image: none;
-  color: black; 
+  color: var(--text-hover); 
   font-weight: bold;
-  background-color: #E6FFE3 !important;
-  border-color: lightgrey;
+  background-color: var(--bg-button-hover) !important;
+  border-color: var(--border-color);
 }
 
 // unvisited tag and category links
 #top > div.pub > div > div.article-tags > a:link, #top > article > div > div.article-tags > a:link, .article-tags a:link {
-  color: black;
-  background-color: #F3F3F3;
+  color: var(--text-hover);
+  background-color: var(--bg-tag);
 }
 
 // visited tag and category links
 #top > div.pub > div > div.article-tags > a:visited, #top > article > div > div.article-tags > a:visited, .article-tags a:visited {
-  color: black;
-  background-color: #F7F1FF;
+  color: var(--text-hover);
+  background-color: var(--bg-tag-visited);
 }
 
 // hovered tag and category links
 #top > div.pub > div > div.article-tags > a:hover, #top > article > div > div.article-tags > a:hover, .article-tags a:hover {
-  color: black;
-  background-color: #E6FFE3;
+  color: var(--text-hover);
+  background-color: var(--bg-tag-hover);
 }
 
 
 // Social icons on the left-hand side of the bio section
 #profile > div > div > span > span > a > i:hover {
-  color: #379E8A !important;
+  color: var(--accent-primary) !important;
   background-color: transparent;
   background-image: none;
 }
 
 // Icons on the body of the bio section
 #bio > div > div > div.col-12.col-lg-8 > div > div > ul > li > i {
-  color: lightgrey;
+  color: var(--border-color);
   background-color: transparent;
   background-image: none;
 }
 
 // Folder icon for categories
 span.article-categories > i {
-  color: lightgrey;
+  color: var(--border-color);
   background-color: transparent;
   background-image: none;
 }
@@ -355,19 +1000,19 @@ i, #fn1 > p > a.footnote-back {
 }
 
 div.col-12.col-lg-4.section-heading > h1 > span > a > i {
-  color: lightgrey;
+  color: var(--border-color);
   background-image: none;
 }
 
 a > i:hover, #profile > div > div > span > span > a:hover, #navbar-main > div > button > span > i:hover, :is(#navbar-main, #publication, #applications-and-dashboards, #blog) :is(a:has(i), i:hover, button:hover), #navbar-main > div > button:hover, #navbar-main > div > button > span:hover {
-  color: #379E8A;
+  color: var(--accent-primary);
   background-color: transparent !important;
   background-image: none !important;
 }
 
 // Buttons, full text buttons, dashboard/application button
 button:hover, #top > div.pub > div > a > button:hover, #top > div.pub > div > div.article-style > a > button:hover, #top > article > div > div.article-style > a > button:hover {
-  background-color: #E6FFE3 !important;
+  background-color: var(--bg-button-hover) !important;
 }
 
 // Keyboard buttons
@@ -398,9 +1043,9 @@ kbd {
 
 // Bootstrap warning alert messages
 div.alert.alert-warning {
-  color: #4A4D10;
-  background-color: #F6F7E4;
-  border-color: #6B6F0F;
+  color: var(--text-warning);
+  background-color: var(--bg-warning);
+  border-color: var(--border-warning);
 }
 
 // links in the footer of code chunks from emgithub
@@ -469,7 +1114,7 @@ div.lds-ring:after {
   content: '⟳ Please wait or reload page to view this snippet.';
   display: inline-block; /* Allows the text to be centered */
   font-size: 1.2em;
-  color: red;
+  color: var(--color-red);
   margin-top: 20px; /* Adjust as needed for positioning */
   white-space: nowrap; /* Prevents the text from wrapping */
   box-sizing: border-box; /* Ensures padding and border are included in width */
@@ -491,11 +1136,11 @@ div.lds-ring:after {
 // Related references 
 
 .related-references {
-  color: #787878;
-  scrollbar-color: #57a292 #edf5f4;
+  color: var(--related-references);
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
   border-style: solid; 
   border-width: 0.2px;
-  border-left-color: aquamarine;
+  border-left-color: var(--anim-start);
   border-left-width: thin;
   border-top: none;
   border-right: none;
@@ -514,7 +1159,7 @@ div.lds-ring:after {
 
 // scroll bar for textarea
 textarea {
-  scrollbar-color: #57a292 #edf5f4;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
 
 
@@ -539,7 +1184,7 @@ pre {
   
   div.col-12.col-lg-4.section-heading > h1 {
     border-bottom: 0.4px solid;
-    border-image-source: linear-gradient(to right, #BADDD5, #BADDD5, #EAF7F3, #F2FBF8);
+    border-image-source: var(--gradient-section-border);
     border-image-slice: 1;
   }
   
@@ -718,15 +1363,15 @@ pre {
 
 .script-container {
   padding: 0px 1px;
-  background: white;
+  background: var(--bg-script-container);
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
   margin-bottom: 5%;
 }
 
 .toggle-script {
-  background: linear-gradient(135deg, #d7e3e0);
-  color: black;
+  background: var(--gradient-script);
+  color: var(--text-hover);
   border: none;
   padding: 8px 16px;
   font-size: 20px;
@@ -737,7 +1382,7 @@ pre {
 }
 
 .toggle-script:hover {
-  background: linear-gradient(135deg, #d3f3e9, #a9e3c9);
+  background: var(--gradient-script-hover);
   transform: scale(1.05);
 }
 
@@ -749,9 +1394,9 @@ pre {
 // Full text button
 
 .full-text-btn {
-  background-color: white;
-  color: black;
-  border: 2px solid #4CAF50;
+  background-color: var(--bg-full-text);
+  color: var(--text-hover);
+  border: 2px solid var(--border-full-text);
   border-radius: 12px;
   width: 100%;
   padding: 8px 24px;
@@ -765,9 +1410,9 @@ pre {
 }
 .full-text-btn:hover,
 .full-text-btn:focus {
-  background-color: #f0fdf4;
-  border-color: #388e3c;
-  box-shadow: 0 0 0 2px #b7e4c7;
+  background-color: var(--bg-full-text-hover);
+  border-color: var(--border-full-text-hover);
+  box-shadow: 0 0 0 2px var(--bg-button-hover);
   border-radius: 12px; /* Ensures corners stay rounded */
 }
 .full-text-btn .full-text {
@@ -783,9 +1428,9 @@ pre {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #fff7ec;
-  color: black;
-  border: 2px solid #196F27;
+  background-color: var(--bg-cv);
+  color: var(--text-hover);
+  border: 2px solid var(--border-cv);
   border-radius: 12px;
   width: 100%;
   padding: 6px 0;
@@ -797,13 +1442,13 @@ pre {
 }
 .cv-btn:hover,
 .cv-btn:focus {
-  background-color: #f0e6d2;
-  border-color: #145a20;
-  box-shadow: 0 0 0 2px #b7e4c7;
+  background-color: var(--bg-cv-hover);
+  border-color: var(--border-cv-hover);
+  box-shadow: 0 0 0 2px var(--bg-button-hover);
   border-radius: 12px; /* Ensures corners stay rounded */
 }
 .cv-btn i {
-  color: darkgrey;
+  color: var(--text-secondary);
   margin-right: 8px;
 }
 
@@ -879,7 +1524,7 @@ button#read-more-btn,
   border: none !important;
   padding: 0 !important;
   background: none !important;
-  color: #57a292 !important;
+  color: var(--accent-secondary) !important;
   font-style: italic !important; 
   font-weight: 400 !important;
   cursor: pointer !important;
@@ -897,7 +1542,7 @@ button#read-more-btn,
 button#read-more-btn:hover,
 #collapsible-wrapper #read-more-btn:hover,
 .collapsible-text-wrapper #read-more-btn:hover {
-  color: #4b5563 !important;
+  color: var(--text-quaternary) !important;
   text-decoration: underline !important;
   background: none !important;
   opacity: 1 !important;

@@ -1,0 +1,56 @@
+{{/* Prevent white flash on dark theme load */}}
+<script>
+  (function () {
+    "use strict";
+
+    // Get saved theme preference or default to auto
+    function getThemeMode() {
+      return parseInt(localStorage.getItem("dark_mode") || 2);
+    }
+
+    function shouldUseDarkTheme() {
+      let currentThemeMode = getThemeMode();
+      switch (currentThemeMode) {
+        case 0:
+          return false; // Light mode
+        case 1:
+          return true; // Dark mode
+        default:
+          // Auto mode - check system preference
+          return (
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+          );
+      }
+    }
+
+    // Apply theme immediately before page renders
+    if (shouldUseDarkTheme()) {
+      document.documentElement.style.setProperty("--initial-bg", "#0f172a");
+      document.documentElement.style.setProperty("--initial-color", "#e2e8f0");
+      document.documentElement.style.backgroundColor = "#0f172a";
+      document.documentElement.style.color = "#e2e8f0";
+
+      // Also add to body if it exists
+      if (document.body) {
+        document.body.style.backgroundColor = "#0f172a";
+        document.body.style.color = "#e2e8f0";
+      }
+    }
+  })();
+</script>
+
+<style>
+  /* Inline CSS to prevent flash */
+  html {
+    --initial-bg: inherit;
+    --initial-color: inherit;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html {
+      background-color: var(--initial-bg, #0f172a);
+      color: var(--initial-color, #e2e8f0);
+    }
+  }
+</style>

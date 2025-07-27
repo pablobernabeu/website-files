@@ -44,7 +44,7 @@ local_business_type = ''
 org_name = ''
 
 # Description for social sharing and search engines. If undefined, superuser role is used in place.
-description = 'Cognitive psychology and neuroscience, linguistics, data analysis, statistics and scientific technology. Research, tutorials and software.'
+description = 'Cognitive psychology and neuroscience, linguistics, education, data analysis, statistics and scientific technology. Research, tutorials and software.'
 
 ############################
 ## Site Features
