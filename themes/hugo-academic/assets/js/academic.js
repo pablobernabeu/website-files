@@ -895,7 +895,7 @@
     scrollEventListeners = [];
 
     // Initialize scroll animations for desktop view
-    if (window.innerWidth > 1000) {
+    if (window.innerWidth > 999) {
       function setupScrollAnimations() {
         const sectionHeading = document.querySelectorAll(
           "div.col-12.col-lg-4.section-heading"
@@ -1018,24 +1018,93 @@
 
       scrollAnimationsInitialized = true;
     } else {
-      // For mobile/tablet screens, ensure all elements are visible
-      const allAnimatedElements = document.querySelectorAll(
-        `div.col-12.col-lg-4.section-heading, 
-       div.col-12.col-lg-4.section-heading > h1,
-       div.article-container.pt-3 > div.btn-links.mb-3 > a:link,
-       #top > div.pub > div > a > button,
-       div.btn-links.mb-3 > button,
-       button > h3,
-       .portrait-title > h3,
-       .social-icon,
-       .tag-cloud > a:link`
-      );
+      // For mobile/tablet screens, enable scroll animations with optimized performance
+      function setupMobileScrollAnimations() {
+        const sectionHeading = document.querySelectorAll(
+          "div.col-12.col-lg-4.section-heading"
+        );
+        const sectionHeadingH1 = document.querySelectorAll(
+          "div.col-12.col-lg-4.section-heading > h1"
+        );
+        const articleTags = document.querySelectorAll(
+          "div.article-container.pt-3 > div.btn-links.mb-3 > a:link"
+        );
+        const fullText = document.querySelectorAll(
+          "#top > div.pub > div > a > button"
+        );
+        const citationButton = document.querySelectorAll(
+          "div.btn-links.mb-3 > button"
+        );
+        const buttonH3 = document.querySelectorAll("button > h3");
+        const portraitInfo = document.querySelectorAll(".portrait-title > h3");
+        const icons = document.querySelectorAll(".social-icon");
+        const cloudTags = document.querySelectorAll(".tag-cloud > a:link");
 
-      allAnimatedElements.forEach((el) => {
-        el.classList.add("visible");
-      });
+        // Mobile-optimized reveal function with throttling
+        let ticking = false;
+        function revealOnScrollMobile() {
+          if (!ticking) {
+            requestAnimationFrame(() => {
+              const triggerBottom = window.innerHeight / 1.3; // Slightly less generous trigger for better control
 
-      scrollAnimationsInitialized = false;
+              // Function to check and animate elements
+              function animateVisible(elements, delayFactor = 0) {
+                elements.forEach((el, index) => {
+                  if (!el.classList.contains("visible")) {
+                    const elTop = el.getBoundingClientRect().top;
+                    if (elTop < triggerBottom) {
+                      setTimeout(() => {
+                        el.classList.add("visible");
+                      }, index * delayFactor);
+                    }
+                  }
+                });
+              }
+
+              // Animate different element groups with slight delays
+              animateVisible(sectionHeading);
+              animateVisible(sectionHeadingH1);
+              animateVisible(articleTags, 2);
+              animateVisible(fullText);
+              animateVisible(citationButton);
+              animateVisible(buttonH3);
+              animateVisible(portraitInfo, 10);
+              animateVisible(icons, 20);
+              animateVisible(cloudTags, 5);
+
+              ticking = false;
+            });
+          }
+          ticking = true;
+        }
+
+        // Throttled scroll event handler
+        const mobileScrollHandler = () => revealOnScrollMobile();
+
+        // Initial check for elements already in view
+        setTimeout(() => revealOnScrollMobile(), 100);
+
+        // Add scroll listener
+        window.addEventListener("scroll", mobileScrollHandler, {
+          passive: true,
+        });
+        scrollEventListeners.push({
+          type: "scroll",
+          handler: mobileScrollHandler,
+        });
+      }
+
+      // Setup mobile animations
+      if (document.readyState === "loading") {
+        document.addEventListener(
+          "DOMContentLoaded",
+          setupMobileScrollAnimations
+        );
+      } else {
+        setupMobileScrollAnimations();
+      }
+
+      scrollAnimationsInitialized = true;
     }
   }
 

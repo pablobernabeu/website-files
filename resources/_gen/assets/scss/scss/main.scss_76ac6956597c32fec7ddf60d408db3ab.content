@@ -9236,11 +9236,11 @@ body.dark {
   --gradient-section-border: linear-gradient(to right, #374151, #4b5563, #6b7280);
   --gradient-script: linear-gradient(135deg, #374151);
   --gradient-script-hover: linear-gradient(135deg, rgba(72, 187, 120, 0.25), rgba(72, 187, 120, 0.15));
-  --anim-start: #7dd3fc;
-  --anim-mid: #0891b2;
-  --anim-end-1: #0e7490;
-  --anim-end-2: #60a5fa;
-  --anim-end-3: #8b5a3c;
+  --anim-start: #a1a1aa;
+  --anim-mid: #71717a;
+  --anim-end-1: #52525b;
+  --anim-end-2: #64748b;
+  --anim-end-3: #475569;
   --color-red: #ef4444;
   --color-white: #1f2937;
   --color-black: #f8fafc;
@@ -9538,10 +9538,8 @@ body.dark a:hover > code {
   text-underline-offset: 2px; }
 
 body.dark .tag-cloud > a:hover {
-  text-decoration: underline;
-  text-decoration-color: #22c55e;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 2px; }
+  text-decoration: none;
+  color: var(--text-quaternary); }
 
 body.dark .navbar a,
 body.dark .nav a,
@@ -9562,7 +9560,8 @@ body.dark h3 a,
 body.dark h4 a,
 body.dark .cv-btn,
 body.dark .cv-btn a,
-body.dark .article-categories a {
+body.dark .article-categories a,
+body.dark .tag-cloud a {
   text-decoration: none !important;
   text-decoration-color: transparent !important; }
 
@@ -9585,9 +9584,30 @@ body.dark h3 a:hover,
 body.dark h4 a:hover,
 body.dark .cv-btn:hover,
 body.dark .cv-btn a:hover,
-body.dark .article-categories a:hover {
+body.dark .article-categories a:hover,
+body.dark .tag-cloud a:hover {
   text-decoration: none !important;
   text-decoration-color: transparent !important; }
+
+body.dark img {
+  background-color: white;
+  padding: 2px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); }
+
+body.dark .navbar img,
+body.dark .social-icon img,
+body.dark .portrait img,
+body.dark .navbar-brand img,
+body.dark .imageContainer img,
+body.dark .imageModal-content,
+body.dark [class*="logo"] img,
+body.dark [class*="icon"] img,
+body.dark .avatar img {
+  background-color: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important; }
 
 @media (min-width: 1000px) {
   div.col-12.col-lg-4.section-heading, div.col-12.col-lg-4.section-heading > h1, div.article-container.pt-3 > div.btn-links.mb-3 > a:link, div.btn-links.mb-3 > button, button > h3, .portrait-title > h3, .social-icon, .tag-cloud a:link, #top > div.pub > div > a > button {
@@ -9640,6 +9660,50 @@ body.dark .article-categories a:hover {
       color: var(--anim-mid); }
     100% {
       color: var(--accent-quaternary); } } }
+
+@media (max-width: 999px) {
+  div.col-12.col-lg-4.section-heading,
+  div.col-12.col-lg-4.section-heading > h1,
+  div.article-container.pt-3 > div.btn-links.mb-3 > a:link,
+  div.btn-links.mb-3 > button,
+  button > h3,
+  .portrait-title > h3,
+  .social-icon,
+  #top > div.pub > div > a > button {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: all 0.2s ease-out; }
+  div.col-12.col-lg-4.section-heading.visible, div.col-12.col-lg-4.section-heading > h1.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: mobile-color-transition1 1.5s forwards; }
+  @keyframes mobile-color-transition1 {
+    0% {
+      color: var(--anim-start); }
+    50% {
+      color: var(--anim-mid); }
+    100% {
+      color: var(--text-secondary); } }
+  div.article-container.pt-3 > div.btn-links.mb-3 > a:link.visible, button.visible, button > h3.visible, div.btn-links.mb-3 > button.visible, #top > div.pub > div > a > button.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: mobile-color-transition2 1s forwards; }
+  @keyframes mobile-color-transition2 {
+    0% {
+      color: var(--anim-start); }
+    100% {
+      color: var(--text-hover); } }
+  .portrait-title > h3.visible, .social-icon.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: mobile-color-transition3 1s forwards; }
+  @keyframes mobile-color-transition3 {
+    0% {
+      color: var(--anim-start); }
+    50% {
+      color: var(--anim-mid); }
+    100% {
+      color: var(--accent-tertiary); } } }
 
 #profile > div:nth-child(5) > div > ul > div > div > a:link, #profile > div:nth-child(5) > div > ul > div > div > a {
   margin-right: -10px; }
@@ -9762,6 +9826,61 @@ h3 a:hover, div a:hover {
 .tag-cloud > a:hover {
   color: var(--text-quaternary) !important;
   text-decoration: none; }
+
+@media (max-width: 999px) {
+  .tag-cloud > a:link,
+  .tag-cloud > a:visited {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.03s ease-in-out;
+    text-decoration: none !important;
+    color: transparent; }
+  .tag-cloud > a:link.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: mobile-tag-color-transition 5s forwards;
+    text-decoration: none !important; }
+  .tag-cloud > a:visited.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: mobile-tag-color-transition-visited 5s forwards;
+    text-decoration: none !important; }
+  @keyframes mobile-tag-color-transition {
+    0% {
+      color: var(--anim-start); }
+    50% {
+      color: var(--anim-mid); }
+    100% {
+      color: var(--accent-quaternary); } }
+  @keyframes mobile-tag-color-transition-visited {
+    0% {
+      color: var(--anim-start); }
+    50% {
+      color: var(--anim-mid); }
+    100% {
+      color: var(--accent-visited-categories); } }
+  .tag-cloud > a:link:hover,
+  .tag-cloud > a:visited:hover {
+    color: var(--text-quaternary) !important;
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+    text-decoration: none !important; }
+  .tag-cloud > a:link,
+  .tag-cloud > a:visited,
+  .tag-cloud > a:link.visible,
+  .tag-cloud > a:visited.visible,
+  .tag-cloud > a:link:hover,
+  .tag-cloud > a:visited:hover {
+    text-decoration: none !important;
+    text-decoration-color: transparent !important; }
+  body.dark .tag-cloud > a:link,
+  body.dark .tag-cloud > a:visited,
+  body.dark .tag-cloud > a:link.visible,
+  body.dark .tag-cloud > a:visited.visible,
+  body.dark .tag-cloud > a:link:hover,
+  body.dark .tag-cloud > a:visited:hover {
+    text-decoration: none !important;
+    text-decoration-color: transparent !important; } }
 
 :is(#publication, #applications-and-dashboards, #blog) span.article-categories, :is(#publication, #applications-and-dashboards, #blog) span.middot-divider:has(+ span.article-categories) {
   display: none; }

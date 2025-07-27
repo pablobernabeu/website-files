@@ -151,12 +151,12 @@ body.dark {
   --gradient-script: linear-gradient(135deg, #374151);
   --gradient-script-hover: linear-gradient(135deg, rgba(72, 187, 120, 0.25), rgba(72, 187, 120, 0.15));
   
-  // Animation colors for dark theme (elegant aquamarine to dark red)
-  --anim-start: #7dd3fc;
-  --anim-mid: #0891b2;
-  --anim-end-1: #0e7490;
-  --anim-end-2: #60a5fa;
-  --anim-end-3: #8b5a3c;
+  // Animation colors for dark theme (subtle and elegant)
+  --anim-start: #a1a1aa;
+  --anim-mid: #71717a;
+  --anim-end-1: #52525b;
+  --anim-end-2: #64748b;
+  --anim-end-3: #475569;
   
   // Utility colors for dark theme
   --color-red: #ef4444;
@@ -530,12 +530,10 @@ body.dark {
 
   // Category links removed from green underlining - now handled by exclusion rules above
 
-  // Tag cloud links only in content areas (like at bottom of site)
+  // Tag cloud links - no green underlines, just normal hover behavior
   .tag-cloud > a:hover {
-    text-decoration: underline;
-    text-decoration-color: #22c55e;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 2px;
+    text-decoration: none;
+    color: var(--text-quaternary);
   }
 
   // Explicitly remove green underlines from navigation, buttons, and UI elements
@@ -558,7 +556,8 @@ body.dark {
   h4 a,
   .cv-btn,
   .cv-btn a,
-  .article-categories a {
+  .article-categories a,
+  .tag-cloud a {
     text-decoration: none !important;
     text-decoration-color: transparent !important;
   }
@@ -583,9 +582,34 @@ body.dark {
   h4 a:hover,
   .cv-btn:hover,
   .cv-btn a:hover,
-  .article-categories a:hover {
+  .article-categories a:hover,
+  .tag-cloud a:hover {
     text-decoration: none !important;
     text-decoration-color: transparent !important;
+  }
+
+  // Add white background behind images in dark theme for better text visibility
+  img {
+    background-color: white;
+    padding: 2px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+
+  // Exceptions for images that should not have white backgrounds
+  .navbar img,
+  .social-icon img,
+  .portrait img,
+  .navbar-brand img,
+  .imageContainer img,
+  .imageModal-content,
+  [class*="logo"] img,
+  [class*="icon"] img,
+  .avatar img {
+    background-color: transparent !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
   }
 }
 
@@ -676,6 +700,84 @@ body.dark {
     }
     100% {
       color: var(--accent-quaternary);
+    }
+  }
+
+}
+
+// Mobile scroll animations - same elements as desktop but optimized for mobile performance
+@media (max-width: 999px) {
+  
+  div.col-12.col-lg-4.section-heading, 
+  div.col-12.col-lg-4.section-heading > h1, 
+  div.article-container.pt-3 > div.btn-links.mb-3 > a:link, 
+  div.btn-links.mb-3 > button, 
+  button > h3, 
+  .portrait-title > h3, 
+  .social-icon,
+  #top > div.pub > div > a > button {
+    opacity: 0;
+    transform: translateY(15px); // Slightly less movement for mobile
+    transition: all 0.2s ease-out; // Faster transition for mobile
+  }
+  
+  // Mobile section headings animation
+  div.col-12.col-lg-4.section-heading.visible, 
+  div.col-12.col-lg-4.section-heading > h1.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: mobile-color-transition1 1.5s forwards; // Shorter duration for mobile
+  }
+  
+  @keyframes mobile-color-transition1 {
+    0% {
+      color: var(--anim-start);
+    }
+    50% {
+      color: var(--anim-mid);
+    }
+    100% {
+      color: var(--text-secondary);
+    }
+  }
+  
+  // Mobile button links animation
+  div.article-container.pt-3 > div.btn-links.mb-3 > a:link.visible, 
+  button.visible, 
+  button > h3.visible, 
+  div.btn-links.mb-3 > button.visible, 
+  #top > div.pub > div > a > button.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: mobile-color-transition2 1s forwards; // Shorter duration for mobile
+  }
+  
+  @keyframes mobile-color-transition2 {
+    0% {
+      color: var(--anim-start);
+    }
+    100% {
+      color: var(--text-hover);
+    }
+  }
+  
+  // Mobile bio/profile elements animation
+  .portrait-title > h3.visible, 
+  .social-icon.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: mobile-color-transition3 1s forwards; // Shorter duration for mobile
+  }
+  
+  @keyframes mobile-color-transition3 {
+    0% {
+      color: var(--anim-start);
+    }
+    50% {
+      color: var(--anim-mid);
+    }
+    100% {
+      color: var(--accent-tertiary);
     }
   }
 
@@ -859,6 +961,93 @@ h3 a:hover, div a:hover {
 .tag-cloud > a:hover {
   color: var(--text-quaternary) !important;
   text-decoration: none;
+}
+
+// Mobile-specific tag cloud styling with color transitions
+@media (max-width: 999px) {
+  // Mobile tag cloud elements setup for scroll animations (all states)
+  .tag-cloud > a:link,
+  .tag-cloud > a:visited {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.03s ease-in-out;
+    text-decoration: none !important;
+    // Override any general color rules for mobile - start transparent
+    color: transparent;
+  }
+  
+  // When visible (triggered by scroll), animate with color transition for unvisited links
+  .tag-cloud > a:link.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: mobile-tag-color-transition 5s forwards;
+    text-decoration: none !important;
+  }
+  
+  // When visible (triggered by scroll), animate with color transition for visited links
+  .tag-cloud > a:visited.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: mobile-tag-color-transition-visited 5s forwards;
+    text-decoration: none !important;
+  }
+  
+  // Mobile-specific color transition animation for unvisited links (matches desktop color-transition4)
+  @keyframes mobile-tag-color-transition {
+    0% {
+      color: var(--anim-start);
+    }
+    50% {
+      color: var(--anim-mid);
+    }
+    100% {
+      color: var(--accent-quaternary);
+    }
+  }
+  
+  // Mobile-specific color transition animation for visited links
+  @keyframes mobile-tag-color-transition-visited {
+    0% {
+      color: var(--anim-start);
+    }
+    50% {
+      color: var(--anim-mid);
+    }
+    100% {
+      color: var(--accent-visited-categories);
+    }
+  }
+  
+  // Hover effects for mobile tag cloud (all states) - override general hover rules
+  .tag-cloud > a:link:hover,
+  .tag-cloud > a:visited:hover {
+    color: var(--text-quaternary) !important;
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+    text-decoration: none !important;
+  }
+  
+  // Explicitly remove any underlines from mobile tag cloud in all themes
+  .tag-cloud > a:link,
+  .tag-cloud > a:visited,
+  .tag-cloud > a:link.visible,
+  .tag-cloud > a:visited.visible,
+  .tag-cloud > a:link:hover,
+  .tag-cloud > a:visited:hover {
+    text-decoration: none !important;
+    text-decoration-color: transparent !important;
+  }
+  
+  // Additional dark theme specificity to override any green underline rules
+  body.dark .tag-cloud > a:link,
+  body.dark .tag-cloud > a:visited,
+  body.dark .tag-cloud > a:link.visible,
+  body.dark .tag-cloud > a:visited.visible,
+  body.dark .tag-cloud > a:link:hover,
+  body.dark .tag-cloud > a:visited:hover {
+    text-decoration: none !important;
+    text-decoration-color: transparent !important;
+  }
 }
 
 // Hide tags in general home page, along with the preceding divider
