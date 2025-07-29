@@ -476,6 +476,22 @@
   }
 
   /**
+   * Force reset animation colors after theme switch to prevent color persistence
+   */
+  function resetAnimationColors() {
+    // Remove and re-add animation classes to force color recalculation
+    const animatedElements = document.querySelectorAll(".visible");
+    animatedElements.forEach((element) => {
+      // Temporarily remove the class
+      element.classList.remove("visible");
+      // Force a reflow to ensure the removal takes effect
+      element.offsetHeight;
+      // Re-add the class to trigger fresh color calculation
+      element.classList.add("visible");
+    });
+  }
+
+  /**
    * Render theme variation (day or night).
    *
    * @param {int} isDarkTheme - TODO: convert to boolean.
@@ -521,6 +537,11 @@
           location.reload();
         }
       }
+
+      // Reset animation colors after theme switch (with delay to ensure DOM is updated)
+      if (!init) {
+        setTimeout(() => resetAnimationColors(), 100);
+      }
     } else if (isDarkTheme === 1) {
       if (!init) {
         // Only fade in the page when changing the theme variation.
@@ -540,6 +561,11 @@
           // Have to reload to re-initialise Mermaid with the new theme and re-parse the Mermaid code blocks.
           location.reload();
         }
+      }
+
+      // Reset animation colors after theme switch (with delay to ensure DOM is updated)
+      if (!init) {
+        setTimeout(() => resetAnimationColors(), 100);
       }
     }
   }
@@ -1045,14 +1071,21 @@
         function revealOnScrollMobile() {
           if (!ticking) {
             requestAnimationFrame(() => {
-              const triggerBottom = window.innerHeight / 1.3; // Slightly less generous trigger for better control
+              const triggerBottom = window.innerHeight / 1.15; // More generous trigger for earlier animation
+              const triggerTop = -50; // Allow elements to animate when scrolling up
 
               // Function to check and animate elements
               function animateVisible(elements, delayFactor = 0) {
                 elements.forEach((el, index) => {
                   if (!el.classList.contains("visible")) {
                     const elTop = el.getBoundingClientRect().top;
-                    if (elTop < triggerBottom) {
+                    const elBottom = el.getBoundingClientRect().bottom;
+
+                    // Trigger if element is coming into view from below OR from above
+                    if (
+                      (elTop < triggerBottom && elTop > triggerTop) ||
+                      (elBottom > triggerTop && elBottom < window.innerHeight)
+                    ) {
                       setTimeout(() => {
                         el.classList.add("visible");
                       }, index * delayFactor);
@@ -1061,16 +1094,16 @@
                 });
               }
 
-              // Animate different element groups with slight delays
+              // Animate different element groups with slight delays (reduced delays for faster appearance)
               animateVisible(sectionHeading);
               animateVisible(sectionHeadingH1);
-              animateVisible(articleTags, 2);
+              animateVisible(articleTags, 1); // Reduced from 2
               animateVisible(fullText);
               animateVisible(citationButton);
               animateVisible(buttonH3);
-              animateVisible(portraitInfo, 10);
-              animateVisible(icons, 20);
-              animateVisible(cloudTags, 5);
+              animateVisible(portraitInfo, 5); // Reduced from 10
+              animateVisible(icons, 10); // Reduced from 20
+              animateVisible(cloudTags, 3); // Reduced from 5
 
               ticking = false;
             });

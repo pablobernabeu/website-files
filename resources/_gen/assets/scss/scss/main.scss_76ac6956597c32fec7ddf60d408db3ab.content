@@ -9230,15 +9230,15 @@ body.dark {
   --accent-primary: #22d3ee;
   --accent-secondary: #06b6d4;
   --accent-tertiary: #60a5fa;
-  --accent-quaternary: #f472b6;
+  --accent-quaternary: #e998c2;
   --accent-visited-categories: #c084fc;
   --gradient-light: linear-gradient(180deg, rgba(72, 187, 120, 0.12), rgba(72, 187, 120, 0.08), rgba(72, 187, 120, 0.05));
   --gradient-section-border: linear-gradient(to right, #374151, #4b5563, #6b7280);
   --gradient-script: linear-gradient(135deg, #374151);
   --gradient-script-hover: linear-gradient(135deg, rgba(72, 187, 120, 0.25), rgba(72, 187, 120, 0.15));
   --anim-start: #a1a1aa;
-  --anim-mid: #71717a;
-  --anim-end-1: #52525b;
+  --anim-mid: #4ade80;
+  --anim-end-1: #22c55e;
   --anim-end-2: #64748b;
   --anim-end-3: #475569;
   --color-red: #ef4444;
@@ -9634,8 +9634,10 @@ body.dark .avatar img {
   @keyframes color-transition2 {
     0% {
       color: var(--anim-start); }
-    50% {
+    33% {
       color: var(--anim-mid); }
+    66% {
+      color: var(--anim-end-1); }
     100% {
       color: var(--text-hover); } }
   .portrait-title > h3.visible, .social-icon.visible {
@@ -9645,8 +9647,10 @@ body.dark .avatar img {
   @keyframes color-transition3 {
     0% {
       color: var(--anim-start); }
-    50% {
+    33% {
       color: var(--anim-mid); }
+    66% {
+      color: var(--anim-end-1); }
     100% {
       color: var(--accent-tertiary); } }
   .tag-cloud > a:link.visible {
@@ -9656,8 +9660,10 @@ body.dark .avatar img {
   @keyframes color-transition4 {
     0% {
       color: var(--anim-start); }
-    50% {
+    33% {
       color: var(--anim-mid); }
+    66% {
+      color: var(--anim-end-1); }
     100% {
       color: var(--accent-quaternary); } } }
 
@@ -9680,8 +9686,10 @@ body.dark .avatar img {
   @keyframes mobile-color-transition1 {
     0% {
       color: var(--anim-start); }
-    50% {
+    33% {
       color: var(--anim-mid); }
+    66% {
+      color: var(--anim-end-1); }
     100% {
       color: var(--text-secondary); } }
   div.article-container.pt-3 > div.btn-links.mb-3 > a:link.visible, button.visible, button > h3.visible, div.btn-links.mb-3 > button.visible, #top > div.pub > div > a > button.visible {
@@ -9691,6 +9699,10 @@ body.dark .avatar img {
   @keyframes mobile-color-transition2 {
     0% {
       color: var(--anim-start); }
+    33% {
+      color: var(--anim-mid); }
+    66% {
+      color: var(--anim-end-1); }
     100% {
       color: var(--text-hover); } }
   .portrait-title > h3.visible, .social-icon.visible {
@@ -9700,8 +9712,10 @@ body.dark .avatar img {
   @keyframes mobile-color-transition3 {
     0% {
       color: var(--anim-start); }
-    50% {
+    33% {
       color: var(--anim-mid); }
+    66% {
+      color: var(--anim-end-1); }
     100% {
       color: var(--accent-tertiary); } } }
 
@@ -9848,15 +9862,19 @@ h3 a:hover, div a:hover {
   @keyframes mobile-tag-color-transition {
     0% {
       color: var(--anim-start); }
-    50% {
+    33% {
       color: var(--anim-mid); }
+    66% {
+      color: var(--anim-end-1); }
     100% {
       color: var(--accent-quaternary); } }
   @keyframes mobile-tag-color-transition-visited {
     0% {
       color: var(--anim-start); }
-    50% {
+    33% {
       color: var(--anim-mid); }
+    66% {
+      color: var(--anim-end-1); }
     100% {
       color: var(--accent-visited-categories); } }
   .tag-cloud > a:link:hover,
@@ -10487,3 +10505,6 @@ button#read-more-btn:hover,
   background: none !important;
   opacity: 1 !important;
   transform: none !important; }
+
+.section-heading.visible {
+  margin-bottom: 4%; }

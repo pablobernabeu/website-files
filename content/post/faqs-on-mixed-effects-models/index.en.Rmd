@@ -24,7 +24,6 @@ projects: []
 ---
 
 
-
 <blockquote style='color: black; background-color: #FFF9F3; margin-bottom: 30px;'>
 
 I am dealing with nested data, and I remember from an article by [Clark (1973)](https://doi.org/10.1016/S0022-5371(73)80014-3) that nested should be analysed using special models. I've looked into mixed-effects models, and I've reached a structure with random intercepts by subjects and by items. Is this fine?
@@ -33,7 +32,7 @@ I am dealing with nested data, and I remember from an article by [Clark (1973)](
 
 
 <div style='padding-left: 60px;'>
-<blockquote style='color: black; background-color: #F4FFF3; margin-bottom: 45px;'>
+<blockquote style='color: black; background-color: #F4FFF3; margin-bottom: 55px;'>
 
 In early days, researchers would aggregate the data across these repeated measures to prevent the violation of the assumption of independence of observations, which is one of the most important assumptions in statistics. With the advent of mixed-effects models, researchers began accounting for these repeated measures using random intercepts and slopes. However, problems of convergence led many researchers to remove random slopes. This became widespread until, over the past few years, we have realised that random slopes are necessary to prevent an inflation of the Type I error due to the violation of the assumption of independence ([Brauer & Curtin, 2018](https://psych.wisc.edu/Brauer/BrauerLab/wp-content/uploads/2014/04/Brauer-Curtin-2018-on-LMEMs.pdf); [Singmann & Kellen, 2019](http://singmann.org/download/publications/singmann_kellen-introduction-mixed-models.pdf)). Please see Table 17 in Brauer and Curtin (2018). Due to the present reasons, the models in the current article are anti-conservative. To redress this problem, please consider the inclusion of random slopes by participant for all between-items variables [e.g., `(stimulus_condition | participant)`], and random slopes by item for all between-participants variables [e.g., `(extraversion | item)`]. Interaction terms should also have the corresponding slopes, except when the variables in the interaction vary within different units, that is, one between participants and one between items ([Brauer & Curtin, 2018](https://psych.wisc.edu/Brauer/BrauerLab/wp-content/uploads/2014/04/Brauer-Curtin-2018-on-LMEMs.pdf)). Each of the random intercepts and random slopes included in the model should be noted in the main text, for instance using footnotes in the results table (see [example](https://bookdown.org/pablobernabeu/language-sensorimotor-conceptual-processing-statistical-power/study-2.1-semantic-priming.html#semanticpriming-results)).
 
@@ -50,7 +49,7 @@ I calculated the *p* values by comparing minimally-different models using the `a
 
 
 <div style='padding-left: 60px;'>
-<blockquote style='color: black; background-color: #F4FFF3; margin-bottom: 45px;'>
+<blockquote style='color: black; background-color: #F4FFF3; margin-bottom: 55px;'>
 
 [Luke (2017)](https://doi.org/10.3758/s13428-016-0809-y) warns that the *p* values calculated by model comparison---which are based on likelihood ratio tests---can be anti-conservative. Therefore, the Kenward-Roger and the Satterthwaite methods are recommended instead (both available in other packages, such as [lmerTest](https://cran.r-project.org/web/packages/lmerTest/lmerTest.pdf) and [afex](https://cran.r-project.org/web/packages/afex/afex.pdf)).
 
@@ -67,7 +66,7 @@ The lme4 package only runs on one thread (CPU) but the computer has 8. Do you ha
 
 
 <div style='padding-left: 60px;'>
-<blockquote style='color: black; background-color: #F4FFF3; margin-bottom: 45px;'>
+<blockquote style='color: black; background-color: #F4FFF3; margin-bottom: 55px;'>
 
 From the information I have seen in the past as well as right now, parallelising (g)lmer intentionally would be very involved. There is certainly interest in it, as your resources show (also see [here](https://github.com/lme4/lme4/issues?q=is%3Aissue+parallel)). However, the current information suggests to me that it is not possible. 
 
@@ -92,7 +91,7 @@ I have attached my code in a txt file and the data in excel for you to see, in c
 
 
 <div style='padding-left: 60px;'>
-<blockquote style='color: black; background-color: #F4FFF3; margin-bottom: 45px;'>
+<blockquote style='color: black; background-color: #F4FFF3; margin-bottom: 55px;'>
 
 The multi-optimizer check is indeed a way (albeit tentative) to probe into the convergence. Convergence has long been a fuzzy subject, as there are different standpoints depending on the degree of conservativeness that is sought after by the analysts. 
 
@@ -123,7 +122,7 @@ failure to converge in 10000 evaluations
 
 
 <div style='padding-left: 60px;'>
-<blockquote style='color: black; background-color: #F4FFF3; margin-bottom: 45px;'>
+<blockquote style='color: black; background-color: #F4FFF3; margin-bottom: 55px;'>
 
 Please try [increasing the max number of iterations](https://github.com/pablobernabeu/language-sensorimotor-simulation-PhD-thesis/blob/main/semanticpriming/frequentist_analysis/semanticpriming_lmerTest.R#L109).
 
@@ -142,10 +141,22 @@ I wanted to ask please, do you know of any issues with the max iterations being 
 
 
 <div style='padding-left: 60px;'>
-<blockquote style='color: black; background-color: #F4FFF3; margin-bottom: 45px;'>
+<blockquote style='color: black; background-color: #F4FFF3; margin-bottom: 55px;'>
 
 There are no side-effects to increasing the number of iterations (see Remedy 6 in [Brauer & Curtin, 2018](https://psych.wisc.edu/Brauer/BrauerLab/wp-content/uploads/2014/04/Brauer-Curtin-2018-on-LMEMs.pdf)).
 
 </blockquote>
 </div>
+
+
+
+## References
+
+Brauer, M., & Curtin, L. A. (2018). Mixed models in psychology: An introduction to the world of multilevel models. *Psychological Methods, 23*(3), 389-411. https://doi.org/10.1037/met0000132
+
+Clark, H. H. (1973). The language-as-fixed-effect fallacy: A critique of language statistics in psychological research. *Journal of Verbal Learning and Verbal Behavior, 12*(4), 335-359. https://doi.org/10.1016/S0022-5371(73)80014-3
+
+Luke, S. G. (2017). Evaluating significance in linear mixed-effects models in R. *Behavior Research Methods, 49*(4), 1494–1502. https://doi.org/10.3758/s13428-016-0809-y
+
+Singmann, H., & Kellen, D. (2019). An introduction to mixed models for experimental psychology. In D. H. Spieler & E. Schumacher (Eds.), *New Methods in Cognitive Psychology* (pp. 4–31). Hove, UK: Psychology Press. http://singmann.org/download/publications/singmann_kellen-introduction-mixed-models.pdf
 

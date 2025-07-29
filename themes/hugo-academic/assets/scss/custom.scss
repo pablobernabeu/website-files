@@ -142,7 +142,7 @@ body.dark {
   --accent-primary: #22d3ee;
   --accent-secondary: #06b6d4;
   --accent-tertiary: #60a5fa;
-  --accent-quaternary: #f472b6;
+  --accent-quaternary: #e998c2;
   --accent-visited-categories: #c084fc;
   
   // Special backgrounds and gradients for dark theme
@@ -151,10 +151,10 @@ body.dark {
   --gradient-script: linear-gradient(135deg, #374151);
   --gradient-script-hover: linear-gradient(135deg, rgba(72, 187, 120, 0.25), rgba(72, 187, 120, 0.15));
   
-  // Animation colors for dark theme (subtle and elegant)
+  // Animation colors for dark theme (with brighter green intermediate)
   --anim-start: #a1a1aa;
-  --anim-mid: #71717a;
-  --anim-end-1: #52525b;
+  --anim-mid: #4ade80; // Bright green for more vibrant transitions
+  --anim-end-1: #22c55e; // Slightly darker green for intermediate step
   --anim-end-2: #64748b;
   --anim-end-3: #475569;
   
@@ -657,8 +657,11 @@ body.dark {
     0% {
       color: var(--anim-start);
     }
-    50% {
+    33% {
       color: var(--anim-mid);
+    }
+    66% {
+      color: var(--anim-end-1);
     }
     100% {
       color: var(--text-hover);
@@ -676,8 +679,11 @@ body.dark {
     0% {
       color: var(--anim-start);
     }
-    50% {
+    33% {
       color: var(--anim-mid);
+    }
+    66% {
+      color: var(--anim-end-1);
     }
     100% {
       color: var(--accent-tertiary);
@@ -695,8 +701,11 @@ body.dark {
     0% {
       color: var(--anim-start);
     }
-    50% {
+    33% {
       color: var(--anim-mid);
+    }
+    66% {
+      color: var(--anim-end-1);
     }
     100% {
       color: var(--accent-quaternary);
@@ -733,8 +742,11 @@ body.dark {
     0% {
       color: var(--anim-start);
     }
-    50% {
+    33% {
       color: var(--anim-mid);
+    }
+    66% {
+      color: var(--anim-end-1);
     }
     100% {
       color: var(--text-secondary);
@@ -756,6 +768,12 @@ body.dark {
     0% {
       color: var(--anim-start);
     }
+    33% {
+      color: var(--anim-mid);
+    }
+    66% {
+      color: var(--anim-end-1);
+    }
     100% {
       color: var(--text-hover);
     }
@@ -773,8 +791,11 @@ body.dark {
     0% {
       color: var(--anim-start);
     }
-    50% {
+    33% {
       color: var(--anim-mid);
+    }
+    66% {
+      color: var(--anim-end-1);
     }
     100% {
       color: var(--accent-tertiary);
@@ -997,8 +1018,11 @@ h3 a:hover, div a:hover {
     0% {
       color: var(--anim-start);
     }
-    50% {
+    33% {
       color: var(--anim-mid);
+    }
+    66% {
+      color: var(--anim-end-1);
     }
     100% {
       color: var(--accent-quaternary);
@@ -1010,8 +1034,11 @@ h3 a:hover, div a:hover {
     0% {
       color: var(--anim-start);
     }
-    50% {
+    33% {
       color: var(--anim-mid);
+    }
+    66% {
+      color: var(--anim-end-1);
     }
     100% {
       color: var(--accent-visited-categories);
@@ -1752,3 +1779,7 @@ button#read-more-btn:hover,
   transform: none !important;
 }
 
+// Add margin under section headings 
+.section-heading.visible {
+  margin-bottom: 4%;
+}
