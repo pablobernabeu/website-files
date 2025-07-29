@@ -489,6 +489,34 @@
       // Re-add the class to trigger fresh color calculation
       element.classList.add("visible");
     });
+
+    // Also reset any elements that might have inline styles from animations
+    const elementsWithInlineStyles =
+      document.querySelectorAll("[style*='color']");
+    elementsWithInlineStyles.forEach((element) => {
+      // Check if this element has animation-related classes
+      if (
+        element.classList.contains("visible") ||
+        element.closest(".article-style") ||
+        element.closest(".tag-cloud") ||
+        element.closest(".biography-container")
+      ) {
+        // Remove inline color styles to let CSS take over
+        element.style.removeProperty("color");
+        // Force reflow
+        element.offsetHeight;
+      }
+    });
+
+    // Force recalculation of CSS custom properties
+    const root = document.documentElement;
+    const computedStyle = getComputedStyle(root);
+
+    // Trigger a style recalculation by temporarily modifying and restoring a property
+    const currentDisplay = root.style.display;
+    root.style.display = "none";
+    root.offsetHeight; // Trigger reflow
+    root.style.display = currentDisplay;
   }
 
   /**
@@ -504,6 +532,14 @@
     const codeHlLight = $("link[title=hl-light]")[0];
     const codeHlDark = $("link[title=hl-dark]")[0];
     const diagramEnabled = $("script[title=mermaid]").length > 0;
+
+    // Debug logging for Mermaid detection
+    console.log("Theme switch debug:", {
+      isDarkTheme,
+      init,
+      diagramEnabled,
+      mermaidElementsCount: document.querySelectorAll(".mermaid").length,
+    });
 
     // Check if re-render required.
     if (!init) {
@@ -529,18 +565,27 @@
         codeHlLight.disabled = false;
         codeHlDark.disabled = true;
       }
-      if (diagramEnabled) {
-        if (init) {
-          mermaid.initialize({ theme: "default", securityLevel: "loose" });
-        } else {
-          // Have to reload to re-initialise Mermaid with the new theme and re-parse the Mermaid code blocks.
-          location.reload();
-        }
+      // Check for Mermaid diagrams - only process if they actually exist
+      const mermaidElements = document.querySelectorAll(".mermaid");
+      const hasActualMermaidContent = mermaidElements.length > 0;
+
+      // COMPLETELY DISABLE MERMAID RELOAD FOR THEME SWITCHING
+      // Only allow Mermaid initialization on page load, never on theme switch
+      if (diagramEnabled && hasActualMermaidContent && init) {
+        console.log("Initializing Mermaid with default theme on page load");
+        mermaid.initialize({ theme: "default", securityLevel: "loose" });
+      } else if (!init && hasActualMermaidContent) {
+        console.log(
+          "MERMAID RELOAD PREVENTED - Theme switching without reload"
+        );
+        // For theme switching, we just log that we're skipping reload
+        // Mermaid diagrams will keep their current theme until page reload
       }
+      // NO RELOAD EVER during theme switching
 
       // Reset animation colors after theme switch (with delay to ensure DOM is updated)
       if (!init) {
-        setTimeout(() => resetAnimationColors(), 100);
+        setTimeout(() => resetAnimationColors(), 200);
       }
     } else if (isDarkTheme === 1) {
       if (!init) {
@@ -554,18 +599,27 @@
         codeHlLight.disabled = true;
         codeHlDark.disabled = false;
       }
-      if (diagramEnabled) {
-        if (init) {
-          mermaid.initialize({ theme: "dark", securityLevel: "loose" });
-        } else {
-          // Have to reload to re-initialise Mermaid with the new theme and re-parse the Mermaid code blocks.
-          location.reload();
-        }
+      // Check for Mermaid diagrams - only process if they actually exist
+      const mermaidElements = document.querySelectorAll(".mermaid");
+      const hasActualMermaidContent = mermaidElements.length > 0;
+
+      // COMPLETELY DISABLE MERMAID RELOAD FOR THEME SWITCHING
+      // Only allow Mermaid initialization on page load, never on theme switch
+      if (diagramEnabled && hasActualMermaidContent && init) {
+        console.log("Initializing Mermaid with dark theme on page load");
+        mermaid.initialize({ theme: "dark", securityLevel: "loose" });
+      } else if (!init && hasActualMermaidContent) {
+        console.log(
+          "MERMAID RELOAD PREVENTED - Theme switching without reload"
+        );
+        // For theme switching, we just log that we're skipping reload
+        // Mermaid diagrams will keep their current theme until page reload
       }
+      // NO RELOAD EVER during theme switching
 
       // Reset animation colors after theme switch (with delay to ensure DOM is updated)
       if (!init) {
-        setTimeout(() => resetAnimationColors(), 100);
+        setTimeout(() => resetAnimationColors(), 200);
       }
     }
   }
