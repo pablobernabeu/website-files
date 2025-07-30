@@ -6,6 +6,31 @@
  **************************************************/
 
 (function ($) {
+  // GLOBAL RELOAD PREVENTION SYSTEM
+  let themeChangeInProgress = false;
+
+  // Override page reload globally when theme change is in progress
+  const originalReload = window.location.reload;
+  window.location.reload = function () {
+    if (themeChangeInProgress) {
+      console.warn("🚫 GLOBAL RELOAD BLOCKED - Theme change in progress");
+      return false;
+    }
+    return originalReload.apply(this, arguments);
+  };
+
+  // Monitor for theme-related storage changes that might trigger reloads
+  window.addEventListener("storage", function (e) {
+    if (e.key === "dark_mode") {
+      console.log(
+        "🎨 Theme storage change detected:",
+        e.oldValue,
+        "→",
+        e.newValue
+      );
+    }
+  });
+
   /* ---------------------------------------------------------------------------
    * Responsive scrolling for URL hashes.
    * --------------------------------------------------------------------------- */
@@ -62,6 +87,133 @@
       $body.data("bs.scrollspy", data);
       $body.scrollspy("refresh");
     }
+  }
+
+  // Enhanced navigation highlighting system
+  function enhancedNavigationHighlighting() {
+    const navLinks = document.querySelectorAll(
+      '.navbar-nav .nav-link[href^="#"]'
+    );
+
+    if (navLinks.length === 0) {
+      console.warn("No navigation links found");
+      return;
+    }
+
+    // Dynamically extract section IDs from navigation links
+    const sectionIds = [];
+    navLinks.forEach((link) => {
+      const href = link.getAttribute("href");
+      if (href && href.startsWith("#") && href.length > 1) {
+        const sectionId = href.substring(1);
+        if (!sectionIds.includes(sectionId)) {
+          sectionIds.push(sectionId);
+        }
+      }
+    });
+
+    const sections = [];
+
+    // Find sections using multiple selectors for each discovered section ID
+    sectionIds.forEach((id) => {
+      let element =
+        document.getElementById(id) ||
+        document.querySelector(`section[id="${id}"]`) ||
+        document.querySelector(`div[id="${id}"]`) ||
+        document.querySelector(`[data-anchor="${id}"]`) ||
+        document.querySelector(`.wg-${id}`) ||
+        document.querySelector(`[class*="${id}"]`) ||
+        document.querySelector(`*[data-section="${id}"]`) ||
+        document.querySelector(`.section-${id}`);
+
+      if (element) {
+        sections.push(element);
+        console.log(`Found section element for: ${id}`, element);
+      } else {
+        console.warn(`Could not find section element for: ${id}`);
+      }
+    });
+
+    if (sections.length === 0) {
+      console.warn("No sections found for any navigation links");
+      return;
+    }
+
+    console.log(
+      `Navigation highlighting initialized with ${navLinks.length} links and ${sections.length} sections`
+    );
+    console.log("Discovered section IDs:", sectionIds);
+
+    function updateActiveNavigation() {
+      const scrollPosition = window.scrollY + getNavBarHeight() + 50; // Buffer for better detection
+      let activeSection = null;
+
+      // Find the current section
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight;
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          activeSection = section;
+        }
+      });
+
+      // If near the top of the page, highlight the first section
+      if (window.scrollY < 100 && sections.length > 0) {
+        activeSection = sections[0];
+      }
+
+      // Update navigation highlighting
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+
+        if (activeSection) {
+          const linkHref = link.getAttribute("href");
+          const sectionId = "#" + activeSection.id;
+
+          if (linkHref === sectionId) {
+            link.classList.add("active");
+            console.log(`Activated nav link for section: ${activeSection.id}`);
+          }
+        }
+      });
+    }
+
+    // Throttled scroll handler for performance
+    let scrollTimeout;
+    function handleScroll() {
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(updateActiveNavigation, 10);
+    }
+
+    // Initial update
+    updateActiveNavigation();
+
+    // Add scroll listener
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    // Update on resize (navbar height might change)
+    window.addEventListener("resize", () => {
+      setTimeout(updateActiveNavigation, 100);
+    });
+
+    // Update when hash changes
+    window.addEventListener("hashchange", updateActiveNavigation);
+
+    return { updateActiveNavigation, handleScroll };
+  }
+
+  // Initialize enhanced navigation highlighting
+  let navigationHighlighting = null;
+
+  function initializeEnhancedNavigation() {
+    // Clean up existing listeners if any
+    if (navigationHighlighting && navigationHighlighting.handleScroll) {
+      window.removeEventListener("scroll", navigationHighlighting.handleScroll);
+    }
+
+    // Initialize new navigation highlighting
+    navigationHighlighting = enhancedNavigationHighlighting();
   }
 
   function removeQueryParamsFromUrl() {
@@ -413,6 +565,11 @@
     if (!canChangeTheme()) {
       return;
     }
+
+    // GLOBAL ANTI-RELOAD PROTECTION
+    themeChangeInProgress = true;
+    console.log("🔄 Theme switch initiated - GLOBAL RELOAD PROTECTION ACTIVE");
+
     let $themeChanger = $(".js-dark-toggle i");
     let currentThemeMode = getThemeMode();
     let isDarkTheme;
@@ -444,7 +601,16 @@
         $themeChanger.removeClass("fa-sun fa-palette").addClass("fa-moon");
         break;
     }
+
     renderThemeVariation(isDarkTheme);
+
+    // Reset global flag after theme switch is complete
+    setTimeout(() => {
+      themeChangeInProgress = false;
+      console.log(
+        "✅ Theme switch complete - GLOBAL RELOAD PROTECTION DISABLED"
+      );
+    }, 1500);
   }
 
   function getThemeVariation() {
@@ -1454,5 +1620,15 @@
         };
       }
     }, 2000); // Wait 2 seconds for everything to load
+  });
+
+  // Initialize enhanced navigation highlighting
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("Initializing enhanced navigation highlighting...");
+    if (typeof enhancedNavigationHighlighting === "function") {
+      enhancedNavigationHighlighting();
+    } else {
+      console.warn("enhancedNavigationHighlighting function not found");
+    }
   });
 })(jQuery);

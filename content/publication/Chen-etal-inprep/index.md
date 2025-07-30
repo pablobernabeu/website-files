@@ -15,7 +15,7 @@ image:
 # projects:
 # - internal-project
 publishDate: "2023-06-08"
-publication: Current Psychology
+publication: '*Current Psychology*'
 publication_short:
 publication_types:
   - "2"
