@@ -716,7 +716,7 @@ body.dark {
 
 }
 
-// Mobile scroll animations - same elements as desktop but optimized for mobile performance
+// Mobile scroll animations - optimized for fast, responsive mobile performance
 @media (max-width: 999px) {
   
   div.col-12.col-lg-4.section-heading, 
@@ -728,34 +728,31 @@ body.dark {
   .social-icon,
   #top > div.pub > div > a > button {
     opacity: 0;
-    transform: translateY(15px); // Slightly less movement for mobile
-    transition: all 0.2s ease-out; // Faster transition for mobile
+    transform: translateY(10px); // Reduced movement for snappy mobile animation
+    transition: all 0.15s ease-out; // Much faster transition for immediate response
   }
   
-  // Mobile section headings animation
+  // Mobile section headings animation - fast and responsive
   div.col-12.col-lg-4.section-heading.visible, 
   div.col-12.col-lg-4.section-heading > h1.visible {
     opacity: 1;
     transform: translateY(0);
-    animation: mobile-color-transition1 1.5s forwards; // Shorter duration for mobile
+    animation: mobile-color-transition1 0.6s forwards; // Much faster duration for instant visibility
   }
   
   @keyframes mobile-color-transition1 {
     0% {
       color: var(--anim-start);
     }
-    33% {
+    50% {
       color: var(--anim-mid);
-    }
-    66% {
-      color: var(--anim-end-1);
     }
     100% {
       color: var(--text-secondary);
     }
   }
   
-  // Mobile button links animation
+  // Mobile button links animation - quick and snappy
   div.article-container.pt-3 > div.btn-links.mb-3 > a:link.visible, 
   button.visible, 
   button > h3.visible, 
@@ -763,41 +760,35 @@ body.dark {
   #top > div.pub > div > a > button.visible {
     opacity: 1;
     transform: translateY(0);
-    animation: mobile-color-transition2 1s forwards; // Shorter duration for mobile
+    animation: mobile-color-transition2 0.4s forwards; // Very fast for immediate button visibility
   }
   
   @keyframes mobile-color-transition2 {
     0% {
       color: var(--anim-start);
     }
-    33% {
+    50% {
       color: var(--anim-mid);
-    }
-    66% {
-      color: var(--anim-end-1);
     }
     100% {
       color: var(--text-hover);
     }
   }
   
-  // Mobile bio/profile elements animation
+  // Mobile bio/profile elements animation - instant response
   .portrait-title > h3.visible, 
   .social-icon.visible {
     opacity: 1;
     transform: translateY(0);
-    animation: mobile-color-transition3 1s forwards; // Shorter duration for mobile
+    animation: mobile-color-transition3 0.4s forwards; // Fast profile element animation
   }
   
   @keyframes mobile-color-transition3 {
     0% {
       color: var(--anim-start);
     }
-    33% {
+    50% {
       color: var(--anim-mid);
-    }
-    66% {
-      color: var(--anim-end-1);
     }
     100% {
       color: var(--accent-tertiary);
