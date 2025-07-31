@@ -719,8 +719,16 @@ body.dark {
 // Mobile scroll animations - optimized for fast, responsive mobile performance
 @media (max-width: 999px) {
   
+  // Section headings: NO ANIMATION on mobile - instant visibility
   div.col-12.col-lg-4.section-heading, 
-  div.col-12.col-lg-4.section-heading > h1, 
+  div.col-12.col-lg-4.section-heading > h1 {
+    opacity: 1 !important; // Always visible
+    transform: none !important; // No transform effects
+    transition: none !important; // No transitions
+    animation: none !important; // No animations
+  }
+  
+  // Other elements: keep minimal animations for subtle effect
   div.article-container.pt-3 > div.btn-links.mb-3 > a:link, 
   div.btn-links.mb-3 > button, 
   button > h3, 
@@ -730,26 +738,6 @@ body.dark {
     opacity: 0;
     transform: translateY(10px); // Reduced movement for snappy mobile animation
     transition: all 0.15s ease-out; // Much faster transition for immediate response
-  }
-  
-  // Mobile section headings animation - fast and responsive
-  div.col-12.col-lg-4.section-heading.visible, 
-  div.col-12.col-lg-4.section-heading > h1.visible {
-    opacity: 1;
-    transform: translateY(0);
-    animation: mobile-color-transition1 0.6s forwards; // Much faster duration for instant visibility
-  }
-  
-  @keyframes mobile-color-transition1 {
-    0% {
-      color: var(--anim-start);
-    }
-    50% {
-      color: var(--anim-mid);
-    }
-    100% {
-      color: var(--text-secondary);
-    }
   }
   
   // Mobile button links animation - quick and snappy
