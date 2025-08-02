@@ -237,7 +237,12 @@ plugins_js  = []
   #   0: No search engine
   #   1: Academic (built-in)
   #   2: Algolia (https://www.algolia.com)
-  engine = 0
+  engine = 1
+
+  # Configuration of Academic search engine for more precise results
+  [search.academic]
+    threshold = 0.1  # Lower value = more strict matching (default: 0.3)
+    min_length = 2   # Minimum query length (default: 1)
 
   # Configuration of Algolia search engine.
   # Paste the values from your Algolia dashboard.

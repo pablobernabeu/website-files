@@ -32,7 +32,7 @@ projects: []
 
 <div style='font-size:110%;'><b> Dashboards for data visualisation, such as [R Shiny](https://shiny.rstudio.com/) and [Tableau](https://www.tableau.com/), allow the interactive exploration of data by means of drop-down lists and checkboxes, with no coding required from the final users. These web applications can be useful for both the data analyst and the public at large. </b></div>
 
-<br>
+<div style = "margin-top: 4%;"></div>
 
 
 <img style = "float: right; margin-left: 30px;" width = "25%" src="https://pablobernabeu.github.io/2017/the-case-for-data-dashboards-first-steps-in-r-shiny/1.jpg" />
@@ -348,7 +348,6 @@ mainPanel(
 
 ```
 
-<br>
 
 The [official Shiny gallery](https://shiny.rstudio.com/gallery/) offers a great array of apps including their code (e.g., [basic example](https://shiny.rstudio.com/gallery/kmeans-example.html)). Another feature you may add is the option to download your plots, tables, data...
 
@@ -410,7 +409,6 @@ output$downloadPlot.1 <- downloadHandler(
 
 ```
 
-<br>
 
 Apps can include any text, such as explanations of any length and web links. For instance, we can link back to the data repository, where the code for the app can be found.
 
@@ -459,7 +457,6 @@ High-resolution plots can be rendered into a PDF document in a snap. Convenientl
 
 <style>.embed-responsive{position:relative;height:100%;}.embed-responsive iframe{position:absolute;height:100%;}</style><script>window.jQuery || document.write('<script src="//code.jquery.com/jquery-1.11.2.min.js">\x3C/script>') </script><link href="https://mfr.osf.io/static/css/mfr.css" media="all" rel="stylesheet"><div id="mfrIframe" class="mfr mfr-file"></div><script src="https://mfr.osf.io/static/js/mfr.js"></script> <script>var mfrRender = new mfr.Render("mfrIframe", "https://mfr.osf.io/render?url=https://osf.io/2tpxn/?direct%26mode=render%26action=download%26mode=render");</script>
 
-<br>
 
 ### Summary in [slides](https://www.slideshare.net/PabloBernabeu/presenting-data-interactively-online-using-r-shiny-126064157)
 

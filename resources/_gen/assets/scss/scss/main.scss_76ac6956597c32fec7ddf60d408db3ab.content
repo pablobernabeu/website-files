@@ -9150,9 +9150,10 @@ body.dark {
   --text-hover: black;
   --text-active: #24494F;
   --nav-text: darkgrey;
-  --nav-hover: #31A290;
-  --nav-active: #39A290;
+  --nav-hover: #00ff00;
+  --nav-active: #5f9ea0;
   --nav-link: #79A990;
+  --nav-hover-text: #006400;
   --bg-highlight: #EAFFE8;
   --bg-button: #F8F8F8;
   --bg-button-secondary: #F7F7F7;
@@ -9204,9 +9205,10 @@ body.dark {
   --text-hover: #f1f5f9;
   --text-active: #cbd5e1;
   --nav-text: #94a3b8;
-  --nav-hover: #22d3ee;
-  --nav-active: #06b6d4;
+  --nav-hover: #00ff00;
+  --nav-active: #5f9ea0;
   --nav-link: #67e8f9;
+  --nav-hover-text: #32cd32;
   --bg-highlight: rgba(72, 187, 120, 0.2);
   --bg-button: #374151;
   --bg-button-secondary: #4b5563;
@@ -9566,8 +9568,8 @@ body.dark .nav a:hover,
 body.dark .btn:hover,
 body.dark .badge:hover,
 body.dark .btn-links a:hover,
-body.dark .navbar-nav a:hover,
-body.dark #navbar-main a:hover,
+body.dark .navbar-nav a:hover:not(.js-dark-toggle),
+body.dark #navbar-main a:hover:not(.js-dark-toggle),
 body.dark #navbar-content a:hover,
 body.dark .section-heading a:hover,
 body.dark .portrait-title a:hover,
@@ -9763,6 +9765,13 @@ body.dark #navbar-content,
 body.dark .navbar-collapse {
   color: var(--nav-text) !important; }
 
+.navbar-brand:hover {
+  color: #5f9ea0 !important;
+  transition: color 0.3s ease; }
+
+body.dark .navbar-brand:hover {
+  color: #5f9ea0 !important; }
+
 body.dark #navbar-main,
 body.dark .navbar-toggler {
   background-color: #1f2937 !important; }
@@ -9798,7 +9807,119 @@ div.col-12.col-lg-4.section-heading > h1, #navbar-content > ul > li > a {
 
 #navbar-content > ul > li > a:hover > span {
   color: var(--nav-hover);
-  font-weight: bold; }
+  font-weight: normal !important; }
+
+.navbar-nav .nav-link,
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active span,
+.navbar-nav .nav-link:hover span,
+#navbar-content > ul > li > a,
+#navbar-content > ul > li > a.active,
+#navbar-content > ul > li > a:hover,
+#navbar-content > ul > li > a.active > span,
+#navbar-content > ul > li > a:hover > span,
+#navbar-main .nav-link,
+#navbar-main .nav-link.active,
+#navbar-main .nav-link:hover,
+.nav-link,
+.nav-link.active,
+.nav-link:hover {
+  text-decoration: none !important;
+  border-bottom: none !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  position: relative; }
+
+.navbar-nav .nav-link,
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active span,
+.navbar-nav .nav-link:hover span,
+#navbar-content > ul > li > a,
+#navbar-content > ul > li > a.active,
+#navbar-content > ul > li > a:hover,
+#navbar-content > ul > li > a.active > span,
+#navbar-content > ul > li > a:hover > span,
+#navbar-main .nav-link,
+#navbar-main .nav-link.active,
+#navbar-main .nav-link:hover {
+  font-weight: normal !important; }
+
+.navbar-nav .nav-link.active,
+#navbar-content > ul > li > a.active,
+.nav-link.active {
+  color: var(--nav-active) !important;
+  font-weight: normal !important;
+  text-decoration: none !important; }
+
+.navbar-nav .nav-link.active::after,
+#navbar-content > ul > li > a.active::after,
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background-color: var(--nav-active);
+  display: block; }
+
+.navbar-nav .nav-link:hover:not(.active),
+#navbar-content > ul > li > a:hover:not(.active),
+.nav-link:hover:not(.active) {
+  color: var(--nav-hover-text) !important;
+  font-weight: normal !important;
+  text-decoration: none !important;
+  transition: color 0.1s ease; }
+
+.navbar-nav .nav-link:hover:not(.active):not(.js-dark-toggle):not(.js-search)::after,
+#navbar-content > ul > li > a:hover:not(.active)::after,
+.nav-link:hover:not(.active):not(.js-dark-toggle):not(.js-search)::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
+  background-color: var(--nav-hover);
+  display: block;
+  transition: all 0.1s ease; }
+
+.navbar-nav .nav-link.active span,
+#navbar-content > ul > li > a.active > span,
+.nav-link.active span {
+  color: var(--nav-active) !important; }
+
+.navbar-nav .nav-link:hover:not(.active) span,
+#navbar-content > ul > li > a:hover:not(.active) > span,
+.nav-link:hover:not(.active) span {
+  color: var(--nav-hover-text) !important;
+  transition: color 0.1s ease; }
+
+body.dark .navbar-nav .nav-link.active,
+body.dark #navbar-content > ul > li > a.active,
+body.dark .nav-link.active,
+body.dark .navbar-nav .nav-link.active span,
+body.dark #navbar-content > ul > li > a.active > span,
+body.dark .nav-link.active span {
+  color: var(--nav-active) !important;
+  text-decoration: none !important; }
+
+body.dark .navbar-nav .nav-link:hover:not(.active),
+body.dark #navbar-content > ul > li > a:hover:not(.active),
+body.dark .nav-link:hover:not(.active),
+body.dark .navbar-nav .nav-link:hover:not(.active) span,
+body.dark #navbar-content > ul > li > a:hover:not(.active) > span,
+body.dark .nav-link:hover:not(.active) span {
+  color: var(--nav-hover-text) !important;
+  text-decoration: none !important;
+  transition: color 0.1s ease; }
 
 #navbar-main > div > ul a:link {
   color: var(--text-secondary); }
@@ -10503,7 +10624,7 @@ button#read-more-btn:hover,
 
 .navbar-nav .nav-link.active {
   color: aquamarine !important;
-  font-weight: 600 !important;
+  font-weight: bold !important;
   position: relative; }
 
 .navbar-nav .nav-link.active::after {
@@ -10526,7 +10647,16 @@ button#read-more-btn:hover,
 body.dark .navbar-nav .nav-link.active,
 body.dark .navbar-nav .nav-item .nav-link.active {
   color: aquamarine !important;
-  font-weight: 600 !important; }
+  font-weight: normal !important; }
+
+body.dark .navbar-nav .nav-link.active,
+body.dark .nav-link.active {
+  font-weight: normal !important; }
+
+html body.dark .navbar-nav .nav-link.active,
+html body.dark #navbar-main .navbar-nav .nav-link.active,
+html body.dark .navbar-collapse .navbar-nav .nav-link.active {
+  font-weight: 300 !important; }
 
 .dark .navbar-nav .nav-link.active::after,
 .dark .navbar-nav .nav-item .nav-link.active::after,
@@ -10657,3 +10787,171 @@ body.dark .section-heading > h1 {
   border-image-source: linear-gradient(to right, aquamarine, #2d2d2d) !important;
   border-image-slice: 1 !important;
   border-bottom: 0.4px solid !important; }
+
+#search > div > section.section-search-results h3,
+.section-search-results h3,
+.search-results h3,
+#search .section-search-results h3 a,
+.section-search-results h3 a,
+.search-results h3 a {
+  color: #4a5568 !important;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  text-decoration: none !important; }
+
+#search > div > section.section-search-results h3:hover,
+.section-search-results h3:hover,
+.search-results h3:hover {
+  color: #2d3748 !important; }
+
+body.dark #search > div > section.section-search-results h3,
+body.dark .section-search-results h3,
+body.dark .search-results h3,
+body.dark #search .section-search-results h3 a,
+body.dark .section-search-results h3 a,
+body.dark .search-results h3 a {
+  color: #a0aec0 !important; }
+
+body.dark #search > div > section.section-search-results h3:hover,
+body.dark .section-search-results h3:hover,
+body.dark .search-results h3:hover,
+body.dark #search .section-search-results h3 a:hover,
+body.dark .section-search-results h3 a:hover,
+body.dark .search-results h3 a:hover {
+  color: #cbd5e0 !important; }
+
+#search > div > section.section-search-results a,
+.section-search-results a,
+.search-results a {
+  text-decoration: none !important; }
+
+#search > div > section.section-search-results a h3,
+.section-search-results a h3,
+.search-results a h3 {
+  color: inherit !important; }
+
+.navbar-nav .nav-link.js-search,
+.navbar-nav .nav-link.js-dark-toggle {
+  color: var(--nav-text) !important; }
+
+.navbar-nav .nav-link.js-search:hover {
+  color: var(--nav-hover-text) !important; }
+
+.navbar-nav .nav-link.js-dark-toggle:hover {
+  color: var(--nav-hover-text) !important; }
+
+body.dark .navbar-nav .nav-link.js-search,
+body.dark .navbar-nav .nav-link.js-dark-toggle {
+  color: var(--nav-text) !important; }
+
+body.dark .navbar-nav .nav-link.js-search:hover,
+body.dark .navbar-nav .nav-link.js-dark-toggle:hover {
+  color: var(--nav-hover-text) !important; }
+
+#search > div > section.search-header > div.row.no-gutters.justify-content-between.mb-3 > div.col-6.col-search-close > a > i:hover,
+.search-header .col-search-close a i:hover {
+  background-color: transparent !important;
+  color: #5f9ea0 !important;
+  transition: color 0.3s ease; }
+
+#search > div > section.search-header > div.row.no-gutters.justify-content-between.mb-3 > div.col-6.col-search-close > a:hover,
+.search-header .col-search-close a:hover {
+  background-color: transparent !important; }
+
+body.dark #search > div > section.search-header > div.row.no-gutters.justify-content-between.mb-3 > div.col-6.col-search-close > a > i:hover,
+body.dark .search-header .col-search-close a i:hover {
+  background-color: transparent !important;
+  color: aquamarine !important; }
+
+/* NUCLEAR OVERRIDE FOR SEARCH RESULTS - Must be at end of file */
+html body #search div.section-search-results h3,
+html body #search div.section-search-results h3 a,
+html body .section-search-results h3,
+html body .section-search-results h3 a,
+html body .search-results h3,
+html body .search-results h3 a {
+  color: #4a5568 !important;
+  /* Elegant dark grey for light theme */ }
+
+html body.dark #search div.section-search-results h3,
+html body.dark #search div.section-search-results h3 a,
+html body.dark .section-search-results h3,
+html body.dark .section-search-results h3 a,
+html body.dark .search-results h3,
+html body.dark .search-results h3 a {
+  color: #a0aec0 !important;
+  /* Soft warm grey for dark theme */ }
+
+/* NUCLEAR OVERRIDE FOR ACTIVE MENU BOLD - Must be at end of file */
+html body.dark #navbar-main .navbar-nav .nav-link.active,
+html body.dark .navbar-collapse .navbar-nav .nav-link.active,
+html body.dark .navbar-nav .nav-link.active {
+  font-weight: 300 !important;
+  /* Light weight to ensure no bold */ }
+
+/* Additional Bootstrap and theme overrides for dark theme */
+.dark .nav-link.active,
+.dark .navbar-nav .nav-link.active,
+.dark .navbar-light .navbar-nav .nav-link.active,
+body.dark .nav-link.active,
+body.dark .navbar-nav .nav-link.active,
+body.dark .navbar-light .navbar-nav .nav-link.active {
+  font-weight: 300 !important; }
+
+/* Force override any inherited bold styling */
+html body.dark * .nav-link.active {
+  font-weight: 300 !important; }
+
+/* NUCLEAR SEARCH RESULT TITLE STYLING - Override blue defaults */
+html body .search-hit h1,
+html body .search-hit h2,
+html body .search-hit h3,
+html body .search-hit h4,
+html body .search-hit h5,
+html body .search-hit h6,
+html body .search-results .search-hit h1,
+html body .search-results .search-hit h2,
+html body .search-results .search-hit h3,
+html body .search-results .search-hit h4,
+html body .search-results .search-hit h5,
+html body .search-results .search-hit h6,
+html body #search-results .search-hit h1,
+html body #search-results .search-hit h2,
+html body #search-results .search-hit h3,
+html body #search-results .search-hit h4,
+html body #search-results .search-hit h5,
+html body #search-results .search-hit h6 {
+  color: #009688 !important;
+  /* Force aquamarine */ }
+
+/* Target any link in search results */
+html body .search-hit a,
+html body .search-results .search-hit a,
+html body #search-results .search-hit a,
+html body .search-hit a h1,
+html body .search-hit a h2,
+html body .search-hit a h3,
+html body .search-hit a h4,
+html body .search-hit a h5,
+html body .search-hit a h6 {
+  color: #009688 !important;
+  /* Force aquamarine */
+  text-decoration: none !important; }
+
+/* Dark theme version for search results */
+html body.dark .search-hit h1,
+html body.dark .search-hit h2,
+html body.dark .search-hit h3,
+html body.dark .search-hit h4,
+html body.dark .search-hit h5,
+html body.dark .search-hit h6,
+html body.dark .search-hit a,
+html body.dark .search-hit a h1,
+html body.dark .search-hit a h2,
+html body.dark .search-hit a h3,
+html body.dark .search-hit a h4,
+html body.dark .search-hit a h5,
+html body.dark .search-hit a h6 {
+  color: #64ffda !important;
+  /* Force light aquamarine for dark theme */
+  text-decoration: none !important; }

@@ -40,9 +40,10 @@ body.dark {
   
   // Navigation colors
   --nav-text: darkgrey;
-  --nav-hover: #31A290;
-  --nav-active: #39A290;
+  --nav-hover: #00ff00; // Green for hover underline
+  --nav-active: #5f9ea0; // Dark aquamarine for active
   --nav-link: #79A990;
+  --nav-hover-text: #006400; // Dark green for hover text (light theme)
   
   // Background colors
   --bg-highlight: #EAFFE8;
@@ -99,6 +100,23 @@ body.dark {
 }
 
 // Dark theme color overrides
+// =================================================================================
+// Color Conversion System: Light → Dark Theme Mappings
+// 
+// Light Theme Color → Dark Theme Equivalent:
+// #006400 (dark green) → #32cd32 (lime green) - Better visibility on dark backgrounds
+// #5f9ea0 (dark aquamarine) → #5f9ea0 (same) - Already works well on dark
+// #00ff00 (bright green) → #00ff00 (same) - High contrast works on both themes
+// darkgrey → #94a3b8 (slate blue-grey) - Softer on dark backgrounds
+// #79A990 (muted teal) → #67e8f9 (cyan) - Brighter for dark theme visibility
+//
+// Conversion Principles:
+// 1. Dark colors → Lighter equivalents for dark backgrounds
+// 2. Maintain color family relationships (green stays green)
+// 3. Ensure adequate contrast ratios for accessibility
+// 4. Preserve semantic meaning across themes
+// =================================================================================
+
 body.dark {
   --text-primary: #e2e8f0;
   --text-secondary: #94a3b8;
@@ -108,35 +126,36 @@ body.dark {
   --text-hover: #f1f5f9;
   --text-active: #cbd5e1;
   
-  // Navigation colors for dark theme
+  // Navigation colors for dark theme (converted for dark background visibility)
   --nav-text: #94a3b8;
-  --nav-hover: #22d3ee;
-  --nav-active: #06b6d4;
-  --nav-link: #67e8f9;
+  --nav-hover: #00ff00; // Green for hover underline (high contrast, works on dark)
+  --nav-active: #5f9ea0; // Dark aquamarine for active (already optimal for dark)
+  --nav-link: #67e8f9; // Cyan (brighter conversion of light theme teal)
+  --nav-hover-text: #32cd32; // Lime green (lighter conversion of #006400 dark green)
   
-  // Background colors for dark theme
-  --bg-highlight: rgba(72, 187, 120, 0.2);
+  // Background colors for dark theme (converted for dark mode)
+  --bg-highlight: rgba(72, 187, 120, 0.2); // Green highlight with low opacity for dark
   --bg-button: #374151;
   --bg-button-secondary: #4b5563;
-  --bg-button-hover: rgba(72, 187, 120, 0.3);
+  --bg-button-hover: rgba(72, 187, 120, 0.3); // Green hover background (converted from light theme)
   --bg-tag: #374151;
   --bg-tag-visited: #4c1d95;
-  --bg-tag-hover: rgba(72, 187, 120, 0.25);
-  --bg-profile-gradient: rgba(72, 187, 120, 0.2);
+  --bg-tag-hover: rgba(72, 187, 120, 0.25); // Subtle green hover (converted)
+  --bg-profile-gradient: rgba(72, 187, 120, 0.2); // Green gradient for dark theme
   --bg-warning: #422006;
   --bg-script-container: #1f2937;
   --bg-full-text: #374151;
-  --bg-full-text-hover: rgba(72, 187, 120, 0.15);
+  --bg-full-text-hover: rgba(72, 187, 120, 0.15); // Subtle green hover (converted from light)
   --bg-cv: #422006;
   --bg-cv-hover: #451a03;
   
-  // Border colors for dark theme
+  // Border colors for dark theme (converted equivalents)
   --border-color: #4b5563;
   --border-warning: #a16207;
-  --border-full-text: aquamarine;
-  --border-full-text-hover: #16a34a;
-  --border-cv: aquamarine;
-  --border-cv-hover: #16a34a;
+  --border-full-text: aquamarine; // High contrast accent
+  --border-full-text-hover: #16a34a; // Darker green → brighter green conversion
+  --border-cv: aquamarine; // High contrast accent  
+  --border-cv-hover: #16a34a; // Darker green → brighter green conversion
   
   // Accent colors for dark theme
   --accent-primary: #22d3ee;
@@ -564,8 +583,8 @@ body.dark {
   .btn:hover, 
   .badge:hover,
   .btn-links a:hover,
-  .navbar-nav a:hover,
-  #navbar-main a:hover,
+  .navbar-nav a:hover:not(.js-dark-toggle),
+  #navbar-main a:hover:not(.js-dark-toggle),
   #navbar-content a:hover,
   .section-heading a:hover,
   .portrait-title a:hover,
@@ -870,6 +889,16 @@ body.dark .navbar-collapse {
   color: var(--nav-text) !important;
 }
 
+// Navbar brand hover styling for both light and dark themes
+.navbar-brand:hover {
+  color: #5f9ea0 !important; // Dark aquamarine
+  transition: color 0.3s ease;
+}
+
+body.dark .navbar-brand:hover {
+  color: #5f9ea0 !important; // Dark aquamarine
+}
+
 // Ensure navbar elements have proper dark background
 body.dark #navbar-main,
 body.dark .navbar-toggler {
@@ -918,7 +947,140 @@ div.col-12.col-lg-4.section-heading > h1, #navbar-content > ul > li > a {
 
 #navbar-content > ul > li > a:hover > span {
   color: var(--nav-hover);
-  font-weight: bold;
+  font-weight: normal !important; // Remove bold on hover
+}
+
+// Navigation Menu Styling Enhancements
+// =================================================================================
+
+// 0. Remove ALL existing underlines and borders from navigation elements
+.navbar-nav .nav-link,
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active span,
+.navbar-nav .nav-link:hover span,
+#navbar-content > ul > li > a,
+#navbar-content > ul > li > a.active,
+#navbar-content > ul > li > a:hover,
+#navbar-content > ul > li > a.active > span,
+#navbar-content > ul > li > a:hover > span,
+#navbar-main .nav-link,
+#navbar-main .nav-link.active,
+#navbar-main .nav-link:hover,
+.nav-link,
+.nav-link.active,
+.nav-link:hover {
+  text-decoration: none !important;
+  border-bottom: none !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  position: relative; // Needed for ::after positioning
+}
+
+// 1. Remove bold font-weight from all navigation menu items
+.navbar-nav .nav-link,
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active span,
+.navbar-nav .nav-link:hover span,
+#navbar-content > ul > li > a,
+#navbar-content > ul > li > a.active,
+#navbar-content > ul > li > a:hover,
+#navbar-content > ul > li > a.active > span,
+#navbar-content > ul > li > a:hover > span,
+#navbar-main .nav-link,
+#navbar-main .nav-link.active,
+#navbar-main .nav-link:hover {
+  font-weight: normal !important;
+}
+
+// 2. Active menu item styling - dark aquamarine color with properly centered underline
+.navbar-nav .nav-link.active,
+#navbar-content > ul > li > a.active,
+.nav-link.active {
+  color: var(--nav-active) !important; // Dark aquamarine
+  font-weight: normal !important;
+  text-decoration: none !important;
+}
+
+// Fixed positioning for active underlines - centered under text
+.navbar-nav .nav-link.active::after,
+#navbar-content > ul > li > a.active::after,
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; // Positioned closer to words but not too close
+  left: 50%; // Center the underline
+  transform: translateX(-50%); // Center alignment
+  width: 80%; // Slightly narrower than full width for better centering
+  height: 1px;
+  background-color: var(--nav-active);
+  display: block;
+}
+
+// 3. Hover menu item styling - dark green color with properly centered underline
+.navbar-nav .nav-link:hover:not(.active),
+#navbar-content > ul > li > a:hover:not(.active),
+.nav-link:hover:not(.active) {
+  color: var(--nav-hover-text) !important; // Dark green for hover text
+  font-weight: normal !important;
+  text-decoration: none !important;
+  transition: color 0.1s ease; // Fast transition to reduce lag
+}
+
+// Fixed positioning for hover underlines - centered under text
+.navbar-nav .nav-link:hover:not(.active):not(.js-dark-toggle):not(.js-search)::after,
+#navbar-content > ul > li > a:hover:not(.active)::after,
+.nav-link:hover:not(.active):not(.js-dark-toggle):not(.js-search)::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; // Positioned closer to words but not too close
+  left: 50%; // Center the underline
+  transform: translateX(-50%); // Center alignment
+  width: 80%; // Slightly narrower than full width for better centering
+  height: 2px; // Slightly thicker for hover
+  background-color: var(--nav-hover); // Green for hover underline
+  display: block;
+  transition: all 0.1s ease; // Fast transition to reduce lag
+}
+
+// 4. Ensure span elements inside links also get the right colors
+.navbar-nav .nav-link.active span,
+#navbar-content > ul > li > a.active > span,
+.nav-link.active span {
+  color: var(--nav-active) !important; // Dark aquamarine
+}
+
+.navbar-nav .nav-link:hover:not(.active) span,
+#navbar-content > ul > li > a:hover:not(.active) > span,
+.nav-link:hover:not(.active) span {
+  color: var(--nav-hover-text) !important; // Dark green for hover text
+  transition: color 0.1s ease; // Fast transition to reduce lag
+}
+
+// 5. Dark theme consistency with fast transitions
+body.dark .navbar-nav .nav-link.active,
+body.dark #navbar-content > ul > li > a.active,
+body.dark .nav-link.active,
+body.dark .navbar-nav .nav-link.active span,
+body.dark #navbar-content > ul > li > a.active > span,
+body.dark .nav-link.active span {
+  color: var(--nav-active) !important;
+  text-decoration: none !important;
+}
+
+body.dark .navbar-nav .nav-link:hover:not(.active),
+body.dark #navbar-content > ul > li > a:hover:not(.active),
+body.dark .nav-link:hover:not(.active),
+body.dark .navbar-nav .nav-link:hover:not(.active) span,
+body.dark #navbar-content > ul > li > a:hover:not(.active) > span,
+body.dark .nav-link:hover:not(.active) span {
+  color: var(--nav-hover-text) !important; // Dark green for hover text
+  text-decoration: none !important;
+  transition: color 0.1s ease; // Fast transition to reduce lag
 }
 
 #navbar-main > div > ul a:link {
@@ -1776,7 +1938,7 @@ button#read-more-btn:hover,
 // Active navigation item highlighting - Light theme
 .navbar-nav .nav-link.active {
   color: aquamarine !important;
-  font-weight: 600 !important;
+  font-weight: bold !important;
   position: relative;
 }
 
@@ -1804,7 +1966,20 @@ button#read-more-btn:hover,
 body.dark .navbar-nav .nav-link.active,
 body.dark .navbar-nav .nav-item .nav-link.active {
   color: aquamarine !important;
-  font-weight: 600 !important;
+  font-weight: normal !important; // Remove bold in dark theme
+}
+
+// Additional specificity to override bold styling in dark theme
+body.dark .navbar-nav .nav-link.active,
+body.dark .nav-link.active {
+  font-weight: normal !important;
+}
+
+// Nuclear option - extremely specific selector for dark theme
+html body.dark .navbar-nav .nav-link.active,
+html body.dark #navbar-main .navbar-nav .nav-link.active,
+html body.dark .navbar-collapse .navbar-nav .nav-link.active {
+  font-weight: 300 !important; // Use lighter weight to ensure no bold
 }
 
 .dark .navbar-nav .nav-link.active::after,
@@ -1963,4 +2138,213 @@ body.dark .section-heading > h1 {
   border-image-source: linear-gradient(to right, aquamarine, #2d2d2d) !important;
   border-image-slice: 1 !important;
   border-bottom: 0.4px solid !important;
+}
+
+////////////////////////////
+// Search Results Styling
+////////////////////////////
+
+// Style search result titles with elegant colors
+#search > div > section.section-search-results h3,
+.section-search-results h3,
+.search-results h3,
+#search .section-search-results h3 a,
+.section-search-results h3 a,
+.search-results h3 a {
+  color: #4a5568 !important; // Elegant dark grey for light theme
+  font-weight: 600;
+  transition: color 0.3s ease;
+  text-decoration: none !important;
+}
+
+#search > div > section.section-search-results h3:hover,
+.section-search-results h3:hover,
+.search-results h3:hover {
+  color: #2d3748 !important; // Darker elegant grey on hover for light theme
+}
+
+// Dark theme search result titles
+body.dark #search > div > section.section-search-results h3,
+body.dark .section-search-results h3,
+body.dark .search-results h3,
+body.dark #search .section-search-results h3 a,
+body.dark .section-search-results h3 a,
+body.dark .search-results h3 a {
+  color: #a0aec0 !important; // Soft warm grey for dark theme
+}
+
+body.dark #search > div > section.section-search-results h3:hover,
+body.dark .section-search-results h3:hover,
+body.dark .search-results h3:hover,
+body.dark #search .section-search-results h3 a:hover,
+body.dark .section-search-results h3 a:hover,
+body.dark .search-results h3 a:hover {
+  color: #cbd5e0 !important; // Lighter warm grey on hover for dark theme
+}
+
+// Remove default blue color from search result links
+#search > div > section.section-search-results a,
+.section-search-results a,
+.search-results a {
+  text-decoration: none !important;
+}
+
+#search > div > section.section-search-results a h3,
+.section-search-results a h3,
+.search-results a h3 {
+  color: inherit !important; // Use the colors defined above
+}
+
+////////////////////////////
+// Navigation Icon Colors (Search & Theme Toggle)
+////////////////////////////
+
+// Default grey color for search icon and theme toggle
+.navbar-nav .nav-link.js-search,
+.navbar-nav .nav-link.js-dark-toggle {
+  color: var(--nav-text) !important; // Use default grey
+}
+
+// Keep current hover colors for search icon and theme toggle
+.navbar-nav .nav-link.js-search:hover {
+  color: var(--nav-hover-text) !important; // Current hover color
+}
+
+.navbar-nav .nav-link.js-dark-toggle:hover {
+  color: var(--nav-hover-text) !important; // Current hover color
+}
+
+// Dark theme
+body.dark .navbar-nav .nav-link.js-search,
+body.dark .navbar-nav .nav-link.js-dark-toggle {
+  color: var(--nav-text) !important; // Use default grey
+}
+
+body.dark .navbar-nav .nav-link.js-search:hover,
+body.dark .navbar-nav .nav-link.js-dark-toggle:hover {
+  color: var(--nav-hover-text) !important; // Current hover color
+}
+
+////////////////////////////
+// Search Close Icon Styling
+////////////////////////////
+
+// Remove background color and add dark aquamarine icon color on hover (light theme)
+#search > div > section.search-header > div.row.no-gutters.justify-content-between.mb-3 > div.col-6.col-search-close > a > i:hover,
+.search-header .col-search-close a i:hover {
+  background-color: transparent !important;
+  color: #5f9ea0 !important; // Dark aquamarine for light theme
+  transition: color 0.3s ease;
+}
+
+// Ensure no background color is applied
+#search > div > section.search-header > div.row.no-gutters.justify-content-between.mb-3 > div.col-6.col-search-close > a:hover,
+.search-header .col-search-close a:hover {
+  background-color: transparent !important;
+}
+
+// Dark theme search close icon (regular aquamarine)
+body.dark #search > div > section.search-header > div.row.no-gutters.justify-content-between.mb-3 > div.col-6.col-search-close > a > i:hover,
+body.dark .search-header .col-search-close a i:hover {
+  background-color: transparent !important;
+  color: aquamarine !important;
+}
+
+////////////////////////////
+// NUCLEAR OPTIONS - FINAL OVERRIDES
+////////////////////////////
+
+/* NUCLEAR OVERRIDE FOR SEARCH RESULTS - Must be at end of file */
+html body #search div.section-search-results h3,
+html body #search div.section-search-results h3 a,
+html body .section-search-results h3,
+html body .section-search-results h3 a,
+html body .search-results h3,
+html body .search-results h3 a {
+  color: #4a5568 !important; /* Elegant dark grey for light theme */
+}
+
+html body.dark #search div.section-search-results h3,
+html body.dark #search div.section-search-results h3 a,
+html body.dark .section-search-results h3,
+html body.dark .section-search-results h3 a,
+html body.dark .search-results h3,
+html body.dark .search-results h3 a {
+  color: #a0aec0 !important; /* Soft warm grey for dark theme */
+}
+
+/* NUCLEAR OVERRIDE FOR ACTIVE MENU BOLD - Must be at end of file */
+html body.dark #navbar-main .navbar-nav .nav-link.active,
+html body.dark .navbar-collapse .navbar-nav .nav-link.active,
+html body.dark .navbar-nav .nav-link.active {
+  font-weight: 300 !important; /* Light weight to ensure no bold */
+}
+
+/* Additional Bootstrap and theme overrides for dark theme */
+.dark .nav-link.active,
+.dark .navbar-nav .nav-link.active,
+.dark .navbar-light .navbar-nav .nav-link.active,
+body.dark .nav-link.active,
+body.dark .navbar-nav .nav-link.active,
+body.dark .navbar-light .navbar-nav .nav-link.active {
+  font-weight: 300 !important;
+}
+
+/* Force override any inherited bold styling */
+html body.dark * .nav-link.active {
+  font-weight: 300 !important;
+}
+
+/* NUCLEAR SEARCH RESULT TITLE STYLING - Override blue defaults */
+html body .search-hit h1,
+html body .search-hit h2,
+html body .search-hit h3,
+html body .search-hit h4,
+html body .search-hit h5,
+html body .search-hit h6,
+html body .search-results .search-hit h1,
+html body .search-results .search-hit h2,
+html body .search-results .search-hit h3,
+html body .search-results .search-hit h4,
+html body .search-results .search-hit h5,
+html body .search-results .search-hit h6,
+html body #search-results .search-hit h1,
+html body #search-results .search-hit h2,
+html body #search-results .search-hit h3,
+html body #search-results .search-hit h4,
+html body #search-results .search-hit h5,
+html body #search-results .search-hit h6 {
+  color: #009688 !important; /* Force aquamarine */
+}
+
+/* Target any link in search results */
+html body .search-hit a,
+html body .search-results .search-hit a,
+html body #search-results .search-hit a,
+html body .search-hit a h1,
+html body .search-hit a h2,
+html body .search-hit a h3,
+html body .search-hit a h4,
+html body .search-hit a h5,
+html body .search-hit a h6 {
+  color: #009688 !important; /* Force aquamarine */
+  text-decoration: none !important;
+}
+
+/* Dark theme version for search results */
+html body.dark .search-hit h1,
+html body.dark .search-hit h2,
+html body.dark .search-hit h3,
+html body.dark .search-hit h4,
+html body.dark .search-hit h5,
+html body.dark .search-hit h6,
+html body.dark .search-hit a,
+html body.dark .search-hit a h1,
+html body.dark .search-hit a h2,
+html body.dark .search-hit a h3,
+html body.dark .search-hit a h4,
+html body.dark .search-hit a h5,
+html body.dark .search-hit a h6 {
+  color: #64ffda !important; /* Force light aquamarine for dark theme */
+  text-decoration: none !important;
 }

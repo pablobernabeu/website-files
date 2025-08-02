@@ -145,15 +145,19 @@
     console.log("Discovered section IDs:", sectionIds);
 
     function updateActiveNavigation() {
-      const scrollPosition = window.scrollY + getNavBarHeight() + 50; // Buffer for better detection
+      const scrollPosition = window.scrollY + getNavBarHeight() + 10; // Reduced buffer for more accurate detection
       let activeSection = null;
 
-      // Find the current section
+      // Find the current section with more precise detection
       sections.forEach((section) => {
         const sectionTop = section.offsetTop;
         const sectionBottom = sectionTop + section.offsetHeight;
 
-        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+        // More precise section detection - account for section padding
+        if (
+          scrollPosition >= sectionTop - 20 &&
+          scrollPosition < sectionBottom - 20
+        ) {
           activeSection = section;
         }
       });
@@ -179,11 +183,11 @@
       });
     }
 
-    // Throttled scroll handler for performance
+    // Optimized scroll handler for better performance
     let scrollTimeout;
     function handleScroll() {
       if (scrollTimeout) clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(updateActiveNavigation, 10);
+      scrollTimeout = setTimeout(updateActiveNavigation, 50); // Slightly longer timeout to reduce lag
     }
 
     // Initial update

@@ -9,6 +9,22 @@
 {{- range $pages -}}
   {{- /* Do not index drafts or private pages. */ -}}
   {{- if and (not .Draft) (not .Params.private) -}}
+    
+    {{- /* Skip blog posts (Section = "post") that don't have the "s" tag */ -}}
+    {{- $shouldIndex := true -}}
+    {{- if eq .Section "post" -}}
+      {{- $hasStag := false -}}
+      {{- range .Params.Tags -}}
+        {{- if eq . "s" -}}
+          {{- $hasStag = true -}}
+        {{- end -}}
+      {{- end -}}
+      {{- if not $hasStag -}}
+        {{- $shouldIndex = false -}}
+      {{- end -}}
+    {{- end -}}
+    
+    {{- if $shouldIndex -}}
 
     {{- /* Generate page description. */ -}}
     {{- $desc := "" -}}
@@ -56,6 +72,7 @@
     {{- /* Add page to index. */ -}}
     {{- $index = $index | append (dict "objectID" .File.UniqueID "date" .Date.UTC.Unix "publishdate" .PublishDate "lastmod" .Lastmod.UTC.Unix "expirydate" .ExpiryDate.UTC.Unix "lang" .Lang "permalink" $permalink "relpermalink" $rel_permalink "title" $title "summary" (plainify $desc) "content" .Plain "authors" $authors "kind" .Kind "type" .Type "section" .Section "tags" .Params.Tags "categories" .Params.Categories) -}}
 
+    {{- end -}}
   {{- end -}}
 {{- end -}}
 
