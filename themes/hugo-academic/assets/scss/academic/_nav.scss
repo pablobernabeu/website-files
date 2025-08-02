@@ -49,7 +49,6 @@
       }
 
       &.active {
-        font-weight: bold !important;
         color: $sta-menu-text-active !important;
       }
     }
@@ -62,7 +61,6 @@
   // Note: dedicated `i18n-active` class to prevent ScrollSpy removing `active` class from language chooser.
   .dropdown-item.active,
   .i18n-active {
-    font-weight: bold;
     color: $sta-menu-text-active !important;
   }
 

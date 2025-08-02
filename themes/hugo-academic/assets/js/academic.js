@@ -293,6 +293,14 @@
     }
   });
 
+  // Enhanced mobile menu auto-close for navigation links
+  $(document).on("click", ".navbar-nav .nav-link", function (e) {
+    // Close mobile menu when any nav link is clicked (on mobile)
+    if (window.innerWidth <= 768) {
+      $(".navbar-collapse").collapse("hide");
+    }
+  });
+
   /* ---------------------------------------------------------------------------
    * Filter publications.
    * --------------------------------------------------------------------------- */

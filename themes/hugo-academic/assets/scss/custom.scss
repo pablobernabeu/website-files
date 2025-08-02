@@ -2030,6 +2030,16 @@ section[id] {
   #navbar-main .navbar-nav .nav-link.active::after {
     display: none !important;
   }
+  
+  // Fix mobile dropdown positioning - hang under toggle icon on left side
+  .navbar-collapse {
+    width: auto !important;
+    max-width: 250px !important;
+    left: 15px !important;           // Position from left (under toggle)
+    right: auto !important;          // Remove right positioning
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  }
 }
 
 /* CRITICAL FIXES - Maximum specificity overrides */
