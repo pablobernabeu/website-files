@@ -13,9 +13,7 @@
 
     <!-- Load in semantic priming stimuli (tag: 'SemPri') -->
     <script src="js/semanticpriming_practice_stimuli.js"></script>
-    <!-- Large stimuli files loaded from jsDelivr CDN -->
-    <script src="https://cdn.jsdelivr.net/gh/pablobernabeu/semanticpriming_jsPsych_experiment@main/semanticpriming_main_stimuli_1.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/pablobernabeu/semanticpriming_jsPsych_experiment@main/semanticpriming_main_stimuli_2.js"></script>
+    <!-- Large stimuli files will be lazy loaded when experiment starts -->
 
     <!-- Load in reading ability stimuli (tag: 'ReadAbil') -->
     <script src="js/reading_ability_stimuli.js"></script>
@@ -2038,7 +2036,114 @@
     /** Run experiment                         **/
     /********************************************/
 
-    // Start experiment directly (stimuli loaded via CDN)
-    jsPsych.run(language_vision_SemPri_TIMELINE);
+    // Lazy loading system for large stimuli files
+    async function loadStimuli() {
+      return new Promise((resolve, reject) => {
+        let loadedFiles = 0;
+        const totalFiles = 2;
+
+        function updateProgress() {
+          loadedFiles++;
+          const progress = Math.round((loadedFiles / totalFiles) * 100);
+          document.getElementById(
+            "loadingProgress"
+          ).textContent = `Loading stimuli files... ${progress}% (${loadedFiles}/${totalFiles})`;
+
+          if (loadedFiles === totalFiles) {
+            resolve(true);
+          }
+        }
+
+        function loadScript(src) {
+          return new Promise((resolve, reject) => {
+            const script = document.createElement("script");
+            script.src = src;
+            script.onload = () => {
+              updateProgress();
+              resolve();
+            };
+            script.onerror = () => reject(new Error(`Failed to load ${src}`));
+            document.head.appendChild(script);
+          });
+        }
+
+        // Load both large stimuli files
+        Promise.all([
+          loadScript("js/semanticpriming_main_stimuli_1.js"),
+          loadScript("js/semanticpriming_main_stimuli_2.js"),
+        ])
+          .then(() => {
+            resolve(true);
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
+    }
+
+    // Experiment startup with loading screen
+    async function startExperiment() {
+      // Show loading screen
+      document.body.innerHTML = `
+        <div style="display: flex; justify-content: center; align-items: center; height: 100vh; font-family: Arial, sans-serif; background-color: #f5f5f5;">
+          <div style="text-align: center; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); max-width: 500px;">
+            <h2 style="color: #333; margin-bottom: 20px;">🧠 Language & Vision Experiment</h2>
+            <p style="color: #666; margin-bottom: 30px;">Loading experiment resources...<br>
+            <small>This may take a moment depending on your connection (128MB total).</small></p>
+            <div style="margin: 20px 0;">
+              <div id="loadingProgress" style="font-size: 16px; color: #007bff; font-weight: bold;">
+                Preparing to load stimuli files...
+              </div>
+            </div>
+            <div style="margin-top: 30px;">
+              <div style="width: 100%; height: 6px; background-color: #e0e0e0; border-radius: 3px; overflow: hidden;">
+                <div id="progressBar" style="width: 0%; height: 100%; background-color: #007bff; transition: width 0.3s ease;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      try {
+        // Update progress bar
+        document.getElementById("progressBar").style.width = "10%";
+
+        // Load the large stimuli files
+        await loadStimuli();
+
+        // Update progress
+        document.getElementById("progressBar").style.width = "100%";
+        document.getElementById("loadingProgress").innerHTML =
+          '<span style="color: #28a745;">✅ All files loaded successfully!</span>';
+
+        // Small delay to show success message
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+
+        // Restore original body and start experiment
+        document.body.innerHTML = "";
+        jsPsych.run(language_vision_SemPri_TIMELINE);
+      } catch (error) {
+        // Show error message with retry option
+        document.getElementById(
+          "loadingProgress"
+        ).innerHTML = `<span style="color: #dc3545;">❌ Failed to load files</span><br>
+           <button onclick="startExperiment()" style="margin-top: 15px; padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+             Try Again
+           </button>`;
+        console.error("Loading error:", error);
+      }
+    }
+
+    // Check if stimuli files are already loaded (page refresh case)
+    if (
+      typeof SemPri_Block1_STIMULI !== "undefined" &&
+      typeof SemPri_Block2_STIMULI !== "undefined"
+    ) {
+      // Files already loaded, start immediately
+      jsPsych.run(language_vision_SemPri_TIMELINE);
+    } else {
+      // Start lazy loading process
+      startExperiment();
+    }
   </script>
 </html>
