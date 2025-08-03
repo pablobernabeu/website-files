@@ -2358,3 +2358,68 @@ html body.dark .search-hit a h6 {
   color: #64ffda !important; /* Force light aquamarine for dark theme */
   text-decoration: none !important;
 }
+
+// Make navbar thinner in desktop view by reducing bottom spacing
+@media (min-width: 992px) {
+  .navbar {
+    height: 70px; // Adjusted to accommodate internal padding (60px + 5px top + 5px bottom)
+    padding-top: 5px; // Decrease top margin a tiny bit
+    padding-bottom: 5px; // Adjust bottom margin accordingly
+  }
+  
+  .navbar-nav .nav-item {
+    margin-bottom: 0; // Remove any bottom margin from nav items
+    margin-top: 0; // Remove extra margin to align with logo
+  }
+  
+  .navbar-nav .nav-link {
+    padding-top: 10px; // Increase top padding slightly
+    padding-bottom: 2px; // Decrease margin between titles and underlining bars
+  }
+  
+  .navbar-brand {
+    padding-top: 5px; // Match navbar top padding for alignment
+    padding-bottom: 2px; // Reduce bottom padding for logo
+  }
+  
+  .navbar-brand img {
+    max-height: 50px; // Adjust logo height for thinner navbar
+  }
+  
+  // Make active and hover underline bars thinner
+  .navbar-nav .nav-link::after,
+  .navbar-nav .nav-link:hover::after,
+  .navbar-nav .nav-link.active::after {
+    height: 1px !important; // Make underline bars thinner (default is usually 2-3px)
+  }
+  
+  .navbar-nav .nav-link {
+    border-bottom-width: 1px !important; // Alternative method for underlines
+  }
+  
+  .navbar-nav .nav-link:hover,
+  .navbar-nav .nav-link.active {
+    border-bottom-width: 1px !important; // Ensure hover and active states are also thin
+  }
+  
+  // Fix scroll offset for proper section highlighting
+  html {
+    scroll-padding-top: 70px; // Match navbar height for proper scroll positioning
+  }
+  
+  // Remove glow effects from navbar in dark theme
+  html body.dark .navbar-nav .nav-link,
+  html body.dark .navbar-nav .nav-link:hover,
+  html body.dark .navbar-nav .nav-link.active,
+  html body.dark .navbar-nav .nav-link:focus {
+    text-shadow: none !important; // Remove text glow/shadow
+    box-shadow: none !important; // Remove any box shadow
+  }
+  
+  html body.dark .navbar-nav .nav-link::after,
+  html body.dark .navbar-nav .nav-link:hover::after,
+  html body.dark .navbar-nav .nav-link.active::after {
+    box-shadow: none !important; // Remove glow from underline bars
+    text-shadow: none !important; // Remove any shadow effects
+  }
+}
