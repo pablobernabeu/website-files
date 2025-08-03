@@ -58,7 +58,7 @@ highlight_languages = ['r', 'htmlbars', 'css', 'javascript']  # Add support for 
 
 # Enable LaTeX math rendering? true/false
 #   If false, you can enable math on a per page basis as needed.
-math = true
+math = false  # Disabled globally for faster loading - enable per page if needed
 
 # Enable diagram rendering? true/false
 #   If false, you can enable diagrams on a per page basis as needed.
