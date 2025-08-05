@@ -10999,3 +10999,43 @@ html body.dark .search-hit a h6 {
   html body.dark .navbar-nav .nav-link.active::after {
     box-shadow: none !important;
     text-shadow: none !important; } }
+
+@media (max-width: 991px) {
+  .navbar-collapse {
+    max-width: calc(100% - 40px) !important;
+    width: fit-content !important;
+    min-width: 280px !important; }
+  .navbar-collapse.show {
+    margin-left: 0 !important;
+    margin-right: auto !important; }
+  .navbar-collapse.show .navbar-nav {
+    margin-left: 0 !important;
+    padding-left: 0 !important; } }
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .navbar-collapse {
+    max-width: 400px !important;
+    margin-left: 0 !important;
+    margin-right: auto !important; } }
+
+@media (max-width: 767px) {
+  .navbar-collapse {
+    max-width: calc(100% - 30px) !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    min-width: 260px !important; } }
+
+@media (min-width: 992px) {
+  .section-heading h1,
+  .section-heading h2,
+  .section-heading h3 {
+    white-space: normal !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+    hyphens: none !important;
+    overflow: visible !important;
+    line-height: 1.2 !important;
+    max-width: 100% !important; }
+  .section-heading {
+    overflow: visible !important;
+    word-break: keep-all !important; } }

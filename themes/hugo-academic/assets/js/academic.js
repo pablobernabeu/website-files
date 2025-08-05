@@ -302,6 +302,32 @@
   });
 
   /* ---------------------------------------------------------------------------
+   * Close mobile/tablet toggle menu when tapping outside its area.
+   * --------------------------------------------------------------------------- */
+
+  $(document).on("click touchstart", function (e) {
+    // Only apply on mobile and tablet devices (when toggle menu is used)
+    if (window.innerWidth <= 991) {
+      let $navbar = $("#navbar-main");
+      let $navbarCollapse = $(".navbar-collapse");
+      let $navbarToggler = $(".navbar-toggler");
+
+      // Check if navbar is currently open
+      if ($navbarCollapse.hasClass("show")) {
+        // Check if click/tap was outside navbar area and not on the toggler button
+        if (
+          !$navbar.is(e.target) &&
+          !$navbar.has(e.target).length &&
+          !$navbarToggler.is(e.target) &&
+          !$navbarToggler.has(e.target).length
+        ) {
+          $navbarCollapse.collapse("hide");
+        }
+      }
+    }
+  });
+
+  /* ---------------------------------------------------------------------------
    * Filter publications.
    * --------------------------------------------------------------------------- */
 

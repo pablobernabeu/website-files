@@ -2423,3 +2423,63 @@ html body.dark .search-hit a h6 {
     text-shadow: none !important; // Remove any shadow effects
   }
 }
+
+// Mobile and tablet toggle menu width adjustments
+@media (max-width: 991px) {
+  .navbar-collapse {
+    max-width: calc(100% - 40px) !important; // Leave 20px margin on each side
+    width: fit-content !important; // Use minimum necessary width
+    min-width: 280px !important; // Ensure minimum usable width
+  }
+  
+  // Only apply alignment when menu is actually collapsed and shown
+  .navbar-collapse.show {
+    margin-left: 0 !important; // Align with toggle icon
+    margin-right: auto !important;
+  }
+  
+  // Ensure navbar nav doesn't interfere when menu is shown
+  .navbar-collapse.show .navbar-nav {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+}
+
+// Tablet-specific adjustments (768px to 991px)
+@media (min-width: 768px) and (max-width: 991px) {
+  .navbar-collapse {
+    max-width: 400px !important; // Limit width on tablets
+    margin-left: 0 !important; // Align with toggle icon
+    margin-right: auto !important;
+  }
+}
+
+// Mobile-specific adjustments (below 768px)
+@media (max-width: 767px) {
+  .navbar-collapse {
+    max-width: calc(100% - 30px) !important; // Leave 15px margin on each side
+    margin-left: 0 !important; // Align with toggle icon
+    margin-right: auto !important;
+    min-width: 260px !important; // Smaller minimum width for mobile
+  }
+}
+
+// Desktop: Smart word wrapping for section headings
+@media (min-width: 992px) {
+  .section-heading h1,
+  .section-heading h2,
+  .section-heading h3 {
+    white-space: normal !important; // Allow line breaks between words
+    word-break: keep-all !important; // Don't break words
+    overflow-wrap: normal !important; // Don't wrap within words
+    hyphens: none !important; // Disable hyphenation
+    overflow: visible !important; // No scroll bars
+    line-height: 1.2 !important; // Tighter line spacing for multi-line headings
+    max-width: 100% !important; // Respect container width
+  }
+  
+  .section-heading {
+    overflow: visible !important; // No scroll bars on container
+    word-break: keep-all !important; // Don't break words
+  }
+}
