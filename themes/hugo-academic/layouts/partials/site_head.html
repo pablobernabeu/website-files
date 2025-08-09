@@ -35,6 +35,13 @@
   {{ end }}
   <meta name="description" content="{{ $desc }}">
 
+  {{/* IndexNow meta tags for search engine submission */}}
+  {{ if site.Params.indexnow.enabled }}
+  <meta name="indexnow-key" content="{{ site.Params.indexnow.api_key }}">
+  <meta name="indexnow-host" content="{{ site.Params.indexnow.host }}">
+  <meta name="indexnow-key-location" content="{{ site.Params.indexnow.key_location }}">
+  {{ end }}
+
   {{ range .Translations }}
   <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
   {{ end }}

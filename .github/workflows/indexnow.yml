@@ -1,0 +1,52 @@
+name: IndexNow URL Submission
+
+on:
+  push:
+    branches: [master, main]
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  submit-to-indexnow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "latest"
+          extended: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: |
+          npm install node-fetch xml2js
+
+      - name: Build Hugo site
+        run: hugo --minify
+
+      - name: Submit URLs to IndexNow
+        run: |
+          node scripts/indexnow-bulk-submit.js
+        env:
+          # Add any environment variables if needed
+          NODE_ENV: production
+
+      - name: Deploy to GitHub Pages (if not already configured)
+        if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
+          force_orphan: true

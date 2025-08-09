@@ -129,7 +129,7 @@ body.dark {
   // Navigation colors for dark theme (converted for dark background visibility)
   --nav-text: #94a3b8;
   --nav-hover: #00ff00; // Green for hover underline (high contrast, works on dark)
-  --nav-active: #5f9ea0; // Dark aquamarine for active (already optimal for dark)
+  --nav-active: #7db3ad; // Lighter aquamarine for active text in dark theme
   --nav-link: #67e8f9; // Cyan (brighter conversion of light theme teal)
   --nav-hover-text: #32cd32; // Lime green (lighter conversion of #006400 dark green)
   
@@ -2421,6 +2421,35 @@ html body.dark .search-hit a h6 {
   html body.dark .navbar-nav .nav-link.active::after {
     box-shadow: none !important; // Remove glow from underline bars
     text-shadow: none !important; // Remove any shadow effects
+  }
+  
+  // Dark theme specific: Make ONLY active item underline thinner and darker
+  html.dark body.dark .navbar-nav .nav-link.active::after,
+  html.dark body.dark #navbar-content > ul > li > a.active::after,
+  html.dark body.dark .nav-link.active::after,
+  body.dark .navbar-nav .nav-link.active::after,
+  body.dark #navbar-content > ul > li > a.active::after,
+  body.dark .nav-link.active::after {
+    height: 0.3px !important; // Make it even thinner
+    background: none !important; // Remove existing background
+    background-color: transparent !important; // Make background transparent
+    background-image: none !important; // Remove any background image
+    border: none !important; // Remove any border
+    border-bottom: 0.3px solid #1f6a61 !important; // Darker aquamarine underline
+    box-shadow: none !important; // Remove any glow/shadow effects
+    text-shadow: none !important; // Remove text glow
+    --nav-active: #1f6a61 !important; // Override the CSS variable locally
+  }
+  
+  // Remove glow from active navbar text in dark theme
+  html.dark body.dark .navbar-nav .nav-link.active,
+  html.dark body.dark #navbar-content > ul > li > a.active,
+  html.dark body.dark .nav-link.active,
+  body.dark .navbar-nav .nav-link.active,
+  body.dark #navbar-content > ul > li > a.active,
+  body.dark .nav-link.active {
+    box-shadow: none !important; // Remove glow from text
+    text-shadow: none !important; // Remove text glow
   }
 }
 

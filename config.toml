@@ -96,3 +96,10 @@ buildDrafts = false
     disable = true
   [privacy.youtube]
     disable = true
+
+# IndexNow configuration for search engine submission
+[params.indexnow]
+  enabled = true
+  api_key = "ba7d2697a8f44966bd90543d188a8aac"
+  host = "pablobernabeu.github.io"
+  key_location = "https://pablobernabeu.github.io/ba7d2697a8f44966bd90543d188a8aac.txt"

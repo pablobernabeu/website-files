@@ -148,4 +148,9 @@
     {{ $js_bundle := slice $js_bundle_head $js_bundle | resources.Concat "js/academic.min.js" | fingerprint "md5" }}
     <script src="{{ $js_bundle.RelPermalink }}"></script>
 
+    {{/* IndexNow JavaScript for automatic URL submission */}}
+    {{ if site.Params.indexnow.enabled }}
+    <script src="{{ "js/indexnow.js" | relURL }}"></script>
+    {{ end }}
+
     {{ partial "custom_js" . }}

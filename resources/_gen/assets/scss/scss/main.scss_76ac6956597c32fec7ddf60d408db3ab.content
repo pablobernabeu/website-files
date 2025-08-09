@@ -9204,7 +9204,7 @@ body.dark {
   --text-active: #cbd5e1;
   --nav-text: #94a3b8;
   --nav-hover: #00ff00;
-  --nav-active: #5f9ea0;
+  --nav-active: #7db3ad;
   --nav-link: #67e8f9;
   --nav-hover-text: #32cd32;
   --bg-highlight: rgba(72, 187, 120, 0.2);
@@ -10997,6 +10997,29 @@ html body.dark .search-hit a h6 {
   html body.dark .navbar-nav .nav-link::after,
   html body.dark .navbar-nav .nav-link:hover::after,
   html body.dark .navbar-nav .nav-link.active::after {
+    box-shadow: none !important;
+    text-shadow: none !important; }
+  html.dark body.dark .navbar-nav .nav-link.active::after,
+  html.dark body.dark #navbar-content > ul > li > a.active::after,
+  html.dark body.dark .nav-link.active::after,
+  body.dark .navbar-nav .nav-link.active::after,
+  body.dark #navbar-content > ul > li > a.active::after,
+  body.dark .nav-link.active::after {
+    height: 0.3px !important;
+    background: none !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: none !important;
+    border-bottom: 0.3px solid #1f6a61 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    --nav-active: #1f6a61 !important; }
+  html.dark body.dark .navbar-nav .nav-link.active,
+  html.dark body.dark #navbar-content > ul > li > a.active,
+  html.dark body.dark .nav-link.active,
+  body.dark .navbar-nav .nav-link.active,
+  body.dark #navbar-content > ul > li > a.active,
+  body.dark .nav-link.active {
     box-shadow: none !important;
     text-shadow: none !important; } }
 
