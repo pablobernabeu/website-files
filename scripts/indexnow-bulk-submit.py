@@ -20,8 +20,8 @@ CONFIG = {
     'key_location': 'https://pablobernabeu.github.io/ba7d2697a8f44966bd90543d188a8aac.txt',
     'sitemap_path': 'public/sitemap.xml',
     'api_endpoint': 'https://api.indexnow.org/indexnow',
-    'batch_size': 1000,
-    'delay_between_batches': 2
+    'batch_size': 50,  # Smaller batches to avoid 403 errors
+    'delay_between_batches': 3  # Longer delay between batches
 }
 
 def extract_urls_from_sitemap(sitemap_path):
