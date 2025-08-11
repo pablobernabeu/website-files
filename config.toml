@@ -34,7 +34,11 @@ hasCJKLanguage = false  # Set `true` for Chinese/Japanese/Korean languages.
 defaultContentLanguageInSubdir = false
 removePathAccents = true  # Workaround for https://github.com/gohugoio/hugo/issues/5687
 
-paginate = 20  # Balanced for performance and UX
+# Pagination configuration (updated for Hugo v0.128.0+)
+[pagination]
+  pagerSize = 20  # Balanced for performance and UX
+  path = "page"
+
 enableEmoji = true
 footnotereturnlinkcontents = "<sup>^</sup>"
 ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\\.md$", "semanticpriming_main_stimuli_.*\\.js$"]
@@ -77,11 +81,7 @@ buildDrafts = false
   home = [ "HTML", "RSS", "JSON", "WebAppManifest" ]
   section = [ "HTML", "RSS" ]
   taxonomy = [ "HTML", "RSS" ]
-  taxonomyTerm = [ "HTML", "RSS" ]
-
-# Paginate search results for better performance
-paginate = 20  # Further reduced from 50 for faster loading
-paginatePath = "page"
+  term = [ "HTML", "RSS" ]
 
 [mediaTypes."application/manifest+json"]
   suffixes = ["webmanifest"]
@@ -124,7 +124,7 @@ paginatePath = "page"
 [privacy]
   [privacy.disqus]
     disable = true
-  [privacy.twitter]
+  [privacy.x]
     disable = true
   [privacy.vimeo]
     disable = true
