@@ -1101,6 +1101,15 @@
       e.preventDefault();
       toggleSearchDialog();
     });
+
+    // Close search modal when clicking outside the content area (on margins)
+    $(".search-results").click(function (e) {
+      // Only close if clicking directly on the search-results background (not on child elements)
+      if (e.target === this && $("body").hasClass("searching")) {
+        toggleSearchDialog();
+      }
+    });
+
     $(document).on("keydown", function (e) {
       if (e.which == 27) {
         // `Esc` key pressed.

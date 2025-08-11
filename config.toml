@@ -34,7 +34,7 @@ hasCJKLanguage = false  # Set `true` for Chinese/Japanese/Korean languages.
 defaultContentLanguageInSubdir = false
 removePathAccents = true  # Workaround for https://github.com/gohugoio/hugo/issues/5687
 
-paginate = 50  # Reduced from 500 - improves load times
+paginate = 20  # Balanced for performance and UX
 enableEmoji = true
 footnotereturnlinkcontents = "<sup>^</sup>"
 ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\\.md$", "semanticpriming_main_stimuli_.*\\.js$"]
@@ -45,6 +45,31 @@ buildFuture = false
 buildExpired = false
 buildDrafts = false
 
+# Build performance
+[caches]
+  [caches.assets]
+    dir = ":cacheDir/assets"
+    maxAge = "24h"
+  [caches.getcsv]
+    dir = ":cacheDir/getcsv"
+    maxAge = "24h"
+  [caches.getjson]
+    dir = ":cacheDir/getjson"
+    maxAge = "24h"
+  [caches.images]
+    dir = ":cacheDir/images"
+    maxAge = "24h"
+  [caches.modules]
+    dir = ":cacheDir/modules"
+    maxAge = "24h"
+
+# Security headers
+[security]
+  [security.exec]
+    allow = ["^dart-sass-embedded$", "^go$", "^npx$", "^postcss$"]
+  [security.funcs]
+    getenv = ["^HUGO_"]
+
 [permalinks]
   post = "/:year/:slug/"
 
@@ -53,6 +78,10 @@ buildDrafts = false
   section = [ "HTML", "RSS" ]
   taxonomy = [ "HTML", "RSS" ]
   taxonomyTerm = [ "HTML", "RSS" ]
+
+# Paginate search results for better performance
+paginate = 20  # Further reduced from 50 for faster loading
+paginatePath = "page"
 
 [mediaTypes."application/manifest+json"]
   suffixes = ["webmanifest"]
@@ -74,12 +103,17 @@ buildDrafts = false
 
 [imaging]
   resampleFilter = "lanczos"
-  quality = 75  # Reduced from 90 for faster loading
+  quality = 60  # Much more aggressive compression (was 75)
   anchor = "smart"  # Anchor for cropping. Options include Smart and Center.
   
   # Additional optimization settings
   [imaging.exif]
     includeFields = ""  # Remove EXIF data to reduce file size
+  
+  # WebP optimization
+  [imaging.webp]
+    quality = 70  # More aggressive WebP compression
+    lossless = false
 
 # Taxonomies.
 [taxonomies]

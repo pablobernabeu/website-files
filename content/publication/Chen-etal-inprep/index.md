@@ -11,7 +11,7 @@ featured: false
 image:
   caption: ""
   focal_point: ""
-  preview_only: true
+  preview_only: no
 # projects:
 # - internal-project
 publishDate: "2023-06-08"

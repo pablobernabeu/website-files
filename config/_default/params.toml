@@ -241,8 +241,8 @@ plugins_js  = []
 
   # Configuration of Academic search engine for more precise results
   [search.academic]
-    threshold = 0.1  # Lower value = more strict matching (default: 0.3)
-    min_length = 2   # Minimum query length (default: 1)
+    threshold = 0.3  # Balanced for performance and accuracy
+    min_length = 2   # Standard minimum for good UX
 
   # Configuration of Algolia search engine.
   # Paste the values from your Algolia dashboard.

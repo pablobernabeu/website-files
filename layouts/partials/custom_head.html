@@ -1,9 +1,9 @@
-{{/* Custom head additions */}} {{/* Prevent white flash on dark theme load */}}
+{{/* Minimal custom head for testing */}} {{/* Essential dark theme script only
+*/}}
 <script>
   (function () {
     "use strict";
 
-    // Get saved theme preference or default to auto
     function getThemeMode() {
       return parseInt(localStorage.getItem("dark_mode") || 2);
     }
@@ -16,10 +16,8 @@
         case 1:
           return true; // Dark mode
         default:
-          // Auto mode - only apply if user has explicitly chosen auto mode
-          // Otherwise, default to light theme for new visitors
           if (localStorage.getItem("dark_mode") === null) {
-            return false; // No preference saved, use light theme by default
+            return false; // Default to light for new visitors
           }
           return (
             window.matchMedia &&
@@ -28,18 +26,113 @@
       }
     }
 
-    // Apply theme immediately before page renders
+    // Apply theme immediately
     if (shouldUseDarkTheme()) {
+      document.documentElement.setAttribute("data-theme", "dark");
       document.documentElement.style.backgroundColor = "#0f172a";
       document.documentElement.style.color = "#e2e8f0";
     }
   })();
 </script>
 
-<style>
-  /* Ensure smooth transitions */
-  html,
-  body {
-    transition: background-color 0.15s ease, color 0.15s ease;
-  }
-</style>
+{{/* Basic performance optimization */}}
+<meta name="format-detection" content="telephone=no" />
+
+{{/* Smart search modal closing behavior */}}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Wait for search functionality to be fully loaded
+    setTimeout(function () {
+      const searchModal = document.getElementById("search");
+      if (!searchModal) return;
+
+      // Function to check if there are search results
+      function hasSearchResults() {
+        const searchHits = document.getElementById("search-hits");
+        if (!searchHits) return false;
+        const results = searchHits.querySelectorAll(".search-hit");
+        return results.length > 0;
+      }
+
+      // Function to check if search input has content
+      function hasSearchQuery() {
+        const searchInput = document.getElementById("search-query");
+        return searchInput && searchInput.value.trim().length > 0;
+      }
+
+      // Use event capturing to intercept clicks before theme handlers
+      searchModal.addEventListener(
+        "click",
+        function (e) {
+          console.log("Search modal clicked:", e.target); // Debug log
+
+          // Check if clicking on modal background or search-results container
+          const isBackgroundClick =
+            e.target === searchModal ||
+            e.target.classList.contains("search-results");
+
+          if (isBackgroundClick) {
+            const hasResults = hasSearchResults();
+            const hasQuery = hasSearchQuery();
+
+            console.log(
+              "Background click detected. Has results:",
+              hasResults,
+              "Has query:",
+              hasQuery
+            ); // Debug log
+
+            // If there are results or query, prevent closing
+            if (hasResults || hasQuery) {
+              console.log("Preventing modal close due to results/query"); // Debug log
+              e.preventDefault();
+              e.stopPropagation();
+              e.stopImmediatePropagation(); // Stop all other handlers
+              return false;
+            }
+          }
+        },
+        true
+      ); // Use event capturing (true) to fire before theme handlers
+
+      // Also prevent clicks inside search content from bubbling up
+      const searchContent = searchModal.querySelector(".container");
+      if (searchContent) {
+        searchContent.addEventListener(
+          "click",
+          function (e) {
+            // Always stop propagation for clicks inside content
+            e.stopPropagation();
+          },
+          true
+        );
+      }
+
+      // Additional safety: monitor when search results are added
+      const observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+          if (mutation.type === "childList") {
+            console.log("Search results changed"); // Debug log
+          }
+        });
+      });
+
+      const searchHits = document.getElementById("search-hits");
+      if (searchHits) {
+        observer.observe(searchHits, { childList: true, subtree: true });
+      }
+    }, 2000); // Increased wait time to ensure everything is loaded
+  });
+</script>
+
+{{/* IndexNow automatic submission */}} {{ if site.Params.indexnow.enabled }}
+<script>
+  window.addEventListener("load", function () {
+    if (typeof IndexNowSubmission !== "undefined") {
+      setTimeout(function () {
+        IndexNowSubmission.submitCurrentPage();
+      }, 2000);
+    }
+  });
+</script>
+{{ end }}

@@ -1,0 +1,112 @@
+{{- /* Generate the optimized search index. */ -}}
+{{- $index := slice -}}
+{{- $pages := site.RegularPages -}}
+{{- /* Add the index page of docs separately since it's not in RegularPages above. */ -}}
+{{- $pages := $pages | union (where (where site.Pages "Kind" "section") "Type" "docs") -}}
+{{- /* Add author pages to index so their bios can be searched. Hide empty `/authors/` node. */ -}}
+{{- $pages := $pages | union (where (where site.Pages "Section" "authors") "Params.name" "!=" nil) -}}
+
+{{- range $pages -}}
+  {{- /* Do not index drafts or private pages. */ -}}
+  {{- if and (not .Draft) (not .Params.private) -}}
+    
+    {{- /* Skip blog posts (Section = "post") that don't have the "s" tag */ -}}
+    {{- $shouldIndex := true -}}
+    {{- if eq .Section "post" -}}
+      {{- $hasStag := false -}}
+      {{- range .Params.Tags -}}
+        {{- if eq . "s" -}}
+          {{- $hasStag = true -}}
+        {{- end -}}
+      {{- end -}}
+      {{- if not $hasStag -}}
+        {{- $shouldIndex = false -}}
+      {{- end -}}
+    {{- end -}}
+    
+    {{- if $shouldIndex -}}
+
+    {{- /* Generate page description. */ -}}
+    {{- $desc := "" -}}
+    {{- if .Params.summary -}}
+      {{- $desc = .Params.summary | truncate 200 -}}
+    {{- else if .Params.abstract -}}
+      {{- $desc = .Params.abstract | truncate 200 -}}
+    {{- else -}}
+      {{- $desc = .Summary | truncate 200 -}}
+    {{- end -}}
+
+    {{- $authors := .Params.authors -}}
+    {{- $title := .Title}}
+    {{- $rel_permalink := .RelPermalink -}}
+    {{- $permalink := .Permalink -}}
+
+    {{/* Correct the title and URL for author profile pages. */}}
+    {{- if eq .Section "authors" -}}
+      {{- $title = .Params.name -}}
+      {{- $username := path.Base (path.Split .Path).Dir -}}
+      {{- with site.GetPage (printf "/authors/%s" $username) -}}
+        {{- $permalink = .Permalink -}}
+        {{- $rel_permalink = .RelPermalink -}}
+      {{- end -}}
+    {{- else -}}
+      {{/* Include a user's display name rather than username where possible. */}}
+      {{- if .Params.authors -}}
+        {{- $authorLen := len .Params.authors -}}
+        {{- if gt $authorLen 0 -}}
+          {{- $authors = slice -}}
+            {{- range $k, $v := .Params.authors -}}
+              {{- $person_page_path := (printf "/authors/%s" (anchorize $v)) -}}
+              {{- $person_page := site.GetPage $person_page_path -}}
+              {{- if and $person_page $person_page.File -}}
+                {{- $person := $person_page.Params -}}
+                {{- $authors = $authors | append $person.name -}}
+              {{- else -}}
+                {{- $authors = $authors | append ($v | plainify) -}}
+              {{- end -}}
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}
+    {{- end -}}
+
+    {{- /* OPTIMIZATION: Create much smaller content excerpt instead of full content */ -}}
+    {{- $content := .Plain -}}
+    {{- $contentExcerpt := "" -}}
+    {{- if gt (len $content) 500 -}}
+      {{- $contentExcerpt = substr $content 0 500 -}}
+      {{- /* Simple truncation without word boundary detection for compatibility */ -}}
+    {{- else -}}
+      {{- $contentExcerpt = $content -}}
+    {{- end -}}
+
+    {{- /* OPTIMIZATION: Limit tags and categories */ -}}
+    {{- $limitedTags := slice -}}
+    {{- if .Params.Tags -}}
+      {{- range first 5 .Params.Tags -}}
+        {{- $limitedTags = $limitedTags | append . -}}
+      {{- end -}}
+    {{- end -}}
+
+    {{- $limitedCategories := slice -}}
+    {{- if .Params.Categories -}}
+      {{- range first 3 .Params.Categories -}}
+        {{- $limitedCategories = $limitedCategories | append . -}}
+      {{- end -}}
+    {{- end -}}
+
+    {{- /* OPTIMIZATION: Limit authors */ -}}
+    {{- $limitedAuthors := slice -}}
+    {{- if $authors -}}
+      {{- range first 3 $authors -}}
+        {{- $limitedAuthors = $limitedAuthors | append . -}}
+      {{- end -}}
+    {{- end -}}
+
+    {{- /* Add page to index with optimized content. */ -}}
+    {{- $index = $index | append (dict "objectID" .File.UniqueID "date" .Date.UTC.Unix "publishdate" .PublishDate "lastmod" .Lastmod.UTC.Unix "lang" .Lang "permalink" $permalink "relpermalink" $rel_permalink "title" ($title | plainify) "summary" (plainify $desc) "content" (plainify $contentExcerpt) "authors" $limitedAuthors "kind" .Kind "type" .Type "section" .Section "tags" $limitedTags "categories" $limitedCategories) -}}
+
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $index | jsonify -}}

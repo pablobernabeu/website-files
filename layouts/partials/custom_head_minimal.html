@@ -1,0 +1,51 @@
+{{/* Minimal custom head for testing */}} {{/* Essential dark theme script only
+*/}}
+<script>
+  (function () {
+    "use strict";
+
+    function getThemeMode() {
+      return parseInt(localStorage.getItem("dark_mode") || 2);
+    }
+
+    function shouldUseDarkTheme() {
+      let currentThemeMode = getThemeMode();
+      switch (currentThemeMode) {
+        case 0:
+          return false; // Light mode
+        case 1:
+          return true; // Dark mode
+        default:
+          if (localStorage.getItem("dark_mode") === null) {
+            return false; // Default to light for new visitors
+          }
+          return (
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+          );
+      }
+    }
+
+    // Apply theme immediately
+    if (shouldUseDarkTheme()) {
+      document.documentElement.setAttribute("data-theme", "dark");
+      document.documentElement.style.backgroundColor = "#0f172a";
+      document.documentElement.style.color = "#e2e8f0";
+    }
+  })();
+</script>
+
+{{/* Basic performance optimization */}}
+<meta name="format-detection" content="telephone=no" />
+
+{{/* IndexNow automatic submission */}} {{ if site.Params.indexnow.enabled }}
+<script>
+  window.addEventListener("load", function () {
+    if (typeof IndexNowSubmission !== "undefined") {
+      setTimeout(function () {
+        IndexNowSubmission.submitCurrentPage();
+      }, 2000);
+    }
+  });
+</script>
+{{ end }}
