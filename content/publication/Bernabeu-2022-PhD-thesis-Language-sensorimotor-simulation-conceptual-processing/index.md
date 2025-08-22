@@ -7,7 +7,7 @@ slug: Pablo-Bernabeu-2022-PhD-thesis
 categories:
   - conceptual processing
   - embodied cognition
-  - statistical power`
+  - statistical power
   - research methods
   - statistics
 tags:

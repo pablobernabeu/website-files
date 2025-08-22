@@ -9,7 +9,7 @@ active = true  # Activate this widget? true/false
 weight = 150  # Order that this section will appear.
 
 title = "Videos and Podcasts"
-subtitle = "Not the most riveting channel on [YouTube](https://www.youtube.com/channel/UCm3CfloakLprTWQuwjyjI2Q)—much less aurally exciting on [Spotify](https://open.spotify.com/show/4QXENVjprdaGkTvOexGvD3). <br> <div style = 'position: relative; margin-top: 20px; padding-top: 56.25%;'><iframe src='https://www.youtube-nocookie.com/embed/nh7E1L8Evc8' frameborder='0' allowfullscreen style = 'position:absolute; top:0; left:0; width:87%; height:90%;'></iframe></div>"
+subtitle = "Not the most riveting channel on [YouTube](https://www.youtube.com/channel/UCm3CfloakLprTWQuwjyjI2Q)—much less aurally exciting on [Spotify](https://open.spotify.com/show/4QXENVjprdaGkTvOexGvD3). <br> <div style = 'position: relative; margin-top: 20px; padding-top: 56.25%;'><iframe src='https://www.youtube-nocookie.com/embed/nh7E1L8Evc8' frameborder='0' allowfullscreen style = 'position:absolute; top:0; left:0; width:70%; height:100%;'></iframe></div>"
 
 [design]
 # Choose how many columns the section has. Valid values: 1 or 2.

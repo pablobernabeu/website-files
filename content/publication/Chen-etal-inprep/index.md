@@ -56,7 +56,8 @@ links:
 
 #### &nbsp; <i class="fa fa-database"></i>&nbsp; <a href='https://osf.io/waf48/'>Data from our lab</a>
 
-#### &nbsp; <i class="fas fa-eye"></i>&nbsp; <a href='https://osf.io/h36wr/'>Video demonstration of the procedure followed in our lab</a>
+
+##### <a href='https://osf.io/h36wr/'>Video demonstration of the procedure followed in our lab</a>
 
 <iframe src="https://mfr.de-1.osf.io/render?url=https://osf.io/download/h36wr/?direct%26mode=render"
     width="100%"
