@@ -128,10 +128,10 @@ body.dark {
   
   // Navigation colors for dark theme (converted for dark background visibility)
   --nav-text: #94a3b8;
-  --nav-hover: #00ff00; // Green for hover underline (high contrast, works on dark)
+  --nav-hover: #A5D9C5; // Custom mint green for hover underline in dark mode
   --nav-active: #7db3ad; // Lighter aquamarine for active text in dark theme
   --nav-link: #67e8f9; // Cyan (brighter conversion of light theme teal)
-  --nav-hover-text: #32cd32; // Lime green (lighter conversion of #006400 dark green)
+  --nav-hover-text: #A5D9C5; // Custom mint green for hover text in dark mode
   
   // Background colors for dark theme (converted for dark mode)
   --bg-highlight: rgba(72, 187, 120, 0.2); // Green highlight with low opacity for dark

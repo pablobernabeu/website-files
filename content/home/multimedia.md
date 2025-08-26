@@ -65,6 +65,8 @@ css_class = ""
 <div id="collapsible-content" class="collapsible-text-content">
 <p id="main-text" class="text-base leading-relaxed mb-0">
 
+<i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey;'></i> <span style='color:darkgrey; font-style:italic;'>Podcast created using Google Gemini and NotebookLM.</span>
+
 What happens in your brain when you understand a simple word? It seems instantaneous, but this seemingly simple act is at the heart of one of the deepest mysteries of the human mind and has sparked one of the longest-running debates in cognitive science.
 
 In this episode of Codex Mentis, we journey deep into the architecture of meaning to explore the battle between two powerful ideas. For decades, scientists were divided. Is your brain a vast, abstract dictionary, processing words like 'kick' by looking up amodal symbols and their connections to other symbols? Or is it a sophisticated simulator, where understanding 'kick' involves partially re-enacting the physical experience in your motor cortex?
