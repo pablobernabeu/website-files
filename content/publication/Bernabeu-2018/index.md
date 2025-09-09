@@ -56,6 +56,13 @@ Bernabeu, P. (2018). *Dutch modality exclusivity norms for 336 properties and 41
 </div>
 
 
+### Related podcast
+
+<i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using Google Gemini and NotebookLM.</span>
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/56mb7N81kp3VPzhcijQXi0?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+
 ### Related references
 
 <div class = 'related-references'>

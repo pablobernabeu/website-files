@@ -75,11 +75,14 @@ links:
 **Related:** [the value of a replication study during a PhD](https://doi.org/10.1017/S0140525X18000730).
 
 
-### Related AI podcast
+### Related podcasts
 
-<i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey;'></i> <span style='color:darkgrey; font-style:italic;'>Created using Google Gemini and NotebookLM.</span>
+<i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using Google Gemini and NotebookLM.</span>
 
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/32uBJncddvl04ID4WlSkhm?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/56mb7N81kp3VPzhcijQXi0?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
 
 ### Reference
 
