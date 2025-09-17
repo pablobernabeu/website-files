@@ -35,6 +35,7 @@ recent_work:
     - job: "Researcher"
       institution: "Department of Education, University of Oxford"
       year: "June 2025 -- _May 2027_"
+      extra: '-&nbsp; Additional service: Assistance at [inaugural convening of AI in Education at Oxford University](https://aieou.web.ox.ac.uk/events)'
     - job: "[Postdoctoral Fellow](https://app.cristin.no/projects/show.jsf?id=2559611)"
       institution: "Center for Language, Brain and Learning, UiT The Arctic University of Norway"
       year: "Nov 2022 -- Feb 2025"
