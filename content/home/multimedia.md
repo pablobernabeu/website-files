@@ -9,7 +9,7 @@ active = true  # Activate this widget? true/false
 weight = 150  # Order that this section will appear.
 
 title = "Videos and Podcasts"
-subtitle = "Not the most riveting channel on [YouTube](https://www.youtube.com/@pablo-bernabeu/videos)—much less on [Spotify](https://open.spotify.com/show/4QXENVjprdaGkTvOexGvD3), [Apple Podcasts](https://podcasts.apple.com/au/podcast/codex-mentis-science-and-tech-to-study-cognition/id1836910507) and [iVoox](https://www.ivoox.com/en/podcast-codex-mentis-science-and-tech-to-study-cognition_sq_f12741704_1.html). <br> <div style = 'position: relative; margin-top: 20px; padding-top: 56.25%;'><iframe src='https://www.youtube-nocookie.com/embed/nh7E1L8Evc8' frameborder='0' allowfullscreen style = 'position:absolute; top:0; left:0; width:70%; height:100%;'></iframe></div>"
+subtitle = "Not the most riveting channel on [YouTube](https://www.youtube.com/@pablo-bernabeu/videos)—much less on [Spotify](https://open.spotify.com/show/4QXENVjprdaGkTvOexGvD3), [Apple Podcasts](https://podcasts.apple.com/au/podcast/codex-mentis-science-and-tech-to-study-cognition/id1836910507) or [iVoox](https://www.ivoox.com/en/podcast-codex-mentis-science-and-tech-to-study-cognition_sq_f12741704_1.html). <br> <div style = 'position: relative; margin-top: 20px; padding-top: 56.25%;'><iframe src='https://www.youtube-nocookie.com/embed/nh7E1L8Evc8' frameborder='0' allowfullscreen style = 'position:absolute; top:0; left:0; width:70%; height:100%;'></iframe></div>"
 
 [design]
 # Choose how many columns the section has. Valid values: 1 or 2.

@@ -132,4 +132,4 @@ I have worked with a wide range of research methods, including behavioural and E
 
 Materials from my research are available at [osf.io/25u3x](https://osf.io/25u3x).
 
-Want to find out more? Please drop me an [email](mailto:pcbernabeu@gmail.com) or try this [chatbot](https://chatgpt.com/g/g-67b0b84a30588191aeff5991b6eb1c15-pb-core) for fun.
+Want to find out more? Please drop me an [email](mailto:pcbernabeu@gmail.com) (or try this [chatbot](https://chatgpt.com/g/g-67b0b84a30588191aeff5991b6eb1c15-pb-core) for fun).

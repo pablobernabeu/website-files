@@ -51,7 +51,7 @@ subtitle = ""
 +++
 
 
-|      |                        |                        |
+| Year | Grant/Award            | Purpose/Reason         |
 | ---- | ---------------------- | ---------------------- |
 | 2021 | Joint second place in the [Open Scholarship Prize Competition](https://osc-galway.ie/competition/) organised by [Open Scholarship Community Galway](https://osc-galway.ie/) | Prize obtained after [a final series of presentations](/presentation/towards-reproducibility-and-maximally-open-data/). |
 | 2020 | [RepliCATS Grant](https://replicats.research.unimelb.edu.au), University of Melbourne | Obtained for completing 20 [RepliCATS research assessments](https://replicats.research.unimelb.edu.au). |
