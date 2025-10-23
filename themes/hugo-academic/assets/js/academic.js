@@ -144,21 +144,26 @@
     );
     console.log("Discovered section IDs:", sectionIds);
 
+    // Cache section positions for better performance
+    let sectionPositions = [];
+    function cacheSectionPositions() {
+      sectionPositions = sections.map((section) => ({
+        element: section,
+        top: section.offsetTop,
+        bottom: section.offsetTop + section.offsetHeight,
+      }));
+    }
+    cacheSectionPositions();
+
     function updateActiveNavigation() {
       const scrollPosition = window.scrollY + getNavBarHeight() + 10; // Reduced buffer for more accurate detection
       let activeSection = null;
 
-      // Find the current section with more precise detection
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        const sectionBottom = sectionTop + section.offsetHeight;
-
+      // Find the current section with more precise detection using cached positions
+      sectionPositions.forEach(({ element, top, bottom }) => {
         // More precise section detection - account for section padding
-        if (
-          scrollPosition >= sectionTop - 20 &&
-          scrollPosition < sectionBottom - 20
-        ) {
-          activeSection = section;
+        if (scrollPosition >= top - 20 && scrollPosition < bottom - 20) {
+          activeSection = element;
         }
       });
 
@@ -196,10 +201,19 @@
     // Add scroll listener
     window.addEventListener("scroll", handleScroll, { passive: true });
 
-    // Update on resize (navbar height might change)
-    window.addEventListener("resize", () => {
-      setTimeout(updateActiveNavigation, 100);
-    });
+    // Update on resize (navbar height might change and section positions need recalculation)
+    let resizeTimeout;
+    window.addEventListener(
+      "resize",
+      () => {
+        if (resizeTimeout) clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          cacheSectionPositions(); // Recalculate positions after layout changes
+          updateActiveNavigation();
+        }, 100);
+      },
+      { passive: true }
+    );
 
     // Update when hash changes
     window.addEventListener("hashchange", updateActiveNavigation);
@@ -1213,12 +1227,21 @@
         function revealOnScroll(elements, delayFactor = 0) {
           const triggerBottom = window.innerHeight / 1.05;
           elements.forEach((el, index) => {
+            // Skip already visible elements to avoid unnecessary getBoundingClientRect() calls
+            if (el.classList.contains("visible")) return;
+
             const elTop = el.getBoundingClientRect().top;
             // Show elements that are in view or have already passed the trigger point
             if (elTop < triggerBottom) {
-              setTimeout(() => {
+              // Use requestAnimationFrame for smoother, immediate updates instead of setTimeout
+              if (delayFactor === 0) {
                 el.classList.add("visible");
-              }, index * delayFactor);
+              } else {
+                // Only use minimal delays for specific elements
+                setTimeout(() => {
+                  el.classList.add("visible");
+                }, Math.min(index * delayFactor, 50)); // Cap max delay at 50ms
+              }
             }
           });
         }
@@ -1226,13 +1249,21 @@
         function checkAllElementsOnLoad(elements, delayFactor = 0) {
           const triggerBottom = window.innerHeight / 1.05;
           elements.forEach((el, index) => {
-            const elTop = el.getBoundingClientRect().top;
-            const elBottom = el.getBoundingClientRect().bottom;
+            // Skip already visible elements to avoid unnecessary getBoundingClientRect() calls
+            if (el.classList.contains("visible")) return;
+
+            const rect = el.getBoundingClientRect();
             // Show elements that are currently visible or above the viewport
-            if (elTop < triggerBottom || elBottom < 0) {
-              setTimeout(() => {
+            if (rect.top < triggerBottom || rect.bottom < 0) {
+              // Use requestAnimationFrame for smoother, immediate updates instead of setTimeout
+              if (delayFactor === 0) {
                 el.classList.add("visible");
-              }, index * delayFactor);
+              } else {
+                // Only use minimal delays for specific elements
+                setTimeout(() => {
+                  el.classList.add("visible");
+                }, Math.min(index * delayFactor, 50)); // Cap max delay at 50ms
+              }
             }
           });
         }
@@ -1240,31 +1271,41 @@
         function checkElements(isInitialLoad = false) {
           if (isInitialLoad) {
             // On initial load or hash change, check all elements including those already above viewport
+            // Reduced delays for faster page responsiveness
             checkAllElementsOnLoad(sectionHeading);
             checkAllElementsOnLoad(sectionHeadingH1);
-            checkAllElementsOnLoad(articleTags, 5);
+            checkAllElementsOnLoad(articleTags, 1); // Reduced from 5
             checkAllElementsOnLoad(fullText);
             checkAllElementsOnLoad(citationButton);
             checkAllElementsOnLoad(buttonH3);
-            checkAllElementsOnLoad(portraitInfo, 30);
-            checkAllElementsOnLoad(icons, 90);
+            checkAllElementsOnLoad(portraitInfo, 2); // Reduced from 30
+            checkAllElementsOnLoad(icons, 3); // Reduced from 90
             checkAllElementsOnLoad(cloudTags);
           } else {
-            // Regular scroll behavior
+            // Regular scroll behavior - minimal delays for instant feedback
             revealOnScroll(sectionHeading);
             revealOnScroll(sectionHeadingH1);
-            revealOnScroll(articleTags, 5);
+            revealOnScroll(articleTags, 1); // Reduced from 5
             revealOnScroll(fullText);
             revealOnScroll(citationButton);
             revealOnScroll(buttonH3);
-            revealOnScroll(portraitInfo, 30);
-            revealOnScroll(icons, 90);
+            revealOnScroll(portraitInfo, 2); // Reduced from 30
+            revealOnScroll(icons, 3); // Reduced from 90
             revealOnScroll(cloudTags);
           }
         }
 
-        // Create event handlers
-        const scrollHandler = () => checkElements(false);
+        // Create event handlers with throttling for better performance
+        let scrollTimeout;
+        const scrollHandler = () => {
+          // Throttle scroll events to run at most every 50ms for faster responsiveness
+          if (scrollTimeout) return;
+          scrollTimeout = setTimeout(() => {
+            checkElements(false);
+            scrollTimeout = null;
+          }, 50); // Reduced from 100ms for faster response
+        };
+
         const resizeHandler = () => {
           // When resizing, reinitialize animations
           setTimeout(() => {
@@ -1272,14 +1313,16 @@
           }, 100);
         };
         const hashChangeHandler = () => {
-          setTimeout(() => checkElements(true), 100);
+          // Immediate response to hash changes for faster navigation
+          setTimeout(() => checkElements(true), 0);
         };
         const loadHandler = () => {
-          setTimeout(() => checkElements(true), 100);
+          // Quick initial load
+          setTimeout(() => checkElements(true), 50);
         };
 
-        // Bind to scroll
-        window.addEventListener("scroll", scrollHandler);
+        // Bind to scroll with passive listener for better performance
+        window.addEventListener("scroll", scrollHandler, { passive: true });
         scrollEventListeners.push({ type: "scroll", handler: scrollHandler });
 
         // Also trigger on resize and when fragment identifiers change (e.g., #section)
@@ -1345,32 +1388,37 @@
               function animateVisible(elements, delayFactor = 0) {
                 elements.forEach((el, index) => {
                   if (!el.classList.contains("visible")) {
-                    const elTop = el.getBoundingClientRect().top;
-                    const elBottom = el.getBoundingClientRect().bottom;
+                    const rect = el.getBoundingClientRect();
 
                     // Trigger if element is coming into view from below OR from above
                     if (
-                      (elTop < triggerBottom && elTop > triggerTop) ||
-                      (elBottom > triggerTop && elBottom < window.innerHeight)
+                      (rect.top < triggerBottom && rect.top > triggerTop) ||
+                      (rect.bottom > triggerTop &&
+                        rect.bottom < window.innerHeight)
                     ) {
-                      setTimeout(() => {
+                      // Immediate visibility for elements with no delay, minimal delays otherwise
+                      if (delayFactor === 0) {
                         el.classList.add("visible");
-                      }, index * delayFactor);
+                      } else {
+                        setTimeout(() => {
+                          el.classList.add("visible");
+                        }, Math.min(index * delayFactor, 30)); // Cap at 30ms for mobile
+                      }
                     }
                   }
                 });
               }
 
-              // Animate different element groups with slight delays (reduced delays for faster appearance)
+              // Animate different element groups with minimal delays for instant feel
               animateVisible(sectionHeading);
               animateVisible(sectionHeadingH1);
-              animateVisible(articleTags, 1); // Reduced from 2
+              animateVisible(articleTags, 1);
               animateVisible(fullText);
               animateVisible(citationButton);
               animateVisible(buttonH3);
-              animateVisible(portraitInfo, 5); // Reduced from 10
-              animateVisible(icons, 10); // Reduced from 20
-              animateVisible(cloudTags, 3); // Reduced from 5
+              animateVisible(portraitInfo, 1); // Reduced from 5
+              animateVisible(icons, 2); // Reduced from 10
+              animateVisible(cloudTags, 1); // Reduced from 3
 
               ticking = false;
             });
@@ -1381,8 +1429,8 @@
         // Throttled scroll event handler
         const mobileScrollHandler = () => revealOnScrollMobile();
 
-        // Initial check for elements already in view
-        setTimeout(() => revealOnScrollMobile(), 100);
+        // Initial check for elements already in view - faster for instant feedback
+        setTimeout(() => revealOnScrollMobile(), 10);
 
         // Add scroll listener
         window.addEventListener("scroll", mobileScrollHandler, {
@@ -1593,80 +1641,51 @@
       d.append(pre);
     });
 
-  // Simple and direct collapsible functionality
-  $(window).on("load", function () {
-    console.log("Window loaded - setting up collapsible...");
+  // Robust collapsible functionality - works with unlimited sections
+  $(document).ready(function () {
+    console.log("Setting up collapsible sections...");
 
-    // Wait a bit more for everything to be ready
-    setTimeout(function () {
-      // Direct approach - find any button with "Continue reading" text
-      $("button").each(function () {
-        const $btn = $(this);
-        const btnText = $btn.text().trim().toLowerCase();
+    // Use event delegation for dynamic content and multiple sections
+    $(document).on("click", ".read-more-btn", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
 
-        if (btnText.includes("continue") && btnText.includes("reading")) {
-          console.log("Found Continue reading button:", $btn[0]);
+      const $btn = $(this);
+      console.log("Collapsible button clicked");
 
-          // Remove any existing click handlers
-          $btn.off("click");
+      // Find the wrapper and content relative to this specific button
+      const $wrapper = $btn.closest(".collapsible-text-wrapper");
+      const $content = $wrapper.find(".collapsible-text-content");
 
-          // Add our click handler
-          $btn.on("click", function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            console.log("Continue reading clicked via direct method!");
-
-            // Find the content to expand
-            const $wrapper = $btn.closest(
-              "#collapsible-wrapper, .collapsible-text-wrapper"
-            );
-            const $content = $wrapper.find(
-              "#collapsible-content, .collapsible-text-content"
-            );
-
-            if ($content.length) {
-              // Get the natural height
-              const originalMaxHeight = $content.css("max-height");
-              $content.css("max-height", "none");
-              const fullHeight = $content.height();
-              $content.css("max-height", originalMaxHeight);
-
-              // Animate to full height
-              $content.css("max-height", fullHeight + "px");
-              $wrapper.addClass("is-expanded");
-
-              console.log(
-                "Expansion successful! Height set to:",
-                fullHeight + "px"
-              );
-            } else {
-              console.log("Could not find content to expand");
-            }
-          });
-
-          console.log("Click handler attached to Continue reading button");
+      if ($content.length && $wrapper.length) {
+        // Check if already expanded
+        if ($wrapper.hasClass("is-expanded")) {
+          console.log("Already expanded, ignoring click");
+          return;
         }
-      });
 
-      // Also try the original approach as backup
-      const btn = document.getElementById("read-more-btn");
-      if (btn) {
-        console.log("Found read-more-btn by ID:", btn);
-        btn.onclick = function (e) {
-          e.preventDefault();
-          console.log("read-more-btn clicked via onclick!");
+        // Get the natural height
+        $content.css("max-height", "none");
+        const fullHeight = $content[0].scrollHeight;
+        $content.css("max-height", ""); // Reset to CSS value
 
-          const wrapper = document.getElementById("collapsible-wrapper");
-          const content = document.getElementById("collapsible-content");
+        // Trigger reflow to ensure transition works
+        void $content[0].offsetHeight;
 
-          if (wrapper && content) {
-            content.style.maxHeight = content.scrollHeight + "px";
-            wrapper.classList.add("is-expanded");
-            console.log("Expansion via onclick successful!");
-          }
-        };
+        // Animate to full height
+        $content.css("max-height", fullHeight + "px");
+        $wrapper.addClass("is-expanded");
+
+        // Hide the button after expansion
+        $btn.fadeOut(300);
+
+        console.log("Expansion successful! Height:", fullHeight + "px");
+      } else {
+        console.log("Could not find wrapper or content for this button");
       }
-    }, 2000); // Wait 2 seconds for everything to load
+    });
+
+    console.log("Collapsible functionality ready");
   });
 
   // Initialize enhanced navigation highlighting

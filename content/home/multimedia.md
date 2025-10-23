@@ -54,16 +54,74 @@ css_class = ""
 <div style = "margin-bottom: -2.5%;"></div>
 
 
+### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; Third language learning and morphosyntactic transfer
+
+<div class="max-w-2xl w-full p-6">
+
+<!-- This wrapper controls the state of the component -->
+<div class="collapsible-text-wrapper">
+
+<!-- This div contains the text that will be collapsed -->
+<div class="collapsible-text-content">
+<p class="text-base leading-relaxed mb-0">
+
+<i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using Google Gemini and NotebookLM.</span>
+
+Many of us know how difficult it is to master a second language (L2). But what happens when you decide to go for a third? You might assume the process gets easier once your brain is "warmed up," but the reality is far more complex and far more fascinating.
+
+In this insightful episode of Codex Mentis, we explore the burgeoning science of Third Language Acquisition, or L3 acquisition. We reveal why learning an L3 presents a fundamentally different cognitive puzzle than learning an L2.
+
+The Two-Blueprint Problem: When an L3 learner approaches a new language, their brain has two prior linguistic blueprints—the native language (L1) and the second language (L2)—instead of just one. This means they already have experience managing two co-existing, often competing, language systems. This difference has profound, measurable consequences on the learning process, documented clearly in studies like the one involving L1 English/L2 Spanish speakers learning French, where they preferentially borrowed the complicating Spanish grammar instead of the helpful English one. This phenomenon, known as Cross-Linguistic Influence or 'transfer,' forces the L3 learner's brain to run a rapid, high-stakes cost-benefit analysis about which existing knowledge base to deploy. This effort reflects a fundamental principle of human cognition: cognitive economy, where the brain avoids redundancy by reusing existing knowledge.
+
+The Great Debate: How Does the Brain Choose its Blueprint? The field is split over how transfer occurs:
+
+1. Typological Primacy Model: Argues for a 'wholesale' transfer—the brain makes a quick-and-dirty assessment of the new language's overall structure (its typology) and copies the entire grammatical system of the most similar known language (L1 or L2). This is the 'big picture first' approach.
+
+2. Linguistic Proximity Model and Scalpel Model: Suggest a continuous, granular, property-by-property negotiation. Influence is exerted by the language (L1 or L2) that has the most similar feature to the specific feature currently being processed in the L3.
+
+Building Languages in the Lab: To test these competing theories and study the initial state of learning, scientists employ ingenious methodology: the artificial language paradigm. These miniature, custom-designed languages provide total control over input and allow researchers to create perfectly unambiguous contrasts between the learner's L1, L2, and the new L3. By using familiar words but new grammar (semi-artificial languages), researchers bypass the time-consuming process of memorizing vocabulary (the 'lexico-semantic bottleneck') and get straight to processing morphosyntax.
+
+Learning vs. Acquisition: The Neural Evidence: This leads to a critical question rooted in Stephen Krashen’s work: are these lab studies capturing subconscious, intuitive acquisition (like a child absorbing their native tongue) or conscious, effortful learning (like cramming rules for an exam)?
+
+Using EEG brain scans to measure neural activity, researchers look for the P600—the brain's automatic, implicit signature for grammatical errors in a native language. Surprisingly, early studies on artificial languages did not find the P600. Instead, they observed the P300. The P300 is a domain-general signal linked to attention, working memory, and processing unexpected patterns.
+
+This means the brain’s initial response to a new grammar is not an automatic 'copy-and-paste' of a prior language; rather, L3 acquisition begins with the conscious recruitment of domain-general pattern-matching and attention.
+
+The Next Frontier: We detail the sophisticated, large-scale, longitudinal study currently underway, designed to bridge the gap between conscious learning and subconscious acquisition. This research tracks participants over months to see if the P300 evolves into the automatic P600, while systematically measuring individual differences in working memory, inhibitory control, and implicit learning aptitude.
+
+The study of the third tongue is evolving beyond linguistics; it has become a privileged window into one of the most fundamental questions about the human mind: how we manage, integrate, and reuse complex systems of knowledge.
+
+Join us and delve into the science of the multilingual mind!
+
+View [sources and related content](/publication/third-language-longitudinal-data-artificial-language-learning-eeg).
+
+</p>
+</div>
+
+<!-- The "Continue reading" button -->
+<button class="read-more-btn link-style-button mt-2">
+Continue reading...
+</button>
+
+</div>
+</div>
+
+<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
+<iframe src="https://www.youtube-nocookie.com/embed/tcBCMajt16Y" frameborder="0" allowfullscreen
+style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
+</div>
+
+
 ### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; Behind the curtains: Methods used to investigate conceptual processing
 
 <div class="max-w-2xl w-full p-6">
 
 <!-- This wrapper controls the state of the component -->
-<div id="collapsible-wrapper" class="collapsible-text-wrapper">
+<div class="collapsible-text-wrapper">
 
 <!-- This div contains the text that will be collapsed -->
-<div id="collapsible-content" class="collapsible-text-content">
-<p id="main-text" class="text-base leading-relaxed mb-0">
+<div class="collapsible-text-content">
+<p class="text-base leading-relaxed mb-0">
 
 <i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using Google Gemini and NotebookLM.</span>
 
@@ -80,22 +138,8 @@ View [sources and related content](/publication/pablo-bernabeu-2022-phd-thesis).
 </p>
 </div>
 
-<!-- The "Continue reading button. It is a block-level element that sits after the text container. -->
-
-<button id="read-more-btn" class="read-more-btn link-style-button mt-2" onclick="
-  console.log('Inline onclick fired!');
-  event.preventDefault();
-  event.stopPropagation();
-  var wrapper = document.getElementById('collapsible-wrapper');
-  var content = document.getElementById('collapsible-content');
-  if (wrapper && content) {
-    content.style.maxHeight = content.scrollHeight + 'px';
-    wrapper.classList.add('is-expanded');
-    console.log('Expansion successful via inline onclick!');
-  } else {
-    console.log('Elements not found in inline onclick');
-  }
-">
+<!-- The "Continue reading" button -->
+<button class="read-more-btn link-style-button mt-2">
 Continue reading...
 </button>
 
@@ -113,11 +157,11 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 <div class="max-w-2xl w-full p-6">
 
 <!-- This wrapper controls the state of the component -->
-<div id="collapsible-wrapper" class="collapsible-text-wrapper">
+<div class="collapsible-text-wrapper">
 
 <!-- This div contains the text that will be collapsed -->
-<div id="collapsible-content" class="collapsible-text-content">
-<p id="main-text" class="text-base leading-relaxed mb-0">
+<div class="collapsible-text-content">
+<p class="text-base leading-relaxed mb-0">
 
 <i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using Google Gemini and NotebookLM.</span>
 
@@ -148,22 +192,8 @@ View [sources and related content](/publication/pablo-bernabeu-2022-phd-thesis).
 </p>
 </div>
 
-<!-- The "Continue reading button. It is a block-level element that sits after the text container. -->
-
-<button id="read-more-btn" class="read-more-btn link-style-button mt-2" onclick="
-  console.log('Inline onclick fired!');
-  event.preventDefault();
-  event.stopPropagation();
-  var wrapper = document.getElementById('collapsible-wrapper');
-  var content = document.getElementById('collapsible-content');
-  if (wrapper && content) {
-    content.style.maxHeight = content.scrollHeight + 'px';
-    wrapper.classList.add('is-expanded');
-    console.log('Expansion successful via inline onclick!');
-  } else {
-    console.log('Elements not found in inline onclick');
-  }
-">
+<!-- The "Continue reading" button -->
+<button class="read-more-btn link-style-button mt-2">
 Continue reading...
 </button>
 

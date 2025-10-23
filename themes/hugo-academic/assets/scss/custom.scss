@@ -590,7 +590,7 @@ body.dark {
   .portrait-title a:hover,
   .social-icon a:hover,
   .btn-outline-primary:hover,
-  button:hover,
+  button:hover:not(.read-more-btn),
   .js-dark-toggle a:hover,
   h2 a:hover,
   h3 a:hover,
@@ -1384,7 +1384,7 @@ a > i:hover, #profile > div > div > span > span > a:hover, #navbar-main > div > 
 }
 
 // Buttons, full text buttons, dashboard/application button
-button:hover, #top > div.pub > div > a > button:hover, #top > div.pub > div > div.article-style > a > button:hover, #top > article > div > div.article-style > a > button:hover {
+button:hover:not(.read-more-btn), #top > div.pub > div > a > button:hover, #top > div.pub > div > div.article-style > a > button:hover, #top > article > div > div.article-style > a > button:hover {
   background-color: var(--bg-button-hover) !important;
 }
 
@@ -1826,100 +1826,45 @@ pre {
 }
 
 
-// Collapsible text widget styles
+// Collapsible text widget styles - simplified and reusable
 
-/* The content container starts collapsed.
-* Height is calculated for 3 lines (3 * 1.5rem line-height = 4.5rem) */
+/* The content container starts collapsed (showing ~3 lines) */
 .collapsible-text-content {
   max-height: 5.3rem; 
   overflow: hidden;
-  /* Smooth transition for the max-height property */
   transition: max-height 0.4s ease-in-out;
 }
 
-/* --- State-based visibility for buttons --- */
-
-/* By default, the "Show less" button is hidden */
-.show-less-btn {
-  display: none;
+/* When expanded, content shows full height */
+.collapsible-text-wrapper.is-expanded .collapsible-text-content {
+  overflow: visible;
 }
 
-/* When the wrapper is expanded... */
-.collapsible-text-wrapper.is-expanded .read-more-btn {
-  display: none !important; /* ...hide the "Continue reading" button */
-}
-
-/* More specific selectors to ensure button hiding works */
-#collapsible-wrapper.is-expanded #read-more-btn,
-#collapsible-wrapper.is-expanded .read-more-btn,
-.collapsible-text-wrapper.is-expanded #read-more-btn,
-.collapsible-text-wrapper.is-expanded button.read-more-btn {
-  display: none !important;
-  visibility: hidden !important;
-}
-
-.collapsible-text-wrapper.is-expanded .show-less-btn {
-  display: block; /* ...and show the "Show less" button */
-}
-
-/* A utility class to make a button look like a link */
-.link-style-button {
-  border: none !important;
-  padding: 0 !important;
-  color: #6b7280 !important; /* grey-500 - more subdued grey color */
-  font-weight: 400 !important; /* normal font weight */
-  font-style: italic !important; 
-  cursor: pointer !important;
-  font-size: 0.95rem !important; /* slightly smaller text */
-  transition: color 0.2s ease-in-out !important;
-  display: inline-block !important;
-  margin-top: 0.5rem !important;
-}
-.link-style-button:hover {
-  color: #4b5563 !important; /* darker grey on hover */
-  text-decoration: underline !important;
-  background: none !important;
-}
-
-/* Ensure the read-more button is visible and clickable */
+/* Style the "Continue reading" button to look like a subtle link */
 .read-more-btn {
-  display: inline-block !important;
-  position: relative !important;
-  z-index: 10 !important;
-  pointer-events: auto !important;
+  border: none;
+  padding: 0;
+  background: none;
+  color: #6b7280; /* subdued grey */
+  font-weight: 400;
+  font-style: italic;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: color 0.2s ease-in-out;
+  display: inline-block;
+  margin-top: 0.5rem;
 }
 
-/* Very specific selector to override any conflicting styles */
-#read-more-btn.read-more-btn.link-style-button,
-button#read-more-btn,
-#collapsible-wrapper #read-more-btn,
-.collapsible-text-wrapper #read-more-btn {
-  border: none !important;
-  padding: 0 !important;
+.read-more-btn:hover {
+  color: #4b5563; /* darker grey on hover */
+  text-decoration: underline;
   background: none !important;
-  color: var(--accent-secondary) !important;
-  font-style: italic !important; 
-  font-weight: 400 !important;
-  cursor: pointer !important;
-  font-size: 0.95rem !important;
-  outline: none !important;
-  display: inline-block !important;
-  margin-top: 0.5rem !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: none !important;
-  animation: none !important;
+  background-color: transparent !important;
 }
 
-#read-more-btn.read-more-btn.link-style-button:hover,
-button#read-more-btn:hover,
-#collapsible-wrapper #read-more-btn:hover,
-.collapsible-text-wrapper #read-more-btn:hover {
-  color: var(--text-quaternary) !important;
-  text-decoration: underline !important;
-  background: none !important;
-  opacity: 1 !important;
-  transform: none !important;
+/* Hide button when wrapper is expanded (handled by JavaScript fadeOut) */
+.collapsible-text-wrapper.is-expanded .read-more-btn {
+  display: none;
 }
 
 // Add margin under section headings 
