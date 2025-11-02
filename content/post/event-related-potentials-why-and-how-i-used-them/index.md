@@ -151,8 +151,6 @@ This pipeline is reflected in the [scripts exported from Brain Vision](https://o
   </Nodes
 ```
 
-<br>
-
 Word reading ERPs can look somewhat like this after the preprocessing (<a href='https://osf.io/bz7ae/'>plots made in R</a>).
 
 <img src='Four main waveform plots stacked.png'></img>
@@ -161,11 +159,18 @@ To visualise these waveforms throughout the different sections of the data, a [d
 
 ## Statistical analysis
 
-With the myriad repeated measures involved in EEG, linear mixed-effects models are a good option, allowing the registration of electrodes and time points in the error term per participant (and trial, too, if these are not aggregated). The analysis I performed, in R, is [available](https://osf.io/sx3nw/) (plots visible by downloading the file from the aforementioned link).
+With the myriad repeated measures involved in EEG, linear mixed-effects models are a good option, allowing the registration of electrodes and time points in the error term per participant (and trial, too, if these are not aggregated). The statistical analysis is [available on OSF](https://osf.io/sx3nw) (to view the plots, please [download the document](https://osf.io/download/sx3nw)).
 
-<style>.embed-responsive{position:relative;height:100%;}.embed-responsive iframe{position:absolute;height:100%;}</style><script>window.jQuery || document.write('<script src="//code.jquery.com/jquery-1.11.2.min.js">\x3C/script>') </script><link href="https://mfr.osf.io/static/css/mfr.css" media="all" rel="stylesheet"><div id="mfrIframe" class="mfr mfr-file"></div><script src="https://mfr.osf.io/static/js/mfr.js"></script> <script>var mfrRender = new mfr.Render("mfrIframe", "https://mfr.osf.io/render?url=https://osf.io/sx3nw/?direct%26mode=render%26action=download%26mode=render");</script>
-
-<br>
+<iframe src="https://mfr.osf.io/render?url=https%3A%2F%2Fosf.io%2Fdownload%2Fsx3nw%2F%3Fdirect%26mode%3Drender"
+        width="100%"
+        scrolling="yes"
+        height="677px"
+        marginheight="0"
+        frameborder="0"
+        allowfullscreen
+        webkitallowfullscreen
+>
+</iframe>
 
 ## Conclusion
 
@@ -181,8 +186,6 @@ You can learn about and overcome multiple challenges. One of the issues I faced 
 >
 > This issue might seem like a simple zoom I've bypassed, or similar... But unfortunately the channels are just not there. I've confirmed it as I tried to copy the pipeline from the good data sets onto the faulty ones, where I got the error 'No channels enabled.' In case you had access to the BVA analysis software, please find the raw files for one of the faulty data sets here.
 
-<br>
-
 Thanks to invaluable help from a [ResearchGate contributor](https://www.researchgate.net/post/EEG_error_datasets_missing_channels_Its_strange_because_they_were_recorded_well_and_faulty_files_are_quite_as_heavy_as_the_good_ones_Any_ideas) and the Brain Products team, I could put the pieces back together.
 
 > Update: Problem solved.
@@ -193,8 +196,6 @@ Thanks to invaluable help from a [ResearchGate contributor](https://www.research
 >
 > First, I used the transform function 'Edit channels' to rename all labels and set each within their coordinates. I did that for just one subject (it doesn't take as long as it sounds). Afterwards, I created a 'History template' out of that process, and copied it to all other nodes.
 At any rate, never getting out of the comfort workspace again... :D
-
-<br>
 
 ## References
 

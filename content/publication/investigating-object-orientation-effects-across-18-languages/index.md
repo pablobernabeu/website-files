@@ -45,19 +45,31 @@ url_fulltext: "https://doi.org/10.1007/s12144-025-08304-x"
 # url_source: '#'
 url_video: "https://osf.io/h36wr"
 links:
-  - name: Preregistration
+  - name: 'Stage 1 Registered Report'
     url: https://osf.io/preprints/psyarxiv/t2pjv_v1
+  - name: '<i class="fa-solid fa-lock-open"></i> View-only full text'
+    url: https://rdcu.be/eNjUA
 ---
 
-<br>
+
+<div style = 'margin-bottom: 3%;'>
+<a href='https://rdcu.be/eNjUA' style="text-decoration: none;">
+<button class="full-text-btn" style="background-color: white; color: black; border: 2px solid #DF2E2E; border-radius: 12px; padding: 8px 0 12px 0;">
+<h3 class="full-text">
+<i class="fa-solid fa-lock-open" style="color: #3f8344ff;"></i>&nbsp;<b>View-only</b> full text 
+</h3>
+</button>
+</a>
+</div>
 
 
 #### &nbsp; <i class="fa fa-folder"></i>&nbsp; <a href='https://osf.io/e428p/'>General project</a>
 
-#### &nbsp; <i class="fa fa-file"></i>&nbsp; <a href='https://doi.org/10.31234/osf.io/t2pjv'>Preregistration</a>
+#### &nbsp; <i class="fa fa-file"></i>&nbsp; <a href='https://doi.org/10.31234/osf.io/t2pjv'>Stage 1 Registered Report</a>
 
 #### &nbsp; <i class="fa fa-database"></i>&nbsp; <a href='https://osf.io/waf48/'>Data from our lab</a>
-
+      
+<div style = 'margin-bottom: 5%;'></div>
 
 ##### <a href='https://osf.io/h36wr/'>Video demonstration of the procedure followed in our lab</a>
 
@@ -74,7 +86,7 @@ links:
 <br>
 <br>
 
-**Related:** [the value of a replication study during a PhD](https://doi.org/10.1017/S0140525X18000730).
+<i class="fa-solid fa-lightbulb" fa-xl style="color: #d3a934ff;"></i>&nbsp; [The value of conducting a replication study during a PhD](https://doi.org/10.1017/S0140525X18000730).
 
 
 ### Related podcasts

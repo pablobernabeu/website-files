@@ -21,6 +21,16 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+// General blockquote styling 
+blockquote {
+  margin-bottom: 1.5rem !important;
+}
+
+// Publication abstract spacing
+.pub-abstract {
+  margin-bottom: 1.5rem !important;
+}
+
 // Ensure immediate dark theme application only when dark class is present
 body.dark {
   background-color: #0f172a;
@@ -853,6 +863,16 @@ p a:hover, ul a:hover, li a:hover, .article-container a:hover, td a:hover, a.dsq
   text-decoration: none;
 }
 
+// Exception: no background highlight for links inside full-text-btn
+.full-text-btn a:hover,
+.full-text-btn h3 > a:hover,
+.full-text-btn:hover a,
+.full-text-btn:hover h3 > a {
+  background-color: transparent !important;
+  background-image: none !important;
+  background: none !important;
+}
+
 // active link
 h3 a:active, div a:active, p a:active, ul a:active, li a:active, .article-container a:active, td a:active, a.dsq-brlink:active {
   color: var(--text-active); 
@@ -1230,10 +1250,217 @@ h3 a:hover, div a:hover {
   margin-top: -2%;
 }
 
-// Remove abstracts from home page
+// Collapsible abstracts on home page - collapsed by default, expandable on click
+// Applied to publication, applications-and-dashboards, and blog sections
+:is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12.col-lg-8 > div > div.media-body > div.article-style {
+  max-height: 3.6em; // Show ~3 lines initially
+  overflow: hidden;
+  position: relative;
+  transition: max-height 0.3s ease;
+  cursor: pointer; // Make entire area clickable
+  
+  // Add prominent fade gradient at bottom to indicate more content
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2em; // Taller fade area for better visibility
+    background: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0.95) 70%, rgba(255, 255, 255, 1) 100%);
+    pointer-events: none;
+  }
+  
+  // Add "Expand" button at bottom left - overlays the text
+  &::before {
+    content: 'Expand';
+    position: absolute;
+    bottom: 2px;
+    left: 5px; // Small left margin
+    font-size: 0.75em;
+    padding: 2px 8px;
+    background-color: var(--bg-button);
+    color: var(--text-hover);
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    z-index: 1;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    pointer-events: none; // Allow clicks to pass through to parent
+  }
+  
+  // Hover effect for the entire abstract
+  &:hover::before {
+    background-color: var(--bg-button-hover);
+    transform: scale(1.05);
+  }
+}
 
-#publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.article-style {
+// Specific gradient for applications-and-dashboards section (even section with different background)
+#applications-and-dashboards > div > div > div.col-12.col-lg-8 > div > div.media-body > div.article-style::after {
+  background: linear-gradient(to bottom, transparent 0%, rgba(247, 250, 252, 0.7) 40%, rgba(247, 250, 252, 0.95) 70%, rgba(247, 250, 252, 1) 100%);
+}
+
+// Remove fade gradient and button when expanded
+:is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12.col-lg-8 > div > div.media-body.is-expanded > div.article-style::after,
+:is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12.col-lg-8 > div > div.media-body.is-expanded > div.article-style::before {
   display: none;
+}
+
+// Dark theme fade gradient - more visible with stronger opacity gradient
+body.dark :is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12.col-lg-8 > div > div.media-body > div.article-style::after {
+  background: linear-gradient(to bottom, transparent 0%, rgba(31, 41, 55, 0.7) 40%, rgba(31, 41, 55, 0.95) 70%, rgba(31, 41, 55, 1) 100%);
+}
+
+// When expanded, show full content and remove padding
+:is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12.col-lg-8 > div > div.media-body.is-expanded > div.article-style {
+  max-height: 100%;
+  padding-bottom: 0;
+}
+
+// "Read in full" button that appears after abstract expansion
+.read-in-full-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 12px;
+  font-size: 0.9em;
+  color: var(--text-hover) !important;
+  background-color: var(--bg-button) !important;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  
+  i {
+    margin-right: 5px;
+  }
+  
+  &:hover {
+    background-color: var(--bg-button-hover) !important;
+    transform: scale(1.05);
+  }
+}
+
+// Document Viewer Styles
+.document-viewer-container {
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  margin: 20px auto;
+  padding: 0;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  overflow: hidden;
+  
+  // Responsive width for different screen sizes
+  @media (max-width: 768px) {
+    // Mobile: 90% width
+    width: 90%;
+    max-width: 90%;
+    margin: 15px auto;
+  }
+  
+  @media (min-width: 769px) {
+    // Desktop: 100% width
+    width: 100%;
+    max-width: 100%;
+    margin: 20px auto;
+  }
+  
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  iframe {
+    display: block;
+  }
+}
+
+// Enhanced toolbar for document viewer
+.document-viewer-toolbar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  background-color: var(--bg-button);
+  border: 1px solid var(--border-color);
+  border-radius: 25px;
+  padding: 5px 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.toolbar-buttons {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.doc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: transparent;
+  color: var(--text-hover) !important;
+  border: none;
+  border-radius: 50%;
+  text-decoration: none !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1em;
+  
+  i {
+    font-size: 1em;
+  }
+  
+  &:hover {
+    background-color: var(--bg-button-hover) !important;
+    transform: scale(1.15);
+  }
+  
+  &:active {
+    transform: scale(1.05);
+  }
+  
+  &:focus {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+  }
+}
+
+// Separator between button groups
+.doc-btn:nth-child(2)::after {
+  content: '';
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 20px;
+  background-color: var(--border-color);
+}
+
+// Dark theme adjustments for document viewer
+body.dark .document-viewer-container {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  }
+}
+
+body.dark .document-viewer-toolbar {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+  }
 }
 
 // Change size of article metadata
@@ -1320,7 +1547,6 @@ div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #publication > div 
 #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.btn-links > a:hover, div.article-container.pt-3 > div.btn-links.mb-3 > a:hover, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > a:hover, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:hover, .btn-links a:hover, div.grid-sizer > div > p > button:hover, div.grid-sizer > div > p > a:hover, div.media-body > h3 > a:hover, #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.btn-links > button:hover, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button:hover {
   background-image: none;
   color: var(--text-hover); 
-  font-weight: bold;
   background-color: var(--bg-button-hover) !important;
   border-color: var(--border-color);
 }
@@ -1772,9 +1998,11 @@ pre {
   border: 2px solid var(--border-full-text);
   border-radius: 12px;
   width: 100%;
-  padding: 8px 24px;
-  margin-top: 5%;
-  font-size: 1.2em;
+  padding: 6px 0;
+  margin: 0 auto 5%;
+  font-size: 1.4em;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
   display: flex;
@@ -1789,13 +2017,63 @@ pre {
   border-radius: 12px; /* Ensures corners stay rounded */
 }
 .full-text-btn .full-text {
-  margin: 7.5px 9px !important;
+  margin: 0 !important;
+  padding: 0 !important;
   font-size: 1em;
-  font-weight: normal;
+  font-weight: 400 !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif !important;
+  line-height: 1.5 !important;
+  letter-spacing: normal !important;
+}
+.full-text-btn .full-text i {
+  margin-right: 8px;
+  color: #dc2626;
+}
+// Prevent h3 hover styles from affecting button text
+.full-text-btn:hover .full-text,
+.full-text-btn:focus .full-text,
+.full-text-btn:hover a,
+.full-text-btn:focus a,
+.full-text-btn a:hover,
+.full-text-btn a:focus {
+  color: var(--text-hover) !important;
+  text-decoration: none !important;
+  background: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+// Same for dark mode
+body.dark .full-text-btn:hover .full-text,
+body.dark .full-text-btn:focus .full-text,
+body.dark .full-text-btn:hover a,
+body.dark .full-text-btn:focus a,
+body.dark .full-text-btn a:hover,
+body.dark .full-text-btn a:focus,
+.dark .full-text-btn:hover .full-text,
+.dark .full-text-btn:focus .full-text,
+.dark .full-text-btn:hover a,
+.dark .full-text-btn:focus a,
+.dark .full-text-btn a:hover,
+.dark .full-text-btn a:focus {
+  color: var(--text-hover) !important;
+  text-decoration: none !important;
+  background: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border: none !important;
 }
 
 
 // CV button
+
+// Add top margin only to the first btn-links container (which contains CV button)
+.pub > .container > .article-container > .btn-links.mb-3:first-of-type,
+.article-container > .btn-links.mb-3:first-of-type {
+  margin-top: 8% !important;
+}
 
 .cv-btn {
   display: flex;
@@ -1806,11 +2084,13 @@ pre {
   border: 2px solid var(--border-cv);
   border-radius: 12px;
   width: 100%;
-  padding: 6px 0;
+  padding: 8px 0 10px 0;
   font-size: 1.4em; 
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
   text-decoration: none;
   transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
-  margin: 0 auto 5%;
+  margin: 0 auto 1%;
   cursor: pointer;
 }
 .cv-btn:hover,
@@ -2456,4 +2736,12 @@ html body.dark .search-hit a h6 {
     overflow: visible !important; // No scroll bars on container
     word-break: keep-all !important; // Don't break words
   }
+}
+
+
+// Create class to disable automatic bullet list formatting
+
+.no-bullets {
+  list-style-type: none;
+  padding-left: 0; /* Optional: Removes the default list indentation */
 }

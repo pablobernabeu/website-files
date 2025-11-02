@@ -1617,20 +1617,20 @@
       // Style the summary text
       summary.style.color = "darkgrey";
       summary.style.fontSize = "90%";
-      summary.textContent = "Hide";
+      summary.textContent = "Collapse";
       summary.style.fontWeight = "normal";
       d.open = true;
 
       d.addEventListener("toggle", () => {
         if (d.open) {
-          summary.textContent = "Hide";
+          summary.textContent = "Collapse";
           summary.style.fontWeight = "normal";
           summary.style.fontSize = "90%";
           summary.style.color = "darkgrey";
         } else {
-          summary.textContent = "Show source code";
+          summary.textContent = "Expand";
           summary.style.fontWeight = "bold";
-          summary.style.fontSize = "105%";
+          summary.style.fontSize = "103%";
           summary.style.color = "#379E8A";
         }
       });
@@ -1640,6 +1640,167 @@
       pre.before(d);
       d.append(pre);
     });
+
+  // Collapsible abstracts on home page - click anywhere on abstract to expand
+  // Use event delegation for robustness - applies to publication, applications-and-dashboards, and blog sections
+  $(document).on(
+    "click",
+    "#publication .media-body .article-style, #applications-and-dashboards .media-body .article-style, #blog .media-body .article-style",
+    function (e) {
+      const $abstract = $(this);
+      const $mediaBody = $abstract.closest(".media-body");
+
+      // Check if already expanded
+      if ($mediaBody.hasClass("is-expanded")) {
+        console.log("Abstract already expanded, ignoring click");
+        return;
+      }
+
+      console.log("Abstract clicked! Expanding...");
+
+      // Get the full height
+      const fullHeight = this.scrollHeight;
+      console.log(
+        "Expanding from",
+        $abstract.css("max-height"),
+        "to",
+        fullHeight + "px"
+      );
+
+      // Expand with animation
+      $abstract.css({
+        "max-height": fullHeight + "px",
+        cursor: "default",
+      });
+
+      // Mark as expanded
+      $mediaBody.addClass("is-expanded");
+
+      // Add "View complete content" button after expansion
+      // Find the link from the title
+      const $title = $mediaBody.find(".article-title a");
+      const pageUrl = $title.attr("href");
+
+      if (pageUrl && !$abstract.next(".read-in-full-btn").length) {
+        const $readInFullBtn = $("<a>", {
+          href: pageUrl,
+          class: "read-in-full-btn",
+          html: '<i class="fas fa-plus"></i> View complete content',
+          css: {
+            display: "inline-block",
+            marginTop: "10px",
+            padding: "6px 12px",
+            fontSize: "0.9em",
+            color: "var(--text-hover)",
+            backgroundColor: "var(--bg-button)",
+            border: "1px solid var(--border-color)",
+            borderRadius: "3px",
+            textDecoration: "none",
+            transition: "all 0.2s ease",
+          },
+        });
+
+        // Add hover effect
+        $readInFullBtn.hover(
+          function () {
+            $(this).css({
+              backgroundColor: "var(--bg-button-hover)",
+              transform: "scale(1.05)",
+            });
+          },
+          function () {
+            $(this).css({
+              backgroundColor: "var(--bg-button)",
+              transform: "scale(1)",
+            });
+          }
+        );
+
+        $abstract.after($readInFullBtn);
+      }
+
+      console.log("Abstract expanded successfully!");
+    }
+  );
+
+  // Log when page is ready
+  $(document).ready(function () {
+    console.log("Document ready - collapsible abstracts event listener active");
+
+    // Debug: count abstracts in all sections
+    setTimeout(function () {
+      const pubCount = $("#publication .media-body .article-style").length;
+      const appCount = $(
+        "#applications-and-dashboards .media-body .article-style"
+      ).length;
+      const blogCount = $("#blog .media-body .article-style").length;
+      console.log("Found", pubCount, "abstracts in publication section");
+      console.log(
+        "Found",
+        appCount,
+        "abstracts in applications-and-dashboards section"
+      );
+      console.log("Found", blogCount, "abstracts in blog section");
+    }, 500);
+  });
+
+  // Document Viewer Controls
+  $(document).ready(function () {
+    // Zoom functionality for PDFs
+    $(".doc-zoom-in, .doc-zoom-out").on("click", function (e) {
+      e.preventDefault();
+      const $toolbar = $(this).closest(".document-viewer-toolbar");
+      const $iframe = $toolbar.siblings("iframe");
+      const isPDF = $toolbar.data("is-pdf");
+
+      if (isPDF && $iframe.length) {
+        // For PDFs, try to manipulate the iframe content
+        try {
+          const iframeDoc =
+            $iframe[0].contentDocument || $iframe[0].contentWindow.document;
+          const currentZoom = parseFloat(iframeDoc.body.style.zoom || 1);
+          const zoomDelta = $(this).hasClass("doc-zoom-in") ? 0.1 : -0.1;
+          const newZoom = Math.max(0.5, Math.min(3, currentZoom + zoomDelta));
+          iframeDoc.body.style.zoom = newZoom;
+          console.log("Zoom level:", newZoom);
+        } catch (err) {
+          // Cross-origin restriction - open in new tab instead
+          console.log("Cannot zoom embedded PDF, opening in new tab");
+          const url = $toolbar.data("doc-url");
+          window.open(url, "_blank");
+        }
+      }
+    });
+
+    // Print functionality
+    $(".doc-print").on("click", function (e) {
+      e.preventDefault();
+      const $toolbar = $(this).closest(".document-viewer-toolbar");
+      const $iframe = $toolbar.siblings("iframe");
+      const docUrl = $toolbar.data("doc-url");
+
+      // Try to print the iframe content
+      try {
+        if ($iframe.length && $iframe[0].contentWindow) {
+          $iframe[0].contentWindow.print();
+          console.log("Printing document");
+        } else {
+          throw new Error("Cannot access iframe");
+        }
+      } catch (err) {
+        // If iframe print fails, open in new window for printing
+        console.log("Cannot print embedded document, opening in new window");
+        const printWindow = window.open(docUrl, "_blank");
+        if (printWindow) {
+          printWindow.onload = function () {
+            printWindow.print();
+          };
+        }
+      }
+    });
+
+    console.log("Document viewer controls initialized");
+  });
 
   // Robust collapsible functionality - works with unlimited sections
   $(document).ready(function () {

@@ -45,7 +45,7 @@ title: 'Modality switch effects emerge early and increase throughout conceptual 
 url_code: 'https://osf.io/97unm'
 url_data: 'https://osf.io/97unm'
 url_fulltext: 'https://doi.org/10.31234/osf.io/a5pcz'
-url_poster: 'https://mfr.osf.io/render?url=https://osf.io/dj52n/?direct%26mode=render%26action=download%26mode=render'
+url_poster: 'https://osf.io/dj52n'
 # url_project: ""
 # url_slides: ""
 # url_source: '#'
@@ -69,11 +69,9 @@ Bernabeu, P., Willems, R. M., & Louwerse, M. M. (2017). Modality switch effects 
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/56mb7N81kp3VPzhcijQXi0?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
 
-### Bonus: a conference poster with further analyses &nbsp;<a href='https://mfr.osf.io/render?url=https://osf.io/dj52n/?direct%26mode=render%26action=download%26mode=render'><i class="fas fa-external-link-alt"></i></a>
+### Bonus: a conference poster with further analyses &nbsp;<a href='https://osf.io/97unm/files/dj52n'><i class="fas fa-external-link-alt"></i></a>
 
-<style>.embed-responsive{position:relative;height:100%;}.embed-responsive iframe{position:absolute;height:100%;}</style><script>window.jQuery || document.write('<script src="//code.jquery.com/jquery-1.11.2.min.js">\x3C/script>') </script><link href="https://mfr.osf.io/static/css/mfr.css" media="all" rel="stylesheet"><div id="mfrIframe" class="mfr mfr-file"></div><script src="https://mfr.osf.io/static/js/mfr.js"></script> <script>var mfrRender = new mfr.Render("mfrIframe", "https://mfr.osf.io/render?url=https://osf.io/dj52n/?direct%26mode=render%26action=download%26mode=render");</script>
-
-<br>
+{{< document-viewer url="https://cdn.jsdelivr.net/gh/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing@bae8be8180e719dbb1214ffd3ce90643d1cb9144/Poster%20-%20Bernabeu%20et%20al.,%20Modality%20switch%20effects%20emerge%20early%20and%20increase%20throughout%20conceptual%20processing.pdf" height="470px" >}}
 
 
 ### Related references
