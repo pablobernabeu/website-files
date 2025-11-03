@@ -69,7 +69,7 @@ Bernabeu, P., Willems, R. M., & Louwerse, M. M. (2017). Modality switch effects 
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/56mb7N81kp3VPzhcijQXi0?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
 
-### Bonus: a conference poster with further analyses &nbsp;<a href='https://osf.io/97unm/files/dj52n'><i class="fas fa-external-link-alt"></i></a>
+### Conference poster with additional analyses &nbsp;<a href='https://osf.io/97unm/files/dj52n'><i class="fas fa-external-link-alt"></i></a>
 
 {{< document-viewer url="https://cdn.jsdelivr.net/gh/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing@bae8be8180e719dbb1214ffd3ce90643d1cb9144/Poster%20-%20Bernabeu%20et%20al.,%20Modality%20switch%20effects%20emerge%20early%20and%20increase%20throughout%20conceptual%20processing.pdf" height="470px" >}}
 

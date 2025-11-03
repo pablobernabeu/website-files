@@ -1681,42 +1681,41 @@
       const $title = $mediaBody.find(".article-title a");
       const pageUrl = $title.attr("href");
 
-      if (pageUrl && !$abstract.next(".read-in-full-btn").length) {
-        const $readInFullBtn = $("<a>", {
+      if (pageUrl && !$abstract.next(".view-complete-content-btn").length) {
+        const $viewCompleteContentBtn = $("<a>", {
           href: pageUrl,
-          class: "read-in-full-btn",
+          class: "view-complete-content-btn",
           html: '<i class="fas fa-plus"></i> View complete content',
           css: {
             display: "inline-block",
             marginTop: "10px",
-            padding: "6px 12px",
-            fontSize: "0.9em",
+            padding: "8px 16px",
+            fontSize: "14px",
             color: "var(--text-hover)",
             backgroundColor: "var(--bg-button)",
             border: "1px solid var(--border-color)",
-            borderRadius: "3px",
+            borderRadius: "4px",
             textDecoration: "none",
-            transition: "all 0.2s ease",
+            transition: "all 0.3s ease",
           },
         });
 
-        // Add hover effect
-        $readInFullBtn.hover(
+        $viewCompleteContentBtn.hover(
           function () {
             $(this).css({
               backgroundColor: "var(--bg-button-hover)",
-              transform: "scale(1.05)",
+              transform: "translateY(-2px)",
             });
           },
           function () {
             $(this).css({
               backgroundColor: "var(--bg-button)",
-              transform: "scale(1)",
+              transform: "translateY(0)",
             });
           }
         );
 
-        $abstract.after($readInFullBtn);
+        $abstract.after($viewCompleteContentBtn);
       }
 
       console.log("Abstract expanded successfully!");
