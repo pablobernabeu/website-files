@@ -3,6 +3,96 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://pablobernabeu.github.io/tags/audio-processing/</loc>
+    <lastmod>2025-11-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://pablobernabeu.github.io/categories/</loc>
+    <lastmod>2025-11-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://pablobernabeu.github.io/tags/gdpr/</loc>
+    <lastmod>2025-11-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://pablobernabeu.github.io/tags/high-performance-computing/</loc>
+    <lastmod>2025-11-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://pablobernabeu.github.io/tags/natural-language-processing/</loc>
+    <lastmod>2025-11-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://pablobernabeu.github.io/tags/openai/</loc>
+    <lastmod>2025-11-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://pablobernabeu.github.io/</loc>
+    <lastmod>2025-11-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://pablobernabeu.github.io/post/</loc>
+    <lastmod>2025-11-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://pablobernabeu.github.io/tags/privacy/</loc>
+    <lastmod>2025-11-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://pablobernabeu.github.io/2025/speech-transcription-python/</loc>
+    <lastmod>2025-11-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://pablobernabeu.github.io/categories/programming/</loc>
+    <lastmod>2025-11-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://pablobernabeu.github.io/tags/python/</loc>
+    <lastmod>2025-11-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://pablobernabeu.github.io/tags/s/</loc>
+    <lastmod>2025-11-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://pablobernabeu.github.io/tags/speech-recognition/</loc>
+    <lastmod>2025-11-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://pablobernabeu.github.io/tags/speech-to-text/</loc>
+    <lastmod>2025-11-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://pablobernabeu.github.io/tags/</loc>
+    <lastmod>2025-11-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://pablobernabeu.github.io/tags/transcription/</loc>
+    <lastmod>2025-11-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://pablobernabeu.github.io/tags/whisper/</loc>
+    <lastmod>2025-11-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://pablobernabeu.github.io/2025/4authors-year-doi-url/</loc>
     <lastmod>2025-10-22T00:00:00+00:00</lastmod>
   </url>
@@ -13,22 +103,7 @@
   </url>
   
   <url>
-    <loc>https://pablobernabeu.github.io/categories/</loc>
-    <lastmod>2025-10-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://pablobernabeu.github.io/tags/csl/</loc>
-    <lastmod>2025-10-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://pablobernabeu.github.io/</loc>
-    <lastmod>2025-10-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://pablobernabeu.github.io/post/</loc>
     <lastmod>2025-10-22T00:00:00+00:00</lastmod>
   </url>
   
@@ -39,16 +114,6 @@
   
   <url>
     <loc>https://pablobernabeu.github.io/categories/research-methods/</loc>
-    <lastmod>2025-10-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://pablobernabeu.github.io/tags/s/</loc>
-    <lastmod>2025-10-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://pablobernabeu.github.io/tags/</loc>
     <lastmod>2025-10-22T00:00:00+00:00</lastmod>
   </url>
   
@@ -128,12 +193,12 @@
   </url>
   
   <url>
-    <loc>https://pablobernabeu.github.io/tags/replication/</loc>
+    <loc>https://pablobernabeu.github.io/categories/replication/</loc>
     <lastmod>2025-10-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://pablobernabeu.github.io/categories/replication/</loc>
+    <loc>https://pablobernabeu.github.io/tags/replication/</loc>
     <lastmod>2025-10-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -218,17 +283,7 @@
   </url>
   
   <url>
-    <loc>https://pablobernabeu.github.io/categories/programming/</loc>
-    <lastmod>2025-03-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://pablobernabeu.github.io/2025/prototype-workflow-for-semi-automatic-processing-of-speech-and-cospeech-gestures/</loc>
-    <lastmod>2025-03-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://pablobernabeu.github.io/tags/python/</loc>
     <lastmod>2025-03-28T00:00:00+00:00</lastmod>
   </url>
   
@@ -1343,11 +1398,6 @@
   </url>
   
   <url>
-    <loc>https://pablobernabeu.github.io/tags/transcription/</loc>
-    <lastmod>2021-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://pablobernabeu.github.io/tags/web-application/</loc>
     <lastmod>2021-01-01T00:00:00+00:00</lastmod>
   </url>
@@ -1633,12 +1683,12 @@
   </url>
   
   <url>
-    <loc>https://pablobernabeu.github.io/categories/education/</loc>
+    <loc>https://pablobernabeu.github.io/tags/education/</loc>
     <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://pablobernabeu.github.io/tags/education/</loc>
+    <loc>https://pablobernabeu.github.io/categories/education/</loc>
     <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -1688,12 +1738,12 @@
   </url>
   
   <url>
-    <loc>https://pablobernabeu.github.io/tags/linguistic-relativity/</loc>
+    <loc>https://pablobernabeu.github.io/categories/linguistic-relativity/</loc>
     <lastmod>2019-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://pablobernabeu.github.io/categories/linguistic-relativity/</loc>
+    <loc>https://pablobernabeu.github.io/tags/linguistic-relativity/</loc>
     <lastmod>2019-01-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -1873,22 +1923,22 @@
   </url>
   
   <url>
-    <loc>https://pablobernabeu.github.io/tags/big-data/</loc>
-    <lastmod>2016-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://pablobernabeu.github.io/categories/big-data/</loc>
     <lastmod>2016-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://pablobernabeu.github.io/categories/data-mining/</loc>
+    <loc>https://pablobernabeu.github.io/tags/big-data/</loc>
     <lastmod>2016-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://pablobernabeu.github.io/tags/data-mining/</loc>
+    <lastmod>2016-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://pablobernabeu.github.io/categories/data-mining/</loc>
     <lastmod>2016-01-01T00:00:00+00:00</lastmod>
   </url>
   

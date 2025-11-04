@@ -1,7 +1,8 @@
 source("renv/activate.R")
 
 options(blogdown.hugo.version = '0.61.0', 
-        blogdown.server.timeout = 600)
+        blogdown.server.timeout = 600,
+        blogdown.knit.on_save = TRUE)
 
 # Enable copy of code blocks to clipboard
 library(xaringanExtra)

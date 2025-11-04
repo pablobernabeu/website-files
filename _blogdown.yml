@@ -1,0 +1,4 @@
+# Blogdown configuration
+knit:
+  method: markdown
+  on_save: TRUE

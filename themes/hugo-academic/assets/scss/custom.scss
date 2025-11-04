@@ -2782,3 +2782,18 @@ html body.dark .search-hit a h6 {
   list-style-type: none;
   padding-left: 0; /* Optional: Removes the default list indentation */
 }
+
+// Collapsed code chunks styling
+details summary {
+  cursor: pointer;
+  margin-bottom: 1rem; // Add margin below the 'Expand' text
+}
+
+details[open] summary {
+  margin-bottom: 0.5rem; // Slightly less margin when expanded
+}
+
+// Add margin above h2 headings
+h2 {
+  margin-top: 2rem;
+}
