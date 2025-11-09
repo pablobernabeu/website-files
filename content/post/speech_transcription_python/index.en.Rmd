@@ -1,12 +1,11 @@
 ---
 title: 'Secure and Scalable Speech Transcription for Local and HPC'
 author: ''
-date: '2025-11-04'
+date: '2099-11-04'
 slug: speech-transcription-python
 categories:
   - programming
 tags:
-  - s
   - speech-to-text
   - speech recognition
   - transcription
@@ -19,11 +18,11 @@ tags:
   - high-performance computing
   - privacy
 subtitle: ''
-summary: "A production-ready local transcription workflow leveraging OpenAI's Whisper models that addresses the limitations of cloud-based solutions through complete data sovereignty, unlimited scale, reproducible processing and advanced quality control while maintaining GDPR compliance."
+summary: "A production-ready local transcription workflow leveraging OpenAI's Whisper models that addresses the limitations of cloud-based solutions through complete data sovereignty, unlimited scale, reproducible processing and advanced quality control, while maintaining GDPR compliance."
 authors: []
 lastmod: ~
 featured: no
-draft: no
+draft: yes
 image:
   caption: ''
   focal_point: ''
@@ -163,6 +162,8 @@ The solution implements proactive model caching by running the download process 
 The collection of SLURM integration scripts solved the complex challenge of translating a single-file processing workflow into a scalable, parallel processing system suitable for large datasets.
 
 These scripts implement several key technical solutions to orchestrate this process effectively. Dynamic job array sizing automatically detects input files and calculates the optimal job array parameters, matching the workload to available resources. This is complemented by intelligent resource optimisation, which prioritises GPU allocation but provides a graceful fallback to CPU processing, ensuring maximum throughput and continuous operation even when GPU resources are constrained. To handle the inevitable issues in large-scale processing, the system includes comprehensive error detection and recovery mechanisms, logging failures to enable easy identification and reprocessing of specific jobs without affecting the rest of the batch. Finally, a systematic output organisation strategy maintains clear relationships between input files, processing logs and output products, ensuring a well-structured and auditable workflow across hundreds of concurrent jobs.
+
+The HPC submission scripts support optional resource allocation parameters that allow users to override default settings when processing particularly large or complex audio files. The `--memory` argument enables specification of custom memory allocation (e.g., `--memory 32GB` for files requiring more than the standard allocation), whilst the `--time-limit` argument allows adjustment of maximum job duration (e.g., `--time-limit 8:00:00` for eight hours). These parameters provide flexibility for diverse processing requirements whilst maintaining sensible defaults for typical use cases.
 
 ### Environment Setup Scripts: Reproducible Deployment
 

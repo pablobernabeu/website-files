@@ -68,8 +68,8 @@ education:
   furthercourses:
     - course: "[Professional conduct](https://staff.admin.ox.ac.uk/working-at-oxford/new-to-the-university/when-you-start#/)"
       institution: University of Oxford
-        year: 2025
-        extra: '\-&nbsp; I completed the following online courses as part of my induction: [Anti-Bribery and Corruption](/course-certificates/Anti-Bribery-and-Corruption-certificate-for-Pablo-Bernabeu.pdf), [Conflicts of Interest](/course-certificates/Conflicts-of-Interest-certificate-for-Pablo-Bernabeu.pdf), [Equality and Diversity](/course-certificates/Equality-and-Diversity-Briefing-certificate-for-Pablo-Bernabeu.pdf), [Harassment in Higher Education](/course-certificates/Harassment-in-Higher-Education-certificate-for-Pablo-Bernabeu.pdf), [Health and Safety](/course-certificates/Health-and-Safety-Basics-certificate-for-Pablo-Bernabeu.pdf), [Implicit Bias in the Workplace](/course-certificates/Implicit-Bias-certificate-for-Pablo-Bernabeu.pdf), [Information Security and Data Protection](/course-certificates/Information-Security-and-Data-Protection-certificate-for-Pablo-Bernabeu.pdf), [Research Integrity](/course-certificates/Research-Integrity-certificate-for-Pablo-Bernabeu.pdf), [Recruitment and Selection for Chairs of Panels and Members](/course-certificates/Recruitment-and-Selection-for-Chairs-of-Panels-and-Members-certificate-for-Pablo-Bernabeu.pdf).'
+      year: 2025
+      extra: '\-&nbsp; I completed the following online courses as part of my induction: [Anti-Bribery and Corruption](/course-certificates/Anti-Bribery-and-Corruption-certificate-for-Pablo-Bernabeu.pdf), [Conflicts of Interest](/course-certificates/Conflicts-of-Interest-certificate-for-Pablo-Bernabeu.pdf), [Equality and Diversity](/course-certificates/Equality-and-Diversity-Briefing-certificate-for-Pablo-Bernabeu.pdf), [Harassment in Higher Education](/course-certificates/Harassment-in-Higher-Education-certificate-for-Pablo-Bernabeu.pdf), [Health and Safety](/course-certificates/Health-and-Safety-Basics-certificate-for-Pablo-Bernabeu.pdf), [Implicit Bias in the Workplace](/course-certificates/Implicit-Bias-certificate-for-Pablo-Bernabeu.pdf), [Information Security and Data Protection](/course-certificates/Information-Security-and-Data-Protection-certificate-for-Pablo-Bernabeu.pdf), [Research Integrity](/course-certificates/Research-Integrity-certificate-for-Pablo-Bernabeu.pdf), [Recruitment and Selection for Chairs of Panels and Members](/course-certificates/Recruitment-and-Selection-for-Chairs-of-Panels-and-Members-certificate-for-Pablo-Bernabeu.pdf).'
     - course: "[Advanced R programming](https://www.coursera.org/account/accomplishments/verify/FMNADHCTXZEZ)"
       institution: Johns Hopkins University via Coursera
       year: 2017
@@ -117,10 +117,12 @@ education:
       extra: \-&nbsp; I followed the first two months of this course as a listener to learn the principles of electroencephalography, event-related potentials, magnetoencephalography and functional magnetic resonance imaging.
 ---
 
+<div style = 'margin-bottom: 5%;'>
 <a href="/cv-pablo-bernabeu.pdf" class="cv-btn">
   <i class="fa fa-file"></i> &nbsp;
   <span>View <b>CV</b></span>
 </a>
+</div>
 
 I conduct research and data analysis on digitally-enhanced childhood learning as part of the [Learning in Families through Technology (LiFT) project](https://www.education.ox.ac.uk/project/lift-learning-in-families-through-technology) at the Department of Education at the University of Oxford.
 
