@@ -51,7 +51,62 @@ css_class = ""
 +++
 
 
+
 <div style = "margin-bottom: -2.5%;"></div>
+
+
+### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; The modular mini-grammar: Building testable and reproducible artificial languages using FAIR principles
+
+<div class="max-w-2xl w-full p-6">
+
+<!-- This wrapper controls the state of the component -->
+<div class="collapsible-text-wrapper">
+
+<!-- This div contains the text that will be collapsed -->
+<div class="collapsible-text-content">
+<p class="text-base leading-relaxed mb-0">
+
+<i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using Google Gemini and NotebookLM.
+
+In the high-stakes world of scientific inquiry, methods and findings are inextricable. Yet, issues of reproducibility remain a challenge, especially in experimental linguistics and cognitive science. As the old adage goes, "To err is human", but when creating research materials, adhering to best practices can significantly reduce mistakes and enhance long-term efficiency.
+
+In this episode of Codex Mentis, we explore the crucial application of the FAIR Guiding Principles—making materials Findable, Accessible, Interoperable, and Reusable—to the creation of stimuli and experimental workflows.
+
+Drawing on research presented by Bernabeu and colleagues, we delve into a complex study on multilingualism using artificial languages, designed specifically to ensure the materials are reproducible, testable, modifiable, and expandable. Unlike many previous artificial language studies that showed low to medium accessibility, this methodology emphasizes high standards for scientific data management.
+
+What you will learn:
+
+• The Power of Open Source: We discuss the importance of using free, script-based, open-source software, such as R and OpenSesame, to augment the credibility and reliability of research.
+
+• Modular Frameworks: Discover how creating a modular workflow based on minimal components in R facilitates the expansion of materials to new languages or within the same language set.
+
+• Rigour and Reproducibility: We examine crucial testing steps exerted throughout the preparation workflow—including checking if all experimental elements appear equally often—to prevent blatant disparities and spurious effects.
+
+• Detailed Experimentation: Hear how custom Python code within OpenSesame was implemented to manage complex procedures across multiple sessions, including assigning participant-specific parameters (like mini-language or resting-state order).
+
+• Measuring the Brain: We look at the technical challenge of accurately time-locking electroencephalographic (EEG) measurements. The episode details the custom Python script used in OpenSesame to send triggers to the serial port, enabling precise Event-Related Potential (ERP) recording.
+
+• Generous Documentation: Why detailed documentation, using formats like README.txt that are universally accessible, is essential for allowing collaborators and future researchers (or even your future self) to understand, reproduce, and reuse the materials.
+
+Adhering to FAIR standards ensures that the investment in research materials facilitates researchers' work beyond the shortest term, contributing to the best use of resources and increasing scientific reliability.
+
+View [sources and related content](/presentation/making-research-materials-findable-accessible-interoperable-reusable-fair).
+
+</p>
+</div>
+
+<!-- The "Continue reading" button -->
+<button class="read-more-btn link-style-button mt-2">
+Continue reading...
+</button>
+
+</div>
+</div>
+
+<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
+<iframe src="https://www.youtube-nocookie.com/embed/tcBCMajt16Y" frameborder="0" allowfullscreen
+style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
+</div>
 
 
 ### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; Third language learning and morphosyntactic transfer
