@@ -2,7 +2,8 @@ source("renv/activate.R")
 
 options(blogdown.hugo.version = '0.61.0', 
         blogdown.server.timeout = 600,
-        blogdown.knit.on_save = TRUE)
+        blogdown.knit.on_save = TRUE,
+        blogdown.server.args = c('--disableFastRender'))
 
 # Enable copy of code blocks to clipboard
 library(xaringanExtra)
@@ -21,3 +22,4 @@ download.file(
   destfile = 'static/cv-pablo-bernabeu.pdf',
   mode = 'wb',
 )
+options(blogdown.fast_preview = FALSE)
