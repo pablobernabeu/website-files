@@ -74,10 +74,10 @@
 
 - id: interests
   translation: Interests
-  
+
 - id: profileicons
-  translation: ''
-  
+  translation: ""
+
 - id: subsections
   translation: Subsections
 
@@ -86,13 +86,13 @@
 
 - id: education
   translation: '<span id="education">Education</span>'
-  
+
 - id: furthercourses
   translation: Further Courses
-  
+
 - id: skills
   translation: Skills
-  
+
 - id: user_profile_latest
   translation: Latest
 
@@ -190,6 +190,9 @@
 - id: pub_patent
   translation: Patent
 
+- id: pub_software
+  translation: Software
+
 # Project details
 
 - id: open_project_site
@@ -205,7 +208,7 @@
 
 - id: presentations
   translation: Presentations
-  
+
 - id: projects
   translation: Projects
 
@@ -215,7 +218,7 @@
   translation: Search
 
 - id: search_placeholder
-  translation: '   Search...'
+  translation: "   Search..."
 
 - id: search_results
   translation: results found

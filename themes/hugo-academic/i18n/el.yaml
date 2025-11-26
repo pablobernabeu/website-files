@@ -15,7 +15,7 @@
 - id: next
   translation: Επόμενο
 - id: figure
-  translation: 'Figure %d:'
+  translation: "Figure %d:"
 - id: btn_preprint
   translation: Προ-δημοσίευση
 - id: btn_fulltext
@@ -100,6 +100,8 @@
   translation: Thesis
 - id: pub_patent
   translation: Patent
+- id: pub_software
+  translation: Software
 - id: open_project_site
   translation: Προς ιστοσελίδα ερευνητικού προγράμματος
 - id: posts
