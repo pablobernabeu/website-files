@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Apply styles with maximum priority - remove any inherited/conflicting styles first
     button.style.setProperty("background", "none", "important");
     button.style.setProperty("background-image", "none", "important");
-    
+
     // Now apply our styles
     button.style.setProperty("display", "inline-block", "important");
     button.style.setProperty("padding", "0.75em 1.5em", "important");
@@ -23,7 +23,10 @@ document.addEventListener("DOMContentLoaded", function () {
     );
     button.style.setProperty("border", "2px solid #0d47a1", "important");
 
-    console.log("Button styles applied. Background color:", button.style.backgroundColor);
+    console.log(
+      "Button styles applied. Background color:",
+      button.style.backgroundColor
+    );
 
     // Add hover event listeners
     button.addEventListener("mouseenter", function () {
