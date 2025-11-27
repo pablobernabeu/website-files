@@ -2797,3 +2797,37 @@ details[open] summary {
 h2 {
   margin-top: 2rem;
 }
+
+// GitHub workflow button styling
+.github-workflow-button {
+  display: inline-block !important;
+  padding: 0.75em 1.5em !important;
+  background-color: #1565C0 !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s !important;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3) !important;
+  border: 2px solid #0d47a1 !important;
+  
+  &:hover, &:focus, &:visited {
+    background-color: #0d47a1 !important;
+    color: #ffffff !important;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4) !important;
+    transform: translateY(-2px) !important;
+    text-decoration: none !important;
+  }
+}
+
+// Dark theme - button should stay the same
+body.dark .github-workflow-button {
+  background-color: #1565C0 !important;
+  color: #ffffff !important;
+  border-color: #0d47a1 !important;
+  
+  &:hover, &:focus, &:visited {
+    background-color: #0d47a1 !important;
+    color: #ffffff !important;
+  }
+}
