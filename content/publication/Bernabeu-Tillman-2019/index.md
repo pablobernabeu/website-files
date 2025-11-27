@@ -22,6 +22,9 @@ publication: '*Dutch Journal of Applied Linguistics*'
 publication_short:
 publication_types:
 - "2"
+preregistered: false
+open_materials: false
+open_data: false
 # slides: example
 tags:
 - linguistic relativity

@@ -19,6 +19,9 @@ publication: '*Tenth Language at the University of Essex (LangUE) Postgraduate C
 publication_short: 
 publication_types:
 - "1"
+preregistered: false
+open_materials: false
+open_data: false
 # slides: example
 summary:
 tags:

@@ -6,6 +6,9 @@ date: "2018-01-01"
 slug: Dutch-modality-exclusivity-norms-for-336-properties-and-411-concepts
 publication_types:
 - "3"
+preregistered: false
+open_materials: true
+open_data: true
 publication: PsyArXiv Preprints
 categories:
   - linguistic materials

@@ -1,72 +1,59 @@
-{{ $item := . }}
-
-{{/* Dynamic view adjusts to content type. */}}
-{{ $show_authors_only := false }}{{/* Show authors only or full metadata? */}}
-{{ $show_buttons := false }}
-{{ $link := $item.RelPermalink }}
-{{ $target := "" }}
-{{ if $item.Params.external_link }}
-  {{ $link = $item.Params.external_link }}
-  {{ $target = "target=\"_self\" rel=\"noopener\"" }}
-{{ end }}
-{{ if eq $item.Type "presentation" }}
-  {{ $show_authors_only = true }}
-  {{ $show_buttons = true }}
-{{ else if eq $item.Type "publication" }}
-  {{ $show_authors_only = false }}
-  {{ $show_buttons = true }}
-{{ else if eq $item.Type "data-dashboards" }}
-  {{ $show_authors_only = false }}
-  {{ $show_buttons = true }}
-{{ else if eq $item.Type "project" }}
-  {{ $show_authors_only = true }}
-  {{ $show_buttons = true }}
-{{ end }}
-
-{{/* Get summary. */}}
-{{ $summary := "" }}
-{{ if $item.Params.summary }}
-  {{ $summary = $item.Params.summary | markdownify | emojify }}
-{{ else if .Params.abstract }}
-  {{ $summary = .Params.abstract | markdownify | emojify }}
-{{ else if $item.Truncated }}
-  {{ $summary = $item.Summary | markdownify | emojify }}
-{{ end }}
+{{$item := .}} {{/* Dynamic view adjusts to content type. */}} {{
+$show_authors_only := false }}{{/* Show authors only or full metadata? */}} {{
+$show_buttons := false }} {{ $link := $item.RelPermalink }} {{ $target := "" }}
+{{ if $item.Params.external_link }} {{ $link = $item.Params.external_link }} {{
+$target = "target=\"_blank\" rel=\"noopener\"" }} {{ end }} {{ if eq $item.Type
+"presentation" }} {{ $show_authors_only = true }} {{ $show_buttons = true }} {{
+else if eq $item.Type "publication" }} {{ $show_authors_only = false }} {{
+$show_buttons = true }} {{ else if eq $item.Type "data-dashboards" }} {{
+$show_authors_only = false }} {{ $show_buttons = true }} {{ else if eq
+$item.Type "project" }} {{ $show_authors_only = true }} {{ $show_buttons = true
+}} {{ end }} {{/* Get summary. */}} {{ $summary := "" }} {{ if
+$item.Params.summary }} {{ $summary = $item.Params.summary | markdownify |
+emojify }} {{ else if .Params.abstract }} {{ $summary = .Params.abstract |
+markdownify | emojify }} {{ else if $item.Truncated }} {{ $summary =
+$item.Summary | markdownify | emojify }} {{ end }}
 
 <div class="media stream-item">
   <div class="media-body">
-
     <h3 class="article-title mb-0 mt-0">
-      <a href="{{$link}}" {{ $target | safeHTMLAttr }}>{{ $item.Title | markdownify }}</a>
+      <a href="{{$link}}" {{ $target | safeHTMLAttr }}
+        >{{ $item.Title | markdownify }}</a
+      >
     </h3>
 
-    {{ with $summary }}
-    <div class="article-style">
-      {{ . }}
-    </div>
+    {{ if eq $item.Type "publication" }} {{ $pub_types := slice "pub_uncat"
+    "pub_conf" "pub_journal" "pub_preprint" "pub_report" "pub_book"
+    "pub_book_section" "pub_thesis" "pub_patent" "pub_software" }} {{ $pub_icons
+    := slice "fa-file" "fa-users" "fa-file-text" "fa-briefcase" "fa-briefcase"
+    "fa-book" "fa-book" "fa-graduation-cap" "fa-lightbulb-o" "fa-code" }} {{
+    $pub_classes := slice "pub-type-uncat" "pub-type-conf" "pub-type-journal"
+    "pub-type-preprint" "pub-type-report" "pub-type-book"
+    "pub-type-book-section" "pub-type-thesis" "pub-type-patent"
+    "pub-type-software" }} {{ range $index, $type :=
+    $item.Params.publication_types }} {{ $pub_type := index $pub_types (int
+    $type) }} {{ $pub_icon := index $pub_icons (int $type) }} {{ $pub_class :=
+    index $pub_classes (int $type) }}
+    <span class="pub-type-badge {{ $pub_class }}">
+      <i class="fa {{ $pub_icon }}"></i> {{ i18n $pub_type }}
+    </span>
+    {{ end }} {{ end }} {{ with $summary }}
+    <div class="article-style">{{ . }}</div>
     {{ end }}
 
     <div class="stream-meta article-metadata">
-
       {{ if eq $item.Type "presentation" }}
       <div>
-        <span>
-          {{ partial "functions/get_event_dates" $item }}
-        </span>
+        <span> {{ partial "functions/get_event_dates" $item }} </span>
         {{ with $item.Params.location }}
         <span class="middot-divider"></span>
         <span>{{ . }}</span>
         {{ end }}
       </div>
-      {{ end }}
-
-      {{ if and $show_authors_only $item.Params.authors }}
-      <div>
-        {{ partial "page_metadata_authors" $item }}
-      </div>
-      {{ else if not $show_authors_only }}
-        {{ partial "page_metadata" (dict "page" $item "is_list" 1) }}
-      {{ end }}
+      {{ end }} {{ if and $show_authors_only $item.Params.authors }}
+      <div>{{ partial "page_metadata_authors" $item }}</div>
+      {{ else if not $show_authors_only }} {{ partial "page_metadata" (dict
+      "page" $item "is_list" 1) }} {{ end }}
     </div>
 
     {{ if $show_buttons }}
@@ -74,14 +61,12 @@
       {{ partial "page_links" (dict "page" $item "is_list" 1) }}
     </div>
     {{ end }}
-
   </div>
   <div class="ml-3">
-    {{ $resource := ($item.Resources.ByType "image").GetMatch "*featured*" }}
-    {{ with $resource }}
-    {{ $image := .Resize "150x" }}
+    {{ $resource := ($item.Resources.ByType "image").GetMatch "*featured*" }} {{
+    with $resource }} {{ $image := .Resize "150x" }}
     <a href="{{$link}}" {{ $target | safeHTMLAttr }}>
-      <img src="{{ $image.RelPermalink }}" alt="">
+      <img src="{{ $image.RelPermalink }}" alt="" />
     </a>
     {{end}}
   </div>

@@ -1,0 +1,3 @@
+# Ignore Hugo template files - they have Go template syntax that breaks when reformatted
+layouts/**/*.html
+themes/**/*.html

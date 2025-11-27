@@ -1,0 +1,17 @@
+{{ $page := . }}
+{{ if eq $page.Type "publication" }}
+<span class="publication-badges">
+{{ $pub_types := slice "pub_uncat" "pub_conf" "pub_journal" "pub_preprint" "pub_report" "pub_book" "pub_book_section" "pub_thesis" "pub_patent" "pub_software" }}
+{{ $pub_icons := slice "fa-file" "fa-users" "fa-file-text" "fa-briefcase" "fa-briefcase" "fa-book" "fa-book" "fa-graduation-cap" "fa-lightbulb-o" "fa-code" }}
+{{ $pub_classes := slice "pub-type-uncat" "pub-type-conf" "pub-type-journal" "pub-type-preprint" "pub-type-report" "pub-type-book" "pub-type-book-section" "pub-type-thesis" "pub-type-patent" "pub-type-software" }}
+{{ range $index, $type := $page.Params.publication_types }}
+{{ $pub_type := index $pub_types (int $type) }}
+{{ $pub_icon := index $pub_icons (int $type) }}
+{{ $pub_class := index $pub_classes (int $type) }}
+<a href="/publication/#{{ $type }}" class="pub-type-badge {{ $pub_class }}"><i class="fa {{ $pub_icon }}"></i> {{ i18n $pub_type }}</a>
+{{ end }}
+{{ if $page.Params.preregistered }}<img src="{{ "img/preregistered_large_color.png" | relURL }}" alt="Preregistered" class="open-science-badge" data-badge-type="Preregistered">{{ end }}
+{{ if $page.Params.open_materials }}<img src="{{ "img/materials_large_color.png" | relURL }}" alt="Open Materials" class="open-science-badge" data-badge-type="Open Materials">{{ end }}
+{{ if $page.Params.open_data }}<img src="{{ "img/data_large_color.png" | relURL }}" alt="Open Data" class="open-science-badge" data-badge-type="Open Data">{{ end }}
+</span>
+{{ end }}

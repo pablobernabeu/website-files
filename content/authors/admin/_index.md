@@ -35,12 +35,12 @@ recent_work:
     - job: "Researcher"
       institution: "Department of Education, University of Oxford"
       year: "June 2025 -- _May 2027_"
-      extra: '-&nbsp; Additional service: Assistance at [inaugural convening of AI in Education at Oxford University](https://aieou.web.ox.ac.uk/events)'
+      extra: '-&nbsp; Additional service: Assistance at [inaugural convening of AI in Education at Oxford University](https://aieou.web.ox.ac.uk/events);<br>Member, Research Computing Advisory Board.'
     - job: "[Postdoctoral Fellow](https://app.cristin.no/projects/show.jsf?id=2559611)"
       institution: "Center for Language, Brain and Learning, UiT The Arctic University of Norway"
       year: "Nov 2022 -- Feb 2025"
       extra: '-&nbsp; I worked at the [Department of Language and Culture](https://en.uit.no/enhet/isk), and specifically within the [PoLaR Lab](https://site.uit.no/polar) and [<span style = "white-space: nowrap;">C-LaBL</span>](https://uit.no/research/clabl). As the local manager of the [**LESS Project** (Language Economy through Transfer Source Selectivity)](https://app.cristin.no/projects/show.jsf?id=2559611), I worked on a longitudinal study that investigates how bilingual people acquire an additional language, how this process is influenced by the characteristics of the languages, and how the process is instantiated in the brain. As part of this work, I contributed to designing our main study and developing materials in Norwegian and English, as well as creating materials in Spanish and English for a partner study in Spain. After documenting and pretesting these materials, I prepared a [preregistration](https://osf.io/tjr54) for the studies. Additionally, I recruited participants, designed the protocol for electroencephalography (EEG) sessions, and trained students and research assistants in both the protocol and EEG methodology more broadly. I also established and managed an EEG lab, conducted numerous sessions, supervised those led by research assistants, and monitored the longitudinal progress per participant. Moreover, I presented the study design at conferences and collaborated with research assistants to preprocess, visualise and analyse EEG and behavioural data.'
-      extra2: '-&nbsp; Additional service: co-organisation of multiple events, including the lunch meetings of [AcqVA Aurora](https://uit.no/research/acqva#747906_buttoncont1) and [<span style = "white-space: nowrap;">C-LaBL</span>](https://uit.no/research/clabl#836271_buttoncont2), and a public outreach event of C-LaBL. Peer-review for *Cognition*, *Cognitive Science* and EuroSLA Conference.'
+      extra2: '-&nbsp; Additional service: Co-organisation of multiple events, including the lunch meetings of [AcqVA Aurora](https://uit.no/research/acqva#747906_buttoncont1) and [<span style = "white-space: nowrap;">C-LaBL</span>](https://uit.no/research/clabl#836271_buttoncont2), and a public outreach event of C-LaBL. Peer-review for *Cognition*, *Cognitive Science* and EuroSLA Conference.'
     - job: "Statistical Consultant (25%)"
       institution: "AcqVA Aurora Center, UiT The Arctic University of Norway"
       year: "Nov--Dec 2022"
@@ -50,7 +50,7 @@ education:
     - course: "[PhD Psychology](https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109).html)"
       institution: Lancaster University (United Kingdom)
       year: "2018--2022"
-      extra: "-&nbsp; Additional service: peer-review for Cognitive Science and for Psychological Science Accelerator; development of website for open science group in my department."
+      extra: "-&nbsp; Additional service: Peer-review for Cognitive Science and for Psychological Science Accelerator; development of website for open science group in my department."
       extra2: '\-&nbsp; [Activities](https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109)/activities.html)'
     - course: "[Research Master Language and Communication](https://www.tilburguniversity.edu/education/masters-programmes/research-master-linguistics-and-communication-sciences)"
       institution: Tilburg University and Radboud University (the Netherlands)

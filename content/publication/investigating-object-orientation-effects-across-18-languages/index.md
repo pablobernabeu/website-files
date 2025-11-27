@@ -21,6 +21,9 @@ publication: '*Current Psychology*'
 publication_short:
 publication_types:
   - "2"
+preregistered: true
+open_materials: true
+open_data: true
 # slides: example
 summary:
 tags:

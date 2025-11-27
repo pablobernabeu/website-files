@@ -28,6 +28,9 @@ publication: 'In G. Gunzelmann, A. Howes, T. Tenbrink, & E. J. Davelaar (Eds.), 
 publication_short: 
 publication_types:
 - "1"
+preregistered: false
+open_materials: true
+open_data: true
 # slides: example
 summary:
 tags:
