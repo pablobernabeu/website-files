@@ -23,6 +23,8 @@ body {
 
 // General blockquote styling 
 blockquote {
+  padding: 0.7%;
+  padding-left: 1.7%;
   margin-bottom: 1.5rem !important;
 }
 
@@ -2830,4 +2832,9 @@ body.dark .github-workflow-button {
     background-color: #0d47a1 !important;
     color: #ffffff !important;
   }
+}
+
+// Increase padding for pre elements with class 'text'
+pre.text {
+  padding: 0.8em !important;
 }
