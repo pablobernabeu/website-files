@@ -1641,6 +1641,23 @@
       d.append(pre);
     });
 
+  // Add arrow indicators on sides of Expand button for abstracts
+  $(
+    "#publication .media-body .article-style, #applications-and-dashboards .media-body .article-style, #blog .media-body .article-style"
+  ).each(function () {
+    const $abstract = $(this);
+    // Create left arrows (multiple, pointing down)
+    const $leftArrow = $(
+      '<span class="expand-arrow expand-arrow-left">▼▼▼</span>'
+    );
+    // Create right arrows (multiple, pointing down)
+    const $rightArrow = $(
+      '<span class="expand-arrow expand-arrow-right">▼▼▼</span>'
+    );
+    // Append arrows to abstract (they'll be positioned via CSS)
+    $abstract.append($leftArrow).append($rightArrow);
+  });
+
   // Collapsible abstracts on home page - click anywhere on abstract to expand
   // Use event delegation for robustness - applies to publication, applications-and-dashboards, and blog sections
   $(document).on(
@@ -1682,40 +1699,78 @@
       const pageUrl = $title.attr("href");
 
       if (pageUrl && !$abstract.next(".view-complete-content-btn").length) {
+        // Detect theme and set appropriate colors
+        const isDark = $("body").hasClass("dark");
+        console.log("Theme detection - isDark:", isDark);
+        const btnColors = isDark
+          ? {
+              color: "#333",
+              background: "#ddd",
+              border: "#ccc",
+              hoverBg: "#ccc",
+            }
+          : {
+              color: "#eee",
+              background: "#555",
+              border: "#444",
+              hoverBg: "#444",
+            };
+        console.log("Button colors:", btnColors);
+
+        // Build style string with !important to override any CSS
+        const styleStr =
+          "display: inline-block !important; " +
+          "margin-top: 10px !important; " +
+          "margin-bottom: 0.3rem !important; " +
+          "padding: 8px 16px !important; " +
+          "font-size: 14px !important; " +
+          "color: " +
+          btnColors.color +
+          " !important; " +
+          "background-color: " +
+          btnColors.background +
+          " !important; " +
+          "background: " +
+          btnColors.background +
+          " !important; " +
+          "border: 1px solid " +
+          btnColors.border +
+          " !important; " +
+          "border-radius: 4px !important; " +
+          "text-decoration: none !important; " +
+          "transition: all 0.3s ease !important;";
+
         const $viewCompleteContentBtn = $("<a>", {
           href: pageUrl,
           class: "view-complete-content-btn",
           html: '<i class="fas fa-plus"></i> View complete content',
-          css: {
-            display: "inline-block",
-            marginTop: "10px",
-            padding: "8px 16px",
-            fontSize: "14px",
-            color: "var(--text-hover)",
-            backgroundColor: "var(--bg-button)",
-            border: "1px solid var(--border-color)",
-            borderRadius: "4px",
-            textDecoration: "none",
-            transition: "all 0.3s ease",
-          },
         });
+
+        // Set style attribute directly
+        $viewCompleteContentBtn.attr("style", styleStr);
 
         $viewCompleteContentBtn.hover(
           function () {
-            $(this).css({
-              backgroundColor: "var(--bg-button-hover)",
-              transform: "translateY(-2px)",
-            });
+            $(this).attr(
+              "style",
+              styleStr
+                .replace(
+                  "background-color: " + btnColors.background,
+                  "background-color: " + btnColors.hoverBg
+                )
+                .replace(
+                  "background: " + btnColors.background,
+                  "background: " + btnColors.hoverBg
+                ) + " transform: translateY(-2px) !important;"
+            );
           },
           function () {
-            $(this).css({
-              backgroundColor: "var(--bg-button)",
-              transform: "translateY(0)",
-            });
+            $(this).attr("style", styleStr);
           }
         );
 
         $abstract.after($viewCompleteContentBtn);
+        console.log("Button created with background:", btnColors.background);
       }
 
       console.log("Abstract expanded successfully!");

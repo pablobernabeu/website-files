@@ -28,21 +28,22 @@
   text-decoration: none !important;
   transition: all 0.2s ease;
   cursor: pointer;
+  margin-right: 0.5em;
+}
+
+.pub-type-badge:hover,
+.pub-type-badge:focus {
+  color: #fff !important;
+  text-decoration: none !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  filter: brightness(1.15);
 }
 
 a.pub-type-badge,
 a.pub-type-badge:visited,
 a.pub-type-badge:link {
   color: #fff !important;
-}
-
-a.pub-type-badge:hover,
-a.pub-type-badge:focus {
-  color: #fff !important;
-  text-decoration: none !important;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  filter: brightness(1.15);
 }
 
 /* Ensure badges work in all contexts including .media containers */
@@ -144,6 +145,8 @@ a.pub-type-badge:focus {
   display: block;
   width: 112px;
   height: auto;
+  margin-top: 2px;
+  margin-bottom: 8px;
 }
 
 #open-science-popup span {
@@ -169,4 +172,71 @@ a.pub-type-badge:focus {
 #open-science-popup span a:hover {
   text-decoration: underline;
   color: #1976D2 !important;
+}
+
+/* Publication Type Badge Modal Popup */
+#pub-type-popup {
+  display: none;
+  position: absolute;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  padding: 10px 14px;
+  z-index: 99999;
+  width: max-content;
+  max-width: 220px;
+}
+
+#pub-type-popup .pub-type-popup-text {
+  display: block;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  font-weight: 400;
+  text-align: center;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+#pub-type-popup .pub-type-popup-text a {
+  color: #2196F3 !important;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+#pub-type-popup .pub-type-popup-text a:hover {
+  text-decoration: underline;
+  color: #1976D2 !important;
+}
+
+/* Dark theme support for pub-type popup */
+body.dark #pub-type-popup {
+  background: #333;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+body.dark #pub-type-popup .pub-type-popup-text a {
+  color: #64B5F6 !important;
+}
+
+body.dark #pub-type-popup .pub-type-popup-text a:hover {
+  color: #90CAF9 !important;
+}
+
+/* Center the Expand/Collapse button in collapsed abstracts */
+details summary {
+  cursor: pointer !important;
+  margin-bottom: 1rem !important;
+  text-align: center !important;
+  display: block !important;
+  list-style: none !important;
+  width: 100% !important;
+}
+
+details summary::-webkit-details-marker {
+  display: none !important;
+}
+
+details[open] summary {
+  margin-bottom: 0.5rem !important;
 }

@@ -8,7 +8,7 @@
 {{ $pub_type := index $pub_types (int $type) }}
 {{ $pub_icon := index $pub_icons (int $type) }}
 {{ $pub_class := index $pub_classes (int $type) }}
-<a href="/publication/#{{ $type }}" class="pub-type-badge {{ $pub_class }}"><i class="fa {{ $pub_icon }}"></i> {{ i18n $pub_type }}</a>
+<span class="pub-type-badge {{ $pub_class }}" data-pub-type-url="/publication/#{{ $type }}" data-pub-type-name="{{ i18n $pub_type }}"><i class="fa {{ $pub_icon }}"></i> {{ i18n $pub_type }}</span>
 {{ end }}
 {{ if $page.Params.preregistered }}<img src="{{ "img/preregistered_large_color.png" | relURL }}" alt="Preregistered" class="open-science-badge" data-badge-type="Preregistered">{{ end }}
 {{ if $page.Params.open_materials }}<img src="{{ "img/materials_large_color.png" | relURL }}" alt="Open Materials" class="open-science-badge" data-badge-type="Open Materials">{{ end }}

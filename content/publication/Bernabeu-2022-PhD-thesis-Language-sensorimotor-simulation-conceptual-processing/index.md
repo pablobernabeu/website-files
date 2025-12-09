@@ -1,7 +1,7 @@
 ---
 title: 'Language and sensorimotor simulation in conceptual processing: Multilevel analysis and statistical power'
 authors:
-- '**Bernabeu, P.**'
+- 'Bernabeu, P.'
 date: '2022-10-14'
 slug: Pablo-Bernabeu-2022-PhD-thesis
 categories:

@@ -28,7 +28,7 @@
   
     
   
-  <meta name="description" content="This repository contains a production-ready, local transcription workflow that leverages OpenAI&#39;s Whisper models to overcome the limitations of cloud-based ASR services. While platforms like ChatGPT offer convenience, they impose file size restrictions, lack transparency for reproducible research, and pose significant privacy risks under regulations like GDPR. Our solution addresses these challenges by providing a self-contained system that ensures complete data sovereignty. It is designed for unlimited scale, supporting batch operations on high-performance computing (HPC) clusters with GPU acceleration. The workflow incorporates advanced quality control features, including algorithms to detect and remove AI-generated repetitions and context-aware name masking for privacy. It also offers speaker diarisation via pyannote.audio and a flexible audio enhancement pipeline. Implemented as a single, maintainable Python script, this system offers a robust, reproducible, and secure alternative for academic and enterprise transcription needs.">
+  <meta name="description" content="A production-ready, local transcription workflow using OpenAI&#39;s Whisper, designed for security, scalability on HPC, and advanced quality control. It overcomes the privacy and reproducibility limitations of cloud-based services, offering a robust alternative for academic and enterprise use.">
 
   
   
@@ -235,7 +235,7 @@
   <meta property="og:site_name" content="Pablo Bernabeu">
   <meta property="og:url" content="https://pablobernabeu.github.io/publication/secure-local-hpc-speech-transcription/">
   <meta property="og:title" content="Secure and scalable speech transcription for local and HPC | Pablo Bernabeu">
-  <meta property="og:description" content="This repository contains a production-ready, local transcription workflow that leverages OpenAI&#39;s Whisper models to overcome the limitations of cloud-based ASR services. While platforms like ChatGPT offer convenience, they impose file size restrictions, lack transparency for reproducible research, and pose significant privacy risks under regulations like GDPR. Our solution addresses these challenges by providing a self-contained system that ensures complete data sovereignty. It is designed for unlimited scale, supporting batch operations on high-performance computing (HPC) clusters with GPU acceleration. The workflow incorporates advanced quality control features, including algorithms to detect and remove AI-generated repetitions and context-aware name masking for privacy. It also offers speaker diarisation via pyannote.audio and a flexible audio enhancement pipeline. Implemented as a single, maintainable Python script, this system offers a robust, reproducible, and secure alternative for academic and enterprise transcription needs."><meta property="og:image" content="https://pablobernabeu.github.io/publication/secure-local-hpc-speech-transcription/featured.png">
+  <meta property="og:description" content="A production-ready, local transcription workflow using OpenAI&#39;s Whisper, designed for security, scalability on HPC, and advanced quality control. It overcomes the privacy and reproducibility limitations of cloud-based services, offering a robust alternative for academic and enterprise use."><meta property="og:image" content="https://pablobernabeu.github.io/publication/secure-local-hpc-speech-transcription/featured.png">
   <meta property="twitter:image" content="https://pablobernabeu.github.io/publication/secure-local-hpc-speech-transcription/featured.png"><meta property="og:locale" content="en-uk">
   
     
@@ -287,7 +287,7 @@
       "url": "https://pablobernabeu.github.io/images/icon_hu125e1cde4fb125eb9c515e372e2310e0_537990_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": "This repository contains a production-ready, local transcription workflow that leverages OpenAI's Whisper models to overcome the limitations of cloud-based ASR services. While platforms like ChatGPT offer convenience, they impose file size restrictions, lack transparency for reproducible research, and pose significant privacy risks under regulations like GDPR. Our solution addresses these challenges by providing a self-contained system that ensures complete data sovereignty. It is designed for unlimited scale, supporting batch operations on high-performance computing (HPC) clusters with GPU acceleration. The workflow incorporates advanced quality control features, including algorithms to detect and remove AI-generated repetitions and context-aware name masking for privacy. It also offers speaker diarisation via \u003ccode\u003epyannote.audio\u003c/code\u003e and a flexible audio enhancement pipeline. Implemented as a single, maintainable Python script, this system offers a robust, reproducible, and secure alternative for academic and enterprise transcription needs."
+  "description": "A production-ready, local transcription workflow using OpenAI's Whisper, designed for security, scalability on HPC, and advanced quality control. It overcomes the privacy and reproducibility limitations of cloud-based services, offering a robust alternative for academic and enterprise use."
 }
 </script>
 
@@ -339,6 +339,7 @@
 <link rel="stylesheet" href="/css/custom-nav.css">
 <script src="/js/open-science-badges.js" defer></script>
 <script src="/js/publication-type-badge-colors.js" defer></script>
+<script src="/js/publication-type-badge-popup.js" defer></script>
 <script src="/js/github-button-fix.js" defer></script>
  
 <meta name="format-detection" content="telephone=no" />
@@ -889,7 +890,7 @@
 
 
 
-<a href="/publication/#9" class="pub-type-badge pub-type-software"><i class="fa fa-code"></i> Software</a>
+<span class="pub-type-badge pub-type-software" data-pub-type-url="/publication/#9" data-pub-type-name="Software"><i class="fa fa-code"></i> Software</span>
 
 
 <img src="/img/materials_large_color.png" alt="Open Materials" class="open-science-badge" data-badge-type="Open Materials">
@@ -1057,7 +1058,7 @@
 
     
     <h3>Abstract</h3>
-    <p class="pub-abstract">This repository contains a production-ready, local transcription workflow that leverages OpenAI's Whisper models to overcome the limitations of cloud-based ASR services. While platforms like ChatGPT offer convenience, they impose file size restrictions, lack transparency for reproducible research, and pose significant privacy risks under regulations like GDPR. Our solution addresses these challenges by providing a self-contained system that ensures complete data sovereignty. It is designed for unlimited scale, supporting batch operations on high-performance computing (HPC) clusters with GPU acceleration. The workflow incorporates advanced quality control features, including algorithms to detect and remove AI-generated repetitions and context-aware name masking for privacy. It also offers speaker diarisation via <code>pyannote.audio</code> and a flexible audio enhancement pipeline. Implemented as a single, maintainable Python script, this system offers a robust, reproducible, and secure alternative for academic and enterprise transcription needs.</p>
+    <p class="pub-abstract">Cloud-based speech-to-text services are convenient, but they often have file size limits, lack transparency for reproducible research, and can pose privacy risks under regulations like GDPR. To address these limitations, this project introduces a production-ready, local transcription workflow using OpenAI's Whisper models. This self-contained system ensures complete data sovereignty and is designed for scalability, supporting batch operations on high-performance computing (HPC) clusters with GPU acceleration. The workflow includes advanced quality control, such as algorithms to detect and remove AI-generated repetitions, context-aware name masking for privacy, speaker diarisation, and a flexible audio enhancement pipeline. Implemented as a single Python script, this system offers a robust, reproducible, and secure alternative for academic and enterprise transcription.</p>
     
 
     
@@ -1293,7 +1294,7 @@ Bernabeu, P. (2025). <em>Secure and scalable speech transcription for local and 
     
     
     
-    <script src="/js/academic.min.0c09bfbfbab27517b8a7440c19d09e1a.js"></script>
+    <script src="/js/academic.min.bcff41b53246b0b961071e5cf4ce22da.js"></script>
 
     
     

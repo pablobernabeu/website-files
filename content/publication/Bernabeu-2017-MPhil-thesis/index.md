@@ -2,7 +2,7 @@
 title: "Modality switches occur early and extend late in conceptual processing: Evidence
   from ERPs"
 authors:
-- '**Bernabeu, P.**'
+- 'Bernabeu, P.'
 date: '2017-03-30'
 slug: Bernabeu-2017-MPhil-thesis
 categories:

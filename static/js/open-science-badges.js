@@ -5,7 +5,7 @@
     var popup = document.createElement("div");
     popup.id = "open-science-popup";
     popup.innerHTML =
-      '<img src="" alt=""><span><a href="https://www.cos.io/initiatives/badges" target="_blank" rel="noopener">Badge by Center for Open Science</a></span>';
+      '<img src="" alt=""><span><a href="https://www.cos.io/initiatives/badges" target="_blank" rel="noopener">Center for Open Science</a></span>';
     document.body.appendChild(popup);
 
     var popupImg = popup.querySelector("img");

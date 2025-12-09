@@ -1,11 +1,11 @@
 // Open Science Badge Hover Popup
 (function () {
   document.addEventListener("DOMContentLoaded", function () {
-    // Create the popup element
+    // Create the popup element (styling handled in CSS)
     var popup = document.createElement("div");
     popup.id = "open-science-popup";
     popup.innerHTML =
-      '<img src="" alt=""><a href="https://www.cos.io/initiatives/badges" target="_blank" rel="noopener">Badge by Center for Open Science</a>';
+      '<img src="" alt=""><span><a href="https://www.cos.io/initiatives/badges" target="_blank" rel="noopener">Center for Open Science</a></span>';
     document.body.appendChild(popup);
 
     var popupImg = popup.querySelector("img");
@@ -17,10 +17,14 @@
       popupImg.src = badgeSrc;
       popupImg.alt = badge.alt;
 
+      // Show popup temporarily to measure its actual width
+      popup.style.display = "block";
+      popup.style.visibility = "hidden";
+
       // Position popup above or below the badge
       var rect = badge.getBoundingClientRect();
-      var popupHeight = 170; // actual height with padding
-      var popupWidth = 200; // actual width
+      var popupHeight = popup.offsetHeight;
+      var popupWidth = popup.offsetWidth;
 
       // Calculate position relative to page (not viewport)
       var badgeCenterX = rect.left + window.pageXOffset + rect.width / 2;
@@ -44,7 +48,7 @@
 
       popup.style.left = left + "px";
       popup.style.top = top + "px";
-      popup.style.display = "block";
+      popup.style.visibility = "visible";
     }
 
     function hidePopup() {
