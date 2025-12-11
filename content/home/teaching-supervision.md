@@ -55,7 +55,7 @@ Since 2018, I have advised numerous students and colleagues on designing and con
 
 During my PhD, I held a graduate teaching assistantship that involved 180 hours of teaching annually, covering seminars, essay marking and lab sessions. Each year, I led 30 seminars and marked 80 essays in developmental, cognitive and social psychology, while also helping in 30 statistics lab sessions (activities summarised below). Furthermore, I was a representative for graduate teaching assistants in the department for a year. 
 
-|             | **Course and remit**                                                             |
+| **Year**    | **Course and remit**                                                             |
 | :---------: | -------------------------------------------------------------------------------- |
 | **2021–22** | Introduction to developmental psychology (115) — Seminars and essay marking  |
 |             | Introduction to neuroscience (112) — Seminars  |

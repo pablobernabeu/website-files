@@ -2884,6 +2884,21 @@ details[open] summary {
   margin-bottom: 0.5rem; // Slightly less margin when expanded
 }
 
+// Left-align only summary elements that contain code blocks (pre elements)
+details:has(pre) summary {
+  text-align: left !important;
+}
+
+// Add arrows to code block Expand/Collapse buttons
+details:has(pre) summary::before {
+  content: '▶';
+  margin-right: 0.5em;
+}
+
+details:has(pre)[open] summary::before {
+  content: '▼';
+}
+
 // Add margin above h2 headings
 h2 {
   margin-top: 2rem;
@@ -2927,3 +2942,14 @@ body.dark .github-workflow-button {
 pre.text {
   padding: 0.8em !important;
 }
+
+// Image captions
+p.caption {
+  margin-top: 2%;
+}
+
+// Table captions
+table caption {
+  color: inherit;
+}
+
