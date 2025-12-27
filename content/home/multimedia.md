@@ -9,11 +9,11 @@ active = true  # Activate this widget? true/false
 weight = 150  # Order that this section will appear.
 
 title = "Videos and Podcasts"
-subtitle = "Not the most riveting channel on [YouTube](https://www.youtube.com/@pablo-bernabeu/videos)—much less on [Spotify](https://open.spotify.com/show/4QXENVjprdaGkTvOexGvD3), [Apple Podcasts](https://podcasts.apple.com/us/podcast/codex-mentis-science-and-technology-to-study-cognition/id1837010092) or [iVoox](https://www.ivoox.com/en/podcast-codex-mentis-science-and-tech-to-study-cognition_sq_f12741704_1.html). <br> <div style = 'position: relative; margin-top: 20px; padding-top: 56.25%;'><iframe src='https://www.youtube-nocookie.com/embed/nh7E1L8Evc8' frameborder='0' allowfullscreen style = 'position:absolute; top:0; left:0; width:70%; height:100%;'></iframe></div>"
+subtitle = "<div style='display: flex; align-items: center; gap: 30px;'><div style='flex: 0 0 20%; margin-left: 15px;'><div style='position: relative; width: 100%; padding-top: 56.25%;'><iframe src='https://www.youtube-nocookie.com/embed/nh7E1L8Evc8' frameborder='0' allowfullscreen style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;'></iframe></div></div><div style='flex: 1; max-width: 400px;'>Not the most riveting channel on <a href='https://www.youtube.com/@pablo-bernabeu/videos'>YouTube</a>—much less on <a href='https://open.spotify.com/show/4QXENVjprdaGkTvOexGvD3'>Spotify</a>, <a href='https://podcasts.apple.com/us/podcast/codex-mentis-science-and-technology-to-study-cognition/id1837010092'>Apple Podcasts</a> or <a href='https://www.ivoox.com/en/podcast-codex-mentis-science-and-tech-to-study-cognition_sq_f12741704_1.html'>iVoox</a>.</div></div>"
 
 [design]
 # Choose how many columns the section has. Valid values: 1 or 2.
-columns = "2"
+columns = "1"
 
 [design.background]
 # Apply a background color, gradient, or image.
@@ -51,22 +51,14 @@ css_class = ""
 +++
 
 
-
-<div style = "margin-bottom: -2.5%;"></div>
+<div style = "margin-bottom: 4%;"></div>
 
 
 ### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; The modular mini-grammar: Building testable and reproducible artificial languages using FAIR principles
 
-<div class="max-w-2xl w-full p-6">
+<div class="multimedia-summary">
 
-<!-- This wrapper controls the state of the component -->
-<div class="collapsible-text-wrapper">
-
-<!-- This div contains the text that will be collapsed -->
-<div class="collapsible-text-content">
-<p class="text-base leading-relaxed mb-0">
-
-<i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using Google Gemini and NotebookLM.
+<div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using Google Gemini and NotebookLM.</span></div>
 
 In the high-stakes world of scientific inquiry, methods and findings are inextricable. Yet, issues of reproducibility remain a challenge, especially in experimental linguistics and cognitive science. As the old adage goes, "To err is human", but when creating research materials, adhering to best practices can significantly reduce mistakes and enhance long-term efficiency.
 
@@ -76,34 +68,25 @@ Drawing on research presented by Bernabeu and colleagues, we delve into a comple
 
 What you will learn:
 
-• The Power of Open Source: We discuss the importance of using free, script-based, open-source software, such as R and OpenSesame, to augment the credibility and reliability of research.
+- The Power of Open Source: We discuss the importance of using free, script-based, open-source software, such as R and OpenSesame, to augment the credibility and reliability of research.
 
-• Modular Frameworks: Discover how creating a modular workflow based on minimal components in R facilitates the expansion of materials to new languages or within the same language set.
+- Modular Frameworks: Discover how creating a modular workflow based on minimal components in R facilitates the expansion of materials to new languages or within the same language set.
 
-• Rigour and Reproducibility: We examine crucial testing steps exerted throughout the preparation workflow—including checking if all experimental elements appear equally often—to prevent blatant disparities and spurious effects.
+- Rigour and Reproducibility: We examine crucial testing steps exerted throughout the preparation workflow—including checking if all experimental elements appear equally often—to prevent blatant disparities and spurious effects.
 
-• Detailed Experimentation: Hear how custom Python code within OpenSesame was implemented to manage complex procedures across multiple sessions, including assigning participant-specific parameters (like mini-language or resting-state order).
+- Detailed Experimentation: Hear how custom Python code within OpenSesame was implemented to manage complex procedures across multiple sessions, including assigning participant-specific parameters (like mini-language or resting-state order).
 
-• Measuring the Brain: We look at the technical challenge of accurately time-locking electroencephalographic (EEG) measurements. The episode details the custom Python script used in OpenSesame to send triggers to the serial port, enabling precise Event-Related Potential (ERP) recording.
+- Measuring the Brain: We look at the technical challenge of accurately time-locking electroencephalographic (EEG) measurements. The episode details the custom Python script used in OpenSesame to send triggers to the serial port, enabling precise Event-Related Potential (ERP) recording.
 
-• Generous Documentation: Why detailed documentation, using formats like README.txt that are universally accessible, is essential for allowing collaborators and future researchers (or even your future self) to understand, reproduce, and reuse the materials.
+- Generous Documentation: Why detailed documentation, using formats like README.txt that are universally accessible, is essential for allowing collaborators and future researchers (or even your future self) to understand, reproduce, and reuse the materials.
 
 Adhering to FAIR standards ensures that the investment in research materials facilitates researchers' work beyond the shortest term, contributing to the best use of resources and increasing scientific reliability.
 
 View [sources and related content](/presentation/making-research-materials-findable-accessible-interoperable-reusable-fair).
 
-</p>
 </div>
 
-<!-- The "Continue reading" button -->
-<button class="read-more-btn link-style-button mt-2">
-Continue reading...
-</button>
-
-</div>
-</div>
-
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
+<div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/NG9G1gQdOEo" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
@@ -111,16 +94,9 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 
 ### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; Third language learning and morphosyntactic transfer
 
-<div class="max-w-2xl w-full p-6">
+<div class="multimedia-summary">
 
-<!-- This wrapper controls the state of the component -->
-<div class="collapsible-text-wrapper">
-
-<!-- This div contains the text that will be collapsed -->
-<div class="collapsible-text-content">
-<p class="text-base leading-relaxed mb-0">
-
-<i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using Google Gemini and NotebookLM.</span>
+<div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using Google Gemini and NotebookLM.</span></div>
 
 Many of us know how difficult it is to master a second language (L2). But what happens when you decide to go for a third? You might assume the process gets easier once your brain is "warmed up," but the reality is far more complex and far more fascinating.
 
@@ -150,18 +126,9 @@ Join us and delve into the science of the multilingual mind!
 
 View [sources and related content](/publication/third-language-longitudinal-data-artificial-language-learning-eeg).
 
-</p>
 </div>
 
-<!-- The "Continue reading" button -->
-<button class="read-more-btn link-style-button mt-2">
-Continue reading...
-</button>
-
-</div>
-</div>
-
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
+<div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/tcBCMajt16Y" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
@@ -169,16 +136,9 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 
 ### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; Behind the curtains: Methods used to investigate conceptual processing
 
-<div class="max-w-2xl w-full p-6">
+<div class="multimedia-summary">
 
-<!-- This wrapper controls the state of the component -->
-<div class="collapsible-text-wrapper">
-
-<!-- This div contains the text that will be collapsed -->
-<div class="collapsible-text-content">
-<p class="text-base leading-relaxed mb-0">
-
-<i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using Google Gemini and NotebookLM.</span>
+<div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using Google Gemini and NotebookLM.</span></div>
 
 How do scientists measure a thought? While the great philosophical questions about the nature of meaning have been debated for centuries, the last few decades have seen the development of a sophisticated scientific toolkit designed to turn these abstract queries into concrete, measurable data. In this episode of Codex Mentis, we go behind the curtains of cognitive science to explore the very methods used to investigate how the human brain processes language and constructs meaning.
 
@@ -190,18 +150,9 @@ Finally, the episode demystifies the complex statistical techniques required to 
 
 View [sources and related content](/publication/pablo-bernabeu-2022-phd-thesis).
 
-</p>
 </div>
 
-<!-- The "Continue reading" button -->
-<button class="read-more-btn link-style-button mt-2">
-Continue reading...
-</button>
-
-</div>
-</div>
-
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
+<div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/ftFoNsEbJcM" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
@@ -209,16 +160,9 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 
 ### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; The architecture of meaning: Inside the words we use
 
-<div class="max-w-2xl w-full p-6">
+<div class="multimedia-summary">
 
-<!-- This wrapper controls the state of the component -->
-<div class="collapsible-text-wrapper">
-
-<!-- This div contains the text that will be collapsed -->
-<div class="collapsible-text-content">
-<p class="text-base leading-relaxed mb-0">
-
-<i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using Google Gemini and NotebookLM.</span>
+<div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using Google Gemini and NotebookLM.</span></div>
 
 What happens in your brain when you understand a simple word? It seems instantaneous, but this seemingly simple act is at the heart of one of the deepest mysteries of the human mind and has sparked one of the longest-running debates in cognitive science.
 
@@ -244,18 +188,9 @@ This is a comprehensive exploration of the intricate, context-dependent dance be
 
 View [sources and related content](/publication/pablo-bernabeu-2022-phd-thesis).
 
-</p>
 </div>
 
-<!-- The "Continue reading" button -->
-<button class="read-more-btn link-style-button mt-2">
-Continue reading...
-</button>
-
-</div>
-</div>
-
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
+<div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/Uii-4ybSmKM" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
@@ -264,7 +199,7 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 
 This live demonstration guides you through the process of segmenting event-related potentials (ERPs) in BrainVision Analyzer. The events of interest are represented by several markers, requiring some thought to time-lock each segmentation to the event onset.
 
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
+<div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/QXOpa-uOBVc" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
@@ -273,79 +208,79 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 
 This tutorial walks through the key steps: creating grand averages across participants, computing difference waves between experimental conditions, selecting appropriate map types, and defining time windows for visualisation.
 
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
+<div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/FI9FO7oJj_o" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; Naming results files exported from Gorilla Experiment Builder
 
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
+<div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/nVidNO8xcxE" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2024 ·</span>&nbsp; [Reducing the impedance in electroencephalography using a blunt needle, electrolyte gel and wiggling](/2024/lowering-impedance-in-electroencephalography-using-a-blunt-needle-electrolyte-gel-and-wiggling)
 
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
+<div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/4KLtp-WnOOo" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2024 ·</span>&nbsp; [Briefing participants to prevent muscle artifacts in electroencephalography sessions](/2024/preventing-muscle-artifacts-in-electroencephalography-sessions)
 
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
+<div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/9Mbv6bUZlqY" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2021 ·</span>&nbsp; [Linguistic and embodied systems in conceptual processing: Variation across individuals and items](/presentation/linguistic-and-embodied-systems-in-conceptual-processing-variation-across-individuals-and-items)
 
-<div style = "position: relative; margin-top: 20px;">
-<a href = 'https://www.youtube.com/watch?v=y2bopgYWYvE&ab_channel=LancasterPsychology'>
-<img src = '/presentation/linguistic-and-embodied-systems-in-conceptual-processing-variation-across-individuals-and-items/img/thumbnail.png'></a>
+<div class="multimedia-thumbnail" style="margin-top: 10px;">
+<a href='https://www.youtube.com/watch?v=y2bopgYWYvE&ab_channel=LancasterPsychology'>
+<img src='/presentation/linguistic-and-embodied-systems-in-conceptual-processing-variation-across-individuals-and-items/img/thumbnail.png'></a>
 </div>
 
 <div style = 'padding-bottom: 3.5%;'></div>
 
 ### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; [Reproducibilidad en torno a una aplicación web](/presentation/2020-10-08-reproducibilidad-en-torno-a-una-aplicacion-web)
 
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
+<div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/1njLOAWqLPM" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; Workshop on <i class="fa-brands fa-r-project" aria-label="R"></i> Markdown, dashboards and Binder (see [programme and materials](https://github.com/pablobernabeu/CarpentryCon-2020-workshop-Open-Data-Reproducibility))
 
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
+<div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/wZsPD7CgJC0" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; Personal profile and experience at Lancaster University Department of Psychology
 
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
+<div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/ZEoan5tWqFg" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; Embedding open research and reproducibility in the UG and PGT curricula
 
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
+<div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/vzkDBZ1qWfY" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Part of application for [Gorilla Grant](#funding-awards)
 
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
+<div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/DTHFuC0Lw0Y" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Part of application for [Software Sustainability Institute Fellowship](#funding-awards)
 
-<div style = "position: relative; margin-top: 20px; padding-top: 56.25%;">
+<div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
 <iframe src="https://www.youtube-nocookie.com/embed/F-MQ8BYwLn4" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>

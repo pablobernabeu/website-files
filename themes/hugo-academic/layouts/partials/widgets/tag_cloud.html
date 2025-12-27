@@ -6,6 +6,7 @@
 {{ $taxonomy := $st.Params.content.taxonomy | default "tags" }}
 {{ $fontSmall := $st.Params.design.font_size_min | default 0.8 }}
 {{ $fontBig := $st.Params.design.font_size_max | default 2.5 }}
+{{ $columns := $st.Params.design.columns | default 2 }}
 
 {{ $items_count := $st.Params.content.count }}
 {{ if eq $items_count 0 }}
@@ -19,6 +20,34 @@
 {{ $count := len $tags }}
 
 <div class="row">
+  {{ if eq $columns 1 }}
+  {{/* Single column layout */}}
+  <div class="col-12">
+    <h1>{{ with $st.Title | markdownify | emojify }}{{ . | markdownify | emojify }}{{ end }}</h1>
+    {{ with $st.Params.subTitle | markdownify | emojify }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
+    {{ with $st.Content }}{{ . }}{{ end }}
+
+    {{ if ne $count 0 }}
+
+      {{ $fontDelta := sub $fontBig $fontSmall }}
+      {{/* Warning: Hugo's `Reverse` function appears to operate in-place, hence the order of performing $max/$min matters. */}}
+      {{ $max := add (len (index $tags 0).Pages) 1 }}
+      {{ $min := len (index ($tags).Reverse 0).Pages }}
+      {{ $delta := sub $max $min }}
+      {{ $fontStep := div $fontDelta $delta }}
+
+      <div class="tag-cloud">
+        {{ range $name, $term := (sort $tags ".Page.Title" "asc") }}
+          {{ $tagCount := len $term.Pages }}
+          {{ $weight := div (sub (math.Log $tagCount) (math.Log $min)) (sub (math.Log $max) (math.Log $min)) }}
+          {{ $fontSize := add $fontSmall (mul (sub $fontBig $fontSmall) $weight) }}
+          <a href="{{ .Page.RelPermalink }}" style="font-size:{{ $fontSize }}rem">{{ .Page.Title | markdownify | emojify }}</a>
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+  {{ else }}
+  {{/* Two column layout (default) */}}
   <div class="col-12 col-lg-4 section-heading">
     <h1>{{ with $st.Title | markdownify | emojify }}{{ . | markdownify | emojify }}{{ end }}</h1>
     {{ with $st.Params.subTitle | markdownify | emojify }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
@@ -46,4 +75,5 @@
     {{ end }}
 
   </div>
+  {{ end }}
 </div>

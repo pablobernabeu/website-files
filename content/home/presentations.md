@@ -13,7 +13,7 @@ subtitle = ""
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
-  columns = "2"
+  columns = "1"
 
 [design.background]
   # Apply a background color, gradient, or image.
@@ -51,8 +51,9 @@ subtitle = ""
 +++
 
 
-| Date     | Format   | Title                  | Event     |
-| -------- | ------ | ---------------------- | ---------------------- |
+| Date     | Format   | Title                  | Event                  |
+| -------- | -------- | ---------------------- | ---------------------- |
+| Dec 2025 | Talk | Designing a study on the interplay of text, reader and context in children’s digital reading comprehension | Developmental Hour seminar, Department of Experimental Psychology, University of Oxford |
 | Nov 2025 | Lightning talk | [Scaling systematic reviews: A solo researcher's workflow with Gemini](/presentation/scaling-systematic-reviews-a-solo-researchers-workflow-with-gemini) | [Gemini Pro Pilot Showcase and Wrap-up Event](https://oerc.ox.ac.uk/ai-centre/ai-centre-events/gemini-pro-pilot-showcase), University of Oxford |
 | Feb 2025,<br>Nov 2025 | (1) Talk, <br>(2) Invited talk | [Unpacking ERP responses in artificial language learning ](/presentation/unpacking-erp-responses-in-artificial-language-learning) | (1) Lunch Seminar at the [Center for Language, Brain and Learning (C-LaBL)](https://uit.no/research/clabl), UiT The Arctic University of Norway; <br> (2) [Laboratoire de Psycholinguistique et Logopédie](https://www.unige.ch/fapse/psycholinguistique), University of Geneva |
 | Apr 2025 | Poster | The interplay of cognition and bilingual repertoires in L3 learning | [Meeting of the Experimental Psychology Society](https://eps.ac.uk/wp-content/uploads/2025/03/EPS-Lancaster-Programme-v5.pdf), Lancaster University |

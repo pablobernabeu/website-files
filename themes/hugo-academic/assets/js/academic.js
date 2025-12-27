@@ -316,6 +316,20 @@
   });
 
   /* ---------------------------------------------------------------------------
+   * Close mobile menu when scrolling.
+   * --------------------------------------------------------------------------- */
+
+  $(window).on("scroll", function () {
+    // Close mobile menu when scrolling on mobile/tablet
+    if (window.innerWidth <= 991) {
+      let $navbarCollapse = $(".navbar-collapse");
+      if ($navbarCollapse.hasClass("show")) {
+        $navbarCollapse.collapse("hide");
+      }
+    }
+  });
+
+  /* ---------------------------------------------------------------------------
    * Close mobile/tablet toggle menu when tapping outside its area.
    * --------------------------------------------------------------------------- */
 
@@ -340,6 +354,125 @@
       }
     }
   });
+
+  /* ---------------------------------------------------------------------------
+   * Mobile navbar toggle button handler.
+   * --------------------------------------------------------------------------- */
+
+  $(document).ready(function() {
+    // Ensure Bootstrap collapse is initialized for mobile menu
+    $('.navbar-toggler').on('click', function(e) {
+      e.stopPropagation();
+      const target = $(this).data('target');
+      if (target) {
+        $(target).collapse('toggle');
+      }
+    });
+  });
+
+  /* ---------------------------------------------------------------------------
+   * Time-based navbar hide/show: Hide after 5s when not at top, show after 2s upscroll or at top.
+   * --------------------------------------------------------------------------- */
+
+  (function() {
+    const $navbar = $('.navbar');
+    let lastScrollTop = 0;
+    let scrollDirection = null;
+    let upScrollStartTime = 0;
+    let timeAtCurrentPosition = 0;
+    let lastPositionChangeTime = Date.now();
+    
+    const UPSCROLL_DURATION_TO_SHOW = 50; // 0.05 seconds of upscroll to show navbar
+    const TIME_AT_POSITION_TO_HIDE = 11000; // 11 seconds at position (not scrolling) to hide
+    const TOP_THRESHOLD = 50; // Consider "at top" if within 50px
+    const MOUSE_TOP_THRESHOLD = 80; // Show navbar when mouse is within 80px of top
+    
+    function handleNavbarVisibility() {
+      const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const currentTime = Date.now();
+      
+      // Always show navbar when at top of page
+      if (currentScrollTop <= TOP_THRESHOLD) {
+        if ($navbar.hasClass('hide-navbar')) {
+          $navbar.removeClass('hide-navbar');
+        }
+        scrollDirection = null;
+        upScrollStartTime = 0;
+        lastPositionChangeTime = currentTime;
+        return;
+      }
+      
+      // Determine scroll direction (no threshold - immediate response)
+      let currentDirection = null;
+      if (currentScrollTop < lastScrollTop) {
+        currentDirection = 'up';
+      } else if (currentScrollTop > lastScrollTop) {
+        currentDirection = 'down';
+        // Reset upscroll timer when scrolling down
+        upScrollStartTime = 0;
+      }
+      
+      // If direction changed to up, start timing
+      if (currentDirection === 'up' && scrollDirection !== 'up') {
+        upScrollStartTime = currentTime;
+        scrollDirection = 'up';
+      } else if (currentDirection === 'down') {
+        scrollDirection = 'down';
+      }
+      
+      // Check if user has been scrolling up for threshold time
+      if (scrollDirection === 'up' && upScrollStartTime > 0) {
+        const upScrollDuration = currentTime - upScrollStartTime;
+        if (upScrollDuration >= UPSCROLL_DURATION_TO_SHOW) {
+          // Show navbar after 2 seconds of upward scrolling
+          if ($navbar.hasClass('hide-navbar')) {
+            $navbar.removeClass('hide-navbar');
+          }
+        }
+      }
+      
+      // Check if position hasn't changed (not scrolling)
+      if (Math.abs(currentScrollTop - lastScrollTop) < 1) {
+        timeAtCurrentPosition = currentTime - lastPositionChangeTime;
+      } else {
+        lastPositionChangeTime = currentTime;
+        timeAtCurrentPosition = 0;
+      }
+      
+      // Hide navbar after 5 seconds of no scrolling (when not at top)
+      if (timeAtCurrentPosition >= TIME_AT_POSITION_TO_HIDE && currentScrollTop > TOP_THRESHOLD) {
+        if (!$navbar.hasClass('hide-navbar')) {
+          $navbar.addClass('hide-navbar');
+        }
+      }
+      
+      lastScrollTop = currentScrollTop;
+    }
+    
+    // Use passive scroll listener for better performance
+    let scrollTimeout;
+    window.addEventListener('scroll', function() {
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+      scrollTimeout = setTimeout(handleNavbarVisibility, 50);
+    }, { passive: true });
+    
+    // Show navbar when mouse is near the top of the screen
+    window.addEventListener('mousemove', function(e) {
+      if (e.clientY <= MOUSE_TOP_THRESHOLD) {
+        if ($navbar.hasClass('hide-navbar')) {
+          $navbar.removeClass('hide-navbar');
+          // Reset the timer so navbar stays visible for at least 11 seconds
+          lastPositionChangeTime = Date.now();
+          timeAtCurrentPosition = 0;
+        }
+      }
+    }, { passive: true });
+    
+    // Also check periodically for the 5-second hide timer
+    setInterval(handleNavbarVisibility, 1000);
+  })();
 
   /* ---------------------------------------------------------------------------
    * Filter publications.
@@ -1641,25 +1774,7 @@
       d.append(pre);
     });
 
-  // Add arrow indicators on sides of Expand button for abstracts
-  $(
-    "#publication .media-body .article-style, #applications-and-dashboards .media-body .article-style, #blog .media-body .article-style"
-  ).each(function () {
-    const $abstract = $(this);
-    // Create left arrows (multiple, pointing down)
-    const $leftArrow = $(
-      '<span class="expand-arrow expand-arrow-left">▼▼▼</span>'
-    );
-    // Create right arrows (multiple, pointing down)
-    const $rightArrow = $(
-      '<span class="expand-arrow expand-arrow-right">▼▼▼</span>'
-    );
-    // Append arrows to abstract (they'll be positioned via CSS)
-    $abstract.append($leftArrow).append($rightArrow);
-  });
-
-  // Collapsible abstracts on home page - click anywhere on abstract to expand
-  // Use event delegation for robustness - applies to publication, applications-and-dashboards, and blog sections
+  // Collapsible abstracts on home page - click to expand
   $(document).on(
     "click",
     "#publication .media-body .article-style, #applications-and-dashboards .media-body .article-style, #blog .media-body .article-style",
@@ -1669,22 +1784,11 @@
 
       // Check if already expanded
       if ($mediaBody.hasClass("is-expanded")) {
-        console.log("Abstract already expanded, ignoring click");
         return;
       }
 
-      console.log("Abstract clicked! Expanding...");
-
-      // Get the full height
+      // Get the full height and expand
       const fullHeight = this.scrollHeight;
-      console.log(
-        "Expanding from",
-        $abstract.css("max-height"),
-        "to",
-        fullHeight + "px"
-      );
-
-      // Expand with animation
       $abstract.css({
         "max-height": fullHeight + "px",
         cursor: "default",
@@ -1694,109 +1798,20 @@
       $mediaBody.addClass("is-expanded");
 
       // Add "View complete content" button after expansion
-      // Find the link from the title
       const $title = $mediaBody.find(".article-title a");
       const pageUrl = $title.attr("href");
 
       if (pageUrl && !$abstract.next(".view-complete-content-btn").length) {
-        // Detect theme and set appropriate colors
-        const isDark = $("body").hasClass("dark");
-        console.log("Theme detection - isDark:", isDark);
-        const btnColors = isDark
-          ? {
-              color: "#333",
-              background: "#ddd",
-              border: "#ccc",
-              hoverBg: "#ccc",
-            }
-          : {
-              color: "#eee",
-              background: "#555",
-              border: "#444",
-              hoverBg: "#444",
-            };
-        console.log("Button colors:", btnColors);
-
-        // Build style string with !important to override any CSS
-        const styleStr =
-          "display: inline-block !important; " +
-          "margin-top: 10px !important; " +
-          "margin-bottom: 0.3rem !important; " +
-          "padding: 8px 16px !important; " +
-          "font-size: 14px !important; " +
-          "color: " +
-          btnColors.color +
-          " !important; " +
-          "background-color: " +
-          btnColors.background +
-          " !important; " +
-          "background: " +
-          btnColors.background +
-          " !important; " +
-          "border: 1px solid " +
-          btnColors.border +
-          " !important; " +
-          "border-radius: 4px !important; " +
-          "text-decoration: none !important; " +
-          "transition: all 0.3s ease !important;";
-
         const $viewCompleteContentBtn = $("<a>", {
           href: pageUrl,
           class: "view-complete-content-btn",
           html: '<i class="fas fa-plus"></i> View complete content',
         });
 
-        // Set style attribute directly
-        $viewCompleteContentBtn.attr("style", styleStr);
-
-        $viewCompleteContentBtn.hover(
-          function () {
-            $(this).attr(
-              "style",
-              styleStr
-                .replace(
-                  "background-color: " + btnColors.background,
-                  "background-color: " + btnColors.hoverBg
-                )
-                .replace(
-                  "background: " + btnColors.background,
-                  "background: " + btnColors.hoverBg
-                ) + " transform: translateY(-2px) !important;"
-            );
-          },
-          function () {
-            $(this).attr("style", styleStr);
-          }
-        );
-
         $abstract.after($viewCompleteContentBtn);
-        console.log("Button created with background:", btnColors.background);
       }
-
-      console.log("Abstract expanded successfully!");
     }
   );
-
-  // Log when page is ready
-  $(document).ready(function () {
-    console.log("Document ready - collapsible abstracts event listener active");
-
-    // Debug: count abstracts in all sections
-    setTimeout(function () {
-      const pubCount = $("#publication .media-body .article-style").length;
-      const appCount = $(
-        "#applications-and-dashboards .media-body .article-style"
-      ).length;
-      const blogCount = $("#blog .media-body .article-style").length;
-      console.log("Found", pubCount, "abstracts in publication section");
-      console.log(
-        "Found",
-        appCount,
-        "abstracts in applications-and-dashboards section"
-      );
-      console.log("Found", blogCount, "abstracts in blog section");
-    }, 500);
-  });
 
   // Document Viewer Controls
   $(document).ready(function () {
@@ -1860,44 +1875,25 @@
   $(document).ready(function () {
     console.log("Setting up collapsible sections...");
 
-    // Use event delegation for dynamic content and multiple sections
-    $(document).on("click", ".read-more-btn", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-
-      const $btn = $(this);
-      console.log("Collapsible button clicked");
-
-      // Find the wrapper and content relative to this specific button
-      const $wrapper = $btn.closest(".collapsible-text-wrapper");
-      const $content = $wrapper.find(".collapsible-text-content");
-
-      if ($content.length && $wrapper.length) {
-        // Check if already expanded
-        if ($wrapper.hasClass("is-expanded")) {
-          console.log("Already expanded, ignoring click");
-          return;
-        }
-
-        // Get the natural height
-        $content.css("max-height", "none");
-        const fullHeight = $content[0].scrollHeight;
-        $content.css("max-height", ""); // Reset to CSS value
-
-        // Trigger reflow to ensure transition works
-        void $content[0].offsetHeight;
-
-        // Animate to full height
-        $content.css("max-height", fullHeight + "px");
-        $wrapper.addClass("is-expanded");
-
-        // Hide the button after expansion
-        $btn.fadeOut(300);
-
-        console.log("Expansion successful! Height:", fullHeight + "px");
-      } else {
-        console.log("Could not find wrapper or content for this button");
+    // Handle multimedia-summary click to expand (matches pub-abstract style)
+    $(document).on("click", ".multimedia-summary", function (e) {
+      const $summary = $(this);
+      
+      // Check if already expanded
+      if ($summary.hasClass("is-expanded")) {
+        return;
       }
+
+      // Get the full height and expand
+      const fullHeight = this.scrollHeight;
+      $summary.css({
+        "max-height": fullHeight + "px",
+      });
+
+      // Mark as expanded
+      $summary.addClass("is-expanded");
+
+      console.log("Multimedia summary expanded! Height:", fullHeight + "px");
     });
 
     console.log("Collapsible functionality ready");

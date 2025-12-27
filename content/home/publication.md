@@ -7,7 +7,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 10  # Order that this section will appear.
 
-title = "Publications &nbsp;<span style='font-size:60%;' data-toggle='tooltip1' data-placement='bottom' title=' &nbsp; Filter by keywords, year and type &nbsp; '><a href='/publication/'><i class='fas fa-search fa-2xs' style='font-size:75%;'></i><i class='fa fa-filter fa-2xs' style='font-size:70%;'></i></a></span>"
+title = "Publications"
 subtitle = ""
 
 [content]
@@ -31,6 +31,9 @@ subtitle = ""
     exclude_featured = false
   
 [design]
+  # Choose how many columns the section has. Valid values: 1 or 2.
+  columns = 1
+
   # Toggle between the various page layout types.
   #   1 = List
   #   2 = Compact
@@ -60,7 +63,7 @@ subtitle = ""
   
 [advanced]
  # Custom CSS. 
- css_style = ""
+ css_style = ".grid-item { width: 100% !important; } .grid { grid-template-columns: 1fr !important; }"
  
  # CSS class.
  css_class = ""

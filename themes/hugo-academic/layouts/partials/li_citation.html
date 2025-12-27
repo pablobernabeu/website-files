@@ -4,11 +4,23 @@
   {{/* APA Style */}}
   {{ if eq (site.Params.publications.citation_style | default "apa") "apa" }}
 
+  {{/* Get publication type for conditional italics */}}
+  {{ $pubtype := 0 }}
+  {{ if .Params.publication_types }}
+    {{ $pubtype = index .Params.publication_types 0 | int }}
+  {{ end }}
+  {{/* Italicize title for preprint (3), thesis (7), and software (9) */}}
+  {{ $italicize_title := or (eq $pubtype 3) (eq $pubtype 7) (eq $pubtype 9) }}
+
   <span class="article-metadata li-cite-author">
     {{ partial "page_metadata_authors" . }}
   </span>
   ({{- .Date.Format "2006" -}}).
+  {{ if $italicize_title }}
+  <a href="{{ .RelPermalink }}"><em>{{ .Title | markdownify | emojify }}</em></a>.
+  {{ else }}
   <a href="{{ .RelPermalink }}">{{ .Title | markdownify | emojify }}</a>.
+  {{ end }}
   {{ if .Params.publication_short }}
   {{- .Params.publication_short | markdownify -}}.
   {{ else if .Params.publication }}
@@ -19,10 +31,22 @@
   {{/* MLA Style */}}
   {{ else }}
 
+  {{/* Get publication type for conditional italics */}}
+  {{ $pubtype := 0 }}
+  {{ if .Params.publication_types }}
+    {{ $pubtype = index .Params.publication_types 0 | int }}
+  {{ end }}
+  {{/* Italicize title for preprint (3), thesis (7), and software (9) */}}
+  {{ $italicize_title := or (eq $pubtype 3) (eq $pubtype 7) (eq $pubtype 9) }}
+
   <span class="article-metadata li-cite-author">
     {{ partial "page_metadata_authors" . }}
   </span>.
+  {{ if $italicize_title }}
+  <a href="{{ .RelPermalink }}"><em>{{ .Title | markdownify | emojify }}</em></a>.
+  {{ else }}
   <a href="{{ .RelPermalink }}">{{ .Title | markdownify | emojify }}</a>.
+  {{ end }}
   {{ if .Params.publication_short }}
   {{- .Params.publication_short | markdownify -}},
   {{ else if .Params.publication }}

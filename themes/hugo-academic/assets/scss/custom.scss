@@ -2,6 +2,259 @@
 
 // Override this file to add your own SCSS styling.
 
+// Widget subtitle links - use site link styling with green underlines
+.home-section .col-lg-12 > p a,
+.home-section .section-heading > p a,
+.home-section .col-12 > p a,
+.home-section .col-lg-12 > p div a,
+.home-section .section-heading > p div a,
+.home-section .col-12 > p div a,
+#top > div:nth-child(4) > div:nth-child(1) > h2 > a,
+#top > div > div > h2 > a,
+#blog > div > div > div.col-12.section-heading > p > span a,
+#applications-and-dashboards > div > div > div.col-12.section-heading > p a,
+#skills > div > div > div > table > tbody a,
+#multimedia > div > div > div > div:nth-child(3) > div:nth-child(2) a,
+#multimedia > div > div > div > div > div > a {
+  color: #000;
+  text-decoration: underline;
+  text-decoration-color: #bbf7d0;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: #22c55e;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+  }
+}
+
+body.dark .home-section .col-lg-12 > p a,
+body.dark .home-section .section-heading > p a,
+body.dark .home-section .col-12 > p a,
+body.dark .home-section .col-lg-12 > p div a,
+body.dark .home-section .section-heading > p div a,
+body.dark .home-section .col-12 > p div a,
+body.dark #top > div:nth-child(4) > div:nth-child(1) > h2 > a,
+body.dark #top > div > div > h2 > a,
+body.dark #blog > div > div > div.col-12.section-heading > p > span a,
+body.dark #applications-and-dashboards > div > div > div.col-12.section-heading > p a,
+body.dark #skills > div > div > div > table > tbody a,
+body.dark #multimedia > div > div > div > div:nth-child(3) > div:nth-child(2) a,
+body.dark #multimedia > div > div > div > div > div > a {
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: #bbf7d0;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: #22c55e;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+  }
+}
+
+// Prevent scroll blocking and spurious scrollbars - no forced vertical scrollbar
+html {
+  scroll-behavior: auto !important;
+  scroll-padding-top: 60px !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+}
+
+// Prevent horizontal scrolling and spurious scrollbars
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+}
+
+body {
+  position: relative !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+// Ensure all major containers respect viewport width
+.container,
+.container-fluid,
+section,
+.home-section {
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+}
+
+// Reduce top and bottom padding of all home sections
+.home-section {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+
+// Prevent spurious scrollbars on home page columns - maximum specificity
+.home-section .row,
+.home-section .col-12,
+.home-section .col-lg-8,
+.home-section .col-lg-4,
+.home-section > .container > .row,
+.home-section > .container > .row > .col-12,
+.home-section > .container > .row > .col-lg-8,
+.home-section > .container > .row > .col-lg-4,
+section.home-section .row,
+section.home-section .col-12,
+section.home-section .col-lg-8,
+section.home-section .col-lg-4 {
+  overflow: visible !important;
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+  max-height: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+/* Hide all scrollbars on home page sections */
+.home-section *,
+.home-section .row,
+.home-section .col-12,
+.home-section .col-lg-8,
+.home-section .col-lg-4,
+section.home-section *,
+section.home-section .row,
+section.home-section .col-12,
+section.home-section .col-lg-8,
+section.home-section .col-lg-4 {
+  scrollbar-width: none !important; /* Firefox */
+  -ms-overflow-style: none !important; /* IE/Edge */
+}
+
+.home-section *::-webkit-scrollbar,
+.home-section .row::-webkit-scrollbar,
+.home-section .col-12::-webkit-scrollbar,
+.home-section .col-lg-8::-webkit-scrollbar,
+.home-section .col-lg-4::-webkit-scrollbar,
+section.home-section *::-webkit-scrollbar,
+section.home-section .row::-webkit-scrollbar,
+section.home-section .col-12::-webkit-scrollbar,
+section.home-section .col-lg-8::-webkit-scrollbar,
+section.home-section .col-lg-4::-webkit-scrollbar {
+  display: none !important; /* Chrome/Safari */
+  width: 0 !important;
+  height: 0 !important;
+}
+
+// Reduce article-container top margin
+.article-container {
+  margin-top: 0.5rem !important;
+}
+
+// Home page max-width
+section.home-section .container {
+  max-width: 1250px !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  margin: 0 auto !important;
+}
+
+// Set max-width for specific home sections to match article-container (760px)
+#teaching-supervision .container,
+#funding-awards .container,
+#other-work .container,
+#skills .container,
+#multimedia .container,
+#blog .container {
+  max-width: 760px !important;
+}
+
+// Set max-width for publications and applications sections (950px)
+#publication .container,
+#applications-and-dashboards .container,
+#workshops .container,
+#presentations .container {
+  max-width: 950px !important;
+}
+
+// Reduce bottom margin in section headings
+#applications-and-dashboards > div > div > div.col-12.section-heading > h1 {
+  margin-bottom: 0.25rem !important;
+}
+
+// Increase font size of section heading subtitle
+div > div > div.col-12.section-heading > p {
+  font-size: 1.1rem !important;
+}
+
+// Apply consistent font properties to all home section titles
+.home-section .section-heading h1,
+#blog > div > div > div.col-12.section-heading > h1,
+#applications-and-dashboards > div > div > div.col-12.section-heading > h1 {
+  margin-bottom: 0.25rem !important;
+  font-size: 2.25rem !important;
+}
+
+// Reduce margin above stream-meta article-metadata
+#top > div:nth-child(4) > div > div.media-body > div.stream-meta.article-metadata {
+  margin-top: -0.3rem !important;
+}
+
+// Remove navbar's extra horizontal padding
+.navbar {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+// Navbar container max-width
+.navbar > .container,
+.navbar > .container-fluid,
+#navbar-main > .container,
+#navbar-main > .container-fluid {
+  max-width: 1250px !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  margin: 0 auto !important;
+}
+
+// Navbar hamburger menu icon - larger and moved up
+#navbar-main > div > button > span > i {
+  font-size: 1.4rem;
+  position: relative;
+  top: -2px;
+}
+
+// Mobile-specific container fixes
+@media (max-width: 991px) {
+  .container,
+  .container-fluid {
+    padding-left: 0.4rem !important;
+    padding-right: 0.4rem !important;
+  }
+  
+  section.home-section {
+    padding-left: 0.4rem !important;
+    padding-right: 0.4rem !important;
+  }
+  
+  section.home-section .container {
+    padding-left: 0.4rem !important;
+    padding-right: 0.4rem !important;
+  }
+  
+  .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  .col,
+  [class*="col-"] {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+}
+
 // Prevent white flash on dark theme load
 html {
   // Immediate dark theme application (used by theme-init.js)
@@ -31,6 +284,47 @@ blockquote {
 // Publication abstract spacing
 .pub-abstract {
   margin-bottom: 1.5rem !important;
+}
+
+// Increase gap above Abstract heading in publication pages
+.article-container > h3:first-child {
+  margin-top: 5rem;
+}
+
+// Margin above article-metadata in publication pages
+.pub .article-container.pt-3 .article-metadata {
+  margin-top: 0.7rem !important;
+  margin-bottom: 0.3rem !important;
+  padding-bottom: 0 !important;
+}
+
+// Margin above publication badges
+#top > div.pub > div.article-container.pt-3 > .btn-links {
+  margin-top: 0.15rem !important;
+  margin-bottom: 0.1rem !important;
+}
+
+// Reduce top margin on featured image container
+div:has(> img.featured-image) {
+  margin-top: -5%;
+}
+
+@media (max-width: 991px) {
+  .pub div:has(> img.featured-image) {
+    margin-top: 0;
+  }
+  
+  // Decrease top padding on featured-image-wrapper in tablet/mobile
+  #top > div.pub > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 {
+    padding-top: 0 !important;
+    margin-top: 0.5rem !important;
+  }
+  
+  // Increase article-metadata size in mobile view
+  .article-metadata,
+  .article-metadata * {
+    font-size: 0.9rem !important;
+  }
 }
 
 // Ensure immediate dark theme application only when dark class is present
@@ -842,8 +1136,37 @@ body.dark {
 }
 
 // Interests
+#profile > div:nth-child(4) {
+  padding-top: 0 !important;
+  margin-top: -0.5rem !important;
+}
+
+#profile > div:nth-child(5) {
+  padding-top: 0 !important;
+  margin-top: -1rem !important;
+}
+
 #profile > div:nth-child(4) > div {
   color: var(--text-secondary);
+}
+
+// Center Interests and Subsections divs in bio section without centering text
+#bio .col-lg-4 #profile > div:nth-child(4),
+#bio .col-lg-4 #profile > div:nth-child(5) {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+#bio .col-lg-4 #profile > div:nth-child(4) > div,
+#bio .col-lg-4 #profile > div:nth-child(5) > div {
+  text-align: left !important;
+  width: fit-content !important;
+}
+
+// Center the Interests title
+#bio .col-lg-4 #profile > div:nth-child(4) > h3 {
+  text-align: center !important;
+  width: 100% !important;
 }
 
 // unvisited link
@@ -858,7 +1181,7 @@ h3 a:visited, div a:visited, p a:visited, ul a:visited, li a:visited, .article-c
 }
 
 // mouse over link
-p a:hover, ul a:hover, li a:hover, .article-container a:hover, td a:hover, a.dsq-brlink:hover, div.grid-sizer > div > a:hover, #top > div.pub > div > div > div.col-md-10 > div > div.col-12.col-md-9 > a:hover, h3 > a:hover, #top a:hover, a:hover > code {
+p a:hover:not(.view-complete-content-btn), ul a:hover:not(.view-complete-content-btn), li a:hover:not(.view-complete-content-btn), .article-container a:hover:not(.view-complete-content-btn), td a:hover:not(.view-complete-content-btn), a.dsq-brlink:hover, div.grid-sizer > div > a:hover:not(.view-complete-content-btn), #top > div.pub > div > div > div.col-md-10 > div > div.col-12.col-md-9 > a:hover:not(.view-complete-content-btn), h3 > a:hover:not(.view-complete-content-btn), #top a:hover:not(.view-complete-content-btn), a:hover > code {
   background-image: none; // necessary to override `p a:link` property
   color: var(--text-hover);
   background-color: var(--bg-highlight);
@@ -880,9 +1203,25 @@ h3 a:active, div a:active, p a:active, ul a:active, li a:active, .article-contai
   color: var(--text-active); 
 }
 
-// background colour for links
-p a:link, td a:link, div.grid-sizer > div > a, #top > div.pub > div > div > div.col-md-10 > div > div.col-12.col-md-9 > a, h3 > a, h4 > a, h5 > a, a > code {
+// background colour for links (excluding view-complete-content buttons)
+p a:link:not(.view-complete-content-btn), 
+td a:link:not(.view-complete-content-btn), 
+div.grid-sizer > div > a:not(.view-complete-content-btn), 
+#top > div.pub > div > div > div.col-md-10 > div > div.col-12.col-md-9 > a:not(.view-complete-content-btn), 
+h3 > a:not(.view-complete-content-btn), 
+h4 > a:not(.view-complete-content-btn), 
+h5 > a:not(.view-complete-content-btn), 
+a > code {
   background-image: var(--gradient-light);
+}
+
+// Force remove background-image from view-complete-content buttons
+a.view-complete-content-btn,
+.view-complete-content-btn,
+button.view-complete-content-btn {
+  background: none !important;
+  background-image: none !important;
+  margin-bottom: 0.15rem !important;
 }
 
 /* Remove link highlight from general links in home 
@@ -893,13 +1232,418 @@ and from bio portrait information. */
 // Light theme navbar background
 .navbar {
   background-color: var(--color-white) !important;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: none !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25) !important;
+  height: 6vh !important;
+  min-height: 50px !important;
+  max-height: 50px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  z-index: 1030 !important;
+  position: fixed !important;
+  overflow: visible !important;
+  overflow-y: visible !important;
+  overflow-x: visible !important;
+  transition: transform 0.01s linear !important;
+  width: 100% !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  pointer-events: none !important; /* Allow scroll events to pass through */
+}
+
+// Light theme: Remove background color from nav items on hover (desktop view)
+@media (min-width: 992px) {
+  .navbar .nav-link:hover,
+  .navbar .nav-item:hover,
+  .navbar-nav .nav-link:hover,
+  #navbar-content > ul > li > a:hover,
+  #navbar-main .nav-link:hover {
+    background-color: transparent !important;
+    background: none !important;
+  }
+}
+
+// Re-enable pointer events for interactive elements
+.navbar a,
+.navbar button,
+.navbar .navbar-brand,
+.navbar .navbar-toggler,
+.navbar .nav-link,
+.navbar .dropdown-toggle,
+.navbar-collapse,
+.navbar-nav {
+  pointer-events: auto !important;
+  overflow: visible !important;
+}
+
+// Prevent any scrolling within navbar and its children
+.navbar,
+.navbar *,
+.navbar-collapse,
+.navbar-collapse *,
+.navbar-nav,
+.navbar-nav * {
+  overflow: visible !important;
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+  max-height: none !important;
+}
+
+// Hide scrollbar in navbar for webkit browsers
+.navbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.navbar *, .navbar-collapse *, .navbar-nav * {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.navbar *::-webkit-scrollbar,
+.navbar-collapse *::-webkit-scrollbar,
+.navbar-nav *::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+// Force mobile hamburger menu at ≤991px (override Bootstrap navbar-expand-lg)
+// This triggers the mobile menu earlier to prevent title wrapping and navbar-brand occlusion
+@media (max-width: 991px) {
+  .navbar-expand-lg .navbar-toggler {
+    display: flex !important;
+  }
+  
+  .navbar-expand-lg .navbar-collapse {
+    display: none !important;
+    position: fixed !important;
+  }
+  
+  .navbar-expand-lg .navbar-collapse.show,
+  .navbar-expand-lg .navbar-collapse.collapsing {
+    display: block !important;
+  }
+}
+
+// Mobile-specific navbar adjustments
+@media (max-width: 991px) {
+  .navbar {
+    height: 50px !important;
+    min-height: 50px !important;
+    max-height: 50px !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    padding-top: 8px !important;
+    padding-bottom: 0 !important;
+    overflow: visible !important;
+    display: flex !important;
+    align-items: center !important;
+    transition: transform 0s linear !important;
+  }
+  
+  .navbar > .container,
+  .navbar > .container-fluid {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+  }
+  
+  .navbar-nav,
+  .navbar-nav-right {
+    align-items: center !important;
+    margin-bottom: 0 !important;
+    height: 100% !important;
+  }
+  
+  .navbar-collapse {
+    position: fixed !important;
+    top: 50px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    background-color: white !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+    z-index: 1020 !important;
+    padding: 1rem 0 !important;
+    margin: 0 !important;
+    transition: all 0.2s ease-in-out !important;
+    opacity: 1 !important;
+  }
+  
+  .navbar-collapse:not(.show) {
+    display: none !important;
+  }
+  
+  .navbar-collapse.collapsing {
+    opacity: 0 !important;
+    transition: all 0.2s ease-in-out !important;
+  }
+  
+  body.dark .navbar-collapse {
+    background-color: #1f2937 !important;
+    box-shadow: 0 4px 6px rgba(150,150,150,0.2) !important;
+  }
+  
+  .navbar-nav {
+    padding: 0.5rem 0 !important;
+  }
+  
+  // Remove background color on hover for mobile menu items
+  .navbar-collapse .nav-link:hover,
+  .navbar-collapse .navbar-nav .nav-link:hover,
+  .navbar-collapse #navbar-content > ul > li > a:hover {
+    background-color: transparent !important;
+    background: none !important;
+  }
+  
+  .navbar-brand {
+    font-size: 1.2rem !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+  }
+  
+  .navbar-brand img {
+    max-height: 40px !important;
+    margin: 0 !important;
+  }
+  
+  .navbar-toggler {
+    padding: 0.25rem 0.75rem !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  
+  .navbar-toggler .navbar-toggler-icon {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  
+  // Align right-side icons at same vertical level as other navbar content
+  .navbar-nav-right,
+  .nav-icons {
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .navbar-nav-right .nav-item,
+  .nav-icons .nav-item {
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .navbar-nav-right .nav-item:first-child,
+  .nav-icons .nav-item:first-child {
+    margin-left: 50px !important;
+    margin-right: 0 !important;
+  }
+  
+  .navbar-nav-right .nav-link,
+  .nav-icons .nav-link {
+    padding: 0.25rem 0.4rem !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  
+  .navbar-nav-right i,
+  .navbar-nav-right svg,
+  .nav-icons i,
+  .nav-icons svg {
+    font-size: 1.2rem !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+  }
+  
+  .navbar-nav .nav-link {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+}
+
+.navbar.hide-navbar {
+  transform: translateY(-100%) !important;
+}
+
+.navbar::after {
+  display: none !important;
+  content: none !important;
+}
+
+// Remove any top spacing on body element
+body, #top {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+body::before, #top::before {
+  display: none !important;
+  content: none !important;
+}
+
+// Add spacing for page content below fixed navbar
+section.home-section:first-of-type {
+  margin-top: 7vh !important;
+  padding-top: 1rem !important;
+}
+
+@media (max-width: 991px) {
+  section.home-section:first-of-type {
+    margin-top: 55px !important;
+    padding-top: 1rem !important;
+  }
+}
+
+@media (max-height: 800px) {
+  section.home-section:first-of-type {
+    margin-top: 65px !important;
+  }
+}
+
+// Add margin above page titles to prevent navbar occlusion
+.article-container,
+.universal-wrapper {
+  padding-top: 50px !important;
+}
+
+@media (max-width: 991px) {
+  .article-container,
+  .universal-wrapper {
+    padding-top: 40px !important;
+  }
+}
+
+// Adjust margins for universal-wrapper and article-container on individual pages
+#top > div.universal-wrapper.pt-3 {
+  margin-top: 0.8rem !important;
+  margin-bottom: -1rem !important;
+}
+
+#top > article > div.article-container.pt-3 {
+  margin-top: 0.8rem !important;
+  margin-bottom: -1rem !important;
+}
+
+// Decrease top padding in article and div nth-child elements
+#top > article > div:nth-child(2) {
+  padding-top: 1.25rem !important;
+}
+
+#top > div:nth-child(4) {
+  padding-top: 0 !important;
+}
+
+// Reduce margin above first publication title on home page (desktop)
+@media (min-width: 992px) {
+  #publication > div > div > div:nth-child(2) > div:nth-child(1) > div.media-body > h3 {
+    margin-top: -0.5rem !important;
+  }
+}
+
+// White link color for featured image header in light theme
+#top > div.pub > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 > div > span > a,
+.pub .article-header.featured-image-wrapper .article-header-caption a {
+  color: white !important;
+}
+
+// Increase margin above featured-image-wrapper in pub pages
+#top > div.pub > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 {
+  margin-top: 1rem !important;
+}
+
+// Mobile view: decrease margins for portrait-title h3
+@media (max-width: 991px) {
+  #profile > div.portrait-title > h3:nth-child(3) {
+    margin-top: 0.2rem !important;
+    margin-bottom: 0.2rem !important;
+  }
+
+  #profile > div:nth-child(3) {
+    padding-top: 0.5rem !important;
+    margin-top: 0 !important;
+  }
+
+  #profile > img {
+    margin-bottom: 0.5rem !important;
+  }
+}
+
+// Reduce margin under profile image
+#profile > img {
+  margin-bottom: 0 !important;
+}
+
+// Reduce margin above portrait-title
+#profile > div.portrait-title {
+  margin-top: 0 !important;
+}
+
+// Reduce top padding in profile
+#profile {
+  padding-top: 0 !important;
+  margin-top: -1rem !important;
+}
+
+// Reduce margins above h2-h6 headings in blog posts
+article.article h2,
+article.article h3,
+article.article h4,
+article.article h5,
+article.article h6 {
+  margin-top: 1rem !important;
+}
+
+// Increase margin above article-metadata in individual pages
+#top > div:nth-child(4) > div > div.media-body > div.stream-meta.article-metadata > div {
+  margin-top: 0.5rem !important;
+}
+
+// Decrease top padding in article nth-child(3)
+#top > article > div:nth-child(3) {
+  padding-top: 0 !important;
+}
+
+// Reduce margin above h3 headings in pub pages
+#top > div.pub > div > h3 {
+  margin-top: -2rem !important;
+}
+
+.article-title,
+.page-title,
+h1.article-title {
+  margin-top: 0.5rem !important;
 }
 
 // Dark theme navbar background
 body.dark .navbar {
   background-color: #1f2937 !important;
-  border-bottom: 1px solid #4b5563;
+  border-bottom: none !important;
+  box-shadow: 0 2px 4px rgba(150,150,150,0.2) !important;
+}
+
+body.dark .navbar::after {
+  display: none !important;
+  content: none !important;
 }
 
 // Dark theme navbar brand and text
@@ -911,14 +1655,25 @@ body.dark .navbar-collapse {
   color: var(--nav-text) !important;
 }
 
+// Increase margin between navbar-brand and menu items (desktop only)
+@media (min-width: 992px) {
+  .navbar-brand {
+    margin-right: 3rem !important;
+  }
+}
+
 // Navbar brand hover styling for both light and dark themes
 .navbar-brand:hover {
   color: #5f9ea0 !important; // Dark aquamarine
   transition: color 0.3s ease;
+  background-color: transparent !important;
+  background: none !important;
 }
 
 body.dark .navbar-brand:hover {
   color: #5f9ea0 !important; // Dark aquamarine
+  background-color: transparent !important;
+  background: none !important;
 }
 
 // Ensure navbar elements have proper dark background
@@ -944,6 +1699,13 @@ body.dark .navbar-collapse .navbar-nav .nav-link {
 // Dark theme navbar toggler icon
 body.dark .navbar-toggler-icon {
   filter: invert(1);
+}
+
+// Increase mobile menu icon size (Font Awesome fa-bars)
+.navbar-toggler .fa-bars,
+.navbar-toggler .fas.fa-bars,
+.navbar-toggler i.fas {
+  font-size: 28px !important;
 }
 
 #navbar-main > div > div.d-none.d-lg-inline-flex > a, #navbar-content > ul > li > a, #navbar-main > div > div.navbar-brand-mobile-wrapper.d-inline-flex.d-lg-none > a {
@@ -1249,18 +2011,47 @@ h3 a:hover, div a:hover {
 
 // Reduce margin above button links in home page
 :is(#publication, #applications-and-dashboards, #blog) .btn-links {
-  margin-top: -2%;
+  margin-top: -4%;
+}
+
+@media (max-width: 991px) {
+  :is(#publication, #applications-and-dashboards, #blog) .btn-links {
+    margin-top: -4%;
+  }
+}
+
+// Increase font size and margin for publication metadata
+#publication > div > div > div > div > div.media-body > div.stream-meta.article-metadata > div {
+  font-size: 120% !important;
+  margin-bottom: 1.2rem !important;
+}
+
+// Reduce top margin only when abstract is collapsed
+#publication > div > div > div.col-12 > div > div.media-body:not(.is-expanded) > div.stream-meta.article-metadata > div {
+  margin-top: 0 !important;
+}
+
+// Adjust btn-links margins on individual pages: reduce margin below and increase margin above
+article #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 {
+  margin-bottom: 0.2rem !important;
+  margin-top: 0.3rem !important;
+}
+
+// Reduce margin under btn-links in individual pages (different selector)
+#top > article > div.article-container.pt-3 > div.btn-links.mb-3 {
+  margin-bottom: 0.2rem !important;
+  margin-top: 0.3rem !important;
 }
 
 // Collapsible abstracts on home page - collapsed by default, expandable on click
 // Applied to publication, applications-and-dashboards, and blog sections
-:is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12.col-lg-8 > div > div.media-body > div.article-style {
-  max-height: 3.6em; // Show ~3 lines initially
-  overflow: hidden;
-  position: relative;
-  transition: max-height 0.3s ease;
-  cursor: pointer; // Make entire area clickable
-  margin-bottom: 0rem; // Reduced margin under collapsed abstract
+:is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style {
+  max-height: 3.6em !important; // Show ~2-3 lines initially
+  overflow: hidden !important;
+  position: relative !important;
+  transition: max-height 0.3s ease !important;
+  cursor: pointer !important; // Make entire area clickable
+  margin-bottom: -0.5rem !important; // Reduced margin under collapsed abstract
   
   // Add prominent fade gradient at bottom to indicate more content
   &::after {
@@ -1274,11 +2065,11 @@ h3 a:hover, div a:hover {
     pointer-events: none;
   }
   
-  // Add "Expand" button at bottom center - overlays the text
+  // Add "Expand summary" button at bottom center - overlays the text
   // Reduced padding with compact styling
   // Hidden by default, shown on hover
   &::before {
-    content: 'Expand';
+    content: 'Expand summary';
     position: absolute;
     bottom: 6px;
     left: 50%;
@@ -1333,96 +2124,125 @@ h3 a:hover, div a:hover {
 }
 
 // Dark theme: invert Expand button colours
-body.dark :is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12.col-lg-8 > div > div.media-body > div.article-style::before {
+body.dark :is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style::before {
   background-color: #ddd;
   color: #333;
   border: 1px solid #ccc;
 }
 
-body.dark :is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12.col-lg-8 > div > div.media-body > div.article-style:hover::before {
+body.dark :is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style:hover::before {
   background-color: #ccc;
   color: #222;
 }
 
 // Dark theme: arrow colors (white for visibility)
-body.dark :is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12.col-lg-8 > div > div.media-body > div.article-style .expand-arrow {
+body.dark :is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style .expand-arrow {
   color: #fff;
 }
 
-body.dark :is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12.col-lg-8 > div > div.media-body > div.article-style:hover .expand-arrow {
+body.dark :is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style:hover .expand-arrow {
   color: #eee;
 }
 
 // Specific gradient for applications-and-dashboards section (even section with different background)
-#applications-and-dashboards > div > div > div.col-12.col-lg-8 > div > div.media-body > div.article-style::after {
+#applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.article-style::after {
   background: linear-gradient(to bottom, transparent 0%, rgba(247, 250, 252, 0.7) 40%, rgba(247, 250, 252, 0.95) 70%, rgba(247, 250, 252, 1) 100%);
 }
 
 // Remove fade gradient and button when expanded
-:is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12.col-lg-8 > div > div.media-body.is-expanded > div.article-style::after,
-:is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12.col-lg-8 > div > div.media-body.is-expanded > div.article-style::before {
+:is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body.is-expanded > div.article-style::after,
+:is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body.is-expanded > div.article-style::before {
   display: none;
 }
 
 // Hide arrows when expanded
-:is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12.col-lg-8 > div > div.media-body.is-expanded > div.article-style .expand-arrow {
+:is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body.is-expanded > div.article-style .expand-arrow {
   display: none;
 }
 
 // Dark theme fade gradient - more visible with stronger opacity gradient
-body.dark :is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12.col-lg-8 > div > div.media-body > div.article-style::after {
+body.dark :is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style::after {
   background: linear-gradient(to bottom, transparent 0%, rgba(31, 41, 55, 0.7) 40%, rgba(31, 41, 55, 0.95) 70%, rgba(31, 41, 55, 1) 100%);
 }
 
 // When expanded, show full content and remove padding
-:is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12.col-lg-8 > div > div.media-body.is-expanded > div.article-style {
-  max-height: 100%;
+:is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body.is-expanded > div.article-style {
+  max-height: none !important;
   padding-bottom: 0;
+  cursor: default !important;
+}
+
+// Reduce metadata margin
+#publication > div > div > div.col-12 > div > div.media-body > div.stream-meta.article-metadata > div {
+  margin-bottom: 0.9rem !important;
 }
 
 // "View complete content" button that appears after abstract expansion
-// Light theme (default): dark button with light text
+// Light theme: dark text on light background, reverses on hover
 a.view-complete-content-btn,
-.view-complete-content-btn {
+.view-complete-content-btn,
+button.view-complete-content-btn,
+a[class*="view-complete-content-btn"],
+.home-section a.view-complete-content-btn {
   display: inline-block !important;
-  margin-top: 10px !important;
-  margin-bottom: 0.3rem !important;
-  padding: 8px 16px !important;
+  margin-top: 0.8rem !important;
+  margin-bottom: 0.2rem !important;
+  padding: 4px 12px !important;
   font-size: 14px !important;
-  color: #eee !important;
-  background: #555 !important;
-  background-color: #555 !important;
-  border: 1px solid #444 !important;
+  font-weight: 500 !important;
+  color: #ffffff !important;
+  background-color: #2c3e50 !important;
+  background-image: none !important;
+  border: 2px solid #2c3e50 !important;
   border-radius: 4px !important;
   text-decoration: none !important;
   transition: all 0.3s ease !important;
   
   i {
-    margin-right: 5px;
+    margin-right: 5px !important;
+    color: #ffffff !important;
   }
   
   &:hover {
-    color: #fff !important;
-    background: #444 !important;
-    background-color: #444 !important;
-    transform: translateY(-2px);
+    color: #2c3e50 !important;
+    background-color: #ecf0f1 !important;
+    background-image: none !important;
+    border: 2px solid #95a5a6 !important;
+    transform: translateY(-2px) !important;
+    
+    i {
+      color: #2c3e50 !important;
+    }
   }
 }
 
-// Dark theme: invert View complete content button colours (light button with dark text)
+// Dark theme: light text on dark background, reverses on hover
 body.dark a.view-complete-content-btn,
 body.dark .view-complete-content-btn,
+body.dark button.view-complete-content-btn,
+body.dark a[class*="view-complete-content-btn"],
 .dark a.view-complete-content-btn,
-.dark .view-complete-content-btn {
-  color: #333 !important;
-  background: #ddd !important;
-  background-color: #ddd !important;
-  border: 1px solid #ccc !important;
+.dark .view-complete-content-btn,
+.dark button.view-complete-content-btn,
+body.dark .home-section a.view-complete-content-btn {
+  color: #ecf0f1 !important;
+  background-color: #34495e !important;
+  background-image: none !important;
+  border: 2px solid #7f8c8d !important;
+  
+  i {
+    color: #ecf0f1 !important;
+  }
   
   &:hover {
-    color: #222 !important;
-    background: #ccc !important;
-    background-color: #ccc !important;
+    color: #2c3e50 !important;
+    background-color: #bdc3c7 !important;
+    background-image: none !important;
+    border: 2px solid #95a5a6 !important;
+    
+    i {
+      color: #2c3e50 !important;
+    }
   }
 }
 
@@ -1550,17 +2370,165 @@ body.dark .document-viewer-toolbar {
 
 // Change size of article metadata
 
+// Global article metadata rules (apply to all pages)
+.article-metadata {
+  margin-bottom: 0.4rem !important;
+}
+
 .article-metadata > div {
-  margin-top: -0.1rem;
+  margin-top: -0.4rem !important;
+  margin-bottom: -0.3rem !important;
 }
 
 // Reduce margin under article-metadata in web applications and blog sections
 #applications-and-dashboards .article-metadata > div,
 #blog .article-metadata > div {
-  margin-bottom: -0.1rem;
+  margin-bottom: -0.3rem !important;
 }
 
-#publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.stream-meta.article-metadata > div {
+// Increase margin above blog metadata on home page
+#blog > div > div > div.col-12.col-lg-8 > div > div.media-body > div.stream-meta.article-metadata > div > span {
+  margin-top: 0.6rem !important;
+  display: inline-block !important;
+}
+
+// HOME SECTION SPECIFIC RULES - MUST COME AFTER GLOBAL RULES
+.home-section .article-metadata {
+  margin-top: 0.3rem !important;
+  margin-bottom: initial !important; // Reset to allow media queries to work
+}
+
+.home-section .article-metadata > div {
+  margin-top: 0 !important;
+  margin-bottom: initial !important; // Reset to allow media queries to work
+}
+
+// Smaller screens - larger font size, minimal margin (MUST BE LAST)
+@media (max-width: 600px) {
+  .home-section .article-metadata {
+    font-size: 0.95rem !important;
+  }
+  
+  #blog .stream-meta.article-metadata,
+  #blog .stream-meta.article-metadata * {
+    font-size: 0.8rem !important;
+  }
+  
+  #applications-and-dashboards .stream-meta.article-metadata,
+  #applications-and-dashboards .stream-meta.article-metadata *,
+  #applications-and-dashboards .stream-meta.article-metadata span {
+    font-size: 0.8rem !important;
+  }
+  
+  .home-section .article-metadata,
+  .home-section .article-metadata *,
+  .home-section .article-metadata > div {
+    margin-bottom: 0rem !important;
+    color: rgba(0,0,0,0.54) !important;
+  }
+  
+  body.dark .home-section .article-metadata,
+  body.dark .home-section .article-metadata *,
+  body.dark .home-section .article-metadata > div {
+    color: rgba(255,255,255,0.54) !important;
+  }
+}
+
+// Larger screens - smaller font size, significantly increased margin (MUST BE LAST)
+@media (min-width: 601px) {
+  .home-section .article-metadata {
+    font-size: 0.7rem !important;
+  }
+  
+  .home-section .article-metadata,
+  .home-section .article-metadata *,
+  .home-section .article-metadata > div {
+    margin-bottom: 0.7rem !important;
+    color: rgba(0,0,0,0.54) !important;
+  }
+  
+  body.dark .home-section .article-metadata,
+  body.dark .home-section .article-metadata *,
+  body.dark .home-section .article-metadata > div {
+    color: rgba(255,255,255,0.54) !important;
+  }
+}
+
+// Format post titles on home page: keep link color but remove background and borders
+#blog h3 a,
+#blog h3 a:link,
+#blog h3 a:visited,
+#blog .media-body h3 a,
+#blog .media-body h3 a:link,
+#blog .media-body h3 a:visited,
+#blog div.media-body > h3 > a,
+#blog div.media-body > h3 > a:link,
+#blog div.media-body > h3 > a:visited,
+#publication h3 a,
+#publication h3 a:link,
+#publication h3 a:visited,
+#publication .media-body h3 a,
+#publication .media-body h3 a:link,
+#publication .media-body h3 a:visited,
+#publication div.media-body > h3 > a,
+#publication div.media-body > h3 > a:link,
+#publication div.media-body > h3 > a:visited,
+#applications-and-dashboards h3 a,
+#applications-and-dashboards h3 a:link,
+#applications-and-dashboards h3 a:visited,
+#applications-and-dashboards .media-body h3 a,
+#applications-and-dashboards .media-body h3 a:link,
+#applications-and-dashboards .media-body h3 a:visited,
+#applications-and-dashboards div.media-body > h3 > a,
+#applications-and-dashboards div.media-body > h3 > a:link,
+#applications-and-dashboards div.media-body > h3 > a:visited,
+.home-section h3 a,
+.home-section h3 a:link,
+.home-section h3 a:visited,
+.home-section .media-body h3 a,
+.home-section .media-body h3 a:link,
+.home-section .media-body h3 a:visited {
+  background: none !important;
+  background-image: none !important;
+  background-color: transparent !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+#blog h3 a:hover,
+#blog h3 a:active,
+#blog .media-body h3 a:hover,
+#blog .media-body h3 a:active,
+#blog div.media-body > h3 > a:hover,
+#blog div.media-body > h3 > a:active,
+#publication h3 a:hover,
+#publication h3 a:active,
+#publication .media-body h3 a:hover,
+#publication .media-body h3 a:active,
+#publication div.media-body > h3 > a:hover,
+#publication div.media-body > h3 > a:active,
+#applications-and-dashboards h3 a:hover,
+#applications-and-dashboards h3 a:active,
+#applications-and-dashboards .media-body h3 a:hover,
+#applications-and-dashboards .media-body h3 a:active,
+#applications-and-dashboards div.media-body > h3 > a:hover,
+#applications-and-dashboards div.media-body > h3 > a:active,
+.home-section h3 a:hover,
+.home-section h3 a:active,
+.home-section .media-body h3 a:hover,
+.home-section .media-body h3 a:active {
+  background: none !important;
+  background-image: none !important;
+  background-color: transparent !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+article .article-metadata {
+  margin-bottom: 2px !important;
+}
+
+#publication > div > div > div.col-12 > div > div.media-body > div.stream-meta.article-metadata > div {
   font-size: 115%;
 }
 
@@ -1571,17 +2539,7 @@ body.dark .document-viewer-toolbar {
 
 #top > div.pub > div.article-container.pt-3 > div.article-metadata {
   font-size: 90%;
-}
-
-// Reduce font size in mobile view
-@media (max-width: 768px) {
-  #publication .article-metadata span {
-    font-size: 85%;
-  }
-  
-  .article-metadata {
-    line-height: 1.3;
-  }
+  margin-bottom: 0.1rem !important;
 }
 
 #top div.media-body > div.article-style {
@@ -1644,14 +2602,14 @@ body.dark table th, body.dark table thead th {
 
 // LINKS
 
-#publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.btn-links > a, div.article-container.pt-3 > div.btn-links.mb-3 > a:link, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:link, .btn-links a:link, #top > div.pub > div > a > button:link, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button:link, div.grid-sizer > div > p > button, div.grid-sizer > div > p > a:link, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button, #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.btn-links > button {
+#publication > div > div > div.col-12 > div > div.media-body > div.btn-links > a, div.article-container.pt-3 > div.btn-links.mb-3 > a:link, #publication > div > div > div.col-12 > * > div.media-body > div.btn-links > a:link, .btn-links a:link, #top > div.pub > div > a > button:link, #publication > div > div > div.col-12 > * > div.media-body > div.btn-links > button:link, div.grid-sizer > div > p > button, div.grid-sizer > div > p > a:link, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button, #publication > div > div > div.col-12 > div > div.media-body > div.btn-links > button {
   background-image: none;
   color: var(--text-hover); 
   background-color: var(--bg-button) !important;
   border-color: var(--border-color);
 }
 
-div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:visited, .btn-links a:visited, #top > div.pub > div > a > button:visited, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > button:visited, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button:visited, div.grid-sizer > div > p > button:visited, div.grid-sizer > div > p > a:visited, #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.btn-links > button:visited {
+div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #publication > div > div > div.col-12 > * > div.media-body > div.btn-links > a:visited, .btn-links a:visited, #top > div.pub > div > a > button:visited, #publication > div > div > div.col-12 > * > div.media-body > div.btn-links > button:visited, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button:visited, div.grid-sizer > div > p > button:visited, div.grid-sizer > div > p > a:visited, #publication > div > div > div.col-12 > div > div.media-body > div.btn-links > button:visited {
   background-image: none;
   color: var(--text-visited);
   font-weight: bold;
@@ -1659,7 +2617,7 @@ div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #publication > div 
   border-color: var(--text-visited);
 }
 
-#publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.btn-links > a:hover, div.article-container.pt-3 > div.btn-links.mb-3 > a:hover, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > a:hover, #publication > div > div > div.col-12.col-lg-8 > * > div.media-body > div.btn-links > a:hover, .btn-links a:hover, div.grid-sizer > div > p > button:hover, div.grid-sizer > div > p > a:hover, div.media-body > h3 > a:hover, #publication > div > div > div.col-12.col-lg-8 > div > div.media-body > div.btn-links > button:hover, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button:hover {
+#publication > div > div > div.col-12 > div > div.media-body > div.btn-links > a:hover, div.article-container.pt-3 > div.btn-links.mb-3 > a:hover, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > a:hover, #publication > div > div > div.col-12 > * > div.media-body > div.btn-links > a:hover, .btn-links a:hover, div.grid-sizer > div > p > button:hover, div.grid-sizer > div > p > a:hover, div.media-body > h3 > a:hover, #publication > div > div > div.col-12 > div > div.media-body > div.btn-links > button:hover, #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 > button:hover {
   background-image: none;
   color: var(--text-hover); 
   background-color: var(--bg-button-hover) !important;
@@ -1693,7 +2651,7 @@ div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #publication > div 
 }
 
 // Icons on the body of the bio section
-#bio > div > div > div.col-12.col-lg-8 > div > div > ul > li > i {
+#bio > div > div > div.col-12 > div > div > ul > li > i {
   color: var(--border-color);
   background-color: transparent;
   background-image: none;
@@ -1718,7 +2676,7 @@ div.col-12.col-lg-4.section-heading > h1 > span > a > i {
   background-image: none;
 }
 
-a > i:hover, #profile > div > div > span > span > a:hover, #navbar-main > div > button > span > i:hover, :is(#navbar-main, #publication, #applications-and-dashboards, #blog) :is(a:has(i), i:hover, button:hover), #navbar-main > div > button:hover, #navbar-main > div > button > span:hover {
+a > i:hover, #profile > div > div > span > span > a:hover, #navbar-main > div > button > span > i:hover, :is(#navbar-main, #publication, #applications-and-dashboards, #blog) :is(a:has(i):not(.view-complete-content-btn), i:hover, button:hover:not(.view-complete-content-btn)), #navbar-main > div > button:hover, #navbar-main > div > button > span:hover {
   color: var(--accent-primary);
   background-color: transparent !important;
   background-image: none !important;
@@ -1891,20 +2849,33 @@ pre {
 // in desktop view only
 @media (min-width: 1000px) {
   
+  // Ensure parent containers allow sticky to work
+  .home-section,
+  .home-section > .container,
+  .home-section > .container > .row {
+    overflow: visible !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+  }
+  
   // make sidebar headings sticky
   .section-heading, #bio > div > div > div.col-12.col-lg-4 {
-    margin: 0;
-    height: 100%;
-    overflow-y: hidden;
-    position: sticky; 
-    top: 120px;
-    margin-bottom: 20px;
+    margin: 0 !important;
+    height: auto !important;
+    overflow-y: visible !important;
+    position: -webkit-sticky !important;
+    position: sticky !important; 
+    top: 70px !important;
+    align-self: flex-start !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    z-index: 10 !important;
   }
   
   div.col-12.col-lg-4.section-heading > h1 {
-    border-bottom: 0.4px solid;
-    border-image-source: var(--gradient-section-border);
-    border-image-slice: 1;
+    border-bottom: none !important;
+    border-image-source: none !important;
+    border-image-slice: 0 !important;
   }
   
   // remove Experience from profile subsections
@@ -2210,7 +3181,7 @@ body.dark .full-text-btn a:focus,
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
   text-decoration: none;
   transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
-  margin: 0 auto 1%;
+  margin: 1rem auto 0.25rem;
   cursor: pointer;
 }
 .cv-btn:hover,
@@ -2226,45 +3197,90 @@ body.dark .full-text-btn a:focus,
 }
 
 
-// Collapsible text widget styles - simplified and reusable
+// Multimedia section collapsible summaries - matches the pub-abstract collapsed style
+// Collapsed by default, expandable on click with fade gradient and hover button
 
-/* The content container starts collapsed (showing ~3 lines) */
-.collapsible-text-content {
-  max-height: 5.3rem; 
-  overflow: hidden;
-  transition: max-height 0.4s ease-in-out;
+.multimedia-summary {
+  max-height: 6.8em !important; // Show ~5 lines initially
+  overflow: hidden !important;
+  position: relative !important;
+  transition: max-height 0.3s ease !important;
+  cursor: pointer !important; // Make entire area clickable
+  margin-bottom: -0.25rem !important;
+  
+  // Add prominent fade gradient at bottom to indicate more content
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2em; // Taller fade area for better visibility
+    background: linear-gradient(to bottom, transparent 0%, rgba(247, 247, 247, 0.7) 40%, rgba(247, 247, 247, 0.95) 70%, rgba(247, 247, 247, 1) 100%);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  // Add "Expand summary" button at bottom center - overlays the text
+  // Hidden by default, shown on hover
+  &::before {
+    content: 'Expand summary';
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8em;
+    padding: 0px 8px;
+    background-color: #555;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 3px;
+    z-index: 1;
+    white-space: nowrap;
+    opacity: 0;
+    transition: all 0.2s ease;
+    pointer-events: none;
+  }
+  
+  // Hover effect - show button
+  &:hover::before {
+    opacity: 1;
+    background-color: #444;
+    color: #fff;
+    transform: translateX(-50%) scale(1.03);
+  }
 }
 
-/* When expanded, content shows full height */
-.collapsible-text-wrapper.is-expanded .collapsible-text-content {
-  overflow: visible;
+// When expanded, remove constraints and hide fade/button
+.multimedia-summary.is-expanded {
+  max-height: none !important;
+  cursor: default !important;
+  
+  &::after {
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  &::before {
+    display: none;
+  }
 }
 
-/* Style the "Continue reading" button to look like a subtle link */
-.read-more-btn {
-  border: none;
-  padding: 0;
-  background: none;
-  color: #6b7280; /* subdued grey */
-  font-weight: 400;
-  font-style: italic;
-  cursor: pointer;
-  font-size: 0.95rem;
-  transition: color 0.2s ease-in-out;
-  display: inline-block;
-  margin-top: 0.5rem;
-}
-
-.read-more-btn:hover {
-  color: #4b5563; /* darker grey on hover */
-  text-decoration: underline;
-  background: none !important;
-  background-color: transparent !important;
-}
-
-/* Hide button when wrapper is expanded (handled by JavaScript fadeOut) */
-.collapsible-text-wrapper.is-expanded .read-more-btn {
-  display: none;
+// Dark theme adjustments for multimedia summary
+body.dark .multimedia-summary {
+  &::after {
+    background: linear-gradient(to bottom, transparent 0%, rgba(30, 30, 30, 0.7) 40%, rgba(30, 30, 30, 0.95) 70%, rgba(30, 30, 30, 1) 100%);
+  }
+  
+  &::before {
+    background-color: #ddd;
+    color: #333;
+    border: 1px solid #ccc;
+  }
+  
+  &:hover::before {
+    background-color: #ccc;
+  }
 }
 
 // Add margin under section headings 
@@ -2345,7 +3361,7 @@ html {
 
 // Section offset to account for fixed navbar
 section[id] {
-  scroll-margin-top: 80px; // Adjust for navbar height
+  scroll-margin-top: 60px; // Adjust for navbar height
 }
 
 // Mobile responsive navigation highlighting
@@ -2357,7 +3373,12 @@ section[id] {
   }
   
   section[id] {
-    scroll-margin-top: 60px; // Adjusted for mobile navbar height
+    scroll-margin-top: 50px; // Adjusted for mobile navbar height
+  }
+  
+  // Reduce font size of article-metadata on home page in mobile view
+  .home-section .article-metadata {
+    font-size: 65% !important;
   }
   
   // Remove underlines from navigation menu items in mobile view
@@ -2728,7 +3749,7 @@ html body.dark .search-hit a h6 {
   }
   
   .navbar-brand img {
-    max-height: 50px; // Adjust logo height for thinner navbar
+    max-height: 40px; // Adjust logo height for thinner navbar
   }
   
   // Make active and hover underline bars thinner
@@ -2749,7 +3770,7 @@ html body.dark .search-hit a h6 {
   
   // Fix scroll offset for proper section highlighting
   html {
-    scroll-padding-top: 70px; // Match navbar height for proper scroll positioning
+    scroll-padding-top: 60px; // Match navbar height for proper scroll positioning
   }
   
   // Remove glow effects from navbar in dark theme
@@ -2838,23 +3859,65 @@ html body.dark .search-hit a h6 {
   }
 }
 
-// Desktop: Smart word wrapping for section headings
+// Desktop: Smart word wrapping for section headings with moderate font size and reduced subtitle
 @media (min-width: 992px) {
+  // Adjust two-column layout: narrower left column (headings), wider right column (content)
+  .home-section .col-lg-4 {
+    flex: 0 0 30% !important;
+    max-width: 30% !important;
+  }
+  
+  .home-section .col-lg-8 {
+    flex: 0 0 70% !important;
+    max-width: 70% !important;
+  }
+  
+  // Exception for bio section: keep original proportions
+  #bio .col-lg-4 {
+    flex: 0 0 33.333333% !important;
+    max-width: 33.333333% !important;
+  }
+  
+  #bio .col-lg-8 {
+    flex: 0 0 66.666667% !important;
+    max-width: 66.666667% !important;
+  }
+  
+  // Add spacing within sections using padding on the container, not the section itself
+  .home-section .container {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+  
   .section-heading h1,
-  .section-heading h2,
+  .section-heading h2, 
   .section-heading h3 {
-    white-space: normal !important; // Allow line breaks between words
-    word-break: keep-all !important; // Don't break words
-    overflow-wrap: normal !important; // Don't wrap within words
-    hyphens: none !important; // Disable hyphenation
-    overflow: visible !important; // No scroll bars
-    line-height: 1.2 !important; // Tighter line spacing for multi-line headings
-    max-width: 100% !important; // Respect container width
+    white-space: normal !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+    hyphens: none !important;
+    overflow: visible !important;
+    line-height: 1.2 !important;
+    max-width: 100% !important;
+    padding-right: 1.5rem !important;
+    margin: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0.5rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 1.35em !important;
+  }
+  
+  // Reduce subtitle size under section headings
+  .section-heading p {
+    font-size: 0.75em !important;
   }
   
   .section-heading {
-    overflow: visible !important; // No scroll bars on container
-    word-break: keep-all !important; // Don't break words
+    overflow: visible !important;
+    word-break: keep-all !important;
+    padding-right: 1.5rem !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
   }
 }
 
@@ -2904,6 +3967,75 @@ h2 {
   margin-top: 2rem;
 }
 
+// Force single column for publications widget compact view
+#publication .col-12 {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+// Hide heading and border on desktop (min-width: 769px)
+@media (min-width: 769px) {
+  #publication .section-heading {
+    border-bottom: none !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  #publication .section-heading h1,
+  #publication .section-heading h2,
+  #publication .section-heading h3,
+  #publication .col-12.section-heading,
+  #publication .col-12.section-heading h1,
+  div#publication .section-heading,
+  div#publication .section-heading::after,
+  div#publication .section-heading::before {
+    display: none !important;
+    border: none !important;
+    border-bottom: none !important;
+    border-image: none !important;
+    border-image-source: none !important;
+    background: none !important;
+    background-image: none !important;
+  }
+
+  #publication .section-heading::after,
+  #publication .col-12.section-heading::after {
+    display: none !important;
+    content: none !important;
+    background: none !important;
+    border: none !important;
+  }
+}
+
+// Show heading without border on mobile (max-width: 768px)
+@media (max-width: 768px) {
+  #publication .section-heading h1,
+  #publication .col-12.section-heading h1,
+  div#publication .section-heading h1 {
+    display: block !important;
+    color: var(--text-secondary) !important;
+    font-size: 2.25rem !important;
+    margin: 0 0 10px 0 !important;
+    padding-bottom: 10px !important;
+  }
+}
+
+.col-12 .media.stream-item {
+  display: flex !important;
+  width: 100% !important;
+  margin-bottom: 2rem !important;
+}
+
+// Reduce margin above first publication
+.col-12 .media.stream-item:first-child {
+  margin-top: 0 !important;
+}
+
+// Ensure media-body takes full width
+.col-12 .media-body {
+  flex: 1 !important;
+}
+
 // GitHub workflow button styling
 .github-workflow-button {
   display: inline-block !important;
@@ -2951,5 +4083,60 @@ p.caption {
 // Table captions
 table caption {
   color: inherit;
+}
+
+// Multimedia section video sizing - maintain 16:9 aspect ratio
+// Desktop: 50% width, centered
+#multimedia > div > div > div > div[style*="position: relative"][style*="padding-top"] {
+  width: 50% !important;
+  padding-top: 28.125% !important; // 50% * 56.25% = 28.125% for 16:9 ratio
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+// OSF iframe at bottom - centered (wider due to different aspect ratio)
+#multimedia > div > div > div > iframe[src*="osf.io"] {
+  display: block !important;
+  width: 70% !important;
+  height: 240px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+// Multimedia thumbnail image - match video sizing
+.multimedia-thumbnail {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+// Mobile: 90% width, centered
+@media (max-width: 991px) {
+  #profile > div:nth-child(3) > div {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  #multimedia > div > div > div > div[style*="position: relative"][style*="padding-top"] {
+    width: 90% !important;
+    padding-top: 50.625% !important; // 90% * 56.25% = 50.625% for 16:9 ratio
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  #multimedia > div > div > div > iframe[src*="osf.io"] {
+    width: 90% !important;
+  }
+  
+  .multimedia-thumbnail {
+    width: 90%;
+  }
 }
 

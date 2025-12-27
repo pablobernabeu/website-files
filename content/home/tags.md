@@ -16,6 +16,9 @@ subtitle = ""
   count = 70
 
 [design]
+  # Choose how many columns the section has. Valid values: 1 or 2.
+  columns = 1
+ 
   # Minimum and maximum font sizes (1.0 = 100%).
   font_size_min = 0.8
   font_size_max = 2

@@ -31,6 +31,9 @@ subtitle = "<span style='font-size:80%;'>Articles republished on [R-bloggers](ht
     exclude_featured = false
   
 [design]
+  # Choose how many columns the section has. Valid values: 1 or 2.
+  columns = 1
+  
   # Toggle between the various page layout types.
   #   1 = List
   #   2 = Compact

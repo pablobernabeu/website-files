@@ -65,12 +65,22 @@
   {{ $i18n = "more_pages" }}
 {{ end }}
 
+{{ $columns := $st.Params.design.columns | default 2 }}
+
 <div class="row">
+  {{ if eq $columns 1 }}
+  <div class="col-12 section-heading">
+    <h1>{{ with $st.Title | markdownify | emojify }}{{ . | markdownify | emojify }}{{ end }}</h1>
+    {{ with $st.Params.subTitle | markdownify | emojify }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
+  </div>
+  <div class="col-12">
+  {{ else }}
   <div class="col-12 col-lg-4 section-heading">
     <h1>{{ with $st.Title | markdownify | emojify }}{{ . | markdownify | emojify }}{{ end }}</h1>
     {{ with $st.Params.subTitle | markdownify | emojify }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
   </div>
   <div class="col-12 col-lg-8">
+  {{ end }}
 
     {{ with $st.Content }}{{ . }}{{ end }}
 

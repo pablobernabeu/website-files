@@ -38,7 +38,10 @@ $item.Summary | markdownify | emojify }} {{ end }}
       <i class="fa {{ $pub_icon }}"></i> {{ i18n $pub_type }}
     </span>
     {{ end }} {{ end }} {{ with $summary }}
-    <div class="article-style">{{ . }}</div>
+    <details>
+      <summary>Abstract</summary>
+      <div class="article-style">{{ . }}</div>
+    </details>
     {{ end }}
 
     <div class="stream-meta article-metadata">

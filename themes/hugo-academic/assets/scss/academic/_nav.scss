@@ -3,9 +3,10 @@
  **************************************************/
 
 .navbar {
-  height: 70px;
+  height: 5vh;
+  min-height: 30px;
   background: $sta-menu-primary;
-  box-shadow: 0 0.125rem 0.25rem 0 rgba(0,0,0,.11);
+  box-shadow: none;
   font-size: #{$sta-font-size-small}px;
   position: fixed;
   top: 0;
@@ -106,8 +107,8 @@
 
 .navbar-brand {
   // Set v-padding to 5px to align with 50/70px responsive max navbar heights.
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
   font-weight: bold;
   position: relative;
   z-index: 1030;  // For z-index clickable mobile logo.
@@ -122,7 +123,7 @@
   height: -webkit-fill-available;
   height: -webkit-stretch;
   height: stretch;
-  max-height: 60px;  // For lg+ responsive sizing. 60px height +10px v-padding = 70px
+  max-height: calc(5vh - 8px);  // Fit within navbar minus padding
   max-width: fit-content;  // Must override default responsive image style.
 }
 
@@ -171,7 +172,7 @@
 ul.nav-icons {
   list-style-type: none;
   font-size: 18px;
-  padding: 0.5rem 0 0.5rem 0;
+  padding: 0.2rem 0 0.2rem 0;
   margin: 0;
 }
 

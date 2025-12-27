@@ -47,7 +47,7 @@ links:
 - name: Stimulus data dashboard
   url: 'https://pablobernabeu.shinyapps.io/Dutch-modality-exclusivity-norms'
 - name: Results data dashboard
-  url: '/applications-and-dashboards/bernabeu-etal-2017-modalityswitch/'
+  url: 'https://pablobernabeu.shinyapps.io/ERP-waveform-visualization_CMS-experiment/'
 - name: Conference paper
   url: '/publication/bernabeu-etal-2017/'
 image:

@@ -26,23 +26,28 @@
       var popupHeight = popup.offsetHeight;
       var popupWidth = popup.offsetWidth;
 
-      // Calculate position relative to page (not viewport)
-      var badgeCenterX = rect.left + window.pageXOffset + rect.width / 2;
-      var badgeTop = rect.top + window.pageYOffset;
-      var badgeBottom = rect.bottom + window.pageYOffset;
+      // Calculate position relative to viewport (fixed positioning)
+      var badgeCenterX = rect.left + rect.width / 2;
+      var badgeTop = rect.top;
+      var badgeBottom = rect.bottom;
 
       // Center popup horizontally on badge
       var left = badgeCenterX - popupWidth / 2;
-      var top = badgeTop - popupHeight - 5; // Position above with 5px gap
 
-      // If not enough room above, show below
-      if (rect.top < popupHeight + 10) {
-        top = badgeBottom + 5;
+      // Check if there's enough space below; if not, position above
+      var spaceBelow = window.innerHeight - badgeBottom;
+      var top;
+      if (spaceBelow < popupHeight + 15) {
+        // Not enough space below, position above
+        top = badgeTop - popupHeight;
+      } else {
+        // Enough space, position below
+        top = badgeBottom;
       }
 
       // Keep popup in viewport horizontally
-      var minLeft = window.pageXOffset + 10;
-      var maxLeft = window.pageXOffset + window.innerWidth - popupWidth - 10;
+      var minLeft = 10;
+      var maxLeft = window.innerWidth - popupWidth - 10;
       if (left < minLeft) left = minLeft;
       if (left > maxLeft) left = maxLeft;
 
