@@ -1,0 +1,28 @@
+<!-- Custom JavaScript for mobile navbar hover trigger -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Only apply on mobile (max-width: 991px)
+  if (window.innerWidth <= 991) {
+    const toggler = document.querySelector('.navbar-toggler');
+    const navbarCollapse = document.querySelector('#navbar-content');
+    
+    if (toggler && navbarCollapse) {
+      // Show menu on hover over hamburger icon
+      toggler.addEventListener('mouseenter', function() {
+        if (!navbarCollapse.classList.contains('show')) {
+          $(navbarCollapse).collapse('show');
+        }
+      });
+      
+      // Prevent menu from auto-hiding once it's expanded
+      // Users must click outside or on a link to close it
+    }
+  }
+  
+  // Disable all tooltips and popovers when in navbar
+  if (typeof $ !== 'undefined') {
+    $('[data-toggle="tooltip"]').tooltip('disable');
+    $('[data-toggle="popover"]').popover('disable');
+  }
+});
+</script>

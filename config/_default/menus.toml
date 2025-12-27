@@ -9,12 +9,12 @@
   weight = 10
 
 [[main]]
-  name = 'Web Apps'
+  name = '<span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Web applications and data dashboards &nbsp; ">Web Apps</span>'
   url = '#applications-and-dashboards'
   weight = 20
   
 [[main]]
-  name = 'Presentations'
+  name = '<span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Presentations and workshops &nbsp; ">Presentations</span>'
   url = '#workshops'
   weight = 30
 
