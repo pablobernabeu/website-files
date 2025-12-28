@@ -1788,6 +1788,37 @@ body.dark .navbar-collapse {
   .navbar-nav .nav-link {
     font-size: 0.9rem !important;
   }
+  
+  // Increase modal width in desktop view
+  .modal-dialog {
+    max-width: 60vw !important;
+    width: 60vw !important;
+    margin: 1.75rem auto !important;
+  }
+}
+
+// For smaller desktop screens, increase modal width further
+@media (min-width: 992px) and (max-width: 1200px) {
+  .modal-dialog {
+    max-width: 95vw !important;
+    width: 95vw !important;
+  }
+}
+
+// Reduce margin under modal header
+.modal-header {
+  margin-bottom: 0 !important;
+  padding-bottom: 0.25rem !important;
+}
+
+.modal-body {
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
+}
+
+.modal-footer {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
 
@@ -1818,6 +1849,7 @@ body.dark .navbar-brand:hover {
   #navbar-main > div > ul {
     margin-left: 0 !important;
     padding-left: 0 !important;
+    margin-top: 0.5rem !important;
   }
 }
 
