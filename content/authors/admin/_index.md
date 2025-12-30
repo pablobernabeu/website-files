@@ -47,11 +47,10 @@ recent_work:
       extra: "-&nbsp; I worked as a statistical consultant for the [CLICK Project (Cross-Linguistic Influence of Competing Knowledge)](https://uit.no/research/acqva/project?pid=723990), which investigated multilingualism in heritage speakers. I worked with questionnaire and eye-tracking data."
 education:
   courses:
-    - course: "[PhD Psychology](https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109).html)"
+    - course: "PhD Psychology"
       institution: Lancaster University (United Kingdom)
       year: "2018--2022"
       extra: "-&nbsp; Additional service: Peer-review for Cognitive Science and for Psychological Science Accelerator; development of website for open science group in my department."
-      extra2: '\-&nbsp; [Activities](https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109)/activities.html)'
     - course: "[Research Master Language and Communication](https://www.tilburguniversity.edu/education/masters-programmes/research-master-linguistics-and-communication-sciences)"
       institution: Tilburg University and Radboud University (the Netherlands)
       year: "2013--2017"

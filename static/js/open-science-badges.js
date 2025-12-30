@@ -14,11 +14,17 @@
     function showPopup(badge) {
       clearTimeout(hideTimeout);
       var badgeSrc = badge.src;
+      
+      // Don't show popup if badge has no src or empty src
+      if (!badgeSrc || badgeSrc.trim() === '' || badgeSrc.endsWith('/')) {
+        return;
+      }
+      
       popupImg.src = badgeSrc;
       popupImg.alt = badge.alt;
 
       // Show popup temporarily to measure its actual width
-      popup.style.display = "block";
+      popup.style.display = "inline-flex";
       popup.style.visibility = "hidden";
 
       // Position popup above or below the badge

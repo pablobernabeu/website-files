@@ -680,7 +680,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#applications-and-dashboards" data-target="#applications-and-dashboards"><span>Web Applications</span></a>
+          <a class="nav-link " href="/#applications-and-dashboards" data-target="#applications-and-dashboards"><span><span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Web applications and data dashboards &nbsp; ">Web Apps</span></span></a>
         </li>
 
         
@@ -709,7 +709,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#workshops" data-target="#workshops"><span>Workshops & Presentations</span></a>
+          <a class="nav-link " href="/#workshops" data-target="#workshops"><span><span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Presentations and workshops &nbsp; ">Presentations</span></span></a>
         </li>
 
         
@@ -794,7 +794,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#blog" data-target="#blog"><span><span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Short essays &nbsp; | &nbsp; Tutorials &nbsp; | &nbsp; Inquiries &nbsp; | &nbsp; Functions for the implementation of experiments, data analysis and other purposes &nbsp; ">Blog & Resources</span></span></a>
+          <a class="nav-link " href="/#blog" data-target="#blog"><span><span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Short essays &nbsp; | &nbsp; Tutorials &nbsp; | &nbsp; Inquiries &nbsp; | &nbsp; Functions for the implementation of experiments, data analysis and other purposes &nbsp; ">Resources</span></span></a>
         </li>
 
         
@@ -4540,11 +4540,9 @@
           <li>
             <i class="fa-li fas fa-graduation-cap fa-sm" style="padding-left:17px;"></i>
             <div class="description" style="padding-left:14px;">
-              <p class="course" style="color:#515151"><a href="https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109).html">PhD Psychology</a>, 2018&ndash;2022</p>
+              <p class="course" style="color:#515151">PhD Psychology, 2018&ndash;2022</p>
               <p class="institution" style="color:#5B5B5B">Lancaster University (United Kingdom)</p>
               <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-top:0.3em; margin-left:1em;">-  Additional service: Peer-review for Cognitive Science and for Psychological Science Accelerator; development of website for open science group in my department.</p>
-              
-                <p class="institution" style="max-width:550px; padding-left:8px; text-indent:-0.8em; margin-top:0.3em; margin-left:1em;">-  <a href="https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109)/activities.html">Activities</a></p>
               
               
               
@@ -5007,13 +5005,13 @@
 </tr>
 <tr>
 <td>Apr 2019</td>
-<td>Travel grant, UK Open Science Working Group. Aston University, UK</td>
+<td>Travel grant, UK Open Science Working Group. Aston University</td>
 <td>Attendance at first meeting of the UK Open Science Working Group.</td>
 </tr>
 <tr>
 <td>2018 &ndash; 2022</td>
-<td>Scholarship for PhD and graduate teaching assistantship, Lancaster University, UK</td>
-<td>See <a href="https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109).html">research and other activities</a>.</td>
+<td>Scholarship for PhD and graduate teaching assistantship, Lancaster University</td>
+<td>See details about <a href="/#education">PhD</a> and <a href="/#teaching-supervision">teaching assistantship</a>.</td>
 </tr>
 <tr>
 <td>Nov 2017</td>
@@ -5039,6 +5037,11 @@
 <td>May &ndash; June 2016</td>
 <td>Funding for experiment from <a href="https://www.mpi.nl/department/neurobiology-language/4">Neurobiology of Language Dept., Max Planck Institute for Psycholinguistics</a></td>
 <td>Conducting an EEG experiment for my <a href="https://psyarxiv.com/5gjvk/">master's thesis</a>.</td>
+</tr>
+<tr>
+<td>2014 &ndash; 2015</td>
+<td>Tilburg University Scholarship for Academic Excellence</td>
+<td>Supporting my engagement in the Research Master's Language and Communication.</td>
 </tr>
 </tbody>
 </table>
@@ -5103,7 +5106,7 @@
 <tbody>
 <tr>
 <td><div style='white-space:nowrap;'>May – July 2018</div></td>
-<td>Service Analyst. <a href="https://onfido.com/">Onfido</a>, London, UK <br> <span style='color:#5A826F;'>I was responsible for verifying identity checks through random sampling and data analysis, leveraging insights retrieved from Power BI. I designed and implemented a self-updating Excel dashboard with dynamic tables and visualisations to streamline data reporting. My role involved close collaboration with service analysts and engineers to ensure accurate and actionable insights. Additionally, I utilised tools such as Jira, Confluence and Zendesk to support project management, documentation and customer service processes.</span></td>
+<td>Service Analyst. <a href="https://onfido.com/">Onfido</a>, London <br> <span style='color:#5A826F;'>I was responsible for verifying identity checks through random sampling and data analysis, leveraging insights retrieved from Power BI. I designed and implemented a self-updating Excel dashboard with dynamic tables and visualisations to streamline data reporting. My role involved close collaboration with service analysts and engineers to ensure accurate and actionable insights. Additionally, I utilised tools such as Jira, Confluence and Zendesk to support project management, documentation and customer service processes.</span></td>
 </tr>
 <tr>
 <td><div style='white-space:nowrap;'>Dec 2015 – Feb 2016</div></td>
@@ -11277,9 +11280,33 @@ Memory-based viewThe memory-based view presented reading as an autonomous, unco
     
 
     
-
-
-
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  
+  if (window.innerWidth <= 991) {
+    const toggler = document.querySelector('.navbar-toggler');
+    const navbarCollapse = document.querySelector('#navbar-content');
+    
+    if (toggler && navbarCollapse) {
+      
+      toggler.addEventListener('mouseenter', function() {
+        if (!navbarCollapse.classList.contains('show')) {
+          $(navbarCollapse).collapse('show');
+        }
+      });
+      
+      
+      
+    }
+  }
+  
+  
+  if (typeof $ !== 'undefined') {
+    $('[data-toggle="tooltip"]').tooltip('disable');
+    $('[data-toggle="popover"]').popover('disable');
+  }
+});
+</script>
 
 
 

@@ -714,7 +714,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#applications-and-dashboards"><span>Web Applications</span></a>
+          <a class="nav-link " href="/#applications-and-dashboards"><span><span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Web applications and data dashboards &nbsp; ">Web Apps</span></span></a>
         </li>
 
         
@@ -743,7 +743,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#workshops"><span>Workshops & Presentations</span></a>
+          <a class="nav-link " href="/#workshops"><span><span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Presentations and workshops &nbsp; ">Presentations</span></span></a>
         </li>
 
         
@@ -828,7 +828,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#blog"><span><span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Short essays &nbsp; | &nbsp; Tutorials &nbsp; | &nbsp; Inquiries &nbsp; | &nbsp; Functions for the implementation of experiments, data analysis and other purposes &nbsp; ">Blog & Resources</span></span></a>
+          <a class="nav-link " href="/#blog"><span><span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Short essays &nbsp; | &nbsp; Tutorials &nbsp; | &nbsp; Inquiries &nbsp; | &nbsp; Functions for the implementation of experiments, data analysis and other purposes &nbsp; ">Resources</span></span></a>
         </li>
 
         
@@ -1303,9 +1303,33 @@ Bernabeu, P. (2025). <em>Secure and scalable speech transcription for local and 
     
 
     
-
-
-
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  
+  if (window.innerWidth <= 991) {
+    const toggler = document.querySelector('.navbar-toggler');
+    const navbarCollapse = document.querySelector('#navbar-content');
+    
+    if (toggler && navbarCollapse) {
+      
+      toggler.addEventListener('mouseenter', function() {
+        if (!navbarCollapse.classList.contains('show')) {
+          $(navbarCollapse).collapse('show');
+        }
+      });
+      
+      
+      
+    }
+  }
+  
+  
+  if (typeof $ !== 'undefined') {
+    $('[data-toggle="tooltip"]').tooltip('disable');
+    $('[data-toggle="popover"]').popover('disable');
+  }
+});
+</script>
 
 
 

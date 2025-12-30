@@ -146,6 +146,14 @@ function parseResults(query, results) {
       content_key = content_type[content_key];
     }
 
+    // Override type for home page sections.
+    if (value.item.relpermalink && value.item.relpermalink.includes('/#')) {
+      content_key = 'Section on home page';
+    }
+
+    // Replace hyphens with spaces in content type.
+    content_key = content_key.replace(/-/g, ' ');
+
     // Parse template.
     let templateData = {
       key: key,

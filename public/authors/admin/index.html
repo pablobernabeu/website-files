@@ -666,7 +666,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#applications-and-dashboards"><span>Web Applications</span></a>
+          <a class="nav-link " href="/#applications-and-dashboards"><span><span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Web applications and data dashboards &nbsp; ">Web Apps</span></span></a>
         </li>
 
         
@@ -695,7 +695,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#workshops"><span>Workshops & Presentations</span></a>
+          <a class="nav-link " href="/#workshops"><span><span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Presentations and workshops &nbsp; ">Presentations</span></span></a>
         </li>
 
         
@@ -780,7 +780,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#blog"><span><span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Short essays &nbsp; | &nbsp; Tutorials &nbsp; | &nbsp; Inquiries &nbsp; | &nbsp; Functions for the implementation of experiments, data analysis and other purposes &nbsp; ">Blog & Resources</span></span></a>
+          <a class="nav-link " href="/#blog"><span><span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Short essays &nbsp; | &nbsp; Tutorials &nbsp; | &nbsp; Inquiries &nbsp; | &nbsp; Functions for the implementation of experiments, data analysis and other purposes &nbsp; ">Resources</span></span></a>
         </li>
 
         
@@ -1006,11 +1006,9 @@
           <li>
             <i class="fa-li fas fa-graduation-cap fa-sm" style="padding-left:17px;"></i>
             <div class="description" style="padding-left:14px;">
-              <p class="course" style="color:#515151"><a href="https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109).html">PhD Psychology</a>, 2018&ndash;2022</p>
+              <p class="course" style="color:#515151">PhD Psychology, 2018&ndash;2022</p>
               <p class="institution" style="color:#5B5B5B">Lancaster University (United Kingdom)</p>
               <p class="institution" style="max-width: 550px; padding-left:8px; text-indent:-0.8em; margin-top:0.3em; margin-left:1em;">-  Additional service: Peer-review for Cognitive Science and for Psychological Science Accelerator; development of website for open science group in my department.</p>
-              
-                <p class="institution" style="max-width:550px; padding-left:8px; text-indent:-0.8em; margin-top:0.3em; margin-left:1em;">-  <a href="https://www.research.lancs.ac.uk/portal/en/people/pablo-de-juan-bernabeu(5add90d6-f60f-4a88-91fc-b2e756579109)/activities.html">Activities</a></p>
               
               
               
@@ -1358,9 +1356,33 @@
     
 
     
-
-
-
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  
+  if (window.innerWidth <= 991) {
+    const toggler = document.querySelector('.navbar-toggler');
+    const navbarCollapse = document.querySelector('#navbar-content');
+    
+    if (toggler && navbarCollapse) {
+      
+      toggler.addEventListener('mouseenter', function() {
+        if (!navbarCollapse.classList.contains('show')) {
+          $(navbarCollapse).collapse('show');
+        }
+      });
+      
+      
+      
+    }
+  }
+  
+  
+  if (typeof $ !== 'undefined') {
+    $('[data-toggle="tooltip"]').tooltip('disable');
+    $('[data-toggle="popover"]').popover('disable');
+  }
+});
+</script>
 
 
 

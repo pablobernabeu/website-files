@@ -35,8 +35,15 @@
   })();
 </script>
 
-{{ partial "publication-badges-css.html" . }} {{/* Basic performance
-optimization */}}
+{{ partial "publication-badges-css.html" . }}
+
+{{/* Search modal styling */}}
+<link rel="stylesheet" href="{{ "css/search-modal.css" | relURL }}" />
+
+{{/* Tag cloud network visualization */}}
+<script src="{{ "js/tag-cloud-network.js" | relURL }}" defer></script>
+
+{{/* Basic performance optimization */}}
 <meta name="format-detection" content="telephone=no" />
 
 {{/* Search modal smart closing and query preservation - Simple Version */}}

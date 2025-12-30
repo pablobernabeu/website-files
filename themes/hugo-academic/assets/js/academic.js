@@ -509,7 +509,14 @@
   // Filter by search term.
   let $quickSearch = $(".filter-search").keyup(
     debounce(function () {
-      searchRegex = new RegExp($quickSearch.val(), "gi");
+      let searchTerms = $quickSearch.val().trim().split(/\s+/).filter(term => term.length > 0);
+      if (searchTerms.length > 0) {
+        // Create regex that matches all terms in any order
+        let regexPattern = searchTerms.map(term => `(?=.*${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`).join('') + '.*';
+        searchRegex = new RegExp(regexPattern, "gis");
+      } else {
+        searchRegex = null;
+      }
       $grid_pubs.isotope();
     })
   );

@@ -175,6 +175,7 @@ article .article-metadata {
   display: block;
   position: relative;
   overflow: hidden;
+  min-height: calc(100vh - 400px);
 }
 
 .li-cite-author {

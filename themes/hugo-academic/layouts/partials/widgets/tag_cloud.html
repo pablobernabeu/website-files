@@ -41,7 +41,7 @@
           {{ $tagCount := len $term.Pages }}
           {{ $weight := div (sub (math.Log $tagCount) (math.Log $min)) (sub (math.Log $max) (math.Log $min)) }}
           {{ $fontSize := add $fontSmall (mul (sub $fontBig $fontSmall) $weight) }}
-          <a href="{{ .Page.RelPermalink }}" style="font-size:{{ $fontSize }}rem">{{ .Page.Title | markdownify | emojify }}</a>
+          <a href="{{ .Page.RelPermalink }}" style="font-size:{{ $fontSize }}rem" data-count="{{ $tagCount }}" data-tag="{{ .Page.Title }}">{{ .Page.Title | markdownify | emojify }}</a>
         {{ end }}
       </div>
     {{ end }}
@@ -69,7 +69,7 @@
           {{ $tagCount := len $term.Pages }}
           {{ $weight := div (sub (math.Log $tagCount) (math.Log $min)) (sub (math.Log $max) (math.Log $min)) }}
           {{ $fontSize := add $fontSmall (mul (sub $fontBig $fontSmall) $weight) }}
-          <a href="{{ .Page.RelPermalink }}" style="font-size:{{ $fontSize }}rem">{{ .Page.Title | markdownify | emojify }}</a>
+          <a href="{{ .Page.RelPermalink }}" style="font-size:{{ $fontSize }}rem" data-count="{{ $tagCount }}" data-tag="{{ .Page.Title }}">{{ .Page.Title | markdownify | emojify }}</a>
         {{ end }}
       </div>
     {{ end }}

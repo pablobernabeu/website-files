@@ -12,7 +12,10 @@
     
     {{- /* Skip blog posts (Section = "post") that don't have the "s" tag */ -}}
     {{- $shouldIndex := true -}}
-    {{- if eq .Section "post" -}}
+    {{- /* Skip authors section as we index bio widget separately */ -}}
+    {{- if eq .Section "authors" -}}
+      {{- $shouldIndex = false -}}
+    {{- else if eq .Section "post" -}}
       {{- $hasStag := false -}}
       {{- range .Params.Tags -}}
         {{- if eq . "s" -}}
@@ -72,8 +75,13 @@
     {{- /* OPTIMIZATION: Create much smaller content excerpt instead of full content */ -}}
     {{- $content := .Plain -}}
     {{- $contentExcerpt := "" -}}
-    {{- if gt (len $content) 500 -}}
-      {{- $contentExcerpt = substr $content 0 500 -}}
+    {{- /* Use larger excerpt for author pages to capture full bio */ -}}
+    {{- $excerptSize := 500 -}}
+    {{- if eq .Section "authors" -}}
+      {{- $excerptSize = 3000 -}}
+    {{- end -}}
+    {{- if gt (len $content) $excerptSize -}}
+      {{- $contentExcerpt = substr $content 0 $excerptSize -}}
       {{- /* Simple truncation without word boundary detection for compatibility */ -}}
     {{- else -}}
       {{- $contentExcerpt = $content -}}
@@ -106,6 +114,67 @@
     {{- $index = $index | append (dict "objectID" .File.UniqueID "date" .Date.UTC.Unix "publishdate" .PublishDate "lastmod" .Lastmod.UTC.Unix "lang" .Lang "permalink" $permalink "relpermalink" $rel_permalink "title" ($title | plainify) "summary" (plainify $desc) "content" (plainify $contentExcerpt) "authors" $limitedAuthors "kind" .Kind "type" .Type "section" .Section "tags" $limitedTags "categories" $limitedCategories) -}}
 
     {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* Add home page with all widget content combined for searchability */ -}}
+{{- $homePage := site.GetPage "/" -}}
+{{- if $homePage -}}
+  {{- $homeContent := "" -}}
+  {{- $homeWidgets := slice -}}
+  
+  {{- /* Try to read home widget files from filesystem */ -}}
+  {{- range (readDir "content/home") -}}
+    {{- if and (not .IsDir) (ne .Name "index.md") (or (strings.HasSuffix .Name ".md") (strings.HasSuffix .Name ".markdown")) -}}
+      {{- $widgetPath := printf "content/home/%s" .Name -}}
+      {{- $widgetContent := readFile $widgetPath -}}
+      {{- /* Check if widget is active */ -}}
+      {{- $activeMatch := findRE `(?m)^active\s*=\s*(true|false)` $widgetContent 1 -}}
+      {{- $isActive := true -}}
+      {{- if $activeMatch -}}
+        {{- if in (index $activeMatch 0) "false" -}}
+          {{- $isActive = false -}}
+        {{- end -}}
+      {{- end -}}
+      {{- /* Extract title from front matter - look for title = "..." */ -}}
+      {{- $titleMatch := findRE `(?m)^title\s*=\s*"([^"]+)"` $widgetContent 1 -}}
+      {{- $widgetTitle := "" -}}
+      {{- if $titleMatch -}}
+        {{- $widgetTitle = replaceRE `(?m)^title\s*=\s*"([^"]+)"` "$1" (index $titleMatch 0) -}}
+      {{- end -}}
+      {{- /* Remove front matter to get content */ -}}
+      {{- $cleanContent := replaceRE `(?s)^\+\+\+.*?\+\+\+` "" $widgetContent -}}
+      {{- $cleanContent = replaceRE `(?s)^---.*?---` "" $cleanContent -}}
+      {{- if and $widgetTitle $isActive -}}
+        {{- $homeContent = printf "%s\n\n## %s\n\n%s" $homeContent $widgetTitle $cleanContent -}}
+        {{- $homeWidgets = $homeWidgets | append (dict "title" $widgetTitle "id" (replace (replace .Name ".md" "") ".markdown" "") "content" $cleanContent) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  
+  {{- /* Add individual entries for each widget section */ -}}
+  {{- range $homeWidgets -}}
+    {{- $sectionID := .id -}}
+    {{- $sectionTitle := .title -}}
+    {{- $sectionContent := .content -}}
+    {{- $permalink := printf "%s#%s" site.BaseURL $sectionID -}}
+    {{- $relpermalink := printf "/#%s" $sectionID -}}
+    {{- $uniqueID := printf "home-widget-%s" $sectionID -}}
+    
+    {{- $index = $index | append (dict "objectID" $uniqueID "date" 0 "publishdate" "0001-01-01T00:00:00Z" "lastmod" 0 "lang" "en" "permalink" $permalink "relpermalink" $relpermalink "title" $sectionTitle "summary" $sectionTitle "content" (plainify $sectionContent) "authors" slice "kind" "home" "type" "home" "section" $sectionTitle "tags" slice "categories" slice) -}}
+  {{- end -}}
+  
+  {{- /* Add bio widget separately since it pulls content from author profile */ -}}
+  {{- $authorPage := site.GetPage "/authors/admin" -}}
+  {{- if $authorPage -}}
+    {{- $bioContent := $authorPage.Plain -}}
+    {{- $bioExcerpt := $bioContent -}}
+    {{- if gt (len $bioContent) 3000 -}}
+      {{- $bioExcerpt = substr $bioContent 0 3000 -}}
+    {{- end -}}
+    {{- $bioPermalink := printf "%s#bio" site.BaseURL -}}
+    {{- $bioRelpermalink := "/#bio" -}}
+    {{- $index = $index | append (dict "objectID" "home-widget-bio" "date" 0 "publishdate" "0001-01-01T00:00:00Z" "lastmod" 0 "lang" "en" "permalink" $bioPermalink "relpermalink" $bioRelpermalink "title" "Profile" "summary" "Profile of Pablo Bernabeu" "content" (plainify $bioExcerpt) "authors" slice "kind" "home" "type" "home" "section" "Profile" "tags" slice "categories" slice) -}}
   {{- end -}}
 {{- end -}}
 

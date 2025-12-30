@@ -118,6 +118,36 @@ section.home-section .col-lg-4 {
 }
 
 /* Hide all scrollbars on home page sections */
+
+/* Full width tag cloud with minimal margins */
+#tags .container {
+  max-width: 100% !important;
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+}
+
+#tags .tag-cloud {
+  text-align: center !important;
+  line-height: 2.2 !important;
+  position: relative;
+}
+
+#tags .tag-cloud a {
+  display: inline;
+  margin: 0 0.4rem;
+  position: relative;
+  padding: 0;
+}
+
+/* Frequency count subscripts */
+#tags .tag-cloud a::after {
+  content: attr(data-count);
+  font-size: 0.6em;
+  vertical-align: sub;
+  opacity: 0.5;
+  margin-left: 0.15em;
+  font-weight: 400;
+}
 .home-section *,
 .home-section .row,
 .home-section .col-12,
@@ -4316,4 +4346,131 @@ table caption {
     width: 90%;
   }
 }
+
+/* Increase top padding in bio section */
+#bio {
+  padding-top: 3rem !important;
+}
+
+/* Increase margin above publication filter controls */
+.universal-wrapper .form-row.mb-4 {
+  margin-top: 1rem !important;
+}
+
+/* Reduce margin above publication page container */
+#top > div.container {
+  margin-top: 0rem !important;
+  padding-top: -1rem !important;
+}
+
+/* Reduce margins around publication page title */
+#top > div.universal-wrapper.pt-3 > h1 {
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+/* Expand search input in publication filters */
+.universal-wrapper .form-row.mb-4 > div:nth-child(1) {
+  flex: 0 1 auto !important;
+  max-width: 320px !important;
+  min-width: 150px !important;
+}
+
+.universal-wrapper .form-row.mb-4 .filter-search {
+  width: 100% !important;
+}
+
+/* Reduce padding in filter dropdowns */
+.universal-wrapper .form-row.mb-4 .pub-filters {
+  padding-right: 0.5rem !important;
+  min-width: 100px !important;
+}
+
+.universal-wrapper .form-row.mb-4 > div:nth-child(2),
+.universal-wrapper .form-row.mb-4 > div:nth-child(3) {
+  flex: 0 0 auto !important;
+  padding-right: 0.25rem !important;
+}
+
+/* Search modal improvements - sticky elements with body scrollbar */
+
+/* Change search from fixed modal to full-page overlay using body scroll */
+.search-results {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: auto !important;
+  min-height: 100vh !important;
+  overflow: visible !important;
+  z-index: 1031;
+}
+
+/* Allow body to scroll when search is open, but hide other content */
+.searching {
+  overflow: auto !important;
+  position: static !important;
+}
+
+/* Hide all page content when search is open */
+.searching > *:not(.search-results) {
+  display: none !important;
+}
+
+/* Container with max-width and reduced top padding */
+#search > div {
+  max-width: 850px !important;
+  margin: 0 auto 2rem auto !important;
+  padding-top: 1rem !important;
+  padding-bottom: 0 !important;
+}
+
+/* Make search header sticky to viewport */
+#search > div > section.search-header {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10 !important;
+  background-color: #fff;
+  padding: 0 !important;
+  margin: 0 0 0.5rem 0 !important;
+}
+
+.dark #search > div > section.search-header {
+  background-color: #282a36;
+}
+
+/* Reduce bottom padding in the row */
+#search > div > section.search-header > div.row.no-gutters.justify-content-between.mb-3 {
+  margin-bottom: 0.5rem !important;
+}
+
+/* Remove padding from search results section */
+.section-search-results {
+  padding: 0;
+  margin: 0;
+}
+
+#search-hits {
+  padding: 0;
+  margin: 0 0 3rem 0;
+}
+
+/* Make the results count sticky to viewport */
+#search-hits > p.search-results-count {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 3.5rem !important;
+  background-color: #fff;
+  z-index: 9;
+  padding: 0.5rem 0;
+  margin: 0 0 1rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark #search-hits > p.search-results-count {
+  background-color: #282a36;
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
 
