@@ -35,7 +35,7 @@ summary: "A production-ready, local transcription workflow using OpenAI's Whispe
 featured: no
 url_fulltext: https://github.com/pablobernabeu/secure_local_HPC_speech_transcription/blob/main/README.md
 url_code: https://github.com/pablobernabeu/secure_local_HPC_speech_transcription
-url_data: ~
+url_data: https://github.com/pablobernabeu/secure_local_HPC_speech_transcription/tree/main/example_output
 url_poster: ~
 url_project: ~
 url_slides: ~ 

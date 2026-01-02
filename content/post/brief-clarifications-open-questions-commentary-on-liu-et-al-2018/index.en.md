@@ -18,7 +18,7 @@ tags:
   - event-related potentials
   - experiment
   - statistics
-  - bayesian
+  - Bayesian
   - frequentist
   - bias
   - methodology
@@ -34,7 +34,7 @@ projects: []
 ---
 
 
-Liu et al. (2018) present a study that implements the conceptual modality switch (CMS) paradigm, which has been used to investigate the modality-specific nature of conceptual representations (Pecher et al., 2003). Liu et al.'s experiment uses event-related potentials (ERPs; similarly, see Bernabeu et al., 2017; Collins et al., 2011; Hald et al., 2011, 2013). In the design of the switch conditions, the experiment implements a corpus analysis to distinguish between purely-embodied modality switches and switches that are more liable to linguistic bootstrapping (also see Bernabeu et al., 2017; Louwerse & Connell, 2011). The procedure for stimulus selection was novel as well as novel; thus, it could prove useful in future studies, too. In addition, the application of bayesian statistics is an interesting and promising novelty in the present research area.
+Liu et al. (2018) present a study that implements the conceptual modality switch (CMS) paradigm, which has been used to investigate the modality-specific nature of conceptual representations (Pecher et al., 2003). Liu et al.'s experiment uses event-related potentials (ERPs; similarly, see Bernabeu et al., 2017; Collins et al., 2011; Hald et al., 2011, 2013). In the design of the switch conditions, the experiment implements a corpus analysis to distinguish between purely-embodied modality switches and switches that are more liable to linguistic bootstrapping (also see Bernabeu et al., 2017; Louwerse & Connell, 2011). Furthermore, the sophisticated procedure used for the selection of stimuli could prove useful in future studies, and the application of Bayesian statistics is an interesting and promising novelty in the present research area.
 
 In reviewing the literature, Liu (2018) and Liu et al. (2018) contend that previous studies may be strongly biased due to methodological decisions in the analysis of ERPs. These decisions particularly regard the latency---i.e., time windows---and the topographic regions of interest---i.e., subsets of electrodes. Thus, Liu et al. identify a 'highly inconsistent' (p. 6) landscape in the ERP components that have been ascribed to the CMS effect in previous studies. Similarly, Liu (p. 47) writes:
 
@@ -43,7 +43,7 @@ In reviewing the literature, Liu (2018) and Liu et al. (2018) contend that previ
 
 ### Drastic conclusions
 
-Liu et al. (2018) conclude that a confirmatory research approach is not warranted, and adopt a semi-exploratory approach, creating time windows of 50 ms each, rather than windows linked to known ERP components (Swaab et al., 2012), and using bayesian statistics. Such a drastic conclusion appears to stem from the assumption that, if the CMS were robust enough, it would present in the same guise across studies. Such an assumption, however, may merit further examination, considering the multiplicity of known and unknown variables that may differ across experiments (Barsalou, 2019). This variability influences the *replication praxis*, as it were. Indeed, Liu et al. themselves allude to one such variable (p. 7).
+Liu et al. (2018) conclude that a confirmatory research approach is not warranted, and adopt a semi-exploratory approach, creating time windows of 50 ms each, rather than windows linked to known ERP components (Swaab et al., 2012), and using Bayesian statistics. Such a drastic conclusion appears to stem from the assumption that, if the CMS were robust enough, it would present in the same guise across studies. Such an assumption, however, may merit further examination, considering the multiplicity of known and unknown variables that may differ across experiments (Barsalou, 2019). This variability influences the *replication praxis*, as it were. Indeed, Liu et al. themselves allude to one such variable (p. 7).
 
 > These previous studies did not only examine the effect of modality switching but also other linguistic factors such as negated sentences, which could easily distort observed waveforms (Luck, 2005).
 
@@ -52,7 +52,7 @@ Liu et al.'s (2018) conclusions about the 'inconsistent' results do not seem to 
 
 ### Clarifications
 
-Liu et al. (2018) apply bayesian statistics reportedly to help reduce the bias that may exist in the present literature. However, the reviews by Liu (2018) and Liu et al. appear to gloss over some important aspects regarding previous studies. For instance, Liu writes (p. 53):
+Liu et al. (2018) apply Bayesian statistics reportedly to help reduce the bias that may exist in the present literature. However, the reviews by Liu (2018) and Liu et al. appear to gloss over some important aspects regarding previous studies. For instance, Liu writes (p. 53):
 
 > The inflation of the probability of Type I error leads to an over-confidence in the interpretation of the results. For example, in the studies on modality switching costs, different time windows were chosen to test the early effect of modality switching costs. While Bernabeu et al. (2017), Hald et al. (2011) and Hald et al. (2013) examined the segment of ERP waveform between 190ms and 300ms or 160ms and 215ms based on visual inspection and found significant effects, Collins et al. (2011) chose a prescribed time window between 100ms and 200ms before the analysis and did not find the effect.
 
@@ -107,7 +107,7 @@ The results of Bernabeu et al. (2017) were reanalysed after publication using a 
 
 ### Open questions
 
-Liu (2018) and Liu et al. (2018) raise interesting and important questions. Firstly, future research may be conducted to investigate what determines the variability of ERP results---in terms of ERP components, time windows and topographic regions of interest. This research could include a comparison with other measurements, such as response times, to test whether ERPs are less reliable---i.e., more variable across studies---than response times. Similarly, future research may investigate whether the ERP literature is more biased than literature employing other measures, such as response times. In addition, future research could investigate whether moving to exploratory, bayesian research designs is a necessary or sufficient condition to reduce bias in research and improve the precision of experimental measurements. Current alternatives to such an approach include direct (or conceptual) replications designed to achieve a higher power than previous studies (e.g., Chen et al., 2019). Arguably, policies determining funding decisions would need to change if we are to fully acknowledge the importance of *direct* replication (Howe & Perfors, 2018; Kunert, 2016; Simons, 2014; Zwaan et al., 2018). Last, future research may investigate whether 'clear picture' results are realistic, desirable or necessary, and whether unclear-picture results should be eschewed; or whether, on the contrary, clear-picture results may largely be the product of publication bias---that is, the pressure to hide or misreport those aspects of a study that could challenge its acceptance by peer-reviewers or any other academics.
+Liu (2018) and Liu et al. (2018) raise interesting and important questions. Firstly, future research may be conducted to investigate what determines the variability of ERP results---in terms of ERP components, time windows and topographic regions of interest. This research could include a comparison with other measurements, such as response times, to test whether ERPs are less reliable---i.e., more variable across studies---than response times. Similarly, future research may investigate whether the ERP literature is more biased than literature employing other measures, such as response times. In addition, future research could investigate whether moving to exploratory, Bayesian research designs is a necessary or sufficient condition to reduce bias in research and improve the precision of experimental measurements. Current alternatives to such an approach include direct (or conceptual) replications designed to achieve a higher power than previous studies (e.g., Chen et al., 2019). Arguably, policies determining funding decisions would need to change if we are to fully acknowledge the importance of *direct* replication (Howe & Perfors, 2018; Kunert, 2016; Simons, 2014; Zwaan et al., 2018). Last, future research may investigate whether 'clear picture' results are realistic, desirable or necessary, and whether unclear-picture results should be eschewed; or whether, on the contrary, clear-picture results may largely be the product of publication bias---that is, the pressure to hide or misreport those aspects of a study that could challenge its acceptance by peer-reviewers or any other academics.
 
 
 ### References

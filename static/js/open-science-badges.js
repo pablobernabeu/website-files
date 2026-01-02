@@ -9,11 +9,14 @@
     document.body.appendChild(popup);
 
     var popupImg = popup.querySelector("img");
+    var popupSpan = popup.querySelector("span");
     var hideTimeout;
 
     function showPopup(badge) {
       clearTimeout(hideTimeout);
       var badgeSrc = badge.src;
+      var badgeType = badge.dataset.badgeType;
+      var badgeUrl = badge.dataset.badgeUrl;
       
       // Don't show popup if badge has no src or empty src
       if (!badgeSrc || badgeSrc.trim() === '' || badgeSrc.endsWith('/')) {
@@ -22,6 +25,38 @@
       
       popupImg.src = badgeSrc;
       popupImg.alt = badge.alt;
+
+      // Build popup content dynamically
+      var popupContent = '';
+      
+      // Add badge-specific link if URL is available
+      if (badgeUrl && badgeUrl !== 'undefined' && badgeUrl.trim() !== '') {
+        // Map badge type to display text and color
+        var linkText = '';
+        var linkColor = '';
+        if (badgeType === 'Preregistered') {
+          linkText = '<i class="fa fa-external-link" style="font-size: 11px; color: #666;"></i> Prereg';
+          linkColor = '#b31b1b';  // Dark red
+        } else if (badgeType === 'Open Materials') {
+          linkText = '<i class="fa fa-external-link" style="font-size: 11px; color: #666;"></i> Materials';
+          linkColor = '#f68212';  // Orange
+        } else if (badgeType === 'Open Data') {
+          linkText = '<i class="fa fa-external-link" style="font-size: 11px; color: #666;"></i> Data';
+          linkColor = '#2996cc';  // Blue
+        }
+        
+        popupContent += '<a href="' + badgeUrl + '" target="_blank" rel="noopener" style="color: ' + linkColor + '; text-decoration: none; font-weight: bold; display: block; text-align: center; margin-left: -6px; margin-bottom: 8px; font-size: 15px;">';
+        popupContent += linkText;
+        popupContent += '</a>';
+        
+        // Add horizontal separator
+        popupContent += '<span class="popup-separator" style="display: block; height: 1px; background: #ccc; margin: 8px 0;"></span>';
+      }
+      
+      // Add COS link
+      popupContent += '<a href="https://www.cos.io/initiatives/badges" target="_blank" rel="noopener" style="font-size: 10px; white-space: nowrap; display: block; text-align: center;">Center for Open Science</a>';
+      
+      popupSpan.innerHTML = popupContent;
 
       // Show popup temporarily to measure its actual width
       popup.style.display = "inline-flex";

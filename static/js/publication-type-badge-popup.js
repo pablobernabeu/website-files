@@ -16,7 +16,7 @@
       popup.classList.add("home-page-popup");
     }
     popup.innerHTML =
-      '<span class="pub-type-popup-text"><a href="#" class="content-link">View publication</a><span class="popup-separator" style="display: block; height: 1px; background: #ccc; margin: 4px 0;"></span><a href="/publication/" class="type-link">Filter works</a></span>';
+      '<span class="pub-type-popup-text"><a href="#" class="content-link">View publication</a><span class="popup-separator" style="display: block; height: 1px; background: #ccc; margin: 4px 0;"></span><a href="/publication/" class="type-link"><i class="fas fa-search"></i> Filter works</a></span>';
     document.body.appendChild(popup);
 
     var contentLink = popup.querySelector(".content-link");

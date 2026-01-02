@@ -16,7 +16,7 @@
       popup.classList.add("home-page-popup");
     }
     popup.innerHTML =
-      '<span class="pub-type-popup-text"><a href="#" class="content-link">See content</a><span class="popup-separator" style="display: block; height: 1px; background: #ccc; margin: 4px 0;"></span><a href="#" class="type-link">See publications<br>of the same type</a></span>';
+      '<span class="pub-type-popup-text"><a href="#" class="content-link">View publication</a><span class="popup-separator" style="display: block; height: 1px; background: #ccc; margin: 4px 0;"></span><a href="/publication/" class="type-link"><i class="fas fa-search"></i> Filter works</a></span>';
     document.body.appendChild(popup);
 
     var contentLink = popup.querySelector(".content-link");
@@ -71,21 +71,9 @@
       }
 
       // Get or set the publication type filter URL
-      var typeUrl = badge.getAttribute("data-pub-type-url");
-      if (!typeUrl) {
-        // Find which type this badge is and set the URL
-        for (var className in pubTypeToNumber) {
-          if (badge.classList.contains(className)) {
-            typeUrl = "/publication/#" + pubTypeToNumber[className];
-            badge.setAttribute("data-pub-type-url", typeUrl);
-            break;
-          }
-        }
-      }
-
-      if (typeUrl) {
-        typeLink.href = typeUrl;
-      }
+      var typeUrl = "/publication/";
+      
+      typeLink.href = typeUrl;
 
       // Show popup temporarily to measure its actual width
       popup.style.display = "block";

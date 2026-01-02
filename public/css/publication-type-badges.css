@@ -147,7 +147,6 @@ a.pub-type-badge:link {
   z-index: 99999;
   width: auto;
   max-width: 160px;
-  display: inline-flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
@@ -197,7 +196,7 @@ a.pub-type-badge:link {
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  padding: 6px 10px 8px 10px;
+  padding: 6px 16px 8px 16px;
   z-index: 99999;
   width: max-content;
   max-width: 220px;
@@ -205,8 +204,8 @@ a.pub-type-badge:link {
 
 /* More rounded upper corners on home page */
 #pub-type-popup.home-page-popup {
-  border-radius: 30px 30px 8px 8px;
-  padding: 4px 10px 8px 10px;
+  border-radius: 20px 20px 16px 16px;
+  padding: 6px 12px 8px 12px;
 }
 
 #pub-type-popup .pub-type-popup-text {
@@ -229,6 +228,10 @@ a.pub-type-badge:link {
 #pub-type-popup .pub-type-popup-text a:hover {
   text-decoration: underline;
   color: #1976D2 !important;
+}
+
+#pub-type-popup .popup-separator {
+  margin-top: 6px !important;
 }
 
 /* Dark theme support for pub-type popup */

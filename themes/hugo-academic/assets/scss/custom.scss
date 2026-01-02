@@ -2,6 +2,41 @@
 
 // Override this file to add your own SCSS styling.
 
+// Article header caption links - always white
+.article-header-caption a,
+.article-header-caption a:link,
+.article-header-caption a:visited,
+.article-header-caption a:hover,
+.article-header-caption a:active,
+#top > article > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 > div > span > a,
+#top > article > div.article-header > div > span > a,
+#top > div.pub > div.article-header > div > span > a,
+.featured-image-wrapper .article-header-caption a,
+.article-header .article-header-caption a {
+  color: #fff !important;
+  background: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  text-decoration: none !important;
+}
+
+body.dark .article-header-caption a,
+body.dark .article-header-caption a:link,
+body.dark .article-header-caption a:visited,
+body.dark .article-header-caption a:hover,
+body.dark .article-header-caption a:active,
+body.dark #top > article > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 > div > span > a,
+body.dark #top > article > div.article-header > div > span > a,
+body.dark #top > div.pub > div.article-header > div > span > a,
+body.dark .featured-image-wrapper .article-header-caption a,
+body.dark .article-header .article-header-caption a {
+  color: #fff !important;
+  background: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  text-decoration: none !important;
+}
+
 // Widget subtitle links - use site link styling with green underlines
 .home-section .col-lg-12 > p a,
 .home-section .section-heading > p a,
@@ -15,8 +50,11 @@
 #applications-and-dashboards > div > div > div.col-12.section-heading > p a,
 #skills > div > div > div > table > tbody a,
 #multimedia > div > div > div > div:nth-child(3) > div:nth-child(2) a,
-#multimedia > div > div > div > div > div > a {
+#multimedia > div > div > div > div > div > a,
+#top > div.universal-wrapper.pt-3 a,
+#top div.universal-wrapper a {
   color: #000;
+  font-weight: bold;
   text-decoration: underline;
   text-decoration-color: #bbf7d0;
   text-decoration-thickness: 1px;
@@ -42,8 +80,11 @@ body.dark #blog > div > div > div.col-12.section-heading > p > span a,
 body.dark #applications-and-dashboards > div > div > div.col-12.section-heading > p a,
 body.dark #skills > div > div > div > table > tbody a,
 body.dark #multimedia > div > div > div > div:nth-child(3) > div:nth-child(2) a,
-body.dark #multimedia > div > div > div > div > div > a {
+body.dark #multimedia > div > div > div > div > div > a,
+body.dark #top > div.universal-wrapper.pt-3 a,
+body.dark #top div.universal-wrapper a {
   color: #fff;
+  font-weight: bold;
   text-decoration: underline;
   text-decoration-color: #bbf7d0;
   text-decoration-thickness: 1px;
@@ -55,6 +96,15 @@ body.dark #multimedia > div > div > div > div > div > a {
     text-decoration-thickness: 2px;
     text-underline-offset: 2px;
   }
+}
+
+// Reduce font size for specific h2 links
+#top > div > div > h2 > a {
+  font-size: 0.9em;
+}
+
+body.dark #top > div > div > h2 > a {
+  font-size: 0.9em;
 }
 
 // Prevent scroll blocking and spurious scrollbars - no forced vertical scrollbar
@@ -120,23 +170,170 @@ section.home-section .col-lg-4 {
 /* Hide all scrollbars on home page sections */
 
 /* Full width tag cloud with minimal margins */
+#tags {
+  overflow: visible !important;
+  min-height: 70vh !important;
+  margin-bottom: 2rem !important;
+  padding-bottom: 1rem !important;
+}
+
+#tags.home-section {
+  overflow: visible !important;
+  padding-bottom: 1rem !important;
+  min-height: 70vh !important;
+}
+
+/* Mobile adjustments - constrain height and reduce spacing */
+@media (max-width: 768px) {
+  #tags {
+    margin-bottom: 2rem !important;
+    padding-bottom: 2rem !important;
+    min-height: 60vh !important;
+  }
+  
+  #tags.home-section {
+    padding-bottom: 2rem !important;
+    min-height: 60vh !important;
+  }
+  
+  #tags .tag-cloud {
+    font-size: clamp(0.6rem, 1vw, 0.75rem) !important;
+    max-height: 60vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 0.5rem;
+  }
+}
+
 #tags .container {
-  max-width: 100% !important;
+  max-width: 1200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
+  overflow: visible !important;
+  min-height: 65vh !important;
+  padding-bottom: 4rem !important;
 }
 
 #tags .tag-cloud {
   text-align: center !important;
-  line-height: 2.2 !important;
+  line-height: clamp(1.3, 1.5 + 0.5vh, 1.8) !important;
+  font-size: clamp(0.65rem, 1.2vw, 0.85rem) !important;
   position: relative;
+  overflow: visible !important;
+  min-height: 60vh !important;
+  padding-bottom: 3rem !important;
+}
+
+/* Mobile adjustments - constrain height and reduce spacing */
+@media (max-width: 768px) {
+  #tags .container {
+    min-height: 90vh !important;
+    padding-bottom: 2rem !important;
+    max-width: 100% !important;
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
+  }
+  
+  #tags .tag-cloud {
+    font-size: clamp(0.6rem, 1vw, 0.75rem) !important;
+    max-height: 95vh;
+    min-height: 85vh !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 1rem !important;
+  }
 }
 
 #tags .tag-cloud a {
   display: inline;
-  margin: 0 0.4rem;
+  margin: 0 clamp(0.15rem, 0.3vw, 0.3rem);
+  margin-bottom: clamp(0.1rem, 0.5vh, 0.3rem);
   position: relative;
   padding: 0;
+  white-space: nowrap;  /* Prevent multi-word tags from breaking across lines */
+}
+
+/* Instant CSS-based hover outline - always visible immediately */
+#tags .tag-cloud a:hover {
+  outline: 2px solid currentColor !important;
+  outline-offset: 2px !important;
+  border-radius: 0.3em !important;
+  opacity: 1 !important;
+}
+
+/* Footer tag cloud - simpler version without network */
+.footer-tag-cloud-section {
+  padding: 1.5rem 0;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-top: 1px solid rgba(128, 128, 128, 0.2);
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+}
+
+/* Site footer spacing to prevent overlap with tag cloud */
+.site-footer {
+  margin-top: 2rem !important;
+  clear: both;
+}
+
+/* Target the container wrapper around the footer specifically */
+body > div.container:last-of-type {
+  margin-top: 3rem !important;
+  clear: both;
+}
+
+@media (max-width: 768px) {
+  .site-footer {
+    margin-top: 3rem !important;
+  }
+  
+  body > div.container:last-of-type {
+    margin-top: 4rem !important;
+  }
+  
+  /* Constrain tag cloud height on small screens */
+  #tags .tag-cloud {
+    max-height: 50vh !important;
+    overflow-y: auto !important;
+  }
+}
+
+body.dark .footer-tag-cloud-section {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.footer-tag-cloud {
+  text-align: center !important;
+  line-height: 1.6 !important;
+  font-size: 0.8rem !important;
+}
+
+.footer-tag-cloud a {
+  display: inline;
+  margin: 0 0.25rem;
+  white-space: nowrap;
+}
+
+.footer-tag-cloud a:hover,
+.footer-tag-cloud a:focus {
+  background-color: transparent !important;
+}
+
+.footer-tag-cloud a::after {
+  content: attr(data-count);
+  font-size: 0.6em;
+  vertical-align: sub;
+  opacity: 0.4;
+  margin-left: 0.1em;
+  font-weight: 400;
+}
+
+/* Hide the 's' tag */
+#tags .tag-cloud a[data-tag="s"] {
+  display: none;
 }
 
 /* Frequency count subscripts */
@@ -148,6 +345,64 @@ section.home-section .col-lg-4 {
   margin-left: 0.15em;
   font-weight: 400;
 }
+
+/* Tag page heading links - match home page styling */
+#top > div > div > h2 a {
+  color: var(--text-tertiary) !important;
+  text-decoration: none !important;
+  
+  &:hover {
+    color: #059669 !important;
+    text-decoration: underline !important;
+    text-decoration-color: #22c55e !important;
+    text-decoration-thickness: 2px !important;
+    text-underline-offset: 3px !important;
+  }
+}
+
+body.dark #top > div > div > h2 a {
+  &:hover {
+    color: #34d399 !important;
+    text-decoration-color: #10b981 !important;
+  }
+}
+
+/* Decrease margin between tag page entries */
+#top > div > div > h2 {
+  margin-bottom: 0.5rem !important;
+  margin-top: 0 !important;
+}
+
+/* Increase margin under universal wrapper */
+#top > div.universal-wrapper.pt-3 {
+  margin-bottom: 2rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/* Increase margin above content section */
+#top > div:nth-child(4) {
+  margin-top: 3rem !important;
+}
+
+/* Increase margin under content section header */
+#top > div:nth-child(4) > div > div {
+  margin-bottom: 1.5rem !important;
+}
+
+/* Increase margin under h1 in universal wrapper */
+#top > div.universal-wrapper.pt-3 > h1 {
+  margin-bottom: 1.5rem !important;
+}
+
+#top div.universal-wrapper h1 {
+  margin-bottom: 1.5rem !important;
+}
+
+#top div div h2 {
+  margin-bottom: 0.5rem !important;
+  margin-top: 0 !important;
+}
+
 .home-section *,
 .home-section .row,
 .home-section .col-12,
@@ -353,7 +608,7 @@ div:has(> img.featured-image) {
   // Increase article-metadata size in mobile view
   .article-metadata,
   .article-metadata * {
-    font-size: 0.9rem !important;
+    font-size: 0.8rem !important;
   }
 }
 
@@ -1644,8 +1899,8 @@ section.home-section:first-of-type {
 // Adjust margins for universal-wrapper and article-container on individual pages
 #top > div.universal-wrapper.pt-3 {
   margin-top: 0.8rem !important;
-  margin-bottom: -2rem !important;
-  padding-bottom: 0 !important;
+  margin-bottom: -3rem !important;
+  padding-bottom: 0.5rem !important;
 }
 
 #top > article > div.article-container.pt-3 {
@@ -1678,6 +1933,11 @@ section.home-section:first-of-type {
 // Increase margin above featured-image-wrapper in pub pages
 #top > div.pub > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 {
   margin-top: 1rem !important;
+}
+
+// Increase margin above featured-image-wrapper in article pages
+#top > article > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 {
+  margin-top: 2.5rem !important;
 }
 
 // Mobile view: decrease margins for portrait-title h3
@@ -2091,10 +2351,13 @@ h3 a:link {
   color: var(--text-tertiary);
 }
 
-// active link
-
+// active link - use green for hover to match site theme
 h3 a:hover, div a:hover {
-  color: var(--text-quaternary); 
+  color: #059669 !important; 
+}
+
+body.dark h3 a:hover, body.dark div a:hover {
+  color: #34d399 !important;
 }
 
 // category links

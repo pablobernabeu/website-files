@@ -1,3 +1,43 @@
+{{ if not .IsHome }}
+{{/* Only show tag cloud on individual pages, not the home page */}}
+{{ $taxonomy := "tags" }}
+{{ $fontSmall := 0.7 }}
+{{ $fontBig := 1.0 }}
+{{ $items_count := 30 }}
+
+{{/* Query */}}
+{{ $tags := first $items_count (index site.Taxonomies $taxonomy).ByCount }}
+{{ $count := len $tags }}
+
+{{ if ne $count 0 }}
+<div class="footer-tag-cloud-section">
+  <div class="container" style="max-width: 1000px;">
+    <h4 style="text-align: center; margin-bottom: 1rem; opacity: 0.6; font-size: 0.9rem;">Common Topics</h4>
+    
+    {{ $fontDelta := sub $fontBig $fontSmall }}
+    {{ $max := add (len (index $tags 0).Pages) 1 }}
+    {{ $min := len (index ($tags).Reverse 0).Pages }}
+    {{ $delta := sub $max $min }}
+
+    <div class="tag-cloud footer-tag-cloud">
+      {{ range $name, $term := (sort $tags ".Page.Title" "asc") }}
+        {{ if ne .Page.Title "s" }}
+          {{ $tagCount := len $term.Pages }}
+          {{ $weight := div (sub (math.Log $tagCount) (math.Log $min)) (sub (math.Log $max) (math.Log $min)) }}
+          {{ $fontSize := add $fontSmall (mul (sub $fontBig $fontSmall) $weight) }}
+          <a href="{{ .Page.RelPermalink }}" style="font-size:{{ $fontSize }}rem" data-count="{{ $tagCount }}" data-tag="{{ .Page.Title }}">{{ .Page.Title | markdownify | emojify }}</a>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</div>
+
+{{/* Load footer tag cloud highlighter script on individual pages */}}
+<script src="{{ "js/footer-tag-cloud-highlight.js" | relURL }}"></script>
+
+{{ end }}
+{{ end }}
+
 <footer class="site-footer">
   {{ if or (site.GetPage "terms.md") (site.GetPage "privacy.md") }}
   <p class="powered-by">

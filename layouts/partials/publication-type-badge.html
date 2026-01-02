@@ -10,8 +10,8 @@
 {{ $pub_class := index $pub_classes (int $type) }}
 <span class="pub-type-badge {{ $pub_class }}" data-pub-type-url="/publication/#{{ $type }}" data-pub-type-name="{{ i18n $pub_type }}"><i class="fa {{ $pub_icon }}"></i> {{ i18n $pub_type }}</span>
 {{ end }}
-{{ if $page.Params.preregistered }}<img src="{{ "img/preregistered_large_color.png" | relURL }}" alt="Preregistered" class="open-science-badge" data-badge-type="Preregistered">{{ end }}
-{{ if $page.Params.open_materials }}<img src="{{ "img/materials_large_color.png" | relURL }}" alt="Open Materials" class="open-science-badge" data-badge-type="Open Materials">{{ end }}
-{{ if $page.Params.open_data }}<img src="{{ "img/data_large_color.png" | relURL }}" alt="Open Data" class="open-science-badge" data-badge-type="Open Data">{{ end }}
+{{ if $page.Params.preregistered }}{{ $preregUrl := "" }}{{ range $page.Params.links }}{{ if or (eq .name "Preregistration") (eq .name "Stage 1 Registered Report") }}{{ $preregUrl = .url }}{{ end }}{{ end }}<img src="{{ "img/preregistered_large_color.png" | relURL }}" alt="Preregistered" class="open-science-badge" data-badge-type="Preregistered" data-badge-url="{{ $preregUrl }}">{{ end }}
+{{ if $page.Params.open_materials }}<img src="{{ "img/materials_large_color.png" | relURL }}" alt="Open Materials" class="open-science-badge" data-badge-type="Open Materials" data-badge-url="{{ $page.Params.url_code }}">{{ end }}
+{{ if $page.Params.open_data }}<img src="{{ "img/data_large_color.png" | relURL }}" alt="Open Data" class="open-science-badge" data-badge-type="Open Data" data-badge-url="{{ $page.Params.url_data }}">{{ end }}
 </span>
 {{ end }}

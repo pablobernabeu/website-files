@@ -1,0 +1,11 @@
+{
+  "name": "website-files",
+  "version": "1.0.0",
+  "description": "Hugo Academic website with semantic tag network visualization",
+  "scripts": {
+    "build": "hugo",
+    "serve": "hugo server"
+  },
+  "author": "",
+  "license": "MIT"
+}

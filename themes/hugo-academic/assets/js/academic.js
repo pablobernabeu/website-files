@@ -342,7 +342,8 @@
 
       // Check if navbar is currently open
       if ($navbarCollapse.hasClass("show")) {
-        // Check if click/tap was outside navbar area and not on the toggler button
+        // Check if click/tap was outside navbar area
+        // Explicitly exclude the toggler button - it handles its own toggle behavior
         if (
           !$navbar.is(e.target) &&
           !$navbar.has(e.target).length &&
@@ -365,7 +366,19 @@
       e.stopPropagation();
       const target = $(this).data('target');
       if (target) {
-        $(target).collapse('toggle');
+        const $target = $(target);
+        // Only open the menu if it's closed, don't close it
+        if (!$target.hasClass('show')) {
+          $target.collapse('show');
+        }
+      }
+    });
+    
+    // Close mobile menu when mouse leaves navbar area
+    $('.navbar').on('mouseleave', function() {
+      const $navbarCollapse = $('.navbar-collapse');
+      if ($navbarCollapse.hasClass('show')) {
+        $navbarCollapse.collapse('hide');
       }
     });
   });
