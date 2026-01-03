@@ -167,12 +167,22 @@ section.home-section .col-lg-4 {
   min-height: 0 !important;
 }
 
+/* Exception for tags section - constrain height */
+#tags,
+#tags.home-section,
+#tags > .container > .row,
+#tags > .container > .row > .col-12,
+#tags > .container > .row > .col-lg-8 {
+  max-height: 95vh !important;
+}
+
 /* Hide all scrollbars on home page sections */
 
 /* Full width tag cloud with minimal margins */
 #tags {
   overflow: visible !important;
   min-height: 70vh !important;
+  max-height: 95vh !important;
   margin-bottom: 2rem !important;
   padding-bottom: 1rem !important;
 }
@@ -181,6 +191,7 @@ section.home-section .col-lg-4 {
   overflow: visible !important;
   padding-bottom: 1rem !important;
   min-height: 70vh !important;
+  max-height: 95vh !important;
 }
 
 /* Mobile adjustments - constrain height and reduce spacing */
@@ -213,6 +224,7 @@ section.home-section .col-lg-4 {
   padding-right: 0.5rem !important;
   overflow: visible !important;
   min-height: 65vh !important;
+  max-height: 90vh !important;
   padding-bottom: 4rem !important;
 }
 
@@ -223,6 +235,7 @@ section.home-section .col-lg-4 {
   position: relative;
   overflow: visible !important;
   min-height: 60vh !important;
+  max-height: 90vh !important;
   padding-bottom: 3rem !important;
 }
 
@@ -253,6 +266,8 @@ section.home-section .col-lg-4 {
   position: relative;
   padding: 0;
   white-space: nowrap;  /* Prevent multi-word tags from breaking across lines */
+  transform: none !important;  /* Disable academic.css transform: scale(1.2) to prevent shrinking bug */
+  transition: none !important;  /* Disable transform transitions */
 }
 
 /* Instant CSS-based hover outline - always visible immediately */
@@ -261,6 +276,7 @@ section.home-section .col-lg-4 {
   outline-offset: 2px !important;
   border-radius: 0.3em !important;
   opacity: 1 !important;
+  transform: none !important;  /* Override academic.css transform: scale(1.2) */
 }
 
 /* Footer tag cloud - simpler version without network */
@@ -3095,21 +3111,93 @@ div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #publication > div 
 }
 
 // unvisited tag and category links
+// main tags container
+#top > div.pub > div > div.article-tags, #top > article > div > div.article-tags, .article-tags {
+  text-align: center;
+  line-height: 2;
+  display: block;
+}
+
+// main tag links
 #top > div.pub > div > div.article-tags > a:link, #top > article > div > div.article-tags > a:link, .article-tags a:link {
-  color: var(--text-hover);
-  background-color: var(--bg-tag);
+  display: inline-block;
+  color: inherit;
+  background-color: transparent;
+  background: transparent;
+  padding: 0;
+  margin: 0 0.4rem 0.3rem 0.4rem;
+  border: none;
+  border-radius: 0;
+  font-weight: 600;
+  font-size: 1rem;
+  outline: none;
+  box-shadow: none;
+  text-decoration: none;
 }
 
 // visited tag and category links
 #top > div.pub > div > div.article-tags > a:visited, #top > article > div > div.article-tags > a:visited, .article-tags a:visited {
-  color: var(--text-hover);
-  background-color: var(--bg-tag-visited);
+  color: inherit;
+  background-color: transparent;
+  background: transparent;
 }
 
 // hovered tag and category links
 #top > div.pub > div > div.article-tags > a:hover, #top > article > div > div.article-tags > a:hover, .article-tags a:hover {
-  color: var(--text-hover);
-  background-color: var(--bg-tag-hover);
+  color: inherit;
+  background-color: transparent;
+  background: transparent;
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 0.3em;
+}
+
+// ancillary tags container
+#top > div.pub > div > div.article-tags-ancillary, #top > article > div > div.article-tags-ancillary, .article-tags-ancillary {
+  text-align: center;
+  line-height: 2;
+  margin: 0.75rem 0 0 0;
+  padding: 0.75rem 0 0 0;
+  border-top: 1px solid rgba(0,0,0,0.12);
+  max-width: none;
+  width: auto;
+  display: block;
+}
+
+// ancillary tag links
+#top > div.pub > div > div.article-tags-ancillary > a:link, #top > article > div > div.article-tags-ancillary > a:link, .article-tags-ancillary a:link {
+  display: inline-block;
+  color: inherit;
+  background-color: transparent;
+  background: transparent;
+  padding: 0;
+  margin: 0 0.35rem 0.3rem 0.35rem;
+  border: none;
+  border-radius: 0;
+  font-weight: 400;
+  font-size: 0.9rem;
+  opacity: 0.55;
+  outline: none;
+  box-shadow: none;
+  text-decoration: none;
+}
+
+// visited ancillary tag links
+#top > div.pub > div > div.article-tags-ancillary > a:visited, #top > article > div > div.article-tags-ancillary > a:visited, .article-tags-ancillary a:visited {
+  color: inherit;
+  background-color: transparent;
+  background: transparent;
+}
+
+// hovered ancillary tag links
+#top > div.pub > div > div.article-tags-ancillary > a:hover, #top > article > div > div.article-tags-ancillary > a:hover, .article-tags-ancillary a:hover {
+  color: inherit;
+  background-color: transparent;
+  background: transparent;
+  opacity: 0.85;
+  outline: 1px dashed var(--primary);
+  outline-offset: 2px;
+  border-radius: 0.3em;
 }
 
 
