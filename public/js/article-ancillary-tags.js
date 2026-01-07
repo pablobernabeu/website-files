@@ -11,94 +11,6 @@
     return;
   }
   
-  // Add CSS to override existing article-tags styling - ALWAYS run this
-  if (!document.getElementById('article-tags-custom-css')) {
-    const style = document.createElement('style');
-    style.id = 'article-tags-custom-css';
-    style.textContent = `
-      .article-tags,
-      #top > article > div > div.article-tags,
-      #top > div.pub > div > div.article-tags {
-        text-align: center !important;
-        line-height: 1.8 !important;
-      }
-      
-      .article-tags a,
-      .article-tags a:link,
-      .article-tags a:visited,
-      .article-tags a:hover,
-      .article-tags .badge,
-      #top > article > div > div.article-tags > a,
-      #top > article > div > div.article-tags > a:link,
-      #top > article > div > div.article-tags > a:visited,
-      #top > article > div > div.article-tags > a:hover,
-      #top > div.pub > div > div.article-tags > a,
-      #top > div.pub > div > div.article-tags > a:link,
-      #top > div.pub > div > div.article-tags > a:visited,
-      #top > div.pub > div > div.article-tags > a:hover {
-        display: inline !important;
-        padding: 0 !important;
-        margin: 0 0.3rem !important;
-        margin-bottom: 0.3rem !important;
-        background: transparent !important;
-        background-color: transparent !important;
-        border: none !important;
-        border-radius: 0 !important;
-        color: inherit !important;
-        font-weight: 600 !important;
-        font-size: 1rem !important;
-        white-space: nowrap !important;
-        position: relative !important;
-        text-decoration: none !important;
-        transition: none !important;
-        transform: none !important;
-        outline: none !important;
-        box-shadow: none !important;
-      }
-      
-      .article-tags-ancillary,
-      #top > article > div > div.article-tags-ancillary,
-      #top > div.pub > div > div.article-tags-ancillary {
-        text-align: center !important;
-        line-height: 1.8 !important;
-      }
-      
-      .article-tags-ancillary a,
-      .article-tags-ancillary a:link,
-      .article-tags-ancillary a:visited,
-      .article-tags-ancillary a:hover,
-      #top > article > div > div.article-tags-ancillary > a,
-      #top > article > div > div.article-tags-ancillary > a:link,
-      #top > article > div > div.article-tags-ancillary > a:visited,
-      #top > article > div > div.article-tags-ancillary > a:hover,
-      #top > div.pub > div > div.article-tags-ancillary > a,
-      #top > div.pub > div > div.article-tags-ancillary > a:link,
-      #top > div.pub > div > div.article-tags-ancillary > a:visited,
-      #top > div.pub > div > div.article-tags-ancillary > a:hover {
-        display: inline !important;
-        padding: 0 !important;
-        margin: 0 0.25rem !important;
-        margin-bottom: 0.25rem !important;
-        background: transparent !important;
-        background-color: transparent !important;
-        border: none !important;
-        border-radius: 0 !important;
-        color: inherit !important;
-        font-weight: 400 !important;
-        font-size: 0.85rem !important;
-        opacity: 0.6 !important;
-        white-space: nowrap !important;
-        position: relative !important;
-        text-decoration: none !important;
-        transition: none !important;
-        transform: none !important;
-        outline: none !important;
-        box-shadow: none !important;
-      }
-    `;
-    document.head.appendChild(style);
-  }
-  
   // Don't run if already processed
   if (document.querySelector('.article-tags-ancillary')) {
     console.log('Article ancillary tags: Already loaded, skipping');
@@ -107,7 +19,20 @@
   
   // Get existing tags from current article
   const articleTagsContainer = document.querySelector('.article-tags');
-  const existingTags = Array.from(articleTagsContainer.querySelectorAll('.badge')).map(badge => badge.textContent.trim());
+  const existingBadges = Array.from(articleTagsContainer.querySelectorAll('.badge'));
+  const existingTags = existingBadges
+    .map(badge => badge.textContent.trim())
+    .filter(tag => tag !== 's'); // Hide 's' tag
+  
+  console.log('Article ancillary tags: Extracted existing tags:', existingTags);
+  
+  // Hide 's' tag badges from display
+  articleTagsContainer.querySelectorAll('.badge').forEach(badge => {
+    const tagName = badge.textContent.trim();
+    if (tagName === 's') {
+      badge.style.display = 'none';
+    }
+  });
   
   if (existingTags.length === 0) {
     return;
@@ -234,19 +159,25 @@
     .then(data => {
       console.log('Article ancillary tags: Loaded index.json with', data.length, 'pages');
       
-      // Build list of all available tags
+      // Build list of all available tags and count pages per tag
+      // Normalize tag names to lowercase for consistent matching
       const allTagsSet = new Set();
+      const tagPageCounts = new Map();
       data.forEach(page => {
-        (page.tags || []).forEach(tag => allTagsSet.add(tag));
+        (page.tags || []).forEach(tag => {
+          const normalizedTag = tag.toLowerCase();
+          allTagsSet.add(normalizedTag);
+          tagPageCounts.set(normalizedTag, (tagPageCounts.get(normalizedTag) || 0) + 1);
+        });
       });
       const allTags = Array.from(allTagsSet);
       console.log('Article ancillary tags: Found', allTags.length, 'unique tags');
       
-      // Build co-occurrence map
+      // Build co-occurrence map with normalized tag names
       const tagCooccurrence = new Map();
       
       data.forEach(page => {
-        const pageTags = page.tags || [];
+        const pageTags = (page.tags || []).map(t => t.toLowerCase());
         for (let i = 0; i < pageTags.length; i++) {
           for (let j = i + 1; j < pageTags.length; j++) {
             const pair = [pageTags[i], pageTags[j]].sort().join('|||');
@@ -260,8 +191,8 @@
         const related = [];
         
         allTags.forEach(candidateTag => {
-          // Skip if it's already an existing tag
-          if (existingTags.includes(candidateTag)) {
+          // Skip if it's already an existing tag or is 's'
+          if (existingTags.includes(candidateTag) || candidateTag === 's') {
             return;
           }
           
@@ -290,114 +221,143 @@
         relatedTagsMap.set(existingTag, related);
       });
       
-      // Combine and deduplicate all related tags
-      const allRelatedTags = new Set();
+      // Combine and deduplicate all related tags, keeping track of max strength
+      const allRelatedTagsWithStrength = new Map();
       relatedTagsMap.forEach(related => {
-        related.forEach(r => allRelatedTags.add(r.tag));
+        related.forEach(r => {
+          const currentStrength = allRelatedTagsWithStrength.get(r.tag) || 0;
+          if (r.strength > currentStrength) {
+            allRelatedTagsWithStrength.set(r.tag, r.strength);
+          }
+        });
       });
       
-      // Style the container to match home page cloud
-      articleTagsContainer.style.textAlign = 'center';
-      articleTagsContainer.style.lineHeight = '1.8';
-      articleTagsContainer.style.padding = '0.5rem';
-      articleTagsContainer.style.margin = '0';
+      // Convert to array and sort by strength, then limit to ~15 tags (approx 3 lines)
+      const sortedRelatedTags = Array.from(allRelatedTagsWithStrength.entries())
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 15)
+        .map(entry => entry[0]);
       
-      // Enhance existing tags styling FIRST
+      const allRelatedTags = new Set(sortedRelatedTags);
+      
+      // Enhance existing tags with data attributes, page counts, and colored hover
       const existingBadges = articleTagsContainer.querySelectorAll('.badge');
       existingBadges.forEach(badge => {
+        // Use text content to get the actual tag name as displayed
         const tag = badge.textContent.trim();
+        
         const category = categorizeTag(tag);
         const color = getCategoryColor(category);
+        // Use lowercase for lookup since tagPageCounts keys are normalized
+        const pageCount = tagPageCounts.get(tag.toLowerCase()) || 0;
         
         badge.setAttribute('data-tag-type', 'primary');
         badge.setAttribute('data-tag-name', tag);
         badge.setAttribute('data-category-color', color);
         
-        // Add hover handlers for colored outline
+        // Add page count as subscript and apply category color
+        badge.innerHTML = `${tag}<sub style="opacity: 0.5; font-size: 0.7em; margin-left: 0.1em;">${pageCount}</sub>`;
+        badge.style.color = color;
+        
+        // Add hover handlers for colored outline (overrides SCSS default)
         badge.addEventListener('mouseenter', function() {
           const tagColor = this.getAttribute('data-category-color');
-          this.style.outline = `2px solid ${tagColor}`;
-          this.style.outlineOffset = '2px';
-          this.style.borderRadius = '0.3em';
+          this.style.setProperty('color', tagColor, 'important');
+          this.style.setProperty('outline', `2px solid ${tagColor}`, 'important');
+          this.style.setProperty('outline-offset', '2px', 'important');
+          this.style.setProperty('border-radius', '0.3em', 'important');
+          this.style.setProperty('background', 'transparent', 'important');
         });
         
         badge.addEventListener('mouseleave', function() {
-          this.style.outline = 'none';
-          this.style.outlineOffset = '0';
-          this.style.borderRadius = '0';
+          const tagColor = this.getAttribute('data-category-color');
+          this.style.setProperty('color', tagColor, 'important');
+          this.style.removeProperty('outline');
+          this.style.removeProperty('outline-offset');
+          this.style.removeProperty('border-radius');
+          this.style.removeProperty('background');
         });
       });
       
-      // Sort primary tags alphabetically
+      // Collect primary tags
       const primaryBadges = Array.from(articleTagsContainer.querySelectorAll('.badge'));
-      primaryBadges.sort((a, b) => {
-        const nameA = a.getAttribute('data-tag-name').toLowerCase();
-        const nameB = b.getAttribute('data-tag-name').toLowerCase();
-        return nameA.localeCompare(nameB);
-      });
-      articleTagsContainer.innerHTML = '';
-      primaryBadges.forEach(badge => articleTagsContainer.appendChild(badge));
       
-      // Add ancillary tags in separate container below
+      // Collect ancillary tags
+      const ancillaryTagElements = [];
+      
       if (allRelatedTags.size > 0) {
         console.log('Article ancillary tags: Adding', allRelatedTags.size, 'ancillary tags');
-        
-        // Create ancillary container
-        const ancillaryContainer = document.createElement('div');
-        ancillaryContainer.className = 'article-tags-ancillary';
-        ancillaryContainer.style.textAlign = 'center';
-        ancillaryContainer.style.lineHeight = '1.8';
-        ancillaryContainer.style.padding = '0.5rem';
-        ancillaryContainer.style.paddingTop = '0.75rem';
-        ancillaryContainer.style.marginTop = '0.5rem';
-        ancillaryContainer.style.borderTop = '1px solid rgba(0,0,0,0.15)';
-        
-        const ancillaryTags = [];
         
         Array.from(allRelatedTags).forEach(tag => {
           const category = categorizeTag(tag);
           const color = getCategoryColor(category);
+          // Use lowercase for lookup since tagPageCounts keys are normalized
+          const pageCount = tagPageCounts.get(tag.toLowerCase()) || 0;
           
           const badge = document.createElement('a');
           badge.className = 'badge badge-light ancillary-tag';
           badge.href = `/tags/${tag.toLowerCase().replace(/\s+/g, '-')}/`;
-          badge.textContent = tag;
+          badge.innerHTML = `${tag}<sub style="opacity: 0.5; font-size: 0.7em; margin-left: 0.1em;">${pageCount}</sub>`;
           badge.setAttribute('data-tag-type', 'ancillary');
           badge.setAttribute('data-tag-name', tag);
           badge.setAttribute('data-category-color', color);
+          // Do not apply color to ancillary tags
           
-          // Add hover handlers for colored outline
+          // Add hover handlers with dark grey color
           badge.addEventListener('mouseenter', function() {
-            const tagColor = this.getAttribute('data-category-color');
-            this.style.opacity = '0.85';
-            this.style.outline = `1px dashed ${tagColor}`;
-            this.style.outlineOffset = '2px';
-            this.style.borderRadius = '0.3em';
+            this.style.setProperty('color', '#555', 'important');
+            this.style.setProperty('opacity', '0.85', 'important');
+            this.style.setProperty('outline', `1px dashed #555`, 'important');
+            this.style.setProperty('outline-offset', '2px', 'important');
+            this.style.setProperty('border-radius', '0.3em', 'important');
+            this.style.setProperty('background', 'transparent', 'important');
           });
           
           badge.addEventListener('mouseleave', function() {
-            this.style.opacity = '0.6';
-            this.style.outline = 'none';
-            this.style.outlineOffset = '0';
-            this.style.borderRadius = '0';
+            this.style.removeProperty('color');
+            this.style.removeProperty('opacity');
+            this.style.removeProperty('outline');
+            this.style.removeProperty('outline-offset');
+            this.style.removeProperty('border-radius');
+            this.style.removeProperty('background');
           });
           
-          ancillaryTags.push(badge);
+          ancillaryTagElements.push(badge);
         });
-        
-        // Sort ancillary tags alphabetically
-        ancillaryTags.sort((a, b) => {
-          const nameA = a.getAttribute('data-tag-name').toLowerCase();
-          const nameB = b.getAttribute('data-tag-name').toLowerCase();
-          return nameA.localeCompare(nameB);
-        });
-        
-        // Append sorted ancillary tags to their container
-        ancillaryTags.forEach(badge => ancillaryContainer.appendChild(badge));
-        
-        // Insert ancillary container after primary tags
-        articleTagsContainer.parentNode.insertBefore(ancillaryContainer, articleTagsContainer.nextSibling);
       }
+      
+      // Combine all tags and sort alphabetically
+      const allTagElements = [...primaryBadges, ...ancillaryTagElements];
+      allTagElements.sort((a, b) => {
+        const nameA = a.getAttribute('data-tag-name').toLowerCase();
+        const nameB = b.getAttribute('data-tag-name').toLowerCase();
+        return nameA.localeCompare(nameB);
+      });
+      
+      // Clear container and rebuild
+      articleTagsContainer.innerHTML = '';
+      
+      // Add separator bar above heading
+      const separator = document.createElement('div');
+      separator.style.borderTop = '1px solid rgba(0,0,0,0.12)';
+      separator.style.marginBottom = '0.75rem';
+      separator.style.paddingTop = '0';
+      articleTagsContainer.appendChild(separator);
+      
+      // Add heading for main tags
+      const mainHeading = document.createElement('h4');
+      mainHeading.textContent = 'Topics';
+      mainHeading.style.textAlign = 'center';
+      mainHeading.style.marginBottom = '0.25rem';
+      mainHeading.style.color = '#666';
+      mainHeading.style.fontSize = '0.85rem';
+      mainHeading.style.fontWeight = '400';
+      mainHeading.style.textTransform = 'uppercase';
+      mainHeading.style.letterSpacing = '0.05em';
+      articleTagsContainer.appendChild(mainHeading);
+      
+      // Append all sorted tags
+      allTagElements.forEach(badge => articleTagsContainer.appendChild(badge));
     })
     .catch(error => {
       console.error('Error loading tag co-occurrence data:', error);

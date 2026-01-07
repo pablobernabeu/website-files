@@ -54,6 +54,24 @@ css_class = ""
 <div style = "margin-bottom: 4%;"></div>
 
 
+### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; Beyond the cloud: Reclaiming data sovereignty in speech transcription
+
+<div class="multimedia-summary">
+
+<div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using Google Gemini and NotebookLM.</span></div>
+
+In this episode of Codex Mentis, we explore the critical intersection of generative AI and research methodology, focusing on a production-ready, open-source workflow for secure speech transcription developed by Dr Pablo Bernabeu. While OpenAI’s Whisper models have set a new gold standard for speech-to-text accuracy, relying on consumer-grade cloud interfaces like ChatGPT or Google Gemini often proves incompatible with the rigorous demands of academic and clinical research. We dissect the three primary limitations of these cloud-based tools—restrictive file size caps, a lack of methodological reproducibility, and the significant privacy and GDPR risks inherent in transmitting sensitive human data to third-party servers. The discussion highlights a sophisticated alternative that leverages high-performance computing environments to achieve complete data sovereignty by running transcription entirely offline within a secure institutional perimeter. We break down the engineering behind this transition, including the use of SLURM job scheduling for unlimited scalability across GPU nodes and the implementation of advanced quality controls to fix common AI hallucinations such as spurious repetitions and accidental language switching. Furthermore, we examine the system's intelligent, multi-tiered approach to personal name masking and speaker diarisation, which ensures participant anonymity and structured dialogue without compromising the semantic integrity of the research data. This episode provides a comprehensive look at how researchers can balance the power of modern AI with the non-negotiable requirements of ethical compliance and long-term scientific sustainability.
+
+View [sources and related content](/2025/speech-transcription-python).
+
+</div>
+
+<div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
+<iframe src="https://www.youtube-nocookie.com/embed/pPBhUgQBlBU" frameborder="0" allowfullscreen
+style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
+</div>
+
+
 ### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; The modular mini-grammar: Building testable and reproducible artificial languages using FAIR principles
 
 <div class="multimedia-summary">

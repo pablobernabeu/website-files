@@ -53,6 +53,7 @@ subtitle = "<span style='font-size:80%;'>Introduction to <i class='fa-brands fa-
 
 | Date  | Title        | Event and location   | Registration   |
 | :---: | ------------ | -------------------- | :------------: |
+| Nov 2024 | Workshop stations involving overviews and practical experience in experimental cognitive science and electroencephalography. | [Public outreach event of the Center for Language, Brain and Learning (C-LaBL)](https://uit.no/tavla/artikkel/862114/sprakdag_med_c-labl_senter_for_sprak_hjerne_og), hosted at the Arctic University Museum of Norway. | |
 | Aug 2020 | [Open data and reproducibility: <i class="fa-brands fa-r-project" aria-label="R"></i> Markdown, data dashboards and Binder v2.1](https://github.com/pablobernabeu/CarpentryCon-2020-workshop-Open-Data-Reproducibility) (co-led with Florencia D'Andrea) | [CarpentryCon@Home](https://2020.carpentrycon.org/schedule/), The Carpentries	[online] | [Link](https://2020.carpentrycon.org/schedule/) |
 | July 2020 | [Open data and reproducibility: <i class="fa-brands fa-r-project" aria-label="R"></i> Markdown, data dashboards and Binder](https://github.com/pablobernabeu/UKCLC2020-workshop-Open-data-and-reproducibility) (co-led with Eirini Zormpa) | [UK Cognitive Linguistics Conference](https://www.ukclc2020.com/pre-conference), University of Birmingham [online] | [Link](https://www.ukclc2020.com/registration) | 
 | May 2020 | [<i class='fa-brands fa-r-project' aria-label='R'></i> Markdown](/PDF/LU-May-Markdown-workshop-programme.pdf) | Lancaster University	[online] | |

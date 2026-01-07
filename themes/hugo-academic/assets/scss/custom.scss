@@ -7,19 +7,7 @@
 .article-header-caption a:link,
 .article-header-caption a:visited,
 .article-header-caption a:hover,
-.article-header-caption a:active,
-#top > article > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 > div > span > a,
-#top > article > div.article-header > div > span > a,
-#top > div.pub > div.article-header > div > span > a,
-.featured-image-wrapper .article-header-caption a,
-.article-header .article-header-caption a {
-  color: #fff !important;
-  background: none !important;
-  background-color: transparent !important;
-  background-image: none !important;
-  text-decoration: none !important;
-}
-
+// Article header caption links - dark theme only
 body.dark .article-header-caption a,
 body.dark .article-header-caption a:link,
 body.dark .article-header-caption a:visited,
@@ -54,7 +42,6 @@ body.dark .article-header .article-header-caption a {
 #top > div.universal-wrapper.pt-3 a,
 #top div.universal-wrapper a {
   color: #000;
-  font-weight: bold;
   text-decoration: underline;
   text-decoration-color: #bbf7d0;
   text-decoration-thickness: 1px;
@@ -84,7 +71,6 @@ body.dark #multimedia > div > div > div > div > div > a,
 body.dark #top > div.universal-wrapper.pt-3 a,
 body.dark #top div.universal-wrapper a {
   color: #fff;
-  font-weight: bold;
   text-decoration: underline;
   text-decoration-color: #bbf7d0;
   text-decoration-thickness: 1px;
@@ -225,7 +211,8 @@ section.home-section .col-lg-4 {
   overflow: visible !important;
   min-height: 65vh !important;
   max-height: 90vh !important;
-  padding-bottom: 4rem !important;
+  padding-bottom: 10rem !important;
+  margin-bottom: 6rem !important;
 }
 
 #tags .tag-cloud {
@@ -236,7 +223,8 @@ section.home-section .col-lg-4 {
   overflow: visible !important;
   min-height: 60vh !important;
   max-height: 90vh !important;
-  padding-bottom: 3rem !important;
+  padding-bottom: 8rem !important;
+  margin-bottom: 5rem !important;
 }
 
 /* Mobile adjustments - constrain height and reduce spacing */
@@ -391,13 +379,23 @@ body.dark #top > div > div > h2 a {
 
 /* Increase margin under universal wrapper */
 #top > div.universal-wrapper.pt-3 {
-  margin-bottom: 2rem !important;
-  padding-bottom: 0.5rem !important;
+  margin-bottom: -2.5rem !important;
+  padding-bottom: 0rem !important;
+}
+
+/* Additional reduction for publication page only */
+body.page-publications #top > div.universal-wrapper.pt-3 {
+  margin-bottom: -2.5rem !important;
 }
 
 /* Increase margin above content section */
 #top > div:nth-child(4) {
-  margin-top: 3rem !important;
+  margin-top: 0rem !important;
+}
+
+/* Reduce margin for publication page */
+body.page-publications #top > div:nth-child(4) {
+  margin-top: 0rem !important;
 }
 
 /* Increase margin under content section header */
@@ -1915,8 +1913,8 @@ section.home-section:first-of-type {
 // Adjust margins for universal-wrapper and article-container on individual pages
 #top > div.universal-wrapper.pt-3 {
   margin-top: 0.8rem !important;
-  margin-bottom: -3rem !important;
-  padding-bottom: 0.5rem !important;
+  margin-bottom: -2.5rem !important;
+  padding-bottom: 0rem !important;
 }
 
 #top > article > div.article-container.pt-3 {
@@ -2367,18 +2365,24 @@ h3 a:link {
   color: var(--text-tertiary);
 }
 
-// active link - use green for hover to match site theme
+// active link - use aquamarine for hover
 h3 a:hover, div a:hover {
-  color: #059669 !important; 
+  color: #009688 !important; 
 }
 
 body.dark h3 a:hover, body.dark div a:hover {
-  color: #34d399 !important;
+  color: #5fe0d0 !important;
 }
 
 // category links
 .article-categories a:link {
   color: var(--text-secondary);
+}
+
+// Fix article-categories cropping
+.article-categories,
+.article-categories a {
+  line-height: 1.8 !important;
 }
 
 // visited category and tag cloud links
@@ -2555,7 +2559,7 @@ article #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 {
   // Reduced padding with compact styling
   // Hidden by default, shown on hover
   &::before {
-    content: 'Expand summary';
+    content: '▼▼▼ Expand summary ▼▼▼';
     position: absolute;
     bottom: 6px;
     left: 50%;
@@ -3135,6 +3139,29 @@ div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #publication > div 
   text-decoration: none;
 }
 
+// ancillary tag links within main container
+#top > div.pub > div > div.article-tags > a.ancillary-tag:link, 
+#top > article > div > div.article-tags > a.ancillary-tag:link, 
+.article-tags a.ancillary-tag:link {
+  font-weight: 400;
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+#top > div.pub > div > div.article-tags > a.ancillary-tag:visited, 
+#top > article > div > div.article-tags > a.ancillary-tag:visited, 
+.article-tags a.ancillary-tag:visited {
+  font-weight: 400;
+  opacity: 0.6;
+}
+
+#top > div.pub > div > div.article-tags > a.ancillary-tag:hover, 
+#top > article > div > div.article-tags > a.ancillary-tag:hover, 
+.article-tags a.ancillary-tag:hover {
+  font-weight: 400;
+  opacity: 0.85;
+}
+
 // visited tag and category links
 #top > div.pub > div > div.article-tags > a:visited, #top > article > div > div.article-tags > a:visited, .article-tags a:visited {
   color: inherit;
@@ -3142,14 +3169,50 @@ div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #publication > div 
   background: transparent;
 }
 
+// Pagination styling
+.pagination {
+  overflow: visible !important;
+  margin-bottom: 2rem !important;
+  gap: 1rem !important;
+}
+
+.pagination .page-item {
+  overflow: visible !important;
+  
+  .page-link {
+    overflow: visible !important;
+    border-radius: 0.375rem !important;
+    text-decoration: none !important;
+    
+    &:hover {
+      text-decoration: none !important;
+    }
+  }
+}
+
+.pagination .page-link.pagination-next {
+  text-decoration: none !important;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.1) !important;
+  border: 1px solid rgba(0,0,0,0.1) !important;
+}
+
+// Dark theme pagination
+[data-theme="dark"] {
+  .pagination .page-link.pagination-next {
+    color: #fff !important;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.2) !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+  }
+}
+
 // hovered tag and category links
+// Note: Hover colors are now controlled by JavaScript in article-ancillary-tags.js
+// to maintain thematic colors per tag category
 #top > div.pub > div > div.article-tags > a:hover, #top > article > div > div.article-tags > a:hover, .article-tags a:hover {
   color: inherit;
   background-color: transparent;
   background: transparent;
-  outline: 2px solid var(--primary);
-  outline-offset: 2px;
-  border-radius: 0.3em;
+  // Removed fixed green outline - now handled by JS with thematic colors
 }
 
 // ancillary tags container
@@ -3167,7 +3230,7 @@ div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #publication > div 
 // ancillary tag links
 #top > div.pub > div > div.article-tags-ancillary > a:link, #top > article > div > div.article-tags-ancillary > a:link, .article-tags-ancillary a:link {
   display: inline-block;
-  color: inherit;
+  color: var(--text-secondary) !important;
   background-color: transparent;
   background: transparent;
   padding: 0;
@@ -3782,7 +3845,7 @@ body.dark .full-text-btn a:focus,
   // Add "Expand summary" button at bottom center - overlays the text
   // Hidden by default, shown on hover
   &::before {
-    content: 'Expand summary';
+    content: '▼▼▼ Expand summary ▼▼▼';
     position: absolute;
     bottom: 6px;
     left: 50%;
@@ -4705,7 +4768,7 @@ table caption {
 
 /* Increase margin above publication filter controls */
 .universal-wrapper .form-row.mb-4 {
-  margin-top: 1rem !important;
+  margin-top: 2rem !important;
 }
 
 /* Reduce margin above publication page container */
@@ -4824,4 +4887,35 @@ table caption {
   border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
+// FORCE universal wrapper margin reduction - must be at end to override all other rules
+html body #top > div.universal-wrapper.pt-3 {
+  margin-bottom: -2.5rem !important;
+}
 
+// Increase margin above publication section first child
+#top > div:nth-child(4) > div:nth-child(1) {
+  margin-top: 3rem !important;
+}
+
+// Increase margin above publication filter form
+#top > div:nth-child(4) > div > div > div.form-row.mb-4 {
+  margin-top: -1.5rem !important;
+}
+
+// Post page specific styles: increase article-metadata font size and reduce stream-item margin
+.article-metadata,
+.article-metadata * {
+  font-size: 15px !important;
+}
+
+.media.stream-item {
+  margin-bottom: 0.5rem !important;
+}
+
+// Decrease spacing above superscript in article paragraphs
+#top > article > div > div.article-style > p > sup {
+  line-height: 0 !important;
+  vertical-align: super !important;
+  position: relative !important;
+  top: -0.3em !important;
+}

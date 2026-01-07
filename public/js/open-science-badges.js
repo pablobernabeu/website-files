@@ -35,17 +35,17 @@
         var linkText = '';
         var linkColor = '';
         if (badgeType === 'Preregistered') {
-          linkText = '<i class="fa fa-external-link"></i> Prereg';
-          linkColor = '#2a7de1';  // Blue
+          linkText = '<i class="fa fa-external-link" style="font-size: 11px; color: #666;"></i> Prereg';
+          linkColor = '#b31b1b';  // Dark red
         } else if (badgeType === 'Open Materials') {
-          linkText = '<i class="fa fa-external-link"></i> Materials';
-          linkColor = '#e97925';  // Orange
+          linkText = '<i class="fa fa-external-link" style="font-size: 11px; color: #666;"></i> Materials';
+          linkColor = '#f68212';  // Orange
         } else if (badgeType === 'Open Data') {
-          linkText = '<i class="fa fa-external-link"></i> Data';
-          linkColor = '#1fb535';  // Green
+          linkText = '<i class="fa fa-external-link" style="font-size: 11px; color: #666;"></i> Data';
+          linkColor = '#2996cc';  // Blue
         }
         
-        popupContent += '<a href="' + badgeUrl + '" target="_blank" rel="noopener" style="color: ' + linkColor + '; text-decoration: none; font-weight: bold; display: block; text-align: center; margin-bottom: 8px; font-size: 15px;">';
+        popupContent += '<a href="' + badgeUrl + '" target="_blank" rel="noopener" style="color: ' + linkColor + '; text-decoration: none; font-weight: bold; display: block; text-align: center; margin-left: -6px; margin-bottom: 8px; font-size: 15px;">';
         popupContent += linkText;
         popupContent += '</a>';
         
@@ -54,7 +54,7 @@
       }
       
       // Add COS link
-      popupContent += '<a href="https://www.cos.io/initiatives/badges" target="_blank" rel="noopener">Center for Open Science</a>';
+      popupContent += '<a href="https://www.cos.io/initiatives/badges" target="_blank" rel="noopener" style="font-size: 10px; white-space: nowrap; display: block; text-align: center;">Center for Open Science</a>';
       
       popupSpan.innerHTML = popupContent;
 

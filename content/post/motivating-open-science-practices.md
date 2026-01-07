@@ -6,7 +6,6 @@ slug: motivating-open-science-practices
 categories:
   - research methods
 tags:
-  - s
   - open science
   - preregistration
   - open data

@@ -141,7 +141,7 @@ a.pub-type-badge:link {
   display: none;
   position: fixed;
   background: #fff;
-  border-radius: 50px 50px 30px 30px;
+  border-radius: 50px 50px 10px 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   padding: 0 4px 1px 4px;
   z-index: 99999;
@@ -179,14 +179,14 @@ a.pub-type-badge:link {
 }
 
 #open-science-popup span a {
-  color: #2196F3 !important;
+  color: #2196F3;
   background-color: transparent;
   text-decoration: none;
 }
 
 #open-science-popup span a:hover {
   text-decoration: underline;
-  color: #1976D2 !important;
+  color: #1976D2;
 }
 
 /* Publication Type Badge Modal Popup */

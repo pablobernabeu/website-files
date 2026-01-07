@@ -73,8 +73,6 @@
 &lt;/blockquote&gt;
 </description>
       
-            <category>s</category>
-      
             <category>open science</category>
       
             <category>preregistration</category>
@@ -153,7 +151,7 @@ Your browser does not support embedded PDFs. &lt;a href=&#34;https://cdn.jsdeliv
     </item>
     
     <item>
-      <title>4authors-year-doi-url: Minimal, numeric CSL style for documents with extreme space constraints</title>
+      <title>&lt;code&gt;4authors-year-doi-url&lt;/code&gt;: Minimal, numeric CSL style for documents with extreme space constraints</title>
       <link>https://pablobernabeu.github.io/2025/4authors-year-doi-url/</link>
       <pubDate>Wed, 22 Oct 2025 00:00:00 +0000</pubDate>
       

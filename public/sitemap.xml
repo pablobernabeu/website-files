@@ -53,11 +53,6 @@
   </url>
   
   <url>
-    <loc>https://pablobernabeu.github.io/tags/s/</loc>
-    <lastmod>2025-12-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://pablobernabeu.github.io/tags/</loc>
     <lastmod>2025-12-18T00:00:00+00:00</lastmod>
   </url>
@@ -143,6 +138,11 @@
   </url>
   
   <url>
+    <loc>https://pablobernabeu.github.io/publication/</loc>
+    <lastmod>2025-11-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://pablobernabeu.github.io/tags/gdpr/</loc>
     <lastmod>2025-11-12T00:00:00+00:00</lastmod>
   </url>
@@ -183,12 +183,12 @@
   </url>
   
   <url>
-    <loc>https://pablobernabeu.github.io/publication/</loc>
+    <loc>https://pablobernabeu.github.io/tags/python/</loc>
     <lastmod>2025-11-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://pablobernabeu.github.io/tags/python/</loc>
+    <loc>https://pablobernabeu.github.io/tags/s/</loc>
     <lastmod>2025-11-12T00:00:00+00:00</lastmod>
   </url>
   
@@ -638,12 +638,12 @@
   </url>
   
   <url>
-    <loc>https://pablobernabeu.github.io/tags/job/</loc>
+    <loc>https://pablobernabeu.github.io/categories/job/</loc>
     <lastmod>2024-03-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://pablobernabeu.github.io/categories/job/</loc>
+    <loc>https://pablobernabeu.github.io/tags/job/</loc>
     <lastmod>2024-03-27T00:00:00+00:00</lastmod>
   </url>
   
@@ -978,7 +978,7 @@
   </url>
   
   <url>
-    <loc>https://pablobernabeu.github.io/2023/how-to-break-down-colour-variable-in-sjplot-plot-model-into-equally-sized-bins/</loc>
+    <loc>https://pablobernabeu.github.io/2023/how-to-discretise-colour-variable-in-sjplot-plot-model-into-equally-sized-intervals/</loc>
     <lastmod>2023-06-24T16:54:46+02:00</lastmod>
   </url>
   
@@ -1703,12 +1703,12 @@
   </url>
   
   <url>
-    <loc>https://pablobernabeu.github.io/categories/research/</loc>
+    <loc>https://pablobernabeu.github.io/tags/research/</loc>
     <lastmod>2020-05-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://pablobernabeu.github.io/tags/research/</loc>
+    <loc>https://pablobernabeu.github.io/categories/research/</loc>
     <lastmod>2020-05-29T00:00:00+00:00</lastmod>
   </url>
   
@@ -1828,12 +1828,12 @@
   </url>
   
   <url>
-    <loc>https://pablobernabeu.github.io/tags/linguistic-relativity/</loc>
+    <loc>https://pablobernabeu.github.io/categories/linguistic-relativity/</loc>
     <lastmod>2019-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://pablobernabeu.github.io/categories/linguistic-relativity/</loc>
+    <loc>https://pablobernabeu.github.io/tags/linguistic-relativity/</loc>
     <lastmod>2019-01-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -2013,12 +2013,12 @@
   </url>
   
   <url>
-    <loc>https://pablobernabeu.github.io/tags/big-data/</loc>
+    <loc>https://pablobernabeu.github.io/categories/big-data/</loc>
     <lastmod>2016-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://pablobernabeu.github.io/categories/big-data/</loc>
+    <loc>https://pablobernabeu.github.io/tags/big-data/</loc>
     <lastmod>2016-01-01T00:00:00+00:00</lastmod>
   </url>
   

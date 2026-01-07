@@ -22,8 +22,6 @@
 The following recent publications from Nature and The Conversation underscore why this momentum is now irreversible:
   Trust but verify – Nature Materials</description>
       
-            <category>s</category>
-      
             <category>open science</category>
       
             <category>preregistration</category>
@@ -81,12 +79,12 @@ The following recent publications from Nature and The Conversation underscore wh
     </item>
     
     <item>
-      <title>4authors-year-doi-url: Minimal, numeric CSL style for documents with extreme space constraints</title>
+      <title>&lt;code&gt;4authors-year-doi-url&lt;/code&gt;: Minimal, numeric CSL style for documents with extreme space constraints</title>
       <link>https://pablobernabeu.github.io/2025/4authors-year-doi-url/</link>
       <pubDate>Wed, 22 Oct 2025 00:00:00 +0000</pubDate>
       
       <guid>https://pablobernabeu.github.io/2025/4authors-year-doi-url/</guid>
-      <description>This style is designed to be as compact as possible while retaining the three most critical pieces of information for a reference: who (authors), when (year), and where to find it (DOI/URL).</description>
+      <description>&lt;code&gt;4authors-year-doi-url&lt;/code&gt; is a CSL style designed to be as compact as possible while retaining the three most critical pieces of information for a reference: who (authors), when (year), and where to find it (DOI/URL).</description>
       
             <category>bibliometrics</category>
       
@@ -555,11 +553,11 @@ The hours you invest in learning how to use Zotero (approx. 10 hours) are likely
     </item>
     
     <item>
-      <title>How to break down colour variable in sjPlot::plot_model into equally-sized bins</title>
-      <link>https://pablobernabeu.github.io/2023/how-to-break-down-colour-variable-in-sjplot-plot-model-into-equally-sized-bins/</link>
+      <title>How to discretise the colour variable in sjPlot::plot_model into equally-sized intervals</title>
+      <link>https://pablobernabeu.github.io/2023/how-to-discretise-colour-variable-in-sjplot-plot-model-into-equally-sized-intervals/</link>
       <pubDate>Sat, 24 Jun 2023 16:54:46 +0200</pubDate>
       
-      <guid>https://pablobernabeu.github.io/2023/how-to-break-down-colour-variable-in-sjplot-plot-model-into-equally-sized-bins/</guid>
+      <guid>https://pablobernabeu.github.io/2023/how-to-discretise-colour-variable-in-sjplot-plot-model-into-equally-sized-intervals/</guid>
       <description>Whereas the direction of main effects can be interpreted from the sign of the estimate, the interpretation of interaction effects often requires plots. This task is facilitated by the R package sjPlot. For instance, using the plot_model function, I plotted the interaction between two continuous variables.
 library(lme4)#&amp;gt; Loading required package: Matrixlibrary(sjPlot)#&amp;gt; Learn more about sjPlot with &amp;#39;browseVignettes(&amp;quot;sjPlot&amp;quot;)&amp;#39;.library(ggplot2)theme_set(theme_sjplot())# Create data partially based on code by Ben Bolker # from https://stackoverflow.</description>
       

@@ -76,11 +76,16 @@
 
       // Setup tag hover effects immediately - don't wait for animations
       console.log('%c ABOUT TO SETUP HOVER EFFECTS ', 'background: red; color: white; font-weight: bold;');
+      
+      // Setup hover effects first (saves original state without colors)
       setupTagHoverEffects(tags, cooccurrences);
       console.log('%c FINISHED SETTING UP HOVER EFFECTS ', 'background: green; color: white; font-weight: bold;');
 
-      // Draw connections in background
-      drawConnectionsAnimated(svg, cooccurrences, tags);
+      // Draw connections in background, then apply colors after animation
+      drawConnectionsAnimated(svg, cooccurrences, tags).then(() => {
+        // Apply thematic colors to tags after animation completes
+        applyThematicColors(tags);
+      });
       
       // Redraw on window resize
       let resizeTimeout;
@@ -101,8 +106,11 @@
       // Setup hover effects immediately
       setupTagHoverEffects(tags, cooccurrences);
       
-      // Draw connections in background
-      drawConnectionsAnimated(svg, cooccurrences, tags);
+      // Draw connections in background, then apply colors
+      drawConnectionsAnimated(svg, cooccurrences, tags).then(() => {
+        // Apply thematic colors to tags after animation completes
+        applyThematicColors(tags);
+      });
       
       // Redraw on window resize
       let resizeTimeout;
@@ -146,6 +154,18 @@
       other: '#6b7280'        // Gray
     };
     return colors[category] || colors.other;
+  }
+
+  function applyThematicColors(tags) {
+    console.log('%c APPLYING THEMATIC COLORS TO TAGS ', 'background: purple; color: white; font-weight: bold; padding: 4px;');
+    tags.forEach(tag => {
+      const color = getCategoryColor(tag.category);
+      console.log(`  Tag: "${tag.name}" -> Category: ${tag.category} -> Color: ${color}`);
+      tag.element.style.setProperty('color', color, 'important');
+      tag.element.style.transition = 'color 6s cubic-bezier(0.85, 0, 0.15, 1) 1s';
+      console.log(`  Applied color to element:`, tag.element, `Current color:`, tag.element.style.color);
+    });
+    console.log('%c FINISHED APPLYING THEMATIC COLORS ', 'background: purple; color: white; font-weight: bold; padding: 4px;');
   }
 
   function calculateCentrality(tags) {
@@ -946,12 +966,6 @@
       
       console.log(`Setting up hover for "${tag.name}" on element:`, tag.element);
       
-      // Test if element can receive ANY events
-      tag.element.addEventListener('click', (e) => {
-        console.log('CLICK detected on:', tag.name);
-        e.preventDefault();
-      });
-      
       tag.element.addEventListener('mouseenter', () => {
         // Get connection data for this tag
         const hoveredTagData = tagConnectionsMap.get(tag.name);
@@ -969,7 +983,7 @@
         tag.element.style.setProperty('outline', `2px solid ${tag.cachedColor}`, 'important');
         tag.element.style.setProperty('outline-offset', '2px', 'important');
         tag.element.style.setProperty('border-radius', '0.3em', 'important');
-        tag.element.style.setProperty('background-color', `${tag.cachedColor}30`, 'important');
+        tag.element.style.setProperty('background-color', `${tag.cachedColor}15`, 'important');
         tag.element.style.setProperty('text-shadow', `0 0 12px ${tag.cachedColor}60`, 'important');
         tag.element.style.setProperty('opacity', '1', 'important');
         tag.element.style.setProperty('transform', 'scale(1.2)', 'important');
@@ -983,14 +997,14 @@
           if (t.name === tag.name) {
             // Already applied above
           } else if (hoveredTagData.connectedTags.has(t.name)) {
-            // Connected tags - apply visible highlighting with individual property setters
+            // Connected tags - apply visible highlighting with dashed outline, no background
             highlightedCount++;
             console.log(`  -> Highlighting: ${t.name}`);
             t.element.style.setProperty('color', t.cachedColor, 'important');
-            t.element.style.setProperty('outline', `1.5px solid ${t.cachedColor}`, 'important');
-            t.element.style.setProperty('outline-offset', '1px', 'important');
+            t.element.style.setProperty('outline', `1.5px dashed ${t.cachedColor}`, 'important');
+            t.element.style.setProperty('outline-offset', '2px', 'important');
             t.element.style.setProperty('border-radius', '0.3em', 'important');
-            t.element.style.setProperty('background-color', `${t.cachedColor}20`, 'important');
+            t.element.style.setProperty('background-color', 'transparent', 'important');
             t.element.style.setProperty('text-shadow', `0 0 8px ${t.cachedColor}40`, 'important');
             t.element.style.setProperty('opacity', '1', 'important');
           } else {
@@ -1035,10 +1049,20 @@
       });
       
       tag.element.addEventListener('mouseleave', () => {
-        // Reset all tags to their original state
+        // Reset all tags by removing only hover-specific properties
         tags.forEach(t => {
-          // Restore original cssText that was saved
-          t.element.style.cssText = t.originalCssText || '';
+          // Remove hover effects but keep thematic color
+          t.element.style.removeProperty('outline');
+          t.element.style.removeProperty('outline-offset');
+          t.element.style.removeProperty('border-radius');
+          t.element.style.removeProperty('background-color');
+          t.element.style.removeProperty('text-shadow');
+          t.element.style.removeProperty('transform');
+          t.element.style.opacity = '';
+          
+          // Ensure thematic color persists with important flag
+          const color = getCategoryColor(t.category);
+          t.element.style.setProperty('color', color, 'important');
         });
         
         // Hide all connection lines on mouse leave

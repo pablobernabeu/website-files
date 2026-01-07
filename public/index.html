@@ -314,7 +314,13 @@
 <link rel="stylesheet" href="/css/search-modal.css" />
 
 
+<link rel="stylesheet" href="/css/tag-cloud-height.css" />
+
+
 <script src="/js/tag-cloud-network.js"></script>
+
+
+<script src="/js/article-ancillary-tags.js"></script>
 
 
 <meta name="format-detection" content="telephone=no" />
@@ -1147,7 +1153,7 @@
     
     
     <a href="/publication/secure-local-hpc-speech-transcription/" >
-      <img src="/publication/secure-local-hpc-speech-transcription/featured_hu0926dd5193db36b4028846741fb7baf9_400201_150x0_resize_lanczos_2.png" alt="">
+      <img src="/publication/secure-local-hpc-speech-transcription/featured_hu86bda7ae30f0e79cd5c3621119e57107_5810058_150x0_resize_lanczos_2.png" alt="">
     </a>
     
   </div>
@@ -4073,6 +4079,12 @@
 </thead>
 <tbody>
 <tr>
+<td align="center">Nov 2024</td>
+<td>Workshop stations involving overviews and practical experience in experimental cognitive science and electroencephalography.</td>
+<td><a href="https://uit.no/tavla/artikkel/862114/sprakdag_med_c-labl_senter_for_sprak_hjerne_og">Public outreach event of the Center for Language, Brain and Learning (C-LaBL)</a>, hosted at the Arctic University Museum of Norway.</td>
+<td align="center"></td>
+</tr>
+<tr>
 <td align="center">Aug 2020</td>
 <td><a href="https://github.com/pablobernabeu/CarpentryCon-2020-workshop-Open-Data-Reproducibility">Open data and reproducibility: <i class="fa-brands fa-r-project" aria-label="R"></i> Markdown, data dashboards and Binder v2.1</a> (co-led with Florencia D'Andrea)</td>
 <td><a href="https://2020.carpentrycon.org/schedule/">CarpentryCon@Home</a>, The Carpentries	[online]</td>
@@ -4182,12 +4194,6 @@
 <td>Poster</td>
 <td><a href="/presentation/smart-starts-cognitive-differences-predict-prior-knowledge-involvement-in-language-learning">Smart starts: Cognitive differences predict prior knowledge involvement in language learning</a></td>
 <td>(1) <a href="https://www.sepex24.com/_files/ugd/5182f6_f8e5d3cd93584a0db65e47222c87051a.pdf">XIV Conference of the Spanish Society for Experimental Psychology (SEPEX)</a>, Almería; <br> (2) <a href="https://cdn.ymaws.com/www.psychonomic.org/resource/resmgr/annual_meeting/2024_meeting/abstract_book/2024_Abstracts_Final.pdf">65th Annual Meeting of the Psychonomic Society</a>, New York; <br> (3) <a href="https://www.upf.edu/documents/3186291/276286902/3rd+MULTILINGUA+Network+Meeting+program-1-2.pdf/95e13a92-e3f2-e486-3162-05acac84c937?t=1740389444336">3rd MULTILINGUA Network Meeting</a>, Barcelona</td>
-</tr>
-<tr>
-<td>Nov 2024</td>
-<td>Co-organisation and presentations</td>
-<td>Tasks tailored for several electroencephalography and behavioural stations. Short presentations given on electroencephalography, language acquisition and executive functions.</td>
-<td><a href="https://uit.no/tavla/artikkel/862114/sprakdag_med_c-labl_senter_for_sprak_hjerne_og">Public outreach event of the Center for Language, Brain and Learning (C-LaBL)</a>, hosted at the Arctic University Museum of Norway.</td>
 </tr>
 <tr>
 <td>Oct, Nov 2023; June, July, Aug, Sept 2024</td>
@@ -5283,6 +5289,16 @@
       <h1>Videos and Podcasts</h1>
       <p><div style='display: flex; align-items: center; gap: 30px;'><div style='flex: 0 0 20%; margin-left: 15px;'><div style='position: relative; width: 100%; padding-top: 56.25%;'><iframe src='https://www.youtube-nocookie.com/embed/nh7E1L8Evc8' frameborder='0' allowfullscreen style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;'></iframe></div></div><div style='flex: 1; max-width: 400px;'>Not the most riveting channel on <a href='https://www.youtube.com/@pablo-bernabeu/videos'>YouTube</a>—much less on <a href='https://open.spotify.com/show/4QXENVjprdaGkTvOexGvD3'>Spotify</a>, <a href='https://podcasts.apple.com/us/podcast/codex-mentis-science-and-technology-to-study-cognition/id1837010092'>Apple Podcasts</a> or <a href='https://www.ivoox.com/en/podcast-codex-mentis-science-and-tech-to-study-cognition_sq_f12741704_1.html'>iVoox</a>.</div></div></p>
       <div style = "margin-bottom: 4%;"></div>
+<h3 id="span-stylecolorgrey-font-size702025-spannbsp-beyond-the-cloud-reclaiming-data-sovereignty-in-speech-transcription"><span style='color:grey; font-size:70%;'>2025 ·</span>  Beyond the cloud: Reclaiming data sovereignty in speech transcription</h3>
+<div class="multimedia-summary">
+<div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using Google Gemini and NotebookLM.</span></div>
+<p>In this episode of Codex Mentis, we explore the critical intersection of generative AI and research methodology, focusing on a production-ready, open-source workflow for secure speech transcription developed by Dr Pablo Bernabeu. While OpenAI’s Whisper models have set a new gold standard for speech-to-text accuracy, relying on consumer-grade cloud interfaces like ChatGPT or Google Gemini often proves incompatible with the rigorous demands of academic and clinical research. We dissect the three primary limitations of these cloud-based tools—restrictive file size caps, a lack of methodological reproducibility, and the significant privacy and GDPR risks inherent in transmitting sensitive human data to third-party servers. The discussion highlights a sophisticated alternative that leverages high-performance computing environments to achieve complete data sovereignty by running transcription entirely offline within a secure institutional perimeter. We break down the engineering behind this transition, including the use of SLURM job scheduling for unlimited scalability across GPU nodes and the implementation of advanced quality controls to fix common AI hallucinations such as spurious repetitions and accidental language switching. Furthermore, we examine the system's intelligent, multi-tiered approach to personal name masking and speaker diarisation, which ensures participant anonymity and structured dialogue without compromising the semantic integrity of the research data. This episode provides a comprehensive look at how researchers can balance the power of modern AI with the non-negotiable requirements of ethical compliance and long-term scientific sustainability.</p>
+<p>View <a href="/2025/speech-transcription-python">sources and related content</a>.</p>
+</div>
+<div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
+<iframe src="https://www.youtube-nocookie.com/embed/pPBhUgQBlBU" frameborder="0" allowfullscreen
+style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
+</div>
 <h3 id="span-stylecolorgrey-font-size702025-spannbsp-the-modular-mini-grammar-building-testable-and-reproducible-artificial-languages-using-fair-principles"><span style='color:grey; font-size:70%;'>2025 ·</span>  The modular mini-grammar: Building testable and reproducible artificial languages using FAIR principles</h3>
 <div class="multimedia-summary">
 <div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using Google Gemini and NotebookLM.</span></div>
@@ -5575,88 +5591,6 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 <div class="media stream-item">
   <div class="media-body">
     <h3 class="article-title mb-0 mt-0">
-      <a href="/2025/motivating-open-science-practices/" >Beyond the paper: Why open science is the new research standard</a>
-    </h3>
-
-    
-
-
-
-    
-    <div class="article-style">Scientific research is undergoing a fundamental transformation. What began in the early 2010s as a niche advocacy movement has evolved into a global standard for excellence. We are moving away from a ‘trust me’ culture toward a ‘show me’ culture, where transparency is the primary currency of credibility.
-The following recent publications from Nature and The Conversation underscore why this momentum is now irreversible:
-Trust but verify – Nature Materials</div>
-    
-
-    <div class="stream-meta article-metadata">
-      
-      
-      
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-    
-    
-      
-    
-    
-    <span style='font-size:100%;'>
-      2025
-    <span >
-    
-  
-
-  
-
-  
-
-  
-  
-  
-
-  
-  
-  <span class="middot-divider"></span>
-  <span class="article-categories">
-    <i class="fas fa-folder mr-1"></i><a href="/categories/research-methods/">research methods</a></span>
-  
-
-</div>
-
-      
-    </div>
-
-    
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-      
-    
-      
-        
-
-
-
-
-
-
-
-
-
-
-
-<div class="media stream-item">
-  <div class="media-body">
-    <h3 class="article-title mb-0 mt-0">
       <a href="/2025/speech-transcription-python/" >Secure and scalable speech transcription for local and HPC</a>
     </h3>
 
@@ -5716,6 +5650,11 @@ Trust but verify – Nature Materials</div>
   <div class="ml-3">
     
     
+    
+    <a href="/2025/speech-transcription-python/" >
+      <img src="/2025/speech-transcription-python/featured_hu86bda7ae30f0e79cd5c3621119e57107_5810058_150x0_resize_lanczos_2.png" alt="">
+    </a>
+    
   </div>
 </div>
 
@@ -5737,7 +5676,7 @@ Trust but verify – Nature Materials</div>
 <div class="media stream-item">
   <div class="media-body">
     <h3 class="article-title mb-0 mt-0">
-      <a href="/2025/4authors-year-doi-url/" >4authors-year-doi-url: Minimal, numeric CSL style for documents with extreme space constraints</a>
+      <a href="/2025/4authors-year-doi-url/" ><code>4authors-year-doi-url</code>: Minimal, numeric CSL style for documents with extreme space constraints</a>
     </h3>
 
     
@@ -5745,7 +5684,7 @@ Trust but verify – Nature Materials</div>
 
 
     
-    <div class="article-style">This style is designed to be as compact as possible while retaining the three most critical pieces of information for a reference: who (authors), when (year), and where to find it (DOI/URL).</div>
+    <div class="article-style"><code>4authors-year-doi-url</code> is a CSL style designed to be as compact as possible while retaining the three most critical pieces of information for a reference: who (authors), when (year), and where to find it (DOI/URL).</div>
     
 
     <div class="stream-meta article-metadata">
@@ -7446,7 +7385,7 @@ In early days, researchers would aggregate the data across these repeated measur
 <div class="media stream-item">
   <div class="media-body">
     <h3 class="article-title mb-0 mt-0">
-      <a href="/2023/how-to-break-down-colour-variable-in-sjplot-plot-model-into-equally-sized-bins/" >How to break down colour variable in sjPlot::plot_model into equally-sized bins</a>
+      <a href="/2023/how-to-discretise-colour-variable-in-sjplot-plot-model-into-equally-sized-intervals/" >How to discretise the colour variable in sjPlot::plot_model into equally-sized intervals</a>
     </h3>
 
     
@@ -9381,86 +9320,6 @@ The first way is using GitHub, which has a great version control system, and eve
 <div class="media stream-item">
   <div class="media-body">
     <h3 class="article-title mb-0 mt-0">
-      <a href="/2020/stray-meetings-in-microsoft-teams/" >Stray meetings in Microsoft Teams</a>
-    </h3>
-
-    
-
-
-
-    
-    <div class="article-style">Unwanted, stranded meetings, overlapping with a general one in a channel, can occur when people click on the <kbd>Meet (now)</kbd>/📷 button, instead of clicking on the same <kbd>Join</kbd> button in the chat field. This may especially happen to those who reach the channel first, or who cannot see the <kbd>Join</kbd> button in the chat field because this field has been taken up by messages.</div>
-    
-
-    <div class="stream-meta article-metadata">
-      
-      
-      
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-    
-    
-      
-    
-    
-    <span style='font-size:100%;'>
-      2020
-    <span >
-    
-  
-
-  
-
-  
-
-  
-  
-  
-
-  
-  
-  <span class="middot-divider"></span>
-  <span class="article-categories">
-    <i class="fas fa-folder mr-1"></i><a href="/categories/research-and-teaching-applications/">research and teaching applications</a></span>
-  
-
-</div>
-
-      
-    </div>
-
-    
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-      
-    
-      
-        
-
-
-
-
-
-
-
-
-
-
-
-<div class="media stream-item">
-  <div class="media-body">
-    <h3 class="article-title mb-0 mt-0">
       <a href="/2020/formal-punctuation/" >Notes about punctuation in formal writing</a>
     </h3>
 
@@ -9508,6 +9367,86 @@ The first way is using GitHub, which has a great version control system, and eve
   <span class="middot-divider"></span>
   <span class="article-categories">
     <i class="fas fa-folder mr-1"></i><a href="/categories/writing/">writing</a></span>
+  
+
+</div>
+
+      
+    </div>
+
+    
+  </div>
+  <div class="ml-3">
+    
+    
+  </div>
+</div>
+
+      
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+<div class="media stream-item">
+  <div class="media-body">
+    <h3 class="article-title mb-0 mt-0">
+      <a href="/2020/stray-meetings-in-microsoft-teams/" >Stray meetings in Microsoft Teams</a>
+    </h3>
+
+    
+
+
+
+    
+    <div class="article-style">Unwanted, stranded meetings, overlapping with a general one in a channel, can occur when people click on the <kbd>Meet (now)</kbd>/📷 button, instead of clicking on the same <kbd>Join</kbd> button in the chat field. This may especially happen to those who reach the channel first, or who cannot see the <kbd>Join</kbd> button in the chat field because this field has been taken up by messages.</div>
+    
+
+    <div class="stream-meta article-metadata">
+      
+      
+      
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+    
+    
+      
+    
+    
+    <span style='font-size:100%;'>
+      2020
+    <span >
+    
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/research-and-teaching-applications/">research and teaching applications</a></span>
   
 
 </div>
@@ -10832,7 +10771,7 @@ Memory-based viewThe memory-based view presented reading as an autonomous, unco
           
           
           
-          <a href="/tags/artificial-languages/" style="font-size:1.04rem" data-count="4" data-tag="artificial languages">artificial languages</a>
+          <a href="/tags/artificial-languages/" style="font-size:1.0410955418308452rem" data-count="4" data-tag="artificial languages">artificial languages</a>
         
           
           
@@ -10842,7 +10781,7 @@ Memory-based viewThe memory-based view presented reading as an autonomous, unco
           
           
           
-          <a href="/tags/bayesian-statistics/" style="font-size:1.1172627427729669rem" data-count="5" data-tag="Bayesian statistics">Bayesian statistics</a>
+          <a href="/tags/bayesian-statistics/" style="font-size:1.1187109702982856rem" data-count="5" data-tag="Bayesian statistics">Bayesian statistics</a>
         
           
           
@@ -10852,327 +10791,327 @@ Memory-based viewThe memory-based view presented reading as an autonomous, unco
           
           
           
-          <a href="/tags/brainvision/" style="font-size:1.1172627427729669rem" data-count="5" data-tag="BrainVision">BrainVision</a>
+          <a href="/tags/brainvision/" style="font-size:1.1187109702982856rem" data-count="5" data-tag="BrainVision">BrainVision</a>
         
           
           
           
-          <a href="/tags/brms/" style="font-size:1.1803910001730775rem" data-count="6" data-tag="brms">brms</a>
+          <a href="/tags/brms/" style="font-size:1.1821273928929386rem" data-count="6" data-tag="brms">brms</a>
         
           
           
           
-          <a href="/tags/cognition/" style="font-size:1.3902635884729515rem" data-count="11" data-tag="cognition">cognition</a>
+          <a href="/tags/cognition/" style="font-size:1.392957998691272rem" data-count="11" data-tag="cognition">cognition</a>
         
           
           
           
-          <a href="/tags/cognitive-neuroscience/" style="font-size:0.9403910001730775rem" data-count="3" data-tag="cognitive neuroscience">cognitive neuroscience</a>
+          <a href="/tags/cognitive-neuroscience/" style="font-size:0.9410318510620933rem" data-count="3" data-tag="cognitive neuroscience">cognitive neuroscience</a>
         
           
           
           
-          <a href="/tags/conceptual-modality-switch/" style="font-size:1.320782000346155rem" data-count="9" data-tag="conceptual modality switch">conceptual modality switch</a>
+          <a href="/tags/conceptual-modality-switch/" style="font-size:1.3231592439550317rem" data-count="9" data-tag="conceptual modality switch">conceptual modality switch</a>
         
           
           
           
-          <a href="/tags/conceptual-processing/" style="font-size:1.357262742772967rem" data-count="10" data-tag="conceptual processing">conceptual processing</a>
+          <a href="/tags/conceptual-processing/" style="font-size:1.359806512129131rem" data-count="10" data-tag="conceptual processing">conceptual processing</a>
         
           
           
           
-          <a href="/tags/conceptual-replication/" style="font-size:0.9403910001730775rem" data-count="3" data-tag="conceptual replication">conceptual replication</a>
+          <a href="/tags/conceptual-replication/" style="font-size:0.9410318510620933rem" data-count="3" data-tag="conceptual replication">conceptual replication</a>
         
           
           
           
-          <a href="/tags/crosslinguistic-transfer/" style="font-size:1.04rem" data-count="4" data-tag="crosslinguistic transfer">crosslinguistic transfer</a>
+          <a href="/tags/crosslinguistic-transfer/" style="font-size:1.0410955418308452rem" data-count="4" data-tag="crosslinguistic transfer">crosslinguistic transfer</a>
         
           
           
           
-          <a href="/tags/css/" style="font-size:1.1172627427729669rem" data-count="5" data-tag="CSS">CSS</a>
+          <a href="/tags/css/" style="font-size:1.1187109702982856rem" data-count="5" data-tag="CSS">CSS</a>
         
           
           
           
-          <a href="/tags/data-dashboard/" style="font-size:0.9403910001730775rem" data-count="3" data-tag="data dashboard">data dashboard</a>
+          <a href="/tags/data-dashboard/" style="font-size:0.9410318510620933rem" data-count="3" data-tag="data dashboard">data dashboard</a>
         
           
           
           
-          <a href="/tags/data-simulation/" style="font-size:0.9403910001730775rem" data-count="3" data-tag="data simulation">data simulation</a>
+          <a href="/tags/data-simulation/" style="font-size:0.9410318510620933rem" data-count="3" data-tag="data simulation">data simulation</a>
         
           
           
           
-          <a href="/tags/data-visualisation/" style="font-size:0.9403910001730775rem" data-count="3" data-tag="data visualisation">data visualisation</a>
+          <a href="/tags/data-visualisation/" style="font-size:0.9410318510620933rem" data-count="3" data-tag="data visualisation">data visualisation</a>
         
           
           
           
-          <a href="/tags/dimensionality-reduction/" style="font-size:0.9403910001730775rem" data-count="3" data-tag="dimensionality reduction">dimensionality reduction</a>
+          <a href="/tags/dimensionality-reduction/" style="font-size:0.9410318510620933rem" data-count="3" data-tag="dimensionality reduction">dimensionality reduction</a>
         
           
           
           
-          <a href="/tags/dutch/" style="font-size:0.9403910001730775rem" data-count="3" data-tag="Dutch">Dutch</a>
+          <a href="/tags/dutch/" style="font-size:0.9410318510620933rem" data-count="3" data-tag="Dutch">Dutch</a>
         
           
           
           
-          <a href="/tags/eeg/" style="font-size:0.9403910001730775rem" data-count="3" data-tag="EEG">EEG</a>
+          <a href="/tags/eeg/" style="font-size:0.9410318510620933rem" data-count="3" data-tag="EEG">EEG</a>
         
           
           
           
-          <a href="/tags/electroencephalography/" style="font-size:1.4481055323538623rem" data-count="13" data-tag="electroencephalography">electroencephalography</a>
+          <a href="/tags/electroencephalography/" style="font-size:1.4510639770267615rem" data-count="13" data-tag="electroencephalography">electroencephalography</a>
         
           
           
           
-          <a href="/tags/event-related-potentials/" style="font-size:1.473765181293825rem" data-count="14" data-tag="event-related potentials">event-related potentials</a>
+          <a href="/tags/event-related-potentials/" style="font-size:1.4768407560449683rem" data-count="14" data-tag="event-related potentials">event-related potentials</a>
         
           
           
           
-          <a href="/tags/executive-functions/" style="font-size:1.1172627427729669rem" data-count="5" data-tag="executive functions">executive functions</a>
+          <a href="/tags/executive-functions/" style="font-size:1.1187109702982856rem" data-count="5" data-tag="executive functions">executive functions</a>
         
           
           
           
-          <a href="/tags/experiment/" style="font-size:1.04rem" data-count="4" data-tag="experiment">experiment</a>
+          <a href="/tags/experiment/" style="font-size:1.0410955418308452rem" data-count="4" data-tag="experiment">experiment</a>
         
           
           
           
-          <a href="/tags/flexdashboard/" style="font-size:1.1172627427729669rem" data-count="5" data-tag="Flexdashboard">Flexdashboard</a>
+          <a href="/tags/flexdashboard/" style="font-size:1.1187109702982856rem" data-count="5" data-tag="Flexdashboard">Flexdashboard</a>
         
           
           
           
-          <a href="/tags/frequentist-statistics/" style="font-size:0.9403910001730775rem" data-count="3" data-tag="frequentist statistics">frequentist statistics</a>
+          <a href="/tags/frequentist-statistics/" style="font-size:0.9410318510620933rem" data-count="3" data-tag="frequentist statistics">frequentist statistics</a>
         
           
           
           
-          <a href="/tags/html/" style="font-size:1.1172627427729669rem" data-count="5" data-tag="HTML">HTML</a>
+          <a href="/tags/html/" style="font-size:1.1187109702982856rem" data-count="5" data-tag="HTML">HTML</a>
         
           
           
           
-          <a href="/tags/individual-differences/" style="font-size:1.28rem" data-count="8" data-tag="individual differences">individual differences</a>
+          <a href="/tags/individual-differences/" style="font-size:1.2821910836616903rem" data-count="8" data-tag="individual differences">individual differences</a>
         
           
           
           
-          <a href="/tags/language/" style="font-size:1.04rem" data-count="4" data-tag="language">language</a>
+          <a href="/tags/language/" style="font-size:1.0410955418308452rem" data-count="4" data-tag="language">language</a>
         
           
           
           
-          <a href="/tags/language-comprehension/" style="font-size:1.1172627427729669rem" data-count="5" data-tag="language comprehension">language comprehension</a>
+          <a href="/tags/language-comprehension/" style="font-size:1.1187109702982856rem" data-count="5" data-tag="language comprehension">language comprehension</a>
         
           
           
           
-          <a href="/tags/language-learning/" style="font-size:0.9403910001730775rem" data-count="3" data-tag="language learning">language learning</a>
+          <a href="/tags/language-learning/" style="font-size:0.9410318510620933rem" data-count="3" data-tag="language learning">language learning</a>
         
           
           
           
-          <a href="/tags/linear-mixed-effects-models/" style="font-size:1.560782000346155rem" data-count="18" data-tag="linear-mixed effects models">linear-mixed effects models</a>
+          <a href="/tags/linear-mixed-effects-models/" style="font-size:1.5642547857858768rem" data-count="18" data-tag="linear-mixed effects models">linear-mixed effects models</a>
         
           
           
           
-          <a href="/tags/linguistics/" style="font-size:1.3902635884729515rem" data-count="11" data-tag="linguistics">linguistics</a>
+          <a href="/tags/linguistics/" style="font-size:1.392957998691272rem" data-count="11" data-tag="linguistics">linguistics</a>
         
           
           
           
-          <a href="/tags/lme4/" style="font-size:1.04rem" data-count="4" data-tag="lme4">lme4</a>
+          <a href="/tags/lme4/" style="font-size:1.0410955418308452rem" data-count="4" data-tag="lme4">lme4</a>
         
           
           
           
-          <a href="/tags/lmertest/" style="font-size:1.04rem" data-count="4" data-tag="lmerTest">lmerTest</a>
+          <a href="/tags/lmertest/" style="font-size:1.0410955418308452rem" data-count="4" data-tag="lmerTest">lmerTest</a>
         
           
           
           
-          <a href="/tags/longitudinal-study/" style="font-size:0.9403910001730775rem" data-count="3" data-tag="longitudinal study">longitudinal study</a>
+          <a href="/tags/longitudinal-study/" style="font-size:0.9410318510620933rem" data-count="3" data-tag="longitudinal study">longitudinal study</a>
         
           
           
           
-          <a href="/tags/modality-exclusivity-norms/" style="font-size:1.04rem" data-count="4" data-tag="modality exclusivity norms">modality exclusivity norms</a>
+          <a href="/tags/modality-exclusivity-norms/" style="font-size:1.0410955418308452rem" data-count="4" data-tag="modality exclusivity norms">modality exclusivity norms</a>
         
           
           
           
-          <a href="/tags/multilingualism/" style="font-size:1.04rem" data-count="4" data-tag="multilingualism">multilingualism</a>
+          <a href="/tags/multilingualism/" style="font-size:1.0410955418308452rem" data-count="4" data-tag="multilingualism">multilingualism</a>
         
           
           
           
-          <a href="/tags/norwegian/" style="font-size:0.9403910001730775rem" data-count="3" data-tag="Norwegian">Norwegian</a>
+          <a href="/tags/norwegian/" style="font-size:0.9410318510620933rem" data-count="3" data-tag="Norwegian">Norwegian</a>
         
           
           
           
-          <a href="/tags/open-data/" style="font-size:1.28rem" data-count="8" data-tag="open data">open data</a>
+          <a href="/tags/open-data/" style="font-size:1.2821910836616903rem" data-count="8" data-tag="open data">open data</a>
         
           
           
           
-          <a href="/tags/open-science/" style="font-size:1.1172627427729669rem" data-count="5" data-tag="open science">open science</a>
+          <a href="/tags/open-science/" style="font-size:1.1187109702982856rem" data-count="5" data-tag="open science">open science</a>
         
           
           
           
-          <a href="/tags/opensesame/" style="font-size:1.1172627427729669rem" data-count="5" data-tag="OpenSesame">OpenSesame</a>
+          <a href="/tags/opensesame/" style="font-size:1.1187109702982856rem" data-count="5" data-tag="OpenSesame">OpenSesame</a>
         
           
           
           
-          <a href="/tags/plotting/" style="font-size:1.04rem" data-count="4" data-tag="plotting">plotting</a>
+          <a href="/tags/plotting/" style="font-size:1.0410955418308452rem" data-count="4" data-tag="plotting">plotting</a>
         
           
           
           
-          <a href="/tags/power-analysis/" style="font-size:1.1172627427729669rem" data-count="5" data-tag="power analysis">power analysis</a>
+          <a href="/tags/power-analysis/" style="font-size:1.1187109702982856rem" data-count="5" data-tag="power analysis">power analysis</a>
         
           
           
           
-          <a href="/tags/preregistration/" style="font-size:0.9403910001730775rem" data-count="3" data-tag="preregistration">preregistration</a>
+          <a href="/tags/preregistration/" style="font-size:0.9410318510620933rem" data-count="3" data-tag="preregistration">preregistration</a>
         
           
           
           
-          <a href="/tags/principal-component-analysis/" style="font-size:0.9403910001730775rem" data-count="3" data-tag="principal component analysis">principal component analysis</a>
+          <a href="/tags/principal-component-analysis/" style="font-size:0.9410318510620933rem" data-count="3" data-tag="principal component analysis">principal component analysis</a>
         
           
           
           
-          <a href="/tags/programming/" style="font-size:1.04rem" data-count="4" data-tag="programming">programming</a>
+          <a href="/tags/programming/" style="font-size:1.0410955418308452rem" data-count="4" data-tag="programming">programming</a>
         
           
           
           
-          <a href="/tags/psycholinguistics/" style="font-size:1.5409910819000814rem" data-count="17" data-tag="psycholinguistics">psycholinguistics</a>
+          <a href="/tags/psycholinguistics/" style="font-size:1.5443735265938514rem" data-count="17" data-tag="psycholinguistics">psycholinguistics</a>
         
           
           
           
-          <a href="/tags/python/" style="font-size:1.1172627427729669rem" data-count="5" data-tag="python">python</a>
+          <a href="/tags/python/" style="font-size:1.1187109702982856rem" data-count="5" data-tag="python">python</a>
         
           
           
           
-          <a href="/tags/r/" style="font-size:1.76rem" data-count="32" data-tag="R">R</a>
+          <a href="/tags/r/" style="font-size:1.7643821673233808rem" data-count="32" data-tag="R">R</a>
         
           
           
           
-          <a href="/tags/r-markdown/" style="font-size:1.1172627427729669rem" data-count="5" data-tag="R Markdown">R Markdown</a>
+          <a href="/tags/r-markdown/" style="font-size:1.1187109702982856rem" data-count="5" data-tag="R Markdown">R Markdown</a>
         
           
           
           
-          <a href="/tags/r-shiny/" style="font-size:1.1803910001730775rem" data-count="6" data-tag="R Shiny">R Shiny</a>
+          <a href="/tags/r-shiny/" style="font-size:1.1821273928929386rem" data-count="6" data-tag="R Shiny">R Shiny</a>
         
           
           
           
-          <a href="/tags/reading/" style="font-size:1.320782000346155rem" data-count="9" data-tag="reading">reading</a>
+          <a href="/tags/reading/" style="font-size:1.3231592439550317rem" data-count="9" data-tag="reading">reading</a>
         
           
           
           
-          <a href="/tags/replication/" style="font-size:1.04rem" data-count="4" data-tag="replication">replication</a>
+          <a href="/tags/replication/" style="font-size:1.0410955418308452rem" data-count="4" data-tag="replication">replication</a>
         
           
           
           
-          <a href="/tags/reproducibility/" style="font-size:1.04rem" data-count="4" data-tag="reproducibility">reproducibility</a>
+          <a href="/tags/reproducibility/" style="font-size:1.0410955418308452rem" data-count="4" data-tag="reproducibility">reproducibility</a>
         
           
           
           
-          <a href="/tags/research-methods/" style="font-size:1.5795026032264605rem" data-count="19" data-tag="research methods">research methods</a>
+          <a href="/tags/research-methods/" style="font-size:1.583060843680991rem" data-count="19" data-tag="research methods">research methods</a>
         
           
           
           
-          <a href="/tags/rstats/" style="font-size:1.04rem" data-count="4" data-tag="rstats">rstats</a>
+          <a href="/tags/rstats/" style="font-size:1.0410955418308452rem" data-count="4" data-tag="rstats">rstats</a>
         
           
           
           
-          <a href="/tags/s/" style="font-size:1.99454718163998rem" data-count="63" data-tag="s">s</a>
+          <a href="/tags/s/" style="font-size:1.9944346437890978rem" data-count="62" data-tag="s">s</a>
         
           
           
           
-          <a href="/tags/semantic-decision/" style="font-size:0.9403910001730775rem" data-count="3" data-tag="semantic decision">semantic decision</a>
+          <a href="/tags/semantic-decision/" style="font-size:0.9410318510620933rem" data-count="3" data-tag="semantic decision">semantic decision</a>
         
           
           
           
-          <a href="/tags/semantic-processing/" style="font-size:0.9403910001730775rem" data-count="3" data-tag="semantic processing">semantic processing</a>
+          <a href="/tags/semantic-processing/" style="font-size:0.9410318510620933rem" data-count="3" data-tag="semantic processing">semantic processing</a>
         
           
           
           
-          <a href="/tags/simr/" style="font-size:0.9403910001730775rem" data-count="3" data-tag="simr">simr</a>
+          <a href="/tags/simr/" style="font-size:0.9410318510620933rem" data-count="3" data-tag="simr">simr</a>
         
           
           
           
-          <a href="/tags/sjplot/" style="font-size:1.04rem" data-count="4" data-tag="sjPlot">sjPlot</a>
+          <a href="/tags/sjplot/" style="font-size:1.0410955418308452rem" data-count="4" data-tag="sjPlot">sjPlot</a>
         
           
           
           
-          <a href="/tags/software/" style="font-size:0.9403910001730775rem" data-count="3" data-tag="software">software</a>
+          <a href="/tags/software/" style="font-size:0.9410318510620933rem" data-count="3" data-tag="software">software</a>
         
           
           
           
-          <a href="/tags/software-sustainability-institute-fellowship/" style="font-size:1.1172627427729669rem" data-count="5" data-tag="Software Sustainability Institute Fellowship">Software Sustainability Institute Fellowship</a>
+          <a href="/tags/software-sustainability-institute-fellowship/" style="font-size:1.1187109702982856rem" data-count="5" data-tag="Software Sustainability Institute Fellowship">Software Sustainability Institute Fellowship</a>
         
           
           
           
-          <a href="/tags/statistics/" style="font-size:1.6456548694536832rem" data-count="23" data-tag="statistics">statistics</a>
+          <a href="/tags/statistics/" style="font-size:1.6495150789701183rem" data-count="23" data-tag="statistics">statistics</a>
         
           
           
           
-          <a href="/tags/stimuli/" style="font-size:0.9403910001730775rem" data-count="3" data-tag="stimuli">stimuli</a>
+          <a href="/tags/stimuli/" style="font-size:0.9410318510620933rem" data-count="3" data-tag="stimuli">stimuli</a>
         
           
           
           
-          <a href="/tags/transcription/" style="font-size:0.9403910001730775rem" data-count="3" data-tag="transcription">transcription</a>
+          <a href="/tags/transcription/" style="font-size:0.9410318510620933rem" data-count="3" data-tag="transcription">transcription</a>
         
           
           
           
-          <a href="/tags/visualisation/" style="font-size:1.28rem" data-count="8" data-tag="visualisation">visualisation</a>
+          <a href="/tags/visualisation/" style="font-size:1.2821910836616903rem" data-count="8" data-tag="visualisation">visualisation</a>
         
           
           
           
-          <a href="/tags/web-application/" style="font-size:1.1803910001730775rem" data-count="6" data-tag="web application">web application</a>
+          <a href="/tags/web-application/" style="font-size:1.1821273928929386rem" data-count="6" data-tag="web application">web application</a>
         
           
           
           
-          <a href="/tags/word-recognition/" style="font-size:0.9403910001730775rem" data-count="3" data-tag="word recognition">word recognition</a>
+          <a href="/tags/word-recognition/" style="font-size:0.9410318510620933rem" data-count="3" data-tag="word recognition">word recognition</a>
         
       </div>
     
@@ -11323,6 +11262,9 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
+
+
+<script src="/js/article-ancillary-tags.js"></script>
 
 
 

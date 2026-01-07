@@ -1,7 +1,9 @@
 ---
-title: How to break down colour variable in sjPlot::plot_model into equally-sized bins
+title: How to discretise the colour variable in sjPlot::plot_model into equally-sized intervals
 author: ''
-slug: how-to-break-down-colour-variable-in-sjplot-plot-model-into-equally-sized-bins
+slug: how-to-discretise-colour-variable-in-sjplot-plot-model-into-equally-sized-intervals
+aliases:
+  - /2023/how-to-break-down-colour-variable-in-sjplot-plot-model-into-equally-sized-bins/
 categories:
   - R
   - statistics
@@ -64,7 +66,7 @@ plot_model(fit, type = 'pred', terms = c('spin', 'trait'))
 #> Warning: Ignoring unknown parameters: linewidth
 ```
 
-![](https://i.imgur.com/7VTcfLu.png)<!-- -->
+![](7VTcfLu.png)<!-- -->
 
 <sup>Created on 2023-06-24 with [reprex v2.0.2](https://reprex.tidyverse.org)</sup>
 
@@ -139,7 +141,7 @@ deciles_interaction_plot(
 #> which will replace the existing scale.
 ```
 
-![](https://i.imgur.com/niqWOzx.png)<!-- -->
+![](niqWOzx.png)<!-- -->
 
 ``` r
 
@@ -162,7 +164,7 @@ sextiles_interaction_plot(
 #> which will replace the existing scale.
 ```
 
-![](https://i.imgur.com/w8Ydo4F.png)<!-- -->
+![](w8Ydo4F.png)<!-- -->
 
 <sup>Created on 2023-06-24 with [reprex v2.0.2](https://reprex.tidyverse.org)</sup>
 

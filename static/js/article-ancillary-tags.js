@@ -19,13 +19,17 @@
   
   // Get existing tags from current article
   const articleTagsContainer = document.querySelector('.article-tags');
-  const existingTags = Array.from(articleTagsContainer.querySelectorAll('.badge'))
+  const existingBadges = Array.from(articleTagsContainer.querySelectorAll('.badge'));
+  const existingTags = existingBadges
     .map(badge => badge.textContent.trim())
     .filter(tag => tag !== 's'); // Hide 's' tag
   
+  console.log('Article ancillary tags: Extracted existing tags:', existingTags);
+  
   // Hide 's' tag badges from display
   articleTagsContainer.querySelectorAll('.badge').forEach(badge => {
-    if (badge.textContent.trim() === 's') {
+    const tagName = badge.textContent.trim();
+    if (tagName === 's') {
       badge.style.display = 'none';
     }
   });
@@ -155,19 +159,25 @@
     .then(data => {
       console.log('Article ancillary tags: Loaded index.json with', data.length, 'pages');
       
-      // Build list of all available tags
+      // Build list of all available tags and count pages per tag
+      // Normalize tag names to lowercase for consistent matching
       const allTagsSet = new Set();
+      const tagPageCounts = new Map();
       data.forEach(page => {
-        (page.tags || []).forEach(tag => allTagsSet.add(tag));
+        (page.tags || []).forEach(tag => {
+          const normalizedTag = tag.toLowerCase();
+          allTagsSet.add(normalizedTag);
+          tagPageCounts.set(normalizedTag, (tagPageCounts.get(normalizedTag) || 0) + 1);
+        });
       });
       const allTags = Array.from(allTagsSet);
       console.log('Article ancillary tags: Found', allTags.length, 'unique tags');
       
-      // Build co-occurrence map
+      // Build co-occurrence map with normalized tag names
       const tagCooccurrence = new Map();
       
       data.forEach(page => {
-        const pageTags = page.tags || [];
+        const pageTags = (page.tags || []).map(t => t.toLowerCase());
         for (let i = 0; i < pageTags.length; i++) {
           for (let j = i + 1; j < pageTags.length; j++) {
             const pair = [pageTags[i], pageTags[j]].sort().join('|||');
@@ -230,39 +240,101 @@
       
       const allRelatedTags = new Set(sortedRelatedTags);
       
-      // Enhance existing tags with data attributes and colored hover
+      // Enhance existing tags with data attributes, page counts, and colored hover
       const existingBadges = articleTagsContainer.querySelectorAll('.badge');
       existingBadges.forEach(badge => {
+        // Use text content to get the actual tag name as displayed
         const tag = badge.textContent.trim();
+        
         const category = categorizeTag(tag);
         const color = getCategoryColor(category);
+        // Use lowercase for lookup since tagPageCounts keys are normalized
+        const pageCount = tagPageCounts.get(tag.toLowerCase()) || 0;
         
         badge.setAttribute('data-tag-type', 'primary');
         badge.setAttribute('data-tag-name', tag);
         badge.setAttribute('data-category-color', color);
         
+        // Add page count as subscript and apply category color
+        badge.innerHTML = `${tag}<sub style="opacity: 0.5; font-size: 0.7em; margin-left: 0.1em;">${pageCount}</sub>`;
+        badge.style.color = color;
+        
         // Add hover handlers for colored outline (overrides SCSS default)
         badge.addEventListener('mouseenter', function() {
           const tagColor = this.getAttribute('data-category-color');
-          this.style.outline = `2px solid ${tagColor}`;
-          this.style.outlineOffset = '2px';
-          this.style.borderRadius = '0.3em';
+          this.style.setProperty('color', tagColor, 'important');
+          this.style.setProperty('outline', `2px solid ${tagColor}`, 'important');
+          this.style.setProperty('outline-offset', '2px', 'important');
+          this.style.setProperty('border-radius', '0.3em', 'important');
+          this.style.setProperty('background', 'transparent', 'important');
         });
         
         badge.addEventListener('mouseleave', function() {
-          this.style.outline = '';
-          this.style.outlineOffset = '';
-          this.style.borderRadius = '';
+          const tagColor = this.getAttribute('data-category-color');
+          this.style.setProperty('color', tagColor, 'important');
+          this.style.removeProperty('outline');
+          this.style.removeProperty('outline-offset');
+          this.style.removeProperty('border-radius');
+          this.style.removeProperty('background');
         });
       });
       
-      // Sort primary tags alphabetically
+      // Collect primary tags
       const primaryBadges = Array.from(articleTagsContainer.querySelectorAll('.badge'));
-      primaryBadges.sort((a, b) => {
+      
+      // Collect ancillary tags
+      const ancillaryTagElements = [];
+      
+      if (allRelatedTags.size > 0) {
+        console.log('Article ancillary tags: Adding', allRelatedTags.size, 'ancillary tags');
+        
+        Array.from(allRelatedTags).forEach(tag => {
+          const category = categorizeTag(tag);
+          const color = getCategoryColor(category);
+          // Use lowercase for lookup since tagPageCounts keys are normalized
+          const pageCount = tagPageCounts.get(tag.toLowerCase()) || 0;
+          
+          const badge = document.createElement('a');
+          badge.className = 'badge badge-light ancillary-tag';
+          badge.href = `/tags/${tag.toLowerCase().replace(/\s+/g, '-')}/`;
+          badge.innerHTML = `${tag}<sub style="opacity: 0.5; font-size: 0.7em; margin-left: 0.1em;">${pageCount}</sub>`;
+          badge.setAttribute('data-tag-type', 'ancillary');
+          badge.setAttribute('data-tag-name', tag);
+          badge.setAttribute('data-category-color', color);
+          // Do not apply color to ancillary tags
+          
+          // Add hover handlers with dark grey color
+          badge.addEventListener('mouseenter', function() {
+            this.style.setProperty('color', '#555', 'important');
+            this.style.setProperty('opacity', '0.85', 'important');
+            this.style.setProperty('outline', `1px dashed #555`, 'important');
+            this.style.setProperty('outline-offset', '2px', 'important');
+            this.style.setProperty('border-radius', '0.3em', 'important');
+            this.style.setProperty('background', 'transparent', 'important');
+          });
+          
+          badge.addEventListener('mouseleave', function() {
+            this.style.removeProperty('color');
+            this.style.removeProperty('opacity');
+            this.style.removeProperty('outline');
+            this.style.removeProperty('outline-offset');
+            this.style.removeProperty('border-radius');
+            this.style.removeProperty('background');
+          });
+          
+          ancillaryTagElements.push(badge);
+        });
+      }
+      
+      // Combine all tags and sort alphabetically
+      const allTagElements = [...primaryBadges, ...ancillaryTagElements];
+      allTagElements.sort((a, b) => {
         const nameA = a.getAttribute('data-tag-name').toLowerCase();
         const nameB = b.getAttribute('data-tag-name').toLowerCase();
         return nameA.localeCompare(nameB);
       });
+      
+      // Clear container and rebuild
       articleTagsContainer.innerHTML = '';
       
       // Add separator bar above heading
@@ -276,82 +348,16 @@
       const mainHeading = document.createElement('h4');
       mainHeading.textContent = 'Topics';
       mainHeading.style.textAlign = 'center';
-      mainHeading.style.marginBottom = '0.5rem';
-      mainHeading.style.opacity = '0.5';
+      mainHeading.style.marginBottom = '0.25rem';
+      mainHeading.style.color = '#666';
       mainHeading.style.fontSize = '0.85rem';
       mainHeading.style.fontWeight = '400';
       mainHeading.style.textTransform = 'uppercase';
       mainHeading.style.letterSpacing = '0.05em';
       articleTagsContainer.appendChild(mainHeading);
       
-      primaryBadges.forEach(badge => articleTagsContainer.appendChild(badge));
-      
-      // Add ancillary tags in separate container below
-      if (allRelatedTags.size > 0) {
-        console.log('Article ancillary tags: Adding', allRelatedTags.size, 'ancillary tags');
-        
-        // Create ancillary container
-        const ancillaryContainer = document.createElement('div');
-        ancillaryContainer.className = 'article-tags-ancillary';
-        
-        // Add heading for ancillary tags
-        const ancillaryHeading = document.createElement('h4');
-        ancillaryHeading.textContent = 'Related Topics';
-        ancillaryHeading.style.textAlign = 'center';
-        ancillaryHeading.style.marginBottom = '0.5rem';
-        ancillaryHeading.style.opacity = '0.4';
-        ancillaryHeading.style.fontSize = '0.8rem';
-        ancillaryHeading.style.fontWeight = '400';
-        ancillaryHeading.style.textTransform = 'uppercase';
-        ancillaryHeading.style.letterSpacing = '0.05em';
-        ancillaryContainer.appendChild(ancillaryHeading);
-        
-        const ancillaryTags = [];
-        
-        Array.from(allRelatedTags).forEach(tag => {
-          const category = categorizeTag(tag);
-          const color = getCategoryColor(category);
-          
-          const badge = document.createElement('a');
-          badge.className = 'badge badge-light ancillary-tag';
-          badge.href = `/tags/${tag.toLowerCase().replace(/\s+/g, '-')}/`;
-          badge.textContent = tag;
-          badge.setAttribute('data-tag-type', 'ancillary');
-          badge.setAttribute('data-tag-name', tag);
-          badge.setAttribute('data-category-color', color);
-          
-          // Add hover handlers for colored outline (overrides SCSS default)
-          badge.addEventListener('mouseenter', function() {
-            const tagColor = this.getAttribute('data-category-color');
-            this.style.opacity = '0.85';
-            this.style.outline = `1px dashed ${tagColor}`;
-            this.style.outlineOffset = '2px';
-            this.style.borderRadius = '0.3em';
-          });
-          
-          badge.addEventListener('mouseleave', function() {
-            this.style.opacity = '';
-            this.style.outline = '';
-            this.style.outlineOffset = '';
-            this.style.borderRadius = '';
-          });
-          
-          ancillaryTags.push(badge);
-        });
-        
-        // Sort ancillary tags alphabetically
-        ancillaryTags.sort((a, b) => {
-          const nameA = a.getAttribute('data-tag-name').toLowerCase();
-          const nameB = b.getAttribute('data-tag-name').toLowerCase();
-          return nameA.localeCompare(nameB);
-        });
-        
-        // Append sorted ancillary tags to their container
-        ancillaryTags.forEach(badge => ancillaryContainer.appendChild(badge));
-        
-        // Insert ancillary container after primary tags
-        articleTagsContainer.parentNode.insertBefore(ancillaryContainer, articleTagsContainer.nextSibling);
-      }
+      // Append all sorted tags
+      allTagElements.forEach(badge => articleTagsContainer.appendChild(badge));
     })
     .catch(error => {
       console.error('Error loading tag co-occurrence data:', error);

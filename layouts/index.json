@@ -1,4 +1,4 @@
-{{- /* Generate the optimized search index. */ -}}
+{{- /* Generate the optimized search index - Updated to include all tags */ -}}
 {{- $index := slice -}}
 {{- $pages := site.RegularPages -}}
 {{- /* Add the index page of docs separately since it's not in RegularPages above. */ -}}
@@ -87,10 +87,10 @@
       {{- $contentExcerpt = $content -}}
     {{- end -}}
 
-    {{- /* OPTIMIZATION: Limit tags and categories */ -}}
+    {{- /* Include all tags instead of limiting to 5 */ -}}
     {{- $limitedTags := slice -}}
     {{- if .Params.Tags -}}
-      {{- range first 5 .Params.Tags -}}
+      {{- range .Params.Tags -}}
         {{- $limitedTags = $limitedTags | append . -}}
       {{- end -}}
     {{- end -}}
