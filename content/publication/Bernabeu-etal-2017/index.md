@@ -1,8 +1,9 @@
 ---
-abstract: 'We tested whether conceptual processing is modality-specific by tracking the time course of the Conceptual Modality Switch effect. Forty-six participants verified the relation between property words and concept words. The conceptual modality of consecutive trials was manipulated in order to produce an Auditory-to-visual switch condition, a Haptic-to-visual switch condition, and a Visual-to-visual, no-switch condition. Event-Related Potentials (ERPs) were time-locked to the onset of the first word (property) in the target trials so as to measure the effect online and to avoid a within-trial confound. A switch effect was found, characterized by more negative ERP amplitudes for modality switches than no-switches. It proved significant in four typical time windows from 160 to 750 milliseconds post word onset, with greater strength in posterior brain regions, and after 350 milliseconds. These results suggest that conceptual processing may be modality-specific in certain tasks, but also that the early stage of processing is relatively amodal.'
+title: 'Modality switch effects emerge early and increase throughout conceptual processing: Evidence from ERPs'
 authors:
 - '**Bernabeu, P.**, Willems, R. M., & Louwerse, M. M.'
 date: "2017-07-01"
+abstract: 'We tested whether conceptual processing is modality-specific by tracking the time course of the Conceptual Modality Switch effect. Forty-six participants verified the relation between property words and concept words. The conceptual modality of consecutive trials was manipulated in order to produce an Auditory-to-visual switch condition, a Haptic-to-visual switch condition, and a Visual-to-visual, no-switch condition. Event-Related Potentials (ERPs) were time-locked to the onset of the first word (property) in the target trials so as to measure the effect online and to avoid a within-trial confound. A switch effect was found, characterized by more negative ERP amplitudes for modality switches than no-switches. It proved significant in four typical time windows from 160 to 750 milliseconds post word onset, with greater strength in posterior brain regions, and after 350 milliseconds. These results suggest that conceptual processing may be modality-specific in certain tasks, but also that the early stage of processing is relatively amodal.'
 categories:
   - conceptual processing
   - conceptual replication
@@ -24,7 +25,7 @@ links:
 projects:
 # - internal-project
 publishDate: "2017-01-01"
-publication: 'In G. Gunzelmann, A. Howes, T. Tenbrink, & E. J. Davelaar (Eds.), *Proceedings of the 39th Annual Conference of the Cognitive Science Society* (pp. 1629-1634). Austin, TX: Cognitive Science Society.'
+publication: 'In G. Gunzelmann, A. Howes, T. Tenbrink, & E. J. Davelaar (Eds.), *Proceedings of the 39th Annual Conference of the Cognitive Science Society* (pp. 1629-1634). Austin, TX: Cognitive Science Society'
 publication_short: 
 publication_types:
 - "1"
@@ -44,7 +45,6 @@ tags:
 - linear mixed-effects models
 - replication
 - CogSci
-title: 'Modality switch effects emerge early and increase throughout conceptual processing: Evidence from ERPs'
 url_code: 'https://osf.io/97unm'
 url_data: 'https://osf.io/97unm'
 url_fulltext: 'https://doi.org/10.31234/osf.io/a5pcz'

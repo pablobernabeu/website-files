@@ -1,0 +1,40 @@
+{{- define "main" -}}
+
+{{ partial "page_header.html" . }}
+
+<div class="universal-wrapper">
+
+  {{ with .Content }}
+  <div class="article-style">{{ . }}</div>
+  {{ end }}
+
+  {{- /* Filter pages: only include posts with the "s" tag */ -}}
+  {{- $filteredPages := slice -}}
+  {{- range .Data.Pages -}}
+    {{- $hasStag := false -}}
+    {{- range .Params.Tags -}}
+      {{- if eq . "s" -}}
+        {{- $hasStag = true -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if $hasStag -}}
+      {{- $filteredPages = $filteredPages | append . -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{ $paginator := .Paginate $filteredPages }}
+  {{ range $paginator.Pages }}
+    {{ if eq $.Params.view 1 }}
+      {{ partial "li_list" . }}
+    {{ else if eq $.Params.view 3 }}
+      {{ partial "li_card" . }}
+    {{ else }}
+      {{ partial "li_compact" . }}
+    {{ end }}
+  {{ end }}
+
+  {{ partial "pagination" . }}
+
+</div>
+
+{{- end -}}

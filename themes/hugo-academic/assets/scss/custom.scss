@@ -84,6 +84,29 @@ body.dark #top div.universal-wrapper a {
   }
 }
 
+// Add subtle background to multimedia and blog section links (matching underline colors)
+#multimedia > div > div > div > div:nth-child(3) > div:nth-child(2) > a,
+#blog > div > div > div.col-12.section-heading > p > span > a {
+  background-color: #f0fdf4 !important;
+  padding: 2px 4px !important;
+  border-radius: 2px !important;
+  
+  &:hover {
+    background-color: #dcfce7 !important;
+  }
+}
+
+body.dark #multimedia > div > div > div > div:nth-child(3) > div:nth-child(2) > a,
+body.dark #blog > div > div > div.col-12.section-heading > p > span > a {
+  background-color: #14532d !important;
+  color: #bbf7d0 !important;
+  
+  &:hover {
+    background-color: #166534 !important;
+    color: #dcfce7 !important;
+  }
+}
+
 // Reduce font size for specific h2 links
 #top > div > div > h2 > a {
   font-size: 0.9em;
@@ -91,6 +114,30 @@ body.dark #top div.universal-wrapper a {
 
 body.dark #top > div > div > h2 > a {
   font-size: 0.9em;
+}
+
+// Make all text in pub-list-item white in dark theme
+.dark .pub-list-item,
+.dark .pub-list-item * {
+  color: #ffffff !important;
+}
+
+.dark .pub-list-item a {
+  color: #ffffff !important;
+}
+
+// Dark theme: light font for media-body h3 links and article-metadata
+.dark #top > div > div > div.media-body > h3,
+.dark #top > div > div > div.media-body > h3 > a,
+.dark .article-metadata,
+.dark .article-metadata * {
+  color: #ffffff !important;
+}
+
+// Dark theme: collapsed summary gradient blends seamlessly with background
+.dark details > summary::after,
+.dark details[open] > summary::after {
+  background: linear-gradient(to bottom, rgba(15, 23, 42, 0), rgba(15, 23, 42, 0.8), #0f172a) !important;
 }
 
 // Prevent scroll blocking and spurious scrollbars - no forced vertical scrollbar
@@ -469,6 +516,11 @@ section.home-section .container {
   max-width: 760px !important;
 }
 
+// Increase bottom padding in multimedia section
+#multimedia {
+  padding-bottom: 3rem !important;
+}
+
 // Set max-width for publications and applications sections (950px)
 #publication .container,
 #applications-and-dashboards .container,
@@ -480,6 +532,52 @@ section.home-section .container {
 // Reduce bottom margin in section headings
 #applications-and-dashboards > div > div > div.col-12.section-heading > h1 {
   margin-bottom: 0.25rem !important;
+}
+
+// Format page titles on post and presentation pages like home page
+.page-heading h1 {
+  font-size: 2.5rem !important;
+  font-weight: 400 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+// Format titles in post and presentation lists
+#top > div > div > div.media-body > h3 > a,
+#top > div.universal-wrapper.pt-3 > p > a,
+#presentation_list > div.col-lg-10 > div > div.media-body > h3 > a {
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  color: #2c5282 !important;
+  text-decoration: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+  transition: color 0.2s ease !important;
+}
+
+#top > div > div > div.media-body > h3 > a:hover,
+#top > div.universal-wrapper.pt-3 > p > a:hover,
+#presentation_list > div.col-lg-10 > div > div.media-body > h3 > a:hover {
+  color: #1a365d !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+body.dark #top > div > div > div.media-body > h3 > a,
+body.dark #top > div.universal-wrapper.pt-3 > p > a,
+body.dark #presentation_list > div.col-lg-10 > div > div.media-body > h3 > a {
+  color: #63b3ed !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+body.dark #top > div > div > div.media-body > h3 > a:hover,
+body.dark #top > div.universal-wrapper.pt-3 > p > a:hover,
+body.dark #presentation_list > div.col-lg-10 > div > div.media-body > h3 > a:hover {
+  color: #90cdf4 !important;
+  background-color: transparent !important;
+  background-image: none !important;
 }
 
 // Increase font size of section heading subtitle
@@ -587,20 +685,439 @@ blockquote {
 
 // Increase gap above Abstract heading in publication pages
 .article-container > h3:first-child {
-  margin-top: 5rem;
+  margin-top: 6rem;
 }
 
 // Margin above article-metadata in publication pages
 .pub .article-container.pt-3 .article-metadata {
   margin-top: 0.7rem !important;
-  margin-bottom: 0.3rem !important;
   padding-bottom: 0 !important;
+}
+
+// Increase font size for article metadata
+#top > article > div.article-container.pt-3 > div.article-metadata {
+  font-size: 1rem !important;
+}
+
+#top > article > div.article-container.pt-3 > div.article-metadata > span.article-date {
+  font-size: 1rem !important;
+}
+
+#top > article > div.article-container.pt-3 > div.article-metadata > span:nth-child(1) > span {
+  font-size: 1rem !important;
+}
+
+#top > article > div.article-container.pt-3 > div.article-metadata > span > span > strong {
+  font-size: 1rem !important;
+}
+
+// Reduce line height for publication metadata on /publication/ page
+#publication > div > div > div > div > div.media-body > div.stream-meta.article-metadata {
+  line-height: 1.4 !important;
+}
+
+#publication > div > div > div > div > div.media-body > div.stream-meta.article-metadata > div {
+  line-height: 1.4 !important;
+  font-size: 0.8rem !important;
+  margin-top: 0.3rem !important;
+}
+
+#publication > div > div > div > div > div.media-body > div.stream-meta.article-metadata * {
+  line-height: 1.4 !important;
+}
+
+// Reduce font size for abstracts in publication list
+#publication > div > div > div > div > div.media-body > div.article-style {
+  font-size: 0.85rem !important;
+}
+
+// Increase font size for publication type/year headings on /publication/ page
+// Exclude .li-cite-author spans which need different styling
+#container-publications > div.grid-sizer.col-lg-12.isotope-item > div > span:not(.li-cite-author):not(.article-metadata) {
+  font-size: 2rem !important;
+  line-height: 1 !important;
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+}
+
+// Reduce font size for the rest of the publication heading container
+#container-publications > div.grid-sizer.col-lg-12.isotope-item > div {
+  font-size: 0.85rem !important;
+}
+
+// Set font size for publication item containers
+#container-publications .isotope-item[class*="pubtype-"] > div {
+  font-size: 0.85rem !important;
+}
+
+// Style author field in publication list
+#container-publications .li-cite-author {
+  font-size: 0.85rem !important;
+  line-height: 1.5 !important;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
+}
+
+#container-publications .article-metadata.li-cite-author {
+  line-height: 1.5 !important;
+  font-size: 0.85rem !important;
+  display: inline !important;
+}
+
+#container-publications .article-metadata.li-cite-author * {
+  line-height: 1.5 !important;
+  font-size: 0.85rem !important;
+}
+
+#container-publications .article-metadata.li-cite-author > span {
+  line-height: 1.5 !important;
+  font-size: 0.85rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: inline !important;
+}
+
+#container-publications .article-metadata.li-cite-author > span > a {
+  line-height: 1.5 !important;
+  display: inline !important;
+}
+
+#container-publications .li-cite-author * {
+  line-height: 1.5 !important;
+}
+
+#container-publications .li-cite-author span {
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  line-height: 1.5 !important;
+  font-size: 0.85rem !important;
+  font-family: inherit !important;
+  display: inline !important;
+  max-height: 1.5em !important;
+}
+
+#container-publications .li-cite-author a {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.pub-list-item .li-cite-author {
+  line-height: 1.5 !important;
+}
+
+.pub-list-item .li-cite-author span {
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+  line-height: 1.5 !important;
+  font-size: 0.85rem !important;
+}
+
+// Target publication item authors with specific selector
+#container-publications > div.isotope-item > div > span.li-cite-author {
+  line-height: 1.5 !important;
+}
+
+// Force line-height on parent div containing authors
+#container-publications > div.isotope-item > div {
+  line-height: 1.5 !important;
+}
+
+#container-publications > div.isotope-item[class*="pubtype-"] > div > span > span {
+  line-height: 1.5 !important;
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  font-size: 0.85rem !important;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
+}
+
+#container-publications > div.isotope-item > div > span {
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+}
+
+#container-publications > div.isotope-item > div > span.li-cite-author > span {
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+// Alternative selector based on user's suggestion
+#container-publications > div > div > span {
+  line-height: 1.5 !important;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
+}
+
+#container-publications > div > div > span > span {
+  margin-right: 0 !important;
+  padding: 0 !important;
+  line-height: 1.5 !important;
+  font-size: 0.85rem !important;
+  margin-left: -0.1em !important;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
+  display: inline !important;
+  vertical-align: baseline !important;
+}
+
+// Additional specific selectors for authors field with all pubtype variations
+#container-publications > div.grid-sizer.col-lg-12.isotope-item > div > span > span {
+  line-height: 1.5 !important;
+  font-size: 0.85rem !important;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
+  display: inline !important;
+  vertical-align: baseline !important;
+}
+
+#container-publications > div[class*="pubtype-"] > div > span > span {
+  line-height: 1.5 !important;
+  font-size: 0.85rem !important;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
+  display: inline !important;
+  vertical-align: baseline !important;
+}
+
+#container-publications > div[class*="year-"] > div > span > span {
+  line-height: 1.5 !important;
+  font-size: 0.85rem !important;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
+  display: inline !important;
+  vertical-align: baseline !important;
+}
+
+// Target the span.li-cite-author specifically
+#container-publications span.article-metadata.li-cite-author,
+#container-publications span.article-metadata.li-cite-author *,
+#container-publications span.article-metadata.li-cite-author > *,
+#container-publications span.article-metadata.li-cite-author span,
+#container-publications span.article-metadata.li-cite-author > span,
+#container-publications span.li-cite-author,
+#container-publications span.li-cite-author *,
+#container-publications span.li-cite-author > *,
+#container-publications .li-cite-author span,
+#container-publications .li-cite-author > span,
+#container-publications div > span.li-cite-author,
+#container-publications div > span.li-cite-author > span {
+  line-height: 1.5 !important;
+  font-size: 0.85rem !important;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
+  display: inline !important;
+  vertical-align: baseline !important;
+}
+
+// Match strong elements in titles to authors font size
+#container-publications .isotope-item[class*="pubtype-"] > div > span > span > strong {
+  font-size: 0.85rem !important;
+}
+
+#container-publications > div > div > span > span > strong {
+  font-size: 0.85rem !important;
+}
+
+#container-publications > div > div > a {
+  font-size: 0.85rem !important;
+}
+
+// Set consistent margin under publication paragraphs
+#container-publications .isotope-item[class*="pubtype-"] > div > p {
+  font-size: 1.05rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+// Remove underline from publication paragraph links
+#container-publications > div > div > p > a {
+  text-decoration: none !important;
+}
+
+// Reduce margin under form-row on publication page
+#top > div:nth-child(4) > div > div > div.form-row.mb-4 {
+  margin-bottom: 0.5rem !important;
+}
+
+// Reduce margins in open science popups
+#open-science-popup > span > a:nth-child(1) {
+  margin-top: 0 !important;
+  margin-bottom: 0.3rem !important;
+  font-size: 1.02rem !important;
+}
+
+#open-science-popup > span > a:nth-child(1) > i {
+  vertical-align: middle !important;
+}
+
+#open-science-popup > img {
+  margin-bottom: -0.2rem !important;
+}
+
+#open-science-popup > span > span {
+  margin-top: 0.2rem !important;
+  margin-bottom: 0.2rem !important;
+}
+
+// Light grey background for open science badges and popups
+.btn-links a[title*="Open science"],
+.btn-links a[title*="open science"] {
+  background-color: #f5f5f5 !important;
+}
+
+body.dark .btn-links a[title*="Open science"],
+body.dark .btn-links a[title*="open science"] {
+  background-color: #2a2a2a !important;
+}
+
+#open-science-popup {
+  background-color: #f5f5f5 !important;
+}
+
+body.dark #open-science-popup {
+  background-color: #ffffff !important;
+}
+
+// Reduce margin above separator in open science popups
+#open-science-popup .popup-separator {
+  margin-top: 4px !important;
+}
+
+// Increase font size for metadata on individual publication detail pages
+#top > div.pub > div.article-container.pt-3 > div.article-metadata,
+#top > div.pub > div.article-container.pt-3 > div.article-metadata * {
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
+}
+
+#top > div.pub > div.article-container.pt-3 > div.article-metadata {
+  margin-bottom: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+// Move article categories to new line
+#top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories {
+  display: block !important;
+  margin-top: 0.3rem !important;
+  margin-bottom: -0.4rem !important;
+  font-size: 0.8rem !important;
+}
+
+// Override for presentation pages: keep article-categories inline
+body.page-wrapper #top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories {
+  display: inline !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+// Show middot divider before article-categories on presentation pages
+body.page-wrapper #top > div.pub > div.article-container.pt-3 > div.article-metadata > span.middot-divider:has(+ span.article-categories) {
+  display: inline !important;
+}
+
+#top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories * {
+  font-size: 0.8rem !important;
+}
+
+// Reduce font size of first metadata span
+#top > div.pub > div.article-container.pt-3 > div.article-metadata > span:nth-child(1) > span {
+  font-size: 0.85rem !important;
+}
+
+// Hide middot dividers in publication metadata
+#top > div.pub > div.article-container.pt-3 > div.article-metadata > span.middot-divider {
+  display: none !important;
 }
 
 // Margin above publication badges
 #top > div.pub > div.article-container.pt-3 > .btn-links {
   margin-top: 0.15rem !important;
   margin-bottom: 0.1rem !important;
+}
+
+// Move down all section images on home page
+div > div > div > div > div.ml-3 > a > img {
+  margin-top: 1.5rem !important;
+}
+
+// Fix presentation metadata padding and margin
+#presentation_list > div.col-lg-10 > div > div.media-body > div.stream-meta.article-metadata > div > span {
+  padding-top: 0.3rem !important;
+  margin-bottom: 0.5rem !important;
+  display: inline-block !important;
+}
+
+// Reduce margin above presentation button links
+#presentation_list > div.col-lg-10 > div > div.media-body > div.btn-links {
+  margin-top: 0.2rem !important;
+}
+
+// Remove link underline in presentation buttons
+#presentation_list > div.col-lg-10 > div > div.media-body > div.btn-links > a {
+  text-decoration: none !important;
+}
+
+// Light font color in dark theme for presentation buttons
+body.dark #presentation_list > div.col-lg-10 > div > div.media-body > div.btn-links {
+  color: #e2e8f0 !important;
+}
+
+body.dark #presentation_list > div.col-lg-10 > div > div.media-body > div.btn-links > a {
+  color: #e2e8f0 !important;
+}
+
+// Move down all section images on home page
+div > div > div > div > div.ml-3 > a > img {
+  margin-top: 1.5rem !important;
+}
+
+// Increase font size of stream metadata
+div > div > div > div > div.media-body > div.stream-meta.article-metadata > div {
+  font-size: 0.8rem !important;
+  margin-top: 0.3rem !important;
+}
+
+div > div > div > div > div.media-body > div.stream-meta.article-metadata > div > span {
+  font-size: 0.8rem !important;
+}
+
+div > div > div > div > div.media-body > div.stream-meta.article-metadata > div > span > span {
+  font-size: 0.8rem !important;
+}
+
+div > div > div > div > div.media-body > div.stream-meta.article-metadata > div > span > span > strong {
+  font-size: 0.8rem !important;
+}
+
+div > div > div > div > div.media-body > div.stream-meta.article-metadata > div > span.pub-publication {
+  font-size: 0.8rem !important;
+}
+
+div > div > div > div > div.media-body > div.stream-meta.article-metadata > div > span.pub-publication > em {
+  font-size: 0.8rem !important;
+}
+
+div > div > div > div > div.media-body > div.stream-meta.article-metadata > div > span.article-date {
+  font-size: 0.8rem !important;
+}
+
+// Mobile navbar icon positioning
+@media (max-width: 1199px) {
+  .navbar-toggler {
+    margin-left: -1.5rem !important;
+  }
+  
+  .navbar-nav.ml-auto {
+    margin-right: -1rem !important;
+  }
+}
+
+// Mobile navbar icon positioning
+@media (max-width: 1199px) {
+  .navbar-toggler {
+    margin-left: -1.5rem !important;
+  }
+  
+  .navbar-nav.ml-auto {
+    margin-right: -1.5rem !important;
+  }
 }
 
 // Reduce top margin on featured image container
@@ -1949,6 +2466,16 @@ section.home-section:first-of-type {
   margin-top: 1rem !important;
 }
 
+// Reduce margin under featured image in pub pages
+#top > div.pub > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 > div > img {
+  margin-bottom: 0 !important;
+}
+
+// Increase margin above featured image on presentation pages
+body.page-wrapper #top > div.pub > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 > div > img {
+  margin-top: 0.25rem !important;
+}
+
 // Increase margin above featured-image-wrapper in article pages
 #top > article > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 {
   margin-top: 2.5rem !important;
@@ -2071,7 +2598,7 @@ body.dark .navbar-collapse {
   #navbar-content {
     display: flex !important;
     justify-content: flex-start !important;
-    margin: 0 auto 0 0.5rem !important;
+    margin: 0 3vw 0 0.5rem !important;
     padding-left: 0 !important;
   }
   
@@ -2154,6 +2681,7 @@ body.dark .navbar-brand:hover {
     margin-left: 0 !important;
     padding-left: 0 !important;
     margin-top: 0.5rem !important;
+    margin-right: 5vw !important;
   }
 }
 
@@ -3261,6 +3789,13 @@ div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #publication > div 
   outline: 1px dashed var(--primary);
   outline-offset: 2px;
   border-radius: 0.3em;
+}
+
+// Dark theme: make ancillary tags lighter on hover for better visibility
+.dark .article-tags a.ancillary-tag:hover,
+.dark .article-tags-ancillary a:hover {
+  color: #e0e0e0 !important;
+  opacity: 1 !important;
 }
 
 
@@ -4890,6 +5425,68 @@ table caption {
 // FORCE universal wrapper margin reduction - must be at end to override all other rules
 html body #top > div.universal-wrapper.pt-3 {
   margin-bottom: -2.5rem !important;
+}
+
+// Increase margin under remark slides
+body > div.remark-slides-area > div.remark-slide-container.has-continuation.remark-visible {
+  margin-bottom: 2rem !important;
+}
+
+// Reduce margin above publication page content
+#top > div.pub > div > div > div.col-md-10 > div {
+  margin-top: 0 !important;
+}
+
+// Reduce top padding in article-container on presentation pages
+body.page-wrapper .article-container {
+  padding-top: 0.25rem !important;
+}
+
+// Decrease margin above first child in third div on presentation pages
+#top > div.pub > div:nth-child(3) > div:nth-child(1) {
+  margin-top: -1.5rem !important;
+}
+
+// Reduce top padding in presentation page content
+#top > div.pub > div:nth-child(2) {
+  padding-top: 0.5rem !important;
+}
+
+// Increase margin above second child h3 on presentation pages
+#top > div.pub > div:nth-child(2) > h3 {
+  margin-top: 1rem !important;
+}
+
+// Increase margin above abstract heading on presentation pages
+#abstract > h3 {
+  margin-top: 2rem !important;
+}
+
+// Increase margin above third child h3 on presentation pages
+#top > div.pub > div:nth-child(3) > h3 {
+  margin-top: 1rem !important;
+}
+
+// Increase margin above btn-links on presentation pages
+body.page-wrapper #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 {
+  margin-top: 1rem !important;
+}
+
+// Reduce margin under button in presentation page
+#top > div.pub > div:nth-child(3) > div.article-style > a > button {
+  margin-bottom: -1rem !important;
+}
+
+// Increase margin above featured image on presentation pages
+.featured-image {
+  margin-top: 1rem !important;
+}
+
+// Reduce height of mobile spacer on presentation pages
+.d-md-none.space-below {
+  height: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 // Increase margin above publication section first child
