@@ -2,6 +2,6 @@
 header:
   caption: ""
   image: ""
-title: Filter publications
+title: Filter Publications
 view: 4
 ---

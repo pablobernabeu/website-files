@@ -22,7 +22,7 @@ tags:
   - linear mixed-effects models
   - ResearchGate
 subtitle: ''
-summary: ''
+summary: 'An ERP study demonstrating that conceptual modality switch effects emerge within 200ms and increase throughout processing, supporting the role of perceptual simulation in conceptual processing while suggesting that both amodal and modal systems contribute to cognition.'
 authors: []
 featured: false
 image:

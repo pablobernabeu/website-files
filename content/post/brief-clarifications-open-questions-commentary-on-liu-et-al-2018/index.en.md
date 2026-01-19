@@ -22,7 +22,7 @@ tags:
   - frequentist
   - bias
   - methodology
-summary: ''
+summary: 'Critical examination of Liu et al. (2018) claims about methodological inconsistencies in ERP studies of conceptual modality switching, arguing that their conclusions overlook theoretical and methodological justifications for varying analytical approaches.'
 authors: []
 lastmod: ''
 featured: no

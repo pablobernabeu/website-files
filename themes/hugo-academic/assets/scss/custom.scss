@@ -2,6 +2,131 @@
 
 // Override this file to add your own SCSS styling.
 
+// Responsive base font size - scales with viewport, slightly larger on big screens
+html {
+  font-size: #{"clamp(16px, 1vw + 0.25rem, 18px)"} !important;
+}
+
+// Font size levels controlled by data attribute (user toggle overrides)
+html[data-font-size="0"] { font-size: 12px !important; }
+html[data-font-size="1"] { font-size: 13px !important; }
+html[data-font-size="2"] { font-size: 14px !important; }
+html[data-font-size="3"] { font-size: 15px !important; }
+html[data-font-size="4"] { font-size: #{"clamp(16px, 1vw + 0.25rem, 18px)"} !important; } // default with scaling
+html[data-font-size="5"] { font-size: 17px !important; }
+html[data-font-size="6"] { font-size: 18px !important; }
+html[data-font-size="7"] { font-size: 19px !important; }
+html[data-font-size="8"] { font-size: 20px !important; }
+
+// Ensure seamless theme transitions
+html, body {
+  transition: color 0.3s ease, background-color 0.3s ease !important;
+}
+
+// Override text color for light theme
+body:not(.dark) {
+  color: rgba(0,0,0,0.8) !important;
+}
+
+// Override text color for dark theme
+body.dark {
+  color: rgba(255,255,255,0.8) !important;
+}
+
+// Font size toggle dropdown menu
+// Font size toggle dropdown menu
+.font-size-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 0.5rem;
+  background: white;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 0.25rem;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.175);
+  z-index: 9999 !important;
+  width: fit-content;
+  white-space: nowrap;
+  padding: 0;
+}
+
+// Mobile and small screen adjustments
+@media (max-width: 991px) {
+  .font-size-menu {
+    position: fixed !important;
+    right: 0.5rem !important;
+    left: auto !important;
+    top: 3.5rem !important;
+    z-index: 9999 !important;
+  }
+}
+
+.font-size-menu.show {
+  display: block;
+}
+
+.font-size-menu .dropdown-item {
+  padding: 0.5rem 0.4rem 0.5rem 0.5rem !important;
+  cursor: pointer;
+  color: #212529;
+  white-space: nowrap;
+  transition: background-color 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: auto !important;
+  width: auto !important;
+}
+
+.font-size-menu .dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+.font-size-menu .dropdown-item i {
+  width: 0.75rem;
+  flex-shrink: 0;
+}
+
+body.dark .font-size-menu {
+  background: #1f2937;
+  border-color: rgba(255,255,255,0.15);
+}
+
+body.dark .font-size-menu .dropdown-item {
+  color: rgba(255,255,255,0.8);
+}
+
+body.dark .font-size-menu .dropdown-item:hover {
+  background-color: #374151;
+}
+
+.js-font-size-toggle {
+  cursor: pointer;
+}
+
+// Font size toggle should use same colors as search and dark toggle
+.navbar-nav .nav-link.js-font-size-toggle {
+  color: var(--nav-text) !important;
+}
+
+.navbar-nav .nav-link.js-font-size-toggle:hover {
+  color: var(--nav-hover-text) !important;
+}
+
+body.dark .navbar-nav .nav-link.js-font-size-toggle {
+  color: var(--nav-text) !important;
+}
+
+body.dark .navbar-nav .nav-link.js-font-size-toggle:hover {
+  color: var(--nav-hover-text) !important;
+}
+
+// Remove underline on font size toggle hover
+.navbar-nav .nav-link.js-font-size-toggle:hover::after {
+  display: none !important;
+}
+
 // Article header caption links - always white
 .article-header-caption a,
 .article-header-caption a:link,
@@ -103,8 +228,26 @@ body.dark #blog > div > div > div.col-12.section-heading > p > span > a {
   
   &:hover {
     background-color: #166534 !important;
+
     color: #dcfce7 !important;
   }
+}
+
+// Increase bottom margin for blog section heading paragraph
+#blog > div > div > div.col-12.section-heading > p {
+  margin-bottom: 1rem !important;
+}
+
+// Reduce bottom margin for blog entries
+#blog > div > div > div:nth-child(2) > div {
+  margin-bottom: 0.2rem !important;
+}
+
+// Make blog link full width with centred text
+#blog > div > div > div:nth-child(2) > div > div.media-body > a {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
 }
 
 // Reduce font size for specific h2 links
@@ -170,7 +313,18 @@ section,
 .home-section {
   max-width: 100vw !important;
   overflow-x: hidden !important;
+  overflow-y: hidden !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+// Prevent any wrapper divs from creating scrollable contexts
+#top,
+body > *,
+body > div {
   overflow-y: visible !important;
+  max-height: none !important;
+  height: auto !important;
 }
 
 // Reduce top and bottom padding of all home sections
@@ -206,7 +360,7 @@ section.home-section .col-lg-4 {
 #tags > .container > .row,
 #tags > .container > .row > .col-12,
 #tags > .container > .row > .col-lg-8 {
-  max-height: 95vh !important;
+  max-height: none !important;
 }
 
 /* Hide all scrollbars on home page sections */
@@ -214,8 +368,8 @@ section.home-section .col-lg-4 {
 /* Full width tag cloud with minimal margins */
 #tags {
   overflow: visible !important;
-  min-height: 70vh !important;
-  max-height: 95vh !important;
+  min-height: auto !important;
+  max-height: none !important;
   margin-bottom: 2rem !important;
   padding-bottom: 1rem !important;
 }
@@ -223,8 +377,8 @@ section.home-section .col-lg-4 {
 #tags.home-section {
   overflow: visible !important;
   padding-bottom: 1rem !important;
-  min-height: 70vh !important;
-  max-height: 95vh !important;
+  min-height: auto !important;
+  max-height: none !important;
 }
 
 /* Mobile adjustments - constrain height and reduce spacing */
@@ -232,18 +386,18 @@ section.home-section .col-lg-4 {
   #tags {
     margin-bottom: 2rem !important;
     padding-bottom: 2rem !important;
-    min-height: 60vh !important;
+    min-height: auto !important;
   }
   
   #tags.home-section {
     padding-bottom: 2rem !important;
-    min-height: 60vh !important;
+    min-height: auto !important;
   }
   
   #tags .tag-cloud {
-    font-size: clamp(0.6rem, 1vw, 0.75rem) !important;
-    max-height: 60vh;
-    overflow-y: auto;
+    font-size: #{"clamp(0.6rem, 1vw, 0.75rem)"} !important;
+    max-height: none;
+    overflow-y: hidden;
     overflow-x: hidden;
     padding-bottom: 0.5rem;
   }
@@ -256,28 +410,28 @@ section.home-section .col-lg-4 {
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
   overflow: visible !important;
-  min-height: 65vh !important;
-  max-height: 90vh !important;
-  padding-bottom: 10rem !important;
-  margin-bottom: 6rem !important;
+  min-height: auto !important;
+  max-height: none !important;
+  padding-bottom: 2rem !important;
+  margin-bottom: 2rem !important;
 }
 
 #tags .tag-cloud {
   text-align: center !important;
-  line-height: clamp(1.3, 1.5 + 0.5vh, 1.8) !important;
-  font-size: clamp(0.65rem, 1.2vw, 0.85rem) !important;
+  line-height: #{"clamp(1.3, 1.5 + 0.5vh, 1.8)"} !important;
+  font-size: #{"clamp(0.65rem, 1.2vw, 0.85rem)"} !important;
   position: relative;
   overflow: visible !important;
-  min-height: 60vh !important;
-  max-height: 90vh !important;
-  padding-bottom: 8rem !important;
-  margin-bottom: 5rem !important;
+  min-height: auto !important;
+  max-height: none !important;
+  padding-bottom: 2rem !important;
+  margin-bottom: 2rem !important;
 }
 
 /* Mobile adjustments - constrain height and reduce spacing */
 @media (max-width: 768px) {
   #tags .container {
-    min-height: 90vh !important;
+    min-height: auto !important;
     padding-bottom: 2rem !important;
     max-width: 100% !important;
     padding-left: 0.25rem !important;
@@ -285,10 +439,10 @@ section.home-section .col-lg-4 {
   }
   
   #tags .tag-cloud {
-    font-size: clamp(0.6rem, 1vw, 0.75rem) !important;
-    max-height: 95vh;
-    min-height: 85vh !important;
-    overflow-y: auto;
+    font-size: #{"clamp(0.6rem, 1vw, 0.75rem)"} !important;
+    max-height: none;
+    min-height: auto !important;
+    overflow-y: hidden;
     overflow-x: hidden;
     padding-bottom: 1rem !important;
   }
@@ -296,8 +450,8 @@ section.home-section .col-lg-4 {
 
 #tags .tag-cloud a {
   display: inline;
-  margin: 0 clamp(0.15rem, 0.3vw, 0.3rem);
-  margin-bottom: clamp(0.1rem, 0.5vh, 0.3rem);
+  margin: 0 #{"clamp(0.15rem, 0.3vw, 0.3rem)"};
+  margin-bottom: #{"clamp(0.1rem, 0.5vh, 0.3rem)"};
   position: relative;
   padding: 0;
   white-space: nowrap;  /* Prevent multi-word tags from breaking across lines */
@@ -347,8 +501,8 @@ body > div.container:last-of-type {
   
   /* Constrain tag cloud height on small screens */
   #tags .tag-cloud {
-    max-height: 50vh !important;
-    overflow-y: auto !important;
+    max-height: none !important;
+    overflow-y: hidden !important;
   }
 }
 
@@ -528,8 +682,11 @@ section.home-section .container {
 #publication .container,
 #applications-and-dashboards .container,
 #workshops .container,
-#presentations .container {
-  max-width: 760px !important;
+#presentations .container,
+#funding-awards .container,
+#other-work .container,
+#skills .container {
+  max-width: 900px !important;
 }
 
 // Reduce bottom margin in section headings
@@ -588,10 +745,13 @@ div > div > div.col-12.section-heading > p {
   font-size: 1.1rem !important;
 }
 
-// Apply consistent font properties to all home section titles
+// Apply consistent font properties to all section titles
+.section-heading h1,
 .home-section .section-heading h1,
 #blog > div > div > div.col-12.section-heading > h1,
-#applications-and-dashboards > div > div > div.col-12.section-heading > h1 {
+#applications-and-dashboards > div > div > div.col-12.section-heading > h1,
+#publication > div > div > div.col-12.section-heading > h1,
+div.col-12.section-heading > h1 {
   margin-bottom: 0.25rem !important;
   font-size: 2.25rem !important;
 }
@@ -623,6 +783,7 @@ div > div > div.col-12.section-heading > p {
   font-size: 1.4rem;
   position: relative;
   top: -2px;
+  margin-left: -1rem !important;
 }
 
 // Mobile-specific container fixes
@@ -825,6 +986,7 @@ blockquote {
 #container-publications > div.isotope-item > div {
   line-height: 1.5 !important;
   margin-left: 2em !important;
+  margin-bottom: 1.3rem !important;
   text-indent: -2em !important;
   padding-left: 0 !important;
 }
@@ -832,6 +994,7 @@ blockquote {
 // Remove hanging indent from button paragraph
 #container-publications > div.isotope-item > div > p {
   margin-left: -0.5em !important;
+  margin-top: 0.35rem !important;
   text-indent: 0 !important;
   padding-left: 0 !important;
 }
@@ -1010,10 +1173,6 @@ body.dark .btn-links a[title*="open science"] {
 }
 
 #open-science-popup {
-  background-color: #f5f5f5 !important;
-}
-
-body.dark #open-science-popup {
   background-color: #ffffff !important;
 }
 
@@ -1202,12 +1361,12 @@ body.dark {
   --text-hover: black;
   --text-active: #24494F;
   
-  // Navigation colors
-  --nav-text: darkgrey;
-  --nav-hover: #00ff00; // Green for hover underline
-  --nav-active: #5f9ea0; // Dark aquamarine for active
-  --nav-link: #79A990;
-  --nav-hover-text: #006400; // Dark green for hover text (light theme)
+  // Navigation colors (INVERTED - light theme uses dark theme colors)
+  --nav-text: #cbd5e1;
+  --nav-hover: #A5D9C5; // Custom mint green for hover underline (from dark mode)
+  --nav-active: #7db3ad; // Lighter aquamarine for active text (from dark theme)
+  --nav-link: #67e8f9; // Cyan (from dark theme)
+  --nav-hover-text: #A5D9C5; // Custom mint green for hover text (from dark mode)
   
   // Background colors
   --bg-highlight: #EAFFE8;
@@ -1290,12 +1449,12 @@ body.dark {
   --text-hover: #f1f5f9;
   --text-active: #cbd5e1;
   
-  // Navigation colors for dark theme (converted for dark background visibility)
-  --nav-text: #94a3b8;
-  --nav-hover: #A5D9C5; // Custom mint green for hover underline in dark mode
-  --nav-active: #7db3ad; // Lighter aquamarine for active text in dark theme
-  --nav-link: #67e8f9; // Cyan (brighter conversion of light theme teal)
-  --nav-hover-text: #A5D9C5; // Custom mint green for hover text in dark mode
+  // Navigation colors for dark theme (INVERTED - uses light theme colors)
+  --nav-text: #475569;
+  --nav-hover: #00ff00; // Green for hover underline (from light theme)
+  --nav-active: #5f9ea0; // Dark aquamarine for active (from light theme)
+  --nav-link: #79A990; // Muted teal (from light theme)
+  --nav-hover-text: #006400; // Dark green for hover text (from light theme)
   
   // Background colors for dark theme (converted for dark mode)
   --bg-highlight: rgba(72, 187, 120, 0.2); // Green highlight with low opacity for dark
@@ -2079,7 +2238,8 @@ a.view-complete-content-btn,
 button.view-complete-content-btn {
   background: none !important;
   background-image: none !important;
-  margin-bottom: 0.15rem !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: -1rem !important;
 }
 
 /* Remove link highlight from general links in home 
@@ -2087,11 +2247,11 @@ and from bio portrait information. */
 
 // Navigation bar
 
-// Light theme navbar background
+// Light theme navbar background (INVERTED - uses dark theme colors)
 .navbar {
-  background-color: var(--color-white) !important;
+  background-color: #1e293b !important;
   border-bottom: none !important;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.25) !important;
+  box-shadow: 0 2px 4px rgba(150,150,150,0.2) !important;
   height: 6vh !important;
   min-height: 50px !important;
   max-height: 50px !important;
@@ -2110,6 +2270,8 @@ and from bio portrait information. */
   left: 0 !important;
   right: 0 !important;
   pointer-events: none !important; /* Allow scroll events to pass through */
+  font-size: #{"clamp(1.05rem, 0.5vw + 0.7rem, 1.1rem)"} !important; /* Responsive navbar font */
+  color: #cbd5e1 !important;
 }
 
 // Light theme: Remove background color from nav items on hover (desktop view)
@@ -2280,7 +2442,6 @@ and from bio portrait information. */
     text-align: center !important;
     display: block !important;
     width: 100% !important;
-    margin: 0 !important;
   }
   
   .navbar-collapse .navbar-nav .nav-link {
@@ -2371,7 +2532,7 @@ and from bio portrait information. */
   .nav-icons .nav-item {
     display: flex !important;
     align-items: center !important;
-    margin: 0 !important;
+    margin: 0 #{"clamp(0.15rem, 0.5vw, 0.2rem)"} !important;
     padding: 0 !important;
   }
   
@@ -2383,11 +2544,32 @@ and from bio portrait information. */
   
   .navbar-nav-right .nav-link,
   .nav-icons .nav-link {
-    padding: 0.25rem 0.4rem !important;
+    padding: 0.25rem 0.02rem !important;
     line-height: 1 !important;
     margin: 0 !important;
     display: flex !important;
     align-items: center !important;
+  }
+  
+  // Further reduce padding for specific navbar icon links
+  #navbar-main > div > ul > li:nth-child(3) > a,
+  #navbar-main > div > ul > li.nav-item.dropdown > a,
+  #navbar-main > div > ul > li:nth-child(1) > a {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  // Reduce padding on the li elements themselves
+  #navbar-main > div > ul > li:nth-child(1),
+  #navbar-main > div > ul > li.nav-item.dropdown {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+  
+  // Override any general nav-link padding for icon links
+  #navbar-main > div > ul > li:nth-child(1) > a.nav-link,
+  #navbar-main > div > ul > li.nav-item.dropdown > a.nav-link {
+    padding: 0.25rem 0 !important;
   }
   
   .navbar-nav-right i,
@@ -2399,10 +2581,28 @@ and from bio portrait information. */
     margin: 0 !important;
   }
   
-  .navbar-nav .nav-link {
+  .navbar-nav .nav-link:not(.js-search):not(.js-dark-toggle):not([class*="dropdown"]) {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
+}
+
+// Force remove padding from navbar icon links (outside media query to apply everywhere)
+#navbar-main > div > ul > li:nth-child(1),
+#navbar-main > div > ul > li.nav-item.dropdown,
+#navbar-main > div > ul > li:nth-child(3) {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+#navbar-main > div > ul > li:nth-child(1) > a,
+#navbar-main > div > ul > li.nav-item.dropdown > a,
+#navbar-main > div > ul > li:nth-child(3) > a,
+#navbar-main > div > ul > li:nth-child(1) > a.nav-link,
+#navbar-main > div > ul > li.nav-item.dropdown > a.nav-link,
+#navbar-main > div > ul > li:nth-child(3) > a.nav-link {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 // Prevent navbar from hiding on mobile when menu is expanded
@@ -2537,8 +2737,8 @@ article .featured-image {
 // Mobile view: decrease margins for portrait-title h3
 @media (max-width: 991px) {
   #profile > div.portrait-title > h3:nth-child(3) {
-    margin-top: 0.2rem !important;
-    margin-bottom: 0.2rem !important;
+    margin-top: 0.01rem !important;
+    margin-bottom: 0.01rem !important;
   }
 
   #profile > div:nth-child(3) {
@@ -2553,7 +2753,7 @@ article .featured-image {
 
 // Reduce margin under profile image
 #profile > img {
-  margin-bottom: 0 !important;
+  margin-bottom: -0.5rem !important;
 }
 
 // Reduce margin above portrait-title
@@ -2567,11 +2767,57 @@ article .featured-image {
   padding-top: 0 !important;
 }
 
+#profile > div.portrait-title > h3:nth-child(2) {
+  margin-bottom: 0.3rem !important;
+}
+
+#profile > div.portrait-title > h3:nth-child(3) {
+  margin-bottom: 0.3rem !important;
+}
+
+#profile > div:nth-child(4) > div > h3 {
+  margin-bottom: 0.3rem !important;
+}
+
+#profile > div:nth-child(5) > div > h3 {
+  margin-bottom: 0.3rem !important;
+  margin-top: 0.3rem !important;
+}
+
+#profile > div:nth-child(4) {
+  margin-bottom: 0.5rem !important;
+}
+
 // Reduce top padding in profile
 #profile {
   padding-top: 0 !important;
+  padding-bottom: 0.2rem !important;
   margin-top: -1rem !important;
   margin-bottom: -1rem !important;
+}
+
+#bio > div > div > div.col-12.col-lg-8 > div:nth-child(1) {
+  margin-bottom: 1rem !important;
+}
+
+#bio > div > div > div.col-12.col-lg-8 > div.row > div:nth-child(1) > h3 {
+  margin-top: 0.5rem !important;
+}
+
+#bio > div > div > div.col-12.col-lg-8 > div.row > div:nth-child(2) > h3:nth-child(1) {
+  margin-top: 0.5rem !important;
+}
+
+#bio > div > div > div.col-12.col-lg-8 > div.row > div:nth-child(2) > h3:nth-child(3) {
+  margin-top: 0.5rem !important;
+}
+
+#bio > div > div > div.col-12.col-lg-8 > div.row > div:nth-child(1) > ul > li > div > p.course {
+  font-size: 1.1rem !important;
+}
+
+#bio > div > div > div.col-12.col-lg-8 > div.row > div:nth-child(1) > ul > li:nth-child(1) > div > p {
+  font-size: 1.1rem !important;
 }
 
 // Reduce margins above h2-h6 headings in blog posts
@@ -2580,6 +2826,20 @@ article.article h3,
 article.article h4,
 article.article h5,
 article.article h6 {
+  margin-top: 1rem !important;
+}
+
+#blog > div > div > div:nth-child(2) > div > div.media-body.is-expanded > a {
+  margin-bottom: 0.5rem !important;
+  margin-top: 0.8rem !important;
+}
+
+#applications-and-dashboards > div > div > div:nth-child(2) > div > div.media-body > div.stream-meta.article-metadata {
+  margin-top: 0.3rem !important;
+  margin-bottom: 0.3rem !important;
+}
+
+#applications-and-dashboards > div > div > div:nth-child(2) > div > div.media-body.is-expanded > a {
   margin-top: 1rem !important;
 }
 
@@ -2604,11 +2864,12 @@ h1.article-title {
   margin-top: 0.5rem !important;
 }
 
-// Dark theme navbar background
+// Dark theme navbar background (INVERTED - uses light theme colors)
 body.dark .navbar {
-  background-color: #1f2937 !important;
+  background-color: #f8fafc !important;
   border-bottom: none !important;
-  box-shadow: 0 2px 4px rgba(150,150,150,0.2) !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25) !important;
+  color: #475569 !important;
 }
 
 body.dark .navbar::after {
@@ -2650,9 +2911,11 @@ body.dark .navbar-collapse {
   
   #navbar-content {
     display: flex !important;
-    justify-content: flex-start !important;
-    margin: 0 3vw 0 0.5rem !important;
+    justify-content: center !important;
+    margin: 0 !important;
     padding-left: 0 !important;
+    flex-grow: 1 !important;
+    text-align: center !important;
   }
   
   #navbar-content > ul {
@@ -2666,6 +2929,7 @@ body.dark .navbar-collapse {
   
   #navbar-content > ul > li {
     white-space: nowrap !important;
+    margin: 0 #{"clamp(0.01rem, 1vw, 0.3rem)"} !important;
   }
   
   #navbar-content > ul > li > a,
@@ -2721,21 +2985,44 @@ body.dark .navbar-brand:hover {
   background: none !important;
 }
 
-// Remove right padding/margin from navbar-brand at desktop widths only
+// Balance navbar-brand spacing at desktop widths
 @media (min-width: 992px) {
   .navbar-brand {
-    margin-right: 1rem !important;
-    padding-right: 0 !important;
-    margin-left: 0 !important;
+    margin-right: auto !important;
+    padding-right: 1rem !important;
     margin-top: 0.1rem !important;
   }
   
-  // Remove left padding/margin from navbar right icons
+  // Place navbar icons with balanced spacing
   #navbar-main > div > ul {
-    margin-left: 0 !important;
-    padding-left: 0 !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
     margin-top: 0.5rem !important;
-    margin-right: 5vw !important;
+    display: flex !important;
+    max-width: fit-content !important;
+    gap: 0 !important;
+  }
+  
+  // Prevent icons from overlapping mobile brand
+  #navbar-main > div > div.navbar-brand-mobile-wrapper.d-inline-flex.d-lg-none {
+    margin-right: 1rem !important;
+    flex-shrink: 0 !important;
+  }
+  
+  // Ensure navbar container uses flexbox with max-width constraint and is centered
+  #navbar-main > div,
+  #navbar-main > .container {
+    display: flex !important;
+    max-width: 1300px !important;
+    align-items: center !important;
+    margin: 0 auto !important;
+  }
+  
+  // Responsive right margin for navbar icons
+  .navbar-nav.ml-auto .nav-item {
+    margin-right: #{"clamp(0.15rem, 0.5vw, 0.2rem)"} !important;
+    margin-left: #{"clamp(0.15rem, 0.5vw, 0.2rem)"} !important;
   }
 }
 
@@ -3083,7 +3370,64 @@ body.dark h3 a:hover, body.dark div a:hover {
 
 // Reduce margin above button links in home page
 :is(#publication, #applications-and-dashboards, #blog) .btn-links {
-  margin-top: -4%;
+  margin-top: -14%;
+}
+
+// Increase top margin for publication btn-links on home page
+#publication > div > div > div:nth-child(2) > div > div.media-body > div.btn-links {
+  margin-top: -0.3rem !important;
+}
+
+// Reduce bottom margin for publication article-metadata on home page
+#publication > div > div > div:nth-child(2) > div > div.media-body > div.stream-meta.article-metadata {
+  margin-top: 0.2rem !important;
+  margin-bottom: -0.05rem !important;
+}
+
+// Reduce bottom margin for publication article-metadata div on home page
+#publication > div > div > div:nth-child(2) > div > div.media-body > div.stream-meta.article-metadata > div {
+  margin-top: 2.5rem !important;
+  padding-top: 0.25rem !important;
+  padding-bottom: 0 !important;
+  margin-bottom: -3.6rem !important;
+}
+
+// Reduce bottom margin for publication items
+#publication > div > div > div:nth-child(2) > div {
+  margin-bottom: 1.5rem !important;
+}
+
+// Increase top margin for publication expanded link on home page
+#publication > div > div > div.col-12 > div > div.media-body.is-expanded > a {
+  margin-top: 0.5rem !important;
+  margin-bottom: 0rem !important;
+  display: block !important;
+  text-align: center !important;
+}
+
+// Increase bottom margin for publication expanded article style on home page
+#publication > div > div > div.col-12 > div > div.media-body.is-expanded > div.article-style {
+  margin-bottom: 0.5rem !important;
+}
+
+// Reduce margins for publication expanded metadata on home page
+#publication > div > div > div.col-12 > div > div.media-body.is-expanded > div.stream-meta.article-metadata > div {
+  margin-top: 0.3rem !important;
+  margin-bottom: 0.7rem !important;
+}
+
+// Increase bottom margin for publication media-body span on home page
+#publication > div > div > div.col-12 > div > div.media-body > span {
+  margin-top: 0.3rem !important;
+  margin-bottom: 0.3rem !important;
+}
+
+// Decrease margins for bio section in mobile view
+@media (max-width: 991px) {
+  #bio > div > div > div.col-12.col-lg-8 > div:nth-child(1) {
+    margin-top: -0.5rem !important;
+    margin-bottom: 1rem !important;
+  }
 }
 
 // Set consistent height for all buttons to prevent icon buttons from being taller
@@ -3488,10 +3832,14 @@ body.dark .document-viewer-toolbar {
   margin-bottom: -0.3rem !important;
 }
 
-// Increase margin above blog metadata on home page
-#blog > div > div > div.col-12.col-lg-8 > div > div.media-body > div.stream-meta.article-metadata > div > span {
-  margin-top: 0.6rem !important;
-  display: inline-block !important;
+// Decrease top margin for blog metadata on home page
+#blog > div > div > div:nth-child(2) > div > div.media-body > div.stream-meta.article-metadata > div {
+  margin-top: -0.2rem !important;
+}
+
+// Reduce top padding for blog article metadata
+#blog > div > div > div > div > div.media-body > div.stream-meta.article-metadata {
+  padding-top: 0.2rem !important;
 }
 
 // HOME SECTION SPECIFIC RULES - MUST COME AFTER GLOBAL RULES
@@ -3503,6 +3851,17 @@ body.dark .document-viewer-toolbar {
 .home-section .article-metadata > div {
   margin-top: 0 !important;
   margin-bottom: initial !important; // Reset to allow media queries to work
+}
+
+// Increase font size for article date on home page
+#blog > div > div > div:nth-child(2) > div > div.media-body > div.stream-meta.article-metadata > div > span.article-date {
+  font-size: 112% !important;
+}
+
+// Increase font size and decrease top margin for metadata spans on home page
+#blog > div > div > div:nth-child(2) > div > div.media-body > div.stream-meta.article-metadata > div > span {
+  font-size: 0.85rem !important;
+  margin-top: -0.2rem !important;
 }
 
 // Smaller screens - larger font size, minimal margin (MUST BE LAST)
@@ -3632,6 +3991,11 @@ article .article-metadata {
 
 #publication > div > div > div.col-12 > div > div.media-body > div.stream-meta.article-metadata > div {
   font-size: 115%;
+}
+
+// Increase font size for blog metadata first span
+#blog > div > div > div:nth-child(2) > div > div.media-body > div.stream-meta.article-metadata > div > span:nth-child(1) > span {
+  font-size: 120% !important;
 }
 
 // Equate font size of first span to match publication name span
@@ -5360,8 +5724,8 @@ table caption {
 // Mobile: 90% width, centered
 @media (max-width: 991px) {
   #profile > div:nth-child(3) > div {
-    margin-top: 0.5rem !important;
-    margin-bottom: 0.5rem !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
   }
 
   #multimedia > div > div > div > div[style*="position: relative"][style*="padding-top"] {
@@ -5401,7 +5765,7 @@ table caption {
   margin-top: 0.5rem !important;
   margin-bottom: 0.25rem !important;
   max-width: 760px !important;
-  margin-left: auto !important;
+  margin-left: 0 !important;
   margin-right: auto !important;
 }
 

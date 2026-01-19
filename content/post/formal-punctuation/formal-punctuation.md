@@ -10,7 +10,7 @@ tags:
   - writing
   - punctuation
 subtitle: ''
-summary: ''
+summary: 'Common punctuation pitfalls in formal writing, including run-on sentences, comma splices, and the appropriate use of the Oxford comma based on whether disambiguation is needed.'
 authors: []
 lastmod: ''
 featured: no

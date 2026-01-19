@@ -10,7 +10,7 @@ tags:
   - R
   - R Markdown
 subtitle: 'Advice based on a presentation by Michael Frank'
-summary: ''
+summary: 'Based on Michael Frank''s presentation, three methods for collaborating on R Markdown documents: using GitHub for version control, copying text to trackable editors while preserving code, or knitting to Word/PDF formats.'
 authors: []
 lastmod: ''
 featured: no

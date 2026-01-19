@@ -776,6 +776,7 @@
     console.log("🔄 Theme switch initiated - GLOBAL RELOAD PROTECTION ACTIVE");
 
     let $themeChanger = $(".js-dark-toggle i");
+    let $themeToggle = $(".js-dark-toggle");
     let currentThemeMode = getThemeMode();
     let isDarkTheme;
     switch (currentThemeMode) {
@@ -784,6 +785,7 @@
         isDarkTheme = 1;
         console.info("User changed theme variation to Dark.");
         $themeChanger.removeClass("fa-moon fa-sun").addClass("fa-palette");
+        $themeToggle.attr("title", "Toggle auto mode");
         break;
       case 1:
         localStorage.setItem("dark_mode", "2");
@@ -798,12 +800,14 @@
         }
         console.info("User changed theme variation to Auto.");
         $themeChanger.removeClass("fa-moon fa-palette").addClass("fa-sun");
+        $themeToggle.attr("title", "Toggle light mode");
         break;
       default:
         localStorage.setItem("dark_mode", "0");
         isDarkTheme = 0;
         console.info("User changed theme variation to Light.");
         $themeChanger.removeClass("fa-sun fa-palette").addClass("fa-moon");
+        $themeToggle.attr("title", "Toggle dark mode");
         break;
     }
 
@@ -1000,17 +1004,21 @@
     if (canChangeTheme) {
       let themeMode = getThemeMode();
       let $themeChanger = $(".js-dark-toggle i");
+      let $themeToggle = $(".js-dark-toggle");
       switch (themeMode) {
         case 0:
           $themeChanger.removeClass("fa-sun fa-palette").addClass("fa-moon");
+          $themeToggle.attr("title", "Toggle dark mode");
           console.info("Initialize theme variation to Light.");
           break;
         case 1:
           $themeChanger.removeClass("fa-moon fa-sun").addClass("fa-palette");
+          $themeToggle.attr("title", "Toggle auto mode");
           console.info("Initialize theme variation to Dark.");
           break;
         default:
           $themeChanger.removeClass("fa-moon fa-palette").addClass("fa-sun");
+          $themeToggle.attr("title", "Toggle light mode");
           console.info("Initialize theme variation to Auto.");
           break;
       }

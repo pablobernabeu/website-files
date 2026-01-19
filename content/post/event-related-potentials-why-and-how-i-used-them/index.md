@@ -19,7 +19,7 @@ tags:
   - linear mixed-effects models
   - Max Planck Institute for Psycholinguistics
 subtitle: ''
-summary: ''
+summary: 'Overview of event-related potentials as a research method, covering electroencephalography fundamentals, ERP definitions and processing, and their application to studying the time course of cognitive processes like conceptual processing.'
 authors: []
 lastmod: ''
 featured: no

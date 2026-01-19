@@ -9,7 +9,7 @@ tags:
   - linguistics
   - language
 subtitle: ''
-summary: ''
+summary: 'Scopus searches to compare the prevalence of speculation-related terms across various scientific topics including language evolution, comprehension, disorders, linguistic relativity, teaching, bilingual advantages, sensorimotor simulation, and artificial intelligence.'
 authors: []
 lastmod: ''
 featured: no

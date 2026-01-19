@@ -12,7 +12,7 @@ tags:
   - open materials
   - research methods
 subtitle: ''
-summary: ''
+summary: 'Examination of the global shift toward open science as a new research standard, outlining how preregistration and open sharing of data and materials create benefits for funders, researchers, the scientific community, and society through transparency and reproducibility.'
 authors: []
 lastmod: ''
 featured: no
