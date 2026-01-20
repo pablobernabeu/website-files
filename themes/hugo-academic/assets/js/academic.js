@@ -775,6 +775,9 @@
     themeChangeInProgress = true;
     console.log("🔄 Theme switch initiated - GLOBAL RELOAD PROTECTION ACTIVE");
 
+    // Save current scroll position before theme change
+    const savedScrollY = window.pageYOffset || document.documentElement.scrollTop;
+
     let $themeChanger = $(".js-dark-toggle i");
     let $themeToggle = $(".js-dark-toggle");
     let currentThemeMode = getThemeMode();
@@ -812,6 +815,11 @@
     }
 
     renderThemeVariation(isDarkTheme);
+
+    // Restore scroll position after theme rendering and animation
+    setTimeout(() => {
+      window.scrollTo(0, savedScrollY);
+    }, 550);
 
     // Reset global flag after theme switch is complete
     setTimeout(() => {
