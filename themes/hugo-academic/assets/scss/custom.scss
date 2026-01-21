@@ -192,6 +192,11 @@ body.dark .article-header .article-header-caption a {
   }
 }
 
+// Increase bottom margin for multimedia video containers
+#multimedia > div > div > div > div > div {
+  margin-bottom: 0.5rem !important;
+}
+
 body.dark .home-section .col-lg-12 > p a,
 body.dark .home-section .section-heading > p a,
 body.dark .home-section .col-12 > p a,
@@ -229,7 +234,7 @@ body.dark #top div.universal-wrapper a {
 
 // Reduce bottom margin for blog entries
 #blog > div > div > div:nth-child(2) > div {
-  margin-bottom: 0.2rem !important;
+  margin-bottom: 1.5rem !important;
 }
 
 // Make blog link full width with centred text
@@ -318,8 +323,8 @@ body > div {
 
 // Reduce top and bottom padding of all home sections
 .home-section {
-  padding-top: 1rem !important;
-  padding-bottom: 1rem !important;
+  padding-top: 0.8rem !important;
+  padding-bottom: 2.1rem !important;
 }
 
 // Prevent spurious scrollbars on home page columns - maximum specificity
@@ -644,6 +649,11 @@ section.home-section .col-lg-4::-webkit-scrollbar {
   margin-top: 0.5rem !important;
 }
 
+// Exception: Increase margin for article-container after featured image on presentation pages  
+html body.page-wrapper #top > div.pub > div.article-header.featured-image-wrapper + div.article-container.pt-3 {
+  margin-top: 6rem !important;
+}
+
 // Home page max-width
 section.home-section .container {
   max-width: 1250px !important;
@@ -681,6 +691,11 @@ section.home-section .container {
 // Reduce bottom margin in section headings
 #applications-and-dashboards > div > div > div.col-12.section-heading > h1 {
   margin-bottom: 0.25rem !important;
+}
+
+// Ensure consistent top padding for applications section
+#applications-and-dashboards {
+  padding-top: 0.8rem !important;
 }
 
 // Format page titles on post and presentation pages like home page
@@ -743,6 +758,21 @@ div > div > div.col-12.section-heading > p {
 div.col-12.section-heading > h1 {
   margin-bottom: 0.25rem !important;
   font-size: 2.25rem !important;
+}
+
+// Increase top margin for blog section heading
+#blog > div > div > div.col-12.section-heading > h1 {
+  margin-top: 1.5rem !important;
+}
+
+// Increase top margin for applications-and-dashboards section heading
+#applications-and-dashboards > div > div > div.col-12.section-heading > h1 {
+  margin-top: 1.5rem !important;
+}
+
+// Increase top margin for Related podcasts headings
+#related-podcasts > h3 {
+  margin-top: 2rem !important;
 }
 
 // Reduce margin above stream-meta article-metadata
@@ -1198,8 +1228,21 @@ body.dark #open-science-popup a:hover {
 // Increase font size for metadata on individual publication detail pages
 #top > div.pub > div.article-container.pt-3 > div.article-metadata,
 #top > div.pub > div.article-container.pt-3 > div.article-metadata * {
-  font-size: 0.95rem !important;
+  font-size: 1.15rem !important;
   line-height: 1.5 !important;
+}
+
+// Keep article-categories at original smaller size
+#top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories,
+#top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories * {
+  font-size: 0.8rem !important;
+}
+
+// Override font size for publication pages specifically
+body.page-publication #top > div.pub > div.article-container.pt-3 > div.article-metadata,
+body.page-publication #top > div.pub > div.article-container.pt-3 > div.article-metadata * {
+  font-size: 2rem !important;
+  color: red !important;
 }
 
 #top > div.pub > div.article-container.pt-3 > div.article-metadata {
@@ -1231,9 +1274,28 @@ body.page-wrapper #top > div.pub > div.article-container.pt-3 > div.article-meta
   font-size: 0.8rem !important;
 }
 
+// Publication pages: increase font size for categories
+body.page-publication #top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories * {
+  font-size: 2rem !important;
+}
+
 // Reduce font size of first metadata span
 #top > div.pub > div.article-container.pt-3 > div.article-metadata > span:nth-child(1) > span {
   font-size: 0.85rem !important;
+}
+
+// Override ALL span > span to match general metadata size increase (must come after more specific rules)
+#top > div.pub > div.article-container.pt-3 > div.article-metadata > span:nth-child(1) > span {
+  font-size: 1.15rem !important;
+}
+
+#top > div.pub > div.article-container.pt-3 > div.article-metadata > span > span {
+  font-size: 1.15rem !important;
+}
+
+// Publication pages: increase font size for first metadata span
+body.page-publication #top > div.pub > div.article-container.pt-3 > div.article-metadata > span:nth-child(1) > span {
+  font-size: 2rem !important;
 }
 
 // Hide middot dividers in publication metadata
@@ -2144,6 +2206,10 @@ body.dark {
 
 // Profile subsections
 
+#profile > div:nth-child(5) > div > ul {
+  margin-bottom: 1.5rem !important;
+}
+
 #profile > div:nth-child(5) > div > ul > div> div > a:link, #profile > div:nth-child(5) > div > ul > div> div > a {
   margin-right: -10px;
 }
@@ -2444,26 +2510,26 @@ and from bio portrait information. */
     top: 50px !important;
     left: 0 !important;
     right: auto !important;
-    width: 35% !important;
-    min-width: 150px !important;
-    max-width: 180px !important;
+    width: 45% !important;
+    min-width: 180px !important;
+    max-width: 250px !important;
     background-color: #1e293b !important;
     box-shadow: 0 4px 6px rgba(0,0,0,0.3) !important;
     z-index: 1020 !important;
-    padding: 0.25rem 0.25rem !important;
+    padding: 0 !important;
     margin: 0 !important;
     transition: all 0.2s ease-in-out !important;
     opacity: 1 !important;
   }
   
   .navbar-collapse.show {
-    width: 35% !important;
-    min-width: 150px !important;
-    max-width: 180px !important;
+    width: 45% !important;
+    min-width: 180px !important;
+    max-width: 250px !important;
   }
   
   .navbar-collapse .navbar-nav {
-    text-align: center !important;
+    text-align: left !important;
     width: 100% !important;
     display: block !important;
   }
@@ -2471,23 +2537,23 @@ and from bio portrait information. */
   .navbar-collapse .navbar-nav .nav-item {
     padding-right: 0 !important;
     padding-left: 0 !important;
-    text-align: center !important;
+    text-align: left !important;
     display: block !important;
     width: 100% !important;
   }
   
   .navbar-collapse .navbar-nav .nav-link {
-    text-align: center !important;
+    text-align: left !important;
     display: block !important;
     width: 100% !important;
-    padding: 0.5rem 1rem !important;
+    padding: 0.35rem 0.5rem !important;
     margin: 0 !important;
     color: #cbd5e1 !important;
   }
   
   .navbar-collapse #navbar-content {
     color: #cbd5e1 !important;
-    text-align: center !important;
+    text-align: left !important;
   }
   
   .navbar-collapse #navbar-content > ul {
@@ -2517,7 +2583,17 @@ and from bio portrait information. */
   }
   
   .navbar-nav {
-    padding: 0.5rem 0 !important;
+    padding: 0.25rem 0 !important;
+  }
+  
+  // Reduce padding for mobile menu items
+  .navbar-collapse #navbar-content > ul > li {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  .navbar-collapse #navbar-content > ul > li > a {
+    padding: 0.35rem -0.1rem 0.35rem 0.1rem !important;
   }
   
   // Remove background color on hover for mobile menu items
@@ -2781,6 +2857,27 @@ section.home-section:first-of-type {
 // Increase margin above featured-image-wrapper in pub pages
 #top > div.pub > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 {
   margin-top: 1.5rem !important;
+  margin-bottom: 3.5rem !important;
+}
+
+// Override for publication pages: reduce bottom margin
+html body.page-publication #top > div.pub > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 {
+  margin-bottom: 1rem !important;
+}
+
+// Increase bottom margin for featured-image div
+#top > div.pub > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 > div {
+  margin-bottom: 3rem !important;
+}
+
+// Override for publication pages: reduce bottom margin for featured-image wrapper
+html body.page-publication #top > div.pub > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 {
+  margin-bottom: 1rem !important;
+}
+
+// Override for publication pages: reduce bottom margin for featured-image div
+html body.page-publication #top > div.pub > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 > div {
+  margin-bottom: 0.5rem !important;
 }
 
 // Override margin-bottom for presentation pages
@@ -2790,28 +2887,23 @@ html body.page-wrapper #top > div.pub > div.article-header.article-container.fea
 
 // Alternative: Add top margin to element after featured image on presentation pages
 html body.page-wrapper #top > div.pub > div.article-header.featured-image-wrapper + div.article-container.pt-3 {
-  margin-top: 4rem !important;
+  margin-top: 6rem !important;
 }
 
 // Reduce margin under featured image in pub pages (except presentation pages)
-.page-publication #top > div.pub > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 > div > img {
+html body.page-publication #top > div.pub > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 > div > img {
   margin-bottom: 0 !important;
 }
 
 // Reduce margin under featured-image itself on publication pages
-.page-publication .featured-image {
-  margin-bottom: -1.5rem !important;
+html body.page-publication .featured-image {
+  margin-bottom: -3.5rem !important;
 }
 
 // Increase margin above and below featured image on presentation pages
 .page-wrapper #top > div.pub > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 > div > img {
   margin-top: 0.25rem !important;
-  margin-bottom: 4rem !important;
-}
-
-// General rule for all pub pages - increase bottom margin for featured image
-#top > div.pub > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 > div > img {
-  margin-bottom: 3rem !important;
+  margin-bottom: 6rem !important;
 }
 
 // Increase margin above featured-image-wrapper in article pages
@@ -2834,7 +2926,8 @@ article .featured-image {
 
   #profile > div:nth-child(3) {
     padding-top: 0.5rem !important;
-    margin-top: 0 !important;
+    margin-top: -0.5rem !important;
+    margin-bottom: -0.8rem !important;
   }
 
   #profile > img {
@@ -2845,6 +2938,7 @@ article .featured-image {
 // Reduce margin under profile image
 #profile > img {
   margin-bottom: -0.5rem !important;
+  margin-left: -0.1rem !important;
 }
 
 // Reduce margin above portrait-title
@@ -2856,9 +2950,11 @@ article .featured-image {
 #profile > div.portrait-title > h2 {
   margin-top: 0 !important;
   padding-top: 0 !important;
+  margin-bottom: 0.3rem !important;
 }
 
 #profile > div.portrait-title > h3:nth-child(2) {
+  margin-top: -0.2rem !important;
   margin-bottom: 0.3rem !important;
 }
 
@@ -3135,7 +3231,7 @@ body.dark .navbar-brand:hover {
   // Place navbar icons with balanced spacing
   #navbar-main > div > ul {
     margin-left: auto !important;
-    margin-right: -1rem !important;
+    margin-right: 0 !important;
     padding: 0 !important;
     margin-top: 0.5rem !important;
     display: flex !important;
@@ -3536,7 +3632,8 @@ body.dark h3 a:hover, body.dark div a:hover {
   margin-top: 2.5rem !important;
   padding-top: 0.25rem !important;
   padding-bottom: 0 !important;
-  margin-bottom: -3.6rem !important;
+  margin-bottom: -3.8rem !important;
+  font-size: 0.92rem !important;
 }
 
 // Reduce bottom margin for publication items
@@ -4160,6 +4257,11 @@ article .article-metadata {
   margin-bottom: 0.1rem !important;
 }
 
+// Override for publication pages - larger font
+body.page-publication #top > div.pub > div.article-container.pt-3 > div.article-metadata {
+  font-size: 2rem !important;
+}
+
 #top div.media-body > div.article-style {
   font-size: 90%;
 }
@@ -4167,6 +4269,11 @@ article .article-metadata {
 // Change size of article categories
 #top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories {
   font-size: 80%;
+}
+
+// Override for publication pages - larger categories font
+body.page-publication #top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories {
+  font-size: 2rem !important;
 }
 
 
@@ -4962,7 +5069,7 @@ body.dark .full-text-btn a:focus,
   position: relative !important;
   transition: max-height 0.3s ease !important;
   cursor: pointer !important; // Make entire area clickable
-  margin-bottom: -0.25rem !important;
+  margin-bottom: 0.6rem !important;
   
   // Add prominent fade gradient at bottom to indicate more content
   &::after {
@@ -4971,7 +5078,7 @@ body.dark .full-text-btn a:focus,
     bottom: 0;
     left: 0;
     right: 0;
-    height: 2em; // Taller fade area for better visibility
+    height: 1.5em; // Taller fade area for better visibility
     background: linear-gradient(to bottom, transparent 0%, rgba(247, 247, 247, 0.7) 40%, rgba(247, 247, 247, 0.95) 70%, rgba(247, 247, 247, 1) 100%);
     pointer-events: none;
     transition: opacity 0.3s ease;
@@ -5011,6 +5118,7 @@ body.dark .full-text-btn a:focus,
 .multimedia-summary.is-expanded {
   max-height: none !important;
   cursor: default !important;
+  margin-bottom: 0.3rem !important;
   
   &::after {
     opacity: 0;
@@ -5723,6 +5831,13 @@ h2 {
   margin-top: 2rem;
 }
 
+// Lighten h1, h2, h3 headings on dark theme home page
+body.dark h1,
+body.dark h2,
+body.dark h3 {
+  color: #f0f0f0 !important;
+}
+
 // Force single column for publications widget compact view
 #publication .col-12 {
   display: flex !important;
@@ -5877,8 +5992,8 @@ table caption {
 // Mobile: 90% width, centered
 @media (max-width: 991px) {
   #profile > div:nth-child(3) > div {
-    margin-top: -1rem !important;
-    margin-bottom: 0 !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 1rem !important;
   }
 
   #multimedia > div > div > div > div[style*="position: relative"][style*="padding-top"] {
@@ -6055,6 +6170,7 @@ body.page-wrapper .article-container {
 // Reduce top padding in third div on publication pages
 #top > div.pub > div:nth-child(3) {
   padding-top: 0 !important;
+  margin-top: -1.6rem !important;
 }
 
 // Reduce top padding in presentation page content
