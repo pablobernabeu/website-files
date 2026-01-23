@@ -37,10 +37,8 @@
 
   // Dynamically get responsive navigation bar height for offsetting Scrollspy.
   function getNavBarHeight() {
-    let $navbar = $("#navbar-main");
-    let navbar_offset = $navbar.outerHeight();
-    console.debug("Navbar height: " + navbar_offset);
-    return navbar_offset;
+    // Return fixed offset to match CSS scroll-margin-top
+    return 60;
   }
 
   /**
@@ -1117,6 +1115,72 @@
     $(".js-dark-toggle").click(function (e) {
       e.preventDefault();
       changeThemeModeClick();
+    });
+
+    // Light theme button - set to light mode specifically
+    $(".js-set-theme-light").click(function (e) {
+      e.preventDefault();
+      localStorage.setItem("dark_mode", "0");
+      renderThemeVariation(0);
+    });
+
+    // Dark theme button - set to dark mode specifically
+    $(".js-set-theme-dark").click(function (e) {
+      e.preventDefault();
+      localStorage.setItem("dark_mode", "1");
+      renderThemeVariation(1);
+    });
+
+    // Search trigger from menu
+    $(document).on("click", ".js-search-trigger", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      $(".js-search").click();
+    });
+    
+    // Font size toggle - ensure theme menu is completely hidden first
+    $(document).on("click", ".js-font-size-toggle", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      let fontMenu = $(".font-size-menu");
+      let themeMenu = $(".theme-menu");
+      
+      // Force immediate hide - check both visibility states
+      if (themeMenu.is(":visible")) {
+        themeMenu.hide();
+        // Wait for DOM update before showing
+        setTimeout(function() {
+          fontMenu.toggle();
+        }, 50);
+      } else {
+        fontMenu.toggle();
+      }
+    });
+    
+    // Theme toggle - ensure font size menu is completely hidden first
+    $(document).on("click", ".js-theme-toggle", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      let fontMenu = $(".font-size-menu");
+      let themeMenu = $(".theme-menu");
+      
+      // Force immediate hide - check both visibility states
+      if (fontMenu.is(":visible")) {
+        fontMenu.hide();
+        // Wait for DOM update before showing
+        setTimeout(function() {
+          themeMenu.toggle();
+        }, 50);
+      } else {
+        themeMenu.toggle();
+      }
+    });
+    
+    // Hide dropdowns when clicking outside
+    $(document).on("click", function (e) {
+      if (!$(e.target).closest(".nav-item.dropdown").length) {
+        $(".font-size-menu, .theme-menu").stop(true, true).css("display", "none");
+      }
     });
 
     // Live update of day/night mode on system preferences update (no refresh required).

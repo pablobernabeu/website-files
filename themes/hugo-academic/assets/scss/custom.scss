@@ -4,7 +4,7 @@
 
 // Responsive base font size - scales with viewport, slightly larger on big screens
 html {
-  font-size: #{"clamp(16px, 1vw + 0.25rem, 18px)"} !important;
+  font-size: #{"clamp(15px, 0.9vw + 0.2rem, 16px)"} !important;
 }
 
 // Font size levels controlled by data attribute (user toggle overrides)
@@ -12,7 +12,7 @@ html[data-font-size="0"] { font-size: 12px !important; }
 html[data-font-size="1"] { font-size: 13px !important; }
 html[data-font-size="2"] { font-size: 14px !important; }
 html[data-font-size="3"] { font-size: 15px !important; }
-html[data-font-size="4"] { font-size: #{"clamp(16px, 1vw + 0.25rem, 18px)"} !important; } // default with scaling
+html[data-font-size="4"] { font-size: #{"clamp(15px, 0.9vw + 0.2rem, 16px)"} !important; } // default with scaling
 html[data-font-size="5"] { font-size: 17px !important; }
 html[data-font-size="6"] { font-size: 18px !important; }
 html[data-font-size="7"] { font-size: 19px !important; }
@@ -38,8 +38,8 @@ body.dark {
 .font-size-menu {
   display: none;
   position: absolute;
-  right: 50%;
-  transform: translateX(50%);
+  right: 0;
+  transform: none;
   top: 100%;
   margin-top: 0;
   background: #1e293b !important;
@@ -51,6 +51,7 @@ body.dark {
   white-space: nowrap;
   min-width: 0 !important;
   max-width: fit-content !important;
+  transition: none !important;
 }
 
 // Desktop large viewport adjustments
@@ -116,8 +117,95 @@ body.dark {
   cursor: pointer;
 }
 
+// Theme menu styling - same as font-size-menu
+.theme-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  transform: none;
+  top: 100%;
+  margin-top: 0;
+  background: #1e293b !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.175);
+  z-index: 9999 !important;
+  width: fit-content;
+  white-space: nowrap;
+  min-width: 0 !important;
+  max-width: fit-content !important;
+  transition: none !important;
+}
+
+@media (min-width: 992px) {
+  .theme-menu {
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .theme-menu {
+    position: fixed !important;
+    right: 0 !important;
+    left: auto !important;
+    top: 50px !important;
+    transform: none !important;
+    z-index: 9999 !important;
+  }
+}
+
+.theme-menu.show {
+  display: block;
+  pointer-events: auto !important;
+}
+
+.nav-item.dropdown:hover .theme-menu,
+.theme-menu:hover {
+  display: block !important;
+  pointer-events: auto !important;
+}
+
+.theme-menu .dropdown-item {
+  padding: 0.5rem !important;
+  cursor: pointer;
+  color: #cbd5e1 !important;
+  white-space: nowrap;
+  transition: background-color 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem !important;
+  min-width: auto !important;
+  width: auto !important;
+  pointer-events: auto !important;
+}
+
+.theme-menu .dropdown-item:hover {
+  background-color: #334155 !important;
+}
+
+.theme-menu .dropdown-item i {
+  width: 1rem;
+  flex-shrink: 0;
+  margin-right: 0.3rem;
+}
+
+// Show only opposite theme option based on current theme
+body:not(.dark) .theme-menu .js-set-theme-light {
+  display: none !important;
+}
+
+body.dark .theme-menu .js-set-theme-dark {
+  display: none !important;
+}
+
+.js-theme-toggle {
+  cursor: pointer;
+}
+
 // Font size toggle should use same colors as search and dark toggle
-.navbar-nav .nav-link.js-font-size-toggle {
+.navbar-nav .nav-link.js-font-size-toggle,
+.navbar-nav .nav-link.js-theme-toggle {
   color: var(--nav-text) !important;
 }
 
@@ -197,6 +285,11 @@ body.dark .article-header .article-header-caption a {
   margin-bottom: 0.5rem !important;
 }
 
+// Remove extra top margin from first video in multimedia section
+#multimedia > div > div > div:nth-child(2) > div:nth-child(1) {
+  margin-top: 0 !important;
+}
+
 body.dark .home-section .col-lg-12 > p a,
 body.dark .home-section .section-heading > p a,
 body.dark .home-section .col-12 > p a,
@@ -234,7 +327,7 @@ body.dark #top div.universal-wrapper a {
 
 // Reduce bottom margin for blog entries
 #blog > div > div > div:nth-child(2) > div {
-  margin-bottom: 1.5rem !important;
+  margin-bottom: 1rem !important;
 }
 
 // Make blog link full width with centred text
@@ -298,6 +391,7 @@ body {
   position: relative !important;
   overflow-x: hidden !important;
   overflow-y: auto !important;
+  padding-top: 75px !important;
 }
 
 // Ensure all major containers respect viewport width
@@ -324,7 +418,7 @@ body > div {
 // Reduce top and bottom padding of all home sections
 .home-section {
   padding-top: 0.8rem !important;
-  padding-bottom: 2.1rem !important;
+  padding-bottom: 3rem !important;
 }
 
 // Prevent spurious scrollbars on home page columns - maximum specificity
@@ -756,18 +850,31 @@ div > div > div.col-12.section-heading > p {
 #applications-and-dashboards > div > div > div.col-12.section-heading > h1,
 #publication > div > div > div.col-12.section-heading > h1,
 div.col-12.section-heading > h1 {
+  margin-top: 0.5rem !important;
   margin-bottom: 0.25rem !important;
   font-size: 2.25rem !important;
 }
 
+// Reduce bottom margin specifically for publication heading
+#publication > div > div > div.col-12.section-heading > h1 {
+  margin-bottom: 0.1rem !important;
+}
+
 // Increase top margin for blog section heading
 #blog > div > div > div.col-12.section-heading > h1 {
-  margin-top: 1.5rem !important;
+  margin-top: 0.8rem !important;
 }
 
 // Increase top margin for applications-and-dashboards section heading
 #applications-and-dashboards > div > div > div.col-12.section-heading > h1 {
-  margin-top: 1.5rem !important;
+  margin-top: 0.8rem !important;
+}
+
+// Increase top margin for publication section heading in mobile
+@media (max-width: 991px) {
+  #publication > div > div > div.col-12.section-heading > h1 {
+    margin-top: 2rem !important;
+  }
 }
 
 // Increase top margin for Related podcasts headings
@@ -909,10 +1016,10 @@ blockquote {
   line-height: 1.4 !important;
 }
 
-// Reduce font size for abstracts in publication list
-#publication > div > div > div > div > div.media-body > div.article-style {
-  font-size: 0.85rem !important;
-}
+// Remove reduced font size for abstracts to maintain consistency with other paragraphs
+// #publication > div > div > div > div > div.media-body > div.article-style {
+//   font-size: 0.85rem !important;
+// }
 
 // Increase font size for publication type/year headings on /publication/ page
 // Exclude .li-cite-author spans which need different styling
@@ -2036,7 +2143,7 @@ body.dark {
 
 // On scroll and only in desktop view, highlight section headings, tags in articles, bio info (name, title, email, socials), and the tag cloud at the bottom of the site. This work depends on CSS code in custom.scss, and JS code in academic.js.
 
-@media (min-width: 1000px) {
+@media (min-width: 992px) {
   
   div.col-12.col-lg-4.section-heading, div.col-12.col-lg-4.section-heading > h1, div.article-container.pt-3 > div.btn-links.mb-3 > a:link, div.btn-links.mb-3 > button, button > h3, .portrait-title > h3, .social-icon, .tag-cloud a:link, #top > div.pub > div > a > button {
     opacity: 0;
@@ -2135,7 +2242,7 @@ body.dark {
 }
 
 // Mobile scroll animations - optimized for fast, responsive mobile performance
-@media (max-width: 999px) {
+@media (max-width: 991px) {
   
   // Section headings: NO ANIMATION on mobile - instant visibility
   div.col-12.col-lg-4.section-heading, 
@@ -2144,6 +2251,8 @@ body.dark {
     transform: none !important; // No transform effects
     transition: none !important; // No transitions
     animation: none !important; // No animations
+    display: block !important; // Force display
+    visibility: visible !important; // Force visibility
   }
   
   // Other elements: keep minimal animations for subtle effect
@@ -2332,9 +2441,9 @@ and from bio portrait information. */
   background-color: #1e293b !important;
   border-bottom: none !important;
   box-shadow: none !important;
-  height: 6vh !important;
-  min-height: 50px !important;
-  max-height: 50px !important;
+  height: 55px !important;
+  min-height: 55px !important;
+  max-height: 55px !important;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
   padding-left: 0 !important;
@@ -2510,9 +2619,9 @@ and from bio portrait information. */
     top: 50px !important;
     left: 0 !important;
     right: auto !important;
-    width: 45% !important;
-    min-width: 180px !important;
-    max-width: 250px !important;
+    width: 40% !important;
+    min-width: 160px !important;
+    max-width: 220px !important;
     background-color: #1e293b !important;
     box-shadow: 0 4px 6px rgba(0,0,0,0.3) !important;
     z-index: 1020 !important;
@@ -2523,15 +2632,18 @@ and from bio portrait information. */
   }
   
   .navbar-collapse.show {
-    width: 45% !important;
-    min-width: 180px !important;
-    max-width: 250px !important;
+    width: 40% !important;
+    min-width: 160px !important;
+    max-width: 220px !important;
+    margin-left: 0 !important;
   }
   
   .navbar-collapse .navbar-nav {
     text-align: left !important;
     width: 100% !important;
     display: block !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
   }
   
   .navbar-collapse .navbar-nav .nav-item {
@@ -2540,13 +2652,14 @@ and from bio portrait information. */
     text-align: left !important;
     display: block !important;
     width: 100% !important;
+    margin-left: 0 !important;
   }
   
   .navbar-collapse .navbar-nav .nav-link {
     text-align: left !important;
     display: block !important;
     width: 100% !important;
-    padding: 0.35rem 0.5rem !important;
+    padding: 0.5rem 0.3rem 0.5rem 0.5rem !important;
     margin: 0 !important;
     color: #cbd5e1 !important;
   }
@@ -2628,8 +2741,8 @@ and from bio portrait information. */
   
   @media (max-width: 350px) {
     .navbar-brand {
-      left: 40% !important;
-      transform: translate(-40%, -50%) !important;
+      left: 42% !important;
+      transform: translate(-42%, -50%) !important;
     }
   }
   
@@ -2663,28 +2776,42 @@ and from bio portrait information. */
   // Add right margin to icon container
   ul.nav-icons.navbar-nav {
     margin-right: -1rem !important;
+    gap: 2rem !important;
+  }
+  
+  // Reduce gap on mobile
+  @media (max-width: 991px) {
+    ul.nav-icons.navbar-nav {
+      gap: 0.3rem !important;
+    }
   }
   
   .navbar-nav-right .nav-item,
   .nav-icons .nav-item {
     display: flex !important;
     align-items: center !important;
-    margin: 0 #{"clamp(0.4rem, 0.5vw, 0.25rem)"} !important;
+    margin: 0 !important;
     padding: 0 !important;
   }
   
-  // Very narrow mobile viewports: reduce icon margins
+  // Add margin between icons only (not on outer edges)
+  .navbar-nav-right .nav-item:not(:last-child),
+  .nav-icons .nav-item:not(:last-child) {
+    margin-right: #{"clamp(0.8rem, 1vw, 0.5rem)"} !important;
+  }
+  
+  // Very narrow mobile viewports: reduce margin between icons
   @media (max-width: 400px) {
-    .navbar-nav-right .nav-item,
-    .nav-icons .nav-item {
-      margin: 0 #{"clamp(0.25rem, 0.5vw, 0.15rem)"} !important;
+    .navbar-nav-right .nav-item:not(:last-child),
+    .nav-icons .nav-item:not(:last-child) {
+      margin-right: #{"clamp(0.5rem, 0.8vw, 0.3rem)"} !important;
     }
   }
   
   @media (max-width: 350px) {
-    .navbar-nav-right .nav-item,
-    .nav-icons .nav-item {
-      margin: 0 #{"clamp(0.15rem, 0.5vw, 0.1rem)"} !important;
+    .navbar-nav-right .nav-item:not(:last-child),
+    .nav-icons .nav-item:not(:last-child) {
+      margin-right: #{"clamp(0.3rem, 0.6vw, 0.2rem)"} !important;
     }
   }
   
@@ -2715,12 +2842,18 @@ and from bio portrait information. */
   #navbar-main > div > ul > li.nav-item.dropdown {
     padding-right: 0 !important;
     padding-left: 0 !important;
+    margin-right: 0.8rem !important;
   }
   
   // Override any general nav-link padding for icon links
   #navbar-main > div > ul > li:nth-child(1) > a.nav-link,
   #navbar-main > div > ul > li.nav-item.dropdown > a.nav-link {
     padding: 0.25rem 0 !important;
+  }
+  
+  // Remove margin from last icon
+  #navbar-main > div > ul > li.nav-item:last-child {
+    margin-right: 0 !important;
   }
   
   .navbar-nav-right i,
@@ -2790,20 +2923,26 @@ body::before, #top::before {
 
 // Add spacing for page content below fixed navbar
 section.home-section:first-of-type {
-  margin-top: 7vh !important;
+  margin-top: 55px !important;
   padding-top: 1rem !important;
 }
 
 @media (max-width: 991px) {
   section.home-section:first-of-type {
-    margin-top: 55px !important;
+    margin-top: 70px !important;
     padding-top: 1rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  section.home-section:first-of-type {
+    margin-top: 15px !important;
   }
 }
 
 @media (max-height: 800px) {
   section.home-section:first-of-type {
-    margin-top: 65px !important;
+    margin-top: 70px !important;
   }
 }
 
@@ -2846,6 +2985,11 @@ section.home-section:first-of-type {
   #publication > div > div > div:nth-child(2) > div:nth-child(1) > div.media-body > h3 {
     margin-top: -0.5rem !important;
   }
+}
+
+// Reduce bottom margin for first publication container
+#publication > div > div > div:nth-child(2) > div:nth-child(1) {
+  margin-bottom: 1rem !important;
 }
 
 // White link color for featured image header in light theme
@@ -3121,6 +3265,20 @@ body.dark .font-size-menu .dropdown-item:hover {
   color: #0f172a !important;
 }
 
+body.dark .theme-menu {
+  background: #e2e8f0 !important;
+  border-color: rgba(0,0,0,0.15) !important;
+}
+
+body.dark .theme-menu .dropdown-item {
+  color: #0f172a !important;
+}
+
+body.dark .theme-menu .dropdown-item:hover {
+  background-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
 // Center navbar-content (menu items) in desktop view
 @media (min-width: 992px) {
   #navbar-main > .container,
@@ -3231,12 +3389,16 @@ body.dark .navbar-brand:hover {
   // Place navbar icons with balanced spacing
   #navbar-main > div > ul {
     margin-left: auto !important;
-    margin-right: 0 !important;
+    margin-right: 0.3rem !important;
     padding: 0 !important;
     margin-top: 0.5rem !important;
-    display: flex !important;
-    max-width: fit-content !important;
-    gap: 0 !important;
+  }
+  
+  // Increase right margin on mobile
+  @media (max-width: 991px) {
+    #navbar-main > div > ul {
+      margin-right: 1rem !important;
+    }
   }
   
   // Prevent icons from overlapping mobile brand
@@ -3618,7 +3780,7 @@ body.dark h3 a:hover, body.dark div a:hover {
 
 // Increase top margin for publication btn-links on home page
 #publication > div > div > div:nth-child(2) > div > div.media-body > div.btn-links {
-  margin-top: -0.3rem !important;
+  margin-top: -0.5rem !important;
 }
 
 // Reduce bottom margin for publication article-metadata on home page
@@ -3638,7 +3800,7 @@ body.dark h3 a:hover, body.dark div a:hover {
 
 // Reduce bottom margin for publication items
 #publication > div > div > div:nth-child(2) > div {
-  margin-bottom: 1.5rem !important;
+  margin-bottom: 1rem !important;
 }
 
 // Increase top margin for publication expanded link on home page
@@ -3731,6 +3893,20 @@ article #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 {
 #top > article > div.article-container.pt-3 > div.btn-links.mb-3 {
   margin-bottom: 0.2rem !important;
   margin-top: 0.3rem !important;
+}
+
+// Ensure consistent font size for all home page section paragraphs
+#multimedia > div > div > div > div > p:nth-child(2),
+#teaching-supervision > div > div > div > p,
+#bio > div > div > div.col-12.col-lg-8 > p,
+#bio > div > div > div.col-12.col-lg-8 > div.row > div > ul > li > div > p,
+div > div > div > table > tbody > tr > td,
+:is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style,
+:is(#publication, #applications-and-dashboards, #blog) > div > div > div:nth-child(2) > div > div.media-body > div.stream-meta.article-metadata > div,
+:is(#publication, #applications-and-dashboards, #blog) > div > div > div:nth-child(2) > div > div.media-body > div.stream-meta.article-metadata > div > span,
+:is(#publication, #applications-and-dashboards, #blog) .stream-meta.article-metadata,
+:is(#publication, #applications-and-dashboards, #blog) .stream-meta.article-metadata * {
+  font-size: #{"clamp(15px, 0.9vw + 0.2rem, 16px)"} !important;
 }
 
 // Collapsible abstracts on home page - collapsed by default, expandable on click
@@ -5237,7 +5413,7 @@ section[id] {
   }
   
   section[id] {
-    scroll-margin-top: 50px; // Adjusted for mobile navbar height
+    scroll-margin-top: 60px; // Adjusted for mobile navbar height
   }
   
   // Reduce font size of article-metadata on home page in mobile view
@@ -5773,7 +5949,7 @@ html body.dark .search-hit a h6 {
   
   // Reduce subtitle size under section headings
   .section-heading p {
-    font-size: 0.75em !important;
+    font-size: 1.1rem !important;
   }
   
   .section-heading {
@@ -5963,6 +6139,7 @@ table caption {
   padding-top: 28.125% !important; // 50% * 56.25% = 28.125% for 16:9 ratio
   margin-left: auto !important;
   margin-right: auto !important;
+  margin-top: 10px !important;
   margin-bottom: 2rem !important;
 }
 
@@ -6001,6 +6178,7 @@ table caption {
     padding-top: 50.625% !important; // 90% * 56.25% = 50.625% for 16:9 ratio
     margin-left: auto !important;
     margin-right: auto !important;
+    margin-top: 10px !important;
     margin-bottom: 2rem !important;
   }
   
@@ -6016,6 +6194,21 @@ table caption {
 /* Increase top padding in bio section */
 #bio {
   padding-top: 3rem !important;
+}
+
+/* Ensure equal left and right padding in bio section columns */
+#bio > div > div > div.col-12.col-lg-8,
+#bio > div > div > div.col-12.col-lg-4 {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Ensure bio section row has no extra margins */
+#bio > div > div {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 /* Increase margin above publication filter controls */

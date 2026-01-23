@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 
-### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; The digital parrot or the universal machine? Debating the mind in the model
+### <span style='color:grey; font-size:70%;'>2026 ·</span>&nbsp; The digital parrot or the universal machine? Debating the mind in the model
 
 <div class="multimedia-summary">
 
@@ -141,7 +141,7 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 
-### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; Beyond the cloud: Reclaiming data sovereignty in speech transcription
+### <span style='color:grey; font-size:70%;'>2026 ·</span>&nbsp; Beyond the cloud: Reclaiming data sovereignty in speech transcription
 
 <div class="multimedia-summary">
 

@@ -32,3 +32,8 @@
    name = '<span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Short essays &nbsp; | &nbsp; Tutorials &nbsp; | &nbsp; Inquiries &nbsp; | &nbsp; Functions for the implementation of experiments, data analysis and other purposes &nbsp; ">Resources</span>'
    url = '#blog'
    weight = 60
+
+[[main]]
+   name = "<i class='fas fa-search js-search-trigger'></i> <span class='d-lg-none js-search-trigger'>Search</span>"
+   url = '#'
+   weight = 70
