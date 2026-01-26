@@ -59,20 +59,12 @@
     const currentIndex = getCurrentIndex();
     applyFontSize(currentIndex);
 
-    // Add event listeners
+    // Add event listeners for font size controls
     document.addEventListener('click', function(e) {
-      // Prevent default and stop propagation for all font size controls
-      if (e.target.closest('.js-font-size-toggle, .js-font-increase, .js-font-decrease, .js-font-reset')) {
+      // Prevent default for all font size controls
+      if (e.target.closest('.js-font-increase, .js-font-decrease, .js-font-reset')) {
         e.preventDefault();
         e.stopPropagation();
-      }
-
-      // Toggle dropdown menu
-      if (e.target.closest('.js-font-size-toggle')) {
-        const menu = e.target.closest('.nav-item').querySelector('.font-size-menu');
-        if (menu) {
-          menu.classList.toggle('show');
-        }
       }
 
       // Increase font size
@@ -88,14 +80,6 @@
       // Reset font size
       if (e.target.closest('.js-font-reset')) {
         resetFontSize();
-      }
-    });
-
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('.nav-item.dropdown')) {
-        const openMenus = document.querySelectorAll('.font-size-menu.show');
-        openMenus.forEach(menu => menu.classList.remove('show'));
       }
     });
   }

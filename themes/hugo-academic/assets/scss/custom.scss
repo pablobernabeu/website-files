@@ -38,8 +38,9 @@ body.dark {
 .font-size-menu {
   display: none;
   position: absolute;
-  right: 0;
-  transform: none;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%) !important;
   top: 100%;
   margin-top: 0;
   background: #1e293b !important;
@@ -54,22 +55,21 @@ body.dark {
   transition: none !important;
 }
 
+// Mobile viewport - center dropdown under icon
+@media (max-width: 991px) {
+  .font-size-menu {
+    position: absolute !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    margin-top: 0 !important;
+  }
+}
+
 // Desktop large viewport adjustments
 @media (min-width: 992px) {
   .font-size-menu {
     margin-top: 0.5rem;
-  }
-}
-
-// Mobile and small screen adjustments
-@media (max-width: 991px) {
-  .font-size-menu {
-    position: fixed !important;
-    right: 0 !important;
-    left: auto !important;
-    top: 50px !important;
-    transform: none !important;
-    z-index: 9999 !important;
   }
 }
 
@@ -121,8 +121,9 @@ body.dark {
 .theme-menu {
   display: none;
   position: absolute;
-  right: 0;
-  transform: none;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%) !important;
   top: 100%;
   margin-top: 0;
   background: #1e293b !important;
@@ -137,20 +138,20 @@ body.dark {
   transition: none !important;
 }
 
-@media (min-width: 992px) {
+// Mobile viewport - center dropdown under icon
+@media (max-width: 991px) {
   .theme-menu {
-    margin-top: 0.5rem;
+    position: absolute !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    margin-top: 0 !important;
   }
 }
 
-@media (max-width: 991px) {
+@media (min-width: 992px) {
   .theme-menu {
-    position: fixed !important;
-    right: 0 !important;
-    left: auto !important;
-    top: 50px !important;
-    transform: none !important;
-    z-index: 9999 !important;
+    margin-top: 0.5rem;
   }
 }
 
@@ -188,6 +189,20 @@ body.dark {
   width: 1rem;
   flex-shrink: 0;
   margin-right: 0.3rem;
+}
+
+// Desktop: reduce icon margin
+@media (min-width: 992px) {
+  .theme-menu .dropdown-item i {
+    margin-right: 0.2rem;
+  }
+}
+
+// Mobile: increase icon right margin
+@media (max-width: 991px) {
+  .theme-menu .dropdown-item i {
+    margin-right: 0.6rem;
+  }
 }
 
 // Show only opposite theme option based on current theme
@@ -418,7 +433,7 @@ body > div {
 // Reduce top and bottom padding of all home sections
 .home-section {
   padding-top: 0.8rem !important;
-  padding-bottom: 3rem !important;
+  padding-bottom: 4rem !important;
 }
 
 // Prevent spurious scrollbars on home page columns - maximum specificity
@@ -672,12 +687,30 @@ body.dark #top > div > div > h2 a {
   padding-bottom: 0rem !important;
 }
 
+/* Remove horizontal padding from universal-wrapper in mobile view */
+@media (max-width: 991px) {
+  #top > div.universal-wrapper.pt-3 {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+}
+
 /* Additional reduction for publication page only */
 body.page-publications #top > div.universal-wrapper.pt-3 {
   margin-bottom: -2.5rem !important;
   max-width: 760px !important;
   margin-left: auto !important;
   margin-right: auto !important;
+}
+
+/* Remove left and right margins in mobile view */
+@media (max-width: 991px) {
+  body.page-publications #top > div.universal-wrapper.pt-3 {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 }
 
 /* Increase margin above content section */
@@ -768,7 +801,7 @@ section.home-section .container {
 
 // Increase bottom padding in multimedia section
 #multimedia {
-  padding-bottom: 3rem !important;
+  padding-bottom: 5rem !important;
 }
 
 // Set max-width for publications and applications sections (760px to match blog posts)
@@ -873,7 +906,17 @@ div.col-12.section-heading > h1 {
 // Increase top margin for publication section heading in mobile
 @media (max-width: 991px) {
   #publication > div > div > div.col-12.section-heading > h1 {
-    margin-top: 2rem !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.1rem !important;
+    visibility: visible !important;
+    display: block !important;
+    opacity: 1 !important;
+  }
+  
+  /* Ultra-specific override to ensure margin applies */
+  body #publication > div > div > div.col-12.section-heading > h1 {
+    margin-top: 4rem !important;
+    margin-bottom: 0.5rem !important;
   }
 }
 
@@ -904,12 +947,33 @@ div.col-12.section-heading > h1 {
   margin: 0 auto !important;
 }
 
+/* In mobile view, reduce left margin/padding on navbar main div */
+@media (max-width: 991px) {
+  body #navbar-main > div,
+  body #navbar-main > .container,
+  body #navbar-main > .container-fluid {
+    margin-left: 0 !important;
+    padding-left: 10px !important;
+  }
+}
+
 // Navbar hamburger menu icon - larger and moved up
+#navbar-main > div > button {
+  margin-right: 0.5rem !important;
+}
+
 #navbar-main > div > button > span > i {
   font-size: 1.4rem;
   position: relative;
   top: -2px;
-  margin-left: -1rem !important;
+  margin-left: -0.5rem !important;
+}
+
+/* In mobile view, increase left margin for hamburger icon */
+@media (max-width: 991px) {
+  #navbar-main > div > button > span > i {
+    margin-left: -0.3rem !important;
+  }
 }
 
 // Mobile-specific container fixes
@@ -1032,35 +1096,36 @@ blockquote {
 
 // Reduce font size for the rest of the publication heading container
 #container-publications > div.grid-sizer.col-lg-12.isotope-item > div {
-  font-size: 0.85rem !important;
+  font-size: 1rem !important;
+  margin-left: 1.7rem !important;
 }
 
 // Set font size for publication item containers
 #container-publications .isotope-item[class*="pubtype-"] > div {
-  font-size: 0.85rem !important;
+  font-size: 1rem !important;
 }
 
 // Style author field in publication list
 #container-publications .li-cite-author {
-  font-size: 0.85rem !important;
+  font-size: 1rem !important;
   line-height: 1.5 !important;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
 }
 
 #container-publications .article-metadata.li-cite-author {
   line-height: 1.5 !important;
-  font-size: 0.85rem !important;
+  font-size: 1rem !important;
   display: inline !important;
 }
 
 #container-publications .article-metadata.li-cite-author * {
   line-height: 1.5 !important;
-  font-size: 0.85rem !important;
+  font-size: 1rem !important;
 }
 
 #container-publications .article-metadata.li-cite-author > span {
   line-height: 1.5 !important;
-  font-size: 0.85rem !important;
+  font-size: 1rem !important;
   margin: 0 !important;
   padding: 0 !important;
   display: inline !important;
@@ -1081,7 +1146,7 @@ blockquote {
   margin-left: 0 !important;
   padding-left: 0 !important;
   line-height: 1.5 !important;
-  font-size: 0.85rem !important;
+  font-size: 1rem !important;
   font-family: inherit !important;
   display: inline !important;
   max-height: 1.5em !important;
@@ -1100,7 +1165,7 @@ blockquote {
   margin-right: 0 !important;
   padding-right: 0 !important;
   line-height: 1.5 !important;
-  font-size: 0.85rem !important;
+  font-size: 1rem !important;
 }
 
 // Target publication item authors with specific selector
@@ -1111,15 +1176,34 @@ blockquote {
 // Force line-height on parent div containing authors
 #container-publications > div.isotope-item > div {
   line-height: 1.5 !important;
-  margin-left: 2em !important;
   margin-bottom: 1.3rem !important;
-  text-indent: -2em !important;
   padding-left: 0 !important;
+}
+
+/* Increase left margin in desktop view */
+@media (min-width: 992px) {
+  #container-publications > div.isotope-item > div {
+    margin-left: 3.2em !important;
+    text-indent: -3.2em !important;
+    padding-left: 3rem !important;
+  }
+}
+
+/* Adjust publication item margins in mobile view */
+@media (max-width: 991px) {
+  #container-publications > div.isotope-item > div {
+    margin-left: 2.3em !important;
+    text-indent: -2.3em !important;
+  }
+  
+  #container-publications > div.isotope-item > div > p {
+    margin-left: -1em !important;
+  }
 }
 
 // Remove hanging indent from button paragraph
 #container-publications > div.isotope-item > div > p {
-  margin-left: -0.5em !important;
+  margin-left: -1.8em !important;
   margin-top: 0.35rem !important;
   text-indent: 0 !important;
   padding-left: 0 !important;
@@ -1130,12 +1214,22 @@ blockquote {
 #container-publications > div.isotope-item > div .btn-links .btn,
 #container-publications > div.isotope-item > div .btn-links a {
   text-indent: 0 !important;
+  font-size: 1.1rem !important;
+  height: 2.5em !important;
+  min-height: 2.5em !important;
+  max-height: 2.5em !important;
+}
+
+// Hide report icons at the beginning of references (but not button icons)
+#container-publications > div.isotope-item > div > i {
+  display: none !important;
 }
 
 // Reduce icon margin in publication reference buttons
-#container-publications > div.isotope-item > div i {
-  margin: 0 0.1em 0 0 !important;
+#container-publications > div.isotope-item > div .btn-links i {
+  margin: 0 0.35em 0 0 !important;
   text-indent: 0 !important;
+  display: inline !important;
 }
 
 // Fix ::before pseudo-element positioning on icons
@@ -1151,13 +1245,23 @@ blockquote {
   margin-right: auto !important;
 }
 
+/* Remove container margins in mobile view */
+@media (max-width: 991px) {
+  #container-publications {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+}
+
 #container-publications > div.isotope-item[class*="pubtype-"] > div > span > span {
   line-height: 1.5 !important;
   margin-right: 0 !important;
   padding-right: 0 !important;
   margin-left: 0 !important;
   padding-left: 0 !important;
-  font-size: 0.85rem !important;
+  font-size: 1rem !important;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
 }
 
@@ -1173,6 +1277,11 @@ blockquote {
   padding-left: 0 !important;
 }
 
+// Set bottom margin for publication items
+#container-publications > div > div {
+  margin-bottom: 1.8rem !important;
+}
+
 // Alternative selector based on user's suggestion
 #container-publications > div > div > span {
   line-height: 1.5 !important;
@@ -1183,7 +1292,7 @@ blockquote {
   margin-right: 0 !important;
   padding: 0 !important;
   line-height: 1.5 !important;
-  font-size: 0.85rem !important;
+  font-size: 1rem !important;
   margin-left: -0.1em !important;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
   display: inline !important;
@@ -1193,7 +1302,7 @@ blockquote {
 // Additional specific selectors for authors field with all pubtype variations
 #container-publications > div.grid-sizer.col-lg-12.isotope-item > div > span > span {
   line-height: 1.5 !important;
-  font-size: 0.85rem !important;
+  font-size: 1rem !important;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
   display: inline !important;
   vertical-align: baseline !important;
@@ -1201,7 +1310,7 @@ blockquote {
 
 #container-publications > div[class*="pubtype-"] > div > span > span {
   line-height: 1.5 !important;
-  font-size: 0.85rem !important;
+  font-size: 1rem !important;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
   display: inline !important;
   vertical-align: baseline !important;
@@ -1209,7 +1318,7 @@ blockquote {
 
 #container-publications > div[class*="year-"] > div > span > span {
   line-height: 1.5 !important;
-  font-size: 0.85rem !important;
+  font-size: 1rem !important;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
   display: inline !important;
   vertical-align: baseline !important;
@@ -1229,7 +1338,7 @@ blockquote {
 #container-publications div > span.li-cite-author,
 #container-publications div > span.li-cite-author > span {
   line-height: 1.5 !important;
-  font-size: 0.85rem !important;
+  font-size: 1rem !important;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
   display: inline !important;
   vertical-align: baseline !important;
@@ -1237,20 +1346,20 @@ blockquote {
 
 // Match strong elements in titles to authors font size
 #container-publications .isotope-item[class*="pubtype-"] > div > span > span > strong {
-  font-size: 0.85rem !important;
+  font-size: 1rem !important;
 }
 
 #container-publications > div > div > span > span > strong {
-  font-size: 0.85rem !important;
+  font-size: 1rem !important;
 }
 
 #container-publications > div > div > a {
-  font-size: 0.85rem !important;
+  font-size: 1rem !important;
 }
 
 // Set consistent margin under publication paragraphs
 #container-publications .isotope-item[class*="pubtype-"] > div > p {
-  font-size: 1.05rem !important;
+  font-size: 1.1rem !important;
   margin-bottom: 0.5rem !important;
 }
 
@@ -1547,7 +1656,7 @@ body.dark {
   // Navigation colors (INVERTED - light theme uses dark theme colors)
   --nav-text: #cbd5e1;
   --nav-hover: #A5D9C5; // Custom mint green for hover underline (from dark mode)
-  --nav-active: #7db3ad; // Lighter aquamarine for active text (from dark theme)
+  --nav-active: #06b6d4; // Bright cyan for active text - better contrast on light navbar
   --nav-link: #67e8f9; // Cyan (from dark theme)
   --nav-hover-text: #A5D9C5; // Custom mint green for hover text (from dark mode)
   
@@ -1635,7 +1744,7 @@ body.dark {
   // Navigation colors for dark theme (INVERTED - uses light theme colors)
   --nav-text: #475569;
   --nav-hover: #00ff00; // Green for hover underline (from light theme)
-  --nav-active: #5f9ea0; // Dark aquamarine for active (from light theme)
+  --nav-active: #0d9488; // Darker teal for active - better contrast on dark navbar
   --nav-link: #79A990; // Muted teal (from light theme)
   --nav-hover-text: #006400; // Dark green for hover text (from light theme)
   
@@ -2495,15 +2604,28 @@ and from bio portrait information. */
 
 // Re-enable pointer events for interactive elements
 .navbar a,
-.navbar button,
+.navbar button:not(.js-font-size-toggle):not(.js-theme-toggle),
 .navbar .navbar-brand,
 .navbar .navbar-toggler,
-.navbar .nav-link,
+.navbar .nav-link:not(.js-font-size-toggle):not(.js-theme-toggle),
 .navbar .dropdown-toggle,
 .navbar-collapse,
 .navbar-nav {
   pointer-events: auto !important;
   overflow: visible !important;
+}
+
+/* Mobile: Ensure icon buttons have no background */
+@media (max-width: 991px) {
+  .navbar button.js-font-size-toggle,
+  .navbar button.js-theme-toggle {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+  }
 }
 
 // Prevent any scrolling within navbar and its children
@@ -2779,6 +2901,12 @@ and from bio portrait information. */
     gap: 2rem !important;
   }
   
+  @media (max-width: 991px) {
+    ul.nav-icons.navbar-nav {
+      margin-right: -0.4rem !important;
+    }
+  }
+  
   // Reduce gap on mobile
   @media (max-width: 991px) {
     ul.nav-icons.navbar-nav {
@@ -2829,6 +2957,21 @@ and from bio portrait information. */
     align-items: center !important;
   }
   
+  /* Increase spacing between font size and theme icons in desktop view */
+  @media (min-width: 992px) {
+    .nav-icons .nav-item:nth-child(2) {
+      margin-left: 0.8rem !important;
+    }
+    
+    .nav-icons .nav-link.js-theme-toggle {
+      margin-left: 0.8rem !important;
+    }
+    
+    #navbar-main > div > ul > li:nth-child(2) {
+      margin-left: 0.8rem !important;
+    }
+  }
+  
   // Further reduce padding for specific navbar icon links
   #navbar-main > div > ul > li:nth-child(3) > a,
   #navbar-main > div > ul > li.nav-item.dropdown > a,
@@ -2842,7 +2985,31 @@ and from bio portrait information. */
   #navbar-main > div > ul > li.nav-item.dropdown {
     padding-right: 0 !important;
     padding-left: 0 !important;
-    margin-right: 0.8rem !important;
+  }
+  
+  /* In mobile view, use negative margins to move icons rightward */
+  @media (max-width: 991px) {
+    #navbar-main > div > ul > li:nth-child(1) {
+      margin-right: 0.5rem !important;
+    }
+    
+    #navbar-main > div > ul {
+      margin-right: -0.5rem !important;
+    }
+    
+    /* Zero out button padding in mobile */
+    #navbar-main > div > ul > li:nth-child(1) > button,
+    #navbar-main > div > ul > li.nav-item.dropdown.theme-dropdown > button {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+  }
+  
+  /* Increase right margin on font size icon in desktop view */
+  @media (min-width: 992px) {
+    #navbar-main > div > ul > li:nth-child(1) {
+      margin-right: 1.2rem !important;
+    }
   }
   
   // Override any general nav-link padding for icon links
@@ -3325,6 +3492,145 @@ body.dark .theme-menu .dropdown-item:hover {
     margin: 0 #{"clamp(0.01rem, 1vw, 0.3rem)"} !important;
   }
   
+  /* Reduce spacing between navbar icon items in desktop */
+  #navbar-main > div > ul.nav-icons > li:nth-child(1) {
+    margin-right: 0.5rem !important;
+  }
+  
+  /* Style button.nav-link to match anchor.nav-link exactly */
+  button.nav-link {
+    background: none !important;
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0.4rem 0.05rem !important;
+    color: inherit !important;
+    font-size: 0.9rem !important;
+    line-height: 1.5 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    vertical-align: middle !important;
+    cursor: pointer !important;
+    margin: 0 !important;
+    height: 100% !important;
+  }
+  
+  button.nav-link:hover,
+  button.nav-link:focus {
+    color: var(--nav-active) !important;
+    outline: none !important;
+    background: none !important;
+    background-color: transparent !important;
+  }
+  
+  /* Remove button backgrounds in mobile navbar */
+  @media (max-width: 991px) {
+    /* Nuclear option - target everything */
+    .navbar button,
+    .navbar button *,
+    .nav-icons button,
+    .nav-icons button *,
+    button.nav-link,
+    .nav-icons button.nav-link,
+    ul.nav-icons li button,
+    ul.nav-icons li button.nav-link,
+    .navbar button.nav-link,
+    .navbar-nav button,
+    .navbar-nav button.nav-link {
+      background: none !important;
+      background-color: transparent !important;
+      background-image: none !important;
+      box-shadow: none !important;
+      border: none !important;
+      outline: none !important;
+      -webkit-box-shadow: none !important;
+      -webkit-appearance: none !important;
+      padding: 0.5rem !important;
+    }
+    
+    /* Absolute override for icon buttons */
+    body .navbar button.js-font-size-toggle,
+    body .navbar button.js-theme-toggle,
+    body .nav-icons button.js-font-size-toggle,
+    body .nav-icons button.js-theme-toggle {
+      background: transparent !important;
+      background-color: transparent !important;
+      background-image: none !important;
+      border: 0 !important;
+      box-shadow: none !important;
+      outline: 0 !important;
+      -webkit-box-shadow: none !important;
+      -webkit-appearance: none !important;
+    }
+    
+    /* All button states */
+    button.nav-link:hover,
+    button.nav-link:focus,
+    button.nav-link:active,
+    button.nav-link:visited,
+    button.nav-link::before,
+    button.nav-link::after,
+    .nav-icons button:hover,
+    .nav-icons button:focus,
+    .nav-icons button:active,
+    .nav-icons button.nav-link:hover,
+    .nav-icons button.nav-link:focus,
+    .nav-icons button.nav-link:active {
+      background: none !important;
+      background-color: transparent !important;
+      background-image: none !important;
+      box-shadow: none !important;
+      border: none !important;
+      outline: none !important;
+      -webkit-box-shadow: none !important;
+      -webkit-appearance: none !important;
+    }
+    
+    .navbar-collapse button.nav-link,
+    .navbar-nav button.nav-link,
+    .navbar-collapse .nav-icons button.nav-link,
+    .navbar-nav .nav-icons button.nav-link {
+      background: none !important;
+      background-color: transparent !important;
+      background-image: none !important;
+      box-shadow: none !important;
+      outline: none !important;
+      -webkit-box-shadow: none !important;
+      -webkit-appearance: none !important;
+    }
+    
+    /* Remove from parent li elements */
+    .nav-icons li.nav-item,
+    .nav-icons li.nav-item.dropdown,
+    .nav-icons li,
+    .nav-icons li * {
+      background: none !important;
+      background-color: transparent !important;
+      box-shadow: none !important;
+      -webkit-box-shadow: none !important;
+    }
+    
+    /* Override Bootstrap btn class if present */
+    button.btn,
+    .navbar button.btn {
+      background: none !important;
+      background-color: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      outline: none !important;
+      -webkit-appearance: none !important;
+    }
+  }
+  
+  /* Ensure dropdown containers don't have gap */
+  .nav-item.dropdown {
+    position: relative !important;
+  }
+  
+  .font-size-menu,
+  .theme-menu {
+    margin-top: 0 !important;
+  }
+  
   #navbar-content > ul > li > a,
   .navbar-nav .nav-link {
     font-size: 0.9rem !important;
@@ -3386,18 +3692,23 @@ body.dark .navbar-brand:hover {
     margin-top: 0.1rem !important;
   }
   
-  // Place navbar icons with balanced spacing
-  #navbar-main > div > ul {
-    margin-left: auto !important;
-    margin-right: 0.3rem !important;
-    padding: 0 !important;
-    margin-top: 0.5rem !important;
+  // Place navbar icons with balanced spacing (desktop)
+  @media (min-width: 992px) {
+    #navbar-main > div > ul {
+      margin-left: auto !important;
+      margin-right: 0.3rem !important;
+      padding: 0 !important;
+      margin-top: 0.5rem !important;
+    }
   }
   
   // Increase right margin on mobile
   @media (max-width: 991px) {
     #navbar-main > div > ul {
-      margin-right: 1rem !important;
+      margin-left: auto !important;
+      margin-right: 1.5rem !important;
+      padding: 0 !important;
+      margin-top: 0.5rem !important;
     }
   }
   
@@ -3465,6 +3776,10 @@ body.dark .navbar-toggler i.fas {
 
 #navbar-main > div > div.d-none.d-lg-inline-flex > a, #navbar-content > ul > li > a, #navbar-main > div > div.navbar-brand-mobile-wrapper.d-inline-flex.d-lg-none > a {
   color: var(--nav-text);
+}
+
+#navbar-main > div > div.d-none.d-lg-inline-flex > a {
+  margin-left: 1rem !important;
 }
 
 #navbar-main > div > div.d-none.d-lg-inline-flex > a:hover, #navbar-content > ul > li > a:hover, #navbar-main > div > div.navbar-brand-mobile-wrapper.d-inline-flex.d-lg-none > a:hover {
@@ -4408,6 +4723,15 @@ body.dark .document-viewer-toolbar {
   background-color: transparent !important;
   text-decoration: none !important;
   border-bottom: none !important;
+}
+
+/* Increase font size for home page h3 headings with links */
+#blog div.media-body > h3 > a,
+#publication div.media-body > h3 > a,
+#applications-and-dashboards div.media-body > h3 > a,
+.home-section div.media-body > h3 > a {
+  font-size: 1.3rem !important;
+  line-height: 1.5 !important;
 }
 
 article .article-metadata {
@@ -6222,13 +6546,38 @@ table caption {
   padding-top: -1rem !important;
 }
 
-/* Reduce margins around publication page title */
+/* Remove left and right padding from container in mobile view on publications page */
+@media (max-width: 991px) {
+  body.page-publications #top > div.container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+/* Reduce margins around publication page title and align with search field */
 #top > div.universal-wrapper.pt-3 > h1 {
   margin-top: 0.5rem !important;
   margin-bottom: 0.25rem !important;
   max-width: 760px !important;
-  margin-left: 0 !important;
+  margin-left: auto !important;
   margin-right: auto !important;
+}
+
+/* In mobile view, align heading left to match search field */
+@media (max-width: 991px) {
+  #top > div.universal-wrapper.pt-3 > h1 {
+    margin-left: 0.75rem !important;
+    margin-right: 0 !important;
+    margin-top: 0 !important;
+  }
+  
+  /* Reduce top margin for publication section heading in mobile */
+  #publication > div > div > div.col-12.section-heading > h1 {
+    margin-top: 0.15rem !important;
+    visibility: visible !important;
+    display: block !important;
+    opacity: 1 !important;
+  }
 }
 
 /* Expand search input in publication filters */
@@ -6236,6 +6585,56 @@ table caption {
   flex: 0 1 auto !important;
   max-width: 320px !important;
   min-width: 150px !important;
+}
+
+/* Adjust publication metadata and button link font sizes */
+#publication > div > div > div:nth-child(2) > div > div.media-body > div.stream-meta.article-metadata > div {
+  font-size: 0.8rem !important;
+}
+
+#publication > div > div > div:nth-child(2) > div > div.media-body > div.stream-meta.article-metadata > div > span:nth-child(1) > span {
+  font-size: 0.9rem !important;
+}
+
+#publication > div > div > div:nth-child(2) > div > div.media-body > div.btn-links {
+  font-size: 1.25rem !important;
+}
+
+/* Ultra-specific override to ensure font size applies */
+body #publication > div > div > div:nth-child(2) > div > div.media-body > div.btn-links {
+  font-size: 0.8rem !important;
+  line-height: 1.3 !important;
+}
+
+body #publication > div > div > div:nth-child(2) > div > div.media-body > div.btn-links a,
+body #publication > div > div > div:nth-child(2) > div > div.media-body > div.btn-links button {
+  font-size: 0.8rem !important;
+  line-height: 1.3 !important;
+}
+
+/* In mobile view, increase button links font size */
+@media (max-width: 991px) {
+  #publication > div > div > div:nth-child(2) > div > div.media-body > div.btn-links {
+    font-size: 1.3rem !important;
+  }
+  
+  body #publication > div > div > div:nth-child(2) > div > div.media-body > div.btn-links {
+    font-size: 0.8rem !important;
+    line-height: 1.3 !important;
+  }
+  
+  body #publication > div > div > div:nth-child(2) > div > div.media-body > div.btn-links a,
+  body #publication > div > div > div:nth-child(2) > div > div.media-body > div.btn-links button {
+    font-size: 0.8rem !important;
+    line-height: 1.3 !important;
+  }
+}
+
+/* Remove left padding from search field in mobile view */
+@media (max-width: 991px) {
+  .universal-wrapper .form-row.mb-4 > div:nth-child(1) {
+    padding-left: 0.75rem !important;
+  }
 }
 
 .universal-wrapper .form-row.mb-4 .filter-search {

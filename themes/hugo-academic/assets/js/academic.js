@@ -256,6 +256,11 @@
    * --------------------------------------------------------------------------- */
 
   $("#navbar-main li.nav-item a.nav-link").on("click", function (event) {
+    // Exclude dropdown toggle links (font-size and theme toggles)
+    if ($(this).hasClass('js-font-size-toggle') || $(this).hasClass('js-theme-toggle')) {
+      return;
+    }
+    
     // Store requested URL hash.
     let hash = this.hash;
 
@@ -307,6 +312,13 @@
 
   // Enhanced mobile menu auto-close for navigation links
   $(document).on("click", ".navbar-nav .nav-link", function (e) {
+    // Exclude dropdown toggle links and dropdown items
+    if ($(this).hasClass('js-font-size-toggle') || 
+        $(this).hasClass('js-theme-toggle') ||
+        $(this).closest('.dropdown-menu').length > 0) {
+      return;
+    }
+    
     // Close mobile menu when any nav link is clicked (on mobile)
     if (window.innerWidth <= 768) {
       $(".navbar-collapse").collapse("hide");
@@ -1118,17 +1130,67 @@
     });
 
     // Light theme button - set to light mode specifically
-    $(".js-set-theme-light").click(function (e) {
+    $(document).on("click", ".js-set-theme-light", function (e) {
       e.preventDefault();
+      e.stopPropagation();
+      
+      // Save current scroll position
+      const savedScrollY = window.pageYOffset || document.documentElement.scrollTop;
+      const savedScrollX = window.pageXOffset || document.documentElement.scrollLeft;
+      
       localStorage.setItem("dark_mode", "0");
+      let $themeChanger = $(".js-dark-toggle i");
+      let $themeToggle = $(".js-dark-toggle");
+      $themeChanger.removeClass("fa-sun fa-palette").addClass("fa-moon");
+      $themeToggle.attr("title", "Toggle dark mode");
       renderThemeVariation(0);
+      
+      // Restore scroll position multiple times to ensure it sticks
+      const restoreScroll = () => {
+        window.scrollTo(savedScrollX, savedScrollY);
+      };
+      setTimeout(restoreScroll, 0);
+      setTimeout(restoreScroll, 50);
+      setTimeout(restoreScroll, 100);
+      setTimeout(restoreScroll, 250);
+      setTimeout(restoreScroll, 500);
+      setTimeout(restoreScroll, 600);
+      
+      // Close dropdown menu
+      $(".theme-menu").removeClass("show");
+      return false;
     });
 
     // Dark theme button - set to dark mode specifically
-    $(".js-set-theme-dark").click(function (e) {
+    $(document).on("click", ".js-set-theme-dark", function (e) {
       e.preventDefault();
+      e.stopPropagation();
+      
+      // Save current scroll position
+      const savedScrollY = window.pageYOffset || document.documentElement.scrollTop;
+      const savedScrollX = window.pageXOffset || document.documentElement.scrollLeft;
+      
       localStorage.setItem("dark_mode", "1");
+      let $themeChanger = $(".js-dark-toggle i");
+      let $themeToggle = $(".js-dark-toggle");
+      $themeChanger.removeClass("fa-moon fa-sun").addClass("fa-palette");
+      $themeToggle.attr("title", "Toggle auto mode");
       renderThemeVariation(1);
+      
+      // Restore scroll position multiple times to ensure it sticks
+      const restoreScroll = () => {
+        window.scrollTo(savedScrollX, savedScrollY);
+      };
+      setTimeout(restoreScroll, 0);
+      setTimeout(restoreScroll, 50);
+      setTimeout(restoreScroll, 100);
+      setTimeout(restoreScroll, 250);
+      setTimeout(restoreScroll, 500);
+      setTimeout(restoreScroll, 600);
+      
+      // Close dropdown menu
+      $(".theme-menu").removeClass("show");
+      return false;
     });
 
     // Search trigger from menu
@@ -1138,50 +1200,7 @@
       $(".js-search").click();
     });
     
-    // Font size toggle - ensure theme menu is completely hidden first
-    $(document).on("click", ".js-font-size-toggle", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      let fontMenu = $(".font-size-menu");
-      let themeMenu = $(".theme-menu");
-      
-      // Force immediate hide - check both visibility states
-      if (themeMenu.is(":visible")) {
-        themeMenu.hide();
-        // Wait for DOM update before showing
-        setTimeout(function() {
-          fontMenu.toggle();
-        }, 50);
-      } else {
-        fontMenu.toggle();
-      }
-    });
-    
-    // Theme toggle - ensure font size menu is completely hidden first
-    $(document).on("click", ".js-theme-toggle", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      let fontMenu = $(".font-size-menu");
-      let themeMenu = $(".theme-menu");
-      
-      // Force immediate hide - check both visibility states
-      if (fontMenu.is(":visible")) {
-        fontMenu.hide();
-        // Wait for DOM update before showing
-        setTimeout(function() {
-          themeMenu.toggle();
-        }, 50);
-      } else {
-        themeMenu.toggle();
-      }
-    });
-    
-    // Hide dropdowns when clicking outside
-    $(document).on("click", function (e) {
-      if (!$(e.target).closest(".nav-item.dropdown").length) {
-        $(".font-size-menu, .theme-menu").stop(true, true).css("display", "none");
-      }
-    });
+    // Note: Dropdown hover behavior for font-size and theme menus is handled by navbar-dropdowns.js
 
     // Live update of day/night mode on system preferences update (no refresh required).
     // Note: since we listen only for *dark* events, we won't detect other scheme changes such as light to no-preference.
@@ -1314,6 +1333,15 @@
       }
     });
 
+    // Close modal when clicking outside of it
+    $(document).on('click', function (e) {
+      if ($(e.target).closest('#modal .modal-content').length === 0 && 
+          $(e.target).closest('.js-cite-modal').length === 0 &&
+          $('#modal').hasClass('show')) {
+        $("#modal").modal("hide");
+      }
+    });
+
     // Copy citation text on 'Copy' click.
     $(".js-copy-cite").click(function (e) {
       e.preventDefault();
@@ -1380,6 +1408,11 @@
 
   // Automatic main menu dropdowns on mouse over.
   $("body").on("mouseenter mouseleave", ".dropdown", function (e) {
+    // Exclude font-size and theme dropdowns (handled by navbar-dropdowns.js)
+    if ($(this).hasClass('theme-dropdown') || $(this).find('.font-size-menu').length > 0) {
+      return;
+    }
+    
     var dropdown = $(e.target).closest(".dropdown");
     var menu = $(".dropdown-menu", dropdown);
     dropdown.addClass("show");
