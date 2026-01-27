@@ -7092,3 +7092,18 @@ body.page-wrapper #top > div.pub > div.article-container.pt-3 > div.btn-links.mb
   position: relative !important;
   top: -0.3em !important;
 }
+
+// Increase table header font size to match website font size
+div > div > div > table > thead > tr > th {
+  font-size: 1rem !important;
+}
+
+// Reduce bottom margin in teaching-supervision table
+#teaching-supervision > div > div > div > table {
+  margin-bottom: -1rem !important;
+}
+
+// Increase bottom margin in teaching-supervision heading
+#teaching-supervision > div > div > div > h1 {
+  margin-bottom: 1.5rem !important;
+}
