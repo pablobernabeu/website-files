@@ -9,7 +9,7 @@ active = true  # Activate this widget? true/false
 weight = 70  # Order that this section will appear.
 
 title = "Workshops"
-subtitle = "<span style='font-size:80%;'>Introduction to <i class='fa-brands fa-r-project' aria-label='R'></i>, statistics, visualisation, reproducible documents, web applications and dashboards, HTML, CSS, web hosting ([further details](/2020/data-is-present-workshops-and-datathons/)).</span>"
+subtitle = ""
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
