@@ -4470,7 +4470,7 @@ div > div > div > table > tbody > tr > td,
 :is(#publication, #applications-and-dashboards, #blog) > div > div > div:nth-child(2) > div > div.media-body > div.stream-meta.article-metadata > div > span,
 :is(#publication, #applications-and-dashboards, #blog) .stream-meta.article-metadata,
 :is(#publication, #applications-and-dashboards, #blog) .stream-meta.article-metadata * {
-  font-size: #{"clamp(15px, 0.9vw + 0.2rem, 16px)"} !important;
+  font-size: #{"clamp(15px, 0.85vw + 0.2rem, 15.5px)"} !important;
 }
 
 // Collapsible abstracts on home page - collapsed by default, expandable on click
@@ -4823,7 +4823,7 @@ body.dark .document-viewer-toolbar {
 
 // Decrease top margin for blog metadata on home page
 #blog > div > div > div:nth-child(2) > div > div.media-body > div.stream-meta.article-metadata > div {
-  margin-top: -0.2rem !important;
+  margin-top: 0rem !important;
 }
 
 // Reduce top padding for blog article metadata
@@ -4850,8 +4850,8 @@ body.dark .document-viewer-toolbar {
 
 // Increase font size and decrease top margin for metadata spans on home page
 #blog > div > div > div:nth-child(2) > div > div.media-body > div.stream-meta.article-metadata > div > span {
-  font-size: 0.85rem !important;
-  margin-top: 0rem !important;
+  font-size: 0.9rem !important;
+  margin-top: 0.4rem !important;
 }
 
 // Smaller screens - larger font size, minimal margin (MUST BE LAST)
@@ -6961,7 +6961,7 @@ body.page-collection #top > div.universal-wrapper.pt-3 > p {
 
 /* Adjust publication metadata and button link font sizes */
 #publication > div > div > div:nth-child(2) > div > div.media-body > div.stream-meta.article-metadata > div {
-  font-size: 0.8rem !important;
+  font-size: 0.85rem !important;
 }
 
 #publication > div > div > div:nth-child(2) > div > div.media-body > div.stream-meta.article-metadata > div > span:nth-child(1) > span {
@@ -6977,6 +6977,10 @@ body.page-collection #top > div.universal-wrapper.pt-3 > p {
 }
 
 #publication > div > div > div:nth-child(2) > div > div.media-body > div.stream-meta.article-metadata > div > span.pub-publication {
+  font-size: 0.9rem !important;
+}
+
+#publication > div > div > div:nth-child(2) > div > div.media-body > div.stream-meta.article-metadata > div > span.pub-publication > em {
   font-size: 0.9rem !important;
 }
 
