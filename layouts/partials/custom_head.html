@@ -5,19 +5,32 @@
     "use strict";
 
     function getThemeMode() {
-      return parseInt(localStorage.getItem("dark_mode") || 2);
+      try {
+        const storedMode = localStorage.getItem("dark_mode");
+        console.log("Theme init: stored dark_mode =", storedMode);
+        return parseInt(storedMode || 2);
+      } catch (e) {
+        console.error("localStorage access failed:", e);
+        return 2; // Default to auto if localStorage is blocked
+      }
     }
 
     function shouldUseDarkTheme() {
       let currentThemeMode = getThemeMode();
+      console.log("Theme init: currentThemeMode =", currentThemeMode);
       switch (currentThemeMode) {
         case 0:
           return false; // Light mode
         case 1:
           return true; // Dark mode
         default:
-          if (localStorage.getItem("dark_mode") === null) {
-            return false; // Default to light for new visitors
+          try {
+            if (localStorage.getItem("dark_mode") === null) {
+              console.log("Theme init: No preference saved, defaulting to light");
+              return false; // Default to light for new visitors
+            }
+          } catch (e) {
+            console.error("localStorage check failed:", e);
           }
           return (
             window.matchMedia &&
@@ -28,9 +41,17 @@
 
     // Apply theme immediately
     if (shouldUseDarkTheme()) {
+      console.log("Theme init: Applying dark theme");
       document.documentElement.setAttribute("data-theme", "dark");
       document.documentElement.style.backgroundColor = "#0f172a";
       document.documentElement.style.color = "#e2e8f0";
+      // Critical: Add dark class to body to match academic.js expectations
+      document.addEventListener("DOMContentLoaded", function() {
+        document.body.classList.add("dark");
+        console.log("Theme init: Added dark class to body");
+      });
+    } else {
+      console.log("Theme init: Applying light theme");
     }
   })();
 </script>

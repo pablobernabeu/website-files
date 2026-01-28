@@ -795,6 +795,7 @@
     switch (currentThemeMode) {
       case 0:
         localStorage.setItem("dark_mode", "1");
+        console.log("✓ Saved dark_mode=1 to localStorage. Verification:", localStorage.getItem("dark_mode"));
         isDarkTheme = 1;
         console.info("User changed theme variation to Dark.");
         $themeChanger.removeClass("fa-moon fa-sun").addClass("fa-palette");
@@ -802,6 +803,7 @@
         break;
       case 1:
         localStorage.setItem("dark_mode", "2");
+        console.log("✓ Saved dark_mode=2 to localStorage. Verification:", localStorage.getItem("dark_mode"));
         if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
           // The visitor prefers dark themes and switching to the dark variation is allowed by admin.
           isDarkTheme = 1;
@@ -817,6 +819,7 @@
         break;
       default:
         localStorage.setItem("dark_mode", "0");
+        console.log("✓ Saved dark_mode=0 to localStorage. Verification:", localStorage.getItem("dark_mode"));
         isDarkTheme = 0;
         console.info("User changed theme variation to Light.");
         $themeChanger.removeClass("fa-sun fa-palette").addClass("fa-moon");
