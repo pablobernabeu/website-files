@@ -960,18 +960,53 @@ div.col-12.section-heading > h1 {
 
 // Increase top margin for publication section heading in mobile
 @media (max-width: 991px) {
-  #publication > div > div > div.col-12.section-heading > h1 {
-    margin-top: 0.5rem !important;
-    margin-bottom: 0.1rem !important;
-    visibility: visible !important;
-    display: block !important;
-    opacity: 1 !important;
+  #publication > div > div > div.col-12.section-heading {
+    padding-top: 4rem !important;
   }
   
-  /* Ultra-specific override to ensure margin applies */
-  body #publication > div > div > div.col-12.section-heading > h1 {
-    margin-top: 4rem !important;
-    margin-bottom: 0.5rem !important;
+  #publication > div > div > div.col-12.section-heading,
+  #publication > div > div > div.col-12.section-heading > h1,
+  #publication div.col-12.col-lg-4.section-heading,
+  #publication div.col-12.col-lg-4.section-heading > h1 {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    transform: none !important;
+  }
+  
+  #publication > div > div > div.col-12.section-heading > h1 {
+    margin-top: 0 !important;
+    margin-bottom: 1.5rem !important;
+  }
+}
+
+// Mid-sized viewports (768px-991px) - ensure publication heading is visible
+@media (min-width: 768px) and (max-width: 991px) {
+  #publication > div > div > div.col-12.section-heading {
+    padding-top: 4rem !important;
+  }
+  
+  #publication > div > div > div.col-12.section-heading,
+  #publication > div > div > div.col-12.section-heading > h1,
+  #publication div.col-12.col-lg-4.section-heading,
+  #publication div.col-12.col-lg-4.section-heading > h1 {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    transform: none !important;
+  }
+  
+  section[id*="publication"].home-section,
+  #publication.home-section,
+  section#publication.home-section,
+  #publication {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  
+  section[id*="publication"] > div,
+  #publication > div {
+    padding-top: 0.3rem !important;
   }
 }
 
@@ -2466,6 +2501,8 @@ body.dark {
 @media (max-width: 991px) {
   
   // Section headings: NO ANIMATION on mobile - instant visibility
+  div.col-12.section-heading,
+  div.col-12.section-heading > h1,
   div.col-12.col-lg-4.section-heading, 
   div.col-12.col-lg-4.section-heading > h1 {
     opacity: 1 !important; // Always visible
@@ -3270,11 +3307,6 @@ section.home-section:first-of-type {
   #publication > div > div > div:nth-child(2) > div:nth-child(1) > div.media-body > h3 {
     margin-top: -0.5rem !important;
   }
-}
-
-// Reduce bottom margin for first publication container
-#publication > div > div > div:nth-child(2) > div:nth-child(1) {
-  margin-bottom: 1rem !important;
 }
 
 // White link color for featured image header in light theme
@@ -4353,8 +4385,13 @@ body.dark h3 a:hover, body.dark div a:hover {
   font-size: 0.92rem !important;
 }
 
-// Reduce bottom margin for publication items
+// Increase bottom margin for publication items
 #publication > div > div > div:nth-child(2) > div {
+  margin-bottom: 1.5rem !important;
+}
+
+// Increase bottom margin for first publication container to match others
+#publication > div > div > div:nth-child(2) > div:nth-child(1) {
   margin-bottom: 1.5rem !important;
 }
 
@@ -6650,8 +6687,8 @@ body.dark h3 {
   flex-direction: column !important;
 }
 
-// Hide heading and border on desktop (min-width: 769px)
-@media (min-width: 769px) {
+// Hide heading and border on desktop (min-width: 992px) - only on large screens with scroll animation
+@media (min-width: 992px) {
   #publication .section-heading {
     border-bottom: none !important;
     margin-bottom: 0 !important;
@@ -6943,9 +6980,23 @@ body.page-collection #top > div.universal-wrapper.pt-3 > p {
     margin-left: 0.75rem !important;
   }
   
+  /* Reduce top padding and margin for publication section in mobile */
+  section[id*="publication"].home-section,
+  #publication.home-section,
+  section#publication.home-section,
+  #publication {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  
+  section[id*="publication"] > div,
+  #publication > div {
+    padding-top: 0.3rem !important;
+  }
+  
   /* Reduce top margin for publication section heading in mobile */
   #publication > div > div > div.col-12.section-heading > h1 {
-    margin-top: 0.15rem !important;
+    margin-top: 0.3rem !important;
     visibility: visible !important;
     display: block !important;
     opacity: 1 !important;
