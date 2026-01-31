@@ -110,8 +110,20 @@
       {{- end -}}
     {{- end -}}
 
+    {{- /* Format section type for search display */ -}}
+    {{- $formattedType := .Type -}}
+    {{- if eq .Section "post" -}}
+      {{- $formattedType = "Post" -}}
+    {{- else if eq .Section "publication" -}}
+      {{- $formattedType = "Publication" -}}
+    {{- else if eq .Section "applications-and-dashboards" -}}
+      {{- $formattedType = "Applications and dashboards" -}}
+    {{- else if eq .Section "presentation" -}}
+      {{- $formattedType = "Presentation" -}}
+    {{- end -}}
+
     {{- /* Add page to index with optimized content. */ -}}
-    {{- $index = $index | append (dict "objectID" .File.UniqueID "date" .Date.UTC.Unix "publishdate" .PublishDate "lastmod" .Lastmod.UTC.Unix "lang" .Lang "permalink" $permalink "relpermalink" $rel_permalink "title" ($title | plainify) "summary" (plainify $desc) "content" (plainify $contentExcerpt) "authors" $limitedAuthors "kind" .Kind "type" .Type "section" .Section "tags" $limitedTags "categories" $limitedCategories) -}}
+    {{- $index = $index | append (dict "objectID" .File.UniqueID "date" .Date.UTC.Unix "publishdate" .PublishDate "lastmod" .Lastmod.UTC.Unix "lang" .Lang "permalink" $permalink "relpermalink" $rel_permalink "title" ($title | plainify) "summary" (plainify $desc) "content" (plainify $contentExcerpt) "authors" $limitedAuthors "kind" .Kind "type" $formattedType "section" .Section "tags" $limitedTags "categories" $limitedCategories) -}}
 
     {{- end -}}
   {{- end -}}

@@ -56,13 +56,25 @@ function updateURL(url) {
 function initSearch(force, fuse) {
   let query = $("#search-query").val();
 
-  // If query deleted, clear results.
+  // If query deleted or empty, clear results immediately and update URL.
   if (query.length < 1) {
     $("#search-hits").empty();
+    // Remove query parameter from URL
+    let cleanURL =
+      window.location.protocol +
+      "//" +
+      window.location.host +
+      window.location.pathname +
+      window.location.hash;
+    updateURL(cleanURL);
+    return;
   }
 
   // Check for timer event (enter key not pressed) and query less than minimum length required.
-  if (!force && query.length < fuseOptions.minMatchCharLength) return;
+  if (!force && query.length < fuseOptions.minMatchCharLength) {
+    $("#search-hits").empty();
+    return;
+  }
 
   // Do search.
   $("#search-hits").empty();
@@ -207,6 +219,14 @@ if (typeof Fuse === "function") {
     // On search box key up, process query.
     $("#search-query").keyup(function (e) {
       clearTimeout($.data(this, "searchTimer")); // Ensure only one timer runs!
+      
+      // Check if query is empty - clear immediately without timer
+      let query = $(this).val();
+      if (query.length < 1) {
+        $("#search-hits").empty();
+        return;
+      }
+      
       if (e.keyCode == 13) {
         initSearch(true, fuse);
       } else {

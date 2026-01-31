@@ -38,6 +38,14 @@
     {{ end }}
     <div>
       <h2><a href="{{$link}}" {{ $target | safeHTMLAttr }}>{{ .Title | markdownify | emojify }}</a></h2>
+      {{/* Show page type based on section */}}
+      <p class="taxonomy-page-type">
+        {{ if eq .Section "post" }}Post
+        {{ else if eq .Section "publication" }}Publication
+        {{ else if eq .Section "applications-and-dashboards" }}Application / dashboard
+        {{ else if eq .Section "presentation" }}Presentation
+        {{ end }}
+      </p>
       <div class="article-style">
         {{ if .Params.summary }}
           {{ .Params.summary | plainify | emojify }}

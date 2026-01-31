@@ -944,8 +944,8 @@ div.col-12.section-heading > h1 {
 
 // Reduce bottom margin specifically for publication heading
 #publication > div > div > div.col-12.section-heading > h1 {
-  margin-bottom: 0.5rem !important;
-  margin-top: 0rem !important;
+  margin-bottom: 0 !important;
+  margin-top: -0.5rem !important;
 }
 
 // Increase top margin for blog section heading
@@ -976,7 +976,7 @@ div.col-12.section-heading > h1 {
   
   #publication > div > div > div.col-12.section-heading > h1 {
     margin-top: 0 !important;
-    margin-bottom: 1.5rem !important;
+    margin-bottom: 0.3rem !important;
   }
 }
 
@@ -3359,6 +3359,8 @@ html body.page-publication #top > div.pub > div.article-header.article-container
 // Apply sizing and margin to publication page featured images
 .pub .featured-image-wrapper {
   margin-bottom: 3rem !important;
+  margin-left: 0.5rem !important;
+  margin-right: 0.5rem !important;
 }
 
 .pub .featured-image-wrapper img {
@@ -4534,11 +4536,11 @@ div > div > div > table > tbody > tr > td,
   
   // Add "Expand summary" button at bottom center - overlays the text
   // Reduced padding with compact styling
-  // Hidden by default, shown on hover
+  // Faded by default, fully visible on hover
   &::before {
-    content: '▼▼▼ Expand summary ▼▼▼';
+    content: '▼▼▼▼▼▼▼';
     position: absolute;
-    bottom: 6px;
+    bottom: 12px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 0.8em;
@@ -4549,7 +4551,7 @@ div > div > div > table > tbody > tr > td,
     border-radius: 3px;
     z-index: 1;
     white-space: nowrap;
-    opacity: 0;
+    opacity: 0.15;
     transition: all 0.2s ease;
     pointer-events: none;
   }
@@ -4578,6 +4580,7 @@ div > div > div > table > tbody > tr > td,
   
   // Hover effect for the entire abstract - show button and arrows
   &:hover::before {
+    content: '▼▼▼      Expand summary      ▼▼▼';
     opacity: 1;
     background-color: #444;
     color: #fff;
@@ -4595,11 +4598,13 @@ body.dark :is(#publication, #applications-and-dashboards, #blog) > div > div > d
   background-color: #ddd;
   color: #333;
   border: 1px solid #ccc;
+  opacity: 0.2;
 }
 
 body.dark :is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style:hover::before {
   background-color: #ccc;
   color: #222;
+  opacity: 1;
 }
 
 // Dark theme: arrow colors (white for visibility)
@@ -5928,11 +5933,11 @@ body.dark .full-text-btn a:focus,
   }
   
   // Add "Expand summary" button at bottom center - overlays the text
-  // Hidden by default, shown on hover
+  // Faded by default, fully visible on hover
   &::before {
-    content: '▼▼▼ Expand summary ▼▼▼';
+    content: '▼▼▼▼▼▼▼';
     position: absolute;
-    bottom: 6px;
+    bottom: 12px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 0.8em;
@@ -5943,13 +5948,14 @@ body.dark .full-text-btn a:focus,
     border-radius: 3px;
     z-index: 1;
     white-space: nowrap;
-    opacity: 0;
+    opacity: 0.15;
     transition: all 0.2s ease;
     pointer-events: none;
   }
   
   // Hover effect - show button
   &:hover::before {
+    content: '▼▼▼      Expand summary      ▼▼▼';
     opacity: 1;
     background-color: #444;
     color: #fff;
@@ -5983,10 +5989,12 @@ body.dark .multimedia-summary {
     background-color: #ddd;
     color: #333;
     border: 1px solid #ccc;
+    opacity: 0.2;
   }
   
   &:hover::before {
     background-color: #ccc;
+    opacity: 1;
   }
 }
 
@@ -6721,16 +6729,16 @@ body.dark h3 {
   }
 }
 
-// Show heading without border on mobile (max-width: 768px)
-@media (max-width: 768px) {
+// Show heading without border on mobile (max-width: 991px)
+@media (max-width: 991px) {
   #publication .section-heading h1,
   #publication .col-12.section-heading h1,
   div#publication .section-heading h1 {
     display: block !important;
     color: var(--text-secondary) !important;
     font-size: 2.25rem !important;
-    margin: 0 0 10px 0 !important;
-    padding-bottom: 10px !important;
+    margin: 0 !important;
+    padding-bottom: 0 !important;
   }
 }
 
@@ -7204,9 +7212,87 @@ body.page-wrapper .article-container {
   margin-top: -1.6rem !important;
 }
 
+// Fix alignment of presentation table columns in desktop screens (not mobile, not extra-large)
+@media (min-width: 768px) and (max-width: 1399px) {
+  #top > div.pub > div.article-container > div.row > div.col-md-1 {
+    margin-left: 0 !important;
+  }
+  
+  #top > div.pub > div.article-container > div.row > div.col-md-10 > div.row > div.pub-row-heading {
+    margin-right: 0 !important;
+    padding-right: 0.75rem !important;
+    flex: 0 0 12% !important;
+    max-width: 12% !important;
+  }
+  
+  #top > div.pub > div.article-container > div.row > div.col-md-10 > div.row > div.col-md-9 {
+    padding-left: 0 !important;
+    flex: 0 0 88% !important;
+    max-width: 88% !important;
+  }
+  
+  #top > div.pub > div.article-container > div.row {
+    margin-right: 0 !important;
+  }
+}
+
+// Fix alignment of presentation table columns in large viewports
+@media (min-width: 1400px) {
+  #top > div.pub > div.article-container > div.row > div.col-md-1 {
+    margin-left: 0 !important;
+  }
+  
+  #top > div.pub > div.article-container > div.row > div.col-md-10 > div.row > div.pub-row-heading {
+    margin-right: 0 !important;
+    padding-right: 0.75rem !important;
+    flex: 0 0 12% !important;
+    max-width: 12% !important;
+  }
+  
+  #top > div.pub > div.article-container > div.row > div.col-md-10 > div.row > div.col-md-9 {
+    padding-left: 0 !important;
+    flex: 0 0 88% !important;
+    max-width: 88% !important;
+  }
+  
+  #top > div.pub > div.article-container > div.row {
+    margin-right: 0 !important;
+  }
+}
+
 // Reduce top padding in presentation page content
 #top > div.pub > div:nth-child(2) {
   padding-top: 0.5rem !important;
+}
+
+// Increase bottom margin for iframes in presentation article content
+#top > div.pub > div > div.article-style > iframe {
+  margin-bottom: 2rem !important;
+}
+
+// Reduce bottom margin for buttons in presentation article content
+#top > div.pub > div:nth-child(2) > div.article-style > a > button {
+  margin-bottom: 0.5rem !important;
+}
+
+// Remove bottom margin for paragraphs in presentation article content
+#top > div.pub > div:nth-child(2) > div.article-style > p {
+  margin-bottom: 0 !important;
+}
+
+// Increase left margin in col-md-10 containers and hide first child div
+@media (min-width: 768px) {
+  #top > div.pub > div > div:nth-child(1) > div.col-md-10,
+  #top > div.pub > div > div:nth-child(3) > div.col-md-10,
+  #top > div.pub > div > div:nth-child(5) > div.col-md-10 {
+    margin-left: 2% !important;
+  }
+  
+  #top > div.pub > div > div:nth-child(1) > div:nth-child(1),
+  #top > div.pub > div > div:nth-child(3) > div:nth-child(1),
+  #top > div.pub > div > div:nth-child(5) > div:nth-child(1) {
+    display: none !important;
+  }
 }
 
 // Increase margin above second child h3 on presentation pages
@@ -7328,4 +7414,31 @@ div > div > div > table > thead > tr > th {
 // Increase bottom margin in teaching-supervision heading
 #teaching-supervision > div > div > div > h1 {
   margin-bottom: 1.5rem !important;
+}
+
+// Style for taxonomy content types indicator (tags/categories pages)
+.taxonomy-page-type {
+  font-size: 0.9rem !important;
+  color: #555 !important;
+  margin-top: -0.25rem !important;
+  margin-bottom: 0.5rem !important;
+  font-weight: bold !important;
+}
+
+body.dark .taxonomy-page-type {
+  color: #aaa !important;
+}
+
+// Increase font size for summary section links and paragraphs
+[id^="summary-"] > div > div > a {
+  font-size: 1.05rem !important;
+}
+
+[id^="summary-"] > div > div > p {
+  font-size: 0.95rem !important;
+}
+
+// Increase font size in search query input
+#search-query {
+  font-size: 1.2rem !important;
 }
