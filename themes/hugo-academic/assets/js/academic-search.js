@@ -14,20 +14,20 @@ let fuseOptions = {
   shouldSort: true,
   includeMatches: true,
   tokenize: true,
-  threshold: search_config.threshold, // Set to ~0.1 for more precise matching
+  threshold: 0.25, // Balanced matching
   location: 0,
-  distance: 50, // Reduced from 100 for more precise location matching
+  distance: 50, // Allow more distance flexibility
   maxPatternLength: 32,
-  minMatchCharLength: search_config.minLength, // Set to 2 for more precise matching
+  minMatchCharLength: search_config.minLength,
   findAllMatches: false, // Stop at first good match for better performance
   ignoreLocation: false, // Consider location in matching
   keys: [
     { name: "title", weight: 0.99 } /* 1.0 doesn't work o_O */,
     { name: "summary", weight: 0.6 },
     { name: "authors", weight: 0.5 },
-    { name: "content", weight: 0.15 }, // Reduced weight for content to prioritize titles
-    { name: "tags", weight: 0.7 }, // Increased weight for tags
-    { name: "categories", weight: 0.6 }, // Increased weight for categories
+    { name: "content", weight: 0.2 },
+    { name: "tags", weight: 0.6 },
+    { name: "categories", weight: 0.5 },
   ],
 };
 
@@ -181,6 +181,50 @@ function parseResults(query, results) {
     $.each(snippetHighlights, function (hlKey, hlValue) {
       $("#summary-" + key).mark(hlValue);
     });
+  });
+  
+  // Add click handlers for search result links using event delegation
+  $(document).off('click.searchresults').on('click.searchresults', '#search-hits a', function(e) {
+    const href = $(this).attr('href');
+    
+    // Prevent default link behavior
+    e.preventDefault();
+    e.stopPropagation();
+    
+    // Extract hash from href
+    let targetHash = null;
+    let isTargetHomePage = false;
+    
+    try {
+      const targetUrl = new URL(href, window.location.origin);
+      if (targetUrl.hash) {
+        targetHash = targetUrl.hash.substring(1);
+      }
+      isTargetHomePage = targetUrl.pathname === '/' || targetUrl.pathname === '/index.html' || targetUrl.pathname === '';
+    } catch (err) {
+      const hashMatch = href.match(/#(.+)$/);
+      if (hashMatch) {
+        targetHash = hashMatch[1];
+      }
+      isTargetHomePage = href.startsWith('/#') || href.startsWith('#');
+    }
+    
+    const isCurrentlyHomePage = window.location.pathname === '/' || window.location.pathname === '/index.html';
+    const isHomePageHashNav = targetHash && isTargetHomePage && isCurrentlyHomePage;
+    
+    // Close search by simulating Escape key press (this triggers toggleSearchDialog)
+    $(document).trigger($.Event('keydown', { which: 27 }));
+    
+    // Navigate after search closes
+    setTimeout(function() {
+      if (isHomePageHashNav) {
+        window.location.assign('/#' + targetHash);
+      } else {
+        window.location.href = href;
+      }
+    }, 150);
+    
+    return false;
   });
 }
 

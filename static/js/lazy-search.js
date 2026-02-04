@@ -9,18 +9,18 @@ let fuse = null;
 
 // Lazy load search configuration
 const lazySearchConfig = {
-  threshold: 0.3,
+  threshold: 0.25, // Balanced matching
   location: 0,
-  distance: 50,
+  distance: 50, // Allow more distance flexibility
   maxPatternLength: 32,
   minMatchCharLength: 3,
   keys: [
-    { name: "title", weight: 0.8 },
-    { name: "content", weight: 0.5 },
+    { name: "title", weight: 0.99 },
+    { name: "content", weight: 0.2 },
     { name: "summary", weight: 0.6 },
-    { name: "authors", weight: 0.3 },
-    { name: "categories", weight: 0.3 },
-    { name: "tags", weight: 0.3 },
+    { name: "authors", weight: 0.5 },
+    { name: "categories", weight: 0.5 },
+    { name: "tags", weight: 0.6 },
   ],
 };
 
@@ -239,6 +239,60 @@ function displaySearchResults(results, query) {
   }
 
   searchHits.html(html);
+  
+  // Add click handlers for search result links to properly close search and navigate
+  searchHits.find('a').on('click', function(e) {
+    const href = $(this).attr('href');
+    
+    // Always prevent default to handle navigation ourselves
+    e.preventDefault();
+    e.stopPropagation();
+    
+    // Extract hash from href BEFORE closing dialog
+    let targetHash = null;
+    let isTargetHomePage = false;
+    
+    try {
+      const targetUrl = new URL(href, window.location.origin);
+      if (targetUrl.hash) {
+        targetHash = targetUrl.hash.substring(1);
+      }
+      isTargetHomePage = targetUrl.pathname === '/' || targetUrl.pathname === '/index.html' || targetUrl.pathname === '';
+    } catch (err) {
+      const hashMatch = href.match(/#(.+)$/);
+      if (hashMatch) {
+        targetHash = hashMatch[1];
+      }
+      isTargetHomePage = href.startsWith('/#') || href.startsWith('#');
+    }
+    
+    const isCurrentlyHomePage = window.location.pathname === '/' || window.location.pathname === '/index.html';
+    const isHomePageHashNav = targetHash && isTargetHomePage && isCurrentlyHomePage;
+    
+    // Close search by removing searching class (same as pressing Escape)
+    $("[id=search-query]").blur().val('');
+    $("body").removeClass("searching compensate-for-scrollbar");
+    $("#fancybox-style-noscroll").remove();
+    $(".search-results").css({ opacity: 0, visibility: "hidden" });
+    $("#search-hits").empty();
+    
+    // Remove search query params from URL
+    if (window.history && window.history.replaceState) {
+      const url = new URL(window.location);
+      url.searchParams.delete("q");
+      window.history.replaceState({}, "", url.toString());
+    }
+    
+    // Navigate after a short delay
+    setTimeout(function() {
+      if (isHomePageHashNav) {
+        // Force navigation with hash
+        window.location.assign('/#' + targetHash);
+      } else {
+        window.location.href = href;
+      }
+    }, 100);
+  });
 }
 
 function highlightMatch(text, query) {

@@ -35,7 +35,7 @@ recent_work:
     - job: "Researcher"
       institution: "Department of Education, University of Oxford"
       year: "June 2025 -- _May 2027_"
-      extra: '-&nbsp; Additional service: Assistant, [Inaugural convening of AI in Education at Oxford University](https://aieou.web.ox.ac.uk/events); [AI Ambassador, AI Competency Centre](https://oerc.ox.ac.uk/ai-centre/about/ai-ambassadors); Member, Research Computing Advisory Board [focussed on High Performance Computing]; Member, Research Assistant hiring committee.'
+      extra: '-&nbsp; Additional service: Assistant, [Inaugural convening of AI in Education at Oxford University](https://aieou.web.ox.ac.uk/events); [AI Ambassador, AI Competency Centre](https://oerc.ox.ac.uk/ai-centre/about/ai-ambassadors); Member, Research Computing Advisory Board [focussed on High Performance Computing]; Member, Research Assistant hiring committee; Assessor, doctoral qualifying examination.'
     - job: "[Postdoctoral Fellow](https://app.cristin.no/projects/show.jsf?id=2559611)"
       institution: "Center for Language, Brain and Learning, UiT The Arctic University of Norway"
       year: "Nov 2022 -- Feb 2025"
