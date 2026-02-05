@@ -3463,6 +3463,56 @@ article .featured-image {
   margin-left: 0.1rem !important;
 }
 
+// Profile email - dynamically fit on one line
+#profile .profile-email {
+  white-space: nowrap;
+  font-size: clamp(0.65rem, 2.3vw, 0.95rem);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+// Ensure the inner span also doesn't wrap
+#profile .profile-email span {
+  white-space: nowrap;
+  font-size: inherit !important; // Override inline style
+}
+
+// Oxford email specific styling - fit on one line
+#profile .profile-email .oxford-email {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: clamp(0.55rem, 1.8vw, 0.85rem) !important;
+}
+
+// Mobile adjustments for profile email
+@media (max-width: 400px) {
+  #profile .profile-email {
+    font-size: clamp(0.45rem, 3.2vw, 0.7rem);
+  }
+  #profile .profile-email .oxford-email {
+    font-size: clamp(0.4rem, 2.9vw, 0.65rem) !important;
+  }
+}
+
+@media (min-width: 401px) and (max-width: 576px) {
+  #profile .profile-email {
+    font-size: clamp(0.5rem, 3.5vw, 0.75rem);
+  }
+  #profile .profile-email .oxford-email {
+    font-size: clamp(0.45rem, 3.2vw, 0.7rem) !important;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  #profile .profile-email {
+    font-size: clamp(0.6rem, 2.5vw, 0.8rem);
+  }
+  #profile .profile-email .oxford-email {
+    font-size: clamp(0.5rem, 2.2vw, 0.75rem) !important;
+  }
+}
+
 // Reduce profile width in desktop view to remove empty space
 @media (min-width: 992px) {
   #profile {
