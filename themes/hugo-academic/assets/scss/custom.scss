@@ -7368,7 +7368,7 @@ body.page-wrapper #top > div.pub > div.article-container.pt-3 > div.btn-links.mb
 // Style button in publication/presentation pages like full-text button
 #top > div.pub > div:nth-child(3) > div.article-style > a {
   display: block;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
   text-decoration: none !important;
 }
@@ -7379,7 +7379,7 @@ body.page-wrapper #top > div.pub > div.article-container.pt-3 > div.btn-links.mb
   border: 2px solid var(--border-full-text);
   border-radius: 12px;
   width: 100%;
-  padding: 3px 0;
+  padding: 6px 0;
   margin: -0.5rem auto -0.5rem;
   font-size: 1.4em;
   font-weight: 400;
@@ -7406,6 +7406,13 @@ body.dark #top > div.pub > div:nth-child(3) > div.article-style > a > button:hov
 body.dark #top > div.pub > div:nth-child(3) > div.article-style > a > button:focus {
   background-color: rgba(220, 38, 38, 0.15) !important;
   border-color: #f87171;
+  color: black !important;
+}
+
+// Remove h3 margins inside Online book button to match full-text button height
+#top > div.pub > div:nth-child(3) > div.article-style > a > button > h3 {
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 // Increase margin above featured image on presentation pages
@@ -7496,7 +7503,7 @@ div > div > div > table > thead > tr > th {
 
 // Reduce bottom margin in embedded audio player
 #top > div.pub > div > div.article-style > iframe {
-  margin-bottom: 0 !important;
+  margin-bottom: 10px !important;
 }
 
 // Reduce bottom margin in teaching-supervision table
