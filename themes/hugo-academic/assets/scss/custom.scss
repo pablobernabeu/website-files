@@ -4773,7 +4773,7 @@ body.dark .home-section a.view-complete-content-btn {
   position: relative;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
-  margin: 20px auto;
+  margin: 20px auto 40px auto;
   padding: 0;
   border: 1px solid var(--border-color);
   border-radius: 5px;
@@ -4784,14 +4784,14 @@ body.dark .home-section a.view-complete-content-btn {
     // Mobile: 90% width
     width: 90%;
     max-width: 90%;
-    margin: 15px auto;
+    margin: 15px auto 35px auto;
   }
   
   @media (min-width: 769px) {
     // Desktop: 100% width
     width: 100%;
     max-width: 100%;
-    margin: 20px auto;
+    margin: 20px auto 40px auto;
   }
   
   &:hover {
@@ -7365,9 +7365,47 @@ body.page-wrapper #top > div.pub > div.article-container.pt-3 > div.btn-links.mb
   margin-top: 1rem !important;
 }
 
-// Reduce margin under button in presentation page
+// Style button in publication/presentation pages like full-text button
+#top > div.pub > div:nth-child(3) > div.article-style > a {
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+  text-decoration: none !important;
+}
+
 #top > div.pub > div:nth-child(3) > div.article-style > a > button {
-  margin-bottom: -1rem !important;
+  background-color: var(--bg-full-text) !important;
+  color: var(--text-hover);
+  border: 2px solid var(--border-full-text);
+  border-radius: 12px;
+  width: 100%;
+  padding: 3px 0;
+  margin: -0.5rem auto -0.5rem;
+  font-size: 1.4em;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none !important;
+}
+
+#top > div.pub > div:nth-child(3) > div.article-style > a > button:hover,
+#top > div.pub > div:nth-child(3) > div.article-style > a > button:focus {
+  background-color: #fee2e2 !important;
+  border-color: #dc2626;
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2);
+  border-radius: 12px;
+  text-decoration: none !important;
+}
+
+// Dark mode hover for button
+body.dark #top > div.pub > div:nth-child(3) > div.article-style > a > button:hover,
+body.dark #top > div.pub > div:nth-child(3) > div.article-style > a > button:focus {
+  background-color: rgba(220, 38, 38, 0.15) !important;
+  border-color: #f87171;
 }
 
 // Increase margin above featured image on presentation pages
@@ -7454,6 +7492,11 @@ body.page-wrapper #top > div.pub > div.article-container.pt-3 > div.btn-links.mb
 // Increase table header font size to match website font size
 div > div > div > table > thead > tr > th {
   font-size: 1rem !important;
+}
+
+// Reduce bottom margin in embedded audio player
+#top > div.pub > div > div.article-style > iframe {
+  margin-bottom: 0 !important;
 }
 
 // Reduce bottom margin in teaching-supervision table
