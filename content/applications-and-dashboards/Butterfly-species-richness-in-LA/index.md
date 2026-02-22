@@ -21,6 +21,8 @@ publication_types:
 # slides: example
 summary: 
 categories:
+- web application
+- research and teaching applications
 - data visualisation
 - R
 tags:

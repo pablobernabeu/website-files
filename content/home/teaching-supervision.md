@@ -77,7 +77,7 @@ During my PhD, I held a graduate teaching assistantship that involved 180 hours 
 <div style="margin-top: 40px;"></div>
 
 
-Lastly, I have created two web applications intended for educational contexts. One supports the [simulation of data](/applications-and-dashboards/experimental-data-simulation), enhancing the teaching of statistical principles, while the other streamlines the [transcription of video captions](/applications-and-dashboards/vtt-transcription-app) for use in multimedia learning environments.
+Lastly, I have created some web applications intended for educational contexts. One [develops science literacy](/applications-and-dashboards/unlock-the-lab), another supports the [simulation of data](/applications-and-dashboards/experimental-data-simulation)---enhancing the teaching of statistical principles---, while a third app streamlines the [transcription of video captions](/applications-and-dashboards/vtt-transcription-app) for use in multimedia learning environments.
 
 
 ## **Teaching Philosophy**

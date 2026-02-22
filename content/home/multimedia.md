@@ -111,7 +111,7 @@ Collins, J., Pecher, D., Zeelenberg, R., & Coulson, S. (2011). Modality switchin
 
 Hald, L. A., Marshall, J.-A., Janssen, D. P., & Garnham, A. (2011). Switching modalities in a sentence verification task: ERP evidence for embodied language processing. *Frontiers in Psychology*, *2*, Article 45. https://doi.org/10.3389/fpsyg.2011.00045
 
-Bernabeu, P., Willems, R. M., & Louwerse, M. M. (2017). Modality switch effects emerge early and increase throughout conceptual processing: Evidence from ERPs. *Proceedings of the 39th Annual Conference of the Cognitive Science Society*. https://doi.org/10.31234/osf.io/a5pcz
+Bernabeu, P., Willems, R. M., & Louwerse, M. M. (2017). Modality switch effects emerge early and increase throughout conceptual processing: Evidence from ERPs. In G. Gunzelmann, A. Howes, T. Tenbrink, & E. J. Davelaar (Eds.), *Proceedings of the 39th Annual Conference of the Cognitive Science Society* (pp. 1629-1634). Austin, TX: Cognitive Science Society. https://doi.org/10.31234/osf.io/a5pcz
 
 Platonova, O., & Miklashevsky, A. (2025). Warm and fuzzy: Perceptual semantics can be activated even during shallow lexical processing. *Journal of Experimental Psychology: Learning, Memory, and Cognition*, *51*(9), 1471–1496. https://dx.doi.org/10.1037/xlm0001429
 

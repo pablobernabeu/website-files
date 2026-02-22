@@ -28,9 +28,8 @@ publication_types:
 # slides: example
 summary: 'This app presents linguistic data over several tabs. The code combines the great front-end of Flexdashboard—based on R Markdown and yielding an unmatched user interface—, with the great back-end of Shiny—allowing users to download sections of data they select, in various formats. The hardest nuts to crack included modifying the rows/columns orientation without affecting the functionality of tables. A cool, recent finding was the reactable package. A nice feature, allowed by Flexdashboard, was the use of quite different formats in different tabs.'
 categories:
-  - linguistic materials
-  - research methods
-  - web-application
+  - web application
+  - research and teaching applications
   - R
 tags:
 - web application
