@@ -45,11 +45,28 @@
       
       <div style="margin-top:8%;">
       {{ with $person.profileicons }}
-      <div>
+      <div id="profile-icons" style="white-space: nowrap;">
           {{ range . }}
           <span>{{ . | markdownify | emojify }} &nbsp;</span>
           {{ end }}
       </div>
+      <script>
+      (function() {
+        function fitProfileIcons() {
+          var el = document.getElementById('profile-icons');
+          if (!el) return;
+          var parent = el.parentElement;
+          el.style.fontSize = '';
+          var size = 1.0;
+          while (el.scrollWidth > parent.clientWidth && size > 0.3) {
+            size = Math.round((size - 0.05) * 100) / 100;
+            el.style.fontSize = size + 'em';
+          }
+        }
+        document.addEventListener('DOMContentLoaded', fitProfileIcons);
+        window.addEventListener('resize', fitProfileIcons);
+      })();
+      </script>
       {{ end }}
       </div>
       

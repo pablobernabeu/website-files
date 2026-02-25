@@ -1122,6 +1122,17 @@ blockquote {
   margin-bottom: 1.5rem !important;
 }
 
+// General list spacing – increase vertical gap between items in bullet and numbered lists
+ul li,
+ol li {
+  margin-bottom: 0.55em;
+}
+
+// General textarea spacing
+textarea {
+  margin-bottom: 1.75rem !important;
+}
+
 // Publication abstract spacing
 .pub-abstract {
   margin-bottom: 1.5rem !important;
@@ -5559,8 +5570,17 @@ div.lds-ring:after {
 
 
 // Hanging indentation for references
+// .Rmd posts (Pandoc): <div id="references"><h2>…</h2><p>…</p></div>  → children inherit
+// .md posts (Goldmark): <h2 id="references">…</h2><p>…</p>            → siblings need explicit rule
 #reference, #references, .hanging-indent {
   text-indent: -2em; 
+  margin-left: 2em;
+}
+
+// Sibling rule for Hugo/Goldmark-rendered plain-Markdown reference sections
+h2#references ~ p, h3#references ~ p, h4#references ~ p,
+h2#reference  ~ p, h3#reference  ~ p, h4#reference  ~ p {
+  text-indent: -2em;
   margin-left: 2em;
 }
 

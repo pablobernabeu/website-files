@@ -27,6 +27,8 @@ summary: 'We tested whether conceptual processing is modality-specific by tracki
 categories:
 - conceptual processing
 - R
+- web application
+- research and teaching applications
 tags:
 - web application
 - data dashboard

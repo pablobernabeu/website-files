@@ -190,4 +190,25 @@
   {{- end -}}
 {{- end -}}
 
+{{- /* Add tag counts filtered the same way as the tag page (exclude posts without the "s" tag) */ -}}
+{{- $accurateTagCounts := dict -}}
+{{- range $tagSlug, $term := site.Taxonomies.tags -}}
+  {{- $filteredCount := 0 -}}
+  {{- range $term.Pages -}}
+    {{- $include := true -}}
+    {{- if eq .Section "post" -}}
+      {{- $hasStag := false -}}
+      {{- range .Params.Tags -}}
+        {{- if eq . "s" -}}{{- $hasStag = true -}}{{- end -}}
+      {{- end -}}
+      {{- if not $hasStag -}}{{- $include = false -}}{{- end -}}
+    {{- end -}}
+    {{- if $include -}}{{- $filteredCount = add $filteredCount 1 -}}{{- end -}}
+  {{- end -}}
+  {{- /* Key by URL slug (last path segment of RelPermalink) for reliable JS lookup */ -}}
+  {{- $tagSlugKey := path.Base $term.Page.RelPermalink -}}
+  {{- $accurateTagCounts = merge $accurateTagCounts (dict $tagSlugKey $filteredCount) -}}
+{{- end -}}
+{{- $index = $index | append (dict "objectID" "__tag-counts__" "tagCounts" $accurateTagCounts) -}}
+
 {{- $index | jsonify -}}
