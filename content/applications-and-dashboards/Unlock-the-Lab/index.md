@@ -35,7 +35,7 @@ links:
 
 [**Unlock the Lab**](https://unlock-the-lab.web.app) is an educational web application designed to develop science literacy by guiding participants through the evaluation of research quality using evidence-based criteria. Rather than passively consuming information, participants actively engage with 48 fictional research scenarios, rating study quality and predicting how their peers will rate the same studies. This peer-anchored design fosters reflective thinking and helps participants calibrate their own judgements against a broader community standard.
 
-The application is suitable for use in university workshops, open science training events, and self-directed learning. It requires no login or prior knowledge, and its browser-based format makes it accessible from any device.
+The application is suitable for use in university workshops, open science training events and self-directed learning. It requires no login or prior knowledge, and its browser-based format makes it accessible from any device.
 
 <img src="img/screenshot-welcome.png" alt="Welcome screen of Unlock the Lab" style="max-width:100%; border-radius:6px; margin: 1em 0;">
 <p style="font-size:0.85em; color:#555; margin-top:-0.5em;"><em>Welcome screen</em></p>
@@ -45,7 +45,7 @@ The application is suitable for use in university workshops, open science traini
 The application targets several interconnected competencies in scientific reasoning. Participants learn to evaluate research quality using a structured rubric that covers methodology, sample size, data transparency, pre-registration, and publication practices. They also learn to recognise misleading framing, such as sensationalised headlines and clickbait abstracts that misrepresent underlying findings. The scenarios help users identify barriers to knowledge access, including paywalled journals and predatory publishing. A core objective is to practise objective assessment by decoupling conclusions from title framing and focusing instead on the evidence presented. Finally, participants build calibrated consensus skills by comparing their personal ratings against the community average for each study. These objectives are embedded in both the educational content and the task design, ensuring that learning occurs through active participation rather than passive instruction.
 
 <img src="img/screenshot-rubric.png" alt="Evaluation rubric in Unlock the Lab" style="max-width:100%; border-radius:6px; margin: 1em 0;">
-<p style="font-size:0.85em; color:#555; margin-top:-0.5em;"><em>Evaluation rubric presented before the study scenarios</em></p>
+<p style="font-size:0.85em; color:#555; margin-top:-0.5em;"><em>Evaluation rubric presented before the study scenarios and accessible throughout the experience</em></p>
 
 ## Application Structure
 
@@ -73,10 +73,10 @@ A real-time leaderboard ranks participants by their aggregate prediction score. 
 
 ## Analytics Dashboard
 
-A publicly accessible [live analytics dashboard](https://unlock-the-lab.web.app/dashboard.html) provides visualisations of the aggregate data collected across all participants. It includes a real-time leaderboard of top predictors, a criterion importance chart showing the average percentage of tokens participants assigned to each evaluation criterion (title, access, source, theory, methods and data, and conclusion), and a study-level bar chart of mean quality ratings with 95% confidence intervals across all 48 studies. The dashboard is intended both for participants reviewing their own results and for facilitators and researchers interested in population-level patterns.
+A publicly accessible [live analytics dashboard](https://unlock-the-lab.web.app/dashboard.html) provides visualisations of the aggregate data collected across all participants. In addition to the leaderboard shown above, the dashboard includes a criterion importance chart showing the degree of importance that participants assigned to each evaluation criterion (title, access, source, theory, methods and data, and conclusion), and a study-level bar chart of mean quality ratings with 95% confidence intervals across all 48 studies. The dashboard is intended both for participants reviewing their own results and for facilitators and researchers interested in population-level patterns.
 
 <img src="img/screenshot-dashboard-1.png" alt="Top Predictors leaderboard and Criterion Importance chart" style="max-width:100%; border-radius:6px; margin: 1em 0;">
-<p style="font-size:0.85em; color:#555; margin-top:-0.5em;"><em>Dashboard section showing the Top Predictors leaderboard and the Criterion Importance chart, which displays the average token allocation per evaluation criterion across participants</em></p>
+<p style="font-size:0.85em; color:#555; margin-top:-0.5em;"><em>Dashboard section showing the Criterion Importance chart, which displays the average token allocation per evaluation criterion across participants</em></p>
 
 <img src="img/screenshot-dashboard-2.png" alt="Average Quality Ratings by Study chart" style="max-width:100%; border-radius:6px; margin: 1em 0;">
 <p style="font-size:0.85em; color:#555; margin-top:-0.5em;"><em>Dashboard section showing mean quality ratings (1–7 scale) with 95% confidence intervals for each of the 48 studies; bars are colour-coded and clickable for detailed study information</em></p>
@@ -115,7 +115,7 @@ Generative artificial intelligence has since added a further layer of complexity
 
 ## Source Code and Contributions
 
-The [source code is available on GitHub](https://github.com/pablobernabeu/Unlock_the_Lab) under a [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) licence. The application can be extended or adapted via pull requests. Feature requests, bug reports, and other suggestions can be submitted as [issues](https://github.com/pablobernabeu/Unlock_the_Lab/issues).
+The [source code is available on GitHub](https://github.com/pablobernabeu/Unlock_the_Lab) under a [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) licence. The application can be extended or adapted via pull requests. Feature requests, bug reports and other suggestions can be submitted as [issues](https://github.com/pablobernabeu/Unlock_the_Lab/issues).
 
 ## References
 
