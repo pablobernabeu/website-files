@@ -1,12 +1,11 @@
 ---
 title: 'Why a few prompts are often insufficient: You shall know a word by the company it keeps'
 author: ''
-date: '2025-11-12'
+date: '2099-11-12'
 slug: why-few-prompts-are-not-enough
 categories:
  - software
 tags:
- - s
  - prompts
 subtitle: ''
 summary: "Exploring the limitations of relying on a few prompts in AI interactions and the importance of context in understanding language."
@@ -248,17 +247,6 @@ lsa_pipeline(as.list(texts4), labels4,
 <p>To extend the political timeline, the <code>sotu</code> package provides the full text of every State of the Union address. Splitting at 1945 – the end of the Second World War – highlights the transition from pre-war domestic and industrial vocabulary to post-war geopolitical and welfare-state language.</p>
 <pre class="r"><code>
 if (!requireNamespace(&quot;sotu&quot;, quietly = TRUE)) install.packages(&quot;sotu&quot;)
-#&gt; # Downloading packages -------------------------------------------------------
-#&gt; - Downloading sotu from CRAN ...                OK [3.8 Mb in 0.78s]
-#&gt; Successfully downloaded 1 package in 5.3 seconds.
-#&gt; 
-#&gt; The following package(s) will be installed:
-#&gt; - sotu [1.0.4]
-#&gt; These packages will be installed into &quot;~/GitHub/website-files/renv/library/windows/R-4.5/x86_64-w64-mingw32&quot;.
-#&gt; 
-#&gt; # Installing packages --------------------------------------------------------
-#&gt; - Installing sotu ...                           OK [installed binary and cached in 0.52s]
-#&gt; Successfully installed 1 package in 0.59 seconds.
 
 sotu_texts  &lt;- sotu::sotu_text
 sotu_years  &lt;- sotu::sotu_meta$year
@@ -287,20 +275,6 @@ Figure 4: Top words from US State of the Union addresses split at 1945 projected
 <p>Returning to news, the <code>topicmodels</code> package includes <code>AssociatedPress</code>, a document-term matrix of roughly 2,200 Associated Press articles from 1988. Because the data ships as a pre-built DTM (document-term matrix), the pipeline here skips text preprocessing and works directly with the matrix. The articles are split by whether they lean towards domestic political coverage or international/business reporting, using a simple keyword heuristic.</p>
 <pre class="r"><code>
 if (!requireNamespace(&quot;topicmodels&quot;, quietly = TRUE)) install.packages(&quot;topicmodels&quot;)
-#&gt; # Downloading packages -------------------------------------------------------
-#&gt; - Downloading topicmodels from CRAN ...         OK [1.2 Mb in 0.56s]
-#&gt; - Downloading modeltools from CRAN ...          OK [223.2 Kb in 0.45s]
-#&gt; Successfully downloaded 2 packages in 1.7 seconds.
-#&gt; 
-#&gt; The following package(s) will be installed:
-#&gt; - modeltools  [0.2-24]
-#&gt; - topicmodels [0.2-17]
-#&gt; These packages will be installed into &quot;~/GitHub/website-files/renv/library/windows/R-4.5/x86_64-w64-mingw32&quot;.
-#&gt; 
-#&gt; # Installing packages --------------------------------------------------------
-#&gt; - Installing modeltools ...                     OK [installed binary and cached in 0.43s]
-#&gt; - Installing topicmodels ...                    OK [installed binary and cached in 0.6s]
-#&gt; Successfully installed 2 packages in 1.1 seconds.
 
 data(&quot;AssociatedPress&quot;, package = &quot;topicmodels&quot;)
 ap_mat &lt;- t(as.matrix(AssociatedPress))   # words x docs
@@ -373,38 +347,6 @@ Figure 5: Top words from approximately 2,200 Associated Press articles (1988) pr
 <p>Moving from news to entertainment, the <code>text2vec</code> package includes <code>movie_review</code>, a dataset of 5,000 IMDB film reviews labelled as positive or negative. This is a classic sentiment-analysis benchmark. The LSA space here captures not so much topic as evaluative tone: positive and negative adjectives cluster by polarity.</p>
 <pre class="r"><code>
 if (!requireNamespace(&quot;text2vec&quot;, quietly = TRUE)) install.packages(&quot;text2vec&quot;)
-#&gt; # Downloading packages -------------------------------------------------------
-#&gt; - Downloading text2vec from CRAN ...            OK [3.8 Mb in 0.9s]
-#&gt; - Downloading rsparse from CRAN ...             OK [1.7 Mb in 0.46s]
-#&gt; - Downloading MatrixExtra from CRAN ...         OK [1.8 Mb in 0.56s]
-#&gt; - Downloading RhpcBLASctl from CRAN ...         OK [137.7 Kb in 0.35s]
-#&gt; - Downloading float from CRAN ...               OK [1.3 Mb in 1.0s]
-#&gt; - Downloading lgr from CRAN ...                 OK [1.4 Mb in 0.57s]
-#&gt; - Downloading RcppArmadillo from CRAN ...       OK [3.1 Mb in 0.89s]
-#&gt; - Downloading mlapi from CRAN ...               OK [236.9 Kb in 0.34s]
-#&gt; Successfully downloaded 8 packages in 8.3 seconds.
-#&gt; 
-#&gt; The following package(s) will be installed:
-#&gt; - float         [0.3-3]
-#&gt; - lgr           [0.5.2]
-#&gt; - MatrixExtra   [0.1.15]
-#&gt; - mlapi         [0.1.1]
-#&gt; - RcppArmadillo [15.2.3-1]
-#&gt; - RhpcBLASctl   [0.23-42]
-#&gt; - rsparse       [0.5.3]
-#&gt; - text2vec      [0.6.6]
-#&gt; These packages will be installed into &quot;~/GitHub/website-files/renv/library/windows/R-4.5/x86_64-w64-mingw32&quot;.
-#&gt; 
-#&gt; # Installing packages --------------------------------------------------------
-#&gt; - Installing RhpcBLASctl ...                    OK [installed binary and cached in 0.46s]
-#&gt; - Installing float ...                          OK [installed binary and cached in 0.62s]
-#&gt; - Installing MatrixExtra ...                    OK [installed binary and cached in 0.59s]
-#&gt; - Installing lgr ...                            OK [installed binary and cached in 0.74s]
-#&gt; - Installing RcppArmadillo ...                  OK [installed binary and cached in 17s]
-#&gt; - Installing rsparse ...                        OK [installed binary and cached in 0.63s]
-#&gt; - Installing mlapi ...                          OK [installed binary and cached in 0.41s]
-#&gt; - Installing text2vec ...                       OK [installed binary and cached in 0.5s]
-#&gt; Successfully installed 8 packages in 21 seconds.
 
 data(&quot;movie_review&quot;, package = &quot;text2vec&quot;)
 mv_labels &lt;- ifelse(movie_review$sentiment == 1, &quot;Positive&quot;, &quot;Negative&quot;)
@@ -432,17 +374,6 @@ Figure 6: Top words from 5,000 IMDB film reviews (text2vec built-in dataset) pro
 <p>From modern reviews to Regency prose: the <code>janeaustenr</code> package provides the full text of six Austen novels. Here, two thematic groups are contrasted – the more gothic or melancholy pair (<em>Northanger Abbey</em>, <em>Persuasion</em>) against the quintessential comedies of manners (<em>Pride and Prejudice</em>, <em>Emma</em>). Each novel is split into 200-line chunks so that the TF-IDF matrix has enough documents to work with.</p>
 <pre class="r"><code>
 if (!requireNamespace(&quot;janeaustenr&quot;, quietly = TRUE)) install.packages(&quot;janeaustenr&quot;)
-#&gt; # Downloading packages -------------------------------------------------------
-#&gt; - Downloading janeaustenr from CRAN ...         OK [1.5 Mb in 0.57s]
-#&gt; Successfully downloaded 1 package in 0.99 seconds.
-#&gt; 
-#&gt; The following package(s) will be installed:
-#&gt; - janeaustenr [1.0.0]
-#&gt; These packages will be installed into &quot;~/GitHub/website-files/renv/library/windows/R-4.5/x86_64-w64-mingw32&quot;.
-#&gt; 
-#&gt; # Installing packages --------------------------------------------------------
-#&gt; - Installing janeaustenr ...                    OK [installed binary and cached in 0.44s]
-#&gt; Successfully installed 1 package in 0.53 seconds.
 
 chunk_lines &lt;- function(lines, chunk_size = 200) {
   lines &lt;- lines[nchar(trimws(lines)) &gt; 0]

@@ -1,12 +1,11 @@
 ﻿---
 title: 'Why a few prompts are often insufficient: You shall know a word by the company it keeps'
 author: ''
-date: '2025-11-12'
+date: '2099-11-12'
 slug: why-few-prompts-are-not-enough
 categories:
  - software
 tags:
- - s
  - prompts
 subtitle: ''
 summary: "Exploring the limitations of relying on a few prompts in AI interactions and the importance of context in understanding language."
@@ -492,7 +491,6 @@ Devlin, J., Chang, M.-W., Lee, K., & Toutanova, K. (2019). BERT: Pre-training of
 Feinerer, I., Hornik, K., & Meyer, D. (2008). Text mining infrastructure in R. *Journal of Statistical Software, 25*(5), 1–54. https://doi.org/10.18637/jss.v025.i05
 
 Firth, J. R. (1957). *Studies in Linguistic Analysis*. Oxford University Press. (Original source of the quote “You shall know a word by the company it keeps.”) 
-
 
 Günther, F., Dudschig, C., & Kaup, B. (2016). LSAfun: An R package for computations based on Latent Semantic Analysis. *Behavior Research Methods, 48*(2), 409-421. https://doi.org/10.3758/s13428-015-0662-x
 
