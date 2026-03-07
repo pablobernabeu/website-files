@@ -3255,12 +3255,18 @@ body::before, #top::before {
 }
 
 // Add spacing for page content below fixed navbar
-// clamp scales naturally with viewport height: ~20px at 500px tall, ~32px at 800px, 50px at 1250px+
 section.home-section:first-of-type {
-  margin-top: clamp(25px, 6vh, 70px) !important;
   padding-top: 1rem !important;
 }
 
+// Desktop: clamp scales gently with viewport height, raised floor for short viewports
+@media (min-width: 769px) {
+  section.home-section:first-of-type {
+    margin-top: clamp(45px, 5vh, 55px) !important;
+  }
+}
+
+// Mobile: fixed small gap
 @media (max-width: 768px) {
   section.home-section:first-of-type {
     margin-top: 15px !important;
