@@ -2,6 +2,7 @@
 abstract: 'Dashboard with open data from a study by Prudic et al. (2018), that compares citizen science with traditional methods in butterfly sampling. Coding tasks included long-transforming, merging, and as ever, wrangling with a table.'
 authors:
 date: "2020-01-01"
+publishDate: "2020-01-01"
 # doi:
 featured: false
 image:
@@ -13,7 +14,6 @@ links:
   url: '/dashboards/Butterfly-species-richness-in-LA'
 #  projects:
 # - internal-project
-publishDate: "2020-01-01"
 publication:
 publication_short:
 publication_types:

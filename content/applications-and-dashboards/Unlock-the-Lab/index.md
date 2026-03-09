@@ -15,6 +15,7 @@ categories:
 tags:
 - web application
 - science literacy
+- metascience
 - open science
 - critical thinking
 - peer assessment
@@ -37,8 +38,12 @@ links:
 
 The application is suitable for use in university workshops, open science training events and self-directed learning. It requires no login or prior knowledge, and its browser-based format makes it accessible from any device.
 
-<img src="img/screenshot-welcome.png" alt="Welcome screen of Unlock the Lab" style="max-width:100%; border-radius:6px; margin: 1em 0;">
-<p style="font-size:0.85em; color:#555; margin-top:-0.5em;"><em>Welcome screen</em></p>
+<div style="width: 100%; height: 800px; margin: 2em 0; border-radius: 8px; overflow: hidden; border: 1px solid #ddd;">
+  <iframe src="https://unlock-the-lab.web.app"
+      style="width: 100%; height: 100%; border: none;"
+      title="Unlock the Lab web application">
+  </iframe>
+</div>
 
 ## Educational Objectives
 

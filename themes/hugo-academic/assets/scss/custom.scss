@@ -3675,13 +3675,19 @@ h3 {
 }
 
 #applications-and-dashboards > div > div > div:nth-child(2) > div > div.media-body > div.stream-meta.article-metadata {
-  margin-top: 0.3rem !important;
-  margin-bottom: 0.3rem !important;
+  margin-top: 0.7rem !important;
+  margin-bottom: 0.7rem !important;
+  line-height: 1.4 !important;
 }
 
 #applications-and-dashboards > div > div > div:nth-child(2) > div > div.media-body > div.stream-meta.article-metadata > div {
   margin-top: 0 !important;
-  font-size: 0.95rem !important;
+  font-size: 0.85rem !important;
+  line-height: 1.4 !important;
+}
+
+#applications-and-dashboards > div > div > div:nth-child(2) > div > div.media-body > div.stream-meta.article-metadata * {
+  line-height: 1.4 !important;
 }
 
 #applications-and-dashboards > div > div > div:nth-child(2) > div > div.media-body.is-expanded > a {
@@ -4425,6 +4431,47 @@ body.dark h3 a:hover, body.dark div a:hover {
 // Increase top margin for publication btn-links on home page
 #publication > div > div > div:nth-child(2) > div > div.media-body > div.btn-links {
   margin-top: -0.5rem !important;
+}
+
+// Override the generic -14% negative margin for apps section (no complex stream-meta offset here)
+#applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links {
+  margin-top: 0.3rem !important;
+}
+
+// Match apps section button size and style to publication buttons
+body #applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links,
+body #applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links a,
+body #applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links button {
+  font-size: 0.8rem !important;
+  line-height: 1.3 !important;
+}
+
+body #applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links a,
+body #applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links button {
+  height: 2em !important;
+  min-height: 2em !important;
+  max-height: 2em !important;
+  padding: 0 0.5rem !important;
+}
+
+// Match apps section button backgrounds to publication buttons (override transparent rule from icon hover block)
+#applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links > a,
+#applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links > button {
+  background-color: var(--bg-button) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-hover) !important;
+}
+
+#applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links > a:visited {
+  background-color: var(--bg-button-secondary) !important;
+  border-color: var(--text-visited) !important;
+  color: var(--text-visited) !important;
+}
+
+#applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links > a:hover,
+#applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links > button:hover {
+  background-color: var(--bg-button-hover) !important;
+  color: var(--text-hover) !important;
 }
 
 // Reduce bottom margin for publication article-metadata on home page
