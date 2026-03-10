@@ -137,7 +137,7 @@ Larsson, T., Plonsky, L., Sterling, S., Kytö, M., Yaw, K., & Wood, M. (2023). O
 
 Makel, M. C., Hodges, J., Cook, B. G., & Plucker, J. A. (2021). Both questionable and open research practices are prevalent in education research. *Educational Researcher, 50*(8), 493–504. https://doi.org/10.3102/0013189X211001356
 
-Xie, Y., Wang, K., & Kong, Y. (2021). Prevalence of research misconduct and questionable research practices: A systematic review and meta-analysis. *Science and engineering ethics, 27*(4), 41. https://doi.org/10.1007/s11948-021-00314-9
+Xie, Y., Wang, K., & Kong, Y. (2021). Prevalence of research misconduct and questionable research practices: A systematic review and meta-analysis. *Science and Engineering Ethics, 27*(4), 41. https://doi.org/10.1007/s11948-021-00314-9
 
 
 <a href='https://unlock-the-lab.web.app/' target='_blank' style="display:inline-block; margin-top: 0.8rem;">
