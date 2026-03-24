@@ -9,7 +9,7 @@ tags:
   - s
   - communications
 subtitle: ''
-summary: "Unwanted, stranded meetings, overlapping with a general one in a channel, can occur when people click on the <kbd>Meet (now)</kbd>/:camera: button, instead of clicking on the same <kbd>Join</kbd> button in the chat field. This may especially happen to those who reach the channel first, or who cannot see the <kbd>Join</kbd> button in the chat field because this field has been taken up by messages."
+summary: "Unwanted, stranded meetings, overlapping with a general one in a channel, can occur when people click on the 'Meet' button, instead of clicking on the same 'Join' button in the chat field. This may especially happen to those who reach the channel first, or who cannot see the 'Join' button in the chat field because this field has been taken up by messages."
 authors: []
 lastmod: ''
 featured: no
