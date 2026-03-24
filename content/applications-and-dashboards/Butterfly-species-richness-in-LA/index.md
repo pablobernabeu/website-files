@@ -111,9 +111,4 @@ Column {style="data-width:100%; position:static; height:1000px;"}
 
 ### Reference
 
-<div class = 'hanging-indent'>
-
 Prudic, K. L., Oliver, J. C., Brown, B. V., & Long, E. C. (2018). Comparisons of citizen science data-gathering approaches to evaluate urban butterfly diversity. *Insects, 9*(4), 186. https://doi.org/10.3390/insects9040186
-
-</div>
-

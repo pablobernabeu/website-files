@@ -112,8 +112,6 @@ Liu (2018) and Liu et al. (2018) raise interesting and important questions. Firs
 
 ### References
 
-<div class = 'hanging-indent'>
-
 Albers, C., & Lakens, D. (2018). When power analyses based on pilot data are biased: Inaccurate effect size estimators and follow-up bias. *Journal of Experimental Social Psychology, 74*, 187–195. https://doi.org/10.1016/j.jesp.2017.09.004
 
 Amsel, B. D., Urbach, T. P., & Kutas, M. (2014). Empirically grounding grounded cognition: the case of color. *Neuroimage, 99*, 149-157. https://doi.org/10.1016/j.neuroimage.2014.05.025
@@ -172,6 +170,3 @@ Van Dam, W. O., Brazil, I. A., Bekkering, H., & Rueschemeyer, S.-A. (2014). Flex
 Yarkoni, T. (2020). The generalizability crisis. *Behavioral and Brain Sciences*, 1-37. https://doi.org/10.1017/S0140525X20001685
 
 Zwaan, R., Etz, A., Lucas, R., & Donnellan, M. (2018). Making replication mainstream. *Behavioral and Brain Sciences, 41*, E120. https://doi.org/10.1017/S0140525X17001972
-
-</div>
-

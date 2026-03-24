@@ -58,11 +58,7 @@ url_poster: 'https://osf.io/dj52n'
 
 ### Reference
 
-<div class = 'hanging-indent'>
-
 Bernabeu, P., Willems, R. M., & Louwerse, M. M. (2017). Modality switch effects emerge early and increase throughout conceptual processing: Evidence from ERPs. In G. Gunzelmann, A. Howes, T. Tenbrink, & E. J. Davelaar (Eds.), *Proceedings of the 39th Annual Conference of the Cognitive Science Society* (pp. 1629-1634). Austin, TX: Cognitive Science Society. https://doi.org/10.31234/osf.io/a5pcz
-
-</div>
 
 
 ### Related podcasts

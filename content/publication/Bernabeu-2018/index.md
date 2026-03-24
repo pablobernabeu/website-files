@@ -52,11 +52,7 @@ doi: 10.31234/osf.io/s2c5h
 
 ### Reference
 
-<div class = 'hanging-indent'>
-
 Bernabeu, P. (2018). *Dutch modality exclusivity norms for 336 properties and 411 concepts*. PsyArXiv. https://doi.org/10.31234/osf.io/s2c5h
-
-</div>
 
 
 ### Related podcast

@@ -4455,11 +4455,18 @@ body #applications-and-dashboards > div > div > div.col-12 > div > div.media-bod
 }
 
 // Match apps section button backgrounds to publication buttons (override transparent rule from icon hover block)
+// Light mode: use white for contrast against the greyish section background
 #applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links > a,
 #applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links > button {
-  background-color: var(--bg-button) !important;
+  background-color: white !important;
   border-color: var(--border-color) !important;
   color: var(--text-hover) !important;
+}
+
+// Dark mode: revert to the standard dark button background
+body.dark #applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links > a,
+body.dark #applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links > button {
+  background-color: var(--bg-button) !important;
 }
 
 #applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links > a:visited {

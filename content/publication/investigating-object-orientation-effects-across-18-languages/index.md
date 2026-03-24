@@ -103,8 +103,4 @@ links:
 
 ### Reference
 
-<div class = 'hanging-indent'>
-
 Chen, S.-C., Buchanan, E. M., Kekecs, Z., Miller, J. K., Szabelska, A., Aczel, B., Bernabeu, P., Forscher, P. S., Szuts, A., Vally, D. Z., Al-Hoorie, A. H., Helmy, M., Silva, C. S. A. da, Silva, L. O. da, Moraes, Y. L. de, Hsu, R. M. C. S., Mafra, A. L., Valentova, J. V., Varella, M. A. C., … Chartier, C. R. (2025). Investigating object orientation effects across 18 languages. _Current Psychology_. https://doi.org/10.1007/s12144-025-08304-x
-
-</div>

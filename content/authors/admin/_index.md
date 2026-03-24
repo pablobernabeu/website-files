@@ -5,13 +5,14 @@ name: Pablo Bernabeu
 role: '<span style="font-size:115%;"><b>Researcher</b><br>University of Oxford</span>'
 email: '<span class="oxford-email">pablo.bernabeu@education.ox.ac.uk</span><br>pcbernabeu@gmail.com'
 profileicons:
-  - '<span aria-label="Google Scholar" data-toggle="tooltip1" data-placement="bottom" title=" Google Scholar "><a href="https://scholar.google.com/citations?user=DxD0QDoAAAAJ&hl=en"><i style="color:#8AA3CD;" class="social-icon ai ai-google-scholar ai-lg"></i></a></span>'
-  - '<span aria-label="Github" data-toggle="tooltip1" data-placement="bottom" title=" Github "><a href="https://github.com/pablobernabeu"><i style="color:#8AA3CD;" class="social-icon fab fa-github fa-lg"></i></a></span>'
-  - '<span aria-label="OSF" data-toggle="tooltip1" data-placement="bottom" title=" OSF "><a href="https://osf.io/25u3x/"><i style="color:#8AA3CD;" class="social-icon ai ai-osf ai-lg"></i></a></span>'
-  - '<span aria-label="ResearchGate" data-toggle="tooltip1" data-placement="bottom" title=" ResearchGate "><a href="https://www.researchgate.net/profile/Pablo-Bernabeu"><i style="color:#8AA3CD;" class="social-icon fab fa-researchgate fa-lg"></i></a></span>'
-  - '<span aria-label="Figshare" data-toggle="tooltip1" data-placement="bottom" title=" Figshare "><a href="https://figshare.com/authors/Pablo_Bernabeu/820703"><i style="color:#8AA3CD;" class="social-icon ai ai-figshare ai-lg"></i></a></span>'
-  - '<span aria-label="YouTube" data-toggle="tooltip1" data-placement="bottom" title=" YouTube "><a href="https://www.youtube.com/@pablo-bernabeu"><i style="color:#8AA3CD;" class="social-icon fa-brands fa-youtube ai-lg"></i></a></span>'
-  - '<span aria-label="LinkedIn" data-toggle="tooltip1" data-placement="bottom" title=" LinkedIn "><a href="https://www.linkedin.com/in/pablobernabeu/"><i style="color:#8AA3CD;" class="social-icon fab fa-linkedin-in fa-lg"></i></a></span>'
+  - '<span aria-label="Link to Google Scholar profile" data-toggle="tooltip1" data-placement="bottom" title=" Google Scholar "><a href="https://scholar.google.com/citations?user=DxD0QDoAAAAJ&hl=en"><i style="color:#8AA3CD;" class="social-icon ai ai-google-scholar ai-lg"></i></a></span>'
+  - '<span aria-label="Link to Github profile" data-toggle="tooltip1" data-placement="bottom" title=" Github "><a href="https://github.com/pablobernabeu"><i style="color:#8AA3CD;" class="social-icon fab fa-github fa-lg"></i></a></span>'
+  - '<span aria-label="Link to OSF profile" data-toggle="tooltip1" data-placement="bottom" title=" OSF "><a href="https://osf.io/25u3x/"><i style="color:#8AA3CD;" class="social-icon ai ai-osf ai-lg"></i></a></span>'
+  - '<span aria-label="Link to ResearchGate profile" data-toggle="tooltip1" data-placement="bottom" title=" ResearchGate "><a href="https://www.researchgate.net/profile/Pablo-Bernabeu"><i style="color:#8AA3CD;" class="social-icon fab fa-researchgate fa-lg"></i></a></span>'
+  - '<span aria-label="Link to ORCID profile" data-toggle="tooltip1" data-placement="bottom" title=" ORCID "><a href="https://orcid.org/0000-0003-1083-2460"><i style="color:#8AA3CD;" class="social-icon fab fa-orcid fa-lg"></i></a></span>'
+  - '<span aria-label="Link to Figshare profile" data-toggle="tooltip1" data-placement="bottom" title=" Figshare "><a href="https://figshare.com/authors/Pablo_Bernabeu/820703"><i style="color:#8AA3CD;" class="social-icon ai ai-figshare ai-lg"></i></a></span>'
+  - '<span aria-label="Link to YouTube profile" data-toggle="tooltip1" data-placement="bottom" title=" YouTube "><a href="https://www.youtube.com/@pablo-bernabeu"><i style="color:#8AA3CD;" class="social-icon fa-brands fa-youtube ai-lg"></i></a></span>'
+  - '<span aria-label="Link to LinkedIn profile" data-toggle="tooltip1" data-placement="bottom" title=" LinkedIn "><a href="https://www.linkedin.com/in/pablobernabeu/"><i style="color:#8AA3CD;" class="social-icon fab fa-linkedin-in fa-lg"></i></a></span>'
 interests:
   - Education & digital technologies
   - Cognitive psychology & neuroscience
@@ -34,7 +35,7 @@ recent_work:
     - job: "Researcher"
       institution: "Department of Education, University of Oxford"
       year: "June 2025 -- _May 2027_"
-      extra: '-&nbsp; Additional service: Assistant, [Inaugural convening of AI in Education at Oxford University](https://aieou.web.ox.ac.uk/events); [AI Ambassador, AI Competency Centre](https://oerc.ox.ac.uk/ai-centre/about/ai-ambassadors); Member, Research Computing Advisory Board [focussed on High Performance Computing]; Member, Research Assistant hiring committee; Assessor, doctoral qualifying examination. Peer-review: *NeuroImage*.'
+      extra: '-&nbsp; Additional service: Assistant, [Inaugural convening of AI in Education at Oxford University](https://aieou.web.ox.ac.uk/events); [AI Ambassador, AI Competency Centre](https://oerc.ox.ac.uk/ai-centre/about/ai-ambassadors); Member, Research Computing Advisory Board, University of Oxford; Member, Research Assistant hiring committee; Assessor, doctoral qualifying examination. Peer-review: *NeuroImage*.'
     - job: "[Postdoctoral Fellow](https://app.cristin.no/projects/show.jsf?id=2559611)"
       institution: "Center for Language, Brain and Learning, UiT The Arctic University of Norway"
       year: "Nov 2022 -- Feb 2025"

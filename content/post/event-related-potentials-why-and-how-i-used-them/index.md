@@ -199,8 +199,6 @@ At any rate, never getting out of the comfort workspace again... :D
 
 ## References
 
-<div class = 'hanging-indent'>
-
 Ambrosi, S., Kalenine, S., Blaye, A., & Bonthoux, F. (2011). Modality switching cost during property verification by 7 years of age. *International Journal of Behavioral Development, 35*, 1, 78-83.
 
 Aurlien, H., Gjerde, I., Aarseth, J., Eldøen, G., Karlsen, B., Skeidsvoll, H., & Gilhus, N. (2003).
@@ -267,5 +265,3 @@ Van Vliet, M., Manyakov, N., Storms, G., Fias, W., Wiersema, J., & Van Hulle, M.
 Vermeulen, N., Niedenthal, P. M., & Luminet, O. (2007). Switching between sensory and affective systems incurs processing costs. *Cognitive Science, 31*, 1, 183-192.
 
 Willems, R. M., Frank, S. L., Nijhoff, A. D., Hagoort, P., & Van den Bosch, A. (2016). Prediction during natural language comprehension. *Cerebral Cortex, 26*, 6, 2506-2516.
-
-</div>

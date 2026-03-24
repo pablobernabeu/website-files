@@ -8,13 +8,12 @@ image:
   caption: ''
   focal_point: ""
   preview_only: false
+url_fulltext: 'https://doi.org/10.31234/osf.io/s2c5h'
 links:
 - name: Complete web application
   url: 'https://pablobernabeu.shinyapps.io/Dutch-modality-exclusivity-norms/'
 - name: Reduced dashboard
   url: '/dashboards/Dutch-modality-exclusivity-norms'
-- name: Paper
-  url: '/publication/dutch-modality-exclusivity-norms-for-336-properties-and-411-concepts/'
 - name: Github
   url: 'https://github.com/pablobernabeu/Dutch-modality-exclusivity-norms-Bernabeu-2018'
 - name: RStudio Cloud
@@ -225,9 +224,4 @@ To create the Flexdashboard-only version departing from the Flexdashboard-Shiny 
 
 ## Reference
 
-<div class = 'hanging-indent'>
-
 Bernabeu, P. (2018). Dutch modality exclusivity norms for 336 properties and 411 concepts [Web application]. Retrieved from https://pablobernabeu.shinyapps.io/Dutch-Modality-Exclusivity-Norms
-
-</div>
-

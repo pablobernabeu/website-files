@@ -114,8 +114,6 @@ A conference poster with further analyses is [also available](https://osf.io/dj5
 
 ## References
 
-<div class = 'hanging-indent'>
-
 Barsalou, L. W. (2016). On staying grounded and avoiding quixotic dead ends. *Psychonomic Bulletin & Review, 23*.
 
 Bernabeu, P., Louwerse, M. M., & Willems, R. M. (in prep.). Modality exclusivity norms for 747 properties and concepts in Dutch: a replication of English. Retrieved from https://osf.io/brkjw/
@@ -135,5 +133,3 @@ Mahon, B. Z., & Caramazza, A. (2008). A critical look at the Embodied Cognition 
 Scerrati, E., Lugli, L., Nicoletti, R., & Borghi, A. M. (2016). The Multilevel Modality-Switch Effect: What Happens When We See the Bees Buzzing and Hear the Diamonds Glistening. *Psychonomic Bulletin & Review*, doi:10.3758/s13423-016-1150-2.
 
 Vukovic, V., Feurra, M., Shpektor, A., Myachykov, A., & Shtyrov, Y. (2017). Primary motor cortex functionally contributes to language comprehension: An online rTMS study. *Neuropsychologia, 96*, 222-229.
-
-</div>
