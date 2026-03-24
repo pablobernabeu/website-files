@@ -93,6 +93,8 @@ buildDrafts = false
 [markup]
   defaultMarkdownHandler = "goldmark"
   [markup.goldmark]
+    [markup.goldmark.extensions]
+      typographer = false
     [markup.goldmark.parser]
       autoHeadingID = true
       autoHeadingIDType = "github"
