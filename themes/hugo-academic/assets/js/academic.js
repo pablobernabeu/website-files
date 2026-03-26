@@ -336,6 +336,41 @@
       if ($navbarCollapse.hasClass("show")) {
         $navbarCollapse.collapse("hide");
       }
+      // Close font-size and theme dropdowns when scrolling on mobile
+      $(".font-size-menu, .theme-menu").removeClass("show");
+    }
+  });
+
+  /* ---------------------------------------------------------------------------
+   * Toggle font-size and theme dropdowns on tap (mobile).
+   * On desktop, CSS :hover handles this. On mobile, we toggle the .show class.
+   * --------------------------------------------------------------------------- */
+
+  $(document).on("click", ".js-font-size-toggle", function (e) {
+    if (window.innerWidth <= 991) {
+      e.preventDefault();
+      e.stopPropagation();
+      var $menu = $(this).siblings(".font-size-menu");
+      var wasOpen = $menu.hasClass("show");
+      // Close all dropdown menus first
+      $(".font-size-menu, .theme-menu").removeClass("show");
+      if (!wasOpen) {
+        $menu.addClass("show");
+      }
+    }
+  });
+
+  $(document).on("click", ".js-theme-toggle", function (e) {
+    if (window.innerWidth <= 991) {
+      e.preventDefault();
+      e.stopPropagation();
+      var $menu = $(this).siblings(".theme-menu");
+      var wasOpen = $menu.hasClass("show");
+      // Close all dropdown menus first
+      $(".font-size-menu, .theme-menu").removeClass("show");
+      if (!wasOpen) {
+        $menu.addClass("show");
+      }
     }
   });
 

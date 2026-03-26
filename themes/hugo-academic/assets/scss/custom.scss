@@ -77,10 +77,12 @@ body.dark {
   display: block;
 }
 
-// Keep menu visible when hovering over the icon or the menu itself
-.nav-item.dropdown:hover .font-size-menu,
-.font-size-menu:hover {
-  display: block !important;
+// Keep menu visible when hovering over the icon or the menu itself (desktop only)
+@media (min-width: 992px) {
+  .nav-item.dropdown:hover .font-size-menu,
+  .font-size-menu:hover {
+    display: block !important;
+  }
 }
 
 .font-size-menu .dropdown-item {
@@ -160,10 +162,12 @@ body.dark {
   pointer-events: auto !important;
 }
 
-.nav-item.dropdown:hover .theme-menu,
-.theme-menu:hover {
-  display: block !important;
-  pointer-events: auto !important;
+@media (min-width: 992px) {
+  .nav-item.dropdown:hover .theme-menu,
+  .theme-menu:hover {
+    display: block !important;
+    pointer-events: auto !important;
+  }
 }
 
 .theme-menu .dropdown-item {
