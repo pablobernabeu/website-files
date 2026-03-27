@@ -331,6 +331,15 @@ body.dark .article-header .article-header-caption a {
   margin-top: 0 !important;
 }
 
+// Reduce margin above the first multimedia entry's heading
+#multimedia .multimedia-entry:first-of-type {
+  padding-top: 0 !important;
+  
+  h3 {
+    margin-top: 0 !important;
+  }
+}
+
 body.dark .home-section .col-lg-12 > p a,
 body.dark .home-section .section-heading > p a,
 body.dark .home-section .col-12 > p a,
@@ -5291,6 +5300,23 @@ div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #publication > div 
   text-decoration: none;
 }
 
+// article tag count subscripts (via data-count attribute set by JS)
+.article-tags a[data-count]::after {
+  content: attr(data-count);
+  font-size: 0.6em;
+  vertical-align: sub;
+  opacity: 0.85;
+  margin-left: 0.1em;
+  font-weight: 400;
+  color: #059669;
+}
+
+body.dark .article-tags a[data-count]::after,
+[data-theme="dark"] .article-tags a[data-count]::after {
+  opacity: 0.85;
+  color: #34d399;
+}
+
 // ancillary tag links within main container
 #top > div.pub > div > div.article-tags > a.ancillary-tag:link, 
 #top > article > div > div.article-tags > a.ancillary-tag:link, 
@@ -6118,6 +6144,35 @@ body.dark .multimedia-summary {
     background-color: #ccc;
     opacity: 1;
   }
+}
+
+// Multimedia section alternating backgrounds for video entries
+.multimedia-entry {
+  padding: 0.75rem 1.2rem 1rem;
+  margin: 0 -1.2rem 0.25rem;
+  border-radius: 6px;
+}
+
+// Consistent h3 margins in multimedia to prevent layout shift when JS wraps entries
+#multimedia h3 {
+  margin-top: 1.5rem !important;
+}
+
+.multimedia-entry.bg-alt {
+  background-color: rgba(0, 0, 0, 0.025);
+}
+
+// Adjust summary fade gradient for alt-background entries
+.multimedia-entry.bg-alt .multimedia-summary::after {
+  background: linear-gradient(to bottom, transparent 0%, rgba(241, 241, 241, 0.7) 40%, rgba(241, 241, 241, 0.95) 70%, rgba(241, 241, 241, 1) 100%);
+}
+
+body.dark .multimedia-entry.bg-alt {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+body.dark .multimedia-entry.bg-alt .multimedia-summary::after {
+  background: linear-gradient(to bottom, transparent 0%, rgba(36, 36, 36, 0.7) 40%, rgba(36, 36, 36, 0.95) 70%, rgba(36, 36, 36, 1) 100%);
 }
 
 // Add margin under section headings 
@@ -7222,29 +7277,20 @@ body #publication > div > div > div:nth-child(2) > div > div.media-body > div.bt
   padding-right: 0.25rem !important;
 }
 
-/* Search modal improvements - sticky elements with body scrollbar */
-
-/* Change search from fixed modal to full-page overlay using body scroll */
+/* Search modal improvements - use theme's fixed overlay (preserves scroll position) */
 .search-results {
-  position: absolute !important;
+  position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
-  bottom: auto !important;
-  min-height: 100vh !important;
-  overflow: visible !important;
+  bottom: 0 !important;
+  overflow-y: auto !important;
   z-index: 1031;
 }
 
-/* Allow body to scroll when search is open, but hide other content */
+/* Prevent body scrolling behind search overlay */
 .searching {
-  overflow: auto !important;
-  position: static !important;
-}
-
-/* Hide all page content when search is open */
-.searching > *:not(.search-results) {
-  display: none !important;
+  overflow: hidden !important;
 }
 
 /* Container with max-width and reduced top padding */

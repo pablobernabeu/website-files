@@ -23,7 +23,7 @@ tags:
   - cognition
   - psycholinguistics
   - reading
-  - individual differences
+  - Individual differences
   - linear mixed-effects models
   - frequentist statistics
   - lme4

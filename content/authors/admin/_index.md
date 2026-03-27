@@ -16,7 +16,7 @@ profileicons:
 interests:
   - Education & digital technologies
   - Cognitive psychology & neuroscience
-  - Linguistics
+  - linguistics
   - Data science & programming
   - Research methods & open science
 subsections:

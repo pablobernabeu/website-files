@@ -9,7 +9,7 @@ active = true  # Activate this widget? true/false
 weight = 150  # Order that this section will appear.
 
 title = "Videos and Podcasts"
-subtitle = "<div style='display: flex; align-items: center; gap: 30px;'><div style='flex: 0 0 20%; margin-left: 15px;'><div style='position: relative; width: 100%; padding-top: 56.25%;'><iframe src='https://www.youtube-nocookie.com/embed/nh7E1L8Evc8' frameborder='0' allowfullscreen style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;'></iframe></div></div><div style='flex: 1; max-width: 400px;'>Not the most riveting channel on <a href='https://www.youtube.com/@pablo-bernabeu/videos'><b>YouTube</b></a>—much less on <a href='https://open.spotify.com/show/4QXENVjprdaGkTvOexGvD3'><b>Spotify</b></a>, <a href='https://podcasts.apple.com/us/podcast/codex-mentis-science-and-technology-to-study-cognition/id1837010092'><b>Apple Podcasts</b></a>, <a href='https://www.audible.co.uk/podcast/Codex-Mentis-Science-and-technology-to-study-cognition/B0GNJC33DW'><b>Audible</b></a> or <a href='https://www.ivoox.com/en/podcast-codex-mentis-science-and-tech-to-study-cognition_sq_f12741704_1.html'><b>iVoox</b></a>.</div></div>"
+subtitle = "Not the most riveting channel on <a href='https://www.youtube.com/@pablo-bernabeu/videos'><b>YouTube</b></a>—much less on <a href='https://open.spotify.com/show/4QXENVjprdaGkTvOexGvD3'><b>Spotify</b></a>, <a href='https://podcasts.apple.com/us/podcast/codex-mentis-science-and-technology-to-study-cognition/id1837010092'><b>Apple Podcasts</b></a>, <a href='https://www.audible.co.uk/podcast/Codex-Mentis-Science-and-technology-to-study-cognition/B0GNJC33DW'><b>Audible</b></a> or <a href='https://www.ivoox.com/en/podcast-codex-mentis-science-and-tech-to-study-cognition_sq_f12741704_1.html'><b>iVoox</b></a>."
 
 [design]
 # Choose how many columns the section has. Valid values: 1 or 2.
@@ -51,7 +51,7 @@ css_class = ""
 +++
 
 
-<div style = "margin-bottom: 4%;"></div>
+<div style = "margin-bottom: 3%;"></div>
 
 <button id="toggle-all-summaries" style="padding: 8px 16px; margin-bottom: 1rem; background-color: #059669; color: #ffffff; border: 1px solid #047857; border-radius: 4px; cursor: pointer; font-size: 0.9em; transition: all 0.2s ease;">
   <i class="fas fa-chevron-down"></i> Expand all video descriptions
@@ -87,8 +87,70 @@ document.addEventListener('DOMContentLoaded', function() {
     
     this.innerHTML = isExpanding ? '<i class="fas fa-chevron-up"></i> Collapse all video descriptions' : '<i class="fas fa-chevron-down"></i> Expand all video descriptions';
   });
+
+  // Alternating backgrounds: wrap each video entry (h3 + content) in a div
+  const h3s = document.querySelectorAll('#multimedia h3');
+  if (h3s.length > 0) {
+    const container = h3s[0].parentElement;
+    const children = Array.from(container.children);
+    const entries = [];
+    let currentGroup = null;
+
+    for (const child of children) {
+      if (child.tagName === 'H3') {
+        if (currentGroup) entries.push(currentGroup);
+        currentGroup = [child];
+      } else if (currentGroup) {
+        currentGroup.push(child);
+      }
+    }
+    if (currentGroup) entries.push(currentGroup);
+
+    entries.forEach(function(group, i) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'multimedia-entry' + (i % 2 === 0 ? ' bg-alt' : '');
+      group[0].parentNode.insertBefore(wrapper, group[0]);
+      group.forEach(function(el) { wrapper.appendChild(el); });
+    });
+  }
 });
 </script>
+
+
+### <span style='color:grey; font-size:70%;'>2026 ·</span>&nbsp; Unlock the Lab: Your guide to reading science like a scientist
+
+<div class="multimedia-summary">
+
+<div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using NotebookLM, with all the benefits and blind spots of human editing.</span></div>
+
+In this episode of Codex Mentis, we explore the underlying machinery of scientific truth to understand how research reaches the public and why a healthy dose of scepticism is vital for its evaluation. The conversation begins with an overview of Dr Pablo Bernabeu's interactive web application which uses a unique peer-anchored design to help users calibrate their judgements by predicting community standards across forty-eight fictional research scenarios. We discuss how this tool trains participants to identify critical red flags such as predatory publishing models, underpowered sample sizes and overblown conclusions that often mask mundane data behind sensationalised media narratives. Transitioning to real-world research integrity, the episode reviews a systematic meta-analysis quantifying the prevalence of misconduct and explores the pervasive culture of silence revealed by the stark discrepancy between those admitting to questionable research practices and those witnessing them in colleagues. We examine granular behaviours like hypothesising after results are known (HARKing) and salami publication before explaining the randomised response technique which is a mathematical method used in large-scale surveys to elicit honest answers about sensitive misconduct. The discussion also addresses qualitative findings that characterise academia as a 'bad barrel' where systemic 'publish or perish' pressures and an over-reliance on journal impact factors actively discourage the publication of valid negative results. Finally, we analyse a massive quantitative study of over forty-one million papers revealing a structural paradox where artificial intelligence tools accelerate individual careers and impact while simultaneously contracting the collective focus of science by automating established centres of knowledge rather than exploring unknown frontiers.
+
+Further details on the app and the workshop are available at https://pablobernabeu.github.io/applications-and-dashboards/unlock-the-lab. 
+
+#### References (in order of appearance)
+
+<div style="padding-left: 2em; text-indent: -2em;">
+
+Bernabeu, P. (2026). *Unlock the Lab: Your guide to reading science like a scientist* (Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.19153148
+
+Xie, Y., Wang, K., & Kong, Y. (2021). Prevalence of research misconduct and questionable research practices: A systematic review and meta-analysis. *Science and Engineering Ethics*, *27*(4), Article 41. https://doi.org/10.1007/s11948-021-00314-w
+
+Larsson, T., Plonsky, L., Sterling, S., Kytö, M., Yaw, K., & Wood, M. (2023). On the frequency, prevalence, and perceived severity of questionable research practices. *Research Methods in Applied Linguistics*, *2*(3), Article 100064. https://doi.org/10.1016/j.rmal.2023.100064
+
+Gopalakrishna, G., ter Riet, G., Vink, G., Stoop, I., Wicherts, J. M., & Bouter, L. M. (2022). Prevalence of questionable research practices, research misconduct and their potential explanatory factors: A survey among academic researchers in The Netherlands. *PLoS ONE*, *17*(2), Article e0263023. https://doi.org/10.1371/journal.pone.0263023
+
+Bruton, S. V., Medlin, M., Brown, M., & Sacco, D. F. (2020). Personal motivations and systemic incentives: Scientists on questionable research practices. *Science and Engineering Ethics*, *26*(3), 1531–1547. https://doi.org/10.1007/s11948-020-00187-0
+
+Hao, Q., Xu, F., Li, Y., & Evans, J. (2026). Artificial intelligence tools expand scientists' impact but contract science's focus. *Nature*, *679*, 1237–1243. https://doi.org/10.1038/s41586-025-09172-0
+
+</div>
+
+</div>
+
+<div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/kvkKu_a7fZI" frameborder="0" allowfullscreen
+style = "position:absolute; top:0; left:2.5%; width:95%; height:95%;"></iframe>
+</div>
 
 
 ### <span style='color:grey; font-size:70%;'>2026 ·</span>&nbsp; Modality switch effects: The brain friction of switching senses
@@ -122,7 +184,7 @@ Wentura, D., Shi, E., & Degner, J. (2024). Examining modal and amodal language p
 </div>
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe src="https://www.youtube-nocookie.com/embed/for6EvX5wDE" frameborder="0" allowfullscreen
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/for6EvX5wDE" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
@@ -164,7 +226,7 @@ Rubin, M. (2021). When to adjust alpha during multiple testing: A consideration 
 </div>
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe src="https://www.youtube-nocookie.com/embed/v5OF4qziTaE" frameborder="0" allowfullscreen
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/v5OF4qziTaE" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
@@ -215,7 +277,7 @@ Warstadt, A., Mueller, A., Choshen, L., Wilcox, E., Zhuang, C., Ciro, J., Mosque
 </div>
 
 <div style = "position: relative; margin-top: 1.4rem; padding-top: 56.25%;">
-<iframe src="https://www.youtube-nocookie.com/embed/7lOVAkCk-sc" frameborder="0" allowfullscreen
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/7lOVAkCk-sc" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
@@ -233,7 +295,7 @@ View [sources and related content](/2025/speech-transcription-python).
 </div>
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe src="https://www.youtube-nocookie.com/embed/pPBhUgQBlBU" frameborder="0" allowfullscreen
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/pPBhUgQBlBU" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
@@ -271,7 +333,7 @@ View [sources and related content](/presentation/making-research-materials-finda
 </div>
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe src="https://www.youtube-nocookie.com/embed/NG9G1gQdOEo" frameborder="0" allowfullscreen
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/NG9G1gQdOEo" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
@@ -291,7 +353,7 @@ View [sources and related content](/publication/third-language-longitudinal-data
 </div>
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe src="https://www.youtube-nocookie.com/embed/tcBCMajt16Y" frameborder="0" allowfullscreen
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/tcBCMajt16Y" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
@@ -315,7 +377,7 @@ View [sources and related content](/publication/pablo-bernabeu-2022-phd-thesis).
 </div>
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe src="https://www.youtube-nocookie.com/embed/ftFoNsEbJcM" frameborder="0" allowfullscreen
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/ftFoNsEbJcM" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
@@ -353,7 +415,7 @@ View [sources and related content](/publication/pablo-bernabeu-2022-phd-thesis).
 </div>
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe src="https://www.youtube-nocookie.com/embed/Uii-4ybSmKM" frameborder="0" allowfullscreen
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/Uii-4ybSmKM" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
@@ -362,7 +424,7 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 This live demonstration guides you through the process of segmenting event-related potentials (ERPs) in BrainVision Analyzer. The events of interest are represented by several markers, requiring some thought to time-lock each segmentation to the event onset.
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe src="https://www.youtube-nocookie.com/embed/QXOpa-uOBVc" frameborder="0" allowfullscreen
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/QXOpa-uOBVc" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
@@ -371,28 +433,28 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 This tutorial walks through the key steps: creating grand averages across participants, computing difference waves between experimental conditions, selecting appropriate map types, and defining time windows for visualisation.
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe src="https://www.youtube-nocookie.com/embed/FI9FO7oJj_o" frameborder="0" allowfullscreen
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/FI9FO7oJj_o" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; Naming results files exported from Gorilla Experiment Builder
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe src="https://www.youtube-nocookie.com/embed/nVidNO8xcxE" frameborder="0" allowfullscreen
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/nVidNO8xcxE" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2024 ·</span>&nbsp; [Reducing the impedance in electroencephalography using a blunt needle, electrolyte gel and wiggling](/2024/lowering-impedance-in-electroencephalography-using-a-blunt-needle-electrolyte-gel-and-wiggling)
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe src="https://www.youtube-nocookie.com/embed/4KLtp-WnOOo" frameborder="0" allowfullscreen
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/4KLtp-WnOOo" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2024 ·</span>&nbsp; [Briefing participants to prevent muscle artifacts in electroencephalography sessions](/2024/preventing-muscle-artifacts-in-electroencephalography-sessions)
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe src="https://www.youtube-nocookie.com/embed/9Mbv6bUZlqY" frameborder="0" allowfullscreen
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/9Mbv6bUZlqY" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
@@ -408,48 +470,48 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 ### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; [Reproducibilidad en torno a una aplicación web](/presentation/2020-10-08-reproducibilidad-en-torno-a-una-aplicacion-web)
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe src="https://www.youtube-nocookie.com/embed/1njLOAWqLPM" frameborder="0" allowfullscreen
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/1njLOAWqLPM" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; Workshop on <i class="fa-brands fa-r-project" aria-label="R"></i> Markdown, dashboards and Binder (see [programme and materials](https://github.com/pablobernabeu/CarpentryCon-2020-workshop-Open-Data-Reproducibility))
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe src="https://www.youtube-nocookie.com/embed/wZsPD7CgJC0" frameborder="0" allowfullscreen
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/wZsPD7CgJC0" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; Personal profile and experience at Lancaster University Department of Psychology
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe src="https://www.youtube-nocookie.com/embed/ZEoan5tWqFg" frameborder="0" allowfullscreen
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/ZEoan5tWqFg" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; Embedding open research and reproducibility in the UG and PGT curricula
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe src="https://www.youtube-nocookie.com/embed/vzkDBZ1qWfY" frameborder="0" allowfullscreen
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/vzkDBZ1qWfY" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Part of application for [Gorilla Grant](#funding-awards)
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe src="https://www.youtube-nocookie.com/embed/DTHFuC0Lw0Y" frameborder="0" allowfullscreen
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/DTHFuC0Lw0Y" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Part of application for [Software Sustainability Institute Fellowship](#funding-awards)
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe src="https://www.youtube-nocookie.com/embed/F-MQ8BYwLn4" frameborder="0" allowfullscreen
+<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/F-MQ8BYwLn4" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Demonstration of procedure for bundled PSA Studies [002](/publication/chen-etal-inprep) and [003](/publication/multi-region-investigation-of-man-as-default-in-attitudes)
 
-<iframe src="https://mfr.de-1.osf.io/render?url=https://osf.io/download/h36wr/?direct%26mode=render"
+<iframe loading="lazy" src="https://mfr.de-1.osf.io/render?url=https://osf.io/download/h36wr/?direct%26mode=render"
     style="margin-top:10px"
     width="100%"
     scrolling="yes"

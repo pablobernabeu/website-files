@@ -33,7 +33,7 @@ tags:
   - event-related potentials
   - cognition
   - mental rotation
-  - individual differences
+  - Individual differences
   - crosslinguistic
   - replication
   - psycholinguistics

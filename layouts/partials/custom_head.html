@@ -64,14 +64,41 @@
 {{/* Tag cloud height constraint */}}
 <link rel="stylesheet" href="{{ "css/tag-cloud-height.css" | relURL }}" />
 
-{{/* Tag cloud network visualization - load without defer to debug */}}
-<script src="{{ "js/tag-cloud-network.js" | relURL }}"></script>
+{{/* Tag cloud network visualization */}}
+<script defer src="{{ "js/tag-cloud-network.js" | relURL }}"></script>
 
 {{/* Article ancillary tags - adds related tags to article pages */}}
-<script src="{{ "js/article-ancillary-tags.js" | relURL }}"></script>
+<script defer src="{{ "js/article-ancillary-tags.js" | relURL }}"></script>
 
 {{/* Basic performance optimization */}}
 <meta name="format-detection" content="telephone=no" />
+
+{{/* Neutralize search link href immediately when DOM is available */}}
+<script>
+(function fixSearchLink() {
+  function neutralize() {
+    var triggers = document.querySelectorAll('.js-search-trigger');
+    for (var i = 0; i < triggers.length; i++) {
+      var a = triggers[i].closest('a');
+      if (a && a.getAttribute('href') !== 'javascript:void(0)') {
+        a.setAttribute('href', 'javascript:void(0)');
+      }
+    }
+  }
+  // Run as soon as possible - the <head> script runs before body, so use MutationObserver
+  if (document.body) {
+    neutralize();
+  }
+  var observer = new MutationObserver(function() {
+    neutralize();
+    if (document.querySelector('.js-search-trigger')) {
+      observer.disconnect();
+    }
+  });
+  // Observe document for when navbar gets added
+  observer.observe(document.documentElement, { childList: true, subtree: true });
+})();
+</script>
 
 {{/* Search modal smart closing and query preservation - Simple Version */}}
 <script>

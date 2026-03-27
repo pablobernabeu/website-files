@@ -260,6 +260,11 @@
     if ($(this).hasClass('js-font-size-toggle') || $(this).hasClass('js-theme-toggle')) {
       return;
     }
+
+    // Exclude search trigger link
+    if ($(this).find('.js-search-trigger').length) {
+      return;
+    }
     
     // Store requested URL hash.
     let hash = this.hash;
