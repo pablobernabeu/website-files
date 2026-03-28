@@ -1,12 +1,11 @@
 ---
 title: 'Greenhouse gas emissions and the economy: A contextualised analysis'
 author: 'admin'
-date: '2026-03-27'
+date: '2099-03-27'
 slug: greenhouse-gas-and-economy-analysis
 categories:
  - R
 tags:
- - s
  - climate
  - environment
  - sustainability
