@@ -1,0 +1,836 @@
+---
+title: 'Greenhouse gas emissions and the economy: A contextualised analysis'
+author: 'admin'
+date: '2026-03-27'
+slug: greenhouse-gas-and-economy-analysis
+categories:
+ - R
+tags:
+ - s
+ - climate
+ - environment
+ - sustainability
+ - greenhouse gas emissions
+ - carbon dioxide
+ - socioeconomic inequality
+ - EDGAR
+ - World Bank
+ - linear regression
+ - R
+ - ggplot2
+ - leaflet
+ - interactive
+ - visualisation
+subtitle: ''
+summary: "An analysis of global greenhouse gas emissions that goes beyond raw figures by incorporating socioeconomic context, drawing on EDGAR data and World Bank indicators."
+authors: []
+lastmod: ~
+featured: no
+draft: no
+image:
+ caption: ''
+ focal_point: ''
+ preview_only: no
+projects: []
+---
+
+
+```{r setup, include=FALSE}
+# Basic knitr options
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, error = TRUE, echo = TRUE, fig.align = 'center', out.width = '100%', comment = "#>")
+
+# Enable copy of code blocks to clipboard
+library(xaringanExtra)
+xaringanExtra::use_clipboard()
+
+library(readxl)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(scales)
+library(ggrepel)
+library(ggtext)
+library(plotly)
+library(crosstalk)
+library(htmltools)
+library(leaflet)
+library(sf)
+library(RColorBrewer)
+library(rnaturalearth)
+
+# --- Helper function: fix outdated country entries in EDGAR ---
+
+fix_outdated_countries <- function(data) {
+  sm <- data %>% filter(country == "Serbia and Montenegro")
+  ss <- data %>% filter(country == "Sudan and South Sudan")
+
+  data %>%
+    filter(!country %in% c("Serbia and Montenegro", "Sudan and South Sudan")) %>%
+    bind_rows(
+      sm %>% mutate(country = "Serbia"),
+      sm %>% mutate(country = "Montenegro"),
+      ss %>% mutate(country = "Sudan"),
+      ss %>% mutate(country = "South Sudan")
+    ) %>%
+    mutate(countryCode = case_when(
+      country == "Serbia" ~ "SRB",
+      country == "Montenegro" ~ "MNE",
+      country == "South Sudan" ~ "SSD",
+      TRUE ~ countryCode
+    ))
+}
+
+# --- Load spatial data ---
+
+world_sf <- ne_countries(scale = "medium", returnclass = "sf")
+
+# --- Reusable leaflet mapping function ---
+
+map_country_metric <-
+  function(data, iso_col = "countryCode", value_col,
+           title = NULL, palette = "YlOrRd") {
+    if (!all(c(iso_col, value_col) %in% colnames(data))) {
+      stop("Missing required columns in data.")
+    }
+
+    merged_data <- world_sf %>%
+      # Replace missing codes for FRA and NOR
+      # (https://github.com/ropensci/rnaturalearth/issues/30#issuecomment-2150044929)
+      mutate(iso_a3 = ifelse(iso_a3 == "-99", iso_a3_eh, iso_a3)) %>%
+      left_join(data, by = c("iso_a3" = iso_col))
+
+    values <- merged_data[[value_col]]
+
+    pal <- colorNumeric(palette = palette, domain = values, na.color = "transparent")
+
+    leaflet(merged_data) %>%
+      addProviderTiles("CartoDB.Positron") %>%
+      setView(lng = 10, lat = 25, zoom = 2) %>%
+      addPolygons(
+        fillColor = ~ pal(values), color = "#555555",
+        fillOpacity = 0.8, weight = 0.7, smoothFactor = 0.2,
+        label = ~ ifelse(
+          is.na(country), "Unavailable data",
+          paste0(country, ": ", round(values, 2))
+        ),
+        highlightOptions = highlightOptions(
+          weight = 2, color = "#333333",
+          fillOpacity = 0.9, bringToFront = TRUE
+        )
+      ) %>%
+      addLegend(
+        pal = pal, values = values, position = "bottomright",
+        title = ifelse(is.null(title), value_col, title)
+      )
+  }
+
+# --- Load and clean EDGAR GHG totals ---
+
+edgar_totals <- read_xlsx("data/EDGAR_2024_GHG_booklet_2024.xlsx",
+  sheet = "GHG_totals_by_country"
+) %>%
+  rename(country = Country, countryCode = "EDGAR Country Code") %>%
+  filter(!is.na(countryCode)) %>%
+  fix_outdated_countries()
+
+# --- Load and clean EDGAR GHG per capita ---
+
+edgar_percapita <- read_xlsx("data/EDGAR_2024_GHG_booklet_2024.xlsx",
+  sheet = "GHG_per_capita_by_country"
+) %>%
+  rename(country = Country, countryCode = "EDGAR Country Code") %>%
+  filter(!is.na(countryCode)) %>%
+  fix_outdated_countries()
+
+# --- Country-to-continent mapping ---
+
+country_continent <- read.csv("data/countries and continents.csv") %>%
+  rename(countryCode = alpha.3, continent = region) %>%
+  mutate(continent = case_when(
+    countryCode == "TWN" ~ "Asia",
+    continent == "Americas" ~ "America",
+    .default = continent
+  )) %>%
+  filter(!is.na(countryCode))
+
+# --- World Bank income groups ---
+
+world_bank <- read_xlsx("data/World Bank Income groups.xlsx",
+  sheet = "List of economies"
+) %>%
+  rename(countryCode = Code, incomeGroup = `Income group`) %>%
+  filter(!is.na(countryCode), !is.na(incomeGroup))
+
+# --- Standard of living ---
+
+living_standard <- read.csv("data/standard-of-living-by-country.csv") %>%
+  rename(
+    countryCode2 = flagCode,
+    living_standard2024 = StandardOfLiving_QoLScoreCEOWorld_2024
+  ) %>%
+  left_join(country_continent %>% rename(countryCode2 = alpha.2), by = "countryCode2")
+```
+
+```{css, echo = FALSE}
+.figure p.caption, figcaption {
+  text-align: left;
+}
+.figure {
+  max-width: 100%;
+  overflow-x: auto;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+}
+.html-widget {
+  max-width: 100%;
+  width: 100% !important;
+}
+.leaflet {
+  height: 500px !important;
+  width: 100% !important;
+}
+h2 {
+  margin-top: 2.5em;
+}
+iframe {
+  margin-top: 1.2em;
+  margin-bottom: 1.5em;
+}
+```
+
+```{js, echo = FALSE}
+// Collapse code chunks by default in this post
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll("details").forEach(function(d) {
+    d.open = false;
+    var s = d.querySelector("summary");
+    if (s) {
+      s.textContent = "Expand";
+      s.style.fontWeight = "bold";
+      s.style.fontSize = "103%";
+      s.style.color = "#379E8A";
+    }
+  });
+});
+```
+
+
+Everything happens in a context that determines, at least in part, the possibilities and the freedom available to those involved. Climate change is no exception. The Intergovernmental Panel on Climate Change has confirmed, with unequivocal evidence, that human activities---principally through the burning of fossil fuels---have driven a rise in global mean surface temperature of approximately 1.1 °C above pre-industrial levels, with each of the last four decades warmer than any that preceded it since 1850 ([IPCC, 2023](https://doi.org/10.59327/IPCC/AR6-9789291691647)). Without rapid and deep reductions in greenhouse gas emissions across all sectors, the goal of limiting warming to 1.5 °C will slip out of reach within the next decade ([IPCC, 2023](https://doi.org/10.59327/IPCC/AR6-9789291691647)). The scientific consensus is clear, but the path to decarbonisation is neither simple nor uniform.
+
+The scale of the problem is considerable. Global greenhouse gas emissions reached approximately 51.27 Gt CO<sub>2</sub>eq in 2021, having grown from 35.33 Gt CO<sub>2</sub>eq at the turn of the century, with non-OECD countries contributing around 71.5% of the total ([Xu et al., 2025](https://doi.org/10.1016/j.cjpre.2025.05.002)). A comprehensive review of sector-level trends from 1990 to 2018 confirmed that emissions increased across nearly all sectors, with the largest contributions from energy supply, industry and transport ([Lamb et al., 2021](https://doi.org/10.1088/1748-9326/abee4e)). Yet the conventional focus on total output obscures the structure of global emissions. Network analysis covering 185 countries over two decades has revealed an increasingly complex and multi-centred web of inter-country emission relationships, in which certain nations---notably Germany and Canada---serve as disproportionately important bridges for coordinating mitigation efforts across the network ([Xu et al., 2025](https://doi.org/10.1016/j.cjpre.2025.05.002)). These findings underscore that emission patterns cannot be understood in isolation from the economic and political relationships that link countries together. Indeed, current emission trends, planned infrastructure and national policy commitments have put the Paris Agreement targets in jeopardy; as [Höhne et al. (2020)](https://doi.org/10.1038/d41586-020-00571-x) put it, the world has 'four times the work or one-third of the time' to keep warming below 2 °C.
+
+Countries around the world face mounting pressure to abandon fossil fuels in favour of renewable energy. This transition, while necessary and urgent, is far from costless. Replacing coal- and oil-based infrastructure with solar and wind energy demands vast capital investment, institutional restructuring and careful planning to avoid social disruption ([Mercure et al., 2018](https://doi.org/10.1038/s41558-018-0182-1)). Historical evidence shows that energy transitions are measured in decades rather than years ([Smil, 2017](https://mitpress.mit.edu/9780262536592/)), and the process is profoundly shaped by each country's economic structure, institutional capacity and level of development. For nations where fossil fuels underpin both employment and export revenue, the transition also carries risks of stranded assets---existing infrastructure rendered obsolete before the end of its economic life---which the literature estimates could amount to trillions of dollars globally ([McGlade & Ekins, 2015](https://doi.org/10.1038/nature14016)). Accordingly, the question cannot be limited to who pollutes most. The [socioeconomic conditions of each country](https://www.theguardian.com/global-development/2025/nov/14/china-and-saudi-arabia-among-nations-receiving-climate-loans-analysis-reveals) must be considered too, but many of the [relevant details escape the general public](https://www.theguardian.com/commentisfree/2025/nov/14/climate-crisis-communication-super-rich).
+
+The following documentary offers a useful overview of how countries navigate declining fossil-fuel revenues alongside growing climate obligations.
+
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/CWUtS_1k93o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Greenhouse gases---carbon dioxide, methane, nitrous oxide and fluorinated gases---are the principal drivers of anthropogenic warming, trapping outgoing infrared radiation and altering the Earth's energy balance ([IPCC, 2023](https://doi.org/10.59327/IPCC/AR6-9789291691647)). These emissions are systematically tracked in the Emissions Database for Global Atmospheric Research (EDGAR), [published by the European Commission](https://edgar.jrc.ec.europa.eu/report_2024) ([European Commission, 2024](https://edgar.jrc.ec.europa.eu/report_2024)). As is common in environmental reporting, the database presents raw figures per country, per region or per capita. Raw figures are necessary but not sufficient, as they overlook the contingent conditions in which emissions arise. The Global Carbon Budget estimates that cumulative CO<sub>2</sub> emissions since 1850 have reached approximately 2,660 GtCO<sub>2</sub>, with the industrialised nations of North America and Europe responsible for the majority of that historical total ([Friedlingstein et al., 2024](https://doi.org/10.5194/essd-16-5625-2024)). These cumulative emissions matter because CO<sub>2</sub> persists in the atmosphere for centuries, meaning that the climate impacts experienced today are largely the product of past emissions by wealthy nations.
+
+Can India, with over a billion citizens and widespread energy poverty, convert its energy production system as rapidly as the United States? This tension lies at the heart of the principle of 'common but differentiated responsibilities and respective capabilities' enshrined in the Paris Agreement ([UNFCCC, 2015](https://unfccc.int/sites/default/files/english_paris_agreement.pdf)). The principle recognises that while all nations must act, those with greater historical responsibility and greater economic capacity should bear a proportionally larger share of the mitigation burden. Furthermore, research has shown that the wealthiest 10% of the global population accounts for roughly half of all carbon emissions, while the poorest 50% contributes only around 12% ([Chancel, 2022](https://doi.org/10.1038/s41893-022-00955-z)). This within-country inequality in emissions compounds the between-country disparities, raising fundamental questions about environmental justice that cannot be answered by aggregate national statistics alone ([Diffenbaugh & Burke, 2019](https://doi.org/10.1073/pnas.1816020116)). President Obama captured this tension when reflecting on the negotiations that led to the Paris Agreement:
+
+> During the negotiations around the Paris Agreement, the key was to get China and India bought in on them taking responsibility for reducing their emissions, setting standards despite the fact that most of the existing greenhouse gasses up there were created by the West during the long period of our industrialization. Now, I could have gone to President Xi or Modi and said, no, we’re only going to do something if you do exactly what we do. But that wouldn’t have taken into account the fact that, on a per capita basis, each American has a much bigger carbon footprint than they do. They’re at a different stage of development in India. You’ve got a third of the country that still doesn’t have electricity, that they need energy.
+>
+> And so, if I don’t listen and understand their perspective, if I think that I can talk to a leader of India and dismiss the pressures on him to deliver basic electricity, even if it uses coal, if I don’t have an answer for how, look, I understand you can’t leave half a billion people in poverty, that you need development, and are there ways in which we can encourage you to leapfrog dirty energy and go straight to clean energy?
+
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/nU3E8r0n27w?start=2242" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+One of the key covariates to consider alongside raw emission statistics is socioeconomic status. To demonstrate this, the following sections present both raw and contextualised figures on greenhouse gas emissions, progressively layering in economic indicators to reveal a more complete picture of global responsibility.
+
+
+## Evolution of Greenhouse Gas Emissions in the Euro Area, European Union and Worldwide
+
+Figure 1 tracks global greenhouse gas emissions alongside those of the EU27 and the euro area from 1970 to 2023. Global emissions have followed a striking upward trajectory since the mid-twentieth century, driven in large part by rapid industrialisation in Asia and other developing regions ([Raupach et al., 2007](https://doi.org/10.1073/pnas.0700609104)). Meanwhile, the European Union has been among the first major economic blocs to demonstrate sustained emission reductions, a trend attributed to a combination of binding policy targets, carbon pricing mechanisms and a structural shift away from coal ([European Commission, 2024](https://edgar.jrc.ec.europa.eu/report_2024)).
+
+### Sources
+
+[EDGAR Booklet 2024](https://edgar.jrc.ec.europa.eu/report_2024): Sheet 'GHG_totals_by_country'; [Euro Area countries](https://european-union.europa.eu/institutions-law-budget/euro/countries-using-euro_en); [EU27 countries](https://european-union.europa.eu/easy-read_en).
+
+```{r plot1, fig.cap='*Figure 1. Evolution of greenhouse gas emissions in the euro area, the EU27 and the world (1970–2023). Greenhouse gas (GHG) measured in million tonnes of CO<sub>2</sub> equivalent.*'}
+# Euro area countries
+euro_area <- c(
+  "Austria", "Belgium", "Croatia", "Cyprus", "Estonia", "Finland",
+  "France", "Germany", "Greece", "Ireland", "Italy", "Latvia",
+  "Lithuania", "Luxembourg", "Malta", "Netherlands", "Portugal",
+  "Slovakia", "Slovenia", "Spain"
+)
+
+# EU27 countries
+EU27 <- c(
+  "Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus", "Czechia",
+  "Denmark", "Estonia", "Finland", "France", "Germany", "Greece",
+  "Hungary", "Ireland", "Italy", "Latvia", "Lithuania", "Luxembourg",
+  "Malta", "Netherlands", "Poland", "Portugal", "Romania", "Slovakia",
+  "Slovenia", "Spain", "Sweden"
+)
+
+# Classify and pivot
+GHG_totals_long <- edgar_totals %>%
+  mutate(
+    euro_area_member = country %in% euro_area,
+    EU27_member = country %in% EU27,
+    World_member = TRUE
+  ) %>%
+  pivot_longer(
+    cols = matches("^\\d{4}$"),
+    names_to = "year", values_to = "GHG"
+  )
+
+# Summarise by cluster
+GHG_totals_by_cluster <- bind_rows(
+  GHG_totals_long %>%
+    filter(euro_area_member) %>%
+    group_by(year) %>%
+    summarise(cluster = "Euro area", GHG = sum(GHG, na.rm = TRUE), .groups = "drop"),
+  GHG_totals_long %>%
+    filter(EU27_member) %>%
+    group_by(year) %>%
+    summarise(cluster = "EU27", GHG = sum(GHG, na.rm = TRUE), .groups = "drop"),
+  GHG_totals_long %>%
+    group_by(year) %>%
+    summarise(cluster = "World", GHG = sum(GHG, na.rm = TRUE), .groups = "drop")
+)
+
+# PLOT
+GHG_totals_by_cluster %>%
+  ggplot(aes(x = as.numeric(year), y = GHG, colour = cluster)) +
+  geom_line(linewidth = 1.2) +
+  geom_label_repel(
+    aes(label = cluster, colour = cluster),
+    data = GHG_totals_by_cluster %>%
+      group_by(cluster) %>%
+      filter(year == max(as.numeric(year)) - 25),
+    fill = alpha("white", .3), size = 6, fontface = "bold", box.padding = 0.4,
+    point.padding = 2.2, max.overlaps = 10, force_pull = .012, force = 2,
+    nudge_y = 0.9
+  ) +
+  scale_colour_manual(values = c(
+    "Euro area" = "#a6bddb", "EU27" = "#0570b0", "World" = "#023858"
+  )) +
+  scale_x_continuous(expand = expansion(mult = c(0, 0))) +
+  scale_y_continuous(expand = expansion(mult = c(0.14, 0.1)), labels = comma) +
+  labs(
+    x = "Year", y = "**GHG Emissions** (Mt CO<sub>2</sub>e)", colour = "Cluster",
+    caption = "*Note.* Greenhouse gas (GHG) measured <br> in million tonnes of CO<sub>2</sub> equivalent."
+  ) +
+  theme_minimal() +
+  theme(
+    axis.title.x = element_text(size = 15, face = "bold", margin = margin(7, 0, 0, 0, "pt")),
+    axis.title.y = element_markdown(size = 15, margin = margin(0, 7, 0, 0, "pt")),
+    axis.text = element_text(size = 13),
+    plot.caption = element_markdown(),
+    legend.position = "none"
+  )
+```
+
+As shown in Figure 1, global emissions of greenhouse gas have shown a marked upward trend from 1970 to 2023, surpassing 90,000 million tonnes of CO<sub>2</sub> equivalent by 2015 and continuing to rise. The European Union (EU27) and the euro area represent a comparatively small share of the global total, reflecting the growing dominance of rapidly industrialising regions. Although this is not easily visible at the global scale, emissions within the EU27 and the euro area peaked around 1990 and have since declined steadily, consistent with the implementation of progressively stricter emission reduction policies across the bloc (European Commission, 2024).
+
+
+## Greenhouse Gas Emissions per Capita Across World Bank Income Groups
+
+Figure 2 disaggregates per capita emissions by World Bank income classification. The relationship between national income and emissions is well established. High-income countries have historically been responsible for the bulk of cumulative greenhouse gas output, while low-income countries---despite being most vulnerable to climate impacts---have contributed comparatively little (Chancel, 2022). Grouping countries by the World Bank's income classification (World Bank, 2024) offers a useful lens through which to examine whether these disparities are narrowing or widening over time.
+
+### Sources
+
+[EDGAR Booklet 2024](https://edgar.jrc.ec.europa.eu/report_2024): Sheet 'GHG_per_capita_by_country'; [World Bank Income Data](https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups): Sheet 'List of economies'.
+
+```{r plot2, fig.cap='*Figure 2. Greenhouse gas emissions per capita by World Bank income group (1970–2023). The dashed red line marks 50% of the global total. GHG measured in tonnes of CO<sub>2</sub> equivalent per capita.*'}
+# Merge EDGAR per capita with World Bank income groups
+GHG_per_capita_by_incomeGroup <- edgar_percapita %>%
+  left_join(world_bank[, c("countryCode", "incomeGroup")], by = "countryCode") %>%
+  filter(!is.na(incomeGroup)) %>%
+  select(contains(c("countryCode", "country", "incomeGroup")), everything()) %>%
+  pivot_longer(
+    cols = matches("^\\d{4}$"),
+    names_to = "year", values_to = "GHG"
+  ) %>%
+  mutate(
+    incomeGroup_with_count = paste0(
+      incomeGroup, " (",
+      sapply(incomeGroup, function(x) n_distinct(filter(., incomeGroup == x)$country)),
+      " countries)"
+    )
+  ) %>%
+  group_by(incomeGroup_with_count, year) %>%
+  summarise(across(where(is.numeric), ~ sum(., na.rm = TRUE)), .groups = "drop") %>%
+  arrange(desc(GHG))
+
+# Order factor levels by median GHG
+group_order <- GHG_per_capita_by_incomeGroup %>%
+  group_by(incomeGroup_with_count) %>%
+  summarise(avg_ghg = median(GHG, na.rm = TRUE)) %>%
+  arrange(desc(avg_ghg)) %>%
+  pull(incomeGroup_with_count)
+
+GHG_per_capita_by_incomeGroup$incomeGroup_with_count <-
+  factor(GHG_per_capita_by_incomeGroup$incomeGroup_with_count, levels = group_order)
+
+# 50% reference line
+total_ghg_by_year <- GHG_per_capita_by_incomeGroup %>%
+  group_by(year) %>%
+  summarise(total_ghg = sum(GHG, na.rm = TRUE)) %>%
+  mutate(ghg_50_percent = total_ghg * 0.5)
+
+# PLOT
+GHG_per_capita_by_incomeGroup %>%
+  ggplot(aes(x = as.numeric(year), y = GHG, colour = incomeGroup_with_count)) +
+  geom_line(linewidth = 1.2) +
+  geom_text_repel(
+    aes(label = incomeGroup_with_count, colour = incomeGroup_with_count),
+    data = GHG_per_capita_by_incomeGroup %>%
+      group_by(incomeGroup_with_count) %>%
+      filter(year == max(as.numeric(year)) - 25),
+    segment.linetype = NA, size = 5, fontface = "bold", box.padding = 0.4,
+    point.padding = 0.1, max.overlaps = 10, force_pull = 0, force = 2,
+    nudge_y = 8
+  ) +
+  geom_line(
+    data = total_ghg_by_year, aes(x = as.numeric(year), y = ghg_50_percent),
+    colour = "red", linetype = "dashed", linewidth = 1.2
+  ) +
+  annotate("text",
+    x = round(mean(as.numeric(total_ghg_by_year$year))),
+    y = total_ghg_by_year %>%
+      filter(year == round(mean(as.numeric(total_ghg_by_year$year)))) %>%
+      pull(ghg_50_percent) * 0.9,
+    label = "50% of total", colour = "red", size = 5, fontface = "bold"
+  ) +
+  scale_colour_manual(values = c("#000000", "#08306b", "#2171b5", "#4292c6")) +
+  scale_x_continuous(expand = expansion(mult = c(0, 0))) +
+  scale_y_continuous(expand = expansion(mult = c(0.1, 0.1)), labels = comma) +
+  labs(
+    x = "Year", y = "**GHG Emissions** (t CO<sub>2</sub>e)", colour = "World Bank income group",
+    caption = "*Note.* Greenhouse gas (GHG) measured <br> in tonnes of CO<sub>2</sub> equivalent."
+  ) +
+  theme_minimal() +
+  theme(
+    axis.title.x = element_text(size = 15, face = "bold", margin = margin(7, 0, 0, 0, "pt")),
+    axis.title.y = element_markdown(size = 15, margin = margin(0, 7, 0, 0, "pt")),
+    axis.text = element_text(size = 13),
+    plot.caption = element_markdown(),
+    legend.position = "none"
+  )
+```
+
+As Figure 2 shows, high-income countries contribute the largest per capita emissions, consistently accounting for more than half of the global total. After maintaining a broadly stable rate for two decades, these countries have demonstrated a declining trend over the past ten years or so. In contrast, per capita emissions in upper-middle and lower-middle income groups have grown steadily since the early 2000s, with the upper-middle income group---driven largely by China's rapid industrialisation---showing the steepest increase. Low-income countries maintain consistently negligible per capita emissions, underscoring their minimal contribution to greenhouse gas accumulation despite bearing a disproportionate share of climate-related risks (IPCC, 2023).
+
+
+## Contributions of Individual Countries and Continents to Global Greenhouse Gas Emissions
+
+While aggregate trends by income group reveal structural patterns, disaggregating emissions at the level of individual countries and continents exposes the concentrated nature of global greenhouse gas output. A relatively small number of countries and regions account for the overwhelming majority of total emissions (Friedlingstein et al., 2024).
+
+### Sources
+
+[EDGAR Booklet 2024](https://edgar.jrc.ec.europa.eu/report_2024): Sheet 'GHG_totals_by_country'; [Continents](https://github.com/lukes/ISO-3166-Countries-with-Regional-Codes).
+
+```{r plot3, fig.cap='*Figure 3. Total greenhouse gas emissions (2013–2023) by country and continent. Continents shown in blue; countries in orange. GHG measured in million tonnes of CO<sub>2</sub> equivalent.*'}
+# Merge with continent data
+GHG_by_country <- edgar_totals %>%
+  left_join(country_continent[, c("countryCode", "continent")], by = "countryCode") %>%
+  mutate(
+    continent = case_when(
+      countryCode == "ANT" ~ "America",
+      countryCode == "SCG" ~ "Europe",
+      .default = continent
+    ),
+    site_type = "country"
+  ) %>%
+  filter(!is.na(continent)) %>%
+  rowwise() %>%
+  mutate(
+    GHG_2013_2023 = sum(c_across(`2013`:`2023`), na.rm = TRUE),
+    GHG_2013_2023_SE =
+      sd(c_across(`2013`:`2023`), na.rm = TRUE) / sqrt(sum(!is.na(c_across(`2013`:`2023`)))),
+    GHG_2013_2023_CI_lower =
+      GHG_2013_2023 - qt(0.975, df = sum(!is.na(c_across(`2013`:`2023`))) - 1) * GHG_2013_2023_SE,
+    GHG_2013_2023_CI_upper =
+      GHG_2013_2023 + qt(0.975, df = sum(!is.na(c_across(`2013`:`2023`))) - 1) * GHG_2013_2023_SE
+  ) %>%
+  ungroup() %>%
+  select(-matches("^\\d{4}$")) %>%
+  select(countryCode, country, continent, everything()) %>%
+  mutate(site = country)
+
+# Continent-level summaries
+GHG_by_continent <- GHG_by_country %>%
+  group_by(continent) %>%
+  summarise(across(where(is.numeric), ~ sum(., na.rm = TRUE)), .groups = "drop") %>%
+  mutate(site_type = "continent") %>%
+  rename(site = continent)
+
+# Combine
+GHG_combined <- bind_rows(GHG_by_country, GHG_by_continent) %>%
+  arrange(desc(GHG_2013_2023))
+
+# Threshold: lowest-emission continent
+min_continent_GHG <- GHG_combined %>%
+  filter(site_type == "continent") %>%
+  summarise(min_val = min(GHG_2013_2023)) %>%
+  pull(min_val)
+
+# Colour scheme
+site_colors <- c("continent" = "#0072B2", "country" = "#D55E00")
+
+# PLOT
+plot3_data <- GHG_combined %>%
+  filter(GHG_2013_2023 >= min_continent_GHG) %>%
+  mutate(site = factor(site, levels = site[order(-GHG_2013_2023)]))
+
+# Build colour vector for x-axis labels
+label_colours <- ifelse(plot3_data$site_type == "continent",
+  site_colors["continent"], site_colors["country"])
+names(label_colours) <- plot3_data$site
+
+ggplot(plot3_data, aes(x = site, y = GHG_2013_2023, fill = site_type)) +
+  geom_bar(stat = "identity", show.legend = FALSE) +
+  geom_errorbar(
+    aes(ymin = GHG_2013_2023_CI_lower, ymax = GHG_2013_2023_CI_upper, colour = site_type),
+    width = 0.4, size = 1.3, show.legend = FALSE
+  ) +
+  scale_fill_manual(values = site_colors) +
+  scale_colour_manual(values = alpha(site_colors, 0.5)) +
+  labs(
+    y = "**GHG Emissions** (Mt CO<sub>2</sub>e)",
+    caption = "*Note.* Greenhouse gas (GHG) measured <br> in million tonnes of CO<sub>2</sub> equivalent."
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0)), labels = comma) +
+  theme_minimal() +
+  theme(
+    axis.title.x = element_blank(),
+    axis.title.y = element_markdown(size = 15, margin = margin(0, 7, 0, 0, "pt")),
+    axis.text.x = element_text(size = 11, angle = 45, hjust = 1, vjust = 1,
+      colour = label_colours[levels(plot3_data$site)],
+      face = ifelse(
+        levels(plot3_data$site) %in% plot3_data$site[plot3_data$site_type == "continent"],
+        "bold", "plain")),
+    axis.text.y = element_text(size = 13),
+    plot.caption = element_markdown()
+  )
+```
+
+
+```{r map-GHG, echo=FALSE}
+map_country_metric(GHG_combined,
+  value_col = "GHG_2013_2023",
+  title = "GHG 2013\u20132023"
+)
+```
+
+<p class="caption">*Figure 4. Map of total greenhouse gas emissions by country (2013–2023). Values in million tonnes of CO<sub>2</sub> equivalent. Hover over a country for details.*</p>
+
+Figures 3 and 4 confirm that Asia---and China in particular---contributes the largest share of global greenhouse gas emissions, far outpacing all other regions and individual countries combined. The United States and Europe follow as the next most significant contributors, with India, Russia and Brazil also making substantial impacts. Africa, Oceania and smaller emitters such as Canada and Saudi Arabia collectively account for a much smaller share, highlighting stark disparities in emissions across regions and countries. These aggregate figures, however, tell only part of the story: they reflect absolute output without adjusting for population size or economic capacity.
+
+
+## Greenhouse Gas Emissions per Capita Weighted by Standard of Living
+
+Greenhouse gas emissions are frequently compared across countries using per capita measures, but this approach fails to account for substantial differences in socioeconomic capacity. Nations with higher standards of living typically possess more resources, technological infrastructure and institutional stability, which can facilitate the transition to cleaner energy systems and more sustainable industrial practices. The principle of 'common but differentiated responsibilities and respective capabilities' in the Paris Agreement (UNFCCC, 2015) formally recognises this asymmetry: wealthier nations bear a greater obligation to lead emission reductions.
+
+To acknowledge this disparity, the following analysis adjusts per capita emissions by each country's standard of living, operationalised through a quality-of-life index. Higher living standards translate to proportionally higher expectations for emission reductions, yielding a measure that more equitably reflects each country's scope for climate responsibility.
+
+### Sources
+
+[EDGAR Booklet 2024](https://edgar.jrc.ec.europa.eu/report_2024): Sheet 'GHG_per_capita_by_country'; [Continents](https://github.com/lukes/ISO-3166-Countries-with-Regional-Codes); [Standard of living by country](https://worldpopulationreview.com/country-rankings/standard-of-living-by-country): Index StandardOfLiving_QoLScoreCEOWorld_2024.
+
+```{r plot4, fig.cap='*Figure 5. Greenhouse gas emissions per capita weighted by standard of living, by country and continent. Continents shown in blue; countries in orange.*'}
+# Merge EDGAR per capita with living standard and continent data
+ghg_weighted <- edgar_percapita %>%
+  left_join(living_standard %>% select(-country), by = "countryCode") %>%
+  mutate(
+    continent = case_when(
+      countryCode == "ANT" ~ "America",
+      countryCode == "SCG" ~ "Europe",
+      .default = continent
+    ),
+    site = country,
+    site_type = "country"
+  ) %>%
+  rowwise() %>%
+  mutate(
+    years_values = list(c_across(`2013`:`2023`)),
+    n_years = sum(!is.na(years_values)),
+    median_GHG = median(years_values, na.rm = TRUE),
+    GHG_2013_2023_weighted_by_living_standard = median_GHG * living_standard2024,
+    SE_median = 1.253 * sd(years_values, na.rm = TRUE) / sqrt(n_years),
+    GHG_weighted_SE = SE_median * living_standard2024,
+    GHG_weighted_CI_lower = GHG_2013_2023_weighted_by_living_standard -
+      qt(0.975, df = n_years - 1) * GHG_weighted_SE,
+    GHG_weighted_CI_upper = GHG_2013_2023_weighted_by_living_standard +
+      qt(0.975, df = n_years - 1) * GHG_weighted_SE
+  ) %>%
+  ungroup() %>%
+  mutate(across(contains("weight"), as.numeric))
+
+# Continent-level summaries
+ghg_weighted_continent <- ghg_weighted %>%
+  group_by(continent) %>%
+  summarise(across(where(is.numeric), ~ sum(., na.rm = TRUE)), .groups = "drop") %>%
+  mutate(site_type = "continent") %>%
+  rename(site = continent)
+
+# Combine
+ghg_weighted_all <- bind_rows(ghg_weighted, ghg_weighted_continent)
+
+# Colour scheme
+site_colors <- c("continent" = "#0072B2", "country" = "#D55E00")
+
+# PLOT
+plot4_data <- ghg_weighted_all %>%
+  arrange(desc(GHG_2013_2023_weighted_by_living_standard)) %>%
+  slice_head(n = 45) %>%
+  mutate(site = factor(site, levels = site[order(-GHG_2013_2023_weighted_by_living_standard)]))
+
+label_colours4 <- ifelse(plot4_data$site_type == "continent",
+  site_colors["continent"], site_colors["country"])
+names(label_colours4) <- plot4_data$site
+
+ggplot(plot4_data, aes(
+    x = site, y = GHG_2013_2023_weighted_by_living_standard,
+    fill = site_type
+  )) +
+  geom_bar(stat = "identity", show.legend = FALSE) +
+  geom_errorbar(
+    aes(ymin = GHG_weighted_CI_lower, ymax = GHG_weighted_CI_upper, colour = site_type),
+    width = 0.4, size = 1, show.legend = FALSE
+  ) +
+  scale_fill_manual(values = site_colors) +
+  scale_colour_manual(values = alpha(site_colors, 0.5)) +
+  labs(
+    y = "GHG Emissions weighted by standard of living",
+    caption = "*Note.* Greenhouse gas (GHG) measured <br> in million tonnes of CO<sub>2</sub> equivalent."
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0)), labels = comma) +
+  theme_minimal() +
+  theme(
+    axis.title.x = element_blank(),
+    axis.text.x = element_text(size = 8, angle = 45, hjust = 1, vjust = 1,
+      colour = label_colours4[levels(plot4_data$site)],
+      face = ifelse(
+        levels(plot4_data$site) %in% plot4_data$site[plot4_data$site_type == "continent"],
+        "bold", "plain")),
+    axis.title.y = element_markdown(size = 11, margin = margin(7, 7, 0, 0, "pt")),
+    axis.text.y = element_text(size = 10),
+    plot.caption = element_markdown()
+  )
+```
+
+
+```{r map-weighted-emissions, echo=FALSE}
+map_country_metric(ghg_weighted_all,
+  value_col = "GHG_2013_2023_weighted_by_living_standard",
+  title = "GHG 2013\u20132023<br>weighted by<br>living standard"
+)
+```
+
+<p class="caption">*Figure 6. Map of greenhouse gas emissions per capita weighted by standard of living (2013–2023). Higher values indicate greater emissions relative to socioeconomic capacity. Hover over a country for details.*</p>
+
+As Figures 5 and 6 illustrate, when per capita emissions are weighted by standard of living the ranking shifts notably. Countries that combine high per capita emissions with high standards of living---such as the United States, Australia and several Gulf states---are penalised more heavily, reflecting greater capacity and therefore greater responsibility to decarbonise. Conversely, countries with low standards of living see their weighted emissions reduced, acknowledging the structural constraints they face in undertaking rapid energy transitions. This weighted approach, while informative, relies on a direct proportional adjustment that may oversimplify the underlying relationship. Section 5 introduces a more nuanced, model-based alternative.
+
+
+## Evaluating Emissions Fairly: A Socioeconomic Adjustment via Residuals
+
+The weighted analysis above introduces an important socioeconomic dimension, yet it assumes a strictly proportional relationship between living standards and emissions. A more rigorous approach is to model emissions as a function of standard of living using ordinary least squares (OLS) linear regression, and then to examine the residuals---that is, the difference between each country's actual emissions and those predicted by the model.
+
+Formally, both variables are first z-scored (centred to zero mean and scaled to unit variance), yielding $\text{GHG}_{z,i}$ and $\text{LS}_{z,i}$ for each country $i$. The model is then
+
+$$\text{GHG}_{z,i} = \beta_0 + \beta_1 \, \text{LS}_{z,i} + \varepsilon_i$$
+
+where $\beta_0$ is the intercept (approximately zero after z-scoring), $\beta_1$ captures the linear association between standard of living and per capita emissions, and $\varepsilon_i$ is the residual for country $i$. Countries with positive residuals ($\varepsilon_i > 0$) emit more than expected given their socioeconomic status, while those with negative residuals ($\varepsilon_i < 0$) emit less. This method offers a fairer comparison by statistically controlling for socioeconomic constraints, helping to identify which countries are genuinely leading or lagging in the global effort to decarbonise (Raupach et al., 2007).
+
+Several analytical choices materially affect the results and deserve explicit consideration. First, the model assumes a linear relationship between living standards and emissions; in reality, the association may be curvilinear, as very wealthy nations sometimes show declining per capita emissions owing to de-industrialisation and service-sector dominance---a pattern consistent with the environmental Kuznets curve hypothesis. A quadratic or log-transformed specification could capture such nonlinearity but would alter the residual ranking. Second, the choice of socioeconomic indicator matters: the CEO World Quality of Life Index used here is a composite score that conflates purchasing power, safety, health care and other dimensions, and a different index---such as GDP per capita or the Human Development Index---could produce a different set of residuals. Third, the time window (2013--2023) captures only the most recent decade; extending it backward would give greater weight to the historical emissions of early industrialisers. Finally, the model includes only a single predictor; adding covariates such as fossil-fuel endowment, population density, climatic conditions (which influence heating and cooling demand) or the share of manufacturing in GDP would yield a richer picture, at the cost of greater complexity and data requirements.
+
+### Sources
+
+[EDGAR Booklet 2024](https://edgar.jrc.ec.europa.eu/report_2024): Sheet 'GHG_per_capita_by_country'; [Continents](https://github.com/lukes/ISO-3166-Countries-with-Regional-Codes); [Standard of living by country](https://worldpopulationreview.com/country-rankings/standard-of-living-by-country).
+
+
+```{r residuals-data}
+# Prepare data for residual analysis
+ghg_residuals <- edgar_percapita %>%
+  left_join(living_standard %>% select(-country), by = "countryCode") %>%
+  mutate(site = country, site_type = "country") %>%
+  rowwise() %>%
+  mutate(
+    years_values = list(c_across(`2013`:`2023`)),
+    n_years = sum(!is.na(years_values)),
+    GHG_2013_2023 = sum(unlist(years_values), na.rm = TRUE)
+  ) %>%
+  ungroup() %>%
+  mutate(
+    GHG_2013_2023_z = as.numeric(scale(GHG_2013_2023)),
+    living_standard2024_z = as.numeric(scale(living_standard2024))
+  ) %>%
+  filter(!is.na(GHG_2013_2023_z), !is.na(living_standard2024_z), !is.na(country))
+
+# Fit linear model
+emission_model <- lm(GHG_2013_2023_z ~ living_standard2024_z,
+  data = ghg_residuals
+)
+
+# Add residuals
+ghg_residuals <- ghg_residuals %>%
+  mutate(residual_emissions = resid(emission_model))
+```
+
+
+### Diverging Residual Emissions by Country
+
+```{r plot-residuals-diverging, fig.height=10, fig.cap='*Figure 7. Diverging residual emissions: top 20 countries emitting more than expected (orange) and top 20 emitting less (blue), relative to standard of living. Residuals from a linear regression of z-scored GHG emissions on z-scored standard of living.*'}
+# Select top 20 over-emitters and top 20 under-emitters
+top_over <- ghg_residuals %>% arrange(desc(residual_emissions)) %>% slice_head(n = 20)
+top_under <- ghg_residuals %>% arrange(residual_emissions) %>% slice_head(n = 20)
+
+residuals_subset <- bind_rows(top_over, top_under) %>%
+  mutate(
+    direction = ifelse(residual_emissions >= 0, "Higher than expected", "Lower than expected"),
+    country = factor(country, levels = country[order(residual_emissions)])
+  )
+
+# Compute legend position: vertically at the boundary between the two groups,
+# horizontally on the left (negative-residual) side of the panel
+legend_y_pos <- sum(residuals_subset$residual_emissions < 0) / nrow(residuals_subset)
+
+# PLOT
+ggplot(residuals_subset, aes(x = country, y = residual_emissions, fill = direction)) +
+  geom_bar(stat = "identity", show.legend = TRUE) +
+  scale_fill_manual(values = c(
+    "Higher than expected" = "#D55E00",
+    "Lower than expected" = "#0072B2"
+  )) +
+  coord_flip() +
+  labs(
+    x = NULL,
+    y = "Residual Emissions (Actual \u2013 Predicted)",
+    fill = NULL,
+    caption = "*Note.* Residuals from a linear regression of GHG emissions <br> (z-scored) on standard of living (z-scored)."
+  ) +
+  scale_y_continuous(labels = comma) +
+  theme_minimal() +
+  theme(
+    axis.text.y = element_text(size = 9),
+    axis.title.x = element_markdown(size = 11, margin = margin(7, 0, 0, 0, "pt")),
+    axis.text.x = element_text(size = 10),
+    plot.caption = element_markdown(),
+    legend.position.inside = c(0.85, legend_y_pos),
+    legend.direction = "vertical",
+    legend.background = element_rect(fill = alpha("white", 0.8), colour = NA),
+    legend.key.size = unit(0.5, "cm"),
+    legend.text = element_text(size = 11)
+  )
+```
+
+
+```{r plot-interactive}
+# Prepare a slim data frame with only the columns needed for the interactive plot
+ghg_interactive <- ghg_residuals %>%
+  select(country, residual_emissions) %>%
+  mutate(direction = ifelse(residual_emissions >= 0,
+    "Higher than expected", "Lower than expected"))
+
+# Crosstalk shared data object
+shared_data <- SharedData$new(ghg_interactive)
+
+# Interactive plot
+p <- plot_ly(
+  shared_data,
+  x = ~ reorder(country, residual_emissions),
+  y = ~residual_emissions,
+  type = "bar",
+  color = ~direction,
+  colors = c("Higher than expected" = "#D55E00", "Lower than expected" = "#0072B2"),
+  text = ~ paste0(country, ": ", round(residual_emissions, 2)),
+  hoverinfo = "text"
+) %>%
+  layout(
+    yaxis = list(title = "Residual Emissions (Actual - Predicted)", tickformat = ","),
+    xaxis = list(title = "", tickangle = -45),
+    margin = list(b = 120),
+    showlegend = FALSE
+  )
+
+# Filter slider
+slider <- filter_slider(
+  id = "emission_filter",
+  label = "Filter by Residual Emissions",
+  sharedData = shared_data,
+  column = ~residual_emissions,
+  step = 0.1,
+  round = TRUE
+)
+
+browsable(tagList(slider, p))
+```
+
+<p class="caption">*Figure 8. Interactive residual emissions by country. The y-axis shows residual emissions in standardised units (actual minus predicted z-scored GHG). Use the slider to filter countries by residual magnitude. Hover over a bar for details.*</p>
+
+
+```{r map-residual-emissions, echo=FALSE}
+map_country_metric(ghg_residuals,
+  value_col = "residual_emissions",
+  title = "Residual<br>emissions"
+)
+```
+
+<p class="caption">*Figure 9. Map of residual emissions by country. Positive values (warmer colours) indicate countries emitting more than predicted by their standard of living; negative values (cooler colours) indicate countries emitting less. Values in standardised units.*</p>
+
+Figures 7–9 reveal several noteworthy patterns. Among the countries that emit substantially more than predicted by their standard of living, major industrial economies with large fossil-fuel sectors---such as China, the United States and Russia---feature prominently. At the other end, many European countries and several small island developing states fall well below their predicted emissions, suggesting either effective mitigation policies or structural characteristics (such as limited heavy industry) that constrain output. The map underscores the geographic clustering of these patterns: over-emission relative to socioeconomic capacity is concentrated in parts of Asia and the Middle East, whereas under-emission is more common across Western Europe, Sub-Saharan Africa and Latin America.
+
+
+## Conclusion
+
+The figures presented above tell a story that raw emission statistics alone cannot. When greenhouse gas output is examined through the lens of socioeconomic capacity, the conventional ranking of polluters shifts in ways that carry important implications for climate policy and international negotiation.
+
+First, the data confirm a pattern that the climate science literature has documented for over a decade: the overwhelming majority of cumulative and per capita emissions originate in high-income countries ([Friedlingstein et al., 2024](https://doi.org/10.5194/essd-16-5625-2024); [Chancel, 2022](https://doi.org/10.1038/s41893-022-00955-z)). These nations industrialised earliest, benefited most from carbon-intensive growth and now possess the financial and technological resources to decarbonise rapidly. The principle of common but differentiated responsibilities, codified in the Paris Agreement ([UNFCCC, 2015](https://unfccc.int/sites/default/files/english_paris_agreement.pdf)), exists precisely to acknowledge this asymmetry, yet its practical application remains contested in every round of international climate talks.
+
+Second, the residual analysis reveals that some countries emit far more or far less than their socioeconomic circumstances would predict. This finding matters because it separates structural constraints from policy choices. A country that emits less than expected given its standard of living has likely implemented effective mitigation measures or benefits from a lower reliance on heavy industry; a country that over-emits relative to its means may be locked into fossil-fuel dependence due to geological endowments, infrastructure inertia or policy failures. Understanding these residuals can help direct climate finance and technology transfer to where they are most needed, and help hold wealthier over-emitters to account.
+
+Recent research reinforces these findings at a global scale. A decomposition analysis covering 185 countries from 2000 to 2021 identified GDP per capita as the principal positive driver of greenhouse gas emissions, while improvements in emission intensity---reflecting gains in energy efficiency and cleaner technologies---served as the main counteracting force ([Xu et al., 2025](https://doi.org/10.1016/j.cjpre.2025.05.002)). Crucially, the relationship between economic growth and emissions is not uniform: in most developed regions the interaction produces rapid short-term adjustments, whereas in lower-income countries the mutual impulse between GDP and emissions fluctuates over multiple periods, suggesting that these economies are less able to decouple growth from pollution in the near term ([Xu et al., 2025](https://doi.org/10.1016/j.cjpre.2025.05.002); [Haberl et al., 2020](https://doi.org/10.1088/1748-9326/ab842a)). This heterogeneity points to the need for differentiated policy responses---immediate mitigation strategies for regions that respond quickly, and longer-term investments in energy technology and economic restructuring for those where the emissions--economy relationship is more persistent. Encouragingly, independent evidence shows that national climate legislation has already produced measurable emission reductions in a number of countries ([Eskander & Fankhauser, 2020](https://doi.org/10.1038/s41558-020-0831-z)), and that declining emissions in at least 18 developed economies can be traced to specific structural and policy drivers ([Le Quéré et al., 2019](https://doi.org/10.1038/s41558-019-0419-7)).
+
+Third, it is worth noting what these analyses cannot capture. The standard-of-living index used here, while informative, is a composite measure that does not fully reflect the breadth of socioeconomic constraints that shape national emissions. Factors such as geographic size, population density, climatic conditions (which influence heating and cooling demand) and the structure of trade (whereby emissions may be outsourced to manufacturing countries) all play a role ([Peters et al., 2011](https://doi.org/10.1073/pnas.1006388108)). Consumption-based emission accounts, which attribute emissions to the country where goods are ultimately consumed rather than where they are produced, would further alter the picture, typically increasing the apparent emissions of wealthy importing nations and decreasing those of manufacturing economies ([Davis & Caldeira, 2010](https://doi.org/10.1073/pnas.0906974107)). Future work could integrate consumption-based metrics alongside the production-based figures analysed here.
+
+Ultimately, any serious response to the climate crisis requires a framework that is both scientifically rigorous and ethically grounded. Raw emission data is indispensable, but it is only the starting point. Contextualising emissions by economic capacity moves the conversation from blame towards shared responsibility---a shift that the scale and urgency of the problem demand.
+
+
+## Analysis Details
+
+These reproducible visualisations were created in R using the EDGAR 2024 dataset ([European Commission, 2024](https://edgar.jrc.ec.europa.eu/report_2024)) as the primary source of greenhouse gas emission figures. Data sets were reshaped to move years from columns into rows and were combined with external data to classify countries by income group and continent. For Section 1, emission totals were aggregated separately for the euro area, the EU27 and the world to distinguish interrelated but non-identical groupings. For Sections 4 and 5, per capita emissions were linked with a quality-of-life index to produce socioeconomically adjusted measures. The residual analysis in Section 5 employed ordinary least squares regression with both variables z-scored prior to fitting.
+
+
+## References
+
+Chancel, L. (2022). Global carbon inequality over 1990–2019. *Nature Sustainability*, *5*(11), 931–938. https://doi.org/10.1038/s41893-022-00955-z
+
+European Commission, Joint Research Centre. (2024). *EDGAR – Emissions Database for Global Atmospheric Research: GHG emissions of all world countries – 2024 Report*. https://edgar.jrc.ec.europa.eu/report_2024
+
+Friedlingstein, P., O'Sullivan, M., Jones, M. W., Andrew, R. M., Bakker, D. C. E., Hauck, J., Landschützer, P., Le Quéré, C., Luijkx, I. T., Peters, G. P., Peters, W., Pongratz, J., Schwingshackl, C., Sitch, S., Canadell, J. G., Ciais, P., Jackson, R. B., Alin, S. R., Anthoni, P., ... Zheng, B. (2024). Global carbon budget 2024. *Earth System Science Data*, *16*(11), 5625–5765. https://doi.org/10.5194/essd-16-5625-2024
+
+IPCC. (2023). *Climate change 2023: Synthesis report. Contribution of Working Groups I, II and III to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change* [Core Writing Team, H. Lee & J. Romero (Eds.)]. IPCC. https://doi.org/10.59327/IPCC/AR6-9789291691647
+
+Davis, S. J., & Caldeira, K. (2010). Consumption-based accounting of CO<sub>2</sub> emissions. *Proceedings of the National Academy of Sciences*, *107*(12), 5687–5692. https://doi.org/10.1073/pnas.0906974107
+
+Diffenbaugh, N. S., & Burke, M. (2019). Global warming has increased global economic inequality. *Proceedings of the National Academy of Sciences*, *116*(20), 9808–9813. https://doi.org/10.1073/pnas.1816020116
+
+Eskander, S. M. S. U., & Fankhauser, S. (2020). Reduction in greenhouse gas emissions from national climate legislation. *Nature Climate Change*, *10*(8), 750–756. https://doi.org/10.1038/s41558-020-0831-z
+
+Haberl, H., Wiedenhofer, D., Virág, D., Kalt, G., Plank, B., Brockway, P., Fishman, T., Hausknost, D., Krausmann, F., Leon-Gruchalski, B., Mayer, A., Pichler, M., Schaffartzik, A., Sousa, T., Streeck, J., & Creutzig, F. (2020). A systematic review of the evidence on decoupling of GDP, resource use, and GHG emissions, part II: Synthesizing the insights. *Environmental Research Letters*, *15*(6), Article 065003. https://doi.org/10.1088/1748-9326/ab842a
+
+Höhne, N., den Elzen, M., Rogelj, J., Metz, B., Fransen, T., Kuramochi, T., Olhoff, A., Alcamo, J., Winkler, H., Fu, S., Schaeffer, M., Schaeffer, R., Peters, G. P., Maxwell, S., & Dubash, N. K. (2020). Emissions: World has four times the work or one-third of the time. *Nature*, *579*(7797), 25–28. https://doi.org/10.1038/d41586-020-00571-x
+
+Lamb, W. F., Wiedmann, T., Pongratz, J., Andrew, R., Crippa, M., Olivier, J. G. J., Wiedenhofer, D., Mattioli, G., Al Khourdajie, A., House, J., Pachauri, S., Figueroa, M., Saheb, Y., Slade, R., Hubacek, K., Sun, L., Ribeiro, S. K., Khennas, S., de la Rue du Can, S., ... Minx, J. (2021). A review of trends and drivers of greenhouse gas emissions by sector from 1990 to 2018. *Environmental Research Letters*, *16*(7), Article 073005. https://doi.org/10.1088/1748-9326/abee4e
+
+Le Quéré, C., Korsbakken, J. I., Wilson, C., Tosun, J., Andrew, R., Andres, R. J., Canadell, J. G., Jordan, A., Peters, G. P., & van Vuuren, D. P. (2019). Drivers of declining CO<sub>2</sub> emissions in 18 developed economies. *Nature Climate Change*, *9*(3), 213–217. https://doi.org/10.1038/s41558-019-0419-7
+
+McGlade, C., & Ekins, P. (2015). The geographical distribution of fossil fuels unused when limiting global warming to 2 °C. *Nature*, *517*(7533), 187–190. https://doi.org/10.1038/nature14016
+
+Mercure, J.-F., Pollitt, H., Viñuales, J. E., Edwards, N. R., Holden, P. B., Chewpreecha, U., Salas, P., Sognnaes, I., Lam, A., & Knobloch, F. (2018). Macroeconomic impact of stranded fossil fuel assets. *Nature Climate Change*, *8*(7), 588–593. https://doi.org/10.1038/s41558-018-0182-1
+
+Peters, G. P., Minx, J. C., Weber, C. L., & Edenhofer, O. (2011). Growth in emission transfers via international trade from 1990 to 2008. *Proceedings of the National Academy of Sciences*, *108*(21), 8903–8908. https://doi.org/10.1073/pnas.1006388108
+
+Raupach, M. R., Marland, G., Ciais, P., Le Quéré, C., Canadell, J. G., Klepper, G., & Field, C. B. (2007). Global and regional drivers of accelerating CO<sub>2</sub> emissions. *Proceedings of the National Academy of Sciences*, *104*(24), 10288–10293. https://doi.org/10.1073/pnas.0700609104
+
+Smil, V. (2017). *Energy transitions: Global and national perspectives* (2nd ed.). Praeger.
+
+United Nations Framework Convention on Climate Change. (2015). *Paris Agreement*. https://unfccc.int/sites/default/files/english_paris_agreement.pdf
+
+World Bank. (2024). *World Bank country and lending groups*. https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups
+
+Xu, C., Gao, Y., & Lv, M. (2025). Global greenhouse gas emissions in the 21st century: Complex network, driver pattern and economy-based interaction. *Chinese Journal of Population, Resources and Environment*, *23*(2), 153–167. https://doi.org/10.1016/j.cjpre.2025.05.002
