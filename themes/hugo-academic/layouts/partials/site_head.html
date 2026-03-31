@@ -55,7 +55,9 @@
   {{ end }}
 
   {{/* Config LaTeX math rendering. */}}
-  {{ if or .Params.math site.Params.math }}
+  {{/* Auto-detect math content in knitted HTML posts (e.g., <span class="math inline">) */}}
+  {{ $hasMathContent := or (findRE "class=\"math" .Content 1) (findRE `\\\(` .Content 1) }}
+  {{ if or .Params.math site.Params.math $hasMathContent }}
   {{ $mathjax_config := resources.Get "js/mathjax-config.js" }}
   <script src="{{ $mathjax_config.RelPermalink }}"></script>
   {{ end }}
@@ -110,7 +112,8 @@
       {{ $load := $v.async }}
 
       {{/* Only load MathJax if required. */}}
-      {{ if (eq $k "mathJax") | and (not (or $.Params.math site.Params.math)) }}
+      {{ $hasMathInContent := or (findRE "class=\"math" $.Content 1) (findRE `\\\(` $.Content 1) }}
+      {{ if (eq $k "mathJax") | and (not (or $.Params.math site.Params.math $hasMathInContent)) }}
         {{ $load = false }}
       {{end}}
 
