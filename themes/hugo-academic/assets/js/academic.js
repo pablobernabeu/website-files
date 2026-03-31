@@ -1240,7 +1240,7 @@
     $(document).on("click", ".js-search-trigger", function (e) {
       e.preventDefault();
       e.stopPropagation();
-      $(".js-search").click();
+      toggleSearchDialog();
     });
     
     // Note: Dropdown hover behavior for font-size and theme menus is handled by navbar-dropdowns.js
