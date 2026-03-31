@@ -1242,7 +1242,38 @@
       e.stopPropagation();
       toggleSearchDialog();
     });
-    
+
+    // On search icon click toggle search dialog (close button inside modal).
+    $(document).on("click", ".js-search", function (e) {
+      e.preventDefault();
+      toggleSearchDialog();
+    });
+
+    // Close search modal when clicking outside the content area (on margins).
+    $(document).on("click", ".search-results", function (e) {
+      if (e.target === this && $("body").hasClass("searching")) {
+        toggleSearchDialog();
+      }
+    });
+
+    // Keyboard shortcuts for search.
+    $(document).on("keydown", function (e) {
+      if (e.which == 27) {
+        // `Esc` key pressed.
+        if ($("body").hasClass("searching")) {
+          toggleSearchDialog();
+        }
+      } else if (
+        e.which == 191 &&
+        e.shiftKey == false &&
+        !$("input,textarea").is(":focus")
+      ) {
+        // `/` key pressed outside of text input.
+        e.preventDefault();
+        toggleSearchDialog();
+      }
+    });
+
     // Note: Dropdown hover behavior for font-size and theme menus is handled by navbar-dropdowns.js
 
     // Live update of day/night mode on system preferences update (no refresh required).
@@ -1414,36 +1445,6 @@
         $(githubReleaseSelector).data("repo")
       );
 
-    // On search icon click toggle search dialog.
-    $(".js-search").click(function (e) {
-      e.preventDefault();
-      toggleSearchDialog();
-    });
-
-    // Close search modal when clicking outside the content area (on margins)
-    $(".search-results").click(function (e) {
-      // Only close if clicking directly on the search-results background (not on child elements)
-      if (e.target === this && $("body").hasClass("searching")) {
-        toggleSearchDialog();
-      }
-    });
-
-    $(document).on("keydown", function (e) {
-      if (e.which == 27) {
-        // `Esc` key pressed.
-        if ($("body").hasClass("searching")) {
-          toggleSearchDialog();
-        }
-      } else if (
-        e.which == 191 &&
-        e.shiftKey == false &&
-        !$("input,textarea").is(":focus")
-      ) {
-        // `/` key pressed outside of text input.
-        e.preventDefault();
-        toggleSearchDialog();
-      }
-    });
   });
 
   // Normalize Bootstrap carousel slide heights.
