@@ -623,18 +623,14 @@ for (pub_dir in pub_dirs) {
 
   if (length(new_dois) == 0) {
     cat("  No DOIs returned from Scopus\n")
-    next
+    new_dois <- character(0)
   }
 
   # ---- Deduplicate ----
   new_dois <- new_dois[!tolower(new_dois) %in% existing_dois]
   cat("  New DOIs to fetch:", length(new_dois), "\n")
-  if (length(new_dois) == 0) {
-    cat("  All DOIs already present\n")
-    next
-  }
 
-  # ---- Fetch APA 7 citations and CrossRef metadata ----
+  # ---- Fetch APA 7 citations and CrossRef metadata for new DOIs ----
   new_citations <- character(0)
   new_metadata <- list()
   for (doi in new_dois) {
@@ -655,53 +651,78 @@ for (pub_dir in pub_dirs) {
     Sys.sleep(1)
   }
 
-  if (length(new_citations) == 0) next
+  # ---- Sort & insert new citations ----
+  if (length(new_citations) > 0) {
+    new_citations <- sort(new_citations)
+    cat("  Inserting", length(new_citations), "citations into",
+        basename(index_path), "\n")
+    if (insert_references_into_index(index_path, new_citations)) {
+      any_changes <- TRUE
+      cat("  Done\n")
 
-  # ---- Sort & insert ----
-  new_citations <- sort(new_citations)
-  cat("  Inserting", length(new_citations), "citations into",
-      basename(index_path), "\n")
-  if (insert_references_into_index(index_path, new_citations)) {
-    any_changes <- TRUE
-    cat("  Done\n")
-
-    # Also update the pre-rendered HTML counterpart for Rmd publications
-    html_path <- find_html_counterpart(index_path)
-    if (!is.null(html_path)) {
-      if (insert_references_into_html(html_path, new_citations)) {
-        cat("  Also updated", basename(html_path), "\n")
-      } else {
-        cat("  Warning: could not update HTML counterpart\n")
-      }
-    }
-
-    # Update metadata JSON block with new entries (in both source and HTML)
-    if (length(new_metadata) > 0) {
-      existing_metadata <- read_ref_metadata(index_path)
-      merged_metadata <- modifyList(existing_metadata, new_metadata)
-      write_ref_metadata(index_path, merged_metadata)
-      cat("  Updated metadata for", length(new_metadata), "DOIs\n")
+      # Also update the pre-rendered HTML counterpart for Rmd publications
+      html_path <- find_html_counterpart(index_path)
       if (!is.null(html_path)) {
-        existing_html_meta <- read_ref_metadata(html_path)
-        merged_html_meta <- modifyList(existing_html_meta, new_metadata)
-        write_ref_metadata(html_path, merged_html_meta)
+        if (insert_references_into_html(html_path, new_citations)) {
+          cat("  Also updated", basename(html_path), "\n")
+        } else {
+          cat("  Warning: could not update HTML counterpart\n")
+        }
       }
+    } else {
+      cat("  Failed to update index file\n")
     }
+  }
 
-    # Embed Scopus query info for the JS viewer (in both source and HTML)
-    script_file <- file.path(refs_dir, "related references.R")
-    sp <- if (query_source == "script" && file.exists(script_file)) {
-      gsub("\\\\", "/", script_file)
-    } else { NULL }
+  # ---- Backfill metadata for existing DOIs without metadata ----
+  existing_metadata <- read_ref_metadata(index_path)
+  all_dois <- extract_existing_dois(index_path)
+  dois_missing_meta <- setdiff(all_dois, tolower(names(existing_metadata)))
+  if (length(dois_missing_meta) > 0) {
+    cat("  Backfilling metadata for", length(dois_missing_meta), "DOIs\n")
+    for (doi in dois_missing_meta) {
+      meta <- get_crossref_metadata(doi)
+      entry <- list()
+      if (!is.null(meta$abstract)) entry$abstract <- meta$abstract
+      if (!is.null(meta$type)) entry$type <- meta$type
+      if (length(entry) > 0) new_metadata[[doi]] <- entry
+      Sys.sleep(1)
+    }
+  }
+
+  # ---- Write metadata JSON block (new + backfilled) ----
+  html_path <- find_html_counterpart(index_path)
+  if (length(new_metadata) > 0) {
+    merged_metadata <- modifyList(existing_metadata, new_metadata)
+    write_ref_metadata(index_path, merged_metadata)
+    any_changes <- TRUE
+    cat("  Updated metadata for", length(new_metadata), "DOIs\n")
+    if (!is.null(html_path)) {
+      existing_html_meta <- read_ref_metadata(html_path)
+      merged_html_meta <- modifyList(existing_html_meta, new_metadata)
+      write_ref_metadata(html_path, merged_html_meta)
+    }
+  }
+
+  # Embed Scopus query info for the JS viewer (in both source and HTML)
+  script_file <- file.path(refs_dir, "related references.R")
+  sp <- if (query_source == "script" && file.exists(script_file)) {
+    gsub("\\\\", "/", script_file)
+  } else { NULL }
+  # Only write if not already present
+  existing_content <- readLines(index_path, warn = FALSE)
+  if (!any(grepl('class="scopus-queries"', existing_content))) {
     write_scopus_queries(index_path, query, query_source, search_period,
                          script_path = sp)
+    any_changes <- TRUE
     cat("  Embedded Scopus query info\n")
-    if (!is.null(html_path)) {
+  }
+  if (!is.null(html_path)) {
+    html_content <- readLines(html_path, warn = FALSE)
+    if (!any(grepl('class="scopus-queries"', html_content))) {
       write_scopus_queries(html_path, query, query_source, search_period,
                            script_path = sp)
     }
-  } else {
-    cat("  Failed to update index file\n")
   }
 }
 

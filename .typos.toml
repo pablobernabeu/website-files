@@ -2,8 +2,6 @@
 # https://github.com/crate-ci/typos/blob/master/docs/reference.md
 
 [files]
-# Only check content files
-include = ["content/**/*.md", "content/**/*.Rmd"]
 # Skip generated/data files
 extend-exclude = [
   "public/",
