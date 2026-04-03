@@ -552,7 +552,9 @@ for (pub_dir in pub_dirs) {
       error = function(e) NULL
     )
     if (is.null(pub_year) || is.na(pub_year)) pub_year <- current_year - 1
-    search_period <- pub_year:current_year
+    # Ensure at least a 7-year search window
+    search_start <- min(pub_year, current_year - 6L)
+    search_period <- search_start:current_year
   }
 
   cat("  Search period:", min(search_period), "-", max(search_period), "\n")
