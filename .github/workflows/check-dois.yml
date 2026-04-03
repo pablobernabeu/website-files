@@ -1,0 +1,105 @@
+name: Check DOI Resolution
+
+on:
+  schedule:
+    # Run on the 1st and 15th of each month at 04:00 UTC
+    - cron: "0 4 1,15 * *"
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  check-dois:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Extract and verify DOIs
+        id: check
+        run: |
+          echo "## DOI Resolution Report" > doi-report.md
+          echo "" >> doi-report.md
+          echo "Checked: $(date -u +'%Y-%m-%d %H:%M UTC')" >> doi-report.md
+          echo "" >> doi-report.md
+
+          TOTAL=0
+          FAILED=0
+          FAILED_DETAILS=""
+
+          # Extract DOIs from frontmatter (doi: field) and content (<https://doi.org/...>)
+          while IFS= read -r line; do
+            file=$(echo "$line" | cut -d: -f1)
+            doi=$(echo "$line" | grep -oP '10\.\d{4,9}/[^\s>"'\'']+' | head -1)
+
+            if [ -z "$doi" ]; then
+              continue
+            fi
+
+            # Remove trailing punctuation that may have been captured
+            doi=$(echo "$doi" | sed 's/[)>,;]*$//')
+
+            # Skip duplicates within this run
+            if echo "$SEEN" | grep -qF "$doi"; then
+              continue
+            fi
+            SEEN="$SEEN $doi"
+
+            TOTAL=$((TOTAL + 1))
+
+            # Resolve the DOI with a HEAD request
+            HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" -L \
+              --max-time 30 --retry 2 --retry-delay 5 \
+              -H "User-Agent: DOI-Checker/1.0 (https://pablobernabeu.github.io; academic site link checker)" \
+              "https://doi.org/$doi" 2>/dev/null || echo "000")
+
+            if [ "$HTTP_CODE" -ge 200 ] && [ "$HTTP_CODE" -lt 400 ] || [ "$HTTP_CODE" -eq 403 ]; then
+              : # OK — 403 is common for paywalled content but DOI is valid
+            else
+              FAILED=$((FAILED + 1))
+              FAILED_DETAILS="$FAILED_DETAILS\n| \`$doi\` | $HTTP_CODE | $file |"
+              echo "FAIL [$HTTP_CODE]: $doi (in $file)"
+            fi
+
+            # Rate limit: be polite to DOI resolvers
+            sleep 1
+
+          done < <(grep -rn 'doi:\|doi\.org/' content/publication/ --include="*.md" --include="*.Rmd")
+
+          echo "### Summary" >> doi-report.md
+          echo "" >> doi-report.md
+          echo "- **Total unique DOIs checked:** $TOTAL" >> doi-report.md
+          echo "- **Failed to resolve:** $FAILED" >> doi-report.md
+          echo "" >> doi-report.md
+
+          if [ "$FAILED" -gt 0 ]; then
+            echo "### Failed DOIs" >> doi-report.md
+            echo "" >> doi-report.md
+            echo "| DOI | HTTP Status | File |" >> doi-report.md
+            echo "|-----|------------|------|" >> doi-report.md
+            echo -e "$FAILED_DETAILS" >> doi-report.md
+            echo "" >> doi-report.md
+            echo "has_failures=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "All DOIs resolved successfully." >> doi-report.md
+            echo "has_failures=false" >> "$GITHUB_OUTPUT"
+          fi
+
+          echo ""
+          echo "=== DOI Check Complete: $TOTAL checked, $FAILED failed ==="
+          cat doi-report.md
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: doi-resolution-report
+          path: doi-report.md
+          retention-days: 30
+
+      - name: Create issue if DOIs are broken
+        if: steps.check.outputs.has_failures == 'true'
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "Broken DOIs detected"
+          content-filepath: doi-report.md
+          labels: maintenance, automated

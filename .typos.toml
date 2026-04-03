@@ -1,0 +1,70 @@
+# Typos configuration for academic Hugo site
+# https://github.com/crate-ci/typos/blob/master/docs/reference.md
+
+[files]
+# Only check content files
+include = ["content/**/*.md", "content/**/*.Rmd"]
+# Skip generated/data files
+extend-exclude = [
+  "public/",
+  "themes/",
+  "renv/",
+  "static/rmarkdown-libs/",
+  "*.bib",
+  "*.csv",
+  "*.json",
+  "*.js",
+  "*.css",
+  "*.R",
+  "*.html",
+]
+
+[default]
+# Don't check filenames (folder names contain slugs, not prose)
+check-filename = false
+
+[default.extend-identifiers]
+# Technical terms and abbreviations common in academic writing
+# (identifier = correct spelling to suppress false positives)
+
+[default.extend-words]
+# Words that typos flags but are correct in academic context
+ith = "ith"             # "i-th" element
+nto = "nto"             # e.g., "into" split across lines
+ot = "ot"               # abbreviation in some contexts
+te = "te"               # Dutch word / abbreviation
+fo = "fo"               # abbreviation
+als = "als"             # Dutch/German word
+vor = "vor"             # German word
+ist = "ist"             # German/Dutch word
+auf = "auf"             # German word
+ser = "ser"             # Spanish word
+hoc = "hoc"             # as in "ad hoc" or "post hoc"
+ful = "ful"             # suffix
+ned = "ned"             # past tense
+thr = "thr"             # abbreviation
+caf = "caf"             # abbreviation
+lme = "lme"             # lme4 R package
+lmer = "lmer"           # lme4 function
+brms = "brms"           # R package
+simr = "simr"           # R package
+rstats = "rstats"       # hashtag
+rmarkdown = "rmarkdown" # R package
+blogdown = "blogdown"   # R package
+knitr = "knitr"         # R package
+tibble = "tibble"       # R package
+dplyr = "dplyr"         # R package
+ggplot = "ggplot"       # R package
+sjplot = "sjplot"       # R package
+opensesame = "opensesame" # software
+psycholinguistics = "psycholinguistics"
+crosslinguistic = "crosslinguistic"
+psychophysics = "psychophysics"
+neuroinformatics = "neuroinformatics"
+morphosyntax = "morphosyntax"
+morphosyntactic = "morphosyntactic"
+multimodal = "multimodal"
+sensorimotor = "sensorimotor"
+nonwords = "nonwords"
+preregistration = "preregistration"
+preregistered = "preregistered"

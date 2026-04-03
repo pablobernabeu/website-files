@@ -1,0 +1,30 @@
+# Lychee link checker configuration
+# https://lychee.cli.rs/configuration/
+
+# Exclude patterns — URLs that commonly return false positives
+exclude = [
+  # LinkedIn blocks automated requests
+  "linkedin\\.com",
+  # localhost / example URLs
+  "localhost",
+  "127\\.0\\.0\\.1",
+  "example\\.com",
+  # Shiny apps may be sleeping (503 on first hit)
+  "shinyapps\\.io",
+  # Twitter/X rate-limits aggressively
+  "twitter\\.com",
+  "x\\.com",
+  # Mail links
+  "^mailto:",
+  # Apple podcast embeds (require auth)
+  "embed\\.podcasts\\.apple\\.com"
+]
+
+# Accept these status codes as valid (some DOI resolvers return 403 to bots)
+accept = [200, 301, 302, 403, 429]
+
+# Include only these file types
+include_mail = false
+
+# Maximum concurrent requests
+max_concurrency = 8

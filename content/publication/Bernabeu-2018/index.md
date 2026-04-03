@@ -66,6 +66,15 @@ Bernabeu, P. (2018). *Dutch modality exclusivity norms for 336 properties and 41
 
 <div class = 'related-references'>
 
+<script type="application/json" class="scopus-queries">
+{"source":"script","query":"\"Modality exclusivity norms for 423 object properties\" OR  \"Modality exclusivity norms for 400 nouns: The relationship between perceptual experience and surface word form\"","period":"2017-2023","scriptPath":"content/publication/Bernabeu-2018/related references/related references.R"}
+</script>
+
+
+
+
+
+
 <div class = 'hanging-indent'>
 
 Anderson, A. J., Binder, J. R., Fernandino, L., Humphries, C. J., Conant, L. L., Aguilar, M., Wang, X., Doko, D., & Raizada, R. D. S. (2016). Predicting Neural Activity Patterns Associated with Sentences Using a Neurobiologically Motivated Model of Semantic Representation. *Cerebral Cortex*, cercor;bhw240v1. <https://doi.org/10.1093/cercor/bhw240>

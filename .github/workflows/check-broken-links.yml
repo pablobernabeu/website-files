@@ -1,0 +1,51 @@
+name: Check Broken Links
+
+on:
+  schedule:
+    # Run every Monday at 05:00 UTC
+    - cron: "0 5 * * 1"
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Restore lychee cache
+        uses: actions/cache@v4
+        with:
+          path: .lycheecache
+          key: cache-lychee-${{ github.sha }}
+          restore-keys: cache-lychee-
+
+      - name: Check links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --cache
+            --max-cache-age 7d
+            --max-retries 3
+            --timeout 30
+            --no-progress
+            "content/**/*.md"
+            "content/**/*.Rmd"
+          fail: false
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: broken-links-report
+          path: lychee/out.md
+          retention-days: 30
+
+      - name: Create issue if broken links found
+        if: env.lychee_exit_code != 0
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "Broken links detected"
+          content-filepath: lychee/out.md
+          labels: maintenance, automated
