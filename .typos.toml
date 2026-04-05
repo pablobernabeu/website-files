@@ -8,6 +8,11 @@ extend-exclude = [
   "themes/",
   "renv/",
   "static/rmarkdown-libs/",
+  # Generated blog assets (HTML widgets, JS libs, sourcemaps)
+  "content/**/index_files/**",
+  "content/**/index.en_files/**",
+  "content/**/index.*_files/**",
+  "**/*.map",
   "*.bib",
   "*.csv",
   "*.json",
@@ -66,3 +71,4 @@ sensorimotor = "sensorimotor"
 nonwords = "nonwords"
 preregistration = "preregistration"
 preregistered = "preregistered"
+Packt = "Packt"           # Packt Publishing (proper noun)
