@@ -175,8 +175,30 @@ get_apa7_citation <- function(doi, max_retries = 3) {
   NULL
 }
 
+#' Fetch an abstract from Scopus via the Abstract Retrieval API.
+#' Returns NULL if no abstract is available.
+get_scopus_abstract <- function(doi, max_retries = 2) {
+  for (attempt in seq_len(max_retries)) {
+    abstract <- tryCatch({
+      res <- rscopus::abstract_retrieval(doi, identifier = "doi", verbose = FALSE)
+      abs_text <- res$content$`coredata`$`dc:description` %||% ""
+      abs_text <- trimws(abs_text)
+      if (nchar(abs_text) > 0) abs_text else NULL
+    }, error = function(e) NULL)
+
+    if (!is.null(abstract)) return(abstract)
+    if (attempt < max_retries) Sys.sleep(1)
+  }
+  NULL
+}
+
 #' Fetch metadata (abstract, type) from CrossRef API for a single DOI.
+#' Falls back to the Scopus Abstract Retrieval API when CrossRef lacks an
+#' abstract (many publishers deposit abstracts only in Scopus).
 get_crossref_metadata <- function(doi, max_retries = 2) {
+  result <- list(abstract = NULL, type = NULL)
+
+  # --- Try CrossRef first ---
   for (attempt in seq_len(max_retries)) {
     result <- tryCatch({
       url <- paste0("https://api.crossref.org/works/", URLencode(doi, reserved = TRUE))
@@ -202,10 +224,19 @@ get_crossref_metadata <- function(doi, max_retries = 2) {
       }
     }, error = function(e) list(abstract = NULL, type = NULL))
 
-    if (!is.null(result$abstract) || !is.null(result$type)) return(result)
+    if (!is.null(result$abstract) || !is.null(result$type)) break
     if (attempt < max_retries) Sys.sleep(1)
   }
-  list(abstract = NULL, type = NULL)
+
+  # --- Scopus fallback when CrossRef has no abstract ---
+  if (is.null(result$abstract)) {
+    scopus_abs <- get_scopus_abstract(doi)
+    if (!is.null(scopus_abs)) {
+      result$abstract <- scopus_abs
+    }
+  }
+
+  result
 }
 
 #' Format a citation for embedding in Hugo markdown with DOI angle-bracket link.
@@ -650,7 +681,7 @@ for (pub_dir in pub_dirs) {
     if (!is.null(meta$abstract)) entry$abstract <- meta$abstract
     if (!is.null(meta$type)) entry$type <- meta$type
     if (length(entry) > 0) new_metadata[[doi]] <- entry
-    Sys.sleep(1)
+    Sys.sleep(0.5)
   }
 
   # ---- Sort & insert new citations ----
@@ -677,18 +708,34 @@ for (pub_dir in pub_dirs) {
   }
 
   # ---- Backfill metadata for existing DOIs without metadata ----
+  # Cap at 50 DOIs per publication per run to keep CI runtime manageable.
+  # The JS UI handles on-demand CrossRef lookups for any remaining DOIs.
+  BACKFILL_CAP <- 50L
   existing_metadata <- read_ref_metadata(index_path)
   all_dois <- extract_existing_dois(index_path)
+
+  # DOIs completely missing from the metadata block
   dois_missing_meta <- setdiff(all_dois, tolower(names(existing_metadata)))
-  if (length(dois_missing_meta) > 0) {
-    cat("  Backfilling metadata for", length(dois_missing_meta), "DOIs\n")
-    for (doi in dois_missing_meta) {
+  # DOIs present in metadata but still lacking an abstract (retry via Scopus)
+  dois_missing_abstract <- Filter(
+    function(d) is.null(existing_metadata[[d]]$abstract),
+    tolower(names(existing_metadata))
+  )
+  dois_to_backfill <- unique(c(dois_missing_meta, dois_missing_abstract))
+
+  if (length(dois_to_backfill) > 0) {
+    n_to_fill <- min(length(dois_to_backfill), BACKFILL_CAP)
+    cat("  Backfilling metadata for", n_to_fill, "of",
+        length(dois_to_backfill), "DOIs (",
+        length(dois_missing_meta), "new,",
+        length(dois_missing_abstract), "missing abstract)\n")
+    for (doi in dois_to_backfill[seq_len(n_to_fill)]) {
       meta <- get_crossref_metadata(doi)
-      entry <- list()
+      entry <- existing_metadata[[doi]] %||% list()
       if (!is.null(meta$abstract)) entry$abstract <- meta$abstract
       if (!is.null(meta$type)) entry$type <- meta$type
       if (length(entry) > 0) new_metadata[[doi]] <- entry
-      Sys.sleep(1)
+      Sys.sleep(0.5)
     }
   }
 

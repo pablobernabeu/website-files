@@ -7529,7 +7529,8 @@ body.dark #top > div.pub > div:nth-child(3) > div.article-style > a > button:foc
 
 // Remove h3 margins inside Online book button to match full-text button height
 #top > div.pub > div:nth-child(3) > div.article-style > a > button > h3 {
-  margin: 0 !important;
+  margin-top: 7px !important;
+  margin-bottom: 7px !important;
   padding: 0 !important;
 }
 
