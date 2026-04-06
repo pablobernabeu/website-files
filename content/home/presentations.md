@@ -53,7 +53,7 @@ subtitle = ""
 
 | Date     | Format   | Title                  | Event                  |
 | -------- | -------- | ---------------------- | ---------------------- |
-| Apr 2026 | Talk (Hoang, DeLuca, & Bernabeu) | Is third language learning influenced by working memory, implicit learning, and inhibitory control? | Bilingualism Matters Symposium 2026, Milan, Italy |
+| Apr 2026 | Talk | Is third language learning influenced by working memory, implicit learning, and inhibitory control? [Hoang, DeLuca, & Bernabeu] | [Bilingualism Matters Symposium 2026](https://www.bilingualism-matters.org/events/bilingualism-matters-symposium-2026), Milan, Italy |
 | Dec 2025 | Talk | Designing a study on the interplay of text, reader and context in children’s digital reading comprehension | Developmental Hour seminar, Department of Experimental Psychology, University of Oxford |
 | Nov 2025 | Lightning talk | [Scaling systematic reviews: A solo researcher's workflow with Gemini](/presentation/scaling-systematic-reviews-a-solo-researchers-workflow-with-gemini) | [Gemini Pro Pilot Showcase and Wrap-up Event](https://oerc.ox.ac.uk/ai-centre/ai-centre-events/gemini-pro-pilot-showcase), University of Oxford |
 | Feb 2025,<br>Nov 2025 | (1) Talk, <br>(2) Invited talk | [Unpacking ERP responses in artificial language learning ](/presentation/unpacking-erp-responses-in-artificial-language-learning) | (1) Lunch Seminar at the [Center for Language, Brain and Learning (C-LaBL)](https://uit.no/research/clabl), UiT The Arctic University of Norway; <br> (2) [Laboratoire de Psycholinguistique et Logopédie](https://www.unige.ch/fapse/psycholinguistique), University of Geneva |
