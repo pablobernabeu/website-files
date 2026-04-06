@@ -774,10 +774,9 @@ for (pub_dir in pub_dirs) {
   }
 
   # Embed Scopus query info for the JS viewer (in both source and HTML)
-  script_file <- file.path(refs_dir, "related references.R")
-  sp <- if (query_source == "script" && file.exists(script_file)) {
-    gsub("\\\\", "/", script_file)
-  } else { NULL }
+  # Always link to the general collection script (the per-publication scripts
+  # are no longer reflective of the continuous workflow updates).
+  sp <- "scripts/collect_related_references.R"
   # Only write if not already present
   existing_content <- readLines(index_path, warn = FALSE)
   if (!any(grepl('class="scopus-queries"', existing_content))) {
