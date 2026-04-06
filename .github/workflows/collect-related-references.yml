@@ -9,7 +9,7 @@ on:
 jobs:
   collect-references:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 75
 
     env:
       SCOPUS_API_KEY: ${{ secrets.SCOPUS_API_KEY }}

@@ -528,6 +528,15 @@ write_scopus_queries <- function(index_path, query, query_source,
 current_year <- as.integer(format(Sys.Date(), "%Y"))
 any_changes <- FALSE
 
+# Global time budget: stop adding new work after 45 minutes
+# so the remaining time is available for git operations.
+run_start_time <- proc.time()[["elapsed"]]
+TIME_BUDGET_SECS <- 45 * 60  # 45 minutes
+
+time_remaining <- function() {
+  TIME_BUDGET_SECS - (proc.time()[["elapsed"]] - run_start_time)
+}
+
 pub_root <- "content/publication"
 pub_dirs <- list.dirs(pub_root, recursive = FALSE, full.names = TRUE)
 # Exclude hidden or underscore-prefixed entries
@@ -539,6 +548,13 @@ for (pub_dir in pub_dirs) {
 
   pub_name <- basename(pub_dir)
   cat("\n=== Processing:", pub_name, "===\n")
+
+  # Check global time budget before starting a new publication
+  if (time_remaining() < 120) {
+    cat("  Time budget nearly exhausted (",
+        round(time_remaining()), "s left). Stopping.\n")
+    break
+  }
 
   # ---- Find index file ----
   index_path <- find_index_file(pub_dir)
@@ -708,9 +724,9 @@ for (pub_dir in pub_dirs) {
   }
 
   # ---- Backfill metadata for existing DOIs without metadata ----
-  # Cap at 50 DOIs per publication per run to keep CI runtime manageable.
+  # Cap at 15 DOIs per publication per run to keep CI runtime under 1 hour.
   # The JS UI handles on-demand CrossRef lookups for any remaining DOIs.
-  BACKFILL_CAP <- 50L
+  BACKFILL_CAP <- 15L
   existing_metadata <- read_ref_metadata(index_path)
   all_dois <- extract_existing_dois(index_path)
 
@@ -723,8 +739,10 @@ for (pub_dir in pub_dirs) {
   )
   dois_to_backfill <- unique(c(dois_missing_meta, dois_missing_abstract))
 
-  if (length(dois_to_backfill) > 0) {
-    n_to_fill <- min(length(dois_to_backfill), BACKFILL_CAP)
+  if (length(dois_to_backfill) > 0 && time_remaining() > 60) {
+    # Further cap by remaining time: ~3s per DOI
+    time_cap <- max(1L, as.integer((time_remaining() - 60) / 3))
+    n_to_fill <- min(length(dois_to_backfill), BACKFILL_CAP, time_cap)
     cat("  Backfilling metadata for", n_to_fill, "of",
         length(dois_to_backfill), "DOIs (",
         length(dois_missing_meta), "new,",
@@ -737,6 +755,8 @@ for (pub_dir in pub_dirs) {
       if (length(entry) > 0) new_metadata[[doi]] <- entry
       Sys.sleep(0.5)
     }
+  } else if (length(dois_to_backfill) > 0) {
+    cat("  Skipping backfill (time budget low:", round(time_remaining()), "s left)\n")
   }
 
   # ---- Write metadata JSON block (new + backfilled) ----
