@@ -7,12 +7,14 @@ on:
   workflow_dispatch: # Allow manual triggering
 
 jobs:
-  collect-references:
+  # -----------------------------------------------------------------------
+  # 1. Discover publications & run one-time PDF query generation
+  # -----------------------------------------------------------------------
+  discover:
     runs-on: ubuntu-latest
-    timeout-minutes: 75
-
-    env:
-      SCOPUS_API_KEY: ${{ secrets.SCOPUS_API_KEY }}
+    timeout-minutes: 60
+    outputs:
+      publications: ${{ steps.list.outputs.publications }}
 
     steps:
       - name: Checkout repository
@@ -29,10 +31,61 @@ jobs:
       - name: Auto-generate query scripts from PDFs
         run: python scripts/extract_refs_from_pdfs.py
 
+      - name: Upload generated queries
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-queries
+          path: content/publication/**/related references/
+          if-no-files-found: ignore
+
+      - name: List publications
+        id: list
+        run: |
+          pubs=$(ls -d content/publication/*/ 2>/dev/null \
+            | xargs -I{} basename {} \
+            | grep -v '^[_.]' \
+            | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          echo "publications=$pubs" >> $GITHUB_OUTPUT
+          echo "Found publications: $pubs"
+
+  # -----------------------------------------------------------------------
+  # 2. Collect references — one parallel job per publication
+  # -----------------------------------------------------------------------
+  collect:
+    needs: discover
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      matrix:
+        publication: ${{ fromJSON(needs.discover.outputs.publications) }}
+      fail-fast: false
+      max-parallel: 4
+
+    env:
+      SCOPUS_API_KEY: ${{ secrets.SCOPUS_API_KEY }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Download generated queries
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-queries
+          path: content/publication/
+        continue-on-error: true
+
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
         with:
           r-version: "release"
+
+      - name: Cache R packages
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: r-packages-${{ hashFiles('scripts/collect_related_references.R') }}
+          restore-keys: r-packages-
 
       - name: Install system dependencies
         run: |
@@ -44,9 +97,64 @@ jobs:
           install.packages(c("yaml", "rscopus", "rcrossref", "dplyr", "httr", "jsonlite"), repos = "https://cloud.r-project.org")
         shell: Rscript {0}
 
-      - name: Run related references collection
+      - name: Collect references for ${{ matrix.publication }}
         run: |
-          Rscript scripts/collect_related_references.R
+          Rscript scripts/collect_related_references.R --pub "${{ matrix.publication }}"
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet -- "content/publication/${{ matrix.publication }}"; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "Changed files:"
+            git diff --name-only -- "content/publication/${{ matrix.publication }}"
+          fi
+
+      - name: Upload changed files
+        if: steps.changes.outputs.changed == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: changes-${{ matrix.publication }}
+          path: content/publication/${{ matrix.publication }}/
+
+  # -----------------------------------------------------------------------
+  # 3. Commit — merge all changes and open a PR
+  # -----------------------------------------------------------------------
+  commit:
+    needs: collect
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Download all change artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: changes-*
+          path: _artifacts/
+        continue-on-error: true
+
+      - name: Apply changes
+        run: |
+          shopt -s nullglob
+          any=false
+          if [ -d _artifacts ]; then
+            for dir in _artifacts/changes-*/; do
+              pub=$(basename "$dir" | sed 's/^changes-//')
+              echo "Applying changes for: $pub"
+              cp -r "$dir"* "content/publication/$pub/"
+              any=true
+            done
+            rm -rf _artifacts/
+          fi
+          if [ "$any" = false ]; then
+            echo "No artifacts to apply"
+          fi
 
       - name: Check for changes
         id: changes
@@ -55,7 +163,6 @@ jobs:
             echo "No changes detected"
             echo "changed=false" >> $GITHUB_OUTPUT
           else
-            echo "Changes detected"
             echo "changed=true" >> $GITHUB_OUTPUT
             echo "Changed files:"
             git diff --name-only
@@ -71,7 +178,7 @@ jobs:
           delete-branch: true
           title: "New related references $(date +'%Y-%m-%d')"
           body: |
-            Automated daily collection of related references from Scopus.
+            Automated weekly collection of related references from Scopus & CrossRef.
 
             **Changed files:**
             $(git diff --name-only)

@@ -1,6 +1,6 @@
 # collect_related_references.R
 #
-# Fully automated daily collection of related references for ALL publications.
+# Fully automated weekly collection of related references for publications.
 # - Auto-discovers every publication under content/publication/
 # - For publications with an existing related references R script, extracts
 #   the query from that script
@@ -11,7 +11,9 @@
 # - Inserts new citations into each publication's index file, sorted
 #   alphabetically and deduplicated
 #
-# Usage: Rscript scripts/collect_related_references.R
+# Usage:
+#   Rscript scripts/collect_related_references.R              # all publications
+#   Rscript scripts/collect_related_references.R --pub NAME   # single publication
 #
 # Environment variables:
 #   SCOPUS_API_KEY  — Elsevier Scopus API key (required)
@@ -528,13 +530,24 @@ write_scopus_queries <- function(index_path, query, query_source,
 current_year <- as.integer(format(Sys.Date(), "%Y"))
 any_changes <- FALSE
 
-# Global time budget: stop adding new work after 45 minutes
+# Global time budget: stop adding new work after 30 minutes
 # so the remaining time is available for git operations.
 run_start_time <- proc.time()[["elapsed"]]
-TIME_BUDGET_SECS <- 45 * 60  # 45 minutes
+TIME_BUDGET_SECS <- 330 * 60  # 330 minutes (job timeout is 350 min)
 
 time_remaining <- function() {
   TIME_BUDGET_SECS - (proc.time()[["elapsed"]] - run_start_time)
+}
+
+# ---- CLI argument: optional --pub NAME to process a single publication ----
+args <- commandArgs(trailingOnly = TRUE)
+single_pub <- NULL
+if ("--pub" %in% args) {
+  idx <- which(args == "--pub")
+  if (idx < length(args)) {
+    single_pub <- args[idx + 1]
+    cat("Single-publication mode:", single_pub, "\n")
+  }
 }
 
 pub_root <- "content/publication"
@@ -542,7 +555,15 @@ pub_dirs <- list.dirs(pub_root, recursive = FALSE, full.names = TRUE)
 # Exclude hidden or underscore-prefixed entries
 pub_dirs <- pub_dirs[!grepl("^[_.]", basename(pub_dirs))]
 
-cat("Found", length(pub_dirs), "publication folders\n")
+# Filter to a single publication if requested
+if (!is.null(single_pub)) {
+  pub_dirs <- pub_dirs[basename(pub_dirs) == single_pub]
+  if (length(pub_dirs) == 0) {
+    stop("Publication not found: ", single_pub)
+  }
+}
+
+cat("Processing", length(pub_dirs), "publication folder(s)\n")
 
 for (pub_dir in pub_dirs) {
 
@@ -683,6 +704,10 @@ for (pub_dir in pub_dirs) {
   new_citations <- character(0)
   new_metadata <- list()
   for (doi in new_dois) {
+    if (time_remaining() < 90) {
+      cat("  Time budget low (", round(time_remaining()), "s). Stopping new-DOI fetches.\n")
+      break
+    }
     cat("  Fetching:", doi, "\n")
     cit <- get_apa7_citation(doi)
     fmt <- format_citation_for_hugo(cit, doi)
@@ -724,9 +749,9 @@ for (pub_dir in pub_dirs) {
   }
 
   # ---- Backfill metadata for existing DOIs without metadata ----
-  # Cap at 15 DOIs per publication per run to keep CI runtime under 1 hour.
-  # The JS UI handles on-demand CrossRef lookups for any remaining DOIs.
-  BACKFILL_CAP <- 15L
+  # With per-publication parallelism, we can backfill generously —
+  # just respect the time budget. The JS UI handles on-demand CrossRef
+  # lookups for any DOIs not yet backfilled.
   existing_metadata <- read_ref_metadata(index_path)
   all_dois <- extract_existing_dois(index_path)
 
@@ -740,14 +765,18 @@ for (pub_dir in pub_dirs) {
   dois_to_backfill <- unique(c(dois_missing_meta, dois_missing_abstract))
 
   if (length(dois_to_backfill) > 0 && time_remaining() > 60) {
-    # Further cap by remaining time: ~3s per DOI
+    # Cap by remaining time: ~3s per DOI, leave 60s for file writes
     time_cap <- max(1L, as.integer((time_remaining() - 60) / 3))
-    n_to_fill <- min(length(dois_to_backfill), BACKFILL_CAP, time_cap)
+    n_to_fill <- min(length(dois_to_backfill), time_cap)
     cat("  Backfilling metadata for", n_to_fill, "of",
         length(dois_to_backfill), "DOIs (",
         length(dois_missing_meta), "new,",
         length(dois_missing_abstract), "missing abstract)\n")
     for (doi in dois_to_backfill[seq_len(n_to_fill)]) {
+      if (time_remaining() < 60) {
+        cat("  Time budget low (", round(time_remaining()), "s). Stopping backfill.\n")
+        break
+      }
       meta <- get_crossref_metadata(doi)
       entry <- existing_metadata[[doi]] %||% list()
       if (!is.null(meta$abstract)) entry$abstract <- meta$abstract
