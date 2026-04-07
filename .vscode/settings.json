@@ -1,5 +1,11 @@
 {
     "github-actions.workflows.pinned.workflows": [
         ".github/workflows/collect-related-references.yml"
-    ]
+    ],
+    "[markdown]": {
+        "editor.wordWrap": "on"
+    },
+    "[rmd]": {
+        "editor.wordWrap": "on"
+    }
 }

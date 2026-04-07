@@ -25,18 +25,24 @@ jobs:
           TOTAL=0
           FAILED=0
           FAILED_DETAILS=""
+          SEEN=""
 
           # Extract DOIs from frontmatter (doi: field) and content (<https://doi.org/...>)
           while IFS= read -r line; do
             file=$(echo "$line" | cut -d: -f1)
-            doi=$(echo "$line" | grep -oP '10\.\d{4,9}/[^\s>"'\'']+' | head -1)
+            # Exclude <, {, }, [, ] to avoid capturing HTML tags and BibTeX braces
+            doi=$(echo "$line" | grep -oP '10\.\d{4,9}/[^\s>"'\''<{}\[\]]+' | head -1)
 
             if [ -z "$doi" ]; then
               continue
             fi
 
-            # Remove trailing punctuation that may have been captured
-            doi=$(echo "$doi" | sed 's/[)>,;]*$//')
+            # Remove trailing HTML fragments (e.g., </p, </a) and punctuation
+            doi=$(echo "$doi" | sed -E 's/<\/[a-zA-Z].*$//; s/[)>,;.:}]+$//')
+
+            if [ -z "$doi" ]; then
+              continue
+            fi
 
             # Skip duplicates within this run
             if echo "$SEEN" | grep -qF "$doi"; then
@@ -47,13 +53,19 @@ jobs:
             TOTAL=$((TOTAL + 1))
 
             # Resolve the DOI with a HEAD request
+            # NOTE: || must be OUTSIDE $() to avoid concatenating status codes (e.g., "302000")
             HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" -L \
-              --max-time 30 --retry 2 --retry-delay 5 \
+              --max-time 60 --retry 2 --retry-delay 5 \
               -H "User-Agent: DOI-Checker/1.0 (https://pablobernabeu.github.io; academic site link checker)" \
-              "https://doi.org/$doi" 2>/dev/null || echo "000")
+              "https://doi.org/$doi" 2>/dev/null) || HTTP_CODE="000"
 
-            if [ "$HTTP_CODE" -ge 200 ] && [ "$HTTP_CODE" -lt 400 ] || [ "$HTTP_CODE" -eq 403 ]; then
-              : # OK — 403 is common for paywalled content but DOI is valid
+            # Accept: 2xx/3xx (OK/redirect), 401/403 (paywalled), 418 (server quirk)
+            if [[ "$HTTP_CODE" =~ ^[23][0-9][0-9]$ ]] || [ "$HTTP_CODE" = "401" ] || [ "$HTTP_CODE" = "403" ] || [ "$HTTP_CODE" = "418" ]; then
+              : # OK
+            elif [ "$HTTP_CODE" = "000" ]; then
+              FAILED=$((FAILED + 1))
+              FAILED_DETAILS="$FAILED_DETAILS\n| \`$doi\` | **timeout** | $file |"
+              echo "TIMEOUT: $doi (in $file)"
             else
               FAILED=$((FAILED + 1))
               FAILED_DETAILS="$FAILED_DETAILS\n| \`$doi\` | $HTTP_CODE | $file |"
@@ -63,7 +75,7 @@ jobs:
             # Rate limit: be polite to DOI resolvers
             sleep 1
 
-          done < <(grep -rn 'doi:\|doi\.org/' content/publication/ --include="*.md" --include="*.Rmd")
+          done < <(grep -rn 'doi:\|doi\.org/' content/publication/ --include="*.md" --include="*.Rmd" --include="*.html")
 
           echo "### Summary" >> doi-report.md
           echo "" >> doi-report.md

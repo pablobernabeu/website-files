@@ -72,3 +72,22 @@ nonwords = "nonwords"
 preregistration = "preregistration"
 preregistered = "preregistered"
 Packt = "Packt"           # Packt Publishing (proper noun)
+# Author surnames flagged as misspellings
+Mata = "Mata"
+Hald = "Hald"
+Hendler = "Hendler"
+Paret = "Paret"
+Tham = "Tham"
+Uner = "Uner"
+Hassel = "Hassel"
+Blok = "Blok"
+Bui = "Bui"
+Sclar = "Sclar"
+Raison = "Raison"
+# Technical terms and foreign-language words
+formant = "formant"       # phonetics term
+conceptos = "conceptos"   # Spanish word in Spanish titles
+extraversion = "extraversion"  # personality psychology term
+# Acronyms / stylisations
+ND = "ND"                 # as in CC BY-NC-ND
+LangUE = "LangUE"         # Language at the University of Essex conference
