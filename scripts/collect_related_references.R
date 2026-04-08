@@ -194,11 +194,11 @@ get_scopus_abstract <- function(doi, max_retries = 2) {
   NULL
 }
 
-#' Fetch metadata (abstract, type) from CrossRef API for a single DOI.
+#' Fetch metadata (abstract, type, language) from CrossRef API for a single DOI.
 #' Falls back to the Scopus Abstract Retrieval API when CrossRef lacks an
 #' abstract (many publishers deposit abstracts only in Scopus).
 get_crossref_metadata <- function(doi, max_retries = 2) {
-  result <- list(abstract = NULL, type = NULL)
+  result <- list(abstract = NULL, type = NULL, language = NULL)
 
   # --- Try CrossRef first ---
   for (attempt in seq_len(max_retries)) {
@@ -219,12 +219,13 @@ get_crossref_metadata <- function(doi, max_retries = 2) {
         abstract_clean <- trimws(abstract_clean)
         list(
           abstract = if (nchar(abstract_clean) > 0) abstract_clean else NULL,
-          type = msg$type
+          type = msg$type,
+          language = msg$language
         )
       } else {
-        list(abstract = NULL, type = NULL)
+        list(abstract = NULL, type = NULL, language = NULL)
       }
-    }, error = function(e) list(abstract = NULL, type = NULL))
+    }, error = function(e) list(abstract = NULL, type = NULL, language = NULL))
 
     if (!is.null(result$abstract) || !is.null(result$type)) break
     if (attempt < max_retries) Sys.sleep(1)
@@ -239,6 +240,15 @@ get_crossref_metadata <- function(doi, max_retries = 2) {
   }
 
   result
+}
+
+#' Return TRUE if the string contains CJK, Arabic, or other non-Latin scripts.
+#' Used to detect non-English papers when no language tag is available.
+contains_non_latin_script <- function(text) {
+  if (is.null(text) || nchar(text) == 0) return(FALSE)
+  # CJK Unified Ideographs, Hiragana, Katakana, Arabic, Cyrillic, Korean Hangul
+  grepl("[\u3000-\u9FFF\uAC00-\uD7AF\u0600-\u06FF\u0400-\u04FF]",
+        text, perl = TRUE)
 }
 
 #' Format a citation for embedding in Hugo markdown with DOI angle-bracket link.
@@ -292,6 +302,24 @@ extract_existing_dois <- function(index_path) {
   dois <- gsub(">$", "", dois)
   dois <- gsub('^href="https?://doi\\.org/', "", dois)
   dois <- gsub('"$', "", dois)
+
+  # Also load any manually skipped DOIs from skip.csv in the same refs dir
+  refs_dir <- dirname(index_path)
+  refs_dirs <- c(
+    file.path(refs_dir, "related references"),
+    file.path(refs_dir, "related-references")
+  )
+  for (rd in refs_dirs) {
+    skip_file <- file.path(rd, "skip.csv")
+    if (file.exists(skip_file)) {
+      skip_dois <- tryCatch({
+        d <- read.csv(skip_file, stringsAsFactors = FALSE)
+        if ("doi" %in% names(d)) d$doi else d[[1]]
+      }, error = function(e) character(0))
+      dois <- c(dois, skip_dois)
+    }
+  }
+
   unique(tolower(trimws(dois)))
 }
 
@@ -533,7 +561,7 @@ any_changes <- FALSE
 # Global time budget: stop adding new work after 30 minutes
 # so the remaining time is available for git operations.
 run_start_time <- proc.time()[["elapsed"]]
-TIME_BUDGET_SECS <- 330 * 60  # 330 minutes (job timeout is 350 min)
+TIME_BUDGET_SECS <- 345 * 60  # 345 minutes (job timeout is 355 min)
 
 time_remaining <- function() {
   TIME_BUDGET_SECS - (proc.time()[["elapsed"]] - run_start_time)
@@ -639,14 +667,16 @@ for (pub_dir in pub_dirs) {
                               "date and time of previous retrieval of DOIs.txt")
   is_first_run <- !file.exists(timestamp_file)
 
-  # On subsequent runs, narrow the search period to just the last year of the
-  # original period through current_year + 1.  This avoids re-querying
-  # historical years that have already been collected and keeps the Scopus
-  # API usage efficient.
+  # On subsequent runs, use a rolling 3-year lookback window so that
+  # 2024/2025 papers not captured on the first run (due to Scopus relevance
+  # sorting) are picked up in future runs, while still searching ahead to
+  # catch newly published work.
   run_period <- search_period
   if (!is_first_run) {
-    run_start <- max(search_period)
+    run_start <- current_year - 2L   # rolling 3-year lookback
     run_end   <- current_year + 1L
+    # Never go before the original search start
+    run_start <- max(run_start, min(search_period))
     if (run_start > run_end) run_start <- run_end
     run_period <- run_start:run_end
     cat("  Narrowed run period:", min(run_period), "-", max(run_period), "\n")
@@ -709,15 +739,26 @@ for (pub_dir in pub_dirs) {
       break
     }
     cat("  Fetching:", doi, "\n")
+    # Fetch metadata first so we can check language before fetching the citation
+    meta <- get_crossref_metadata(doi)
+    # Skip non-English papers: check CrossRef language tag, then title characters
+    cr_lang <- meta$language
+    if (!is.null(cr_lang) && !grepl("^en", cr_lang, ignore.case = TRUE)) {
+      cat("    Skipping: non-English language tag (", cr_lang, ")\n")
+      next
+    }
     cit <- get_apa7_citation(doi)
+    if (!is.null(cit) && contains_non_latin_script(cit)) {
+      cat("    Skipping: non-Latin script detected in citation\n")
+      next
+    }
     fmt <- format_citation_for_hugo(cit, doi)
     if (!is.null(fmt)) {
       new_citations <- c(new_citations, fmt)
     } else {
       cat("    Warning: citation unavailable\n")
     }
-    # Fetch metadata (abstract + type) for the JS UI
-    meta <- get_crossref_metadata(doi)
+    # Store metadata (abstract + type) for the JS UI
     entry <- list()
     if (!is.null(meta$abstract)) entry$abstract <- meta$abstract
     if (!is.null(meta$type)) entry$type <- meta$type
