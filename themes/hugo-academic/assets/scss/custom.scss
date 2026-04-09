@@ -1023,9 +1023,29 @@ div.col-12.section-heading > h1 {
   }
 }
 
-// Increase top margin for Related podcasts headings
-#related-podcasts > h3 {
+// Style Related podcast(s) headings like h2, adjust margins
+#related-podcast > h3,
+#related-podcast > h2,
+#related-podcasts > h3,
+#related-podcasts > h2 {
   margin-top: 2rem !important;
+  margin-bottom: 0.3rem !important;
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+}
+
+// Prevent hanging indent from affecting Related podcast notice paragraphs
+#related-podcast > p,
+#related-podcasts > p {
+  text-indent: 0 !important;
+  margin-left: 0 !important;
+}
+
+// Fix wand icon size and alignment in podcast notice (article pages: p is sibling of h3)
+h3#related-podcast ~ p .fa-wand-magic-sparkles,
+h3#related-podcasts ~ p .fa-wand-magic-sparkles {
+  vertical-align: middle;
+  font-size: 75%;
 }
 
 // Reduce margin above stream-meta article-metadata
@@ -5662,9 +5682,13 @@ h2#reference  ~ p, h3#reference  ~ p, h4#reference  ~ p {
   margin-left: 2em;
 }
 
-// Related references heading
-h3#related-references {
+// Related references heading — styled like h2
+h3#related-references,
+h3.ref-section-heading,
+h2.ref-section-heading {
   margin-top: 2rem;
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
 }
 
 // Related references 
@@ -5681,7 +5705,8 @@ h3#related-references {
   border-bottom: none;
   overflow: auto; 
   font-size: 90%; 
-  height: 700px; 
+  height: auto;
+  max-height: 700px;
   overflow-wrap: normal; 
   margin-top: 1em; 
   margin-left: -0.7em; 

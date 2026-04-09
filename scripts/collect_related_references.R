@@ -171,7 +171,14 @@ get_apa7_citation <- function(doi, max_retries = 3) {
       }
     }, error = function(e) NULL)
 
-    if (!is.null(citation) && nchar(citation) > 0) return(citation)
+    if (!is.null(citation) && nchar(citation) > 0) {
+      # Reject HTML responses (e.g. Chinese journals returning a full page instead of a citation)
+      if (grepl('^\\s*<[!?]', citation, perl = TRUE)) {
+        cat("    Warning: DOI server returned HTML instead of a citation for", doi, "\n")
+        return(NULL)
+      }
+      return(citation)
+    }
     if (attempt < max_retries) Sys.sleep(2)
   }
   NULL
@@ -384,8 +391,10 @@ insert_references_into_html <- function(html_path, new_citations) {
 
   content <- readLines(html_path, warn = FALSE)
 
-  # Find the hanging-indent div inside the related-references section
-  hanging_line <- grep('class="hanging-indent"', content)
+  # Find the <div class="hanging-indent"> specifically inside the related-references section.
+  # Use a div-specific pattern to avoid false matches on <p class='hanging-indent'> (e.g., in
+  # Citation sections that reuse the same class on a paragraph element).
+  hanging_line <- grep('<div[^>]*class="hanging-indent"', content)
   if (length(hanging_line) == 0) {
     # No related references section in HTML — append one
     new_section <- c(
