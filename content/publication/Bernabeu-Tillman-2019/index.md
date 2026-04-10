@@ -55,18 +55,13 @@ Bernabeu, P., & Tillman, R. (2019). More refined typology and design in linguist
 </script>
 
 
-
-
 <script type="application/json" class="scopus-queries">
 {"source":"script","query":"\"Ways to go: Methodological considerations in Whorfian studies in motion events\" OR  \"Does language shape thought? English and Mandarin speakers’ conceptions of time\" OR  \"Rethinking linguistic relativity\" OR  \"Language diversity and thought: A reformulation of the linguistic relativity hypothesis\" OR  \"Satellite- vs. verb-framing underpredicts nonverbal motion categorization\" OR  \"Speaking of motion: Verb use in English and Spanish\" OR  \"The representation of motion in thought and language\" OR  \"Lexical, syntactic, and semantic-geometric factors in the acquisition of motion predicates\" OR  \"Thinking for speaking\" OR  \"Two ways to travel: Verbs of motion in English and Spanish\" OR  \"What makes manner of motion salient?\" OR  \"Path to realization: A typology of event conflation\" OR  \"Perceiving and remembering events cross-linguistically\" OR  \"The evolutionary dynamics of motion event encoding\" OR  \"Consistency in motion event encoding across languages\"","period":"2019-2026","collected":"2026-04-07","scriptPath":"scripts/collect_related_references.R"}
 </script>
 
 
-
-
 <div class = 'hanging-indent'>
 
-{"volume":"20","issue":"2","page-first":"141","container-title":"Taiwan Journal of Linguistics","author":[{"literal":"魏吟玲"},{"literal":"蕭惠貞"}],"language":"zh-TW","abstract":"本研究探討漢語中自我移動方式動詞與路徑動詞「來／過／過來」形成趨向補語結構之規則。本文於COCT語料庫選取47個與「來／過／過來」高頻構式的方式動詞作為分析對象，並依照「情狀分類」、「動詞語意」分析方式動詞特性，使用「層級結構」分析路徑動詞的特點。研究結果顯示，首先，若路徑動詞所涵蓋之訊息越完備，構式力越強，如「V過來」；若方式動詞蘊含位移義，且無蘊含路徑訊息，則能與越多路徑動詞構式，如「走」。其次，影響構式要素的階層為：［±動態］＞［±位移］＞［±路徑］。其中，不具動態性的方式動詞，僅能與「V過來」構式；帶有兩點、過程路徑特徵的方式動詞，能與「V過」構式；蘊含預期性結果的方式動詞，則能與「V來」構式。","type":"article-journal","title":"漢語運動事件趨向補語構式規則之探究－以「V＋來／過／過來」為例","issued":{"date-parts":[["2022","7","1"]]},"URL":"","DOI":"10.6519/TJL.202207_20(2).0004"}. <https://doi.org/10.6519/TJL.202207_20(2).0004>
 
 Abarbanell, L., & Li, P. (2020). Unraveling the contribution of left-right language on spatial perspective taking. Spatial Cognition &amp; Computation, 21(1), 1–38. <https://doi.org/10.1080/13875868.2020.1825442>
 

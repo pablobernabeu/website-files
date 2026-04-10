@@ -42,7 +42,7 @@ extract_query_from_script <- function(refs_dir) {
   if (is.null(refs_dir)) return(NULL)
   script <- file.path(refs_dir, "related references.R")
   if (!file.exists(script)) return(NULL)
-  code <- paste(readLines(script, warn = FALSE), collapse = "\n")
+  code <- paste(readLines(script, encoding = "UTF-8", warn = FALSE), collapse = "\n")
   env <- new.env(parent = baseenv())
   tryCatch({
     m <- regmatches(code, regexpr("query\\s*=\\s*paste\\((.|\n)*?\\)\n", code, perl = TRUE))
@@ -56,7 +56,7 @@ extract_period_from_script <- function(refs_dir) {
   if (is.null(refs_dir)) return(NULL)
   script <- file.path(refs_dir, "related references.R")
   if (!file.exists(script)) return(NULL)
-  lines <- readLines(script, warn = FALSE)
+  lines <- readLines(script, encoding = "UTF-8", warn = FALSE)
   m <- grep("^\\s*search_period\\s*=", lines, value = TRUE)
   if (length(m) == 0) return(NULL)
   env <- new.env(parent = baseenv())
@@ -67,7 +67,7 @@ extract_period_from_script <- function(refs_dir) {
 }
 
 write_scopus_queries <- function(index_path, query, search_period, script_path) {
-  content <- readLines(index_path, warn = FALSE)
+  content <- readLines(index_path, encoding = "UTF-8", warn = FALSE)
 
   # Remove existing block if present
   start <- grep('<script[^>]*class="scopus-queries"', content)
@@ -120,7 +120,7 @@ write_scopus_queries <- function(index_path, query, search_period, script_path) 
     content[(insert_at + 1):length(content)]
   )
 
-  writeLines(content, index_path)
+  writeLines(content, index_path, useBytes = TRUE)
   TRUE
 }
 
@@ -146,7 +146,7 @@ for (pub_dir in pub_dirs) {
   if (is.null(index_path)) next
 
   # Only embed if the file has a related-references section
-  content <- readLines(index_path, warn = FALSE)
+  content <- readLines(index_path, encoding = "UTF-8", warn = FALSE)
   if (!any(grepl("related-references", content))) next
 
   # Path to the R script (relative to repo root, with forward slashes)
@@ -161,7 +161,7 @@ for (pub_dir in pub_dirs) {
     # Also update HTML counterpart for Rmd publications
     html_path <- find_html_counterpart(index_path)
     if (!is.null(html_path)) {
-      html_content <- readLines(html_path, warn = FALSE)
+      html_content <- readLines(html_path, encoding = "UTF-8", warn = FALSE)
       if (any(grepl("related-references", html_content))) {
         if (write_scopus_queries(html_path, query, search_period, script_path)) {
           cat("  -> Updated", basename(html_path), "\n")

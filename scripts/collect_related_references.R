@@ -68,7 +68,7 @@ find_html_counterpart <- function(index_path) {
 #' Read YAML frontmatter from a markdown / Rmd file.
 #' Returns a named list.
 read_frontmatter <- function(path) {
-  lines <- readLines(path, warn = FALSE)
+  lines <- readLines(path, encoding = "UTF-8", warn = FALSE)
   delims <- which(trimws(lines) == "---")
   if (length(delims) < 2) return(list())
   yaml_text <- lines[(delims[1] + 1):(delims[2] - 1)]
@@ -95,7 +95,7 @@ extract_query_from_script <- function(refs_dir) {
   script <- file.path(refs_dir, "related references.R")
   if (!file.exists(script)) return(NULL)
 
-  code <- paste(readLines(script, warn = FALSE), collapse = "\n")
+  code <- paste(readLines(script, encoding = "UTF-8", warn = FALSE), collapse = "\n")
 
   # The query is always assigned as  query = paste( ... )
   # We evaluate the paste() call in a sandboxed environment.
@@ -112,7 +112,7 @@ extract_query_from_script <- function(refs_dir) {
 extract_period_from_script <- function(refs_dir) {
   script <- file.path(refs_dir, "related references.R")
   if (!file.exists(script)) return(NULL)
-  lines <- readLines(script, warn = FALSE)
+  lines <- readLines(script, encoding = "UTF-8", warn = FALSE)
   m <- grep("^\\s*search_period\\s*=", lines, value = TRUE)
   if (length(m) == 0) return(NULL)
   env <- new.env(parent = baseenv())
@@ -173,8 +173,18 @@ get_apa7_citation <- function(doi, max_retries = 3) {
 
     if (!is.null(citation) && nchar(citation) > 0) {
       # Reject HTML responses (e.g. Chinese journals returning a full page instead of a citation)
-      if (grepl('^\\s*<[!?]', citation, perl = TRUE)) {
+      if (grepl('<[!?]|<html|<head|<meta|<body|<script', citation, perl = TRUE, ignore.case = TRUE)) {
         cat("    Warning: DOI server returned HTML instead of a citation for", doi, "\n")
+        return(NULL)
+      }
+      # Reject raw JSON responses (API returning metadata instead of formatted citation)
+      if (grepl('^\\s*\\{\\s*"', citation, perl = TRUE)) {
+        cat("    Warning: DOI server returned JSON instead of a citation for", doi, "\n")
+        return(NULL)
+      }
+      # Reject suspiciously long responses (a valid APA citation is rarely > 2000 chars)
+      if (nchar(citation) > 2000) {
+        cat("    Warning: citation too long (", nchar(citation), "chars) for", doi, "- likely malformed\n")
         return(NULL)
       }
       return(citation)
@@ -299,7 +309,7 @@ citation_md_to_html <- function(citation) {
 #' Handles both markdown angle-bracket format and HTML <a> tag format.
 extract_existing_dois <- function(index_path) {
   if (!file.exists(index_path)) return(character(0))
-  content <- readLines(index_path, warn = FALSE)
+  content <- readLines(index_path, encoding = "UTF-8", warn = FALSE)
   # Match markdown: <https://doi.org/...>
   matches1 <- regmatches(content, gregexpr("<https://doi\\.org/([^>]+)>", content))
   # Match HTML: href="https://doi.org/..."
@@ -335,7 +345,7 @@ extract_existing_dois <- function(index_path) {
 insert_references_into_index <- function(index_path, new_citations) {
   if (length(new_citations) == 0) return(FALSE)
 
-  content <- readLines(index_path, warn = FALSE)
+  content <- readLines(index_path, encoding = "UTF-8", warn = FALSE)
   related_line <- grep("^### Related references", content)
 
   if (length(related_line) == 0) {
@@ -355,7 +365,7 @@ insert_references_into_index <- function(index_path, new_citations) {
       "</div>"
     )
     content <- c(content, new_section)
-    writeLines(content, index_path)
+    writeLines(content, index_path, useBytes = TRUE)
     return(TRUE)
   }
 
@@ -379,7 +389,7 @@ insert_references_into_index <- function(index_path, new_citations) {
     content[insert_before:length(content)]
   )
 
-  writeLines(content, index_path)
+  writeLines(content, index_path, useBytes = TRUE)
   TRUE
 }
 
@@ -389,7 +399,7 @@ insert_references_into_html <- function(html_path, new_citations) {
   if (length(new_citations) == 0 || is.null(html_path)) return(FALSE)
   if (!file.exists(html_path)) return(FALSE)
 
-  content <- readLines(html_path, warn = FALSE)
+  content <- readLines(html_path, encoding = "UTF-8", warn = FALSE)
 
   # Find the <div class="hanging-indent"> specifically inside the related-references section.
   # Use a div-specific pattern to avoid false matches on <p class='hanging-indent'> (e.g., in
@@ -408,7 +418,7 @@ insert_references_into_html <- function(html_path, new_citations) {
     }
     new_section <- c(new_section, "</div>", "</div>", "</div>")
     content <- c(content, new_section)
-    writeLines(content, html_path)
+    writeLines(content, html_path, useBytes = TRUE)
     return(TRUE)
   }
 
@@ -430,7 +440,7 @@ insert_references_into_html <- function(html_path, new_citations) {
     content[insert_before:length(content)]
   )
 
-  writeLines(content, html_path)
+  writeLines(content, html_path, useBytes = TRUE)
   TRUE
 }
 
@@ -441,7 +451,7 @@ insert_references_into_html <- function(html_path, new_citations) {
 #' Read existing ref-metadata JSON from the index file's <script> block.
 #' Returns a named list (DOI -> list(abstract, type)).
 read_ref_metadata <- function(index_path) {
-  content <- readLines(index_path, warn = FALSE)
+  content <- readLines(index_path, encoding = "UTF-8", warn = FALSE)
   start <- grep('<script[^>]*class="ref-metadata"', content)
   if (length(start) == 0) return(list())
 
@@ -463,7 +473,7 @@ read_ref_metadata <- function(index_path) {
 write_ref_metadata <- function(index_path, metadata) {
   if (length(metadata) == 0) return(FALSE)
 
-  content <- readLines(index_path, warn = FALSE)
+  content <- readLines(index_path, encoding = "UTF-8", warn = FALSE)
 
   # Remove existing metadata block if present
   start <- grep('<script[^>]*class="ref-metadata"', content)
@@ -497,7 +507,7 @@ write_ref_metadata <- function(index_path, metadata) {
     content[(insert_at + 1):length(content)]
   )
 
-  writeLines(content, index_path)
+  writeLines(content, index_path, useBytes = TRUE)
   TRUE
 }
 
@@ -510,7 +520,7 @@ write_ref_metadata <- function(index_path, metadata) {
 write_scopus_queries <- function(index_path, query, query_source,
                                  search_period, script_path = NULL,
                                  date_collected = Sys.Date()) {
-  content <- readLines(index_path, warn = FALSE)
+  content <- readLines(index_path, encoding = "UTF-8", warn = FALSE)
 
   # Remove existing block if present
   start <- grep('<script[^>]*class="scopus-queries"', content)
@@ -556,7 +566,7 @@ write_scopus_queries <- function(index_path, query, query_source,
     content[(insert_at + 1):length(content)]
   )
 
-  writeLines(content, index_path)
+  writeLines(content, index_path, useBytes = TRUE)
   TRUE
 }
 
@@ -857,7 +867,7 @@ for (pub_dir in pub_dirs) {
   # are no longer reflective of the continuous workflow updates).
   sp <- "scripts/collect_related_references.R"
   # Only write if not already present
-  existing_content <- readLines(index_path, warn = FALSE)
+  existing_content <- readLines(index_path, encoding = "UTF-8", warn = FALSE)
   if (!any(grepl('class="scopus-queries"', existing_content))) {
     write_scopus_queries(index_path, query, query_source, search_period,
                          script_path = sp)
@@ -865,7 +875,7 @@ for (pub_dir in pub_dirs) {
     cat("  Embedded Scopus query info\n")
   }
   if (!is.null(html_path)) {
-    html_content <- readLines(html_path, warn = FALSE)
+    html_content <- readLines(html_path, encoding = "UTF-8", warn = FALSE)
     if (!any(grepl('class="scopus-queries"', html_content))) {
       write_scopus_queries(html_path, query, query_source, search_period,
                            script_path = sp)
