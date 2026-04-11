@@ -1035,8 +1035,17 @@ div.col-12.section-heading > h1 {
 }
 
 // Prevent hanging indent from affecting Related podcast notice paragraphs
+// Div-container version (Rmd pages: id is on a wrapping div)
 #related-podcast > p,
 #related-podcasts > p {
+  text-indent: 0 !important;
+  margin-left: 0 !important;
+}
+
+// Sibling version (.md pages: id is on the h3 itself, p is a sibling)
+// Needed because h3#reference ~ p applies hanging indent to all subsequent siblings
+h3#related-podcast ~ p,
+h3#related-podcasts ~ p {
   text-indent: 0 !important;
   margin-left: 0 !important;
 }
