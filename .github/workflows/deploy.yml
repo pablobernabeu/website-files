@@ -6,6 +6,11 @@ on:
       - master
     paths:
       - "content/**"
+      - "static/**"
+      - "themes/**"
+      - "layouts/**"
+      - "config/**"
+      - "config.toml"
   workflow_dispatch: # Allow manual triggering
 
 jobs:
