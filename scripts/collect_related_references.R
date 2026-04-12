@@ -281,6 +281,10 @@ format_citation_for_hugo <- function(citation, doi) {
 
   citation <- trimws(citation)
 
+  # Remove Portico preservation-service label inserted by CrossRef's APA formatter
+  citation <- gsub("\.?\\s*Portico\.?", "", citation, ignore.case = FALSE, perl = FALSE)
+  citation <- trimws(citation)
+
   # Strip month/day from parenthetical dates, keeping year only: (2023, March 15) -> (2023)
   citation <- gsub("\\((\\d{4})[a-z]?),\\s*[A-Za-z]+\\.?\\s*\\d{0,2}\\)", "(\\1)", citation)
 
