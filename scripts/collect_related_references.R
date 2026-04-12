@@ -286,6 +286,18 @@ format_citation_for_hugo <- function(citation, doi) {
 
   citation <- sub("\\.$", "", citation)
 
+  # Add APA 7 italics: wrap journal name and volume in *...* so that
+  # citation_md_to_html() converts them to <em> tags.
+  # Pattern: ". Journal Name, Volume[(Issue)][, Pages]" at the end of the body.
+  # Volume must NOT be immediately followed by an en/em-dash, which would
+  # indicate a page range (e.g. "89\u201390") rather than a volume number.
+  citation <- sub(
+    "(\\.\\s+)([^.]+?),\\s*(\\d{1,4})(?![\\u2013\\u2014-])(\\([^)]+\\))?((?:,\\s*[\\w\\d\\u2013-]+(?:[\\u2013-]\\d+)?)*)$",
+    "\\1*\\2*, *\\3*\\4\\5",
+    citation,
+    perl = TRUE
+  )
+
   paste0(citation, ". <", doi_url, ">")
 }
 
