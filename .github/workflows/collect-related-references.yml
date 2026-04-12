@@ -59,7 +59,7 @@ jobs:
       matrix:
         publication: ${{ fromJSON(needs.discover.outputs.publications) }}
       fail-fast: false
-      max-parallel: 4
+      max-parallel: 2
 
     env:
       SCOPUS_API_KEY: ${{ secrets.SCOPUS_API_KEY }}

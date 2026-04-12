@@ -701,6 +701,25 @@ for (pub_dir in pub_dirs) {
     cat("  Narrowed run period:", min(run_period), "-", max(run_period), "\n")
   }
 
+  # Pre-write the timestamp and an empty DOI CSV before calling the Scopus API.
+  # If the API call crashes (e.g.  rate-limit / transient error), these files
+  # will already exist, so the NEXT scheduled run will see is_first_run = FALSE
+  # and move on to scopus_search_additional_DOIs instead of retrying the same
+  # failing first-run path indefinitely.
+  if (is_first_run) {
+    tryCatch({
+      date_time_pre <- as.character(format(Sys.time(), "%Y-%m-%d %H%M"))
+      fileConn <- file(timestamp_file)
+      writeLines(date_time_pre, fileConn)
+      close(fileConn)
+      write.csv(data.frame(x = character(0)),
+                file.path(refs_dir, paste0("DOIs, ", date_time_pre, ".csv")),
+                row.names = FALSE)
+    }, error = function(e) {
+      cat("  Warning: could not pre-write timestamp:", e$message, "\n")
+    })
+  }
+
   new_dois <- tryCatch({
     refs_path <- paste0(refs_dir, "/")
 
