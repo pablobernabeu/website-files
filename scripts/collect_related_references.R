@@ -282,7 +282,7 @@ format_citation_for_hugo <- function(citation, doi) {
   citation <- trimws(citation)
 
   # Remove Portico preservation-service label inserted by CrossRef's APA formatter
-  citation <- gsub("\.?\\s*Portico\.?", "", citation, ignore.case = FALSE, perl = FALSE)
+  citation <- gsub("\\.?\\s*Portico\\.?", "", citation, ignore.case = FALSE, perl = FALSE)
   citation <- trimws(citation)
 
   # Strip month/day from parenthetical dates, keeping year only: (2023, March 15) -> (2023)
@@ -296,7 +296,7 @@ format_citation_for_hugo <- function(citation, doi) {
   # Volume must NOT be immediately followed by an en/em-dash, which would
   # indicate a page range (e.g. "89\u201390") rather than a volume number.
   citation <- sub(
-    "(\\.\\s+)([^.]+?),\\s*(\\d{1,4})(?![\\u2013\\u2014-])(\\([^)]+\\))?((?:,\\s*[\\w\\d\\u2013-]+(?:[\\u2013-]\\d+)?)*)$",
+    "(\\.\\s+)([^.]+?),\\s*(\\d{1,4})(?![\\x{2013}\\x{2014}-])(\\([^)]+\\))?((?:,\\s*[\\w\\d\\x{2013}-]+(?:[\\x{2013}-]\\d+)?)*)$",
     "\\1*\\2*, *\\3*\\4\\5",
     citation,
     perl = TRUE
