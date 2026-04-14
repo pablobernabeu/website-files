@@ -79,6 +79,8 @@ Bernabeu, P. (2018). *Dutch modality exclusivity norms for 336 properties and 41
 
 
 
+
+
 <script type="application/json" class="scopus-queries">
 {"source":"script","query":"\"Modality exclusivity norms for 423 object properties\" OR  \"Modality exclusivity norms for 400 nouns: The relationship between perceptual experience and surface word form\"","period":"2017-2023","scriptPath":"scripts/collect_related_references.R"}
 </script>
