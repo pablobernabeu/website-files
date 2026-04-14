@@ -296,7 +296,7 @@ format_citation_for_hugo <- function(citation, doi) {
   # Volume must NOT be immediately followed by an en/em-dash, which would
   # indicate a page range (e.g. "89\u201390") rather than a volume number.
   citation <- sub(
-    "(\\.\\s+)([^.]+?),\\s*(\\d{1,4})(?![\\x{2013}\\x{2014}-])(\\([^)]+\\))?((?:,\\s*[\\w\\d\\x{2013}-]+(?:[\\x{2013}-]\\d+)?)*)$",
+    "(\\.\\s+)([^.]+?),\\s*(\\d{1,4})(?![\u2013\u2014-])(\\([^)]+\\))?((?:,\\s*[\\w\\d\u2013-]+(?:[\u2013-]\\d+)?)*)$",
     "\\1*\\2*, *\\3*\\4\\5",
     citation,
     perl = TRUE
@@ -799,6 +799,13 @@ for (pub_dir in pub_dirs) {
     cr_lang <- meta$language
     if (!is.null(cr_lang) && !grepl("^en", cr_lang, ignore.case = TRUE)) {
       cat("    Skipping: non-English language tag (", cr_lang, ")\n")
+      next
+    }
+    # Skip non-paper CrossRef types that lack meaningful citation metadata
+    non_paper_types <- c("component", "dataset", "peer-review", "grant",
+                         "report-component", "other")
+    if (!is.null(meta$type) && tolower(meta$type) %in% non_paper_types) {
+      cat("    Skipping: CrossRef type '", meta$type, "' is not a citable paper\n", sep = "")
       next
     }
     cit <- get_apa7_citation(doi)
