@@ -274,10 +274,9 @@ format_citation_for_hugo <- function(citation, doi) {
 
   doi_url <- paste0("https://doi.org/", doi)
 
-  # Remove trailing DOI URL already appended by CrossRef (various formats)
-  esc <- function(x) gsub("([.|()\\^{}+*?\\[\\]\\\\])", "\\\\\\1", x)
-  citation <- gsub(paste0("\\s*", esc(doi_url), "\\s*$"), "", citation)
-  citation <- gsub(paste0("\\s*", esc(gsub("https://", "http://", doi_url)), "\\s*$"), "", citation)
+  # Remove trailing DOI URL already appended by CrossRef (various formats, case-insensitive)
+  doi_pattern <- paste0("\\s*https?://doi\\.org/", doi, "\\s*$")
+  citation <- gsub(doi_pattern, "", citation, ignore.case = TRUE)
 
   citation <- trimws(citation)
 
@@ -301,7 +300,10 @@ format_citation_for_hugo <- function(citation, doi) {
     citation,
     perl = TRUE
   )
-
+  # Reject ahead-of-print placeholders: volume 0 or page 0 signals no real metadata yet
+  if (grepl(",\\s*0\\s*(\\(|,|\\.|$)", citation, perl = TRUE)) {
+    return(NULL)
+  }
   paste0(citation, ". <", doi_url, ">")
 }
 

@@ -80,7 +80,7 @@ Abdai, J., & Miklósi, Á. (2024). Ethology. An Introduction to Ethorobotics, 3�
 
 Abele, R. (2021). The Self-Conscious, Thinking Subject. Springer International Publishing. <https://doi.org/10.1007/978-3-030-79557-3>
 
-Abner, N. (2017). Syntactic Categorization in Sign Languages * *I am extremely indebted to all of the individuals who have shared their language and their research with me and with the scientific community. I also thank Carlo Geraci and the editors for valuable feedback and suggestions. Any remaining errors are my own. Handbook of Categorization in Cognitive Science, 549–566. https://doi.org/10.1016/b978-0-08-101107-2.00022-1. <https://doi.org/10.1016/B978-0-08-101107-2.00022-1>
+Abner, N. (2017). Syntactic Categorization in Sign Languages * *I am extremely indebted to all of the individuals who have shared their language and their research with me and with the scientific community. I also thank Carlo Geraci and the editors for valuable feedback and suggestions. Any remaining errors are my own. Handbook of Categorization in Cognitive Science, 549–566. <https://doi.org/10.1016/B978-0-08-101107-2.00022-1>
 
 Abner, N., Flaherty, M., Stangl, K., Coppola, M., Brentari, D., & Goldin-Meadow, S. (2019). The Noun-Verb Distinction in Established and Emergent Sign Systems. Language, 95(2), 230–267. <https://doi.org/10.1353/lan.2019.0030>
 
@@ -100,7 +100,7 @@ Acarturk, C., Indurkya, B., Nawrocki, P., Sniezynski, B., Jarosz, M., & Usal, K.
 
 Acciai, A., Guerrisi, L., Perconti, P., Plebe, A., Suriano, R., & Velardi, A. (2025). Narrative coherence in neural language models. Frontiers in Psychology, 16. <https://doi.org/10.3389/fpsyg.2025.1572076>
 
-ACHA, J., AGIRREGOIKOA, A., BARRETO-ZARZA, F., & ARRANZ-FREIJO, E. B. (2022). Cognitive predictors of language abilities in primary school children: A cascaded developmental view. Journal of Child Language, 50(2), 417–436. https://doi.org/10.1017/s0305000921000908. <https://doi.org/10.1017/S0305000921000908>
+ACHA, J., AGIRREGOIKOA, A., BARRETO-ZARZA, F., & ARRANZ-FREIJO, E. B. (2022). Cognitive predictors of language abilities in primary school children: A cascaded developmental view. Journal of Child Language, 50(2), 417–436. <https://doi.org/10.1017/S0305000921000908>
 
 Acquaviva, P. (2022). Word meaning: a linguistic dimension of conceptualization. Synthese, 200(5). <https://doi.org/10.1007/s11229-022-03910-9>
 
@@ -140,13 +140,13 @@ Affinito, S., Eteson, B., Cáceres, L. T., Moos, E. T., & Karakostis, F. A. (202
 
 Agebjörn, A. (2020). Explicit and Implicit Knowledge of Article Semantics in Belarusian Learners of English: Implications for Teaching. Formal Linguistics and Language Education, 179–201. <https://doi.org/10.1007/978-3-030-39257-4_10>
 
-AGUADO-OREA, J., WITHERSTONE, H., BOURGEOIS, L., & BASELGA, A. (2019). Learning to construct sentences in Spanish: a replication of the Weird Word Order technique. Journal of Child Language, 46(6), 1249–1259. https://doi.org/10.1017/s0305000919000448. <https://doi.org/10.1017/S0305000919000448>
+AGUADO-OREA, J., WITHERSTONE, H., BOURGEOIS, L., & BASELGA, A. (2019). Learning to construct sentences in Spanish: a replication of the Weird Word Order technique. Journal of Child Language, 46(6), 1249–1259. <https://doi.org/10.1017/S0305000919000448>
 
 Ahern, A., Amenós-Pons, J., & Guijarro-Fuentes, P. (2023). Relevance theory and the study of linguistic interfaces in second language acquisition. Intercultural Pragmatics, 20(4), 429–453. <https://doi.org/10.1515/ip-2023-4004>
 
 Akbarnezhad, S., Sadighi, F., & Bagheri, M. S. (2020). A syntactic-based approach to the perception and production of English verbs’ argument structures by Iranian EFL learners. Cogent Arts &amp; Humanities, 7(1), 1770956. <https://doi.org/10.1080/23311983.2020.1770956>
 
-Akbarnezhad, S., Sadighi, F., Bagheri, M. S., & Lu, X. (2019). Iranian EFL learners’ perception of the English verbs’ argument structure and their language proficiency: A semantic-syntactic approach. Cogent Education, 6(1). https://doi.org/10.1080/2331186x.2019.1674576. <https://doi.org/10.1080/2331186X.2019.1674576>
+Akbarnezhad, S., Sadighi, F., Bagheri, M. S., & Lu, X. (2019). Iranian EFL learners’ perception of the English verbs’ argument structure and their language proficiency: A semantic-syntactic approach. Cogent Education, 6(1). <https://doi.org/10.1080/2331186X.2019.1674576>
 
 Akita, K., & Murasugi, K. (2022). Binomial adjective doublets in Japanese: A Relational Morphology account. Morphology, 32(3), 281–297. <https://doi.org/10.1007/s11525-022-09395-z>
 
@@ -186,7 +186,7 @@ Allan, K. (2020). Linguistics and communication. Intercultural Pragmatics, 17(3)
 
 Allott, N., & Rey, G. (2017). The many errors of Vyvyan Evans’ The Language Myth. The Linguistic Review, 34(3), 1–20. <https://doi.org/10.1515/tlr-2017-0011>
 
-Almécija, S., & Sherwood, C. C. (2017). Hands, Brains, and Precision Grips: Origins of Tool Use Behaviors. Evolution of Nervous Systems, 299–315. https://doi.org/10.1016/b978-0-12-804042-3.00085-3. <https://doi.org/10.1016/B978-0-12-804042-3.00085-3>
+Almécija, S., & Sherwood, C. C. (2017). Hands, Brains, and Precision Grips: Origins of Tool Use Behaviors. Evolution of Nervous Systems, 299–315. <https://doi.org/10.1016/B978-0-12-804042-3.00085-3>
 
 Almeida, H. (2017). From comics to biology diagrams: structure and inference in visual narratives of transformation. Visual Communication, 16(1), 85–108. <https://doi.org/10.1177/1470357216668694>
 
@@ -200,11 +200,11 @@ Altakhaineh, A. R. M. (2019). A cross-linguistic perspective on the Right-Hand H
 
 Altamimi, H. S., & Alsager, H. N. (2023). Argument Structure and Word Order in Saudi Sign Language. Journal of Language Teaching and Research, 14(1), 203–214. <https://doi.org/10.17507/jltr.1401.21>
 
-Alves, R. R. N., Souto, W. M. S., Fernandes-Ferreira, H., Bezerra, D. M. M., Barboza, R. R. D., & Vieira, W. L. S. (2018). The Importance of Hunting in Human Societies. Ethnozoology, 95–118. https://doi.org/10.1016/b978-0-12-809913-1.00007-7. <https://doi.org/10.1016/B978-0-12-809913-1.00007-7>
+Alves, R. R. N., Souto, W. M. S., Fernandes-Ferreira, H., Bezerra, D. M. M., Barboza, R. R. D., & Vieira, W. L. S. (2018). The Importance of Hunting in Human Societies. Ethnozoology, 95–118. <https://doi.org/10.1016/B978-0-12-809913-1.00007-7>
 
 Ambasciano, L. (2016). Mind the (Unbridgeable) Gaps. Method &amp; Theory in the Study of Religion, 28(2), 141–225. <https://doi.org/10.1163/15700682-12341372>
 
-Ambridge, B. (2017). Syntactic Categories in Child Language Acquisition. Handbook of Categorization in Cognitive Science, 567–580. https://doi.org/10.1016/b978-0-08-101107-2.00023-3. <https://doi.org/10.1016/B978-0-08-101107-2.00023-3>
+Ambridge, B. (2017). Syntactic Categories in Child Language Acquisition. Handbook of Categorization in Cognitive Science, 567–580. <https://doi.org/10.1016/B978-0-08-101107-2.00023-3>
 
 Ambridge, B., Pine, J. M., & Lieven, E. V. M. (2015). Explanatory adequacy is not enough: Response to commentators on ‘Child language acquisition: Why universal grammar doesn’t help.’ Language, 91(3), e116–e126. <https://doi.org/10.1353/lan.2015.0037>
 
@@ -224,7 +224,7 @@ Andersson, C., & Törnberg, P. (2018). Toward a Macroevolutionary Theory of Huma
 
 Andler, D. (2018). Philosophy of Cognitive Science. The Philosophy of Science. <https://doi.org/10.1093/oso/9780190690649.003.0016>
 
-Andor, J. (2020). A magyar nyelv első kognitív szemléletű grammatikája. Magyar Nyelv, 116(2), 139–155. https://doi.org/10.18349/magyarnyelv.2020.2.139. <https://doi.org/10.18349/MAGYARNYELV.2020.2.139>
+Andor, J. (2020). A magyar nyelv első kognitív szemléletű grammatikája. Magyar Nyelv, 116(2), 139–155. <https://doi.org/10.18349/MAGYARNYELV.2020.2.139>
 
 Andrä, C., Mathias, B., Schwager, A., Macedonia, M., & von Kriegstein, K. (2020). Learning Foreign Language Vocabulary with Gestures and Pictures Enhances Vocabulary Memory for Several Months Post-Learning in Eight-Year-Old School Children. Educational Psychology Review, 32(3), 815–850. <https://doi.org/10.1007/s10648-020-09527-z>
 
@@ -270,7 +270,7 @@ Armeni, K., Willems, R. M., & Frank, S. L. (2017). Probabilistic language models
 
 Armstrong, M. E., Andreu, L., Esteve-Gibert, N., & Prieto, P. (2016). Children’s processing of morphosyntactic and prosodic cues in overriding context-based hypotheses: an eye tracking study. Probus, 28(1). <https://doi.org/10.1515/probus-2016-0004>
 
-ARNON, I. (2015). What can frequency effects tell us about the building blocks and mechanisms of language learning? Journal of Child Language, 42(2), 274–277. https://doi.org/10.1017/s0305000914000610. <https://doi.org/10.1017/S0305000914000610>
+ARNON, I. (2015). What can frequency effects tell us about the building blocks and mechanisms of language learning? Journal of Child Language, 42(2), 274–277. <https://doi.org/10.1017/S0305000914000610>
 
 Arocha, H. H. (2016). Locución y modelos para su descripción semántica. Lebende Sprachen, 61(1), 117–174. <https://doi.org/10.1515/les-2016-0005>
 
@@ -286,7 +286,7 @@ Aschenbrenner, L. (2022). Neo-Spiritual Aesthetics. <https://doi.org/10.5040/978
 
 Ash, M., & Welshon, R. (2020). Dynamicism, radical enactivism, and representational cognitive processes: The case of subitization. Philosophical Psychology, 33(8), 1096–1120. <https://doi.org/10.1080/09515089.2020.1775798>
 
-Asia, D., & Gordon, R. E. (2021). CULTURAL VALUE AND EVOLVING TECHNOLOGIES: INSTANCES FROM MUSIC AND VISUAL ART. Social Philosophy and Policy, 38(2), 210–231. https://doi.org/10.1017/s0265052522000127. <https://doi.org/10.1017/S0265052522000127>
+Asia, D., & Gordon, R. E. (2021). CULTURAL VALUE AND EVOLVING TECHNOLOGIES: INSTANCES FROM MUSIC AND VISUAL ART. Social Philosophy and Policy, 38(2), 210–231. <https://doi.org/10.1017/S0265052522000127>
 
 Asoulin, E. (2016). Language as an instrument of thought. Glossa: A Journal of General Linguistics, 1(1). <https://doi.org/10.5334/gjgl.34>
 
@@ -300,7 +300,7 @@ ATKINSON, D. (2019). Beyond the Brain: Intercorporeality and Co‐Operative Acti
 
 ATKINSON, D. (2019). Second Language Acquisition Beyond Borders? The Douglas Fir Group Searches for Transdisciplinary Identity. The Modern Language Journal, 103(S1), 113–121. Portico. <https://doi.org/10.1111/modl.12530>
 
-Atkinson, M., & Smith, K. (2015). Language Development: Evolutionary Theories. International Encyclopedia of the Social &amp; Behavioral Sciences, 319–323. https://doi.org/10.1016/b978-0-08-097086-8.23124-3. <https://doi.org/10.1016/B978-0-08-097086-8.23124-3>
+Atkinson, M., & Smith, K. (2015). Language Development: Evolutionary Theories. International Encyclopedia of the Social &amp; Behavioral Sciences, 319–323. <https://doi.org/10.1016/B978-0-08-097086-8.23124-3>
 
 Audring, J. (2019). Mothers or sisters? The encoding of morphological knowledge. Word Structure, 12(3), 274–296. <https://doi.org/10.3366/word.2019.0150>
 
@@ -310,7 +310,7 @@ Audring, J., & Booij, G. (2016). Cooperation and coercion. Linguistics, 54(4). <
 
 Audring, J., Booij, G., & Jackendoff, R. (2017). Menscheln, kibbelen, sparkle. Linguistics in the Netherlands, 34, 1–15. Portico. <https://doi.org/10.1075/avt.34.01aud>
 
-Austin, J., Blume, M., & Sánchez, L. (2015). Bilingualism in the Spanish-Speaking World. https://doi.org/10.1017/cbo9780511844201. <https://doi.org/10.1017/CBO9780511844201>
+Austin, J., Blume, M., & Sánchez, L. (2015). Bilingualism in the Spanish-Speaking World. <https://doi.org/10.1017/CBO9780511844201>
 
 Avcu, E., Hwang, M., Brown, K. S., & Gow, D. W. (2023). A tale of two lexica: Investigating computational pressures on word representation with neural networks. Frontiers in Artificial Intelligence, 6. <https://doi.org/10.3389/frai.2023.1062230>
 
@@ -340,7 +340,7 @@ Baggio, G. (2025). G.H. Mead and the cognitive sciences. The Elgar Companion to 
 
 Baggio, G., Cohn, N., & Wittenberg, E. (2025). The Present and Future of Parallel Architectures of Language and Cognition. Topics in Cognitive Science, 17(4), 808–821. Portico. <https://doi.org/10.1111/tops.70020>
 
-Bagher, M. M. (2020). Immersive VR and Embodied Learning: The Role of Embodied Affordances in The Long-term Retention of Semantic Knowledge. 2020 IEEE Conference on Virtual Reality and 3D User Interfaces Abstracts and Workshops (VRW), 537–538. https://doi.org/10.1109/vrw50115.2020.00120. <https://doi.org/10.1109/VRW50115.2020.00120>
+Bagher, M. M. (2020). Immersive VR and Embodied Learning: The Role of Embodied Affordances in The Long-term Retention of Semantic Knowledge. 2020 IEEE Conference on Virtual Reality and 3D User Interfaces Abstracts and Workshops (VRW), 537–538. <https://doi.org/10.1109/VRW50115.2020.00120>
 
 Bagher, M. M., Sajjadi, P., Wallgrün, J. O., La Femina, P. C., & Klippel, A. (2021). Move The Object or Move The User: The Role of Interaction Techniques on Embodied Learning in VR. Frontiers in Virtual Reality, 2. <https://doi.org/10.3389/frvir.2021.695312>
 
@@ -390,7 +390,7 @@ Barham, L., & Everett, D. (2020). Semiotics and the Origin of Language in the Lo
 
 Barker, H., & Bozic, M. (2024). Forms, Mechanisms, and Roles of Iconicity in Spoken Language: A Review. Psychological Reports. <https://doi.org/10.1177/00332941241310119>
 
-Barnard, A. (2015). Language in Prehistory. https://doi.org/10.1017/cbo9781139644563. <https://doi.org/10.1017/CBO9781139644563>
+Barnard, A. (2015). Language in Prehistory. <https://doi.org/10.1017/CBO9781139644563>
 
 Barnard, A. (2016). Unity versus Interdisciplinarity. Current Anthropology, 57(S13), S145–S153. <https://doi.org/10.1086/686022>
 
@@ -398,7 +398,7 @@ Barratt, B. B. (2019). Oedipality and oedipal complexes reconsidered: On the inc
 
 Barrett, H. C. (2019). Selected emergence in the evolution of behavior and cognition. Behavioural Processes, 161, 87–93. <https://doi.org/10.1016/j.beproc.2018.04.019>
 
-Barrett, H. C. (2020). The Search for Human Cognitive Specializations. Evolutionary Neuroscience, 917–929. https://doi.org/10.1016/b978-0-12-820584-6.00039-8. <https://doi.org/10.1016/B978-0-12-820584-6.00039-8>
+Barrett, H. C. (2020). The Search for Human Cognitive Specializations. Evolutionary Neuroscience, 917–929. <https://doi.org/10.1016/B978-0-12-820584-6.00039-8>
 
 Barrett, L. F., Atzil, S., Bliss-Moreau, E., Chanes, L., Gendron, M., Hoemann, K., Katsumi, Y., Kleckner, I. R., Lindquist, K. A., Quigley, K. S., Satpute, A. B., Sennesh, E., Shaffer, C., Theriault, J. E., Tugade, M., & Westlin, C. (2025). The Theory of Constructed Emotion: More Than a Feeling. Perspectives on Psychological Science, 20(3), 392–420. <https://doi.org/10.1177/17456916251319045>
 
@@ -428,7 +428,7 @@ Beaudet, A., Du, A., & Wood, B. (2019). Evolution of the modern human brain. Evo
 
 Beccaluva, E. A., Riccardi, F., Bettelli, G., Moskwa, L., Di Iorio, M., Di Gioia, F. R., Pasqua, E., Arosio, F., Guasti, M. T., & Garzotto, F. (2022). Grasping the Grammar with Moovy: a Tangible User Interface to Train Linguistic Skills in Children. CHI Conference on Human Factors in Computing Systems Extended Abstracts, 1–7. <https://doi.org/10.1145/3491101.3519733>
 
-Becerra Parra, R., & Lizarralde Contreras, D. (2022). Expresión de relaciones topológicas en mapudungun. Atenea (Concepción), 28(525), 151–176. https://doi.org/10.29393/at525-8errd20008. <https://doi.org/10.29393/At525-8ERRD20008>
+Becerra Parra, R., & Lizarralde Contreras, D. (2022). Expresión de relaciones topológicas en mapudungun. Atenea (Concepción), 28(525), 151–176. <https://doi.org/10.29393/At525-8ERRD20008>
 
 Beck, J., Loretz, E., & Rasch, B. (2021). Exposure to relaxing words during sleep promotes slow-wave sleep and subjective sleep quality. SLEEP, 44(11). <https://doi.org/10.1093/sleep/zsab148>
 
@@ -442,7 +442,7 @@ Bednarikova, M. (2017). Critical Thinking as a Multifaceted Phenomenon. Medical 
 
 Beer, G. (2017). In(ter)discipline. <https://doi.org/10.4324/9781351195195>
 
-Begby, E. (2015). Deranging the Mental Lexicon. Inquiry, 59(1), 33–55. https://doi.org/10.1080/0020174x.2015.1115276. <https://doi.org/10.1080/0020174X.2015.1115276>
+Begby, E. (2015). Deranging the Mental Lexicon. Inquiry, 59(1), 33–55. <https://doi.org/10.1080/0020174X.2015.1115276>
 
 Behme, C. (2018). The relevance of realism for language evolution theorizing. Essays on Linguistic Realism, 61–78. Portico. <https://doi.org/10.1075/slcs.196.04beh>
 
@@ -470,7 +470,7 @@ Benetti, S., Ferrari, A., & Pavani, F. (2023). Multimodal processing in face-to-
 
 Benigno, V., Grossmann, F., & Kraif, O. (2015). Les collocations fondamentales : une piste pour l’apprentissage lexical. Revue Française de Linguistique Appliquée, Vol. XX(1), 81–96. <https://doi.org/10.3917/rfla.201.0081>
 
-Benítez-Burraco, A. (2024). What about language? Behavioral and Brain Sciences, 47. https://doi.org/10.1017/s0140525x2400075x. <https://doi.org/10.1017/S0140525X2400075X>
+Benítez-Burraco, A. (2024). What about language? Behavioral and Brain Sciences, 47. <https://doi.org/10.1017/S0140525X2400075X>
 
 Benítez-Burraco, A. (2025). Stories come together with the cognitive and behavioral innovations needed for human communication [JB]. Rivista internazionale di Filosofia e Psicologia, 16(1), 17–21. <https://doi.org/10.4453/rifp.2025.0002>
 
@@ -506,7 +506,7 @@ Berry, M., Lewin, S., & Brown, S. (2022). Correlated expression of the body, fac
 
 Berwick, R. C., & Chomsky, N. (2017). Why only us: Recent questions and answers. Journal of Neurolinguistics, 43, 166–177. <https://doi.org/10.1016/j.jneuroling.2016.12.002>
 
-Besold, T. R., d’Avila Garcez, A., Bader, S., Bowman, H., Domingos, P., Hitzler, P., Kühnberger, K.-U., Lamb, L. C., Lima, P. M. V., de Penning, L., Pinkas, G., Poon, H., & Zaverucha, G. (2021). Chapter 1. Neural-Symbolic Learning and Reasoning: A Survey and Interpretation1. Neuro-Symbolic Artificial Intelligence: The State of the Art. https://doi.org/10.3233/faia210348. <https://doi.org/10.3233/FAIA210348>
+Besold, T. R., d’Avila Garcez, A., Bader, S., Bowman, H., Domingos, P., Hitzler, P., Kühnberger, K.-U., Lamb, L. C., Lima, P. M. V., de Penning, L., Pinkas, G., Poon, H., & Zaverucha, G. (2021). Chapter 1. Neural-Symbolic Learning and Reasoning: A Survey and Interpretation1. Neuro-Symbolic Artificial Intelligence: The State of the Art. <https://doi.org/10.3233/FAIA210348>
 
 Bhattacharya, S. (2026). Brainmaker. <https://doi.org/10.1515/9783111439198>
 
@@ -530,7 +530,7 @@ Bischoff, J., Conermann, S., & Gymnich, M. (2023). Naming, Defining, Phrasing St
 
 Bishop, M. E., & Lerch, B. A. (2023). The influence of language on the evolution of cooperation. Evolution and Human Behavior, 44(4), 349–358. <https://doi.org/10.1016/j.evolhumbehav.2023.04.003>
 
-Blackmore, S. (2019). Gene and Meme. Encyclopedia of Animal Behavior, 67–74. https://doi.org/10.1016/b978-0-12-809633-8.20756-5. <https://doi.org/10.1016/B978-0-12-809633-8.20756-5>
+Blackmore, S. (2019). Gene and Meme. Encyclopedia of Animal Behavior, 67–74. <https://doi.org/10.1016/B978-0-12-809633-8.20756-5>
 
 Blackwell, N. L., Perlman, M., & Fox Tree, J. E. (2015). Quotation as a multimodal construction. Journal of Pragmatics, 81, 1–7. <https://doi.org/10.1016/j.pragma.2015.03.004>
 
@@ -554,7 +554,7 @@ Boë, L.-J., Fagot, J., Perrier, P., & Schwartz, J.-L. (Eds.). (2017). Origins o
 
 Boeckx, C. (2006). Title Page. Linguistic Minimalism, i–iv. <https://doi.org/10.1093/oso/9780199297573.002.0001>
 
-Boeckx, C. (2021). <i>Reflections on language evolution: From minimalism to pluralism</i>. Zenodo. https://doi.org/10.5281/ZENODO.5524633. <https://doi.org/10.5281/zenodo.5524633>
+Boeckx, C. (2021). <i>Reflections on language evolution: From minimalism to pluralism</i>. Zenodo. <https://doi.org/10.5281/zenodo.5524633>
 
 Boeckx, C. (2023). What made us “hunter-gatherers of words.” Frontiers in Neuroscience, 17. <https://doi.org/10.3389/fnins.2023.1080861>
 
@@ -586,7 +586,7 @@ Bonfiglio, T. P. (2023). Linguistics and Psychoanalysis. <https://doi.org/10.432
 
 Bongard, J. (2015). Using robots to investigate the evolution of adaptive behavior. Current Opinion in Behavioral Sciences, 6, 168–173. <https://doi.org/10.1016/j.cobeha.2015.11.008>
 
-Bonvillian, J. D., Lee, N. K., Dooley, T. T., & Loncke, F. T. (2020). Simplified Signs. https://doi.org/10.11647/obp.0205. <https://doi.org/10.11647/OBP.0205>
+Bonvillian, J. D., Lee, N. K., Dooley, T. T., & Loncke, F. T. (2020). Simplified Signs. <https://doi.org/10.11647/OBP.0205>
 
 Boogers, N., Badan, L., Samo, G., & Fiorin, G. (2022). The linear structure of narrative figures in the Saint Francis Cycle: a linguistic analysis. Social Semiotics, 34(2), 201–234. <https://doi.org/10.1080/10350330.2022.2080544>
 
@@ -602,9 +602,9 @@ Borgohain, S. K., & Nair, S. B. (2015). An Immuno-inspired Approach Towards Sent
 
 Bornkessel-Schlesewsky, I., & Schlesewsky, M. (2009). Processing Syntax and Morphology: A Neurocognitive Perspective. <https://doi.org/10.1093/oso/9780199207817.001.0001>
 
-Bornkessel-Schlesewsky, I., & Schlesewsky, M. (2025). Processing syntax. Encyclopedia of the Human Brain, 442–457. https://doi.org/10.1016/b978-0-12-820480-1.00150-9. <https://doi.org/10.1016/B978-0-12-820480-1.00150-9>
+Bornkessel-Schlesewsky, I., & Schlesewsky, M. (2025). Processing syntax. Encyclopedia of the Human Brain, 442–457. <https://doi.org/10.1016/B978-0-12-820480-1.00150-9>
 
-Boruta-Żywiczyńska, M., & Placiński, M. (2021). The Natural Order of Events: speakers of Polish do not follow the pattern. Theoria et Historia Scientiarum, 17, 59. https://doi.org/10.12775/ths.2020.002. <https://doi.org/10.12775/THS.2020.002>
+Boruta-Żywiczyńska, M., & Placiński, M. (2021). The Natural Order of Events: speakers of Polish do not follow the pattern. Theoria et Historia Scientiarum, 17, 59. <https://doi.org/10.12775/THS.2020.002>
 
 Botha, R. (2020). Neanderthal Language. <https://doi.org/10.1017/9781108868167>
 
@@ -632,7 +632,7 @@ Boutet, D. (2017). The dual origin of gesture. Language, Interaction and Acquisi
 
 Boutiche, S. (2023). Language evolution and computational capabilities: conceptualization of the first language units. International Journal of Anthropology and Ethnology, 7(1). <https://doi.org/10.1186/s41257-023-00090-3>
 
-Boutonnet, B., & Lupyan, G. (2015). Words Jump-Start Vision: A Label Advantage in Object Recognition. Journal of Neuroscience, 35(25), 9329–9335. https://doi.org/10.1523/jneurosci.5111-14.2015. <https://doi.org/10.1523/JNEUROSCI.5111-14.2015>
+Boutonnet, B., & Lupyan, G. (2015). Words Jump-Start Vision: A Label Advantage in Object Recognition. Journal of Neuroscience, 35(25), 9329–9335. <https://doi.org/10.1523/JNEUROSCI.5111-14.2015>
 
 Boutwell, B. B., & Maestripieri, D. (2023). On the Usefulness of Behavior Genetics: Using Family Studies in Evolutionary Psychological Science to Improve Causal Inference and Sharpen Theory. Adaptive Human Behavior and Physiology, 9(4), 387–399. <https://doi.org/10.1007/s40750-023-00228-9>
 
@@ -646,7 +646,7 @@ to Dabrowska (2015). Open Linguistics, 2(1). <https://doi.org/10.1515/opli-2016-
 
 Boyd, R., & Mathew, S. (2015). Third-party monitoring and sanctions aid the evolution of language. Evolution and Human Behavior, 36(6), 475–479. <https://doi.org/10.1016/j.evolhumbehav.2015.06.002>
 
-Boyer, P. (2022). Ownership psychology as a cognitive adaptation: A minimalist model. Behavioral and Brain Sciences, 46. https://doi.org/10.1017/s0140525x22002527. <https://doi.org/10.1017/S0140525X22002527>
+Boyer, P. (2022). Ownership psychology as a cognitive adaptation: A minimalist model. Behavioral and Brain Sciences, 46. <https://doi.org/10.1017/S0140525X22002527>
 
 Boyer, P., & Barrett, H. C. (2015). Domain Specificity and Intuitive Ontology. The Handbook of Evolutionary Psychology, 96–118. Portico. <https://doi.org/10.1002/9780470939376.ch3>
 
@@ -658,7 +658,7 @@ Bradley, C., & Wilbur, R. (2023). Visual Form and Event Semantics Predict Transi
 
 Brand, C. O., Mesoudi, A., & Smaldino, P. E. (2021). Analogy as a Catalyst for Cumulative Cultural Evolution. Trends in Cognitive Sciences, 25(6), 450–461. <https://doi.org/10.1016/j.tics.2021.03.002>
 
-Branigan, H. P., & Pickering, M. J. (2016). An experimental approach to linguistic representation. Behavioral and Brain Sciences, 40. https://doi.org/10.1017/s0140525x16002028. <https://doi.org/10.1017/S0140525X16002028>
+Branigan, H. P., & Pickering, M. J. (2016). An experimental approach to linguistic representation. Behavioral and Brain Sciences, 40. <https://doi.org/10.1017/S0140525X16002028>
 
 Bratanova, B. (2025). Conceptualizing and Lexicalizing Pillars of Statehood: National Mottos Across Borders and Cultures. Cultures, Narratives, and Concepts, 3–22. <https://doi.org/10.1007/978-3-031-86158-1_1>
 
@@ -694,11 +694,11 @@ Brody, G., & Feiman, R. (2023). Polysemy does not exist, at least not in the rel
 
 Brody, M. (2019). Some biolinguistic remarks. Acta Linguistica Academica, 66(3), 335–347. <https://doi.org/10.1556/2062.2019.66.3.2>
 
-Bross, F. (2019). <i>The clausal syntax of German Sign Language: A cartographic approach</i>. Zenodo. https://doi.org/10.5281/ZENODO.3560718. <https://doi.org/10.5281/zenodo.3560718>
+Bross, F. (2019). <i>The clausal syntax of German Sign Language: A cartographic approach</i>. Zenodo. <https://doi.org/10.5281/zenodo.3560718>
 
-Bross, F., & Fraser, K. (2020). Contrastive focus reduplication and the modification puzzle. Glossa: A Journal of General Linguistics, 5(1). https://doi.org/10.5334/gjgl.1075. <https://doi.org/10.5334/GJGL.1075>
+Bross, F., & Fraser, K. (2020). Contrastive focus reduplication and the modification puzzle. Glossa: A Journal of General Linguistics, 5(1). <https://doi.org/10.5334/GJGL.1075>
 
-Brothers, T., Hoversten, L. J., & Traxler, M. J. (2021). Bilinguals on the garden-path: Individual differences in syntactic ambiguity resolution. Bilingualism: Language and Cognition, 24(4), 612–627. https://doi.org/10.1017/s1366728920000711. <https://doi.org/10.1017/S1366728920000711>
+Brothers, T., Hoversten, L. J., & Traxler, M. J. (2021). Bilinguals on the garden-path: Individual differences in syntactic ambiguity resolution. Bilingualism: Language and Cognition, 24(4), 612–627. <https://doi.org/10.1017/S1366728920000711>
 
 Brouillet, T., Michalland, A.-H., Martin, S., & Brouillet, D. (2021). When the Action to Be Performed at the Stage of Retrieval Enacts Memory of Action Verbs. Experimental Psychology, 68(1), 18–31. <https://doi.org/10.1027/1618-3169/a000507>
 
@@ -740,7 +740,7 @@ BURIGO, M., & SCHULTHEIS, H. (2018). The effects of direction and orientation of
 
 Burkart, J. M., Adriaense, J. E. C., Brügger, R. K., Miss, F. M., Wierucka, K., & van Schaik, C. P. (2022). A convergent interaction engine: vocal communication among marmoset monkeys. Philosophical Transactions of the Royal Society B, 377(1859). <https://doi.org/10.1098/rstb.2021.0098>
 
-Burkart, J. M., Schubiger, M. N., & van Schaik, C. P. (2016). The evolution of general intelligence. Behavioral and Brain Sciences, 40. https://doi.org/10.1017/s0140525x16000959. <https://doi.org/10.1017/S0140525X16000959>
+Burkart, J. M., Schubiger, M. N., & van Schaik, C. P. (2016). The evolution of general intelligence. Behavioral and Brain Sciences, 40. <https://doi.org/10.1017/S0140525X16000959>
 
 Burke, M., & Bon, E. V. (2018). The Locations and Means of Literary Reading. In Oxford Scholarship Online. Oxford University Press. <https://doi.org/10.1093/oso/9780190457747.003.0010>
 
@@ -766,11 +766,11 @@ Byun, K.-S., Roberts, S. G., de Vos, C., Zeshan, U., & Levinson, S. C. (2022). D
 
 Caffarra, S., Wolpert, M., Scarinci, D., & Mancini, S. (2020). Who are you talking to? The role of addressee identity in utterance comprehension. Psychophysiology, 57(4). Portico. <https://doi.org/10.1111/psyp.13527>
 
-Cahoone, L. (2019). Mead and the Emergence of the Joint Intentional Self. European Journal of Pragmatism and American Philosophy, XI(2). https://doi.org/10.4000/ejpap.1683. <https://doi.org/10.4000/EJPAP.1683>
+Cahoone, L. (2019). Mead and the Emergence of the Joint Intentional Self. European Journal of Pragmatism and American Philosophy, XI(2). <https://doi.org/10.4000/EJPAP.1683>
 
 Cai, L., Wang, Z., Wang, C., Zou, B., & Zhang, X. (2025). Interactivity and signaling in Immersive Virtual Reality: Effects on EFL learning experiences and outcomes. Computers &amp; Education, 238, 105412. <https://doi.org/10.1016/j.compedu.2025.105412>
 
-Cain, E., & Ryskin, R. (2025). Semantic Representations Are Updated Across the Lifespan Reflecting Diachronic Language Change. Open Mind, 9, 2114–2148. https://doi.org/10.1162/opmi.a.315. <https://doi.org/10.1162/OPMI.a.315>
+Cain, E., & Ryskin, R. (2025). Semantic Representations Are Updated Across the Lifespan Reflecting Diachronic Language Change. Open Mind, 9, 2114–2148. <https://doi.org/10.1162/OPMI.a.315>
 
 Cain, M. J. (2021). Innateness and Cognition. <https://doi.org/10.4324/9781315644356>
 
@@ -784,11 +784,11 @@ Cann, R. (2017). What do Words do for Us? Dialectica, 71(3), 425–460. <https:/
 
 Cantlon, J. F., & Piantadosi, S. T. (2024). Uniquely human intelligence arose from expanded information capacity. Nature Reviews Psychology, 3(4), 275–293. <https://doi.org/10.1038/s44159-024-00283-3>
 
-Canu Højgaard, C. (2024). Roles and Relations in Biblical Law. Semitic Languages and Cultures. https://doi.org/10.11647/obp.0376. <https://doi.org/10.11647/OBP.0376>
+Canu Højgaard, C. (2024). Roles and Relations in Biblical Law. Semitic Languages and Cultures. <https://doi.org/10.11647/OBP.0376>
 
 Cao, D. (2017). Chinese Law. Routledge. <https://doi.org/10.4324/9781315260419>
 
-Cao, Y., & Wang, L. (2017). Processing of emotional information in written language. Chinese Science Bulletin, 63(2), 148–163. https://doi.org/10.1360/n972017-00701. <https://doi.org/10.1360/N972017-00701>
+Cao, Y., & Wang, L. (2017). Processing of emotional information in written language. Chinese Science Bulletin, 63(2), 148–163. <https://doi.org/10.1360/N972017-00701>
 
 Cao, Y., Majid, A., & Vanek, N. (2025). Not all verbal labels grease the wheels of odor categories. Language and Cognition, 17. <https://doi.org/10.1017/langcog.2025.1>
 
@@ -804,7 +804,7 @@ Carling, G. (2024). Linguistic Archaeology. <https://doi.org/10.4324/97810032916
 
 Carnie, A. (2007). Constituent Structure. <https://doi.org/10.1093/oso/9780199261994.001.0001>
 
-CARROLL, S. E. (2015). Exposure and input in bilingual development. Bilingualism: Language and Cognition, 20(1), 3–16. https://doi.org/10.1017/s1366728915000863. <https://doi.org/10.1017/S1366728915000863>
+CARROLL, S. E. (2015). Exposure and input in bilingual development. Bilingualism: Language and Cognition, 20(1), 3–16. <https://doi.org/10.1017/S1366728915000863>
 
 Carroll, S. E. (2019). Prosodic effects on L2 grammars. Linguistic Approaches to Bilingualism, 9(6), 827–832. Portico. <https://doi.org/10.1075/lab.19050.car>
 
@@ -826,7 +826,7 @@ Caruana, M. V. (2020). South African handaxes reloaded. Journal of Archaeologica
 
 Caruana, M. V., Wilson, C. G., Blackwood, A. F., & Herries, A. I. R. (2022). Mitigating Mishaps: Diachronic Trends in Handaxe Shaping and Knapping Error Management at Amanzi Springs Area 2 (Eastern Cape, South Africa). Lithic Technology, 48(4), 347–363. <https://doi.org/10.1080/01977261.2022.2155905>
 
-Casas Navarro, R., & Montoya Samamé, J. (2018). ASEDIOS A LA GRAMÁTICA UNIVERSAL. Atenea (Concepción), 517, 105–122. https://doi.org/10.4067/s0718-04622018000100105. <https://doi.org/10.4067/S0718-04622018000100105>
+Casas Navarro, R., & Montoya Samamé, J. (2018). ASEDIOS A LA GRAMÁTICA UNIVERSAL. Atenea (Concepción), 517, 105–122. <https://doi.org/10.4067/S0718-04622018000100105>
 
 Cassani, G., Chuang, Y.-Y., & Baayen, R. H. (2020). On the semantics of nonwords and their lexical category. Journal of Experimental Psychology: Learning, Memory, and Cognition, 46(4), 621–637. <https://doi.org/10.1037/xlm0000747>
 
@@ -854,7 +854,7 @@ Chahboun, S., Kvello, Ø., & Page, A. G. (2021). Extending the Field of Extended
 
 Chahboun, S., Vulchanov, V., Saldaña, D., Eshuis, H., & Vulchanova, M. (2016). Can You Play with Fire and Not Hurt Yourself? A Comparative Study in Figurative Language Comprehension between Individuals with and without Autism Spectrum Disorder. PLOS ONE, 11(12), e0168571. <https://doi.org/10.1371/journal.pone.0168571>
 
-Chai, Q., Huang, G., Fei, Y., Ma, G., Zhang, G., & Tang, H. (2023). A spatial cognition approach based on grid cell group representation for embodied intelligence. Chinese Science Bulletin, 68(35), 4872–4884. https://doi.org/10.1360/tb-2023-0850. <https://doi.org/10.1360/TB-2023-0850>
+Chai, Q., Huang, G., Fei, Y., Ma, G., Zhang, G., & Tang, H. (2023). A spatial cognition approach based on grid cell group representation for embodied intelligence. Chinese Science Bulletin, 68(35), 4872–4884. <https://doi.org/10.1360/TB-2023-0850>
 
 Chai, X., & Ma, M. (2022). Exploring Relationships Between L2 Chinese Character Writing and Reading Acquisition From Embodied Cognitive Perspectives: Evidence From HSK Big Data. Frontiers in Psychology, 12. <https://doi.org/10.3389/fpsyg.2021.779190>
 
@@ -880,7 +880,7 @@ Chater, N. (2023). How could we make a social robot? A virtual bargaining approa
 
 Chater, N. (2025). Hunting for Paradoxes: A Research Strategy for Cognitive Science. Topics in Cognitive Science, 17(3), 770–801. Portico. <https://doi.org/10.1111/tops.70004>
 
-Chater, N., & Christiansen, M. H. (2025). Social Tinkering: The Social Foundations of Cultural Complexity. Behavioral and Brain Sciences, 1–62. https://doi.org/10.1017/s0140525x25103981. <https://doi.org/10.1017/S0140525X25103981>
+Chater, N., & Christiansen, M. H. (2025). Social Tinkering: The Social Foundations of Cultural Complexity. Behavioral and Brain Sciences, 1–62. <https://doi.org/10.1017/S0140525X25103981>
 
 Chater, N., Zeitoun, H., & Melkonyan, T. (2022). The paradox of social interaction: Shared intentionality, we-reasoning, and virtual bargaining. Psychological Review, 129(3), 415–437. <https://doi.org/10.1037/rev0000343>
 
@@ -888,7 +888,7 @@ Chatzikyriakidis, S., & Gibson, H. (2017). The Bantu-Romance-Greek connection re
 
 Chaudhuri, S., & Bhattacharya, J. (2025). The Power of Brevity: Creativity Judgments in English Language Haiku and Senryu Poetry. The Journal of Creative Behavior, 59(2). Portico. <https://doi.org/10.1002/jocb.70018>
 
-CHAVES, R. P., & DERY, J. E. (2018). Frequency effects in Subject Islands. Journal of Linguistics, 55(3), 475–521. https://doi.org/10.1017/s0022226718000294. <https://doi.org/10.1017/S0022226718000294>
+CHAVES, R. P., & DERY, J. E. (2018). Frequency effects in Subject Islands. Journal of Linguistics, 55(3), 475–521. <https://doi.org/10.1017/S0022226718000294>
 
 Chaves, R. P., & Putnam, M. T. (2020). Unbounded Dependency Constructions. <https://doi.org/10.1093/oso/9780198784999.001.0001>
 
@@ -912,7 +912,7 @@ Chernela, J. (2023). The Great Pirahã Brouhaha: Linguistic Diversity and Cognit
 
 Cherniak, C. (2020). Extending the bounded rationality framework. Routledge Handbook of Bounded Rationality, 391–397. <https://doi.org/10.4324/9781315658353-27>
 
-Chernigovskaya, T. V. (2020). Biology, environment, and culture: From animal communication to human language and cognition. Vestnik of Saint Petersburg University. Philosophy and Conflict Studies, 36(1), 157–170. https://doi.org/10.21638/spbu17.2020.113. <https://doi.org/10.21638/SPBU17.2020.113>
+Chernigovskaya, T. V. (2020). Biology, environment, and culture: From animal communication to human language and cognition. Vestnik of Saint Petersburg University. Philosophy and Conflict Studies, 36(1), 157–170. <https://doi.org/10.21638/SPBU17.2020.113>
 
 Chhaya, P. (2023). The Topological Model of Genome and Evolution. Springer Nature Singapore. <https://doi.org/10.1007/978-981-99-4318-0>
 
@@ -940,27 +940,27 @@ Choubsaz, Y., & Gheitury, A. (2016). Is Semantics Affected by Missing a Critical
 
 Christensen, P., Fusaroli, R., & Tylén, K. (2016). Environmental constraints shaping constituent order in emerging communication systems: Structural iconicity, interactive alignment and conventionalization. Cognition, 146, 67–80. <https://doi.org/10.1016/j.cognition.2015.09.004>
 
-Christiansen, M. H. (2017). <i>Language Intertwined Across Multiple Timescales</i>. Zenodo. https://doi.org/10.5281/ZENODO.573775. <https://doi.org/10.5281/zenodo.573775>
+Christiansen, M. H. (2017). <i>Language Intertwined Across Multiple Timescales</i>. Zenodo. <https://doi.org/10.5281/zenodo.573775>
 
 Christiansen, M. H., & Chater, N. (2015). The language faculty that wasn’t: a usage-based account of natural language recursion. Frontiers in Psychology, 6. <https://doi.org/10.3389/fpsyg.2015.01182>
 
-Christiansen, M. H., & Chater, N. (2015). The Now-or-Never bottleneck: A fundamental constraint on language. Behavioral and Brain Sciences, 39. https://doi.org/10.1017/s0140525x1500031x. <https://doi.org/10.1017/S0140525X1500031X>
+Christiansen, M. H., & Chater, N. (2015). The Now-or-Never bottleneck: A fundamental constraint on language. Behavioral and Brain Sciences, 39. <https://doi.org/10.1017/S0140525X1500031X>
 
 Christiansen, M. H., & Oaksford, M. (2025). Introduction to the Special Issue in Honor of Nick Chater Receiving the 2023 Rumelhart Prize. Topics in Cognitive Science, 17(3), 625–635. Portico. <https://doi.org/10.1111/tops.70007>
 
-Christman, S. D., & Prichard, E. C. (2024). Historical changes in everyday human lifestyles and their effects on hemispheric activation: Speculations on McGilchrist’sThe Master and His Emissary. Laterality, 29(2), 169–183. https://doi.org/10.1080/1357650x.2024.2315854. <https://doi.org/10.1080/1357650X.2024.2315854>
+Christman, S. D., & Prichard, E. C. (2024). Historical changes in everyday human lifestyles and their effects on hemispheric activation: Speculations on McGilchrist’sThe Master and His Emissary. Laterality, 29(2), 169–183. <https://doi.org/10.1080/1357650X.2024.2315854>
 
 Chrupała, G. (2023). Putting Natural in Natural Language Processing. Findings of the Association for Computational Linguistics: ACL 2023, 7820–7827. <https://doi.org/10.18653/v1/2023.findings-acl.495>
 
 Chuang, A. H. C., & Chang, Y. (2025). From Use to Mention: Path-Locative Constructions that Trigger Conversion in English. Linguistics, Language Education, and Language Contact, 21–40. <https://doi.org/10.1007/978-3-031-86154-3_2>
 
-CHUNG, E. S. (2016). Second and heritage language acquisition of Korean case drop. Bilingualism: Language and Cognition, 21(1), 63–79. https://doi.org/10.1017/s1366728916001218. <https://doi.org/10.1017/S1366728916001218>
+CHUNG, E. S. (2016). Second and heritage language acquisition of Korean case drop. Bilingualism: Language and Cognition, 21(1), 63–79. <https://doi.org/10.1017/S1366728916001218>
 
 Cimentepe, I., & Bingol, H. O. (2017). Parent oriented teacher selection causes language diversity. Journal of Theoretical Biology, 429, 142–148. <https://doi.org/10.1016/j.jtbi.2017.06.032>
 
-Cirillo, D., Gonen, H., Santus, E., Valencia, A., Costa-jussà, M. R., & Villegas, M. (2022). Sex and gender bias in natural language processing. Sex and Gender Bias in Technology and Artificial Intelligence, 113–132. https://doi.org/10.1016/b978-0-12-821392-6.00009-1. <https://doi.org/10.1016/B978-0-12-821392-6.00009-1>
+Cirillo, D., Gonen, H., Santus, E., Valencia, A., Costa-jussà, M. R., & Villegas, M. (2022). Sex and gender bias in natural language processing. Sex and Gender Bias in Technology and Artificial Intelligence, 113–132. <https://doi.org/10.1016/B978-0-12-821392-6.00009-1>
 
-Clark Barrett, H. (2017). The Search for Human Cognitive Specializations. Evolution of Nervous Systems, 355–366. https://doi.org/10.1016/b978-0-12-804042-3.00122-6. <https://doi.org/10.1016/B978-0-12-804042-3.00122-6>
+Clark Barrett, H. (2017). The Search for Human Cognitive Specializations. Evolution of Nervous Systems, 355–366. <https://doi.org/10.1016/B978-0-12-804042-3.00122-6>
 
 Clark, J., & Linares-Matás, G. J. (2025). Setbacks in the use of a handaxe: lithic investment and seasonality in the Early Acheulean. Archaeological and Anthropological Sciences, 17(2). <https://doi.org/10.1007/s12520-024-02133-y>
 
@@ -968,7 +968,7 @@ Clement Kwamina Insaidoo Appah. (2016). Noun-adjective compounds in Akan [JB]. L
 
 Clough, S., & Duff, M. C. (2020). The Role of Gesture in Communication and Cognition: Implications for Understanding and Treating Neurogenic Communication Disorders. Frontiers in Human Neuroscience, 14. <https://doi.org/10.3389/fnhum.2020.00323>
 
-Cobos López, I. (2022). Traducción y multimodalidad para la divulgación de la ciencia dirigida a un público infantil. MonTI. Monografías de Traducción e Interpretación, 14, 87–118. https://doi.org/10.6035/monti.2022.14.03. <https://doi.org/10.6035/MonTI.2022.14.03>
+Cobos López, I. (2022). Traducción y multimodalidad para la divulgación de la ciencia dirigida a un público infantil. MonTI. Monografías de Traducción e Interpretación, 14, 87–118. <https://doi.org/10.6035/MonTI.2022.14.03>
 
 Cocho, G., Flores, J., Gershenson, C., Pineda, C., & Sánchez, S. (2015). Rank Diversity of Languages: Generic Behavior in Computational Linguistics. PLOS ONE, 10(4), e0121898. <https://doi.org/10.1371/journal.pone.0121898>
 
@@ -1044,7 +1044,7 @@ Compounds and multi-word expressions in German. (2019). Complex Lexical Units, 6
 
 Compounds and multi-word expressions in the languages of Europe. (2019). Complex Lexical Units, 1–44. <https://doi.org/10.1515/9783110632446-001>
 
-Constructions and Usage‐based Approaches to Language Acquisition. (2016). Language Learning, 66(S1), 23–44. Portico. https://doi.org/10.1111/lang.1_12177. <https://doi.org/10.1111/LANG.1_12177>
+Constructions and Usage‐based Approaches to Language Acquisition. (2016). Language Learning, 66(S1), 23–44. Portico. <https://doi.org/10.1111/LANG.1_12177>
 
 Contreras Kallens, P. A., Dale, R., & Smaldino, P. E. (2018). Cultural evolution of categorization. Cognitive Systems Research, 52, 765–774. <https://doi.org/10.1016/j.cogsys.2018.08.026>
 
@@ -1056,7 +1056,7 @@ Cook, N. D. (2018). The Triadic Roots of Human Cognition: “Mind” Is the Abil
 
 Cook, S. W., Wernette, E. M. D., Valentine, M., Aldugom, M., Pruner, T., & Fenn, K. M. (2024). How Prior Knowledge, Gesture Instruction, and Interference After Instruction Interact to Influence Learning of Mathematical Equivalence. Cognitive Science, 48(2). Portico. <https://doi.org/10.1111/cogs.13412>
 
-Cook, V. (2016). Premises of multi-competence. The Cambridge Handbook of Linguistic Multi-Competence, 1–25. https://doi.org/10.1017/cbo9781107425965.001. <https://doi.org/10.1017/CBO9781107425965.001>
+Cook, V. (2016). Premises of multi-competence. The Cambridge Handbook of Linguistic Multi-Competence, 1–25. <https://doi.org/10.1017/CBO9781107425965.001>
 
 Coolidge, F. L. (2020). Evolutionary Neuropsychology. <https://doi.org/10.1093/oso/9780190940942.001.0001>
 
@@ -1068,11 +1068,11 @@ Cooper, R. (2019). Representing Types as Neural Events. Journal of Logic, Langua
 
 Cooper, R. (2023). From Perception to Communication. <https://doi.org/10.1093/oso/9780192871312.001.0001>
 
-Cooperrider, K. (2023). Fifteen ways of looking at a pointing gesture. Public Journal of Semiotics, 10(2), 40–84. https://doi.org/10.37693/pjos.2023.10.25120. <https://doi.org/10.37693/PJOS.2023.10.25120>
+Cooperrider, K. (2023). Fifteen ways of looking at a pointing gesture. Public Journal of Semiotics, 10(2), 40–84. <https://doi.org/10.37693/PJOS.2023.10.25120>
 
 Coopmans, C. W., Kaushik, K., & Martin, A. E. (2023). Hierarchical structure in language and action: A formal comparison. Psychological Review, 130(4), 935–952. <https://doi.org/10.1037/rev0000429>
 
-Corballis, M. C. (2015). Mirror Neurons, Theory of. International Encyclopedia of the Social &amp; Behavioral Sciences, 582–588. https://doi.org/10.1016/b978-0-08-097086-8.23204-2. <https://doi.org/10.1016/B978-0-08-097086-8.23204-2>
+Corballis, M. C. (2015). Mirror Neurons, Theory of. International Encyclopedia of the Social &amp; Behavioral Sciences, 582–588. <https://doi.org/10.1016/B978-0-08-097086-8.23204-2>
 
 Corballis, M. C. (2015). What’s left in language? Beyond the classical model. Annals of the New York Academy of Sciences, 1359(1), 14–29. Portico. <https://doi.org/10.1111/nyas.12761>
 
@@ -1106,7 +1106,7 @@ Cowan, N. (2019). Short-term memory based on activated long-term memory: A revie
 
 Coward, F. (2016). Scaling up: Material culture as scaffold for the social brain. Quaternary International, 405, 78–90. <https://doi.org/10.1016/j.quaint.2015.09.064>
 
-Coward, F., Hosfield, R., Pope, M., & Wenban-Smith, F. (Eds.). (2015). Settlement, Society and Cognition in Human Evolution. Cambridge University Press. https://doi.org/10.1017/cbo9781139208697. <https://doi.org/10.1017/CBO9781139208697>
+Coward, F., Hosfield, R., Pope, M., & Wenban-Smith, F. (Eds.). (2015). Settlement, Society and Cognition in Human Evolution. Cambridge University Press. <https://doi.org/10.1017/CBO9781139208697>
 
 Cowley, S. J., & Kuhle, A. (2020). The rise of languaging. Biosystems, 198, 104264. <https://doi.org/10.1016/j.biosystems.2020.104264>
 
@@ -1118,7 +1118,7 @@ Crespi, B., & Leach, E. (2015). The Evolutionary Biology of Human Neurodevelopme
 
 Crocchiolo, P. R. (2020). Social Media: “Surrogate Tribes”? The Logic of Social Practices, 69–76. <https://doi.org/10.1007/978-3-030-37305-4_5>
 
-Cruz, F. M., & Tamanaha, A. C. (2021). Do silêncio às ações corporificadas em interações de crianças com Transtorno do Espectro do autismo não-verbais. Calidoscópio, 19(2), 209–223. https://doi.org/10.4013/cld.2021.192.04. <https://doi.org/10.4013/CLD.2021.192.04>
+Cruz, F. M., & Tamanaha, A. C. (2021). Do silêncio às ações corporificadas em interações de crianças com Transtorno do Espectro do autismo não-verbais. Calidoscópio, 19(2), 209–223. <https://doi.org/10.4013/CLD.2021.192.04>
 
 Cuccio, V., & Gallese, V. (2018). A Peircean account of concepts: grounding abstraction in phylogeny through a comparative neuroscientific perspective. Philosophical Transactions of the Royal Society B: Biological Sciences, 373(1752), 20170128. <https://doi.org/10.1098/rstb.2017.0128>
 
@@ -1174,13 +1174,13 @@ D’Ulizia, A., Ferri, F., & Grifoni, P. (2019). A Survey on Modeling Language E
 
 Da Cruz, F. M. (2018). Documentação multimodal de interações com crianças com Transtorno do Espectro do Autismo: corpo, língua e mundo material. Calidoscópio, 16(2). <https://doi.org/10.4013/cld.2018.162.01>
 
-Dabouis, Q., & Fournier, J.-M. (2024). Opaque morphology and phonology: Historical prefixes in English. Journal of Linguistics, 61(2), 231–263. https://doi.org/10.1017/s002222672400015x. <https://doi.org/10.1017/S002222672400015X>
+Dabouis, Q., & Fournier, J.-M. (2024). Opaque morphology and phonology: Historical prefixes in English. Journal of Linguistics, 61(2), 231–263. <https://doi.org/10.1017/S002222672400015X>
 
 Dagan, G., Hupkes, D., & Bruni, E. (2021). Co-evolution of language and agents in referential games. Proceedings of the 16th Conference of the European Chapter of the Association for Computational Linguistics: Main Volume. <https://doi.org/10.18653/v1/2021.eacl-main.260>
 
 Dahlgrün, M. H. (2014). The Broad Foundations of Adaptationist-Computational Evolutionary Psychology. Epistemological Dimensions of Evolutionary Psychology, 19–68. <https://doi.org/10.1007/978-1-4939-1387-9_2>
 
-Dai, H. (2025). An exception-filtering approach to phonotactic learning. Phonology, 42. https://doi.org/10.1017/s0952675725000028. <https://doi.org/10.1017/S0952675725000028>
+Dai, H. (2025). An exception-filtering approach to phonotactic learning. Phonology, 42. <https://doi.org/10.1017/S0952675725000028>
 
 Dale, R. (2015). An Integrative Research Strategy for Exploring Synergies in Natural Language Performance. Ecological Psychology, 27(3), 190–201. <https://doi.org/10.1080/10407413.2015.1068649>
 
@@ -1220,7 +1220,7 @@ de Boer, B. (2016). Modeling Co‐evolution of Speech and Biology. Topics in Cog
 
 de Boer, B. (2017). Complexity in Speech: Teasing Apart Culture and Cognition. Complexity in Language, 48–66. <https://doi.org/10.1017/9781107294264.003>
 
-de Boer, B. (2019). Evolution of Speech: Anatomy and Control. Journal of Speech, Language, and Hearing Research, 62(8S), 2932–2945. https://doi.org/10.1044/2019_jslhr-s-csmc7-18-0293. <https://doi.org/10.1044/2019_JSLHR-S-CSMC7-18-0293>
+de Boer, B. (2019). Evolution of Speech: Anatomy and Control. Journal of Speech, Language, and Hearing Research, 62(8S), 2932–2945. <https://doi.org/10.1044/2019_JSLHR-S-CSMC7-18-0293>
 
 de Boer, B., & Thompson, B. (2018). Biology-Culture Co-evolution in Finite Populations. Scientific Reports, 8(1). <https://doi.org/10.1038/s41598-017-18928-0>
 
@@ -1228,7 +1228,7 @@ de Boer, M., Kokal, I., Blokpoel, M., Liu, R., Stolk, A., Roelofs, K., van Rooij
 
 De Carolis, L., Marsico, E., & Coupé, C. (2017). Evolutionary roots of sound symbolism. Association tasks of animal properties with phonetic features. Language &amp; Communication, 54, 21–35. <https://doi.org/10.1016/j.langcom.2016.10.003>
 
-de Chene, B. (2017). <i>Root-Based Syntax And Japanese Derivational Morphology</i>. Zenodo. https://doi.org/10.5281/ZENODO.495442. <https://doi.org/10.5281/zenodo.495442>
+de Chene, B. (2017). <i>Root-Based Syntax And Japanese Derivational Morphology</i>. Zenodo. <https://doi.org/10.5281/zenodo.495442>
 
 De Deyne, S., Brysbaert, M., & Elgort, I. (2023). Cross-language influences in L2 semantic and conceptual representation and processing. Cross-Language Influences in Bilingual Processing and Second Language Acquisition, 152–186. Portico. <https://doi.org/10.1075/bpa.16.07ded>
 
@@ -1254,11 +1254,11 @@ Dediu, D., & de Boer, B. (2015). Language evolution needs its own journal. Journ
 
 Deem, M. J. (2016). Dehorning the Darwinian dilemma for normative realism. Biology &amp; Philosophy, 31(5), 727–746. <https://doi.org/10.1007/s10539-016-9529-z>
 
-Delaine, L. (2022). Habituation and wonder: embodied knowledge in Renaissance Italy’s memory. <i>Ágora. Estudos Clássicos Em Debate</i>, n.º 24.1 (2022): Ágora. Estudos Clássicos em Debate — Ars memorativa. https://doi.org/10.34624/AGORA.V0I24.1.29404. <https://doi.org/10.34624/agora.v0i24.1.29404>
+Delaine, L. (2022). Habituation and wonder: embodied knowledge in Renaissance Italy’s memory. <i>Ágora. Estudos Clássicos Em Debate</i>, n.º 24.1 (2022): Ágora. Estudos Clássicos em Debate — Ars memorativa. <https://doi.org/10.34624/agora.v0i24.1.29404>
 
 Delfitto, D. (2025). Externalization and language design [JB]. Rivista internazionale di Filosofia e Psicologia, 16(1), 35–42. <https://doi.org/10.4453/rifp.2025.0005>
 
-Delia Bentley, &amp; Nigel Vincent. (2023). <i>LFG and Role and Reference Grammar</i>. Language Science Press. https://doi.org/10.5281/ZENODO.10186048. <https://doi.org/10.5281/zenodo.10186048>
+Delia Bentley, &amp; Nigel Vincent. (2023). <i>LFG and Role and Reference Grammar</i>. Language Science Press. <https://doi.org/10.5281/zenodo.10186048>
 
 Delisle, R. (2015). Debating Humankind’s Place in Nature, 1860-2000. Routledge. <https://doi.org/10.4324/9781315664361>
 
@@ -1276,9 +1276,9 @@ Demartsev, V., Strandburg-Peshkin, A., Ruffner, M., & Manser, M. (2018). Vocal T
 
 Demuru, E., & Giacoma, C. (2022). Interacting primates: the biological roots of human communication. Ethology Ecology &amp; Evolution, 34(3), 201–204. <https://doi.org/10.1080/03949370.2022.2059788>
 
-Denisov, P., & Vu, N. T. (2020). Pretrained Semantic Speech Embeddings for End-to-End Spoken Language Understanding via Cross-Modal Teacher-Student Learning. Interspeech 2020, 881–885. https://doi.org/10.21437/interspeech.2020-2456. <https://doi.org/10.21437/Interspeech.2020-2456>
+Denisov, P., & Vu, N. T. (2020). Pretrained Semantic Speech Embeddings for End-to-End Spoken Language Understanding via Cross-Modal Teacher-Student Learning. Interspeech 2020, 881–885. <https://doi.org/10.21437/Interspeech.2020-2456>
 
-Dennett, D. (2020). Comment on “Can memes explain the birth of comprehension?” AVANT. The Journal of the Philosophical-Interdisciplinary Vanguard, 11(2). https://doi.org/10.26913/avant.2020.02.13. <https://doi.org/10.26913/AVANT.2020.02.13>
+Dennett, D. (2020). Comment on “Can memes explain the birth of comprehension?” AVANT. The Journal of the Philosophical-Interdisciplinary Vanguard, 11(2). <https://doi.org/10.26913/AVANT.2020.02.13>
 
 Dennett, D. C. (2018). Facing up to the hard question of consciousness. Philosophical Transactions of the Royal Society B: Biological Sciences, 373(1755). <https://doi.org/10.1098/rstb.2017.0342>
 
@@ -1288,11 +1288,11 @@ Dessalles, J.-L. (2014). Human Language: An Evolutionary Anomaly. Handbook of Ev
 
 Dessalles, J.-L. (2016). L’émergence du sens au cours de l’évolution. Langages, N° 201(1), 129–145. <https://doi.org/10.3917/lang.201.0129>
 
-Dessalles, J.-L. (2021). Language: The missing selection pressure. Theoria et Historia Scientiarum, 17, 7. https://doi.org/10.12775/ths.2020.001. <https://doi.org/10.12775/THS.2020.001>
+Dessalles, J.-L. (2021). Language: The missing selection pressure. Theoria et Historia Scientiarum, 17, 7. <https://doi.org/10.12775/THS.2020.001>
 
 Destefano, M. (2017). La composicionalidad del lenguaje revisitada. Tópicos, Revista de Filosofía, 53, 51. <https://doi.org/10.21555/top.v0i53.844>
 
-Destéfano, M. (2019). Procesamiento de la información lingüística y lenguaje del pensamiento. Tópicos. Revista de Filosofía de Santa Fe, 36, 20–38. https://doi.org/10.14409/topicos.v0i36.8226. <https://doi.org/10.14409/TOPICOS.V0I36.8226>
+Destéfano, M. (2019). Procesamiento de la información lingüística y lenguaje del pensamiento. Tópicos. Revista de Filosofía de Santa Fe, 36, 20–38. <https://doi.org/10.14409/TOPICOS.V0I36.8226>
 
 Destéfano, M. (2023). Somewhere in-between: Inner speech and proto-mental content [JD]. Rivista internazionale di Filosofia e Psicologia, 14(3), 181–191. <https://doi.org/10.4453/rifp.2023.0015>
 
@@ -1352,17 +1352,17 @@ Drobňák, M. (2024). Compositionality, communication, and commitments. Synthese
 
 Droste, K.-K. (2025). Constructing a hierarchical network of prefixal
                     up
-                    from a Construction Morphology perspective. English Language and Linguistics, 1–24. https://doi.org/10.1017/s1360674325100555. <https://doi.org/10.1017/S1360674325100555>
+                    from a Construction Morphology perspective. English Language and Linguistics, 1–24. <https://doi.org/10.1017/S1360674325100555>
 
 Drożdż, G. (2016). Introduction. Studies in Lexicogrammar, 1–20. Portico. <https://doi.org/10.1075/hcp.54.01dro>
 
 Drummond, J. J. (2023). Phenomenology Park: The Landscape of Husserlian Phenomenology. Horizons of Phenomenology, 49–62. <https://doi.org/10.1007/978-3-031-26074-2_3>
 
-Du, Y., Wu, Y., & Lan, M. (2019). Exploring Human Gender Stereotypes with Word Association Test. Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP), 6132–6142. https://doi.org/10.18653/v1/d19-1635. <https://doi.org/10.18653/v1/D19-1635>
+Du, Y., Wu, Y., & Lan, M. (2019). Exploring Human Gender Stereotypes with Word Association Test. Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP), 6132–6142. <https://doi.org/10.18653/v1/D19-1635>
 
 Dube, M. R. (2020). Enhanced UML Use Case Meta-model Semantics from Cognitive and Utility Perspectives. Advances in Computing and Data Sciences, 85–95. <https://doi.org/10.1007/978-981-15-6634-9_9>
 
-Duc Chau, D., & Thi Linh Nguyen, H. (2025). The Acquisition of Locative Alternation: A Multiple Account. 3L The Southeast Asian Journal of English Language Studies, 31(1), 211–234. https://doi.org/10.17576/3l-2025-3101-15. <https://doi.org/10.17576/3L-2025-3101-15>
+Duc Chau, D., & Thi Linh Nguyen, H. (2025). The Acquisition of Locative Alternation: A Multiple Account. 3L The Southeast Asian Journal of English Language Studies, 31(1), 211–234. <https://doi.org/10.17576/3L-2025-3101-15>
 
 Dudschig, C., Maienborn, C., & Kaup, B. (2016). Is there a difference between stripy journeys and stripy ladybirds? The N400 response to semantic and world-knowledge violations during sentence processing. Brain and Cognition, 103, 38–49. <https://doi.org/10.1016/j.bandc.2016.01.001>
 
@@ -1439,7 +1439,7 @@ Erteschik-Shir, N. (2007). Information Structure. <https://doi.org/10.1093/oso/9
 
 Eryilmaz, K., & Little, H. (2016). Using leap motion to investigate the emergence of structure in speech and language. Behavior Research Methods, 49(5), 1748–1768. <https://doi.org/10.3758/s13428-016-0818-x>
 
-Escutia, M. (2019). Chomsky with Lewis: Human Nature, Science and Language Origin. Scientia et Fides, 7(1), 163. https://doi.org/10.12775/setf.2019.008. <https://doi.org/10.12775/SetF.2019.008>
+Escutia, M. (2019). Chomsky with Lewis: Human Nature, Science and Language Origin. Scientia et Fides, 7(1), 163. <https://doi.org/10.12775/SetF.2019.008>
 
 Eskandari, Z., Khatin-Zadeh, O., Farsani, D., & Banaruee, H. (2024). The effect of type of task on EFL learners’ vocabulary learning. Frontiers in Psychology, 15. <https://doi.org/10.3389/fpsyg.2024.1306306>
 
@@ -1455,7 +1455,7 @@ Ettlinger, M., Morgan‐Short, K., Faretta‐Stutenberg, M., & Wong, P. C. M. (2
 
 Evans, V., & Green, M. (2018). Congnitive Linguistics an Introduction. Routledge. <https://doi.org/10.4324/9781315864327>
 
-Executive Brain Vitality. (2024). https://doi.org/10.1016/c2023-0-50727-x. <https://doi.org/10.1016/C2023-0-50727-X>
+Executive Brain Vitality. (2024). <https://doi.org/10.1016/C2023-0-50727-X>
 
 Experience, B. (Ed.). (2017). Performing Interdisciplinarity. Routledge. <https://doi.org/10.4324/9781315558639>
 
@@ -1465,11 +1465,11 @@ Fábrega, H. (2023). Evolution of Sickness and Healing. <https://doi.org/10.2307
 
 Fabry, R. E., & Pantsar, M. (2019). A fresh look at research strategies in computational cognitive science: The case of enculturated mathematical problem solving. Synthese, 198(4), 3221–3263. <https://doi.org/10.1007/s11229-019-02276-9>
 
-Fairlie, J. E., & Barham, L. S. (2016). From Chaîne Opératoire to Observational Analysis: A Pilot Study of a New Methodology for Analysing Changes in Cognitive Task-Structuring Strategies Across Different Hominin Tool-Making Events. Cambridge Archaeological Journal, 26(4), 643–664. https://doi.org/10.1017/s0959774316000469. <https://doi.org/10.1017/S0959774316000469>
+Fairlie, J. E., & Barham, L. S. (2016). From Chaîne Opératoire to Observational Analysis: A Pilot Study of a New Methodology for Analysing Changes in Cognitive Task-Structuring Strategies Across Different Hominin Tool-Making Events. Cambridge Archaeological Journal, 26(4), 643–664. <https://doi.org/10.1017/S0959774316000469>
 
 Falandays, J. B., Batzloff, B. J., Spevack, S. C., & Spivey, M. J. (2018). Interactionism in language: from neural networks to bodies to dyads. Language, Cognition and Neuroscience, 35(5), 543–558. <https://doi.org/10.1080/23273798.2018.1501501>
 
-Faluvégi, K., & Pléh, C. (2023). Thass-Thienemann and Fónagy: Two Hungarian Versions of Finding the Unconscious in Language. European Yearbook of the History of Psychology, 9, 129–159. https://doi.org/10.1484/j.eyhp.5.137226. <https://doi.org/10.1484/J.EYHP.5.137226>
+Faluvégi, K., & Pléh, C. (2023). Thass-Thienemann and Fónagy: Two Hungarian Versions of Finding the Unconscious in Language. European Yearbook of the History of Psychology, 9, 129–159. <https://doi.org/10.1484/J.EYHP.5.137226>
 
 Falzone, A. (2019). Evolution of Language. Continuity and Discontinuity through Models and Empirical Data. Theoria et Historia Scientiarum, 16, 63. <https://doi.org/10.12775/ths.2019.004>
 
@@ -1495,7 +1495,7 @@ Fayyaz, Z., Righetti, F., Wiskott, L., & Werning, M. (2025). Remembering without
 
 Fedato, A. (2025). Medical imaging technologies applied to ancient human behaviour and lifestyle. STAR: Science &amp; Technology of Archaeological Research, 11(1). <https://doi.org/10.1080/20548923.2025.2555066>
 
-Fedato, A., & Bruner, E. (2023). Handling prehistory: tools, electrophysiology, and haptics. Cognitive Archaeology, Body Cognition, and the Evolution of Visuospatial Perception, 241–262. https://doi.org/10.1016/b978-0-323-99193-3.00012-x. <https://doi.org/10.1016/B978-0-323-99193-3.00012-X>
+Fedato, A., & Bruner, E. (2023). Handling prehistory: tools, electrophysiology, and haptics. Cognitive Archaeology, Body Cognition, and the Evolution of Visuospatial Perception, 241–262. <https://doi.org/10.1016/B978-0-323-99193-3.00012-X>
 
 Fedorenko, E., & Varley, R. (2016). Language and thought are not the same thing: evidence from neuroimaging and neurological patients. Annals of the New York Academy of Sciences, 1369(1), 132–153. Portico. <https://doi.org/10.1111/nyas.13046>
 
@@ -1521,7 +1521,7 @@ Fernandez-Borsot, G. (2025). Artificial intelligence and the future of otherness
 
 Fernández-Domínguez, J. (2023). The Suffix ‑ment between the Available and the Unavailable. Anglia, 141(2), 171–196. <https://doi.org/10.1515/ang-2023-0015>
 
-Fernandino, L., & Binder, J. R. (2025). Concept representation. Encyclopedia of the Human Brain, 421–441. https://doi.org/10.1016/b978-0-12-820480-1.00155-8. <https://doi.org/10.1016/B978-0-12-820480-1.00155-8>
+Fernandino, L., & Binder, J. R. (2025). Concept representation. Encyclopedia of the Human Brain, 421–441. <https://doi.org/10.1016/B978-0-12-820480-1.00155-8>
 
 Fernandino, L., & Conant, L. L. (2024). The primacy of experience in language processing: Semantic priming is driven primarily by experiential similarity. Neuropsychologia, 201, 108939. <https://doi.org/10.1016/j.neuropsychologia.2024.108939>
 
@@ -1592,7 +1592,7 @@ Fitzpatrick, S. (2014). Nativism, Empiricism, and Ockham’s Razor. Erkenntnis, 
 
 Flicker, D., & Key, A. (2023). Statistical assessment of the temporal and cultural relationship between the Lomekwian and Oldowan. Journal of Archaeological Science: Reports, 48, 103834. <https://doi.org/10.1016/j.jasrep.2023.103834>
 
-Fliessbach, J. (2023). <i>The intonation of expectations: On marked declaratives, exclamatives, and discourse particles in Castilian Spanish</i>. Zenodo. https://doi.org/10.5281/ZENODO.7929375. <https://doi.org/10.5281/zenodo.7929375>
+Fliessbach, J. (2023). <i>The intonation of expectations: On marked declaratives, exclamatives, and discourse particles in Castilian Spanish</i>. Zenodo. <https://doi.org/10.5281/zenodo.7929375>
 
 Florkiewicz, B. N., & Lazebnik, T. (2025). Combinatorics and complexity of chimpanzee (Pan troglodytes) facial signals. Animal Cognition, 28(1). <https://doi.org/10.1007/s10071-025-01955-0>
 
@@ -1618,7 +1618,7 @@ Forte, V., Sartori, L., Visalli, A., Yildirim, M., Galati, G., Vidale, M., Fares
 
 Foster-Cohen, S. H. (2017). Making the most of MOGUL: Reflections on interlanguage in childhood language disorders. International Review of Applied Linguistics in Language Teaching, 55(4), 349–364. <https://doi.org/10.1515/iral-2017-0148>
 
-Foster, K., Foster, K., & Mitchell, V. (2020). Pears, pistachios, pencils and punctuation: Performative encounter and the art of conversation. Journal of Writing in Creative Practice, 13(2), 169–186. https://doi.org/10.1386/jwcp_00002_1. <https://doi.org/10.1386/JWCP_00002_1>
+Foster, K., Foster, K., & Mitchell, V. (2020). Pears, pistachios, pencils and punctuation: Performative encounter and the art of conversation. Journal of Writing in Creative Practice, 13(2), 169–186. <https://doi.org/10.1386/JWCP_00002_1>
 
 Fountoulakis, K. N. (2022). The Human Connectome. Springer International Publishing. <https://doi.org/10.1007/978-3-031-10351-3>
 
@@ -1646,7 +1646,7 @@ Friston, K. J., & Frith, C. D. (2015). Active inference, communication and herme
 
 Friston, K., & Frith, C. (2015). A Duet for one. Consciousness and Cognition, 36, 390–405. <https://doi.org/10.1016/j.concog.2014.12.003>
 
-Froesel, M., Ben Hamed, S., & Cléry, J. (2023). Evolutionary perspective on peripersonal space and perception. Cognitive Archaeology, Body Cognition, and the Evolution of Visuospatial Perception, 51–83. https://doi.org/10.1016/b978-0-323-99193-3.00009-x. <https://doi.org/10.1016/B978-0-323-99193-3.00009-X>
+Froesel, M., Ben Hamed, S., & Cléry, J. (2023). Evolutionary perspective on peripersonal space and perception. Cognitive Archaeology, Body Cognition, and the Evolution of Visuospatial Perception, 51–83. <https://doi.org/10.1016/B978-0-323-99193-3.00009-X>
 
 Fröhlich, M. (2017). Taking turns across channels: Conversation-analytic tools in animal communication. Neuroscience &amp; Biobehavioral Reviews, 80, 201–209. <https://doi.org/10.1016/j.neubiorev.2017.05.005>
 
@@ -1682,9 +1682,9 @@ Fukano, Y., & Soga, M. (2025). The biophilia hypothesis revisited: back to basic
 
 Fukui, N. (2017). Merge in the Mind-Brain. <https://doi.org/10.4324/9781315442808>
 
-Fulcher-Rood, K., & Higginbotham, J. (2019). Interacting With Persons Who Have ALS. Topics in Language Disorders, 39(4), 370–388. https://doi.org/10.1097/tld.0000000000000195. <https://doi.org/10.1097/TLD.0000000000000195>
+Fulcher-Rood, K., & Higginbotham, J. (2019). Interacting With Persons Who Have ALS. Topics in Language Disorders, 39(4), 370–388. <https://doi.org/10.1097/TLD.0000000000000195>
 
-Fulker, Z., Forber, P., Smead, R., & Riedl, C. (2024). Spontaneous emergence of groups and signaling diversity in dynamic networks. Physical Review E, 109(1). https://doi.org/10.1103/physreve.109.014309. <https://doi.org/10.1103/PhysRevE.109.014309>
+Fulker, Z., Forber, P., Smead, R., & Riedl, C. (2024). Spontaneous emergence of groups and signaling diversity in dynamic networks. Physical Review E, 109(1). <https://doi.org/10.1103/PhysRevE.109.014309>
 
 Futrell, R., & Hahn, M. (2022). Information Theory as a Bridge Between Language Function and Language Form. Frontiers in Communication, 7. <https://doi.org/10.3389/fcomm.2022.657725>
 
@@ -1719,7 +1719,7 @@ Gao, Q., Ping, X., & Chen, W. (2019). Body Influences on Social Cognition Throug
 
 GARCÍA VELASCO, D. (2017). Modularity and derivation in Functional Discourse Grammar. DELTA: Documentação de Estudos Em Lingüística Teórica e Aplicada, 33(1), 1–23. <https://doi.org/10.1590/0102-445079408678625808>
 
-GARCÍA-GÁMEZ, A. B., & MACIZO, P. (2018). Learning nouns and verbs in a foreign language: The role of gestures. Applied Psycholinguistics, 40(2), 473–507. https://doi.org/10.1017/s0142716418000656. <https://doi.org/10.1017/S0142716418000656>
+GARCÍA-GÁMEZ, A. B., & MACIZO, P. (2018). Learning nouns and verbs in a foreign language: The role of gestures. Applied Psycholinguistics, 40(2), 473–507. <https://doi.org/10.1017/S0142716418000656>
 
 García-Gámez, A. B., & Macizo, P. (2023). Gestures as Scaffolding to Learn Vocabulary in a Foreign Language. Brain Sciences, 13(12), 1712. <https://doi.org/10.3390/brainsci13121712>
 
@@ -1749,15 +1749,15 @@ Gauthier, J., Vincent, A. T., Charette, S. J., & Derome, N. (2018). A brief hist
 
 Geary, D. C. (2022). Spatial ability as a distinct domain of human cognition: An evolutionary perspective. Intelligence, 90, 101616. <https://doi.org/10.1016/j.intell.2021.101616>
 
-Geary, D. C. (2025). Sexual selection and sex differences in brain and cognition. Encyclopedia of the Human Brain, 570–589. https://doi.org/10.1016/b978-0-12-820480-1.00032-2. <https://doi.org/10.1016/B978-0-12-820480-1.00032-2>
+Geary, D. C. (2025). Sexual selection and sex differences in brain and cognition. Encyclopedia of the Human Brain, 570–589. <https://doi.org/10.1016/B978-0-12-820480-1.00032-2>
 
 Gebhardt, L. (2023). The Study of Words. <https://doi.org/10.4324/9781003030188>
 
 Geenen, J., & Howard, A. (2023). Conflict in Interaction. Multimodality Studies in International Contexts, 219–240. <https://doi.org/10.4324/9781003367550-15>
 
-Geertz, A. W. (2018). Hvorfor, hvorfra (og hvornår) kom religion? Religionsvidenskabeligt Tidsskrift, 67, 111–137. https://doi.org/10.7146/rt.v0i0.104022. <https://doi.org/10.7146/RT.V0I0.104022>
+Geertz, A. W. (2018). Hvorfor, hvorfra (og hvornår) kom religion? Religionsvidenskabeligt Tidsskrift, 67, 111–137. <https://doi.org/10.7146/RT.V0I0.104022>
 
-Geertz, A. W., & Feldt, L. (2020). Religion og medier i et religionsvidenskabeligt perspektiv. Religionsvidenskabeligt Tidsskrift, 70, 6–37. https://doi.org/10.7146/rt.v0i70.120397. <https://doi.org/10.7146/RT.V0I70.120397>
+Geertz, A. W., & Feldt, L. (2020). Religion og medier i et religionsvidenskabeligt perspektiv. Religionsvidenskabeligt Tidsskrift, 70, 6–37. <https://doi.org/10.7146/RT.V0I70.120397>
 
 Gelepithis, P. A. M. (2024). Unification of Artificial Intelligence and Psychology. Springer Nature Switzerland. <https://doi.org/10.1007/978-3-031-68319-0>
 
@@ -1777,7 +1777,7 @@ Geytenbeek, J. J. M., Heim, M. J. M., Knol, D. L., Vermeulen, R. J., & Oostrom, 
 
 Geytenbeek, J. J., Oostrom, K. J., Harlaar, L., Becher, J. G., Knol, D. L., Barkhof, F., Pinto, P. S., & Vermeulen, R. J. (2015). Language comprehension in nonspeaking children with severe cerebral palsy: Neuroanatomical substrate? European Journal of Paediatric Neurology, 19(5), 510–520. <https://doi.org/10.1016/j.ejpn.2015.06.001>
 
-Ghazi, B., Haramaty, E., Kamath, P., &amp; Sudan, M. (2017). Compression in a Distributed Setting. In C. H. Papadimitriou (Ed.), <i>LIPIcs, Volume 67, ITCS 2017</i> (No.19; Vol. 67, pp. 19:1–19:22). Schloss Dagstuhl – Leibniz-Zentrum für Informatik. https://doi.org/10.4230/LIPICS.ITCS.2017.19. <https://doi.org/10.4230/LIPIcs.ITCS.2017.19>
+Ghazi, B., Haramaty, E., Kamath, P., &amp; Sudan, M. (2017). Compression in a Distributed Setting. In C. H. Papadimitriou (Ed.), <i>LIPIcs, Volume 67, ITCS 2017</i> (No.19; Vol. 67, pp. 19:1–19:22). Schloss Dagstuhl – Leibniz-Zentrum für Informatik. <https://doi.org/10.4230/LIPIcs.ITCS.2017.19>
 
 Giacomo Romano. (2024). Un’altra Babele. Lo stallo tra le ipotesi sulle origini e l’evoluzione del linguaggio [JB]. Sistemi intelligenti, 1, 157–178. <https://doi.org/10.1422/109016>
 
@@ -1817,13 +1817,13 @@ Giulia Terzian, & María Inés Corbalán. (2020). Fare di falsità virtù. Acqui
 
 Giulio Massari, & Claudia Scorolli. (2024). Homo loquens, homo ridens. Interrelazioni tra risata e linguaggio [JB]. Sistemi intelligenti, 1, 179–206. <https://doi.org/10.1422/109014>
 
-Giuseppe Varaschin. (2023). <i>LFG and Simpler Syntax</i>. Language Science Press. https://doi.org/10.5281/ZENODO.10186052. <https://doi.org/10.5281/zenodo.10186052>
+Giuseppe Varaschin. (2023). <i>LFG and Simpler Syntax</i>. Language Science Press. <https://doi.org/10.5281/zenodo.10186052>
 
 Glackin, S. N. (2018). Against Thatcherite Linguistics: Rule‐following, Speech Communities, and Biolanguage. The Southern Journal of Philosophy, 56(2), 163–192. Portico. <https://doi.org/10.1111/sjp.12276>
 
 Glanville, P. J. (2018). The Lexical Semantics of the Arabic Verb. Oxford Scholarship Online. <https://doi.org/10.1093/oso/9780198792734.001.0001>
 
-GLASS, L. (2021). English verbs can omit their objects when they describe routines. English Language and Linguistics, 26(1), 49–73. https://doi.org/10.1017/s1360674321000022. <https://doi.org/10.1017/S1360674321000022>
+GLASS, L. (2021). English verbs can omit their objects when they describe routines. English Language and Linguistics, 26(1), 49–73. <https://doi.org/10.1017/S1360674321000022>
 
 Gobbato, V. (2022). Collections Emerge from the Shadows: Exhibition Design, or a Multi-sensory Approach to Reinvesting in Collections. Museum International, 74(1–2), 18–29. <https://doi.org/10.1080/13500775.2022.2157554>
 
@@ -1833,7 +1833,7 @@ Goldberg, A. E., & Michaelis, L. A. (2016). One Among Many: Anaphoric One and It
 
 Goldberg, A., Srivastava, S. B., Manian, V. G., Monroe, W., & Potts, C. (2016). Fitting In or Standing Out? The Tradeoffs of Structural and Cultural Embeddedness. American Sociological Review, 81(6), 1190–1222. <https://doi.org/10.1177/0003122416671873>
 
-Goldin-Meadow, S., & Brentari, D. (2015). Gesture, sign, and language: The coming of age of sign language and gesture studies. Behavioral and Brain Sciences, 40. https://doi.org/10.1017/s0140525x15001247. <https://doi.org/10.1017/S0140525X15001247>
+Goldin-Meadow, S., & Brentari, D. (2015). Gesture, sign, and language: The coming of age of sign language and gesture studies. Behavioral and Brain Sciences, 40. <https://doi.org/10.1017/S0140525X15001247>
 
 Goldin‐Meadow, S. (2014). The Impact of Time on Predicate Forms in the Manual Modality: Signers, Homesigners, and Silent Gesturers. Topics in Cognitive Science, 7(1), 169–184. Portico. <https://doi.org/10.1111/tops.12119>
 
@@ -1915,7 +1915,7 @@ Greif, H. (2021). Likeness-making and the evolution of cognition. Biology &amp; 
 
 Grifoni, P., D’Ulizia, A., & Ferri, F. (2015). Computational methods and grammars in language evolution: a survey. Artificial Intelligence Review, 45(3), 369–403. <https://doi.org/10.1007/s10462-015-9449-3>
 
-Grifoni, P., D’ulizia, A., & Ferri, F. (2021). When Language Evolution Meets Multimodality: Current Status and Challenges Toward Multimodal Computational Models. IEEE Access, 9, 35196–35206. https://doi.org/10.1109/access.2021.3061756. <https://doi.org/10.1109/ACCESS.2021.3061756>
+Grifoni, P., D’ulizia, A., & Ferri, F. (2021). When Language Evolution Meets Multimodality: Current Status and Challenges Toward Multimodal Computational Models. IEEE Access, 9, 35196–35206. <https://doi.org/10.1109/ACCESS.2021.3061756>
 
 Grimaldi, M., & Iaia, C. (2023). From Neurons to Language and Speech: An Overview. Language Electrified, 3–27. <https://doi.org/10.1007/978-1-0716-3263-5_1>
 
@@ -1935,17 +1935,17 @@ Guan, C. Q., & Meng, W. (2022). Facilitative Effects of Embodied English Instruc
 
 Guardiola, M., Morales, J. I., & Vergès, J. M. (2016). From blunt to cutting: Distinguishing alternating method flakes in early stages on rounded blanks. Quaternary International, 411, 378–385. <https://doi.org/10.1016/j.quaint.2015.08.039>
 
-Guerra-Manzanares, A., & Shamout, F. E. (2025). MILES: Modality-Informed Learning Rate Scheduler for Balancing Multimodal Learning. 2025 International Joint Conference on Neural Networks (IJCNN), 1–9. https://doi.org/10.1109/ijcnn64981.2025.11228348. <https://doi.org/10.1109/IJCNN64981.2025.11228348>
+Guerra-Manzanares, A., & Shamout, F. E. (2025). MILES: Modality-Informed Learning Rate Scheduler for Balancing Multimodal Learning. 2025 International Joint Conference on Neural Networks (IJCNN), 1–9. <https://doi.org/10.1109/IJCNN64981.2025.11228348>
 
 Guerrero Medina, P. (2018). Towards a comprehensive account of English -erdeverbal synthetic compounds in Functional Discourse Grammar. Word Structure, 11(1), 14–35. <https://doi.org/10.3366/word.2018.0114>
 
 Guilbeault, D., Nadler, E. O., Chu, M., Lo Sardo, D. R., Kar, A. A., & Desikan, B. S. (2020). Color associations in abstract semantic domains. Cognition, 201, 104306. <https://doi.org/10.1016/j.cognition.2020.104306>
 
-Gulliksen, M. S. (2017). Making matters? Unpacking the role of practical aesthetic making activities in the general education through the theoretical lens of embodied learning. Cogent Education, 4(1), 1415108. https://doi.org/10.1080/2331186x.2017.1415108. <https://doi.org/10.1080/2331186X.2017.1415108>
+Gulliksen, M. S. (2017). Making matters? Unpacking the role of practical aesthetic making activities in the general education through the theoretical lens of embodied learning. Cogent Education, 4(1), 1415108. <https://doi.org/10.1080/2331186X.2017.1415108>
 
 Gulliksen, M. S. (2021). There and back again: A carver’s tale of losing and regaining sense of space due to a brain tumour. Craft Research, 12(1), 127–152. <https://doi.org/10.1386/crre_00043_1>
 
-Gunasekaran, S. S., Ahmad, Mohd. S., Tang, A., & Mostafa, S. A. (2016). The Collective Intelligence concept: A literature review from the behavioral and cognitive perspective. 2016 2nd International Symposium on Agent, Multi-Agent Systems and Robotics (ISAMSR), 154–159. https://doi.org/10.1109/isamsr.2016.7810020. <https://doi.org/10.1109/ISAMSR.2016.7810020>
+Gunasekaran, S. S., Ahmad, Mohd. S., Tang, A., & Mostafa, S. A. (2016). The Collective Intelligence concept: A literature review from the behavioral and cognitive perspective. 2016 2nd International Symposium on Agent, Multi-Agent Systems and Robotics (ISAMSR), 154–159. <https://doi.org/10.1109/ISAMSR.2016.7810020>
 
 Günther, F., & Marelli, M. (2018). The language-invariant aspect of compounding: Predicting compound meanings across languages. Proceedings of the Fifth Italian Conference on Computational Linguistics CLiC-It 2018, 230–234. <https://doi.org/10.4000/books.aaccademia.3411>
 
@@ -1957,13 +1957,13 @@ Gurvitch, M. (2021). The Darwin Is in the Details. Techné: Research in Philosop
 
 Gylfe, P., Franck, H., Lebaron, C., & Mantere, S. (2015). Video methods in strategy research: Focusing on embodied cognition. Strategic Management Journal, 37(1), 133–148. Portico. <https://doi.org/10.1002/smj.2456>
 
-Häberling, I. S., & Corballis, M. C. (2015). Cerebellar asymmetry, cortical asymmetry and handedness: Two independent networks. Laterality: Asymmetries of Body, Brain and Cognition, 21(4–6), 397–414. https://doi.org/10.1080/1357650x.2015.1110161. <https://doi.org/10.1080/1357650X.2015.1110161>
+Häberling, I. S., & Corballis, M. C. (2015). Cerebellar asymmetry, cortical asymmetry and handedness: Two independent networks. Laterality: Asymmetries of Body, Brain and Cognition, 21(4–6), 397–414. <https://doi.org/10.1080/1357650X.2015.1110161>
 
-Haeuser, K. I., & Kray, J. (2022). How odd: Diverging effects of predictability and plausibility violations on sentence reading and word memory. Applied Psycholinguistics, 43(5), 1193–1220. https://doi.org/10.1017/s0142716422000364. <https://doi.org/10.1017/S0142716422000364>
+Haeuser, K. I., & Kray, J. (2022). How odd: Diverging effects of predictability and plausibility violations on sentence reading and word memory. Applied Psycholinguistics, 43(5), 1193–1220. <https://doi.org/10.1017/S0142716422000364>
 
 Hafri, A., & Firestone, C. (2021). The Perception of Relations. Trends in Cognitive Sciences, 25(6), 475–492. <https://doi.org/10.1016/j.tics.2021.01.006>
 
-Hagoort, P. (2016). MUC (Memory, Unification, Control). Neurobiology of Language, 339–347. https://doi.org/10.1016/b978-0-12-407794-2.00028-6. <https://doi.org/10.1016/B978-0-12-407794-2.00028-6>
+Hagoort, P. (2016). MUC (Memory, Unification, Control). Neurobiology of Language, 339–347. <https://doi.org/10.1016/B978-0-12-407794-2.00028-6>
 
 Hagoort, P. (2017). The core and beyond in the language-ready brain. Neuroscience &amp; Biobehavioral Reviews, 81, 194–204. <https://doi.org/10.1016/j.neubiorev.2017.01.048>
 
@@ -1997,7 +1997,7 @@ Hampe, B. (Ed.). (2017). Metaphor. <https://doi.org/10.1017/9781108182324>
 
 Hancock, P. M., Hilverman, C., Cook, S. W., & Halvorson, K. M. (2023). Emoji as gesture in digital communication: Emoji improve comprehension of indirect speech. Psychonomic Bulletin &amp; Review, 31(3), 1335–1347. <https://doi.org/10.3758/s13423-023-02411-1>
 
-Hanks, P., El Maarouf, I., &amp; Oakes, M. (2018). <i>Flexibility Of Multiword Expressions And Corpus Pattern Analysis</i>. Zenodo. https://doi.org/10.5281/ZENODO.1182593. <https://doi.org/10.5281/zenodo.1182593>
+Hanks, P., El Maarouf, I., &amp; Oakes, M. (2018). <i>Flexibility Of Multiword Expressions And Corpus Pattern Analysis</i>. Zenodo. <https://doi.org/10.5281/zenodo.1182593>
 
 Hannahs, S. J., & Bosch, A. R. K. (Eds.). (2017). The Routledge Handbook of Phonological Theory. Routledge. <https://doi.org/10.4324/9781315675428>
 
@@ -2013,7 +2013,7 @@ Harrington, K. (2018). The Role of Corpus Linguistics in the Ethnography of a Cl
 
 Harris, R. A. (2021). The Linguistics Wars. <https://doi.org/10.1093/oso/9780199740338.001.0001>
 
-Harrod, J. B. (2018). A post-structuralist revised Weil–Lévi-Strauss transformation formula for conceptual value-fields. Sign Systems Studies, 46(2/3), 255–281. https://doi.org/10.12697/sss.2018.46.2-3.03. <https://doi.org/10.12697/SSS.2018.46.2-3.03>
+Harrod, J. B. (2018). A post-structuralist revised Weil–Lévi-Strauss transformation formula for conceptual value-fields. Sign Systems Studies, 46(2/3), 255–281. <https://doi.org/10.12697/SSS.2018.46.2-3.03>
 
 Hartmann, S. (2020). Language change and language evolution: Cousins, siblings, twins? Glottotheory, 11(1), 15–39. <https://doi.org/10.1515/glot-2020-2003>
 
@@ -2027,7 +2027,7 @@ Hashim, M. S., Mason, C., & Menon, A. S. (2024). Semiotic Analysis on Sustainabl
 
 Hashimoto, T. (2020). The Emergent Constructive Approach to Evolinguistics: Considering Hierarchy and Intention Sharing in Linguistic Communication. Journal of Systems Science and Systems Engineering, 29(6), 675–696. <https://doi.org/10.1007/s11518-020-5469-x>
 
-Haspelmath, M. (2019). <i>Can cross-linguistic regularities be explained by constraints on change?</i> Zenodo. https://doi.org/10.5281/ZENODO.2583804. <https://doi.org/10.5281/zenodo.2583804>
+Haspelmath, M. (2019). <i>Can cross-linguistic regularities be explained by constraints on change?</i> Zenodo. <https://doi.org/10.5281/zenodo.2583804>
 
 Haspelmath, M. (2020). Human Linguisticality and the Building Blocks of Languages. Frontiers in Psychology, 10. <https://doi.org/10.3389/fpsyg.2019.03056>
 
@@ -2085,7 +2085,7 @@ Heine, B., & Kuteva, T. (2007). The Genesis of Grammar. <https://doi.org/10.1093
 
 Heinrich, S., Magg, S., & Wermter, S. (2015). Analysing the Multiple Timescale Recurrent Neural Network for Embodied Language Understanding. Artificial Neural Networks, 149–174. <https://doi.org/10.1007/978-3-319-09903-3_8>
 
-Heintz, C., & Scott-Phillips, T. (2022). Expression unleashed: The evolutionary and cognitive foundations of human communication. Behavioral and Brain Sciences, 46. https://doi.org/10.1017/s0140525x22000012. <https://doi.org/10.1017/S0140525X22000012>
+Heintz, C., & Scott-Phillips, T. (2022). Expression unleashed: The evolutionary and cognitive foundations of human communication. Behavioral and Brain Sciences, 46. <https://doi.org/10.1017/S0140525X22000012>
 
 Hengst, J. A. (2020). Understanding Everyday Communicative Interactions. Routledge. <https://doi.org/10.4324/9781003034537>
 
@@ -2099,7 +2099,7 @@ Hermas, A. (2018). Discourse-linking in advanced L3 English: Testing the Interfa
 
 Hernández Arocha, H., & Hernández Socas, E. (2019). The conceptual basis of ablativity. Review of Cognitive Linguistics, 17(2), 511–530. Portico. <https://doi.org/10.1075/rcl.00045.her>
 
-Heyes, C. (2018). Précis of Cognitive Gadgets: The Cultural Evolution of Thinking. Behavioral and Brain Sciences, 42. https://doi.org/10.1017/s0140525x18002145. <https://doi.org/10.1017/S0140525X18002145>
+Heyes, C. (2018). Précis of Cognitive Gadgets: The Cultural Evolution of Thinking. Behavioral and Brain Sciences, 42. <https://doi.org/10.1017/S0140525X18002145>
 
 Heyes, C., Chater, N., & Dwyer, D. M. (2020). Sinking In: The Peripheral Baldwinisation of Human Cognition. Trends in Cognitive Sciences, 24(11), 884–899. <https://doi.org/10.1016/j.tics.2020.08.006>
 
@@ -2153,7 +2153,7 @@ Høffding, S., & Roald, T. (2019). Passivity in Aesthetic Experience: Husserlian
 
 Hoffecker, J. F., & Hoffecker, I. T. (2017). The Structural and Functional Complexity of Hunter-Gatherer Technology. Journal of Archaeological Method and Theory, 25(1), 202–225. <https://doi.org/10.1007/s10816-017-9332-4>
 
-Hoffmann, C. P. (2023). Investor Relations as Strategic Communication: Insights from Evolutionary Psychology. International Journal of Strategic Communication, 17(3), 213–227. https://doi.org/10.1080/1553118x.2023.2230575. <https://doi.org/10.1080/1553118X.2023.2230575>
+Hoffmann, C. P. (2023). Investor Relations as Strategic Communication: Insights from Evolutionary Psychology. International Journal of Strategic Communication, 17(3), 213–227. <https://doi.org/10.1080/1553118X.2023.2230575>
 
 Hoffmann, C. P., & Strauß, N. (2024). Effective Financial Communication. <https://doi.org/10.4324/9781003271826>
 
@@ -2165,11 +2165,11 @@ Hoffmann, T. (2017). Multimodal constructs – multimodal constructions? The rol
 
 Hoffmann, T. (2018). Creativity and Construction Grammar: Cognitive and Psychological Issues. Zeitschrift Für Anglistik Und Amerikanistik, 66(3), 259–276. <https://doi.org/10.1515/zaa-2018-0024>
 
-Högberg, A., & Gärdenfors, P. (2015). Children, Teaching and the Evolution of Humankind. Childhood in the Past, 8(2), 113–121. https://doi.org/10.1179/1758571615z.00000000033. <https://doi.org/10.1179/1758571615Z.00000000033>
+Högberg, A., & Gärdenfors, P. (2015). Children, Teaching and the Evolution of Humankind. Childhood in the Past, 8(2), 113–121. <https://doi.org/10.1179/1758571615Z.00000000033>
 
 Høgenhaven, J., Bach, M. S., & Geertz, A. W. (2024). A Neurocognitive Model for Analyzing End Time Narratives: the Book of Revelation 14–16 as a Test Case. Numen, 71(4), 335–392. <https://doi.org/10.1163/15685276-20240011>
 
-HOGEWEG, L., & VICENTE, A. (2020). On the nature of the lexicon: The status of rich lexical meanings. Journal of Linguistics, 56(4), 865–891. https://doi.org/10.1017/s0022226720000316. <https://doi.org/10.1017/S0022226720000316>
+HOGEWEG, L., & VICENTE, A. (2020). On the nature of the lexicon: The status of rich lexical meanings. Journal of Linguistics, 56(4), 865–891. <https://doi.org/10.1017/S0022226720000316>
 
 Hohlfeld, A., Martín-Loeches, M., & Sommer, W. (2019). The nature of morphosyntactic processing during language perception. Evidence from an additional-task study in Spanish and German. International Journal of Psychophysiology, 143, 9–24. <https://doi.org/10.1016/j.ijpsycho.2019.06.016>
 
@@ -2211,9 +2211,9 @@ Hoot, B., & Leal, T. (2022). Crosslinguistic influence from Catalan and Yucatec 
 
 Horcik, Z. (2022). Renewing the Tools for Simulation-Based Training in Medical Education: How Situated Cognition Approaches Can Help Us? Simulation Training through the Lens of Experience and Activity Analysis, 61–80. <https://doi.org/10.1007/978-3-030-89567-9_4>
 
-Horton, L. (2022). Lexical overlap in young sign languages from Guatemala. Glossa: A Journal of General Linguistics, 7(1). https://doi.org/10.16995/glossa.5829. <https://doi.org/10.16995/GLOSSA.5829>
+Horton, L. (2022). Lexical overlap in young sign languages from Guatemala. Glossa: A Journal of General Linguistics, 7(1). <https://doi.org/10.16995/GLOSSA.5829>
 
-Houghton, C. (2025). Cooperation as Well as Learning: A Commentary on “How Learning Can Guide Evolution.” Complex Systems, 34(2), 253–258. https://doi.org/10.25088/complexsystems.34.2.253. <https://doi.org/10.25088/ComplexSystems.34.2.253>
+Houghton, C. (2025). Cooperation as Well as Learning: A Commentary on “How Learning Can Guide Evolution.” Complex Systems, 34(2), 253–258. <https://doi.org/10.25088/ComplexSystems.34.2.253>
 
 Houser, D., & Yang, Y. (2024). Learning language: An experiment. Journal of Economic Behavior &amp; Organization, 217, 547–559. <https://doi.org/10.1016/j.jebo.2023.08.023>
 
@@ -2311,17 +2311,17 @@ Invitto, S., Faggiano, C., Sammarco, S., De Luca, V., & De Paolis, L. (2015). In
 
 Ip, K. I., Hsu, L. S., Arredondo, M. M., Tardif, T., & Kovelman, I. (2016). Brain bases of morphological processing in Chinese‐English bilingual children. Developmental Science, 20(5). Portico. <https://doi.org/10.1111/desc.12449>
 
-Irurtzun, A. (2019). Dessintactitzar la sintaxi? Preocupacions sobre l’arquitectura de la gramàtica i el paper dels components d’interfície. Catalan Journal of Linguistics, 165. https://doi.org/10.5565/rev/catjl.231. <https://doi.org/10.5565/REV/CATJL.231>
+Irurtzun, A. (2019). Dessintactitzar la sintaxi? Preocupacions sobre l’arquitectura de la gramàtica i el paper dels components d’interfície. Catalan Journal of Linguistics, 165. <https://doi.org/10.5565/REV/CATJL.231>
 
 Isbilen, E. S., & Christiansen, M. H. (2018). Chunk‐Based Memory Constraints on the Cultural Evolution of Language. Topics in Cognitive Science, 12(2), 713–726. Portico. <https://doi.org/10.1111/tops.12376>
 
 Isbilen, E. S., Christiansen, M. H., & Chater, N. (2019). It’s about time: Adding processing to neuroemergentism. Journal of Neurolinguistics, 49, 224–227. <https://doi.org/10.1016/j.jneuroling.2018.04.005>
 
-Ischen, C., Araujo, T. B., Voorveld, H. A. M., Van Noort, G., & Smit, E. G. (2022). Is voice really persuasive? The influence of modality in virtual assistant interactions and two alternative explanations. Internet Research, 32(7), 402–425. https://doi.org/10.1108/intr-03-2022-0160. <https://doi.org/10.1108/INTR-03-2022-0160>
+Ischen, C., Araujo, T. B., Voorveld, H. A. M., Van Noort, G., & Smit, E. G. (2022). Is voice really persuasive? The influence of modality in virtual assistant interactions and two alternative explanations. Internet Research, 32(7), 402–425. <https://doi.org/10.1108/INTR-03-2022-0160>
 
 Ismail, A., Sarudin, A., Osman, Z., & Mohamed Redzwan, H. F. (2021). Proses Pembentukan Makna Simpulan Bahasa “Kepala Angin” Menggunakan Prinsip Metafora Integrasi (The Process of Forming a More Complex Idiomatic Meaning Using A Principle of Integration Metaphors). GEMA Online® Journal of Language Studies, 21(2), 86–110. <https://doi.org/10.17576/gema-2021-2102-05>
 
-Ivanova, A. A., Srikant, S., Sueoka, Y., Kean, H. H., Dhamala, R., O’Reilly, U.-M., Bers, M. U., & Fedorenko, E. (2020). Comprehension of computer code relies primarily on domain-general executive brain regions. ELife, 9. CLOCKSS. https://doi.org/10.7554/elife.58906. <https://doi.org/10.7554/eLife.58906>
+Ivanova, A. A., Srikant, S., Sueoka, Y., Kean, H. H., Dhamala, R., O’Reilly, U.-M., Bers, M. U., & Fedorenko, E. (2020). Comprehension of computer code relies primarily on domain-general executive brain regions. ELife, 9. CLOCKSS. <https://doi.org/10.7554/eLife.58906>
 
 Iwasaki, S., Yoshimura, K., Asami, T., & Erdoğan, S. (2022). Comparative morphology and physiology of the vocal production apparatus and the brain in the extant primates. Annals of Anatomy - Anatomischer Anzeiger, 240, 151887. <https://doi.org/10.1016/j.aanat.2022.151887>
 
@@ -2329,9 +2329,9 @@ Iwata, S. (2017). ‘State-maintaining’ causatives: A close kin to resultative
 
 Iwata, S. (2021). Another look at the interaction between verbs and constructions. Constructions and Frames, 13(2), 263–308. Portico. <https://doi.org/10.1075/cf.21006.iwa>
 
-Iyer, P., Nguyen, M., Everett, N., Primitivo, O., Collins, G., & Hajiarbabi, M. (2025). Ai-Based Sign Language to Text Translator Using Computer Vision and Deep Learning. 2025 6th International Conference on Data Intelligence and Cognitive Informatics (ICDICI), 83–92. https://doi.org/10.1109/icdici66477.2025.11135376. <https://doi.org/10.1109/ICDICI66477.2025.11135376>
+Iyer, P., Nguyen, M., Everett, N., Primitivo, O., Collins, G., & Hajiarbabi, M. (2025). Ai-Based Sign Language to Text Translator Using Computer Vision and Deep Learning. 2025 6th International Conference on Data Intelligence and Cognitive Informatics (ICDICI), 83–92. <https://doi.org/10.1109/ICDICI66477.2025.11135376>
 
-Jaakkola Hannu, & Thalheim Bernhard. (2020). Functions of Models in Scenarios and Their Maturity. Information Modelling and Knowledge Bases XXXI. https://doi.org/10.3233/faia200020. <https://doi.org/10.3233/FAIA200020>
+Jaakkola Hannu, & Thalheim Bernhard. (2020). Functions of Models in Scenarios and Their Maturity. Information Modelling and Knowledge Bases XXXI. <https://doi.org/10.3233/FAIA200020>
 
 Jaber, A., Omari, O., & Abudalbuh, M. (2021). Reflections on Protolanguage: Evidence from Studies on Animal Communication. Journal of Educational and Social Research, 11(1), 113. <https://doi.org/10.36941/jesr-2021-0012>
 
@@ -2359,13 +2359,13 @@ Jackendoff, R., & Audring, J. (2023). Blends and Overlaps in Relational Morpholo
 
 Jackendoff, R., & Wittenberg, E. (2016). Linear grammar as a possible stepping-stone in the evolution of language. Psychonomic Bulletin &amp; Review, 24(1), 219–224. <https://doi.org/10.3758/s13423-016-1073-y>
 
-Jacob, R. (2024). EMO Sapiens: a study on the enchantment of emoted language and its impact on the emoji usage behaviour of the interlocutors. International Journal of Business and Globalisation, 38(2), 262–284. https://doi.org/10.1504/ijbg.2024.142232. <https://doi.org/10.1504/IJBG.2024.142232>
+Jacob, R. (2024). EMO Sapiens: a study on the enchantment of emoted language and its impact on the emoji usage behaviour of the interlocutors. International Journal of Business and Globalisation, 38(2), 262–284. <https://doi.org/10.1504/IJBG.2024.142232>
 
 Jacobs, N., & Cooper, R. (2018). Living in Digital Worlds. Routledge. <https://doi.org/10.4324/9781315592787>
 
 Jacoby, N., & Fedorenko, E. (2018). Discourse-level comprehension engages medial frontal Theory of Mind brain regions even for expository texts. Language, Cognition and Neuroscience, 35(6), 780–796. <https://doi.org/10.1080/23273798.2018.1525494>
 
-Jacoby, N., Margulis, E. H., Clayton, M., Hannon, E., Honing, H., Iversen, J., Klein, T. R., Mehr, S. A., Pearson, L., Peretz, I., Perlman, M., Polak, R., Ravignani, A., Savage, P. E., Steingo, G., Stevens, C. J., Trainor, L., Trehub, S., Veal, M., & Wald-Fuhrmann, M. (2020). Cross-Cultural Work in Music Cognition. Music Perception, 37(3), 185–195. https://doi.org/10.1525/mp.2020.37.3.185. <https://doi.org/10.1525/MP.2020.37.3.185>
+Jacoby, N., Margulis, E. H., Clayton, M., Hannon, E., Honing, H., Iversen, J., Klein, T. R., Mehr, S. A., Pearson, L., Peretz, I., Perlman, M., Polak, R., Ravignani, A., Savage, P. E., Steingo, G., Stevens, C. J., Trainor, L., Trehub, S., Veal, M., & Wald-Fuhrmann, M. (2020). Cross-Cultural Work in Music Cognition. Music Perception, 37(3), 185–195. <https://doi.org/10.1525/MP.2020.37.3.185>
 
 Jakielaszek, J. (2017). A Minimalist View on the Syntax–Semantics Relationship. <https://doi.org/10.3726/b10789>
 
@@ -2421,13 +2421,13 @@ Kang, B. (2018). Unifying Opposites through Metaphor: A Cognitive Approach to th
 
 Karthikeyan, S., Rammairone, B., & Ramachandra, V. (2016). The Bouba-Kiki Phenomenon Tested via Schematic Drawings of Facial Expressions: Further Validation of the Internal Simulation Hypothesis. I-Perception, 7(1). <https://doi.org/10.1177/2041669516631877>
 
-Katz, A., & Bowes, A. (2015). Embodiment in Metaphor and (Not?) in Bilingual Language. Bilingual Figurative Language Processing, 3–27. https://doi.org/10.1017/cbo9781139342100.004. <https://doi.org/10.1017/CBO9781139342100.004>
+Katz, A., & Bowes, A. (2015). Embodiment in Metaphor and (Not?) in Bilingual Language. Bilingual Figurative Language Processing, 3–27. <https://doi.org/10.1017/CBO9781139342100.004>
 
-Katz, J. (2017). Harmonic Syntax of the Twelve-Bar Blues Form. Music Perception, 35(2), 165–192. https://doi.org/10.1525/mp.2017.35.2.165. <https://doi.org/10.1525/MP.2017.35.2.165>
+Katz, J. (2017). Harmonic Syntax of the Twelve-Bar Blues Form. Music Perception, 35(2), 165–192. <https://doi.org/10.1525/MP.2017.35.2.165>
 
 Katz, J. (2022). Musical grouping as prosodic implementation. Linguistics and Philosophy, 46(4), 959–988. <https://doi.org/10.1007/s10988-022-09365-y>
 
-KAWABATA, H., SHIBA, R., MATSUMOTO, N., MATSUGI, T., & JANIK, L. (2021). HOW MODERN HUMANS SEE ANCIENT FIGURE FACES: THE DIFFERENTIAL IMPRESSIONS AND PERCEIVED EXPRESSIONS FROM CLAY FIGURE FACES FROM PREHISTORIC AND PROTOHISTORIC JAPAN. PSYCHOLOGIA, 63(2), 116–136. https://doi.org/10.2117/psysoc.2021-b019. <https://doi.org/10.2117/psysoc.2021-B019>
+KAWABATA, H., SHIBA, R., MATSUMOTO, N., MATSUGI, T., & JANIK, L. (2021). HOW MODERN HUMANS SEE ANCIENT FIGURE FACES: THE DIFFERENTIAL IMPRESSIONS AND PERCEIVED EXPRESSIONS FROM CLAY FIGURE FACES FROM PREHISTORIC AND PROTOHISTORIC JAPAN. PSYCHOLOGIA, 63(2), 116–136. <https://doi.org/10.2117/psysoc.2021-B019>
 
 Kazanina, N., & Tavano, A. (2022). What neural oscillations can and cannot do for syntactic structure building. Nature Reviews Neuroscience, 24(2), 113–128. <https://doi.org/10.1038/s41583-022-00659-5>
 
@@ -2467,7 +2467,7 @@ Kendrick, K. H., Brown, P., Dingemanse, M., Floyd, S., Gipper, S., Hayano, K., H
 
 Kentner, G. (2019). Rhythmic parsing. The Linguistic Review, 34(1), 123–155. <https://doi.org/10.1515/tlr-2016-0005>
 
-Kesen, I., Arkan Can, O., Erdem, E., Erdem, A., & Yuret, D. (2022). Modulating Bottom-Up and Top-Down Visual Processing via Language-Conditional Filters. 2022 IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW), 4609–4619. https://doi.org/10.1109/cvprw56347.2022.00507. <https://doi.org/10.1109/CVPRW56347.2022.00507>
+Kesen, I., Arkan Can, O., Erdem, E., Erdem, A., & Yuret, D. (2022). Modulating Bottom-Up and Top-Down Visual Processing via Language-Conditional Filters. 2022 IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW), 4609–4619. <https://doi.org/10.1109/CVPRW56347.2022.00507>
 
 Kessler, R., Weber, A., & Friedrich, C. K. (2020). Activation of Literal Word Meanings in Idioms: Evidence from Eye-tracking and ERP Experiments. Language and Speech, 64(3), 594–624. <https://doi.org/10.1177/0023830920943625>
 
@@ -2481,7 +2481,7 @@ Key, A. J. M., Farr, I., Hunter, R., & Winter, S. L. (2020). Muscle recruitment 
 
 Key, A., Dunmore, C. J., Hatala, K. G., & Williams-Hatala, E. M. (2017). Flake morphology as a record of manual pressure during stone tool production. Journal of Archaeological Science: Reports, 12, 43–53. <https://doi.org/10.1016/j.jasrep.2017.01.023>
 
-Khan, J., & Belk, R. (2024). Money you could touch: cash and psychological ownership. Qualitative Market Research: An International Journal, 27(5), 820–840. https://doi.org/10.1108/qmr-04-2023-0049. <https://doi.org/10.1108/QMR-04-2023-0049>
+Khan, J., & Belk, R. (2024). Money you could touch: cash and psychological ownership. Qualitative Market Research: An International Journal, 27(5), 820–840. <https://doi.org/10.1108/QMR-04-2023-0049>
 
 Khatin-Zadeh, O., Eskandari, Z., Yazdani-Fazlabadi, B., & Marmolejo-Ramos, F. (2022). Four Functions of Gesture in Promoting Thought Processes. Psychological Studies, 67(4), 411–418. <https://doi.org/10.1007/s12646-022-00680-9>
 
@@ -2495,7 +2495,7 @@ Killin, A., & Pain, R. (2021). Cognitive Archaeology and the Minimum Necessary C
 
 Killin, A., & Pain, R. (2022). How WEIRD is Cognitive Archaeology? Engaging with the Challenge of Cultural Variation and Sample Diversity. Review of Philosophy and Psychology, 14(2), 539–563. <https://doi.org/10.1007/s13164-021-00611-z>
 
-KIM, C.-E., & O’GRADY, W. (2015). Asymmetries in children’s production of relative clauses: data from English and Korean. Journal of Child Language, 43(5), 1038–1071. https://doi.org/10.1017/s0305000915000422. <https://doi.org/10.1017/S0305000915000422>
+KIM, C.-E., & O’GRADY, W. (2015). Asymmetries in children’s production of relative clauses: data from English and Korean. Journal of Child Language, 43(5), 1038–1071. <https://doi.org/10.1017/S0305000915000422>
 
 Kim, H., & Rah, Y. (2019). Constructional Processing in a Second Language: The Role of Constructional Knowledge in Verb‐Construction Integration. Language Learning, 69(4), 1022–1056. Portico. <https://doi.org/10.1111/lang.12366>
 
@@ -2517,9 +2517,9 @@ Kleineberg, D. (2022). The expression of “collectivity” in Romance languages
 
 Kleyko, D., Rachkovskij, D. A., Osipov, E., & Rahimi, A. (2022). A Survey on Hyperdimensional Computing aka Vector Symbolic Architectures, Part I: Models and Data Transformations. ACM Computing Surveys, 55(6), 1–40. <https://doi.org/10.1145/3538531>
 
-Klimek-Jankowska, D., Hwaszcz, K., & Wieczorek, J. (2022). The Spectrum of Sense Remoteness in Polysemy: Bridging Computational and Theoretical Lexicography with Psycholinguistics (Part 1). Studies in Polish Linguistics, 17(1), 31–53. https://doi.org/10.4467/23005920spl.22.002.15759. <https://doi.org/10.4467/23005920SPL.22.002.15759>
+Klimek-Jankowska, D., Hwaszcz, K., & Wieczorek, J. (2022). The Spectrum of Sense Remoteness in Polysemy: Bridging Computational and Theoretical Lexicography with Psycholinguistics (Part 1). Studies in Polish Linguistics, 17(1), 31–53. <https://doi.org/10.4467/23005920SPL.22.002.15759>
 
-Knaebe, B., Taylor, A. H., Elliffe, D. M., & Gray, R. D. (2017). New Caledonian crows show behavioural flexibility when manufacturing their tools. Behaviour, 154(1), 65–91. https://doi.org/10.1163/1568539x-00003411. <https://doi.org/10.1163/1568539X-00003411>
+Knaebe, B., Taylor, A. H., Elliffe, D. M., & Gray, R. D. (2017). New Caledonian crows show behavioural flexibility when manufacturing their tools. Behaviour, 154(1), 65–91. <https://doi.org/10.1163/1568539X-00003411>
 
 Knoeferle, P. (2019). Predicting (variability of) context effects in language comprehension. Journal of Cultural Cognitive Science, 3(2), 141–158. <https://doi.org/10.1007/s41809-019-00025-5>
 
@@ -2535,7 +2535,7 @@ Koçak, Ö., & Warglien, M. (2020). When three’s a crowd: how relational struc
 
 Koch, N., & Günther, K. (2021). Transfer Phenomena in Bilingual Language Acquisition: The Case of Caused-Motion Constructions. Languages, 6(1), 25. <https://doi.org/10.3390/languages6010025>
 
-Koebli, J. R. (2022). Cognitive communication connections and higher-level language with traumatic brain-injured population. Cellular, Molecular, Physiological, and Behavioral Aspects of Traumatic Brain Injury, 527–538. https://doi.org/10.1016/b978-0-12-823036-7.00030-x. <https://doi.org/10.1016/B978-0-12-823036-7.00030-X>
+Koebli, J. R. (2022). Cognitive communication connections and higher-level language with traumatic brain-injured population. Cellular, Molecular, Physiological, and Behavioral Aspects of Traumatic Brain Injury, 527–538. <https://doi.org/10.1016/B978-0-12-823036-7.00030-X>
 
 Koelsch, S., Jacobs, A. M., Menninghaus, W., Liebal, K., Klann-Delius, G., von Scheve, C., & Gebauer, G. (2015). The quartet theory of human emotions: An integrative and neurofunctional model. Physics of Life Reviews, 13, 1–27. <https://doi.org/10.1016/j.plrev.2015.03.001>
 
@@ -2571,7 +2571,7 @@ Koornneef, A. (2021). The processing signature of anticipatory reading: an eye-t
 
 Koplenig, A., Wolfer, S., & Meyer, P. (2023). A large quantitative analysis of written language challenges the idea that all languages are equally complex. Scientific Reports, 13(1). <https://doi.org/10.1038/s41598-023-42327-3>
 
-Körner, A., Castillo, M., Drijvers, L., Fischer, M. H., Günther, F., Marelli, M., Platonova, O., Rinaldi, L., Shaki, S., Trujillo, J. P., Tsaregorodtseva, O., & Glenberg, A. M. (2023). Embodied Processing at Six Linguistic Granularity Levels: A Consensus Paper. Journal of Cognition, 6(1). https://doi.org/10.5334/joc.231. <https://doi.org/10.5334/JOC.231>
+Körner, A., Castillo, M., Drijvers, L., Fischer, M. H., Günther, F., Marelli, M., Platonova, O., Rinaldi, L., Shaki, S., Trujillo, J. P., Tsaregorodtseva, O., & Glenberg, A. M. (2023). Embodied Processing at Six Linguistic Granularity Levels: A Consensus Paper. Journal of Cognition, 6(1). <https://doi.org/10.5334/JOC.231>
 
 Kos, P. (2024). Instantiating variables in schemas within Relational Morphology. Linguistica Pragensia, 34(2), 77–99. <https://doi.org/10.14712/18059635.2024.2.1>
 
@@ -2583,7 +2583,7 @@ Kosta, P. (2020). The Syntax of Meaning and the Meaning of Syntax. <https://doi.
 
 Koster, J., Scelza, B., & Shenk, M. K. (Eds.). (2024). Human Behavioral Ecology. <https://doi.org/10.1017/9781108377911>
 
-Kouhestani, M., Golfam, A., Aghagolzadeh, F., & Zafaranlu Kambuziya, A. (2016). Subject salience in SOV and SVO word orders as a result of agent animacy. XLinguae, 9(2), 37–46. https://doi.org/10.18355/xl.2016.09.02.37-46. <https://doi.org/10.18355/XL.2016.09.02.37-46>
+Kouhestani, M., Golfam, A., Aghagolzadeh, F., & Zafaranlu Kambuziya, A. (2016). Subject salience in SOV and SVO word orders as a result of agent animacy. XLinguae, 9(2), 37–46. <https://doi.org/10.18355/XL.2016.09.02.37-46>
 
 Kousar Nikhath, A., Nagini, S., Vasavi, R., & Vasundra, S. (2020). SCP Design of Situated Cognitive Processing Model to Assist Learning-Centric Approach for Higher Education in Smart Classrooms. Intelligent System Design, 653–661. <https://doi.org/10.1007/978-981-15-5400-1_63>
 
@@ -2599,7 +2599,7 @@ Krause, C. M., & Wille, A. M. (2021). Sign Language in Light of Mathematics Educ
 
 Krause, E. (2020). High sensitivity to conceptual cues in Turkish heritage speakers with dominant German L2. Lost in Transmission, 197–228. Portico. <https://doi.org/10.1075/sibil.59.08kra>
 
-Kreitler, S. (2022). The Construct of Meaning. https://doi.org/10.52305/bnoc7210. <https://doi.org/10.52305/BNOC7210>
+Kreitler, S. (2022). The Construct of Meaning. <https://doi.org/10.52305/BNOC7210>
 
 Krishnaswamy, N., & Pustejovsky, J. (2022). Affordance embeddings for situated language understanding. Frontiers in Artificial Intelligence, 5. <https://doi.org/10.3389/frai.2022.774752>
 
@@ -2627,7 +2627,7 @@ Kuperberg, G. R., & Jaeger, T. F. (2015). What do we mean by prediction in langu
 
 Kurbatova, T. (2017). Basic Features of Conceptual Sphere “Geopolitics” in Modern English-Speaking Worldview. At the Crossroads: Challenges of Foreign Language Learning, 37–51. <https://doi.org/10.1007/978-3-319-55155-5_3>
 
-Kurihara, Y., Kaburagi, T., Nishio, K., Hamada, Y., Matsumoto, T., & Kumagai, S. (2020). Discrimination of Verbal/Visuospatial Memory Retrieval Processes by Measuring Prefrontal Lobe Blood Volume With Functional Near-Infrared Spectrometry. IEEE Access, 8, 208683–208695. https://doi.org/10.1109/access.2020.3038553. <https://doi.org/10.1109/ACCESS.2020.3038553>
+Kurihara, Y., Kaburagi, T., Nishio, K., Hamada, Y., Matsumoto, T., & Kumagai, S. (2020). Discrimination of Verbal/Visuospatial Memory Retrieval Processes by Measuring Prefrontal Lobe Blood Volume With Functional Near-Infrared Spectrometry. IEEE Access, 8, 208683–208695. <https://doi.org/10.1109/ACCESS.2020.3038553>
 
 Kuś, K., & Wójtowicz, K. (2024). Explanation versus Understanding: On Two Roles of Dynamical Systems Theory in Extended Cognition Research. Foundations of Science, 30(1), 175–200. <https://doi.org/10.1007/s10699-024-09940-5>
 
@@ -2653,7 +2653,7 @@ Lai, V. T., Willems, R. M., & Hagoort, P. (2015). Feel between the Lines: Implie
 
 Laine, P., Rousi, R., Parviainen, T., & Kujala, T. (2025). Converging creativity through semantic processing. Journal of Creativity, 35(3), 100111. <https://doi.org/10.1016/j.yjoc.2025.100111>
 
-Lake, B. M., Ullman, T. D., Tenenbaum, J. B., & Gershman, S. J. (2016). Building machines that learn and think like people. Behavioral and Brain Sciences, 40. https://doi.org/10.1017/s0140525x16001837. <https://doi.org/10.1017/S0140525X16001837>
+Lake, B. M., Ullman, T. D., Tenenbaum, J. B., & Gershman, S. J. (2016). Building machines that learn and think like people. Behavioral and Brain Sciences, 40. <https://doi.org/10.1017/S0140525X16001837>
 
 Laland, K., & Seed, A. (2021). Understanding Human Cognitive Uniqueness. Annual Review of Psychology, 72(1), 689–716. <https://doi.org/10.1146/annurev-psych-062220-051256>
 
@@ -2661,7 +2661,7 @@ Lameira, A. R., & Moran, S. (2023). Life of p: A consonant older than speech. Bi
 
 Lampert, G. (2016). Between Composition and Emergentness: A Cognitive Semantics Re-Reading of the Way-Construction. Cognitive Semantics, 2(2), 164–189. <https://doi.org/10.1163/23526416-00202002>
 
-Lane, C., Kanjlia, S., Omaki, A., & Bedny, M. (2015). “Visual” Cortex of Congenitally Blind Adults Responds to Syntactic Movement. The Journal of Neuroscience, 35(37), 12859–12868. https://doi.org/10.1523/jneurosci.1256-15.2015. <https://doi.org/10.1523/JNEUROSCI.1256-15.2015>
+Lane, C., Kanjlia, S., Omaki, A., & Bedny, M. (2015). “Visual” Cortex of Congenitally Blind Adults Responds to Syntactic Movement. The Journal of Neuroscience, 35(37), 12859–12868. <https://doi.org/10.1523/JNEUROSCI.1256-15.2015>
 
 Lane, E. (2024). Metaphor and ambiguity. Philosophical Studies, 181(11), 3059–3087. <https://doi.org/10.1007/s11098-024-02252-1>
 
@@ -2727,7 +2727,7 @@ León-Cabrera, P., Flores, A., Rodríguez-Fornells, A., & Morís, J. (2019). Ahe
 
 León-Cabrera, P., Rodríguez-Fornells, A., & Morís, J. (2017). Electrophysiological correlates of semantic anticipation during speech comprehension. Neuropsychologia, 99, 326–334. <https://doi.org/10.1016/j.neuropsychologia.2017.02.026>
 
-Leon, F. (2024). Learning to Count with Cell Assemblies: A Neuro-Symbolic Approach. 2024 28th International Conference on System Theory, Control and Computing (ICSTCC), 290–296. https://doi.org/10.1109/icstcc62912.2024.10744731. <https://doi.org/10.1109/ICSTCC62912.2024.10744731>
+Leon, F. (2024). Learning to Count with Cell Assemblies: A Neuro-Symbolic Approach. 2024 28th International Conference on System Theory, Control and Computing (ICSTCC), 290–296. <https://doi.org/10.1109/ICSTCC62912.2024.10744731>
 
 Leopold, C., Mayer, R. E., & Dutke, S. (2019). The power of imagination and perspective in learning from science text. Journal of Educational Psychology, 111(5), 793–808. <https://doi.org/10.1037/edu0000310>
 
@@ -2735,7 +2735,7 @@ Leow, R. P. (2015). Explicit Learning in the L2 Classroom. Routledge. <https://d
 
 Lestrade, S. (2015). A case of cultural evolution. Linguistics in the Netherlands, 32, 105–115. Portico. <https://doi.org/10.1075/avt.32.08les>
 
-Lestrade, S. (2018). <i>The Emergence Of Differential Case Marking</i>. Zenodo. https://doi.org/10.5281/ZENODO.1228275. <https://doi.org/10.5281/zenodo.1228275>
+Lestrade, S. (2018). <i>The Emergence Of Differential Case Marking</i>. Zenodo. <https://doi.org/10.5281/zenodo.1228275>
 
 Levinson, S. C. (2016). Turn-taking in Human Communication – Origins and Implications for Language Processing. Trends in Cognitive Sciences, 20(1), 6–14. <https://doi.org/10.1016/j.tics.2015.10.010>
 
@@ -2763,7 +2763,7 @@ Li, G., Zhang, W., Qiu, H., Tan, C., & Niu, J. (2024). The allocation of carbon 
 
 Li, H., Kuman, K., Lotter, M. G., Leader, G. M., & Gibbon, R. J. (2017). The Victoria West: earliest prepared core technology in the Acheulean at Canteen Kopje and implications for the cognitive evolution of early hominids. Royal Society Open Science, 4(6), 170288. <https://doi.org/10.1098/rsos.170288>
 
-Li, K., Nguyen, H. V., Cheng, T. C. E., & Teng, C.-I. (2018). How do avatar characteristics affect avatar friendliness and online gamer loyalty? Perspective of the theory of embodied cognition. Internet Research, 28(4), 1103–1121. https://doi.org/10.1108/intr-06-2017-0246. <https://doi.org/10.1108/IntR-06-2017-0246>
+Li, K., Nguyen, H. V., Cheng, T. C. E., & Teng, C.-I. (2018). How do avatar characteristics affect avatar friendliness and online gamer loyalty? Perspective of the theory of embodied cognition. Internet Research, 28(4), 1103–1121. <https://doi.org/10.1108/IntR-06-2017-0246>
 
 Li, L. H.-L., & Lin, P.-H. (2017). Monster character profiling and Chinese classifier cognition: linguistic and conceptual perspectives. Journal of Cognitive Psychology, 29(4), 433–449. <https://doi.org/10.1080/20445911.2017.1282488>
 
@@ -2805,7 +2805,7 @@ Liu, M., & Dou, J. (2023). Metaphorical polysemy of the Chinese color termhēi�
 
 Liu, N., Iijima, A., Iwata, Y., Ohashi, K., Fujisawa, N., Sasaoka, T., & Hasegawa, I. (2022). Mental construction of object symbols from meaningless elements by Japanese macaques (Macaca fuscata). Scientific Reports, 12(1). <https://doi.org/10.1038/s41598-022-07563-z>
 
-Liu, Y.-F., Kim, J., Wilson, C., & Bedny, M. (2020). Computer code comprehension shares neural resources with formal logical inference in the fronto-parietal network. ELife, 9. CLOCKSS. https://doi.org/10.7554/elife.59340. <https://doi.org/10.7554/eLife.59340>
+Liu, Y.-F., Kim, J., Wilson, C., & Bedny, M. (2020). Computer code comprehension shares neural resources with formal logical inference in the fronto-parietal network. ELife, 9. CLOCKSS. <https://doi.org/10.7554/eLife.59340>
 
 Liu, Y.-F., Wilson, C., & Bedny, M. (2024). Contribution of the language network to the comprehension of Python programming code. Brain and Language, 251, 105392. <https://doi.org/10.1016/j.bandl.2024.105392>
 
@@ -2813,7 +2813,7 @@ Liu, Y.-T., & Tseng, W.-T. (2024). Seeing to understand better? The interplay be
 
 Liu, Y., Li, Y., Mayfield, R., & Huang, Y. (2025). Improving Emotional Support Delivery in Text-Based Community Safety Reporting Using Large Language Models. Proceedings of the ACM on Human-Computer Interaction, 9(2), 1–31. <https://doi.org/10.1145/3711012>
 
-Livengood, J., van Steenburgh, J. J., Jayatillake, R., Vannorsdall, T. D., Schretlen, D. J., & Gordon, B. (2015). Transcranial Direct Current Stimulation and Language. International Encyclopedia of the Social &amp; Behavioral Sciences, 533–544. https://doi.org/10.1016/b978-0-08-097086-8.54052-5. <https://doi.org/10.1016/B978-0-08-097086-8.54052-5>
+Livengood, J., van Steenburgh, J. J., Jayatillake, R., Vannorsdall, T. D., Schretlen, D. J., & Gordon, B. (2015). Transcranial Direct Current Stimulation and Language. International Encyclopedia of the Social &amp; Behavioral Sciences, 533–544. <https://doi.org/10.1016/B978-0-08-097086-8.54052-5>
 
 Llanes-Coromina, J., Vilà-Giménez, I., Kushch, O., Borràs-Comes, J., & Prieto, P. (2018). Beat gestures help preschoolers recall and comprehend discourse information. Journal of Experimental Child Psychology, 172, 168–188. <https://doi.org/10.1016/j.jecp.2018.02.004>
 
@@ -2833,11 +2833,11 @@ Lombao, D., Guardiola, M., & Mosquera, M. (2017). Teaching to make stone tools: 
 
 Lombard, M. (2025). Towards an archaeology of attention: A neuro-genetic exploration. Journal of Archaeological Science, 182, 106344. <https://doi.org/10.1016/j.jas.2025.106344>
 
-Lombard, M., & Gärdenfors, P. (2017). Tracking the evolution of causal cognition in humans [JB]. Journal of Anthropological Sciences, 95, 219–234. https://doi.org/10.4436/JASS.95006. <https://doi.org/10.4436/jass.95006>
+Lombard, M., & Gärdenfors, P. (2017). Tracking the evolution of causal cognition in humans [JB]. Journal of Anthropological Sciences, 95, 219–234. <https://doi.org/10.4436/jass.95006>
 
 Lombard, M., & Gärdenfors, P. (2021). Causal Cognition and Theory of Mind in Evolutionary Cognitive Archaeology. Biological Theory, 18(4), 234–252. <https://doi.org/10.1007/s13752-020-00372-5>
 
-Longa Martínez, V. M., & López Rivera, J. J. (2020). Reseña de Moliner, Soledad (2009): Primeros auxilios para hablar bien español. Pragmalinguistica, 28, 302–320. https://doi.org/10.25267/pragmalinguistica.2020.i28.19. <https://doi.org/10.25267/Pragmalinguistica.2020.i28.19>
+Longa Martínez, V. M., & López Rivera, J. J. (2020). Reseña de Moliner, Soledad (2009): Primeros auxilios para hablar bien español. Pragmalinguistica, 28, 302–320. <https://doi.org/10.25267/Pragmalinguistica.2020.i28.19>
 
 Loos, C., German, A., & Meier, R. P. (2022). Simultaneous structures in sign languages: Acquisition and emergence. Frontiers in Psychology, 13. <https://doi.org/10.3389/fpsyg.2022.992589>
 
@@ -2861,11 +2861,11 @@ Lotem, A., Halpern, J. Y., Edelman, S., & Kolodny, O. (2017). The evolution of c
 
 Louwerse, M. M. (2018). Knowing the Meaning of a Word by the Linguistic and Perceptual Company It Keeps. Topics in Cognitive Science, 10(3), 573–589. Portico. <https://doi.org/10.1111/tops.12349>
 
-Löwenadler, J. (2015). Relative clause extraction: Pragmatic dominance, processing complexity and the nature of crosslinguistic variation. Nordic Journal of Linguistics, 38(1), 37–65. https://doi.org/10.1017/s0332586515000050. <https://doi.org/10.1017/S0332586515000050>
+Löwenadler, J. (2015). Relative clause extraction: Pragmatic dominance, processing complexity and the nature of crosslinguistic variation. Nordic Journal of Linguistics, 38(1), 37–65. <https://doi.org/10.1017/S0332586515000050>
 
 Lowney, C. W., Levy, S. D., Meroney, W., & Gayler, R. W. (2020). Connecting Twenty-First Century Connectionism and Wittgenstein. Philosophia, 48(2), 643–671. <https://doi.org/10.1007/s11406-019-00154-9>
 
-Lücking, A. (2021). <i>Gesture</i>. Zenodo. https://doi.org/10.5281/ZENODO.5599872. <https://doi.org/10.5281/zenodo.5599872>
+Lücking, A. (2021). <i>Gesture</i>. Zenodo. <https://doi.org/10.5281/zenodo.5599872>
 
 Lücking, A., Brückner, S., Abrami, G., Uslu, T., & Mehler, A. (2021). Computational Linguistic Assessment of Textbooks and Online Texts by Means of Threshold Concepts in Economics. Frontiers in Education, 5. <https://doi.org/10.3389/feduc.2020.578475>
 
@@ -2885,7 +2885,7 @@ Lumaca, M., Vuust, P., & Baggio, G. (2021). Network Analysis of Human Brain Conn
 
 Luo, G., & Mukherjee, S. (2020). In Search of Chaos and Complexity of a Cognitive Language-Learning System. Complexity, 2020, 1–10. <https://doi.org/10.1155/2020/7169597>
 
-Luuk, E. (2015). Syntax–Semantics Interface. International Encyclopedia of the Social &amp; Behavioral Sciences, 900–905. https://doi.org/10.1016/b978-0-08-097086-8.57035-4. <https://doi.org/10.1016/B978-0-08-097086-8.57035-4>
+Luuk, E. (2015). Syntax–Semantics Interface. International Encyclopedia of the Social &amp; Behavioral Sciences, 900–905. <https://doi.org/10.1016/B978-0-08-097086-8.57035-4>
 
 Luuk, E. (2020). Type Theory and Universal Grammar. Software Engineering and Formal Methods, 180–194. <https://doi.org/10.1007/978-3-030-57506-9_14>
 
@@ -2943,7 +2943,7 @@ Malafouris, L. (2020). How does thinking relate to tool making? Adaptive Behavio
 
 Malafouris, L. (2024). People are STRANGE: towards a philosophical archaeology of self. Phenomenology and the Cognitive Sciences, 24(3), 685–711. <https://doi.org/10.1007/s11097-024-10002-1>
 
-Malafouris, L., &amp; Prestininzi, F. (2024). Come si relaziona il pensiero alla produzione di utensili? <i>Zenodo</i>. https://doi.org/10.5281/ZENODO.11121559. <https://doi.org/10.5281/zenodo.11121559>
+Malafouris, L., &amp; Prestininzi, F. (2024). Come si relaziona il pensiero alla produzione di utensili? <i>Zenodo</i>. <https://doi.org/10.5281/zenodo.11121559>
 
 Malassé, A. D., & Cauche, D. (2022). Des traces de boucherie aux outils lithiques de Masol (Pliocène supérieur, Inde du Nord). Une approche psychomotrice de l’origine et de l’identité des hominiens. L’Anthropologie, 126(4), 103070. <https://doi.org/10.1016/j.anthro.2022.103070>
 
@@ -2999,7 +2999,7 @@ Marten, L., Hurst-Harosh, E., Kula, N. C., & Zeller, J. (Eds.). (2025). The Oxfo
 
 Martens, B. V. der V. (2023). Signals, Semiotics. Keywords In and Out of Context, 15–27. <https://doi.org/10.1007/978-3-031-32530-4_2>
 
-Martín-Ramos, C. (2025). Evolutionary Cognitive Archaeology and Acheulean Technology. A Historiographic Review. Cambridge Archaeological Journal, 35(4), 633–647. https://doi.org/10.1017/s0959774325100073. <https://doi.org/10.1017/S0959774325100073>
+Martín-Ramos, C. (2025). Evolutionary Cognitive Archaeology and Acheulean Technology. A Historiographic Review. Cambridge Archaeological Journal, 35(4), 633–647. <https://doi.org/10.1017/S0959774325100073>
 
 Martin, A. E., & Baggio, G. (2019). Modelling meaning composition from formalism to mechanism. Philosophical Transactions of the Royal Society B: Biological Sciences, 375(1791), 20190298. <https://doi.org/10.1098/rstb.2019.0298>
 
@@ -3045,7 +3045,7 @@ Mathias, B., Andrä, C., Schwager, A., Macedonia, M., & von Kriegstein, K. (2022
 
 Mathias, B., Sureth, L., Hartwigsen, G., Macedonia, M., Mayer, K. M., & von Kriegstein, K. (2020). Visual Sensory Cortices Causally Contribute to Auditory Word Recognition Following Sensorimotor-Enriched Vocabulary Training. Cerebral Cortex, 31(1), 513–528. <https://doi.org/10.1093/cercor/bhaa240>
 
-Mathias, B., Waibel, A., Hartwigsen, G., Sureth, L., Macedonia, M., Mayer, K. M., & von Kriegstein, K. (2021). Motor Cortex Causally Contributes to Vocabulary Translation following Sensorimotor-Enriched Training. The Journal of Neuroscience, 41(41), 8618–8631. https://doi.org/10.1523/jneurosci.2249-20.2021. <https://doi.org/10.1523/JNEUROSCI.2249-20.2021>
+Mathias, B., Waibel, A., Hartwigsen, G., Sureth, L., Macedonia, M., Mayer, K. M., & von Kriegstein, K. (2021). Motor Cortex Causally Contributes to Vocabulary Translation following Sensorimotor-Enriched Training. The Journal of Neuroscience, 41(41), 8618–8631. <https://doi.org/10.1523/JNEUROSCI.2249-20.2021>
 
 Matoba, R., Yonezawa, T., Hagiwara, S., Cooper, T., & Nakamura, M. (2020). Extension of iterated learning model based on real-world experiment. Artificial Life and Robotics, 26(2), 228–234. <https://doi.org/10.1007/s10015-020-00665-9>
 
@@ -3055,11 +3055,11 @@ Matos, F. I. de A. (2019). Uma perspectiva etiológica sobre a função natural 
 
 Matsumoto, D. (2023). Social evolution and commitment: Bridging the gap between formal linguistic theories and language evolution research. Biolinguistics, 17. <https://doi.org/10.5964/bioling.12787>
 
-Matsunaga, T. (2023). Scale-Free Patterns by Synchronous Word Connectivity Sustainably for Chronological Variation. IEEE Access, 11, 101537–101543. https://doi.org/10.1109/access.2023.3315322. <https://doi.org/10.1109/ACCESS.2023.3315322>
+Matsunaga, T. (2023). Scale-Free Patterns by Synchronous Word Connectivity Sustainably for Chronological Variation. IEEE Access, 11, 101537–101543. <https://doi.org/10.1109/ACCESS.2023.3315322>
 
 Mattiello, E. (2024). A morphosyntactic and morphosemantic analysis of English slang suffixoids [JB]. Studi e Saggi Linguistici, 62(1). <https://doi.org/10.4454/ssl.v62i1.380>
 
-Maurer, H. (2023). Chapter 10. Connectionist Neuroarchitectures in Cognition and Consciousness Theory Based on Integrative (Synchronization) Mechanisms. Compendium of Neurosymbolic Artificial Intelligence. https://doi.org/10.3233/faia230142. <https://doi.org/10.3233/FAIA230142>
+Maurer, H. (2023). Chapter 10. Connectionist Neuroarchitectures in Cognition and Consciousness Theory Based on Integrative (Synchronization) Mechanisms. Compendium of Neurosymbolic Artificial Intelligence. <https://doi.org/10.3233/FAIA230142>
 
 Mavilidi, M. F., Ouwehand, K., Schmidt, M., Pesce, C., Tomporowski, P. D., Okely, A., & Paas, F. (2021). Embodiment as a pedagogical tool to enhance learning. The Body, Embodiment, and Education, 183–203. <https://doi.org/10.4324/9781003142010-10>
 
@@ -3113,7 +3113,7 @@ Mehler, A., Lücking, A., & Dong, T. (2023). Editorial: Multimodal communication
 
 Mehr, S. A., & Krasnow, M. M. (2017). Parent-offspring conflict and the evolution of infant-directed song. Evolution and Human Behavior, 38(5), 674–684. <https://doi.org/10.1016/j.evolhumbehav.2016.12.005>
 
-Mehr, S. A., Krasnow, M. M., Bryant, G. A., & Hagen, E. H. (2020). Origins of music in credible signaling. Behavioral and Brain Sciences, 44. https://doi.org/10.1017/s0140525x20000345. <https://doi.org/10.1017/S0140525X20000345>
+Mehr, S. A., Krasnow, M. M., Bryant, G. A., & Hagen, E. H. (2020). Origins of music in credible signaling. Behavioral and Brain Sciences, 44. <https://doi.org/10.1017/S0140525X20000345>
 
 Mehta, M., Arif, A. S., Gupta, A., DeLong, S., Manshaei, R., Williams, G., Lalwani, M., Chandrasekharan, S., & Mazalek, A. (2016). Active Pathways. Proceedings of the 2016 ACM International Conference on Interactive Surfaces and Spaces, 129–138. <https://doi.org/10.1145/2992154.2992176>
 
@@ -3131,9 +3131,9 @@ Mellet, E., Salagnon, M., Majkić, A., Cremona, S., Joliot, M., Jobard, G., Mazo
 
 Menary, R. (2018). Keeping Track with Things. Oxford Scholarship Online. <https://doi.org/10.1093/oso/9780198769811.003.0016>
 
-MENDÍVIL-GIRÓ, J.-L. (2018). Is Universal Grammar ready for retirement? A short review of a longstanding misinterpretation. Journal of Linguistics, 54(4), 859–888. https://doi.org/10.1017/s0022226718000166. <https://doi.org/10.1017/S0022226718000166>
+MENDÍVIL-GIRÓ, J.-L. (2018). Is Universal Grammar ready for retirement? A short review of a longstanding misinterpretation. Journal of Linguistics, 54(4), 859–888. <https://doi.org/10.1017/S0022226718000166>
 
-Mendívil-Giró, J.-L. (2019). Did language evolve through language change? On language change, language evolution and grammaticalization theory. Glossa: A Journal of General Linguistics, 4(1). https://doi.org/10.5334/gjgl.895. <https://doi.org/10.5334/GJGL.895>
+Mendívil-Giró, J.-L. (2019). Did language evolve through language change? On language change, language evolution and grammaticalization theory. Glossa: A Journal of General Linguistics, 4(1). <https://doi.org/10.5334/GJGL.895>
 
 Meneganzin, A., & Killin, A. (2024). Beyond reasonable doubt: reconsidering Neanderthal aesthetic capacity. Phenomenology and the Cognitive Sciences, 24(3), 733–765. <https://doi.org/10.1007/s11097-024-10003-0>
 
@@ -3143,7 +3143,7 @@ Mercier, H. (2017). How Gullible are We? A Review of the Evidence from Psycholog
 
 Meyerhoff, M. (2018). Introducing Sociolinguistics. Routledge. <https://doi.org/10.4324/9780429507922>
 
-Michaelov, J. A., Coulson, S., & Bergen, B. K. (2023). So Cloze Yet So Far: N400 Amplitude Is Better Predicted by Distributional Information Than Human Predictability Judgements. IEEE Transactions on Cognitive and Developmental Systems, 15(3), 1033–1042. https://doi.org/10.1109/tcds.2022.3176783. <https://doi.org/10.1109/TCDS.2022.3176783>
+Michaelov, J. A., Coulson, S., & Bergen, B. K. (2023). So Cloze Yet So Far: N400 Amplitude Is Better Predicted by Distributional Information Than Human Predictability Judgements. IEEE Transactions on Cognitive and Developmental Systems, 15(3), 1033–1042. <https://doi.org/10.1109/TCDS.2022.3176783>
 
 Michele Di Francesco. (2017). Spiegazione neurocentrica e mente personale. Tra filosofia e neuroscienze [JB]. Rivista di filosofia, 2, 233–248. <https://doi.org/10.1413/86812>
 
@@ -3153,7 +3153,7 @@ Milburn, E., Warren, T., & Dickey, M. W. (2015). World knowledge affects predict
 
 Miller, G. L. (2024). Sense and Symbolic Sensibility: The Rise of Amphibians and the Roots of Language in Whiteheadian Perspective. Process Studies, 53(1), 7–41. <https://doi.org/10.5406/21543682.53.1.01>
 
-Miller, P., & Culicover, P. W. (2025). Lexical be. Journal of Linguistics, 1–24. https://doi.org/10.1017/s0022226724000422. <https://doi.org/10.1017/S0022226724000422>
+Miller, P., & Culicover, P. W. (2025). Lexical be. Journal of Linguistics, 1–24. <https://doi.org/10.1017/S0022226724000422>
 
 Milošević, J., & Risku, H. (2024). Interpreting and embodied cognition. The Routledge Handbook of Interpreting and Cognition, 324–340. <https://doi.org/10.4324/9780429297533-24>
 
@@ -3225,7 +3225,7 @@ Mondal, P. (2022). A Critical Perspective on the (Neuro)biological Foundations o
 
 Mondal, P. (2022). Disunity with unity in cognition within the context of language–biology relations. Journal of Theoretical and Philosophical Psychology, 42(1), 19–36. <https://doi.org/10.1037/teo0000156>
 
-Mondal, P. (2022). Predicate Concepts and their Normal Form. Computación y Sistemas, 26(1). https://doi.org/10.13053/cys-26-1-4161. <https://doi.org/10.13053/CyS-26-1-4161>
+Mondal, P. (2022). Predicate Concepts and their Normal Form. Computación y Sistemas, 26(1). <https://doi.org/10.13053/CyS-26-1-4161>
 
 Mondal, P. (2022). The Puzzling Chasm Between Cognitive Representations and Formal Structures of Linguistic Meanings. Cognitive Science, 46(9). Portico. <https://doi.org/10.1111/cogs.13200>
 
@@ -3249,7 +3249,7 @@ Moore, R. (2017). The evolution of syntactic structure. Biology &amp; Philosophy
 
 Moreno-Fernandez, F. (2016). A Framework for Cognitive Sociolinguistics. Routledge. <https://doi.org/10.4324/9781315545448>
 
-MORETT, L. M. (2017). In hand and in mind: Effects of gesture production and viewing on second language word learning. Applied Psycholinguistics, 39(2), 355–381. https://doi.org/10.1017/s0142716417000388. <https://doi.org/10.1017/S0142716417000388>
+MORETT, L. M. (2017). In hand and in mind: Effects of gesture production and viewing on second language word learning. Applied Psycholinguistics, 39(2), 355–381. <https://doi.org/10.1017/S0142716417000388>
 
 Morett, L. M. (2022). How to Conduct Experimental Research Illuminating Gesture’s Role in L2 Acquisition. Gesture and Multimodality in Second Language Acquisition, 147–171. <https://doi.org/10.4324/9781003100683-7>
 
@@ -3270,7 +3270,7 @@ Morgenstern, A. (2024). Gesture and First Language Development: The Multimodal C
 Morgenstern, A. (2024). The choreography of multimedial procedures and multimodal languaging
 								in French family dinners. Media as Procedures of Communication, 188–217. Portico. <https://doi.org/10.1075/pbns.348.08mor>
 
-Morrish, L. (n.d.). Introduction: what is language? What is linguistics? Exploring Language and Linguistics, 1–23. https://doi.org/10.1017/cbo9781139548922.002. <https://doi.org/10.1017/CBO9781139548922.002>
+Morrish, L. (n.d.). Introduction: what is language? What is linguistics? Exploring Language and Linguistics, 1–23. <https://doi.org/10.1017/CBO9781139548922.002>
 
 Morrison, D. M. (2020). Disambiguated Indexical Pointing as a Tipping Point for the Explosive Emergence of Language Among Human Ancestors. Biological Theory, 15(4), 196–211. <https://doi.org/10.1007/s13752-020-00355-6>
 
@@ -3288,7 +3288,7 @@ Mou, X., Qian, C., Liu, W., Yan, L., Hu, Y., Huang, X., & Wei, Z. (2025). EcoLAN
 
 Mougenot, D., & Matheson, H. (2024). Theoretical strategies for an embodied cognitive neuroscience: Mechanistic explanations of brain-body-environment systems. Cognitive Neuroscience, 15(3–4), 85–97. <https://doi.org/10.1080/17588928.2024.2349546>
 
-Mounier, A., Noûs, C., & Balzeau, A. (2020). Palaeoneurology and the Emergence of Language. Bulletins et Mémoires de La Société d’Anthropologie de Paris, 32(3–4), 147–157. https://doi.org/10.3166/bmsap-2020-0098. <https://doi.org/10.3166/BMSAP-2020-0098>
+Mounier, A., Noûs, C., & Balzeau, A. (2020). Palaeoneurology and the Emergence of Language. Bulletins et Mémoires de La Société d’Anthropologie de Paris, 32(3–4), 147–157. <https://doi.org/10.3166/BMSAP-2020-0098>
 
 Movsesian, A. A. (2025). Scaffolding minds? Toolmaking complexity and brain evolution in the hominin record. Journal of Archaeological Science, 184, 106412. <https://doi.org/10.1016/j.jas.2025.106412>
 
@@ -3312,15 +3312,15 @@ Muller, A., Sharon, G., & Grosman, L. (2025). The Skills of Handaxe Making: Quan
 
 Muller, A., Shipton, C., & Clarkson, C. (2022). Stone toolmaking difficulty and the evolution of hominin technological skills. Scientific Reports, 12(1). <https://doi.org/10.1038/s41598-022-09914-2>
 
-Muller, A., Shipton, C., & Clarkson, C. (2023). The Proceduralization of Hominin Knapping Skill: Memorizing Different Lithic Technologies. Cambridge Archaeological Journal, 33(4), 655–672. https://doi.org/10.1017/s0959774323000070. <https://doi.org/10.1017/S0959774323000070>
+Muller, A., Shipton, C., & Clarkson, C. (2023). The Proceduralization of Hominin Knapping Skill: Memorizing Different Lithic Technologies. Cambridge Archaeological Journal, 33(4), 655–672. <https://doi.org/10.1017/S0959774323000070>
 
 Müller, K. H. (2016). Expanding Socio-economics in Four Dimensions. Forum for Social Economics, 46(1), 26–51. <https://doi.org/10.1080/07360932.2015.1094744>
 
-Müller, S. (2019). <i>Grammatical theory: From transformational grammar to constraint-based approaches. Third revised and extended edition</i>. Zenodo. https://doi.org/10.5281/ZENODO.3364215. <https://doi.org/10.5281/zenodo.3364215>
+Müller, S. (2019). <i>Grammatical theory: From transformational grammar to constraint-based approaches. Third revised and extended edition</i>. Zenodo. <https://doi.org/10.5281/zenodo.3364215>
 
-Müller, S. (2020). <i>Grammatical theory: From transformational grammar to constraint-based approaches. Fifth revised edition</i>. Zenodo. https://doi.org/10.5281/ZENODO.7376662. <https://doi.org/10.5281/zenodo.7376662>
+Müller, S. (2020). <i>Grammatical theory: From transformational grammar to constraint-based approaches. Fifth revised edition</i>. Zenodo. <https://doi.org/10.5281/zenodo.7376662>
 
-Müller, S. (2020). <i>Grammatical theory: From transformational grammar to constraint-based approaches. Fourth revised and extended edition</i>. Zenodo. https://doi.org/10.5281/ZENODO.3992307. <https://doi.org/10.5281/zenodo.3992307>
+Müller, S. (2020). <i>Grammatical theory: From transformational grammar to constraint-based approaches. Fourth revised and extended edition</i>. Zenodo. <https://doi.org/10.5281/zenodo.3992307>
 
 Müller, T. F., Brinkmann, L., Winters, J., & Pescetelli, N. (2023). Machine Impostors Can Avoid Human Detection and Interrupt the Formation of Stable Conventions by Imitating Past Interactions: A Minimal Turing Test. Cognitive Science, 47(4). Portico. <https://doi.org/10.1111/cogs.13288>
 
@@ -3328,13 +3328,13 @@ Müller, T. F., Winters, J., & Morin, O. (2019). The Influence of Shared Visual 
 
 Müller, T. F., Winters, J., Morisseau, T., Noveck, I., & Morin, O. (2021). Colour terms: native language semantic structure and artificial language structure formation in a large-scale online smartphone application. Journal of Cognitive Psychology, 33(4), 357–378. <https://doi.org/10.1080/20445911.2021.1900199>
 
-Murgiano, M., Motamedi, Y., & Vigliocco, G. (2021). Situating Language in the Real-World: The Role of Multimodal Iconicity and Indexicality. Journal of Cognition, 4(1). https://doi.org/10.5334/joc.113. <https://doi.org/10.5334/JOC.113>
+Murgiano, M., Motamedi, Y., & Vigliocco, G. (2021). Situating Language in the Real-World: The Role of Multimodal Iconicity and Indexicality. Journal of Cognition, 4(1). <https://doi.org/10.5334/JOC.113>
 
 Murphy, E. (2020). The Oscillatory Nature of Language. <https://doi.org/10.1017/9781108864466>
 
 Murphy, M. (2020). Training ecologies for the actor-creator and Gordon Craig’s School for the Art of the Theatre. Theatre, Dance and Performance Training, 11(3), 285–299. <https://doi.org/10.1080/19443927.2020.1789721>
 
-Muysken, P. (2017). Linguistic Categories in Language Contact. Handbook of Categorization in Cognitive Science, 511–548. https://doi.org/10.1016/b978-0-08-101107-2.00021-x. <https://doi.org/10.1016/B978-0-08-101107-2.00021-X>
+Muysken, P. (2017). Linguistic Categories in Language Contact. Handbook of Categorization in Cognitive Science, 511–548. <https://doi.org/10.1016/B978-0-08-101107-2.00021-X>
 
 Myachykov, A., Chapman, A. J., & Fischer, M. H. (2017). Cross-Representational Interactions: Interface and Overlap Mechanisms. Frontiers in Psychology, 07. <https://doi.org/10.3389/fpsyg.2016.02028>
 
@@ -3362,17 +3362,17 @@ Nasukawa, K. (2015). Recursion in the lexical structure of morphemes. Representi
 
 Nathan, M. J., & Walkington, C. (2017). Grounded and embodied mathematical cognition: Promoting mathematical insight and proof using action and language. Cognitive Research: Principles and Implications, 2(1). <https://doi.org/10.1186/s41235-016-0040-5>
 
-Natochin, Y., & Chernigovskaya, T. (2020). From archebiosis to evolution of organisms and informational systems. Biological Communications, 65(3), 215–227. https://doi.org/10.21638/spbu03.2020.301. <https://doi.org/10.21638/SPBU03.2020.301>
+Natochin, Y., & Chernigovskaya, T. (2020). From archebiosis to evolution of organisms and informational systems. Biological Communications, 65(3), 215–227. <https://doi.org/10.21638/SPBU03.2020.301>
 
 Navarro, D. J., Perfors, A., Kary, A., Brown, S. D., & Donkin, C. (2018). When Extremists Win: Cultural Transmission Via Iterated Learning When Populations Are Heterogeneous. Cognitive Science, 42(7), 2108–2149. Portico. <https://doi.org/10.1111/cogs.12667>
 
-Naya-Varela, M., Faina, A., & Duro, R. J. (2021). Morphological Development in Robotic Learning: A Survey. IEEE Transactions on Cognitive and Developmental Systems, 13(4), 750–768. https://doi.org/10.1109/tcds.2021.3052548. <https://doi.org/10.1109/TCDS.2021.3052548>
+Naya-Varela, M., Faina, A., & Duro, R. J. (2021). Morphological Development in Robotic Learning: A Survey. IEEE Transactions on Cognitive and Developmental Systems, 13(4), 750–768. <https://doi.org/10.1109/TCDS.2021.3052548>
 
 Nefdt, R. M. (2016). Scientific modelling in generative grammar and the dynamic turn in syntax. Linguistics and Philosophy, 39(5), 357–394. <https://doi.org/10.1007/s10988-016-9193-4>
 
 Nefdt, R. M. (2017). Infinity and the foundations of linguistics. Synthese, 196(5), 1671–1711. <https://doi.org/10.1007/s11229-017-1574-x>
 
-Nefdt, R. M. (2019). <i>Linguistics as a science of structure</i>. Zenodo. https://doi.org/10.5281/ZENODO.2654361. <https://doi.org/10.5281/zenodo.2654361>
+Nefdt, R. M. (2019). <i>Linguistics as a science of structure</i>. Zenodo. <https://doi.org/10.5281/zenodo.2654361>
 
 Nefdt, R. M. (2019). Formal Semantics and Applied Mathematics: An Inferential Account. Journal of Logic, Language and Information, 29(2), 221–253. <https://doi.org/10.1007/s10849-019-09298-z>
 
@@ -3382,7 +3382,7 @@ Nefdt, R. M. (2020). A Puzzle concerning Compositionality in Machines. Minds and
 
 Nefdt, R. M. (2020). The Role of Language in the Cognitive Sciences. The Philosophy and Science of Language, 215–238. <https://doi.org/10.1007/978-3-030-55438-5_9>
 
-Nefdt, R. M. (2021). Concepts and conceptual engineering: answering Cappelen’s challenge. Inquiry, 67(1), 400–428. https://doi.org/10.1080/0020174x.2021.1926316. <https://doi.org/10.1080/0020174X.2021.1926316>
+Nefdt, R. M. (2021). Concepts and conceptual engineering: answering Cappelen’s challenge. Inquiry, 67(1), 400–428. <https://doi.org/10.1080/0020174X.2021.1926316>
 
 Nefdt, R. M. (2021). Structural realism and generative linguistics. Synthese, 199(1–2), 3711–3737. <https://doi.org/10.1007/s11229-020-02952-1>
 
@@ -3404,21 +3404,21 @@ Newmeyer, F. J. (2016). Form and Function in the Evolution of Grammar. Cognitive
 
 Newmeyer, F. J. (2021). Complexity and Relative Complexity in Generative Grammar. Frontiers in Communication, 6. <https://doi.org/10.3389/fcomm.2021.614352>
 
-Nguyen, L. D., Preece, C., & Vom Lehn, D. (2023). Reframing art online through collective meaning-making. Journal of Marketing Management, 39(17–18), 1710–1737. https://doi.org/10.1080/0267257x.2023.2274486. <https://doi.org/10.1080/0267257X.2023.2274486>
+Nguyen, L. D., Preece, C., & Vom Lehn, D. (2023). Reframing art online through collective meaning-making. Journal of Marketing Management, 39(17–18), 1710–1737. <https://doi.org/10.1080/0267257X.2023.2274486>
 
 Nickerson, J. V. (2020). Remixing systems: collective design through modification. Handbook of Digital Innovation. <https://doi.org/10.4337/9781788119986.00018>
 
 Nieder, A. (2025). The calculating brain. Physiological Reviews, 105(1), 267–314. <https://doi.org/10.1152/physrev.00014.2024>
 
-Nieuwland, M. S., Politzer-Ahles, S., Heyselaar, E., Segaert, K., Darley, E., Kazanina, N., Von Grebmer Zu Wolfsthurn, S., Bartolozzi, F., Kogan, V., Ito, A., Mézière, D., Barr, D. J., Rousselet, G. A., Ferguson, H. J., Busch-Moreno, S., Fu, X., Tuomainen, J., Kulakova, E., Husband, E. M., … Huettig, F. (2018). Large-scale replication study reveals a limit on probabilistic prediction in language comprehension. ELife, 7. CLOCKSS. https://doi.org/10.7554/elife.33468. <https://doi.org/10.7554/eLife.33468>
+Nieuwland, M. S., Politzer-Ahles, S., Heyselaar, E., Segaert, K., Darley, E., Kazanina, N., Von Grebmer Zu Wolfsthurn, S., Bartolozzi, F., Kogan, V., Ito, A., Mézière, D., Barr, D. J., Rousselet, G. A., Ferguson, H. J., Busch-Moreno, S., Fu, X., Tuomainen, J., Kulakova, E., Husband, E. M., … Huettig, F. (2018). Large-scale replication study reveals a limit on probabilistic prediction in language comprehension. ELife, 7. CLOCKSS. <https://doi.org/10.7554/eLife.33468>
 
-Nikanne, U. (2017). <i>Finite Sentences In Finnish: Word Order, Morphology, And Information Structure</i>. Zenodo. https://doi.org/10.5281/ZENODO.1117710. <https://doi.org/10.5281/zenodo.1117710>
+Nikanne, U. (2017). <i>Finite Sentences In Finnish: Word Order, Morphology, And Information Structure</i>. Zenodo. <https://doi.org/10.5281/zenodo.1117710>
 
 Nikiforidou, K., & Fried, M. (2025). Grammar and multimodality. Multimodal Communication from a Construction Grammar Perspective, 1–24. Portico. <https://doi.org/10.1075/cal.38.intro>
 
 Nilsson, J., & Norrthon, S. (2024). Opening interspecies encounters – Greetings between humans and nonhuman animals. Journal of Pragmatics, 229, 40–55. <https://doi.org/10.1016/j.pragma.2024.05.007>
 
-NISBET, T. (2019). Meaning, metaphor, and argument structure. Journal of Linguistics, 56(3), 629–662. https://doi.org/10.1017/s002222671900029x. <https://doi.org/10.1017/S002222671900029X>
+NISBET, T. (2019). Meaning, metaphor, and argument structure. Journal of Linguistics, 56(3), 629–662. <https://doi.org/10.1017/S002222671900029X>
 
 NISHIMURA, T. (2018). The descended larynx and the descending larynx. Anthropological Science, 126(1), 3–8. <https://doi.org/10.1537/ase.180301>
 
@@ -3440,7 +3440,7 @@ Norris, D. (2017). Short-term memory and long-term memory are still different. P
 
 Norrthon, S., & Nilsson, J. (2025). Human affiliative responses to companion animal vocalizations. Language &amp; Communication, 101, 1–14. <https://doi.org/10.1016/j.langcom.2024.12.011>
 
-Nortier, J., & Svendsen, B. A. (Eds.). (2015). Language, Youth and Identity in the 21st Century. https://doi.org/10.1017/cbo9781139061896. <https://doi.org/10.1017/CBO9781139061896>
+Nortier, J., & Svendsen, B. A. (Eds.). (2015). Language, Youth and Identity in the 21st Century. <https://doi.org/10.1017/CBO9781139061896>
 
 Nota, N., Trujillo, J. P., & Holler, J. (2021). Facial Signals and Social Actions in Multimodal Face-to-Face Interaction. Brain Sciences, 11(8), 1017. <https://doi.org/10.3390/brainsci11081017>
 
@@ -3448,17 +3448,17 @@ Nota, N., Trujillo, J. P., & Holler, J. (2023). Conversational Eyebrow Frowns Fa
 
 Nota, N., Trujillo, J. P., & Holler, J. (2023). Specific facial signals associate with categories of social actions conveyed through questions. PLOS ONE, 18(7), e0288104. <https://doi.org/10.1371/journal.pone.0288104>
 
-Nothhaft, H., & Seiffert-Brockmann, J. (2023). Peacocks, Penknives and Power. International Journal of Strategic Communication, 17(3), 163–180. https://doi.org/10.1080/1553118x.2023.2197441. <https://doi.org/10.1080/1553118X.2023.2197441>
+Nothhaft, H., & Seiffert-Brockmann, J. (2023). Peacocks, Penknives and Power. International Journal of Strategic Communication, 17(3), 163–180. <https://doi.org/10.1080/1553118X.2023.2197441>
 
 Nowak, I., & Baggio, G. (2016). The emergence of word order and morphology in compositional languages via multigenerational signaling games. Journal of Language Evolution, 1(2), 137–150. <https://doi.org/10.1093/jole/lzw007>
 
-Nowak, T. (2021). Reflection on the Borders of Language and Speech in Light of Discoveries in Zoosemiotics. Zoophilologica, 1 (7), 1–53. https://doi.org/10.31261/zoophilologica.2021.07.10. <https://doi.org/10.31261/ZOOPHILOLOGICA.2021.07.10>
+Nowak, T. (2021). Reflection on the Borders of Language and Speech in Light of Discoveries in Zoosemiotics. Zoophilologica, 1 (7), 1–53. <https://doi.org/10.31261/ZOOPHILOLOGICA.2021.07.10>
 
-Nowak, T. (2022). Komunikacja komplikacji i komplikacja komunikacji. Porozumiewanie się zwierząt ludzkich i nie-ludzkich na tle założeń biosemiotyki. Zoophilologica, 1 (9), 1–34. https://doi.org/10.31261/zoophilologica.2022.09.02. <https://doi.org/10.31261/ZOOPHILOLOGICA.2022.09.02>
+Nowak, T. (2022). Komunikacja komplikacji i komplikacja komunikacji. Porozumiewanie się zwierząt ludzkich i nie-ludzkich na tle założeń biosemiotyki. Zoophilologica, 1 (9), 1–34. <https://doi.org/10.31261/ZOOPHILOLOGICA.2022.09.02>
 
 Nuger, J. (2016). Setting the Stage. Building Predicates, 1–49. <https://doi.org/10.1007/978-3-319-28682-2_1>
 
-Nungesser, F. (2017). The Evolution of Pragmatism. European Journal of Sociology, 58(2), 327–367. https://doi.org/10.1017/s0003975617000121. <https://doi.org/10.1017/S0003975617000121>
+Nungesser, F. (2017). The Evolution of Pragmatism. European Journal of Sociology, 58(2), 327–367. <https://doi.org/10.1017/S0003975617000121>
 
 Nungesser, F. (2019). Folterbarkeit. Eine soziologische Analyse menschlicher Verletzungsoffenheit. Zeitschrift Für Soziologie, 48(5–6), 378–400. <https://doi.org/10.1515/zfsoz-2019-0027>
 
@@ -3470,7 +3470,7 @@ O’Grady, W. (2015). Anaphora and the Case for Emergentism. The Handbook of Lan
 
 O’Grady, W. (2015). Casting a wider net. Linguistic Approaches to Bilingualism, 5(4), 505–510. Portico. <https://doi.org/10.1075/lab.5.4.11ogr>
 
-O’Grady, W. (2017). Working memory and language: From phonology to grammar. Applied Psycholinguistics, 38(6), 1340–1343. https://doi.org/10.1017/s0142716417000327. <https://doi.org/10.1017/S0142716417000327>
+O’Grady, W. (2017). Working memory and language: From phonology to grammar. Applied Psycholinguistics, 38(6), 1340–1343. <https://doi.org/10.1017/S0142716417000327>
 
 O’Keeffe, A., Knight, D., Mark, G., Fitzgerald, C., McNamara, J., Adolphs, S., Cowan, B., Fahey Palma, T., Farr, F., & Peraldi, S. (2024). “We’ve lost you Ian”: Multi-modal corpus innovations in capturing, processing and analysing professional online spoken interactions. Research in Corpus Linguistics, 12(2), 1–23. <https://doi.org/10.32714/ricl.12.02.02>
 
@@ -3480,15 +3480,15 @@ Oesch, N. (2019). Music and Language in Social Interaction: Synchrony, Antiphony
 
 Øhrn, H., Sjursen, E. P., Specht, K., Hugdahl, K., Straffon, L. M., & Bender, A. (2025). The neural underpinnings of repeated skill transfer in human cultural evolution. Frontiers in Psychology, 16. <https://doi.org/10.3389/fpsyg.2025.1545120>
 
-OHTA, S. (2020). &lt;i&gt;Why Only Us: Language and Evolution&lt;/i&gt; ENGLISH LINGUISTICS, 37(1), 101–111. https://doi.org/10.9793/elsj.37.1_101. <https://doi.org/10.9793/ELSJ.37.1_101>
+OHTA, S. (2020). &lt;i&gt;Why Only Us: Language and Evolution&lt;/i&gt; ENGLISH LINGUISTICS, 37(1), 101–111. <https://doi.org/10.9793/ELSJ.37.1_101>
 
 Okada, K., Rogalsky, C., O’Grady, L., Hanaumi, L., Bellugi, U., Corina, D., & Hickok, G. (2016). An fMRI study of perception and action in deaf signers. Neuropsychologia, 82, 179–188. <https://doi.org/10.1016/j.neuropsychologia.2016.01.015>
 
-Oki, K., Kurihara, Y., Kaburagi, T., & Shiba, K. (2017). English ability score prediction algorithm based on prefrontal cortex blood volume utilizing a regulated linear regression model. 2017 5th International Winter Conference on Brain-Computer Interface (BCI), 20–23. https://doi.org/10.1109/iww-bci.2017.7858147. <https://doi.org/10.1109/IWW-BCI.2017.7858147>
+Oki, K., Kurihara, Y., Kaburagi, T., & Shiba, K. (2017). English ability score prediction algorithm based on prefrontal cortex blood volume utilizing a regulated linear regression model. 2017 5th International Winter Conference on Brain-Computer Interface (BCI), 20–23. <https://doi.org/10.1109/IWW-BCI.2017.7858147>
 
-Olaya, C. (2019). The experimenting university. Kybernetes, 48(7), 1398–1417. https://doi.org/10.1108/k-05-2018-0276. <https://doi.org/10.1108/K-05-2018-0276>
+Olaya, C. (2019). The experimenting university. Kybernetes, 48(7), 1398–1417. <https://doi.org/10.1108/K-05-2018-0276>
 
-Oleg Belyaev. (2023). <i>Introduction to LFG</i>. Language Science Press. https://doi.org/10.5281/ZENODO.10185934. <https://doi.org/10.5281/zenodo.10185934>
+Oleg Belyaev. (2023). <i>Introduction to LFG</i>. Language Science Press. <https://doi.org/10.5281/zenodo.10185934>
 
 Oller, D. K., Caskey, M., Yoo, H., Bene, E. R., Jhang, Y., Lee, C.-C., Bowman, D. D., Long, H. L., Buder, E. H., & Vohr, B. (2019). Preterm and full term infant vocalization and the origin of language. Scientific Reports, 9(1). <https://doi.org/10.1038/s41598-019-51352-0>
 
@@ -3496,7 +3496,7 @@ Oller, D. K., Dale, R., & Griebel, U. (2016). New Frontiers in Language Evolutio
 
 Olmstead, R., & Walls, M. (2024). Acheulean technology and emergent sociality: what material engagement means for the evolution of human-environment systems. Phenomenology and the Cognitive Sciences, 24(3), 809–828. <https://doi.org/10.1007/s11097-024-10039-2>
 
-Olson, D. R. (2016). The Mind on Paper. https://doi.org/10.1017/cbo9781316678466. <https://doi.org/10.1017/CBO9781316678466>
+Olson, D. R. (2016). The Mind on Paper. <https://doi.org/10.1017/CBO9781316678466>
 
 Olson, M. E. (2019). Spandrels and trait delimitation: No such thing as “architectural constraint.” Evolution &amp; Development, 21(2), 59–71. Portico. <https://doi.org/10.1111/ede.12279>
 
@@ -3522,7 +3522,7 @@ Ormazabal, J., & Romero, J. (2024). Deconstructing SE-Constructions: Number Agre
 
 Ornelas, M. L., Smith, G. B., & Mansouri, M. (2022). Redefining culture in cultural robotics. AI &amp; SOCIETY, 38(2), 777–788. <https://doi.org/10.1007/s00146-022-01476-1>
 
-Ortega-Andrés, M., & Vicente, A. (2019). Polysemy and co-predication. Glossa: A Journal of General Linguistics, 4(1). https://doi.org/10.5334/gjgl.564. <https://doi.org/10.5334/GJGL.564>
+Ortega-Andrés, M., & Vicente, A. (2019). Polysemy and co-predication. Glossa: A Journal of General Linguistics, 4(1). <https://doi.org/10.5334/GJGL.564>
 
 ORTEGA, G., & ÖZYÜREK, A. (2019). Types of iconicity and combinatorial strategies distinguish semantic categories in silent gesture across cultures. Language and Cognition, 12(1), 84–113. <https://doi.org/10.1017/langcog.2019.28>
 
@@ -3564,7 +3564,7 @@ Pain, R. (2022). Stone tools, predictive processing and the evolution of languag
 
 Pain, R., & Brown, R. L. (2020). Mind the gap: a more evolutionarily plausible role for technical reasoning in cumulative technological culture. Synthese, 199(1–2), 2467–2489. <https://doi.org/10.1007/s11229-020-02894-8>
 
-PALIT, P., & SAHOO, A. (2025). VARIATIONS IN LANGUAGE AND ITS EQUATION WITH LINGUISTIC IDENTITY. Dialectologia, .34. https://doi.org/10.1344/dialectologia.34.7. <https://doi.org/10.1344/DIALECTOLOGIA.34.7>
+PALIT, P., & SAHOO, A. (2025). VARIATIONS IN LANGUAGE AND ITS EQUATION WITH LINGUISTIC IDENTITY. Dialectologia, .34. <https://doi.org/10.1344/DIALECTOLOGIA.34.7>
 
 Pally, R., Olds, D., & Solms, M. (2018). The Mind-Brain Relationship. Routledge. <https://doi.org/10.4324/9780429482465>
 
@@ -3608,13 +3608,13 @@ Patihis, L. (2023). Did Dissociative Amnesia Evolve? Topics in Cognitive Science
 
 Patterson, A. (2021). Predicting second language listening functor comprehension probability with usage-based and embodiment approaches. International Journal of Bilingualism, 25(3), 772–788. <https://doi.org/10.1177/13670069211000851>
 
-Paulsen, G., & Nikanne, U. (2019). Causative purpose adjuncts in Estonian and Finnish: A non-linear approach. Nordic Journal of Linguistics, 42(3), 263–289. https://doi.org/10.1017/s033258651900012x. <https://doi.org/10.1017/S033258651900012X>
+Paulsen, G., & Nikanne, U. (2019). Causative purpose adjuncts in Estonian and Finnish: A non-linear approach. Nordic Journal of Linguistics, 42(3), 263–289. <https://doi.org/10.1017/S033258651900012X>
 
 Paunov, A. M., Blank, I. A., & Fedorenko, E. (2019). Functionally distinct language and Theory of Mind networks are synchronized at rest and during language comprehension. Journal of Neurophysiology, 121(4), 1244–1265. <https://doi.org/10.1152/jn.00619.2018>
 
 Pavlović, V., Janić Mitić, A., & Mitić, I. (2024). Motion-related image schemas in Serbian journalistic articles. Review of Cognitive Linguistics. <https://doi.org/10.1075/rcl.00210.pav>
 
-Pawlett Jackson, S. (2024). Phenomenologies of loneliness: alone without you, alone without an us. Journal of Psychosocial Studies, 17(1), 46–61. https://doi.org/10.1332/14786737y2024d000000011. <https://doi.org/10.1332/14786737Y2024D000000011>
+Pawlett Jackson, S. (2024). Phenomenologies of loneliness: alone without you, alone without an us. Journal of Psychosocial Studies, 17(1), 46–61. <https://doi.org/10.1332/14786737Y2024D000000011>
 
 Pawlett Jackson, S. (2025). The Phenomenology of the Second-Person Plural. <https://doi.org/10.4324/9781003587811>
 
@@ -3680,11 +3680,11 @@ Peschl, M. F., Kaiser, A., & Fordinal, B. (2023). Enabling the Phronetically Ena
 
 Pescuma, V. N., Serova, D., Lukassek, J., Sauermann, A., Schäfer, R., Adli, A., Bildhauer, F., Egg, M., Hülk, K., Ito, A., Jannedy, S., Kordoni, V., Kuehnast, M., Kutscher, S., Lange, R., Lehmann, N., Liu, M., Lütke, B., Maquate, K., … Knoeferle, P. (2023). Situating language register across the ages, languages, modalities, and cultural aspects: Evidence from complementary methods. Frontiers in Psychology, 13. <https://doi.org/10.3389/fpsyg.2022.964658>
 
-Pessoa, L. (2015). The cognitive-emotional amalgam. Behavioral and Brain Sciences, 38. https://doi.org/10.1017/s0140525x14001083. <https://doi.org/10.1017/S0140525X14001083>
+Pessoa, L. (2015). The cognitive-emotional amalgam. Behavioral and Brain Sciences, 38. <https://doi.org/10.1017/S0140525X14001083>
 
 Peters, J., Waubert de Puiseau, C., Tercan, H., Gopikrishnan, A., Lucas de Carvalho, G. A., Bitter, C., & Meisen, T. (2025). Emergent language: a survey and taxonomy. Autonomous Agents and Multi-Agent Systems, 39(1). <https://doi.org/10.1007/s10458-025-09691-y>
 
-Petracca, E. (2017). A cognition paradigm clash: Simon,situated cognitionand the interpretation of bounded rationality. Journal of Economic Methodology, 24(1), 20–40. https://doi.org/10.1080/1350178x.2017.1279742. <https://doi.org/10.1080/1350178X.2017.1279742>
+Petracca, E. (2017). A cognition paradigm clash: Simon,situated cognitionand the interpretation of bounded rationality. Journal of Economic Methodology, 24(1), 20–40. <https://doi.org/10.1080/1350178X.2017.1279742>
 
 Petreski, D., & Hashim, I. C. (2022). Word embeddings are biased. But whose bias are they reflecting? AI &amp; SOCIETY, 38(2), 975–982. <https://doi.org/10.1007/s00146-022-01443-w>
 
@@ -3702,7 +3702,7 @@ Piantadosi, S. T., & Fedorenko, E. (2017). Infinitely productive language can ar
 
 Piattelli-Palmarini, M. (2017). Fodor and the Innateness of All (Basic) Concepts. In Oxford Scholarship Online. Oxford University Press. <https://doi.org/10.1093/oso/9780190464783.003.0010>
 
-Piegzik, W. A., & Mitera, E. (2025). La construction de la compétence à communiquer langagièrement en français langue étrangère à l’époque de la pandémie du Covid-19 : entre succès et échecs. Romanica Cracoviensia, 25(1), 47. https://doi.org/10.4467/20843917rc.25.005.22093. <https://doi.org/10.4467/20843917RC.25.005.22093>
+Piegzik, W. A., & Mitera, E. (2025). La construction de la compétence à communiquer langagièrement en français langue étrangère à l’époque de la pandémie du Covid-19 : entre succès et échecs. Romanica Cracoviensia, 25(1), 47. <https://doi.org/10.4467/20843917RC.25.005.22093>
 
 Pietroski, P. M. (2018). Conjoining Meanings. Oxford Scholarship Online. <https://doi.org/10.1093/oso/9780198812722.001.0001>
 
@@ -3770,15 +3770,15 @@ Prat, Y., Bshary, R., & Lotem, A. (2022). Modelling how cleaner fish approach an
 
 Prestwood, L., Salnaitis, C., & Brice, A. (2021). Bilingualism. Encyclopedia of Evolutionary Psychological Science, 572–579. <https://doi.org/10.1007/978-3-319-19650-3_2419>
 
-Preuss, T. M. (2017). An Introduction to Human Brain Evolutionary Studies. Evolution of Nervous Systems, 1–18. https://doi.org/10.1016/b978-0-12-804042-3.00101-9. <https://doi.org/10.1016/B978-0-12-804042-3.00101-9>
+Preuss, T. M. (2017). An Introduction to Human Brain Evolutionary Studies. Evolution of Nervous Systems, 1–18. <https://doi.org/10.1016/B978-0-12-804042-3.00101-9>
 
-Preuss, T. M. (2020). An Introduction to Human Brain Evolutionary Studies. Evolutionary Neuroscience, 711–731. https://doi.org/10.1016/b978-0-12-820584-6.00029-5. <https://doi.org/10.1016/B978-0-12-820584-6.00029-5>
+Preuss, T. M. (2020). An Introduction to Human Brain Evolutionary Studies. Evolutionary Neuroscience, 711–731. <https://doi.org/10.1016/B978-0-12-820584-6.00029-5>
 
 Prieur, J., Barbu, S., Blois‐Heulin, C., & Lemasson, A. (2019). The origins of gestures and language: history, current advances and proposed theories. Biological Reviews, 95(3), 531–554. Portico. <https://doi.org/10.1111/brv.12576>
 
 Prieur, J., Lemasson, A., Barbu, S., & Blois‐Heulin, C. (2018). History, development and current advances concerning the evolutionary roots of human right‐handedness and language: Brain lateralisation and manual laterality in non‐human primates. Ethology, 125(1), 1–28. Portico. <https://doi.org/10.1111/eth.12827>
 
-Privas-Bréauté, V. (2022). Mise en scène du corps dématérialisé de l’apprenant en langues : La réalité virtuelle comme dispositif enactif prometteur. Recherche et Pratiques Pédagogiques En Langues de Spécialité - Cahiers de l’APLIUT, Vol. 41 N°1. https://doi.org/10.4000/apliut.9830. <https://doi.org/10.4000/APLIUT.9830>
+Privas-Bréauté, V. (2022). Mise en scène du corps dématérialisé de l’apprenant en langues : La réalité virtuelle comme dispositif enactif prometteur. Recherche et Pratiques Pédagogiques En Langues de Spécialité - Cahiers de l’APLIUT, Vol. 41 N°1. <https://doi.org/10.4000/APLIUT.9830>
 
 Progovac, L. (2016). A Gradualist Scenario for Language Evolution: Precise Linguistic Reconstruction of Early Human (and Neandertal) Grammars. Frontiers in Psychology, 7. <https://doi.org/10.3389/fpsyg.2016.01714>
 
@@ -3792,7 +3792,7 @@ Progovac, L., Rakhlin, N., Angell, W., Liddane, R., Tang, L., & Ofen, N. (2018).
 
 Progovac, L., Rakhlin, N., Angell, W., Liddane, R., Tang, L., & Ofen, N. (2018). Neural Correlates of Syntax and Proto-Syntax: Evolutionary Dimension. Frontiers in Psychology, 9. <https://doi.org/10.3389/fpsyg.2018.02415>
 
-Pronina, M., Grofulovic, J., Castillo, E., Prieto, P., & Igualada, A. (2023). Narrative Abilities at Age 3 Are Associated Positively With Gesture Accuracy but Negatively With Gesture Rate. Journal of Speech, Language, and Hearing Research, 66(3), 951–965. https://doi.org/10.1044/2022_jslhr-21-00414. <https://doi.org/10.1044/2022_JSLHR-21-00414>
+Pronina, M., Grofulovic, J., Castillo, E., Prieto, P., & Igualada, A. (2023). Narrative Abilities at Age 3 Are Associated Positively With Gesture Accuracy but Negatively With Gesture Rate. Journal of Speech, Language, and Hearing Research, 66(3), 951–965. <https://doi.org/10.1044/2022_JSLHR-21-00414>
 
 Proroković, J., & Malenica, F. (2023). Language corpora and first language acquisition—A case study of the ditransitive construction. Applied Corpus Linguistics, 3(1), 100041. <https://doi.org/10.1016/j.acorp.2023.100041>
 
@@ -3844,7 +3844,7 @@ Rácz, D. S., Boros, M., & Andics, A. (2025). Dogs as a model to study the emerg
 
 Rączaszek-Leonardi, J. (2016). How does a word become a message? An illustration on a developmental time-scale. New Ideas in Psychology, 42, 46–55. <https://doi.org/10.1016/j.newideapsych.2015.08.001>
 
-Rahul, D. R., & Ponniah, J. (2020). Understanding the robustness of incidental vocabulary acquisition through reading: Qualitative insights from biolinguistics. Rupkatha Journal on Interdisciplinary Studies in Humanities, 12(5). https://doi.org/10.21659/rupkatha.v12n5.rioc1s23n2. <https://doi.org/10.21659/RUPKATHA.V12N5.RIOC1S23N2>
+Rahul, D. R., & Ponniah, J. (2020). Understanding the robustness of incidental vocabulary acquisition through reading: Qualitative insights from biolinguistics. Rupkatha Journal on Interdisciplinary Studies in Humanities, 12(5). <https://doi.org/10.21659/RUPKATHA.V12N5.RIOC1S23N2>
 
 Raja, V. (2017). A Theory of Resonance: Towards an Ecological Cognitive Architecture. Minds and Machines, 28(1), 29–51. <https://doi.org/10.1007/s11023-017-9431-8>
 
@@ -3874,7 +3874,7 @@ Rappaport, M. B., & Corbally, C. (2018). EVOLUTION OF RELIGIOUS CAPACITY IN THE 
 
 Ras, M., Wyrwa, M., Stachowiak, J., Buchwald, M., Nowik, A. M., & Kroliczak, G. (2022). Complex tools and motor-to-mechanical transformations. Scientific Reports, 12(1). <https://doi.org/10.1038/s41598-022-12142-3>
 
-Rasenberg, M., Özyürek, A., Bögels, S., & Dingemanse, M. (2022). The Primacy of Multimodal Alignment in Converging on Shared Symbols for Novel Referents. Discourse Processes, 59(3), 209–236. https://doi.org/10.1080/0163853x.2021.1992235. <https://doi.org/10.1080/0163853X.2021.1992235>
+Rasenberg, M., Özyürek, A., Bögels, S., & Dingemanse, M. (2022). The Primacy of Multimodal Alignment in Converging on Shared Symbols for Novel Referents. Discourse Processes, 59(3), 209–236. <https://doi.org/10.1080/0163853X.2021.1992235>
 
 Rast, E. (2022). Metalinguistic disputes, semantic decomposition, and externalism. Linguistics and Philosophy, 46(1), 65–85. <https://doi.org/10.1007/s10988-022-09357-y>
 
@@ -3943,7 +3943,7 @@ Rhode, A. K., Voyer, B. G., & Gleibs, I. H. (2016). Does Language Matter? Explor
 Richerson, P. J., Gavrilets, S., & de Waal, F. B. M. (2021). Modern theories of human evolution foreshadowed by Darwin’s
             Descent of Man. Science, 372(6544). <https://doi.org/10.1126/science.aba3776>
 
-Richerson, P., Baldini, R., Bell, A. V., Demps, K., Frost, K., Hillis, V., Mathew, S., Newton, E. K., Naar, N., Newson, L., Ross, C., Smaldino, P. E., Waring, T. M., & Zefferman, M. (2016). Cultural group selection follows Darwin’s classic syllogism for the operation of selection. Behavioral and Brain Sciences, 39. https://doi.org/10.1017/s0140525x15000606. <https://doi.org/10.1017/S0140525X15000606>
+Richerson, P., Baldini, R., Bell, A. V., Demps, K., Frost, K., Hillis, V., Mathew, S., Newton, E. K., Naar, N., Newson, L., Ross, C., Smaldino, P. E., Waring, T. M., & Zefferman, M. (2016). Cultural group selection follows Darwin’s classic syllogism for the operation of selection. Behavioral and Brain Sciences, 39. <https://doi.org/10.1017/S0140525X15000606>
 
 Righetti, F. (2024). Re-enactment and embodied resonance in episodic memory: reconciling phenomenological approaches and constructive theories. Phenomenology and the Cognitive Sciences. <https://doi.org/10.1007/s11097-024-10026-7>
 
@@ -3951,7 +3951,7 @@ Rik, S. (2018). Dawn. Routledge. <https://doi.org/10.4324/9780203793817>
 
 Rimassa, C. (2016). Cognición: denominador común para los estudios del lenguaje en las ciencias cognitivas. Literatura y Lingüística, 33, 325–348. <https://doi.org/10.4067/s0716-58112016000100016>
 
-Rimassa, C. (2018). Cognición: denominador común para los estudios del lenguaje en las ciencias cognitivas. Literatura y Lingüística, 33, 325–348. https://doi.org/10.29344/0717621x.33.1488. <https://doi.org/10.29344/0717621X.33.1488>
+Rimassa, C. (2018). Cognición: denominador común para los estudios del lenguaje en las ciencias cognitivas. Literatura y Lingüística, 33, 325–348. <https://doi.org/10.29344/0717621X.33.1488>
 
 Rissman, L., & Majid, A. (2019). Thematic roles: Core knowledge or linguistic construct? Psychonomic Bulletin &amp; Review, 26(6), 1850–1869. <https://doi.org/10.3758/s13423-019-01634-5>
 
@@ -4001,7 +4001,7 @@ Rohrmeier, M., & Widdess, R. (2016). Incidental Learning of Melodic Structure of
 
 Rokotnitz, N. (2018). Performance and Cognition: How the Performing Arts Contribute to The Science of Mind. Interdisciplinary Literary Studies, 20(4), 470–485. <https://doi.org/10.5325/intelitestud.20.4.0470>
 
-Roldán, J. P. (2021). ¿La comunicabilidad operativa de la persona requiere su comunicabilidad ontológica? Discusión sobre un dogma filosófico de nuestro tiempo. Scientia et Fides, 9(2), 75–90. https://doi.org/10.12775/setf.2021.019. <https://doi.org/10.12775/SETF.2021.019>
+Roldán, J. P. (2021). ¿La comunicabilidad operativa de la persona requiere su comunicabilidad ontológica? Discusión sobre un dogma filosófico de nuestro tiempo. Scientia et Fides, 9(2), 75–90. <https://doi.org/10.12775/SETF.2021.019>
 
 Rolls, E. T. (2017). Neurobiological foundations of aesthetics and art. New Ideas in Psychology, 47, 121–135. <https://doi.org/10.1016/j.newideapsych.2017.03.005>
 
@@ -4009,7 +4009,7 @@ Rolls, E. T. (2020). Brain Computations. <https://doi.org/10.1093/oso/9780198871
 
 Rolls, E. T. (2023). Brain Computations and Connectivity. Oxford University PressOxford. <https://doi.org/10.1093/oso/9780198887911.001.0001>
 
-ROMERO-RIVAS, C., COREY, J. D., GARCIA, X., THIERRY, G., MARTIN, C. D., & COSTA, A. (2016). World knowledge and novel information integration during L2 speech comprehension. Bilingualism: Language and Cognition, 20(3), 576–587. https://doi.org/10.1017/s1366728915000905. <https://doi.org/10.1017/S1366728915000905>
+ROMERO-RIVAS, C., COREY, J. D., GARCIA, X., THIERRY, G., MARTIN, C. D., & COSTA, A. (2016). World knowledge and novel information integration during L2 speech comprehension. Bilingualism: Language and Cognition, 20(3), 576–587. <https://doi.org/10.1017/S1366728915000905>
 
 Roncaglia-Denissen, M. P., Bouwer, F. L., & Honing, H. (2018). Decision Making Strategy and the Simultaneous Processing of Syntactic Dependencies in Language and Music. Frontiers in Psychology, 9. <https://doi.org/10.3389/fpsyg.2018.00038>
 
@@ -4019,13 +4019,13 @@ Rosselló, J., Celma-Miralles, A., & Martins, M. D. (2025). Visual recursion wit
 
 Rota, A. (2022). (Re)Connecting Analytic Philosophy and Empirical Research: The Example of Ritual Speech Acts and Religious Collectivities. Sophia, 61(1), 79–92. <https://doi.org/10.1007/s11841-021-00899-5>
 
-ROTHMAN, J. (2013). Linguistic and cognitive motivations for the Typological Primacy Model (TPM) of third language (L3) transfer: Timing of acquisition and proficiency considered. Bilingualism: Language and Cognition, 18(2), 179–190. https://doi.org/10.1017/s136672891300059x. <https://doi.org/10.1017/S136672891300059X>
+ROTHMAN, J. (2013). Linguistic and cognitive motivations for the Typological Primacy Model (TPM) of third language (L3) transfer: Timing of acquisition and proficiency considered. Bilingualism: Language and Cognition, 18(2), 179–190. <https://doi.org/10.1017/S136672891300059X>
 
 Rothman, J., González Alonso, J., & Puig-Mayenco, E. (2019). Third Language Acquisition and Linguistic Transfer. <https://doi.org/10.1017/9781316014660>
 
 Roze, E., Flamand-Roze, C., Méneret, A., Ruiz, M., Le Liepvre, H., Duguet, A., Renaud, M.-C., Alamowitch, S., & Steichen, O. (2016). ‘The Move’, an innovative simulation-based medical education program using roleplay to teach neurological semiology: Students’ and teachers’ perceptions. Revue Neurologique, 172(4–5), 289–294. <https://doi.org/10.1016/j.neurol.2016.02.007>
 
-Rozov, N. S. (2022). Anthropological Roots of Linguistic Universals. Chelovek, 33(4), 111. https://doi.org/10.31857/s023620070021631-1. <https://doi.org/10.31857/S023620070021631-1>
+Rozov, N. S. (2022). Anthropological Roots of Linguistic Universals. Chelovek, 33(4), 111. <https://doi.org/10.31857/S023620070021631-1>
 
 Rozov, N. S. (2023). Basic Concepts and Principles of Cognitive Evolution. The Origin of Language and Consciousness, 19–47. <https://doi.org/10.1007/978-3-031-30630-3_2>
 
@@ -4039,7 +4039,7 @@ Rubio-Fernandez, P., Berke, M. D., & Jara-Ettinger, J. (2025). Tracking minds in
 
 Rucińska, Z., & Weichold, M. (2022). Pretense and imagination from the perspective of 4E cognitive science: introduction to the special issue. Phenomenology and the Cognitive Sciences, 21(5), 989–1001. <https://doi.org/10.1007/s11097-022-09856-0>
 
-Ruck, L., Broadfield, D. C., & Brown, C. T. (2015). DETERMINING HOMINID HANDEDNESS IN LITHIC DEBITAGE: A REVIEW OF CURRENT METHODOLOGIES. Lithic Technology, 40(3), 171–188. https://doi.org/10.1179/2051618515y.0000000009. <https://doi.org/10.1179/2051618515Y.0000000009>
+Ruck, L., Broadfield, D. C., & Brown, C. T. (2015). DETERMINING HOMINID HANDEDNESS IN LITHIC DEBITAGE: A REVIEW OF CURRENT METHODOLOGIES. Lithic Technology, 40(3), 171–188. <https://doi.org/10.1179/2051618515Y.0000000009>
 
 Rühlemann, C. (2018). How Long Does it Take to Say ‘Well’? Evidence from the Audio BNC. Corpus Pragmatics, 3(1), 49–66. <https://doi.org/10.1007/s41701-018-0046-y>
 
@@ -4073,7 +4073,7 @@ Sabinasz, D., & Schöner, G. (2022). A Neural Dynamic Model Perceptually Grounds
 
 Sadowski, P. (2022). Systemic Semiotics. <https://doi.org/10.5040/9781350240698>
 
-Saeed, J. I. (2015). Semantics. International Encyclopedia of the Social &amp; Behavioral Sciences, 585–591. https://doi.org/10.1016/b978-0-08-097086-8.53079-7. <https://doi.org/10.1016/B978-0-08-097086-8.53079-7>
+Saeed, J. I. (2015). Semantics. International Encyclopedia of the Social &amp; Behavioral Sciences, 585–591. <https://doi.org/10.1016/B978-0-08-097086-8.53079-7>
 
 Sag, I. A., & Wasow, T. (2014). Flexible Processing and the Design of Grammar. Journal of Psycholinguistic Research, 44(1), 47–63. <https://doi.org/10.1007/s10936-014-9332-4>
 
@@ -4109,7 +4109,7 @@ Sanches de Oliveira, G. (2023). Explanatory Diversity and Embodied Cognitive Sci
 
 Sanches, C., Routier, A., Colliot, O., & Teichmann, M. (2018). The structure of the mental lexicon: What primary progressive aphasias reveal. Neuropsychologia, 109, 107–115. <https://doi.org/10.1016/j.neuropsychologia.2017.12.018>
 
-Sánchez Fajardo, J. A. (2021). Morphophonological salience through constructional schemas : an analysis of two case studies of English Slang Words Ending in {o}. Brno Studies in English, 1, 47–71. https://doi.org/10.5817/bse2021-1-4. <https://doi.org/10.5817/BSE2021-1-4>
+Sánchez Fajardo, J. A. (2021). Morphophonological salience through constructional schemas : an analysis of two case studies of English Slang Words Ending in {o}. Brno Studies in English, 1, 47–71. <https://doi.org/10.5817/BSE2021-1-4>
 
 Sánchez Fajardo, J. A. (2021). On nonce echo constructions expressing disapproval and annoyance. Languages in Contrast, 21(2), 275–297. Portico. <https://doi.org/10.1075/lic.20003.san>
 
@@ -4196,13 +4196,13 @@ Scott-Phillips, T. C. (2015). Nonhuman Primate Communication, Pragmatics, and th
 
 Scott, J., Foley, R., & Bozic, M. (2025). Labelling and iconicity facilitate visual categorisation and discrimination. Language and Cognition, 17. <https://doi.org/10.1017/langcog.2025.10023>
 
-Scotto, C. (2017). Wittgenstein: Iconicity In Language And «Experience Of Meaning» [Wittgenstein: Iconicidad En El Lenguaje Y «Experiencia Del Significado»]. <i>Zenodo</i>. https://doi.org/10.5281/ZENODO.1418402. <https://doi.org/10.5281/zenodo.1418402>
+Scotto, C. (2017). Wittgenstein: Iconicity In Language And «Experience Of Meaning» [Wittgenstein: Iconicidad En El Lenguaje Y «Experiencia Del Significado»]. <i>Zenodo</i>. <https://doi.org/10.5281/zenodo.1418402>
 
 Scotto, S. C. (2022). A Pragmatics-First Approach to Faces. Topoi, 41(4), 641–657. <https://doi.org/10.1007/s11245-022-09821-1>
 
 Seale, J. M., Bisantz, A. M., & Higginbotham, J. (2020). Interaction symmetry: Assessing augmented speaker and oral speaker performances across four tasks. Augmentative and Alternative Communication, 36(2), 82–94. <https://doi.org/10.1080/07434618.2020.1782987>
 
-Sederias, I., Krakovitch, A., Stojanovik, V., & Zimmerer, V. C. (2024). Overuse of familiar phrases by individuals with Williams syndrome masks differences in language processing. Journal of Child Language, 52(5), 1198–1212. https://doi.org/10.1017/s0305000924000436. <https://doi.org/10.1017/S0305000924000436>
+Sederias, I., Krakovitch, A., Stojanovik, V., & Zimmerer, V. C. (2024). Overuse of familiar phrases by individuals with Williams syndrome masks differences in language processing. Journal of Child Language, 52(5), 1198–1212. <https://doi.org/10.1017/S0305000924000436>
 
 Segaert, K., Wheeldon, L., & Hagoort, P. (2016). Unifying structural priming effects on syntactic choices and timing of sentence generation. Journal of Memory and Language, 91, 59–80. <https://doi.org/10.1016/j.jml.2016.03.011>
 
@@ -4218,7 +4218,7 @@ Semaw, S., Rogers, M. J., Simpson, S. W., Levin, N. E., Quade, J., Dunbar, N., M
             Homo erectus
             cranial fossils from Gona, Afar, Ethiopia. Science Advances, 6(10). <https://doi.org/10.1126/sciadv.aaw4694>
 
-Senaldi, M. S. G., & Titone, D. (2024). Idiom meaning selection following a prior context: eye movement evidence of L1 direct retrieval and L2 compositional assembly. Discourse Processes, 61(1–2), 21–43. https://doi.org/10.1080/0163853x.2024.2311637. <https://doi.org/10.1080/0163853X.2024.2311637>
+Senaldi, M. S. G., & Titone, D. (2024). Idiom meaning selection following a prior context: eye movement evidence of L1 direct retrieval and L2 compositional assembly. Discourse Processes, 61(1–2), 21–43. <https://doi.org/10.1080/0163853X.2024.2311637>
 
 Senaldi, M. S. G., & Titone, D. A. (2022). Less Direct, More Analytical: Eye-Movement Measures of L2 Idiom Reading. Languages, 7(2), 91. <https://doi.org/10.3390/languages7020091>
 
@@ -4234,7 +4234,7 @@ Sevdali, C., Mertyris, D., & Anagnostopoulou, E. (Eds.). (2024). The Place of Ca
 
 Seyfarth, R. M., & Cheney, D. L. (2016). Precursors to language: Social cognition and pragmatic inference in primates. Psychonomic Bulletin &amp; Review, 24(1), 79–84. <https://doi.org/10.3758/s13423-016-1059-9>
 
-Sha’ked, A., Rokach, A., & Zverling, E. (2025). Accurate empathy in romantic relationships. The Psychology of Romantic Relationships, 15–44. https://doi.org/10.1016/b978-0-443-31320-2.00028-6. <https://doi.org/10.1016/B978-0-443-31320-2.00028-6>
+Sha’ked, A., Rokach, A., & Zverling, E. (2025). Accurate empathy in romantic relationships. The Psychology of Romantic Relationships, 15–44. <https://doi.org/10.1016/B978-0-443-31320-2.00028-6>
 
 Shaikh, S. J. (2022). Artificially Intelligent, Interactive, and Assistive Machines: A Definitional Framework for Intelligent Assistants. International Journal of Human–Computer Interaction, 39(4), 776–789. <https://doi.org/10.1080/10447318.2022.2049133>
 
@@ -4264,7 +4264,7 @@ Sharwood Smith, M. (2019). The compatibility within a modular framework of emerg
 
 Sharwood Smith, M. (2020). Language transfer: a useful or pernicious concept? Second Language Research, 37(3), 409–414. <https://doi.org/10.1177/0267658320941035>
 
-Sharwood Smith, M. (2024). Applying a functionally specialized processing architecture to yield multilevel explanations of language. Discourse Processes, 62(8–9), 703–718. https://doi.org/10.1080/0163853x.2024.2433897. <https://doi.org/10.1080/0163853X.2024.2433897>
+Sharwood Smith, M. (2024). Applying a functionally specialized processing architecture to yield multilevel explanations of language. Discourse Processes, 62(8–9), 703–718. <https://doi.org/10.1080/0163853X.2024.2433897>
 
 Sharwood Smith, M. (2024). The place of language in multimodal communication in humans and other primates. Cognitive Systems Research, 84, 101205. <https://doi.org/10.1016/j.cogsys.2023.101205>
 
@@ -4272,7 +4272,7 @@ Shaules, J. (2019). Language, Culture, and the Embodied Mind. Springer Singapore
 
 Shaw-Williams, K. (2017). The Social Trackways Theory of the Evolution of Language. Biological Theory, 12(4), 195–210. <https://doi.org/10.1007/s13752-017-0278-2>
 
-Shayestehfar, M., & Rafei, S. R. (2024). Investigating spatial cognition in the production of chopper tools in the Lower Palaeolithic key sites of the Near East. Time and Mind, 17(3–4), 159–180. https://doi.org/10.1080/1751696x.2024.2415556. <https://doi.org/10.1080/1751696X.2024.2415556>
+Shayestehfar, M., & Rafei, S. R. (2024). Investigating spatial cognition in the production of chopper tools in the Lower Palaeolithic key sites of the Near East. Time and Mind, 17(3–4), 159–180. <https://doi.org/10.1080/1751696X.2024.2415556>
 
 Sherry, J. L. (2015). Neuroscience and Communication. Communication Methods and Measures, 9(1–2), 117–122. <https://doi.org/10.1080/19312458.2014.999756>
 
@@ -4332,7 +4332,7 @@ Sionti, M., Schack, T., & Aloimonos, Y. (2019). The Language of Motion MoCap Ont
 
 Sivakumar, M. S., & Balakrishnan, V. (2022). Theorizing Language Evolution Using NCT and Conlangs: An Etiological Study. Journal of Asian Linguistic Anthropology, 4(2), 70–87. <https://doi.org/10.47298/jala.v4-i2-a4>
 
-Skiba, S. A., & Taglialatela, J. P. (2017). Evolution of Laterality and Language in Primates. Evolution of Nervous Systems, 301–309. https://doi.org/10.1016/b978-0-12-804042-3.00121-4. <https://doi.org/10.1016/B978-0-12-804042-3.00121-4>
+Skiba, S. A., & Taglialatela, J. P. (2017). Evolution of Laterality and Language in Primates. Evolution of Nervous Systems, 301–309. <https://doi.org/10.1016/B978-0-12-804042-3.00121-4>
 
 Skidelsky, L. (2018). Facultad del lenguaje: la “hipótesis de solo ensamble” y la especificidad de dominio. Areté, 30(2), 357–385. <https://doi.org/10.18800/arete.201802.008>
 
@@ -4364,11 +4364,11 @@ Smith, K. (2022). How Language Learning and Language Use Create Linguistic Struc
 
 Smith, M. S. (2015). On virtual versus real spatio-temporal explanations of linguistic development. Linguistic Approaches to Bilingualism, 5(4), 537–540. Portico. <https://doi.org/10.1075/lab.5.4.17sha>
 
-Smith, M. S. (2020). The cognitive status of metalinguistic knowledge in speakers of one or more languages. Bilingualism: Language and Cognition, 24(1), 185–196. https://doi.org/10.1017/s1366728920000371. <https://doi.org/10.1017/S1366728920000371>
+Smith, M. S. (2020). The cognitive status of metalinguistic knowledge in speakers of one or more languages. Bilingualism: Language and Cognition, 24(1), 185–196. <https://doi.org/10.1017/S1366728920000371>
 
 Smith, M. S., & Truscott, J. (2024). Input Processing as an Interaction Between Internal and External Context. The Routledge Handbook of Second Language Acquisition and Input Processing, 120–133. <https://doi.org/10.4324/9781003041412-12>
 
-Smith, N., & Allott, N. (2015). Chomsky. https://doi.org/10.1017/cbo9781139979634. <https://doi.org/10.1017/CBO9781139979634>
+Smith, N., & Allott, N. (2015). Chomsky. <https://doi.org/10.1017/CBO9781139979634>
 
 Smithner, N. (2025). Embodied Learning in Educational Theatre. <https://doi.org/10.4324/9781003128106>
 
@@ -4426,7 +4426,7 @@ Stanlaw, J., & Adachi, N. (2025). Language, Culture, and Society. <https://doi.o
 
 Stefanich, S., Cabrelli, J., Hilderman, D., & Archibald, J. (2019). The Morphophonology of Intraword Codeswitching: Representation and Processing. Frontiers in Communication, 4. <https://doi.org/10.3389/fcomm.2019.00054>
 
-Stegemann-Philipps, C., & Butz, M. V. (2021). Learn It First: Grounding Language in Compositional Event-Predictive Encodings. 2021 IEEE International Conference on Development and Learning (ICDL), 1–6. https://doi.org/10.1109/icdl49984.2021.9515621. <https://doi.org/10.1109/ICDL49984.2021.9515621>
+Stegemann-Philipps, C., & Butz, M. V. (2021). Learn It First: Grounding Language in Compositional Event-Predictive Encodings. 2021 IEEE International Conference on Development and Learning (ICDL), 1–6. <https://doi.org/10.1109/ICDL49984.2021.9515621>
 
 Steinberg, J., & Sompolinsky, H. (2022). Associative memory of structured knowledge. Scientific Reports, 12(1). <https://doi.org/10.1038/s41598-022-25708-y>
 
@@ -4436,7 +4436,7 @@ Sternberg, R. J., Preiss, D. D., & Karami, S. (2023). An Historical Causal-Chain
 
 Stetie, N. A. (2021). Modelos de procesamiento sintáctico y sus implicaciones  para el estudio del lenguaje / Syntactic processing models and their implications for the study of language. REVISTA DE ESTUDOS DA LINGUAGEM, 29(3), 2117. <https://doi.org/10.17851/2237-2083.29.3.2117-1262>
 
-Stetie, N. A., & Zunino, G. M. (2022). Non-binary language in Spanish? Comprehension of non-binary morphological forms: a psycholinguistic study. Glossa: A Journal of General Linguistics, 7(1). https://doi.org/10.16995/glossa.6144. <https://doi.org/10.16995/GLOSSA.6144>
+Stetie, N. A., & Zunino, G. M. (2022). Non-binary language in Spanish? Comprehension of non-binary morphological forms: a psycholinguistic study. Glossa: A Journal of General Linguistics, 7(1). <https://doi.org/10.16995/GLOSSA.6144>
 
 Stewart-Williams, S. (2018). The Ape that Understood the Universe. <https://doi.org/10.1017/9781108348140>
 
@@ -4446,7 +4446,7 @@ Stewart, A. E., & Bolton, M. J. (2023). Digital Weather Information in an Embodi
 
 Stock, K., Jones, C. B., & Tenbrink, T. (2022). Speaking of location: a review of spatial language research. Spatial Cognition &amp; Computation, 22(3–4), 185–224. <https://doi.org/10.1080/13875868.2022.2095275>
 
-Stolk, A., Blokpoel, M., van Rooij, I., & Toni, I. (2015). On the generation of shared symbols. Cognitive Neuroscience of Natural Language Use, 201–227. https://doi.org/10.1017/cbo9781107323667.010. <https://doi.org/10.1017/CBO9781107323667.010>
+Stolk, A., Blokpoel, M., van Rooij, I., & Toni, I. (2015). On the generation of shared symbols. Cognitive Neuroscience of Natural Language Use, 201–227. <https://doi.org/10.1017/CBO9781107323667.010>
 
 Stolk, A., Verhagen, L., & Toni, I. (2016). Conceptual Alignment: How Brains Achieve Mutual Understanding. Trends in Cognitive Sciences, 20(3), 180–191. <https://doi.org/10.1016/j.tics.2015.11.007>
 
@@ -4460,11 +4460,11 @@ Stout, D. (2018). Archaeology and the evolutionary neuroscience of language. Int
 
 Stout, D. (2020). Culture, Mind, and Brain in Human Evolution. Culture, Mind, and Brain, 55–87. <https://doi.org/10.1017/9781108695374.005>
 
-Stout, D. (2023). Experimental neuroarchaeology of visuospatial behavior. Cognitive Archaeology, Body Cognition, and the Evolution of Visuospatial Perception, 195–211. https://doi.org/10.1016/b978-0-323-99193-3.00008-8. <https://doi.org/10.1016/B978-0-323-99193-3.00008-8>
+Stout, D. (2023). Experimental neuroarchaeology of visuospatial behavior. Cognitive Archaeology, Body Cognition, and the Evolution of Visuospatial Perception, 195–211. <https://doi.org/10.1016/B978-0-323-99193-3.00008-8>
 
 Stout, D., & Hecht, E. E. (2017). Evolutionary neuroscience of cumulative culture. Proceedings of the National Academy of Sciences, 114(30), 7861–7868. <https://doi.org/10.1073/pnas.1620738114>
 
-Stout, D., & Khreisheh, N. (2015). Skill Learning and Human Brain Evolution: An Experimental Approach. Cambridge Archaeological Journal, 25(4), 867–875. https://doi.org/10.1017/s0959774315000359. <https://doi.org/10.1017/S0959774315000359>
+Stout, D., & Khreisheh, N. (2015). Skill Learning and Human Brain Evolution: An Experimental Approach. Cambridge Archaeological Journal, 25(4), 867–875. <https://doi.org/10.1017/S0959774315000359>
 
 Stout, D., Chaminade, T., Apel, J., Shafti, A., & Faisal, A. A. (2021). The measurement, evolution, and neural representation of action grammars of human behavior. Scientific Reports, 11(1). <https://doi.org/10.1038/s41598-021-92992-5>
 
@@ -4510,11 +4510,11 @@ Sumers, T. R., Ho, M. K., Griffiths, T. L., & Hawkins, R. D. (2024). Reconciling
 
 Sumers, T. R., Ho, M. K., Hawkins, R. D., & Griffiths, T. L. (2023). Show or tell? Exploring when (and why) teaching with language outperforms demonstration. Cognition, 232, 105326. <https://doi.org/10.1016/j.cognition.2022.105326>
 
-Sun, X., Luo, X., Liu, J., Jiang, X., & Zhang, J. (2015). Semantics in Deep Neural-Network Computing. 2015 11th International Conference on Semantics, Knowledge and Grids (SKG), 81–88. https://doi.org/10.1109/skg.2015.42. <https://doi.org/10.1109/SKG.2015.42>
+Sun, X., Luo, X., Liu, J., Jiang, X., & Zhang, J. (2015). Semantics in Deep Neural-Network Computing. 2015 11th International Conference on Semantics, Knowledge and Grids (SKG), 81–88. <https://doi.org/10.1109/SKG.2015.42>
 
 Sun, Y., & Poeppel, D. (2023). Syllables and their beginnings have a special role in the mental lexicon. Proceedings of the National Academy of Sciences, 120(36). <https://doi.org/10.1073/pnas.2215710120>
 
-Sung, L. U., & Ferdman, A. (2025). Empathetic Large Language Models, the social capacities and human flourishing. Inquiry, 1–23. https://doi.org/10.1080/0020174x.2025.2518448. <https://doi.org/10.1080/0020174X.2025.2518448>
+Sung, L. U., & Ferdman, A. (2025). Empathetic Large Language Models, the social capacities and human flourishing. Inquiry, 1–23. <https://doi.org/10.1080/0020174X.2025.2518448>
 
 Sutliff, D. J. (2024). Were they appealing to the sun? On why cones and tetrahedra were so popular at the dawn of civilization. Psychology of Aesthetics, Creativity, and the Arts, 18(1), 92–104. <https://doi.org/10.1037/aca0000619>
 
@@ -4568,7 +4568,7 @@ Tattersall, I. (2016). Language Origins: An Evolutionary Framework. Topoi, 37(2)
 
 Tattersall, I. (2017). The material record and the antiquity of language. Neuroscience &amp; Biobehavioral Reviews, 81, 247–254. <https://doi.org/10.1016/j.neubiorev.2017.01.043>
 
-Tattersall, I. (2019). Evolution and Human Cognition. Aisthesis. Pratiche, Linguaggi e Saperi Dell’estetico, 12(2), 11–18. https://doi.org/10.13128/aisthesis-10729. <https://doi.org/10.13128/Aisthesis-10729>
+Tattersall, I. (2019). Evolution and Human Cognition. Aisthesis. Pratiche, Linguaggi e Saperi Dell’estetico, 12(2), 11–18. <https://doi.org/10.13128/Aisthesis-10729>
 
 Tattersall, I. (2019). The Minimalist Program and the Origin of Language: A View From Paleoanthropology. Frontiers in Psychology, 10. <https://doi.org/10.3389/fpsyg.2019.00677>
 
@@ -4614,9 +4614,9 @@ Thagard, P. (2019). Brain-Mind. <https://doi.org/10.1093/oso/9780190678715.001.0
 
 The contribution of statistical learning to language and literacy acquisition. (2020). Adult and Second Language Learning, 283–318. <https://doi.org/10.1016/bs.plm.2020.02.001>
 
-The dual stream model of speech and language processing. (2022). Aphasia, 57–69. https://doi.org/10.1016/b978-0-12-823384-9.00003-7. <https://doi.org/10.1016/B978-0-12-823384-9.00003-7>
+The dual stream model of speech and language processing. (2022). Aphasia, 57–69. <https://doi.org/10.1016/B978-0-12-823384-9.00003-7>
 
-The Future of Human Evolution. (2026). https://doi.org/10.1016/c2023-0-50943-7. <https://doi.org/10.1016/C2023-0-50943-7>
+The Future of Human Evolution. (2026). <https://doi.org/10.1016/C2023-0-50943-7>
 
 The N400 in silico: A review of computational models. (2022). Psychology of Learning and Motivation, 123–206. <https://doi.org/10.1016/bs.plm.2022.03.005>
 
@@ -4624,7 +4624,7 @@ The Philosophy of Daniel Dennett. (2018). In B. Huebner (Ed.), Oxford Scholarshi
 
 The syntactic nature of inflection. (2025). The Boundary between Grammar and Lexicon, 1–17. Portico. <https://doi.org/10.1075/cilt.368.c1>
 
-The Whole Person. (2025). https://doi.org/10.1016/c2024-0-00168-3. <https://doi.org/10.1016/C2024-0-00168-3>
+The Whole Person. (2025). <https://doi.org/10.1016/C2024-0-00168-3>
 
 Thiede, R. (2018). Children’s Books, Brain Development, and Language Acquisition. <https://doi.org/10.4324/9781351113991>
 
@@ -4650,7 +4650,7 @@ Tian, Y., Liu, S., & Wang, J. (2023). A Corpus Study on the Difference of Turn-T
 
 Timperley, C. (2021). “To Read What Was Never Written.” Subversive Pedagogies, 108–126. <https://doi.org/10.4324/9781003217183-9>
 
-Tina Bögel. (2023). <i>Prosody and its interfaces</i>. Language Science Press. https://doi.org/10.5281/ZENODO.10185970. <https://doi.org/10.5281/zenodo.10185970>
+Tina Bögel. (2023). <i>Prosody and its interfaces</i>. Language Science Press. <https://doi.org/10.5281/zenodo.10185970>
 
 Tipper, C. M., Signorini, G., & Grafton, S. T. (2015). Body language in the brain: constructing meaning from expressive movement. Frontiers in Human Neuroscience, 9. <https://doi.org/10.3389/fnhum.2015.00450>
 
@@ -4662,7 +4662,7 @@ Tison, R., & Poirier, P. (2021). Communication as Socially Extended Active Infer
 
 Title Pending 9982. (2033). Glossa: A Journal of General Linguistics. <https://doi.org/10.16995/glossa.9982>
 
-Titone, D., Columbus, G., Whitford, V., Mercier, J., & Libben, M. (2015). Contrasting Bilingual and Monolingual Idiom Processing. Bilingual Figurative Language Processing, 171–207. https://doi.org/10.1017/cbo9781139342100.011. <https://doi.org/10.1017/CBO9781139342100.011>
+Titone, D., Columbus, G., Whitford, V., Mercier, J., & Libben, M. (2015). Contrasting Bilingual and Monolingual Idiom Processing. Bilingual Figurative Language Processing, 171–207. <https://doi.org/10.1017/CBO9781139342100.011>
 
 Titone, D., Lovseth, K., Kasparian, K., & Tiv, M. (2019). Are figurative interpretations of idioms directly retrieved, compositionally built, or both? Evidence from eye movement measures of reading. Canadian Journal of Experimental Psychology / Revue Canadienne de Psychologie Expérimentale, 73(4), 216–230. <https://doi.org/10.1037/cep0000175>
 
@@ -4690,21 +4690,21 @@ Tooby, J., & Cosmides, L. (2015). The Theoretical Foundations of Evolutionary Ps
 
 Tooley, K. M., Pickering, M. J., & Traxler, M. J. (2019). Lexically-mediated syntactic priming effects in comprehension: Sources of facilitation. Quarterly Journal of Experimental Psychology, 72(9), 2176–2196. <https://doi.org/10.1177/1747021819834247>
 
-Toquebiau, M., Jun, J.-Y., Benamar, F., & Bredeche, N. (2025). Towards Language-Augmented Multi-Agent Deep Reinforcement Learning. ECAI 2025. https://doi.org/10.3233/faia251260. <https://doi.org/10.3233/FAIA251260>
+Toquebiau, M., Jun, J.-Y., Benamar, F., & Bredeche, N. (2025). Towards Language-Augmented Multi-Agent Deep Reinforcement Learning. ECAI 2025. <https://doi.org/10.3233/FAIA251260>
 
 Torner, S., Battaner, P., & Renau, I. (2023). Lexicografía hispánica / The Routledge Handbook of Spanish Lexicography. Routledge. <https://doi.org/10.4324/9780429244353>
 
-Torreira, F., & Grice, M. (2018). Melodic constructions in Spanish: Metrical structure determines the association properties of intonational tones. Journal of the International Phonetic Association, 48(1), 9–32. https://doi.org/10.1017/s0025100317000603. <https://doi.org/10.1017/S0025100317000603>
+Torreira, F., & Grice, M. (2018). Melodic constructions in Spanish: Metrical structure determines the association properties of intonational tones. Journal of the International Phonetic Association, 48(1), 9–32. <https://doi.org/10.1017/S0025100317000603>
 
-Toth, N., & Schick, K. (2018). An overview of the cognitive implications of the Oldowan Industrial Complex. Azania: Archaeological Research in Africa, 53(1), 3–39. https://doi.org/10.1080/0067270x.2018.1439558. <https://doi.org/10.1080/0067270X.2018.1439558>
+Toth, N., & Schick, K. (2018). An overview of the cognitive implications of the Oldowan Industrial Complex. Azania: Archaeological Research in Africa, 53(1), 3–39. <https://doi.org/10.1080/0067270X.2018.1439558>
 
-Tovar Torres, A., Schmeisser Nieto, W. S., Garí Soler, A., Morey Matamalas, C., & Hinzen, W. (2019). Language disintegration under conditions of severe formal thought disorder. Glossa: A Journal of General Linguistics, 4(1). https://doi.org/10.5334/gjgl.720. <https://doi.org/10.5334/GJGL.720>
+Tovar Torres, A., Schmeisser Nieto, W. S., Garí Soler, A., Morey Matamalas, C., & Hinzen, W. (2019). Language disintegration under conditions of severe formal thought disorder. Glossa: A Journal of General Linguistics, 4(1). <https://doi.org/10.5334/GJGL.720>
 
 Toya, G., & Hashimoto, T. (2018). Recursive Combination Has Adaptability in Diversifiability of Production and Material Culture. Frontiers in Psychology, 9. <https://doi.org/10.3389/fpsyg.2018.01512>
 
 Trettenbrein, P. C. (2015). Commentary: Cultural recycling of neural substrates during language evolution and development. Frontiers in Psychology, 6. <https://doi.org/10.3389/fpsyg.2015.01507>
 
-Trevarthen, C. (2020). Discovering Our Music With Infants. Enfance, N° 1(1), 17–39. https://doi.org/10.3917/enf2.201.0017. <https://doi.org/10.3917/ENF2.201.0017>
+Trevarthen, C. (2020). Discovering Our Music With Infants. Enfance, N° 1(1), 17–39. <https://doi.org/10.3917/ENF2.201.0017>
 
 Triantafyllopoulos, A., Christ, L., Gebhard, A., Jing, X., Kathan, A., Milling, M., Tsangko, I., Amiriparian, S., & Schuller, B. W. (2024). Beyond Deep Learning: Charting the Next Frontiers of Affective Computing. Intelligent Computing, 3. <https://doi.org/10.34133/icomputing.0089>
 
@@ -4712,7 +4712,7 @@ Tripoli, C. S., & Fux, M. (2021). By-Product. Encyclopedia of Evolutionary Psych
 
 Troscianko, E. T. (2018). Literary reading and eating disorders: survey evidence of therapeutic help and harm. Journal of Eating Disorders, 6(1). <https://doi.org/10.1186/s40337-018-0191-5>
 
-Trouillas, P. (2024). A Quantum Theory of Syntax. https://doi.org/10.52305/uvcc6516. <https://doi.org/10.52305/UVCC6516>
+Trouillas, P. (2024). A Quantum Theory of Syntax. <https://doi.org/10.52305/UVCC6516>
 
 Troyer, M., & McRae, K. (2021). Thematic and other semantic relations central to abstract (and concrete) concepts. Psychological Research, 86(8), 2399–2416. <https://doi.org/10.1007/s00426-021-01484-8>
 
@@ -4724,7 +4724,7 @@ Trujillo, J., Özyürek, A., Holler, J., & Drijvers, L. (2021). Speakers exhibit
 
 Truscott, J. (2017). Modularity, working memory, and second language acquisition: A research program. Second Language Research, 33(3), 313–323. <https://doi.org/10.1177/0267658317696127>
 
-TRUSCOTT, J., & SHARWOOD SMITH, M. (2016). Representation, Processing and Code-switching. Bilingualism: Language and Cognition, 20(5), 903–916. https://doi.org/10.1017/s1366728916000742. <https://doi.org/10.1017/S1366728916000742>
+TRUSCOTT, J., & SHARWOOD SMITH, M. (2016). Representation, Processing and Code-switching. Bilingualism: Language and Cognition, 20(5), 903–916. <https://doi.org/10.1017/S1366728916000742>
 
 Truscott, J., & Sharwood Smith, M. (2024). Dangerous dichotomies and misunderstandings in L2 research. Second Language Research, 41(3), 605–616. <https://doi.org/10.1177/02676583241276433>
 
@@ -4736,7 +4736,7 @@ Tsuchiya, K. (2023). Introduction. Multimodal Approaches to Healthcare Communica
 
 Tubau, S., González-Fuente, S., Prieto, P., & Espinal, M. T. (2015). Prosody and gesture in the interpretation of yes-answers to negative yes/no-questions. The Linguistic Review, 32(1). <https://doi.org/10.1515/tlr-2014-0016>
 
-Tummolini, L. (2023). The curious origins of ownership. Behavioral and Brain Sciences, 46. https://doi.org/10.1017/s0140525x23001218. <https://doi.org/10.1017/S0140525X23001218>
+Tummolini, L. (2023). The curious origins of ownership. Behavioral and Brain Sciences, 46. <https://doi.org/10.1017/S0140525X23001218>
 
 Tuomenoksa, A., Beeke, S., & Klippi, A. (2022). People with aphasia and their family members proposing joint future activities in everyday conversations: A conversation analytic study. International Journal of Language &amp; Communication Disorders, 58(2), 310–325. Portico. <https://doi.org/10.1111/1460-6984.12786>
 
@@ -4798,7 +4798,7 @@ van der Graaf, J., Segers, E., & Verhoeven, L. (2018). Individual differences in
 
 van der Spuy, A. (2017). Construction Morphology and inflection. Lingua, 199, 60–71. <https://doi.org/10.1016/j.lingua.2017.07.010>
 
-van der Velde, F. (2023). Chapter 12. The Neural Blackboard Theory of Neuro-Symbolic Processing: Logistics of Access, Connection Paths and Intrinsic Structures. Compendium of Neurosymbolic Artificial Intelligence. https://doi.org/10.3233/faia230144. <https://doi.org/10.3233/FAIA230144>
+van der Velde, F. (2023). Chapter 12. The Neural Blackboard Theory of Neuro-Symbolic Processing: Logistics of Access, Connection Paths and Intrinsic Structures. Compendium of Neurosymbolic Artificial Intelligence. <https://doi.org/10.3233/FAIA230144>
 
 van der Velde, F., & de Kamps, M. (2015). The necessity of connection structures in neural models of variable binding. Cognitive Neurodynamics, 9(4), 359–370. <https://doi.org/10.1007/s11571-015-9331-7>
 
@@ -4806,7 +4806,7 @@ van der Velde, F., Forth, J., Nazareth, D. S., & Wiggins, G. A. (2017). Linking 
 
 van Gelderen, E. (2016). Features and affix-hop. Acta Linguistica Hungarica, 63(1), 1–22. <https://doi.org/10.1556/064.2016.63.1.1>
 
-VAN GELDEREN, E. (2017). Generative coda. English Language and Linguistics, 21(2), 423–430. https://doi.org/10.1017/s1360674317000235. <https://doi.org/10.1017/S1360674317000235>
+VAN GELDEREN, E. (2017). Generative coda. English Language and Linguistics, 21(2), 423–430. <https://doi.org/10.1017/S1360674317000235>
 
 van Gelderen, E. (2018). The Diachrony of Verb Meaning. <https://doi.org/10.4324/9781315180335>
 
@@ -4834,19 +4834,19 @@ Varaschin, G., & Culicover, P. W. (2024). Flat structure: a minimalist program f
 
 Varghese, M. (2022). English Bilingual Project. Springer Nature Singapore. <https://doi.org/10.1007/978-981-19-4778-0>
 
-Varo Varo, C. (2020). El lenguaje como marco de abordaje de cromosomopatías de baja prevalencia. Pragmalinguistica, Monográfico 2, 354–372. https://doi.org/10.25267/pragmalinguistica.2020.iextra2.22. <https://doi.org/10.25267/Pragmalinguistica.2020.iextra2.22>
+Varo Varo, C. (2020). El lenguaje como marco de abordaje de cromosomopatías de baja prevalencia. Pragmalinguistica, Monográfico 2, 354–372. <https://doi.org/10.25267/Pragmalinguistica.2020.iextra2.22>
 
 Varo Varo, C. (2021). Business discourse from a psycholinguistic approach. Discourse Studies in Public Communication, 273–296. Portico. <https://doi.org/10.1075/dapsac.92.12var>
 
-Varo Varo, C. (2021). Sintagmatismo y significado léxico: un acercamiento neurocognitivo. Bulletin Hispanique, 123–2, 299–314. https://doi.org/10.4000/bulletinhispanique.14290. <https://doi.org/10.4000/BULLETINHISPANIQUE.14290>
+Varo Varo, C. (2021). Sintagmatismo y significado léxico: un acercamiento neurocognitivo. Bulletin Hispanique, 123–2, 299–314. <https://doi.org/10.4000/BULLETINHISPANIQUE.14290>
 
-Vázquez-Larruscaín, M. (2022). La alocución en español: hacia una teoría modular del tratamiento. Lingüística, 38(2). https://doi.org/10.5935/2079-312x.20220020. <https://doi.org/10.5935/2079-312X.20220020>
+Vázquez-Larruscaín, M. (2022). La alocución en español: hacia una teoría modular del tratamiento. Lingüística, 38(2). <https://doi.org/10.5935/2079-312X.20220020>
 
-Vázquez, C., Xia, L., Aikawa, T., & Maes, P. (2018). Words in Motion: Kinesthetic Language Learning in Virtual Reality. 2018 IEEE 18th International Conference on Advanced Learning Technologies (ICALT), 272–276. https://doi.org/10.1109/icalt.2018.00069. <https://doi.org/10.1109/ICALT.2018.00069>
+Vázquez, C., Xia, L., Aikawa, T., & Maes, P. (2018). Words in Motion: Kinesthetic Language Learning in Virtual Reality. 2018 IEEE 18th International Conference on Advanced Learning Technologies (ICALT), 272–276. <https://doi.org/10.1109/ICALT.2018.00069>
 
 Vela-Candelas, J., Català, N., & Demestre, J. (2022). Effects of world knowledge on the prediction of upcoming verbs: an eye-tracking study. Journal of Psycholinguistic Research, 51(6), 1335–1345. <https://doi.org/10.1007/s10936-022-09900-9>
 
-Vera, J. (2016). Attention disruption in agent-based modeling of vocabulary formation. 2016 35th International Conference of the Chilean Computer Science Society (SCCC), 1–6. https://doi.org/10.1109/sccc.2016.7836031. <https://doi.org/10.1109/SCCC.2016.7836031>
+Vera, J. (2016). Attention disruption in agent-based modeling of vocabulary formation. 2016 35th International Conference of the Chilean Computer Science Society (SCCC), 1–6. <https://doi.org/10.1109/SCCC.2016.7836031>
 
 Veres, C., & Sampson, J. (2023). Self supervised learning and the poverty of the stimulus. Data &amp; Knowledge Engineering, 147, 102208. <https://doi.org/10.1016/j.datak.2023.102208>
 
@@ -4887,7 +4887,7 @@ von Tetzchner, S. (2018). Introduction to the special issue on aided language pr
 
 von Tetzchner, S. (2022). Typical and Atypical Child and Adolescent Development 5. <https://doi.org/10.4324/9781003292524>
 
-Vonk, J., & Aradhye, C. (2015). Evolution of Cognition. Basics in Human Evolution, 479–491. https://doi.org/10.1016/b978-0-12-802652-6.00035-9. <https://doi.org/10.1016/B978-0-12-802652-6.00035-9>
+Vonk, J., & Aradhye, C. (2015). Evolution of Cognition. Basics in Human Evolution, 479–491. <https://doi.org/10.1016/B978-0-12-802652-6.00035-9>
 
 Vulchanova, M., Saldaña, D., Chahboun, S., & Vulchanov, V. (2015). Figurative language processing in atypical populations: the ASD perspective. Frontiers in Human Neuroscience, 9. <https://doi.org/10.3389/fnhum.2015.00024>
 
@@ -4911,7 +4911,7 @@ Wacewicz, S., Żywiczyński, P., & Orzechowski, S. (2016). Visible movements of 
 
 Wacquant, L. (2015). For a Sociology of Flesh and Blood. Qualitative Sociology, 38(1), 1–11. <https://doi.org/10.1007/s11133-014-9291-y>
 
-Wacquant, L. (2019). Por una Sociología de carne y sangre. Revista Del Museo de Antropología, 117–124. https://doi.org/10.31048/1852.4826.v12.n1.24166. <https://doi.org/10.31048/1852.4826.V12.N1.24166>
+Wacquant, L. (2019). Por una Sociología de carne y sangre. Revista Del Museo de Antropología, 117–124. <https://doi.org/10.31048/1852.4826.V12.N1.24166>
 
 Wagner, N.-F. (2016). Transplanting brains? South African Journal of Philosophy, 35(1), 18–27. <https://doi.org/10.1080/02580136.2015.1106705>
 
@@ -4923,7 +4923,7 @@ Wah, A. (2023). Behavioural adaptation through reflective imagination via artist
 
 Walden, J. S. (2017). Musical Portraits. In Oxford Scholarship Online. Oxford University Press. <https://doi.org/10.1093/oso/9780190653507.001.0001>
 
-Walkden, G. (2019). The many faces of uniformitarianism in linguistics. Glossa: A Journal of General Linguistics, 4(1). https://doi.org/10.5334/gjgl.888. <https://doi.org/10.5334/GJGL.888>
+Walkden, G. (2019). The many faces of uniformitarianism in linguistics. Glossa: A Journal of General Linguistics, 4(1). <https://doi.org/10.5334/GJGL.888>
 
 Walker, M. J. (2017). Palaeolithic Pioneers: Behaviour, abilities, and activity of early Homo in European landscapes around the western Mediterranean basin ~1.3-0.05 Ma. <https://doi.org/10.2307/j.ctv1pzk26f>
 
@@ -4959,7 +4959,7 @@ Warren, T., Milburn, E., Patson, N. D., & Dickey, M. W. (2015). Comprehending th
 
 Wasserscheidt, P. (2019). A usage-based approach to “language” in language contact. Applied Linguistics Review, 12(2), 279–298. <https://doi.org/10.1515/applirev-2019-0032>
 
-Watanabe, K., Tanaka, H., Takahashi, K., Niimura, Y., Watanabe, K., & Kurihara, Y. (2016). NIRS-Based Language Learning BCI System. IEEE Sensors Journal, 16(8), 2726–2734. https://doi.org/10.1109/jsen.2016.2519886. <https://doi.org/10.1109/JSEN.2016.2519886>
+Watanabe, K., Tanaka, H., Takahashi, K., Niimura, Y., Watanabe, K., & Kurihara, Y. (2016). NIRS-Based Language Learning BCI System. IEEE Sensors Journal, 16(8), 2726–2734. <https://doi.org/10.1109/JSEN.2016.2519886>
 
 Waterhouse, E. (2018). In-Sync. The Neurocognition of Dance, 55–75. <https://doi.org/10.4324/9781315726410-4>
 
@@ -4969,9 +4969,9 @@ Watts, D. P. (2015). Production of grooming-associated sounds by chimpanzees (Pa
 
 Weber, K., Christiansen, M. H., Indefrey, P., & Hagoort, P. (2018). Primed From the Start: Syntactic Priming During the First Days of Language Learning. Language Learning, 69(1), 198–221. Portico. <https://doi.org/10.1111/lang.12327>
 
-Weber, K., Christiansen, M. H., Petersson, K. M., Indefrey, P., & Hagoort, P. (2016). fMRI Syntactic and Lexical Repetition Effects Reveal the Initial Stages of Learning a New Language. Journal of Neuroscience, 36(26), 6872–6880. https://doi.org/10.1523/jneurosci.3180-15.2016. <https://doi.org/10.1523/JNEUROSCI.3180-15.2016>
+Weber, K., Christiansen, M. H., Petersson, K. M., Indefrey, P., & Hagoort, P. (2016). fMRI Syntactic and Lexical Repetition Effects Reveal the Initial Stages of Learning a New Language. Journal of Neuroscience, 36(26), 6872–6880. <https://doi.org/10.1523/JNEUROSCI.3180-15.2016>
 
-Wee, J., Yoon, N., & Lee, Y.-J. (2024). Beyond Visual Realism. Journal of the Korean Society of Clothing and Textiles, 48(6), 1194–1210. https://doi.org/10.5850/jksct.2024.48.6.1194. <https://doi.org/10.5850/JKSCT.2024.48.6.1194>
+Wee, J., Yoon, N., & Lee, Y.-J. (2024). Beyond Visual Realism. Journal of the Korean Society of Clothing and Textiles, 48(6), 1194–1210. <https://doi.org/10.5850/JKSCT.2024.48.6.1194>
 
 Wei, Y., & Knoeferle, P. (2023). Causal inference: relating language to event representations and events in the world. Frontiers in Psychology, 14. <https://doi.org/10.3389/fpsyg.2023.1172928>
 
@@ -4987,7 +4987,7 @@ Welshon, R. (2024). Representation, arbitrariness, and the emergence of speech. 
 
 Wen, Z. (Edward). (2015). 3. Working Memory in Second Language Acquisition and Processing: The Phonological/ Executive Model. Working Memory in Second Language Acquisition and Processing, 41–62. <https://doi.org/10.21832/9781783093595-007>
 
-Wendt, A. (2015). Quantum Mind and Social Science. https://doi.org/10.1017/cbo9781316005163. <https://doi.org/10.1017/CBO9781316005163>
+Wendt, A. (2015). Quantum Mind and Social Science. <https://doi.org/10.1017/CBO9781316005163>
 
 Werner, R. (2018). Music, movement and memory: Pedagogical songs as mnemonic aids. TESOL Journal, 9(4), 1–11. Portico. <https://doi.org/10.1002/tesj.387>
 
@@ -5011,13 +5011,13 @@ Widoff, A. (2024). Towards a domain-neutral prepositional semantics. Lingua, 298
 
 Wierzbicka, A. (2022). I and Thou: Universal human concepts present as words in all human languages. Russian Journal of Linguistics, 26(4), 908–936. <https://doi.org/10.22363/2687-0088-31361>
 
-Wiese, H. (2023). <i>Grammatical systems without language borders: Lessons from free-range language</i>. Language Science Presss. https://doi.org/10.5281/ZENODO.10276182. <https://doi.org/10.5281/zenodo.10276182>
+Wiese, H. (2023). <i>Grammatical systems without language borders: Lessons from free-range language</i>. Language Science Presss. <https://doi.org/10.5281/zenodo.10276182>
 
 Wiese, H., & Pohle, M. (2016). „Ich geh Kino“ oder „… ins Kino“? Zeitschrift Für Sprachwissenschaft, 35(2), 171–216. <https://doi.org/10.1515/zfs-2016-0012>
 
 Wiggins, G. A. (2020). Creativity, information, and consciousness: The information dynamics of thinking. Physics of Life Reviews, 34–35, 1–39. <https://doi.org/10.1016/j.plrev.2018.05.001>
 
-Wiland, B. (2019). <i>The spell-out algorithm and lexicalization patterns</i>. Zenodo. https://doi.org/10.5281/ZENODO.2636394. <https://doi.org/10.5281/zenodo.2636394>
+Wiland, B. (2019). <i>The spell-out algorithm and lexicalization patterns</i>. Zenodo. <https://doi.org/10.5281/zenodo.2636394>
 
 Wilcock, A., & Hocking, C. (2024). An Occupational Perspective of Health. <https://doi.org/10.4324/9781003525233>
 
@@ -5039,7 +5039,7 @@ Williams, D. (2018). Predictive coding and thought. Synthese, 197(4), 1749–177
 
 Williams, J. D. (2022). Language Acquisition and Academic Writing. <https://doi.org/10.4324/9781003329138>
 
-Williams, S., Guijarro-Fuentes, P., & Vulchanova, M. (2022). U-shaped trajectories in an L2 context: Evidence from the acquisition of verb morphology. Vigo International Journal of Applied Linguistics, 19, 223–266. https://doi.org/10.35869/vial.v0i19.3764. <https://doi.org/10.35869/VIAL.V0I19.3764>
+Williams, S., Guijarro-Fuentes, P., & Vulchanova, M. (2022). U-shaped trajectories in an L2 context: Evidence from the acquisition of verb morphology. Vigo International Journal of Applied Linguistics, 19, 223–266. <https://doi.org/10.35869/VIAL.V0I19.3764>
 
 Willman, M. D. (2018). On the Comparative Analysis of Chinese Measure Words: Insights from Evolutionary Theory. Philosophy of Language, Chinese Language, Chinese Philosophy, 170–186. <https://doi.org/10.1163/9789004368446_005>
 
@@ -5061,7 +5061,7 @@ Wittenberg, E., & Levy, R. (2017). If you want a quick kiss, make it count: How 
 
 Wittenberg, E., Khan, M., & Snedeker, J. (2017). Investigating Thematic Roles through Implicit Learning: Evidence from Light Verb Constructions. Frontiers in Psychology, 8. <https://doi.org/10.3389/fpsyg.2017.01089>
 
-Wittenberg, E., Momma, S., & Kaiser, E. (2021). Demonstratives as bundlers of conceptual structure. Glossa: A Journal of General Linguistics, 6(1). https://doi.org/10.5334/gjgl.917. <https://doi.org/10.5334/GJGL.917>
+Wittenberg, E., Momma, S., & Kaiser, E. (2021). Demonstratives as bundlers of conceptual structure. Glossa: A Journal of General Linguistics, 6(1). <https://doi.org/10.5334/GJGL.917>
 
 Woensdregt, M., Fusaroli, R., Rich, P., Modrák, M., Kolokolova, A., Wright, C., & Warlaumont, A. S. (2024). Lessons for Theory from Scientific Domains Where Evidence is Sparse or Indirect. Computational Brain &amp; Behavior, 7(4), 588–607. <https://doi.org/10.1007/s42113-024-00214-8>
 
@@ -5127,11 +5127,11 @@ Yan, Z. (2021). The origins of children’s understanding of technologies: A foc
 
 Yang, B. (2022). Non-Finiteness. <https://doi.org/10.1017/9781009072502>
 
-Yang, J., & Small, S. L. (2015). Language Processing, Functional Magnetic Resonance Imaging of. International Encyclopedia of the Social &amp; Behavioral Sciences, 368–380. https://doi.org/10.1016/b978-0-08-097086-8.54033-1. <https://doi.org/10.1016/B978-0-08-097086-8.54033-1>
+Yang, J., & Small, S. L. (2015). Language Processing, Functional Magnetic Resonance Imaging of. International Encyclopedia of the Social &amp; Behavioral Sciences, 368–380. <https://doi.org/10.1016/B978-0-08-097086-8.54033-1>
 
 Yang, Q., & Jiang, X. (2023). On the scope of presupposition in discourse reading comprehension. Acta Psychologica, 237, 103955. <https://doi.org/10.1016/j.actpsy.2023.103955>
 
-Yang, S. (2023). Modeling and Case Analysis of Biological System Interpretation Based on Logical Meaning. 2023 International Conference on Asian Language Processing (IALP), 131–138. https://doi.org/10.1109/ialp61005.2023.10337323. <https://doi.org/10.1109/IALP61005.2023.10337323>
+Yang, S. (2023). Modeling and Case Analysis of Biological System Interpretation Based on Logical Meaning. 2023 International Conference on Asian Language Processing (IALP), 131–138. <https://doi.org/10.1109/IALP61005.2023.10337323>
 
 Yao, R., Guan, C. Q., Smolen, E. R., MacWhinney, B., Meng, W., & Morett, L. M. (2022). Gesture–Speech Integration in Typical and Atypical Adolescent Readers. Frontiers in Psychology, 13. <https://doi.org/10.3389/fpsyg.2022.890962>
 
@@ -5143,7 +5143,7 @@ Ying, L., Zhi-Xuan, T., Wong, L., Mansinghka, V., & Tenenbaum, J. B. (2025). Und
 
 Yong, J. C., & Li, N. P. (2018). The Adaptive Functions of Jealousy. The Function of Emotions, 121–140. <https://doi.org/10.1007/978-3-319-77619-4_7>
 
-Yuan, C., González-Fuente, S., Baills, F., & Prieto, P. (2018). OBSERVING PITCH GESTURES FAVORS THE LEARNING OF SPANISH INTONATION BY MANDARIN SPEAKERS. Studies in Second Language Acquisition, 41(1), 5–32. https://doi.org/10.1017/s0272263117000316. <https://doi.org/10.1017/S0272263117000316>
+Yuan, C., González-Fuente, S., Baills, F., & Prieto, P. (2018). OBSERVING PITCH GESTURES FAVORS THE LEARNING OF SPANISH INTONATION BY MANDARIN SPEAKERS. Studies in Second Language Acquisition, 41(1), 5–32. <https://doi.org/10.1017/S0272263117000316>
 
 Yue, J., Sun, Y., Bi, X., Chen, Z., & Zhang, Y. (2023). Retrospective Multi-granularity Fusion Network for Chinese Idiom Cloze-style Reading Comprehension. ACM Transactions on Asian and Low-Resource Language Information Processing, 22(7), 1–20. <https://doi.org/10.1145/3603370>
 
@@ -5159,7 +5159,7 @@ Zaidel, D. W. (2018). Brain and Art: Neuro-Clues from Intersection of Discipline
 
 Zaidel, D. W. (2019). Coevolution of language and symbolic meaning: Co‐opting meaning underlying the initial arts in early human culture. WIREs Cognitive Science, 11(2). Portico. <https://doi.org/10.1002/wcs.1520>
 
-Zaitova, I., Stenger, I., Xue, W., Avgustinova, T., Möbius, B., & Klakow, D. (2024). Cross-Linguistic Intelligibility of Non-Compositional Expressions in Spoken Context. Interspeech 2024, 4189–4193. https://doi.org/10.21437/interspeech.2024-416. <https://doi.org/10.21437/Interspeech.2024-416>
+Zaitova, I., Stenger, I., Xue, W., Avgustinova, T., Möbius, B., & Klakow, D. (2024). Cross-Linguistic Intelligibility of Non-Compositional Expressions in Spoken Context. Interspeech 2024, 4189–4193. <https://doi.org/10.21437/Interspeech.2024-416>
 
 Žanić, J. (2021). The geometry vs. the algebra of meaning. Jezikoslovlje, 22(1), 77–98. <https://doi.org/10.29162/jez.2021.3>
 
@@ -5167,7 +5167,7 @@ Zarrilli, P., & Thompson, E. (2019). (toward) a phenomenology of acting. Routled
 
 Zehentner, E. (2019). Competition in Language Change. <https://doi.org/10.1515/9783110633856>
 
-Zeijlstra, H. (2020). <i>Rethinking remerge: Merge, movement and music</i>. Zenodo. https://doi.org/10.5281/ZENODO.4280631. <https://doi.org/10.5281/zenodo.4280631>
+Zeijlstra, H. (2020). <i>Rethinking remerge: Merge, movement and music</i>. Zenodo. <https://doi.org/10.5281/zenodo.4280631>
 
 Zelli, B. (2015). Constructive Interrelationship Between Structural Components in Early Music and Language Learning. Language, Music, and Computing, 45–58. <https://doi.org/10.1007/978-3-319-27498-0_4>
 
@@ -5181,29 +5181,29 @@ Zeng, G. (2023). Joint attention and its linguistic representation in dialogue: 
 
 Zeng, T., Branigan, H. P., & Pickering, M. J. (2020). Do bilinguals represent between-language relationships beyond the word level in their lexicon? Journal of Neurolinguistics, 55, 100892. <https://doi.org/10.1016/j.jneuroling.2020.100892>
 
-Zeng, T., Li, Y., & Wu, M. (2020). Syntactic and semantic processing of passive BEI sentences in Mandarin Chinese: evidence from event-related potentials. NeuroReport, 31(13), 979–984. https://doi.org/10.1097/wnr.0000000000001507. <https://doi.org/10.1097/WNR.0000000000001507>
+Zeng, T., Li, Y., & Wu, M. (2020). Syntactic and semantic processing of passive BEI sentences in Mandarin Chinese: evidence from event-related potentials. NeuroReport, 31(13), 979–984. <https://doi.org/10.1097/WNR.0000000000001507>
 
-Zeng, T., Mao, W., & Lu, Q. (2016). Syntactic and semantic processing of Chinese middle sentences. NeuroReport, 27(8), 568–573. https://doi.org/10.1097/wnr.0000000000000569. <https://doi.org/10.1097/WNR.0000000000000569>
+Zeng, T., Mao, W., & Lu, Q. (2016). Syntactic and semantic processing of Chinese middle sentences. NeuroReport, 27(8), 568–573. <https://doi.org/10.1097/WNR.0000000000000569>
 
 Zerilli, J. (2017). Against the “system” module. Philosophical Psychology, 30(3), 235–250. <https://doi.org/10.1080/09515089.2017.1280145>
 
 Zhang, B., Ma, H., Ding, J., Wang, J., Xu, B., & Lin, H. (2025). Distilling implicit multimodal knowledge into large language models for zero-resource dialogue generation. Information Fusion, 118, 102985. <https://doi.org/10.1016/j.inffus.2025.102985>
 
-Zhang, E. Q., & Pleyer, M. (2024). Toward Interdisciplinary Integration in the Study of Comparative Cognition: Insights from Studying the Evolution of Multimodal Communication. Comparative Cognition &amp; Behavior Reviews, 19, 85–90. https://doi.org/10.3819/ccbr.2024.190017. <https://doi.org/10.3819/CCBR.2024.190017>
+Zhang, E. Q., & Pleyer, M. (2024). Toward Interdisciplinary Integration in the Study of Comparative Cognition: Insights from Studying the Evolution of Multimodal Communication. Comparative Cognition &amp; Behavior Reviews, 19, 85–90. <https://doi.org/10.3819/CCBR.2024.190017>
 
 Zhang, F., Hu, M., Che, W., Lin, H., & Fang, C. (2018). Framework for Virtual Cognitive Experiment in Virtual Geographic Environments. ISPRS International Journal of Geo-Information, 7(1), 36. <https://doi.org/10.3390/ijgi7010036>
 
-Zhang, Y. (2024). Análise das Traduções em Chinês do Prefácio do “Livro do Desassossego” sob a Perspetiva da Teoria do Construal. <i>Confluenze. Rivista Di Studi Iberoamericani</i>, <i>Vol. 16 No. 1 </i>(2024), and Circulation of Objects in the Americas. https://doi.org/10.6092/ISSN.2036-0967/17067. <https://doi.org/10.6092/issn.2036-0967/17067>
+Zhang, Y. (2024). Análise das Traduções em Chinês do Prefácio do “Livro do Desassossego” sob a Perspetiva da Teoria do Construal. <i>Confluenze. Rivista Di Studi Iberoamericani</i>, <i>Vol. 16 No. 1 </i>(2024), and Circulation of Objects in the Americas. <https://doi.org/10.6092/issn.2036-0967/17067>
 
 Zhang, Y., Diao, C., & Cai, N. (2024). On universality of clustering in natural evolution of particle systems: taking human languages as an example. Pramana, 98(4). <https://doi.org/10.1007/s12043-024-02822-2>
 
 Zhang, Y., Frassinelli, D., Tuomainen, J., Skipper, J. I., & Vigliocco, G. (2021). More than words: word predictability, prosody, gesture and mouth movements in natural language comprehension. Proceedings of the Royal Society B: Biological Sciences, 288(1955), 20210500. <https://doi.org/10.1098/rspb.2021.0500>
 
-Zhang, Y., Liu, L., Diao, C., & Cai, N. (2023). On Clustering Trend in Language Evolution Based on Dynamical Behaviors of Multi-Agent Model. 2023 35th Chinese Control and Decision Conference (CCDC), 4678–4683. https://doi.org/10.1109/ccdc58219.2023.10326979. <https://doi.org/10.1109/CCDC58219.2023.10326979>
+Zhang, Y., Liu, L., Diao, C., & Cai, N. (2023). On Clustering Trend in Language Evolution Based on Dynamical Behaviors of Multi-Agent Model. 2023 35th Chinese Control and Decision Conference (CCDC), 4678–4683. <https://doi.org/10.1109/CCDC58219.2023.10326979>
 
 Zhao, X., Chen, L., Fu, L., & Maes, J. H. R. (2015). "Wesley says": a children's response inhibition playground training game yields preliminary evidence of transfer effects. Frontiers in Psychology, 6. <https://doi.org/10.3389/fpsyg.2015.00207>
 
-Zheng, C., Zhang, J., Kembhavi, A., & Krishna, R. (2024). Iterated Learning Improves Compositionality in Large Vision-Language Models. 2024 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 13785–13795. https://doi.org/10.1109/cvpr52733.2024.01308. <https://doi.org/10.1109/CVPR52733.2024.01308>
+Zheng, C., Zhang, J., Kembhavi, A., & Krishna, R. (2024). Iterated Learning Improves Compositionality in Large Vision-Language Models. 2024 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 13785–13795. <https://doi.org/10.1109/CVPR52733.2024.01308>
 
 Zheng, Z. L., Yang, X. H., & Li, W. J. (2019). Processing corrective focus and information focus at different positions: an electrophysiological investigation. Language, Cognition and Neuroscience, 34(8), 1059–1072. <https://doi.org/10.1080/23273798.2019.1626455>
 
@@ -5261,7 +5261,7 @@ Zywiczynski, P., Gontier, N., & Wacewicz, S. (2017). The evolution of (proto-)la
 
 Бажанов, В. А. (2017). Противостояние психологизма и антипсихологизма. Подводить итоги рано. Психология. Журнал Высшей Школы Экономики, 14(3), 453–469. <https://doi.org/10.17323/1813-8918-2017-3-453-469>
 
-Николаева, А. Ю., & Строганова, Т. А. (2018). ВЛИЯНИЕ ЛЕКСИКО-СЕМАНТИЧЕСКОЙ ОБРАБОТКИ ГЛАГОЛОВ ДВИЖЕНИЯ РУК И НОГ НА УКАЗАТЕЛЬНЫЕ ДВИЖЕНИЯ ТЕХ ЖЕ КОНЕЧНОСТЕЙ. Журнал Высшей Нервной Деятельности Им И П Павлова, 68(5), 627–636. https://doi.org/10.1134/s0044467718050118. <https://doi.org/10.1134/S0044467718050118>
+Николаева, А. Ю., & Строганова, Т. А. (2018). ВЛИЯНИЕ ЛЕКСИКО-СЕМАНТИЧЕСКОЙ ОБРАБОТКИ ГЛАГОЛОВ ДВИЖЕНИЯ РУК И НОГ НА УКАЗАТЕЛЬНЫЕ ДВИЖЕНИЯ ТЕХ ЖЕ КОНЕЧНОСТЕЙ. Журнал Высшей Нервной Деятельности Им И П Павлова, 68(5), 627–636. <https://doi.org/10.1134/S0044467718050118>
 
 惠貞蕭, & 吟玲魏. (2021). 漢語移動事件中「來」與「過來」之探究. Chinese as a Second Language Research, 10(2), 265–290. <https://doi.org/10.1515/caslar-2021-2005>
 

@@ -119,15 +119,15 @@ Aikhenvald, A. Y. (2022). The Amazon Basin: Linguistic Areas and Language Contac
 
 Aikhenvald, A. Y. (2025). A Guide to Gender and Classifiers. Oxford University PressOxford. <https://doi.org/10.1093/oso/9780198863601.001.0001>
 
-Akbaş, E., & Ölçü-Dinçer, Z. (2021). Accuracy order in L2 grammatical morphemes: Corpus evidence from different proficiency levels of Turkish learners of English. Studies in Second Language Learning and Teaching, 11(4), 607–627. https://doi.org/10.14746/ssllt.2021.11.4.6. <https://doi.org/10.14746/SSLLT.2021.11.4.6>
+Akbaş, E., & Ölçü-Dinçer, Z. (2021). Accuracy order in L2 grammatical morphemes: Corpus evidence from different proficiency levels of Turkish learners of English. Studies in Second Language Learning and Teaching, 11(4), 607–627. <https://doi.org/10.14746/SSLLT.2021.11.4.6>
 
-Akhmetova –, L. A., Shaimardanova, M. R., Zorina, A. V., Nikishina, S. R., Nazmutdinova, M. A., & Gatin, R. G. (2019). The word-formation category “displacement causation”: mutational and modification semantics of German, Russian and Tatar verbs. XLinguae, 12(1), 21–36. https://doi.org/10.18355/xl.2019.12.01.02. <https://doi.org/10.18355/XL.2019.12.01.02>
+Akhmetova –, L. A., Shaimardanova, M. R., Zorina, A. V., Nikishina, S. R., Nazmutdinova, M. A., & Gatin, R. G. (2019). The word-formation category “displacement causation”: mutational and modification semantics of German, Russian and Tatar verbs. XLinguae, 12(1), 21–36. <https://doi.org/10.18355/XL.2019.12.01.02>
 
 Akita, K., & Matsumoto, Y. (2020). A fine-grained analysis of manner salience. Broader Perspectives on Motion Event Descriptions, 143–180. Portico. <https://doi.org/10.1075/hcp.69.05aki>
 
 AKTAN-ERCİYES, A. (2020). Effects of second language on motion event lexicalization: Comparison of bilingual and monolingual children’s frog story narratives. Dil ve Dilbilimi Çalışmaları Dergisi, 16(3), 1127–1145. <https://doi.org/10.17263/jlls.803576>
 
-Aktan-Erciyes, A., Akbuğa, E., Dik, F. N., & Göksun, T. (2022). Linguistic and nonlinguistic evaluation of motion events in a path-focused language. Applied Psycholinguistics, 43(4), 829–865. https://doi.org/10.1017/s0142716422000169. <https://doi.org/10.1017/S0142716422000169>
+Aktan-Erciyes, A., Akbuğa, E., Dik, F. N., & Göksun, T. (2022). Linguistic and nonlinguistic evaluation of motion events in a path-focused language. Applied Psycholinguistics, 43(4), 829–865. <https://doi.org/10.1017/S0142716422000169>
 
 Aktan-Erciyes, A., Akbuğa, E., Kızıldere, E., & Göksun, T. (2022). Motion event representation in L1-Turkish versus L2-English speech and gesture: Relations to eye movements for event components. International Journal of Bilingualism, 27(1), 61–86. <https://doi.org/10.1177/13670069221076838>
 
@@ -137,7 +137,7 @@ Aktan-Erciyes, A., Göksun, T., Tekcan, A. İ., & Aksu-Koç, A. (2020). Children
 
 Al Zidjaly, N. (2019). Society in digital contexts: New modes of identity and community construction. Multilingua, 38(4), 357–375. <https://doi.org/10.1515/multi-2018-0042>
 
-Al-Khatib, H. (2025). Transcultural Linguistics: Reconceptualizing Language across Global  Spaces in the 21st Century. Centre for Applied Linguistics Research, 16(1). https://doi.org/10.60149/gpde7576. <https://doi.org/10.60149/GPDE7576>
+Al-Khatib, H. (2025). Transcultural Linguistics: Reconceptualizing Language across Global  Spaces in the 21st Century. Centre for Applied Linguistics Research, 16(1). <https://doi.org/10.60149/GPDE7576>
 
 Alcántara-Pilar, J. M., Sánchez-Duarte, I. M., Bermúdez-Martínez, M., & Rodríguez-López, M. E. (2024). Linguistics and marketing: The effect of foreign languages in advertising messages. Tourism &amp; Management Studies, 20(1), 79–89. <https://doi.org/10.18089/tms.20240106>
 
@@ -151,7 +151,7 @@ Alduais, A., Al-Khawlani, A., Almaghlouth, S., & Alfadda, H. (2022). Cognitive L
 
 Alejo-González, R. (2023). Metaphor and Corpus Linguistics. <https://doi.org/10.4324/9781003400905>
 
-Alghamdi, A., Daller, M., & Milton, J. (2019). The Persistence of L1 Patterns in SLA: the Boundary Crossing Constraint and Incidental Learning. Vigo International Journal of Applied Linguistics, 16, 81–106. https://doi.org/10.35869/vial.v0i16.94. <https://doi.org/10.35869/VIAL.V0I16.94>
+Alghamdi, A., Daller, M., & Milton, J. (2019). The Persistence of L1 Patterns in SLA: the Boundary Crossing Constraint and Incidental Learning. Vigo International Journal of Applied Linguistics, 16, 81–106. <https://doi.org/10.35869/VIAL.V0I16.94>
 
 Alhammadi, N., & Yagi, S. (2024). An NSM-based contrastive semantic analysis of ‘strolling’ and ‘jogging’ in English and Arabic. Cogent Arts &amp; Humanities, 11(1). <https://doi.org/10.1080/23311983.2024.2331280>
 
@@ -166,13 +166,13 @@ Alonso Alonso, R. (2020). Boundary-crossing events across languages. Review of C
 Alonso Alonso, R., & Cifuentes-Férez, P. (2025). Boundary-crossing events in audio descriptions across English and Spanish. Across Languages and Cultures, 26(2), 189–204. <https://doi.org/10.1556/084.2025.00961>
 
 Alonso, R. A. (2022). Thinking-for-translating in comics: a case-study of
-            Asterix. Perspectives, 32(1), 100–118. https://doi.org/10.1080/0907676x.2022.2063062. <https://doi.org/10.1080/0907676X.2022.2063062>
+            Asterix. Perspectives, 32(1), 100–118. <https://doi.org/10.1080/0907676X.2022.2063062>
 
 Alonso, R. A. (2024). Review of Hijazo-Gascón (2021):  Moving across languages: Motion events in Spanish as a second language. Review of Cognitive Linguistics, 22(1), 296–300. Portico. <https://doi.org/10.1075/rcl.00179.alo>
 
 Alqahtani, F. (2025). Self-Image Projection in Mohammed Bin Salman’s Political Interviews: A Pragma-Semantic Approach to Political Discourse Analysis. Journal of Language Teaching and Research, 16(6), 2036–2047. <https://doi.org/10.17507/jltr.1606.25>
 
-Alshehabi, A., Halabi, H., & Afrifa, G. (2023). The Effect of Time Orientation in Languages on the Recognition of Goodwill Impairment Losses. The International Journal of Accounting, 58(04). https://doi.org/10.1142/s1094406023500117. <https://doi.org/10.1142/S1094406023500117>
+Alshehabi, A., Halabi, H., & Afrifa, G. (2023). The Effect of Time Orientation in Languages on the Recognition of Goodwill Impairment Losses. The International Journal of Accounting, 58(04). <https://doi.org/10.1142/S1094406023500117>
 
 Altarriba, J., & Basnight-Brown, D. (2022). The Psychology of Communication: The Interplay Between Language and Culture Through Time. Journal of Cross-Cultural Psychology, 53(7–8), 860–874. <https://doi.org/10.1177/00220221221114046>
 
@@ -196,9 +196,9 @@ Anastasio, S. (2019). L’expression du déplacement en italien L2. Language, In
 
 Anastasio, S. (2022). Motion event construal in L2 French and Italian: from acquisitional perspectives to pedagogical implications. International Review of Applied Linguistics in Language Teaching, 61(1), 37–60. <https://doi.org/10.1515/iral-2022-0046>
 
-Andersen, E. M., Grønning, A., Hietaketo, M., & Johansson, M. (2019). Direct Reader Address in Health-related Online News Articles: Imposing Problems and Projecting Desires for Action and Change onto Readers. Journalism Studies, 20(16), 2478–2494. https://doi.org/10.1080/1461670x.2019.1603080. <https://doi.org/10.1080/1461670X.2019.1603080>
+Andersen, E. M., Grønning, A., Hietaketo, M., & Johansson, M. (2019). Direct Reader Address in Health-related Online News Articles: Imposing Problems and Projecting Desires for Action and Change onto Readers. Journalism Studies, 20(16), 2478–2494. <https://doi.org/10.1080/1461670X.2019.1603080>
 
-Andersen, M. (2017). Predictive coding in agency detection. Religion, Brain &amp; Behavior, 9(1), 65–84. https://doi.org/10.1080/2153599x.2017.1387170. <https://doi.org/10.1080/2153599X.2017.1387170>
+Andersen, M. (2017). Predictive coding in agency detection. Religion, Brain &amp; Behavior, 9(1), 65–84. <https://doi.org/10.1080/2153599X.2017.1387170>
 
 Anderson, R. M., Giezen, M. R., & Pourquié, M. (2019). Basque-Spanish bilingual children’s expressive and receptive grammatical abilities. Linguistic Approaches to Bilingualism, 9(4–5), 687–709. Portico. <https://doi.org/10.1075/lab.17034.and>
 
@@ -226,7 +226,7 @@ Arnulf, J. K., & Furnham, A. (2024). “Never mind the fine print”: The intera
 
 Arnulf, J. K., & Larsen, K. R. (2020). Culture Blind Leadership Research: How Semantically Determined Survey Data May Fail to Detect Cultural Differences. Frontiers in Psychology, 11. <https://doi.org/10.3389/fpsyg.2020.00176>
 
-Arnulf, J. K., & Larsen, K. R. (2021). Semantic and ontological structures of psychological attributes. Measuring and Modeling Persons and Situations, 69–101. https://doi.org/10.1016/b978-0-12-819200-9.00013-2. <https://doi.org/10.1016/B978-0-12-819200-9.00013-2>
+Arnulf, J. K., & Larsen, K. R. (2021). Semantic and ontological structures of psychological attributes. Measuring and Modeling Persons and Situations, 69–101. <https://doi.org/10.1016/B978-0-12-819200-9.00013-2>
 
 Arnulf, J. K., Dai, W., Lu, H., & Niu, Z. (2021). Limits of a Second Language: Native and Second Languages in Management Team Communication. Frontiers in Psychology, 12. <https://doi.org/10.3389/fpsyg.2021.580946>
 
@@ -238,11 +238,11 @@ Arslangul, A. (2023). Introducing a new protagonist in L2 Chinese narratives: Sy
 
 Arslangul, A., & Watorek, M. (2021). Locative phrase and descriptive discourse in L2 Chinese. Chinese as a Second Language Research, 10(2), 155–182. <https://doi.org/10.1515/caslar-2021-2001>
 
-Artoni, D., Magnani, M., & Saturno, J. (2024). Italian Slavistics and Second Language Acquisition Studies. Studi Slavistici, 147–159. https://doi.org/10.36253/studi_slavis-15709. <https://doi.org/10.36253/Studi_Slavis-15709>
+Artoni, D., Magnani, M., & Saturno, J. (2024). Italian Slavistics and Second Language Acquisition Studies. Studi Slavistici, 147–159. <https://doi.org/10.36253/Studi_Slavis-15709>
 
-Athanasopoulos, P., & Bylund, E. (2019). Whorf in the Wild: Naturalistic Evidence from Human Interaction. Applied Linguistics, 41(6), 947–970. https://doi.org/10.1093/applin/amz050. <https://doi.org/10.1093/APPLIN/AMZ050>
+Athanasopoulos, P., & Bylund, E. (2019). Whorf in the Wild: Naturalistic Evidence from Human Interaction. Applied Linguistics, 41(6), 947–970. <https://doi.org/10.1093/APPLIN/AMZ050>
 
-Athanasopoulos, P., & Bylund, E. (2023). Cognitive restructuring: Psychophysical measurement of time perception in bilinguals. Bilingualism: Language and Cognition, 26(4), 809–818. https://doi.org/10.1017/s1366728922000876. <https://doi.org/10.1017/S1366728922000876>
+Athanasopoulos, P., & Bylund, E. (2023). Cognitive restructuring: Psychophysical measurement of time perception in bilinguals. Bilingualism: Language and Cognition, 26(4), 809–818. <https://doi.org/10.1017/S1366728922000876>
 
 Athanasopoulos, P., & Bylund, E. (2024). Semantics and cognition. The Routledge Handbook of Second Language Acquisition, Morphosyntax, and Semantics, 545–558. <https://doi.org/10.4324/9781003412373-45>
 
@@ -268,7 +268,7 @@ Ayres-Bennett, W., & McLaughlin, M. (Eds.). (2024). The Oxford Handbook of the F
 
 Ayres, I., Katz, T. K., & Regev, T. (2023). Languages and future-oriented economic behavior—Experimental evidence for causal effects. Proceedings of the National Academy of Sciences, 120(7). <https://doi.org/10.1073/pnas.2208871120>
 
-Azar, Z., Backus, A., & Özyürek, A. (2019). Language contact does not drive gesture transfer: Heritage speakers maintain language specific gesture patterns in each language. Bilingualism: Language and Cognition, 23(2), 414–428. https://doi.org/10.1017/s136672891900018x. <https://doi.org/10.1017/S136672891900018X>
+Azar, Z., Backus, A., & Özyürek, A. (2019). Language contact does not drive gesture transfer: Heritage speakers maintain language specific gesture patterns in each language. Bilingualism: Language and Cognition, 23(2), 414–428. <https://doi.org/10.1017/S136672891900018X>
 
 Baayen, R. H., & Ramscar, M. (2019). Chapter 5: Abstraction, storage and naive discriminative learning. Cognitive Linguistics - Foundations of Language, 115–139. <https://doi.org/10.1515/9783110626476-006>
 
@@ -278,7 +278,7 @@ Baicchi, A. (2022). Kinaesthetic embodied schemas in emotion language. Figurativ
 
 Baicchi, A., & Broccias, C. (2024). Introduction. Constructional and Cognitive Explorations of Contrastive Linguistics, 1–10. <https://doi.org/10.1007/978-3-031-46602-1_1>
 
-Baider, F., & Cislaru, G. (2021). Communication et intercompréhension : regards croisés de la pragmatique interculturelle et de la pragmatique contrastive. Langages, N° 222(2), 7–24. https://doi.org/10.3917/lang.222.0007. <https://doi.org/10.3917/LANG.222.0007>
+Baider, F., & Cislaru, G. (2021). Communication et intercompréhension : regards croisés de la pragmatique interculturelle et de la pragmatique contrastive. Langages, N° 222(2), 7–24. <https://doi.org/10.3917/LANG.222.0007>
 
 Bailey, G. (2018). Emerging from below the social radar: Incipient evaluation in the North West of England. Journal of Sociolinguistics, 23(1), 3–28. Portico. <https://doi.org/10.1111/josl.12307>
 
@@ -294,13 +294,13 @@ Baldo, M. (2019). Italian-Canadian Narratives of Return. Palgrave Macmillan UK. 
 
 Balée, W. (2021). Inside Cultures. <https://doi.org/10.4324/9781003081685>
 
-Balmaseda Maestu, E. (2023). Japonesismos del español en la lexicografía académica. Roczniki Humanistyczne, 71(5), 73–94. https://doi.org/10.18290/rf237105.5. <https://doi.org/10.18290/RF237105.5>
+Balmaseda Maestu, E. (2023). Japonesismos del español en la lexicografía académica. Roczniki Humanistyczne, 71(5), 73–94. <https://doi.org/10.18290/RF237105.5>
 
 Banaruee, H., Khatin-Zadeh, O., & Farsani, D. (2022). The challenge of psychological processes in language acquisition: A systematic review. Cogent Arts &amp; Humanities, 10(1). <https://doi.org/10.1080/23311983.2022.2157961>
 
 Banaruee, H., Khatin-Zadeh, O., & Farsani, D. (2023). Motion events in English textbooks: a cross-linguistic analysis of Path. Frontiers in Education, 8. <https://doi.org/10.3389/feduc.2023.1222549>
 
-Banaruee, H., Khoshsima, H., Zare-Behtash, E., Yarahmadzehi, N., & Zhang, L. J. (2019). Types of metaphors and mechanisms of comprehension. Cogent Education, 6(1). https://doi.org/10.1080/2331186x.2019.1617824. <https://doi.org/10.1080/2331186X.2019.1617824>
+Banaruee, H., Khoshsima, H., Zare-Behtash, E., Yarahmadzehi, N., & Zhang, L. J. (2019). Types of metaphors and mechanisms of comprehension. Cogent Education, 6(1). <https://doi.org/10.1080/2331186X.2019.1617824>
 
 Banerjee, A., & Urminsky, O. (2022). What you are getting and what you will be getting: Testing whether verb tense affects intertemporal choices. Journal of Experimental Psychology: General, 151(10), 2342–2395. <https://doi.org/10.1037/xge0001192>
 
@@ -310,13 +310,13 @@ Bannò, M., Franzoni, A., Leggerini, C., & Rosola, M. (2025). Diversity at the t
 
 Bao, D. (2023). Silence in English Language Pedagogy. <https://doi.org/10.1017/9781009019460>
 
-Barbosa do Rêgo Barros, I., Fonseca Lima da Fonte, R., & Rodrigues de Souza, A. F. (2020). Ecolalia e gestos no autismo: reflexões em torno  da metáfora enunciativa. Forma y Función, 33(1), 173–189. https://doi.org/10.15446/fyf.v33n1.84184. <https://doi.org/10.15446/FYF.V33N1.84184>
+Barbosa do Rêgo Barros, I., Fonseca Lima da Fonte, R., & Rodrigues de Souza, A. F. (2020). Ecolalia e gestos no autismo: reflexões em torno  da metáfora enunciativa. Forma y Función, 33(1), 173–189. <https://doi.org/10.15446/FYF.V33N1.84184>
 
 Barnard, A. (2021). History and Theory in Anthropology. <https://doi.org/10.1017/9781108936620>
 
 Baron, I., Begioni, L., Herslund, M., & Rocchetti, A. (2019). Présentation : le lexique entre typologie, cognition et culture. Langages, N° 214(2), 5–18. <https://doi.org/10.3917/lang.214.0005>
 
-Baronchelli, A., Foresta, A., & Ricciuti, R. (2025). The words that keep people apart: official language and accountability. Journal of Institutional Economics, 21. https://doi.org/10.1017/s1744137425100209. <https://doi.org/10.1017/S1744137425100209>
+Baronchelli, A., Foresta, A., & Ricciuti, R. (2025). The words that keep people apart: official language and accountability. Journal of Institutional Economics, 21. <https://doi.org/10.1017/S1744137425100209>
 
 Barrett, R., Cramer, J., & McGowan, K. B. (2022). English with an Accent. <https://doi.org/10.4324/9781003332886>
 
@@ -324,15 +324,15 @@ Bartlett, T. (2023). Atopicality as the unmarked logical structure in Scottish G
 
 Bartlett, T., & O’Grady, G. (2019). Language characterology and textual dynamics: a crosslinguistic exploration in English and Scottish Gaelic. Acta Linguistica Hafniensia, 51(2), 124–159. <https://doi.org/10.1080/03740463.2019.1650607>
 
-Baryshnikov, P. N., & Atakuev, M. N. (2022). Semantics of Judgments about Interoceptive Experience. Epistemology &amp; Philosophy of Science, 59(2), 218–233. https://doi.org/10.5840/eps202259234. <https://doi.org/10.5840/EPS202259234>
+Baryshnikov, P. N., & Atakuev, M. N. (2022). Semantics of Judgments about Interoceptive Experience. Epistemology &amp; Philosophy of Science, 59(2), 218–233. <https://doi.org/10.5840/EPS202259234>
 
 Bassetti, B. (2021). Language and counterfactual reasoning in Chinese, English and ChineseL1-EnglishL2 reasoners. International Journal of Bilingualism, 26(1), 82–103. <https://doi.org/10.1177/13670069211022850>
 
 Bassetti, B., & Filipović, L. (2021). Researching language and cognition in bilinguals. International Journal of Bilingualism, 26(1), 3–12. <https://doi.org/10.1177/13670069211022860>
 
-Bateman, J. A. (2022). GUM: The generalized upper model. Applied Ontology, 17(1), 107–141. https://doi.org/10.3233/ao-210258. <https://doi.org/10.3233/AO-210258>
+Bateman, J. A. (2022). GUM: The generalized upper model. Applied Ontology, 17(1), 107–141. <https://doi.org/10.3233/AO-210258>
 
-Baumgarten, N. (2021). Love as a Term of Address in British English: Micro-diachronic Variation. Contrastive Pragmatics, 3(1), 31–58. https://doi.org/10.1163/26660393-bja10027. <https://doi.org/10.1163/26660393-BJA10027>
+Baumgarten, N. (2021). Love as a Term of Address in British English: Micro-diachronic Variation. Contrastive Pragmatics, 3(1), 31–58. <https://doi.org/10.1163/26660393-BJA10027>
 
 Bayat, M., Shirvan, M. E., & Barabadi, E. (2020). A Teacher’s Multimodal Corrective Feedback: Exploring its Enjoyment Building Capacity. Polish Psychological Bulletin, 71–88. <https://doi.org/10.24425/ppb.2020.133766>
 
@@ -340,7 +340,7 @@ Beal, J. S., Scott, J. A., & Spell, K. (2020). Goodnight Gorilla: Deaf Student A
 
 Beblo, M., Görges, L., & Markowsky, E. (2020). Gender Matters in Language and Economic Behaviour: Can we Measure a Causal Cognition Effect of Speaking? Labour Economics, 65, 101850. <https://doi.org/10.1016/j.labeco.2020.101850>
 
-Becerra Parra, R., & Lizarralde Contreras, D. (2022). Expresión de relaciones topológicas en mapudungun. Atenea (Concepción), 28(525), 151–176. https://doi.org/10.29393/at525-8errd20008. <https://doi.org/10.29393/At525-8ERRD20008>
+Becerra Parra, R., & Lizarralde Contreras, D. (2022). Expresión de relaciones topológicas en mapudungun. Atenea (Concepción), 28(525), 151–176. <https://doi.org/10.29393/At525-8ERRD20008>
 
 Becerra, R., Osorio, J., Cantarutti, Í., & Llanquinao, G. (2022). Motion Events in L1 and L2 Mapudungun Narratives: Typology and Cross-Linguistic Influence. Frontiers in Communication, 7. <https://doi.org/10.3389/fcomm.2022.853988>
 
@@ -386,7 +386,7 @@ Bigolin, A., & Ausensi, J. (2021). A new resultative construction in Spanish? A 
 
 Binnick, R. I. (2020). Aspect and Aspectuality. The Handbook of English Linguistics, 183–205. Portico. <https://doi.org/10.1002/9781119540618.ch11>
 
-Birhan, A. T., Teka, M., & Asrade, N. (2021). Effects of Using Corpus-Based Instructional Mediation  on EFL Students’ Academic Writing Skills Improvement. Theory and Practice of Second Language Acquisition, 7(2), 133–153. https://doi.org/10.31261/tapsla.9993. <https://doi.org/10.31261/TAPSLA.9993>
+Birhan, A. T., Teka, M., & Asrade, N. (2021). Effects of Using Corpus-Based Instructional Mediation  on EFL Students’ Academic Writing Skills Improvement. Theory and Practice of Second Language Acquisition, 7(2), 133–153. <https://doi.org/10.31261/TAPSLA.9993>
 
 Biri, Y. (2023). Affective stance as positioning in an English-speaking online fan community. Journal of Pragmatics, 215, 70–83. <https://doi.org/10.1016/j.pragma.2023.07.004>
 
@@ -406,7 +406,7 @@ Boas, H. C. (2020). A roadmap towards determining the universal status of semant
 
 Boase-Beier, J. (2019). Translation and Style. Routledge. <https://doi.org/10.4324/9780429327322>
 
-Bocanegra, R. C. (2021). Codificación del movimiento por aprendices checos de españo: influencia de los patrones de pensar para hablar de la L1 en la L2. Romanica Cracoviensia, 21(3), 239–252. https://doi.org/10.4467/20843917rc.21.024.14196. <https://doi.org/10.4467/20843917RC.21.024.14196>
+Bocanegra, R. C. (2021). Codificación del movimiento por aprendices checos de españo: influencia de los patrones de pensar para hablar de la L1 en la L2. Romanica Cracoviensia, 21(3), 239–252. <https://doi.org/10.4467/20843917RC.21.024.14196>
 
 Boeg Thomsen, D., Kandemirci, B., Theakston, A., & Brandt, S. (2025). Do complement clauses with first- or third-person perspective support false-belief reasoning? A training study with English-speaking 3-year-olds. Developmental Psychology, 61(6), 1044–1062. <https://doi.org/10.1037/dev0001808>
 
@@ -435,17 +435,16 @@ Boromisza-Habashi, D. (2023). Tracking the transmission of culture: a cultural d
 
 Bortone, P. (2021). Language and Nationality. <https://doi.org/10.5040/9781350071674>
 
-Bosker, H. R., Hoetjes, M., Hustin, D., Pouw, W., & van Maastricht, L. (2026). Foreign Language Learners Show a Kinematic Accent in Their Co-Speech Hand Movements. Open Mind, 10, 66–78. https://doi.org/10.1162/opmi.a.321. <https://doi.org/10.1162/OPMI.a.321>
+Bosker, H. R., Hoetjes, M., Hustin, D., Pouw, W., & van Maastricht, L. (2026). Foreign Language Learners Show a Kinematic Accent in Their Co-Speech Hand Movements. Open Mind, 10, 66–78. <https://doi.org/10.1162/OPMI.a.321>
 
 Boulenger, V., Finos, L., Koun, E., Salemme, R., Desoche, C., & Roy, A. C. (2022). Up right, not right up: Primacy of verticality in both language and movement. Frontiers in Human Neuroscience, 16. <https://doi.org/10.3389/fnhum.2022.981330>
 
-Bowe, H., Martin, K., & Manns, H. (2014). Communication across Cultures. https://doi.org/10.1017/cbo9781107445680. <https://doi.org/10.1017/CBO9781107445680>
+Bowe, H., Martin, K., & Manns, H. (2014). Communication across Cultures. <https://doi.org/10.1017/CBO9781107445680>
 
 Bowern, C. (Ed.). (2023). The Oxford Guide to Australian Languages. <https://doi.org/10.1093/oso/9780198824978.001.0001>
 
 Braem, P. B., & Volterra, V. (2023). Through the signed language glass: Changing and converging views in spoken and signed language research. Signed Language and Gesture Research in Cognitive Linguistics, 23–48. <https://doi.org/10.1515/9783110703788-002>
 
-Brandt, S., Li, H., & Chan, A. (2023). What makes a complement false? Looking at the effects of verbal semantics and perspective in Mandarin children’s interpretation of complement-clause constructions and their false-belief understanding. Cognitive Linguistics, 0(0). <https://doi.org/10.1515/cog-2021-0108>
 
 Bressem, J. (2024). Systems of Gesture Coding and Annotation. The Cambridge Handbook of Gesture Studies, 158–181. <https://doi.org/10.1017/9781108638869.008>
 
@@ -489,7 +488,7 @@ Bulatovic, V. (2020). Thinking for speaking in the right aspect. Revista Españo
 
 Bulatović, V., & Čarapić, D. (2026). STRUCTURAL ASYMMETRIES AND COGNITIVE LOAD IN SI BETWEEN ENGLISH AND SLAVIC LANGUAGES ‐ A PILOT STUDY. Folia Linguistica et Litteraria. <https://doi.org/10.31902/fll.53.2026.8>
 
-Bunger, A., Skordos, D., Trueswell, J. C., & Papafragou, A. (2021). How children attend to events before speaking: crosslinguistic evidence from the motion domain. Glossa: A Journal of General Linguistics, 6(1). https://doi.org/10.5334/gjgl.1210. <https://doi.org/10.5334/GJGL.1210>
+Bunger, A., Skordos, D., Trueswell, J. C., & Papafragou, A. (2021). How children attend to events before speaking: crosslinguistic evidence from the motion domain. Glossa: A Journal of General Linguistics, 6(1). <https://doi.org/10.5334/GJGL.1210>
 
 Burdelski, M. (2020). Classroom socialisation: repair and correction in Japanese as a heritage language. Classroom Discourse, 12(3), 255–279. <https://doi.org/10.1080/19463014.2020.1789483>
 
@@ -501,7 +500,7 @@ Burenhult, N., & Purves, R. S. (2018). The spatial properties of forager motion 
 
 Burguillo Escobar, M. T. (2025). El verbo ir en REDES: significado y combinatoria. Onomázein Revista de Lingüística Filología y Traducción, NE XV, 67–98. <https://doi.org/10.7764/onomazein.ne15.03>
 
-Burke, P. (2022). Alternative Modes Of Thought. Common Knowledge, 28(1), 41–60. https://doi.org/10.1215/0961754x-9713563. <https://doi.org/10.1215/0961754X-9713563>
+Burke, P. (2022). Alternative Modes Of Thought. Common Knowledge, 28(1), 41–60. <https://doi.org/10.1215/0961754X-9713563>
 
 Burkhart, B. (2025). Neither Timeless Nor Linear. The Routledge Companion to Philosophy of Time, 468–478. <https://doi.org/10.4324/9781003495611-51>
 
@@ -555,7 +554,7 @@ Carling, G. (2024). Linguistic Archaeology. <https://doi.org/10.4324/97810032916
 
 Caronia, L. (2021). Language, culture and social interaction. Language and Social Interaction at Home and School, 1–36. Portico. <https://doi.org/10.1075/ds.32.int>
 
-Caronia, L. (2022). Perché leggere Towards a Phenomenological Axiology. Discovering What Matters di Roberta De Monticelli. Appunti di una volpe che voleva diventare un riccio. <i>Encyclopaideia</i>, V. 26 N. 64 (2022). https://doi.org/10.6092/ISSN.1825-8670/15538. <https://doi.org/10.6092/issn.1825-8670/15538>
+Caronia, L. (2022). Perché leggere Towards a Phenomenological Axiology. Discovering What Matters di Roberta De Monticelli. Appunti di una volpe che voleva diventare un riccio. <i>Encyclopaideia</i>, V. 26 N. 64 (2022). <https://doi.org/10.6092/issn.1825-8670/15538>
 
 Caronia, L., & Orletti, F. (2019). The agency of language in institutional talk. Language and Dialogue, 9(1), 1–27. Portico. <https://doi.org/10.1075/ld.00029.orl>
 
@@ -569,7 +568,7 @@ Casaponsa, A., & Thierry, G. (2023). Linguistic Relativity and Second Language. 
 
 Casas Klett, T., & Arnulf, J. K. (2020). Are Chinese Teams Like Western Teams? Indigenous Management Theory to Leapfrog Essentialist Team Myths. Frontiers in Psychology, 11. <https://doi.org/10.3389/fpsyg.2020.01758>
 
-Castañeda Castro, A., & Sánchez Cuadrado, A. (2021). The Role of Metonymy in Teaching the Spanish Verbal System to L2/FL Learners of Spanish. Círculo de Lingüística Aplicada a La Comunicación, 87, 71–94. https://doi.org/10.5209/clac.76713. <https://doi.org/10.5209/CLAC.76713>
+Castañeda Castro, A., & Sánchez Cuadrado, A. (2021). The Role of Metonymy in Teaching the Spanish Verbal System to L2/FL Learners of Spanish. Círculo de Lingüística Aplicada a La Comunicación, 87, 71–94. <https://doi.org/10.5209/CLAC.76713>
 
 Castellano-Risco, I., Martín-Gilete, M., Hijazo-Gascón, A., & Ibarretxe-Antuñano, I. (2023). Metaphors set in motion in the context of L2 academic spoken discourse. Vigo International Journal of Applied Linguistics, 20, 77–105. <https://doi.org/10.35869/vial.v0i20.4355>
 
@@ -595,11 +594,11 @@ Chan, M., Williams, A. I., Teng, Y.-P. T., & Zhou, Q. (2022). Links between Pare
 
 Chang, F., Tatsumi, T., Hiranuma, Y., & Bannard, C. (2023). Visual Heuristics for Verb Production: Testing a Deep‐Learning Model With Experiments in Japanese. Cognitive Science, 47(8). Portico. <https://doi.org/10.1111/cogs.13324>
 
-Chanyeam, C., & Wongthai, N. (2025). The Influence of Grammatical Number on Cognition of Bilinguals: A Test of the Linguistic Relativity Hypothesis. LEARN Journal: Language Education and Acquisition Research Network, 18(1), 405–432. https://doi.org/10.70730/ejvm8006. <https://doi.org/10.70730/EJVM8006>
+Chanyeam, C., & Wongthai, N. (2025). The Influence of Grammatical Number on Cognition of Bilinguals: A Test of the Linguistic Relativity Hypothesis. LEARN Journal: Language Education and Acquisition Research Network, 18(1), 405–432. <https://doi.org/10.70730/EJVM8006>
 
 Che Mustafa, M., Alias, A., Mohamed Isa, Z., Mat, M., & Yan Abdullah, N. (2019). Tools and Symbols as Mediation: A Central Concept to Understand Ways of Improving English Acquisition and Proficiency. Universal Journal of Educational Research, 7(10A), 30–34. <https://doi.org/10.13189/ujer.2019.071706>
 
-Chechuro, I., & Yakovleva, A. (2019). Spatial semantics: Recent advances. Voprosy Jazykoznanija, 3, 125–142. https://doi.org/10.31857/s0373658x0004901-0. <https://doi.org/10.31857/S0373658X0004901-0>
+Chechuro, I., & Yakovleva, A. (2019). Spatial semantics: Recent advances. Voprosy Jazykoznanija, 3, 125–142. <https://doi.org/10.31857/S0373658X0004901-0>
 
 Chen, H. H.-J., & Tao, H. (2019). Academic Chinese: From Corpora to Language Teaching. Computational and Corpus Approaches to Chinese Language Learning, 57–79. <https://doi.org/10.1007/978-981-13-3570-9_4>
 
@@ -659,7 +658,7 @@ Cifuentes-Férez, P. (2024). Approaching the emotional impact of loss of
             <scp>manner</scp>
             in translation: a case study on the reception of translated domestic violence testimonies. Acta Linguistica Hafniensia, 56(2), 317–341. <https://doi.org/10.1080/03740463.2024.2413793>
 
-Cifuentes-Férez, P., & Molés-Cases, T. (2020). On the translation of boundary-crossing events: Evidence from an experiment with German and Spanish translation students. Vigo International Journal of Applied Linguistics, 17, 87–111. https://doi.org/10.35869/vial.v0i17.1466. <https://doi.org/10.35869/VIAL.V0I17.1466>
+Cifuentes-Férez, P., & Molés-Cases, T. (2020). On the translation of boundary-crossing events: Evidence from an experiment with German and Spanish translation students. Vigo International Journal of Applied Linguistics, 17, 87–111. <https://doi.org/10.35869/VIAL.V0I17.1466>
 
 Ciriza, M. del P. (2018). Bringing parents together: an innovative approach for parental involvement in an immersion school in the Basque Autonomous Community. Journal of Multilingual and Multicultural Development, 40(1), 50–63. <https://doi.org/10.1080/01434632.2018.1467424>
 
@@ -689,9 +688,9 @@ Conlin, F. (2021). The Acquisition of Motion Events in Verbs of Motion. Discussi
 
 Cook, H. M. (2022). The East/West Debate over Politeness: Ideology and Practice. Contrastive Pragmatics, 3(3), 351–362. <https://doi.org/10.1163/26660393-bja10051>
 
-Cook, V. (2021). The language in language and thinking. Vigo International Journal of Applied Linguistics, 18, 35–58. https://doi.org/10.35869/vial.v0i18.3364. <https://doi.org/10.35869/VIAL.V0I18.3364>
+Cook, V. (2021). The language in language and thinking. Vigo International Journal of Applied Linguistics, 18, 35–58. <https://doi.org/10.35869/VIAL.V0I18.3364>
 
-Cook, V. (2022). The Language of the English Street Sign. https://doi.org/10.21832/cook4563. <https://doi.org/10.21832/COOK4563>
+Cook, V. (2022). The Language of the English Street Sign. <https://doi.org/10.21832/COOK4563>
 
 Corballis, M. C. (2020). The Evolution of Language. The Cambridge Handbook of Evolutionary Perspectives on Human Behavior, 233–240. <https://doi.org/10.1017/9781108131797.020>
 
@@ -699,11 +698,11 @@ Corella, M. (2020). Talking “smart”: Academic language and indexical compete
 
 Corona, L., & Pietrandrea, P. (2021). In a manner of speaking. Building Categories in Interaction, 415–438. Portico. <https://doi.org/10.1075/slcs.220.15cor>
 
-Corrêa, L. M. S., Ribeiro, V. G., &amp; Longchamps, J. R. (2022). <i>Interface gramática-pragmática e comprometimentos no desempenho linguístico</i>. Zenodo. https://doi.org/10.5281/ZENODO.7233241. <https://doi.org/10.5281/zenodo.7233241>
+Corrêa, L. M. S., Ribeiro, V. G., &amp; Longchamps, J. R. (2022). <i>Interface gramática-pragmática e comprometimentos no desempenho linguístico</i>. Zenodo. <https://doi.org/10.5281/zenodo.7233241>
 
 Costa-Silva, J., & Lee-Schoenfeld, V. (2024). Syntactically branching out beyond the traditional classroom: A report on the discovery method. Language, 100(3), e99–e123. <https://doi.org/10.1353/lan.2024.a937195>
 
-Costa-Silva, J., Zhang, S., & Lee-Schoenfeld, V. (2025). The effects of bilingual proficiency on the acceptability of motion encoding strategies. Bilingualism: Language and Cognition, 28(2), 444–456. https://doi.org/10.1017/s136672892400052x. <https://doi.org/10.1017/S136672892400052X>
+Costa-Silva, J., Zhang, S., & Lee-Schoenfeld, V. (2025). The effects of bilingual proficiency on the acceptability of motion encoding strategies. Bilingualism: Language and Cognition, 28(2), 444–456. <https://doi.org/10.1017/S136672892400052X>
 
 Coventry, K. R. (2019). Chapter 3: Space. Cognitive Linguistics - Key Topics, 44–65. <https://doi.org/10.1515/9783110626438-003>
 
@@ -731,7 +730,7 @@ Dang, K., Korreshi, H., Iqbal, Y., & Lee, S. (2023). Opportunities for Accessibl
 
 Dankel, P., & Gutiérrez Maté, M. (2020). Vuestra atención, por favor ‘your attention, please’. Some remarks on the usage and history of plural vuestro/a in Cusco Spanish (Peru). Address in Portuguese and Spanish, 317–360. <https://doi.org/10.1515/9783110701234-010>
 
-Dankel, P., Rodr\'{I}Guez, M. S., Coler, M., &amp; Banegas-Flores, E. (2022). <i>Trilingual modality: Towards an analysis of mood and modality in Aymara, Quechua and Castellano Andino as a joint systematic concept</i>. Zenodo. https://doi.org/10.5281/ZENODO.7446961. <https://doi.org/10.5281/zenodo.7446961>
+Dankel, P., Rodr\'{I}Guez, M. S., Coler, M., &amp; Banegas-Flores, E. (2022). <i>Trilingual modality: Towards an analysis of mood and modality in Aymara, Quechua and Castellano Andino as a joint systematic concept</i>. Zenodo. <https://doi.org/10.5281/zenodo.7446961>
 
 Darriba, P. G. (2019). Self-directed Motion in Spontaneous and Translated English: A Comparable Corpora Study. Across Languages and Cultures, 20(2), 213–233. <https://doi.org/10.1556/084.2019.20.2.4>
 
@@ -762,15 +761,15 @@ De Vogelaer, G., Koster, D., & Leuschner, T. (2020). Introduction – German and
 
 De Wit, A., Brisard, F., Madden-Lombardi, C., Meeuwis, M., & Patard, A. (Eds.). (2024). Beyond Aspectual Semantics. <https://doi.org/10.1093/oso/9780192849311.001.0001>
 
-Debreslioska, S., & Gullberg, M. (2017). Discourse Reference Is Bimodal: How Information Status in Speech Interacts with Presence and Viewpoint of Gestures. Discourse Processes, 56(1), 41–60. https://doi.org/10.1080/0163853x.2017.1351909. <https://doi.org/10.1080/0163853X.2017.1351909>
+Debreslioska, S., & Gullberg, M. (2017). Discourse Reference Is Bimodal: How Information Status in Speech Interacts with Presence and Viewpoint of Gestures. Discourse Processes, 56(1), 41–60. <https://doi.org/10.1080/0163853X.2017.1351909>
 
 Debreslioska, S., & Gullberg, M. (2020). The semantic content of gestures varies with definiteness, information status and clause structure. Journal of Pragmatics, 168, 36–52. <https://doi.org/10.1016/j.pragma.2020.06.005>
 
 Debreslioska, S., & Gullberg, M. (2020). What’s New? Gestures Accompany Inferable Rather Than Brand-New Referents in Discourse. Frontiers in Psychology, 11. <https://doi.org/10.3389/fpsyg.2020.01935>
 
-Debreslioska, S., & Gullberg, M. (2022). Information Status Predicts the Incidence of Gesture in Discourse: An Experimental Study. Discourse Processes, 59(10), 791–827. https://doi.org/10.1080/0163853x.2022.2085476. <https://doi.org/10.1080/0163853X.2022.2085476>
+Debreslioska, S., & Gullberg, M. (2022). Information Status Predicts the Incidence of Gesture in Discourse: An Experimental Study. Discourse Processes, 59(10), 791–827. <https://doi.org/10.1080/0163853X.2022.2085476>
 
-DeDe, G., & Salis, C. (2020). Temporal and Episodic Analyses of the Story of Cinderella in Latent Aphasia. American Journal of Speech-Language Pathology, 29(1S), 449–462. https://doi.org/10.1044/2019_ajslp-cac48-18-0210. <https://doi.org/10.1044/2019_AJSLP-CAC48-18-0210>
+DeDe, G., & Salis, C. (2020). Temporal and Episodic Analyses of the Story of Cinderella in Latent Aphasia. American Journal of Speech-Language Pathology, 29(1S), 449–462. <https://doi.org/10.1044/2019_AJSLP-CAC48-18-0210>
 
 DeFranza, D., Mishra, H., & Mishra, A. (2020). How language shapes prejudice against women: An examination across 45 world languages. Journal of Personality and Social Psychology, 119(1), 7–22. <https://doi.org/10.1037/pspa0000188>
 
@@ -792,7 +791,7 @@ Deppermann, A., & Schmidt, A. (2021). How Shared Meanings and Uses Emerge Over a
             Wabi Sabi
             in a Series of Theater Rehearsals. Research on Language and Social Interaction, 54(2), 203–224. <https://doi.org/10.1080/08351813.2021.1899714>
 
-Deppermann, A., & Schmidt, A. (2021). Micro-Sequential Coordination in Early Responses. Discourse Processes, 58(4), 372–396. https://doi.org/10.1080/0163853x.2020.1842630. <https://doi.org/10.1080/0163853X.2020.1842630>
+Deppermann, A., & Schmidt, A. (2021). Micro-Sequential Coordination in Early Responses. Discourse Processes, 58(4), 372–396. <https://doi.org/10.1080/0163853X.2020.1842630>
 
 DESAGULIER, G., & MONNERET, P. (2023). Cognitive Linguistics and a Usage‐Based Approach to the Study of Semantics and Pragmatics. The Handbook of Usage‐Based Linguistics, 31–53. Portico. <https://doi.org/10.1002/9781119839859.ch2>
 
@@ -810,7 +809,7 @@ Diaz, B. A. (2022). Chapter 6 Discourses at work in elderly, health policy commu
 
 Diaz, B. A., & Shahri, M. N. N. (2020). Evaluative affect in the social practice of institutional identity: Making a case for connotative inversion. Language &amp; Communication, 74, 15–28. <https://doi.org/10.1016/j.langcom.2020.05.004>
 
-DÍEZ-ÁLAMO, A. M., DÍEZ, E., ALONSO, M. A., & FERNANDEZ, A. (2018). Normative ratings for 536 action-related sentences in Spanish. Applied Psycholinguistics, 40(2), 535–553. https://doi.org/10.1017/s0142716418000693. <https://doi.org/10.1017/S0142716418000693>
+DÍEZ-ÁLAMO, A. M., DÍEZ, E., ALONSO, M. A., & FERNANDEZ, A. (2018). Normative ratings for 536 action-related sentences in Spanish. Applied Psycholinguistics, 40(2), 535–553. <https://doi.org/10.1017/S0142716418000693>
 
 Dijkstra, T., & Peeters, D. (2023). The New Psychology of Language. <https://doi.org/10.4324/9781003326274>
 
@@ -842,7 +841,7 @@ Dresang, H. C., Dickey, M. W., & Warren, T. C. (2019). Semantic memory for objec
 
 Du, J., Li, F. T., Ge, Y., & Zhang, J. (2023). Separation events in Mandarin, Russian and Korean. Review of Cognitive Linguistics, 21(2), 377–410. Portico. <https://doi.org/10.1075/rcl.00143.du>
 
-Du, X., Lin, Q., & Zeng, Q. (2025). Language and Carbon Emissions: A Cross-Country Analysis. Emerging Markets Finance and Trade, 62(2), 348–378. https://doi.org/10.1080/1540496x.2025.2529392. <https://doi.org/10.1080/1540496X.2025.2529392>
+Du, X., Lin, Q., & Zeng, Q. (2025). Language and Carbon Emissions: A Cross-Country Analysis. Emerging Markets Finance and Trade, 62(2), 348–378. <https://doi.org/10.1080/1540496X.2025.2529392>
 
 Duboisdindien, G., & Bolly, C. T. (2025). Heterogeneity of verbal and gestural functions in spoken discourse with MCI. Journal of Neurolinguistics, 73, 101227. <https://doi.org/10.1016/j.jneuroling.2024.101227>
 
@@ -907,11 +906,11 @@ Enfield, N. J. (2023). Scale in Language. Cognitive Science, 47(10). Portico. <h
 
 Enfield, N. J., & Sidnell, J. (2022). 17 Language and culture in Mainland Southeast Asia. Approaches to Language and Culture, 471–498. <https://doi.org/10.1515/9783110726626-017>
 
-Engemann, H. (2021). How (not) to cross a boundary: Crosslinguistic influence in simultaneous bilingual children’s event construal. Bilingualism: Language and Cognition, 25(1), 42–54. https://doi.org/10.1017/s1366728921000298. <https://doi.org/10.1017/S1366728921000298>
+Engemann, H. (2021). How (not) to cross a boundary: Crosslinguistic influence in simultaneous bilingual children’s event construal. Bilingualism: Language and Cognition, 25(1), 42–54. <https://doi.org/10.1017/S1366728921000298>
 
 Engemann, H. (2022). Entropy convergence in early bilinguals’ syntactic packaging. Frontiers in Psychology, 13. <https://doi.org/10.3389/fpsyg.2022.1010002>
 
-ENGEMANN, H. (2023). Structural complexity reduction in English–French bilingual children’s event encoding. Journal of Child Language, 51(6), 1243–1267. https://doi.org/10.1017/s0305000923000338. <https://doi.org/10.1017/S0305000923000338>
+ENGEMANN, H. (2023). Structural complexity reduction in English–French bilingual children’s event encoding. Journal of Child Language, 51(6), 1243–1267. <https://doi.org/10.1017/S0305000923000338>
 
 Enríquez Duque, P. (2023). (Mis)pronunciations of Hispanic Given Names in the U.S.: Positionalities and Discursive Strategies at Play. Languages, 8(3), 199. <https://doi.org/10.3390/languages8030199>
 
@@ -943,9 +942,9 @@ Fan, M., & Zhu, L. (2021). Think-Aloud Verbalizations for Identifying User Exper
 
 Fanego, T. (2024). English motion and progressive constructions, and the typological drift from bounded to unbounded discourse construal. Language Sciences, 101, 101598. <https://doi.org/10.1016/j.langsci.2023.101598>
 
-Fang, P., & Liu, Q. (2022). A semantic contrastive study of Chinese and English verb “跑/run” from the perspective of cognitive semantics. Forum for Linguistic Studies, 4(1), 100. https://doi.org/10.18063/fls.v4i1.1458. <https://doi.org/10.18063/FLS.V4I1.1458>
+Fang, P., & Liu, Q. (2022). A semantic contrastive study of Chinese and English verb “跑/run” from the perspective of cognitive semantics. Forum for Linguistic Studies, 4(1), 100. <https://doi.org/10.18063/FLS.V4I1.1458>
 
-Farashaiyan, A., Sahragard, R., Muthusamy, P., & Muniandy, R. (2020). Questionnaire Development and Validation of Interlanguage Pragmatic Instructional Approaches &amp; Techniques in EFL Contexts. International Journal of Higher Education, 9(2), 330. https://doi.org/10.5430/ijhe.v9n2p330. <https://doi.org/10.5430/IJHE.V9N2P330>
+Farashaiyan, A., Sahragard, R., Muthusamy, P., & Muniandy, R. (2020). Questionnaire Development and Validation of Interlanguage Pragmatic Instructional Approaches &amp; Techniques in EFL Contexts. International Journal of Higher Education, 9(2), 330. <https://doi.org/10.5430/IJHE.V9N2P330>
 
 Farina, A. (2025). Source preverbs and motion verbs in Latin. A quantitative approach to
                     ab-
@@ -964,7 +963,7 @@ Fedorenko, E., Piantadosi, S. T., & Gibson, E. A. F. (2024). Language is primari
 
 Feinmann, D. (2019). Language and Thought in the Motion Domain: Methodological Considerations and New Empirical Evidence. Journal of Psycholinguistic Research, 49(1), 1–29. <https://doi.org/10.1007/s10936-019-09668-5>
 
-Feist, M. I., & Cifuentes-Férez, P. (2025). Thinking-for-audio-describing: an English-Spanish corpus-based study and some didactic applications. Perspectives, 1–20. https://doi.org/10.1080/0907676x.2025.2562022. <https://doi.org/10.1080/0907676X.2025.2562022>
+Feist, M. I., & Cifuentes-Férez, P. (2025). Thinking-for-audio-describing: an English-Spanish corpus-based study and some didactic applications. Perspectives, 1–20. <https://doi.org/10.1080/0907676X.2025.2562022>
 
 FEIST, M. I., & DUFFY, S. E. (2020). On the path of time: temporal motion in typological perspective. Language and Cognition, 12(3), 444–467. <https://doi.org/10.1017/langcog.2020.7>
 
@@ -1020,7 +1019,7 @@ Filipović, L. (2021). First language versus second language effect on memory fo
 
 Filipović, L. (2022). A Multi-Factor Approach to the Study of L2 Acquisition of Motion Verbs and Motion Constructions: Integration of Typological, Psycholinguistic and Sociolinguistic Aspects. Frontiers in Communication, 7. <https://doi.org/10.3389/fcomm.2022.822517>
 
-Filipović, L. (2022). From the Crime Scene to the Language Lab and Back. <i>International Journal of Language &Amp; Law (JLL)</i>, Vol. 11 (2022): Empirical Approaches to Law and Language Studies. https://doi.org/10.14762/JLL.2022.104. <https://doi.org/10.14762/jll.2022.104>
+Filipović, L. (2022). From the Crime Scene to the Language Lab and Back. <i>International Journal of Language &Amp; Law (JLL)</i>, Vol. 11 (2022): Empirical Approaches to Law and Language Studies. <https://doi.org/10.14762/jll.2022.104>
 
 Filipović, L., & Hawkins, J. A. (2018). The Complex Adaptive System Principles model for bilingualism: Language interactions within and across bilingual minds. International Journal of Bilingualism, 23(6), 1223–1248. <https://doi.org/10.1177/1367006918781076>
 
@@ -1073,7 +1072,7 @@ Fugate, J. M. B., MacDonald, C., & O’Hare, A. J. (2020). Emotion Words’ Effe
 
 Gaballo, V. (2022). Cross-Linguistic and Cross-Cultural Conceptualization of Specialized Terms in Corporate Culture. Language Use, Education, and Professional Contexts, 21–40. <https://doi.org/10.1007/978-3-030-96095-7_2>
 
-Gadanidis, T., Kiss, A., Konnelly, L., Pabst, K., Schlegl, L., Umbal, P., & Tagliamonte, S. A. (2021). Integrating qualitative and quantitative analyses of stance: A case study of Englishthat/zero variation. Language in Society, 52(1), 27–50. https://doi.org/10.1017/s0047404521000671. <https://doi.org/10.1017/S0047404521000671>
+Gadanidis, T., Kiss, A., Konnelly, L., Pabst, K., Schlegl, L., Umbal, P., & Tagliamonte, S. A. (2021). Integrating qualitative and quantitative analyses of stance: A case study of Englishthat/zero variation. Language in Society, 52(1), 27–50. <https://doi.org/10.1017/S0047404521000671>
 
 Gao, F., Wu, C., Fu, H., Xu, K., & Yuan, Z. (2023). Language Nativeness Modulates Physiological Responses to Moral vs. Immoral Concepts in Chinese–English Bilinguals: Evidence from Event-Related Potential and Psychophysiological Measures. Brain Sciences, 13(11), 1543. <https://doi.org/10.3390/brainsci13111543>
 
@@ -1099,7 +1098,7 @@ Georgakopoulou, A. (2024). Technography as a synergetic methodology for the stud
 
 George, N. R., Ciaccio, S., Berry, L., & Weiss, D. J. (2024). The effect of lexicalization biases on cross-situational statistical learning of novel verbs. Language and Cognition, 16(4), 1007–1025. <https://doi.org/10.1017/langcog.2023.70>
 
-George, R. (2019). Simultaneity and the refusal to choose: The semiotics of Serbian youth identity on Facebook. Language in Society, 49(3), 399–423. https://doi.org/10.1017/s004740451900099x. <https://doi.org/10.1017/S004740451900099X>
+George, R. (2019). Simultaneity and the refusal to choose: The semiotics of Serbian youth identity on Facebook. Language in Society, 49(3), 399–423. <https://doi.org/10.1017/S004740451900099X>
 
 German, A. (2023). Abrupt grammatical reorganization of an emergent sign language. Diachronica. <https://doi.org/10.1075/dia.22039.ger>
 
@@ -1129,11 +1128,11 @@ Gillmann, M. (2023).
 
 Gillmann, M. (2024). Allostructions and stancetaking: a corpus study of the German discourse management constructionsWo/wenn wir gerade/schon dabei sind. Cognitive Linguistics, 35(1), 67–107. <https://doi.org/10.1515/cog-2020-0117>
 
-Ginsburgh, V., & Weber, S. (2020). The Economics of Language. Journal of Economic Literature, 58(2), 348–404. https://doi.org/10.1257/jel.20191316. <https://doi.org/10.1257/JEL.20191316>
+Ginsburgh, V., & Weber, S. (2020). The Economics of Language. Journal of Economic Literature, 58(2), 348–404. <https://doi.org/10.1257/JEL.20191316>
 
 Giraud, F. (Ed.). (2023). Gesture in French Post-New Wave Cinema. <https://doi.org/10.3726/b21093>
 
-Girnyk, A., Krylova-Grek, Y., & Khan, A. (2021). Психолінгвістичне крос-культурне дослідження поняття конфлікту в Україні та Індії. East European Journal of Psycholinguistics, 8(2), 51–65. https://doi.org/10.29038/eejpl.2021.8.2.gir. <https://doi.org/10.29038/EEJPL.2021.8.2.GIR>
+Girnyk, A., Krylova-Grek, Y., & Khan, A. (2021). Психолінгвістичне крос-культурне дослідження поняття конфлікту в Україні та Індії. East European Journal of Psycholinguistics, 8(2), 51–65. <https://doi.org/10.29038/EEJPL.2021.8.2.GIR>
 
 Głaz, A. (2021). Linguistic Worldview(s). <https://doi.org/10.4324/9781003018803>
 
@@ -1149,7 +1148,7 @@ Goh, C. C. M., & Vandergrift, L. (2021). Teaching and Learning Second Language L
 
 Golinkoff, R. M., Katz, S., Jo, J., Singh, L., Collins, M. A., & Hirsh-Pasek, K. (2025). How the perception of events in children is influenced by language. Cognition, 259, 106123. <https://doi.org/10.1016/j.cognition.2025.106123>
 
-Golovashina, O. (2021). Event as Object: Towards a Flat-Event Theory. Sotsiologicheskoe Obozrenie / Russian Sociological Review, 20(1), 89–106. https://doi.org/10.17323/1728-192x-2021-1-89-106. <https://doi.org/10.17323/1728-192X-2021-1-89-106>
+Golovashina, O. (2021). Event as Object: Towards a Flat-Event Theory. Sotsiologicheskoe Obozrenie / Russian Sociological Review, 20(1), 89–106. <https://doi.org/10.17323/1728-192X-2021-1-89-106>
 
 Golubkova, E., & Trubochkin, A. (2021). A Corpus-Based Model of the English Phrasal Verb Construction: Attraction. Computational Linguistics and Intellectual Technologies, 278–288. <https://doi.org/10.28995/2075-7182-2021-20-278-288>
 
@@ -1175,7 +1174,7 @@ Gramling, D. (2021). The Invention of Multilingualism. <https://doi.org/10.1017/
 
 Gramling, D. (2024). Literature in Late Monolingualism. Bloomsbury Publishing Plc. <https://doi.org/10.5040/9798765113950>
 
-Granados Vargas, A., Peña, E. D., & Bedore, L. M. (2024). Bilingual Children Demonstrate Variation Within Shared Narrative Macrostructure. Journal of Speech, Language, and Hearing Research, 67(11), 4504–4517. https://doi.org/10.1044/2024_jslhr-23-00778. <https://doi.org/10.1044/2024_JSLHR-23-00778>
+Granados Vargas, A., Peña, E. D., & Bedore, L. M. (2024). Bilingual Children Demonstrate Variation Within Shared Narrative Macrostructure. Journal of Speech, Language, and Hearing Research, 67(11), 4504–4517. <https://doi.org/10.1044/2024_JSLHR-23-00778>
 
 Grasso, A., & Russo, K.-E. (2026). Immobility During the Covid-19 Pandemic: Exploring the Mobile Perspective of Detained Refugees on Twitter. Rilce. Revista de Filología Hispánica, 224–256. <https://doi.org/10.15581/008.42.1.224-56>
 
@@ -1247,7 +1246,7 @@ Hafri, A., Bonner, M. F., Landau, B., & Firestone, C. (2024). A Phone in a Baske
 
 Hagoort, P. (2023). The language marker hypothesis. Cognition, 230, 105252. <https://doi.org/10.1016/j.cognition.2022.105252>
 
-HAHN, C. G. K., SAALBACH, H., & GRABNER, R. H. (2017). Language-dependent knowledge acquisition: investigating bilingual arithmetic learning. Bilingualism: Language and Cognition, 22(1), 47–57. https://doi.org/10.1017/s1366728917000530. <https://doi.org/10.1017/S1366728917000530>
+HAHN, C. G. K., SAALBACH, H., & GRABNER, R. H. (2017). Language-dependent knowledge acquisition: investigating bilingual arithmetic learning. Bilingualism: Language and Cognition, 22(1), 47–57. <https://doi.org/10.1017/S1366728917000530>
 
 Haj-Bolouri, A., Conboy, K., & Gregor, S. (2024). Research Perspectives: An Encompassing Framework for Conceptualizing Space in Information Systems: Philosophical Perspectives, Themes, and Concepts. Journal of the Association for Information Systems, 25(2), 407–441. <https://doi.org/10.17705/1jais.00830>
 
@@ -1263,7 +1262,7 @@ Hall, J. K., & Looney, S. D. (2019). 1. Introduction: The Embodied Work of Teach
 
 Hampe, B. (2022). Between embodiment and usage. Dynamism in Metaphor and Beyond, 157–190. Portico. <https://doi.org/10.1075/milcc.9.09ham>
 
-Han, Z. (2020). Usage-based instruction, systems thinking, and the role of Language Mining in second language development. Language Teaching, 54(4), 502–517. https://doi.org/10.1017/s0261444820000282. <https://doi.org/10.1017/S0261444820000282>
+Han, Z. (2020). Usage-based instruction, systems thinking, and the role of Language Mining in second language development. Language Teaching, 54(4), 502–517. <https://doi.org/10.1017/S0261444820000282>
 
 Han, Z., & Bao, G. (2023). Critical period in second language acquisition: The age-attainment geometry. Frontiers in Physics, 11. <https://doi.org/10.3389/fphy.2023.1142584>
 
@@ -1295,11 +1294,11 @@ He, X. (2023). Effects of structural complexity and L1 experience on L2 acquisit
 
 Healey, P. G. T. (2021). Human-like Communication. Human-Like Machine Intelligence, 137–151. <https://doi.org/10.1093/oso/9780198862536.003.0007>
 
-Healey, P. G. T., Howes, C., Kempson, R., Mills, G. J., Purver, M., Gregoromichelaki, E., Eshghi, A., & Hough, J. (2023). “Who’s there?”: Depicting identity in interaction. Behavioral and Brain Sciences, 46. https://doi.org/10.1017/s0140525x22001492. <https://doi.org/10.1017/S0140525X22001492>
+Healey, P. G. T., Howes, C., Kempson, R., Mills, G. J., Purver, M., Gregoromichelaki, E., Eshghi, A., & Hough, J. (2023). “Who’s there?”: Depicting identity in interaction. Behavioral and Brain Sciences, 46. <https://doi.org/10.1017/S0140525X22001492>
 
 Hebedová, P. (2021). Finská a česká slovesa pohybu ve vzájemném kontrastu. Časopis pro Moderní Filologii, 103(1), 88–105. <https://doi.org/10.14712/23366591.2021.1.5>
 
-Hebedová, P. (2024). Deictic motion verbs and anchoring the direction of motion in Estonian, Finnish and Czech. Lähivõrdlusi. Lähivertailuja, 34, 15–48. https://doi.org/10.5128/lv34.01. <https://doi.org/10.5128/LV34.01>
+Hebedová, P. (2024). Deictic motion verbs and anchoring the direction of motion in Estonian, Finnish and Czech. Lähivõrdlusi. Lähivertailuja, 34, 15–48. <https://doi.org/10.5128/LV34.01>
 
 Heinrich, R., Zimmerer, C., Fischbach, M., & Erich Latoschik, M. (2025). A Systematic Review of Fusion Methods for the User-Centered Design of Multimodal Interfaces. Proceedings of the 27th International Conference on Multimodal Interaction, 485–495. <https://doi.org/10.1145/3716553.3750790>
 
@@ -1311,7 +1310,7 @@ Hellwig, B., & Jung, D. (2022). Events of caused accompanied motion in Qaqet and
 
 Hellwig, B., Margetts, A., Riesberg, S., & Schippling, M. (2022). Bringing and taking. Caused Accompanied Motion, 1–41. Portico. <https://doi.org/10.1075/tsl.134.01hel>
 
-HENDRIKS, H., HICKMANN, M., & PASTORINO-CAMPOS, C. (2021). Running or crossing? Children’s expression of voluntary motion in English, German, and French. Journal of Child Language, 49(3), 578–601. https://doi.org/10.1017/s0305000921000271. <https://doi.org/10.1017/S0305000921000271>
+HENDRIKS, H., HICKMANN, M., & PASTORINO-CAMPOS, C. (2021). Running or crossing? Children’s expression of voluntary motion in English, German, and French. Journal of Child Language, 49(3), 578–601. <https://doi.org/10.1017/S0305000921000271>
 
 Henrich, J., Blasi, D. E., Curtin, C. M., Davis, H. E., Hong, Z., Kelly, D., & Kroupin, I. (2022). A Cultural Species and its Cognitive Phenotypes: Implications for Philosophy. Review of Philosophy and Psychology, 14(2), 349–386. <https://doi.org/10.1007/s13164-021-00612-y>
 
@@ -1367,7 +1366,7 @@ Hoshi, S. (2021). Effects of Classroom Instruction on the Development of L2 Inte
 
 House, J. (2019). Translation as a Prime Player in Intercultural Communication. Applied Linguistics. <https://doi.org/10.1093/applin/amz007>
 
-Hovorun, C. (2020). Patristics and Sociolinguistics. Scrinium, 16(1), 20–29. https://doi.org/10.1163/18177565-00160a01. <https://doi.org/10.1163/18177565-00160A01>
+Hovorun, C. (2020). Patristics and Sociolinguistics. Scrinium, 16(1), 20–29. <https://doi.org/10.1163/18177565-00160A01>
 
 Howard, M. (2025). The Acquisition of French as a Second Language. <https://doi.org/10.4324/9781003264118>
 
@@ -1391,11 +1390,11 @@ Husnutdinov, D. H., Sagdieva, R. K., Mirzagitov, R. H., & Karipzhanova, G. T. (2
 
 Huumo, T., & Sivonen, J. (2020). Suurtyö kielen kohdennusjärjestelmästä. Virittäjä, 124(1). <https://doi.org/10.23982/vir.82454>
 
-Iacobuzio, S. V., & Silva, M. L. (2022). Verbos psicológicos: una taxonomía de lo heterogéneo. Lingüística, 38(2). https://doi.org/10.5935/2079-312x.20220012. <https://doi.org/10.5935/2079-312X.20220012>
+Iacobuzio, S. V., & Silva, M. L. (2022). Verbos psicológicos: una taxonomía de lo heterogéneo. Lingüística, 38(2). <https://doi.org/10.5935/2079-312X.20220012>
 
 Ibarretxe-Antuñano, I. (2025). The Use of Basque Ideophones in Motion Events. Cognitive Semantics, 11(2), 1–27. <https://doi.org/10.1163/23526416-bja10081>
 
-IBARRETXE-ANTUÑANO, I., & SAN-SEGUNDO-CACHERO, R. (2024). EL ASTURIANO EN LA TIPOLOGÍA SEMÁNTICA DEL MOVIMIENTO. Dialectologia, 2024.2024. https://doi.org/10.1344/dialectologia2024.2024c.2. <https://doi.org/10.1344/DIALECTOLOGIA2024.2024C.2>
+IBARRETXE-ANTUÑANO, I., & SAN-SEGUNDO-CACHERO, R. (2024). EL ASTURIANO EN LA TIPOLOGÍA SEMÁNTICA DEL MOVIMIENTO. Dialectologia, 2024.2024. <https://doi.org/10.1344/DIALECTOLOGIA2024.2024C.2>
 
 Ibbotson, P. (2020). What it Takes to Talk. <https://doi.org/10.1515/9783110647914>
 
@@ -1413,11 +1412,11 @@ Iriskhanova, O. K., & Prokofyeva, O. N. (2021). WALKING CLOCKS AND SWIRLING GORG
 
 Irsara, M. (2022). Cross-linguistic awareness  in an English L4 education setting:  Discovering language-specific phenomena  in unrelated languages. Glottodidactica. An International Journal of Applied Linguistics, 49(1), 107–123. <https://doi.org/10.14746/gl.2022.49.1.07>
 
-Irsara, M. (2022). Encoding climbing scenes in English : frequency and patterns in descriptions written by speakers of diverse languages. Brno Studies in English, 2, 5–24. https://doi.org/10.5817/bse2022-2-1. <https://doi.org/10.5817/BSE2022-2-1>
+Irsara, M. (2022). Encoding climbing scenes in English : frequency and patterns in descriptions written by speakers of diverse languages. Brno Studies in English, 2, 5–24. <https://doi.org/10.5817/BSE2022-2-1>
 
 Isasi-Isasmendi, A., Andrews, C., Flecken, M., Laka, I., Daum, M. M., Meyer, M., Bickel, B., & Sauppe, S. (2023). The Agent Preference in Visual Event Apprehension. Open Mind, 7, 240–282. <https://doi.org/10.1162/opmi_a_00083>
 
-İşler, C. (2022). Linguistic Typology in Motion Events:  Expression of Motion Events in Translated  Versions of Turkish and English Novels. Litera: Journal of Language, Literature and Culture Studies / Litera: Dil, Edebiyat ve Kültür Araştırmaları Dergisi, 32(2), 833–859. https://doi.org/10.26650/litera2021-1019820. <https://doi.org/10.26650/LITERA2021-1019820>
+İşler, C. (2022). Linguistic Typology in Motion Events:  Expression of Motion Events in Translated  Versions of Turkish and English Novels. Litera: Journal of Language, Literature and Culture Studies / Litera: Dil, Edebiyat ve Kültür Araştırmaları Dergisi, 32(2), 833–859. <https://doi.org/10.26650/LITERA2021-1019820>
 
 Isosävi, J. (2020). Cultural outsiders’ evaluations of (im)politeness in Finland and in France. Journal of Politeness Research, 16(2), 249–280. <https://doi.org/10.1515/pr-2017-0051>
 
@@ -1500,7 +1499,7 @@ Johnson, S. J. (2023). La mariposita ¿La recuerda?: the affective and moral dim
 
 Jones, K. (2019). Contemporary Khoesan Languages of South Africa. Critical Arts, 33(4–5), 55–73. <https://doi.org/10.1080/02560046.2019.1688849>
 
-Jones, L. (2022). ‘I’m a boy, can’t you see that?’: Dialogic embodiment and the construction of agency in trans youth discourse. Language in Society, 52(4), 549–570. https://doi.org/10.1017/s0047404522000252. <https://doi.org/10.1017/S0047404522000252>
+Jones, L. (2022). ‘I’m a boy, can’t you see that?’: Dialogic embodiment and the construction of agency in trans youth discourse. Language in Society, 52(4), 549–570. <https://doi.org/10.1017/S0047404522000252>
 
 Jraissati, Y. (2019). Editorial: Sensory Categories. Review of Philosophy and Psychology, 10(3), 419–439. <https://doi.org/10.1007/s13164-019-00439-8>
 
@@ -1534,9 +1533,9 @@ Kanli, E. (2024). Salgo de casa? Salgo a casa? Salgo la casa? Analysis of the cr
 
 Kaoo, L., & Upor, R. A. (2021). LEMMATIC INFLUENCE ON VOCABULARY ACQUISITION AMONG L3 ENGLISH LANGUAGE LEARNERS IN TANZANIA. Indonesian Journal of Applied Linguistics, 11(1). <https://doi.org/10.17509/ijal.v11i1.34671>
 
-Karimipour, A., & Sharifi, S. (2021). An experimental study on deictic verbs and the coding patterns of deixis in Ilami Kurdish: A comparative study. Studia Linguistica Universitatis Iagellonicae Cracoviensis, 138(4), 159–186. https://doi.org/10.4467/20834624sl.21.014.14742. <https://doi.org/10.4467/20834624SL.21.014.14742>
+Karimipour, A., & Sharifi, S. (2021). An experimental study on deictic verbs and the coding patterns of deixis in Ilami Kurdish: A comparative study. Studia Linguistica Universitatis Iagellonicae Cracoviensis, 138(4), 159–186. <https://doi.org/10.4467/20834624SL.21.014.14742>
 
-Karimipour, A., Rezai, V., & Motavallian, R. (2019). A comparative study of manner salience in Ilami Kurdish. Voprosy Jazykoznanija, 3, 101–124. https://doi.org/10.31857/s0373658x0004900-9. <https://doi.org/10.31857/S0373658X0004900-9>
+Karimipour, A., Rezai, V., & Motavallian, R. (2019). A comparative study of manner salience in Ilami Kurdish. Voprosy Jazykoznanija, 3, 101–124. <https://doi.org/10.31857/S0373658X0004900-9>
 
 Karlsson, M., & Nasi, N. (2023). “This friend was nice”: Young children’s negotiation of social relationships in and through interactions with (play) objects. Learning, Culture and Social Interaction, 42, 100734. <https://doi.org/10.1016/j.lcsi.2023.100734>
 
@@ -1555,7 +1554,7 @@ Kawachi, K. (2020). Should Talmy’s motion typology be expanded to visual
 
 Kawachi, K. (2021). 19 The ‘along’–deictic-directional verb suffix complex in Kupsapiny. Associated Motion, 747–778. <https://doi.org/10.1515/9783110692099-019>
 
-Kawachi, K. (2025). Ideophones in Motion Event Descriptions in Kupsapiiny and Sidaama: Conceptualization of Manners of Motion as Sounds and Postures. Cognitive Semantics, 11(2), 1–40. https://doi.org/10.1163/23526416-bja10083. <https://doi.org/10.1163/23526416-BJA10083>
+Kawachi, K. (2025). Ideophones in Motion Event Descriptions in Kupsapiiny and Sidaama: Conceptualization of Manners of Motion as Sounds and Postures. Cognitive Semantics, 11(2), 1–40. <https://doi.org/10.1163/23526416-BJA10083>
 
 Kay, P., & Cook, R. S. (2023). World Color Survey. Encyclopedia of Color Science and Technology, 1601–1607. <https://doi.org/10.1007/978-3-030-89862-5_113>
 
@@ -1581,7 +1580,7 @@ Kendall, T., & Fridland, V. (2021). Sociophonetics. <https://doi.org/10.1017/978
 
 Kermer, F. (2020). A Cognitive Grammar Perspective on Temporal Conceptualization in SLA. Studia Anglica Posnaniensia, 55(s1), 223–246. <https://doi.org/10.2478/stap-2020-0010>
 
-KERN, F., BODEN, U., NEMETH, A., KOUTALIDIS, S., ABRAMOV, O., KOPP, S., & ROHLFING, K. J. (2024). Preschool children’s discourse competence in different genres and how it relates to iconic gestures. Journal of Child Language, 51(3), 656–680. https://doi.org/10.1017/s030500092300065x. <https://doi.org/10.1017/S030500092300065X>
+KERN, F., BODEN, U., NEMETH, A., KOUTALIDIS, S., ABRAMOV, O., KOPP, S., & ROHLFING, K. J. (2024). Preschool children’s discourse competence in different genres and how it relates to iconic gestures. Journal of Child Language, 51(3), 656–680. <https://doi.org/10.1017/S030500092300065X>
 
 Khachaturyan, M., Sandman, E., & Crane, T. M. (2024). Doing things with grammar. Functions of Language, 31(2), 166–207. Portico. <https://doi.org/10.1075/fol.23032.kha>
 
@@ -1599,7 +1598,7 @@ Kiadan, J. (2023). The effect of linguistic medium on metaphor directionality: w
 
 Kibrik, A. A. (2019). Rethinking agreement: Cognition-to-form mapping. Cognitive Linguistics, 30(1), 37–83. <https://doi.org/10.1515/cog-2017-0035>
 
-Kiernan, L., Ledwith, A., & Lynch, R. (2019). Design teams management of conflict in reaching consensus. International Journal of Conflict Management, 31(2), 263–285. https://doi.org/10.1108/ijcma-06-2019-0097. <https://doi.org/10.1108/IJCMA-06-2019-0097>
+Kiernan, L., Ledwith, A., & Lynch, R. (2019). Design teams management of conflict in reaching consensus. International Journal of Conflict Management, 31(2), 263–285. <https://doi.org/10.1108/IJCMA-06-2019-0097>
 
 Kiesling, S. F. (2022). Stance and Stancetaking. Annual Review of Linguistics, 8(1), 409–426. <https://doi.org/10.1146/annurev-linguistics-031120-121256>
 
@@ -1649,7 +1648,7 @@ Kompa, N. A. (2019). Language and embodiment—Or the cognitive benefits of abst
 
 Kompa, N. A. (2024). Language, Cognition, and the Way We Think. Bloomsbury Publishing Plc. <https://doi.org/10.5040/9781350176881>
 
-Konara, P., & Wei, Y. (2020). Does language matter to foreign subsidiary performance? International Marketing Review, 38(2), 276–299. https://doi.org/10.1108/imr-05-2019-0129. <https://doi.org/10.1108/IMR-05-2019-0129>
+Konara, P., & Wei, Y. (2020). Does language matter to foreign subsidiary performance? International Marketing Review, 38(2), 276–299. <https://doi.org/10.1108/IMR-05-2019-0129>
 
 König, E. (2021). The role of a single lingua franca in scientific inquiry. European Journal of Language Policy, 13(1), 29–46. <https://doi.org/10.3828/ejlp.2021.4>
 
@@ -1678,7 +1677,7 @@ Kou, X., & Hohenstein, J. (2024). Manner, result, and intention: implications fo
 
 Koudenburg, N., Jetten, J., Enz, K. F., & Haslam, S. A. (2024). The social grounds of personal self: Interactions that build a sense of ‘we’ help clarify who ‘I’ am. European Journal of Social Psychology, 54(6), 1153–1167. Portico. <https://doi.org/10.1002/ejsp.3070>
 
-Kövecses, Z. (2022). A nemzet fogalma másként. Magyar Nyelvőr, 146(2), 137–164. https://doi.org/10.38143/nyr.2022.2.137. <https://doi.org/10.38143/NYR.2022.2.137>
+Kövecses, Z. (2022). A nemzet fogalma másként. Magyar Nyelvőr, 146(2), 137–164. <https://doi.org/10.38143/NYR.2022.2.137>
 
 Koven, M., & Marques, I. S. (2021). Multiaddressivity and Collective Addressivity in Vlog‐based Interactions between Diasporic and Nonmigrant Portuguese. Journal of Linguistic Anthropology, 31(1), 97–118. Portico. <https://doi.org/10.1111/jola.12301>
 
@@ -1700,7 +1699,7 @@ Krempel, R. (2021). Is color experience linguistically penetrable? Synthese, 199
 
 Krivochen, D. G. (2019). On trans-derivational operations: generative semantics and tree adjoining grammar. Language Sciences, 74, 47–76. <https://doi.org/10.1016/j.langsci.2019.04.002>
 
-Krivokapic, J., Tiede, M., Tyrone, M., Purse, R., & Seo, J. (2024). The role of prosodic structure in the planning of coordinated speech and manual gestures. Speech Prosody 2024, 692–696. https://doi.org/10.21437/speechprosody.2024-140. <https://doi.org/10.21437/SpeechProsody.2024-140>
+Krivokapic, J., Tiede, M., Tyrone, M., Purse, R., & Seo, J. (2024). The role of prosodic structure in the planning of coordinated speech and manual gestures. Speech Prosody 2024, 692–696. <https://doi.org/10.21437/SpeechProsody.2024-140>
 
 Kuang, X., He, C., Chen, Q., Song, Y., & Song, T. (2026). Language, silence, and logic: Zen, Nishida, and fthe Sapir-Whorf hypothesis in cognitive and cultural perspectives. Frontiers in Psychology, 17. <https://doi.org/10.3389/fpsyg.2026.1638010>
 
@@ -1736,7 +1735,7 @@ Landgrebe, J., & Smith, B. (2022). Why Machines will Never Rule the World. <http
 
 Landone, E. (2022). Methodology in Politeness Research. In Advances in (Im)politeness Studies. Springer International Publishing. <https://doi.org/10.1007/978-3-031-09161-2>
 
-Landqvist, M. (2019). Semiotic spaces in antidiscriminatory political discourse: Naming practices as indexes. Language in Society, 48(5), 721–743. https://doi.org/10.1017/s0047404519000459. <https://doi.org/10.1017/S0047404519000459>
+Landqvist, M. (2019). Semiotic spaces in antidiscriminatory political discourse: Naming practices as indexes. Language in Society, 48(5), 721–743. <https://doi.org/10.1017/S0047404519000459>
 
 Lantolf, J. P., Panahi, A., & Mohebbi, H. (2024). James Lantolf’s 50-Year Research Contribution to SLA through Sociocultural Theory: A Systematic Review. Language Teaching Research Quarterly, 46, 362–402. <https://doi.org/10.32038/ltrq.2024.46.22>
 
@@ -1762,9 +1761,9 @@ Lee, C. (2022). Creativity. Talking with Children, 247–265. <https://doi.org/1
 
 Lee, C., & Kurumada, C. (2020). Learning Maximum Absolute Meaning Through Reasoning About Speaker Intentions. Language Learning, 71(2), 326–368. Portico. <https://doi.org/10.1111/lang.12439>
 
-Lee, J. B., Kinsey, L. E., & Cherney, L. R. (2024). Typing Versus Handwriting: A Preliminary Investigation of Modality Effects in the Writing Output of People With Aphasia. American Journal of Speech-Language Pathology, 33(6S), 3422–3430. https://doi.org/10.1044/2024_ajslp-23-00344. <https://doi.org/10.1044/2024_AJSLP-23-00344>
+Lee, J. B., Kinsey, L. E., & Cherney, L. R. (2024). Typing Versus Handwriting: A Preliminary Investigation of Modality Effects in the Writing Output of People With Aphasia. American Journal of Speech-Language Pathology, 33(6S), 3422–3430. <https://doi.org/10.1044/2024_AJSLP-23-00344>
 
-Lee, J. C. P. (2024). Co-Speech Gestures in Enhancing Engineering Proposal Presentations: A Multimodal Analysis of ESP Spoken Discourse. ESP Today, 12(2), 319–348. https://doi.org/10.18485/esptoday.2024.12.2.6. <https://doi.org/10.18485/ESPTODAY.2024.12.2.6>
+Lee, J. C. P. (2024). Co-Speech Gestures in Enhancing Engineering Proposal Presentations: A Multimodal Analysis of ESP Spoken Discourse. ESP Today, 12(2), 319–348. <https://doi.org/10.18485/ESPTODAY.2024.12.2.6>
 
 Lee, J. H., Gu, N., & Ostwald, M. J. (2019). Cognitive and linguistic differences in architectural design. Architectural Science Review, 62(3), 248–260. <https://doi.org/10.1080/00038628.2019.1606777>
 
@@ -1782,7 +1781,7 @@ Leng, M., Paseau, A., & Potter, M. (Eds.). (2007). Mathematical Knowledge. <http
 
 Leonard, S. P. (2019). Voices from the outside: The instrumentality of radio messages in Colombian kidnappings. Language &amp; Communication, 69, 1–10. <https://doi.org/10.1016/j.langcom.2019.04.005>
 
-Leonard, S. P. (2020). A semiotic approach to language ideologies: Modelling the changing Icelandic languagescape. Sign Systems Studies, 48(2–4), 271–296. https://doi.org/10.12697/sss.2020.48.2-4.05. <https://doi.org/10.12697/SSS.2020.48.2-4.05>
+Leonard, S. P. (2020). A semiotic approach to language ideologies: Modelling the changing Icelandic languagescape. Sign Systems Studies, 48(2–4), 271–296. <https://doi.org/10.12697/SSS.2020.48.2-4.05>
 
 Leonteva, A. V., Cienki, A., & Agafonova, O. V. (2023). Metaphoric gestures in simultaneous interpreting. Russian Journal of Linguistics, 27(4), 820–842. <https://doi.org/10.22363/2687-0088-36189>
 
@@ -1810,7 +1809,7 @@ Lewandowski, W., & Mateu, J. (2020). Motion events again: Delimiting constructio
 
 Lewandowski, W., & Özçalışkan, Ş. (2019). How language type influences patterns of motion expression in bilingual speakers. Second Language Research, 37(1), 27–49. <https://doi.org/10.1177/0267658319877214>
 
-Lewandowski, W., & Özçalışkan, Ş. (2021). THE SPECIFICITY OF EVENT EXPRESSION IN FIRST LANGUAGE INFLUENCES EXPRESSION OF OBJECT PLACEMENT EVENTS IN SECOND LANGUAGE. Studies in Second Language Acquisition, 43(4), 838–869. https://doi.org/10.1017/s0272263121000048. <https://doi.org/10.1017/S0272263121000048>
+Lewandowski, W., & Özçalışkan, Ş. (2021). THE SPECIFICITY OF EVENT EXPRESSION IN FIRST LANGUAGE INFLUENCES EXPRESSION OF OBJECT PLACEMENT EVENTS IN SECOND LANGUAGE. Studies in Second Language Acquisition, 43(4), 838–869. <https://doi.org/10.1017/S0272263121000048>
 
 Lewandowski, W., & Özçalışkan, Ş. (2023). Running across the mind or across the park: does speech about physical and metaphorical motion go hand in hand? Cognitive Linguistics, 34(3–4), 411–444. <https://doi.org/10.1515/cog-2022-0077>
 
@@ -1864,7 +1863,7 @@ Littlemore, J. (2023). Applying Cognitive Linguistics to Second Language Learnin
 
 Liu (刘睿), R., Pouw, W., Goldin-Meadow, S., & Brentari, D. (2025). Signers and Speakers Show Distinct Temporal Kinematic Signatures in Their Manual Communicative Movements. Open Mind, 9, 1323–1338. <https://doi.org/10.1162/opmi.a.18>
 
-Liu, J., Yu, F., Feng, C., & Li, S. (2023). The Pausing Strategies in Chinese Preschool Children’s Narratives. Journal of Speech, Language, and Hearing Research, 66(2), 431–443. https://doi.org/10.1044/2022_jslhr-21-00542. <https://doi.org/10.1044/2022_JSLHR-21-00542>
+Liu, J., Yu, F., Feng, C., & Li, S. (2023). The Pausing Strategies in Chinese Preschool Children’s Narratives. Journal of Speech, Language, and Hearing Research, 66(2), 431–443. <https://doi.org/10.1044/2022_JSLHR-21-00542>
 
 Liu, N., & Li, F. T. (2023). Event integration as a driving force of language change: evidence from Chinese 使-shǐ-make. Language and Cognition, 16(2), 307–328. <https://doi.org/10.1017/langcog.2023.36>
 
@@ -1908,17 +1907,17 @@ Louhichi, I. (2023). On the etymology and distribution of verb forms in Arabic-b
 
 Louhichi, I. (2023). What can the stories of a frog tell us about motion event description in Gulf Pidgin Arabic? Journal of Pidgin and Creole Languages, 39(2), 313–338. Portico. <https://doi.org/10.1075/jpcl.00122.lou>
 
-Lowie, W., Michel, M., Rousse-Malpat, A., Keijzer, M., & Steinkrauss, R. (Eds.). (2020). Usage-Based Dynamics in Second Language Development. https://doi.org/10.21832/lowie5242. <https://doi.org/10.21832/LOWIE5242>
+Lowie, W., Michel, M., Rousse-Malpat, A., Keijzer, M., & Steinkrauss, R. (Eds.). (2020). Usage-Based Dynamics in Second Language Development. <https://doi.org/10.21832/LOWIE5242>
 
 Łozińska, J. (2019). Der Ausdruck des Pfads in drei satellite-framed Languages. Jezikoslovlje, 20(1), 31–61. <https://doi.org/10.29162/jez.2019.2>
 
 Łozińska, J. (2021). The poverty of manner categories in motion verbs coding vertical relations. Evidence from Polish and Russian. Russian Linguistics, 45(1), 93–104. <https://doi.org/10.1007/s11185-021-09237-2>
 
-Łozińska, J. (2024). Caused motion in Polish and in English. An intra- typological comparison. Die Welt Der Slaven, 69(1), 57–73. https://doi.org/10.13173/ws.69.1.057. <https://doi.org/10.13173/WS.69.1.057>
+Łozińska, J. (2024). Caused motion in Polish and in English. An intra- typological comparison. Die Welt Der Slaven, 69(1), 57–73. <https://doi.org/10.13173/WS.69.1.057>
 
 Łozińska, J., & Hendriks, H. (2025). Constructions expressing voluntary and caused motion events in Polish. Evidence from Oral Narratives. Scando-Slavica, 71(2), 343–361. <https://doi.org/10.1080/00806765.2025.2608054>
 
-Lu, L., & Kung, C. W. (2025). Marginalization, ‘Lee Kuan Yew’, and a Chinese-educated class: Understanding the collective memory of Singapore’s Speak Mandarin Campaign. Language in Society, 1–23. https://doi.org/10.1017/s004740452510167x. <https://doi.org/10.1017/S004740452510167X>
+Lu, L., & Kung, C. W. (2025). Marginalization, ‘Lee Kuan Yew’, and a Chinese-educated class: Understanding the collective memory of Singapore’s Speak Mandarin Campaign. Language in Society, 1–23. <https://doi.org/10.1017/S004740452510167X>
 
 Lu, Y. (2020). Chapter 8. Construing the self in discourse. Language, Culture and Identity – Signs of Life, 157–179. Portico. <https://doi.org/10.1075/clscc.13.08lu>
 
@@ -1926,7 +1925,7 @@ Lu, Z., Dai, Y., & Wu, Y. (2022). Spanish L2 Chinese Learners’ Awareness of Mo
 
 Lücking, A. (2019). From Cognitive Structures to Positive and Negative Learning in a Dialogue Semantics Perspective. Frontiers and Advances in Positive Learning in the Age of InformaTiOn (PLATO), 197–205. <https://doi.org/10.1007/978-3-030-26578-6_15>
 
-Lücking, A. (2021). <i>Gesture</i>. Zenodo. https://doi.org/10.5281/ZENODO.5599872. <https://doi.org/10.5281/zenodo.5599872>
+Lücking, A. (2021). <i>Gesture</i>. Zenodo. <https://doi.org/10.5281/zenodo.5599872>
 
 Lucy, J. A. (2024). The Influence of Language Structure and Function on Thought: A Comparison of Yucatec Maya and American English. Journal of Anthropological Research, 80(1), 1–19. <https://doi.org/10.1086/728347>
 
@@ -1942,13 +1941,13 @@ MA, S., & Barlow, M. (2025). A study of visual path expressions in Mandarin Chin
 
 Maalej, Z. A., & Zibin, A. (2025). Metaphors They Kill by: Dehumanization of Palestinians by Israeli Officials and Sympathizers. International Journal of Arabic-English Studies, 25(1), 201–222. <https://doi.org/10.33806/ijaes.v25i1.693>
 
-Macedo, M. N., Yerro, M., Vivas, J., Castillo, M., Meliande, M., de León, A., Fojo, A., & Aguirre, R. (2023). Contrasting the semantic typology biases of Deaf and hearing nonsigners in their conceptualization of time and space. Applied Psycholinguistics, 44(6), 1090–1123. https://doi.org/10.1017/s0142716423000413. <https://doi.org/10.1017/S0142716423000413>
+Macedo, M. N., Yerro, M., Vivas, J., Castillo, M., Meliande, M., de León, A., Fojo, A., & Aguirre, R. (2023). Contrasting the semantic typology biases of Deaf and hearing nonsigners in their conceptualization of time and space. Applied Psycholinguistics, 44(6), 1090–1123. <https://doi.org/10.1017/S0142716423000413>
 
 MacFarlane, M., Barr, C., & Uccelli, P. (2020). Core Academic Language Skills: validating a construct in linguistically dissimilar settings. The Language Learning Journal, 50(1), 89–102. <https://doi.org/10.1080/09571736.2019.1705880>
 
 Machowska-Kosciak, M. (2019). Language and emotions: a follow-up study of ‘moral allegiances’- the case of Wiktoria. TEANGA, the Journal of the Irish Association for Applied Linguistics, 10, 172–185. <https://doi.org/10.35903/teanga.v10i0.77>
 
-Machowska-Kosciak, M. (2020). The Multilingual Adolescent Experience. https://doi.org/10.21832/machow7673. <https://doi.org/10.21832/MACHOW7673>
+Machowska-Kosciak, M. (2020). The Multilingual Adolescent Experience. <https://doi.org/10.21832/MACHOW7673>
 
 Machowska-Kosciak, M. (2021). 6 ‘He Just Does Not Write Enough For It’ – Literacy Practices Among Polish Adolescents in Ireland. Multilingual Literacy, 123–144. <https://doi.org/10.21832/9781800410701-007>
 
@@ -1982,17 +1981,17 @@ Mamus, E., Speed, L. J., Rissman, L., Majid, A., & Özyürek, A. (2023). Lack of
 
 Mañas Navarrete, I., Guijarro Fuentes, P., & Bello Viruega, I. (2023). The Acquisition of Copula Alternation Ser/Estar and Adjective in L1 Russian, Spanish Heritage Speakers. Languages, 8(4), 269. <https://doi.org/10.3390/languages8040269>
 
-Mangual Figueroa, A., & Barrales, W. (2021). Testimonio and Counterstorytelling by Immigrant-Origin Children and Youth: Insights That Amplify Immigrant Subjectivities. Societies, 11(2), 38. https://doi.org/10.3390/soc11020038. <https://doi.org/10.3390/SOC11020038>
+Mangual Figueroa, A., & Barrales, W. (2021). Testimonio and Counterstorytelling by Immigrant-Origin Children and Youth: Insights That Amplify Immigrant Subjectivities. Societies, 11(2), 38. <https://doi.org/10.3390/SOC11020038>
 
-Manhardt, F., Brouwer, S., van Wijk, E., & Özyürek, A. (2022). Word order preference in sign influences speech in hearing bimodal bilinguals but not vice versa: Evidence from behavior and eye-gaze. Bilingualism: Language and Cognition, 26(1), 48–61. https://doi.org/10.1017/s1366728922000311. <https://doi.org/10.1017/S1366728922000311>
+Manhardt, F., Brouwer, S., van Wijk, E., & Özyürek, A. (2022). Word order preference in sign influences speech in hearing bimodal bilinguals but not vice versa: Evidence from behavior and eye-gaze. Bilingualism: Language and Cognition, 26(1), 48–61. <https://doi.org/10.1017/S1366728922000311>
 
 Manhardt, F., Özyürek, A., Sümer, B., Mulder, K., Karadöller, D. Z., & Brouwer, S. (2020). Iconicity in spatial language guides visual attention: A comparison between signers’ and speakers’ eye gaze during message preparation. Journal of Experimental Psychology: Learning, Memory, and Cognition, 46(9), 1735–1753. <https://doi.org/10.1037/xlm0000843>
 
-Maniscalco, U., Messina, A., & Storniolo, P. (2023). A hybrid model for gesture recognition and speech synchronization. 2023 IEEE International Conference on Advanced Robotics and Its Social Impacts (ARSO), 27–32. https://doi.org/10.1109/arso56563.2023.10187512. <https://doi.org/10.1109/ARSO56563.2023.10187512>
+Maniscalco, U., Messina, A., & Storniolo, P. (2023). A hybrid model for gesture recognition and speech synchronization. 2023 IEEE International Conference on Advanced Robotics and Its Social Impacts (ARSO), 27–32. <https://doi.org/10.1109/ARSO56563.2023.10187512>
 
 Maniscalco, U., Storniolo, P., & Messina, A. (2022). Bidirectional Multi-modal Signs of Checking Human-Robot Engagement and Interaction. International Journal of Social Robotics, 14(5), 1295–1309. <https://doi.org/10.1007/s12369-021-00855-w>
 
-Manor, R., & Watad, A. (2024). The complexity of teaching Hebrew in Israel’s Arab school system. Language Teaching, 58(1), 14–26. https://doi.org/10.1017/s0261444824000193. <https://doi.org/10.1017/S0261444824000193>
+Manor, R., & Watad, A. (2024). The complexity of teaching Hebrew in Israel’s Arab school system. Language Teaching, 58(1), 14–26. <https://doi.org/10.1017/S0261444824000193>
 
 Marchand, T. H. J. (2021). The Pursuit of Pleasurable Work: Craftwork in Twenty-First Century England. <https://doi.org/10.3167/9781800732742>
 
@@ -2004,7 +2003,7 @@ Margetts, A., Jorgensen, E., Burke, I., & Sheppard, H. (2024). What counts as a 
 
 Marghetis, T., McComsey, M., & Cooperrider, K. (2020). Space in Hand and Mind: Gesture and Spatial Frames of Reference in Bilingual Mexico. Cognitive Science, 44(12). Portico. <https://doi.org/10.1111/cogs.12920>
 
-Maria Kihlstedt. (2023). <i>Développement du passé composé\slash imparfait et variation des tâches chez quelques enfants bilingues français-suédois</i>. Language Science Press. https://doi.org/10.5281/ZENODO.10280608. <https://doi.org/10.5281/zenodo.10280608>
+Maria Kihlstedt. (2023). <i>Développement du passé composé\slash imparfait et variation des tâches chez quelques enfants bilingues français-suédois</i>. Language Science Press. <https://doi.org/10.5281/zenodo.10280608>
 
 Marklová, A., Panfilova, E., & Mertins, B. (2023). Description of Locomotion Events: Language-Specific Patterns in Child-Directed Speech. WORD, 69(4), 339–361. <https://doi.org/10.1080/00437956.2023.2269702>
 
@@ -2018,7 +2017,7 @@ Martín-Gascón, B. (2023). Developing L2 learners’ metaphoric competence: a c
 
 Martín-Gascón, B., Llopis-García, R., & Alonso-Aparicio, I. (2023). Does L2 assessment make a difference? Testing the empirical validity of applied cognitive linguistics in the acquisition of the Spanish/L2 psych-verb construction. Language Teaching Research, 30(3), 1456–1480. <https://doi.org/10.1177/13621688231190981>
 
-Martín-Laguna, S. (2020). Tasks, Pragmatics and Multilingualism in the Classroom. https://doi.org/10.21832/martin3644. <https://doi.org/10.21832/MARTIN3644>
+Martín-Laguna, S. (2020). Tasks, Pragmatics and Multilingualism in the Classroom. <https://doi.org/10.21832/MARTIN3644>
 
 Martin, F., & Demirdache, H. (2020). Partitive accomplishments across languages. Linguistics, 58(5), 1195–1232. <https://doi.org/10.1515/ling-2020-0201>
 
@@ -2104,7 +2103,7 @@ Menete, S. N. (2022). Motion events in Changana spoken narrative. Southern Afric
 
 Menete, S. N., & Jiang, G. (2024). Another member out of the family: the description of manner of gait in Changana verbs of motion. Folia Linguistica, 58(2), 401–439. <https://doi.org/10.1515/flin-2024-2016>
 
-Métairy, J. (2022). Verb Classes in the Resultative Construction in Germanic and Romance Languages. Transactions of the Philological Society, 120(2), 246–275. Portico. https://doi.org/10.1111/1467-968x.12235. <https://doi.org/10.1111/1467-968X.12235>
+Métairy, J. (2022). Verb Classes in the Resultative Construction in Germanic and Romance Languages. Transactions of the Philological Society, 120(2), 246–275. Portico. <https://doi.org/10.1111/1467-968X.12235>
 
 Métairy, J. (2024). Resultative secondary predicates in cooking recipes: an empirical study of Germanic and Romance languages. Linguistics, 63(3), 701–757. <https://doi.org/10.1515/ling-2022-0130>
 
@@ -2136,7 +2135,7 @@ Mittelberg, I., & Hinnell, J. (2024). Iconicity, Schematicity, and Representatio
 
 Moezzipour, F., & Moezzipour, N. (2024). RA-marking, delimitation, and TA-headed directional PPs in Persian. Review of Cognitive Linguistics, 23(1), 257–285. Portico. <https://doi.org/10.1075/rcl.00169.moe>
 
-Mohammad Khresheh, A. (2020). A Psycholinguistic Review of the Interface of Implicit and Explicit Knowledge: The Case of Bilingual Speakers Using L2 as a Foreign Language. International Journal of English Language and Literature Studies, 9(4), 264–275. https://doi.org/10.18488/journal.23.2020.94.264.275. <https://doi.org/10.18488/JOURNAL.23.2020.94.264.275>
+Mohammad Khresheh, A. (2020). A Psycholinguistic Review of the Interface of Implicit and Explicit Knowledge: The Case of Bilingual Speakers Using L2 as a Foreign Language. International Journal of English Language and Literature Studies, 9(4), 264–275. <https://doi.org/10.18488/JOURNAL.23.2020.94.264.275>
 
 Mohd, J., Aziz, J., & Musaev, T. (2020). The Interlanguage Pragmatics of Japanese Daily Greetings by Malaysian Learners. GEMA Online® Journal of Language Studies, 20(4), 113–129. <https://doi.org/10.17576/gema-2020-2004-07>
 
@@ -2153,7 +2152,7 @@ Molés-Cases, T. (2023). Manner-of-speaking in a corpus-based translation study 
 Molés-Cases, T. (2024). Thinking-for-audio-describing: motion events in the film
             The Hobbit: An Unexpected Journey. Acta Linguistica Hafniensia, 56(2), 280–297. <https://doi.org/10.1080/03740463.2024.2413789>
 
-Molés-Cases, T., & Alonso, R. (2025). Audio description across languages: motion and streaming services. Perspectives, 1–18. https://doi.org/10.1080/0907676x.2025.2576147. <https://doi.org/10.1080/0907676X.2025.2576147>
+Molés-Cases, T., & Alonso, R. (2025). Audio description across languages: motion and streaming services. Perspectives, 1–18. <https://doi.org/10.1080/0907676X.2025.2576147>
 
 Molés-Cases, T., & Cifuentes-Férez, P. (2021). Translating narrative style. Review of Cognitive Linguistics, 19(2), 517–547. Portico. <https://doi.org/10.1075/rcl.00093.mol>
 
@@ -2183,7 +2182,7 @@ Morata, A. (2024). The role of verticality in Danish. Acta Linguistica Hafniensi
 
 Moravcsik, E. (2019). Accounting for Variation in Language. Open Linguistics, 5(1), 369–382. <https://doi.org/10.1515/opli-2019-0020>
 
-Moreira, B. E. da C. (2023). A new look at the unproductivity of resultative constructions in Brazilian Portuguese. DELTA: Documentação de Estudos Em Lingüística Teórica e Aplicada, 39(4). https://doi.org/10.1590/1678-460x202339457357. <https://doi.org/10.1590/1678-460X202339457357>
+Moreira, B. E. da C. (2023). A new look at the unproductivity of resultative constructions in Brazilian Portuguese. DELTA: Documentação de Estudos Em Lingüística Teórica e Aplicada, 39(4). <https://doi.org/10.1590/1678-460X202339457357>
 
 Morgenstern, A. (2021). The Other’s Voice in the Co-Construction of Self-Reference in the Dialogic Child. Bakhtiniana: Revista de Estudos Do Discurso, 16(1), 63–87. <https://doi.org/10.1590/2176-457347133>
 
@@ -2215,11 +2214,11 @@ Moser, D. (2026). The Whorfian Question. Thinking in Chinese and English, 1–25
 
 Motamedi, Y., Schouwstra, M., Smith, K., Culbertson, J., & Kirby, S. (2019). Evolving artificial sign languages in the lab: From improvised gesture to systematic sign. Cognition, 192, 103964. <https://doi.org/10.1016/j.cognition.2019.05.001>
 
-Motavallian, R. (2023). Challenges of FrameNet: The case of motion verbs in Persian. Voprosy Jazykoznanija, 5, 133. https://doi.org/10.31857/0373-658x.2023.5.133-147. <https://doi.org/10.31857/0373-658X.2023.5.133-147>
+Motavallian, R. (2023). Challenges of FrameNet: The case of motion verbs in Persian. Voprosy Jazykoznanija, 5, 133. <https://doi.org/10.31857/0373-658X.2023.5.133-147>
 
 Motinyane, M. (2020). Decolonising Our Minds, Decolonising Our Languages. The Transformative Power of Language, 67–82. <https://doi.org/10.1017/9781108671088.005>
 
-Moura, H. (2021). Onde está o vírus? Manipulação política da linguagem sobre o coronavírus. Calidoscópio, 19(1), 120–130. https://doi.org/10.4013/cld.2021.191.09. <https://doi.org/10.4013/CLD.2021.191.09>
+Moura, H. (2021). Onde está o vírus? Manipulação política da linguagem sobre o coronavírus. Calidoscópio, 19(1), 120–130. <https://doi.org/10.4013/CLD.2021.191.09>
 
 Moura, H., & Badaracco, L. (2019). Traduzindo verbos de movimento do inglês para o português: léxico e construções. Cadernos de Tradução, 39(2), 166–183. <https://doi.org/10.5007/2175-7968.2019v39n2p166>
 
@@ -2251,7 +2250,7 @@ Na, K., & Yan, W. (2021). Languages and corporate tax avoidance. Review of Accou
 
 Nagy, N. (2024). Heritage Languages. <https://doi.org/10.1017/9781108983624>
 
-Nahkola, T., Reile, M., Taremaa, P., &amp; Pajusalu, R. (2020). <i>Space, contrast and joint attention: Demonstrative adverbs in Russian, Estonian and Finnish</i>. Zenodo. https://doi.org/10.5281/ZENODO.4055830. <https://doi.org/10.5281/zenodo.4055830>
+Nahkola, T., Reile, M., Taremaa, P., &amp; Pajusalu, R. (2020). <i>Space, contrast and joint attention: Demonstrative adverbs in Russian, Estonian and Finnish</i>. Zenodo. <https://doi.org/10.5281/zenodo.4055830>
 
 Naidu, V., Zlatev, J., & van de Weijer, J. (2022). Typological features of Telugu: defining the parameters of post-Talmian motion event typology. Acta Linguistica Hafniensia, 54(2), 205–234. <https://doi.org/10.1080/03740463.2022.2132563>
 
@@ -2265,7 +2264,7 @@ Nassenstein, N., Mitchell, A., & Hollington, A. (2024). Introduction. Anthropolo
 
 Nathan, M. J. (2021). Foundations of Embodied Learning. <https://doi.org/10.4324/9780429329098>
 
-Nathan, M. J. (2024). Inference making and learning from text via embodied situation models: extending Kintsch’s legacy. Discourse Processes, 61(6–7), 319–323. https://doi.org/10.1080/0163853x.2024.2362030. <https://doi.org/10.1080/0163853X.2024.2362030>
+Nathan, M. J. (2024). Inference making and learning from text via embodied situation models: extending Kintsch’s legacy. Discourse Processes, 61(6–7), 319–323. <https://doi.org/10.1080/0163853X.2024.2362030>
 
 Nauta, L. (2021). Philosophy and the Language of the People. <https://doi.org/10.1017/9781108991476>
 
@@ -2289,11 +2288,11 @@ Nijk, A. A. (2022). Tense-Switching in Classical Greek. <https://doi.org/10.1017
 
 Nikabadi, M., Lotfi, A., & Hadian, B. (2024). Fictive motion categories in modern Persian: A cognitive semantic approach. Russian Journal of Linguistics, 28(2), 294–320. <https://doi.org/10.22363/2687-0088-34663>
 
-Nikabadi, M., Lotfi, A., & Hadian, B. (2024). Fictive Motion in Modern Persian Within the Framework of Cognitive Semantics. 3L The Southeast Asian Journal of English Language Studies, 30(1), 91–109. https://doi.org/10.17576/3l-2024-3001-08. <https://doi.org/10.17576/3L-2024-3001-08>
+Nikabadi, M., Lotfi, A., & Hadian, B. (2024). Fictive Motion in Modern Persian Within the Framework of Cognitive Semantics. 3L The Southeast Asian Journal of English Language Studies, 30(1), 91–109. <https://doi.org/10.17576/3L-2024-3001-08>
 
 Nintemann, J., Vorholt, M., Arbes, D., & Behrens, K. (2025). Out of our minds and onto the paper: On the morphological complexity of configurational spatial relations. Exploring Structures in Languages and Language Contact, 147–198. <https://doi.org/10.1515/9783111496436-007>
 
-Nishide, T., Zhao, H., & De Deyne, S. (2025). Cross-linguistic L1–L2 dis/similarity effect on mental imagery in incremental motion event processing. Bilingualism: Language and Cognition, 1–17. https://doi.org/10.1017/s1366728925100801. <https://doi.org/10.1017/S1366728925100801>
+Nishide, T., Zhao, H., & De Deyne, S. (2025). Cross-linguistic L1–L2 dis/similarity effect on mental imagery in incremental motion event processing. Bilingualism: Language and Cognition, 1–17. <https://doi.org/10.1017/S1366728925100801>
 
 Nook, E. C., Satpute, A. B., & Ochsner, K. N. (2021). Emotion Naming Impedes Both Cognitive Reappraisal and Mindful Acceptance Strategies of Emotion Regulation. Affective Science, 2(2), 187–198. <https://doi.org/10.1007/s42761-021-00036-y>
 
@@ -2321,7 +2320,7 @@ Obojska, M. A. (2019). ‘Ikke snakke norsk?’ – Transnational adolescents an
 
 Obojska, M. A. (2019). Trilingual repertoires, multifaceted experiences: multilingualism among Poles in Norway. International Multilingual Research Journal, 13(4), 257–276. <https://doi.org/10.1080/19313152.2019.1611337>
 
-Odlin, T. (2022). Explorations of Language Transfer. https://doi.org/10.21832/odlin9547. <https://doi.org/10.21832/ODLIN9547>
+Odlin, T. (2022). Explorations of Language Transfer. <https://doi.org/10.21832/ODLIN9547>
 
 Ogelo, A., & Bylund, E. (2024). Spatial frames of reference in Dholuo. Language Sciences, 104, 101614. <https://doi.org/10.1016/j.langsci.2024.101614>
 
@@ -2359,7 +2358,7 @@ Osypenko, O., Brandt, S., & Athanasopoulos, P. (2025). Between Two Grammatical G
 
 Othman, W., & Alhailawani, M. (2023). Attention to Manner of Motion in Arabic Novels: A Diachronic Study. International Journal of Arabic-English Studies, 23(1), 217–236. <https://doi.org/10.33806/ijaes2000.23.1.12>
 
-OXBURY, R., HUNT, M., & CHESHIRE, J. (2023). Epistemic phrases and adolescent speech in West London. English Language and Linguistics, 27(4), 815–848. https://doi.org/10.1017/s1360674323000370. <https://doi.org/10.1017/S1360674323000370>
+OXBURY, R., HUNT, M., & CHESHIRE, J. (2023). Epistemic phrases and adolescent speech in West London. English Language and Linguistics, 27(4), 815–848. <https://doi.org/10.1017/S1360674323000370>
 
 Özçalışkan, Ş., Lucero, C., & Goldin-Meadow, S. (2023). What the development of gesture with and without speech can tell us about the effect of language on thought. Language and Cognition, 16(1), 220–241. <https://doi.org/10.1017/langcog.2023.34>
 
@@ -2385,7 +2384,7 @@ París, L. (2019). La construcción resultativa del inglés en contraste. Onomá
 
 París, L., Celi, M. A., Tabullo, Á., & Godoy, M. C. (2022). Not all English Resultative Constructions (ERCs) are equal: The acquisition of ERC by Spanish speakers. Language Acquisition, 30(2), 105–138. <https://doi.org/10.1080/10489223.2022.2141634>
 
-Park, H. I. (2019). How do Korean–English bilinguals speak and think about motion events? Evidence from verbal and non-verbal tasks. Bilingualism: Language and Cognition, 23(3), 483–499. https://doi.org/10.1017/s1366728918001074. <https://doi.org/10.1017/S1366728918001074>
+Park, H. I. (2019). How do Korean–English bilinguals speak and think about motion events? Evidence from verbal and non-verbal tasks. Bilingualism: Language and Cognition, 23(3), 483–499. <https://doi.org/10.1017/S1366728918001074>
 
 Park, H. I. (2022). The Role of Language in Expressing Agentivity in Caused Motion Events: A Cross-Linguistic Investigation. Frontiers in Psychology, 13. <https://doi.org/10.3389/fpsyg.2022.878277>
 
@@ -2431,7 +2430,7 @@ Pepinsky, T. B. (2022). On Whorfian Socioeconomics. Language, 98(1), e1–e36. <
 
 Pérez Benítez, C. (2024). The Dustman: a longitudinal case study on non-acquisition of conflated manner of motion in advanced learners of English. Revista Electrónica de Lingüística Aplicada, 22(1), 22–43. <https://doi.org/10.58859/rael.v23i1.512>
 
-Pérez, E. O., & Tavits, M. (2018). Language Heightens the Political Salience of Ethnic Divisions. Journal of Experimental Political Science, 6(02), 131–140. https://doi.org/10.1017/xps.2018.27. <https://doi.org/10.1017/XPS.2018.27>
+Pérez, E. O., & Tavits, M. (2018). Language Heightens the Political Salience of Ethnic Divisions. Journal of Experimental Political Science, 6(02), 131–140. <https://doi.org/10.1017/XPS.2018.27>
 
 Pérez, E. O., & Tavits, M. (2019). Language Influences Public Attitudes toward Gender Equality. The Journal of Politics, 81(1), 81–93. <https://doi.org/10.1086/700004>
 
@@ -2447,12 +2446,12 @@ Persohn, B. (2021). Non-culmination in two Bantu languages. Studies in Language,
 
 Petrova, E., & Lewis, K. (2025). A Pedagogical Analysis of How Unprefixed Verbs of Motion are Presented in Instructional Materials for Beginner Russian  Language Learners. Russian Language Journal, 75(1). <https://doi.org/10.70163/2831-9737.1505>
 
-Pfeifer, V. A., Mehl, M. R., & Lai, V. T. (2025). Impact of Presentation-Language and Self-Construal on Irony Interpretation in Spanish–English Bilinguals. Journal of Language and Social Psychology, 44(2), 204–223. https://doi.org/10.1177/0261927x241313477. <https://doi.org/10.1177/0261927X241313477>
+Pfeifer, V. A., Mehl, M. R., & Lai, V. T. (2025). Impact of Presentation-Language and Self-Construal on Irony Interpretation in Spanish–English Bilinguals. Journal of Language and Social Psychology, 44(2), 204–223. <https://doi.org/10.1177/0261927X241313477>
 
 Pfeiler, B., & Pye, C. (2024). 3 The acquisition of Middle American languages. The Languages and Linguistics of Mexico and Northern Central America, 33–60. <https://doi.org/10.1515/9783110421705-003>
 
 Phan, T., Basciano, B., & Chu, L. (2024). Asymmetry in the Acquisition of Directed Motion Constructions in L2 Vietnamese
- A Comparative Study of Chinese and Korean Learners. Annali Di Ca’ Foscari. Serie Orientale, 1. https://doi.org/10.30687/annor/2385-3042/2024/01/009. <https://doi.org/10.30687/AnnOr/2385-3042/2024/01/009>
+ A Comparative Study of Chinese and Korean Learners. Annali Di Ca’ Foscari. Serie Orientale, 1. <https://doi.org/10.30687/AnnOr/2385-3042/2024/01/009>
 
 Piątkowska, K., & Strugielska, A. (2024). Do ELF users construe a motion event differently when addressing a native and a non-native speaker? Moderna Språk, 118(3), 89–109. <https://doi.org/10.58221/mosp.v118i3.22975>
 
@@ -2499,11 +2498,11 @@ Quinto, J. B., Jimenez, G. C., & Menzi, I. S. (2026). The difficulties that bese
 
 R. Milivojević, N. (2021). LEXICAL-SEMANTIC ANALYSIS OF SECONDARY ASPECTUAL VERBS IN SERBIAN. Филолог – Часопис За Језик Књижевност и Културу, 12(24), 36–61. <https://doi.org/10.21618/fil2124036m>
 
-Rabab’ah, G., Jaser, H., & Altakhaineh, A. R. M. (2022). The Use of Hedging Devices by Female Saudi EFL Learners. The International Journal of Humanities Education, 20(1), 81–96. https://doi.org/10.18848/2327-0063/cgp/v20i01/81-96. <https://doi.org/10.18848/2327-0063/CGP/v20i01/81-96>
+Rabab’ah, G., Jaser, H., & Altakhaineh, A. R. M. (2022). The Use of Hedging Devices by Female Saudi EFL Learners. The International Journal of Humanities Education, 20(1), 81–96. <https://doi.org/10.18848/2327-0063/CGP/v20i01/81-96>
 
 Rafael Macário Fernandes, Souza, R., Lopes, M., Santos, P., & Finbow, T. (2025). Tradução Automática de expressões espaciais e não espaciais do inglês para o português. Linguamática, 17(1), 137–152. <https://doi.org/10.21814/lm.17.1.448>
 
-Rahman, M. (2024). What induces corporations to engage in controversial marketing and environmental practices? A linguistic perspective. International Marketing Review, 41(3/4), 615–641. https://doi.org/10.1108/imr-07-2023-0134. <https://doi.org/10.1108/IMR-07-2023-0134>
+Rahman, M. (2024). What induces corporations to engage in controversial marketing and environmental practices? A linguistic perspective. International Marketing Review, 41(3/4), 615–641. <https://doi.org/10.1108/IMR-07-2023-0134>
 
 Ramírez-Verdugo, M. D. (2021). Intonation in L2 Discourse. <https://doi.org/10.4324/9781003041351>
 
@@ -2528,9 +2527,9 @@ Reagan, T., Matlins, P. E., & Pielick, C. D. (2021). Deaf Epistemology, Sign Lan
 
 Rehrig, G., Hayes, T. R., Henderson, J. M., & Ferreira, F. (2020). When scenes speak louder than words: Verbal encoding does not mediate the relationship between scene meaning and visual attention. Memory &amp; Cognition, 48(7), 1181–1195. <https://doi.org/10.3758/s13421-020-01050-4>
 
-Remsö, A., Bäck, H., & Renström, E. A. (2025). A Sexist Language? Gender Differences in Attitudes and Use of Gender-Inclusive Pronouns. Journal of Language and Social Psychology, 44(5), 682–703. https://doi.org/10.1177/0261927x251335305. <https://doi.org/10.1177/0261927X251335305>
+Remsö, A., Bäck, H., & Renström, E. A. (2025). A Sexist Language? Gender Differences in Attitudes and Use of Gender-Inclusive Pronouns. Journal of Language and Social Psychology, 44(5), 682–703. <https://doi.org/10.1177/0261927X251335305>
 
-Remsö, A., Bäck, H., & Renström, E. A. (2026). Gender-Inclusive Pronouns and Mental Representation of Nonbinary Individuals: The Role of Political Orientation. Journal of Language and Social Psychology. https://doi.org/10.1177/0261927x261430393. <https://doi.org/10.1177/0261927X261430393>
+Remsö, A., Bäck, H., & Renström, E. A. (2026). Gender-Inclusive Pronouns and Mental Representation of Nonbinary Individuals: The Role of Political Orientation. Journal of Language and Social Psychology. <https://doi.org/10.1177/0261927X261430393>
 
 Renström, E. A. (2025). The implementation of neo- and nonbinary pronouns: a review of current research and future challenges. Frontiers in Psychology, 15. <https://doi.org/10.3389/fpsyg.2024.1507858>
 
@@ -2578,7 +2577,6 @@ Rojo López, A., Cifuentes Férez, P., & Ramos Caro, M. (2021). The role of crea
 
 Romagno, D. (2020). Strong resultative constructions in Romance between usage and norm. Belgian Journal of Linguistics, 34, 295–305. Portico. <https://doi.org/10.1075/bjl.00054.rom>
 
-Römer, U., Skalicky, S. C., & Ellis, N. C. (2018). Verb-argument constructions in advanced L2 English learner production: Insights from corpora and verbal fluency tasks. Corpus Linguistics and Linguistic Theory, 0(0). <https://doi.org/10.1515/cllt-2016-0055>
 
 Roque, R. (2022). Bleeding Languages. Current Anthropology, 63(2), 158–184. <https://doi.org/10.1086/719788>
 
@@ -2630,7 +2628,7 @@ Saji, N., Akita, K., Kantartzis, K., Kita, S., & Imai, M. (2019). Cross-linguist
 
 Sakarias, M., & Flecken, M. (2019). Keeping the Result in Sight and Mind: General Cognitive Principles and Language‐Specific Influences in the Perception and Memory of Resultative Events. Cognitive Science, 43(1). Portico. <https://doi.org/10.1111/cogs.12708>
 
-Salaberry, R. (2020). <i>The conceptualisation of knowledge about aspect: From monolingual to multilingual representations</i>. Zenodo. https://doi.org/10.5281/ZENODO.4138737. <https://doi.org/10.5281/zenodo.4138737>
+Salaberry, R. (2020). <i>The conceptualisation of knowledge about aspect: From monolingual to multilingual representations</i>. Zenodo. <https://doi.org/10.5281/zenodo.4138737>
 
 Salama, A. H. Y. (2020). Collocational semiosis in the academic discourse of the Corpus of Contemporary American English (COCA): The case of AFRICA. Semiotica, 2020(235), 185–227. <https://doi.org/10.1515/sem-2017-0103>
 
@@ -2644,7 +2642,7 @@ Samuel, S., Cole, G., & Eacott, M. J. (2019). Grammatical gender and linguistic 
 
 Samuelsen, H. (2024). FRAGILE FUTURES. <https://doi.org/10.3167/9781805391975>
 
-San Roque, L. (2019). Evidentiality. Annual Review of Anthropology, 48(1), 353–370. https://doi.org/10.1146/annurev-anthro-102218-011243. <https://doi.org/10.1146/annurev-Anthro-102218-011243>
+San Roque, L. (2019). Evidentiality. Annual Review of Anthropology, 48(1), 353–370. <https://doi.org/10.1146/annurev-Anthro-102218-011243>
 
 Sánchez-Borges, I., & Álvarez, C. J. (2022). Iconic gestures serve as primes for both auditory and visual word forms. Gesture, 21(2–3), 296–319. Portico. <https://doi.org/10.1075/gest.20019.san>
 
@@ -2660,7 +2658,7 @@ Sarda, L., & Fagard, B. (2022). Introduction: The description of motion events. 
 
 Sarmiento-Quezada, B., & Solís, J. (2025). Tracing Translanguaged Voices in Bilingual Teacher Narratives. International Journal of Multicultural Education, 27(1), 163–189. <https://doi.org/10.18251/ijme.v27i1.4805>
 
-Sarthou, G. (2023). Overworld: Assessing the Geometry of the World for Human-Robot Interaction. IEEE Robotics and Automation Letters, 8(3), 1874–1880. https://doi.org/10.1109/lra.2023.3238891. <https://doi.org/10.1109/LRA.2023.3238891>
+Sarthou, G. (2023). Overworld: Assessing the Geometry of the World for Human-Robot Interaction. IEEE Robotics and Automation Letters, 8(3), 1874–1880. <https://doi.org/10.1109/LRA.2023.3238891>
 
 Sato, M., Niikuni, K., & Schafer, A. J. (2023). Chapter 2 High sense of agency versus low sense of agency in event framing in Japanese. Interaction Between Linguistic and Nonlinguistic Factors, 9–30. <https://doi.org/10.1515/9783110778939-002>
 
@@ -2672,7 +2670,7 @@ Sauer Bredvik, L. (2020). Discussing the Faith. De Gruyter. <https://doi.org/10.
 
 Sauer, B. A. (2022). Reconciling Gestures. Embodied Environmental Risk in Technical Communication, 189–210. <https://doi.org/10.4324/9781003266549-13>
 
-Saulan, D. (2020). Au-delà du bilinguisme : le désarroi linguistique ou comment voyager avec un saumon. Studia Romanica et Anglica Zagrabiensia, 65, 119–124. https://doi.org/10.17234/sraz.65.13. <https://doi.org/10.17234/SRAZ.65.13>
+Saulan, D. (2020). Au-delà du bilinguisme : le désarroi linguistique ou comment voyager avec un saumon. Studia Romanica et Anglica Zagrabiensia, 65, 119–124. <https://doi.org/10.17234/SRAZ.65.13>
 
 Sauppe, S., & Flecken, M. (2021). Speaking for seeing: Sentence structure guides visual event apprehension. Cognition, 206, 104516. <https://doi.org/10.1016/j.cognition.2020.104516>
 
@@ -2690,19 +2688,19 @@ Schembri, A., Cormier, K., & Fenlon, J. (2018). Indicating verbs as typologicall
 
 Schirakowski, B. (2022). Satellite-framed lexicalization of creation events in French? Isogloss. Open Journal of Romance Linguistics, 8(5), 1–32. <https://doi.org/10.5565/rev/isogloss.230>
 
-Schmader, C., & Horton, W. S. (2017). Conceptual Effects of Audience Design in Human–Computer and Human–Human Dialogue. Discourse Processes, 56(2), 170–190. https://doi.org/10.1080/0163853x.2017.1411716. <https://doi.org/10.1080/0163853X.2017.1411716>
+Schmader, C., & Horton, W. S. (2017). Conceptual Effects of Audience Design in Human–Computer and Human–Human Dialogue. Discourse Processes, 56(2), 170–190. <https://doi.org/10.1080/0163853X.2017.1411716>
 
 Schmid, H.-J. (2020). The Dynamics of the Linguistic System. <https://doi.org/10.1093/oso/9780198814771.001.0001>
 
 Schnell, S., & Schiborr, N. N. (2022). Crosslinguistic Corpus Studies in Linguistic Typology. Annual Review of Linguistics, 8(1), 171–191. <https://doi.org/10.1146/annurev-linguistics-031120-104629>
 
-Schrauf, R. W., De Victoria, P. L., & Diaz, B. (2019). Linguistic stance: An integrative paradigm for mixed methods social science. Language in Society, 49(2), 257–281. https://doi.org/10.1017/s0047404519000757. <https://doi.org/10.1017/S0047404519000757>
+Schrauf, R. W., De Victoria, P. L., & Diaz, B. (2019). Linguistic stance: An integrative paradigm for mixed methods social science. Language in Society, 49(2), 257–281. <https://doi.org/10.1017/S0047404519000757>
 
 Schröder, U., Mendes de Oliveira, M., & Wolf, H.-G. (2020). Intercultural Pragmatics and Cultural Linguistics. International Journal of Language and Culture, 7(1), 1–14. Portico. <https://doi.org/10.1075/ijolc.00024.int>
 
 Scotto, S. C., & Perez, D. I. (2020). Relatividad lingüística, gramáticas de género y lenguaje inclusivo: algunas consideraciones. Análisis Filosófico, 40(1), 5–39. <https://doi.org/10.36446/af.2020.318>
 
-Segura Llopes, C. (2023). Les construccions de relatiu col·loquials en català. SCRIPTA. Revista Internacional de Literatura i Cultura Medieval i Moderna, 22(22), 156–190. https://doi.org/10.7203/scripta.22.27823. <https://doi.org/10.7203/SCRIPTA.22.27823>
+Segura Llopes, C. (2023). Les construccions de relatiu col·loquials en català. SCRIPTA. Revista Internacional de Literatura i Cultura Medieval i Moderna, 22(22), 156–190. <https://doi.org/10.7203/SCRIPTA.22.27823>
 
 Selleck, C. (2020). Global ambitions and local identities: new speakers’ access to linguistic markets and resources. Language, Culture and Curriculum, 33(4), 451–466. <https://doi.org/10.1080/07908318.2020.1726375>
 
@@ -2774,7 +2772,7 @@ Silvey, C., Kirby, S., & Smith, K. (2019). Communication increases category stru
 
 Simard, D. (2022). Psycholinguistic Processes in L2 Oral Production. The Routledge Handbook of Second Language Acquisition and Speaking, 24–38. <https://doi.org/10.4324/9781003022497-4>
 
-Simoncelli, C., & Kihlstedt, M. (2025). Lexical color categories in balanced proficient bilinguals: the case of blue. Bilingualism: Language and Cognition, 1–14. https://doi.org/10.1017/s1366728925100710. <https://doi.org/10.1017/S1366728925100710>
+Simoncelli, C., & Kihlstedt, M. (2025). Lexical color categories in balanced proficient bilinguals: the case of blue. Bilingualism: Language and Cognition, 1–14. <https://doi.org/10.1017/S1366728925100710>
 
 Simoncelli, C., Gréa, P., & Kihlstedt, M. (2024). From color naming to color perception: Cross‐linguistic differences of the chromatic information processing in monolingual and bilingual speakers. Color Research &amp; Application, 50(2), 98–118. Portico. <https://doi.org/10.1002/col.22955>
 
@@ -2782,9 +2780,9 @@ Singh, A., & Rohlfing, K. J. (2024). Coupling of Task and Partner Model: Investi
 
 Singh, A., & Rohlfing, K. J. (2025). Contrastive Verbal Guidance: A Beneficial Context for Attention To Events and Their Memory? Cognitive Science, 49(8). Portico. <https://doi.org/10.1111/cogs.70096>
 
-Singh, A., Wrede, B., Richter, B., Groß, A., & Rohlfing, K. J. (2025). Manners Matter: Action History Guides Attention and Repair Choices During Interaction. 2025 IEEE International Conference on Development and Learning (ICDL), 1–8. https://doi.org/10.1109/icdl63968.2025.11204385. <https://doi.org/10.1109/ICDL63968.2025.11204385>
+Singh, A., Wrede, B., Richter, B., Groß, A., & Rohlfing, K. J. (2025). Manners Matter: Action History Guides Attention and Repair Choices During Interaction. 2025 IEEE International Conference on Development and Learning (ICDL), 1–8. <https://doi.org/10.1109/ICDL63968.2025.11204385>
 
-Singh, J. N. (2021). Transcultural Voices. https://doi.org/10.21832/singh8137. <https://doi.org/10.21832/SINGH8137>
+Singh, J. N. (2021). Transcultural Voices. <https://doi.org/10.21832/SINGH8137>
 
 Sinha, V. da S. (2022). 11 Time: Sociocultural structuring beyond the spatialization paradigm. Approaches to Language and Culture, 275–306. <https://doi.org/10.1515/9783110726626-011>
 
@@ -2821,11 +2819,11 @@ Soltani, B. (2021). International students’ socialisation and transition exper
 
 Soltani, B., & Zhang, L. J. (2021). International students’ language socialization in an English-medium university. Australian Review of Applied Linguistics, 46(3), 316–338. Portico. <https://doi.org/10.1075/aral.21035.sal>
 
-SÓLYOM, C. I. (2025). Non-Facilitative Transfer Effects of the First (L1) and Second Language (L2) in Third Language (L3) Acquisition of Pronominal Possessors, Differential Object Marking, and Resultative Constructions. Studii Și Cercetări Lingvistice, 2024(2), 239–262. https://doi.org/10.59277/scl.2024.2.06. <https://doi.org/10.59277/SCL.2024.2.06>
+SÓLYOM, C. I. (2025). Non-Facilitative Transfer Effects of the First (L1) and Second Language (L2) in Third Language (L3) Acquisition of Pronominal Possessors, Differential Object Marking, and Resultative Constructions. Studii Și Cercetări Lingvistice, 2024(2), 239–262. <https://doi.org/10.59277/SCL.2024.2.06>
 
 Song, J., & Ohashi, J. (2020). The Nation over Gender and Class: Media Framing of Comfort Women in South Korea and Japan. European Journal of Korean Studies, 159–184. <https://doi.org/10.33526/ejks.20202001.159>
 
-Song, S. (2022). Analysis of Gender Pronoun Errors in Korean Speakers’ English Speech. English Teaching, 77(1), 21–39. https://doi.org/10.15858/engtea.77.1.202203.21. <https://doi.org/10.15858/ENGTEA.77.1.202203.21>
+Song, S. (2022). Analysis of Gender Pronoun Errors in Korean Speakers’ English Speech. English Teaching, 77(1), 21–39. <https://doi.org/10.15858/ENGTEA.77.1.202203.21>
 
 Sopata, A., & Długosz, K. (2021). The effects of language input on word order in German as a heritage and majority language. Language Acquisition, 29(2), 198–228. <https://doi.org/10.1080/10489223.2021.1992409>
 
@@ -2847,7 +2845,7 @@ Speed, L. J., Chen, J., Huettig, F., & Majid, A. (2021). Classifier categories r
 
 Spelke, E. S. (2022). What Babies Know. <https://doi.org/10.1093/oso/9780190618247.001.0001>
 
-Spiegelman, M., &amp; Conrad, F. (2025). Improving Understanding of Survey Questions with Multimodal Clarification. <i>Methods</i>, <i>data</i>, 1–28. https://doi.org/10.12758/MDA.2025.09. <https://doi.org/10.12758/mda.2025.09>
+Spiegelman, M., &amp; Conrad, F. (2025). Improving Understanding of Survey Questions with Multimodal Clarification. <i>Methods</i>, <i>data</i>, 1–28. <https://doi.org/10.12758/mda.2025.09>
 
 Spitzmüller, J. (2024). Epilogue: The traces and tracings of language ideologies. European Journal of Applied Linguistics, 12(1), 238–253. <https://doi.org/10.1515/eujal-2024-0019>
 
@@ -2897,11 +2895,11 @@ Stelma, J., & Kostoulas, A. (2021). The Intentional Dynamics of TESOL. <https://
 
 Stenzel, K., & Williams, N. (2021). Toward an interactional approach to multilingualism: Ideologies and practices in the northwest Amazon. Language &amp; Communication, 80, 136–164. <https://doi.org/10.1016/j.langcom.2021.05.010>
 
-Stetie, N. A., & Zunino, G. M. (2022). Non-binary language in Spanish? Comprehension of non-binary morphological forms: a psycholinguistic study. Glossa: A Journal of General Linguistics, 7(1). https://doi.org/10.16995/glossa.6144. <https://doi.org/10.16995/GLOSSA.6144>
+Stetie, N. A., & Zunino, G. M. (2022). Non-binary language in Spanish? Comprehension of non-binary morphological forms: a psycholinguistic study. Glossa: A Journal of General Linguistics, 7(1). <https://doi.org/10.16995/GLOSSA.6144>
 
 Stewart, J. R., Crutchfield, R., & Chang, W.-L. (2022). Prelinguistic gesture and developmental abilities: A multi-ethnic comparative study. Infant Behavior and Development, 68, 101748. <https://doi.org/10.1016/j.infbeh.2022.101748>
 
-Stocker, L., & Berthele, R. (2019). The roles of language mode and dominance in French–German bilinguals’ motion event descriptions. Bilingualism: Language and Cognition, 23(3), 519–531. https://doi.org/10.1017/s1366728919000294. <https://doi.org/10.1017/S1366728919000294>
+Stocker, L., & Berthele, R. (2019). The roles of language mode and dominance in French–German bilinguals’ motion event descriptions. Bilingualism: Language and Cognition, 23(3), 519–531. <https://doi.org/10.1017/S1366728919000294>
 
 Stocking, C. H. (2023). Homer’s Iliad and the Problem of Force. <https://doi.org/10.1093/oso/9780192862877.001.0001>
 
@@ -2945,7 +2943,7 @@ Sugianto, A., & Yusuf, F. N. (2023). TEACHER TALK IN A BRITISH SITCOM: INSIGHTS 
 
 Sumekto, D. R., Dardjito, H., Sukur, S. G., Andriani, Y. S., Olam, R. M., & Sulistyorini, D. A. (2024). PARALINGUISTIC FEATURES IN STUDENTS’ STORYTELLING  WITHIN MULTIMODAL COMMUNICATIONS. LLT Journal: A Journal on Language and Language Teaching, 27(2), 997–1018. <https://doi.org/10.24071/llt.v27i2.8701>
 
-SÜMER, B., & ÖZYÜREK, A. (2020). No effects of modality in development of locative expressions of space in signing and speaking children. Journal of Child Language, 47(6), 1101–1131. https://doi.org/10.1017/s0305000919000928. <https://doi.org/10.1017/S0305000919000928>
+SÜMER, B., & ÖZYÜREK, A. (2020). No effects of modality in development of locative expressions of space in signing and speaking children. Journal of Child Language, 47(6), 1101–1131. <https://doi.org/10.1017/S0305000919000928>
 
 Sümer, B., & Özyürek, A. (2022). Cross-modal investigation of event component omissions in language development: a comparison of signing and speaking children. Language, Cognition and Neuroscience, 37(8), 1023–1039. <https://doi.org/10.1080/23273798.2022.2042336>
 
@@ -2971,11 +2969,11 @@ Swallow, K. M., & Wang, Q. (2020). Culture influences how people divide continuo
 
 Swirbul, M. S., Silver, A. M., Libertus, M. E., & Tamis-LeMonda, C. S. (2025). Father, mother, and toddler spatial talk in a favorite activity: Associations with gender, dominant language, and activity choice. Cognitive Development, 75, 101586. <https://doi.org/10.1016/j.cogdev.2025.101586>
 
-Szczyrbak, M. (2019). EPISTEMIC STANCE IN THE KAVANAUGH CONFIRMATION HEARING: FOCUS ON MENTAL AND COMMUNICATION VERBS. Discourse and Interaction, 12(2), 72–94. https://doi.org/10.5817/di2019-2-72. <https://doi.org/10.5817/DI2019-2-72>
+Szczyrbak, M. (2019). EPISTEMIC STANCE IN THE KAVANAUGH CONFIRMATION HEARING: FOCUS ON MENTAL AND COMMUNICATION VERBS. Discourse and Interaction, 12(2), 72–94. <https://doi.org/10.5817/DI2019-2-72>
 
-Szczyrbak, M. (2023). The whole truth? Hypothetical questions and the (de)construction of knowledge in expert witness cross-examination. Studia Linguistica Universitatis Iagellonicae Cracoviensis, 140(1), 67–93. https://doi.org/10.4467/20834624sl.23.004.17264. <https://doi.org/10.4467/20834624SL.23.004.17264>
+Szczyrbak, M. (2023). The whole truth? Hypothetical questions and the (de)construction of knowledge in expert witness cross-examination. Studia Linguistica Universitatis Iagellonicae Cracoviensis, 140(1), 67–93. <https://doi.org/10.4467/20834624SL.23.004.17264>
 
-Szczyrbak, M., & Tereszkiewicz, A. (2023). Responding to Omicron: Speaker Commitment and Legitimisation in COVID-related Press Conferences. Studies in Polish Linguistics, 18(1), 25–54. https://doi.org/10.4467/23005920spl.23.002.17853. <https://doi.org/10.4467/23005920SPL.23.002.17853>
+Szczyrbak, M., & Tereszkiewicz, A. (2023). Responding to Omicron: Speaker Commitment and Legitimisation in COVID-related Press Conferences. Studies in Polish Linguistics, 18(1), 25–54. <https://doi.org/10.4467/23005920SPL.23.002.17853>
 
 Szczyrbak, M., Tereszkiewicz, A., & Ushchyna, V. (2024). Leadership and expressivity: The interplay of speech and gesture in Andrzej Duda’s anti-war rhetoric. “Res Rhetorica,” 11(2), 131–151. <https://doi.org/10.29107/rr2024.2.8>
 
@@ -2996,7 +2994,7 @@ Tan, Y. H., & Tan, S. C. (2020). Conceptions of Knowledge Creation, Knowledge an
 
 Tanenbaum, T. J., Hartoonian, N., & Bryan, J. (2020). “How do I make this thing smile?” Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems, 1–13. <https://doi.org/10.1145/3313831.3376606>
 
-Tang, M. (2020). Crosslinguistic influence on Chinese EFL learners’ acquisition of English finite and nonfinite distinctions. Cogent Education, 7(1). https://doi.org/10.1080/2331186x.2020.1721642. <https://doi.org/10.1080/2331186X.2020.1721642>
+Tang, M. (2020). Crosslinguistic influence on Chinese EFL learners’ acquisition of English finite and nonfinite distinctions. Cogent Education, 7(1). <https://doi.org/10.1080/2331186X.2020.1721642>
 
 Tang, R., & Zou, Y. (2024). Language, Cultural Identity, and Spirituality —A Case Study of the Representation of Minority Ethnic Subjects in Chinese Ethnographic Documentary. Studies in Ethnicity and Nationalism, 25(2), 180–199. Portico. <https://doi.org/10.1111/sena.12447>
 
@@ -3018,7 +3016,7 @@ Taremaa, P., Kiik, J., & Veismann, A. (2025). The
                     fast-over-slow
                     asymmetry: speed adverbs in Estonian. Folia Linguistica. <https://doi.org/10.1515/flin-2025-2028>
 
-Taremaa, P., Kiik, J., Toots, L. K., & Veismann, A. (2022). Speed as a dimension of manner in Estonian frog stories. Nordic Journal of Linguistics, 47(2), 224–253. https://doi.org/10.1017/s0332586522000245. <https://doi.org/10.1017/S0332586522000245>
+Taremaa, P., Kiik, J., Toots, L. K., & Veismann, A. (2022). Speed as a dimension of manner in Estonian frog stories. Nordic Journal of Linguistics, 47(2), 224–253. <https://doi.org/10.1017/S0332586522000245>
 
 Tasci, S., & Öztürk, Y. (2021). Post-predicate that-clauses controlled by verbs in native and non-native academic writing: A corpus-based study. Australian Journal of Applied Linguistics, 4(1), 18–33. <https://doi.org/10.29140/ajal.v4n1.486>
 
@@ -3038,7 +3036,7 @@ Thim, S. (2012). Phrasal Verbs. <https://doi.org/10.1515/9783110257038>
 
 Thomas, A. K., McKinney de Royston, M., & Powell, S. (2023). Color-Evasive Cognition: The Unavoidable Impact of Scientific Racism in the Founding of a Field. Current Directions in Psychological Science, 32(2), 137–144. <https://doi.org/10.1177/09637214221141713>
 
-Thompson, A. L., & Do, Y. (2019). Defining iconicity: An articulation-based methodology for explaining the phonological structure of ideophones. Glossa: A Journal of General Linguistics, 4(1). https://doi.org/10.5334/gjgl.872. <https://doi.org/10.5334/GJGL.872>
+Thompson, A. L., & Do, Y. (2019). Defining iconicity: An articulation-based methodology for explaining the phonological structure of ideophones. Glossa: A Journal of General Linguistics, 4(1). <https://doi.org/10.5334/GJGL.872>
 
 Thompson, A. L., & Do, Y. (2019). Unconventional spoken iconicity follows a conventional structure: Evidence from demonstrations. Speech Communication, 113, 36–46. <https://doi.org/10.1016/j.specom.2019.08.002>
 
@@ -3054,7 +3052,7 @@ Tian, L., McCafferty, S. G., & Zhu, M. (2024). The cognitive-emotional dialectic
 
 Tin Nghi, T. (2020). Applying Non-Linguistic Frameworks for Investigating the Language Transfer. International Journal of English Language and Literature Studies, 9(4), 231–243. <https://doi.org/10.18488/journal.23.2020.94.231.243>
 
-Todisco, E., Guijarro-Fuentes, P., Gudde, H. B., & Coventry, K. R. (2024). Demonstratives in Spanish–Catalan simultaneous bilinguals: which system do they prefer? Bilingualism: Language and Cognition, 28(1), 31–42. https://doi.org/10.1017/s1366728924000051. <https://doi.org/10.1017/S1366728924000051>
+Todisco, E., Guijarro-Fuentes, P., Gudde, H. B., & Coventry, K. R. (2024). Demonstratives in Spanish–Catalan simultaneous bilinguals: which system do they prefer? Bilingualism: Language and Cognition, 28(1), 31–42. <https://doi.org/10.1017/S1366728924000051>
 
 Tolchinsky, L., & Berman, R. A. (2023). Growing into Language. <https://doi.org/10.1093/oso/9780192849984.001.0001>
 
@@ -3068,7 +3066,7 @@ Torres-Martínez, S. (2020). On the origins of semiosic translation, the role of
 
 Tosi, A., Pickering, M. J., & Branigan, H. P. (2020). Speakers’ use of agency and visual context in spatial descriptions. Cognition, 194, 104070. <https://doi.org/10.1016/j.cognition.2019.104070>
 
-Tosun, S., & Filipović, L. (2022). Lost in translation, apparently: Bilingual language processing of evidentiality in a Turkish–English Translation and judgment task. Bilingualism: Language and Cognition, 25(5), 739–754. https://doi.org/10.1017/s1366728922000141. <https://doi.org/10.1017/S1366728922000141>
+Tosun, S., & Filipović, L. (2022). Lost in translation, apparently: Bilingual language processing of evidentiality in a Turkish–English Translation and judgment task. Bilingualism: Language and Cognition, 25(5), 739–754. <https://doi.org/10.1017/S1366728922000141>
 
 Tosun, S., & Filipović, L. (2024). Better late than early: The effect of formal second language training on processing of evidentiality in Turkish-English bilinguals. International Journal of Bilingualism, 29(4), 1008–1026. <https://doi.org/10.1177/13670069241266340>
 
@@ -3083,7 +3081,7 @@ Treiber, A., & Kazzazi, K. (2024). Translating Migration. Methodological Approac
 Treis, Y. (2021). The expression of phasal polarity in Kambaata
 						(Cushitic). The Expression of Phasal Polarity in African Languages, 311–334. <https://doi.org/10.1515/9783110646290-014>
 
-Troberg, M., &amp; Leung, J. (2021). On the unified change of directional/aspectual verb particles in French. <i>Journal of Historical Syntax</i>, Vol 5 No 40 (2021): On the unified change of directional/aspectual verb particles in French. https://doi.org/10.18148/HS/2021.V5I40.104. <https://doi.org/10.18148/hs/2021.v5i40.104>
+Troberg, M., &amp; Leung, J. (2021). On the unified change of directional/aspectual verb particles in French. <i>Journal of Historical Syntax</i>, Vol 5 No 40 (2021): On the unified change of directional/aspectual verb particles in French. <https://doi.org/10.18148/hs/2021.v5i40.104>
 
 Tsoy, E. (2022). Functions of Russian verb-derived discourse markers slušaj and smotri from the perspective of information management and interpersonal regulation. Journal of Pragmatics, 193, 105–121. <https://doi.org/10.1016/j.pragma.2022.03.010>
 
@@ -3102,11 +3100,11 @@ Tusun, A. (2022). Uyghur–Chinese Adult Bilinguals’ Construal of Voluntary Mo
 
 Tusun, A. (2023). Uyghur–Chinese early successive adult bilinguals’ construal of caused motion events. Language and Cognition, 15(3), 427–452. <https://doi.org/10.1017/langcog.2023.7>
 
-Tusun, A. (2023). Uyghur–Chinese early successive bilingual children’s acquisition of voluntary motion expressions. Bilingualism: Language and Cognition, 27(4), 642–654. https://doi.org/10.1017/s1366728923000780. <https://doi.org/10.1017/S1366728923000780>
+Tusun, A. (2023). Uyghur–Chinese early successive bilingual children’s acquisition of voluntary motion expressions. Bilingualism: Language and Cognition, 27(4), 642–654. <https://doi.org/10.1017/S1366728923000780>
 
 Tusun, A. (2024). Voluntary motion events in Uyghur child language. Language, Interaction and Acquisition, 15(2), 189–214. Portico. <https://doi.org/10.1075/lia.23023.tus>
 
-Tusun, A. (2025). Caused motion events in Uyghur child language. Journal of Child Language, 1–25. https://doi.org/10.1017/s0305000925100299. <https://doi.org/10.1017/S0305000925100299>
+Tusun, A. (2025). Caused motion events in Uyghur child language. Journal of Child Language, 1–25. <https://doi.org/10.1017/S0305000925100299>
 
 Tusun, A., & Hendriks, H. (2019). Voluntary motion events in Uyghur: A typological perspective. Lingua, 226, 69–88. <https://doi.org/10.1016/j.lingua.2019.05.003>
 
@@ -3114,13 +3112,13 @@ Tusun, A., & Hendriks, H. (2022). Caused motion events in Modern Uyghur: a typol
 
 Tusun, A., Wang, Y., & Abulajiang, A. (2024). Moving in L2 Chinese from childhood to adulthood: Developmental and crosslinguistic factors in bilingual event construal. International Journal of Bilingualism, 29(5), 1389–1407. <https://doi.org/10.1177/13670069241286423>
 
-Tutton, M. (2021). Expressing prospective location in French: rethinking Vandeloise’s ‘principle of anticipation.’ Journal of French Language Studies, 32(1), 48–75. https://doi.org/10.1017/s0959269521000119. <https://doi.org/10.1017/S0959269521000119>
+Tutton, M. (2021). Expressing prospective location in French: rethinking Vandeloise’s ‘principle of anticipation.’ Journal of French Language Studies, 32(1), 48–75. <https://doi.org/10.1017/S0959269521000119>
 
 Tütüncü, I. S., Emerson, S. N., Paul, J., Şengül, M., & Özçalışkan, Ş. (2024). Learning novel words for motion by speakers of structurally different languages. Language and Cognition, 16(4), 1987–2008. <https://doi.org/10.1017/langcog.2024.44>
 
 Tütüncü, I. S., Paul, J., Emerson, S. N., Şengül, M., Knezevic, M., & Özçalışkan, Ş. (2023). When Gestures Do or Do Not Follow Language‐Specific Patterns of Motion Expression in Speech: Evidence from Chinese, English and Turkish. Cognitive Science, 47(4). Portico. <https://doi.org/10.1111/cogs.13261>
 
-Tuuri, E. (2021). Concerning variation in encoding spatial motion: Evidence from Finnish. Nordic Journal of Linguistics, 46(1), 83–104. https://doi.org/10.1017/s0332586521000202. <https://doi.org/10.1017/S0332586521000202>
+Tuuri, E. (2021). Concerning variation in encoding spatial motion: Evidence from Finnish. Nordic Journal of Linguistics, 46(1), 83–104. <https://doi.org/10.1017/S0332586521000202>
 
 Tuyet Hanh, N. T. (2022). Locative prepositions  “at, in, on” and translation to  Vietnamese representational meaning. Ascarya: Journal of Islamic Science, Culture, and Social Studies, 2(1), 91–102. <https://doi.org/10.53754/iscs.v2i1.365>
 
@@ -3136,9 +3134,9 @@ Underhill, J. W., & Głaz, A. (2022). 18 Research on language and culture in Eur
 
 Urbanski, K. (Buescher), & Stam, G. (2022). Overview of Multimodality and Gesture in Second Language Acquisition. Gesture and Multimodality in Second Language Acquisition, 1–25. <https://doi.org/10.4324/9781003100683-1>
 
-Valdeón, R. A. (2024). The translation of multimodal texts: challenges and theoretical approaches. Perspectives, 32(1), 1–13. https://doi.org/10.1080/0907676x.2024.2290928. <https://doi.org/10.1080/0907676X.2024.2290928>
+Valdeón, R. A. (2024). The translation of multimodal texts: challenges and theoretical approaches. Perspectives, 32(1), 1–13. <https://doi.org/10.1080/0907676X.2024.2290928>
 
-Valenzuela, J. (2021). From X to Y: Anatomy of a Constructional Pattern. Atlantis. Journal of the Spanish Association for Anglo-American Studies, 43(2), 22–46. https://doi.org/10.28914//atlantis-2021-43.2.02. <https://doi.org/10.28914//ATLANTIS-2021-43.2.02>
+Valenzuela, J. (2021). From X to Y: Anatomy of a Constructional Pattern. Atlantis. Journal of the Spanish Association for Anglo-American Studies, 43(2), 22–46. <https://doi.org/10.28914//ATLANTIS-2021-43.2.02>
 
 Valenzuela, J., & Alcaraz Carrión, D. (2020). Temporal Expressions in English and Spanish: Influence of Typology and Metaphorical Construal. Frontiers in Psychology, 11. <https://doi.org/10.3389/fpsyg.2020.543933>
 
@@ -3154,7 +3152,7 @@ Van Der Wege, M., Jacobsen, J., Magats, N., Mansour, C. B., & Park, J. H. (2021)
 
 van Dijk, C., & Unsworth, S. (2023). On the Relation Between Cross-Linguistic Influence, Between-Language Priming and Language Proficiency: Priming of Ungrammatical Adjective Placement in Bilingual Spanish-Dutch and French-Dutch Children. Open Mind, 7, 732–756. <https://doi.org/10.1162/opmi_a_00105>
 
-van Dijk, C., Dijkstra, T., & Unsworth, S. (2022). Cross-linguistic influence during online sentence processing in bilingual children. Bilingualism: Language and Cognition, 25(4), 691–704. https://doi.org/10.1017/s1366728922000050. <https://doi.org/10.1017/S1366728922000050>
+van Dijk, C., Dijkstra, T., & Unsworth, S. (2022). Cross-linguistic influence during online sentence processing in bilingual children. Bilingualism: Language and Cognition, 25(4), 691–704. <https://doi.org/10.1017/S1366728922000050>
 
 van Lier, E. (Ed.). (2023). The Oxford Handbook of Word Classes. <https://doi.org/10.1093/oxfordhb/9780198852889.001.0001>
 
@@ -3200,13 +3198,13 @@ Vicente, L. G. (2019). La expresión de las emociones en la enseñanza del espa�
 
 Vietri, S. (2021). Locatum and location verbs in Italian. Lingvisticæ Investigationes, 44(2), 153–203. Portico. <https://doi.org/10.1075/li.00061.vie>
 
-Vinet, A. O. (2021). <i>Contacto interétnico y experiencias sociolingüísticas: exploración intergeneracional en bilingües mapuzugun/castellano</i>. Zenodo. https://doi.org/10.5281/ZENODO.5643293. <https://doi.org/10.5281/zenodo.5643293>
+Vinet, A. O. (2021). <i>Contacto interétnico y experiencias sociolingüísticas: exploración intergeneracional en bilingües mapuzugun/castellano</i>. Zenodo. <https://doi.org/10.5281/zenodo.5643293>
 
 Vivas, L., Montefinese, M., Bolognesi, M., & Vivas, J. (2020). Core features: measures and characterization for different languages. Cognitive Processing, 21(4), 651–667. <https://doi.org/10.1007/s10339-020-00969-5>
 
 Voelkel, S., & Kretzschmar, F. (2021). Introducing Linguistic Research. <https://doi.org/10.1017/9781316884485>
 
-Volonte, M., Wang, C.-C., Ebrahimi, E., Hsu, Y.-C., Liu, K.-Y., Wong, S.-K., & Babu, S. V. (2021). Effects of Language Familiarity in Simulated Natural Dialogue with a Virtual Crowd of Digital Humans on Emotion Contagion in Virtual Reality. 2021 IEEE Virtual Reality and 3D User Interfaces (VR), 188–197. https://doi.org/10.1109/vr50410.2021.00040. <https://doi.org/10.1109/VR50410.2021.00040>
+Volonte, M., Wang, C.-C., Ebrahimi, E., Hsu, Y.-C., Liu, K.-Y., Wong, S.-K., & Babu, S. V. (2021). Effects of Language Familiarity in Simulated Natural Dialogue with a Virtual Crowd of Digital Humans on Emotion Contagion in Virtual Reality. 2021 IEEE Virtual Reality and 3D User Interfaces (VR), 188–197. <https://doi.org/10.1109/VR50410.2021.00040>
 
 von Stutterheim, C., Gerwien, J., Bouhaous, A., Carroll, M., & Lambert, M. (2020). What makes up a reportable event in a language? Motion events as an important test domain in linguistic typology. Linguistics, 58(6), 1659–1700. <https://doi.org/10.1515/ling-2020-0212>
 
@@ -3228,7 +3226,7 @@ Wang, H., Li, L., Yan, X., & de Vega, M. (2021). Interfering Embodiment Effects 
 
 Wang, J. (2023). Joinder Mechanism in International Commercial Arbitration: A Trend in the Digital Age? International Journal for the Semiotics of Law - Revue Internationale de Sémiotique Juridique, 37(3), 923–942. <https://doi.org/10.1007/s11196-023-10068-1>
 
-Wang, M., Gan, Q., & Boland, J. (2021). L2 Syntactic Alignment in the Reading-Writing Integrated Continuation Task: Evidence From Chinese EFL Learners’ Description of Motion Events. Chinese Journal of Applied Linguistics, 44(3), 292–313. https://doi.org/10.1515/cjal-2021-0019. <https://doi.org/10.1515/CJAL-2021-0019>
+Wang, M., Gan, Q., & Boland, J. (2021). L2 Syntactic Alignment in the Reading-Writing Integrated Continuation Task: Evidence From Chinese EFL Learners’ Description of Motion Events. Chinese Journal of Applied Linguistics, 44(3), 292–313. <https://doi.org/10.1515/CJAL-2021-0019>
 
 Wang, P.-H. (2020). Negotiating Racialized Sexuality Through Online Stancetaking in Text-Based Communication. Gender, Sexuality and Race in the Digital Age, 187–203. <https://doi.org/10.1007/978-3-030-29855-5_11>
 
@@ -3244,7 +3242,7 @@ Wang, Y., & Gennari, S. P. (2019). How language and event recall can shape memor
 
 WANG, Y., & WEI, L. (2019). Cognitive restructuring in the bilingual mind: motion event construal in early Cantonese–English bilinguals. Language and Cognition, 11(4), 527–554. <https://doi.org/10.1017/langcog.2019.31>
 
-Wang, Y., & Wei, L. (2021). Cognitive restructuring in the multilingual mind: language-specific effects on processing efficiency of caused motion events in Cantonese–English–Japanese speakers. Bilingualism: Language and Cognition, 24(4), 730–745. https://doi.org/10.1017/s1366728921000018. <https://doi.org/10.1017/S1366728921000018>
+Wang, Y., & Wei, L. (2021). Cognitive restructuring in the multilingual mind: language-specific effects on processing efficiency of caused motion events in Cantonese–English–Japanese speakers. Bilingualism: Language and Cognition, 24(4), 730–745. <https://doi.org/10.1017/S1366728921000018>
 
 Wang, Y., & Wei, L. (2022). Multilingual learning and cognitive restructuring: The role of audiovisual media exposure in Cantonese–English–Japanese multilinguals’ motion event cognition. International Journal of Bilingualism, 27(3), 331–348. <https://doi.org/10.1177/13670069221085565>
 
@@ -3264,7 +3262,7 @@ Weedon, S., & Fountain, T. K. (2021). Embodied Genres, Typified Performances, an
 
 Wei, J. (2024). I think and I know: Authority and solidarity in UK government Covid briefings. Journal of Pragmatics, 223, 31–46. <https://doi.org/10.1016/j.pragma.2024.02.002>
 
-Wei, L. (2023). Transformative pedagogy for inclusion and social justice through translanguaging, co-learning, and transpositioning. Language Teaching, 57(2), 203–214. https://doi.org/10.1017/s0261444823000186. <https://doi.org/10.1017/S0261444823000186>
+Wei, L. (2023). Transformative pedagogy for inclusion and social justice through translanguaging, co-learning, and transpositioning. Language Teaching, 57(2), 203–214. <https://doi.org/10.1017/S0261444823000186>
 
 Wei, L. (2023). Translanguaging and intercultural communication. ELF and Applied Linguistics, 34–46. <https://doi.org/10.4324/9781003391463-4>
 
@@ -3314,7 +3312,7 @@ Witek, M. (2021). Self-Expression in Speech Acts. Organon F, 28(2), 326–359. <
 
 Witzel, C. (2018). Misconceptions About Colour Categories. Review of Philosophy and Psychology, 10(3), 499–540. <https://doi.org/10.1007/s13164-018-0404-5>
 
-WNUK, E. (2021). Ways of looking: Lexicalizing visual paths in verbs. Journal of Linguistics, 58(1), 157–202. https://doi.org/10.1017/s0022226721000086. <https://doi.org/10.1017/S0022226721000086>
+WNUK, E. (2021). Ways of looking: Lexicalizing visual paths in verbs. Journal of Linguistics, 58(1), 157–202. <https://doi.org/10.1017/S0022226721000086>
 
 Woodbury, A. C. (2024). Seeing linguistic systems as intellectual, aesthetic, and expressive achievements. Language, 100(4), 732–775. <https://doi.org/10.1353/lan.2024.a948426>
 
@@ -3440,9 +3438,9 @@ Zorzi, G., Veiga Busto, R., Barberà, G., Navarrete-González, A., & Quer, J. (2
 
 Zufferey, S., & Moeschler, J. (2025). Studying Meaning. <https://doi.org/10.4324/9781003632610>
 
-ZVAIGZNE, M., OSHIMA-TAKANE, Y., & HIRAKAWA, M. (2019). How does language proficiency affect children’s iconic gesture use? Applied Psycholinguistics, 40(2), 555–583. https://doi.org/10.1017/s014271641800070x. <https://doi.org/10.1017/S014271641800070X>
+ZVAIGZNE, M., OSHIMA-TAKANE, Y., & HIRAKAWA, M. (2019). How does language proficiency affect children’s iconic gesture use? Applied Psycholinguistics, 40(2), 555–583. <https://doi.org/10.1017/S014271641800070X>
 
-Сизова, Н. С., & Семенова, Н. Д. (2023). The Relationship Between Personality and Language: the Concept of Linguistic Personality in Clinical and Psychological Discourse. Психиатрия, Психотерапия и Клиническая Психология, 14(3), 301–309. https://doi.org/10.34883/pi.2023.14.3.012. <https://doi.org/10.34883/PI.2023.14.3.012>
+Сизова, Н. С., & Семенова, Н. Д. (2023). The Relationship Between Personality and Language: the Concept of Linguistic Personality in Clinical and Psychological Discourse. Психиатрия, Психотерапия и Клиническая Психология, 14(3), 301–309. <https://doi.org/10.34883/PI.2023.14.3.012>
 
 惠貞蕭, & 吟玲魏. (2021). 漢語移動事件中「來」與「過來」之探究. Chinese as a Second Language Research, 10(2), 265–290. <https://doi.org/10.1515/caslar-2021-2005>
 
