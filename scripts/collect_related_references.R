@@ -215,7 +215,8 @@ get_scopus_abstract <- function(doi, max_retries = 2) {
 #' Falls back to the Scopus Abstract Retrieval API when CrossRef lacks an
 #' abstract (many publishers deposit abstracts only in Scopus).
 get_crossref_metadata <- function(doi, max_retries = 2) {
-  result <- list(abstract = NULL, type = NULL, language = NULL)
+  result <- list(abstract = NULL, type = NULL, language = NULL,
+                 retracted = FALSE, pub_year = NA_integer_)
 
   # --- Try CrossRef first ---
   for (attempt in seq_len(max_retries)) {
@@ -234,15 +235,30 @@ get_crossref_metadata <- function(doi, max_retries = 2) {
         # Strip JATS/HTML tags from abstract
         abstract_clean <- gsub("<[^>]+>", "", abstract_raw)
         abstract_clean <- trimws(abstract_clean)
+        # Check for retraction: CrossRef marks retractions via update-to relation
+        updates <- msg$`update-to` %||% list()
+        is_retracted <- any(sapply(updates, function(u) {
+          identical(tolower(u$type %||% ""), "retraction")
+        }))
+        # Extract earliest publication year for future-year detection
+        pub_year <- tryCatch({
+          dates <- msg$`published`$`date-parts`[[1]] %||%
+                   msg$`published-print`$`date-parts`[[1]] %||%
+                   msg$`published-online`$`date-parts`[[1]]
+          as.integer(dates[[1]])
+        }, error = function(e) NA_integer_)
         list(
-          abstract = if (nchar(abstract_clean) > 0) abstract_clean else NULL,
-          type = msg$type,
-          language = msg$language
+          abstract    = if (nchar(abstract_clean) > 0) abstract_clean else NULL,
+          type        = msg$type,
+          language    = msg$language,
+          retracted   = is_retracted,
+          pub_year    = pub_year
         )
       } else {
         list(abstract = NULL, type = NULL, language = NULL)
       }
-    }, error = function(e) list(abstract = NULL, type = NULL, language = NULL))
+    }, error = function(e) list(abstract = NULL, type = NULL, language = NULL,
+                                retracted = FALSE, pub_year = NA_integer_))
 
     if (!is.null(result$abstract) || !is.null(result$type)) break
     if (attempt < max_retries) Sys.sleep(1)
@@ -302,6 +318,14 @@ format_citation_for_hugo <- function(citation, doi) {
   )
   # Reject ahead-of-print placeholders: volume 0 or page 0 signals no real metadata yet
   if (grepl(",\\s*0\\s*(\\(|,|\\.|$)", citation, perl = TRUE)) {
+    return(NULL)
+  }
+  # Reject citations with no author: APA starts with "(" when author is missing
+  if (grepl("^\\s*\\(", citation, perl = TRUE)) {
+    return(NULL)
+  }
+  # Reject suspiciously short citations (valid APA journal articles are rarely < 60 chars)
+  if (nchar(citation) < 60) {
     return(NULL)
   }
   paste0(citation, ". <", doi_url, ">")
@@ -810,6 +834,22 @@ for (pub_dir in pub_dirs) {
       cat("    Skipping: CrossRef type '", meta$type, "' is not a citable paper\n", sep = "")
       next
     }
+    # Skip retracted papers
+    if (isTRUE(meta$retracted)) {
+      cat("    Skipping: paper has been retracted\n")
+      next
+    }
+    # Skip self-citation (DOI matches this publication's own DOI)
+    pub_doi <- tolower(trimws(fm$doi %||% ""))
+    if (nchar(pub_doi) > 0 && tolower(trimws(doi)) == pub_doi) {
+      cat("    Skipping: self-citation\n")
+      next
+    }
+    # Skip future publication years (data entry errors in CrossRef)
+    if (!is.na(meta$pub_year) && meta$pub_year > current_year + 1L) {
+      cat("    Skipping: publication year", meta$pub_year, "is implausibly far in the future\n")
+      next
+    }
     cit <- get_apa7_citation(doi)
     if (!is.null(cit) && contains_non_latin_script(cit)) {
       cat("    Skipping: non-Latin script detected in citation\n")
@@ -924,6 +964,66 @@ for (pub_dir in pub_dirs) {
       write_scopus_queries(html_path, query, query_source, search_period,
                            script_path = sp)
     }
+  }
+}
+
+# ===========================================================================
+#  LINT EXISTING REFERENCES
+#  Re-scan all publication index files for known bad patterns and fix in place.
+# ===========================================================================
+
+cat("\n=== Linting existing references ===\n")
+
+lint_files <- list.files("content/publication", pattern = "index\\.md$",
+                         recursive = TRUE, full.names = TRUE)
+
+for (lf in lint_files) {
+  lines <- readLines(lf, encoding = "UTF-8", warn = FALSE)
+  changed_lint <- FALSE
+
+  # 1. Remove duplicate DOI URL preceding the canonical angle-bracket link.
+  #    Occurs when CrossRef appends a differently-cased DOI URL that the
+  #    case-sensitive stripping missed in earlier runs.
+  new_lines <- gsub(
+    "\\s+https?://doi\\.org/\\S+\\.?\\s+(<https://doi\\.org/)",
+    " \\1",
+    lines,
+    ignore.case = TRUE,
+    perl = TRUE
+  )
+  if (any(new_lines != lines)) { changed_lint <- TRUE }
+  lines <- new_lines
+
+  # 2. Remove ahead-of-print placeholders: lines where volume/issue is "0(0)".
+  keep <- !grepl(",\\s*0\\s*\\(0\\)", lines, perl = TRUE)
+  if (any(!keep)) { changed_lint <- TRUE }
+  lines <- lines[keep]
+
+  # 3. Remove citations with no author: APA lines starting with "(" followed
+  #    by a year or "N.d." and containing a DOI link.
+  keep <- !(grepl("^\\s*\\(([0-9]|N\\.d\\.)", lines, perl = TRUE) &
+              grepl("https://doi.org/", lines, fixed = TRUE))
+  if (any(!keep)) { changed_lint <- TRUE }
+  lines <- lines[keep]
+
+  # 4. Remove duplicate DOI links within the same file (keep first occurrence).
+  doi_hits <- regmatches(lines, regexpr("https://doi\.org/[^>\s]+", lines, perl = TRUE))
+  doi_hits <- tolower(doi_hits)
+  seen_dois <- character(0)
+  keep <- vapply(seq_along(lines), function(i) {
+    d <- doi_hits[i]
+    if (is.na(d) || nchar(d) == 0) return(TRUE)
+    if (d %in% seen_dois) return(FALSE)
+    seen_dois <<- c(seen_dois, d)
+    TRUE
+  }, logical(1))
+  if (any(!keep)) { changed_lint <- TRUE }
+  lines <- lines[keep]
+
+  if (changed_lint) {
+    writeLines(lines, lf, useBytes = TRUE)
+    any_changes <- TRUE
+    cat("  Linted:", basename(dirname(lf)), "\n")
   }
 }
 

@@ -123,7 +123,6 @@ Chen, S.-C., Buchanan, E. M., Kekecs, Z., Miller, J. K., Szabelska, A., Aczel, B
 
 ’t Hart, B., Struiksma, M., van Boxtel, A., & van Berkum, J. J. A. (2021). Reading About Us and Them: Moral but no Minimal Group Effects on Language-Induced Emotion. *Frontiers in Communication*, *6*. <https://doi.org/10.3389/fcomm.2021.590077>
 
-A Bibliometric Review on Applying Spatial Perception Technologies to Make Cities Liveable. (2025). Landscape Architecture Frontiers, 0(0), 0. https://doi.org/10.15302/j-laf-0-020038. <https://doi.org/10.15302/J-LAF-0-020038>
 
 Abbondanza, M., Amenta, S., Rinaldi, L., & Marelli, M. (2025). Time is -ending: Sublexical information activates the horizontal mental time line in word processing. *Journal of Experimental Psychology: Learning, Memory, and Cognition*, *51*(1), 119–132. <https://doi.org/10.1037/xlm0001331>
 
@@ -604,7 +603,6 @@ Chen, S., Liu, Y., Wang, Z. A., Colonell, J., Liu, L. D., Hou, H., Tien, N.-W., 
 
 Chen, X., & Azraai, N. Z. B. (2025). Animating Embodied Memories: An Inquiry into Medium-Specificity of Animation in
                     Greatness Code
-                    (2020). *Animation*, *20*(3), 201–218. <https://doi.org/10.1177/17468477251379718>
 
 Chen, X., Liu, W., Ma, Y., & Sun, Z. (2024). How pupils of different ages perceive menus denoting metaphorical and metonymic expressions: Insights from eye-tracking. *Acta Psychologica*, *249*, 104443. <https://doi.org/10.1016/j.actpsy.2024.104443>
 

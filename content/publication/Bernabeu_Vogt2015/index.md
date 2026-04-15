@@ -1411,7 +1411,6 @@ Ellis, R. (2018). Bodies and Other Objects. <https://doi.org/10.1017/97811074468
 
 Elyamany, N. (2022). Postcyberpunk dystopian cityscape and emotion artificial intelligence: A spatio-cognitive analysis of posthuman representation in
                     Blade Runner 2049
-                    (2017). Convergence: The International Journal of Research into New Media Technologies, 29(5), 1199–1225. <https://doi.org/10.1177/13548565221122913>
 
 Elyamany, N., & El Attar, A. A. (2025). The affects of elitism in three-tiered semioscapes: Mountain View’s ‘secret of happiness.’ Southern African Linguistics and Applied Language Studies, 43(2), 195–217. <https://doi.org/10.2989/16073614.2024.2359962>
 
