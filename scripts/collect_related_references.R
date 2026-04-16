@@ -1007,7 +1007,7 @@ for (lf in lint_files) {
   lines <- lines[keep]
 
   # 4. Remove duplicate DOI links within the same file (keep first occurrence).
-  doi_hits <- regmatches(lines, regexpr("https://doi\.org/[^>\s]+", lines, perl = TRUE))
+  doi_hits <- regmatches(lines, regexpr("https://doi\\.org/[^>\\s]+", lines, perl = TRUE))
   doi_hits <- tolower(doi_hits)
   seen_dois <- character(0)
   keep <- vapply(seq_along(lines), function(i) {
