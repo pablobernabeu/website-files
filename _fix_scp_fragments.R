@@ -153,6 +153,8 @@ fix_file <- function(path) {
     result,
     lines[hi_end:length(lines)]
   )
+  # Drop any R NA values that may have slipped in
+  fixed_lines <- fixed_lines[!is.na(fixed_lines)]
 
   # Write back
   writeLines(fixed_lines, path, useBytes = FALSE)
