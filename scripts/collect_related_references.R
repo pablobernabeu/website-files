@@ -65,6 +65,13 @@ find_html_counterpart <- function(index_path) {
   if (file.exists(html_path)) html_path else NULL
 }
 
+#' Return the path to the standalone related-references.html for a publication.
+#' This file is the single source of truth for all reference content and is
+#' injected into the page by the Hugo layout via .Resources.GetMatch.
+find_refs_html_file <- function(pub_dir) {
+  file.path(pub_dir, "related-references.html")
+}
+
 #' Read YAML frontmatter from a markdown / Rmd file.
 #' Returns a named list.
 read_frontmatter <- function(path) {
@@ -394,89 +401,41 @@ extract_existing_dois <- function(index_path) {
   unique(tolower(trimws(dois)))
 }
 
-#' Insert new APA 7 citations into the related-references section of an
-#' index file.  Creates the section if it does not exist.
-insert_references_into_index <- function(index_path, new_citations) {
+#' Insert new citations into the standalone related-references.html file.
+#' Creates the file with the full skeleton if it does not yet exist.
+#' New citations are converted from markdown to HTML <p> tags.
+insert_references_into_refs_html <- function(refs_html_path, new_citations) {
   if (length(new_citations) == 0) return(FALSE)
 
-  content <- readLines(index_path, encoding = "UTF-8", warn = FALSE)
-  related_line <- grep("^### Related references", content)
-
-  if (length(related_line) == 0) {
-    # No section yet — append one at the end
+  if (!file.exists(refs_html_path)) {
+    # Create the file from scratch with the standard skeleton
     new_section <- c(
-      "",
-      "### Related references",
+      "<h3>Related references</h3>",
       "",
       "<div class = 'related-references'>",
       "",
       "<div class = 'hanging-indent'>",
-      "",
-      paste(new_citations, collapse = "\n\n"),
-      "",
-      "</div>",
-      "",
-      "</div>"
+      ""
     )
-    content <- c(content, new_section)
-    writeLines(content, index_path, useBytes = TRUE)
+    for (cit in new_citations) {
+      new_section <- c(new_section, paste0("<p>", citation_md_to_html(cit), "</p>"), "")
+    }
+    new_section <- c(new_section, "</div>", "", "</div>")
+    writeLines(new_section, refs_html_path, useBytes = TRUE)
     return(TRUE)
   }
 
-  # Section exists — insert before the first </div> after the header
-  closing_divs <- grep("^</div>", content)
-  closing_divs_after <- closing_divs[closing_divs > related_line[1]]
+  content <- readLines(refs_html_path, encoding = "UTF-8", warn = FALSE)
 
-  if (length(closing_divs_after) < 2) {
-    message("  Warning: malformed related-references section in ", index_path)
+  # Find the hanging-indent div (handles both quote styles and attribute order)
+  hanging_line <- grep("hanging-indent", content)
+  hanging_line <- hanging_line[grepl("<div", content[hanging_line])]
+  if (length(hanging_line) == 0) {
+    message("  Warning: no hanging-indent div found in ", refs_html_path)
     return(FALSE)
   }
 
-  insert_before <- closing_divs_after[1]
-
-  insert_lines <- character(0)
-  for (cit in new_citations) insert_lines <- c(insert_lines, cit, "")
-
-  content <- c(
-    content[1:(insert_before - 1)],
-    insert_lines,
-    content[insert_before:length(content)]
-  )
-
-  writeLines(content, index_path, useBytes = TRUE)
-  TRUE
-}
-
-#' Insert new references into a pre-rendered .html counterpart of an Rmd file.
-#' Converts markdown citations to HTML <p> tags.
-insert_references_into_html <- function(html_path, new_citations) {
-  if (length(new_citations) == 0 || is.null(html_path)) return(FALSE)
-  if (!file.exists(html_path)) return(FALSE)
-
-  content <- readLines(html_path, encoding = "UTF-8", warn = FALSE)
-
-  # Find the <div class="hanging-indent"> specifically inside the related-references section.
-  # Use a div-specific pattern to avoid false matches on <p class='hanging-indent'> (e.g., in
-  # Citation sections that reuse the same class on a paragraph element).
-  hanging_line <- grep('<div[^>]*class="hanging-indent"', content)
-  if (length(hanging_line) == 0) {
-    # No related references section in HTML — append one
-    new_section <- c(
-      '<div id="related-references" class="section level3">',
-      '<h3>Related references</h3>',
-      '<div class="related-references">',
-      '<div class="hanging-indent">'
-    )
-    for (cit in new_citations) {
-      new_section <- c(new_section, paste0("<p>", citation_md_to_html(cit), "</p>"))
-    }
-    new_section <- c(new_section, "</div>", "</div>", "</div>")
-    content <- c(content, new_section)
-    writeLines(content, html_path, useBytes = TRUE)
-    return(TRUE)
-  }
-
-  # Find the closing </div> for hanging-indent (first </div> after hanging_line)
+  # First </div> after the hanging-indent opening is where new refs go
   closing_divs <- grep("^</div>", content)
   closing_divs_after <- closing_divs[closing_divs > hanging_line[1]]
   if (length(closing_divs_after) == 0) return(FALSE)
@@ -485,7 +444,7 @@ insert_references_into_html <- function(html_path, new_citations) {
 
   insert_lines <- character(0)
   for (cit in new_citations) {
-    insert_lines <- c(insert_lines, paste0("<p>", citation_md_to_html(cit), "</p>"))
+    insert_lines <- c(insert_lines, paste0("<p>", citation_md_to_html(cit), "</p>"), "")
   }
 
   content <- c(
@@ -494,7 +453,7 @@ insert_references_into_html <- function(html_path, new_citations) {
     content[insert_before:length(content)]
   )
 
-  writeLines(content, html_path, useBytes = TRUE)
+  writeLines(content, refs_html_path, useBytes = TRUE)
   TRUE
 }
 
@@ -691,6 +650,9 @@ for (pub_dir in pub_dirs) {
     next
   }
 
+  # ---- Standalone related-references.html (single source of truth for refs) ----
+  refs_html_path <- find_refs_html_file(pub_dir)
+
   # ---- Determine related-references directory ----
   refs_dir <- find_refs_dir(pub_dir)
 
@@ -732,8 +694,8 @@ for (pub_dir in pub_dirs) {
   if (!dir.exists(refs_dir)) dir.create(refs_dir, recursive = TRUE)
 
   # ---- Existing DOIs (dedup) ----
-  existing_dois <- extract_existing_dois(index_path)
-  cat("  Existing DOIs in index:", length(existing_dois), "\n")
+  existing_dois <- extract_existing_dois(refs_html_path)
+  cat("  Existing DOIs in related-references.html:", length(existing_dois), "\n")
 
   # ---- Run Scopus search ----
   timestamp_file <- file.path(refs_dir,
@@ -873,34 +835,24 @@ for (pub_dir in pub_dirs) {
     } else {
       cat("    Warning: citation unavailable\n")
     }
-    # Store metadata (abstract + type) for the JS UI
+    # Store metadata (abstract + type + dateAdded) for the JS UI
     entry <- list()
     if (!is.null(meta$abstract)) entry$abstract <- meta$abstract
     if (!is.null(meta$type)) entry$type <- meta$type
-    if (length(entry) > 0) new_metadata[[doi]] <- entry
+    entry$dateAdded <- format(Sys.Date(), "%Y-%m-%d")
+    new_metadata[[doi]] <- entry
     Sys.sleep(0.5)
   }
 
   # ---- Sort & insert new citations ----
   if (length(new_citations) > 0) {
     new_citations <- sort(new_citations)
-    cat("  Inserting", length(new_citations), "citations into",
-        basename(index_path), "\n")
-    if (insert_references_into_index(index_path, new_citations)) {
+    cat("  Inserting", length(new_citations), "citations into related-references.html\n")
+    if (insert_references_into_refs_html(refs_html_path, new_citations)) {
       any_changes <- TRUE
       cat("  Done\n")
-
-      # Also update the pre-rendered HTML counterpart for Rmd publications
-      html_path <- find_html_counterpart(index_path)
-      if (!is.null(html_path)) {
-        if (insert_references_into_html(html_path, new_citations)) {
-          cat("  Also updated", basename(html_path), "\n")
-        } else {
-          cat("  Warning: could not update HTML counterpart\n")
-        }
-      }
     } else {
-      cat("  Failed to update index file\n")
+      cat("  Failed to update related-references.html\n")
     }
   }
 
@@ -908,8 +860,8 @@ for (pub_dir in pub_dirs) {
   # With per-publication parallelism, we can backfill generously —
   # just respect the time budget. The JS UI handles on-demand CrossRef
   # lookups for any DOIs not yet backfilled.
-  existing_metadata <- read_ref_metadata(index_path)
-  all_dois <- extract_existing_dois(index_path)
+  existing_metadata <- read_ref_metadata(refs_html_path)
+  all_dois <- extract_existing_dois(refs_html_path)
 
   # DOIs completely missing from the metadata block
   dois_missing_meta <- setdiff(all_dois, tolower(names(existing_metadata)))
@@ -945,37 +897,22 @@ for (pub_dir in pub_dirs) {
   }
 
   # ---- Write metadata JSON block (new + backfilled) ----
-  html_path <- find_html_counterpart(index_path)
   if (length(new_metadata) > 0) {
     merged_metadata <- modifyList(existing_metadata, new_metadata)
-    write_ref_metadata(index_path, merged_metadata)
+    write_ref_metadata(refs_html_path, merged_metadata)
     any_changes <- TRUE
     cat("  Updated metadata for", length(new_metadata), "DOIs\n")
-    if (!is.null(html_path)) {
-      existing_html_meta <- read_ref_metadata(html_path)
-      merged_html_meta <- modifyList(existing_html_meta, new_metadata)
-      write_ref_metadata(html_path, merged_html_meta)
-    }
   }
 
-  # Embed Scopus query info for the JS viewer (in both source and HTML)
-  # Always link to the general collection script (the per-publication scripts
-  # are no longer reflective of the continuous workflow updates).
+  # Embed Scopus query info for the JS viewer.
   sp <- "scripts/collect_related_references.R"
   # Only write if not already present
-  existing_content <- readLines(index_path, encoding = "UTF-8", warn = FALSE)
-  if (!any(grepl('class="scopus-queries"', existing_content))) {
-    write_scopus_queries(index_path, query, query_source, search_period,
+  refs_html_content <- readLines(refs_html_path, encoding = "UTF-8", warn = FALSE)
+  if (!any(grepl('class="scopus-queries"', refs_html_content))) {
+    write_scopus_queries(refs_html_path, query, query_source, search_period,
                          script_path = sp)
     any_changes <- TRUE
     cat("  Embedded Scopus query info\n")
-  }
-  if (!is.null(html_path)) {
-    html_content <- readLines(html_path, encoding = "UTF-8", warn = FALSE)
-    if (!any(grepl('class="scopus-queries"', html_content))) {
-      write_scopus_queries(html_path, query, query_source, search_period,
-                           script_path = sp)
-    }
   }
 }
 
@@ -986,18 +923,21 @@ for (pub_dir in pub_dirs) {
 
 cat("\n=== Linting existing references ===\n")
 
-lint_files <- list.files("content/publication", pattern = "index\\.md$",
+lint_files <- list.files("content/publication", pattern = "related-references\\.html$",
                          recursive = TRUE, full.names = TRUE)
 
 for (lf in lint_files) {
   lines <- readLines(lf, encoding = "UTF-8", warn = FALSE)
   changed_lint <- FALSE
 
-  # 1. Remove duplicate DOI URL preceding the canonical angle-bracket link.
-  #    Occurs when CrossRef appends a differently-cased DOI URL that the
-  #    case-sensitive stripping missed in earlier runs.
+  # Strip leading <p> tags to expose raw citation text for author-field checks.
+  # All citation lines in related-references.html are wrapped in <p>...</p>.
+  inner <- sub("^<p[^>]*>\\s*", "", lines)
+
+  # 1. Remove duplicate plain DOI URL preceding the canonical <a href> link.
+  #    Pattern: bare https://doi.org/DOI followed by an <a href=... tag.
   new_lines <- gsub(
-    "\\s+https?://doi\\.org/\\S+\\.?\\s+(<https://doi\\.org/)",
+    "\\s+https?://doi\\.org/[^\"<>\\s]+\\.?\\s+(<a\\s)",
     " \\1",
     lines,
     ignore.case = TRUE,
@@ -1009,29 +949,32 @@ for (lf in lint_files) {
   # 2. Remove ahead-of-print placeholders: lines where volume/issue is "0(0)".
   keep <- !grepl(",\\s*0\\s*\\(0\\)", lines, perl = TRUE)
   if (any(!keep)) { changed_lint <- TRUE }
-  lines <- lines[keep]
+  lines  <- lines[keep]
+  inner  <- inner[keep]
 
-  # 3. Remove citations with no author: APA lines starting with "(" followed
-  #    by a year or "N.d." and containing a DOI link.
-  keep <- !(grepl("^\\s*\\(([0-9]|N\\.d\\.)", lines, perl = TRUE) &
+  # 3. Remove citations with no author: citation text (after <p>) starts with
+  #    "(" followed by a year or "N.d." and the line contains a DOI link.
+  keep <- !(grepl("^\\s*\\(([0-9]|N\\.d\\.)", inner, perl = TRUE) &
               grepl("https://doi.org/", lines, fixed = TRUE))
   if (any(!keep)) { changed_lint <- TRUE }
-  lines <- lines[keep]
+  lines  <- lines[keep]
+  inner  <- inner[keep]
 
   # 4. Remove citations where the title occupies the author field (CrossRef artefact).
   #    Valid APA author fields have either personal initials (", J.") or are
-  #    institutional names that end with "." and contain no "?".
-  #    Titles masquerading as authors fail both conditions.
-  pre_year_lint <- sub("\\(\\d{4}.*", "", lines, perl = TRUE)
+  #    institutional names that end with "." and contain no "?" or ":".
+  pre_year_lint <- sub("\\(\\d{4}.*", "", inner, perl = TRUE)
   has_personal_lint      <- grepl(",\\s*[A-Z]\\.", pre_year_lint, perl = TRUE)
   has_institutional_lint <- grepl("\\.\\s*$", pre_year_lint) & !grepl("[?:]", pre_year_lint)
   keep <- !(grepl("https://doi.org/", lines, fixed = TRUE) &
               !has_personal_lint & !has_institutional_lint)
   if (any(!keep)) { changed_lint <- TRUE }
-  lines <- lines[keep]
+  lines  <- lines[keep]
+  inner  <- inner[keep]
 
   # 5. Remove duplicate DOI links within the same file (keep first occurrence).
-  doi_hits <- regmatches(lines, regexpr("https://doi\\.org/[^>\\s]+", lines, perl = TRUE))
+  #    DOI URLs in HTML appear as href="https://doi.org/..." — exclude quote/angle chars.
+  doi_hits <- regmatches(lines, regexpr("https://doi\\.org/[^\"<>\\s]+", lines, perl = TRUE))
   doi_hits <- tolower(doi_hits)
   seen_dois <- character(0)
   keep <- vapply(seq_along(lines), function(i) {

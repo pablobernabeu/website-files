@@ -1,0 +1,29 @@
+{{- define "main" -}}
+
+<div class="pub">
+
+  {{ partial "page_header.html" . }}
+
+  <div class="article-container">
+
+    {{ if .Params.abstract }}
+    <h3>{{ i18n "abstract" }}</h3>
+    <p class="pub-abstract">{{ .Params.abstract | markdownify }}</p>
+    {{ end }}
+
+    {{ if .Params.url_fulltext }}
+    <a href={{ .Params.url_fulltext }}>
+      <button class="full-text-btn">
+        <i class="fa fa-file" style='color:grey;'></i> &nbsp;&nbsp; 
+        <span>View <b>full text</b></span>
+      </button>
+      </a>
+    {{ end }}
+
+    <div class="article-style">{{ .Content }}{{ with .Resources.GetMatch "related-references.html" }}{{ .Content | safeHTML }}{{ end }}</div>
+
+    {{ partial "page_footer" . }}
+
+  </div>
+</div>
+{{- end -}}
