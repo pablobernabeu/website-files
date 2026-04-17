@@ -114,6 +114,8 @@ Chen, S.-C., Buchanan, E. M., Kekecs, Z., Miller, J. K., Szabelska, A., Aczel, B
 </script>
 
 
+
+
 <script type="application/json" class="scopus-queries">
 {"source":"script","query":"\"Does object size matter with regard to the mental simulation of object orientation?\" OR  \"Representing object colour in language comprehension\" OR  \"Mental simulation of four visual object properties\" OR  \"Size does matter: Implied object size is mentally simulated during language comprehension\" OR  \"Perceptual simulation in developing language comprehension\" OR  \"Mental simulation of object orientation and size: A conceptual replication with second language learners\" OR  \"Effect size matters: the role of language statistics and perceptual simulation in conceptual processing\" OR  \"A pre-registered, multi-lab non-replication of the action-sentence compatibility effect\" OR  \"Six challenges for embodiment research\" OR  \"Language comprehenders retain implied shape and orientation of objects\" OR  \"Object shape and orientation do not routinely influence performance during language processing\" OR  \"One word at a time: Mental representations of object shape change incrementally during sentence processing\" OR  \"The effect of implied orientation derived from verbal context on picture recognition\" OR  \"Six views of embodied cognition\" OR  \"Embodiment and language comprehension: Reframing the discussion\" OR  \"Revisiting mental simulation in language comprehension: Six replication attempts\" OR  \"Language comprehenders mentally represent the shapes of objects\" OR  \"Establishing generalizable mechanisms\"","period":"2020-2026","collected":"2026-04-15","scriptPath":"scripts/collect_related_references.R"}
 </script>
@@ -235,7 +237,6 @@ Aschenbrenner, L. (2025). Studying the Materialization of Power in the Body. *Im
 Ashok, S., Kim, S. S., Heidkamp, R. A., Munos, M. K., Menon, P., & Avula, R. (2021). Using cognitive interviewing to bridge the intent‐interpretation gap for nutrition coverage survey questions in India. *Maternal &amp; Child Nutrition*, *18*(1). <https://doi.org/10.1111/mcn.13248>
 
 Au, K. B., & Lo, L. Y. (2018). March for unity: A study on an effect of synchronized actions to perceived closeness. *Current Psychology*, *39*(3), 1012–1019. <https://doi.org/10.1007/s12144-018-9820-z>
-
 Auriemma, V. (2023). Empathy. Springer International Publishing. <https://doi.org/10.1007/978-3-031-38860-6>
 Auriemma, V. (2024). Emotion, Embodiment and the Virtual World. <https://doi.org/10.4324/9781003440185>
 
