@@ -324,6 +324,18 @@ format_citation_for_hugo <- function(citation, doi) {
   if (grepl("^\\s*\\(", citation, perl = TRUE)) {
     return(NULL)
   }
+  # Reject citations where the title occupies the author field.
+  # Valid APA author fields are either:
+  #   - personal:      contain a comma-initial like ", J."
+  #   - institutional: end with "." and contain no "?" (e.g. "World Health Organization.")
+  # Titles masquerading as authors (CrossRef artefact) typically contain "?" and
+  # lack any comma-initial, so they fail both conditions.
+  pre_year <- sub("\\(\\d{4}.*", "", citation, perl = TRUE)
+  has_personal_author      <- grepl(",\\s*[A-Z]\\.", pre_year, perl = TRUE)
+  has_institutional_author <- grepl("\\.\\s*$", pre_year) && !grepl("[?:]", pre_year)
+  if (!has_personal_author && !has_institutional_author) {
+    return(NULL)
+  }
   # Reject suspiciously short citations (valid APA journal articles are rarely < 60 chars)
   if (nchar(citation) < 60) {
     return(NULL)
@@ -1006,7 +1018,19 @@ for (lf in lint_files) {
   if (any(!keep)) { changed_lint <- TRUE }
   lines <- lines[keep]
 
-  # 4. Remove duplicate DOI links within the same file (keep first occurrence).
+  # 4. Remove citations where the title occupies the author field (CrossRef artefact).
+  #    Valid APA author fields have either personal initials (", J.") or are
+  #    institutional names that end with "." and contain no "?".
+  #    Titles masquerading as authors fail both conditions.
+  pre_year_lint <- sub("\\(\\d{4}.*", "", lines, perl = TRUE)
+  has_personal_lint      <- grepl(",\\s*[A-Z]\\.", pre_year_lint, perl = TRUE)
+  has_institutional_lint <- grepl("\\.\\s*$", pre_year_lint) & !grepl("[?:]", pre_year_lint)
+  keep <- !(grepl("https://doi.org/", lines, fixed = TRUE) &
+              !has_personal_lint & !has_institutional_lint)
+  if (any(!keep)) { changed_lint <- TRUE }
+  lines <- lines[keep]
+
+  # 5. Remove duplicate DOI links within the same file (keep first occurrence).
   doi_hits <- regmatches(lines, regexpr("https://doi\\.org/[^>\\s]+", lines, perl = TRUE))
   doi_hits <- tolower(doi_hits)
   seen_dois <- character(0)

@@ -174,6 +174,7 @@ jobs:
 
       - name: Create pull request with new references
         if: steps.changes.outputs.changed == 'true'
+        id: create-pr
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -183,6 +184,14 @@ jobs:
           title: "New related references ${{ steps.date.outputs.today }}"
           body: |
             Automated collection of related references from Scopus & CrossRef.
-
-            Review the new citations, then merge to trigger deployment.
           labels: automated, references
+
+      - name: Auto-merge pull request
+        if: steps.create-pr.outputs.pull-request-number != ''
+        run: |
+          gh pr merge "${{ steps.create-pr.outputs.pull-request-number }}" \
+            --squash \
+            --subject "Automated related references update ${{ steps.date.outputs.today }}" \
+            --delete-branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
