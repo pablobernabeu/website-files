@@ -1050,11 +1050,17 @@ h3#related-podcasts ~ p {
   margin-left: 0 !important;
 }
 
-// Fix wand icon size and alignment in podcast notice (article pages: p is sibling of h3)
+// Fix wand icon size, alignment, and left margin in podcast notice
 h3#related-podcast ~ p .fa-wand-magic-sparkles,
 h3#related-podcasts ~ p .fa-wand-magic-sparkles {
   vertical-align: middle;
   font-size: 75%;
+  margin-left: 0.3em;
+}
+
+// Left margin for wand icon in NotebookLM notice on publication/post pages
+.article-style .fa-wand-magic-sparkles {
+  margin-left: 0.3em;
 }
 
 // Reduce margin above stream-meta article-metadata
