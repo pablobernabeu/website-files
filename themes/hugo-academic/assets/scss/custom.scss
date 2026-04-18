@@ -1050,17 +1050,17 @@ h3#related-podcasts ~ p {
   margin-left: 0 !important;
 }
 
-// Fix wand icon size, alignment, and left margin in podcast notice
+// Fix wand icon size, alignment, and right margin in podcast notice
 h3#related-podcast ~ p .fa-wand-magic-sparkles,
 h3#related-podcasts ~ p .fa-wand-magic-sparkles {
   vertical-align: middle;
   font-size: 75%;
-  margin-left: 0.3em;
+  margin-right: 0.3em;
 }
 
-// Left margin for wand icon in NotebookLM notice on publication/post pages
-.article-style .fa-wand-magic-sparkles {
-  margin-left: 0.3em;
+// Right margin for wand icon in NotebookLM notices (publication, post, multimedia, etc.)
+.fa-wand-magic-sparkles {
+  margin-right: 0.3em;
 }
 
 // Reduce margin above stream-meta article-metadata
@@ -1344,18 +1344,26 @@ textarea {
     margin-left: 2.3em !important;
     text-indent: -2.3em !important;
   }
-  
+}
+
+// Remove hanging indent from button paragraph (desktop)
+@media (min-width: 992px) {
   #container-publications > div.isotope-item > div > p {
-    margin-left: -1em !important;
+    margin-left: -2.8em !important;
+    margin-top: 0.35rem !important;
+    text-indent: 0 !important;
+    padding-left: 0 !important;
   }
 }
 
-// Remove hanging indent from button paragraph
-#container-publications > div.isotope-item > div > p {
-  margin-left: -1.8em !important;
-  margin-top: 0.35rem !important;
-  text-indent: 0 !important;
-  padding-left: 0 !important;
+// Remove hanging indent from button paragraph (mobile — keep less aggressive offset)
+@media (max-width: 991px) {
+  #container-publications > div.isotope-item > div > p {
+    margin-left: -1em !important;
+    margin-top: 0.35rem !important;
+    text-indent: 0 !important;
+    padding-left: 0 !important;
+  }
 }
 
 // Smaller font size for publication links and buttons
@@ -1396,7 +1404,7 @@ textarea {
 // Set max-width for publication page container to match blog posts
 #container-publications {
   max-width: 760px !important;
-  margin-left: auto !important;
+  margin-left: 0 !important;
   margin-right: auto !important;
 }
 
@@ -5683,10 +5691,12 @@ div.lds-ring:after {
 
 
 // Hanging indentation for references
-// .Rmd posts (Pandoc): <div id="references"><h2>…</h2><p>…</p></div>  → children inherit
-// .md posts (Goldmark): <h2 id="references">…</h2><p>…</p>            → siblings need explicit rule
-#reference, #references, .hanging-indent {
-  text-indent: -2em; 
+// .Rmd posts (Pandoc): <div id="references"><h2>…</h2><p>…</p></div>
+//   → apply only to <p> children, NOT the div (margin-left on div shifts h2/pre too)
+// .md posts (Goldmark): <h2 id="references">…</h2><p>…</p>
+//   → siblings need explicit rule
+#reference > p, #references > p, .hanging-indent {
+  text-indent: -2em;
   margin-left: 2em;
 }
 
@@ -5697,14 +5707,7 @@ h2#reference  ~ p, h3#reference  ~ p, h4#reference  ~ p {
   margin-left: 2em;
 }
 
-// Related references heading — styled like h2
-h3#related-references,
-h3.ref-section-heading,
-h2.ref-section-heading {
-  margin-top: 1.3rem;
-  font-size: 1.5rem !important;
-  font-weight: 600 !important;
-}
+// Related references heading styled via inline style in the HTML files
 
 // Related references 
 

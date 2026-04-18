@@ -974,8 +974,7 @@
       
       <div class="article-style">
         
-          Whereas the direction of main effects can be interpreted from the sign of the estimate, the interpretation of interaction effects often requires plots. This task is facilitated by the R package sjPlot. For instance, using the plot_model function, I plotted the interaction between two continuous variables.
-library(lme4)#&gt; Loading required package: Matrixlibrary(sjPlot)#&gt; Learn more about sjPlot with &#39;browseVignettes(&quot;sjPlot&quot;)&#39;.library(ggplot2)theme_set(theme_sjplot())# Create data partially based on code by Ben Bolker # from https://stackoverflow.
+          Custom functions that extend sjPlot to discretise continuous variables in interaction plots into equally-sized intervals (deciles or sextiles) that include minimum and maximum values, with legend counts showing sample sizes per level.
         
       </div>
     </div>
@@ -1033,8 +1032,7 @@ library(lme4)#&gt; Loading required package: Matrixlibrary(sjPlot)#&gt; Insta
       
       <div class="article-style">
         
-          The need for covariates—or nuisance variables—in statistical analyses is twofold. The first reason is purely statistical and the second reason is academic.
-First, the use of covariates is often necessary when the variable(s) of interest in a study may be connected to, and affected by, some satellite variables (Bottini et al., 2022; Elze et al., 2017; Sassenhagen &amp; Alday, 2016). This complex scenario is the most common one due to the multivariate, dynamic, interactive nature of the real world.
+          Covariates serve two essential purposes: statistically accounting for satellite variables that may affect variables of interest, and academically preventing the development of redundant theories by enabling direct comparisons between related theoretical constructs.
         
       </div>
     </div>

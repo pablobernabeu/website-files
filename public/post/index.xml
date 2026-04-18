@@ -616,8 +616,7 @@
       <pubDate>Sat, 24 Jun 2023 16:54:46 +0200</pubDate>
       
       <guid>https://pablobernabeu.github.io/2023/how-to-discretise-colour-variable-in-sjplot-plot-model-into-equally-sized-intervals/</guid>
-      <description>Whereas the direction of main effects can be interpreted from the sign of the estimate, the interpretation of interaction effects often requires plots. This task is facilitated by the R package sjPlot. For instance, using the plot_model function, I plotted the interaction between two continuous variables.
-library(lme4)#&amp;gt; Loading required package: Matrixlibrary(sjPlot)#&amp;gt; Learn more about sjPlot with &amp;#39;browseVignettes(&amp;quot;sjPlot&amp;quot;)&amp;#39;.library(ggplot2)theme_set(theme_sjplot())# Create data partially based on code by Ben Bolker # from https://stackoverflow.</description>
+      <description>Custom functions that extend sjPlot to discretise continuous variables in interaction plots into equally-sized intervals (deciles or sextiles) that include minimum and maximum values, with legend counts showing sample sizes per level.</description>
       
             <category>visualisation</category>
       
@@ -629,7 +628,7 @@ library(lme4)#&amp;gt; Loading required package: Matrixlibrary(sjPlot)#&amp;g
       
             <category>sjPlot</category>
       
-            <category>individual differences</category>
+            <category>Individual differences</category>
       
             <category>s</category>
       
@@ -754,13 +753,13 @@ library(fuzzyjoin)library(dplyr)#&amp;gt; #&amp;gt; Attaching package: &amp;#3
       <pubDate>Wed, 17 May 2023 00:00:00 +0000</pubDate>
       
       <guid>https://pablobernabeu.github.io/2023/assigning-participant-specific-parameters-automatically-in-opensesame/</guid>
-      <description>OpenSesame offers options to counterbalance properties of the stimulus across participants. However, in cases of more involved assignments of session parameters across participants, it becomes necessary to write a bit of Python code in an inline script, which should be placed at the top of the timeline. In such a script, the participant-specific parameters are loaded in from a csv file. Below is a minimal example of the csv file.</description>
+      <description>Python inline script for OpenSesame that automatically loads participant-specific parameters from a CSV file, enabling complex counterbalancing schemes beyond the standard interface options.</description>
       
             <category>research methods</category>
       
             <category>OpenSesame</category>
       
-            <category>python</category>
+            <category>Python</category>
       
             <category>s</category>
       
@@ -772,7 +771,7 @@ library(fuzzyjoin)library(dplyr)#&amp;gt; #&amp;gt; Attaching package: &amp;#3
       <pubDate>Wed, 17 May 2023 00:00:00 +0000</pubDate>
       
       <guid>https://pablobernabeu.github.io/2023/pronominal-object-clitics-in-preverbal-position-are-a-hard-nut-to-crack-for-google-translate/</guid>
-      <description>Unlike English, some Romance languages not only allow—but sometimes require—pronominal object clitics in preverbal position (Hanson &amp;amp; Carlson, 2014; Labotka et al., 2023). That is, instead of saying La maestra ha detto il nome (Italian) ‘The teacher has said the name’, Italian allows Il nome lo ha detto la maestra (literally, ‘The name it has said the teacher’), which could translate as ‘The name has been said by the teacher’, ‘The teacher has said the name’, or even ‘It is the teacher that has said the name’.</description>
+      <description>Analysis of how Google Translate handles pronominal object clitics in preverbal position in Romance languages, which serve to emphasize the agent and require marked translations to preserve this focus in English.</description>
       
             <category>linguistics</category>
       
@@ -804,8 +803,7 @@ library(fuzzyjoin)library(dplyr)#&amp;gt; #&amp;gt; Attaching package: &amp;#3
       <pubDate>Mon, 15 May 2023 00:00:00 +0000</pubDate>
       
       <guid>https://pablobernabeu.github.io/2023/covariates-are-necessary-to-validate-the-variables-of-interest-and-to-prevent-bogus-theories/</guid>
-      <description>The need for covariates—or nuisance variables—in statistical analyses is twofold. The first reason is purely statistical and the second reason is academic.
-First, the use of covariates is often necessary when the variable(s) of interest in a study may be connected to, and affected by, some satellite variables (Bottini et al., 2022; Elze et al., 2017; Sassenhagen &amp;amp; Alday, 2016). This complex scenario is the most common one due to the multivariate, dynamic, interactive nature of the real world.</description>
+      <description>Covariates serve two essential purposes: statistically accounting for satellite variables that may affect variables of interest, and academically preventing the development of redundant theories by enabling direct comparisons between related theoretical constructs.</description>
       
             <category>research methods</category>
       

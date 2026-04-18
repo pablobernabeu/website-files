@@ -71,14 +71,14 @@ slides: ''
 
 <a href='/thesis'>
 <button style = "background-color: white; color: black; border: 2px solid #DF2E2E; border-radius: 12px;">
-<h3 style = "margin-top: 7px !important; margin-bottom: 7px !important; margin-left: 9px !important; margin-right: 9px !important;">
+<h3 style = "margin-top: 6px !important; margin-bottom: 6px !important; margin-left: 8px !important; margin-right: 8px !important;">
 <span style="color:#DBE6DA;"></span> Online book </h3></button>
 </a>
       
 <br>
 
 
-### Related podcasts
+### Podcasts
 
 <i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using NotebookLM, with all the benefits and blind spots of human editing.</span>
 

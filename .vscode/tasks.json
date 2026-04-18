@@ -1,0 +1,25 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Rmd watcher",
+      "type": "shell",
+      "command": "Rscript build_stale_rmd.R --watch",
+      "isBackground": true,
+      "problemMatcher": [],
+      "options": {
+        "env": {
+          "RSTUDIO_PANDOC": "C:\\Program Files\\RStudio\\resources\\app\\bin\\quarto\\bin\\tools"
+        }
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "label": "Rmd watcher"
+      }
+    }
+  ]
+}

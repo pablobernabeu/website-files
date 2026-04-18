@@ -55,15 +55,14 @@ links:
 ---
 
 
-<div style = 'margin-bottom: 3%;'>
-<a href='https://rdcu.be/eNjUA' style="text-decoration: none;">
-<button class="full-text-btn" style="background-color: white; color: black; border: 2px solid #DF2E2E; border-radius: 12px; padding: 8px 0 12px 0;">
-<h3 class="full-text">
-<i class="fa-solid fa-lock-open" style="color: #3f8344ff;"></i>&nbsp;<b>View-only</b> full text 
-</h3>
-</button>
+
+<a href='https://rdcu.be/eNjUA'>
+<button style = "background-color: white; color: black; border: 2px solid #DF2E2E; border-radius: 12px;">
+<h3 style = "margin-top: 6px !important; margin-bottom: 6px !important; margin-left: 8px !important; margin-right: 8px !important;">
+<i class="fa-solid fa-lock-open" style="color: #3f8344ff;"></i>&nbsp;<b>View-only</b> full text </h3></button>
 </a>
-</div>
+
+<div style='margin-top:6%;'></div>
 
 
 #### &nbsp; <i class="fa fa-folder"></i>&nbsp; <a href='https://osf.io/e428p/'>General project</a>
@@ -72,7 +71,7 @@ links:
 
 #### &nbsp; <i class="fa fa-database"></i>&nbsp; <a href='https://osf.io/waf48/'>Data from our lab</a>
       
-<div style = 'margin-bottom: 5%;'></div>
+<div style = 'margin-bottom: 4%;'></div>
 
 ##### <a href='https://osf.io/h36wr/'>Video demonstration of the procedure followed in our lab</a>
 
@@ -86,12 +85,11 @@ links:
     webkitallowfullscreen>
 </iframe>
 
-<br>
-<br>
+<div style='margin-top:4%;'></div>
 
 <i class="fa-solid fa-lightbulb" fa-xl style="color: #d3a934ff;"></i>&nbsp; [The value of conducting a replication study during a PhD](https://doi.org/10.1017/S0140525X18000730).
 
-<br>
+<div style='margin-top:3%;'></div>
 
 ## Related podcasts
 
@@ -101,7 +99,7 @@ links:
 
 <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style="width:100%;max-width:720px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.podcasts.apple.com/us/podcast/behind-the-curtains-methods-used-to-investigate/id1837010092?i=1000725594999"></iframe>
 
-<br>
+<div style='margin-top:3%;'></div>
 
 
 ## Reference
