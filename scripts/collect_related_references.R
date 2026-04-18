@@ -436,7 +436,7 @@ insert_references_into_refs_html <- function(refs_html_path, new_citations) {
   if (!file.exists(refs_html_path)) {
     # Create the file from scratch with the standard skeleton
     new_section <- c(
-      "<h2 style=\"margin-top:2rem !important;font-size:1.5rem;font-weight:600;\">Related references</h2>",
+      "<h2 style=\"margin-top:2rem !important;font-size:1.5rem;\">Related references</h2>",
       "",
       "<div class = 'related-references'>",
       "",
