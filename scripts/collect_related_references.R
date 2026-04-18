@@ -279,6 +279,29 @@ get_crossref_metadata <- function(doi, max_retries = 2) {
     }
   }
 
+  # --- OpenAlex fallback when CrossRef + Scopus have no abstract ---
+  if (is.null(result$abstract)) {
+    oa_abs <- tryCatch({
+      url <- paste0("https://api.openalex.org/works/doi:", URLencode(doi, reserved = TRUE),
+                    "?select=abstract_inverted_index")
+      res <- httr::GET(url, httr::add_headers(Accept = "application/json"), httr::timeout(15))
+      if (httr::status_code(res) == 200) {
+        data <- jsonlite::fromJSON(httr::content(res, as = "text", encoding = "UTF-8"),
+                                   simplifyVector = FALSE)
+        aii <- data$abstract_inverted_index
+        if (!is.null(aii) && length(aii) > 0) {
+          # Reconstruct plain text from inverted index (word -> positions)
+          positions <- unlist(lapply(names(aii), function(w) {
+            setNames(rep(w, length(aii[[w]])), as.character(unlist(aii[[w]])))
+          }))
+          idx <- as.integer(names(positions))
+          paste(positions[order(idx)], collapse = " ")
+        } else NULL
+      } else NULL
+    }, error = function(e) NULL)
+    if (!is.null(oa_abs) && nchar(trimws(oa_abs)) > 0) result$abstract <- trimws(oa_abs)
+  }
+
   result
 }
 
