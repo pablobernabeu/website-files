@@ -172,6 +172,13 @@ jobs:
         id: date
         run: echo "today=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
+      - name: Delete existing PR branch if present
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git push origin --delete "automated/related-references-${{ steps.date.outputs.today }}" || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Create pull request with new references
         if: steps.changes.outputs.changed == 'true'
         id: create-pr
