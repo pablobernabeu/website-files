@@ -179,7 +179,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Automated related references update ${{ steps.date.outputs.today }}"
-          branch: automated/related-references
+          branch: automated/related-references-${{ steps.date.outputs.today }}
           delete-branch: true
           title: "New related references ${{ steps.date.outputs.today }}"
           body: |
