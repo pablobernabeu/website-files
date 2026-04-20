@@ -170,14 +170,9 @@ jobs:
 
       - name: Set date
         id: date
-        run: echo "today=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
-
-      - name: Delete existing PR branch if present
-        if: steps.changes.outputs.changed == 'true'
         run: |
-          git push origin --delete "automated/related-references-${{ steps.date.outputs.today }}" || true
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          echo "today=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          echo "branch=automated/related-references-$(date +'%Y-%m-%d')-${{ github.run_id }}" >> $GITHUB_OUTPUT
 
       - name: Create pull request with new references
         if: steps.changes.outputs.changed == 'true'
@@ -186,7 +181,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Automated related references update ${{ steps.date.outputs.today }}"
-          branch: automated/related-references-${{ steps.date.outputs.today }}
+          branch: ${{ steps.date.outputs.branch }}
           delete-branch: true
           title: "New related references ${{ steps.date.outputs.today }}"
           body: |
