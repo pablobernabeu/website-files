@@ -540,10 +540,11 @@ write_ref_metadata <- function(index_path, metadata) {
   )
 
   insert_at <- related_div[1]
+  tail_lines <- if (insert_at < length(content)) content[(insert_at + 1):length(content)] else character(0)
   content <- c(
     content[1:insert_at],
     insert_lines,
-    content[(insert_at + 1):length(content)]
+    tail_lines
   )
 
   writeLines(content, index_path, useBytes = TRUE)
@@ -599,10 +600,11 @@ write_scopus_queries <- function(index_path, query, query_source,
   )
 
   insert_at <- related_div[1]
+  tail_lines <- if (insert_at < length(content)) content[(insert_at + 1):length(content)] else character(0)
   content <- c(
     content[1:insert_at],
     insert_lines,
-    content[(insert_at + 1):length(content)]
+    tail_lines
   )
 
   writeLines(content, index_path, useBytes = TRUE)
@@ -807,7 +809,11 @@ for (pub_dir in pub_dirs) {
   }
 
   # ---- Deduplicate ----
-  new_dois <- new_dois[!tolower(new_dois) %in% existing_dois]
+  # Normalise and deduplicate within the fetched batch first (Scopus can
+  # return the same DOI twice in one result set), then remove DOIs already
+  # present in the HTML file.
+  new_dois <- unique(tolower(trimws(new_dois)))
+  new_dois <- new_dois[!new_dois %in% existing_dois]
   cat("  New DOIs to fetch:", length(new_dois), "\n")
 
   # ---- Fetch APA 7 citations and CrossRef metadata for new DOIs ----
@@ -1000,12 +1006,18 @@ for (lf in lint_files) {
 
   # 5. Remove duplicate DOI links within the same file (keep first occurrence).
   #    DOI URLs in HTML appear as href="https://doi.org/..." — exclude quote/angle chars.
-  doi_hits <- regmatches(lines, regexpr("https://doi\\.org/[^\"<>\\s]+", lines, perl = TRUE))
-  doi_hits <- tolower(doi_hits)
+  #    Use substr + attr to keep the result aligned with `lines` (regmatches drops
+  #    non-matching elements, which would misalign the index).
+  m_doi <- regexpr("https://doi\\.org/[^\"<>\\s]+", lines, perl = TRUE)
+  doi_hits <- tolower(ifelse(
+    m_doi > 0L,
+    substr(lines, m_doi, m_doi + attr(m_doi, "match.length") - 1L),
+    NA_character_
+  ))
   seen_dois <- character(0)
   keep <- vapply(seq_along(lines), function(i) {
     d <- doi_hits[i]
-    if (is.na(d) || nchar(d) == 0) return(TRUE)
+    if (is.na(d) || nchar(d) == 0L) return(TRUE)
     if (d %in% seen_dois) return(FALSE)
     seen_dois <<- c(seen_dois, d)
     TRUE

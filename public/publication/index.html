@@ -1079,7 +1079,64 @@
             
           </select>
         </div>
+        <div class="col-auto ml-auto">
+          <button id="pub-reset-filters" class="btn btn-sm btn-outline-secondary" style="visibility:hidden" title="Reset all filters">
+            <i class="fas fa-times-circle"></i> Reset filters
+          </button>
+        </div>
       </div>
+
+      <script>
+      (function () {
+        function initPubReset() {
+          var btn = document.getElementById('pub-reset-filters');
+          if (!btn) return;
+          var searchInput = document.querySelector('.filter-search');
+          var selects = document.querySelectorAll('.pub-filters');
+
+          function isActive() {
+            if (searchInput && searchInput.value.trim() !== '') return true;
+            for (var i = 0; i < selects.length; i++) {
+              if (selects[i].value !== '*') return true;
+            }
+            return false;
+          }
+
+          function updateVisibility() {
+            btn.style.visibility = isActive() ? 'visible' : 'hidden';
+          }
+
+          if (searchInput) {
+            searchInput.addEventListener('input', updateVisibility);
+            searchInput.addEventListener('keyup', updateVisibility);
+          }
+          for (var i = 0; i < selects.length; i++) {
+            selects[i].addEventListener('change', updateVisibility);
+          }
+
+          btn.addEventListener('click', function () {
+            if (searchInput) {
+              searchInput.value = '';
+              searchInput.dispatchEvent(new Event('keyup', { bubbles: true }));
+            }
+            for (var i = 0; i < selects.length; i++) {
+              selects[i].value = '*';
+              selects[i].dispatchEvent(new Event('change', { bubbles: true }));
+            }
+            if (window.location.hash) {
+              history.replaceState(null, '', window.location.pathname + window.location.search);
+            }
+            btn.style.visibility = 'hidden';
+          });
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initPubReset);
+        } else {
+          initPubReset();
+        }
+      })();
+      </script>
 
       <div id="container-publications">
         

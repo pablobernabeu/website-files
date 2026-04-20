@@ -1298,7 +1298,6 @@ textarea {
   font-size: 1rem !important;
   font-family: inherit !important;
   display: inline !important;
-  max-height: 1.5em !important;
 }
 
 #container-publications .li-cite-author a {
@@ -1326,40 +1325,40 @@ textarea {
 #container-publications > div.isotope-item > div {
   line-height: 1.5 !important;
   margin-bottom: 1.3rem !important;
-  padding-left: 0 !important;
 }
 
-/* Increase left margin in desktop view */
+/* Hanging indent in desktop view */
 @media (min-width: 992px) {
   #container-publications > div.isotope-item > div {
-    margin-left: 3.2em !important;
-    text-indent: -3.2em !important;
-    padding-left: 3rem !important;
+    margin-left: 0 !important;
+    padding-left: 1.5em !important;
+    text-indent: -1.5em !important;
   }
 }
 
-/* Adjust publication item margins in mobile view */
+/* Hanging indent in mobile view */
 @media (max-width: 991px) {
   #container-publications > div.isotope-item > div {
-    margin-left: 2.3em !important;
-    text-indent: -2.3em !important;
+    margin-left: 0 !important;
+    padding-left: 1.2em !important;
+    text-indent: -1.2em !important;
   }
 }
 
 // Remove hanging indent from button paragraph (desktop)
 @media (min-width: 992px) {
   #container-publications > div.isotope-item > div > p {
-    margin-left: -2.8em !important;
+    margin-left: -1.5em !important;
     margin-top: 0.35rem !important;
     text-indent: 0 !important;
     padding-left: 0 !important;
   }
 }
 
-// Remove hanging indent from button paragraph (mobile — keep less aggressive offset)
+// Remove hanging indent from button paragraph (mobile)
 @media (max-width: 991px) {
   #container-publications > div.isotope-item > div > p {
-    margin-left: -1em !important;
+    margin-left: -1.2em !important;
     margin-top: 0.35rem !important;
     text-indent: 0 !important;
     padding-left: 0 !important;
@@ -1401,10 +1400,10 @@ textarea {
   text-indent: 0 !important;
 }
 
-// Set max-width for publication page container to match blog posts
+// Set max-width for publication page container; align left edge with page heading
 #container-publications {
   max-width: 760px !important;
-  margin-left: 0 !important;
+  margin-left: auto !important;
   margin-right: auto !important;
 }
 
@@ -1413,8 +1412,8 @@ textarea {
   #container-publications {
     margin-left: 0 !important;
     margin-right: 0 !important;
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 }
 
@@ -1680,6 +1679,12 @@ body.page-publication #top > div.pub > div.article-container.pt-3 > div.article-
 // Hide middot dividers in publication metadata
 #top > div.pub > div.article-container.pt-3 > div.article-metadata > span.middot-divider {
   display: none !important;
+}
+
+// Disable article fade-in on individual pages so btn-links appear immediately
+#top > div.pub article,
+#top > div.talk article {
+  animation: none !important;
 }
 
 // Margin above publication badges
@@ -7231,11 +7236,12 @@ body.page-collection #top > div.universal-wrapper.pt-3 > p {
   }
 }
 
-/* Expand search input in publication filters */
+/* Search bar takes its own full row in publication filters */
 .universal-wrapper .form-row.mb-4 > div:nth-child(1) {
-  flex: 0 1 auto !important;
-  max-width: 320px !important;
-  min-width: 150px !important;
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
+  min-width: unset !important;
+  padding-right: 0 !important;
 }
 
 /* Adjust publication metadata and button link font sizes */
@@ -7315,9 +7321,11 @@ body #publication > div > div > div:nth-child(2) > div > div.media-body > div.bt
 }
 
 .universal-wrapper .form-row.mb-4 > div:nth-child(2),
-.universal-wrapper .form-row.mb-4 > div:nth-child(3) {
+.universal-wrapper .form-row.mb-4 > div:nth-child(3),
+.universal-wrapper .form-row.mb-4 > div:nth-child(4) {
   flex: 0 0 auto !important;
   padding-right: 0.25rem !important;
+  margin-top: 0.5rem !important;
 }
 
 /* Search modal improvements - use theme's fixed overlay (preserves scroll position) */
