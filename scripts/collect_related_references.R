@@ -770,7 +770,9 @@ for (pub_dir in pub_dirs) {
     if (is_first_run) {
       cat("  First run -> scopus_search_DOIs\n")
       scopus_search_DOIs(
-        query = query, search_period = search_period, quota = 20,
+        query = query,
+        search_period = paste0(min(search_period), "-", max(search_period)),
+        quota = 20,
         path = refs_path, save_date_time_file = TRUE,
         console_print_DOIs = FALSE
       )
@@ -785,7 +787,9 @@ for (pub_dir in pub_dirs) {
     } else {
       cat("  Subsequent run -> scopus_search_additional_DOIs\n")
       scopus_search_additional_DOIs(
-        query = query, search_period = run_period, quota = 20,
+        query = query,
+        search_period = paste0(min(run_period), "-", max(run_period)),
+        quota = 20,
         path = refs_path, save_date_time_file = TRUE,
         console_print_DOIs = FALSE
       )
@@ -966,12 +970,21 @@ for (lf in lint_files) {
   # All citation lines in related-references.html are wrapped in <p>...</p>.
   inner <- sub("^<p[^>]*>\\s*", "", lines)
 
-  # 1. Remove duplicate plain DOI URL preceding the canonical <a href> link.
-  #    Pattern: bare https://doi.org/DOI followed by an <a href=... tag.
+  # 1. Remove duplicate plain DOI URL when a hyperlinked DOI already exists.
+  #    Handles both orderings:
+  #    a) bare DOI preceding the <a href> link
+  #    b) bare DOI following a </a> close-tag (already linked)
   new_lines <- gsub(
     "\\s+https?://doi\\.org/[^\"<>\\s]+\\.?\\s+(<a\\s)",
     " \\1",
     lines,
+    ignore.case = TRUE,
+    perl = TRUE
+  )
+  new_lines <- gsub(
+    "(</a>)(\\.?\\s+)https?://doi\\.org/[^\"<>\\s]+\\.?",
+    "\\1\\2",
+    new_lines,
     ignore.case = TRUE,
     perl = TRUE
   )
