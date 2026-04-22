@@ -856,7 +856,8 @@ for (pub_dir in pub_dirs) {
       next
     }
     # Skip future publication years (data entry errors in CrossRef)
-    if (!is.na(meta$pub_year) && meta$pub_year > current_year + 1L) {
+    py <- meta$pub_year
+    if (length(py) == 1L && !is.na(py) && py > current_year + 1L) {
       cat("    Skipping: publication year", meta$pub_year, "is implausibly far in the future\n")
       next
     }
