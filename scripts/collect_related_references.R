@@ -1039,6 +1039,50 @@ for (lf in lint_files) {
   if (any(!keep)) { changed_lint <- TRUE }
   lines <- lines[keep]
 
+  # 6. Close unclosed <em> tags within <p> reference lines.
+  #    CrossRef sometimes returns titles with an <em> that is never closed (e.g.
+  #    when the title is truncated mid-word, or when <scp> tags are mixed in).
+  #    For every line starting with <p>, count open vs close <em> tags; if there
+  #    is a deficit, insert the missing </em> closers just before </p>.
+  fix_em_line <- function(ln) {
+    if (!grepl("^\\s*<p[^>]*>", ln, perl = TRUE)) return(ln)
+    n_open  <- lengths(regmatches(ln, gregexpr("<em>",  ln, fixed = TRUE)))
+    n_close <- lengths(regmatches(ln, gregexpr("</em>", ln, fixed = TRUE)))
+    deficit <- n_open - n_close
+    if (deficit <= 0L) return(ln)
+    closers <- strrep("</em>", deficit)
+    if (grepl("</p>\\s*$", ln, perl = TRUE)) {
+      # Insert before the closing </p>
+      gsub("</p>\\s*$", paste0(closers, "</p>"), ln, perl = TRUE)
+    } else {
+      # No </p> — append closers and add </p>
+      paste0(trimws(ln, which = "right"), closers, "</p>")
+    }
+  }
+  new_lines <- vapply(lines, fix_em_line, character(1L), USE.NAMES = FALSE)
+  if (any(new_lines != lines)) { changed_lint <- TRUE }
+  lines <- new_lines
+
+  # 7. Remove orphan inline-tag lines (e.g. "<scp>CEOs</scp>") that appear
+  #    between <p> reference lines.  These arise when CrossRef returns a title
+  #    split across lines with a <scp> small-caps tag for an acronym; the R
+  #    pandoc pipeline writes the continuation on a bare line without a <p>
+  #    wrapper, leaving an unattached fragment.  We keep only lines that are
+  #    either (a) empty/whitespace, (b) start with a recognised block tag
+  #    (<p>, <h2>, <div>, </div>, <script>, </script>, <!), or (c) are the
+  #    JSON / JS content that sits inside a <script> block.
+  in_script <- FALSE
+  keep_orphan <- vapply(lines, function(ln) {
+    stripped <- trimws(ln)
+    if (grepl("^<script", stripped)) { in_script <<- TRUE;  return(TRUE) }
+    if (grepl("^</script", stripped)) { in_script <<- FALSE; return(TRUE) }
+    if (in_script) return(TRUE)
+    if (nchar(stripped) == 0L) return(TRUE)
+    grepl("^<(?:p[^>]*>|h[1-6]|div|/div|/p>|!)", stripped, perl = TRUE)
+  }, logical(1L), USE.NAMES = FALSE)
+  if (any(!keep_orphan)) { changed_lint <- TRUE }
+  lines <- lines[keep_orphan]
+
   if (changed_lint) {
     writeLines(lines, lf, useBytes = TRUE)
     any_changes <- TRUE
