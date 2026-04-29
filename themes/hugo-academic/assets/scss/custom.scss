@@ -5033,6 +5033,11 @@ body.dark .document-viewer-toolbar {
   margin-top: 0 !important;
 }
 
+// Tighten top margin when Scholar icon is present (scholar-meta-row overrides the above)
+#blog > div > div > div:nth-child(2) > div > div.media-body > div.stream-meta.article-metadata.scholar-meta-row {
+  margin-top: -1.2rem !important;
+}
+
 // Decrease top margin for blog metadata on home page
 #blog > div > div > div:nth-child(2) > div > div.media-body > div.stream-meta.article-metadata > div {
   margin-top: 0rem !important;
@@ -5321,6 +5326,88 @@ div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #publication > div 
   color: var(--text-hover); 
   background-color: var(--bg-button-hover) !important;
   border-color: var(--border-color);
+}
+
+// No background/border for bare Google Scholar icon link
+a.scholar-icon-link,
+a.scholar-icon-link:link,
+a.scholar-icon-link:visited,
+a.scholar-icon-link:hover {
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  color: inherit !important;
+  font-weight: normal !important;
+}
+
+// Scholar icon image: scale to fit when inside btn-links (height: 2em context)
+.btn-links a.scholar-icon-link img {
+  width: auto !important;
+  height: 1.4em !important;
+  display: block !important;
+}
+
+// Scholar icon image: natural size when inline with text (stream-meta context)
+.stream-meta a.scholar-icon-link img {
+  width: 16px !important;
+  height: 16px !important;
+  vertical-align: middle !important;
+  display: inline-block !important;
+}
+
+// Blog list items: make stream-meta a flex row when Scholar icon is present
+.scholar-meta-row {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 0 2px !important;
+  margin-top: -1.2rem !important;
+  padding-top: 0 !important;
+}
+.scholar-meta-row > .article-metadata {
+  flex: 0 1 auto !important;
+  min-width: 0 !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+.scholar-meta-row > span.middot-divider {
+  position: relative !important;
+  top: 8px !important;
+}
+.scholar-meta-row > a.scholar-icon-link {
+  flex: 0 0 auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  height: auto !important;
+  min-height: unset !important;
+  max-height: unset !important;
+  position: relative !important;
+  top: 10px !important;
+}
+
+// Post single pages: scholar icon inside flex wrapper — reset height and nudge down
+article .article-container.pt-3 > div > .btn-links a.scholar-icon-link {
+  height: auto !important;
+  min-height: unset !important;
+  max-height: unset !important;
+  position: relative !important;
+  top: -2px !important;
+}
+article .article-container.pt-3 > div > .btn-links:has(a.scholar-icon-link) {
+  display: inline-flex !important;
+  align-items: center !important;
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-left: 4px !important;
+}
+article .article-container.pt-3 > div > .btn-links:has(a.scholar-icon-link)::before {
+  content: '\00B7';
+  font-size: 15px;
+  color: rgba(0,0,0,0.54);
+  padding-right: 0.65em;
+  padding-left: 0.45em;
 }
 
 // unvisited tag and category links

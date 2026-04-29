@@ -2,6 +2,7 @@
 title: 'Event-related potentials: Why and how I used them'
 author: ''
 date: '2020-01-01'
+google_scholar: true
 slug: event-related-potentials-why-and-how-i-used-them
 categories:
   - event-related potentials

@@ -1,0 +1,183 @@
+{{ $is_list := .is_list }}
+{{ $page := .page }}
+{{ $link := "" }}
+
+{{/* ***** TODO: Deprecate `url_preprint` in favour of `url_fulltext` given there's now a dedicated "Preprint" pub. type. ***** */}}
+{{ with $page.Params.url_preprint }}
+  {{ $resource := $page.Resources.GetMatch . }}
+  {{ if $resource }}
+    {{ $link = $resource.RelPermalink }}
+  {{ else }}
+    {{ $link = . | relURL }}
+  {{ end }}
+<a class="btn btn-outline-primary my-1 mr-1{{ if $is_list }} btn-sm{{end}}" href="{{ $link }}">
+  {{ i18n "btn_preprint" }}
+</a>
+{{ end }}
+{{ $pdf := "" }}
+{{ $resource := $page.Resources.GetMatch (printf "%s.pdf" $page.File.ContentBaseName) }}
+{{ with $resource }}
+  {{ $pdf = .RelPermalink }}
+{{ else }}
+  {{ if $page.Params.url_fulltext }}
+    {{ $pdf = $page.Params.url_fulltext | relURL }}
+  {{ end }}
+{{ end }}
+
+{{ with $pdf }}
+<a class="btn btn-outline-primary my-1 mr-1{{ if $is_list }} btn-sm{{end}}" href="{{ . }}">
+  {{ i18n "btn_fulltext" | markdownify }}
+</a>
+{{ end }}
+{{ $resource := $page.Resources.GetMatch "cite.bib" }}
+{{ with $resource }}
+<button type="button" class="btn btn-outline-primary my-1 mr-1{{ if $is_list }} btn-sm{{end}} js-cite-modal"
+        data-filename="{{ .RelPermalink }}">
+  {{ i18n "btn_cite" }}
+</button>
+{{ end }}
+{{ with $page.Params.url_code }}
+  {{ $resource := $page.Resources.GetMatch . }}
+  {{ if $resource }}
+    {{ $link = $resource.RelPermalink }}
+  {{ else }}
+    {{ $link = . | relURL }}
+  {{ end }}
+<a class="btn btn-outline-primary my-1 mr-1{{ if $is_list }} btn-sm{{end}}" href="{{ $link }}">
+  {{ i18n "btn_code" }}
+</a>
+{{ end }}
+{{ with $page.Params.url_data }}
+  {{ $resource := $page.Resources.GetMatch . }}
+  {{ if $resource }}
+    {{ $link = $resource.RelPermalink }}
+  {{ else }}
+    {{ $link = . | relURL }}
+  {{ end }}
+<a class="btn btn-outline-primary my-1 mr-1{{ if $is_list }} btn-sm{{end}}" href="{{ $link }}">
+  {{ i18n "btn_data" }}
+</a>
+{{ end }}
+{{ if $page.Params.projects }}
+{{ range $page.Params.projects }}
+  {{ with (site.GetPage (printf "project/%s" .)) }}
+  <a class="btn btn-outline-primary my-1 mr-1{{ if $is_list }} btn-sm{{end}}" href="{{ .RelPermalink }}">
+    {{ i18n "btn_project" }}
+  </a>
+  {{ else }}
+    {{/* errorf "The `projects` parameter in `content/%s` references a project file, `content/project/%s`, which cannot be found. Please either set `projects = []` or fix the reference." $page.File.Path . */}}
+  {{ end }}
+{{ end }}
+{{ else }}
+{{ with $page.Params.url_project }}
+<a class="btn btn-outline-primary my-1 mr-1{{ if $is_list }} btn-sm{{end}}" href="{{ . }}">
+  {{ i18n "btn_project" }}
+</a>
+{{ end }}
+{{ end }}
+{{ with $page.Params.url_poster }}
+  {{ $resource := $page.Resources.GetMatch . }}
+  {{ if $resource }}
+    {{ $link = $resource.RelPermalink }}
+  {{ else }}
+    {{ $link = . | relURL }}
+  {{ end }}
+<a class="btn btn-outline-primary my-1 mr-1{{ if $is_list }} btn-sm{{end}}" href="{{ $link }}">
+  {{ i18n "btn_poster" }}
+</a>
+{{ end }}
+{{ if $page.Params.slides }}
+  {{ with (site.GetPage (printf "slides/%s" $page.Params.slides)) }}
+  <a class="btn btn-outline-primary my-1 mr-1{{ if $is_list }} btn-sm{{end}}" href="{{ .RelPermalink }}">
+    {{ i18n "btn_slides" }}
+  </a>
+  {{ end }}
+{{ else }}
+{{ with $page.Params.url_slides }}
+  {{ $resource := $page.Resources.GetMatch . }}
+  {{ if $resource }}
+    {{ $link = $resource.RelPermalink }}
+  {{ else }}
+    {{ $link = . | relURL }}
+  {{ end }}
+<a class="btn btn-outline-primary my-1 mr-1{{ if $is_list }} btn-sm{{end}}" href="{{ $link }}">
+  {{ i18n "btn_slides" }}
+</a>
+{{ end }}
+{{ end }}
+{{ with $page.Params.url_video }}
+  {{ $resource := $page.Resources.GetMatch . }}
+  {{ if $resource }}
+    {{ $link = $resource.RelPermalink }}
+  {{ else }}
+    {{ $link = . | relURL }}
+  {{ end }}
+<a class="btn btn-outline-primary my-1 mr-1{{ if $is_list }} btn-sm{{end}}" href="{{ $link }}">
+  {{ i18n "btn_video" }}
+</a>
+{{ end }}
+{{ with $page.Params.url_source }}
+  {{ $resource := $page.Resources.GetMatch . }}
+  {{ if $resource }}
+    {{ $link = $resource.RelPermalink }}
+  {{ else }}
+    {{ $link = . | relURL }}
+  {{ end }}
+<a class="btn btn-outline-primary my-1 mr-1{{ if $is_list }} btn-sm{{end}}" href="{{ $link }}">
+  {{ i18n "btn_source" }}
+</a>
+{{ end }}
+{{ with $page.Params.doi }}
+<a class="btn btn-outline-primary my-1 mr-1{{ if $is_list }} btn-sm{{end}}" href="https://doi.org/{{ . }}">
+  DOI
+</a>
+{{ end }}
+{{ range $page.Params.links }}
+  {{ $pack := or .icon_pack "fas" }}
+  {{ $pack_prefix := $pack }}
+  {{ if in (slice "fab" "fas" "far" "fal") $pack }}
+    {{ $pack_prefix = "fa" }}
+  {{ end }}
+  {{ $link := .url | default "" }}
+  {{ $scheme := (urls.Parse $link).Scheme }}
+  {{ $target := "" }}
+  {{ if not $scheme }}
+    {{ $resource := $page.Resources.GetMatch $link }}
+    {{ if $resource }}
+      {{ $link = $resource.RelPermalink }}
+    {{ else }}
+      {{ $link = $link | relURL }}
+    {{ end }}
+  {{ else if in (slice "http" "https") $scheme }}
+    {{/* Links open in same tab - users can choose to open in new tab */}}
+  {{ end }}
+  <a class="btn btn-outline-primary my-1 mr-1{{ if $is_list }} btn-sm{{end}}" href="{{ $link | safeURL }}" {{ $target | safeHTMLAttr }}>
+    {{ if .icon }}<i class="{{ $pack }} {{ $pack_prefix }}-{{ .icon }} {{if .name}}mr-1{{end}}"></i>{{end}}
+    {{ with .name }}{{ . | safeHTML }}{{end}}
+  </a>
+{{ end }}
+{{ $scholar_titles_lc := slice }}
+{{ with site.Data.scholar_index }}
+  {{ $scholar_titles_lc = .titles_lc }}
+{{ end }}
+{{ $title_lc := strings.ToLower $page.Title }}
+{{ $in_scholar := false }}
+{{ range $scholar_titles_lc }}
+  {{ if or (eq . $title_lc) (strings.HasPrefix . $title_lc) (strings.HasPrefix $title_lc .) }}
+    {{ $in_scholar = true }}
+  {{ end }}
+{{ end }}
+{{/* For posts, Scholar button is opt-in (requires google_scholar: true). For other types, opt-out (hidden only if google_scholar: false). */}}
+{{ $show_scholar := false }}
+{{ if eq $page.Type "post" }}
+  {{ $show_scholar = and $in_scholar (eq $page.Params.google_scholar true) }}
+{{ else }}
+  {{ $show_scholar = and $in_scholar (ne $page.Params.google_scholar false) }}
+{{ end }}
+{{ if $show_scholar }}
+  {{ $title_q := printf `"Pablo Bernabeu" "%s"` $page.Title | urlquery }}
+  {{ $scholar_url := printf "https://scholar.google.com/scholar?hl=en&as_sdt=0%%2C5&q=%s&btnG=" $title_q }}
+<a href="{{ $scholar_url }}" title="Search on Google Scholar" class="my-1 mr-1 scholar-icon-link" style="background:transparent!important;background-image:none!important;border:none!important;padding:0!important;box-shadow:none!important;">
+  <img src="/img/google-scholar-favicon.png" alt="Google Scholar" width="28" height="28" style="display:block;">
+</a>
+{{ end }}

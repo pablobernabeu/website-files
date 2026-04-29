@@ -44,7 +44,20 @@
     <div class="article-style">{{ . | replaceRE "▼" "" | replaceRE "▶" "" | safeHTML }}</div>
     {{ end }}
 
-    <div class="stream-meta article-metadata">
+    {{ $scholar_titles_lc_li := slice }}
+    {{ with site.Data.scholar_index }}{{ $scholar_titles_lc_li = .titles_lc }}{{ end }}
+    {{ $title_lc_li := strings.ToLower $item.Title }}
+    {{ $in_scholar_li := false }}
+    {{ range $scholar_titles_lc_li }}
+      {{ if or (eq . $title_lc_li) (strings.HasPrefix . $title_lc_li) (strings.HasPrefix $title_lc_li .) }}
+        {{ $in_scholar_li = true }}
+      {{ end }}
+    {{ end }}
+    {{ $show_scholar_li := false }}
+    {{ if eq $item.Type "post" }}
+      {{ $show_scholar_li = and $in_scholar_li (eq $item.Params.google_scholar true) }}
+    {{ end }}
+    <div class="stream-meta article-metadata{{ if $show_scholar_li }} scholar-meta-row{{ end }}">
       {{ if eq $item.Type "presentation" }}
       <div>
         <span>{{ partial "functions/get_event_dates" $item }}</span>
@@ -58,6 +71,9 @@
       <div>{{ partial "page_metadata_authors" $item }}</div>
       {{ else if not $show_authors_only }}
       {{ partial "page_metadata" (dict "page" $item "is_list" 1) }}
+      {{ end }}
+      {{ if $show_scholar_li }}
+      <span class="middot-divider"></span>{{ partial "page_links" (dict "page" $item "is_list" 1) }}
       {{ end }}
     </div>
 

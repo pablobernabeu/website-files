@@ -2,6 +2,26 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "Serve site",
+      "type": "shell",
+      "command": "Rscript -e \"blogdown::serve_site()\"",
+      "isBackground": true,
+      "problemMatcher": [],
+      "options": {
+        "env": {
+          "RSTUDIO_PANDOC": "C:\\Program Files\\RStudio\\resources\\app\\bin\\quarto\\bin\\tools"
+        }
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "label": "Serve site"
+      }
+    },
+    {
       "label": "Rmd watcher",
       "type": "shell",
       "command": "Rscript build_stale_rmd.R --watch",

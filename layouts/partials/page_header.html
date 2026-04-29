@@ -55,8 +55,15 @@
 
   {{ partial "publication-type-badge.html" $page }}
 
+  {{ if eq $page.Type "post" }}
+  <div style="display:flex;align-items:center;flex-wrap:wrap;">
+    {{ partial "page_metadata" (dict "page" $page "is_list" 0 "share" true) }}
+    {{ partial "page_links_div.html" $page }}
+  </div>
+  {{ else }}
   {{ partial "page_metadata" (dict "page" $page "is_list" 0 "share" true) }}
   {{ partial "page_links_div.html" $page }}
+  {{ end }}
 </div>
 
 <div class="article-header {{$image_container}} featured-image-wrapper mt-4 mb-4" style="max-width: {{$image.Width}}px; max-height: {{$image.Height}}px;">
@@ -83,8 +90,15 @@
   {{ partial "publication-type-badge.html" $page }}
 
   {{ if not .IsNode }}
+  {{ if eq $page.Type "post" }}
+  <div style="display:flex;align-items:center;flex-wrap:wrap;">
+    {{ partial "page_metadata" (dict "page" $page "is_list" 0 "share" true) }}
+    {{ partial "page_links_div.html" $page }}
+  </div>
+  {{ else }}
   {{ partial "page_metadata" (dict "page" $page "is_list" 0 "share" true) }}
   {{ partial "page_links_div.html" $page }}
+  {{ end }}
   {{end}}
 </div>
 {{end}}

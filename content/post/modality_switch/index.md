@@ -3,6 +3,7 @@ title: 'Modality switch effects emerge early and increase throughout conceptual 
 author: ''
 date: '2017-01-01'
 lastmod: ''
+google_scholar: true
 slug: modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing-evidence-from-erps
 categories:
   - psycholinguistics
