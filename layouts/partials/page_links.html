@@ -177,7 +177,7 @@
 {{ if $show_scholar }}
   {{ $title_q := printf `"Pablo Bernabeu" "%s"` $page.Title | urlquery }}
   {{ $scholar_url := printf "https://scholar.google.com/scholar?hl=en&as_sdt=0%%2C5&q=%s&btnG=" $title_q }}
-<a href="{{ $scholar_url }}" title="Search on Google Scholar" class="my-1 mr-1 scholar-icon-link" style="background:transparent!important;background-image:none!important;border:none!important;padding:0!important;box-shadow:none!important;">
-  <img src="/img/google-scholar-favicon.png" alt="Google Scholar" width="28" height="28" style="display:block;">
+<a href="{{ $scholar_url }}" title="Search on Google Scholar" class="mr-1 scholar-icon-link" style="background:transparent!important;background-image:none!important;border:none!important;padding:0!important;box-shadow:none!important;margin-top:0!important;margin-bottom:0!important;display:inline-flex!important;align-items:center!important;vertical-align:middle!important;">
+  <img src="/img/google-scholar-favicon.png" alt="Google Scholar" width="28" height="28" style="display:inline-block;vertical-align:middle;">
 </a>
 {{ end }}

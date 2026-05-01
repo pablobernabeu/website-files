@@ -1538,7 +1538,7 @@ textarea {
   margin-right: auto !important;
 }
 
-// Scholar icon in publication filter list: scale to match button height and centre vertically
+// Scholar icon in publication filter list: align with buttons and remove extra margin
 #container-publications .btn-links a.scholar-icon-link {
   height: 2.5em !important;
   min-height: 2.5em !important;
@@ -1546,11 +1546,24 @@ textarea {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  vertical-align: middle !important;
+  padding: 0 !important;
 }
 #container-publications .btn-links a.scholar-icon-link img {
   width: auto !important;
-  height: 1.9em !important;
-  display: block !important;
+  height: 0.7em !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+}
+// Make btn-links a flex row so items align on the same baseline
+#container-publications .btn-links {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
 }
 
 // Reduce margins in open science popups
@@ -5374,8 +5387,8 @@ a.scholar-icon-link:hover {
 
 // Scholar icon image: natural size when inline with text (stream-meta context)
 .stream-meta a.scholar-icon-link img {
-  width: 16px !important;
-  height: 16px !important;
+  width: 24px !important;
+  height: 24px !important;
   vertical-align: middle !important;
   display: inline-block !important;
 }
@@ -5417,6 +5430,10 @@ article .article-container.pt-3 > div > .btn-links a.scholar-icon-link {
   max-height: unset !important;
   position: relative !important;
   top: -2px !important;
+}
+article .article-container.pt-3 > div > .btn-links a.scholar-icon-link img {
+  width: auto !important;
+  height: 1.6em !important;
 }
 article .article-container.pt-3 > div > .btn-links:has(a.scholar-icon-link) {
   display: inline-flex !important;
