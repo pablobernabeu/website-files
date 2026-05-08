@@ -1168,6 +1168,16 @@ blockquote {
   padding: 0.7%;
   padding-left: 1.7%;
   margin-bottom: 1.5rem !important;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+// Override _root.scss's large right padding on narrow viewports to prevent overflow
+@media (max-width: 600px) {
+  blockquote {
+    padding-right: 1rem !important;
+  }
 }
 
 // General list spacing – increase vertical gap between items in bullet and numbered lists
