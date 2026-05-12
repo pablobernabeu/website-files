@@ -1168,16 +1168,6 @@ blockquote {
   padding: 0.7%;
   padding-left: 1.7%;
   margin-bottom: 1.5rem !important;
-  overflow-wrap: break-word;
-  word-break: break-word;
-  max-width: 100%;
-}
-
-// Override _root.scss's large right padding on narrow viewports to prevent overflow
-@media (max-width: 600px) {
-  blockquote {
-    padding-right: 1rem !important;
-  }
 }
 
 // General list spacing – increase vertical gap between items in bullet and numbered lists
@@ -1725,12 +1715,16 @@ body.page-publication #top > div.pub > div.article-container.pt-3 > div.article-
   animation: none !important;
 }
 
-// Ensure btn-links on individual post/blog pages are immediately visible (bypass scroll animation)
+// Ensure btn-links on individual publication/post pages are immediately visible (bypass scroll animation)
+// Note: publication pages use .pub wrapper (not article), post pages use article wrapper
+.pub .article-container.pt-3 > div.btn-links.mb-3 > a:link,
+.pub .article-container.pt-3 > div.btn-links.mb-3 > button:not(.full-text-btn),
 article .article-container.pt-3 > div.btn-links.mb-3 > a:link,
 article .article-container.pt-3 > div.btn-links.mb-3 > button:not(.full-text-btn) {
   opacity: 1 !important;
   transform: none !important;
   transition: none !important;
+  animation: none !important;
 }
 
 // Margin above publication badges
