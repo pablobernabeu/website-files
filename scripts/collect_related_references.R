@@ -349,6 +349,28 @@ format_citation_for_hugo <- function(citation, doi) {
     citation,
     perl = TRUE
   )
+  # Fallback for conference proceedings and book chapters:
+  # ". Container Title, N\u2013M" -- no separate volume/issue number.
+  # Only apply when the journal pattern above left no italics (no "*" added).
+  if (!grepl("\\*", citation, perl = TRUE)) {
+    citation <- sub(
+      "(\\.\\s+)([^.]+?),\\s*(\\d+[\u2013\u2014-]\\d+)\\s*$",
+      "\\1*\\2*, \\3",
+      citation,
+      perl = TRUE
+    )
+  }
+  # Fallback for ahead-of-print / online-first:
+  # ". Journal Name" at end of body, no comma/volume/pages.
+  # Only apply when neither previous pattern added italics.
+  if (!grepl("\\*", citation, perl = TRUE)) {
+    citation <- sub(
+      "(\\.\\s+)([^.]+?)$",
+      "\\1*\\2*",
+      citation,
+      perl = TRUE
+    )
+  }
   # Reject ahead-of-print placeholders: volume 0 or page 0 signals no real metadata yet
   if (grepl(",\\s*0\\s*(\\(|,|\\.|$)", citation, perl = TRUE)) {
     return(NULL)
