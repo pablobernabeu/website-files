@@ -57,22 +57,6 @@ links:
 
 
 
-### Study at a glance
-
-*Schematic overview; see the text for details.*
-
-{{< diagram >}}
-graph TD
-  A["Read sentence implying object shape and orientation"] --> B["Verify pictured object: from the sentence or not"]
-  B --> C["Test match advantage for orientation across 18 languages, nearly 4,000 participants"]
-  C --> D["No compelling evidence for an orientation match advantage"]
-  C --> E["Match advantage not predicted by mental rotation scores"]
-  D --> F["Implications for mental simulation theory and methodology"]
-  E --> F
-{{< /diagram >}}
-
-
-
 <a href='https://rdcu.be/eNjUA'>
 <button style = "background-color: white; color: black; border: 2px solid #DF2E2E; border-radius: 12px;">
 <h3 style = "margin-top: 6px !important; margin-bottom: 6px !important; margin-left: 8px !important; margin-right: 8px !important;">
@@ -81,6 +65,17 @@ graph TD
 
 <div style='margin-top:6%;'></div>
 
+
+### Study at a glance
+{{< diagram >}}
+graph TD
+  A["Read sentence implying<br/>object shape and orientation"] --> B["Verify pictured object:<br/>from the sentence or not"]
+  B --> C["Test match advantage for orientation<br/>across 18 languages,<br/>nearly 4,000 participants"]
+  C --> D["No compelling evidence for<br/>an orientation match advantage"]
+  C --> E["Match advantage not predicted<br/>by mental rotation scores"]
+  D --> F["Implications for mental simulation<br/>theory and methodology"]
+  E --> F
+{{< /diagram >}}
 
 #### &nbsp; <i class="fa fa-folder"></i>&nbsp; <a href='https://osf.io/e428p/'>General project</a>
 

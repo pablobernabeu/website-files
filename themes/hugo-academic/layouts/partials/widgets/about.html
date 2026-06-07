@@ -30,7 +30,7 @@
       {{ end }}
 
       <div class="portrait-title">
-        <h2>{{ $person.name }}</h2>
+        <h1>{{ $person.name }}</h1>
         {{ with $person.role }}<h3>{{ . | markdownify | emojify }}</h3>{{ end }}
         {{ with $person.email }}<h3 class="profile-email" style="margin-top:5%;">{{ . | markdownify | emojify }}</h3>{{ end }}
 
@@ -101,7 +101,7 @@
   <div class="col-12 col-lg-8">
 
     {{/* Only display widget title in explicit instances of about widget, not in author pages. */}}
-    {{ if and $page.Params.widget $page.Title | markdownify | emojify }}<h1>{{ $page.Title | markdownify | emojify }}</h1>{{ end }}
+    {{ if and $page.Params.widget $page.Title | markdownify | emojify }}<h2>{{ $page.Title | markdownify | emojify }}</h2>{{ end }}
 
     {{ $person_page.Content }}
 

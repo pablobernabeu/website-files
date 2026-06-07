@@ -59,15 +59,12 @@ graph TD
   B --> C["Mean ratings per word<br/>(acceptable reliability)"]
   C --> D["Derived measures:<br/>modality exclusivity, perceptual strength"]
   C --> E["Linked corpus variables:<br/>length, frequency, distinctiveness,<br/>concreteness, age of acquisition"]
-  D --> F["Replicate Lynott and Connell (2009, 2013)"]
+  D --> F["Replicate Lynott and<br/>Connell (2009, 2013)"]
   F --> G["Uni-, bi- and tri-modal words;<br/>vision most prevalent"]
   F --> H["Vision and touch related;<br/>audition more independent"]
-  F --> I["Properties more perceptual than concepts"]
+  F --> I["Properties more perceptual<br/>than concepts"]
   F --> J["Sound symbolism: auditory strength<br/>best predicts lexical properties"]
 {{< /diagram >}}
-
-*Schematic overview of the study's design and main findings.*
-
 
 ### Reference
 

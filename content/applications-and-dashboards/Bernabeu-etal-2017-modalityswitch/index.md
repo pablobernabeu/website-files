@@ -54,21 +54,6 @@ url_fulltext: 'https://psyarxiv.com/a5pcz'
 # url_video: '#'
 ---
 
-### How it works
-
-*Schematic overview; see the text for details.*
-
-{{< diagram >}}
-graph TD
-  A["EEG-ERP data from word comprehension experiment"] --> B["ERP plots spanning 800 ms of word processing"]
-  B --> C["Groups of participants"]
-  C --> D["Individual participants"]
-  D --> E["Brain areas"]
-  E --> F["Electrodes"]
-  B --> G["Download HD plots, view 95% confidence intervals"]
-{{< /diagram >}}
-
-
 <a href='https://pablobernabeu.shinyapps.io/ERP-waveform-visualization_CMS-experiment/'>
       <button style = "background-color: white; color: black; border: 2px solid #4CAF50; border-radius: 12px;">
       <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;"> 
@@ -76,6 +61,17 @@ graph TD
 
 <br>
 <br>
+
+### How it works
+{{< diagram >}}
+graph TD
+  A["EEG-ERP data from word<br/>comprehension experiment"] --> B["ERP plots spanning 800 ms<br/>of word processing"]
+  B --> C["Groups of participants"]
+  C --> D["Individual participants"]
+  D --> E["Brain areas"]
+  E --> F["Electrodes"]
+  B --> G["Download HD plots, view<br/>95% confidence intervals"]
+{{< /diagram >}}
 
 **Content**
 

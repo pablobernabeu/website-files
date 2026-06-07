@@ -1,0 +1,3 @@
+{{- /* Markdown image render hook: add native lazy-loading + async decoding.
+     Active on Hugo >= 0.62 (the deploy build); harmlessly ignored by local 0.61. */ -}}
+<img src="{{ .Destination | safeURL }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async">

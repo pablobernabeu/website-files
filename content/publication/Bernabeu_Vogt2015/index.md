@@ -43,18 +43,15 @@ url_fulltext: 'https://www.researchgate.net/profile/Pablo_Bernabeu3/publication/
 
 {{< diagram >}}
 graph TD
-  A["Adapted prior experiment: participants act out events"] --> B["Perceptual features of events"]
-  A --> C["Added variable: communication mode"]
-  C --> D["Body-based communication (gestures)"]
-  C --> E["Disembodied communication (symbol matching)"]
-  B --> F["Resulting grammatical orders / preferences"]
+  A["Adapted prior experiment:<br/>participants act out events"] --> B["Perceptual features of events"]
+  A --> C["Added variable:<br/>communication mode"]
+  C --> D["Body-based communication<br/>(gestures)"]
+  C --> E["Disembodied communication<br/>(symbol matching)"]
+  B --> F["Resulting grammatical<br/>orders / preferences"]
   D --> F
   E --> F
-  F --> G["Greater effect of embodiment on grammatical preferences"]
+  F --> G["Greater effect of embodiment<br/>on grammatical preferences"]
 {{< /diagram >}}
-
-*Schematic overview; see the text for details.*
-
 ### Reference
 
 Bernabeu, P., & Vogt, P. (2015). Language evolution: Current status and future directions. *Tenth Language at the University of Essex (LangUE) Postgraduate Conference*. https://researchgate.net/publication/280858062/

@@ -77,16 +77,13 @@ url_data: 'https://github.com/pablobernabeu/Dutch-modality-exclusivity-norms-Ber
 
 {{< diagram >}}
 graph TD
-  A["Dutch modality exclusivity norms data"] --> B["Flexdashboard front-end (R Markdown)"]
-  B --> C["Shiny back-end (reactive selection and download)"]
-  C --> D["Info tab: HTML and CSS text plus rmarkdown output"]
-  C --> E["Table tab: reactable (colours, bar charts)"]
-  C --> F["Plot tab: plotly (PCA scatter, tooltips)"]
-  B --> G["Static Flexdashboard-only version on RPubs (Shiny removed)"]
+  A["Dutch modality<br/>exclusivity norms data"] --> B["Flexdashboard front-end<br/>(R Markdown)"]
+  B --> C["Shiny back-end<br/>(reactive selection and download)"]
+  C --> D["Info tab: HTML and CSS text<br/>plus rmarkdown output"]
+  C --> E["Table tab: reactable<br/>(colours, bar charts)"]
+  C --> F["Plot tab: plotly<br/>(PCA scatter, tooltips)"]
+  B --> G["Static Flexdashboard-only version<br/>on RPubs (Shiny removed)"]
 {{< /diagram >}}
-
-*Schematic overview; see the text for details.*
-
 This web application presents linguistic data over several tabs. The code combines the great front-end of Flexdashboard—based on R Markdown and yielding an unmatched user interface—, with the great back-end of Shiny—allowing users to download sections of data they select, in various formats.
 
 - A nice find was the 'reactable' package, which implements Javascript under the hood to allow the use of colours, bar charts, etc.

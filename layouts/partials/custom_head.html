@@ -73,7 +73,7 @@
   /* Diagram fits: allow a little more width than the prose column (viewport-safe) */
   .mermaid:not(.pz) {
     position: relative; left: 50%; transform: translateX(-50%);
-    width: 94vw; max-width: 960px; margin: 1rem auto; overflow-x: auto;
+    width: 94vw; max-width: 960px; margin: 1rem auto 2rem; overflow-x: auto;
   }
   .mermaid:not(.pz) > svg { max-width: 100% !important; height: auto !important; display: block; margin: 0 auto; }
 
@@ -82,7 +82,7 @@
      own aspect ratio, so the box hugs the content instead of padding it; the
      min-height here is only a fallback for an SVG with no readable size. */
   .mermaid.pz {
-    position: relative; width: 100%; margin: 1rem auto;
+    position: relative; width: 100%; margin: 1rem auto 2rem;
     min-height: 220px;
     border: 1px solid rgba(127, 127, 127, 0.3); border-radius: 8px;
     background: rgba(127, 127, 127, 0.04); overflow: hidden;

@@ -47,19 +47,16 @@ url_poster: 'https://www.researchgate.net/publication/271588734_Linguistic_relat
 
 {{< diagram >}}
 graph TD
-  A["Linguistic relativity: language influences cognition"] --> B["Motion event encoding (MEE) typology"]
-  B --> C["Path-in-verb languages (e.g., leave)"]
-  B --> D["Manner-in-verb languages (e.g., jump)"]
-  A --> E["Mixed prior results: no effect to verbal and nonverbal effects"]
+  A["Linguistic relativity:<br/>language influences cognition"] --> B["Motion event encoding<br/>(MEE) typology"]
+  B --> C["Path-in-verb languages<br/>(e.g., leave)"]
+  B --> D["Manner-in-verb languages<br/>(e.g., jump)"]
+  A --> E["Mixed prior results: no effect<br/>to verbal and nonverbal effects"]
   E --> F["Proposed enhancements"]
-  F --> G["Refined typology across twenty languages (Verkerk, 2014)"]
-  F --> H["Distinguish verbal and nonverbal subgroups, add filler items"]
+  F --> G["Refined typology across twenty<br/>languages (Verkerk, 2014)"]
+  F --> H["Distinguish verbal and nonverbal<br/>subgroups, add filler items"]
   G --> I["Improved experimental design"]
   H --> I
 {{< /diagram >}}
-
-*Schematic overview; see the text for details.*
-
 ### Reference
 
 Bernabeu, P., & Tillman, R. (2019). More refined typology and design in linguistic relativity: The case of motion event encoding. *Dutch Journal of Applied Linguistics, 8*(2), 163-171. http://doi.org/10.1075/dujal.15019.ber

@@ -65,16 +65,15 @@ slides: ''
 <div class="mermaid">
 graph TD
   A["Audio input"] --> B["Audio enhancement pipeline"]
-  B --> C["Local Whisper transcription with GPU acceleration"]
-  C --> D["Remove AI-generated repetitions"]
+  B --> C["Local Whisper transcription<br/>with GPU acceleration"]
+  C --> D["Remove AI-generated<br/>repetitions"]
   C --> E["Context-aware name masking"]
   C --> F["Speaker diarisation"]
-  D --> G["Reproducible and GDPR-compliant transcript"]
+  D --> G["Reproducible and<br/>GDPR-compliant transcript"]
   E --> G
   F --> G
-  C --> H["Batch operations on HPC clusters"]
+  C --> H["Batch operations<br/>on HPC clusters"]
 </div>
-<p><em>Schematic overview; see the text for details.</em></p>
 </div>
 <div id="reference" class="section level2">
 <h2>Reference</h2>

@@ -60,19 +60,16 @@ diagram: true
 
       
 ### Study at a glance
-
-*Schematic overview; see the text for details.*
-
 {{< diagram >}}
 graph TD
-  A["ERP experiment: conceptual modality switch paradigm"] --> B["Each trial: verify relation between property word and concept word"]
-  B --> C["Manipulate modality of successive trials: switch versus non-switch"]
-  C --> D["Switch types: auditory to visual and haptic to visual versus visual to visual"]
-  C --> E["ERPs time-locked to first word of target trial"]
-  E --> F["Effects in four time windows: 160 to 750 ms"]
+  A["ERP experiment: conceptual<br/>modality switch paradigm"] --> B["Each trial: verify relation between<br/>property word and concept word"]
+  B --> C["Manipulate modality of successive<br/>trials: switch versus non-switch"]
+  C --> D["Switch types: auditory to visual and<br/>haptic to visual versus visual to visual"]
+  C --> E["ERPs time-locked to<br/>first word of target trial"]
+  E --> F["Effects in four time windows:<br/>160 to 750 ms"]
   D --> F
-  F --> G["Negativity for switching that increases over time"]
-  G --> H["Sensory regions may have a functional role in conceptual processing"]
+  F --> G["Negativity for switching<br/>that increases over time"]
+  G --> H["Sensory regions may have a functional<br/>role in conceptual processing"]
 {{< /diagram >}}
 
 ### Reference

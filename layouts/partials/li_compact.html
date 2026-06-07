@@ -88,7 +88,7 @@
     {{ with $resource }}
     {{ $image := .Resize "150x" }}
     <a href="{{$link}}" {{ $target | safeHTMLAttr }}>
-      <img src="{{ $image.RelPermalink }}" alt="">
+      <img loading="lazy" decoding="async" src="{{ $image.RelPermalink }}" alt="">
     </a>
     {{end}}
   </div>

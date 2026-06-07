@@ -70,22 +70,6 @@ slides: ''
 ---
 
 
-### Study at a glance
-
-*Schematic overview; see the text for details.*
-
-{{< diagram >}}
-graph TD
-  A["Conceptual processing: language-based and sensorimotor information"] --> B["Study 1: multi-lab replication of the object orientation effect"]
-  A --> C["Study 2: semantic priming, semantic decision and lexical decision"]
-  A --> D["Power analysis: required sample sizes"]
-  B --> E["No effect across 18 languages; no link to mental rotation"]
-  C --> F["Language-based information more important than vision-based"]
-  C --> G["Task-relevance advantage in higher-vocabulary participants"]
-  D --> H["300 participants for language effects; over 1,000 for vision effects"]
-{{< /diagram >}}
-
-
 <a href='/thesis'>
 <button style = "background-color: white; color: black; border: 2px solid #DF2E2E; border-radius: 12px;">
 <h3 style = "margin-top: 6px !important; margin-bottom: 6px !important; margin-left: 8px !important; margin-right: 8px !important;">
@@ -94,6 +78,18 @@ graph TD
       
 <br>
 
+
+### Study at a glance
+{{< diagram >}}
+graph TD
+  A["Conceptual processing:<br/>language-based and<br/>sensorimotor information"] --> B["Study 1: multi-lab replication<br/>of the object orientation effect"]
+  A --> C["Study 2: semantic priming,<br/>semantic decision and<br/>lexical decision"]
+  A --> D["Power analysis:<br/>required sample sizes"]
+  B --> E["No effect across 18 languages;<br/>no link to mental rotation"]
+  C --> F["Language-based information<br/>more important than vision-based"]
+  C --> G["Task-relevance advantage in<br/>higher-vocabulary participants"]
+  D --> H["300 participants for language effects;<br/>over 1,000 for vision effects"]
+{{< /diagram >}}
 
 ### Podcasts
 

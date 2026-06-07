@@ -48,9 +48,6 @@ The application is suitable for use in university workshops, open science traini
 </div>
 
 ### How it works
-
-*Schematic overview; see the text for details.*
-
 {{< diagram >}}
 graph TD
   A["Educational introduction:<br/>assessment concepts and<br/>21-term glossary"] --> B["Scenario evaluation:<br/>48 fictional research scenarios"]

@@ -61,19 +61,16 @@ url_poster: 'https://osf.io/dj52n'
 
 {{< diagram >}}
 graph TD
-  A["46 participants verify property-concept word relations"] --> B["Modality of consecutive trials manipulated"]
+  A["46 participants verify<br/>property-concept word relations"] --> B["Modality of consecutive<br/>trials manipulated"]
   B --> C["Auditory-to-visual switch"]
   B --> D["Haptic-to-visual switch"]
   B --> E["Visual-to-visual no-switch"]
-  C --> F["ERPs time-locked to first word onset"]
+  C --> F["ERPs time-locked<br/>to first word onset"]
   D --> F
   E --> F
-  F --> G["Switch effect: more negative amplitudes for switches"]
-  G --> H["Significant in four windows from 160 to 750 ms, stronger posteriorly and after 350 ms"]
+  F --> G["Switch effect: more negative<br/>amplitudes for switches"]
+  G --> H["Significant in four windows from 160 to 750 ms,<br/>stronger posteriorly and after 350 ms"]
 {{< /diagram >}}
-
-*Schematic overview; see the text for details.*
-
 
 ### Reference
 

@@ -23,7 +23,7 @@
   {{ if eq $columns 1 }}
   {{/* Single column layout */}}
   <div class="col-12">
-    <h1>{{ with $st.Title | markdownify | emojify }}{{ . | markdownify | emojify }}{{ end }}</h1>
+    <h2>{{ with $st.Title | markdownify | emojify }}{{ . | markdownify | emojify }}{{ end }}</h2>
     {{ with $st.Params.subTitle | markdownify | emojify }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
     {{ with $st.Content }}{{ . }}{{ end }}
 
@@ -49,7 +49,7 @@
   {{ else }}
   {{/* Two column layout (default) */}}
   <div class="col-12 col-lg-4 section-heading">
-    <h1>{{ with $st.Title | markdownify | emojify }}{{ . | markdownify | emojify }}{{ end }}</h1>
+    <h2>{{ with $st.Title | markdownify | emojify }}{{ . | markdownify | emojify }}{{ end }}</h2>
     {{ with $st.Params.subTitle | markdownify | emojify }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
   </div>
   <div class="col-12 col-lg-8">
