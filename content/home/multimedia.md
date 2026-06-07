@@ -462,7 +462,7 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 
 <div class="multimedia-thumbnail" style="margin-top: 10px;">
 <a href='https://www.youtube.com/watch?v=y2bopgYWYvE&ab_channel=LancasterPsychology'>
-<img src='/presentation/linguistic-and-embodied-systems-in-conceptual-processing-variation-across-individuals-and-items/img/thumbnail.png'></a>
+<img src='/presentation/linguistic-and-embodied-systems-in-conceptual-processing-variation-across-individuals-and-items/img/thumbnail.png' alt="Video thumbnail: talk title slide and presenter webcam for Pablo Bernabeu's 2021 Lancaster University presentation"></a>
 </div>
 
 <div style = 'padding-bottom: 3.5%;'></div>

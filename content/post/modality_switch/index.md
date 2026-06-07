@@ -56,7 +56,7 @@ Research has extensively investigated whether conceptual processing is modality-
 
 In the Conceptual Modality Switch (CMS) paradigm, participants perform a property verification task, deciding whether certain property words can reasonably describe concept words. Covertly, the conceptual modality of consecutive trials is manipulated in order to produce specific switches in conceptual modality. For instance, after the trial *Soundless Answer*, which is primarily auditory, the following trial may match in modality—*Loud Welcome*—or mismatch—*Fine Selection* (visual).
 
-![](designoverview.png)
+![Experimental design: a context trial (visual, haptic, or auditory) followed by an always-visual target trial, with property verification task timing](designoverview.png)
 
 Modality switches incur processing costs, as reflected in brain signals linked to semantic violation, and in longer response times (RTs) (Scerrati, Lugli, Nicoletti, & Borghi, 2016). This effect suggests that perceptual features of concepts are accessed during conceptual processing. More recently, however, the CMS effect was reanalysed using a non-perceptual alternative. Louwerse and Connell (2011) found that language statistics (the co-occurrence of words in a language) were able to approximately predict visual/haptic, olfactory/gustatory, and auditory modalities, but not the subtler differences between visual and haptic and between olfactory and gustatory, which seemed to be reserved for perceptual simulations. Moreover, faster response times (RTs) were best explained by language statistics, whereas slower RTs were best explained by perceptual simulations.
 
@@ -80,9 +80,9 @@ All participants but one responded correctly to over half of the trials, with an
 
 ERPs showed a CMS effect from time window 1 on, larger after 350 ms. It appeared with both switch conditions, and was characterized by a more negative amplitude for the switch conditions compared to the no-switch condition. It was generally stronger in the posterior brain regions, and in the Slow group. The results are illustrated in the figure below, which includes 95% Confidence Intervals and time windows.
 
-![](stackERPs.png)
+![ERP waveforms over 0-800 ms for Quick and Slow groups at anterior and posterior electrodes, comparing auditory, haptic, and visual switch conditions](stackERPs.png)
 
-<img style = "float: right; margin-left: 30px;" width = '50%' src='results.jpg' />
+<img style = "float: right; margin-left: 30px;" width = '50%' src='results.jpg' alt="Table of chi-square effects for CMS factors across four ERP time windows, with significance levels" />
 
 The analysis was done with Linear Mixed Effects models. Final models presented good fits, with R<sup>2</sup> ranging from .748 to .862. First, the CMS effect in time window 1 was confirmed significant. Such an early emergence is unprecedented in the CMS literature, and it may have been enabled by the time-locking of ERPs to the first word in target trials. In this time window, the only process not lexicosemantic is possibly working memory (Hauk, 2016), and therefore this early emergence adds support to the possibility that CMS was directly caused by perceptual simulation.
 

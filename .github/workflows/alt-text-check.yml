@@ -1,0 +1,34 @@
+name: Alt-text check
+
+# Advisory accessibility check: lists content images that lack alt text, as
+# inline annotations on the commit/PR. The job does NOT fail by default, so the
+# existing backlog stays non-blocking. To enforce on new content once the
+# backlog is cleared, uncomment ALT_CHECK_STRICT below (it fails only on
+# hand-authored content images missing alt, not on generated figures).
+
+on:
+  push:
+    paths:
+      - "content/**/*.md"
+      - "content/**/*.Rmd"
+      - "content/**/*.html"
+      - ".github/scripts/check_alt_text.py"
+      - ".github/workflows/alt-text-check.yml"
+  pull_request:
+    paths:
+      - "content/**/*.md"
+      - "content/**/*.Rmd"
+      - "content/**/*.html"
+  workflow_dispatch:
+
+jobs:
+  alt-text:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Detect images missing alt text
+        run: python3 .github/scripts/check_alt_text.py
+        # env:
+        #   ALT_CHECK_STRICT: "1"   # uncomment to fail the job on missing alt

@@ -64,7 +64,7 @@ In demonstrating the relevance of embodied cognition, a sizeable series of studi
 
 Bernabeu, Willems and Louwerse (2017) addressed a caveat with the time course of the conceptual modality switch paradigm. In previous experiments, trials presented a concept word followed by a property word. ERPs were time-locked to the latter property word. This design may have left uncontrolled a switch produced already at the concept. Indeed, the property word was already supposed to be in the particular modality of the trial. That pitfall could have had two consequences: loss of power and loss of certainty on the time course of the effect. Thus, Bernabeu et al. created a design in which ERPs were time-locked to the first word in target trials (see some [early input from researchers online](https://www.researchgate.net/post/Conceptual_modality_switch_effect_measured_at_first_word)). The purpose of this relocation was not to completely annul the possibility of post-core sensory processes, but to increase the time accuracy by measuring the modality switch from the point at which it is elicited.
 
-![](designoverview.png)
+![Experiment design: a context trial (visual, haptic or auditory) paired with an always-visual target trial, showing stimulus sequence, timings and ERP and RT measurement windows](designoverview.png)
 
 Implementing this design had an ancillary effect on the measurement of response times. A psycholinguistic experiment like this one requires controlling fundamental variables such as word frequency and length, by matching the means of these variables across experimental conditions. This must be controlled in the target words at least. As it is often the case, this control was only possible in the target words—the first one in target trials—, but it was not possible in the second word, which is the crucial one for response times. Response times could still be measured, but comparisons across conditions were not fully warranted. In sum, this was an ERP design. 
 
@@ -116,7 +116,7 @@ For Bernabeu et al. (2017), I used Brain Vision software, and followed the [tuto
 
 3. re-referencing the signal offline to the right mastoid (RM), having referenced online to the left mastoid (Ref);
 
-<img src='EEG montage.png'></img>
+<img src='EEG montage.png' alt="Custom equidistant ActiCAP electrode montage split into anterior and posterior groups, beside the International 10-20 system for comparison"></img>
 
 4. separating my three experimental conditions;
 
@@ -154,7 +154,7 @@ This pipeline is reflected in the [scripts exported from Brain Vision](https://o
 
 Word reading ERPs can look somewhat like this after the preprocessing (<a href='https://osf.io/bz7ae/'>plots made in R</a>).
 
-<img src='Four main waveform plots stacked.png'></img>
+<img src='Four main waveform plots stacked.png' alt="Four stacked ERP waveform plots over 0-800 ms for quick and slow groups at anterior and posterior electrodes, comparing auditory, haptic and visual conditions"></img>
 
 To visualise these waveforms throughout the different sections of the data, a [dashboard is available](https://pablobernabeu.shinyapps.io/ERP-waveform-visualization_CMS-experiment).
 
