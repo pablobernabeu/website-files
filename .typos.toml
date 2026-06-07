@@ -29,6 +29,8 @@ check-filename = false
 [default.extend-identifiers]
 # Technical terms and abbreviations common in academic writing
 # (identifier = correct spelling to suppress false positives)
+# Matched BEFORE camelCase splitting -- use this for mixed-case tokens.
+LangUE = "LangUE"         # else splits to "Lang" + "UE" and "UE" gets flagged
 
 [default.extend-words]
 # Words that typos flags but are correct in academic context
@@ -90,4 +92,21 @@ conceptos = "conceptos"   # Spanish word in Spanish titles
 extraversion = "extraversion"  # personality psychology term
 # Acronyms / stylisations
 ND = "ND"                 # as in CC BY-NC-ND
-LangUE = "LangUE"         # Language at the University of Essex conference
+BA = "BA"                 # Bachelor of Arts degree (e.g. "BA English")
+# (LangUE moved to [default.extend-identifiers] above to avoid a "UE" split)
+# Additional author surnames flagged as misspellings
+Perfors = "Perfors"       # Amy Perfors
+Smeesters = "Smeesters"   # Dirk Smeesters
+Frane = "Frane"           # Andrew V. Frane
+Vally = "Vally"           # D. Z. Vally
+# Academic terms and British-English variants
+nonsignificant = "nonsignificant"  # standard stats term (non-significant)
+focusses = "focusses"     # British-English variant of "focuses"
+# Foreign-language words (correct within Spanish/Norwegian passages)
+profesor = "profesor"     # Spanish "professor"
+accesible = "accesible"   # Spanish "accessible"
+som = "som"               # Norwegian "as/that"
+noen = "noen"             # Norwegian "some"
+registrer = "registrer"   # Norwegian "register"
+# Markup artifact
+ccessible = "ccessible"   # from "<b>A</b>ccessible" (FAIR) splitting on the tag
