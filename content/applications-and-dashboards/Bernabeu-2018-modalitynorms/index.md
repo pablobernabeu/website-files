@@ -4,6 +4,7 @@ authors:
 date: "2018-01-01"
 doi: "https://doi.org/10.31234/osf.io/a5pcz"
 featured: false
+diagram: true
 image:
   caption: ''
   focal_point: ""
@@ -72,6 +73,20 @@ url_data: 'https://github.com/pablobernabeu/Dutch-modality-exclusivity-norms-Ber
 <br>
 <br>
 
+### How it works
+
+{{< diagram >}}
+graph TD
+  A["Dutch modality exclusivity norms data"] --> B["Flexdashboard front-end (R Markdown)"]
+  B --> C["Shiny back-end (reactive selection and download)"]
+  C --> D["Info tab: HTML and CSS text plus rmarkdown output"]
+  C --> E["Table tab: reactable (colours, bar charts)"]
+  C --> F["Plot tab: plotly (PCA scatter, tooltips)"]
+  B --> G["Static Flexdashboard-only version on RPubs (Shiny removed)"]
+{{< /diagram >}}
+
+*Schematic overview; see the text for details.*
+
 This web application presents linguistic data over several tabs. The code combines the great front-end of Flexdashboard—based on R Markdown and yielding an unmatched user interface—, with the great back-end of Shiny—allowing users to download sections of data they select, in various formats.
 
 - A nice find was the 'reactable' package, which implements Javascript under the hood to allow the use of colours, bar charts, etc.
@@ -88,7 +103,7 @@ This web application presents linguistic data over several tabs. The code combin
    ```
 
 
-- One of the hardest nuts to crack was allowing the full functionality of tables—i.e, scaling to screen, frozen header, and vertical and horizontal scrolling—whilst having tweaked the vertical/horizontal orientation of the dashboard sections. Initial clashes were sorted by adjusting the section's CSS styles
+- One of the hardest nuts to crack was allowing the full functionality of tables—i.e., scaling to screen, frozen header, and vertical and horizontal scrolling—whilst having tweaked the vertical/horizontal orientation of the dashboard sections. Initial clashes were resolved by adjusting the section's CSS styles
 
       
       Table {#table style="background-color:#FCFCFC;"}
@@ -190,7 +205,7 @@ This web application presents linguistic data over several tabs. The code combin
    ````
 
   
-   The only instance in which I drew on javascript code outside R packages was to enable tooltips beyond the packages’ limits—for instance, in the side bar. This javascript feature is created at the top of the script, in the head area.
+   The only instance in which I drew on JavaScript code outside R packages was to enable tooltips beyond the packages’ limits—for instance, in the sidebar. This JavaScript feature is created at the top of the script, in the head area.
    
    ```
    <!-- Javascript function to enable a hovering tooltip -->
@@ -201,7 +216,7 @@ This web application presents linguistic data over several tabs. The code combin
    </script>
    ```
    
-- In the side bar, I added a reactive mean for each variable, complementing the range selector.
+- In the sidebar, I added a reactive mean for each variable, complementing the range selector.
    
    ```
    reactive(cat(paste0('Mean = ', 

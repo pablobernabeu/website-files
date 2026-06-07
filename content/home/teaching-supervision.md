@@ -77,7 +77,7 @@ During my PhD, I held a graduate teaching assistantship that involved 180 hours 
 <div style="margin-top: 40px;"></div>
 
 
-Lastly, I have created some web applications intended for educational contexts. One [develops science literacy](/applications-and-dashboards/unlock-the-lab), another supports the [simulation of data](/applications-and-dashboards/experimental-data-simulation)---enhancing the teaching of statistical principles---, while a third app streamlines the [transcription of video captions](/applications-and-dashboards/vtt-transcription-app) for use in multimedia learning environments.
+Lastly, I have created some web applications intended for educational contexts. One [develops science literacy](/applications-and-dashboards/unlock-the-lab), another supports the [simulation of data](/applications-and-dashboards/experimental-data-simulation)---enhancing the teaching of statistical principles---while a third app streamlines the [transcription of video captions](/applications-and-dashboards/vtt-transcription-app) for use in multimedia learning environments.
 
 
 ## **Teaching Philosophy**
@@ -96,7 +96,7 @@ I strive to connect theoretical concepts to the methods that are used for their 
 
 ### Promoting Scientific Rigour and Reproducibility
 
-My commitment to open science and reproducibility informs my teaching. By embedding these principles into research workflows, I help students produce reliable and sustainable scholarship that is can withstand the test of time. In practical terms, these standards are designed to (1) enhance the quality of research, (2) optimise the use of academic resources in the medium and long term by facilitating access to and reuse of research materials, and (3) enhance students’ professional prospects by equipping them with a high-value, translatable set of skills. 
+My commitment to open science and reproducibility informs my teaching. By embedding these principles into research workflows, I help students produce reliable and sustainable scholarship that can withstand the test of time. In practical terms, these standards are designed to (1) enhance the quality of research, (2) optimise the use of academic resources in the medium and long term by facilitating access to and reuse of research materials, and (3) enhance students’ professional prospects by equipping them with a high-value, translatable set of skills. 
 
 I would like to continue honing these principles, aided by the advice and inspiration from more experienced colleagues and by the regular feedback from students.
 

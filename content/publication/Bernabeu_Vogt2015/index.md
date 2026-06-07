@@ -19,6 +19,7 @@ publication: '*Tenth Language at the University of Essex (LangUE) Postgraduate C
 publication_short: 
 publication_types:
 - "1"
+diagram: true
 preregistered: false
 open_materials: false
 open_data: false
@@ -37,6 +38,22 @@ url_fulltext: 'https://www.researchgate.net/profile/Pablo_Bernabeu3/publication/
 # url_video: '#'
 ---
 
+
+### Study at a glance
+
+{{< diagram >}}
+graph TD
+  A["Adapted prior experiment: participants act out events"] --> B["Perceptual features of events"]
+  A --> C["Added variable: communication mode"]
+  C --> D["Body-based communication (gestures)"]
+  C --> E["Disembodied communication (symbol matching)"]
+  B --> F["Resulting grammatical orders / preferences"]
+  D --> F
+  E --> F
+  F --> G["Greater effect of embodiment on grammatical preferences"]
+{{< /diagram >}}
+
+*Schematic overview; see the text for details.*
 
 ### Reference
 

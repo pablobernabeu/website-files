@@ -1,5 +1,5 @@
-{{/* Minimal custom head for testing */}} {{/* Essential dark theme script only
-*/}}
+{{/* Custom <head> additions: dark-theme flash prevention, search-modal CSS/JS,
+     tag-cloud network, search query/results persistence, and IndexNow. */}}
 <script>
   (function () {
     "use strict";
@@ -7,17 +7,14 @@
     function getThemeMode() {
       try {
         const storedMode = localStorage.getItem("dark_mode");
-        console.log("Theme init: stored dark_mode =", storedMode);
         return parseInt(storedMode || 2);
       } catch (e) {
-        console.error("localStorage access failed:", e);
         return 2; // Default to auto if localStorage is blocked
       }
     }
 
     function shouldUseDarkTheme() {
       let currentThemeMode = getThemeMode();
-      console.log("Theme init: currentThemeMode =", currentThemeMode);
       switch (currentThemeMode) {
         case 0:
           return false; // Light mode
@@ -26,11 +23,9 @@
         default:
           try {
             if (localStorage.getItem("dark_mode") === null) {
-              console.log("Theme init: No preference saved, defaulting to light");
               return false; // Default to light for new visitors
             }
           } catch (e) {
-            console.error("localStorage check failed:", e);
           }
           return (
             window.matchMedia &&
@@ -41,17 +36,14 @@
 
     // Apply theme immediately
     if (shouldUseDarkTheme()) {
-      console.log("Theme init: Applying dark theme");
       document.documentElement.setAttribute("data-theme", "dark");
       document.documentElement.style.backgroundColor = "#0f172a";
       document.documentElement.style.color = "#e2e8f0";
       // Critical: Add dark class to body to match academic.js expectations
       document.addEventListener("DOMContentLoaded", function() {
         document.body.classList.add("dark");
-        console.log("Theme init: Added dark class to body");
       });
     } else {
-      console.log("Theme init: Applying light theme");
     }
   })();
 </script>
@@ -66,6 +58,51 @@
 
 {{/* Related references interactive toolbar */}}
 <link rel="stylesheet" href="{{ "css/related-references.css" | relURL }}" />
+
+{{/* Mermaid diagrams (only loaded on pages with diagram:true):
+     - hide the raw diagram source until Mermaid renders it to an SVG (no code flash);
+     - diagrams that fit get a little more width than the narrow prose column;
+     - diagrams too wide to be legible become interactive (drag to pan, +/- to zoom). */}}
+{{ if or .Params.diagram site.Params.diagram }}
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+<style>
+  /* Hide the raw mermaid code until it is converted to an SVG */
+  .mermaid { visibility: hidden; }
+  .mermaid.mermaid-ready { visibility: visible; }
+
+  /* Diagram fits: allow a little more width than the prose column (viewport-safe) */
+  .mermaid:not(.pz) {
+    position: relative; left: 50%; transform: translateX(-50%);
+    width: 94vw; max-width: 960px; margin: 1rem auto; overflow-x: auto;
+  }
+  .mermaid:not(.pz) > svg { max-width: 100% !important; height: auto !important; display: block; margin: 0 auto; }
+
+  /* Large diagram: interactive pan/zoom viewport.
+     Its height is set per-diagram by mermaid-enhance.js to match the diagram's
+     own aspect ratio, so the box hugs the content instead of padding it; the
+     min-height here is only a fallback for an SVG with no readable size. */
+  .mermaid.pz {
+    position: relative; width: 100%; margin: 1rem auto;
+    min-height: 220px;
+    border: 1px solid rgba(127, 127, 127, 0.3); border-radius: 8px;
+    background: rgba(127, 127, 127, 0.04); overflow: hidden;
+  }
+  .mermaid.pz > svg { width: 100% !important; height: 100% !important; max-width: none !important; }
+  .mermaid.pz::after {
+    content: "Drag to pan \00B7 use + / \2212 to zoom";
+    position: absolute; left: 8px; bottom: 4px; font-size: 11px; opacity: 0.5; pointer-events: none;
+  }
+</style>
+<script>
+  /* Fail-safe: never leave a diagram permanently hidden if the enhancer fails. */
+  setTimeout(function () {
+    var els = document.querySelectorAll(".mermaid:not(.mermaid-ready)");
+    for (var i = 0; i < els.length; i++) els[i].classList.add("mermaid-ready");
+  }, 6000);
+</script>
+<script defer src="{{ "js/svg-pan-zoom.min.js" | relURL }}"></script>
+<script defer src="{{ "js/mermaid-enhance.js" | relURL }}"></script>
+{{ end }}
 
 {{/* Tag cloud network visualization */}}
 <script defer src="{{ "js/tag-cloud-network.js" | relURL }}"></script>
@@ -125,7 +162,6 @@
         if (searchHits && hasSearchResults()) {
           savedResults = searchHits.innerHTML;
           localStorage.setItem("searchResults", savedResults);
-          console.log("Saved search results");
         }
       }
 
@@ -135,7 +171,6 @@
           const searchHits = document.getElementById("search-hits");
           if (searchHits) {
             searchHits.innerHTML = savedResults;
-            console.log("Restored search results");
           }
         }
       }
@@ -154,7 +189,6 @@
         if (searchInput && searchInput.value.trim()) {
           savedQuery = searchInput.value;
           localStorage.setItem("searchQuery", savedQuery);
-          console.log("Saved query:", savedQuery);
         }
       }
 
@@ -167,8 +201,6 @@
             searchInput.value = savedQuery;
             searchInput.setAttribute("value", savedQuery);
             searchInput.defaultValue = savedQuery;
-
-            console.log("Force restored query:", savedQuery);
 
             // Trigger search
             searchInput.dispatchEvent(new Event("input", { bubbles: true }));
@@ -191,22 +223,14 @@
             const currentValue = originalDescriptor.get.call(this);
             // If someone tries to read an empty value but we have a saved query and modal is visible, return the saved query
             if (!currentValue && savedQuery && isModalVisible()) {
-              console.log(
-                "Intercepted empty value read, returning saved query:",
-                savedQuery
-              );
               return savedQuery;
             }
             return currentValue;
           },
           set: function (newValue) {
-            console.log("Value being set to:", newValue);
 
             // If trying to set empty value while modal is visible and we have a saved query, ignore it
             if (!newValue && savedQuery && isModalVisible()) {
-              console.log(
-                "BLOCKED attempt to clear input while modal is visible"
-              );
               return; // Don't set the empty value
             }
 
@@ -217,7 +241,6 @@
             if (newValue && newValue.trim()) {
               savedQuery = newValue;
               localStorage.setItem("searchQuery", newValue);
-              console.log("Saved new query via setter:", newValue);
             }
           },
           configurable: true,
@@ -258,7 +281,6 @@
 
             if (isVisible && !this.wasVisible) {
               // Modal opened - restore both query and results
-              console.log("Modal opened");
               if (savedQuery && searchInput) {
                 // Force the display of our saved query
                 const originalDescriptor = Object.getOwnPropertyDescriptor(
@@ -274,10 +296,6 @@
 
                 searchInput.dispatchEvent(
                   new Event("input", { bubbles: true })
-                );
-                console.log(
-                  "Restored query and results on modal open:",
-                  savedQuery
                 );
               }
             }
@@ -329,14 +347,29 @@
   });
 </script>
 
-{{/* IndexNow automatic submission */}} {{ if site.Params.indexnow.enabled }}
-<script>
-  window.addEventListener("load", function () {
-    if (typeof IndexNowSubmission !== "undefined") {
-      setTimeout(function () {
-        IndexNowSubmission.submitCurrentPage();
-      }, 2000);
-    }
-  });
+{{/* Person structured data (schema.org) with authoritative profile links
+     (sameAs) for richer search results and entity recognition. IndexNow
+     submission is handled at deploy time via GitHub Actions, not per-visitor. */}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Pablo Bernabeu",
+  "url": "{{ site.BaseURL }}",
+  "jobTitle": "Researcher",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "University of Oxford"
+  },
+  "sameAs": [
+    "https://orcid.org/0000-0003-1083-2460",
+    "https://scholar.google.com/citations?user=DxD0QDoAAAAJ&hl=en",
+    "https://github.com/pablobernabeu",
+    "https://www.researchgate.net/profile/Pablo-Bernabeu",
+    "https://osf.io/25u3x/",
+    "https://figshare.com/authors/Pablo_Bernabeu/820703",
+    "https://www.linkedin.com/in/pablobernabeu/",
+    "https://www.youtube.com/@pablo-bernabeu"
+  ]
+}
 </script>
-{{ end }}

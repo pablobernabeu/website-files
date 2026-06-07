@@ -47,6 +47,7 @@ publication_short: ''
 summary: 'Multilevel analyses investigating the interplay between language-based and vision-based information in conceptual processing across semantic priming, semantic decision and lexical decision paradigms, with power analyses revealing sample size requirements for examining perceptual simulation and individual differences.'
 abstract: "Research has suggested that conceptual processing depends on both language-based and sensorimotor information. In this thesis, I investigate the nature of these systems and their interplay at three levels of the experimental structure---namely, individuals, words and tasks. In Study 1, I contributed to a multi-lab replication of the object orientation effect, which has been used to test sensorimotor simulation. The effect did not appear across any of the 18 languages examined, and it was not influenced by individual differences in mental rotation. Next, in Study 2, we drew on three existing data sets that implemented semantic priming, semantic decision and lexical decision. We extended these data sets with measures of language-based and vision-based information, and analysed their interactions with participants' vocabulary size and gender, and with presentation speed. The analysis had a conservative structure of fixed and random effects. First, we found that language-based information was more important than vision-based information. Second, in the semantic priming study---whose task required distinguishing between words and nonwords---, both language-based and vision-based information were more influential when words were presented faster. Third, a 'task-relevance advantage' was identified in higher-vocabulary participants. Specifically, in lexical decision, higher-vocabulary participants were more sensitive to language-based information than lower-vocabulary participants. In contrast, in semantic decision, higher-vocabulary participants were more sensitive to word concreteness. Fourth, we demonstrated the influence of the analytical method on the results. Last, we estimated the sample size required to investigate various effects. We found that 300 participants were sufficient to examine the effect of language-based information in words, whereas more than 1,000 participants were necessary to examine the effect of vision-based information and the interactions of both former variables with vocabulary size, gender and presentation speed. This power analysis reveals the need to increase sample sizes when conduct research on perceptual simulation and individual differences."
 featured: no
+diagram: true
 links:
 - name: PDF at Lancaster U.
   url: https://eprints.lancs.ac.uk/id/eprint/177833/6/2022deJuanBernabeuPhD.pdf
@@ -67,6 +68,22 @@ image:
 projects: []
 slides: ''
 ---
+
+
+### Study at a glance
+
+*Schematic overview; see the text for details.*
+
+{{< diagram >}}
+graph TD
+  A["Conceptual processing: language-based and sensorimotor information"] --> B["Study 1: multi-lab replication of the object orientation effect"]
+  A --> C["Study 2: semantic priming, semantic decision and lexical decision"]
+  A --> D["Power analysis: required sample sizes"]
+  B --> E["No effect across 18 languages; no link to mental rotation"]
+  C --> F["Language-based information more important than vision-based"]
+  C --> G["Task-relevance advantage in higher-vocabulary participants"]
+  D --> H["300 participants for language effects; over 1,000 for vision effects"]
+{{< /diagram >}}
 
 
 <a href='/thesis'>

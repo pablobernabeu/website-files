@@ -12,7 +12,7 @@
 
 - **Key Features:**
   - Search index only loads when search is first opened
-  - Optimized search configuration (threshold 0.3, min_length 3)
+  - Optimized search configuration (threshold 0.3, min_length 2)
   - Intelligent caching with localStorage (24-hour cache)
   - Index size reduction through content filtering and keyword extraction
   - Loading states and error handling
@@ -35,20 +35,20 @@
 - **Files Modified:**
 
   - `config.toml` - Build and performance settings
-  - `config/params.toml` - Search configuration
+  - `config/_default/params.toml` - Search configuration
   - `layouts/partials/custom_head.html` - Critical performance scripts
 
 - **Key Changes:**
   - Reduced pagination from 50 → 20 → 10 items per page
   - Enabled minification and compression
-  - Optimized image quality (75% vs 90%)
+  - Optimized image quality (60%, down from a 75% default)
   - Added build caching configuration
   - Relaxed search threshold for better performance
 
 ### 4. **Image and Resource Optimization**
 
 - **Settings Applied:**
-  - Image quality reduced to 75% for faster loading
+  - Image quality reduced to 60% for faster loading
   - EXIF data removal to reduce file sizes
   - WebP optimization enabled
   - Lazy loading for below-the-fold images

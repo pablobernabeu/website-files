@@ -16,6 +16,7 @@ tags:
   - psychology
   - linguistics
   - psycholinguistics
+diagram: true
 presentation_format: Poster
 event: 30th Conference on Architectures and Mechanisms for Language Processing (AMLaP)
 event_url: 'https://amlap2024.ed.ac.uk/'
@@ -48,6 +49,19 @@ projects: []
 
 
 
+<div id="overview" class="section level3">
+<h3>Overview</h3>
+<div class="mermaid">
+graph TD
+  A["Base files with minimal language components"] --> B["Modular R framework with interoperable components"]
+  B --> C["Controls: counterbalance gender and number, rotate words, control frequency"]
+  C --> D["compile all stimuli script regenerates final stimuli"]
+  D --> E["Stimuli saved to session materials folder"]
+  E --> F["Presentation in OpenSesame across several sessions"]
+  F --> G["Custom script time-locks EEG to stimulus onset for ERPs"]
+  G --> H["Accessible materials, reproducible workflow, expandable design"]
+</div>
+<p><em>Schematic overview; see the text for details.</em></p>
 <a href='https://osf.io/h83yq'>
 <button style = "background-color: white; color: black; border: 2px solid #196F27; border-radius: 12px;">
 <h3 style="margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;">
@@ -216,4 +230,5 @@ def send_trigger(trigger):
 <p>Morgan-Short, K., Finger, I., Grey, S., &amp; Ullman, M. T. (2012). Second language processing shows increased native-like neural responses after months of no exposure. <em>PLOS ONE, 7</em>(3), e32974. <a href="https://doi.org/10.1371/journal.pone.0032974" class="uri">https://doi.org/10.1371/journal.pone.0032974</a></p>
 <p>Pereira Soares, S. M., Kupisch, T., &amp; Rothman, J. (2022). Testing potential transfer effects in heritage and adult L2 bilinguals acquiring a mini grammar as an additional language: An ERP approach. <em>Brain Sciences, 12</em>(5), Article 5. <a href="https://doi.org/10.3390/brainsci12050669" class="uri">https://doi.org/10.3390/brainsci12050669</a></p>
 <p>Wilkinson, M. D., Dumontier, M., Aalbersberg, Ij. J., Appleton, G., Axton, M., Baak, A., Blomberg, N., Boiten, J.-W., da Silva Santos, L. B., Bourne, P. E., Bouwman, J., Brookes, A. J., Clark, T., Crosas, M., Dillo, I., Dumon, O., Edmunds, S., Evelo, C. T., Finkers, R., … Mons, B. (2016). The FAIR Guiding Principles for scientific data management and stewardship. <em>Scientific Data, 3</em>(1), Article 1. <a href="https://doi.org/10.1038/sdata.2016.18" class="uri">https://doi.org/10.1038/sdata.2016.18</a></p>
+</div>
 </div>

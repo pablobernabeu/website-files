@@ -16,7 +16,7 @@ profileicons:
 interests:
   - Education & digital technologies
   - Cognitive psychology & neuroscience
-  - linguistics
+  - Linguistics
   - Data science & programming
   - Research methods & open science
 subsections:
@@ -77,7 +77,7 @@ education:
       year: 2017
     - course: "[Neurobiology of language](https://lotschool.nl/wp-content/uploads/2019/06/LOT-Schools-1997-2019-2.pdf)"
       institution: Netherlands Graduate School of Linguistics
-      extra: \-&nbsp; Course focussed on multilingualism, including the interesting and hotly-debated topic of cognitive benefits.
+      extra: \-&nbsp; Course focussed on multilingualism, including the interesting and hotly debated topic of cognitive benefits.
       year: 2017
     - course: "[Big data in society](https://www.vu.nl/en/programmes/short/summer-school/courses/big-data-in-society/index.aspx)"
       institution: Vrije Universiteit Amsterdam
@@ -127,7 +127,7 @@ I conduct research and data analysis on digitally-enhanced childhood learning as
 
 Previously, I held a postdoctoral fellowship at UiT The Arctic University of Norway, contributing to a project on language learning, crosslinguistic influence and executive functions. Prior to that, I completed a PhD in Psychology at Lancaster University, having previously earned a research master’s in Language and Communication from Tilburg University.
 
-Beyond education and digital technologies, my interests include cognitive psychology and neuroscience, linguistics, digital technologies, data science, research methods and open science.
+Beyond education and digital technologies, my interests include cognitive psychology and neuroscience, linguistics, data science, research methods and open science.
 
 I have worked with a wide range of research methods, including behavioural and EEG experiments, corpus analysis and computational modelling.
 

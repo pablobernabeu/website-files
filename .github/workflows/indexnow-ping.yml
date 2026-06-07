@@ -1,0 +1,56 @@
+name: IndexNow submission
+
+# Notifies IndexNow-participating search engines (Bing, Yandex, etc.) of the
+# site's URLs after each deploy. This is the correct, server-side IndexNow
+# pattern — submission happens once per publish, not on every visitor page load.
+# The IndexNow key is public by design (it lives at the host root).
+
+on:
+  workflow_run:
+    workflows: ["Deploy to GitHub Pages"]
+    types: [completed]
+  schedule:
+    # Weekly safety net, Mondays at 07:00 UTC
+    - cron: "0 7 * * 1"
+  workflow_dispatch:
+
+jobs:
+  submit:
+    # On workflow_run, only proceed if the deploy actually succeeded.
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Submit sitemap URLs to IndexNow
+        run: |
+          set -euo pipefail
+          HOST="pablobernabeu.github.io"
+          KEY="ba7d2697a8f44966bd90543d188a8aac"
+          KEYLOC="https://${HOST}/${KEY}.txt"
+
+          echo "Fetching sitemap from https://${HOST}/sitemap.xml ..."
+          urls=$(curl -fsSL "https://${HOST}/sitemap.xml" | grep -oE '<loc>[^<]+</loc>' | sed -E 's#</?loc>##g')
+          count=$(printf '%s\n' "$urls" | grep -c . || true)
+          echo "Found ${count} URLs."
+          if [ "${count}" -eq 0 ]; then
+            echo "No URLs found; nothing to submit."
+            exit 0
+          fi
+
+          payload=$(printf '%s\n' "$urls" | jq -R . | jq -s \
+            --arg host "$HOST" --arg key "$KEY" --arg keyloc "$KEYLOC" \
+            '{host: $host, key: $key, keyLocation: $keyloc, urlList: .}')
+
+          echo "Submitting ${count} URLs to IndexNow ..."
+          http=$(curl -sS -o /tmp/indexnow_resp.txt -w '%{http_code}' \
+            -X POST 'https://api.indexnow.org/indexnow' \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            -d "$payload")
+          echo "IndexNow responded HTTP ${http}"
+          cat /tmp/indexnow_resp.txt 2>/dev/null || true
+          echo
+          # 200 = accepted, 202 = received/validating
+          if [ "${http}" != "200" ] && [ "${http}" != "202" ]; then
+            echo "::error::IndexNow submission failed with HTTP ${http}"
+            exit 1
+          fi
+          echo "IndexNow submission succeeded."

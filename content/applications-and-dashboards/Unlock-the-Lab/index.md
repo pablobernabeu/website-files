@@ -32,6 +32,7 @@ links:
   url: 'https://unlock-the-lab.web.app'
 - name: Analytics dashboard
   url: 'https://unlock-the-lab.web.app/dashboard.html'
+diagram: true
 ---
 
 
@@ -45,6 +46,20 @@ The application is suitable for use in university workshops, open science traini
       title="Unlock the Lab web application">
   </iframe>
 </div>
+
+### How it works
+
+*Schematic overview; see the text for details.*
+
+{{< diagram >}}
+graph TD
+  A["Educational introduction:<br/>assessment concepts and<br/>21-term glossary"] --> B["Scenario evaluation:<br/>48 fictional research scenarios"]
+  B --> C["For each study, two ratings<br/>on a 1-7 scale"]
+  C --> D["Predict peer consensus score"]
+  C --> E["Give own quality rating"]
+  D --> F["Score: 100 minus<br/>prediction error times 12"]
+  F --> G["Results and reflection:<br/>leaderboard and<br/>analytics dashboard"]
+{{< /diagram >}}
 
 ## Educational Objectives
 

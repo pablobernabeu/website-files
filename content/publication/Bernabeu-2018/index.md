@@ -3,6 +3,7 @@ title: Dutch modality exclusivity norms for 336 properties and 411 concepts
 authors:
 - 'Bernabeu, P.'
 date: "2018-01-01"
+diagram: true
 slug: Dutch-modality-exclusivity-norms-for-336-properties-and-411-concepts
 publication_types:
 - "3"
@@ -48,6 +49,24 @@ doi: 10.31234/osf.io/s2c5h
 # url_source: ''
 # url_video: ''
 ---
+
+
+### Study at a glance
+
+{{< diagram >}}
+graph TD
+  A["42 Dutch speakers"] --> B["Rate auditory, haptic and visual strength<br/>of 336 properties + 411 concepts"]
+  B --> C["Mean ratings per word<br/>(acceptable reliability)"]
+  C --> D["Derived measures:<br/>modality exclusivity, perceptual strength"]
+  C --> E["Linked corpus variables:<br/>length, frequency, distinctiveness,<br/>concreteness, age of acquisition"]
+  D --> F["Replicate Lynott and Connell (2009, 2013)"]
+  F --> G["Uni-, bi- and tri-modal words;<br/>vision most prevalent"]
+  F --> H["Vision and touch related;<br/>audition more independent"]
+  F --> I["Properties more perceptual than concepts"]
+  F --> J["Sound symbolism: auditory strength<br/>best predicts lexical properties"]
+{{< /diagram >}}
+
+*Schematic overview of the study's design and main findings.*
 
 
 ### Reference

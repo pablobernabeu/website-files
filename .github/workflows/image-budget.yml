@@ -1,0 +1,50 @@
+name: Image budget
+
+# Guardrail against oversized images creeping back into the repo (e.g. the
+# multi-MB GIF/PNG assets that previously bloated the deploy). Oversized files
+# are reported as warnings; the job only hard-fails if the total image payload
+# blows past a generous cap. Tighten PER_FILE_FAIL once known orphans are gone.
+
+on:
+  pull_request:
+    paths:
+      - "static/img/**"
+      - "assets/images/**"
+  push:
+    branches: [master]
+    paths:
+      - "static/img/**"
+      - "assets/images/**"
+  workflow_dispatch:
+
+jobs:
+  image-budget:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Enforce image size budget
+        run: |
+          set -euo pipefail
+          PER_FILE_WARN_KB=500       # warn above this (non-blocking)
+          PER_FILE_FAIL_KB=6000      # hard-fail any single file above this
+          TOTAL_BUDGET_KB=10000      # hard-fail if static/img total exceeds this
+          fail=0
+          echo "Per-file warn: ${PER_FILE_WARN_KB} KB | per-file fail: ${PER_FILE_FAIL_KB} KB | total budget: ${TOTAL_BUDGET_KB} KB"
+          while IFS= read -r -d '' f; do
+            kb=$(( ( $(stat -c%s "$f") + 1023 ) / 1024 ))
+            if [ "$kb" -gt "$PER_FILE_FAIL_KB" ]; then
+              echo "::error file=$f::$f is ${kb} KB (exceeds ${PER_FILE_FAIL_KB} KB hard limit)"
+              fail=1
+            elif [ "$kb" -gt "$PER_FILE_WARN_KB" ]; then
+              echo "::warning file=$f::$f is ${kb} KB (over ${PER_FILE_WARN_KB} KB soft cap — consider compressing)"
+            fi
+          done < <(find static/img -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.gif' -o -iname '*.webp' -o -iname '*.svg' \) -print0)
+          total_kb=$(( ( $(du -sb static/img | cut -f1) + 1023 ) / 1024 ))
+          echo "Total static/img: ${total_kb} KB"
+          if [ "$total_kb" -gt "$TOTAL_BUDGET_KB" ]; then
+            echo "::error::static/img total ${total_kb} KB exceeds ${TOTAL_BUDGET_KB} KB budget"
+            fail=1
+          fi
+          exit $fail

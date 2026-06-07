@@ -55,9 +55,26 @@ image:
   preview_only: no
 projects: []
 slides: ''
+diagram: true
 ---
 
       
+### Study at a glance
+
+*Schematic overview; see the text for details.*
+
+{{< diagram >}}
+graph TD
+  A["ERP experiment: conceptual modality switch paradigm"] --> B["Each trial: verify relation between property word and concept word"]
+  B --> C["Manipulate modality of successive trials: switch versus non-switch"]
+  C --> D["Switch types: auditory to visual and haptic to visual versus visual to visual"]
+  C --> E["ERPs time-locked to first word of target trial"]
+  E --> F["Effects in four time windows: 160 to 750 ms"]
+  D --> F
+  F --> G["Negativity for switching that increases over time"]
+  G --> H["Sensory regions may have a functional role in conceptual processing"]
+{{< /diagram >}}
+
 ### Reference
 
 Bernabeu, P. (2017). *Modality switches occur early and extend late in conceptual processing: Evidence from ERPs*. PsyArXiv. https://doi.org/10.31234/osf.io/5gjvk

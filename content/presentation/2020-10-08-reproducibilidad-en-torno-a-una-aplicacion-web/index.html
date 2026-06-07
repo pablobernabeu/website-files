@@ -18,6 +18,7 @@ tags:
   - R
   - Software Sustainability Institute Fellowship
 presentation_format: Talk
+diagram: true
 event_url: ~
 location: ~
 address:
@@ -47,6 +48,20 @@ projects: []
 
 
 
+<div id="overview" class="section level3">
+<h3>Overview</h3>
+<div class="mermaid">
+graph TD
+  A["Aplicacion web en R (shiny, flexdashboard)"] --> B["Uso sin programar"]
+  A --> C["Exportar registro de actividad"]
+  A --> D["Codigo abierto: compartir, investigar, editar"]
+  A --> E["Exportar codigo R ajustado a cada usuario"]
+  C --> F["Reproducibilidad"]
+  D --> F
+  E --> F
+</div>
+<p><em>Schematic overview; see the text for details.</em></p>
+</div>
 <div id="resumen" class="section level3">
 <h3>Resumen</h3>
 <p>Las aplicaciones web nos ayudan a facilitar el uso de nuestro trabajo, ya que no requieren programación para utilizarlas (<a href="https://shiny.rstudio.com/gallery/">ver ejemplos</a>). Crear estas aplicaciones en R, mediante paquetes como “shiny” o “flexdashboard”, ofrece múltiples ventajas. Entre ellas destaca la reproducibilidad, tal como veremos en torno a una <a href="https://github.com/pablobernabeu/Experimental-data-simulation">aplicación para la simulación de datos</a>. Por un lado, los usuarios pueden exportar un registro de su actividad. Por otro lado, el código utilizado para crear estas aplicaciones se puede compartir, investigar y editar con la facilidad que ofrece un lenguaje de código abierto como R. Esto facilita el uso gratuito, el desarrollo colaborativo y una documentación accesible sobre cualquiera de los paquetes utilizados. Por último, la reproducibilidad se puede maximizar si se facilita a los usuarios que lo deseen la exportación de un código de R ajustado a sus requerimientos (más allá del código de la aplicación en general), lo cual añadiría a la aplicación las ventajas de un paquete de R. Esta última opción (no disponible actualmente en la aplicación de simulación, ni en la mayoría de las aplicaciones) se puede habilitar adaptando el código de la aplicación a funciones básicas de R.</p>

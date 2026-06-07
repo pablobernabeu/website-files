@@ -1,7 +1,8 @@
 ---
-abstract: 'We tested whether conceptual processing is modality-specific by tracking the time course of the Conceptual Modality Switch effect. Forty-six participants verified the relation between property words and concept words. The conceptual modality of consecutive trials was manipulated in order to produce an Auditory-to-visual switch condition, a Haptic-to-visual switch condition, and a Visual-to-visual, no-switch condition. Event-Related Potentials (ERPs) were time-locked to the onset of the first word (property) in the target trials so as to measure the effect online and to avoid a within-trial confound. A switch effect was found, characterized by more negative ERP amplitudes for modality switches than no-switches. It proved significant in four typical time windows from 160 to 750 milliseconds post word onset, with greater strength in the Slow group, in posterior brain regions, and in the N400 window. The earliest switch effect was located in the language brain region, whereas later it was more prominent in the visual region. In the N400 and Late Positive windows, the Quick group presented the effect especially in the language region, whereas the Slow had it rather in the visual region. These results suggest that contextual factors such as time resources modulate the engagement of linguistic and embodied systems in conceptual processing.'
+abstract: 'We tested whether conceptual processing is modality-specific by tracking the time course of the Conceptual Modality Switch effect. Forty-six participants verified the relation between property words and concept words. The conceptual modality of consecutive trials was manipulated in order to produce an Auditory-to-visual switch condition, a Haptic-to-visual switch condition, and a Visual-to-visual, no-switch condition. Event-Related Potentials (ERPs) were time-locked to the onset of the first word (property) in the target trials so as to measure the effect online and to avoid a within-trial confound. A switch effect was found, characterized by more negative ERP amplitudes for modality switches than no-switches. It proved significant in four typical time windows from 160 to 750 milliseconds post word onset, with greater strength in posterior brain regions, and after 350 milliseconds. These results suggest that conceptual processing may be modality-specific in certain tasks, but also that the early stage of processing is relatively amodal.'
 authors:
 date: "2017-01-01"
+diagram: true
 # doi: "https://doi.org/10.31234/osf.io/a5pcz"
 featured: false
 image:
@@ -23,7 +24,7 @@ publication_short:
 publication_types:
 - "1"
 # slides: example
-summary: 'We tested whether conceptual processing is modality-specific by tracking the time course of the Conceptual Modality Switch effect. Forty-six participants verified the relation between property words and concept words. The conceptual modality of consecutive trials was manipulated in order to produce an Auditory-to-visual switch condition, a Haptic-to-visual switch condition, and a Visual-to-visual, no-switch condition. Event-Related Potentials (ERPs) were time-locked to the onset of the first word (property) in the target trials so as to measure the effect online and to avoid a within-trial confound. A switch effect was found, characterized by more negative ERP amplitudes for modality switches than no-switches. It proved significant in four typical time windows from 160 to 750 milliseconds post word onset, with greater strength in the Slow group, in posterior brain regions, and in the N400 window. The earliest switch effect was located in the language brain region, whereas later it was more prominent in the visual region. In the N400 and Late Positive windows, the Quick group presented the effect especially in the language region, whereas the Slow had it rather in the visual region. These results suggest that contextual factors such as time resources modulate the engagement of linguistic and embodied systems in conceptual processing.'
+summary: 'We tested whether conceptual processing is modality-specific by tracking the time course of the Conceptual Modality Switch effect. Forty-six participants verified the relation between property words and concept words. The conceptual modality of consecutive trials was manipulated in order to produce an Auditory-to-visual switch condition, a Haptic-to-visual switch condition, and a Visual-to-visual, no-switch condition. Event-Related Potentials (ERPs) were time-locked to the onset of the first word (property) in the target trials so as to measure the effect online and to avoid a within-trial confound. A switch effect was found, characterized by more negative ERP amplitudes for modality switches than no-switches. It proved significant in four typical time windows from 160 to 750 milliseconds post word onset, with greater strength in posterior brain regions, and after 350 milliseconds. These results suggest that conceptual processing may be modality-specific in certain tasks, but also that the early stage of processing is relatively amodal.'
 categories:
 - conceptual processing
 - R
@@ -53,6 +54,20 @@ url_fulltext: 'https://psyarxiv.com/a5pcz'
 # url_video: '#'
 ---
 
+### How it works
+
+*Schematic overview; see the text for details.*
+
+{{< diagram >}}
+graph TD
+  A["EEG-ERP data from word comprehension experiment"] --> B["ERP plots spanning 800 ms of word processing"]
+  B --> C["Groups of participants"]
+  C --> D["Individual participants"]
+  D --> E["Brain areas"]
+  E --> F["Electrodes"]
+  B --> G["Download HD plots, view 95% confidence intervals"]
+{{< /diagram >}}
+
 
 <a href='https://pablobernabeu.shinyapps.io/ERP-waveform-visualization_CMS-experiment/'>
       <button style = "background-color: white; color: black; border: 2px solid #4CAF50; border-radius: 12px;">
@@ -64,7 +79,7 @@ url_fulltext: 'https://psyarxiv.com/a5pcz'
 
 **Content**
 
-The data is from a psychology experiment on the comprehension of words, in which electroencephalographic (EEG) responses were measured. The data are presented in plots spanning 800 milliseconds (the duration of word processing). The aim of this Shiny app is to facilitate the exploration of the data by researchers and the public. Users can delve into the different sections of the data. In a hierarchical order, these sections are groups of participants, individual participants, brain areas, and electrodes. 
+The data are from a psychology experiment on the comprehension of words, in which electroencephalographic (EEG) responses were measured. The data are presented in plots spanning 800 milliseconds (the duration of word processing). The aim of this Shiny app is to facilitate the exploration of the data by researchers and the public. Users can delve into the different sections of the data. In a hierarchical order, these sections are groups of participants, individual participants, brain areas, and electrodes. 
 
 **Shiny apps in science**
 
@@ -72,7 +87,7 @@ By creating this app, I tried to reach beyond the scope of current *open science
 
 **Technical details**
 
-I used tabs on the upper area of the application page to avoid having cramming the side bar with widgets. I adjusted the appearance of these tabs, and by means of 'reactivity' conditions, modified the inputs in the side bar depending on the active tab.
+I used tabs on the upper area of the application page to avoid cramming the side bar with widgets. I adjusted the appearance of these tabs, and by means of 'reactivity' conditions, modified the inputs in the side bar depending on the active tab.
 
 ```
 mainPanel(
@@ -183,7 +198,7 @@ downloadButton('downloadPlot.1', 'Download HD plot')
 
 **_Rising to the challenge_**
 
-My experience with R Shiny has been so good I've been [sharing it](/2017/the-case-for-data-dashboards-first-steps-in-r-shiny/). Yet, on my first crawling days, I spent an eternity stuck with this elephant in my room: "μ". This _μ_ letter (micro-souvenir from hell, as I later knew it), was part of the labels of my plots. All I knew was that I could not deploy the app online, even while I could perfectly launch it locally in my laptop. So, I wondered what use was to deploy locally if I couldn't publish the app?! Eventually, I read about UTF-8 encoding in one forum. Bless them forums. All I had to do was use "Âμ" instead of the single "μ". A better option I found later was: `expression("\u03bc")`.
+My experience with R Shiny has been so good I've been [sharing it](/2017/the-case-for-data-dashboards-first-steps-in-r-shiny/). Yet, on my first crawling days, I spent an eternity stuck with this elephant in my room: "μ". This _μ_ letter (micro-souvenir from hell, as I later knew it), was part of the labels of my plots. All I knew was that I could not deploy the app online, even while I could perfectly launch it locally in my laptop. So, I wondered what use it was to deploy locally if I couldn't publish the app?! Eventually, I read about UTF-8 encoding in one forum. Bless them forums. All I had to do was use "Âμ" instead of the single "μ". A better option I found later was: `expression("\u03bc")`.
 
 Beyond encoding issues, I had a tough time embedding images. You know, the 'www' folder... To be honest, I still haven't handled the 'www' way--but where there's a will, there's a way. I managed to include my images by uploading them to a website and then entering their URL in "img(src", avoiding the use of folder paths.
 

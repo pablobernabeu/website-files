@@ -31,6 +31,7 @@ open_materials: true
 open_data: true
 publication: 'Zenodo'
 publication_short: ''
+diagram: true
 abstract: "Cloud-based speech-to-text services are convenient, but they often have file size limits, lack transparency for reproducible research, and can pose privacy risks under regulations like GDPR. To address these limitations, this project introduces a production-ready, local transcription workflow using OpenAI's Whisper models. This self-contained system ensures complete data sovereignty and is designed for scalability, supporting batch operations on high-performance computing (HPC) clusters with GPU acceleration. The workflow includes advanced quality control, such as algorithms to detect and remove AI-generated repetitions, context-aware name masking for privacy, speaker diarisation, and a flexible audio enhancement pipeline. Implemented as a single Python script, this system offers a robust, reproducible, and secure alternative for academic and enterprise transcription."
 summary: "A production-ready, local transcription workflow using OpenAI's Whisper, designed for security, scalability on HPC, and advanced quality control. It overcomes the privacy and reproducibility limitations of cloud-based services, offering a robust alternative for academic and enterprise use."
 featured: no
@@ -59,6 +60,22 @@ slides: ''
 <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
 
 
+<div id="how-it-works" class="section level3">
+<h3>How it works</h3>
+<div class="mermaid">
+graph TD
+  A["Audio input"] --> B["Audio enhancement pipeline"]
+  B --> C["Local Whisper transcription with GPU acceleration"]
+  C --> D["Remove AI-generated repetitions"]
+  C --> E["Context-aware name masking"]
+  C --> F["Speaker diarisation"]
+  D --> G["Reproducible and GDPR-compliant transcript"]
+  E --> G
+  F --> G
+  C --> H["Batch operations on HPC clusters"]
+</div>
+<p><em>Schematic overview; see the text for details.</em></p>
+</div>
 <div id="reference" class="section level2">
 <h2>Reference</h2>
 <div style="text-align: left;">
