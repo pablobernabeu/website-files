@@ -54,7 +54,7 @@ css_class = ""
 <div style = "margin-bottom: 3%;"></div>
 
 <button id="toggle-all-summaries" style="padding: 8px 16px; margin-bottom: 1rem; background-color: #059669; color: #ffffff; border: 1px solid #047857; border-radius: 4px; cursor: pointer; font-size: 0.9em; transition: all 0.2s ease;">
-  <i class="fas fa-chevron-down"></i> Expand all video descriptions
+  <i class="fas fa-chevron-down"></i>&nbsp;Expand all video descriptions
 </button>
 
 <script>
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     
-    this.innerHTML = isExpanding ? '<i class="fas fa-chevron-up"></i> Collapse all video descriptions' : '<i class="fas fa-chevron-down"></i> Expand all video descriptions';
+    this.innerHTML = isExpanding ? '<i class="fas fa-chevron-up"></i>&nbsp;Collapse all video descriptions' : '<i class="fas fa-chevron-down"></i>&nbsp;Expand all video descriptions';
   });
 
   // Alternating backgrounds: wrap each video entry (h3 + content) in a div
@@ -474,7 +474,7 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
-### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; Workshop on <i class="fa-brands fa-r-project" aria-label="R"></i> Markdown, dashboards and Binder (see [programme and materials](https://github.com/pablobernabeu/CarpentryCon-2020-workshop-Open-Data-Reproducibility))
+### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; Workshop on <i class="fa-brands fa-r-project" aria-label="R"></i>&nbsp;Markdown, dashboards and Binder (see [programme and materials](https://github.com/pablobernabeu/CarpentryCon-2020-workshop-Open-Data-Reproducibility))
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
 <iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/wZsPD7CgJC0" frameborder="0" allowfullscreen

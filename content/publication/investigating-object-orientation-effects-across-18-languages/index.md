@@ -51,7 +51,7 @@ url_video: "https://osf.io/h36wr"
 links:
   - name: 'Stage 1 Registered Report'
     url: https://osf.io/preprints/psyarxiv/t2pjv_v1
-  - name: '<i class="fa-solid fa-lock-open"></i> View-only full text'
+  - name: '<i class="fa-solid fa-lock-open"></i>&nbsp;View-only full text'
     url: https://rdcu.be/eNjUA
 ---
 
