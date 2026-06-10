@@ -872,6 +872,15 @@ section.home-section .container {
   max-width: 900px !important;
 }
 
+// "Other Work" entry descriptions use an inline muted green (#5A826F). It reads
+// fine on the light theme but only ~3:1 against the dark section background, so
+// lighten it on dark for legible contrast (~6.5:1). Case-insensitive match so a
+// minifier lowercasing the inline hex can't slip past it; !important to beat the
+// inline style.
+body.dark #other-work [style*="5a826f" i] {
+  color: #82bba1 !important;
+}
+
 // Reduce bottom margin in section headings
 #applications-and-dashboards > div > div > div.col-12.section-heading > h1 {
   margin-bottom: 0.25rem !important;
@@ -952,6 +961,24 @@ div > div > div.col-12.section-heading > p {
 div.col-12.section-heading > h1 {
   margin-top: 0.5rem !important;
   margin-bottom: 0.25rem !important;
+  font-size: 2.25rem !important;
+}
+
+// Home-page section titles are now <h2> (one <h1> per page = the person's name,
+// for a correct heading hierarchy). Keep their previous on-screen size: restore
+// the 2.25rem the <h1> rendered at, rather than letting them fall through to the
+// smaller h2 sizing. Higher specificity wins the cascade (incl. the desktop
+// `.section-heading h2 { 1.35em }` rule), and being outside a media query it
+// applies at all widths as the old <h1> did. Only font-size changes.
+//
+// Section titles live in two markup shapes depending on the widget/columns:
+//   - 2-column + `pages`/`tag_cloud`: <h2> inside `.section-heading`
+//   - 1-column `blank`/`tag_cloud`:   <h2> directly in `.col-lg-12`/`.col-12`
+// `:first-child` targets only the title (it always precedes body content), so
+// content sub-headings like "Teaching Philosophy" keep their smaller size.
+.home-section .section-heading h2,
+.home-section .col-lg-12 > h2:first-child,
+.home-section .col-12 > h2:first-child {
   font-size: 2.25rem !important;
 }
 
