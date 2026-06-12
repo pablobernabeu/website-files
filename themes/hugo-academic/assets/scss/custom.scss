@@ -2111,8 +2111,13 @@ body.dark {
       color: #64748b !important;
     }
     
-    // Override BACKGROUND colors for nesting elements
-    &[style*="background-color: white"], &[style*="background-color: #ffffff"], &[style*="background-color: #fff"], &[style*="background: white"], &[style*="background: #ffffff"], &[style*="background: #fff"] {
+    // Override BACKGROUND colors for nesting elements.
+    // NB: include the no-space variants (background-color:#fff). hugo --minify
+    // rewrites inline `background-color: white` -> `background-color:#fff` (named
+    // colour to hex, space removed), so the spaced selectors above silently miss
+    // on the deployed site, leaving white CTA pills white with light text on the
+    // dark theme. The `i` flag guards against hex-case changes too.
+    &[style*="background-color: white"], &[style*="background-color: #ffffff"], &[style*="background-color: #fff"], &[style*="background: white"], &[style*="background: #ffffff"], &[style*="background: #fff"], &[style*="background-color:#fff" i], &[style*="background-color:#ffffff" i], &[style*="background:#fff" i], &[style*="background:#ffffff" i] {
       background-color: #1f2937 !important;
     }
     &[style*="background-color: #f"], &[style*="background: #f"] {

@@ -92,6 +92,12 @@
     content: "Drag to pan \00B7 use + / \2212 to zoom";
     position: absolute; left: 8px; bottom: 4px; font-size: 11px; opacity: 0.5; pointer-events: none;
   }
+
+  /* Dark theme: Mermaid's default connector colour (#333) is almost invisible on
+     the dark section background. Lighten the edge lines and arrowheads. */
+  body.dark .mermaid .edgePath path,
+  body.dark .mermaid .flowchart-link { stroke: #c0c6da !important; }
+  body.dark .mermaid .arrowheadPath { fill: #c0c6da !important; }
 </style>
 <script>
   /* Fail-safe: never leave a diagram permanently hidden if the enhancer fails. */
