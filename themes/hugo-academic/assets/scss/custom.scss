@@ -881,6 +881,15 @@ body.dark #other-work [style*="5a826f" i] {
   color: #82bba1 !important;
 }
 
+// Outline-primary buttons (e.g. the citation modal's Copy / Download) show their
+// text + border in the brand blue (#2962ff), which is only ~3:1 on the dark
+// theme. Lighten to the dark-mode link blue for the resting/focus state; leave
+// the :hover / :active fill (white on blue) to Bootstrap.
+body.dark .btn-outline-primary:not(:hover):not(:active) {
+  color: #63b3ed !important;
+  border-color: #63b3ed !important;
+}
+
 // Reduce bottom margin in section headings
 #applications-and-dashboards > div > div > div.col-12.section-heading > h1 {
   margin-bottom: 0.25rem !important;
