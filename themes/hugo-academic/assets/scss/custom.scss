@@ -881,11 +881,13 @@ body.dark #other-work [style*="5a826f" i] {
   color: #82bba1 !important;
 }
 
-// Outline-primary buttons (e.g. the citation modal's Copy / Download) show their
-// text + border in the brand blue (#2962ff), which is only ~3:1 on the dark
-// theme. Lighten to the dark-mode link blue for the resting/focus state; leave
-// the :hover / :active fill (white on blue) to Bootstrap.
-body.dark .btn-outline-primary:not(:hover):not(:active) {
+// The citation modal's Copy / Download buttons (.btn-outline-primary) show their
+// text + border in the brand blue (#2962ff), only ~3:1 on the dark theme.
+// Lighten to the dark-mode link blue for the resting/focus state; leave the
+// :hover / :active fill (white on blue) to Bootstrap. Scoped to .modal-footer so
+// it does NOT touch the section link buttons (#publication etc.), which already
+// have their own neutral grey styling and must stay consistent across sections.
+body.dark .modal-footer .btn-outline-primary:not(:hover):not(:active) {
   color: #63b3ed !important;
   border-color: #63b3ed !important;
 }
