@@ -5105,10 +5105,15 @@ body.dark .document-viewer-toolbar {
   margin-bottom: -0.3rem !important;
 }
 
-// Reduce margin under article-metadata in web applications and blog sections
-#applications-and-dashboards .article-metadata > div,
-#blog .article-metadata > div {
+// Reduce margin under article-metadata in web applications section
+#applications-and-dashboards .article-metadata > div {
   margin-bottom: -0.3rem !important;
+}
+// Blog: don't pull the inner div up — the negative margin shrinks the metadata
+// box below one line-height and (with the inherited overflow:hidden) clips the
+// bottom of the year glyphs.
+#blog .article-metadata > div {
+  margin-bottom: 0 !important;
 }
 
 // Reduce top margin for blog stream-meta container
@@ -5129,6 +5134,17 @@ body.dark .document-viewer-toolbar {
 // Reduce top padding for blog article metadata
 #blog > div > div > div > div > div.media-body > div.stream-meta.article-metadata {
   padding-top: 0.2rem !important;
+}
+
+// ISSUE 1 (cropped year): the theme base `.article-metadata { overflow: hidden }`
+// clips the bottom of the year because the box (~24px) is shorter than the line
+// (~25.6px). The categories line is display:none, so making overflow visible
+// simply un-clips the year — no second line appears. Scoped to #blog so the
+// #publication / #applications-and-dashboards / single-post metadata keep their
+// original overflow behaviour.
+#blog .stream-meta.article-metadata,
+#blog .stream-meta.article-metadata > div.article-metadata {
+  overflow: visible !important;
 }
 
 // HOME SECTION SPECIFIC RULES - MUST COME AFTER GLOBAL RULES
@@ -5455,19 +5471,32 @@ a.scholar-icon-link:hover {
   margin-top: 0 !important;
   padding-top: 0 !important;
 }
+// ISSUE 2: the row is already display:flex; align-items:center, so let flex
+// centre the divider and the cap. The old position:relative/top nudges (8px,
+// 10px) were what pushed them out of line; line-height:1 collapses the inherited
+// ~25.6px strut that stretched the link to ~35px.
 .scholar-meta-row > span.middot-divider {
-  position: relative !important;
-  top: 8px !important;
+  line-height: 1 !important;
 }
 .scholar-meta-row > a.scholar-icon-link {
   flex: 0 0 auto !important;
   display: inline-flex !important;
   align-items: center !important;
-  height: auto !important;
-  min-height: unset !important;
+  height: 24px !important;
+  line-height: 1 !important;
+  min-height: 0 !important;
   max-height: unset !important;
-  position: relative !important;
-  top: 10px !important;
+}
+
+// Keyboard focus ring for the blog metadata links (category links + scholar cap),
+// which previously had none. Uses outline (not border/box-shadow, which the
+// scholar <a> inline-resets) so it adds no layout and can't reintroduce the clip.
+// #blog-scoped to avoid the #publication / single-post scholar icons.
+#blog .stream-meta a:focus-visible,
+#blog .scholar-icon-link:focus-visible {
+  outline: 2px solid currentColor !important;
+  outline-offset: 2px !important;
+  border-radius: 3px !important;
 }
 
 // Post single pages: scholar icon inside flex wrapper — reset height and nudge down
