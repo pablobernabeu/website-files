@@ -5452,8 +5452,12 @@ a.scholar-icon-link:hover {
 .stream-meta a.scholar-icon-link img {
   width: 24px !important;
   height: 24px !important;
-  vertical-align: middle !important;
-  display: inline-block !important;
+  // Centre the cap on the year text in the flex .scholar-icon-link. The cap had
+  // an inherited margin-bottom (~11px) that align-items:center was centring,
+  // shoving the visible icon ~6px above the year; zero it. Use block (not the
+  // inline-block whose baseline also shifted it).
+  display: block !important;
+  margin: 0 !important;
 }
 
 // Blog list items: make stream-meta a flex row when Scholar icon is present
