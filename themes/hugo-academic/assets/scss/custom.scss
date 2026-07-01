@@ -5121,9 +5121,16 @@ body.dark .document-viewer-toolbar {
   margin-top: 0 !important;
 }
 
-// Tighten top margin when Scholar icon is present (scholar-meta-row overrides the above)
+// Scholar rows must NOT be pulled up. The summary (.article-style) already has
+// margin-bottom: -0.5rem, and while collapsed its grey "▼▼▼" expand button
+// (::before, positioned bottom:12px, background #555) + fade gradient sit just
+// above this row. A negative margin-top here drags the 24px Scholar cap up onto
+// that grey bar (collapsed state) and onto the abstract's last text line
+// (expanded state) — the overlap reported by the user. Use margin-top:0 so the
+// row behaves exactly like non-scholar blog rows: the cap clears the grey bar by
+// ~8px and sits below the abstract text, while staying centred on the year.
 #blog > div > div > div:nth-child(2) > div > div.media-body > div.stream-meta.article-metadata.scholar-meta-row {
-  margin-top: -1.2rem !important;
+  margin-top: 0 !important;
 }
 
 // Decrease top margin for blog metadata on home page
@@ -5466,7 +5473,7 @@ a.scholar-icon-link:hover {
   align-items: center !important;
   flex-wrap: wrap !important;
   gap: 0 2px !important;
-  margin-top: -1.2rem !important;
+  margin-top: 0 !important; // was -1.2rem; that dragged the cap onto the summary's grey expand bar / last line (see #blog rule above)
   padding-top: 0 !important;
 }
 .scholar-meta-row > .article-metadata {
