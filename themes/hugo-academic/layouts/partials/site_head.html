@@ -28,6 +28,16 @@
     {{ $desc = .Params.abstract | markdownify | emojify }}
   {{ else if .IsPage }}
     {{ $desc = .Summary | markdownify | emojify }}
+  {{ else if and site.Params.description (not .IsHome) }}
+    {{/* List/section/taxonomy pages (categories, tags, /post/, /publication/, etc.) have no
+         page-specific summary, so they all fell back to the exact same site-wide description —
+         flagged by Bing as duplicate meta descriptions across ~30 pages. Prefix with the page's
+         own title so each list page's <meta name="description"> is unique, while the homepage
+         (IsHome) keeps the plain site description. Deliberately NOT run through markdownify:
+         that returns template.HTML, which printf then flattens to a plain string, stripping the
+         "already safe" marker — the attribute's normal auto-escaping then escapes it a second
+         time (e.g. "Applications & dashboards" became "&amp;amp;"). Plain .Title auto-escapes once. */}}
+    {{ $desc = printf "%s: %s" .Title site.Params.description }}
   {{ else if site.Params.description }}
     {{ $desc = site.Params.description }}
   {{ else }}
