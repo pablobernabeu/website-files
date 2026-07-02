@@ -692,6 +692,14 @@ a[href$="/tags/s/"] {
   font-weight: 400;
 }
 
+// Dark theme: this subscript inherits the tag's own colour (the dark-theme palette in
+// tag-cloud-network.js's getCategoryColor, ~7:1 against #tags's background), then
+// multiplies it by the 0.5 opacity above - e.g. methods green ends up at only ~2.85:1,
+// well under WCAG AA (4.5:1). 0.8 keeps every category's count subscript above ~5:1.
+body.dark #tags .tag-cloud a::after {
+  opacity: 0.8;
+}
+
 /* Tag page heading links - match home page styling */
 #top > div > div > h2 a {
   color: var(--text-tertiary) !important;
@@ -5609,15 +5617,26 @@ body.dark .article-tags a[data-count]::after,
   opacity: 0.6;
 }
 
-#top > div.pub > div > div.article-tags > a.ancillary-tag:visited, 
-#top > article > div > div.article-tags > a.ancillary-tag:visited, 
+#top > div.pub > div > div.article-tags > a.ancillary-tag:visited,
+#top > article > div > div.article-tags > a.ancillary-tag:visited,
 .article-tags a.ancillary-tag:visited {
   font-weight: 400;
   opacity: 0.6;
 }
 
-#top > div.pub > div > div.article-tags > a.ancillary-tag:hover, 
-#top > article > div > div.article-tags > a.ancillary-tag:hover, 
+// Dark theme: ancillary tags inherit body.dark's text colour, which already carries its
+// own 0.8 alpha (e.g. rgba(255,255,255,0.8)). The 0.6 resting opacity above COMPOUNDS with
+// that (effective alpha 0.8*0.6 = 0.48), leaving only ~4.92:1 contrast against the dark
+// background - technically passes WCAG AA (4.5:1) but with almost no margin, and reads as
+// too dark/washed out at these small (0.85rem, 400-weight) sizes. 0.75 keeps ancillary tags
+// visibly de-emphasised relative to primary tags (opacity 1) while restoring a safe ~7:1.
+body.dark .article-tags a.ancillary-tag:link,
+body.dark .article-tags a.ancillary-tag:visited {
+  opacity: 0.75 !important;
+}
+
+#top > div.pub > div > div.article-tags > a.ancillary-tag:hover,
+#top > article > div > div.article-tags > a.ancillary-tag:hover,
 .article-tags a.ancillary-tag:hover {
   font-weight: 400;
   opacity: 0.85;
