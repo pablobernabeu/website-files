@@ -728,24 +728,12 @@ body.dark #top > div > div > h2 a {
   margin-right: auto !important;
 }
 
-/* Increase margin under universal wrapper */
-#top > div.universal-wrapper.pt-3 {
-  margin-bottom: -2.5rem !important;
-  padding-bottom: 0rem !important;
-}
-
 /* Remove horizontal padding from universal-wrapper in mobile view */
 @media (max-width: 991px) {
   #top > div.universal-wrapper.pt-3 {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
-}
-
-/* Additional reduction for publication page only */
-
-/* Remove left and right margins in mobile view */
-@media (max-width: 991px) {
 }
 
 /* Increase margin above content section */
@@ -766,7 +754,6 @@ body.dark #top > div > div > h2 a {
 
 /* Increase margin under h1 in universal wrapper */
 #top > div.universal-wrapper.pt-3 > h1 {
-  margin-bottom: 2rem !important;
   font-size: 2.75rem !important;
 }
 
@@ -994,7 +981,6 @@ div.col-12.section-heading > h1 {
   }
   
   #publication > div > div > div.col-12.section-heading > h1 {
-    margin-top: 0 !important;
     margin-bottom: 0.3rem !important;
   }
 }
@@ -1072,12 +1058,6 @@ h3#related-podcasts ~ p .fa-wand-magic-sparkles {
 // Reduce margin above stream-meta article-metadata
 #top > div:nth-child(4) > div > div.media-body > div.stream-meta.article-metadata {
   margin-top: -0.3rem !important;
-}
-
-// Remove navbar's extra horizontal padding
-.navbar {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
 }
 
 // Navbar container max-width
@@ -1227,7 +1207,6 @@ textarea {
 
 #publication > div > div > div > div > div.media-body > div.stream-meta.article-metadata > div {
   line-height: 1.4 !important;
-  font-size: 0.8rem !important;
   margin-top: 0.3rem !important;
 }
 
@@ -1651,7 +1630,6 @@ body.dark #open-science-popup a:hover {
 }
 
 #top > div.pub > div.article-container.pt-3 > div.article-metadata {
-  margin-bottom: 0.5rem !important;
   padding-bottom: 0.5rem !important;
 }
 
@@ -1677,11 +1655,6 @@ body.page-wrapper #top > div.pub > div.article-container.pt-3 > div.article-meta
 
 #top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories * {
   font-size: 0.8rem !important;
-}
-
-// Reduce font size of first metadata span
-#top > div.pub > div.article-container.pt-3 > div.article-metadata > span:nth-child(1) > span {
-  font-size: 0.85rem !important;
 }
 
 // Override ALL span > span to match general metadata size increase (must come after more specific rules)
@@ -1832,14 +1805,6 @@ div > div > div > div > div.media-body > div.stream-meta.article-metadata > div 
 
 div > div > div > div > div.media-body > div.stream-meta.article-metadata > div > span.article-date {
   font-size: 0.8rem !important;
-}
-
-// Mobile navbar icon positioning
-@media (max-width: 1199px) {
-  
-  .navbar-nav.ml-auto {
-    margin-right: -1rem !important;
-  }
 }
 
 // Mobile navbar icon positioning
@@ -2965,8 +2930,6 @@ and from bio portrait information. */
     left: 0 !important;
     right: auto !important;
     width: 40% !important;
-    min-width: 160px !important;
-    max-width: 220px !important;
     background-color: #1e293b !important;
     box-shadow: 0 4px 6px rgba(0,0,0,0.3) !important;
     z-index: 1020 !important;
@@ -2980,7 +2943,6 @@ and from bio portrait information. */
     width: 40% !important;
     min-width: 160px !important;
     max-width: 220px !important;
-    margin-left: 0 !important;
   }
   
   .navbar-collapse .navbar-nav {
@@ -4496,7 +4458,6 @@ body.dark #applications-and-dashboards > div > div > div.col-12 > div > div.medi
   padding-top: 0.25rem !important;
   padding-bottom: 0 !important;
   margin-bottom: -3.8rem !important;
-  font-size: 0.92rem !important;
 }
 
 // Increase bottom margin for publication items
@@ -6342,7 +6303,6 @@ body div .avatar-circle img,
   -webkit-transform-origin: center center !important;
   -moz-transform-origin: center center !important;
   -ms-transform-origin: center center !important;
-  border: none !important;
   border: 0 !important;
   outline: none !important;
   box-shadow: none !important;
@@ -6361,7 +6321,6 @@ body div .avatar-circle img,
 .portrait .avatar-circle,
 div.avatar.avatar-circle,
 div.avatar-circle {
-  border: none !important;
   border: 0 !important;
   outline: none !important;
   box-shadow: none !important;
@@ -7126,10 +7085,6 @@ table caption {
   padding-top: -1rem !important;
 }
 
-/* Remove left and right padding from container in mobile view on publications page */
-@media (max-width: 991px) {
-}
-
 /* Reduce margins around publication page title and align with search field */
 #top > div.universal-wrapper.pt-3 > h1 {
   margin-top: 0.5rem !important;
@@ -7433,11 +7388,6 @@ body.page-wrapper .article-container {
   padding-top: 0.5rem !important;
 }
 
-// Increase bottom margin for iframes in presentation article content
-#top > div.pub > div > div.article-style > iframe {
-  margin-bottom: 2rem !important;
-}
-
 // Reduce bottom margin for buttons in presentation article content
 #top > div.pub > div:nth-child(2) > div.article-style > a > button {
   margin-bottom: 0.5rem !important;
@@ -7564,13 +7514,6 @@ body.dark #top > div.pub > div:nth-child(3) > div.article-style > a > button:foc
 
 .media.stream-item {
   margin-bottom: 0.5rem !important;
-}
-
-// Desktop view: enforce max-width for entire page on tags/categories/presentation pages
-@media (min-width: 992px) {
-  
-  // Make taxonomy page titles bold - removed duplicate
-  
 }
 
 // Decrease spacing above superscript in article paragraphs
