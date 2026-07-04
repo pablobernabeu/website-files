@@ -1,5 +1,4 @@
 
-
 // Override this file to add your own SCSS styling.
 
 // Responsive base font size - scales with viewport, slightly larger on big screens
@@ -608,14 +607,6 @@ section.home-section .col-lg-4 {
 }
 
 /* Footer tag cloud - simpler version without network */
-.footer-tag-cloud-section {
-  padding: 1.5rem 0;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  border-top: 1px solid rgba(128, 128, 128, 0.2);
-  overflow-x: hidden !important;
-  overflow-y: visible !important;
-}
 
 /* Site footer spacing to prevent overlap with tag cloud */
 .site-footer {
@@ -643,10 +634,6 @@ body > div.container:last-of-type {
     max-height: none !important;
     overflow-y: hidden !important;
   }
-}
-
-body.dark .footer-tag-cloud-section {
-  border-top-color: rgba(255, 255, 255, 0.1);
 }
 
 .footer-tag-cloud {
@@ -756,21 +743,9 @@ body.dark #top > div > div > h2 a {
 }
 
 /* Additional reduction for publication page only */
-body.page-publications #top > div.universal-wrapper.pt-3 {
-  margin-bottom: -3.2rem !important;
-  max-width: 760px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
 
 /* Remove left and right margins in mobile view */
 @media (max-width: 991px) {
-  body.page-publications #top > div.universal-wrapper.pt-3 {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
 }
 
 /* Increase margin above content section */
@@ -782,9 +757,6 @@ body.page-publications #top > div.universal-wrapper.pt-3 {
 }
 
 /* Reduce margin for publication page */
-body.page-publications #top > div:nth-child(4) {
-  margin-top: 0rem !important;
-}
 
 /* Increase margin under content section header */
 #top > div:nth-child(4) > div > div {
@@ -913,13 +885,6 @@ body.dark .modal-footer .btn-outline-primary:not(:hover):not(:active) {
 // Increase top padding for publication section
 #publication > div {
   padding-top: 1.5rem !important;
-}
-
-// Format page titles on post and presentation pages like home page
-.page-heading h1 {
-  font-size: 2.5rem !important;
-  font-weight: 400 !important;
-  margin-bottom: 0.25rem !important;
 }
 
 // Format titles in post and presentation lists
@@ -1690,13 +1655,6 @@ body.dark #open-science-popup a:hover {
   font-size: 0.8rem !important;
 }
 
-// Override font size for publication pages specifically
-body.page-publication #top > div.pub > div.article-container.pt-3 > div.article-metadata,
-body.page-publication #top > div.pub > div.article-container.pt-3 > div.article-metadata * {
-  font-size: 2rem !important;
-  color: red !important;
-}
-
 #top > div.pub > div.article-container.pt-3 > div.article-metadata {
   margin-bottom: 0.5rem !important;
   padding-bottom: 0.5rem !important;
@@ -1726,11 +1684,6 @@ body.page-wrapper #top > div.pub > div.article-container.pt-3 > div.article-meta
   font-size: 0.8rem !important;
 }
 
-// Publication pages: increase font size for categories
-body.page-publication #top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories * {
-  font-size: 2rem !important;
-}
-
 // Reduce font size of first metadata span
 #top > div.pub > div.article-container.pt-3 > div.article-metadata > span:nth-child(1) > span {
   font-size: 0.85rem !important;
@@ -1743,11 +1696,6 @@ body.page-publication #top > div.pub > div.article-container.pt-3 > div.article-
 
 #top > div.pub > div.article-container.pt-3 > div.article-metadata > span > span {
   font-size: 1.15rem !important;
-}
-
-// Publication pages: increase font size for first metadata span
-body.page-publication #top > div.pub > div.article-container.pt-3 > div.article-metadata > span:nth-child(1) > span {
-  font-size: 2rem !important;
 }
 
 // Hide middot dividers in publication metadata
@@ -2343,24 +2291,6 @@ body.dark {
     border-color: #f59e0b !important;
   }
   
-  .alert-danger {
-    background-color: #991b1b !important;
-    color: #fecaca !important;
-    border-color: #ef4444 !important;
-  }
-  
-  .alert-light {
-    background-color: #374151 !important;
-    color: #e2e8f0 !important;
-    border-color: #6b7280 !important;
-  }
-  
-  .alert-dark {
-    background-color: #1f2937 !important;
-    color: #f3f4f6 !important;
-    border-color: #4b5563 !important;
-  }
-  
   // Alert links should be properly styled
   .alert a, .alert .alert-link {
     color: inherit !important;
@@ -2559,7 +2489,6 @@ body.dark {
   }
 }
 
-
 // On scroll and only in desktop view, highlight section headings, tags in articles, bio info (name, title, email, socials), and the tag cloud at the bottom of the site. This work depends on CSS code in custom.scss, and JS code in academic.js.
 
 @media (min-width: 992px) {
@@ -2570,7 +2499,6 @@ body.dark {
     transition: all 0.03s ease-in-out;
   }
   
-
   div.col-12.col-lg-4.section-heading.visible, div.col-12.col-lg-4.section-heading > h1.visible {
     opacity: 1;
     transform: translateY(0);
@@ -2591,7 +2519,6 @@ body.dark {
       color: var(--text-secondary);
     }
   }
-  
   
   div.article-container.pt-3 > div.btn-links.mb-3 > a:link.visible, button.visible:not(.full-text-btn), button:not(.full-text-btn) > h3.visible, div.btn-links.mb-3 > button.visible:not(.full-text-btn), #top > div.pub > div > a > button.visible:not(.full-text-btn) {
     opacity: 1;
@@ -2614,7 +2541,6 @@ body.dark {
     }
   }
   
-  
   .portrait-title > h3.visible, .social-icon.visible {
     opacity: 1;
     transform: translateY(0);
@@ -2635,7 +2561,6 @@ body.dark {
       color: var(--accent-tertiary);
     }
   }
-  
   
   .tag-cloud > a:link.visible {
     opacity: 1;
@@ -2732,7 +2657,6 @@ body.dark {
   }
 
 }
-
 
 // Profile subsections
 
@@ -3193,11 +3117,6 @@ and from bio portrait information. */
     align-items: center !important;
   }
   
-  .navbar-toggler .navbar-toggler-icon {
-    width: 28px !important;
-    height: 28px !important;
-  }
-  
   // Align right-side icons at same vertical level as other navbar content
   .navbar-nav-right,
   .nav-icons {
@@ -3498,19 +3417,9 @@ section.home-section:first-of-type {
   margin-bottom: 3.5rem !important;
 }
 
-// Override for publication pages: reduce bottom margin
-html body.page-publication #top > div.pub > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 {
-  margin-bottom: 1rem !important;
-}
-
 // Increase bottom margin for featured-image div
 #top > div.pub > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 > div {
   margin-bottom: 3rem !important;
-}
-
-// Override for publication pages: reduce bottom margin for featured-image wrapper
-html body.page-publication #top > div.pub > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 {
-  margin-bottom: 1rem !important;
 }
 
 // Apply sizing and margin to publication page featured images
@@ -3531,13 +3440,6 @@ html body.page-publication #top > div.pub > div.article-header.article-container
   margin-right: auto !important;
 }
 
-// Override for publication pages: increase bottom margin for featured-image div
-html body.page-publication #top > div.pub > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 > div {
-  margin-bottom: 3rem !important;
-  max-width: 100% !important;
-  overflow: hidden !important;
-}
-
 // Override margin-bottom for presentation pages
 html body.page-wrapper #top > div.pub > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 {
   margin-bottom: 4rem !important;
@@ -3548,32 +3450,6 @@ html body.page-wrapper #top > div.pub > div.article-header.featured-image-wrappe
   margin-top: 6rem !important;
 }
 
-// Reduce margin under featured image in pub pages (except presentation pages)
-html body.page-publication #top > div.pub > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 > div > img {
-  margin-bottom: 0 !important;
-  max-width: 100% !important;
-  max-height: 400px !important;
-  width: auto !important;
-  height: auto !important;
-  object-fit: contain !important;
-  display: block !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-// Reduce margin under featured-image itself on publication pages
-html body.page-publication .featured-image {
-  margin-bottom: 2rem !important;
-  max-width: 100% !important;
-  max-height: 400px !important;
-  width: auto !important;
-  height: auto !important;
-  object-fit: contain !important;
-  display: block !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
 // Increase margin above and below featured image on presentation pages
 .page-wrapper #top > div.pub > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 > div > img {
   margin-top: 0.25rem !important;
@@ -3582,11 +3458,6 @@ html body.page-publication .featured-image {
 
 // Increase margin above featured-image-wrapper in article pages
 #top > article > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 {
-  margin-top: 3.5rem !important;
-}
-
-// Increase top margin for featured images on applications-and-dashboards pages
-.page-applications-and-dashboards #top > article > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 {
   margin-top: 3.5rem !important;
 }
 
@@ -4149,8 +4020,6 @@ body.dark .theme-menu .dropdown-item:hover {
   padding-top: 0 !important;
 }
 
-
-
 // Navbar brand hover styling for both light and dark themes
 .navbar-brand:hover {
   color: #5f9ea0 !important; // Dark aquamarine
@@ -4233,11 +4102,6 @@ body.dark .navbar-collapse .nav-link,
 body.dark .navbar-collapse .navbar-nav .nav-link {
   color: #0f172a !important;
   background-color: #e2e8f0 !important;
-}
-
-// Dark theme navbar toggler icon
-body.dark .navbar-toggler-icon {
-  filter: invert(0);
 }
 
 // Increase mobile menu icon size (Font Awesome fa-bars)
@@ -4817,28 +4681,6 @@ div > div > div > table > tbody > tr > td,
     pointer-events: none;
   }
   
-  // Arrow indicators on sides of Expand button
-  // Hidden by default, shown on hover
-  .expand-arrow {
-    position: absolute;
-    bottom: 4px;
-    font-size: 0.7em;
-    color: #888;
-    z-index: 1;
-    pointer-events: none;
-    opacity: 0;
-    transition: all 0.2s ease;
-    line-height: 1;
-  }
-  
-  .expand-arrow-left {
-    right: calc(50% + 50px);
-  }
-  
-  .expand-arrow-right {
-    left: calc(50% + 50px);
-  }
-  
   // Hover effect for the entire abstract - show button and arrows
   &:hover::before {
     content: '▼▼▼      Expand summary      ▼▼▼';
@@ -4848,10 +4690,6 @@ div > div > div > table > tbody > tr > td,
     transform: translateX(-50%) scale(1.03);
   }
   
-  &:hover .expand-arrow {
-    opacity: 1;
-    color: #555;
-  }
 }
 
 // Dark theme: invert Expand button colours
@@ -4868,15 +4706,6 @@ body.dark :is(#publication, #applications-and-dashboards, #blog) > div > div > d
   opacity: 1;
 }
 
-// Dark theme: arrow colors (white for visibility)
-body.dark :is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style .expand-arrow {
-  color: #fff;
-}
-
-body.dark :is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style:hover .expand-arrow {
-  color: #eee;
-}
-
 // Specific gradient for applications-and-dashboards section (even section with different background)
 #applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.article-style::after {
   background: linear-gradient(to bottom, transparent 0%, rgba(247, 250, 252, 0.7) 40%, rgba(247, 250, 252, 0.95) 70%, rgba(247, 250, 252, 1) 100%);
@@ -4885,11 +4714,6 @@ body.dark :is(#publication, #applications-and-dashboards, #blog) > div > div > d
 // Remove fade gradient and button when expanded
 :is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body.is-expanded > div.article-style::after,
 :is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body.is-expanded > div.article-style::before {
-  display: none;
-}
-
-// Hide arrows when expanded
-:is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body.is-expanded > div.article-style .expand-arrow {
   display: none;
 }
 
@@ -5030,58 +4854,6 @@ body.dark .home-section a.view-complete-content-btn {
   &:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
-}
-
-.toolbar-buttons {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-}
-
-.doc-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  background-color: transparent;
-  color: var(--text-hover) !important;
-  border: none;
-  border-radius: 50%;
-  text-decoration: none !important;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: 1em;
-  
-  i {
-    font-size: 1em;
-  }
-  
-  &:hover {
-    background-color: var(--bg-button-hover) !important;
-    transform: scale(1.15);
-  }
-  
-  &:active {
-    transform: scale(1.05);
-  }
-  
-  &:focus {
-    outline: 2px solid var(--accent-primary);
-    outline-offset: 2px;
-  }
-}
-
-// Separator between button groups
-.doc-btn:nth-child(2)::after {
-  content: '';
-  position: absolute;
-  right: -8px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1px;
-  height: 20px;
-  background-color: var(--border-color);
 }
 
 // Dark theme adjustments for document viewer
@@ -5355,11 +5127,6 @@ article .article-metadata {
   margin-bottom: 0.1rem !important;
 }
 
-// Override for publication pages - larger font
-body.page-publication #top > div.pub > div.article-container.pt-3 > div.article-metadata {
-  font-size: 2rem !important;
-}
-
 #top div.media-body > div.article-style {
   font-size: 90%;
 }
@@ -5368,13 +5135,6 @@ body.page-publication #top > div.pub > div.article-container.pt-3 > div.article-
 #top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories {
   font-size: 80%;
 }
-
-// Override for publication pages - larger categories font
-body.page-publication #top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories {
-  font-size: 2rem !important;
-}
-
-
 
 // Increase padding under h3 headings
 h3 {
@@ -5390,7 +5150,6 @@ p {
 ul > li {
   margin-bottom: -0.5%;
 }
-
 
 // STICKY TABLE HEADERS - DISABLED
 
@@ -5416,7 +5175,6 @@ body.dark table th, body.dark table thead th {
   }
 }
 */
-
 
 // LINKS
 
@@ -5792,7 +5550,6 @@ body.dark .article-tags a.ancillary-tag:visited {
   opacity: 1 !important;
 }
 
-
 // Social icons on the left-hand side of the bio section
 #profile > div > div > span > span > a > i:hover {
   color: var(--accent-primary) !important;
@@ -5861,7 +5618,6 @@ kbd {
   padding: 0.09em 0.4em 0.11em 0.4em;
   text-shadow: 0 1px 0 #fff;
 }
-
 
 // Bootstrap warning alert messages
 div.alert.alert-warning {
@@ -5948,7 +5704,6 @@ div.lds-ring:after {
   width: fit-content; /* Adjust the width to the text content */
 }
 
-
 // Hanging indentation for references
 // .Rmd posts (Pandoc): <div id="references"><h2>…</h2><p>…</p></div>
 //   → apply only to <p> children, NOT the div (margin-left on div shifts h2/pre too)
@@ -5992,18 +5747,15 @@ h2#reference  ~ p, h3#reference  ~ p, h4#reference  ~ p {
   padding-left: 0.7em;
 }
 
-
 // scroll bar for textarea
 textarea {
   scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
 
-
 // margin after code snippets
 pre {
   margin-bottom: 5%;
 }
-
 
 // in desktop view only
 @media (min-width: 1000px) {
@@ -6044,7 +5796,6 @@ pre {
     }
   }
 }
-
 
 /* Enable gallery with modal windows for images */
 
@@ -6125,7 +5876,6 @@ pre {
     top: 10px; /* Ensure top margin is visible */
 }
 
-
 /* Navigation Arrows */
 .prev, .next {
     position: absolute;
@@ -6203,13 +5953,6 @@ pre {
     }
 }
 
-
-// Remove Disqus heart icon and count
-#favorite-button > div {
-  visibility: hidden;
-}
-
-
 // External script toggling
 
 .script-container {
@@ -6241,7 +5984,6 @@ pre {
   transform: scale(0.95);
 }
 
-
 // Full text button
 
 .full-text-btn {
@@ -6267,19 +6009,6 @@ pre {
   border-color: var(--border-full-text-hover);
   box-shadow: 0 0 0 2px var(--bg-button-hover);
   border-radius: 12px; /* Ensures corners stay rounded */
-}
-.full-text-btn .full-text {
-  margin: 0 !important;
-  padding: 0 !important;
-  font-size: 1em;
-  font-weight: 400 !important;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif !important;
-  line-height: 1.5 !important;
-  letter-spacing: normal !important;
-}
-.full-text-btn .full-text i {
-  margin-right: 8px;
-  color: #dc2626;
 }
 // Prevent h3 hover styles from affecting button text
 .full-text-btn:hover .full-text,
@@ -6318,7 +6047,6 @@ body.dark .full-text-btn a:focus,
   border: none !important;
 }
 
-
 // CV button
 
 // Add top margin only to the first btn-links container (which contains CV button)
@@ -6356,7 +6084,6 @@ body.dark .full-text-btn a:focus,
   color: var(--text-secondary);
   margin-right: 8px;
 }
-
 
 // Multimedia section collapsible summaries - matches the pub-abstract collapsed style
 // Collapsed by default, expandable on click with fade gradient and hover button
@@ -6780,10 +6507,6 @@ body.dark .search-results h3 a:hover {
   color: var(--nav-hover-text) !important; // Current hover color
 }
 
-.navbar-nav .nav-link.js-dark-toggle:hover {
-  color: var(--nav-hover-text) !important; // Current hover color
-}
-
 // Dark theme
 body.dark .navbar-nav .nav-link.js-search,
 body.dark .navbar-nav .nav-link.js-dark-toggle {
@@ -7115,7 +6838,6 @@ html body.dark .search-hit a h6 {
   }
 }
 
-
 // Create class to disable automatic bullet list formatting
 
 .no-bullets {
@@ -7426,10 +7148,6 @@ table caption {
 
 /* Remove left and right padding from container in mobile view on publications page */
 @media (max-width: 991px) {
-  body.page-publications #top > div.container {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
 }
 
 /* Reduce margins around publication page title and align with search field */
@@ -7451,9 +7169,6 @@ table caption {
 }
 
 /* Increase bottom margin for paragraph on presentation page */
-body.page-collection #top > div.universal-wrapper.pt-3 > p {
-  margin-bottom: 2rem !important;
-}
 
 /* In mobile view, align heading left to match search field */
 @media (max-width: 991px) {
@@ -7844,11 +7559,6 @@ body.dark #top > div.pub > div:nth-child(3) > div.article-style > a > button:foc
   margin-top: 1rem !important;
 }
 
-// Reduce margin above featured-image on applications-and-dashboards pages
-.page-applications-and-dashboards .featured-image {
-  margin-top: 2rem !important;
-}
-
 // Reduce height of mobile spacer on presentation pages
 .d-md-none.space-below {
   height: 0 !important;
@@ -7878,38 +7588,9 @@ body.dark #top > div.pub > div:nth-child(3) > div.article-style > a > button:foc
 
 // Desktop view: enforce max-width for entire page on tags/categories/presentation pages
 @media (min-width: 992px) {
-  body.page-collection #top .container {
-    max-width: 750px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-  
-  body.page-taxonomy #top .container {
-    max-width: none !important;
-    margin-left: 8rem !important;
-    margin-right: auto !important;
-  }
-  
-  // Enforce max-width on taxonomy page content divs
-  body.page-taxonomy #top > div:not(.container) {
-    max-width: 750px !important;
-  }
-  
-  body.page-taxonomy #top > div > div {
-    max-width: 750px !important;
-  }
   
   // Make taxonomy page titles bold - removed duplicate
   
-  // Move content further in on tags and categories pages
-  body.page-taxonomy #top > div.universal-wrapper.pt-3 > h1,
-  body.page-taxonomy #top > div.universal-wrapper.pt-3 > p {
-    margin-left: 0 !important;
-  }
-  
-  body.page-taxonomy #top > div > div > h2 {
-    margin-left: 0 !important;
-  }
 }
 
 // Decrease spacing above superscript in article paragraphs
