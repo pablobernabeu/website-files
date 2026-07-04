@@ -4,7 +4,12 @@
 .RData
 .Ruserdata
 content/post/a-new-function-to-plot-convergence-diagnostics-from-lme4-allfit/m1_allFit_convergence.rds
-public/2021/a-new-function-to-plot-convergence-diagnostics-from-lme4-allfit/m1_allFit_convergence.rds
+
+# Built site output. The deploy workflow rebuilds ./public from source with
+# `hugo --minify` and publishes it to the separate pablobernabeu.github.io repo,
+# so a committed copy here is redundant build output (it was ~1.5 GB / 3,000+
+# files bloating history). Kept out of tracking; still generated on disk locally.
+/public/
 # API keys and secrets (never commit — keys belong in GitHub Actions secrets)
 **/scopus_key.txt
 **/Scopus API key.txt

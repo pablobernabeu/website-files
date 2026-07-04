@@ -48,16 +48,18 @@ jobs:
 
           echo "Successfully downloaded valid PDF (${file_size} bytes)"
 
-          # Copy to final locations in public and static directories
-          echo "Copying CV to public/ and static/ directories..."
-          cp temp-cv.pdf public/cv-pablo-bernabeu.pdf
+          # Copy the CV to the static/ source directory only. Hugo copies static/
+          # into the built site on deploy, so a public/ copy is redundant now that
+          # public/ is no longer tracked in this repo (a static/ change still
+          # triggers the deploy workflow, which regenerates public/cv-…pdf).
+          echo "Copying CV to static/ directory..."
           cp temp-cv.pdf static/cv-pablo-bernabeu.pdf
 
       - name: Check for changes
         id: changes
         run: |
-          # Check both file locations for changes
-          if git diff --quiet public/cv-pablo-bernabeu.pdf static/cv-pablo-bernabeu.pdf; then
+          # Check the static/ source for changes
+          if git diff --quiet static/cv-pablo-bernabeu.pdf; then
             echo "No changes detected in CV"
             echo "changed=false" >> $GITHUB_OUTPUT
           else
@@ -70,6 +72,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add public/cv-pablo-bernabeu.pdf static/cv-pablo-bernabeu.pdf
+          git add static/cv-pablo-bernabeu.pdf
           git commit -m "Automated CV update from OSF"
           git push
