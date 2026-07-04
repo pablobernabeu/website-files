@@ -3,6 +3,8 @@ title: Discussion of Labotka et al. (2023)
 author: Pablo Bernabeu
 date: '2023-05-22'
 slug: discussion-of-labotka-et-al-2023
+aliases:
+  - /talk/discussion-of-labotka-et-al-2023/
 categories:
   - psycholinguistics
 tags:

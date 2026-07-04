@@ -3,6 +3,8 @@ title: Towards reproducibility and maximally-open data
 author: Pablo Bernabeu
 date: '2021-05-14'
 slug: towards-reproducibility-and-maximally-open-data
+aliases:
+  - /talk/towards-reproducibility-and-maximally-open-data/
 categories:
   - open science
 tags:

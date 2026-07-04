@@ -3,6 +3,8 @@ title: Discussion of Jost et al. (2019)
 author: Pablo Bernabeu
 date: '2023-01-30'
 slug: discussion-of-jost-et-al-2019
+aliases:
+  - /talk/discussion-of-jost-et-al-2019/
 categories:
   - psycholinguistics
 tags:
