@@ -813,11 +813,6 @@ section.home-section .col-lg-4::-webkit-scrollbar {
   margin-top: 0.5rem !important;
 }
 
-// Exception: Increase margin for article-container after featured image on presentation pages  
-html body.page-wrapper #top > div.pub > div.article-header.featured-image-wrapper + div.article-container.pt-3 {
-  margin-top: 6rem !important;
-}
-
 // Home page max-width
 section.home-section .container {
   max-width: 1250px !important;
@@ -1727,11 +1722,6 @@ article .article-container.pt-3 > div.btn-links.mb-3 > button:not(.full-text-btn
   margin-bottom: 0.1rem !important;
 }
 
-// Move down all section images on home page
-div > div > div > div > div.ml-3 > a > img {
-  margin-top: 1.5rem !important;
-}
-
 // Fix presentation metadata padding and margin
 #presentation_list > div.col-lg-10 > div > div.media-body > div.stream-meta.article-metadata > div > span {
   padding-top: 0.3rem !important;
@@ -1846,9 +1836,6 @@ div > div > div > div > div.media-body > div.stream-meta.article-metadata > div 
 
 // Mobile navbar icon positioning
 @media (max-width: 1199px) {
-  .navbar-toggler {
-    margin-left: -1.5rem !important;
-  }
   
   .navbar-nav.ml-auto {
     margin-right: -1rem !important;
@@ -6255,13 +6242,6 @@ body.dark .navbar-nav .nav-item .nav-link.active {
 body.dark .navbar-nav .nav-link.active,
 body.dark .nav-link.active {
   font-weight: normal !important;
-}
-
-// Nuclear option - extremely specific selector for dark theme
-html body.dark .navbar-nav .nav-link.active,
-html body.dark #navbar-main .navbar-nav .nav-link.active,
-html body.dark .navbar-collapse .navbar-nav .nav-link.active {
-  font-weight: 300 !important; // Use lighter weight to ensure no bold
 }
 
 .dark .navbar-nav .nav-link.active::after,
