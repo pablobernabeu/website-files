@@ -1948,10 +1948,10 @@ body.dark {
   
   // Navigation colors for dark theme (INVERTED - uses light theme colors)
   --nav-text: #475569;
-  --nav-hover: #00ff00; // Green for hover underline (from light theme)
+  --nav-hover: #A5D9C5; // Mint underline, matches light theme (was fluorescent #00ff00)
   --nav-active: #0d9488; // Darker teal for active - better contrast on dark navbar
   --nav-link: #79A990; // Muted teal (from light theme)
-  --nav-hover-text: #006400; // Dark green for hover text (from light theme)
+  --nav-hover-text: #A5D9C5; // Mint text, visible on dark navbar (was near-invisible #006400)
   
   // Background colors for dark theme (converted for dark mode)
   --bg-highlight: rgba(72, 187, 120, 0.2); // Green highlight with low opacity for dark
@@ -2372,7 +2372,6 @@ body.dark {
   .social-icon a,
   .btn-outline-primary,
   button,
-  .js-dark-toggle a,
   h2 a,
   h3 a,
   h4 a,
@@ -2390,15 +2389,14 @@ body.dark {
   .btn:hover, 
   .badge:hover,
   .btn-links a:hover,
-  .navbar-nav a:hover:not(.js-dark-toggle),
-  #navbar-main a:hover:not(.js-dark-toggle),
+  .navbar-nav a:hover,
+  #navbar-main a:hover,
   #navbar-content a:hover,
   .section-heading a:hover,
   .portrait-title a:hover,
   .social-icon a:hover,
   .btn-outline-primary:hover,
-  button:hover:not(.read-more-btn),
-  .js-dark-toggle a:hover,
+  button:hover,
   h2 a:hover,
   h3 a:hover,
   h4 a:hover,
@@ -3212,7 +3210,7 @@ and from bio portrait information. */
     margin: 0 !important;
   }
   
-  .navbar-nav .nav-link:not(.js-search):not(.js-dark-toggle):not([class*="dropdown"]) {
+  .navbar-nav .nav-link:not(.js-search):not(.js-theme-toggle):not(.js-font-size-toggle):not([class*="dropdown"]) {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
@@ -4179,10 +4177,14 @@ div.col-12.col-lg-4.section-heading > h1, #navbar-content > ul > li > a {
   transition: color 0.1s ease; // Fast transition to reduce lag
 }
 
-// Fixed positioning for hover underlines - centered under text
-.navbar-nav .nav-link:hover:not(.active):not(.js-dark-toggle):not(.js-search)::after,
+// Fixed positioning for hover underlines - centered under text.
+// Exclude the icon toggle buttons (theme + font size): they are <button> controls,
+// not page links, so they must never get the nav underline bar. NB the class is
+// .js-theme-toggle (the old :not(.js-dark-toggle) guard was stale and never matched,
+// which is why the theme toggle showed a stray hover underline).
+.navbar-nav .nav-link:hover:not(.active):not(.js-theme-toggle):not(.js-font-size-toggle):not(.js-search)::after,
 #navbar-content > ul > li > a:hover:not(.active)::after,
-.nav-link:hover:not(.active):not(.js-dark-toggle):not(.js-search)::after {
+.nav-link:hover:not(.active):not(.js-theme-toggle):not(.js-font-size-toggle):not(.js-search)::after {
   content: '';
   position: absolute;
   bottom: -3px; // Positioned closer to words but not too close
@@ -4193,6 +4195,22 @@ div.col-12.col-lg-4.section-heading > h1, #navbar-content > ul > li > a {
   background-color: var(--nav-hover); // Green for hover underline
   display: block;
   transition: all 0.1s ease; // Fast transition to reduce lag
+}
+
+// Safeguard: never underline (nav bar or text-decoration) any active/hovered/focused
+// BUTTON in the navbar, at any viewport. Buttons (theme/font-size/search toggles) are
+// controls, not page links. ID-scoped so it wins over the hover/active ::after rules.
+#navbar-main .navbar-nav button.nav-link::after,
+#navbar-main .navbar-nav button.nav-link:hover::after,
+#navbar-main .navbar-nav button.nav-link:focus::after,
+#navbar-main .navbar-nav button.nav-link.active::after {
+  content: none !important;
+  display: none !important;
+}
+#navbar-main .navbar-nav button.nav-link:hover,
+#navbar-main .navbar-nav button.nav-link:focus,
+#navbar-main .navbar-nav button.nav-link.active {
+  text-decoration: none !important;
 }
 
 // 4. Ensure span elements inside links also get the right colors
@@ -5538,7 +5556,7 @@ a > i:hover, #profile > div > div > span > span > a:hover, #navbar-main > div > 
 }
 
 // Buttons, full text buttons, dashboard/application button
-button:hover:not(.read-more-btn), #top > div.pub > div > a > button:hover, #top > div.pub > div > div.article-style > a > button:hover, #top > article > div > div.article-style > a > button:hover {
+button:hover, #top > div.pub > div > a > button:hover, #top > div.pub > div > div.article-style > a > button:hover, #top > article > div > div.article-style > a > button:hover {
   background-color: var(--bg-button-hover) !important;
 }
 
@@ -5615,6 +5633,23 @@ div.emgithub-file.emgithub-file-dark > div.file-data.hljs-style-a11y-dark > div 
 // add margin under emgithub code chunks
 .emgithub-container {
   margin-bottom: 6%;
+}
+
+// Let emgithub embeds scroll horizontally on narrow viewports instead of clipping.
+// The file box uses overflow-x:hidden, so anything wider than the column (the long
+// full-path header, or long code lines) was cut off with no scrollbar on mobile.
+div.emgithub-file {
+  overflow-x: auto !important;
+  max-width: 100% !important;
+}
+
+// Preserve emgithub's a11y-dark palette in dark mode too: the body.dark `code, pre`
+// override forces slate #1e293b, so the same embed looked different light vs dark.
+body.dark div.emgithub-file pre,
+body.dark div.emgithub-file pre code {
+  background-color: #2b2b2b !important; // a11y-dark background (as shown in light mode)
+  color: #f8f8f2 !important;
+  border-color: transparent !important;
 }
 
 // remove love icon from emgithub chunk footnote
@@ -6431,31 +6466,8 @@ body.dark .search-results h3 a:hover {
   color: inherit !important; // Use the colors defined above
 }
 
-////////////////////////////
-// Navigation Icon Colors (Search & Theme Toggle)
-////////////////////////////
-
-// Default grey color for search icon and theme toggle
-.navbar-nav .nav-link.js-search,
-.navbar-nav .nav-link.js-dark-toggle {
-  color: var(--nav-text) !important; // Use default grey
-}
-
-// Keep current hover colors for search icon and theme toggle
-.navbar-nav .nav-link.js-search:hover {
-  color: var(--nav-hover-text) !important; // Current hover color
-}
-
-// Dark theme
-body.dark .navbar-nav .nav-link.js-search,
-body.dark .navbar-nav .nav-link.js-dark-toggle {
-  color: var(--nav-text) !important; // Use default grey
-}
-
-body.dark .navbar-nav .nav-link.js-search:hover,
-body.dark .navbar-nav .nav-link.js-dark-toggle:hover {
-  color: var(--nav-hover-text) !important; // Current hover color
-}
+// (Removed dead navbar icon-colour rules for .js-search and .js-dark-toggle: the navbar
+// search is gated off and the theme toggle is .js-theme-toggle, so neither class renders.)
 
 ////////////////////////////
 // Search Close Icon Styling
