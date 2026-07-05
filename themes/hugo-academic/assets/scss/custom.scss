@@ -3328,7 +3328,7 @@ section.home-section:first-of-type {
 // Reduce margin above first publication title on home page (desktop)
 @media (min-width: 992px) {
   #publication > div > div > div:nth-child(2) > div:nth-child(1) > div.media-body > h3 {
-    margin-top: -0.5rem !important;
+    margin-top: -0.3rem !important;
   }
 }
 
