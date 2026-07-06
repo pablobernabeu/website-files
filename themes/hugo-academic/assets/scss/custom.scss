@@ -5182,6 +5182,21 @@ div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #publication > div 
   border-color: var(--border-color);
 }
 
+// The hand-crafted "Online book" button (in the PhD-thesis and language-vision
+// publication bodies) wraps its label in <a><button><h3>. That <h3> matched the
+// generic scroll-reveal colour animation `color-transition2`, whose first keyframe
+// is `aquamarine` — invisible on the button's inline white background (~1.2:1
+// contrast, which read as a faint/"pink" label). These are static content buttons,
+// so drop the colour animation and keep the label dark in every state; the button's
+// own opacity/transform reveal is unaffected (only the colour keyframes are removed).
+.pub .article-style a > button > h3,
+.pub .article-style a > button > h3.visible,
+.article-container .article-style a > button > h3,
+.article-container .article-style a > button > h3.visible {
+  animation: none !important;
+  color: #313131 !important;
+}
+
 // No background/border for bare Google Scholar icon link
 a.scholar-icon-link,
 a.scholar-icon-link:link,
