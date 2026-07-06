@@ -1,0 +1,20 @@
+# Dependabot configuration
+# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+#
+# The only npm manifest in this repo is themes/hugo-academic/package.json, whose
+# sole dependency is "bootstrap". That entry is a PHANTOM dependency: the Hugo
+# build compiles the theme's *vendored* Bootstrap 4 SCSS
+# (themes/hugo-academic/assets/scss/vendor/bootstrap/, v4.4.1) and never reads
+# node_modules. A Dependabot bump of the npm package (e.g. the 4->5 bump merged
+# in PR #1) therefore changes only the lockfile and has zero effect on the site.
+# So we track the ecosystem to keep the config valid, but ignore bootstrap
+# entirely to avoid pointless, potentially-misleading upgrade PRs.
+
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/themes/hugo-academic"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "bootstrap"
