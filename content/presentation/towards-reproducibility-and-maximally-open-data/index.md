@@ -22,7 +22,7 @@ address:
   region: ~
   postcode: ~
   country: ~
-summary: ~
+summary: 'A talk on reproducibility and maximally-open data in research, presented at the 2021 Open Scholarship Prize Competition, Open Scholarship Community Galway.'
 abstract: ~
 date_end: ~
 all_day: yes
