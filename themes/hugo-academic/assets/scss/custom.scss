@@ -5069,6 +5069,22 @@ body.dark .home-section div.media-body > h3 > a:visited {
   color: #fff !important;
 }
 
+/* Dark theme hover for home-page title links. The #fff rule above is 1-ID specific
+   and matches every state (including :hover), so it beat the general lower-specificity
+   `body.dark h3 a:hover` accent — leaving titles un-highlighted on hover in dark mode.
+   These :hover selectors match that specificity + the pseudo-class, so hover wins and
+   the title turns aquamarine (matching the general dark hover accent). */
+body.dark #blog div.media-body > h3 > a:hover,
+body.dark #blog div.media-body > h3 > a:active,
+body.dark #publication div.media-body > h3 > a:hover,
+body.dark #publication div.media-body > h3 > a:active,
+body.dark #applications-and-dashboards div.media-body > h3 > a:hover,
+body.dark #applications-and-dashboards div.media-body > h3 > a:active,
+body.dark .home-section div.media-body > h3 > a:hover,
+body.dark .home-section div.media-body > h3 > a:active {
+  color: #5fe0d0 !important;
+}
+
 article .article-metadata {
   margin-bottom: 2px !important;
 }
