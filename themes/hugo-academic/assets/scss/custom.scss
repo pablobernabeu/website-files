@@ -7516,12 +7516,19 @@ body.page-wrapper #top > div.pub > div.article-container.pt-3 > div.btn-links.mb
   text-decoration: none !important;
 }
 
-// Dark mode hover for button
-body.dark #top > div.pub > div:nth-child(3) > div.article-style > a > button:hover,
-body.dark #top > div.pub > div:nth-child(3) > div.article-style > a > button:focus {
+// Dark-mode hover for the "Online book" button.
+// NOTE: `#top` is the <body> itself (<body id="top" class="dark">), so the old
+// `body.dark #top > …` (descendant combinator) could NEVER match — it looked for a
+// #top *inside* body.dark, but #top IS body.dark. That left the light-theme hover
+// (#fee2e2, light pink) winning in dark mode, making the near-white label invisible.
+// Fix: `body.dark#top` (compound, no space) matches the body and wins specificity,
+// giving the intended dark-red hover with a light label (~11:1). Label colour still
+// comes from the theme-aware `var(--text-hover)` rule above.
+body.dark#top > div.pub > div:nth-child(3) > div.article-style > a > button:hover,
+body.dark#top > div.pub > div:nth-child(3) > div.article-style > a > button:focus {
   background-color: rgba(220, 38, 38, 0.15) !important;
   border-color: #f87171;
-  color: black !important;
+  color: var(--text-hover) !important;
 }
 
 // Remove h3 margins inside Online book button to match full-text button height
