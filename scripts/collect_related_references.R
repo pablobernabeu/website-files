@@ -649,6 +649,16 @@ time_remaining <- function() {
   TIME_BUDGET_SECS - (proc.time()[["elapsed"]] - run_start_time)
 }
 
+# Maximum number of DOIs to backfill metadata for in a single run.  Broad-topic
+# publications can accumulate thousands of related references; backfilling them
+# all in one job risks exceeding the time budget, and a job that is cancelled
+# part-way persists nothing (its file changes are never uploaded).  Capping the
+# work per run spreads the one-time catch-up over successive scheduled runs
+# while keeping each run comfortably inside its budget.  Once the backlog is
+# cleared, steady-state runs only backfill the handful of newly added DOIs, so
+# the cap rarely binds again.
+BACKFILL_CAP <- 400L
+
 # ---- CLI argument: optional --pub NAME to process a single publication ----
 args <- commandArgs(trailingOnly = TRUE)
 single_pub <- NULL
@@ -916,29 +926,49 @@ for (pub_dir in pub_dirs) {
   }
 
   # ---- Backfill metadata for existing DOIs without metadata ----
-  # With per-publication parallelism, we can backfill generously —
-  # just respect the time budget. The JS UI handles on-demand CrossRef
-  # lookups for any DOIs not yet backfilled.
+  # Bounded, resumable backfill. Broad-topic publications can have thousands of
+  # related references — far more than can be processed in one job — so each run
+  # backfills at most BACKFILL_CAP DOIs and records an entry for every DOI it
+  # touches. The "missing metadata" backlog therefore shrinks monotonically
+  # across successive scheduled runs until it is exhausted. (A cancelled step
+  # uploads nothing, so the only durable progress is a run that finishes and
+  # commits; the cap keeps every run inside its time budget.) The JS UI still
+  # fetches abstracts on demand for any DOI not yet backfilled.
   existing_metadata <- read_ref_metadata(refs_html_path)
   all_dois <- extract_existing_dois(refs_html_path)
 
-  # DOIs completely missing from the metadata block
+  # DOIs completely missing from the metadata block. Highest priority: writing
+  # any entry here is what lets a DOI leave the backlog permanently.
   dois_missing_meta <- setdiff(all_dois, tolower(names(existing_metadata)))
-  # DOIs present in metadata but still lacking an abstract (retry via Scopus)
+  # DOIs present in metadata but still lacking an abstract. Retried only a
+  # bounded number of times so that papers with no abstract available anywhere
+  # stop being re-queried on every run (which would otherwise keep the backlog
+  # permanently non-empty and starve the DOIs further down the list).
+  MAX_ABSTRACT_ATTEMPTS <- 3L
   dois_missing_abstract <- Filter(
-    function(d) is.null(existing_metadata[[d]]$abstract),
+    function(d) {
+      e <- existing_metadata[[d]]
+      is.null(e$abstract) &&
+        (as.integer(e$abstractAttempts %||% 0L) < MAX_ABSTRACT_ATTEMPTS)
+    },
     tolower(names(existing_metadata))
   )
+  # New-entry DOIs first, then abstract retries.
   dois_to_backfill <- unique(c(dois_missing_meta, dois_missing_abstract))
 
   if (length(dois_to_backfill) > 0 && time_remaining() > 60) {
-    # Cap by remaining time: ~3s per DOI, leave 60s for file writes
+    # Two independent caps: a hard per-run count (BACKFILL_CAP) that bounds the
+    # work regardless of nominal time left, and a time-based cap as a secondary
+    # guard (~3s per DOI, leaving 60s for file writes).
     time_cap <- max(1L, as.integer((time_remaining() - 60) / 3))
-    n_to_fill <- min(length(dois_to_backfill), time_cap)
+    n_to_fill <- min(length(dois_to_backfill), time_cap, BACKFILL_CAP)
+    n_deferred <- length(dois_to_backfill) - n_to_fill
     cat("  Backfilling metadata for", n_to_fill, "of",
         length(dois_to_backfill), "DOIs (",
         length(dois_missing_meta), "new,",
-        length(dois_missing_abstract), "missing abstract)\n")
+        length(dois_missing_abstract), "missing abstract);",
+        n_deferred, "deferred to later runs\n")
+    n_done <- 0L
     for (doi in dois_to_backfill[seq_len(n_to_fill)]) {
       if (time_remaining() < 60) {
         cat("  Time budget low (", round(time_remaining()), "s). Stopping backfill.\n")
@@ -948,7 +978,22 @@ for (pub_dir in pub_dirs) {
       entry <- existing_metadata[[doi]] %||% list()
       if (!is.null(meta$abstract)) entry$abstract <- meta$abstract
       if (!is.null(meta$type)) entry$type <- meta$type
-      if (length(entry) > 0) new_metadata[[doi]] <- entry
+      # Count an abstract-retry attempt when none could be obtained, so that
+      # genuinely abstract-less papers eventually drop out of the retry set.
+      if (is.null(entry$abstract)) {
+        entry$abstractAttempts <- as.integer(entry$abstractAttempts %||% 0L) + 1L
+      }
+      # Stamp every touched DOI so it leaves the "missing metadata" backlog even
+      # when neither an abstract nor a type could be retrieved. This guarantees
+      # forward progress: without it, a DOI that CrossRef cannot resolve would be
+      # retried on every future run and block the rest of the backlog.
+      entry$backfilled <- format(Sys.Date(), "%Y-%m-%d")
+      new_metadata[[doi]] <- entry
+      n_done <- n_done + 1L
+      if (n_done %% 50L == 0L) {
+        cat("    ...", n_done, "of", n_to_fill, "backfilled (",
+            round(time_remaining()), "s left)\n")
+      }
       Sys.sleep(0.5)
     }
   } else if (length(dois_to_backfill) > 0) {
@@ -993,6 +1038,16 @@ for (lf in lint_files) {
   # All citation lines in related-references.html are wrapped in <p>...</p>.
   inner <- sub("^<p[^>]*>\\s*", "", lines)
 
+  # The removal rules below (2-5) only ever apply to actual citation paragraphs
+  # (lines beginning with <p>). The file also holds <script> blocks — the
+  # ref-metadata and scopus-queries JSON — whose single content line can
+  # coincidentally match a citation pattern (e.g. an embedded abstract that
+  # contains a "https://doi.org/..." URL). Guarding every removal with
+  # is_citation_line() prevents the lint pass from silently deleting the
+  # metadata JSON, which would otherwise wipe every backfilled abstract on each
+  # run — the reason metadata never persisted for broad-topic publications.
+  is_citation_line <- function(x) grepl("^\\s*<p[^>]*>", x, perl = TRUE)
+
   # 1. Remove duplicate plain DOI URL when a hyperlinked DOI already exists.
   #    Handles both orderings:
   #    a) bare DOI preceding the <a href> link
@@ -1015,14 +1070,15 @@ for (lf in lint_files) {
   lines <- new_lines
 
   # 2. Remove ahead-of-print placeholders: lines where volume/issue is "0(0)".
-  keep <- !grepl(",\\s*0\\s*\\(0\\)", lines, perl = TRUE)
+  keep <- !(is_citation_line(lines) & grepl(",\\s*0\\s*\\(0\\)", lines, perl = TRUE))
   if (any(!keep)) { changed_lint <- TRUE }
   lines  <- lines[keep]
   inner  <- inner[keep]
 
   # 3. Remove citations with no author: citation text (after <p>) starts with
   #    "(" followed by a year or "N.d." and the line contains a DOI link.
-  keep <- !(grepl("^\\s*\\(([0-9]|N\\.d\\.)", inner, perl = TRUE) &
+  keep <- !(is_citation_line(lines) &
+              grepl("^\\s*\\(([0-9]|N\\.d\\.)", inner, perl = TRUE) &
               grepl("https://doi.org/", lines, fixed = TRUE))
   if (any(!keep)) { changed_lint <- TRUE }
   lines  <- lines[keep]
@@ -1034,7 +1090,8 @@ for (lf in lint_files) {
   pre_year_lint <- sub("\\(\\d{4}.*", "", inner, perl = TRUE)
   has_personal_lint      <- grepl(",\\s*[A-Z]\\.", pre_year_lint, perl = TRUE)
   has_institutional_lint <- grepl("\\.\\s*$", pre_year_lint) & !grepl("[?:]", pre_year_lint)
-  keep <- !(grepl("https://doi.org/", lines, fixed = TRUE) &
+  keep <- !(is_citation_line(lines) &
+              grepl("https://doi.org/", lines, fixed = TRUE) &
               !has_personal_lint & !has_institutional_lint)
   if (any(!keep)) { changed_lint <- TRUE }
   lines  <- lines[keep]
@@ -1043,10 +1100,12 @@ for (lf in lint_files) {
   # 5. Remove duplicate DOI links within the same file (keep first occurrence).
   #    DOI URLs in HTML appear as href="https://doi.org/..." — exclude quote/angle chars.
   #    Use substr + attr to keep the result aligned with `lines` (regmatches drops
-  #    non-matching elements, which would misalign the index).
+  #    non-matching elements, which would misalign the index). Only citation
+  #    paragraphs participate; <script>/JSON lines are ignored so an abstract's
+  #    embedded DOI can neither be removed nor evict a real citation's DOI.
   m_doi <- regexpr("https://doi\\.org/[^\"<>\\s]+", lines, perl = TRUE)
   doi_hits <- tolower(ifelse(
-    m_doi > 0L,
+    is_citation_line(lines) & m_doi > 0L,
     substr(lines, m_doi, m_doi + attr(m_doi, "match.length") - 1L),
     NA_character_
   ))
