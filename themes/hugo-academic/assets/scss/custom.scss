@@ -5183,18 +5183,22 @@ div.article-container.pt-3 > div.btn-links.mb-3 > a:visited, #publication > div 
 }
 
 // The hand-crafted "Online book" button (in the PhD-thesis and language-vision
-// publication bodies) wraps its label in <a><button><h3>. That <h3> matched the
-// generic scroll-reveal colour animation `color-transition2`, whose first keyframe
-// is `aquamarine` — invisible on the button's inline white background (~1.2:1
-// contrast, which read as a faint/"pink" label). These are static content buttons,
-// so drop the colour animation and keep the label dark in every state; the button's
-// own opacity/transform reveal is unaffected (only the colour keyframes are removed).
+// publication bodies) wraps its label in <a><button><h3>. Two problems to fix:
+// (1) That <h3> matched the generic scroll-reveal colour animation
+//     `color-transition2`, whose first keyframe is `aquamarine` — invisible on a
+//     light background (~1.2:1). These are static buttons, so drop the animation.
+// (2) The button background is theme-aware (`var(--bg-full-text)`: white in light,
+//     #374151 in dark), so a fixed dark label was invisible in dark mode (1.26:1).
+//     Colour the label with `var(--text-hover)` — the SAME variable the sibling
+//     "View full text" button uses — so it tracks the theme: black on white (light,
+//     ~21:1) and #f1f5f9 on #374151 (dark, ~9.4:1). The button's own
+//     opacity/transform reveal is unaffected (only the colour keyframes are dropped).
 .pub .article-style a > button > h3,
 .pub .article-style a > button > h3.visible,
 .article-container .article-style a > button > h3,
 .article-container .article-style a > button > h3.visible {
   animation: none !important;
-  color: #313131 !important;
+  color: var(--text-hover) !important;
 }
 
 // No background/border for bare Google Scholar icon link
