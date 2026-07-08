@@ -1948,10 +1948,10 @@ body.dark {
   
   // Navigation colors for dark theme (INVERTED - uses light theme colors)
   --nav-text: #475569;
-  --nav-hover: #A5D9C5; // Mint underline, matches light theme (was fluorescent #00ff00)
+  --nav-hover: #0f766e; // Dark teal underline. The dark-theme navbar bg is LIGHT (#e2e8f0), so the hover accent must be DARK; mint #A5D9C5 was only ~1.3:1 here.
   --nav-active: #0d9488; // Darker teal for active - better contrast on dark navbar
   --nav-link: #79A990; // Muted teal (from light theme)
-  --nav-hover-text: #A5D9C5; // Mint text, visible on dark navbar (was near-invisible #006400)
+  --nav-hover-text: #0f766e; // Dark teal hover text, 4.44:1 on the LIGHT dark-theme navbar (#e2e8f0). Mint #A5D9C5 was ~1.3:1 (near-invisible), the reported bug.
   
   // Background colors for dark theme (converted for dark mode)
   --bg-highlight: rgba(72, 187, 120, 0.2); // Green highlight with low opacity for dark
