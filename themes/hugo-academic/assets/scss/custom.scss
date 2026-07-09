@@ -1861,7 +1861,7 @@ body.dark {
   // Navigation colors (INVERTED - light theme uses dark theme colors)
   --nav-text: #cbd5e1;
   --nav-hover: #A5D9C5; // Custom mint green for hover underline (from dark mode)
-  --nav-active: #06b6d4; // Bright cyan for active text - better contrast on light navbar
+  --nav-active: #22d3ee; // Brighter cyan for the active item. The light-theme navbar is DARK (#1e293b); #06b6d4 read dimmer (lum 0.38) than the resting items (#cbd5e1, 0.66), so it looked "too dark". #22d3ee is brighter + saturated (8.1:1).
   --nav-link: #67e8f9; // Cyan (from dark theme)
   --nav-hover-text: #A5D9C5; // Custom mint green for hover text (from dark mode)
   
