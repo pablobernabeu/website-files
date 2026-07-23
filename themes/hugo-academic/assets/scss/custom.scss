@@ -5085,6 +5085,52 @@ body.dark .home-section div.media-body > h3 > a:active {
   color: #5fe0d0 !important;
 }
 
+/* Dark theme: make links *embedded within* content headings clearly recognisable
+   as hyperlinks. Examples: the "002"/"003" links in a multimedia caption heading,
+   or "[launched here]" / "[see instructions]" inside an article sub-heading.
+   Without this, the general `body.dark h3 a:link {color:#fff}` rule (plus the
+   default `-webkit-text-fill-color: currentColor`) paints these links pure white —
+   identical to the surrounding heading text — so a partial link like "002" is
+   invisible. Give them the site's teal link accent and a visible underline.
+
+   `-webkit-text-fill-color` MUST be set alongside `color`: the painted glyph colour
+   is governed by text-fill (which inherits `currentColor`), so overriding `color`
+   alone leaves the text white. Scope is limited to `#multimedia` captions and
+   `.article-style` body content, which excludes the card/list titles
+   (`div.media-body > h3 > a`) that are deliberately kept clean above. */
+body.dark #multimedia h2 a:link, body.dark #multimedia h2 a:visited,
+body.dark #multimedia h3 a:link, body.dark #multimedia h3 a:visited,
+body.dark #multimedia h4 a:link, body.dark #multimedia h4 a:visited,
+body.dark .article-style h2 a:link, body.dark .article-style h2 a:visited,
+body.dark .article-style h3 a:link, body.dark .article-style h3 a:visited,
+body.dark .article-style h4 a:link, body.dark .article-style h4 a:visited,
+body.dark .article-style h5 a:link, body.dark .article-style h5 a:visited,
+body.dark .article-style h6 a:link, body.dark .article-style h6 a:visited {
+  color: #5fe0d0 !important;
+  -webkit-text-fill-color: #5fe0d0 !important;
+  text-decoration: underline !important;
+  text-decoration-color: #5fe0d0 !important;
+  text-decoration-thickness: 1px !important;
+  text-underline-offset: 3px !important;
+}
+
+body.dark #multimedia h2 a:hover, body.dark #multimedia h2 a:active,
+body.dark #multimedia h3 a:hover, body.dark #multimedia h3 a:active,
+body.dark #multimedia h4 a:hover, body.dark #multimedia h4 a:active,
+body.dark .article-style h2 a:hover, body.dark .article-style h2 a:active,
+body.dark .article-style h3 a:hover, body.dark .article-style h3 a:active,
+body.dark .article-style h4 a:hover, body.dark .article-style h4 a:active,
+body.dark .article-style h5 a:hover, body.dark .article-style h5 a:active,
+body.dark .article-style h6 a:hover, body.dark .article-style h6 a:active {
+  color: #b8f5ec !important;
+  -webkit-text-fill-color: #b8f5ec !important;
+  text-decoration: underline !important;
+  text-decoration-color: #b8f5ec !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 3px !important;
+  background-color: transparent !important;
+}
+
 article .article-metadata {
   margin-bottom: 2px !important;
 }
