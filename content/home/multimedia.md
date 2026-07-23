@@ -133,15 +133,15 @@ Further details on the app and the workshop are available at https://pablobernab
 
 Bernabeu, P. (2026). *Unlock the Lab: Your guide to reading science like a scientist* (Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.19153148
 
-Xie, Y., Wang, K., & Kong, Y. (2021). Prevalence of research misconduct and questionable research practices: A systematic review and meta-analysis. *Science and Engineering Ethics*, *27*(4), Article 41. https://doi.org/10.1007/s11948-021-00314-w
+Xie, Y., Wang, K., & Kong, Y. (2021). Prevalence of research misconduct and questionable research practices: A systematic review and meta-analysis. *Science and Engineering Ethics*, *27*(4), Article 41. https://doi.org/10.1007/s11948-021-00314-9
 
 Larsson, T., Plonsky, L., Sterling, S., Kytö, M., Yaw, K., & Wood, M. (2023). On the frequency, prevalence, and perceived severity of questionable research practices. *Research Methods in Applied Linguistics*, *2*(3), Article 100064. https://doi.org/10.1016/j.rmal.2023.100064
 
 Gopalakrishna, G., ter Riet, G., Vink, G., Stoop, I., Wicherts, J. M., & Bouter, L. M. (2022). Prevalence of questionable research practices, research misconduct and their potential explanatory factors: A survey among academic researchers in The Netherlands. *PLoS ONE*, *17*(2), Article e0263023. https://doi.org/10.1371/journal.pone.0263023
 
-Bruton, S. V., Medlin, M., Brown, M., & Sacco, D. F. (2020). Personal motivations and systemic incentives: Scientists on questionable research practices. *Science and Engineering Ethics*, *26*(3), 1531–1547. https://doi.org/10.1007/s11948-020-00187-0
+Bruton, S. V., Medlin, M., Brown, M., & Sacco, D. F. (2020). Personal motivations and systemic incentives: Scientists on questionable research practices. *Science and Engineering Ethics*, *26*(3), 1531–1547. https://doi.org/10.1007/s11948-020-00182-9
 
-Hao, Q., Xu, F., Li, Y., & Evans, J. (2026). Artificial intelligence tools expand scientists' impact but contract science's focus. *Nature*, *679*, 1237–1243. https://doi.org/10.1038/s41586-025-09172-0
+Hao, Q., Xu, F., Li, Y., & Evans, J. (2026). Artificial intelligence tools expand scientists' impact but contract science's focus. *Nature*, *679*, 1237–1243. https://doi.org/10.1038/s41586-025-09922-y
 
 </div>
 

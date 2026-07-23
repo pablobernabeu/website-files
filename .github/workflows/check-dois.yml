@@ -9,6 +9,11 @@ on:
 jobs:
   check-dois:
     runs-on: ubuntu-latest
+    # Hard cap: the checks below run in parallel and finish in ~1-2 min. This
+    # ceiling exists only so a pathological hang can never again burn the full
+    # 6-hour job limit and get silently cancelled (which produced no report and
+    # no issue for months).
+    timeout-minutes: 20
 
     steps:
       - name: Checkout repository
@@ -17,65 +22,89 @@ jobs:
       - name: Extract and verify DOIs
         id: check
         run: |
+          set -euo pipefail
+
+          # ---------------------------------------------------------------
+          # SCOPE: only DOIs the site actually authors -- publication front
+          # matter, hand-written citations, badges, and reference lists in
+          # posts. We deliberately do NOT check the auto-collected
+          # `related-references.html` files or the `related references/*.csv`
+          # logs: those hold ~20k third-party DOIs pulled from external
+          # metadata, many of which are legitimately paywalled, rate-limited
+          # or simply dead upstream. Validating them produced unactionable
+          # noise and, once the collection grew, made this job run for 6h and
+          # get cancelled. Restricting to *.md / *.Rmd cuts that to ~200 DOIs
+          # the author can actually fix.
+          # ---------------------------------------------------------------
+
+          # 1. Collect unique "DOI<TAB>file" pairs (first file wins per DOI).
+          declare -A SEEN
+          : > dois.tsv
+          while IFS= read -r line; do
+            file=${line%%:*}
+            rest=${line#*:}
+            # Extract a DOI, excluding <>{}[]"' so HTML tags and BibTeX braces
+            # are not captured.
+            doi=$(printf '%s' "$rest" | grep -oP '10\.\d{4,9}/[^\s>"'\''<{}\[\]]+' | head -1 || true)
+            [ -z "$doi" ] && continue
+            # Normalise the captured DOI so publisher URL cruft is not mistaken
+            # for a broken DOI: drop a query/fragment (`?...`, `&type=large`,
+            # `#...`), common landing-page path suffixes (`/full`, `/abstract`,
+            # a Zenodo badge's `.svg`, etc.), any trailing slash, and trailing
+            # punctuation from surrounding prose.
+            doi=$(printf '%s' "$doi" | sed -E '
+              s/[?&#].*$//;
+              s#/(full|abstract|meta|pdf|epdf|summary|html)$##;
+              s#/+$##;
+              s/\.(svg|png|jpe?g|gif)$//;
+              s/[)>,;.:}]+$//')
+            [ -z "$doi" ] && continue
+            if [ -z "${SEEN[$doi]:-}" ]; then
+              SEEN[$doi]=1
+              printf '%s\t%s\n' "$doi" "$file" >> dois.tsv
+            fi
+          done < <(grep -rn 'doi:\|doi\.org/' content/ --include="*.md" --include="*.Rmd")
+
+          TOTAL=$(wc -l < dois.tsv | tr -d ' ')
+          echo "Collected $TOTAL unique DOIs to check."
+
+          # 2. Resolve each DOI. A DOI counts as reachable when doi.org
+          #    redirects to a landing page (2xx/3xx) or the publisher answers
+          #    with an access/anti-bot gate (401 paywall, 403 forbidden,
+          #    429 rate-limited, 418 teapot). Only a clean 404/410 -- or a
+          #    connection failure that persists across a retry -- is a failure.
+          check_doi() {
+            local doi="$1" code
+            local ua="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+            for attempt in 1 2; do
+              code=$(curl -s -o /dev/null -w '%{http_code}' -L \
+                --max-time 30 --connect-timeout 15 \
+                -H "User-Agent: $ua" \
+                "https://doi.org/$doi" 2>/dev/null) || code="000"
+              case "$code" in
+                2??|3??|401|403|429|418) printf 'OK\t%s\t%s\n' "$code" "$doi"; return 0 ;;
+                000) [ "$attempt" = 1 ] && { sleep 3; continue; }
+                     printf 'FAIL\ttimeout\t%s\n' "$doi"; return 0 ;;
+                *)   printf 'FAIL\t%s\t%s\n' "$code" "$doi"; return 0 ;;
+              esac
+            done
+          }
+          export -f check_doi
+
+          # Run up to 12 checks concurrently; ~200 DOIs finish in well under a
+          # minute instead of the old sequential ~1s/DOI + retries.
+          cut -f1 dois.tsv | xargs -r -P 12 -I{} bash -c 'check_doi "$@"' _ {} > results.tsv || true
+
+          # 3. Build the report.
           echo "## DOI Resolution Report" > doi-report.md
           echo "" >> doi-report.md
           echo "Checked: $(date -u +'%Y-%m-%d %H:%M UTC')" >> doi-report.md
           echo "" >> doi-report.md
+          echo "Scope: DOIs authored in \`content/**/*.md\` and \`*.Rmd\` (publication front matter, citations, badges, reference lists). Auto-collected related-reference DOIs are excluded." >> doi-report.md
+          echo "" >> doi-report.md
 
-          TOTAL=0
-          FAILED=0
-          FAILED_DETAILS=""
-          SEEN=""
-
-          # Extract DOIs from frontmatter (doi: field) and content (<https://doi.org/...>)
-          while IFS= read -r line; do
-            file=$(echo "$line" | cut -d: -f1)
-            # Exclude <, {, }, [, ] to avoid capturing HTML tags and BibTeX braces
-            doi=$(echo "$line" | grep -oP '10\.\d{4,9}/[^\s>"'\''<{}\[\]]+' | head -1)
-
-            if [ -z "$doi" ]; then
-              continue
-            fi
-
-            # Remove trailing HTML fragments (e.g., </p, </a) and punctuation
-            doi=$(echo "$doi" | sed -E 's/<\/[a-zA-Z].*$//; s/[)>,;.:}]+$//')
-
-            if [ -z "$doi" ]; then
-              continue
-            fi
-
-            # Skip duplicates within this run
-            if echo "$SEEN" | grep -qF "$doi"; then
-              continue
-            fi
-            SEEN="$SEEN $doi"
-
-            TOTAL=$((TOTAL + 1))
-
-            # Resolve the DOI with a HEAD request
-            # NOTE: || must be OUTSIDE $() to avoid concatenating status codes (e.g., "302000")
-            HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" -L \
-              --max-time 60 --retry 2 --retry-delay 5 \
-              -H "User-Agent: DOI-Checker/1.0 (https://pablobernabeu.github.io; academic site link checker)" \
-              "https://doi.org/$doi" 2>/dev/null) || HTTP_CODE="000"
-
-            # Accept: 2xx/3xx (OK/redirect), 401/403 (paywalled), 418 (server quirk)
-            if [[ "$HTTP_CODE" =~ ^[23][0-9][0-9]$ ]] || [ "$HTTP_CODE" = "401" ] || [ "$HTTP_CODE" = "403" ] || [ "$HTTP_CODE" = "418" ]; then
-              : # OK
-            elif [ "$HTTP_CODE" = "000" ]; then
-              FAILED=$((FAILED + 1))
-              FAILED_DETAILS="$FAILED_DETAILS\n| \`$doi\` | **timeout** | $file |"
-              echo "TIMEOUT: $doi (in $file)"
-            else
-              FAILED=$((FAILED + 1))
-              FAILED_DETAILS="$FAILED_DETAILS\n| \`$doi\` | $HTTP_CODE | $file |"
-              echo "FAIL [$HTTP_CODE]: $doi (in $file)"
-            fi
-
-            # Rate limit: be polite to DOI resolvers
-            sleep 1
-
-          done < <(grep -rn 'doi:\|doi\.org/' content/publication/ --include="*.md" --include="*.Rmd" --include="*.html")
+          FAILED=$(grep -c '^FAIL' results.tsv || true)
+          FAILED=${FAILED:-0}
 
           echo "### Summary" >> doi-report.md
           echo "" >> doi-report.md
@@ -88,7 +117,10 @@ jobs:
             echo "" >> doi-report.md
             echo "| DOI | HTTP Status | File |" >> doi-report.md
             echo "|-----|------------|------|" >> doi-report.md
-            echo -e "$FAILED_DETAILS" >> doi-report.md
+            while IFS=$'\t' read -r _ status doi; do
+              file=$(grep -m1 -P "^\Q$doi\E\t" dois.tsv | cut -f2 || true)
+              printf '| `%s` | %s | %s |\n' "$doi" "$status" "$file" >> doi-report.md
+            done < <(grep '^FAIL' results.tsv)
             echo "" >> doi-report.md
             echo "has_failures=true" >> "$GITHUB_OUTPUT"
           else
@@ -96,7 +128,6 @@ jobs:
             echo "has_failures=false" >> "$GITHUB_OUTPUT"
           fi
 
-          echo ""
           echo "=== DOI Check Complete: $TOTAL checked, $FAILED failed ==="
           cat doi-report.md
 
