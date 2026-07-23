@@ -3639,9 +3639,12 @@ h3 {
   margin-top: 1rem !important;
 }
 
+// The button is display:block, so this margin COLLAPSES with the abstract's
+// 0.5rem bottom margin -- the larger of the two wins. Keep it above 0.5rem or
+// the gap will not change. Matches #publication and #applications-and-dashboards.
 #blog > div > div > div.col-12 > div > div.media-body.is-expanded > a {
   margin-bottom: 0.5rem !important;
-  margin-top: 0.8rem !important;
+  margin-top: 1rem !important;
 }
 
 #applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.stream-meta.article-metadata {
@@ -4488,9 +4491,11 @@ body.dark #applications-and-dashboards > div > div > div.col-12 > div > div.medi
   margin-bottom: 1.5rem !important;
 }
 
-// Increase top margin for publication expanded link on home page
+// Increase top margin for publication expanded link on home page.
+// display:block below means this margin COLLAPSES with the abstract's 0.5rem
+// bottom margin, so only a value above 0.5rem actually widens the gap.
 #publication > div > div > div.col-12 > div > div.media-body.is-expanded > a {
-  margin-top: 0.5rem !important;
+  margin-top: 1rem !important;
   margin-bottom: 0rem !important;
   display: block !important;
   text-align: center !important;
