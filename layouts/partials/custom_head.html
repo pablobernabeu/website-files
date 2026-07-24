@@ -34,8 +34,27 @@
       }
     }
 
+    // Pick the matching highlight.js stylesheet. The theme ships both (github for
+    // light, dracula for dark) as <link title="hl-light|hl-dark">, one of them
+    // disabled, and academic.js only swaps them once its DOM-ready handler runs.
+    // By then the code blocks have already painted with the other theme's token
+    // colours, so a dark page shows crimson strings and teal literals on the dark
+    // background until the swap lands. Doing it here, while the <head> is still
+    // parsing (the two links sit just above this script), means the right one is
+    // the only one ever applied.
+    function selectHighlightTheme(isDark) {
+      var light = document.querySelector('link[title="hl-light"]');
+      var dark = document.querySelector('link[title="hl-dark"]');
+      // Absent when highlighting is off, or when the CSS is served as one local bundle.
+      if (!light || !dark) return;
+      light.disabled = isDark;
+      dark.disabled = !isDark;
+    }
+
     // Apply theme immediately
-    if (shouldUseDarkTheme()) {
+    var useDarkTheme = shouldUseDarkTheme();
+    selectHighlightTheme(useDarkTheme);
+    if (useDarkTheme) {
       document.documentElement.setAttribute("data-theme", "dark");
       document.documentElement.style.backgroundColor = "#0f172a";
       document.documentElement.style.color = "#e2e8f0";
@@ -43,7 +62,6 @@
       document.addEventListener("DOMContentLoaded", function() {
         document.body.classList.add("dark");
       });
-    } else {
     }
   })();
 </script>

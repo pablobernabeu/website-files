@@ -6,20 +6,12 @@
  **************************************************/
 
 (function ($) {
-  // GLOBAL RELOAD PREVENTION SYSTEM
-  let themeChangeInProgress = false;
+  // A `window.location.reload` override used to sit here, guarding against a reload
+  // mid-theme-switch. Its flag was only ever raised by the tri-state toggle that the
+  // navbar dropdown replaced, so the override had become a pass-through wrapper around
+  // a native API. Removed with that toggle; the dropdown handlers never reload.
 
-  // Override page reload globally when theme change is in progress
-  const originalReload = window.location.reload;
-  window.location.reload = function () {
-    if (themeChangeInProgress) {
-      console.warn("🚫 GLOBAL RELOAD BLOCKED - Theme change in progress");
-      return false;
-    }
-    return originalReload.apply(this, arguments);
-  };
-
-  // Monitor for theme-related storage changes that might trigger reloads
+  // Log theme changes made in another tab.
   window.addEventListener("storage", function (e) {
     if (e.key === "dark_mode") {
       console.log(
@@ -809,79 +801,21 @@
 
   function canChangeTheme() {
     // If the theme changer component is present, then user is allowed to change the theme variation.
-    return $(".js-dark-toggle").length;
+    // The navbar renders `.js-theme-toggle`, the trigger for a dropdown holding explicit
+    // Light and Dark items (partials/navbar.html). `.js-dark-toggle` was the older
+    // single-button control; it is still matched so either markup keeps working.
+    return $(".js-theme-toggle, .js-dark-toggle").length;
   }
 
   function getThemeMode() {
     return parseInt(localStorage.getItem("dark_mode") || 2);
   }
 
-  function changeThemeModeClick() {
-    if (!canChangeTheme()) {
-      return;
-    }
-
-    // GLOBAL ANTI-RELOAD PROTECTION
-    themeChangeInProgress = true;
-    console.log("🔄 Theme switch initiated - GLOBAL RELOAD PROTECTION ACTIVE");
-
-    // Save current scroll position before theme change
-    const savedScrollY = window.pageYOffset || document.documentElement.scrollTop;
-
-    let $themeChanger = $(".js-dark-toggle i");
-    let $themeToggle = $(".js-dark-toggle");
-    let currentThemeMode = getThemeMode();
-    let isDarkTheme;
-    switch (currentThemeMode) {
-      case 0:
-        localStorage.setItem("dark_mode", "1");
-        console.log("✓ Saved dark_mode=1 to localStorage. Verification:", localStorage.getItem("dark_mode"));
-        isDarkTheme = 1;
-        console.info("User changed theme variation to Dark.");
-        $themeChanger.removeClass("fa-moon fa-sun").addClass("fa-palette");
-        $themeToggle.attr("title", "Toggle auto mode");
-        break;
-      case 1:
-        localStorage.setItem("dark_mode", "2");
-        console.log("✓ Saved dark_mode=2 to localStorage. Verification:", localStorage.getItem("dark_mode"));
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          // The visitor prefers dark themes and switching to the dark variation is allowed by admin.
-          isDarkTheme = 1;
-        } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
-          // The visitor prefers light themes and switching to the dark variation is allowed by admin.
-          isDarkTheme = 0;
-        } else {
-          isDarkTheme = isSiteThemeDark; // Use the site's default theme variation based on `light` in the theme file.
-        }
-        console.info("User changed theme variation to Auto.");
-        $themeChanger.removeClass("fa-moon fa-palette").addClass("fa-sun");
-        $themeToggle.attr("title", "Toggle light mode");
-        break;
-      default:
-        localStorage.setItem("dark_mode", "0");
-        console.log("✓ Saved dark_mode=0 to localStorage. Verification:", localStorage.getItem("dark_mode"));
-        isDarkTheme = 0;
-        console.info("User changed theme variation to Light.");
-        $themeChanger.removeClass("fa-sun fa-palette").addClass("fa-moon");
-        $themeToggle.attr("title", "Toggle dark mode");
-        break;
-    }
-
-    renderThemeVariation(isDarkTheme);
-
-    // Restore scroll position after theme rendering and animation
-    setTimeout(() => {
-      window.scrollTo(0, savedScrollY);
-    }, 550);
-
-    // Reset global flag after theme switch is complete
-    setTimeout(() => {
-      themeChangeInProgress = false;
-      console.log(
-        "✅ Theme switch complete - GLOBAL RELOAD PROTECTION DISABLED"
-      );
-    }, 1500);
-  }
+  // The tri-state cycle (Light -> Dark -> Auto) that used to live here was driven by
+  // the single `.js-dark-toggle` button. That button is gone: the navbar dropdown now
+  // sets mode 0 or 1 outright, in the `.js-set-theme-*` handlers further down. Auto
+  // (mode 2) survives as the state of a visitor who has not chosen yet, and is still
+  // resolved by getThemeVariation() and followed by the OS-preference listener.
 
   function getThemeVariation() {
     if (!canChangeTheme()) {
@@ -897,7 +831,13 @@
         isDarkTheme = 1;
         break;
       default:
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        if (localStorage.getItem("dark_mode") === null) {
+          // The visitor has never touched the switcher. The pre-paint script in
+          // layouts/partials/custom_head.html resolves that to light, so match it:
+          // if the two disagree, an OS-dark machine gets a page whose body is light
+          // while this file believes it is dark.
+          isDarkTheme = 0;
+        } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
           // The visitor prefers dark themes and switching to the dark variation is allowed by admin.
           isDarkTheme = 1;
         } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
@@ -958,24 +898,29 @@
   /**
    * Render theme variation (day or night).
    *
-   * @param {int} isDarkTheme - TODO: convert to boolean.
+   * Mermaid is deliberately left alone here. Diagrams render once, with Mermaid's
+   * own default (light) palette, and the dark theme is handled purely in CSS -- see
+   * the `body.dark .mermaid` rules in layouts/partials/custom_head.html, which
+   * lighten the connectors that would otherwise vanish against a dark background.
+   * Re-running `mermaid.initialize()` on a theme switch used to force a page reload,
+   * and running it on load would restyle every diagram out from under those rules.
+   *
+   * @param {number|boolean} isDarkTheme - 0/false for day, 1/true for night.
    * @param {boolean} init
    * @returns {undefined}
    */
   function renderThemeVariation(isDarkTheme, init = false) {
+    // getThemeVariation() can fall back to `isSiteThemeDark`, which is a boolean,
+    // and the branches below compare strictly against 0 and 1. Without this, a
+    // boolean matches neither and the whole function silently does nothing.
+    isDarkTheme = Number(isDarkTheme);
+
     // Is code highlighting enabled in site config?
+    // On `init` the pre-paint script in custom_head.html has already selected the
+    // matching stylesheet, so re-applying it here is a no-op; it matters on a switch.
     const codeHlEnabled = $("link[title=hl-light]").length > 0;
     const codeHlLight = $("link[title=hl-light]")[0];
     const codeHlDark = $("link[title=hl-dark]")[0];
-    const diagramEnabled = $("script[title=mermaid]").length > 0;
-
-    // Debug logging for Mermaid detection
-    console.log("Theme switch debug:", {
-      isDarkTheme,
-      init,
-      diagramEnabled,
-      mermaidElementsCount: document.querySelectorAll(".mermaid").length,
-    });
 
     // Check if re-render required.
     if (!init) {
@@ -1001,23 +946,6 @@
         codeHlLight.disabled = false;
         codeHlDark.disabled = true;
       }
-      // Check for Mermaid diagrams - only process if they actually exist
-      const mermaidElements = document.querySelectorAll(".mermaid");
-      const hasActualMermaidContent = mermaidElements.length > 0;
-
-      // COMPLETELY DISABLE MERMAID RELOAD FOR THEME SWITCHING
-      // Only allow Mermaid initialization on page load, never on theme switch
-      if (diagramEnabled && hasActualMermaidContent && init) {
-        console.log("Initializing Mermaid with default theme on page load");
-        mermaid.initialize({ theme: "default", securityLevel: "loose" });
-      } else if (!init && hasActualMermaidContent) {
-        console.log(
-          "MERMAID RELOAD PREVENTED - Theme switching without reload"
-        );
-        // For theme switching, we just log that we're skipping reload
-        // Mermaid diagrams will keep their current theme until page reload
-      }
-      // NO RELOAD EVER during theme switching
 
       // Reset animation colors after theme switch (with delay to ensure DOM is updated)
       if (!init) {
@@ -1035,23 +963,6 @@
         codeHlLight.disabled = true;
         codeHlDark.disabled = false;
       }
-      // Check for Mermaid diagrams - only process if they actually exist
-      const mermaidElements = document.querySelectorAll(".mermaid");
-      const hasActualMermaidContent = mermaidElements.length > 0;
-
-      // COMPLETELY DISABLE MERMAID RELOAD FOR THEME SWITCHING
-      // Only allow Mermaid initialization on page load, never on theme switch
-      if (diagramEnabled && hasActualMermaidContent && init) {
-        console.log("Initializing Mermaid with dark theme on page load");
-        mermaid.initialize({ theme: "dark", securityLevel: "loose" });
-      } else if (!init && hasActualMermaidContent) {
-        console.log(
-          "MERMAID RELOAD PREVENTED - Theme switching without reload"
-        );
-        // For theme switching, we just log that we're skipping reload
-        // Mermaid diagrams will keep their current theme until page reload
-      }
-      // NO RELOAD EVER during theme switching
 
       // Reset animation colors after theme switch (with delay to ensure DOM is updated)
       if (!init) {
@@ -1061,31 +972,14 @@
   }
 
   function initThemeVariation() {
-    // If theme changer component present, set its icon according to the theme mode (day, night, or auto).
-    if (canChangeTheme) {
-      let themeMode = getThemeMode();
-      let $themeChanger = $(".js-dark-toggle i");
-      let $themeToggle = $(".js-dark-toggle");
-      switch (themeMode) {
-        case 0:
-          $themeChanger.removeClass("fa-sun fa-palette").addClass("fa-moon");
-          $themeToggle.attr("title", "Toggle dark mode");
-          console.info("Initialize theme variation to Light.");
-          break;
-        case 1:
-          $themeChanger.removeClass("fa-moon fa-sun").addClass("fa-palette");
-          $themeToggle.attr("title", "Toggle auto mode");
-          console.info("Initialize theme variation to Dark.");
-          break;
-        default:
-          $themeChanger.removeClass("fa-moon fa-palette").addClass("fa-sun");
-          $themeToggle.attr("title", "Toggle light mode");
-          console.info("Initialize theme variation to Auto.");
-          break;
-      }
-    }
+    // The navbar's theme control is a dropdown with explicit Light and Dark items
+    // behind a fixed "adjust" icon, so there is no icon state to synchronise here;
+    // the old code mutated `.js-dark-toggle i`, which the navbar no longer renders.
     // Render the day or night theme.
     let isDarkTheme = getThemeVariation();
+    console.info(
+      "Initialize theme variation to " + (isDarkTheme ? "Dark" : "Light") + "."
+    );
     renderThemeVariation(isDarkTheme, true);
   }
 
@@ -1166,12 +1060,6 @@
     // Initialize theme variation.
     initThemeVariation();
 
-    // Change theme mode.
-    $(".js-dark-toggle").click(function (e) {
-      e.preventDefault();
-      changeThemeModeClick();
-    });
-
     // Light theme button - set to light mode specifically
     $(document).on("click", ".js-set-theme-light", function (e) {
       e.preventDefault();
@@ -1182,10 +1070,6 @@
       const savedScrollX = window.pageXOffset || document.documentElement.scrollLeft;
       
       localStorage.setItem("dark_mode", "0");
-      let $themeChanger = $(".js-dark-toggle i");
-      let $themeToggle = $(".js-dark-toggle");
-      $themeChanger.removeClass("fa-sun fa-palette").addClass("fa-moon");
-      $themeToggle.attr("title", "Toggle dark mode");
       renderThemeVariation(0);
       
       // Restore scroll position multiple times to ensure it sticks
@@ -1214,10 +1098,6 @@
       const savedScrollX = window.pageXOffset || document.documentElement.scrollLeft;
       
       localStorage.setItem("dark_mode", "1");
-      let $themeChanger = $(".js-dark-toggle i");
-      let $themeToggle = $(".js-dark-toggle");
-      $themeChanger.removeClass("fa-moon fa-sun").addClass("fa-palette");
-      $themeToggle.attr("title", "Toggle auto mode");
       renderThemeVariation(1);
       
       // Restore scroll position multiple times to ensure it sticks
@@ -1290,23 +1170,14 @@
       console.log(
         `OS dark mode preference changed to ${darkModeOn ? "🌒 on" : "☀️ off"}.`
       );
-      let currentThemeVariation = parseInt(
-        localStorage.getItem("dark_mode") || 2
-      );
-      let isDarkTheme;
-      if (currentThemeVariation === 2) {
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          // The visitor prefers dark themes.
-          isDarkTheme = 1;
-        } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
-          // The visitor prefers light themes.
-          isDarkTheme = 0;
-        } else {
-          // The visitor does not have a day or night preference, so use the theme's default setting.
-          isDarkTheme = isSiteThemeDark;
-        }
-        renderThemeVariation(isDarkTheme);
+      // Only auto mode follows the OS; an explicit Light or Dark choice wins.
+      if (getThemeMode() !== 2) {
+        return;
       }
+      // Defer to getThemeVariation() rather than repeating its rules, so this
+      // listener cannot drift from what a page load would have decided -- including
+      // the "visitor has never chosen, so stay light" case.
+      renderThemeVariation(getThemeVariation());
     });
   });
 
