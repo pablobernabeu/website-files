@@ -10,7 +10,7 @@ tags:
   - R
   - R Markdown
 subtitle: ''
-summary: ''
+summary: 'Three methods for balancing reproducibility and efficiency in R Markdown documents: embedding fast code directly, sourcing long but fast code from external scripts, and pre-running slow code while loading saved results.'
 authors: []
 lastmod: '2021-11-14T00:10:08Z'
 featured: no
@@ -21,7 +21,6 @@ image:
 projects: []
 ---
 
-<script src="{{< blogdown/postref >}}index.en_files/header-attrs/header-attrs.js"></script>
 
 
 <p>As technology and research methods advance, the data sets tend to be larger and the methods more exhaustive. Consequently, the analyses take longer to run. This poses a challenge when the results are to be presented using <a href="https://rmarkdown.rstudio.com/index.html">R Markdown</a>. One has to balance reproducibility and efficiency. On the one hand, it is desirable to keep the R Markdown document as self-contained as possible, so that those who may later examine the document can easily test and edit the code. On the other hand, it would be inefficient to create a document that is very slow to run or very long. The context of the task will determine how how time-consuming and long the code in an Rmd file can be. For instance, one could decide that the knitting can take up to 15 minutes, and each code chunk can span up to 30 lines.</p>
