@@ -1,6 +1,7 @@
 ---
 title: Speculation across various scientific topics
 author: ''
+date: '2094-10-20'
 publishDate: 2094-10-20
 slug: speculation-across-various-scientific-topics
 categories:
@@ -24,11 +25,14 @@ projects: []
 
 <div class='alert alert-info' role='alert' style='padding-bottom: 0; margin-bottom: 6%;'>
 
+Given all of the data that E&L [Evans & Levinson, 2009] cite, how could anyone maintain the notion of a universal grammar with linguistic content? Traditionally, there have been three basic strategies. First, just as we may force English grammar into the Procrustean bed of Latin grammar – that is how I was taught the structure of English in grade school – the grammars of the world’s so-called exotic languages may be forced into an abstract scheme based mainly on European languages.
+
+— **Tomasello (2009)**
 
 </div>
 
 
-```{r echo=FALSE, eval=FALSE, warning=FALSE, message=FALSE, fig.width=7.5, fig.height=8}
+```{r echo=TRUE, eval=FALSE, warning=FALSE, message=FALSE, fig.width=7.5, fig.height=8}
 
 library(rscopus)
 # set_api_key('your_key_here')  # (see https://cran.r-project.org/web/packages/rscopus/vignettes/api_key.html)
@@ -260,4 +264,8 @@ plot_language_evolution_speculation + plot_linguistic_relativity_speculation +
 Bernabeu, P. (2024). *rscopus_plus*. OSF. https://doi.org/10.17605/OSF.IO/BUZQ6
 
 Bernabeu, P., & Vogt, P. (2015). Language evolution: Current status and future directions. *Tenth Language at the University of Essex (LangUE) Postgraduate Conference*. https://researchgate.net/publication/280858062/
+
+Evans, N., & Levinson, S. C. (2009). The myth of language universals: Language diversity and its importance for cognitive science. *Behavioral and Brain Sciences*, *32*(5), 429–448. https://doi.org/10.1017/S0140525X0999094X
+
+Tomasello, M. (2009). Universal grammar is dead. *Behavioral and Brain Sciences*, *32*(5), 470–471. https://doi.org/10.1017/S0140525X09990744
 
