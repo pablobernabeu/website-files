@@ -34,6 +34,6 @@
    weight = 60
 
 [[main]]
-   name = "<i class='fas fa-search js-search-trigger'></i> <span class='d-lg-none js-search-trigger'>Search</span>"
+   name = "<i class='fas fa-search js-search-trigger' aria-hidden='true'></i> <span class='d-lg-none js-search-trigger'>Search</span>"
    url = '#'
    weight = 70

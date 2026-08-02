@@ -7,13 +7,13 @@
           <h2>{{ i18n "search" }}</h2>
         </div>
         <div class="col-6 col-search-close">
-          <a class="js-search" href="javascript:void(0)"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+          <a class="js-search" href="#" role="button" aria-label="Close search"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
         </div>
       </div>
 
       <div id="search-box">
         {{ if eq site.Params.search.engine 1 }}
-        <input name="q" id="search-query" placeholder="{{i18n "search_placeholder"}}" autocapitalize="off"
+        <input name="q" id="search-query" aria-label="{{ i18n "search" }}" placeholder="{{i18n "search_placeholder"}}" autocapitalize="off"
         autocomplete="off" autocorrect="off" spellcheck="false" type="search">
         {{ else }}
         <!-- Search box will appear here -->

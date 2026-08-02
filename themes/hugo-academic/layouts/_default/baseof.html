@@ -4,11 +4,20 @@
 {{ partial "site_head" . }}
 <body id="top" data-spy="scroll" data-offset="70" data-target="{{ if or .IsHome (eq .Type "widget_page") }}#navbar-main{{else}}#TableOfContents{{end}}" {{ if not (.Scratch.Get "light") }}class="dark"{{end}}>
 
+  <a class="skip-link" href="#main">{{ i18n "skip_to_content" | default "Skip to main content" }}</a>
+
   {{ partial "search" . }}
 
   {{ partial "navbar" . }}
 
+  {{/* The docs layout supplies its own <main>, so wrapping here would nest two. */}}
+  {{ if eq .Type "docs" }}
   {{ block "main" . }}{{ end }}
+  {{ else }}
+  <main id="main">
+    {{ block "main" . }}{{ end }}
+  </main>
+  {{ end }}
 
   {{ partial "site_js" . }}
 

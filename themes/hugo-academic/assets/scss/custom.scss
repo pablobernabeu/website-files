@@ -6064,6 +6064,7 @@ pre {
 
 .full-text-btn {
   background-color: var(--bg-full-text);
+  background-image: none !important;
   color: var(--text-hover);
   border: 2px solid var(--border-full-text);
   border-radius: 12px;
@@ -6078,6 +6079,7 @@ pre {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none !important;
 }
 .full-text-btn:hover,
 .full-text-btn:focus {
@@ -7681,4 +7683,70 @@ body.dark .taxonomy-page-type {
 // Increase font size in search query input
 #search-query {
   font-size: 1.2rem !important;
+}
+
+// Keep navbar controls visible and usable from the keyboard.
+@media (min-width: 992px) {
+  .nav-item.dropdown:focus-within .font-size-menu,
+  .font-size-menu:focus-within,
+  .nav-item.dropdown:focus-within .theme-menu,
+  .theme-menu:focus-within {
+    display: block !important;
+    pointer-events: auto !important;
+  }
+}
+
+#navbar-main .nav-link:focus-visible,
+#navbar-main .navbar-toggler:focus-visible,
+#navbar-main .dropdown-item:focus-visible {
+  outline: 3px solid #67e8f9 !important;
+  outline-offset: 2px !important;
+  box-shadow: none !important;
+}
+
+// Search opens a dialog rather than navigating to a page section, so Scrollspy
+// must not make it look like the current navigation section.
+#navbar-main a.nav-link.js-search-trigger,
+#navbar-main a.nav-link.js-search-trigger.active {
+  color: var(--nav-text) !important;
+}
+
+#navbar-main a.nav-link.js-search-trigger:hover {
+  color: var(--nav-hover-text) !important;
+}
+
+#navbar-main a.nav-link.js-search-trigger span {
+  color: inherit !important;
+}
+
+#navbar-main a.nav-link.js-search-trigger::after,
+#navbar-main a.nav-link.js-search-trigger:hover::after,
+#navbar-main a.nav-link.js-search-trigger:focus::after,
+#navbar-main a.nav-link.js-search-trigger.active::after {
+  content: none !important;
+  display: none !important;
+}
+
+// Skip link: the navbar carries roughly thirty links, so keyboard and switch
+// users would otherwise traverse all of them on every page before reaching the
+// content. Hidden off-screen until focused rather than display:none, which would
+// take it out of the tab order entirely.
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0.5rem;
+  z-index: 2000;
+  padding: 0.6rem 1rem;
+  border-radius: 0 0 6px 6px;
+  background-color: #12263f;
+  color: #ffffff !important;
+  background-image: none !important;
+  text-decoration: none !important;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #67e8f9;
+  outline-offset: 2px;
 }

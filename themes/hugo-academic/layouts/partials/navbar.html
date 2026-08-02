@@ -25,7 +25,7 @@
 
     {{ if site.Menus.main }}
     <button type="button" class="navbar-toggler" data-toggle="collapse"
-            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="{{ i18n "toggle_navigation" }}">
+            data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="{{ i18n "toggle_navigation" }}">
     <span><i class="fas fa-bars"></i></span>
     </button>
     {{ end }}
@@ -131,7 +131,7 @@
       {{ end }}
 
       <li class="nav-item dropdown">
-        <button type="button" class="nav-link js-font-size-toggle"><i class="fas fa-text-height" aria-hidden="true"></i></button>
+        <button type="button" class="nav-link js-font-size-toggle" aria-label="Text size options" aria-haspopup="true" aria-expanded="false"><i class="fas fa-text-height" aria-hidden="true"></i></button>
         <div class="dropdown-menu dropdown-menu-right font-size-menu">
           <a class="dropdown-item js-font-increase" href="javascript:void(0)"><i class="fas fa-plus"></i> Larger font</a>
           <a class="dropdown-item js-font-reset" href="javascript:void(0)"><i class="fas fa-undo"></i> Reset</a>
@@ -141,7 +141,7 @@
 
       {{ if site.Params.day_night }}
       <li class="nav-item dropdown theme-dropdown">
-        <button type="button" class="nav-link js-theme-toggle"><i class="fas fa-adjust" aria-hidden="true"></i></button>
+        <button type="button" class="nav-link js-theme-toggle" aria-label="Colour theme options" aria-haspopup="true" aria-expanded="false"><i class="fas fa-adjust" aria-hidden="true"></i></button>
         <div class="dropdown-menu dropdown-menu-right theme-menu">
           <a class="dropdown-item js-set-theme-light" href="javascript:void(0)">
             <i class="fas fa-sun"></i> Light

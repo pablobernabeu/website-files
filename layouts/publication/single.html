@@ -12,12 +12,10 @@
     {{ end }}
 
     {{ if .Params.url_fulltext }}
-    <a href={{ .Params.url_fulltext }}>
-      <button class="full-text-btn">
-        <i class="fa fa-file" style='color:grey;'></i> &nbsp;&nbsp; 
+    <a class="full-text-btn" href="{{ .Params.url_fulltext }}">
+        <i class="fa fa-file" style='color:grey;' aria-hidden="true"></i> &nbsp;&nbsp;
         <span>View <b>full text</b></span>
-      </button>
-      </a>
+    </a>
     {{ end }}
 
     <div class="article-style">{{ .Content }}{{ with .Resources.GetMatch "related-references.html" }}{{ .Content | safeHTML }}{{ end }}</div>

@@ -65,6 +65,34 @@
         menu.classList.remove('show');
       });
     }
+
+    // These menus open three different ways: the `show` class on tap, the same
+    // class on hover, and a CSS :focus-within rule on desktop that changes no
+    // class at all. Report whichever of those is currently true, so that
+    // aria-expanded never contradicts what is on screen.
+    function syncExpandedState(dropdown, menuClass) {
+      if (!dropdown) return;
+
+      const menu = dropdown.querySelector(menuClass);
+      const toggle = dropdown.querySelector('.js-font-size-toggle, .js-theme-toggle');
+      if (!menu || !toggle) return;
+
+      const update = () => {
+        const open = menu.classList.contains('show') ||
+          (window.innerWidth >= 992 && dropdown.contains(document.activeElement));
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      };
+
+      new MutationObserver(update).observe(menu, {
+        attributes: true,
+        attributeFilter: ['class']
+      });
+      dropdown.addEventListener('focusin', update);
+      dropdown.addEventListener('focusout', () => window.setTimeout(update, 0));
+      dropdown.addEventListener('mouseenter', update);
+      dropdown.addEventListener('mouseleave', () => window.setTimeout(update, 600));
+      update();
+    }
     
     function setupDropdownHover(dropdown, menuClass) {
       if (!dropdown) return;
@@ -120,7 +148,10 @@
     
     setupDropdownHover(fontSizeDropdown, '.font-size-menu');
     setupDropdownHover(themeDropdown, '.theme-menu');
-    
+
+    syncExpandedState(fontSizeDropdown, '.font-size-menu');
+    syncExpandedState(themeDropdown, '.theme-menu');
+
     // Close dropdowns on scroll in mobile view (check width on each scroll)
     window.addEventListener('scroll', function() {
       if (window.innerWidth <= 991) {

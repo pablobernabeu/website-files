@@ -5,14 +5,14 @@ name: Pablo Bernabeu
 role: '<span style="font-size:115%;"><b>Researcher</b><br>University of Oxford</span>'
 email: '<span class="oxford-email">pablo.bernabeu@education.ox.ac.uk</span><br>pcbernabeu@gmail.com'
 profileicons:
-  - '<span aria-label="Link to Google Scholar profile" data-toggle="tooltip1" data-placement="bottom" title=" Google Scholar "><a href="https://scholar.google.com/citations?user=DxD0QDoAAAAJ&hl=en"><i style="color:#8AA3CD;" class="social-icon ai ai-google-scholar ai-lg"></i></a></span>'
-  - '<span aria-label="Link to Github profile" data-toggle="tooltip1" data-placement="bottom" title=" Github "><a href="https://github.com/pablobernabeu"><i style="color:#8AA3CD;" class="social-icon fab fa-github fa-lg"></i></a></span>'
-  - '<span aria-label="Link to OSF profile" data-toggle="tooltip1" data-placement="bottom" title=" OSF "><a href="https://osf.io/25u3x/"><i style="color:#8AA3CD;" class="social-icon ai ai-osf ai-lg"></i></a></span>'
-  - '<span aria-label="Link to ResearchGate profile" data-toggle="tooltip1" data-placement="bottom" title=" ResearchGate "><a href="https://www.researchgate.net/profile/Pablo-Bernabeu"><i style="color:#8AA3CD;" class="social-icon fab fa-researchgate fa-lg"></i></a></span>'
-  - '<span aria-label="Link to ORCID profile" data-toggle="tooltip1" data-placement="bottom" title=" ORCID "><a href="https://orcid.org/0000-0003-1083-2460"><i style="color:#8AA3CD;" class="social-icon fab fa-orcid fa-lg"></i></a></span>'
-  - '<span aria-label="Link to Figshare profile" data-toggle="tooltip1" data-placement="bottom" title=" Figshare "><a href="https://figshare.com/authors/Pablo_Bernabeu/820703"><i style="color:#8AA3CD;" class="social-icon ai ai-figshare ai-lg"></i></a></span>'
-  - '<span aria-label="Link to YouTube profile" data-toggle="tooltip1" data-placement="bottom" title=" YouTube "><a href="https://www.youtube.com/@pablo-bernabeu"><i style="color:#8AA3CD;" class="social-icon fa-brands fa-youtube ai-lg"></i></a></span>'
-  - '<span aria-label="Link to LinkedIn profile" data-toggle="tooltip1" data-placement="bottom" title=" LinkedIn "><a href="https://www.linkedin.com/in/pablobernabeu/"><i style="color:#8AA3CD;" class="social-icon fab fa-linkedin-in fa-lg"></i></a></span>'
+  - '<span data-toggle="tooltip1" data-placement="bottom" title=" Google Scholar "><a href="https://scholar.google.com/citations?user=DxD0QDoAAAAJ&hl=en" aria-label="Google Scholar profile"><i style="color:#607AA4;" class="social-icon ai ai-google-scholar ai-lg" aria-hidden="true"></i></a></span>'
+  - '<span data-toggle="tooltip1" data-placement="bottom" title=" Github "><a href="https://github.com/pablobernabeu" aria-label="GitHub profile"><i style="color:#607AA4;" class="social-icon fab fa-github fa-lg" aria-hidden="true"></i></a></span>'
+  - '<span data-toggle="tooltip1" data-placement="bottom" title=" OSF "><a href="https://osf.io/25u3x/" aria-label="OSF profile"><i style="color:#607AA4;" class="social-icon ai ai-osf ai-lg" aria-hidden="true"></i></a></span>'
+  - '<span data-toggle="tooltip1" data-placement="bottom" title=" ResearchGate "><a href="https://www.researchgate.net/profile/Pablo-Bernabeu" aria-label="ResearchGate profile"><i style="color:#607AA4;" class="social-icon fab fa-researchgate fa-lg" aria-hidden="true"></i></a></span>'
+  - '<span data-toggle="tooltip1" data-placement="bottom" title=" ORCID "><a href="https://orcid.org/0000-0003-1083-2460" aria-label="ORCID profile"><i style="color:#607AA4;" class="social-icon fab fa-orcid fa-lg" aria-hidden="true"></i></a></span>'
+  - '<span data-toggle="tooltip1" data-placement="bottom" title=" Figshare "><a href="https://figshare.com/authors/Pablo_Bernabeu/820703" aria-label="Figshare profile"><i style="color:#607AA4;" class="social-icon ai ai-figshare ai-lg" aria-hidden="true"></i></a></span>'
+  - '<span data-toggle="tooltip1" data-placement="bottom" title=" YouTube "><a href="https://www.youtube.com/@pablo-bernabeu" aria-label="YouTube profile"><i style="color:#607AA4;" class="social-icon fa-brands fa-youtube ai-lg" aria-hidden="true"></i></a></span>'
+  - '<span data-toggle="tooltip1" data-placement="bottom" title=" LinkedIn "><a href="https://www.linkedin.com/in/pablobernabeu/" aria-label="LinkedIn profile"><i style="color:#607AA4;" class="social-icon fab fa-linkedin-in fa-lg" aria-hidden="true"></i></a></span>'
 interests:
   - Education & digital technologies
   - Cognitive psychology & neuroscience

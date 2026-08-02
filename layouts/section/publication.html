@@ -18,11 +18,11 @@
 
       <div class="form-row mb-4">
         <div class="col-auto">
-          <input type="search" class="filter-search" placeholder="{{ i18n "search_placeholder" }}" autocapitalize="off"
-          autocomplete="off" autocorrect="off" role="textbox" spellcheck="false">
+          <input type="search" class="filter-search" aria-label="Filter publications" placeholder="{{ i18n "search_placeholder" }}" autocapitalize="off"
+          autocomplete="off" autocorrect="off" spellcheck="false">
         </div>
         <div class="col-auto">
-          <select class="pub-filters form-control form-control-sm" data-filter-group="year">
+          <select class="pub-filters form-control form-control-sm" data-filter-group="year" aria-label="Filter by year">
             <option value="*">{{ i18n "date" }}</option>
             {{ $years_sorted := $.Scratch.GetSortedMapValues "years" }}
             {{ if $years_sorted }}
@@ -35,7 +35,7 @@
           </select>
         </div>
         <div class="col-auto">
-          <select class="pub-filters pubtype-select form-control form-control-sm" data-filter-group="pubtype">
+          <select class="pub-filters pubtype-select form-control form-control-sm" data-filter-group="pubtype" aria-label="Filter by publication type">
             <option value="*">{{ i18n "publication_type" }}</option>
             {{ $pub_types := partial "functions/get_pub_types" $ }}
             {{ range $index, $taxonomy := site.Taxonomies.publication_types }}
@@ -46,8 +46,8 @@
           </select>
         </div>
         <div class="col-auto ml-auto">
-          <button id="pub-reset-filters" class="btn btn-sm btn-outline-secondary" style="visibility:hidden" title="Reset all filters">
-            <i class="fas fa-times-circle"></i> Reset filters
+          <button type="button" id="pub-reset-filters" class="btn btn-sm btn-outline-secondary" style="visibility:hidden" title="Reset all filters">
+            <i class="fas fa-times-circle" aria-hidden="true"></i> Reset filters
           </button>
         </div>
       </div>
