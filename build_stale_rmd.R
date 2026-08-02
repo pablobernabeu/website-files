@@ -1,4 +1,4 @@
-# Build any Rmd files that are newer than their corresponding HTML output.
+# Build any Rmd files whose source has changed since their HTML output was built.
 # Mirrors the "Check for stale Rmd → HTML pages" step in .github/workflows/deploy.yml.
 #
 # Usage (from repo root):
@@ -24,11 +24,37 @@ find_stale <- function() {
   stale <- character(0)
   for (rmd in rmds) {
     html <- sub("\\.Rmd$", ".html", rmd)
-    if (!file.exists(html) || file.mtime(rmd) > file.mtime(html)) {
+    if (!file.exists(html) || is_stale_in_git(rmd, html)) {
       stale <- c(stale, rmd)
     }
   }
   stale
+}
+
+# Modification times cannot answer this question: a fresh clone stamps every file
+# with the checkout time, so an Rmd edited two years after its HTML looks current.
+# Ask Git which commit last touched each file instead, and treat the Rmd as stale
+# when its commit is not an ancestor of the HTML's. This mirrors the check in
+# .github/workflows/deploy.yml.
+last_commit <- function(path) {
+  out <- suppressWarnings(
+    system2("git", c("log", "-1", "--format=%H", "--", shQuote(path)),
+            stdout = TRUE, stderr = FALSE)
+  )
+  if (length(out) == 0) "" else out[1]
+}
+
+is_stale_in_git <- function(rmd, html) {
+  rmd_commit  <- last_commit(rmd)
+  html_commit <- last_commit(html)
+  # Uncommitted files have no history to compare, so fall back to modification
+  # times, which are meaningful for a file the user has just edited.
+  if (!nzchar(rmd_commit) || !nzchar(html_commit)) {
+    return(file.mtime(rmd) > file.mtime(html))
+  }
+  status <- system2("git", c("merge-base", "--is-ancestor", rmd_commit, html_commit),
+                    stdout = FALSE, stderr = FALSE)
+  status != 0L
 }
 
 build_stale <- function(stale) {
