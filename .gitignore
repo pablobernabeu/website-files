@@ -14,6 +14,22 @@ content/post/a-new-function-to-plot-convergence-diagnostics-from-lme4-allfit/m1_
 **/scopus_key.txt
 **/Scopus API key.txt
 **/Scopus*key*.txt
+
+# Transient Scopus search snapshots. The durable state is related-references.html;
+# these timestamped dumps were re-created on every scheduled run and reached
+# 5,115 files / 62 MB before being dropped from tracking. Matched by filename
+# because the containing directory is spelled both "related references" and
+# "related-references".
+content/publication/**/DOIs, *.csv
+content/publication/**/additional DOIs, *.csv
+content/publication/**/date and time of previous retrieval of DOIs.txt
+
+# blogdown lock files. These are transient guards left behind by an interrupted
+# render, but blogdown treats any that it finds as "a render is in progress" and
+# silently skips the post. One was committed in 2024 and blocked rebuilds of
+# content/post/speculation-across-various-scientific-topics for two years.
+*.Rmd.lock~
+
 .DS_Store
 Thumbs.db
 content/authors/admin/_index-PabloBernabeu.md
