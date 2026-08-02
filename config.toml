@@ -13,7 +13,7 @@ baseurl = "https://pablobernabeu.github.io/"
 
 # Enter a copyright notice to display in the site footer.
 # To display a copyright symbol, type `&copy;`. For current year, type `{year}`.
-copyright = 'Pablo Bernabeu, 2015—{year}. Licence: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Email: pcbernabeu@gmail.com. Cookies only used by third-party systems such as [Disqus](https://help.disqus.com/en/articles/1717155-use-of-cookies).'
+copyright = 'Pablo Bernabeu, 2015—{year}. Licence: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Email: pcbernabeu@gmail.com. Third-party content may use cookies; see the [privacy notice](/privacy/).'
 
 ############################
 ## Advanced options below ##
@@ -34,14 +34,13 @@ hasCJKLanguage = false  # Set `true` for Chinese/Japanese/Korean languages.
 defaultContentLanguageInSubdir = false
 removePathAccents = true  # Workaround for https://github.com/gohugoio/hugo/issues/5687
 
-# Pagination configuration (updated for Hugo v0.128.0+)
-[pagination]
-  pagerSize = 20  # Balanced for performance and UX
-  path = "page"
+# Keep the pagination setting compatible with the Hugo 0.62 deploy pin.
+paginate = 20
+paginatePath = "page"
 
 enableEmoji = true
 footnotereturnlinkcontents = "<sup>^</sup>"
-ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\\.md$", "semanticpriming_main_stimuli_.*\\.js$"]
+ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\\.md$", "scopus_key\\.txt$", "semanticpriming_main_stimuli_.*\\.js$"]
 
 # Performance optimizations
 minify = true
@@ -130,7 +129,8 @@ buildDrafts = false
   
 [privacy]
   [privacy.disqus]
-    disable = true
+    # Comments remain available, but the local template loads Disqus only after a visitor opts in.
+    disable = false
   [privacy.x]
     disable = true
   [privacy.vimeo]

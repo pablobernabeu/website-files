@@ -67,6 +67,7 @@ diagram = false
 # Privacy pack
 #   Show a cookie consent message to visitors
 #   Anonymize IP in Google Analytics (if enabled)
+# A generic banner would not gate third-party scripts. Disqus is gated at its point of use instead.
 privacy_pack = false
 
 # Enable visitors to edit pages?
@@ -280,4 +281,3 @@ plugins_js  = []
 [marketing]
   google_analytics = ''
   google_tag_manager = ''
-  
