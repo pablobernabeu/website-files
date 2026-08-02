@@ -72,10 +72,14 @@
 <link rel="stylesheet" href="{{ "css/search-modal.css" | relURL }}" />
 
 {{/* Tag cloud height constraint */}}
+{{ if .IsHome }}
 <link rel="stylesheet" href="{{ "css/tag-cloud-height.css" | relURL }}" />
+{{ end }}
 
 {{/* Related references interactive toolbar */}}
+{{ with .Resources.GetMatch "related-references.html" }}
 <link rel="stylesheet" href="{{ "css/related-references.css" | relURL }}" />
+{{ end }}
 
 {{/* Mermaid diagrams (only loaded on pages with diagram:true):
      - hide the raw diagram source until Mermaid renders it to an SVG (no code flash);
@@ -129,20 +133,25 @@
 {{ end }}
 
 {{/* Tag cloud network visualization */}}
+{{ if .IsHome }}
 <script defer src="{{ "js/tag-cloud-network.js" | relURL }}"></script>
+{{ end }}
 
 {{/* Basic performance optimization */}}
 <meta name="format-detection" content="telephone=no" />
 
-{{/* Neutralize search link href immediately when DOM is available */}}
+{{/* Make the menu-generated search link a labelled, keyboard-operable control. */}}
 <script>
 (function fixSearchLink() {
   function neutralize() {
     var triggers = document.querySelectorAll('.js-search-trigger');
     for (var i = 0; i < triggers.length; i++) {
       var a = triggers[i].closest('a');
-      if (a && a.getAttribute('href') !== 'javascript:void(0)') {
-        a.setAttribute('href', 'javascript:void(0)');
+      if (a) {
+        a.classList.add('js-search-trigger');
+        a.setAttribute('href', '#search');
+        a.setAttribute('role', 'button');
+        a.setAttribute('aria-label', 'Search');
       }
     }
   }

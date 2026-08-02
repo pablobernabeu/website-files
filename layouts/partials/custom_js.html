@@ -28,7 +28,11 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!-- Article ancillary tags script -->
+{{ if .IsPage }}{{ with .Params.tags }}
 <script src="{{ "js/article-ancillary-tags.js" | relURL }}" defer></script>
+{{ end }}{{ end }}
 
 <!-- Related references interactive enhancement -->
+{{ with .Resources.GetMatch "related-references.html" }}
 <script src="{{ "js/related-references.js" | relURL }}" defer></script>
+{{ end }}
