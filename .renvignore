@@ -1,0 +1,3 @@
+# Hugo build output: ~1 GB of generated files that renv would otherwise scan on
+# every snapshot/status call. Dependencies live in content/, not here.
+public/
