@@ -7750,3 +7750,9 @@ body.dark .taxonomy-page-type {
   outline: 3px solid #67e8f9;
   outline-offset: 2px;
 }
+
+// The link's focus target sits at the end of the navbar, so tabbing on from it
+// reaches the content. Taken out of flow so it is not a flex item of the navbar.
+.skip-target {
+  position: absolute;
+}

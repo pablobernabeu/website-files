@@ -4,20 +4,14 @@
 {{ partial "site_head" . }}
 <body id="top" data-spy="scroll" data-offset="70" data-target="{{ if or .IsHome (eq .Type "widget_page") }}#navbar-main{{else}}#TableOfContents{{end}}" {{ if not (.Scratch.Get "light") }}class="dark"{{end}}>
 
-  <a class="skip-link" href="#main">{{ i18n "skip_to_content" | default "Skip to main content" }}</a>
-
   {{ partial "search" . }}
 
   {{ partial "navbar" . }}
 
-  {{/* The docs layout supplies its own <main>, so wrapping here would nest two. */}}
-  {{ if eq .Type "docs" }}
+  {{/* custom.scss carries ~150 rules anchored on body's direct children, 12 of them
+       positional (#top > div:nth-child(n)). Inserting an element here, or wrapping the
+       content in a landmark, silently detaches all of them. Keep this level flat. */}}
   {{ block "main" . }}{{ end }}
-  {{ else }}
-  <main id="main">
-    {{ block "main" . }}{{ end }}
-  </main>
-  {{ end }}
 
   {{ partial "site_js" . }}
 

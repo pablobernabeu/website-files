@@ -9,6 +9,12 @@
 {{ end }}
 
 <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+
+  {{/* Kept inside the nav rather than as a child of body: custom.scss keys about 150
+       rules off body's direct children, 12 of them positional, so an extra element
+       there detaches them. An <a> matches none of the navbar's own child rules. */}}
+  <a class="skip-link" href="#main-content">{{ i18n "skip_to_content" | default "Skip to main content" }}</a>
+
   <div class="container">
 
     {{if $show_logo}}
@@ -174,4 +180,6 @@
     </ul>
 
   </div><!-- /.container -->
+
+  <a id="main-content" class="skip-target" tabindex="-1"></a>
 </nav>
