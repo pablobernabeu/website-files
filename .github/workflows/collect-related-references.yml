@@ -6,6 +6,13 @@ on:
     - cron: "0 3,15 * * *"
   workflow_dispatch: # Allow manual triggering
 
+permissions:
+  contents: read
+
+concurrency:
+  group: collect-related-references-${{ github.repository }}
+  cancel-in-progress: false
+
 jobs:
   # -----------------------------------------------------------------------
   # 1. Discover publications & run one-time PDF query generation
@@ -18,10 +25,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: "3.12"
 
@@ -32,7 +41,7 @@ jobs:
         run: python scripts/extract_refs_from_pdfs.py
 
       - name: Upload generated queries
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: generated-queries
           path: content/publication/**/related references/
@@ -61,15 +70,14 @@ jobs:
       fail-fast: false
       max-parallel: 2
 
-    env:
-      SCOPUS_API_KEY: ${{ secrets.SCOPUS_API_KEY }}
-
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
 
       - name: Download generated queries
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
           name: generated-queries
           path: content/publication/
@@ -77,12 +85,12 @@ jobs:
 
       - name: Set up R
         id: setup-r
-        uses: r-lib/actions/setup-r@v2
+        uses: r-lib/actions/setup-r@d3c5be51b12e724e68f33216ca3c148b66d5f0b6 # v2
         with:
           r-version: "release"
 
       - name: Cache R packages
-        uses: actions/cache@v4
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: ${{ env.R_LIBS_USER }}
           key: r-${{ steps.setup-r.outputs.installed-r-version }}-packages-${{ hashFiles('scripts/collect_related_references.R') }}
@@ -101,6 +109,8 @@ jobs:
       - name: Collect references for ${{ matrix.publication }}
         run: |
           Rscript scripts/collect_related_references.R --pub "${{ matrix.publication }}"
+        env:
+          SCOPUS_API_KEY: ${{ secrets.SCOPUS_API_KEY }}
 
       - name: Check for changes
         id: changes
@@ -115,7 +125,7 @@ jobs:
 
       - name: Upload changed files
         if: steps.changes.outputs.changed == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: changes-${{ matrix.publication }}
           path: content/publication/${{ matrix.publication }}/
@@ -128,13 +138,17 @@ jobs:
     if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
 
       - name: Download all change artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
           pattern: changes-*
           path: _artifacts/
@@ -178,7 +192,7 @@ jobs:
       - name: Create pull request with new references
         if: steps.changes.outputs.changed == 'true'
         id: create-pr
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@22a9089034f40e5a961c8808d113e2c98fb63676 # v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Automated related references update ${{ steps.date.outputs.today }}"

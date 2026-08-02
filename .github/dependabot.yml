@@ -12,6 +12,18 @@
 
 version: 2
 updates:
+  # Actions are pinned to commit SHAs, which is only safe if something keeps
+  # those pins current; Dependabot rewrites the SHA and its trailing version
+  # comment together.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      actions:
+        patterns:
+          - "*"
+
   - package-ecosystem: "npm"
     directory: "/themes/hugo-academic"
     schedule:

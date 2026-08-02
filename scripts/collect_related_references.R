@@ -6,7 +6,7 @@
 #   the query from that script
 # - For publications without one, auto-generates a Scopus query from the
 #   publication title and DOI
-# - Searches Scopus via scopus_search_DOIs / scopus_search_additional_DOIs
+# - Searches Scopus via a commit-pinned scopus_search_plus helper
 # - Retrieves APA 7 formatted citations via CrossRef content negotiation
 # - Inserts new citations into each publication's index file, sorted
 #   alphabetically and deduplicated
@@ -36,10 +36,33 @@ if (nchar(api_key) == 0) {
 }
 rscopus::set_api_key(api_key)
 
-# ---- Source the custom Scopus helper functions ----
+# ---- Source the custom Scopus search helper ----
 
-source("https://raw.githubusercontent.com/pablobernabeu/rscopus_plus/main/scopus_search_DOIs.R")
-source("https://raw.githubusercontent.com/pablobernabeu/rscopus_plus/main/scopus_search_additional_DOIs.R")
+rscopus_plus_commit <- "b81c4b576dfba942c820766ea30229f8db2b77e5"
+rscopus_plus_base <- paste0(
+  "https://raw.githubusercontent.com/pablobernabeu/rscopus_plus/",
+  rscopus_plus_commit,
+  "/"
+)
+source(paste0(rscopus_plus_base, "scopus_search_plus.R"))
+
+#' Query Scopus and return the unique, non-missing DOI values in memory.
+#' Keeping this adapter free of file I/O prevents timestamped search snapshots
+#' from accumulating in publication bundles.
+search_scopus_dois <- function(query, run_period,
+                               search = scopus_search_plus) {
+  results <- search(
+    query,
+    paste0(min(run_period), "-", max(run_period)),
+    quota = 20,
+    verbose = TRUE
+  )
+  if (!is.data.frame(results) || !"doi" %in% names(results)) {
+    stop("Scopus search returned no DOI column")
+  }
+  dois <- results$doi
+  unique(dois[!is.na(dois) & nzchar(trimws(dois))])
+}
 
 # ===========================================================================
 #  DISCOVERY
@@ -758,9 +781,11 @@ for (pub_dir in pub_dirs) {
   cat("  Existing DOIs in related-references.html:", length(existing_dois), "\n")
 
   # ---- Run Scopus search ----
-  timestamp_file <- file.path(refs_dir,
-                              "date and time of previous retrieval of DOIs.txt")
-  is_first_run <- !file.exists(timestamp_file)
+  # The citation HTML is the durable state. Older versions called helper
+  # wrappers that wrote timestamped DOI CSV snapshots into every publication
+  # directory; those transient files accumulated on every scheduled run.
+  # Query in memory instead and compare the result with the existing HTML.
+  is_first_run <- length(existing_dois) == 0L
 
   # On subsequent runs, use a rolling 3-year lookback window so that
   # 2024/2025 papers not captured on the first run (due to Scopus relevance
@@ -777,63 +802,10 @@ for (pub_dir in pub_dirs) {
     cat("  Narrowed run period:", min(run_period), "-", max(run_period), "\n")
   }
 
-  # Pre-write the timestamp and an empty DOI CSV before calling the Scopus API.
-  # If the API call crashes (e.g.  rate-limit / transient error), these files
-  # will already exist, so the NEXT scheduled run will see is_first_run = FALSE
-  # and move on to scopus_search_additional_DOIs instead of retrying the same
-  # failing first-run path indefinitely.
-  if (is_first_run) {
-    tryCatch({
-      date_time_pre <- as.character(format(Sys.time(), "%Y-%m-%d %H%M"))
-      fileConn <- file(timestamp_file)
-      writeLines(date_time_pre, fileConn)
-      close(fileConn)
-      write.csv(data.frame(x = character(0)),
-                file.path(refs_dir, paste0("DOIs, ", date_time_pre, ".csv")),
-                row.names = FALSE)
-    }, error = function(e) {
-      cat("  Warning: could not pre-write timestamp:", e$message, "\n")
-    })
-  }
-
   new_dois <- tryCatch({
-    refs_path <- paste0(refs_dir, "/")
-
-    if (is_first_run) {
-      cat("  First run -> scopus_search_DOIs\n")
-      scopus_search_DOIs(
-        query = query,
-        search_period = paste0(min(search_period), "-", max(search_period)),
-        quota = 20,
-        path = refs_path, save_date_time_file = TRUE,
-        console_print_DOIs = FALSE
-      )
-      csv_files <- list.files(refs_dir, pattern = "^DOIs,.*\\.csv$",
-                              full.names = TRUE)
-      if (length(csv_files) > 0) {
-        latest <- csv_files[order(file.mtime(csv_files), decreasing = TRUE)[1]]
-        d <- read.csv(latest, stringsAsFactors = FALSE)
-        if ("x" %in% names(d)) d$x else d[[1]]
-      } else character(0)
-
-    } else {
-      cat("  Subsequent run -> scopus_search_additional_DOIs\n")
-      scopus_search_additional_DOIs(
-        query = query,
-        search_period = paste0(min(run_period), "-", max(run_period)),
-        quota = 20,
-        path = refs_path, save_date_time_file = TRUE,
-        console_print_DOIs = FALSE
-      )
-      csv_files <- list.files(refs_dir,
-                              pattern = "^additional DOIs,.*\\.csv$",
-                              full.names = TRUE)
-      if (length(csv_files) > 0) {
-        latest <- csv_files[order(file.mtime(csv_files), decreasing = TRUE)[1]]
-        d <- read.csv(latest, stringsAsFactors = FALSE)
-        if ("x" %in% names(d)) d$x else d[[1]]
-      } else character(0)
-    }
+    cat(if (is_first_run) "  Initial Scopus search\n" else
+      "  Rolling Scopus search\n")
+    search_scopus_dois(query, run_period)
   }, error = function(e) {
     cat("  Scopus search error:", e$message, "\n")
     character(0)
