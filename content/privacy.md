@@ -1,11 +1,14 @@
 ---
 title: Privacy notice
-date: "2026-08-02"
+date: "2026-08-03"
 draft: false
 share: false
 commentable: false
 editable: false
+hide_metadata: true
 ---
+
+*Last updated: 3 August 2026*
 
 This is a static personal academic website. Its configuration does not enable site-owned analytics.
 
@@ -13,7 +16,7 @@ This is a static personal academic website. Its configuration does not enable si
 
 Comments are provided by [Disqus](https://disqus.com/) on an opt-in basis. A page does not request Disqus resources until you select **Load comments from Disqus**. If you do, your browser connects directly to Disqus, which may process technical information such as your IP address and browser or device identifiers, and may use cookies or similar technologies. Comments submitted through Disqus are public.
 
-See the [Disqus privacy policy](https://help.disqus.com/en/articles/1717103-disqus-privacy-policy) and [data-sharing settings](https://help.disqus.com/en/articles/1717117-how-to-edit-your-data-sharing-settings) for details and available choices. If you do not want your browser to connect to Disqus, do not load the comments.
+The details, and the choices open to you, are set out in the [Disqus privacy policy](https://help.disqus.com/en/articles/1717103-disqus-privacy-policy) and the [data-sharing settings](https://help.disqus.com/en/articles/1717117-how-to-edit-your-data-sharing-settings).
 
 ## Embedded and external content
 
@@ -22,5 +25,3 @@ Some pages embed media or interactive content from third-party providers, includ
 ## Contact
 
 Questions about this website can be sent to [pcbernabeu@gmail.com](mailto:pcbernabeu@gmail.com).
-
-Last updated: 2 August 2026.
