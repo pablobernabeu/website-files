@@ -14,6 +14,7 @@
 # Usage:
 #   Rscript scripts/collect_related_references.R              # all publications
 #   Rscript scripts/collect_related_references.R --pub NAME   # single publication
+#   Rscript scripts/collect_related_references.R --lint-only  # repair files only
 #
 # Environment variables:
 #   SCOPUS_API_KEY  — Elsevier Scopus API key (required)
@@ -25,16 +26,22 @@ library(jsonlite)
 # Null-coalescing operator
 `%||%` <- function(a, b) if (!is.null(a)) a else b
 
+# Re-run the lint rules over the existing files without contacting Scopus or
+# CrossRef, so a repair can be reproduced offline and after a rebase.
+lint_only <- "--lint-only" %in% commandArgs(trailingOnly = TRUE)
+
 # ---- Scopus API key ----
 
-api_key <- Sys.getenv("SCOPUS_API_KEY", unset = "")
-if (nchar(api_key) == 0) {
-  api_key <- Sys.getenv("RSCOPUS_KEY", unset = "")
+if (!lint_only) {
+  api_key <- Sys.getenv("SCOPUS_API_KEY", unset = "")
+  if (nchar(api_key) == 0) {
+    api_key <- Sys.getenv("RSCOPUS_KEY", unset = "")
+  }
+  if (nchar(api_key) == 0) {
+    stop("No Scopus API key found. Set the SCOPUS_API_KEY environment variable.")
+  }
+  rscopus::set_api_key(api_key)
 }
-if (nchar(api_key) == 0) {
-  stop("No Scopus API key found. Set the SCOPUS_API_KEY environment variable.")
-}
-rscopus::set_api_key(api_key)
 
 # ---- Source the custom Scopus search helper ----
 
@@ -44,7 +51,7 @@ rscopus_plus_base <- paste0(
   rscopus_plus_commit,
   "/"
 )
-source(paste0(rscopus_plus_base, "scopus_search_plus.R"))
+if (!lint_only) source(paste0(rscopus_plus_base, "scopus_search_plus.R"))
 
 #' Query Scopus and return the unique, non-missing DOI values in memory.
 #' Keeping this adapter free of file I/O prevents timestamped search snapshots
@@ -337,9 +344,56 @@ contains_non_latin_script <- function(text) {
         text, perl = TRUE)
 }
 
+#' Decode the HTML entities that CrossRef leaves in citation text.
+#' Container titles are deposited pre-escaped ("Neuroscience &amp; Biobehavioral
+#' Reviews") and the APA formatter title-cases the entity name, so the citation
+#' arrives holding "&Amp;". Decoding here lets citation_md_to_html() escape the
+#' text exactly once, which is what makes the browser show a plain "&".
+#' Escaping is occasionally layered more than once ("&amp;amp;"), hence the
+#' repeated passes. "&lt;" and "&gt;" are deliberately left encoded: the HTML
+#' writer does not escape angle brackets, so decoding them would inject markup.
+decode_html_entities <- function(text, max_passes = 5L) {
+  if (is.null(text) || length(text) == 0) return(text)
+
+  named <- c(apos = "'", quot = "\"", nbsp = "\u00A0", ndash = "\u2013",
+             mdash = "\u2014", lsquo = "\u2018", rsquo = "\u2019",
+             ldquo = "\u201C", rdquo = "\u201D", hellip = "\u2026", amp = "&")
+
+  decode_once <- function(x) {
+    # Numeric character references, decimal (&#8217;) and hexadecimal (&#x2019;)
+    refs <- gregexpr("&#[xX]?[0-9A-Fa-f]+;", x, perl = TRUE)
+    regmatches(x, refs) <- lapply(regmatches(x, refs), function(hits) {
+      vapply(hits, function(hit) {
+        digits <- gsub("^&#|;$", "", hit)
+        code <- if (grepl("^[xX]", digits)) {
+          strtoi(sub("^[xX]", "", digits), base = 16L)
+        } else {
+          suppressWarnings(as.integer(digits))
+        }
+        if (is.na(code) || code <= 0) hit else intToUtf8(code)
+      }, character(1), USE.NAMES = FALSE)
+    })
+    # "&amp;" is decoded last so that "&amp;lt;" yields the literal text "&lt;"
+    # rather than "<".
+    for (nm in names(named)) {
+      x <- gsub(paste0("&", nm, ";"), named[[nm]], x, ignore.case = TRUE)
+    }
+    x
+  }
+
+  for (pass in seq_len(max_passes)) {
+    decoded <- decode_once(text)
+    if (identical(decoded, text)) break
+    text <- decoded
+  }
+  text
+}
+
 #' Format a citation for embedding in Hugo markdown with DOI angle-bracket link.
 format_citation_for_hugo <- function(citation, doi) {
   if (is.null(citation)) return(NULL)
+
+  citation <- decode_html_entities(citation)
 
   doi_url <- paste0("https://doi.org/", doi)
 
@@ -428,8 +482,9 @@ format_citation_for_hugo <- function(citation, doi) {
 #' Convert a markdown-formatted citation to HTML for insertion into .html files.
 #' Handles *italic* -> <em>, <URL> -> <a>, and & -> &amp;.
 citation_md_to_html <- function(citation) {
-  # Escape ampersands (but not inside HTML entities)
-  html <- gsub("&(?!amp;|lt;|gt;|quot;)", "&amp;", citation, perl = TRUE)
+  # Escape ampersands. The citation has already been through
+  # decode_html_entities(), so every "&" here is a literal ampersand.
+  html <- gsub("&", "&amp;", citation, fixed = TRUE)
   # Convert *text* to <em>text</em>
   html <- gsub("\\*([^*]+)\\*", "<em>\\1</em>", html)
   # Convert <URL> to <a href="URL" class="uri">URL</a>
@@ -705,6 +760,8 @@ if (!is.null(single_pub)) {
     stop("Publication not found: ", single_pub)
   }
 }
+
+if (lint_only) pub_dirs <- character(0)
 
 cat("Processing", length(pub_dirs), "publication folder(s)\n")
 
@@ -993,6 +1050,244 @@ for (pub_dir in pub_dirs) {
 }
 
 # ===========================================================================
+#  APA 7 LETTER CASE
+# ===========================================================================
+#
+# CrossRef returns whatever case the publisher deposited, so about a third of
+# titles arrive in Title Case where APA 7 requires sentence case. Whether a
+# capitalised word is a proper noun cannot be decided from the word alone, so
+# each word's case is learned from the abstracts already stored in the
+# ref-metadata blocks: running prose in which "English" and "Bayesian" are
+# always capitalised while "memory" and "processing" almost never are. Titles
+# are not used as evidence, since rewriting them would feed the next run's
+# lexicon. A title is rewritten only when every capitalised word in it is
+# confidently classified, so one unrecognised word leaves the title untouched.
+
+CASE_MIN_COUNT    <- 5     # attestations required before a word is judged
+CASE_LOWER_SHARE  <- 0.95  # lowercase share above which a word is a common word
+CASE_PROPER_SHARE <- 0.25  # lowercase share below which a word is a proper noun
+# Titles cluster at either end of this measure, with a sparse band between
+# roughly 0.3 and 0.65, so the threshold sits in the valley.
+CASE_TITLE_SHARE  <- 0.65
+
+APA_HYPHENS  <- "[-\u2010\u2011\u2012\u2013\u2014]"
+APA_SENT_END <- "[:?!.\u2014\u2013]['\"\u2019\u201d)]?$"
+# A word whose case can be judged: one capital followed by lower case. Acronyms,
+# camel case and anything carrying digits fall outside it and are left alone.
+APA_PLAIN_WORD <- "^[[:upper:]][[:lower:]'\u2019]+$"
+
+#' Tokenise running prose, dropping the positions where English capitalises
+#' whatever the word is: sentence-initial, structured-abstract headings
+#' ("Methods:"), and enumerated labels ("Study 1", "Experiment 2").
+prose_tokens <- function(text) {
+  parts <- strsplit(text, "\\s+")[[1]]
+  n <- length(parts)
+  if (n < 2) return(character(0))
+  keep <- rep(TRUE, n)
+  keep[1] <- FALSE
+  after_stop <- which(grepl(APA_SENT_END, parts, perl = TRUE)) + 1
+  keep[after_stop[after_stop <= n]] <- FALSE
+  keep[grepl(":$", parts)] <- FALSE
+  keep[grepl("^[(\\[]?[0-9]", c(parts[-1], ""), perl = TRUE)] <- FALSE
+  words <- gsub("^[^[:alpha:]]+|[^[:alpha:]'\u2019-]+$", "", parts[keep], perl = TRUE)
+  words[nchar(words) >= 3 & grepl("^[[:alpha:]]", words, perl = TRUE)]
+}
+
+#' Learn which words are ordinary common words and which are proper nouns.
+#' Returns two environments used as sets, so that lookup stays O(1) across the
+#' tens of thousands of words checked per run.
+build_case_lexicon <- function(refs_files) {
+  as_set <- function(x) {
+    x <- x[nzchar(x)]
+    e <- new.env(hash = TRUE, parent = emptyenv(), size = max(29L, length(x)))
+    for (w in x) assign(w, TRUE, envir = e)
+    e
+  }
+  empty <- list(safe = as_set(character(0)), proper = as_set(character(0)))
+
+  abstracts <- unlist(lapply(refs_files, function(f) {
+    unlist(lapply(read_ref_metadata(f), function(m) m$abstract %||% NULL))
+  }))
+  if (length(abstracts) == 0) return(empty)
+
+  tokens <- unlist(lapply(abstracts, prose_tokens))
+  if (length(tokens) == 0) return(empty)
+
+  lower <- tolower(tokens)
+  total <- table(lower)
+  lc    <- table(lower[!grepl("^[[:upper:]]", tokens, perl = TRUE)])
+  words <- names(total)
+  n_total <- as.numeric(total[words])
+  n_lower <- as.numeric(ifelse(words %in% names(lc), lc[words], 0))
+  share <- n_lower / n_total
+
+  list(
+    safe   = as_set(words[n_lower >= CASE_MIN_COUNT & share >= CASE_LOWER_SHARE]),
+    proper = as_set(words[n_total >= CASE_MIN_COUNT & share <= CASE_PROPER_SHARE])
+  )
+}
+
+classify_word <- function(word, lex) {
+  w <- tolower(word)
+  if (exists(w, envir = lex$safe, inherits = FALSE)) {
+    "safe"
+  } else if (exists(w, envir = lex$proper, inherits = FALSE)) {
+    "proper"
+  } else {
+    "unknown"
+  }
+}
+
+#' Share of a title's content words that carry a capital, ignoring positions
+#' where APA 7 requires one anyway. NA when the title is too short to judge.
+title_case_share <- function(title) {
+  parts <- strsplit(title, "\\s+")[[1]]
+  if (length(parts) < 2) return(NA_real_)
+  keep <- rep(TRUE, length(parts))
+  keep[1] <- FALSE
+  after_stop <- which(grepl(APA_SENT_END, parts, perl = TRUE)) + 1
+  keep[after_stop[after_stop <= length(parts)]] <- FALSE
+  words <- gsub("[^[:alpha:]'\u2019-]", "", parts[keep], perl = TRUE)
+  words <- words[nchar(words) >= 3]
+  if (length(words) < 4) return(NA_real_)
+  mean(grepl("^[[:upper:]]", words, perl = TRUE))
+}
+
+#' Rewrite a Title Cased title in APA 7 sentence case. Reports whether every
+#' capitalised word could be classified; an incomplete result must be discarded
+#' rather than used, since a half-converted title is worse than none.
+apa_sentence_case <- function(title, lex) {
+  words <- strsplit(title, " ", fixed = TRUE)[[1]]
+  if (length(words) < 2) return(list(text = title, complete = FALSE))
+
+  out <- words
+  complete <- TRUE
+  # CrossRef occasionally prefixes a title with a chapter number, which must not
+  # be mistaken for the first word.
+  first_word <- which(grepl("[[:alpha:]]", words, perl = TRUE))[1]
+  if (is.na(first_word)) return(list(text = title, complete = FALSE))
+
+  for (i in seq_along(words)) {
+    word <- words[i]
+    core <- gsub("^[^[:alpha:]]+|[^[:alpha:]'\u2019]+$", "", word, perl = TRUE)
+    if (!nzchar(core)) next
+    segments <- strsplit(core, APA_HYPHENS, perl = TRUE)[[1]]
+    separators <- regmatches(core, gregexpr(APA_HYPHENS, core, perl = TRUE))[[1]]
+    if (any(!nzchar(segments)) || length(separators) != length(segments) - 1L) next
+
+    # The word opening the title or a new sentence keeps its capital, but the
+    # rest of a hyphenated compound does not: "Self-report", not "Self-Report".
+    at_start <- i <= first_word || grepl(APA_SENT_END, words[i - 1L], perl = TRUE)
+    idx <- if (at_start) seq_along(segments)[-1] else seq_along(segments)
+    if (!length(idx)) next
+
+    judged <- grepl(APA_PLAIN_WORD, segments[idx], perl = TRUE)
+    # Acronyms, camel case and anything carrying digits are left alone, and do
+    # not count against the title: "fMRI" and "COVID-19" are already correct.
+    if (!all(judged | grepl("^[[:lower:]]", segments[idx], perl = TRUE))) next
+
+    classes <- vapply(segments[idx][judged], classify_word, character(1),
+                      lex = lex, USE.NAMES = FALSE)
+    if (any(classes == "unknown")) { complete <- FALSE; next }
+    demote <- idx[judged][classes == "safe"]
+    if (!length(demote)) next
+
+    segments[demote] <- tolower(segments[demote])
+    new_core <- paste0(segments, c(separators, ""), collapse = "")
+    out[i] <- sub(core, new_core, word, fixed = TRUE)
+  }
+  list(text = paste(out, collapse = " "), complete = complete)
+}
+
+# The title is the span between the year and the italicised container, which is
+# the only boundary that can be located reliably. Lines without it are skipped.
+APA_TITLE_PATTERN <- "^(<p[^>]*>.*?\\(\\d{4}[a-z]?\\)\\.\\s+)(.*?)(<em>.*)$"
+
+fix_title_case_in_line <- function(ln, lex) {
+  if (!grepl(APA_TITLE_PATTERN, ln, perl = TRUE)) return(ln)
+  prefix <- sub(APA_TITLE_PATTERN, "\\1", ln, perl = TRUE)
+  span   <- sub(APA_TITLE_PATTERN, "\\2", ln, perl = TRUE)
+  suffix <- sub(APA_TITLE_PATTERN, "\\3", ln, perl = TRUE)
+
+  # In an edited-book reference the span runs past the title into the editor
+  # field ("... . In B. Editor (Ed.), "), which is not sentence cased.
+  editor_at <- regexpr("\\.\\s+In\\s+[A-Z]", span, perl = TRUE)
+  editor_tail <- ""
+  if (editor_at > 0) {
+    editor_tail <- substring(span, editor_at)
+    span <- substring(span, 1, editor_at - 1)
+  }
+  trail <- regmatches(span, regexpr("\\s*$", span))
+  span <- substring(span, 1, nchar(span) - nchar(trail))
+
+  # A title deposited wholly in capitals carries no case information to recover.
+  if (!nzchar(span) || !grepl("[[:lower:]]", span, perl = TRUE)) return(ln)
+  share <- title_case_share(span)
+  if (is.na(share) || share < CASE_TITLE_SHARE) return(ln)
+
+  result <- apa_sentence_case(span, lex)
+  if (!result$complete || identical(result$text, span)) return(ln)
+  paste0(prefix, result$text, trail, editor_tail, suffix)
+}
+
+# Work types whose italicised span is the work's own title rather than a
+# periodical name. Proceedings are excluded: APA 7 sets them in sentence case
+# only when published as a book, and the deposit does not say which.
+APA_BOOK_TYPES <- c("book", "book-chapter", "edited-book", "monograph",
+                    "reference-book", "dissertation", "report")
+
+#' Apply sentence case to the italicised title of a book or chapter container.
+#' A journal name stays in title case, so this runs only on the types above.
+fix_container_case_in_line <- function(ln, lex, type) {
+  if (!type %in% APA_BOOK_TYPES || !grepl("<em>", ln, fixed = TRUE)) return(ln)
+  prefix <- sub("^(.*?<em>).*$", "\\1", ln, perl = TRUE)
+  span   <- sub("^.*?<em>(.*?)</em>.*$", "\\1", ln, perl = TRUE)
+  suffix <- sub("^.*?<em>.*?(</em>.*)$", "\\1", ln, perl = TRUE)
+
+  # A second italic span straight after the first is the volume number of a
+  # periodical, so the deposited type is wrong and the span is a journal name.
+  if (grepl("^</em>,\\s*<em>", suffix, perl = TRUE)) return(ln)
+  if (!nzchar(span) || !grepl("[[:lower:]]", span, perl = TRUE)) return(ln)
+
+  share <- title_case_share(span)
+  if (is.na(share) || share < CASE_TITLE_SHARE) return(ln)
+  result <- apa_sentence_case(span, lex)
+  if (!result$complete || identical(result$text, span)) return(ln)
+  paste0(prefix, result$text, suffix)
+}
+
+# Author fields are occasionally deposited wholly in capitals.
+APA_AUTHOR_PATTERN <- "^(<p[^>]*>)(.*?)(\\s*\\(\\d{4}[a-z]?\\).*)$"
+APA_UPPER <- "A-Z\u00C0-\u00D6\u00D8-\u00DE"
+
+fix_author_case_in_line <- function(ln) {
+  if (!grepl(APA_AUTHOR_PATTERN, ln, perl = TRUE)) return(ln)
+  prefix  <- sub(APA_AUTHOR_PATTERN, "\\1", ln, perl = TRUE)
+  authors <- sub(APA_AUTHOR_PATTERN, "\\2", ln, perl = TRUE)
+  suffix  <- sub(APA_AUTHOR_PATTERN, "\\3", ln, perl = TRUE)
+
+  letters_only <- gsub("&amp;|[^A-Za-z]", "", authors)
+  if (nchar(letters_only) < 2 || grepl("[a-z]", letters_only)) return(ln)
+
+  # Only ASCII and Latin-1 names are recased; case mapping is locale dependent
+  # for scripts such as Turkish, where lowercasing "I" is ambiguous.
+  eligible <- paste0("^[", APA_UPPER, "'\u2019-]{2,}[,.]?$")
+  recase <- function(w) {
+    if (!grepl(eligible, w, perl = TRUE)) return(w)
+    core <- sub("[,.]+$", "", w)
+    punct <- substring(w, nchar(core) + 1)
+    parts <- strsplit(core, "(?<=['\u2019-])", perl = TRUE)[[1]]
+    parts <- vapply(parts, function(p) sub("^(.)(.*)$", "\\1\\L\\2", p, perl = TRUE),
+                    character(1), USE.NAMES = FALSE)
+    out <- paste0(parts, collapse = "")
+    paste0(sub("^Mc([a-z])", "Mc\\U\\1", out, perl = TRUE), punct)
+  }
+  words <- strsplit(authors, " ", fixed = TRUE)[[1]]
+  paste0(prefix, paste(vapply(words, recase, character(1), USE.NAMES = FALSE),
+                       collapse = " "), suffix)
+}
+
+# ===========================================================================
 #  LINT EXISTING REFERENCES
 #  Re-scan all publication index files for known bad patterns and fix in place.
 # ===========================================================================
@@ -1001,6 +1296,12 @@ cat("\n=== Linting existing references ===\n")
 
 lint_files <- list.files("content/publication", pattern = "related-references\\.html$",
                          recursive = TRUE, full.names = TRUE)
+
+# Built once from every publication's abstracts, so that a word's case is
+# judged against the whole corpus rather than against one publication's topic.
+case_lexicon <- build_case_lexicon(lint_files)
+cat("Case lexicon:", length(ls(case_lexicon$safe)), "common words,",
+    length(ls(case_lexicon$proper)), "proper nouns\n")
 
 for (lf in lint_files) {
   lines <- readLines(lf, encoding = "UTF-8", warn = FALSE)
@@ -1135,6 +1436,56 @@ for (lf in lint_files) {
   }, logical(1L), USE.NAMES = FALSE)
   if (any(!keep_orphan)) { changed_lint <- TRUE }
   lines <- lines[keep_orphan]
+
+  # 8. Repair double-escaped HTML entities in reference lines. CrossRef deposits
+  #    container titles pre-escaped and its APA formatter title-cases the entity
+  #    name, so "&" arrived as "&Amp;" and was escaped again on insertion,
+  #    leaving the page showing "&Amp;" instead of "&".
+  fix_entities_line <- function(ln) {
+    if (!is_citation_line(ln)) return(ln)
+    out <- ln
+    # Escaping is occasionally layered more than once, and gsub does not rescan
+    # its own output, so collapse repeatedly until the line settles.
+    for (pass in seq_len(5L)) {
+      collapsed <- gsub("&amp;amp;", "&amp;", out, perl = TRUE, ignore.case = TRUE)
+      if (identical(collapsed, out)) break
+      out <- collapsed
+    }
+    refs <- gregexpr("&amp;#[xX]?[0-9A-Fa-f]+;", out, perl = TRUE)
+    regmatches(out, refs) <- lapply(regmatches(out, refs), function(hits) {
+      decode_html_entities(sub("^&amp;", "&", hits))
+    })
+    out
+  }
+  new_lines <- vapply(lines, fix_entities_line, character(1L), USE.NAMES = FALSE)
+  if (any(new_lines != lines)) { changed_lint <- TRUE }
+  lines <- new_lines
+
+  # 9. Convert Title Cased titles to APA 7 sentence case, leaving any title
+  #    containing a word the corpus cannot classify exactly as deposited.
+  ref_types <- vapply(read_ref_metadata(lf),
+                      function(m) as.character(m$type %||% "")[1], character(1L))
+  names(ref_types) <- tolower(names(ref_types))
+  new_lines <- vapply(lines, function(ln) {
+    if (!is_citation_line(ln)) return(ln)
+    doi <- if (grepl('href="https?://doi\\.org/', ln, perl = TRUE)) {
+      tolower(sub('^.*href="https?://doi\\.org/([^"]+)".*$', "\\1", ln, perl = TRUE))
+    } else ""
+    hit <- match(doi, names(ref_types))
+    ln <- fix_title_case_in_line(ln, case_lexicon)
+    fix_container_case_in_line(ln, case_lexicon,
+                               if (is.na(hit)) "" else ref_types[[hit]])
+  }, character(1L), USE.NAMES = FALSE)
+  if (any(new_lines != lines)) { changed_lint <- TRUE }
+  lines <- new_lines
+
+  # 10. Recase author fields deposited wholly in capitals ("BYBEE, J.").
+  new_lines <- vapply(lines, function(ln) {
+    if (!is_citation_line(ln)) return(ln)
+    fix_author_case_in_line(ln)
+  }, character(1L), USE.NAMES = FALSE)
+  if (any(new_lines != lines)) { changed_lint <- TRUE }
+  lines <- new_lines
 
   if (changed_lint) {
     writeLines(lines, lf, useBytes = TRUE)
