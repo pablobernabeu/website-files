@@ -71,20 +71,31 @@ jobs:
           # 2. Resolve each DOI. A DOI counts as reachable when doi.org
           #    redirects to a landing page (2xx/3xx) or the publisher answers
           #    with an access/anti-bot gate (401 paywall, 403 forbidden,
-          #    429 rate-limited, 418 teapot). Only a clean 404/410 -- or a
-          #    connection failure that persists across a retry -- is a failure.
+          #    429 rate-limited, 418 teapot). Any other definite HTTP answer,
+          #    a 404 or 410 above all, is a failure.
+          #
+          #    A connection that never completes is neither, and no longer counts
+          #    as one. curl reports 000 for a DNS failure, a TLS error, a refused
+          #    connection and a timeout alike, none of which say anything about
+          #    whether the DOI is registered: they describe the runner's network
+          #    and the publisher's uptime at that moment. Counting one as broken
+          #    is what put 10.5334/joc.10 -- Brysbaert & Stevens (2018), which
+          #    resolves in about a second -- under an issue titled "Broken DOIs
+          #    detected" and left it open. Unreached DOIs are now tallied apart
+          #    and raise no issue on their own, but they still appear in the
+          #    report, so one that is never reachable does not go unseen.
           check_doi() {
             local doi="$1" code
             local ua="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
-            for attempt in 1 2; do
+            for attempt in 1 2 3; do
               code=$(curl -s -o /dev/null -w '%{http_code}' -L \
                 --max-time 30 --connect-timeout 15 \
                 -H "User-Agent: $ua" \
                 "https://doi.org/$doi" 2>/dev/null) || code="000"
               case "$code" in
                 2??|3??|401|403|429|418) printf 'OK\t%s\t%s\n' "$code" "$doi"; return 0 ;;
-                000) [ "$attempt" = 1 ] && { sleep 3; continue; }
-                     printf 'FAIL\ttimeout\t%s\n' "$doi"; return 0 ;;
+                000) if [ "$attempt" -lt 3 ]; then sleep $(( attempt * 5 )); continue; fi
+                     printf 'UNREACHED\ttimeout\t%s\n' "$doi"; return 0 ;;
                 *)   printf 'FAIL\t%s\t%s\n' "$code" "$doi"; return 0 ;;
               esac
             done
@@ -105,15 +116,18 @@ jobs:
 
           FAILED=$(grep -c '^FAIL' results.tsv || true)
           FAILED=${FAILED:-0}
+          UNREACHED=$(grep -c '^UNREACHED' results.tsv || true)
+          UNREACHED=${UNREACHED:-0}
 
           echo "### Summary" >> doi-report.md
           echo "" >> doi-report.md
           echo "- **Total unique DOIs checked:** $TOTAL" >> doi-report.md
-          echo "- **Failed to resolve:** $FAILED" >> doi-report.md
+          echo "- **Broken (the registry or publisher gave a definite failure):** $FAILED" >> doi-report.md
+          echo "- **Not reached (no answer after three tries; not evidence of a broken DOI):** $UNREACHED" >> doi-report.md
           echo "" >> doi-report.md
 
           if [ "$FAILED" -gt 0 ]; then
-            echo "### Failed DOIs" >> doi-report.md
+            echo "### Broken DOIs" >> doi-report.md
             echo "" >> doi-report.md
             echo "| DOI | HTTP Status | File |" >> doi-report.md
             echo "|-----|------------|------|" >> doi-report.md
@@ -122,13 +136,32 @@ jobs:
               printf '| `%s` | %s | %s |\n' "$doi" "$status" "$file" >> doi-report.md
             done < <(grep '^FAIL' results.tsv)
             echo "" >> doi-report.md
+          fi
+
+          if [ "$UNREACHED" -gt 0 ]; then
+            echo "### Not reached" >> doi-report.md
+            echo "" >> doi-report.md
+            echo "These did not answer within the timeout on any of three tries. That usually means the publisher was slow or briefly down, or the runner's network was; it is not evidence that the DOI is broken. Worth a look only if the same DOI keeps appearing here run after run." >> doi-report.md
+            echo "" >> doi-report.md
+            echo "| DOI | File |" >> doi-report.md
+            echo "|-----|------|" >> doi-report.md
+            while IFS=$'\t' read -r _ _ doi; do
+              file=$(grep -m1 -P "^\Q$doi\E\t" dois.tsv | cut -f2 || true)
+              printf '| `%s` | %s |\n' "$doi" "$file" >> doi-report.md
+            done < <(grep '^UNREACHED' results.tsv)
+            echo "" >> doi-report.md
+          fi
+
+          if [ "$FAILED" -gt 0 ]; then
             echo "has_failures=true" >> "$GITHUB_OUTPUT"
           else
-            echo "All DOIs resolved successfully." >> doi-report.md
+            if [ "$UNREACHED" -eq 0 ]; then
+              echo "All DOIs resolved successfully." >> doi-report.md
+            fi
             echo "has_failures=false" >> "$GITHUB_OUTPUT"
           fi
 
-          echo "=== DOI Check Complete: $TOTAL checked, $FAILED failed ==="
+          echo "=== DOI Check Complete: $TOTAL checked, $FAILED broken, $UNREACHED not reached ==="
           cat doi-report.md
 
       - name: Upload report
