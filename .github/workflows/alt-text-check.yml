@@ -14,11 +14,21 @@ on:
       - "content/**/*.html"
       - ".github/scripts/check_alt_text.py"
       - ".github/workflows/alt-text-check.yml"
+  # The generated reference lists are excluded here but not from the push trigger
+  # above, so their content is still checked once it lands on master. The
+  # collect-related-references workflow opens its pull requests with
+  # GITHUB_TOKEN, and GitHub does not run workflows on those without manual
+  # approval, so each one left a run parked at "action required" for ever: on a
+  # check that is advisory, over files it sees on the merge commit anyway, for a
+  # pull request that same workflow auto-merges seconds later. A permanently
+  # pending signal is worse than none, because it is where a real approval
+  # request would go unnoticed.
   pull_request:
     paths:
       - "content/**/*.md"
       - "content/**/*.Rmd"
       - "content/**/*.html"
+      - "!content/**/related-references.html"
   workflow_dispatch:
 
 jobs:
