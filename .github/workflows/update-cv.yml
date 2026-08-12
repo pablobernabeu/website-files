@@ -16,18 +16,24 @@ jobs:
 
       - name: Download CV from OSF
         run: |
-          # Download the CV from OSF with retries
+          # --fail so that an HTTP error is an error. Without it curl writes the
+          # error body to the output file and still exits 0, which counts here
+          # as a successful download.
+          downloaded=no
           for i in {1..3}; do
             echo "Download attempt $i..."
-            if curl -L --max-time 300 --retry 3 --retry-delay 10 -o temp-cv.pdf https://osf.io/download/84ktq; then
+            if curl -L --fail --max-time 300 --retry 3 --retry-delay 10 -o temp-cv.pdf https://osf.io/download/84ktq; then
+              downloaded=yes
               break
             fi
             echo "Download attempt $i failed, retrying..."
             sleep 30
           done
 
-          # Check if download was successful
-          if [ ! -f temp-cv.pdf ]; then
+          # The flag, not the file. curl creates the output file whether or not
+          # the transfer succeeds, so a test for its existence could never fail
+          # and the branch below was unreachable.
+          if [ "$downloaded" != "yes" ]; then
             echo "Failed to download CV from OSF after 3 attempts"
             exit 1
           fi
@@ -43,6 +49,17 @@ jobs:
           if ! file temp-cv.pdf | grep -q "PDF"; then
             echo "Downloaded file is not a valid PDF"
             cat temp-cv.pdf | head -5
+            exit 1
+          fi
+
+          # ...and a complete one. Neither check above catches a partial
+          # download: a CV cut off part-way through is still megabytes long, and
+          # `file` reads only the intact header, so it reports a valid PDF of
+          # however many pages arrived. A transfer that dropped mid-stream would
+          # be committed and published as the CV. Every PDF ends with a %%EOF
+          # trailer and a truncated one does not.
+          if ! tail -c 2048 temp-cv.pdf | grep -qa '%%EOF'; then
+            echo "Downloaded PDF has no %%EOF trailer (${file_size} bytes): the transfer was truncated"
             exit 1
           fi
 
