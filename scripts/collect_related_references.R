@@ -10,6 +10,8 @@
 # - Retrieves APA 7 formatted citations via CrossRef content negotiation
 # - Inserts new citations into each publication's index file, sorted
 #   alphabetically and deduplicated
+# - Persists unfetched DOI candidates so time-limited runs resume collection
+#   before moving on to newly discovered results
 #
 # Usage:
 #   Rscript scripts/collect_related_references.R              # all publications
@@ -527,6 +529,87 @@ extract_existing_dois <- function(index_path) {
   unique(tolower(trimws(dois)))
 }
 
+#' Normalise a DOI vector while preserving its first-seen order.
+normalise_doi_vector <- function(dois) {
+  dois <- tolower(trimws(as.character(unlist(dois, use.names = FALSE))))
+  unique(dois[!is.na(dois) & nzchar(dois)])
+}
+
+#' Read DOI candidates that a previous collection run did not finish fetching.
+#' The queue sits next to the per-publication query assets so it is committed
+#' with the publication and survives the next scheduled GitHub Actions run.
+#' Excluded DOI values are terminal policy rejections and must not be queued or
+#' re-fetched when a later Scopus search returns them again.
+read_ref_collection_backlog <- function(refs_dir) {
+  empty <- list(
+    pending = character(0),
+    excluded = character(0),
+    initial_search_complete = FALSE,
+    valid = TRUE
+  )
+  backlog_path <- file.path(refs_dir, "pending-dois.json")
+  if (!file.exists(backlog_path)) return(empty)
+  backlog <- tryCatch(
+    jsonlite::fromJSON(backlog_path),
+    error = function(e) {
+      message("  Warning: could not read pending DOI backlog: ", e$message)
+      list(valid = FALSE)
+    }
+  )
+  if (is.list(backlog) && isFALSE(backlog$valid)) {
+    empty$valid <- FALSE
+    return(empty)
+  }
+  # Accept a legacy top-level DOI array if a manually created file exists.
+  if (!is.list(backlog) || is.null(names(backlog))) {
+    return(list(
+      pending = normalise_doi_vector(backlog),
+      excluded = character(0),
+      initial_search_complete = length(backlog) > 0,
+      valid = TRUE
+    ))
+  }
+  list(
+    pending = normalise_doi_vector(backlog$pending),
+    excluded = normalise_doi_vector(backlog$excluded),
+    initial_search_complete = isTRUE(backlog$initial_search_complete),
+    valid = TRUE
+  )
+}
+
+#' Persist DOI candidates still awaiting a citation fetch.
+#' The JSON is deliberately stable (no timestamp), so an
+#' unchanged backlog does not create a needless workflow commit.
+write_ref_collection_backlog <- function(refs_dir, pending,
+                                          excluded = character(0),
+                                          initial_search_complete = FALSE) {
+  desired <- list(
+    pending = normalise_doi_vector(pending),
+    excluded = normalise_doi_vector(excluded),
+    initial_search_complete = isTRUE(initial_search_complete)
+  )
+  current <- read_ref_collection_backlog(refs_dir)
+  if (!current$valid) {
+    stop("Refusing to overwrite unreadable pending DOI backlog")
+  }
+  current$valid <- NULL
+  if (identical(current, desired)) return(FALSE)
+
+  backlog_path <- file.path(refs_dir, "pending-dois.json")
+  json_text <- jsonlite::toJSON(desired, auto_unbox = TRUE, pretty = FALSE)
+  temp_path <- tempfile(pattern = "pending-dois-", tmpdir = refs_dir,
+                        fileext = ".tmp")
+  writeLines(as.character(json_text), temp_path, useBytes = TRUE)
+  if (!file.rename(temp_path, backlog_path)) {
+    # GitHub Actions runs on Linux, where rename replaces atomically. This
+    # fallback keeps local Windows runs usable when the destination is open.
+    copied <- file.copy(temp_path, backlog_path, overwrite = TRUE)
+    unlink(temp_path)
+    if (!copied) stop("Could not write pending DOI backlog")
+  }
+  TRUE
+}
+
 #' Insert new citations into the standalone related-references.html file.
 #' Creates the file with the full skeleton if it does not yet exist.
 #' New citations are converted from markdown to HTML <p> tags.
@@ -837,12 +920,33 @@ for (pub_dir in pub_dirs) {
   existing_dois <- extract_existing_dois(refs_html_path)
   cat("  Existing DOIs in related-references.html:", length(existing_dois), "\n")
 
+  # ---- Pending DOI backlog ----
+  # A long first collection can find far more candidates than the job has time
+  # to fetch. Keep those DOI values durably so the next scheduled run resumes
+  # them instead of narrowing its search window and losing the older tail.
+  backlog_path <- file.path(refs_dir, "pending-dois.json")
+  backlog_exists <- file.exists(backlog_path)
+  backlog <- read_ref_collection_backlog(refs_dir)
+  if (!backlog$valid) {
+    cat("  Skipping: pending DOI backlog is unreadable and was left untouched\n")
+    next
+  }
+  excluded_dois <- backlog$excluded
+  excluded_dois <- excluded_dois[!excluded_dois %in% existing_dois]
+  pending_dois <- backlog$pending
+  pending_dois <- pending_dois[!pending_dois %in%
+    unique(c(existing_dois, excluded_dois))]
+  if (length(pending_dois) > 0) {
+    cat("  Pending DOI backlog:", length(pending_dois), "DOIs\n")
+  }
+
   # ---- Run Scopus search ----
-  # The citation HTML is the durable state. Older versions called helper
-  # wrappers that wrote timestamped DOI CSV snapshots into every publication
-  # directory; those transient files accumulated on every scheduled run.
-  # Query in memory instead and compare the result with the existing HTML.
-  is_first_run <- length(existing_dois) == 0L
+  # Citation HTML is the durable list state and pending-dois.json records an
+  # unfinished fetch batch. This avoids timestamped Scopus snapshots while
+  # still allowing a time-limited run to continue collecting later.
+  initial_search_complete <- isTRUE(backlog$initial_search_complete) ||
+    length(existing_dois) > 0L
+  is_first_run <- !initial_search_complete
 
   # On subsequent runs, use a rolling 3-year lookback window so that
   # 2024/2025 papers not captured on the first run (due to Scopus relevance
@@ -859,31 +963,49 @@ for (pub_dir in pub_dirs) {
     cat("  Narrowed run period:", min(run_period), "-", max(run_period), "\n")
   }
 
-  new_dois <- tryCatch({
+  scopus_result <- tryCatch({
     cat(if (is_first_run) "  Initial Scopus search\n" else
       "  Rolling Scopus search\n")
-    search_scopus_dois(query, run_period)
+    list(dois = search_scopus_dois(query, run_period), succeeded = TRUE)
   }, error = function(e) {
     cat("  Scopus search error:", e$message, "\n")
-    character(0)
+    list(dois = character(0), succeeded = FALSE)
   })
+  scopus_dois <- scopus_result$dois
 
-  if (length(new_dois) == 0) {
+  if (length(scopus_dois) == 0) {
     cat("  No DOIs returned from Scopus\n")
-    new_dois <- character(0)
+    scopus_dois <- character(0)
   }
 
-  # ---- Deduplicate ----
-  # Normalise and deduplicate within the fetched batch first (Scopus can
-  # return the same DOI twice in one result set), then remove DOIs already
-  # present in the HTML file.
-  new_dois <- unique(tolower(trimws(new_dois)))
-  new_dois <- new_dois[!new_dois %in% existing_dois]
-  cat("  New DOIs to fetch:", length(new_dois), "\n")
+  # ---- Build the fetch queue ----
+  # Existing backlog candidates stay first so the initial full-period search
+  # is completely harvested across runs. Fresh rolling-search candidates are
+  # then appended for newly published work. Stored citations and manual skips
+  # and prior terminal exclusions are excluded before the queue is persisted.
+  scopus_dois <- normalise_doi_vector(scopus_dois)
+  known_dois <- unique(c(existing_dois, excluded_dois))
+  scopus_dois <- scopus_dois[!scopus_dois %in% known_dois]
+  new_dois <- unique(c(pending_dois, scopus_dois))
+  initial_search_complete <- initial_search_complete ||
+    (is_first_run && isTRUE(scopus_result$succeeded))
+  persist_backlog <- backlog_exists || length(new_dois) > 0 ||
+    length(excluded_dois) > 0 ||
+    (initial_search_complete && length(existing_dois) == 0L)
+  if (persist_backlog && write_ref_collection_backlog(
+    refs_dir, new_dois, excluded_dois, initial_search_complete
+  )) {
+    any_changes <- TRUE
+    cat("  Saved", length(new_dois), "DOIs for resumable collection\n")
+  }
+  cat("  DOIs awaiting citation fetch:", length(new_dois), "\n")
 
   # ---- Fetch APA 7 citations and CrossRef metadata for new DOIs ----
   new_citations <- character(0)
   new_metadata <- list()
+  discarded_dois <- character(0)
+  citation_dois <- character(0)
+  inserted_dois <- character(0)
   for (doi in new_dois) {
     if (time_remaining() < 90) {
       cat("  Time budget low (", round(time_remaining()), "s). Stopping new-DOI fetches.\n")
@@ -896,6 +1018,7 @@ for (pub_dir in pub_dirs) {
     cr_lang <- meta$language
     if (!is.null(cr_lang) && !grepl("^en", cr_lang, ignore.case = TRUE)) {
       cat("    Skipping: non-English language tag (", cr_lang, ")\n")
+      discarded_dois <- c(discarded_dois, doi)
       next
     }
     # Skip non-paper CrossRef types that lack meaningful citation metadata
@@ -903,33 +1026,39 @@ for (pub_dir in pub_dirs) {
                          "report-component", "other")
     if (!is.null(meta$type) && tolower(meta$type) %in% non_paper_types) {
       cat("    Skipping: CrossRef type '", meta$type, "' is not a citable paper\n", sep = "")
+      discarded_dois <- c(discarded_dois, doi)
       next
     }
     # Skip retracted papers
     if (isTRUE(meta$retracted)) {
       cat("    Skipping: paper has been retracted\n")
+      discarded_dois <- c(discarded_dois, doi)
       next
     }
     # Skip self-citation (DOI matches this publication's own DOI)
     pub_doi <- tolower(trimws(fm$doi %||% ""))
     if (nchar(pub_doi) > 0 && tolower(trimws(doi)) == pub_doi) {
       cat("    Skipping: self-citation\n")
+      discarded_dois <- c(discarded_dois, doi)
       next
     }
     # Skip future publication years (data entry errors in CrossRef)
     py <- meta$pub_year
     if (length(py) == 1L && !is.na(py) && py > current_year + 1L) {
       cat("    Skipping: publication year", meta$pub_year, "is implausibly far in the future\n")
+      discarded_dois <- c(discarded_dois, doi)
       next
     }
     cit <- get_apa7_citation(doi)
     if (!is.null(cit) && contains_non_latin_script(cit)) {
       cat("    Skipping: non-Latin script detected in citation\n")
+      discarded_dois <- c(discarded_dois, doi)
       next
     }
     fmt <- format_citation_for_hugo(cit, doi)
     if (!is.null(fmt)) {
       new_citations <- c(new_citations, fmt)
+      citation_dois <- c(citation_dois, doi)
     } else {
       cat("    Warning: citation unavailable\n")
     }
@@ -948,10 +1077,27 @@ for (pub_dir in pub_dirs) {
     cat("  Inserting", length(new_citations), "citations into related-references.html\n")
     if (insert_references_into_refs_html(refs_html_path, new_citations)) {
       any_changes <- TRUE
+      inserted_dois <- citation_dois
       cat("  Done\n")
     } else {
       cat("  Failed to update related-references.html\n")
     }
+  }
+
+  # Keep candidates until their citation was durably inserted. Deliberately
+  # rejected items are removed too; transient citation failures remain queued
+  # for a later retry instead of being silently lost.
+  resolved_dois <- unique(c(discarded_dois, inserted_dois))
+  remaining_dois <- new_dois[!new_dois %in% resolved_dois]
+  excluded_dois <- unique(c(excluded_dois, discarded_dois))
+  # Only write a final state when this publication already has, or this run
+  # created, resumable state. Established lists with no candidates should not
+  # acquire an empty sidecar merely because the scheduled action ran.
+  if (persist_backlog && write_ref_collection_backlog(
+    refs_dir, remaining_dois, excluded_dois, initial_search_complete
+  )) {
+    any_changes <- TRUE
+    cat("  Pending DOI backlog now:", length(remaining_dois), "DOIs\n")
   }
 
   # ---- Backfill metadata for existing DOIs without metadata ----

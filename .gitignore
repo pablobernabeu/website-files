@@ -15,8 +15,9 @@ content/post/a-new-function-to-plot-convergence-diagnostics-from-lme4-allfit/m1_
 **/Scopus API key.txt
 **/Scopus*key*.txt
 
-# Transient Scopus search snapshots. The durable state is related-references.html;
-# these timestamped dumps were re-created on every scheduled run and reached
+# Transient Scopus search snapshots. Citations are durable in
+# related-references.html and unfinished candidates in pending-dois.json; these
+# timestamped dumps were re-created on every scheduled run and reached
 # 5,115 files / 62 MB before being dropped from tracking. Matched by filename
 # because the containing directory is spelled both "related references" and
 # "related-references".

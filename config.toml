@@ -41,7 +41,7 @@ paginatePath = "page"
 
 enableEmoji = true
 footnotereturnlinkcontents = "<sup>^</sup>"
-ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\\.md$", "scopus_key\\.txt$", "semanticpriming_main_stimuli_.*\\.js$"]
+ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\\.md$", "scopus_key\\.txt$", "pending-dois\\.json$", "semanticpriming_main_stimuli_.*\\.js$"]
 
 # Performance optimizations
 minify = true
