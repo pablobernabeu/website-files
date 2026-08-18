@@ -12,6 +12,13 @@ on:
       - "layouts/**"
       - "config/**"
       - "config.toml"
+  workflow_run:
+    # The nightly collection merges its own pull request with GITHUB_TOKEN, and
+    # GitHub deliberately raises no `push` event for token-authored commits.
+    # Without this trigger the collected references never reach the live site:
+    # they accumulated undeployed from 2026-08-04 to 2026-08-18.
+    workflows: ["Collect Related References"]
+    types: [completed]
   workflow_dispatch: # Allow manual triggering
 
 # The deploy pushes to a separate repository with DEPLOY_TOKEN, so the workflow
@@ -25,6 +32,8 @@ concurrency:
 
 jobs:
   deploy:
+    # On workflow_run, only publish when the upstream collection succeeded.
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -33,6 +42,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          # A workflow_run event carries the default-branch head from when the
+          # upstream run *started*, which predates the commit it went on to
+          # merge. Pin to master there so the build is never one commit stale.
+          ref: ${{ github.event_name == 'workflow_run' && 'master' || github.ref }}
           # Full commit graph is needed to date Rmd sources against their HTML
           # output; blobs are filtered out because only the commit graph is read.
           fetch-depth: 0
