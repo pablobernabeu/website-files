@@ -1,5 +1,13 @@
 {{/* Custom <head> additions: dark-theme flash prevention, search-modal CSS/JS,
      tag-cloud network, search query/results persistence, and IndexNow. */}}
+
+{{/* The theme's Google Fonts stylesheet is emitted earlier in site_head.html,
+     but the font files themselves live on a second host that nothing warms up.
+     The connection is opened here rather than waited for after the stylesheet
+     parses. crossorigin is required: webfonts are fetched in CORS mode, and
+     without it the browser opens a second, unused connection. */}}
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
 <script>
   (function () {
     "use strict";
