@@ -6,6 +6,10 @@ on:
     - cron: "0 */6 * * *"
   workflow_dispatch: # Allow manual triggering
 
+# Commits the refreshed CV back to master, so this one needs write access.
+permissions:
+  contents: write
+
 jobs:
   update-cv:
     runs-on: ubuntu-latest
@@ -67,8 +71,14 @@ jobs:
 
           # Copy the CV to the static/ source directory only. Hugo copies static/
           # into the built site on deploy, so a public/ copy is redundant now that
-          # public/ is no longer tracked in this repo (a static/ change still
-          # triggers the deploy workflow, which regenerates public/cv-…pdf).
+          # public/ is no longer tracked in this repo.
+          #
+          # The commit below is authored by GITHUB_TOKEN, and GitHub raises no
+          # push event for those, so it does not start a deploy of its own. The
+          # refreshed CV is published by the next deploy from any source; that
+          # build checks out master, so it picks this commit up regardless of
+          # what triggered it. The collection workflow runs twice a day, which
+          # bounds the wait at about twelve hours.
           echo "Copying CV to static/ directory..."
           cp temp-cv.pdf static/cv-pablo-bernabeu.pdf
 
@@ -91,4 +101,8 @@ jobs:
           git config --local user.name "GitHub Action"
           git add static/cv-pablo-bernabeu.pdf
           git commit -m "Automated CV update from OSF"
+          # The reference collector commits to master too and runs for hours, so
+          # master can move between this job's checkout and its push. Rebase the
+          # single CV commit on whatever landed rather than failing the run.
+          git pull --rebase origin master
           git push

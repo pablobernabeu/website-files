@@ -11,6 +11,10 @@ on:
       - "content/**/*.Rmd"
   workflow_dispatch: # Allow manual triggering
 
+# Reads the checked-out tree and reports through the job log only.
+permissions:
+  contents: read
+
 jobs:
   spell-check:
     runs-on: ubuntu-latest

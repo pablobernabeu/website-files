@@ -14,6 +14,10 @@ on:
     - cron: "0 7 * * 1"
   workflow_dispatch:
 
+# Nothing is checked out and no GitHub API is called: the job only reads the
+# published sitemap over HTTP and posts it to IndexNow.
+permissions: {}
+
 jobs:
   submit:
     # On workflow_run, only proceed if the deploy actually succeeded.

@@ -10,6 +10,11 @@ on:
     - cron: "0 6 * * 1"
   workflow_dispatch:
 
+# Checks out the tree for lighthouserc.json; the report is uploaded to
+# Lighthouse CI's temporary public storage, not through the GitHub API.
+permissions:
+  contents: read
+
 jobs:
   lighthouse:
     runs-on: ubuntu-latest

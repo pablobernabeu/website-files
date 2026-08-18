@@ -31,6 +31,10 @@ on:
       - "!content/**/related-references.html"
   workflow_dispatch:
 
+# Reads the checked-out tree and reports through the job log only.
+permissions:
+  contents: read
+
 jobs:
   alt-text:
     runs-on: ubuntu-latest

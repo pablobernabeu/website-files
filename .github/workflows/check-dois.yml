@@ -6,6 +6,11 @@ on:
     - cron: "0 4 1,15 * *"
   workflow_dispatch: # Allow manual triggering
 
+# Checks out the tree and opens an issue when a DOI fails to resolve.
+permissions:
+  contents: read
+  issues: write
+
 jobs:
   check-dois:
     runs-on: ubuntu-latest

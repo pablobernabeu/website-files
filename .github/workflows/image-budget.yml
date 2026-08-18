@@ -17,6 +17,10 @@ on:
       - "assets/images/**"
   workflow_dispatch:
 
+# Reads the checked-out tree and reports through job annotations only.
+permissions:
+  contents: read
+
 jobs:
   image-budget:
     runs-on: ubuntu-latest
@@ -29,7 +33,11 @@ jobs:
           set -euo pipefail
           PER_FILE_WARN_KB=500       # warn above this (non-blocking)
           PER_FILE_FAIL_KB=6000      # hard-fail any single file above this
-          TOTAL_BUDGET_KB=10000      # hard-fail if static/img total exceeds this
+          TOTAL_BUDGET_KB=10000      # hard-fail if the measured total exceeds this
+          # Both trigger path filters above list assets/images/**, so measure it
+          # too; otherwise a change there wakes the job and it reports on a
+          # directory the change could not have touched.
+          IMAGE_DIRS="static/img assets/images"
           fail=0
           echo "Per-file warn: ${PER_FILE_WARN_KB} KB | per-file fail: ${PER_FILE_FAIL_KB} KB | total budget: ${TOTAL_BUDGET_KB} KB"
           while IFS= read -r -d '' f; do
@@ -40,11 +48,11 @@ jobs:
             elif [ "$kb" -gt "$PER_FILE_WARN_KB" ]; then
               echo "::warning file=$f::$f is ${kb} KB (over ${PER_FILE_WARN_KB} KB soft cap — consider compressing)"
             fi
-          done < <(find static/img -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.gif' -o -iname '*.webp' -o -iname '*.svg' \) -print0)
-          total_kb=$(( ( $(du -sb static/img | cut -f1) + 1023 ) / 1024 ))
-          echo "Total static/img: ${total_kb} KB"
+          done < <(find $IMAGE_DIRS -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.gif' -o -iname '*.webp' -o -iname '*.svg' \) -print0)
+          total_kb=$(( ( $(du -scb $IMAGE_DIRS | tail -1 | cut -f1) + 1023 ) / 1024 ))
+          echo "Total ${IMAGE_DIRS}: ${total_kb} KB"
           if [ "$total_kb" -gt "$TOTAL_BUDGET_KB" ]; then
-            echo "::error::static/img total ${total_kb} KB exceeds ${TOTAL_BUDGET_KB} KB budget"
+            echo "::error::${IMAGE_DIRS} total ${total_kb} KB exceeds ${TOTAL_BUDGET_KB} KB budget"
             fail=1
           fi
           exit $fail
