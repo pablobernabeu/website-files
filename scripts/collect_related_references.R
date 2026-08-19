@@ -690,26 +690,40 @@ read_ref_metadata <- function(index_path) {
 }
 
 #' Insert or update the <script class="ref-metadata"> JSON block in the index
-#' file. The block is placed inside the <div class="related-references"> div,
-#' before the <div class="hanging-indent">.
+#' file. The block goes inside the <div class="related-references"> div but
+#' *after* the citations, immediately before the section's closing tag.
+#'
+#' Position matters for how the page loads. The block reaches 7.9 MB on the
+#' largest publication, some 78% of that page, and while it sat at the top of
+#' the section a reader's browser had to tokenise every byte of it before it
+#' reached the first citation. Measured on the thesis page, the citations
+#' finished parsing at 249 ms with the block first and at 102 ms with it last,
+#' and over a real connection the gap is however long it takes to fetch 2.6 MB
+#' of gzipped JSON rather than milliseconds. The reader's JavaScript finds the
+#' block by class, so moving it costs nothing.
 write_ref_metadata <- function(index_path, metadata) {
   if (length(metadata) == 0) return(FALSE)
 
   content <- readLines(index_path, encoding = "UTF-8", warn = FALSE)
 
-  # Remove existing metadata block if present
+  # Remove existing metadata block if present, along with any blank lines that
+  # immediately surrounded it. Without this the padding below accumulated a
+  # fresh pair of blank lines on every run.
   start <- grep('<script[^>]*class="ref-metadata"', content)
   if (length(start) > 0) {
     end <- grep("</script>", content)
     end <- end[end > start[1]]
     if (length(end) > 0) {
-      content <- content[-(start[1]:end[1])]
+      first <- start[1]
+      last <- end[1]
+      while (first > 1 && !nzchar(trimws(content[first - 1]))) first <- first - 1
+      while (last < length(content) && !nzchar(trimws(content[last + 1]))) last <- last + 1
+      content <- content[-(first:last)]
     }
   }
 
-  # Find insertion point: right after <div class = 'related-references'>
-  related_div <- grep("related-references", content)
-  if (length(related_div) == 0) return(FALSE)
+  # The section must exist before anything is written into it.
+  if (length(grep("related-references", content)) == 0) return(FALSE)
 
   # Convert metadata to compact JSON
   json_text <- jsonlite::toJSON(metadata, auto_unbox = TRUE, pretty = FALSE)
@@ -722,13 +736,15 @@ write_ref_metadata <- function(index_path, metadata) {
     ""
   )
 
-  insert_at <- related_div[1]
+  # Insert before the last closing tag, which ends the related-references div;
+  # the one before it ends the hanging-indent div holding the citations.
+  close_divs <- grep("^\\s*</div>\\s*$", content)
+  insert_at <- if (length(close_divs) > 0) close_divs[length(close_divs)] - 1 else length(content)
+  if (insert_at < 0) insert_at <- 0
+
+  head_lines <- if (insert_at > 0) content[1:insert_at] else character(0)
   tail_lines <- if (insert_at < length(content)) content[(insert_at + 1):length(content)] else character(0)
-  content <- c(
-    content[1:insert_at],
-    insert_lines,
-    tail_lines
-  )
+  content <- c(head_lines, insert_lines, tail_lines)
 
   writeLines(content, index_path, useBytes = TRUE)
   TRUE
