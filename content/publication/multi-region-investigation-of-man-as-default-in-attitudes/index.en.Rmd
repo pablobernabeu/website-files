@@ -59,8 +59,8 @@ graph TD
   C --> D["Stronger link with the men:<br/>Black people, politicians"]
   C --> E["Stronger link with the women:<br/>White people"]
   C --> F["No difference: East Asian people,<br/>police officers, criminals"]
-  D -- "politicians" --> G["Regional agreement with traditional<br/>gender roles moderates role-based<br/>groups only, not race-based groups"]
-  F -- "police, criminals" --> G
+  D -- "for politicians" --> G["Regional agreement with traditional<br/>gender roles moderates role-based<br/>groups only, not race-based groups"]
+  F -- "for police officers, criminals" --> G
 </div>
 ```
 #### &nbsp; <i class="fa fa-file"></i>&nbsp; <a href='https://osf.io/w4q6t'>Read the preregistration</a>

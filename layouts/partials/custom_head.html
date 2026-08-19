@@ -128,6 +128,25 @@
   body.dark .mermaid .edgePath path,
   body.dark .mermaid .flowchart-link { stroke: #c0c6da !important; }
   body.dark .mermaid .arrowheadPath { fill: #c0c6da !important; }
+
+  /* Edge labels. Mermaid gives them a bare #e8e8e8 block with no padding and no
+     radius, so the fill stops at the glyphs and the label reads as a sticker
+     pressed onto the connector. Pad it, round it, and move it into the same
+     lavender family as the node boxes, which stay light in both themes (see the
+     note on renderThemeVariation in the theme's academic.js). The ID selector
+     Mermaid injects outranks a plain class, hence !important.
+
+     Padding is horizontal only: Mermaid sizes the foreignObject from the
+     label's width but not its height, so vertical padding would spill past the
+     box and be clipped. The line box already gives the text room above and
+     below. */
+  .mermaid .edgeLabel,
+  .mermaid .edgeLabel span {
+    background-color: #ececff !important;
+    color: #333 !important;
+    padding: 0 0.5em !important;
+    border-radius: 4px !important;
+  }
 </style>
 <script>
   /* Fail-safe: never leave a diagram permanently hidden if the enhancer fails. */
