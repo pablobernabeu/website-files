@@ -761,13 +761,19 @@ write_scopus_queries <- function(index_path, query, query_source,
                                  date_collected = Sys.Date()) {
   content <- readLines(index_path, encoding = "UTF-8", warn = FALSE)
 
-  # Remove existing block if present
+  # Remove existing block if present, along with the blank lines that surrounded
+  # it. The padding added below was never removed, so each run left two more
+  # blank lines behind; one file had reached a run of 393.
   start <- grep('<script[^>]*class="scopus-queries"', content)
   if (length(start) > 0) {
     end <- grep("</script>", content)
     end <- end[end > start[1]]
     if (length(end) > 0) {
-      content <- content[-(start[1]:end[1])]
+      first <- start[1]
+      last <- end[1]
+      while (first > 1 && !nzchar(trimws(content[first - 1]))) first <- first - 1
+      while (last < length(content) && !nzchar(trimws(content[last + 1]))) last <- last + 1
+      content <- content[-(first:last)]
     }
   }
 
