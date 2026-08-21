@@ -1142,11 +1142,23 @@ for (pub_dir in pub_dirs) {
   # stop being re-queried on every run (which would otherwise keep the backlog
   # permanently non-empty and starve the DOIs further down the list).
   MAX_ABSTRACT_ATTEMPTS <- 3L
+  # An entry marked abstractPruned had its abstract deliberately dropped by
+  # scripts/prune_reference_abstracts.py because the reference ranks too low to
+  # be displayed. Without this guard the backfill would read the missing
+  # abstract as a gap, fetch it from CrossRef again and undo the pruning on the
+  # next scheduled run.
+  #
+  # Index with [["..."]] rather than $. R's $ partial-matches, so on an entry
+  # that carries abstractAttempts but no abstract, e$abstract returned the
+  # attempt count instead of NULL. That read as "already has an abstract", so a
+  # DOI was retried once and then dropped out of this set for good, and
+  # MAX_ABSTRACT_ATTEMPTS never came into play.
   dois_missing_abstract <- Filter(
     function(d) {
       e <- existing_metadata[[d]]
-      is.null(e$abstract) &&
-        (as.integer(e$abstractAttempts %||% 0L) < MAX_ABSTRACT_ATTEMPTS)
+      is.null(e[["abstract"]]) &&
+        !isTRUE(e[["abstractPruned"]]) &&
+        (as.integer(e[["abstractAttempts"]] %||% 0L) < MAX_ABSTRACT_ATTEMPTS)
     },
     tolower(names(existing_metadata))
   )
@@ -1177,8 +1189,10 @@ for (pub_dir in pub_dirs) {
       if (!is.null(meta$type)) entry$type <- meta$type
       # Count an abstract-retry attempt when none could be obtained, so that
       # genuinely abstract-less papers eventually drop out of the retry set.
-      if (is.null(entry$abstract)) {
-        entry$abstractAttempts <- as.integer(entry$abstractAttempts %||% 0L) + 1L
+      # Exact indexing again: entry$abstract would partial-match the counter
+      # this branch maintains, so it never incremented past one.
+      if (is.null(entry[["abstract"]])) {
+        entry$abstractAttempts <- as.integer(entry[["abstractAttempts"]] %||% 0L) + 1L
       }
       # Stamp every touched DOI so it leaves the "missing metadata" backlog even
       # when neither an abstract nor a type could be retrieved. This guarantees
