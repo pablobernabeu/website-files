@@ -62,7 +62,7 @@ education:
       year: "2007--2013"
       extra: '\-&nbsp; Grade: 7.30 out of 10 (2:1 Hons)'
       extra2: '\-&nbsp; One-year Erasmus exchange at University of Jyv&auml;skyl&auml;, Finland'
-      extra3: '\-&nbsp; One-year exchange at University of Barcelona, Spain'
+      extra3: '\-&nbsp; One-year SICUE exchange at University of Barcelona, Spain'
       extra4: '\-&nbsp; Six-month Spanish teaching placement in Kaunas, Lithuania'
   furthercourses:
     - course: "[Professional conduct](https://staff.admin.ox.ac.uk/working-at-oxford/new-to-the-university/when-you-start#/)"
