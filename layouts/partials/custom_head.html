@@ -90,21 +90,32 @@
 {{ end }}
 
 {{/* Mermaid diagrams (only loaded on pages with diagram:true):
-     - hide the raw diagram source until Mermaid renders it to an SVG (no code flash);
+     - the library is fetched here, from the <head>, instead of from the theme's
+       site_js.html at the end of <body>. That starts the download while the page
+       is still parsing, and lets mermaid-enhance.js render at DOMContentLoaded
+       rather than on window "load", which waits for every image and iframe --
+       the diagrams on these pages usually sit next to an embedded app;
+     - the raw diagram source is never shown. Each block waits behind a spinner
+       and, if Mermaid never arrives, ends on a short message rather than a wall
+       of `graph TD ...`;
      - diagrams that fit get a little more width than the narrow prose column;
      - diagrams too wide to be legible become interactive (drag to pan, +/- to zoom). */}}
 {{ if or .Params.diagram site.Params.diagram }}
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
 <style>
-  /* Hide the raw mermaid code until it is converted to an SVG */
+  /* The three states of a diagram. The source stays hidden in two of them --
+     revealing it on failure trades a missing diagram for a broken-looking page. */
   .mermaid { visibility: hidden; }
   .mermaid.mermaid-ready { visibility: visible; }
 
-  /* Diagram fits: allow a little more width than the prose column (viewport-safe) */
+  /* Diagram fits: allow a little more width than the prose column (viewport-safe).
+     Horizontal scrolling is scoped to the ready state so that it cannot compete
+     with the placeholder's clipping below. */
   .mermaid:not(.pz) {
     position: relative; left: 50%; transform: translateX(-50%);
-    width: 94vw; max-width: 960px; margin: 1rem auto 2rem; overflow-x: auto;
+    width: 94vw; max-width: 960px; margin: 1rem auto 2rem;
   }
+  .mermaid.mermaid-ready:not(.pz) { overflow-x: auto; }
   .mermaid:not(.pz) > svg { max-width: 100% !important; height: auto !important; display: block; margin: 0 auto; }
 
   /* Large diagram: interactive pan/zoom viewport.
@@ -123,6 +134,58 @@
     position: absolute; left: 8px; bottom: 4px; font-size: 11px; opacity: 0.5; pointer-events: none;
   }
 
+  /* Placeholder, shared by the loading and error states. Clipping matters as
+     much as the height: the hidden source is still laid out, and would
+     otherwise size the box from however many lines of Mermaid syntax the
+     diagram happens to be. Nothing can be drawn on the box itself --
+     `visibility: hidden` suppresses its background and border along with its
+     text -- so the spinner and the message below are pseudo-elements, each
+     turning its own visibility back on. */
+  .mermaid:not(.mermaid-ready) { position: relative; overflow: hidden; }
+
+  /* Still waiting: reserve roughly the room the diagram will need. */
+  .mermaid:not(.mermaid-ready):not(.mermaid-error) { height: 340px; }
+
+  /* Spinner and caption. The greys are translucent mid-grey, which reads
+     against both the light and the dark page background. */
+  @keyframes mermaid-spin { to { transform: rotate(360deg); } }
+  .mermaid:not(.mermaid-ready):not(.mermaid-error)::before {
+    content: "";
+    visibility: visible;
+    position: absolute; top: 50%; left: 50%;
+    width: 30px; height: 30px; margin: -30px 0 0 -15px;
+    border: 3px solid rgba(127, 127, 127, 0.25);
+    border-top-color: rgba(127, 127, 127, 0.85);
+    border-radius: 50%;
+    animation: mermaid-spin 0.9s linear infinite;
+  }
+  .mermaid:not(.mermaid-ready):not(.mermaid-error)::after {
+    content: "Loading diagram\2026";
+    visibility: visible;
+    position: absolute; top: 50%; left: 0; right: 0; margin-top: 14px;
+    text-align: center; font-size: 0.85rem; opacity: 0.6;
+  }
+
+  /* Gave up on it. Nothing is coming any more, so the reserved height is given
+     back rather than left as a screenful of empty page, and the message takes
+     the place of the spinner. The verdict is not necessarily final -- see the
+     watchdog below -- but a diagram that does arrive late brings its own height
+     with it. */
+  .mermaid.mermaid-error { height: 5rem; }
+  .mermaid.mermaid-error::after {
+    content: "Diagram unavailable";
+    visibility: visible;
+    position: absolute; top: 50%; left: 0; right: 0; margin-top: -0.6em;
+    text-align: center; font-size: 0.9rem; opacity: 0.6;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mermaid:not(.mermaid-ready):not(.mermaid-error)::before {
+      animation: none;
+      border-color: rgba(127, 127, 127, 0.4);
+    }
+  }
+
   /* Dark theme: Mermaid's default connector colour (#333) is almost invisible on
      the dark section background. Lighten the edge lines and arrowheads. */
   body.dark .mermaid .edgePath path,
@@ -139,22 +202,48 @@
      Padding is horizontal only: Mermaid sizes the foreignObject from the
      label's width but not its height, so vertical padding would spill past the
      box and be clipped. The line box already gives the text room above and
-     below. */
-  .mermaid .edgeLabel,
-  .mermaid .edgeLabel span {
+     below.
+
+     Only the <span> inside the label's foreignObject paints anything, so the
+     rule targets that and not the surrounding <g class="edgeLabel"> as well.
+     Mermaid emits one such span for EVERY arrow and leaves it empty on the
+     unlabelled ones -- its flow database seeds each edge with `text: ""`, so
+     the renderer always builds a span -- which is how the pill used to show up
+     as a blank lavender box sitting on each plain connector. Taking the empty
+     ones out of flow also collapses the foreignObject Mermaid sizes from them,
+     so an unlabelled arrow no longer reserves a gap for a label that was never
+     there. mermaid-enhance.js adds .mermaid-blank-label to a span holding
+     nothing but whitespace, which :empty does not match. */
+  .mermaid span.edgeLabel {
     background-color: #ececff !important;
     color: #333 !important;
     padding: 0 0.5em !important;
     border-radius: 4px !important;
   }
+  .mermaid span.edgeLabel:empty,
+  .mermaid span.edgeLabel.mermaid-blank-label { display: none !important; }
 </style>
 <script>
-  /* Fail-safe: never leave a diagram permanently hidden if the enhancer fails. */
-  setTimeout(function () {
+  /* Watchdog for a Mermaid download that never resolves. A hung CDN leaves the
+     deferred scripts below unexecuted, so mermaid-enhance.js never runs and
+     cannot time anything out itself; without this the diagrams would spin for
+     ever. The enhancer clears this timer the moment it does execute -- and if
+     the library only turns up after the deadline, the enhancer takes this
+     verdict back and renders the diagrams anyway, so the delay can afford to be
+     long enough that a merely slow connection is not called a failure. */
+  window.mermaidWatchdog = setTimeout(function () {
     var els = document.querySelectorAll(".mermaid:not(.mermaid-ready)");
-    for (var i = 0; i < els.length; i++) els[i].classList.add("mermaid-ready");
-  }, 6000);
+    for (var i = 0; i < els.length; i++) {
+      els[i].setAttribute("data-mermaid-state", "error");
+      els[i].classList.add("mermaid-error");
+      els[i].removeAttribute("aria-busy");
+      els[i].setAttribute("role", "img");
+      els[i].setAttribute("aria-label", "Diagram unavailable");
+    }
+  }, 20000);
 </script>
+{{ $mermaid := site.Data.assets.js.mermaid }}
+{{ printf "<script defer src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" title=\"mermaid\"></script>" (printf $mermaid.url $mermaid.version) $mermaid.sri | safeHTML }}
 <script defer src="{{ "js/svg-pan-zoom.min.js" | relURL }}"></script>
 <script defer src="{{ "js/mermaid-enhance.js" | relURL }}"></script>
 {{ end }}

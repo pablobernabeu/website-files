@@ -10,9 +10,12 @@
       {{ printf "<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\"></script>" (printf $js.isotope.url $js.isotope.version) $js.isotope.sri | safeHTML }}
       {{ printf "<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\"></script>" (printf $js.fancybox.url $js.fancybox.version) $js.fancybox.sri | safeHTML }}
 
-      {{ if or .Params.diagram site.Params.diagram }}
-        {{ printf "<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" title=\"mermaid\"></script>" (printf $js.mermaid.url $js.mermaid.version) $js.mermaid.sri | safeHTML }}
-      {{ end }}
+      {{/* Mermaid is deliberately not loaded here. It moved to the <head>, in
+           layouts/partials/custom_head.html, so that the download starts while
+           the page is still parsing instead of queueing behind the vendor
+           scripts above, and so that mermaid-enhance.js can render the diagrams
+           at DOMContentLoaded rather than on window "load". Emitting it here as
+           well would fetch and initialise the library a second time. */}}
 
       {{ if $.Scratch.Get "highlight_enabled" }}
         {{ $v := $js.highlight.version }}
