@@ -1144,9 +1144,9 @@ for (pub_dir in pub_dirs) {
   MAX_ABSTRACT_ATTEMPTS <- 3L
   # An entry marked abstractPruned had its abstract deliberately dropped by
   # scripts/prune_reference_abstracts.py because the reference ranks too low to
-  # be displayed. Without this guard the backfill would read the missing
-  # abstract as a gap, fetch it from CrossRef again and undo the pruning on the
-  # next scheduled run.
+  # be worth shipping; the reader fetches it on demand instead. Without this
+  # guard the backfill would read the missing abstract as a gap, fetch it from
+  # CrossRef again and undo the pruning on the next scheduled run.
   #
   # Index with [["..."]] rather than $. R's $ partial-matches, so on an entry
   # that carries abstractAttempts but no abstract, e$abstract returned the
