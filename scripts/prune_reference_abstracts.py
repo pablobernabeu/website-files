@@ -301,15 +301,32 @@ def load_page(refs_path):
                  else parsed.get('query', '')) or ''
     body = re.sub(r'<script.*?</script>', '', source, flags=re.S)
     references = []
-    for paragraph in re.findall(r'<p[ >].*?</p>', body, re.S):
+    # One citation is one <p> on one line, which is what the collector writes.
+    # Matching with re.DOTALL instead let an unclosed <p> -- the signature of a
+    # citation that was truncated before it was written -- run on to the next
+    # paragraph's </p>. That fused two references into a single scoring unit
+    # and read the DOI off the second one, so the ranking this script prunes by
+    # was computed from text belonging to a different reference.
+    matched = 0
+    for paragraph in re.findall(r'<p[ >][^\n]*?</p>', body):
+        matched += 1
         text = paragraph_text(paragraph)
         if not text.strip():
             continue
         doi_match = re.search(r'doi\.org/([^"<\s]+)', paragraph)
         references.append({'doi': doi_match.group(1) if doi_match else None,
                            'text': text})
+    # Report rather than repair: a page with unclosed paragraphs needs
+    # scripts/repair_truncated_citations.R, and pruning it in the meantime
+    # would rank against text this function cannot read.
+    unclosed = len(re.findall(r'<p[ >]', body)) - matched
+    if unclosed > 0:
+        print('  WARNING: %d unclosed <p> in %s -- skipped. Run '
+              'scripts/repair_truncated_citations.R first.'
+              % (unclosed, refs_path))
     return {'source': source, 'metadata': metadata, 'query': query,
-            'references': references, 'meta_match': meta_match}
+            'references': references, 'meta_match': meta_match,
+            'unclosed': unclosed}
 
 
 def metadata_entry(metadata, doi):
@@ -324,6 +341,13 @@ def prune_publication(publication_dir, apply_changes):
         return None
     page = load_page(refs_path)
     if page is None:
+        return None
+    # Pruning decides what to drop from a ranking over every reference on the
+    # page. If some could not be read, the ranking is computed from a subset
+    # and the wrong abstracts get dropped, so leave the page alone entirely.
+    if page.get('unclosed'):
+        print('  SKIPPED %s: repair the truncated citations first.'
+              % os.path.basename(os.path.normpath(publication_dir)))
         return None
 
     core = core_context(read_front_matter(publication_dir))

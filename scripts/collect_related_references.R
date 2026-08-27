@@ -193,6 +193,42 @@ build_auto_query <- function(fm) {
 #  CROSSREF / APA 7
 # ===========================================================================
 
+#' Fold a citation onto a single physical line.
+#'
+#' CrossRef's APA formatter breaks its output across lines whenever the title
+#' carries inline markup, putting the tag on a line of its own:
+#'
+#'   Khan, S., & Gull, A. (2025). Explicit analysis of
+#'                       <i>in vivo</i>
+#'                       , meteorological and statistical hurdles in ...
+#'
+#' Every step downstream assumes one citation is one string on one line: the
+#' italics patterns in format_citation_for_hugo() use `.`, which does not cross
+#' a newline; writeLines() splits any element containing one into separate
+#' lines; and the lint pass reads a reference off a single line. Fold before
+#' anything else looks at the citation. The punctuation pass afterwards closes
+#' the gap the line break leaves in front of the comma above.
+fold_citation_lines <- function(citation) {
+  if (is.null(citation) || length(citation) == 0L) return(citation)
+  folded <- paste(citation, collapse = " ")
+  folded <- gsub("[[:space:]]+", " ", folded, perl = TRUE)
+  folded <- gsub("[[:space:]]+([,.;:!?)\\]])", "\\1", folded, perl = TRUE)
+  folded <- gsub("([(\\[\u201c\u2018\u00ab])[[:space:]]+", "\\1", folded, perl = TRUE)
+  # The break also lands just inside an inline tag, between a closing tag and a
+  # hyphen, and either side of a subscript: "<sub> <em>p</em> </sub> -quantile"
+  # wants to be "<sub><em>p</em></sub>-quantile".
+  inline <- "i|b|em|strong|sub|sup|scp"
+  folded <- gsub(paste0("(<(?:", inline, ")>)[[:space:]]+"), "\\1", folded, perl = TRUE)
+  folded <- gsub(paste0("[[:space:]]+(</(?:", inline, ")>)"), "\\1", folded, perl = TRUE)
+  folded <- gsub(paste0("(</(?:", inline, ")>)[[:space:]]+([-\u2010\u2011])"),
+                 "\\1\\2", folded, perl = TRUE)
+  # Only sub/sup, which sit tight against the text they qualify. Other inline
+  # tags are separated by real words, and closing that gap would join them.
+  folded <- gsub("(</(?:sub|sup)>)[[:space:]]+(<)", "\\1\\2", folded, perl = TRUE)
+  folded <- gsub("(>)[[:space:]]+(<(?:sub|sup)>)", "\\1\\2", folded, perl = TRUE)
+  trimws(folded)
+}
+
 #' Fetch an APA 7 citation string from CrossRef via DOI content negotiation.
 get_apa7_citation <- function(doi, max_retries = 3) {
   for (attempt in seq_len(max_retries)) {
@@ -204,7 +240,8 @@ get_apa7_citation <- function(doi, max_retries = 3) {
         httr::timeout(30)
       )
       if (httr::status_code(response) == 200) {
-        trimws(httr::content(response, as = "text", encoding = "UTF-8"))
+        # Fold here, before the checks below measure the response.
+        fold_citation_lines(httr::content(response, as = "text", encoding = "UTF-8"))
       } else {
         NULL
       }
@@ -395,6 +432,10 @@ decode_html_entities <- function(text, max_passes = 5L) {
 format_citation_for_hugo <- function(citation, doi) {
   if (is.null(citation)) return(NULL)
 
+  # Every citation reaching here should already be folded, but a citation can
+  # arrive from a cached backlog written before folding existed.
+  citation <- fold_citation_lines(citation)
+
   citation <- decode_html_entities(citation)
 
   doi_url <- paste0("https://doi.org/", doi)
@@ -411,6 +452,14 @@ format_citation_for_hugo <- function(citation, doi) {
 
   # Strip <scp>...</scp> small-caps tags inserted by CrossRef (keep inner text)
   citation <- gsub("</?scp>", "", citation, ignore.case = TRUE)
+
+  # Normalise CrossRef's <i>/<b> title markup to the <em>/<strong> the rest of
+  # the pipeline uses. Lint rule 6 balances <em> and counts nothing else, so an
+  # <i> left here would be invisible to it.
+  citation <- gsub("<i>", "<em>", citation, ignore.case = TRUE)
+  citation <- gsub("</i>", "</em>", citation, ignore.case = TRUE)
+  citation <- gsub("<b>", "<strong>", citation, ignore.case = TRUE)
+  citation <- gsub("</b>", "</strong>", citation, ignore.case = TRUE)
 
   # Strip month/day from parenthetical dates, keeping year only: (2023, March 15) -> (2023)
   citation <- gsub("\\((\\d{4})[a-z]?),\\s*[A-Za-z]+\\.?\\s*\\d{0,2}\\)", "(\\1)", citation)
@@ -1503,6 +1552,64 @@ for (lf in lint_files) {
   # run — the reason metadata never persisted for broad-topic publications.
   is_citation_line <- function(x) grepl("^\\s*<p[^>]*>", x, perl = TRUE)
 
+  # 0. Re-join a citation written across several lines.
+  #    Citations used to arrive from CrossRef with newlines inside them (see
+  #    fold_citation_lines), and writeLines() then wrote one citation as several
+  #    lines: a <p> with no </p>, followed by the rest on bare continuation
+  #    lines. Rule 7 below deleted those continuations, taking the end of the
+  #    citation -- including the DOI that identifies it -- with them.
+  #    Joining first means every rule after this one sees a whole citation, and
+  #    leaves rule 7 nothing legitimate to remove. New citations no longer
+  #    arrive split; this is the repair path for files already written, and a
+  #    guard should any future source split one again.
+  n_lines <- length(lines)
+  # Preallocated: these files run to tens of thousands of lines and grow every
+  # scheduled run, and appending with c() would copy the whole vector each time.
+  joined <- character(n_lines)
+  n_out <- 0L
+  in_script_join <- FALSE
+  i <- 1L
+  while (i <= n_lines) {
+    ln <- lines[i]
+    stripped <- trimws(ln)
+    if (grepl("^<script", stripped)) in_script_join <- TRUE
+    if (grepl("^</script", stripped)) in_script_join <- FALSE
+    open_p <- !in_script_join &&
+      grepl("^\\s*<p[^>]*>", ln, perl = TRUE) &&
+      !grepl("</p>\\s*$", ln, perl = TRUE)
+    if (!open_p) {
+      n_out <- n_out + 1L
+      joined[n_out] <- ln
+      i <- i + 1L
+      next
+    }
+    # Absorb the lines that continue this paragraph. A blank line or a block
+    # tag ends it: those separate references, and crossing one would fuse two
+    # citations into a single false reference.
+    acc <- trimws(ln, which = "right")
+    j <- i + 1L
+    while (j <= n_lines) {
+      nxt <- trimws(lines[j])
+      if (nchar(nxt) == 0L) break
+      if (grepl("^<(?:p[^>]*>|h[1-6]|div|/div|/p>|script|/script|!)", nxt, perl = TRUE)) break
+      acc <- paste0(acc, " ", nxt)
+      j <- j + 1L
+      if (grepl("</p>$", acc, perl = TRUE)) break
+    }
+    acc <- fold_citation_lines(acc)
+    if (!grepl("</p>\\s*$", acc, perl = TRUE)) acc <- paste0(acc, "</p>")
+    n_out <- n_out + 1L
+    joined[n_out] <- acc
+    i <- j
+  }
+  joined <- joined[seq_len(n_out)]
+  if (!identical(joined, lines)) {
+    changed_lint <- TRUE
+    lines <- joined
+    # Rules 2-4 read this alongside `lines`, so rebuild it against the joined text.
+    inner <- sub("^<p[^>]*>\\s*", "", lines)
+  }
+
   # 1. Remove duplicate plain DOI URL when a hyperlinked DOI already exists.
   #    Handles both orderings:
   #    a) bare DOI preceding the <a href> link
@@ -1552,24 +1659,35 @@ for (lf in lint_files) {
   lines  <- lines[keep]
   inner  <- inner[keep]
 
-  # 5. Remove duplicate DOI links within the same file (keep first occurrence).
+  # 5. Remove duplicate references within the same file (keep first occurrence).
   #    DOI URLs in HTML appear as href="https://doi.org/..." — exclude quote/angle chars.
   #    Use substr + attr to keep the result aligned with `lines` (regmatches drops
   #    non-matching elements, which would misalign the index). Only citation
   #    paragraphs participate; <script>/JSON lines are ignored so an abstract's
   #    embedded DOI can neither be removed nor evict a real citation's DOI.
+  #
+  #    A citation with no DOI falls back to its own text. Truncation used to
+  #    remove the DOI, which sits at the end of the line, and a reference with
+  #    no DOI is invisible both here and to extract_existing_dois() — so the
+  #    collector re-added it on every run and nothing removed the copy. One
+  #    reference had accumulated 88 of them.
   m_doi <- regexpr("https://doi\\.org/[^\"<>\\s]+", lines, perl = TRUE)
   doi_hits <- tolower(ifelse(
     is_citation_line(lines) & m_doi > 0L,
     substr(lines, m_doi, m_doi + attr(m_doi, "match.length") - 1L),
     NA_character_
   ))
-  seen_dois <- character(0)
+  text_keys <- ifelse(
+    is_citation_line(lines) & is.na(doi_hits),
+    paste0("text:", tolower(trimws(sub("</p>\\s*$", "", inner, perl = TRUE)))),
+    NA_character_
+  )
+  seen_refs <- character(0)
   keep <- vapply(seq_along(lines), function(i) {
-    d <- doi_hits[i]
+    d <- if (is.na(doi_hits[i])) text_keys[i] else doi_hits[i]
     if (is.na(d) || nchar(d) == 0L) return(TRUE)
-    if (d %in% seen_dois) return(FALSE)
-    seen_dois <<- c(seen_dois, d)
+    if (d %in% seen_refs) return(FALSE)
+    seen_refs <<- c(seen_refs, d)
     TRUE
   }, logical(1))
   if (any(!keep)) { changed_lint <- TRUE }
@@ -1614,7 +1732,20 @@ for (lf in lint_files) {
     if (grepl("^</script", stripped)) { in_script <<- FALSE; return(TRUE) }
     if (in_script) return(TRUE)
     if (nchar(stripped) == 0L) return(TRUE)
-    grepl("^<(?:p[^>]*>|h[1-6]|div|/div|/p>|!)", stripped, perl = TRUE)
+    if (grepl("^<(?:p[^>]*>|h[1-6]|div|/div|/p>|!)", stripped, perl = TRUE)) return(TRUE)
+    # Rule 0 has already attached every continuation it could reach, so what
+    # survives to here is a fragment no open <p> claimed. Delete it only when
+    # it is the bare markup this rule was written for. A line carrying real
+    # text is the tail of a citation, and deleting those is what destroyed 113
+    # references across the site: keep it, and say so, because a visibly
+    # malformed page can be repaired and a silently shortened one cannot.
+    text_only <- trimws(gsub("<[^>]*>", "", stripped))
+    if (nchar(text_only) > 60L) {
+      cat("  Warning: orphan text kept in", basename(dirname(lf)), "-",
+          substr(text_only, 1L, 80L), "\n")
+      return(TRUE)
+    }
+    FALSE
   }, logical(1L), USE.NAMES = FALSE)
   if (any(!keep_orphan)) { changed_lint <- TRUE }
   lines <- lines[keep_orphan]
