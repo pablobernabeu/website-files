@@ -5797,6 +5797,25 @@ h2#reference  ~ p, h3#reference  ~ p, h4#reference  ~ p {
   margin-left: 2em;
 }
 
+// Newer Pandoc emits the bibliography as nested divs rather than paragraphs:
+//   <div id="references" class="section level3">
+//     <h3>References</h3>
+//     <div id="refs" class="references csl-bib-body">
+//       <div class="csl-entry">…</div>
+// so the "#references > p" rule above matches nothing here: #references is the
+// section wrapper, holding only the heading and the list, and the entries are
+// grandchildren. A <div> carries neither a paragraph's bottom margin nor any
+// indent, so these lists rendered flush left with the entries run together.
+// The gap is 2% rather than a length because that is what the site's own
+// paragraph rule uses, and a percentage margin resolves against the container's
+// width: any fixed value would match the other reference lists at one viewport
+// and drift from them at every other.
+.csl-bib-body .csl-entry {
+  text-indent: -2em;
+  margin-left: 2em;
+  margin-bottom: 2%;
+}
+
 // Related references heading styled via inline style in the HTML files
 
 // Related references 
