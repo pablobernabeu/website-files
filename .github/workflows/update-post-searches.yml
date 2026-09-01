@@ -6,6 +6,11 @@ name: Update post searches
 # locally. Dispatch-only: nothing here runs on a schedule or on push.
 
 on:
+  push:
+    branches:
+      - claude/website-packages-blog-posts-s9oxz4
+    paths:
+      - scripts/update_post_searches.R
   workflow_dispatch:
     inputs:
       target:
@@ -49,7 +54,7 @@ jobs:
       - name: Run searches
         run: Rscript scripts/update_post_searches.R "$TARGET"
         env:
-          TARGET: ${{ inputs.target }}
+          TARGET: ${{ inputs.target || 'all' }}
           SCOPUS_API_KEY: ${{ secrets.SCOPUS_API_KEY }}
 
       - name: Upload results

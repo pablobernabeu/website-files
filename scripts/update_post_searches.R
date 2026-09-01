@@ -198,3 +198,4 @@ if (target %in% c("all", "allfit")) {
 }
 
 message("Done.")
+# Retrieval runs are dated in each searches/retrieved.txt file.
