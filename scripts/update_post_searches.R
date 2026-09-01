@@ -21,6 +21,8 @@
 #
 # Environment variables:
 #   SCOPUS_API_KEY  Elsevier Scopus API key (read by scopusflow; never printed)
+#
+# Each run writes the retrieval date to searches/retrieved.txt in both bundles.
 
 suppressPackageStartupMessages({
   library(scopusflow)
@@ -198,4 +200,3 @@ if (target %in% c("all", "allfit")) {
 }
 
 message("Done.")
-# Retrieval runs are dated in each searches/retrieved.txt file.

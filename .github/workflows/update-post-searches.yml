@@ -43,10 +43,18 @@ jobs:
           r-version: release
           use-public-rspm: true
 
-      - name: Install R packages
+      - name: Install system dependencies
         run: |
-          install.packages(c("remotes", "httr2", "jsonlite"), repos = "https://cloud.r-project.org")
-          remotes::install_github("pablobernabeu/scopusflow")
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
+
+      - name: Install R packages
+        # Linux binaries from the Posit package manager where available, so that
+        # the run does not compile every dependency from source.
+        run: |
+          repos <- c(RSPM = Sys.getenv("RSPM"), CRAN = "https://cloud.r-project.org")
+          install.packages(c("remotes", "httr2", "jsonlite"), repos = repos)
+          remotes::install_github("pablobernabeu/scopusflow", repos = repos)
         shell: Rscript {0}
         env:
           GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
