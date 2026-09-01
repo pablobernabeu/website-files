@@ -1,0 +1,61 @@
+name: Update post searches
+
+# Re-runs the bibliographic searches behind two posts (see
+# scripts/update_post_searches.R) and publishes the results as an artifact, so
+# that the posts can be rebuilt from fresh counts without holding the Scopus key
+# locally. Dispatch-only: nothing here runs on a schedule or on push.
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: Which searches to run
+        type: choice
+        default: all
+        options:
+          - all
+          - speculation
+          - allfit
+
+# The job only reads the checkout and uploads an artifact.
+permissions:
+  contents: read
+
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@d3c5be51b12e724e68f33216ca3c148b66d5f0b6 # v2
+        with:
+          r-version: release
+          use-public-rspm: true
+
+      - name: Install R packages
+        run: |
+          install.packages(c("remotes", "httr2", "jsonlite"), repos = "https://cloud.r-project.org")
+          remotes::install_github("pablobernabeu/scopusflow")
+        shell: Rscript {0}
+        env:
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run searches
+        run: Rscript scripts/update_post_searches.R "$TARGET"
+        env:
+          TARGET: ${{ inputs.target }}
+          SCOPUS_API_KEY: ${{ secrets.SCOPUS_API_KEY }}
+
+      - name: Upload results
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: post-searches
+          path: content/post/*/searches/
+          if-no-files-found: error
+          retention-days: 30
