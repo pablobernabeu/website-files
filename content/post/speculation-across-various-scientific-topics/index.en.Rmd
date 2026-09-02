@@ -94,7 +94,7 @@ speculation <- bind_rows(comparisons) |>
 head(speculation)
 ```
 
-The searches were run on `r format(as.Date(substr(retrieved, 1, 10)), '%d %B %Y')`, so the final year is incomplete and its share rests on fewer records than the years before it.
+The searches were run on `r format(as.Date(substr(retrieved, 1, 10)), '%e %B %Y') |> trimws()`, so the final year is incomplete and its share rests on fewer records than the years before it.
 
 ## Sizes of the literatures
 
