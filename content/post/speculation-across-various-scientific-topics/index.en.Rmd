@@ -130,9 +130,9 @@ ggplot(filter(speculation, reference_n > 0),
 
 ## The share of records that mention speculation
 
-Each panel below shows one literature. The line is the yearly percentage of records that also match `speculat*`, the shaded band is a stability range computed from the yearly reference count by the Wilson method, which conveys how much the share would move with a handful of records, and the panels are ordered from the most to the least speculative literature over the whole period. The axis is cut at 15%, which clips the bands in the early years of the small literatures, where a single abstract would move the share by tens of points. Years in which a literature had no records are left blank.
+Each panel below shows one literature. The line is the yearly percentage of records that also match `speculat*`, the shaded band is a stability range computed by the Wilson method from the two yearly counts, which conveys how much the share would move with a handful of records, and the panels are ordered from the most to the least speculative literature over the whole period. The axis is cut at 15%, which clips the bands in the early years of the small literatures, where a single abstract would move the share by tens of points. The highest share in the data, `r with(speculation[which.max(speculation$percentage), ], sprintf('the %.0f%% that %d of the %d records on %s in %d represent', percentage, n, reference_n, topic, year))`, sits above that cut and is clipped with them. Years in which a literature has no records break the line.
 
-```{r, fig.width = 9, fig.height = 8, fig.alt = 'Nine panels, one per literature, each showing the yearly percentage of Scopus records that mention speculation from 1980 onwards, with a shaded Wilson interval'}
+```{r, fig.width = 9, fig.height = 8, fig.alt = 'Nine panels, one per literature, each showing the yearly percentage of Scopus records that mention speculation over the years in which that literature has records, with a shaded Wilson interval'}
 wilson <- function(k, n, z = 1.96) {
   p <- k / n
   centre <- (p + z^2 / (2 * n)) / (1 + z^2 / n)
@@ -140,11 +140,12 @@ wilson <- function(k, n, z = 1.96) {
   data.frame(lower = 100 * pmax(0, centre - half), upper = 100 * pmin(1, centre + half))
 }
 
+# Years with no records keep their row but carry NA, so that ggplot2 breaks the
+# line there instead of drawing a segment across a gap in the literature.
 panel_data <- speculation |>
-  filter(reference_n > 0) |>
   mutate(topic = factor(topic, levels = totals$topic)) |>
-  bind_cols(wilson(speculation$n[speculation$reference_n > 0],
-                   speculation$reference_n[speculation$reference_n > 0]))
+  bind_cols(wilson(speculation$n, speculation$reference_n)) |>
+  mutate(across(c(percentage, lower, upper), ~ ifelse(reference_n > 0, .x, NA_real_)))
 
 panel_labels <- totals |>
   mutate(label = sprintf('%s\n%s records, %.1f%% with speculat*',

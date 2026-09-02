@@ -130,7 +130,7 @@ ggplot(filter(speculation, reference_n &gt; 0),
 </div>
 <div id="the-share-of-records-that-mention-speculation" class="section level2">
 <h2>The share of records that mention speculation</h2>
-<p>Each panel below shows one literature. The line is the yearly percentage of records that also match <code>speculat*</code>, the shaded band is a stability range computed from the yearly reference count by the Wilson method, which conveys how much the share would move with a handful of records, and the panels are ordered from the most to the least speculative literature over the whole period. The axis is cut at 15%, which clips the bands in the early years of the small literatures, where a single abstract would move the share by tens of points. Years in which a literature had no records are left blank.</p>
+<p>Each panel below shows one literature. The line is the yearly percentage of records that also match <code>speculat*</code>, the shaded band is a stability range computed by the Wilson method from the two yearly counts, which conveys how much the share would move with a handful of records, and the panels are ordered from the most to the least speculative literature over the whole period. The axis is cut at 15%, which clips the bands in the early years of the small literatures, where a single abstract would move the share by tens of points. The highest share in the data, the 33% that 1 of the 3 records on bilingual advantage in 2006 represent, sits above that cut and is clipped with them. Years in which a literature has no records break the line.</p>
 <pre class="r"><code>wilson &lt;- function(k, n, z = 1.96) {
   p &lt;- k / n
   centre &lt;- (p + z^2 / (2 * n)) / (1 + z^2 / n)
@@ -138,11 +138,12 @@ ggplot(filter(speculation, reference_n &gt; 0),
   data.frame(lower = 100 * pmax(0, centre - half), upper = 100 * pmin(1, centre + half))
 }
 
+# Years with no records keep their row but carry NA, so that ggplot2 breaks the
+# line there instead of drawing a segment across a gap in the literature.
 panel_data &lt;- speculation |&gt;
-  filter(reference_n &gt; 0) |&gt;
   mutate(topic = factor(topic, levels = totals$topic)) |&gt;
-  bind_cols(wilson(speculation$n[speculation$reference_n &gt; 0],
-                   speculation$reference_n[speculation$reference_n &gt; 0]))
+  bind_cols(wilson(speculation$n, speculation$reference_n)) |&gt;
+  mutate(across(c(percentage, lower, upper), ~ ifelse(reference_n &gt; 0, .x, NA_real_)))
 
 panel_labels &lt;- totals |&gt;
   mutate(label = sprintf(&#39;%s\n%s records, %.1f%% with speculat*&#39;,
@@ -160,7 +161,7 @@ ggplot(panel_data, aes(year, percentage)) +
   theme_minimal(base_size = 12) +
   theme(strip.text = element_text(size = 10, hjust = 0),
         panel.spacing = unit(1.2, &#39;lines&#39;))</code></pre>
-<p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-5-1.png" alt="Nine panels, one per literature, each showing the yearly percentage of Scopus records that mention speculation from 1980 onwards, with a shaded Wilson interval" width="864" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-5-1.png" alt="Nine panels, one per literature, each showing the yearly percentage of Scopus records that mention speculation over the years in which that literature has records, with a shaded Wilson interval" width="864" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>recent &lt;- speculation |&gt;
   filter(year &gt;= 2016, year &lt;= max(year) - 1) |&gt;
   group_by(topic) |&gt;
