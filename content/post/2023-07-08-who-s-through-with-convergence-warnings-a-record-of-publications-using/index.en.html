@@ -36,18 +36,19 @@ projects: []
 <div id="where-a-function-name-can-be-found" class="section level2">
 <h2>Where a function name can be found</h2>
 <p>A function name is a poor search term for bibliographic databases, because it appears in the methods section of an article and almost never in its title, abstract or keywords. Three sources with different coverage are therefore searched, by a script in the <a href="https://github.com/pablobernabeu/website-files/blob/master/scripts/update_post_searches.R">website’s repository</a> that a GitHub Actions workflow runs on request.</p>
-<p>Scopus, searched through the <a href="/2026/scopusflow-a-literature-search-you-can-rerun/">scopusflow package</a>, indexes titles, abstracts, keywords, references and a few other fields, but not the body of the article, so a search for the function name in any indexed field finds only articles that mention it in one of those. A second Scopus query, drafted for the first version of this post in 2023, is a proxy: it looks for abstracts that mention lme4, lmerTest or brms alongside maximal random slopes and convergence, on the grounds that an abstract discussing convergence at that level of detail is likely to belong to a study that dealt with it. Europe PMC indexes the full text of a large body of life-science articles, most of them open access but not all, and its search interface accepts a full-text query. OpenAlex offers a full-text search over the articles for which it holds the text. The Europe PMC query pairs the function name with a mixed-model term, which removes some unrelated uses of the string. The OpenAlex query carries no such term, so its results are matches on the string alone.</p>
+<p>Scopus, searched through the <a href="/2026/scopusflow-a-literature-search-you-can-rerun/">scopusflow package</a>, indexes titles, abstracts, keywords, references and a few other fields, but not the body of the article, so a search for the function name in any indexed field finds only articles that mention it in one of those. A second Scopus query, drafted for the first version of this post in 2023, is a proxy: it looks for abstracts that mention lme4, lmerTest or brms alongside maximal random slopes and convergence, on the grounds that an abstract discussing convergence at that level of detail is likely to belong to a study that dealt with it. Europe PMC indexes the full text of a large body of life-science articles, most of them open access but not all, and its search interface accepts a full-text query. OpenAlex offers a full-text search over the articles for which it holds the text. Both full-text queries pair the function name with a mixed-model term, which removes some unrelated uses of the string without removing all of them.</p>
 <pre class="r"><code>library(scopusflow)   # reads the key from SCOPUS_API_KEY
 scopus_any_field &lt;- scopus_fetch(&#39;ALL(&quot;allFit&quot;)&#39;)
 scopus_proxy &lt;- scopus_fetch(
   paste(&#39;(&quot;lme4&quot; OR &quot;lmerTest&quot; OR &quot;brms&quot;) AND maximal AND &quot;random slopes&quot;&#39;,
         &#39;AND (convergence OR converge OR converged OR converging)&#39;),
   field = &#39;TITLE-ABS-KEY&#39;)</code></pre>
-<pre class="r"><code># Europe PMC and OpenAlex, through their public REST interfaces
-europepmc_query &lt;- paste(
-  &#39;&quot;allFit&quot; AND (lme4 OR &quot;mixed-effects&quot; OR &quot;mixed effects&quot; OR&#39;,
-  &#39;&quot;mixed model&quot; OR &quot;mixed models&quot; OR &quot;multilevel&quot;)&#39;)
-openalex_filter &lt;- &#39;fulltext.search:&quot;allFit&quot;&#39;</code></pre>
+<p>The two full-text queries are shown as the workflow recorded them, so that what
+appears here is what actually ran.</p>
+<pre class="r"><code>cat(readLines(&#39;searches/europepmc_query.txt&#39;), sep = &#39;\n&#39;)</code></pre>
+<pre><code>&quot;allFit&quot; AND (lme4 OR &quot;mixed-effects&quot; OR &quot;mixed effects&quot; OR &quot;mixed model&quot; OR &quot;mixed models&quot; OR &quot;multilevel&quot;)</code></pre>
+<pre class="r"><code>cat(readLines(&#39;searches/openalex_filter.txt&#39;), sep = &#39;\n&#39;)</code></pre>
+<pre><code>fulltext.search:allFit AND (lme4 OR lmer OR &quot;mixed effects&quot; OR &quot;mixed-effects&quot; OR &quot;mixed model&quot; OR &quot;mixed models&quot; OR multilevel)</code></pre>
 </div>
 <div id="the-list" class="section level2">
 <h2>The list</h2>

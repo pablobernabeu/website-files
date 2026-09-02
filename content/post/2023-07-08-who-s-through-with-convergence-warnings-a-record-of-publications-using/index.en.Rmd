@@ -40,7 +40,7 @@ The most direct check is to refit the model with every optimiser that lme4 can c
 
 A function name is a poor search term for bibliographic databases, because it appears in the methods section of an article and almost never in its title, abstract or keywords. Three sources with different coverage are therefore searched, by a script in the [website's repository](https://github.com/pablobernabeu/website-files/blob/master/scripts/update_post_searches.R) that a GitHub Actions workflow runs on request.
 
-Scopus, searched through the [scopusflow package](/2026/scopusflow-a-literature-search-you-can-rerun/), indexes titles, abstracts, keywords, references and a few other fields, but not the body of the article, so a search for the function name in any indexed field finds only articles that mention it in one of those. A second Scopus query, drafted for the first version of this post in 2023, is a proxy: it looks for abstracts that mention lme4, lmerTest or brms alongside maximal random slopes and convergence, on the grounds that an abstract discussing convergence at that level of detail is likely to belong to a study that dealt with it. Europe PMC indexes the full text of a large body of life-science articles, most of them open access but not all, and its search interface accepts a full-text query. OpenAlex offers a full-text search over the articles for which it holds the text. The Europe PMC query pairs the function name with a mixed-model term, which removes some unrelated uses of the string. The OpenAlex query carries no such term, so its results are matches on the string alone.
+Scopus, searched through the [scopusflow package](/2026/scopusflow-a-literature-search-you-can-rerun/), indexes titles, abstracts, keywords, references and a few other fields, but not the body of the article, so a search for the function name in any indexed field finds only articles that mention it in one of those. A second Scopus query, drafted for the first version of this post in 2023, is a proxy: it looks for abstracts that mention lme4, lmerTest or brms alongside maximal random slopes and convergence, on the grounds that an abstract discussing convergence at that level of detail is likely to belong to a study that dealt with it. Europe PMC indexes the full text of a large body of life-science articles, most of them open access but not all, and its search interface accepts a full-text query. OpenAlex offers a full-text search over the articles for which it holds the text. Both full-text queries pair the function name with a mixed-model term, which removes some unrelated uses of the string without removing all of them.
 
 ```{r, eval = FALSE}
 library(scopusflow)   # reads the key from SCOPUS_API_KEY
@@ -51,12 +51,12 @@ scopus_proxy <- scopus_fetch(
   field = 'TITLE-ABS-KEY')
 ```
 
-```{r, eval = FALSE}
-# Europe PMC and OpenAlex, through their public REST interfaces
-europepmc_query <- paste(
-  '"allFit" AND (lme4 OR "mixed-effects" OR "mixed effects" OR',
-  '"mixed model" OR "mixed models" OR "multilevel")')
-openalex_filter <- 'fulltext.search:"allFit"'
+The two full-text queries are shown as the workflow recorded them, so that what
+appears here is what actually ran.
+
+```{r, comment = ''}
+cat(readLines('searches/europepmc_query.txt'), sep = '\n')
+cat(readLines('searches/openalex_filter.txt'), sep = '\n')
 ```
 
 ## The list

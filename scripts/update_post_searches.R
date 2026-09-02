@@ -45,9 +45,11 @@ allfit_dir <- file.path(
   "searches"
 )
 
-# Records whether anything was actually retrieved in this run, so that the
-# retrieval timestamps are only refreshed when there is new data behind them.
-wrote_anything <- FALSE
+# Records which search directories actually received data in this run, so that
+# each bundle's retrieval timestamp only moves when its own searches returned
+# something. One flag shared between the bundles would let a successful search
+# in one stamp a fresh date on the other's stale files.
+written_to <- character(0)
 
 # An empty result is far more often an outage, a revoked key or a changed API
 # than a literature that has emptied, and the workflow commits whatever is on
@@ -63,7 +65,7 @@ write_table <- function(x, path) {
   dir.create(dirname(path), recursive = TRUE, showWarnings = FALSE)
   write.csv(x, path, row.names = FALSE, fileEncoding = "UTF-8")
   message("Wrote ", path, " (", nrow(x), " rows)")
-  wrote_anything <<- TRUE
+  written_to <<- union(written_to, normalizePath(dirname(path)))
   invisible(TRUE)
 }
 
@@ -106,15 +108,23 @@ if (target %in% c("all", "speculation")) {
   saveRDS(comparisons, file.path(speculation_dir, "speculation_comparisons.rds"))
   write_table(do.call(rbind, lapply(comparisons, as.data.frame)),
               file.path(speculation_dir, "speculation_comparisons.csv"))
-  if (wrote_anything) writeLines(retrieved, file.path(speculation_dir, "retrieved.txt")) else
-    warning("No search produced rows; leaving retrieved.txt as it is.",
+  if (normalizePath(speculation_dir, mustWork = FALSE) %in% written_to)
+    writeLines(retrieved, file.path(speculation_dir, "retrieved.txt"))
+  else
+    warning("No search wrote to ", speculation_dir, "; leaving its retrieved.txt as it is.",
             call. = FALSE, immediate. = TRUE)
 }
 
 # ---- Publications that used allFit ---------------------------------------------
 
 if (target %in% c("all", "allfit")) {
-  if (!scopus_has_key()) stop("No Scopus API key found in SCOPUS_API_KEY.")
+  # Europe PMC and OpenAlex need no key, so a missing one skips the two Scopus
+  # searches rather than abandoning the bundle.
+  have_key <- scopus_has_key()
+  if (!have_key)
+    warning("No Scopus API key found in SCOPUS_API_KEY; ",
+            "running the Europe PMC and OpenAlex searches only.",
+            call. = FALSE, immediate. = TRUE)
   dir.create(allfit_dir, recursive = TRUE, showWarnings = FALSE)
 
   # A failure in one source must not lose the others, so each search is
@@ -132,8 +142,8 @@ if (target %in% c("all", "allfit")) {
   #    are the most the API serves to a key used outside its institution's
   #    network; larger pages are rejected as malformed.
   records_all <- NULL
-  for (q_all in c('ALL("allFit")', 'ALL(allFit)',
-                  'TITLE-ABS-KEY(allFit) OR REF(allFit)')) {
+  for (q_all in if (have_key) c('ALL("allFit")', 'ALL(allFit)',
+                                'TITLE-ABS-KEY(allFit) OR REF(allFit)') else character(0)) {
     records_all <- try_search(q_all, scopus_fetch(q_all, page_size = 25))
     if (!is.null(records_all)) {
       attr(records_all, "query_used") <- q_all
@@ -151,7 +161,7 @@ if (target %in% c("all", "allfit")) {
     '("lme4" OR "lmerTest" OR "brms") AND maximal AND "random slopes"',
     'AND (convergence OR converge OR converged OR converging)'
   )
-  records_proxy <- try_search("proxy",
+  records_proxy <- if (!have_key) NULL else try_search("proxy",
                               scopus_fetch(q_proxy, field = "TITLE-ABS-KEY", page_size = 25))
   if (!is.null(records_proxy)) {
     write_table(records_proxy, file.path(allfit_dir, "scopus_convergence_proxy.csv"))
@@ -164,6 +174,7 @@ if (target %in% c("all", "allfit")) {
     '"allFit" AND (lme4 OR "mixed-effects" OR "mixed effects" OR',
     '"mixed model" OR "mixed models" OR "multilevel")'
   )
+  writeLines(epmc_query, file.path(allfit_dir, "europepmc_query.txt"))
   epmc <- list()
   cursor <- "*"
   try_search("Europe PMC", repeat {
@@ -202,14 +213,16 @@ if (target %in% c("all", "allfit")) {
   #    On its own, the function name also matches unrelated text (the search
   #    is not case-sensitive and tolerates near matches), so a mixed-model
   #    term is required alongside it.
+  openalex_filter <- paste0('fulltext.search:allFit AND (lme4 OR lmer OR ',
+                            '"mixed effects" OR "mixed-effects" OR "mixed model" OR ',
+                            '"mixed models" OR multilevel)')
+  writeLines(openalex_filter, file.path(allfit_dir, "openalex_filter.txt"))
   oa <- list()
   cursor <- "*"
   try_search("OpenAlex", repeat {
     resp <- request("https://api.openalex.org/works") |>
       req_url_query(
-        filter = paste0('fulltext.search:allFit AND (lme4 OR lmer OR ',
-                        '"mixed effects" OR "mixed-effects" OR "mixed model" OR ',
-                        '"mixed models" OR multilevel)'),
+        filter = openalex_filter,
         `per-page` = 200, cursor = cursor,
         select = "id,doi,title,publication_year,authorships,primary_location",
         mailto = "pcbernabeu@gmail.com"
@@ -244,8 +257,10 @@ if (target %in% c("all", "allfit")) {
   )
   write_table(oa_table, file.path(allfit_dir, "openalex_allfit_fulltext.csv"))
 
-  if (wrote_anything) writeLines(retrieved, file.path(allfit_dir, "retrieved.txt")) else
-    warning("No search produced rows; leaving retrieved.txt as it is.",
+  if (normalizePath(allfit_dir, mustWork = FALSE) %in% written_to)
+    writeLines(retrieved, file.path(allfit_dir, "retrieved.txt"))
+  else
+    warning("No search wrote to ", allfit_dir, "; leaving its retrieved.txt as it is.",
             call. = FALSE, immediate. = TRUE)
 }
 
