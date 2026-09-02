@@ -23,6 +23,15 @@ projects: []
 ---
 
 ```{r setup, include = FALSE}
+# Swap in the smallest sufficient plotly build, keeping the full one if the
+# download fails, so that a render without network access still succeeds.
+lighter_bundle <- function(p) {
+  tryCatch(plotly::partial_bundle(p), error = function(e) {
+    message('Keeping the full plotly bundle: ', conditionMessage(e))
+    p
+  })
+}
+
 knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = TRUE, fig.align = 'center',
                       comment = '#>', fig.width = 8, fig.retina = 2)
 ```
@@ -470,8 +479,8 @@ ggplotly(p5, tooltip = 'text') %>%
   # The full plotly bundle is about 3.4 MB, most of it chart types this figure
   # does not use. partial_bundle() substitutes the smallest build that still
   # covers the traces present. It fetches that build from the plotly CDN, so it
-  # needs network access at render time.
-  partial_bundle()
+  # falls back to the full bundle when the render has no network access.
+  lighter_bundle()
 ```
 
 <p class="caption">Figure 5. Source: EDGAR 2025 (Crippa et al., 2025) and the Human Development Report 2025 (United Nations Development Programme, 2025). Units: tonnes of CO<sub>2</sub> equivalent per person per year, averaged over 2015 to 2024. Marker area proportional to 2024 population.</p>

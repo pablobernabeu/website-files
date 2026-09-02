@@ -238,9 +238,12 @@ lsa_pipeline <- function(doc_list, labels, grp_a, grp_b,
   )
   # The full plotly bundle is about 3.5 MB, most of it chart types these figures
   # do not use. partial_bundle() substitutes the smallest build that still covers
-  # the traces present. It fetches that build from the plotly CDN, so it needs
-  # network access at render time.
-  pp <- partial_bundle(pp)
+  # the traces present. It fetches that build from the plotly CDN, so the render
+  # keeps the full bundle when it has no network access.
+  pp <- tryCatch(plotly::partial_bundle(pp), error = function(e) {
+    message('Keeping the full plotly bundle: ', conditionMessage(e))
+    pp
+  })
   list(plot = pp, lsa = wlsa, tdm = tdm, pca = pca, words = cd)
 }
 
