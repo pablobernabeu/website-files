@@ -95,12 +95,11 @@ records <- bind_rows(lapply(list(scopus_any, scopus_proxy, europepmc, openalex),
 records |> count(source, name = 'records')
 ```
 
-The searches were run on `r format(as.Date(substr(retrieved, 1, 10)), '%d %B %Y')`. The full-text sources are the ones that answer the question, since they find the function name where it is used. The two Scopus queries are kept for comparison and because the proxy query finds studies that discussed convergence in the abstract, some of which will have used `allFit()` without the full-text sources knowing it.
+The searches were run on `r format(as.Date(substr(retrieved, 1, 10)), '%d %B %Y')`. The Scopus search for the function name in any indexed field illustrates why a bare string is a poor query: it returned `r if (is.null(scopus_any)) 0 else nrow(scopus_any)` records, almost all from textile, dental and physics journals, in which the string is presumably matched loosely against unrelated text, and none of the titles concerns mixed models. Those records are left out of the record below. The proxy query returned `r if (is.null(scopus_proxy)) 0 else nrow(scopus_proxy)` record(s), which shows how rarely an abstract describes the treatment of convergence at that level of detail. The two full-text sources are the ones that answer the question, since they find the function name where it is used, together with a mixed-model term that excludes unrelated uses.
 
 ```{r}
 used_allfit <- records |>
-  filter(source %in% c('Europe PMC, full text', 'OpenAlex, full text',
-                       'Scopus, any indexed field')) |>
+  filter(source %in% c('Europe PMC, full text', 'OpenAlex, full text')) |>
   mutate(key = ifelse(is.na(doi) | doi == '', paste(source, title), doi)) |>
   group_by(key) |>
   summarise(year = first(na.omit(year)), authors = first(authors),
@@ -109,6 +108,7 @@ used_allfit <- records |>
             .groups = 'drop') |>
   arrange(desc(year), authors)
 nrow(used_allfit)
+table(used_allfit$sources)
 ```
 
 ```{r, fig.width = 7, fig.height = 3.4, fig.alt = 'Bar chart of the number of publications per year that mention allFit in their full text or indexed fields'}
@@ -122,7 +122,7 @@ used_allfit |>
   theme_minimal(base_size = 13)
 ```
 
-The table lists every publication found by the full-text searches or by the function name in a Scopus field, most recent first, with the sources in which it was found. Authors are given as the source returned them, which for Scopus is the first author alone.
+The table lists every publication found by the full-text searches, most recent first, with the sources in which it was found. Authors are given as the sources returned them. The overlap between the two sources is small, which says as much about their coverage as about the literature.
 
 ```{r}
 short_authors <- function(a) {
@@ -141,14 +141,12 @@ used_allfit |>
   knitr::kable()
 ```
 
-The proxy query is shown separately. Its records are studies whose abstracts describe maximal random-effects structures and convergence, and they are a reasonable place to look for further precedents, since many of them will have compared optimisers in the methods without naming the function in a field that Scopus indexes.
+The proxy query is shown for completeness. Its records are studies whose abstracts describe maximal random-effects structures and convergence, and a wider proxy would be a reasonable place to look for further precedents, since studies that compared optimisers rarely name the function in a field that Scopus indexes.
 
 ```{r}
 records |>
   filter(source == 'Scopus, convergence proxy') |>
-  arrange(desc(year)) |>
-  transmute(Year = year, Authors = short_authors(authors), Title = title,
-            Venue = venue,
+  transmute(Year = year, Authors = short_authors(authors), Title = title, Venue = venue,
             DOI = ifelse(is.na(doi) | doi == '', '',
                          sprintf('[%s](https://doi.org/%s)', doi, doi))) |>
   knitr::kable()
@@ -156,7 +154,7 @@ records |>
 
 ## What the record misses
 
-The count is a lower bound. Europe PMC holds full text for open-access articles only, and mostly in journals within its scope, so a study behind a paywall in a linguistics or psychology journal is invisible to it unless a preprint or an accepted manuscript was deposited. OpenAlex holds text for a subset of the literature that it does not fully document. Scopus cannot see the methods section at all. A study that compared optimisers with its own loop, or with the `optimx` package directly, is not found by any of the three, and neither is a study that reported the comparison only in supplementary material. On the other side, a full-text match can be a mention in a discussion of someone else's analysis rather than a use, and the table has not been screened by hand. The record is therefore a starting point for the reader who needs a precedent, and the workflow that produces it can be dispatched again as the literature grows.
+The count is a lower bound. Europe PMC holds full text for open-access articles only, and mostly in journals within its scope, so a study behind a paywall in a linguistics or psychology journal is invisible to it unless a preprint or an accepted manuscript was deposited. OpenAlex holds text for a subset of the literature that it does not fully document. Scopus cannot see the methods section at all, and a full-text match can be an article that uses the function in a context other than a convergence check, or that mentions it in a footnote. A study that compared optimisers with its own loop, or with the `optimx` package directly, is not found by any of the three, and neither is a study that reported the comparison only in supplementary material. The table has not been screened by hand. The record is therefore a starting point for the reader who needs a precedent, and the workflow that produces it can be dispatched again as the literature grows.
 
 ### References
 

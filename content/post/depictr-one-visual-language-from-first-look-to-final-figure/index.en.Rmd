@@ -220,7 +220,7 @@ arrange_plots(p_density + labs(title = 'A first look'),
               tag_levels = 'A')
 ```
 
-The Python package uses the same function names and the same thresholds. The R session writes the data, the density audit and the colour-vision simulation to disk, and the Python session reads the data, repeats the audit and the simulation and compares. The mixed model is the one place where the engines differ by construction, lme4 against statsmodels, and the demonstration below uses an ordinary regression on the correct trials, which both fit identically.
+The Python package uses the same function names and the same thresholds. The R session writes the data, the density audit and the colour-vision simulation to disk, and the Python session reads the data, repeats the audit and the simulation and compares. The mixed model is the one place where the engines differ by construction, lme4 against statsmodels, so the comparison below uses an ordinary regression on the correct trials, which both fit identically once the reference level of the categorical predictor is set to match.
 
 ```{r}
 write.csv(lexical_decision, file.path(parity_dir, 'lexical_decision.csv'), row.names = FALSE)
@@ -241,11 +241,15 @@ ld = pd.read_csv(os.path.join(parity, 'lexical_decision.csv'))
 correct = ld[ld['accuracy'] == 1]
 
 audit_py = dp.check_figure(dp.explore_distribution(
-    ld, 'RT', group='condition', type='density', legend_inside=True))
+    ld, 'RT', group='condition', kind='density', legend_inside=True))
 audit_r = pd.read_csv(os.path.join(parity, 'audit_R.csv'))
 deutan_r = open(os.path.join(parity, 'deutan_R.txt')).read().split()
-ols_py = dp.tidy_estimates(smf.ols('RT ~ condition + modality + word_frequency',
-                                   data=correct).fit())
+# R's factor keeps the levels of `modality` in the order 'visual', 'auditory';
+# pandas reads the column as text and patsy would sort it alphabetically, which
+# would silently flip the sign of that contrast. The reference is set explicitly.
+formula = ("RT ~ condition + C(modality, Treatment(reference='visual')) "
+           "+ word_frequency")
+ols_py = dp.tidy_estimates(smf.ols(formula, data=correct).fit())
 ols_r = pd.read_csv(os.path.join(parity, 'ols_R.csv'))
 
 print('depictr', dp.__version__)

@@ -1,0 +1,367 @@
+---
+title: 'theoryforge: a theory you can check'
+author: ''
+date: '2026-09-01'
+slug: theoryforge-a-theory-you-can-check
+categories:
+  - research methods
+  - science
+tags:
+  - theory
+  - philosophy of science
+  - preregistration
+  - causal inference
+  - structural equation modelling
+  - Python
+  - conceptual processing
+subtitle: ''
+summary: 'Psychology has a theory crisis as much as a replication crisis, and one reason is that theories live in prose, where nothing can be checked. theoryforge stores a theory as a small, versioned document and checks it: a rigour checklist with blockers, the conditional independencies the causal graph implies, compilation to lavaan syntax, a severity rubric for predictions, a Lakatosian appraisal of amendments and a preregistration export. This post puts a theory from my own field, modality switching in conceptual processing, through the whole cycle in R, tests its implications against simulated data from a rival world and closes with the Python twin producing the same dossier byte for byte.'
+authors: []
+lastmod: ''
+featured: no
+draft: no
+diagram: true
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+<script src="{{< blogdown/postref >}}index.en_files/clipboard/clipboard.min.js"></script>
+<link href="{{< blogdown/postref >}}index.en_files/xaringanExtra-clipboard/xaringanExtra-clipboard.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index.en_files/xaringanExtra-clipboard/xaringanExtra-clipboard.js"></script>
+<script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+
+
+<p>Psychological theories are mostly written in prose, and prose cannot be checked. Whether a theory forbids anything, whether its predictions follow from its propositions, whether an amendment made after a failed test adds content or merely protects the theory, whether two constructs are the same idea under two names: these questions have answers, and the literature on theory appraisal from Meehl (1990) onwards has said what they are, but nothing in the way theories are written down lets the answers be computed. theoryforge stores a theory as a small document, a YAML or JSON file with constructs, propositions, predictions, alternatives and provenance under a published schema, and treats that document the way software treats source code, with validation, tests, versions and diffs. The R and Python packages implement the same specification and produce the same artefacts, which the post checks at the end.</p>
+<p>The theory used throughout is the one bundled with the package that is closest to my own work: an account of modality switching in grounded conceptual processing, the finding that verifying a property of a concept in one perceptual modality is slower after a property in a different modality (Pecher et al., 2003), read as evidence that conceptual access recruits modality-specific systems (Barsalou, 1999). A second bundled theory, a network model of panic disorder with a feedback loop, serves as the contrast case at the one step where cycles matter.</p>
+<pre class="r"><code>library(theoryforge)
+packageVersion(&#39;theoryforge&#39;)</code></pre>
+<pre><code>#&gt; [1] &#39;0.6.0&#39;</code></pre>
+<pre class="r"><code>tf_example_names()</code></pre>
+<pre><code>#&gt; [1] &quot;modality-switching.theory.yaml&quot;    &quot;panic-corpus.yaml&quot;                
+#&gt; [3] &quot;panic-network-2026-v2.theory.yaml&quot; &quot;panic-network.theory.yaml&quot;        
+#&gt; [5] &quot;weak-theory.theory.yaml&quot;</code></pre>
+<pre class="r"><code>switching &lt;- tf_read(tf_example_path(&#39;modality-switching.theory.yaml&#39;))
+panic &lt;- tf_read(tf_example_path(&#39;panic-network.theory.yaml&#39;))
+c(id = switching$id, title = switching$title, maturity = switching$maturity,
+  constructs = length(switching$constructs), propositions = length(switching$propositions),
+  predictions = length(switching$predictions), alternatives = length(switching$alternatives))</code></pre>
+<pre><code>#&gt;                                                     id 
+#&gt;                              &quot;modality-switching-2026&quot; 
+#&gt;                                                  title 
+#&gt; &quot;Modality switching in grounded conceptual processing&quot; 
+#&gt;                                               maturity 
+#&gt;                                           &quot;developing&quot; 
+#&gt;                                             constructs 
+#&gt;                                                    &quot;5&quot; 
+#&gt;                                           propositions 
+#&gt;                                                    &quot;4&quot; 
+#&gt;                                            predictions 
+#&gt;                                                    &quot;4&quot; 
+#&gt;                                           alternatives 
+#&gt;                                                    &quot;2&quot;</code></pre>
+<div id="a-document-that-refuses-to-be-wrong-quietly" class="section level2">
+<h2>A document that refuses to be wrong quietly</h2>
+<p>Validation has two levels. The structural pass checks required fields, enumerations and, since version 0.6.0, unknown keys at the top level, which matters because a misspelt collection used to be dropped silently and moved the rigour score. The full pass adds referential integrity, so that a prediction cannot be derived from a proposition that does not exist.</p>
+<pre class="r"><code>tf_validate(switching, full = TRUE)
+misspelt &lt;- switching
+names(misspelt)[names(misspelt) == &#39;predictions&#39;] &lt;- &#39;predicitions&#39;
+tryCatch(tf_validate(misspelt), error = conditionMessage)</code></pre>
+<pre><code>#&gt; [1] &quot;invalid theory object: unknown top-level field: predicitions&quot;</code></pre>
+<pre class="r"><code>dangling &lt;- switching
+dangling$predictions[[1]]$derives_from &lt;- list(&#39;p_missing&#39;)
+tryCatch(tf_validate(dangling, full = TRUE), error = conditionMessage)</code></pre>
+<pre><code>#&gt; [1] &quot;invalid theory object: prediction[0] derives_from &#39;p_missing&#39; is not a known proposition&quot;</code></pre>
+</div>
+<div id="the-rigour-checklist" class="section level2">
+<h2>The rigour checklist</h2>
+<p>The checklist has 12 items with weights that sum to one, drawn from the literature on what makes a theory appraisable, and two of them are blockers: a theory that forbids nothing, or whose predictions do not derive from its propositions, fails the gate whatever else it scores. Each item carries the citation that motivates it. The score indexes how completely a theory is specified against the checklist, which the package’s documentation is careful to distinguish from whether the theory is true.</p>
+<pre class="r"><code>rep &lt;- tf_check(switching)
+c(score = rep$aggregate_score, gate = rep$gate, blockers_failed = rep$n_blockers_failed)</code></pre>
+<pre><code>#&gt;           score            gate blockers_failed 
+#&gt;          &quot;85.1&quot;          &quot;pass&quot;             &quot;0&quot;</code></pre>
+<pre class="r"><code>do.call(rbind, lapply(rep$items, function(it)
+  data.frame(id = it$id, status = it$status, score = it$score, weight = it$weight,
+             blocker = it$severity_if_fail == &#39;blocker&#39;)))</code></pre>
+<pre><code>#&gt;                    id status score weight blocker
+#&gt; 1      falsifiability   pass 1.000   0.15    TRUE
+#&gt; 2           precision   pass 0.750   0.10   FALSE
+#&gt; 3       risk_severity   pass 0.613   0.10   FALSE
+#&gt; 4           parsimony   pass 0.500   0.08   FALSE
+#&gt; 5      non_redundancy   pass 0.850   0.10   FALSE
+#&gt; 6   construct_clarity   pass 1.000   0.08   FALSE
+#&gt; 7               scope   pass 1.000   0.06   FALSE
+#&gt; 8         logical_why   pass 1.000   0.08   FALSE
+#&gt; 9  causal_testability   pass 1.000   0.06   FALSE
+#&gt; 10      diagnosticity   pass 0.500   0.06   FALSE
+#&gt; 11      formalisation   pass 1.000   0.05   FALSE
+#&gt; 12   derivation_chain   pass 1.000   0.08    TRUE</code></pre>
+<p>The deliberately underspecified theory that ships with the package shows the other end of the scale, and its development roadmap, one of the ten diagram views, orders the repair work with the blockers first.</p>
+<pre class="r"><code>weak &lt;- tf_read(tf_example_path(&#39;weak-theory.theory.yaml&#39;))
+weak_rep &lt;- tf_check(weak)
+c(score = weak_rep$aggregate_score, gate = weak_rep$gate,
+  blockers_failed = weak_rep$n_blockers_failed)</code></pre>
+<pre><code>#&gt;           score            gate blockers_failed 
+#&gt;            &quot;12&quot;       &quot;blocked&quot;             &quot;2&quot;</code></pre>
+<pre class="r"><code>head(tf_redundancy_check(switching), 3)</code></pre>
+<pre><code>#&gt;                       a                     b similarity flag
+#&gt; 1 c_modality_activation         c_switch_cost      0.150   ok
+#&gt; 2   c_conceptual_access c_lexical_familiarity      0.053   ok
+#&gt; 3 c_modality_activation   c_conceptual_access      0.053   ok</code></pre>
+</div>
+<div id="the-diagram" class="section level2">
+<h2>The diagram</h2>
+<p>Every diagram view is deterministic text, in DOT, in dagitty syntax or in SVG, which a website can render and a version-control system can diff. The theory object is plain data, so a Mermaid flowchart, which this site renders in the browser, is a short helper away.</p>
+<pre class="r"><code>cat(tf_diagram(switching, type = &#39;causal_dag&#39;))</code></pre>
+<pre><code>#&gt; dag {
+#&gt;   c_sensorimotor_experience -&gt; c_modality_activation
+#&gt;   c_modality_activation -&gt; c_switch_cost
+#&gt;   c_modality_activation -&gt; c_conceptual_access
+#&gt;   c_lexical_familiarity -&gt; c_conceptual_access
+#&gt; }</code></pre>
+<pre class="r"><code>tf_mermaid &lt;- function(theory) {
+  esc &lt;- function(s) gsub(&#39;&quot;&#39;, &quot;&#39;&quot;, s, fixed = TRUE)
+  lines &lt;- &#39;flowchart LR&#39;
+  for (c in theory$constructs) lines &lt;- c(lines, sprintf(&#39;  %s[&quot;%s&quot;]&#39;, c$id, esc(c$label)))
+  for (p in theory$propositions) {
+    lines &lt;- c(lines, sprintf(&#39;  %s --&gt;|%s| %s&#39;, p$from, p$relation, p$to))
+  }
+  paste0(paste(lines, collapse = &#39;\n&#39;), &#39;\n&#39;)
+}</code></pre>
+<pre class="mermaid"><code>flowchart LR
+  c_sensorimotor_experience[&quot;Sensorimotor experience with a concept&quot;]
+  c_modality_activation[&quot;Modality-specific perceptual activation&quot;]
+  c_switch_cost[&quot;Cost of switching modality between consecutive trials&quot;]
+  c_conceptual_access[&quot;Ease of conceptual access&quot;]
+  c_lexical_familiarity[&quot;Lexical familiarity with the word form&quot;]
+  c_sensorimotor_experience --&gt;|increases| c_modality_activation
+  c_modality_activation --&gt;|increases| c_switch_cost
+  c_modality_activation --&gt;|increases| c_conceptual_access
+  c_lexical_familiarity --&gt;|increases| c_conceptual_access</code></pre>
+</div>
+<div id="what-the-theory-forbids" class="section level2">
+<h2>What the theory forbids</h2>
+<p>A causal graph implies a set of conditional independencies, and the shortest complete statement of what a theory forbids in data is the basis set of those independencies, which for an acyclic graph with k constructs and m edges has k(k − 1)/2 − m members. The panic network has a feedback loop, so it has no basis set, and the function says which cycle is responsible.</p>
+<pre class="r"><code>impl &lt;- tf_implications(switching)
+c(acyclic = impl$acyclic, edges = impl$n_edges, implications = impl$n_implications)</code></pre>
+<pre><code>#&gt;      acyclic        edges implications 
+#&gt;            1            4            6</code></pre>
+<pre class="r"><code>for (x in impl$implications) cat(&#39; &#39;, x$statement, &#39;\n&#39;)</code></pre>
+<pre><code>#&gt;   c_sensorimotor_experience _||_ c_switch_cost | c_modality_activation 
+#&gt;   c_sensorimotor_experience _||_ c_conceptual_access | c_modality_activation, c_lexical_familiarity 
+#&gt;   c_sensorimotor_experience _||_ c_lexical_familiarity 
+#&gt;   c_modality_activation _||_ c_lexical_familiarity | c_sensorimotor_experience 
+#&gt;   c_switch_cost _||_ c_conceptual_access | c_modality_activation, c_lexical_familiarity 
+#&gt;   c_switch_cost _||_ c_lexical_familiarity | c_modality_activation</code></pre>
+<pre class="r"><code>tryCatch(tf_implications(panic), error = conditionMessage)</code></pre>
+<pre><code>#&gt; [1] &quot;implications requires an acyclic causal graph; cycle found: c_arousal -&gt; c_perceived_threat -&gt; c_arousal&quot;</code></pre>
+<p>The implications can be cross-checked with dagitty from the package’s own export of the graph, and they are empirical claims. Below, one observed variable per construct is simulated from the theory’s own graph and from a rival world in which lexical familiarity is partly caused by sensorimotor experience, which is what a symbol-interdependency account of conceptual processing would allow. dagitty’s local tests score every implied independence as a partial correlation in both worlds.</p>
+<pre class="r"><code>g &lt;- dagitty::dagitty(tf_diagram(switching, type = &#39;causal_dag&#39;))
+all(vapply(impl$implications, function(x)
+  dagitty::dseparated(g, x$a, x$b, unlist(x$given)), logical(1)))</code></pre>
+<pre><code>#&gt; [1] TRUE</code></pre>
+<pre class="r"><code>set.seed(2026)
+n &lt;- 4000
+sim_world &lt;- function(rival = FALSE) {
+  E &lt;- rnorm(n)
+  Fm &lt;- if (rival) 0.5 * E + rnorm(n) else rnorm(n)
+  A &lt;- 0.7 * E + rnorm(n)
+  S &lt;- 0.6 * A + rnorm(n)
+  C &lt;- 0.5 * A + 0.5 * Fm + rnorm(n)
+  data.frame(c_sensorimotor_experience = E, c_modality_activation = A,
+             c_switch_cost = S, c_conceptual_access = C, c_lexical_familiarity = Fm)
+}
+tests &lt;- lapply(impl$implications, function(x)
+  structure(list(X = x$a, Y = x$b, Z = as.character(unlist(x$given))), class = &#39;dagitty.ci&#39;))
+theory_world &lt;- dagitty::localTests(g, data = sim_world(FALSE), type = &#39;cis&#39;, tests = tests)
+rival_world  &lt;- dagitty::localTests(g, data = sim_world(TRUE),  type = &#39;cis&#39;, tests = tests)
+data.frame(claim = vapply(impl$implications, function(x) x$statement, character(1)),
+           theory_r = round(theory_world$estimate, 3),
+           rival_r = round(rival_world$estimate, 3),
+           rival_p = signif(rival_world$p.value, 2))</code></pre>
+<pre><code>#&gt;                                                                                               claim
+#&gt; 1                              c_sensorimotor_experience _||_ c_switch_cost | c_modality_activation
+#&gt; 2 c_sensorimotor_experience _||_ c_conceptual_access | c_modality_activation, c_lexical_familiarity
+#&gt; 3                                              c_sensorimotor_experience _||_ c_lexical_familiarity
+#&gt; 4                      c_modality_activation _||_ c_lexical_familiarity | c_sensorimotor_experience
+#&gt; 5             c_switch_cost _||_ c_conceptual_access | c_modality_activation, c_lexical_familiarity
+#&gt; 6                                  c_switch_cost _||_ c_lexical_familiarity | c_modality_activation
+#&gt;   theory_r rival_r  rival_p
+#&gt; 1   -0.007  -0.009  5.7e-01
+#&gt; 2   -0.005   0.018  2.5e-01
+#&gt; 3   -0.009   0.445 2.8e-201
+#&gt; 4    0.019   0.002  8.8e-01
+#&gt; 5    0.006   0.012  4.3e-01
+#&gt; 6    0.006  -0.021  1.9e-01</code></pre>
+<p>In the world generated by the theory every claim holds. In the rival world one claim fails, the marginal independence of sensorimotor experience and lexical familiarity, and the other five still hold, which is the pattern that would tell a researcher which part of the theory the data contradict.</p>
+</div>
+<div id="from-the-graph-to-a-fitted-model" class="section level2">
+<h2>From the graph to a fitted model</h2>
+<p>The same graph compiles to lavaan syntax, with a measurement model for each construct and the structural paths the propositions assert. The compiled model is fitted below to data simulated from a population version of itself, and the third basis-set claim is imposed as a restriction and tested against the free model.</p>
+<pre class="r"><code>model &lt;- tf_compile_sem(switching)
+cat(model)</code></pre>
+<pre><code>#&gt; # lavaan model generated by theoryforge for modality-switching-2026
+#&gt; # Measurement model
+#&gt; c_sensorimotor_experience =~ modality_specific_perceptual_strength_ratings + sensory_experience_ratings + self_reported_frequency_of_first_hand_encounters
+#&gt; c_modality_activation =~ bold_response_in_modality_specific_sensory_cortex + interference_from_a_concurrent_load_in_the_same_modality
+#&gt; c_switch_cost =~ switch_minus_repeat_response_time_difference + switch_minus_repeat_error_rate_difference
+#&gt; c_conceptual_access =~ semantic_categorisation_latency + lexical_decision_latency + accuracy_on_either_task
+#&gt; c_lexical_familiarity =~ subjective_familiarity_ratings + corpus_frequency_of_the_word_form + age_of_acquisition
+#&gt; # Structural model
+#&gt; c_modality_activation ~ c_sensorimotor_experience
+#&gt; c_switch_cost ~ c_modality_activation
+#&gt; c_conceptual_access ~ c_modality_activation
+#&gt; c_conceptual_access ~ c_lexical_familiarity</code></pre>
+<pre class="r"><code>pop_lines &lt;- vapply(strsplit(trimws(model), &#39;\n&#39;)[[1]], function(l) {
+  if (grepl(&#39;=~&#39;, l, fixed = TRUE)) {
+    parts &lt;- strsplit(l, &#39; =~ &#39;, fixed = TRUE)[[1]]
+    ind &lt;- strsplit(parts[2], &#39; + &#39;, fixed = TRUE)[[1]]
+    paste(parts[1], &#39;=~&#39;, paste0(&#39;0.8*&#39;, ind, collapse = &#39; + &#39;))
+  } else if (grepl(&#39;^[^#].* ~ &#39;, l)) {
+    parts &lt;- strsplit(l, &#39; ~ &#39;, fixed = TRUE)[[1]]
+    paste(parts[1], &#39;~&#39;, paste0(&#39;0.5*&#39;, parts[2]))
+  } else l
+}, character(1))
+dat &lt;- lavaan::simulateData(paste(pop_lines, collapse = &#39;\n&#39;), sample.nobs = 1000, seed = 2026)
+fit &lt;- lavaan::sem(model, data = dat)
+round(lavaan::fitMeasures(fit, c(&#39;chisq&#39;, &#39;df&#39;, &#39;pvalue&#39;, &#39;cfi&#39;, &#39;rmsea&#39;, &#39;srmr&#39;)), 3)</code></pre>
+<pre><code>#&gt;  chisq     df pvalue    cfi  rmsea   srmr 
+#&gt; 64.700 59.000  0.284  0.997  0.010  0.022</code></pre>
+<pre class="r"><code>pe &lt;- lavaan::parameterEstimates(fit, standardized = TRUE)
+pe[pe$op == &#39;~&#39;, c(&#39;lhs&#39;, &#39;rhs&#39;, &#39;est&#39;, &#39;se&#39;, &#39;std.all&#39;)]</code></pre>
+<pre><code>#&gt;                      lhs                       rhs   est    se std.all
+#&gt; 14 c_modality_activation c_sensorimotor_experience 0.474 0.065   0.414
+#&gt; 15         c_switch_cost     c_modality_activation 0.524 0.065   0.454
+#&gt; 16   c_conceptual_access     c_modality_activation 0.556 0.059   0.492
+#&gt; 17   c_conceptual_access     c_lexical_familiarity 0.506 0.061   0.400</code></pre>
+<pre class="r"><code>fit_restricted &lt;- lavaan::sem(
+  paste0(model, &#39;c_sensorimotor_experience ~~ 0*c_lexical_familiarity\n&#39;), data = dat)
+lavaan::lavTestLRT(fit_restricted, fit)</code></pre>
+<pre><code>#&gt; 
+#&gt; Chi-Squared Difference Test
+#&gt; 
+#&gt;                Df   AIC   BIC  Chisq Chisq diff    RMSEA Df diff Pr(&gt;Chisq)
+#&gt; fit            59 42019 42176 64.700                                       
+#&gt; fit_restricted 60 42019 42171 66.546     1.8461 0.029087       1     0.1742</code></pre>
+</div>
+<div id="how-risky-are-the-predictions" class="section level2">
+<h2>How risky are the predictions</h2>
+<p>A prediction that could hardly fail corroborates little. The severity rubric scores each prediction by its type, from a bare existence claim to a point prediction, discounts directional predictions by Meehl’s crud factor and adds credit for naming a registered rival. The preregistration export turns the theory into the skeleton of a registration, with the predictions, their severities and the outcomes that would count against them.</p>
+<pre class="r"><code>tf_severity(switching)</code></pre>
+<pre><code>#&gt;   prediction_id        type risk_score computed_severity
+#&gt; 1         pred1 directional        0.4               0.3
+#&gt; 2         pred2    interval        0.7               0.7
+#&gt; 3         pred3       point        0.9               1.0
+#&gt; 4         pred4    interval        0.7               0.8</code></pre>
+<pre class="r"><code>prereg &lt;- tf_preregister(switching, path = file.path(out_dir, &#39;prereg.md&#39;))
+cat(head(strsplit(prereg, &#39;\n&#39;)[[1]], 30), sep = &#39;\n&#39;)</code></pre>
+<pre><code>#&gt; # Preregistration: Modality switching in grounded conceptual processing
+#&gt; 
+#&gt; - Theory ID: modality-switching-2026
+#&gt; - Schema version: 1.0
+#&gt; - Maturity: developing
+#&gt; - Derivation chain verified: yes
+#&gt; 
+#&gt; ## Hypotheses
+#&gt; 1. [directional] In property verification with word frequency, word length and property typicality matched across conditions, responses are slower when the property belongs to a different modality from the preceding trial than when it belongs to the same one. (derives from: p1, p2)
+#&gt; 2. [interval] In that design the switch cost lies between 20 and 60 ms, averaged over items and participants. (derives from: p1, p2)
+#&gt; 3. [point] Concurrent dynamic visual noise removes the advantage of visual properties over auditory properties in semantic categorisation, leaving a difference of zero under load in the same participants who show the advantage without it. (derives from: p3)
+#&gt; 4. [interval] Across a corpus of concrete nouns matched for length, modality-specific perceptual strength and lexical familiarity correlate no more strongly than 0.10 in absolute value. (derives from: p1, p4)
+#&gt; 
+#&gt; ## Severity
+#&gt; - pred1: severity 0.3, risk 0.4
+#&gt; - pred2: severity 0.7, risk 0.7
+#&gt; - pred3: severity 1.0, risk 0.9
+#&gt; - pred4: severity 0.8, risk 0.7</code></pre>
+</div>
+<div id="amending-a-theory-without-cheating" class="section level2">
+<h2>Amending a theory without cheating</h2>
+<p>Lakatos distinguished progressive amendments, which add content that survives a test, from degenerating ones, which add an assumption to protect a prediction that failed (Lakatos, 1978). The appraisal function makes that distinction on two versions of a theory. The package’s own pair of panic-network versions is progressive, since the second adds a prediction that was later corroborated. Two amendments of the modality-switching theory show both outcomes: an auxiliary assumption that protects a prediction with no passing test in sight, and a new prediction about the N400 in EEG, derived from the existing propositions and recorded as passed.</p>
+<pre class="r"><code>panic_v2 &lt;- tf_read(tf_example_path(&#39;panic-network-2026-v2.theory.yaml&#39;))
+str(tf_appraise_amendment(panic_v2, panic))</code></pre>
+<pre><code>#&gt; List of 4
+#&gt;  $ verdict           : chr &quot;progressive&quot;
+#&gt;  $ new_predictions   : chr &quot;pred4&quot;
+#&gt;  $ corroborated_new  : chr &quot;pred4&quot;
+#&gt;  $ ad_hoc_assumptions: chr(0)</code></pre>
+<pre class="r"><code>rescue &lt;- tf_add_assumption(
+  switching, &#39;aux3&#39;,
+  &#39;Dynamic visual noise loads the visual system only when it is presented foveally.&#39;,
+  added_for = &#39;pred3&#39;, protects = &#39;pred3&#39;)
+tf_appraise_amendment(rescue, switching)$verdict</code></pre>
+<pre><code>#&gt; [1] &quot;degenerating&quot;</code></pre>
+<pre class="r"><code>switching_v2 &lt;- tf_add_prediction(
+  switching, &#39;pred5&#39;,
+  &#39;In EEG, the N400 to a property word is larger when the preceding trial addressed a different perceptual modality.&#39;,
+  &#39;directional&#39;, derives_from = c(&#39;p1&#39;, &#39;p2&#39;))
+switching_v2$predictions[[5]]$severity &lt;- 0.5
+switching_v2$test_outcomes &lt;- list(list(
+  prediction_id = &#39;pred5&#39;, passed = TRUE,
+  observed = &#39;Switch trials showed a larger N400 in 4 of 4 modality pairs.&#39;,
+  severity_at_test = 0.5, registered = &#39;osf.io/xxxxx&#39;, date = &#39;2026-09-01&#39;))
+switching_v2$maturity &lt;- &#39;testing&#39;
+switching_v2$version &lt;- list(id = &#39;v2&#39;, parent_id = &#39;v1&#39;, content_hash = NULL)
+str(tf_appraise_amendment(switching_v2, switching))</code></pre>
+<pre><code>#&gt; List of 4
+#&gt;  $ verdict           : chr &quot;progressive&quot;
+#&gt;  $ new_predictions   : chr &quot;pred5&quot;
+#&gt;  $ corroborated_new  : chr &quot;pred5&quot;
+#&gt;  $ ad_hoc_assumptions: chr(0)</code></pre>
+<pre class="r"><code>c(v1 = rep$aggregate_score, v2 = tf_check(switching_v2)$aggregate_score)</code></pre>
+<pre><code>#&gt;   v1   v2 
+#&gt; 85.1 82.8</code></pre>
+<p>Every builder verb logs a provenance entry, so the history of the document records who changed what and when, and the version block records the lineage.</p>
+<pre class="r"><code>tail(do.call(rbind, lapply(switching_v2$provenance, as.data.frame)), 2)</code></pre>
+<pre><code>#&gt;   step            action
+#&gt; 3    3        tf_predict
+#&gt; 4    4 tf_add_prediction
+#&gt;                                                                               detail
+#&gt; 3 Derived four predictions, two of them diagnostic against a registered alternative.
+#&gt; 4                                                                              pred5</code></pre>
+</div>
+<div id="versions-with-a-fingerprint" class="section level2">
+<h2>Versions with a fingerprint</h2>
+<p>The dossier is a Markdown summary of the whole theory, and because it is byte-identical between the R and Python packages, its checksum serves as a language-independent fingerprint of the theory’s state, which the version block can carry. The amended theory is written out, read back and found unchanged.</p>
+<pre class="r"><code>write_raw &lt;- function(s, name) {
+  path &lt;- file.path(out_dir, name)
+  writeBin(charToRaw(enc2utf8(s)), path)
+  path
+}
+dossier_v1 &lt;- write_raw(tf_dossier(switching), &#39;modality-switching-2026.dossier.md&#39;)
+unname(tools::md5sum(dossier_v1))</code></pre>
+<pre><code>#&gt; [1] &quot;2c314f0651ebbaf42d668f692fd88a39&quot;</code></pre>
+<pre class="r"><code>dossier_v2 &lt;- write_raw(tf_dossier(switching_v2), &#39;modality-switching-2026-v2.dossier.md&#39;)
+switching_v2$version$content_hash &lt;- unname(tools::md5sum(dossier_v2))
+tf_write(switching_v2, file.path(out_dir, &#39;modality-switching-2026-v2.theory.yaml&#39;))
+back &lt;- tf_read(file.path(out_dir, &#39;modality-switching-2026-v2.theory.yaml&#39;))
+c(valid = isTRUE(tf_validate(back, full = TRUE)),
+  same_dossier = identical(tf_dossier(back), tf_dossier(switching_v2)))</code></pre>
+<pre><code>#&gt;        valid same_dossier 
+#&gt;         TRUE         TRUE</code></pre>
+<p>The Python package reads the same bundled theory and produces the same dossier, and its class methods correspond to the R verbs.</p>
+<pre class="python"><code>import hashlib, os
+import theoryforge as tf
+
+out = os.environ[&#39;THEORYFORGE_POST_OUT&#39;]
+switching = tf.read(tf.example_path(&#39;modality-switching.theory.yaml&#39;))
+dossier = switching.dossier()
+print(&#39;theoryforge&#39;, tf.__version__)
+print(hashlib.md5(dossier.encode(&#39;utf-8&#39;)).hexdigest())
+print(&#39;identical to the R dossier:&#39;,
+      dossier == open(os.path.join(out, &#39;modality-switching-2026.dossier.md&#39;), encoding=&#39;utf-8&#39;).read())
+print(&#39;rigour score:&#39;, switching.check()[&#39;aggregate_score&#39;])</code></pre>
+<pre><code>#&gt; theoryforge 0.6.0
+#&gt; 2c314f0651ebbaf42d668f692fd88a39
+#&gt; identical to the R dossier: True
+#&gt; rigour score: 85.1</code></pre>
+<p>Beyond the artefacts shown here, the package writes a Quarto report, deposits a dossier on OSF from a dry run that can be inspected before anything is sent, simulates the construct network as a dynamical system, and maps a bibliographic corpus around a theory to point out fronts that the theory does not yet address, with corpora that the <a href="/2026/scopusflow-a-literature-search-you-can-rerun/">scopusflow package</a> can supply. The checklist remains a structural and lexical screen. It can say that a theory forbids something and that its predictions follow from its propositions; whether the theory is true is for the tests that the document now makes easier to specify.</p>
+<div id="references" class="section level3">
+<h3>References</h3>
+<p>Barsalou, L. W. (1999). Perceptual symbol systems. <em>Behavioral and Brain Sciences</em>, <em>22</em>(4), 577–660. <a href="https://doi.org/10.1017/S0140525X99002149" class="uri">https://doi.org/10.1017/S0140525X99002149</a></p>
+<p>Lakatos, I. (1978). <em>The methodology of scientific research programmes: Philosophical papers</em> (J. Worrall &amp; G. Currie, Eds.; Vol. 1). Cambridge University Press. <a href="https://doi.org/10.1017/CBO9780511621123" class="uri">https://doi.org/10.1017/CBO9780511621123</a></p>
+<p>Meehl, P. E. (1990). Appraising and amending theories: The strategy of Lakatosian defense and two principles that warrant it. <em>Psychological Inquiry</em>, <em>1</em>(2), 108–141. <a href="https://doi.org/10.1207/s15327965pli0102_1" class="uri">https://doi.org/10.1207/s15327965pli0102_1</a></p>
+<p>Pecher, D., Zeelenberg, R., &amp; Barsalou, L. W. (2003). Verifying different-modality properties for concepts produces switching costs. <em>Psychological Science</em>, <em>14</em>(2), 119–124. <a href="https://doi.org/10.1111/1467-9280.t01-1-01429" class="uri">https://doi.org/10.1111/1467-9280.t01-1-01429</a></p>
+</div>
+</div>
