@@ -148,7 +148,7 @@ Hao, Q., Xu, F., Li, Y., & Evans, J. (2026). Artificial intelligence tools expan
 </div>
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/kvkKu_a7fZI" frameborder="0" allowfullscreen
+<iframe title="Video: Unlock the Lab: Your guide to reading science like a scientist" loading="lazy" src="https://www.youtube-nocookie.com/embed/kvkKu_a7fZI" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:2.5%; width:95%; height:95%;"></iframe>
 </div>
 
@@ -184,7 +184,7 @@ Wentura, D., Shi, E., & Degner, J. (2024). Examining modal and amodal language p
 </div>
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/for6EvX5wDE" frameborder="0" allowfullscreen
+<iframe title="Video: Modality switch effects: The brain friction of switching senses" loading="lazy" src="https://www.youtube-nocookie.com/embed/for6EvX5wDE" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
@@ -226,7 +226,7 @@ Rubin, M. (2021). When to adjust alpha during multiple testing: A consideration 
 </div>
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/v5OF4qziTaE" frameborder="0" allowfullscreen
+<iframe title="Video: The dead salmon problem: Multiple tests, minimality and data driven alternatives" loading="lazy" src="https://www.youtube-nocookie.com/embed/v5OF4qziTaE" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
@@ -277,7 +277,7 @@ Warstadt, A., Mueller, A., Choshen, L., Wilcox, E., Zhuang, C., Ciro, J., Mosque
 </div>
 
 <div style = "position: relative; margin-top: 1.4rem; padding-top: 56.25%;">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/7lOVAkCk-sc" frameborder="0" allowfullscreen
+<iframe title="Video: The digital parrot or the universal machine? Debating the mind in the model" loading="lazy" src="https://www.youtube-nocookie.com/embed/7lOVAkCk-sc" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
@@ -295,7 +295,7 @@ View [sources and related content](/2025/speech-transcription-python).
 </div>
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/pPBhUgQBlBU" frameborder="0" allowfullscreen
+<iframe title="Video: Beyond the cloud: Reclaiming data sovereignty in speech transcription" loading="lazy" src="https://www.youtube-nocookie.com/embed/pPBhUgQBlBU" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
@@ -333,7 +333,7 @@ View [sources and related content](/presentation/making-research-materials-finda
 </div>
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/NG9G1gQdOEo" frameborder="0" allowfullscreen
+<iframe title="Video: The modular mini-grammar: Building testable and reproducible artificial languages using FAIR principles" loading="lazy" src="https://www.youtube-nocookie.com/embed/NG9G1gQdOEo" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
@@ -353,7 +353,7 @@ View [sources and related content](/publication/third-language-longitudinal-data
 </div>
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/tcBCMajt16Y" frameborder="0" allowfullscreen
+<iframe title="Video: Third language learning and morphosyntactic transfer" loading="lazy" src="https://www.youtube-nocookie.com/embed/tcBCMajt16Y" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
@@ -377,7 +377,7 @@ View [sources and related content](/publication/pablo-bernabeu-2022-phd-thesis).
 </div>
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/ftFoNsEbJcM" frameborder="0" allowfullscreen
+<iframe title="Video: Behind the curtains: Methods used to investigate conceptual processing" loading="lazy" src="https://www.youtube-nocookie.com/embed/ftFoNsEbJcM" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
@@ -415,7 +415,7 @@ View [sources and related content](/publication/pablo-bernabeu-2022-phd-thesis).
 </div>
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/Uii-4ybSmKM" frameborder="0" allowfullscreen
+<iframe title="Video: The architecture of meaning: Inside the words we use" loading="lazy" src="https://www.youtube-nocookie.com/embed/Uii-4ybSmKM" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
@@ -424,7 +424,7 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 This live demonstration guides you through the process of segmenting event-related potentials (ERPs) in BrainVision Analyzer. The events of interest are represented by several markers, requiring some thought to time-lock each segmentation to the event onset.
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/QXOpa-uOBVc" frameborder="0" allowfullscreen
+<iframe title="Video: Segmentation of ERPs involving several markers and time adjustments in BrainVision Analyzer" loading="lazy" src="https://www.youtube-nocookie.com/embed/QXOpa-uOBVc" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
@@ -433,28 +433,28 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 This tutorial walks through the key steps: creating grand averages across participants, computing difference waves between experimental conditions, selecting appropriate map types, and defining time windows for visualisation.
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/FI9FO7oJj_o" frameborder="0" allowfullscreen
+<iframe title="Video: Visualising EEG effects with topographic mapping in BrainVision Analyzer" loading="lazy" src="https://www.youtube-nocookie.com/embed/FI9FO7oJj_o" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; Naming results files exported from Gorilla Experiment Builder
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/nVidNO8xcxE" frameborder="0" allowfullscreen
+<iframe title="Video: Naming results files exported from Gorilla Experiment Builder" loading="lazy" src="https://www.youtube-nocookie.com/embed/nVidNO8xcxE" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2024 ·</span>&nbsp; [Reducing the impedance in electroencephalography using a blunt needle, electrolyte gel and wiggling](/2024/lowering-impedance-in-electroencephalography-using-a-blunt-needle-electrolyte-gel-and-wiggling)
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/4KLtp-WnOOo" frameborder="0" allowfullscreen
+<iframe title="Video: Reducing the impedance in electroencephalography using a blunt needle, electrolyte gel and wiggling" loading="lazy" src="https://www.youtube-nocookie.com/embed/4KLtp-WnOOo" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2024 ·</span>&nbsp; [Briefing participants to prevent muscle artifacts in electroencephalography sessions](/2024/preventing-muscle-artifacts-in-electroencephalography-sessions)
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/9Mbv6bUZlqY" frameborder="0" allowfullscreen
+<iframe title="Video: Briefing participants to prevent muscle artifacts in electroencephalography sessions" loading="lazy" src="https://www.youtube-nocookie.com/embed/9Mbv6bUZlqY" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
@@ -470,48 +470,48 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 ### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; [Reproducibilidad en torno a una aplicación web](/presentation/2020-10-08-reproducibilidad-en-torno-a-una-aplicacion-web)
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/1njLOAWqLPM" frameborder="0" allowfullscreen
+<iframe title="Video: Reproducibilidad en torno a una aplicación web" loading="lazy" src="https://www.youtube-nocookie.com/embed/1njLOAWqLPM" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; Workshop on <i class="fa-brands fa-r-project" aria-label="R"></i>&nbsp;Markdown, dashboards and Binder (see [programme and materials](https://github.com/pablobernabeu/CarpentryCon-2020-workshop-Open-Data-Reproducibility))
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/wZsPD7CgJC0" frameborder="0" allowfullscreen
+<iframe title="Video: Workshop on Markdown, dashboards and Binder (see programme and materials)" loading="lazy" src="https://www.youtube-nocookie.com/embed/wZsPD7CgJC0" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; Personal profile and experience at Lancaster University Department of Psychology
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/ZEoan5tWqFg" frameborder="0" allowfullscreen
+<iframe title="Video: Personal profile and experience at Lancaster University Department of Psychology" loading="lazy" src="https://www.youtube-nocookie.com/embed/ZEoan5tWqFg" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; Embedding open research and reproducibility in the UG and PGT curricula
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/vzkDBZ1qWfY" frameborder="0" allowfullscreen
+<iframe title="Video: Embedding open research and reproducibility in the UG and PGT curricula" loading="lazy" src="https://www.youtube-nocookie.com/embed/vzkDBZ1qWfY" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Part of application for [Gorilla Grant](#funding-awards)
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/DTHFuC0Lw0Y" frameborder="0" allowfullscreen
+<iframe title="Video: Part of application for Gorilla Grant" loading="lazy" src="https://www.youtube-nocookie.com/embed/DTHFuC0Lw0Y" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Part of application for [Software Sustainability Institute Fellowship](#funding-awards)
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/F-MQ8BYwLn4" frameborder="0" allowfullscreen
+<iframe title="Video: Part of application for Software Sustainability Institute Fellowship" loading="lazy" src="https://www.youtube-nocookie.com/embed/F-MQ8BYwLn4" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
 ### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Demonstration of procedure for bundled PSA Studies [002](/publication/chen-etal-inprep) and [003](/publication/multi-region-investigation-of-man-as-default-in-attitudes)
 
-<iframe loading="lazy" src="https://mfr.de-1.osf.io/render?url=https://osf.io/download/h36wr/?direct%26mode=render"
+<iframe title="Document: Demonstration of procedure for bundled PSA Studies 002 and 003" loading="lazy" src="https://mfr.de-1.osf.io/render?url=https://osf.io/download/h36wr/?direct%26mode=render"
     style="margin-top:10px"
     width="100%"
     scrolling="yes"
