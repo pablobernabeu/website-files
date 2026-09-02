@@ -40,9 +40,9 @@ dir.create(parity_dir, showWarnings = FALSE)
 Sys.setenv(DEPICTR_PARITY = parity_dir)
 ```
 
-A paper's figures are made at different moments with different tools. The density plot from the first afternoon with the data has one look, the forest plot of the mixed model another, the diagnostics a third, and the Bayesian posterior, added at a reviewer's request, a fourth. The reader has to learn four conventions to follow one argument, and the author has to remember, at each stage, which colours are safe for readers with a colour-vision deficiency and which are not. depictr is my attempt to settle these questions once. It provides one theme, one palette and one set of conventions for the plots that an analysis produces from exploration to reporting, every function returns a ggplot2 object that can be refined further, and a checking function measures the finished figure against thresholds for contrast, text size and reliance on colour. A Python package of the same name does the same over plotnine.
+A paper's figures are made at different moments with different tools. The density plot from the first afternoon with the data has one look, the forest plot of the mixed model another, the diagnostics a third, and the Bayesian posterior, added at a reviewer's request, a fourth. The reader has to learn four conventions to follow one argument, and the author has to remember, at each stage, which colours are safe for readers with a colour-vision deficiency and which are not. depictr is my attempt to settle these questions once. It provides a single theme, palette and set of conventions for the plots that an analysis produces from exploration to reporting, every function returns a ggplot2 object that can be refined further, and a checking function measures the finished figure against thresholds for contrast, text size and reliance on colour. A Python package of the same name does the same over plotnine.
 
-The data below are the experiment bundled with the package: 24 participants, 40 items, a semantic-priming manipulation with related and unrelated primes, a visual or auditory presentation and the Zipf frequency of each word, with reaction times and accuracy. The design is what I would expect from a lexical-decision study in my own laboratory, which makes it a fair test of whether the package covers the plots such a study needs.
+The data below are the experiment bundled with the package: `r length(unique(depictr::lexical_decision$participant))` participants, `r length(unique(depictr::lexical_decision$item))` items, a semantic-priming manipulation with related and unrelated primes, a visual or auditory presentation and the Zipf frequency of each word, with reaction times and accuracy. The design is what I would expect from a lexical-decision study in my own laboratory.
 
 ```{r}
 library(depictr)
@@ -69,7 +69,7 @@ ecdf_plot(lexical_decision, RT, group = condition,
           title = 'Related primes are faster throughout the distribution')
 ```
 
-A summary table in the format of a paper's first table, with means and standard deviations for numeric variables and counts for categorical ones, comes from the same data with one call, and an estimation plot in the style of Gardner and Altman shows the raw data above the mean difference with a bootstrap interval and Hedges' g.
+A summary table in the format of a paper's first table, with means and standard deviations for numeric variables and counts for categorical ones, comes from the same data with one call, and an estimation plot in the style of Gardner and Altman (Ho et al., 2019) shows the raw data above the mean difference with a bootstrap interval and Hedges' g.
 
 ```{r}
 summary_table(lexical_decision, vars = c('RT', 'accuracy', 'word_frequency', 'modality'),
@@ -121,7 +121,7 @@ compare_models(Reduced = reduced, Full = fit, order = 'descending',
 model_fit_table(Reduced = reduced, Full = fit)
 ```
 
-## Three questions about robustness
+## Convergence, a Bayesian check and power
 
 A convergence warning from lme4 is best answered by refitting with every optimiser and comparing the estimates, a practice I have [written about before](/2023/a-new-function-to-plot-convergence-diagnostics-from-lme4-allfit/). depictr's plot for that comparison takes a tidy data frame of optimiser, term and value, and the package ships the summary of an `allFit()` run on this very model, so the figure is drawn without the refits.
 
@@ -136,7 +136,7 @@ optimizer_fixef_plot(opt_long, labels = term_labels,
                      title = 'Fixed effects across seven optimisers')
 ```
 
-The second question is what a Bayesian version of the model says. The package bundles a thousand draws from the posterior of the same model fitted with brms, and the plot overlays the frequentist estimate on the full posterior of each term, with a note that the frequentist analysis had no prior. The posterior can also be drawn on its own, with a region of practical equivalence and the probability of direction annotated per parameter (Kruschke, 2018).
+A Bayesian version of the same model answers the next question. The package bundles a thousand draws from the posterior of the same model fitted with brms, and the plot overlays the frequentist estimate on the full posterior of each term, with a note that the frequentist analysis had no prior. The posterior can also be drawn on its own, with a region of practical equivalence and the probability of direction annotated per parameter (Kruschke, 2018).
 
 ```{r, fig.height = 5, fig.alt = 'Half-eye plots of the posterior of each fixed effect with the frequentist point estimate and interval overlaid'}
 draws <- readRDS(system.file('extdata', 'lexdec_draws.rds', package = 'depictr'))
@@ -153,7 +153,7 @@ posterior_plot(slopes, style = 'halfeye', rope = c(-5, 5), pd = TRUE,
                title = 'Fixed-effect posteriors (ms), with ROPE and pd')
 ```
 
-The third question is whether the study was large enough. The package ships the summary of a simr power curve for the word-frequency slope at five sample sizes, and the plotting function accepts such a summary as a data frame, so simr is not needed to draw it. A fuller treatment of design analysis by simulation is the subject of the [pilotr post](/2026/pilotr-pilot-the-study-before-running-it/).
+Whether the study was large enough is the third question. The package ships the summary of a simr power curve for the word-frequency slope at five sample sizes, and the plotting function accepts such a summary as a data frame, so simr is not needed to draw it. A fuller treatment of design analysis by simulation is the subject of the [pilotr post](/2026/pilotr-pilot-the-study-before-running-it/).
 
 ```{r, fig.alt = 'Power curve for the word-frequency effect at 12 to 60 participants with confidence intervals'}
 pc <- readRDS(system.file('extdata', 'powercurve_lexdec_summary.rds', package = 'depictr'))
@@ -162,9 +162,9 @@ power_curve_plot(pc, x_lab = 'Number of participants',
                  title = 'Power for the word-frequency effect')
 ```
 
-## Diagnostics that know what they are looking at
+## Diagnostics that match the model class
 
-The diagnostics function recognises the class of the model. For a binomial model of accuracy it draws binned residuals (Gelman & Hill, 2007) and a quantile-quantile plot of randomised quantile residuals (Dunn & Smyth, 1996), with a seed so that the randomisation is reproducible, in place of the panels that suit a linear model.
+The diagnostics function recognises the class of the model. For a binomial model of accuracy, it draws binned residuals (Gelman & Hill, 2007) and a quantile-quantile plot of randomised quantile residuals (Dunn & Smyth, 1996), with a seed so that the randomisation is reproducible, in place of the panels that suit a linear model.
 
 ```{r, fig.height = 6, fig.alt = 'Four diagnostic panels for a binomial model of accuracy, including binned residuals and a quantile-quantile plot of randomised quantile residuals'}
 gfit <- glm(accuracy ~ word_frequency + condition + modality,
@@ -174,7 +174,7 @@ residual_diagnostics_plot(gfit, seed = 1, title = 'Accuracy model: GLM diagnosti
 
 ## The audit
 
-The palette is the eight colours of Okabe and Ito (2008), and the package checks them the way it checks any palette, by the CIE76 colour difference between every pair under normal vision and under each dichromacy simulated at full severity with the model of Machado et al. (2009). A palette that passes is not yet a safe figure, so a second function inspects a built plot and reports nine measurements beside their thresholds.
+The palette is based on the eight colours of Okabe and Ito (2008), with the package's own blue leading and a grey in place of black, and the package checks it the way it checks any palette, by the CIE76 colour difference between every pair under normal vision and under each dichromacy simulated at full severity with the model of Machado et al. (2009). Palette safety does not settle figure safety, so a second function inspects a built plot and reports nine measurements beside their thresholds.
 
 ```{r}
 depictr_palette()
@@ -191,19 +191,19 @@ p_density <- explore_distribution(lexical_decision, RT, group = condition,
 check_figure(p_density)
 ```
 
-Two rows fail on the default two-colour density. The orange sits at a contrast of about 2.25 to 1 against white, where the guideline for graphical objects asks for 3 to 1, and colour alone distinguishes the conditions. Both are mended in one line, by swapping in the darker vermillion and adding line type as a redundant channel, since the plot is an ordinary ggplot2 object. Text drawn for a 17.8 cm figure arrives at half its size in an 8.9 cm journal column, and the check can be run at that width.
+Two rows fail on the default two-colour density. The orange sits at a contrast of about 2.25 to 1 against white, where the guideline for graphical objects asks for 3 to 1, and colour alone distinguishes the conditions. Both are corrected in one line, by swapping in the darker vermillion and adding line type as a redundant channel, since the plot is an ordinary ggplot2 object. Text drawn for a 17.8 cm figure arrives at half its size in an 8.9 cm journal column, and the check can be run at that width.
 
 ```{r, fig.alt = 'Empirical cumulative distributions by priming condition in blue and vermillion with different line types, the mended version of the earlier figure'}
 p_mended <- ecdf_plot(lexical_decision, RT, group = condition,
                       palette = c('#005b96', '#d55e00'), legend_inside = TRUE,
-                      title = 'Mended: vermillion instead of orange, line type joins colour') +
+                      title = 'Corrected: darker vermillion, with line type as a second channel') +
   aes(linetype = condition)
 check_figure(p_mended)[, c('check', 'measured', 'threshold', 'verdict')]
 subset(check_figure(p_density, width_cm = 8.9), check == 'text_size')
 p_mended
 ```
 
-The package states the limit of its guarantee beside the claim. The eight colours pass every colour-vision check and fail in greyscale, where orange and sky blue differ by less than one unit of lightness, so a figure that may be printed in black and white needs a second channel as well.
+The documentation states the limit of the guarantee beside the claim. The eight colours pass every colour-vision check, and the closest pair in greyscale, the orange and the sky blue, differ by about one unit of CIE lightness, so a figure that may be printed in black and white needs a second channel as well.
 
 ## Composition and the Python twin
 
@@ -220,7 +220,7 @@ arrange_plots(p_density + labs(title = 'A first look'),
               tag_levels = 'A')
 ```
 
-The Python package uses the same function names and the same thresholds. The R session writes the data, the density audit and the colour-vision simulation to disk, and the Python session reads the data, repeats the audit and the simulation and compares. The mixed model is the one place where the engines differ by construction, lme4 against statsmodels, so the comparison below uses an ordinary regression on the correct trials, which both fit identically once the reference level of the categorical predictor is set to match.
+The Python package uses the same function names and the same thresholds. Below, the R session writes the data, the density audit and the colour-vision simulation to disk. The Python session then reads the data, repeats the audit and the simulation, and compares the two sets of results. The mixed model is the one place where the engines differ by construction, lme4 against statsmodels, so the comparison below uses an ordinary regression on the correct trials, which both fit identically once the reference level of the categorical predictor is set to match.
 
 ```{r}
 write.csv(lexical_decision, file.path(parity_dir, 'lexical_decision.csv'), row.names = FALSE)
@@ -263,7 +263,7 @@ print('OLS estimates and intervals within 1e-6:',
                   ols_r[['estimate', 'conf.low', 'conf.high']].to_numpy(), atol=1e-6))
 ```
 
-What the package does not do is also worth saying. It does not fit models, so the choice of model, contrasts and priors remains the analyst's, and the plots show what was fitted. The colour-difference thresholds are conventions, and the audit reports measurements against them so that a different threshold can be applied. Beyond eight categories the palette interpolates and warns, and the guarantee lapses, which is one more reason to prefer facets to colour when a figure has many groups.
+The package does not fit models, so the choice of model, contrasts and priors remains the analyst's, and the plots show what was fitted. The colour-difference thresholds are conventions, and the audit reports measurements against them so that a different threshold can be applied. Beyond eight categories, the palette interpolates and warns, and the guarantee lapses, which is one more reason to prefer facets to colour when a figure has many groups.
 
 ### References
 
@@ -272,6 +272,8 @@ Dunn, P. K., & Smyth, G. K. (1996). Randomized quantile residuals. *Journal of C
 Gelman, A., & Hill, J. (2007). *Data analysis using regression and multilevel/hierarchical models*. Cambridge University Press. https://doi.org/10.1017/CBO9780511790942
 
 Kruschke, J. K. (2018). Rejecting or accepting parameter values in Bayesian estimation. *Advances in Methods and Practices in Psychological Science*, *1*(2), 270–280. https://doi.org/10.1177/2515245918771304
+
+Ho, J., Tumkaya, T., Aryal, S., Choi, H., & Claridge-Chang, A. (2019). Moving beyond P values: Data analysis with estimation graphics. *Nature Methods*, *16*(7), 565–566. https://doi.org/10.1038/s41592-019-0470-3
 
 Machado, G. M., Oliveira, M. M., & Fernandes, L. A. F. (2009). A physiologically-based model for simulation of color vision deficiency. *IEEE Transactions on Visualization and Computer Graphics*, *15*(6), 1291–1298. https://doi.org/10.1109/TVCG.2009.113
 

@@ -32,8 +32,8 @@ projects: []
 <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
 
 
-<p>Most experiments in psycholinguistics cross participants with items, and the analysis that respects that structure is a mixed model with random intercepts and slopes for both (Barr et al., 2013). No formula gives the power of such an analysis. The power depends on the number of participants and of items, on the variance of each source of variation, on the correlations between intercepts and slopes and on the response distribution, and the only way to learn it is to write down the design and simulate it many times (DeBruine &amp; Barr, 2021). Doing so before the study rather than after is the difference between a plan and an excuse, and it is also a chance to see the data that the design would produce and to catch a mistaken assumption while it is cheap.</p>
-<p>pilotr makes the design the unit of work. A design is a specification, a small JSON document with the units, the factors, the predictors, the fixed effects, the random effects and the response family, which is validated before anything is simulated. The same specification produces a data set, the formula of the analysis it implies, a power analysis with Type S and Type M errors (Gelman &amp; Carlin, 2014), a precision analysis against a region of practical equivalence, and a set of scripts that reproduce the whole exercise. The R and the Python packages read the same specification and, given the same seed, generate the same data, which the post checks at the end.</p>
+<p>Most experiments in psycholinguistics cross participants with items, and the analysis that respects that structure is a mixed model with random intercepts and slopes for both (Barr et al., 2013). No formula gives the power of such an analysis. The power depends on the number of participants and of items, on the variance of each source of variation, on the correlations between intercepts and slopes and on the response distribution, and the only way to learn it is to write down the design and simulate it many times (DeBruine &amp; Barr, 2021). Simulating before the study, while the design can still be changed, is what makes the chosen sample size a decision. It is also a chance to see the data that the design would produce, and to catch a mistaken assumption while it is cheap.</p>
+<p>In pilotr, the design is the object that is written, validated and reused. A design is a specification, a small JSON document with the units, the factors, the predictors, the fixed effects, the random effects and the response family, which is validated before anything is simulated. The same specification produces a data set, the formula of the analysis it implies, a power analysis with Type S and Type M errors (Gelman &amp; Carlin, 2014), a precision analysis against a region of practical equivalence, and a set of scripts that reproduce the whole exercise. The R and the Python packages read the same specification and, given the same seed, generate the same data, down to the bytes.</p>
 <pre class="r"><code>library(pilotr)
 library(ggplot2)
 packageVersion(&#39;pilotr&#39;)</code></pre>
@@ -42,7 +42,7 @@ packageVersion(&#39;pilotr&#39;)</code></pre>
 n_sims &lt;- 50L</code></pre>
 <div id="the-design-written-once" class="section level2">
 <h2>The design, written once</h2>
-<p>The experiment is a semantic-priming lexical-decision task: 30 participants, 24 target words, each seen with a related and an unrelated prime. Reaction times follow a shifted lognormal distribution, 200 ms plus a lognormal component, so the effects are on the log scale, where an intercept of 6 puts the typical response near 600 ms and a priming effect of 0.05 is a slowing of about five per cent for unrelated primes. Two continuous predictors enter, the frequency of the target word at the item level and the vocabulary of the participant at the participant level, the latter measured with a reliability of 0.8, which is what a vocabulary test delivers. A cross-level interaction lets priming grow with vocabulary. Both participants and items have random intercepts and random priming slopes, with their correlations.</p>
+<p>The experiment is a semantic-priming lexical-decision task: 30 participants, 24 target words, each seen with a related and an unrelated prime. Reaction times follow a shifted lognormal distribution, 200 ms plus a lognormal component, so the effects are on the log scale, where an intercept of 6 puts the typical response near 600 ms and a priming effect of 0.05 is a slowing of about 20 ms for unrelated primes. Two continuous predictors enter, the frequency of the target word at the item level and the vocabulary of the participant at the participant level, the latter measured with a reliability of 0.8, which is what a vocabulary test delivers. A cross-level interaction lets priming grow with vocabulary. Both participants and items have random intercepts and random priming slopes, with their correlations.</p>
 <pre class="r"><code>spec &lt;- list(
   spec_version = &#39;0.3&#39;,
   name = &#39;semantic_priming_ldt&#39;,
@@ -122,7 +122,7 @@ ggplot(effs, aes(effect_ms, id, colour = unit)) +
 <pre class="r"><code>model_formula(spec)</code></pre>
 <pre><code>#&gt; .y ~ prime + z_freq + z_vocab + prime_z_vocab + (1 + prime | 
 #&gt;     subject) + (1 + prime | item)</code></pre>
-<p>Whether a simulation recovers the parameters that went into it is the check that DeBruine and Barr (2021) recommend before trusting a power analysis. One large simulated study fitted with the implied model recovers the fixed effects and the variance components, with the vocabulary slopes attenuated by the square root of the reliability, as they should be.</p>
+<p>Whether a simulation recovers the parameters that went into it is the check that DeBruine and Barr (2021) recommend before trusting a power analysis. One large simulated study, fitted with the implied model, returns the fixed effects below alongside their standard errors. The two vocabulary terms are attenuated, since the specification measures vocabulary with a reliability of 0.8, and the intercept and the priming effect are recovered closely.</p>
 <pre class="r"><code>big &lt;- spec
 big$units$subject$n &lt;- 80
 big$units$item$n &lt;- 60
@@ -152,7 +152,7 @@ c(subject_intercept_sd = from_fit$random$subject$intercept_sd,
 </div>
 <div id="power-and-what-a-significant-result-would-look-like" class="section level2">
 <h2>Power, and what a significant result would look like</h2>
-<p>Simulation-based power at the planned sample refits the implied model on each replicate and counts. The report includes the Monte Carlo standard error, a Wilson interval, the number of fits that were singular, which are counted and not dropped, and for each effect the Type S error, the share of significant estimates with the wrong sign, and the Type M error, the average factor by which significant estimates exaggerate the true effect.</p>
+<p>Simulation-based power at the planned sample refits the implied model on each replicate and counts how often each effect reaches significance. The report includes the Monte Carlo standard error, a Wilson interval, the number of fits that were singular, which are counted and not dropped, and for each effect the Type S error, the share of significant estimates with the wrong sign, and the Type M error, the average factor by which significant estimates exaggerate the true effect.</p>
 <pre class="r"><code>pw &lt;- power_mixed(spec, n_sims = n_sims, workers = workers)
 pw</code></pre>
 <pre><code>#&gt; Simulation-based power over 50 replicates (alpha = 0.05)
@@ -180,7 +180,7 @@ sweep[sweep$effect == &#39;prime&#39;,
 </div>
 <div id="how-many-participants" class="section level2">
 <h2>How many participants</h2>
-<p>A power curve over the number of participants is solved for the sample that reaches 80% power by a binomial regression of power on the square root of the sample size, weighted by the replicates behind each point, with an interval from the delta method. The solver refuses to extrapolate beyond the simulated range.</p>
+<p>A binomial regression of power on the square root of the sample size, weighted by the replicates behind each point, solves the curve for the sample that reaches 80% power, with an interval from the delta method. The solver returns no estimate outside the simulated range.</p>
 <pre class="r"><code>curve &lt;- power_curve_mixed(spec, subject_ns = c(16, 24, 32, 48, 64, 96),
                            n_sims = n_sims, workers = workers)
 cv_prime &lt;- curve[curve$effect == &#39;prime&#39;, ]
@@ -208,7 +208,7 @@ c(n = solved$n, n_lo = solved$n_lo, n_hi = solved$n_hi)</code></pre>
   labs(x = &#39;Participants (24 items)&#39;, y = &#39;Power for the priming effect&#39;) +
   theme_minimal(base_size = 13)</code></pre>
 <p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-13-1.png" alt="Power curve for the priming effect from 16 to 96 participants with a Monte Carlo band, the 80% line and the solved sample size marked" width="672" style="display: block; margin: auto;" /></p>
-<p>Power answers whether an effect would be detected. A different question is whether the study could tell a priming effect from a negligible one, which is what a region of practical equivalence (ROPE) formalises (Kruschke, 2018). With a ROPE of ±0.02 on the log scale, about 8 ms, the precision analysis asks how often the 95% interval would fall entirely outside the region, and solves the curve for the sample that reaches 80%.</p>
+<p>Power concerns detection. Precision concerns whether the study could tell a priming effect from a negligible one, which is what a region of practical equivalence (ROPE) formalises (Kruschke, 2018). With a ROPE of ±0.02 on the log scale, about 8 ms, the precision analysis asks how often the 95% interval would fall entirely outside the region, and solves the curve for the sample that reaches 80%.</p>
 <pre class="r"><code>prc &lt;- precision_curve(spec, focal = c(prime = 0.05),
                        subject_ns = c(16, 32, 64, 96, 128, 160, 200),
                        rope = 0.02, n_sims = n_sims, workers = workers)
@@ -242,7 +242,7 @@ p_right &lt;- ggplot(prc, aes(n_subject, mean_ci_width)) +
   theme_minimal(base_size = 12)
 patchwork::wrap_plots(p_left, p_right)</code></pre>
 <p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-15-1.png" alt="Two panels: the probability that the 95% interval lies outside the region of practical equivalence, and the mean interval width, both against the number of participants" width="768" style="display: block; margin: auto;" /></p>
-<p>The sample that detects the effect is well below the sample that pins it down, which is the usual finding and the reason to plan for precision when the size of an effect matters more than its existence.</p>
+<p>The sample that detects the effect is well below the sample that estimates it precisely, which is the usual finding and the reason to plan for precision when the size of an effect matters more than its existence.</p>
 <pre class="r"><code>sw_prime &lt;- sweep[sweep$effect == &#39;prime&#39;, ]
 tm &lt;- rbind(data.frame(source = &#39;effect-size sweep, N = 30&#39;, power = sw_prime$power,
                        type_m = sw_prime$type_m),
@@ -260,28 +260,10 @@ ggplot(tm, aes(power, type_m, colour = source)) +
 </div>
 <div id="the-artefacts" class="section level2">
 <h2>The artefacts</h2>
-<p>A plan is only useful if someone else can rerun it. The specification is written as JSON, an R script that embeds it at full precision is generated, the confirmatory brms model that the specification implies is written out with its formula, family and priors, and a Bayesian design analysis with a Savage-Dickey Bayes factor and a ROPE decision can be emitted as a script for a cluster. The replicate seeds come from a generator shared with the Python package.</p>
+<p>The artefacts below let someone else rerun the plan. The specification is written as JSON, an R script that embeds it at full precision is generated, the confirmatory brms model that the specification implies is written out with its formula, family and priors, and a Bayesian design analysis with a Savage-Dickey Bayes factor and a ROPE decision can be emitted as a script for a cluster. The replicate seeds come from a generator shared with the Python package.</p>
 <pre class="r"><code>writeLines(spec_json(spec), file.path(out_dir, &#39;semantic_priming_ldt.json&#39;))
 writeLines(generate_r_script(spec), file.path(out_dir, &#39;reproduce_design.R&#39;))
-bridge &lt;- brms_bridge(spec)</code></pre>
-<pre><code>#&gt; library(brms)
-#&gt; fit &lt;- brm(
-#&gt;   RT ~ prime + z_freq + z_vocab + prime:z_vocab + (1 + prime | subject) + (1 + prime | item),
-#&gt;   data   = your_data,
-#&gt;   family = shifted_lognormal(),
-#&gt;   prior  = c(
-#&gt;     prior(normal(0, 2.5), class = &quot;Intercept&quot;),
-#&gt;     prior(normal(0, 0.5), class = &quot;b&quot;, coef = &quot;prime&quot;),
-#&gt;     prior(normal(0, 0.5), class = &quot;b&quot;, coef = &quot;z_freq&quot;),
-#&gt;     prior(normal(0, 0.5), class = &quot;b&quot;, coef = &quot;z_vocab&quot;),
-#&gt;     prior(normal(0, 0.25), class = &quot;b&quot;, coef = &quot;prime:z_vocab&quot;),
-#&gt;     prior(normal(0, 1), class = &quot;sd&quot;),
-#&gt;     prior(lkj(2), class = &quot;cor&quot;)
-#&gt;   ),
-#&gt;   chains = 4, iter = 4000, warmup = 2000, cores = 4,
-#&gt;   control = list(adapt_delta = 0.95)
-#&gt; )</code></pre>
-<pre class="r"><code>cat(bridge$code)</code></pre>
+invisible(brms_bridge(spec))</code></pre>
 <pre><code>#&gt; library(brms)
 #&gt; fit &lt;- brm(
 #&gt;   RT ~ prime + z_freq + z_vocab + prime:z_vocab + (1 + prime | subject) + (1 + prime | item),
@@ -304,7 +286,7 @@ bridge &lt;- brms_bridge(spec)</code></pre>
 </div>
 <div id="the-same-bytes-from-python" class="section level2">
 <h2>The same bytes from Python</h2>
-<p>The two packages implement the same generator over the same specification, down to the order in which random deviates are drawn. The R session writes the simulated pilot data with every value at 17 significant digits and hashes it, and the Python session reads the specification, simulates and hashes the same format. The function names differ slightly, <code>simulate_design()</code> in R against <code>simulate()</code> in Python, since each follows its own language’s conventions.</p>
+<p>The two packages implement the same generator over the same specification, down to the order in which random deviates are drawn. Below, the R session writes the simulated pilot data with every value at 17 significant digits and hashes it. The Python session then reads the specification, simulates and hashes the same format. The function names differ slightly, <code>simulate_design()</code> in R against <code>simulate()</code> in Python, since each follows its own language’s conventions.</p>
 <pre class="r"><code>cell &lt;- function(v) if (is.character(v)) v else sprintf(&#39;%.17g&#39;, as.numeric(v))
 dump17 &lt;- function(d, path) {
   con &lt;- file(path, open = &#39;wb&#39;); on.exit(close(con))
@@ -338,7 +320,7 @@ print(&#39;replicate seeds:&#39;, pilotr.replicate_seeds(spec[&#39;seed&#39;], 5
 <pre><code>#&gt; pilotr 0.3.0
 #&gt; 8be654cd83d3a50dda49658d5142ad73
 #&gt; replicate seeds: [1222973854, 1397434102, 271722066, 2119005144, 1916898993]</code></pre>
-<p>Two cautions apply to everything above. Fifty replicates per point are enough to show the shape of the curves in a post and far too few for a plan, where two hundred or more are the norm and the Monte Carlo standard error is the quantity to watch. The specification also encodes assumptions, in particular the random-effect variances and correlations, that a real pilot or a published data set should supply, and the reverse direction from a fitted model exists for that reason.</p>
+<p>50 replicates per point are enough to show the shape of the curves in a post and far too few for a plan, where two hundred or more are the norm and the Monte Carlo standard error is the quantity to watch. The specification also encodes assumptions, in particular the random-effect variances and correlations, that a real pilot or a published data set should supply, and the reverse direction from a fitted model exists for that reason.</p>
 <div id="references" class="section level3">
 <h3>References</h3>
 <p>Barr, D. J., Levy, R., Scheepers, C., &amp; Tily, H. J. (2013). Random effects structure for confirmatory hypothesis testing: Keep it maximal. <em>Journal of Memory and Language</em>, <em>68</em>(3), 255–278. <a href="https://doi.org/10.1016/j.jml.2012.11.001" class="uri">https://doi.org/10.1016/j.jml.2012.11.001</a></p>

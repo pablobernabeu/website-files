@@ -15,7 +15,7 @@ tags:
   - Python
   - conceptual processing
 subtitle: ''
-summary: 'Psychology has a theory crisis as much as a replication crisis, and one reason is that theories live in prose, where nothing can be checked. theoryforge stores a theory as a small, versioned document and checks it: a rigour checklist with blockers, the conditional independencies the causal graph implies, compilation to lavaan syntax, a severity rubric for predictions, a Lakatosian appraisal of amendments and a preregistration export. This post puts a theory from my own field, modality switching in conceptual processing, through the whole cycle in R, tests its implications against simulated data from a rival world and closes with the Python twin producing the same dossier byte for byte.'
+summary: 'Psychology has a theory crisis as much as a replication crisis, and one reason is that theories live in prose, where their structure cannot be checked mechanically. theoryforge stores a theory as a small, versioned document and checks it: a rigour checklist with blockers, the conditional independencies the causal graph implies, compilation to lavaan syntax, a severity rubric for predictions, a Lakatosian appraisal of amendments and a preregistration export. This post puts a theory from my own field, modality switching in conceptual processing, through the whole cycle in R, tests its implications against simulated data from a rival world and closes with the Python twin producing the same dossier byte for byte.'
 authors: []
 lastmod: ''
 featured: no
@@ -34,7 +34,7 @@ projects: []
 <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
 
 
-<p>Psychological theories are mostly written in prose, and prose cannot be checked. Whether a theory forbids anything, whether its predictions follow from its propositions, whether an amendment made after a failed test adds content or merely protects the theory, whether two constructs are the same idea under two names: these questions have answers, and the literature on theory appraisal from Meehl (1990) onwards has said what they are, but nothing in the way theories are written down lets the answers be computed. theoryforge stores a theory as a small document, a YAML or JSON file with constructs, propositions, predictions, alternatives and provenance under a published schema, and treats that document the way software treats source code, with validation, tests, versions and diffs. The R and Python packages implement the same specification and produce the same artefacts, which the post checks at the end.</p>
+<p>Psychological theories are mostly written in prose, which does not let their structure be checked mechanically. Whether a theory forbids anything, whether its predictions follow from its propositions, whether an amendment made after a failed test adds content or merely protects the theory, whether two constructs are the same idea under two names: these questions have answers, and the literature on theory appraisal from Meehl (1990) onwards has said what they are, but nothing in the way theories are written down lets the answers be computed. theoryforge stores a theory as a small document, a YAML or JSON file with constructs, propositions, predictions, alternatives and provenance under a published schema, and then validates it, tests it, versions it and diffs it. The R and Python packages implement the same specification and produce the same artefacts, as the final section shows.</p>
 <p>The theory used throughout is the one bundled with the package that is closest to my own work: an account of modality switching in grounded conceptual processing, the finding that verifying a property of a concept in one perceptual modality is slower after a property in a different modality (Pecher et al., 2003), read as evidence that conceptual access recruits modality-specific systems (Barsalou, 1999). A second bundled theory, a network model of panic disorder with a feedback loop, serves as the contrast case at the one step where cycles matter.</p>
 <pre class="r"><code>library(theoryforge)
 packageVersion(&#39;theoryforge&#39;)</code></pre>
@@ -62,9 +62,9 @@ c(id = switching$id, title = switching$title, maturity = switching$maturity,
 #&gt;                                                    &quot;4&quot; 
 #&gt;                                           alternatives 
 #&gt;                                                    &quot;2&quot;</code></pre>
-<div id="a-document-that-refuses-to-be-wrong-quietly" class="section level2">
-<h2>A document that refuses to be wrong quietly</h2>
-<p>Validation has two levels. The structural pass checks required fields, enumerations and, since version 0.6.0, unknown keys at the top level, which matters because a misspelt collection used to be dropped silently and moved the rigour score. The full pass adds referential integrity, so that a prediction cannot be derived from a proposition that does not exist.</p>
+<div id="validation-at-two-levels" class="section level2">
+<h2>Validation at two levels</h2>
+<p>Validation runs at two levels. The structural pass checks required fields, enumerations and, since version 0.6.0, unknown keys at the top level, which matters because a misspelt collection used to be dropped silently and moved the rigour score. The full pass adds referential integrity, so that a prediction cannot be derived from a proposition that does not exist.</p>
 <pre class="r"><code>tf_validate(switching, full = TRUE)
 misspelt &lt;- switching
 names(misspelt)[names(misspelt) == &#39;predictions&#39;] &lt;- &#39;predicitions&#39;
@@ -84,27 +84,37 @@ c(score = rep$aggregate_score, gate = rep$gate, blockers_failed = rep$n_blockers
 #&gt;          &quot;85.1&quot;          &quot;pass&quot;             &quot;0&quot;</code></pre>
 <pre class="r"><code>do.call(rbind, lapply(rep$items, function(it)
   data.frame(id = it$id, status = it$status, score = it$score, weight = it$weight,
-             blocker = it$severity_if_fail == &#39;blocker&#39;)))</code></pre>
-<pre><code>#&gt;                    id status score weight blocker
-#&gt; 1      falsifiability   pass 1.000   0.15    TRUE
-#&gt; 2           precision   pass 0.750   0.10   FALSE
-#&gt; 3       risk_severity   pass 0.613   0.10   FALSE
-#&gt; 4           parsimony   pass 0.500   0.08   FALSE
-#&gt; 5      non_redundancy   pass 0.850   0.10   FALSE
-#&gt; 6   construct_clarity   pass 1.000   0.08   FALSE
-#&gt; 7               scope   pass 1.000   0.06   FALSE
-#&gt; 8         logical_why   pass 1.000   0.08   FALSE
-#&gt; 9  causal_testability   pass 1.000   0.06   FALSE
-#&gt; 10      diagnosticity   pass 0.500   0.06   FALSE
-#&gt; 11      formalisation   pass 1.000   0.05   FALSE
-#&gt; 12   derivation_chain   pass 1.000   0.08    TRUE</code></pre>
-<p>The deliberately underspecified theory that ships with the package shows the other end of the scale, and its development roadmap, one of the ten diagram views, orders the repair work with the blockers first.</p>
+             blocker = it$severity_if_fail == &#39;blocker&#39;,
+             citation = substr(it$citation, 1, 34))))</code></pre>
+<pre><code>#&gt;                    id status score weight blocker                           citation
+#&gt; 1      falsifiability   pass 1.000   0.15    TRUE    Popper (1959); Bacharach (1989)
+#&gt; 2           precision   pass 0.750   0.10   FALSE                 Meehl (1967, 1990)
+#&gt; 3       risk_severity   pass 0.613   0.10   FALSE          Mayo (2018); Meehl (1990)
+#&gt; 4           parsimony   pass 0.500   0.08   FALSE Forster &amp; Sober (1994); Lakatos (1
+#&gt; 5      non_redundancy   pass 0.850   0.10   FALSE Kelley (1927); Le et al. (2010); L
+#&gt; 6   construct_clarity   pass 1.000   0.08   FALSE Suddaby (2010); Cronbach &amp; Meehl (
+#&gt; 7               scope   pass 1.000   0.06   FALSE   Whetten (1989); Bacharach (1989)
+#&gt; 8         logical_why   pass 1.000   0.08   FALSE Sutton &amp; Staw (1995); Whetten (198
+#&gt; 9  causal_testability   pass 1.000   0.06   FALSE Textor et al. (2016); Eronen &amp; Bri
+#&gt; 10      diagnosticity   pass 0.500   0.06   FALSE       Platt (1964); Fiedler (2017)
+#&gt; 11      formalisation   pass 1.000   0.05   FALSE Robinaugh et al. (2021); Guest &amp; M
+#&gt; 12   derivation_chain   pass 1.000   0.08    TRUE Scheel et al. (2021); Szollosi et</code></pre>
+<p>The deliberately underspecified theory that ships with the package shows the other end of the scale. Its development roadmap, one of the ten diagram views, lists the items to fix with the blockers first, and a separate screen compares the definitions of the constructs pairwise, so that two names for one idea can be caught before they become two constructs.</p>
 <pre class="r"><code>weak &lt;- tf_read(tf_example_path(&#39;weak-theory.theory.yaml&#39;))
 weak_rep &lt;- tf_check(weak)
 c(score = weak_rep$aggregate_score, gate = weak_rep$gate,
   blockers_failed = weak_rep$n_blockers_failed)</code></pre>
 <pre><code>#&gt;           score            gate blockers_failed 
 #&gt;            &quot;12&quot;       &quot;blocked&quot;             &quot;2&quot;</code></pre>
+<pre class="r"><code>head(strsplit(tf_diagram(weak, type = &#39;development_roadmap&#39;), &#39;\n&#39;)[[1]], 8)</code></pre>
+<pre><code>#&gt; [1] &quot;digraph development_roadmap {&quot;                                                                                                                                                                       
+#&gt; [2] &quot;  graph [rankdir=TB, bgcolor=\&quot;transparent\&quot;, fontname=\&quot;Helvetica\&quot;, fontsize=11, pad=\&quot;0.2\&quot;, nodesep=\&quot;0.3\&quot;, ranksep=\&quot;0.45\&quot;];&quot;                                                                 
+#&gt; [3] &quot;  node [fontname=\&quot;Helvetica\&quot;, fontsize=11, shape=box, style=\&quot;rounded,filled\&quot;, color=\&quot;#33567A\&quot;, fillcolor=\&quot;#F2F6F9\&quot;, fontcolor=\&quot;#12283A\&quot;, penwidth=1.1, margin=\&quot;0.16,0.1\&quot;];&quot;              
+#&gt; [4] &quot;  edge [fontname=\&quot;Helvetica\&quot;, fontsize=10, color=\&quot;#7B909F\&quot;, fontcolor=\&quot;#0F6E6E\&quot;, arrowsize=0.7];&quot;                                                                                              
+#&gt; [5] &quot;  \&quot;roadmap\&quot; [shape=ellipse, label=\&quot;An underspecified\\nmotivation theory\\nscore 12.0, gate blocked\&quot;, fillcolor=\&quot;#12283A\&quot;, color=\&quot;#12283A\&quot;, fontcolor=\&quot;#FFFFFF\&quot;];&quot;                         
+#&gt; [6] &quot;  \&quot;falsifiability\&quot; [label=\&quot;1. falsifiability\\nAt least one\\nprediction forbids an\\nobservation\\nblocks the gate\&quot;, fillcolor=\&quot;#F9E5E4\&quot;, color=\&quot;#B2453C\&quot;];&quot;                                
+#&gt; [7] &quot;  \&quot;derivation_chain\&quot; [label=\&quot;2. derivation_chain\\nEach prediction is\\ngraph-reachable from\\npropositions\\n(reachability only)\\nblocks the gate\&quot;, fillcolor=\&quot;#F9E5E4\&quot;, color=\&quot;#B2453C\&quot;];&quot;
+#&gt; [8] &quot;  \&quot;precision\&quot; [label=\&quot;3. precision\\nPredictions are\\npoint/interval, not\\nmerely directional\\nadvisory\&quot;, fillcolor=\&quot;#FBF1DC\&quot;, color=\&quot;#9C6B14\&quot;];&quot;</code></pre>
 <pre class="r"><code>head(tf_redundancy_check(switching), 3)</code></pre>
 <pre><code>#&gt;                       a                     b similarity flag
 #&gt; 1 c_modality_activation         c_switch_cost      0.150   ok
@@ -113,7 +123,7 @@ c(score = weak_rep$aggregate_score, gate = weak_rep$gate,
 </div>
 <div id="the-diagram" class="section level2">
 <h2>The diagram</h2>
-<p>Every diagram view is deterministic text, in DOT, in dagitty syntax or in SVG, which a website can render and a version-control system can diff. The theory object is plain data, so a Mermaid flowchart, which this site renders in the browser, is a short helper away.</p>
+<p>Every diagram view is deterministic text, in DOT, in dagitty syntax or in SVG, which a website can render and a version-control system can diff. The theory object is plain data, so a Mermaid flowchart, which this site renders in the browser, can be produced by a short helper function.</p>
 <pre class="r"><code>cat(tf_diagram(switching, type = &#39;causal_dag&#39;))</code></pre>
 <pre><code>#&gt; dag {
 #&gt;   c_sensorimotor_experience -&gt; c_modality_activation
@@ -195,7 +205,7 @@ data.frame(claim = vapply(impl$implications, function(x) x$statement, character(
 #&gt; 4    0.019   0.002  8.8e-01
 #&gt; 5    0.006   0.012  4.3e-01
 #&gt; 6    0.006  -0.021  1.9e-01</code></pre>
-<p>In the world generated by the theory every claim holds. In the rival world one claim fails, the marginal independence of sensorimotor experience and lexical familiarity, and the other five still hold, which is the pattern that would tell a researcher which part of the theory the data contradict.</p>
+<p>In the world generated by the theory, every claim holds. In the rival world one claim fails, the marginal independence of sensorimotor experience and lexical familiarity, and the other five still hold, which is the pattern that would tell a researcher which part of the theory the data contradict.</p>
 </div>
 <div id="from-the-graph-to-a-fitted-model" class="section level2">
 <h2>From the graph to a fitted model</h2>
@@ -248,7 +258,7 @@ lavaan::lavTestLRT(fit_restricted, fit)</code></pre>
 </div>
 <div id="how-risky-are-the-predictions" class="section level2">
 <h2>How risky are the predictions</h2>
-<p>A prediction that could hardly fail corroborates little. The severity rubric scores each prediction by its type, from a bare existence claim to a point prediction, discounts directional predictions by Meehl’s crud factor and adds credit for naming a registered rival. The preregistration export turns the theory into the skeleton of a registration, with the predictions, their severities and the outcomes that would count against them.</p>
+<p>A prediction that could hardly fail provides little corroboration, which is what the severity rubric scores. It scores each prediction by its type, from a bare existence claim to a point prediction, discounts directional predictions by Meehl’s crud factor and adds credit for naming a registered rival. The preregistration export turns the theory into the skeleton of a registration, with the predictions, their severities and the outcomes that would count against them.</p>
 <pre class="r"><code>tf_severity(switching)</code></pre>
 <pre><code>#&gt;   prediction_id        type risk_score computed_severity
 #&gt; 1         pred1 directional        0.4               0.3
@@ -276,8 +286,8 @@ cat(head(strsplit(prereg, &#39;\n&#39;)[[1]], 30), sep = &#39;\n&#39;)</code></p
 #&gt; - pred3: severity 1.0, risk 0.9
 #&gt; - pred4: severity 0.8, risk 0.7</code></pre>
 </div>
-<div id="amending-a-theory-without-cheating" class="section level2">
-<h2>Amending a theory without cheating</h2>
+<div id="progressive-and-degenerating-amendments" class="section level2">
+<h2>Progressive and degenerating amendments</h2>
 <p>Lakatos distinguished progressive amendments, which add content that survives a test, from degenerating ones, which add an assumption to protect a prediction that failed (Lakatos, 1978). The appraisal function makes that distinction on two versions of a theory. The package’s own pair of panic-network versions is progressive, since the second adds a prediction that was later corroborated. Two amendments of the modality-switching theory show both outcomes: an auxiliary assumption that protects a prediction with no passing test in sight, and a new prediction about the N400 in EEG, derived from the existing propositions and recorded as passed.</p>
 <pre class="r"><code>panic_v2 &lt;- tf_read(tf_example_path(&#39;panic-network-2026-v2.theory.yaml&#39;))
 str(tf_appraise_amendment(panic_v2, panic))</code></pre>
@@ -312,7 +322,9 @@ str(tf_appraise_amendment(switching_v2, switching))</code></pre>
 <pre class="r"><code>c(v1 = rep$aggregate_score, v2 = tf_check(switching_v2)$aggregate_score)</code></pre>
 <pre><code>#&gt;   v1   v2 
 #&gt; 85.1 82.8</code></pre>
-<p>Every builder verb logs a provenance entry, so the history of the document records who changed what and when, and the version block records the lineage.</p>
+<pre class="r"><code>tf_check(switching_v2)$items[[3]]$score   # risk_severity, the item that moved</code></pre>
+<pre><code>#&gt; [1] 0.59</code></pre>
+<p>The rigour score falls slightly from the first version to the second, because the new prediction is directional and its severity of 0.5 sits below the mean of the four predictions it joins. A theory that gains content can therefore lose a point on a checklist item, which is a reminder that the score measures how completely a theory is specified and not how good it is. Every builder verb logs a provenance entry, so the history of the document records who changed what and when, and the version block records the lineage.</p>
 <pre class="r"><code>tail(do.call(rbind, lapply(switching_v2$provenance, as.data.frame)), 2)</code></pre>
 <pre><code>#&gt;   step            action
 #&gt; 3    3        tf_predict
@@ -321,9 +333,9 @@ str(tf_appraise_amendment(switching_v2, switching))</code></pre>
 #&gt; 3 Derived four predictions, two of them diagnostic against a registered alternative.
 #&gt; 4                                                                              pred5</code></pre>
 </div>
-<div id="versions-with-a-fingerprint" class="section level2">
-<h2>Versions with a fingerprint</h2>
-<p>The dossier is a Markdown summary of the whole theory, and because it is byte-identical between the R and Python packages, its checksum serves as a language-independent fingerprint of the theory’s state, which the version block can carry. The amended theory is written out, read back and found unchanged.</p>
+<div id="a-checksum-for-each-version" class="section level2">
+<h2>A checksum for each version</h2>
+<p>The dossier is a Markdown summary of the whole theory, and because it is byte-identical between the R and Python packages, its checksum serves as a language-independent identifier of the theory’s state, which the version block can carry. The amended theory is written out, read back and found unchanged.</p>
 <pre class="r"><code>write_raw &lt;- function(s, name) {
   path &lt;- file.path(out_dir, name)
   writeBin(charToRaw(enc2utf8(s)), path)
@@ -356,7 +368,7 @@ print(&#39;rigour score:&#39;, switching.check()[&#39;aggregate_score&#39;])</co
 #&gt; 2c314f0651ebbaf42d668f692fd88a39
 #&gt; identical to the R dossier: True
 #&gt; rigour score: 85.1</code></pre>
-<p>Beyond the artefacts shown here, the package writes a Quarto report, deposits a dossier on OSF from a dry run that can be inspected before anything is sent, simulates the construct network as a dynamical system, and maps a bibliographic corpus around a theory to point out fronts that the theory does not yet address, with corpora that the <a href="/2026/scopusflow-a-literature-search-you-can-rerun/">scopusflow package</a> can supply. The checklist remains a structural and lexical screen. It can say that a theory forbids something and that its predictions follow from its propositions; whether the theory is true is for the tests that the document now makes easier to specify.</p>
+<p>Beyond the artefacts shown here, the package writes a Quarto report, deposits a dossier on OSF from a dry run that can be inspected before anything is sent, simulates the construct network as a dynamical system, and maps a bibliographic corpus around a theory to point out topics that the theory does not yet address, with corpora that the <a href="/2026/scopusflow-a-literature-search-you-can-rerun/">scopusflow package</a> can supply. The checklist remains a structural and lexical screen. It can say that a theory forbids something and that its predictions follow from its propositions; whether the theory is true is for the tests that the document now makes easier to specify.</p>
 <div id="references" class="section level3">
 <h3>References</h3>
 <p>Barsalou, L. W. (1999). Perceptual symbol systems. <em>Behavioral and Brain Sciences</em>, <em>22</em>(4), 577–660. <a href="https://doi.org/10.1017/S0140525X99002149" class="uri">https://doi.org/10.1017/S0140525X99002149</a></p>

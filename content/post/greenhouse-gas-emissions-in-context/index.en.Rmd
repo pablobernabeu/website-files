@@ -38,7 +38,7 @@ Socioeconomic status is one covariate to consider alongside raw emission statist
 
 All emissions come from the 2025 EDGAR booklet (Crippa et al., 2025), which runs from 1970 to 2024. Greenhouse gas (GHG) here covers fossil CO<sub>2</sub>, CH<sub>4</sub>, N<sub>2</sub>O and fluorinated gases, aggregated with the 100-year global warming potentials of the IPCC Fifth Assessment Report, and excludes land use, land-use change and forestry. The booklet reports totals in million tonnes of CO<sub>2</sub> equivalent per year (Mt CO<sub>2</sub>eq) and per-capita emissions in tonnes per person, and it includes the EU27 and the world as rows of their own, which are used as such throughout and never recomputed from the countries.
 
-This post reads three compact files that were derived from the booklet and from three context sources in the [companion repository](https://github.com/pablobernabeu/ECB-task), where the document that builds them from the original workbooks also lives. `ghg_long.csv` holds one row per territory and year with its continent, income group, total, per-capita figure, derived population and euro-area membership; `hdi_2023.csv` holds the Human Development Index for 2023 from the 2025 Human Development Report (United Nations Development Programme, 2025); and `sectors_2024.csv` holds the 2024 emissions of each territory by EDGAR sector, summed over the four substances. Continents come from the ISO 3166 dataset maintained by Duncalfe (n.d.) and income groups from the World Bank classification for fiscal year 2026 (World Bank, 2025).
+This post reads three compact files that were derived from the booklet and from three context sources in the [companion repository](https://github.com/pablobernabeu/ECB-task), where the document that builds them from the original workbooks also lives. `ghg_long.csv` holds one row per territory and year with its continent, income group, total, per-capita figure, derived population and euro-area membership. `hdi_2023.csv` holds the Human Development Index for 2023 from the 2025 Human Development Report (United Nations Development Programme, 2025). `sectors_2024.csv` holds the 2024 emissions of each territory by EDGAR sector, summed over the four substances. Continents come from the ISO 3166 dataset maintained by Duncalfe (n.d.) and income groups from the World Bank classification for fiscal year 2026 (World Bank, 2025).
 
 The population of each territory and year is the total divided by the per-capita figure, which recovers the population series behind EDGAR's own per-capita values without a further source. EDGAR reports Serbia and Montenegro (code SCG) and Sudan and South Sudan (code SDN) as combined territories, and likewise folds Liechtenstein into Switzerland, Andorra into Spain, Monaco into France, San Marino and the Holy See into Italy and the State of Palestine into Israel. These rows are kept exactly as reported and are later compared with the HDI of the member whose code they carry. The first chunk loads the packages, sets one theme for all static figures and fixes the colours, taken from the Okabe-Ito palette, that each continent and income group keeps throughout.
 
@@ -89,7 +89,7 @@ caption_theme <- theme(
                                         margin = margin(t = 10)))
 ```
 
-The next chunk reads the sheets of totals and per-capita emissions, moves the years from columns into rows, derives the population of each territory and year as the ratio of the total to the per-capita figure (Mt divided by tonnes per person gives millions of people) and checks that the country rows plus international aviation and shipping add up to EDGAR's global total.
+The next chunk reads the three files, separates EDGAR's own EU27 and world rows from the territories, and lists the joint territories so that later sections can match them to the right HDI.
 
 ```{r data}
 ghg <- read.csv('data/ghg_long.csv', stringsAsFactors = FALSE)
@@ -209,9 +209,9 @@ World emissions reached `r fmt(world_2024)` Mt CO<sub>2</sub>eq in 2024, `r pct(
 
 ## Income groups
 
-The original version summed per-capita values across the countries of each income group, which produces a number with no interpretation, since per-capita figures cannot be added. The finished version uses the population-weighted mean, the total emissions of the group divided by its population, which is the per-capita emission of the group treated as one territory. Panel (a) of figure 2 shows this quantity for the four World Bank income groups of fiscal year 2026 (World Bank, 2025), and panel (b) shows, for each group, its share of world emissions as a solid line and its share of world population as a dashed line, so that the distance between the two lines is the gap between what a group emits and what it would emit at the world average.
+The original version summed per-capita values across the countries of each income group, which produced a number with no interpretation, since per-capita figures cannot be added. The finished version uses the population-weighted mean, the total emissions of the group divided by its population, which is the per-capita emission of the group treated as one territory. Panel (a) of figure 2 shows this quantity for the four World Bank income groups of fiscal year 2026 (World Bank, 2025), and panel (b) shows, for each group, its share of world emissions as a solid line and its share of world population as a dashed line, so that the distance between the two lines is the gap between what a group emits and what it would emit at the world average.
 
-```{r fig2-income-groups, fig.height = 10, fig.alt = 'Two panels. Panel a shows population-weighted mean per-capita emissions from 1970 to 2024 for four World Bank income groups: the high-income line stays far above the others and declines after 2005, the upper-middle-income line rises steeply after 2000 to more than half the high-income level, and the lower-middle-income and low-income lines stay below 3 tonnes per person. Panel b has one small panel per income group with its share of world emissions as a solid line and of world population as a dashed line: the high-income share of emissions falls from two thirds to one third while its population share stays below a fifth, and in the two lowest groups the population share lies far above the emission share.'}
+```{r fig2-income-groups, fig.height = 10, fig.alt = 'Two panels. Panel a shows population-weighted mean per-capita emissions from 1970 to 2024 for four World Bank income groups: the high-income line stays far above the others, changes little until the mid-2000s and then falls, the upper-middle-income line rises steeply after 2000 to more than half the high-income level, and the lower-middle-income and low-income lines stay below 3 tonnes per person. Panel b has one small panel per income group with its share of world emissions as a solid line and of world population as a dashed line: the high-income share of emissions falls from two thirds to one third while its population share falls from about a quarter to under a fifth, and in the two lowest groups the population share lies far above the emission share.'}
 world_population <- countries %>%
   filter(!is.na(population)) %>%
   group_by(year) %>%
@@ -291,7 +291,7 @@ In 2024, a resident of a high-income country emitted `r fmt(income_value('High i
 
 ## The twenty largest emitters
 
-Figure 3 ranks countries by their 2024 total, coloured by continent, with each country's share of the world total printed at the end of its bar and its per-capita emissions in a dot plot beside it. The original version drew confidence intervals around these bars, computed as the standard error of a mean across years, which measure the year-to-year variation of a series and say nothing about the uncertainty of a sum, so they are omitted here.
+Figure 3 ranks countries by their 2024 total, coloured by continent, with each country's share of the world total printed at the end of its bar and its per-capita emissions in a dot plot beside it. The original version drew confidence intervals around these bars, computed as the standard error of a mean across years. Such an interval measures the year-to-year variation of a series and says nothing about the uncertainty of a sum, so it is omitted here.
 
 ```{r fig3-top-emitters, fig.height = 7, fig.alt = 'Horizontal bar chart of the twenty largest emitters in 2024, coloured by continent, with China far ahead, followed by the United States, India, Russia, Indonesia, Brazil, Japan and Iran. A dot plot beside the bars shows per-capita emissions, which are highest for Saudi Arabia, Australia, Canada, Russia and the United States and lowest for Pakistan, India and Indonesia.'}
 top20 <- countries %>%
@@ -302,7 +302,11 @@ top20 <- countries %>%
   mutate(country = factor(country, levels = rev(country)))
 
 top_value <- function(code, variable) top20[[variable]][top20$iso3 == code]
-world_per_capita <- world_2024 / world_population$world_population[world_population$year == 2024] * 1e6
+# The world total includes international aviation and shipping, whose two rows
+# carry no population, so the reference line uses the country total over the
+# country population, keeping the numerator and the denominator on the same set.
+countries_2024 <- countries %>% filter(year == 2024, !iso3 %in% c('AIR', 'SEA'))
+world_per_capita <- sum(countries_2024$total_mt) / sum(countries_2024$population) * 1e6
 
 p3a <- ggplot(top20, aes(total_mt, country, fill = continent)) +
   geom_col(width = 0.72) +
@@ -328,7 +332,7 @@ p3a + p3b +
   plot_annotation(
     caption = paste0(edgar_caption, ' Units: million tonnes of CO<sub>2</sub> equivalent (panel a)',
                      ' and tonnes per person (panel b), both for 2024.<br>',
-                     'The dotted line in panel b is the world average of ',
+                     'The dotted line in panel b is the average across countries, ',
                      fmt(world_per_capita, 1), ' t per person.'),
     theme = caption_theme
   ) &
@@ -506,7 +510,7 @@ leaflet(world_sf, width = '100%', height = 520,
 
 <p class="caption">Figure 6. Source: EDGAR 2025 (Crippa et al., 2025), the Human Development Report 2025 (United Nations Development Programme, 2025) and Natural Earth boundaries via rnaturalearth. Units: residual of log10 per-capita emissions (2015 to 2024 mean) from the linear model on HDI 2023; 10<sup>residual</sup> is the ratio of actual to expected emissions. Boundaries carry no political meaning.</p>
 
-The largest positive residual belongs to `r hdi_data$country[which.max(hdi_data$residual)]`, at `r fmt(max(hdi_data$ratio), 1)` times its expected level, and the largest negative one to `r hdi_data$country[which.min(hdi_data$residual)]`, at `r fmt(min(hdi_data$ratio), 2)` times. The table below lists the ten countries at each end. Oil and gas exporters (Qatar, Kuwait, Bahrain, Turkmenistan, Brunei and Libya) and small states whose per-capita figure is set by one power plant or one fleet (Palau, with `r fmt(hdi_data$population[hdi_data$iso3 == 'PLW'] / 1e3)` thousand inhabitants, and Trinidad and Tobago) fill the positive end, together with Mongolia, where fuel extraction and livestock account for `r pct(sum(sectors_2024$mt[sectors_2024$iso3 == 'MNG' & sectors_2024$sector %in% c('Fuel Exploitation', 'Agriculture')]) / sum(sectors_2024$mt[sectors_2024$iso3 == 'MNG']) * 100, 0)` of emissions, and with Chad and the Central African Republic, where agriculture makes up `r pct(sectors_2024$mt[sectors_2024$iso3 == 'TCD' & sectors_2024$sector == 'Agriculture'] / sum(sectors_2024$mt[sectors_2024$iso3 == 'TCD']) * 100, 0)` and `r pct(sectors_2024$mt[sectors_2024$iso3 == 'CAF' & sectors_2024$sector == 'Agriculture'] / sum(sectors_2024$mt[sectors_2024$iso3 == 'CAF']) * 100, 0)` of emissions and methane from herds counts in full at a low HDI. The negative end mixes small island states, countries of South Asia and Sub-Saharan Africa with low emissions for their HDI and, at the top of the HDI range, Switzerland (reported by EDGAR together with Liechtenstein), whose electricity comes largely from hydropower and nuclear plants. Because EDGAR reports Sudan and South Sudan as one territory, their combined per-capita figure is compared with the HDI of Sudan and mapped onto both countries.
+The largest positive residual belongs to `r hdi_data$country[which.max(hdi_data$residual)]`, at `r fmt(max(hdi_data$ratio), 1)` times its expected level, and the largest negative one to `r hdi_data$country[which.min(hdi_data$residual)]`, at `r fmt(min(hdi_data$ratio), 2)` times. The table below lists the ten countries at each end. Oil and gas exporters fill most of the positive end, together with small states whose per-capita figure is set by one power plant or one fleet, such as Palau, with `r fmt(hdi_data$population[hdi_data$iso3 == 'PLW'] / 1e3)` thousand inhabitants. Two pastoral economies also appear there. In Mongolia, fuel extraction and livestock account for `r pct(sum(sectors_2024$mt[sectors_2024$iso3 == 'MNG' & sectors_2024$sector %in% c('Fuel Exploitation', 'Agriculture')]) / sum(sectors_2024$mt[sectors_2024$iso3 == 'MNG']) * 100, 0)` of emissions, and in Chad agriculture accounts for `r pct(sectors_2024$mt[sectors_2024$iso3 == 'TCD' & sectors_2024$sector == 'Agriculture'] / sum(sectors_2024$mt[sectors_2024$iso3 == 'TCD']) * 100, 0)`. Methane from herds enters the total in full, and the model expects little of it at a low HDI, so a country whose emissions are mostly livestock lands above the line. The negative end mixes small island states and countries of South Asia and Sub-Saharan Africa with low emissions for their HDI, and, at the top of the HDI range, Switzerland (reported by EDGAR together with Liechtenstein), whose electricity comes largely from hydropower and nuclear plants. Because EDGAR reports Sudan and South Sudan as one territory, their combined per-capita figure is compared with the HDI of Sudan and mapped onto both countries.
 
 ```{r residual-table}
 bind_rows(hdi_data %>% slice_max(residual, n = 10),
@@ -524,7 +528,7 @@ bind_rows(hdi_data %>% slice_max(residual, n = 10),
 The table shows how different the two ends are in kind: the positive end is dominated by fuel exporters and by pastoral or very small economies, whereas the negative end has no single cause and ranges from an HDI of `r fmt(min(hdi_data$hdi_2023[order(hdi_data$residual)][1:10]), 2)` to `r fmt(max(hdi_data$hdi_2023[order(hdi_data$residual)][1:10]), 2)`.
 
 
-## Analysis details
+## How the figures were produced
 
 ```{r session, include = FALSE}
 packages_used <- c('dplyr', 'tidyr', 'ggplot2', 'patchwork', 'scales', 'ggrepel',
@@ -534,7 +538,7 @@ package_versions <- paste(packages_used, sapply(packages_used, function(p) as.ch
 package_text <- paste0(paste(head(package_versions, -1), collapse = ', '), ' and ', tail(package_versions, 1))
 ```
 
-The EDGAR sheets store years as columns, so each was reshaped to one row per territory and year before the totals and per-capita figures were joined by country code and year, in the companion document that produced the three files read here. The population of each territory and year is the total divided by the per-capita figure, which recovers the population series behind EDGAR's own per-capita values without a further source. Population-weighted means and population shares were computed from it, and the world population is the sum over the territories that report a per-capita figure. Continents, income groups and the HDI were joined by ISO 3166 alpha-3 code, with a few exceptions handled by hand: Taiwan has no region in the ISO 3166 dataset, EDGAR uses the former Netherlands Antilles code for Curaçao and has no row for Kosovo, and the jointly reported territories keep the code under which EDGAR reports them. The model of figure 5 is an ordinary least-squares regression of log10 per-capita emissions, averaged over 2015 to 2024, on the HDI for 2023, fitted to `r hdi_n` countries, and its residuals feed figure 6 and the table. The LULUCF sheets of the booklet were not used, because land use is excluded from the totals throughout. The document was rendered with `r R.version.string` and the packages `r package_text`.
+The EDGAR sheets store years as columns, so each was reshaped to one row per territory and year before the totals and per-capita figures were joined by country code and year, in the companion document that produced the three files read here. Population-weighted means and population shares were computed from the derived population, and the world population is the sum over the territories that report a per-capita figure. Continents, income groups and the HDI were joined by ISO 3166 alpha-3 code, with a few exceptions handled by hand: Taiwan has no region in the ISO 3166 dataset, EDGAR uses the former Netherlands Antilles code for Curaçao and has no row for Kosovo, and the jointly reported territories keep the code under which EDGAR reports them. The model of figure 5 is an ordinary least-squares regression of log10 per-capita emissions, averaged over 2015 to 2024, on the HDI for 2023, fitted to `r hdi_n` countries, and its residuals feed figure 6 and the table. The LULUCF sheets of the booklet were not used, because land use is excluded from the totals throughout. The document was rendered with `r R.version.string` and the packages `r package_text`.
 
 
 ### References

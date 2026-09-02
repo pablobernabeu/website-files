@@ -15,7 +15,7 @@ tags:
   - Python
   - conceptual processing
 subtitle: ''
-summary: 'Psychology has a theory crisis as much as a replication crisis, and one reason is that theories live in prose, where nothing can be checked. theoryforge stores a theory as a small, versioned document and checks it: a rigour checklist with blockers, the conditional independencies the causal graph implies, compilation to lavaan syntax, a severity rubric for predictions, a Lakatosian appraisal of amendments and a preregistration export. This post puts a theory from my own field, modality switching in conceptual processing, through the whole cycle in R, tests its implications against simulated data from a rival world and closes with the Python twin producing the same dossier byte for byte.'
+summary: 'Psychology has a theory crisis as much as a replication crisis, and one reason is that theories live in prose, where their structure cannot be checked mechanically. theoryforge stores a theory as a small, versioned document and checks it: a rigour checklist with blockers, the conditional independencies the causal graph implies, compilation to lavaan syntax, a severity rubric for predictions, a Lakatosian appraisal of amendments and a preregistration export. This post puts a theory from my own field, modality switching in conceptual processing, through the whole cycle in R, tests its implications against simulated data from a rival world and closes with the Python twin producing the same dossier byte for byte.'
 authors: []
 lastmod: ''
 featured: no
@@ -41,7 +41,7 @@ dir.create(out_dir, showWarnings = FALSE)
 Sys.setenv(THEORYFORGE_POST_OUT = out_dir)
 ```
 
-Psychological theories are mostly written in prose, and prose cannot be checked. Whether a theory forbids anything, whether its predictions follow from its propositions, whether an amendment made after a failed test adds content or merely protects the theory, whether two constructs are the same idea under two names: these questions have answers, and the literature on theory appraisal from Meehl (1990) onwards has said what they are, but nothing in the way theories are written down lets the answers be computed. theoryforge stores a theory as a small document, a YAML or JSON file with constructs, propositions, predictions, alternatives and provenance under a published schema, and treats that document the way software treats source code, with validation, tests, versions and diffs. The R and Python packages implement the same specification and produce the same artefacts, which the post checks at the end.
+Psychological theories are mostly written in prose, which does not let their structure be checked mechanically. Whether a theory forbids anything, whether its predictions follow from its propositions, whether an amendment made after a failed test adds content or merely protects the theory, whether two constructs are the same idea under two names: these questions have answers, and the literature on theory appraisal from Meehl (1990) onwards has said what they are, but nothing in the way theories are written down lets the answers be computed. theoryforge stores a theory as a small document, a YAML or JSON file with constructs, propositions, predictions, alternatives and provenance under a published schema, and then validates it, tests it, versions it and diffs it. The R and Python packages implement the same specification and produce the same artefacts, as the final section shows.
 
 The theory used throughout is the one bundled with the package that is closest to my own work: an account of modality switching in grounded conceptual processing, the finding that verifying a property of a concept in one perceptual modality is slower after a property in a different modality (Pecher et al., 2003), read as evidence that conceptual access recruits modality-specific systems (Barsalou, 1999). A second bundled theory, a network model of panic disorder with a feedback loop, serves as the contrast case at the one step where cycles matter.
 
@@ -56,9 +56,9 @@ c(id = switching$id, title = switching$title, maturity = switching$maturity,
   predictions = length(switching$predictions), alternatives = length(switching$alternatives))
 ```
 
-## A document that refuses to be wrong quietly
+## Validation at two levels
 
-Validation has two levels. The structural pass checks required fields, enumerations and, since version 0.6.0, unknown keys at the top level, which matters because a misspelt collection used to be dropped silently and moved the rigour score. The full pass adds referential integrity, so that a prediction cannot be derived from a proposition that does not exist.
+Validation runs at two levels. The structural pass checks required fields, enumerations and, since version 0.6.0, unknown keys at the top level, which matters because a misspelt collection used to be dropped silently and moved the rigour score. The full pass adds referential integrity, so that a prediction cannot be derived from a proposition that does not exist.
 
 ```{r}
 tf_validate(switching, full = TRUE)
@@ -79,22 +79,24 @@ rep <- tf_check(switching)
 c(score = rep$aggregate_score, gate = rep$gate, blockers_failed = rep$n_blockers_failed)
 do.call(rbind, lapply(rep$items, function(it)
   data.frame(id = it$id, status = it$status, score = it$score, weight = it$weight,
-             blocker = it$severity_if_fail == 'blocker')))
+             blocker = it$severity_if_fail == 'blocker',
+             citation = substr(it$citation, 1, 34))))
 ```
 
-The deliberately underspecified theory that ships with the package shows the other end of the scale, and its development roadmap, one of the ten diagram views, orders the repair work with the blockers first.
+The deliberately underspecified theory that ships with the package shows the other end of the scale. Its development roadmap, one of the ten diagram views, lists the items to fix with the blockers first, and a separate screen compares the definitions of the constructs pairwise, so that two names for one idea can be caught before they become two constructs.
 
 ```{r}
 weak <- tf_read(tf_example_path('weak-theory.theory.yaml'))
 weak_rep <- tf_check(weak)
 c(score = weak_rep$aggregate_score, gate = weak_rep$gate,
   blockers_failed = weak_rep$n_blockers_failed)
+head(strsplit(tf_diagram(weak, type = 'development_roadmap'), '\n')[[1]], 8)
 head(tf_redundancy_check(switching), 3)
 ```
 
 ## The diagram
 
-Every diagram view is deterministic text, in DOT, in dagitty syntax or in SVG, which a website can render and a version-control system can diff. The theory object is plain data, so a Mermaid flowchart, which this site renders in the browser, is a short helper away.
+Every diagram view is deterministic text, in DOT, in dagitty syntax or in SVG, which a website can render and a version-control system can diff. The theory object is plain data, so a Mermaid flowchart, which this site renders in the browser, can be produced by a short helper function.
 
 ```{r}
 cat(tf_diagram(switching, type = 'causal_dag'))
@@ -155,7 +157,7 @@ data.frame(claim = vapply(impl$implications, function(x) x$statement, character(
            rival_p = signif(rival_world$p.value, 2))
 ```
 
-In the world generated by the theory every claim holds. In the rival world one claim fails, the marginal independence of sensorimotor experience and lexical familiarity, and the other five still hold, which is the pattern that would tell a researcher which part of the theory the data contradict.
+In the world generated by the theory, every claim holds. In the rival world one claim fails, the marginal independence of sensorimotor experience and lexical familiarity, and the other five still hold, which is the pattern that would tell a researcher which part of the theory the data contradict.
 
 ## From the graph to a fitted model
 
@@ -189,7 +191,7 @@ lavaan::lavTestLRT(fit_restricted, fit)
 
 ## How risky are the predictions
 
-A prediction that could hardly fail corroborates little. The severity rubric scores each prediction by its type, from a bare existence claim to a point prediction, discounts directional predictions by Meehl's crud factor and adds credit for naming a registered rival. The preregistration export turns the theory into the skeleton of a registration, with the predictions, their severities and the outcomes that would count against them.
+A prediction that could hardly fail provides little corroboration, which is what the severity rubric scores. It scores each prediction by its type, from a bare existence claim to a point prediction, discounts directional predictions by Meehl's crud factor and adds credit for naming a registered rival. The preregistration export turns the theory into the skeleton of a registration, with the predictions, their severities and the outcomes that would count against them.
 
 ```{r}
 tf_severity(switching)
@@ -197,7 +199,7 @@ prereg <- tf_preregister(switching, path = file.path(out_dir, 'prereg.md'))
 cat(head(strsplit(prereg, '\n')[[1]], 30), sep = '\n')
 ```
 
-## Amending a theory without cheating
+## Progressive and degenerating amendments
 
 Lakatos distinguished progressive amendments, which add content that survives a test, from degenerating ones, which add an assumption to protect a prediction that failed (Lakatos, 1978). The appraisal function makes that distinction on two versions of a theory. The package's own pair of panic-network versions is progressive, since the second adds a prediction that was later corroborated. Two amendments of the modality-switching theory show both outcomes: an auxiliary assumption that protects a prediction with no passing test in sight, and a new prediction about the N400 in EEG, derived from the existing propositions and recorded as passed.
 
@@ -224,17 +226,18 @@ switching_v2$maturity <- 'testing'
 switching_v2$version <- list(id = 'v2', parent_id = 'v1', content_hash = NULL)
 str(tf_appraise_amendment(switching_v2, switching))
 c(v1 = rep$aggregate_score, v2 = tf_check(switching_v2)$aggregate_score)
+tf_check(switching_v2)$items[[3]]$score   # risk_severity, the item that moved
 ```
 
-Every builder verb logs a provenance entry, so the history of the document records who changed what and when, and the version block records the lineage.
+The rigour score falls slightly from the first version to the second, because the new prediction is directional and its severity of 0.5 sits below the mean of the four predictions it joins. A theory that gains content can therefore lose a point on a checklist item, which is a reminder that the score measures how completely a theory is specified and not how good it is. Every builder verb logs a provenance entry, so the history of the document records who changed what and when, and the version block records the lineage.
 
 ```{r}
 tail(do.call(rbind, lapply(switching_v2$provenance, as.data.frame)), 2)
 ```
 
-## Versions with a fingerprint
+## A checksum for each version
 
-The dossier is a Markdown summary of the whole theory, and because it is byte-identical between the R and Python packages, its checksum serves as a language-independent fingerprint of the theory's state, which the version block can carry. The amended theory is written out, read back and found unchanged.
+The dossier is a Markdown summary of the whole theory, and because it is byte-identical between the R and Python packages, its checksum serves as a language-independent identifier of the theory's state, which the version block can carry. The amended theory is written out, read back and found unchanged.
 
 ```{r}
 write_raw <- function(s, name) {
@@ -268,7 +271,7 @@ print('identical to the R dossier:',
 print('rigour score:', switching.check()['aggregate_score'])
 ```
 
-Beyond the artefacts shown here, the package writes a Quarto report, deposits a dossier on OSF from a dry run that can be inspected before anything is sent, simulates the construct network as a dynamical system, and maps a bibliographic corpus around a theory to point out fronts that the theory does not yet address, with corpora that the [scopusflow package](/2026/scopusflow-a-literature-search-you-can-rerun/) can supply. The checklist remains a structural and lexical screen. It can say that a theory forbids something and that its predictions follow from its propositions; whether the theory is true is for the tests that the document now makes easier to specify.
+Beyond the artefacts shown here, the package writes a Quarto report, deposits a dossier on OSF from a dry run that can be inspected before anything is sent, simulates the construct network as a dynamical system, and maps a bibliographic corpus around a theory to point out topics that the theory does not yet address, with corpora that the [scopusflow package](/2026/scopusflow-a-literature-search-you-can-rerun/) can supply. The checklist remains a structural and lexical screen. It can say that a theory forbids something and that its predictions follow from its propositions; whether the theory is true is for the tests that the document now makes easier to specify.
 
 ### References
 

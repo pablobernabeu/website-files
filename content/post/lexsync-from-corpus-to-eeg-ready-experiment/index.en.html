@@ -16,7 +16,7 @@ tags:
   - OpenSesame
   - jsPsych
 subtitle: ''
-summary: 'Selecting stimuli for a word-recognition experiment means matching conditions on several lexical dimensions at once, dealing the items into lists that are themselves equated, generating pseudowords, and building the experiment that presents everything with triggers for electroencephalography. lexsync does all of this from a short design file, in R and in Python, and the two engines select byte-identical stimuli and write byte-identical experiment scripts. This post walks through a high- against low-frequency contrast and a lexical-decision task on the bundled English lexicon, reports the realised control as effect sizes with equivalence tests, and ends with the SHA-256 checksums that both engines produce.'
+summary: 'Selecting stimuli for a word-recognition experiment means matching conditions on several lexical dimensions at once, dealing the items into lists that are themselves equated, generating pseudowords and building the experiment that presents everything with triggers for electroencephalography. lexsync does all of this from a short design file, in R and in Python, and the two engines select byte-identical stimuli and write byte-identical experiment scripts. This post walks through a high- against low-frequency contrast and a lexical-decision task on the bundled English lexicon, reports the realised control as effect sizes with equivalence tests, and ends with the SHA-256 checksums that both engines produce.'
 authors: []
 lastmod: ''
 featured: no
@@ -35,7 +35,7 @@ projects: []
 
 
 <p>Every study of word recognition begins with a list of words, and every reviewer of such a study asks how the list was made. In a contrast between high- and low-frequency words, the two conditions have to be equated on length, on orthographic neighbourhood and on whatever else predicts reading times, and when the items are dealt into counterbalancing lists, the lists have to be equated too, or the groups that receive them differ in the materials before they differ in anything else. Packages such as LexOPS match words but stop short of the experiment, and experiment builders present stimuli without matching them. In the studies I have worked on, the two halves were joined by hand, in scripts that no one else could run.</p>
-<p>lexsync joins them. From a word-frequency corpus in any of dozens of languages, it selects items matched in parallel on several dimensions, counterbalances them across conditions and lists, generates pseudowords where the paradigm needs them, and writes the experiment for PsychoPy, OpenSesame or the browser through jsPsych, with electroencephalography (EEG) triggers bound to the screen refresh on which the stimulus appears. It ships as two packages of the same name, one in R and one in Python, built from one repository and released under one version, and under its deterministic matching methods the two engines select byte-identical stimuli. Nothing in either package draws a random number: trial order and jitter come from keyed SHA-256 hashes of the design and the seed, which is what allows a seeded shuffle to mean the same thing in both languages. The post runs the R package on the 3,000-word English lexicon bundled with it and closes by running the Python package on the same design files.</p>
+<p>lexsync joins the two halves. From a word-frequency corpus in any of dozens of languages, it selects items matched in parallel on several dimensions, counterbalances them across conditions and lists, generates pseudowords where the paradigm needs them, and writes the experiment for PsychoPy, OpenSesame or the browser through jsPsych, with electroencephalography (EEG) triggers bound to the screen refresh on which the stimulus appears. It ships as two packages of the same name, one in R and one in Python, built from one repository and released under one version, and under its deterministic matching methods the two engines select byte-identical stimuli. Nothing in either package draws a random number: trial order and jitter come from keyed SHA-256 hashes of the design and the seed, which is what allows a seeded shuffle to mean the same thing in both languages. The post runs the R package on the English lexicon bundled with it and closes by running the Python package on the same design files.</p>
 <pre class="r"><code>library(lexsync)
 packageVersion(&#39;lexsync&#39;)</code></pre>
 <pre><code>#&gt; [1] &#39;0.1.0&#39;</code></pre>
@@ -48,7 +48,7 @@ c(seed = schema$seed, equivalence_bound_d = schema$equivalence$bound_d,
 #&gt;                   &quot;2026&quot;                    &quot;0.5&quot; &quot;standardised_euclidean&quot;</code></pre>
 <div id="the-pool" class="section level2">
 <h2>The pool</h2>
-<p>The bundled lexicon carries a Zipf frequency (van Heuven et al., 2014), the orthographic neighbourhood density N and OLD20 (Yarkoni et al., 2008) for each word, and loading it adds length and an orthographic estimate of syllable count. The estimate is worth inspecting before it is used, since it counts vowel runs and gets ‘rhythm’ and ‘chocolate’ wrong in opposite directions.</p>
+<p>The bundled lexicon carries a Zipf frequency (van Heuven et al., 2014), the orthographic neighbourhood density N and OLD20 (Yarkoni et al., 2008) for each word, and loading it adds length and an orthographic estimate of syllable count. The estimate is worth inspecting before it is used, since it counts vowel runs and so scores ‘rhythm’ and ‘being’ as one syllable and ‘chocolate’ as four.</p>
 <pre class="r"><code>lex &lt;- load_lexicon(lexicon_path, schema, language = &#39;english&#39;)
 dim(lex)</code></pre>
 <pre><code>#&gt; [1] 3000   10</code></pre>
@@ -110,8 +110,8 @@ ggplot() +
   theme_minimal(base_size = 13) + theme(legend.position = &#39;top&#39;)</code></pre>
 <p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-5-1.png" alt="Scatterplot of Zipf frequency against OLD20 for the candidate pool in grey, with the 40 high-frequency and 40 low-frequency selected words coloured by condition" width="672" style="display: block; margin: auto;" /></p>
 </div>
-<div id="the-receipts" class="section level2">
-<h2>The receipts</h2>
+<div id="what-the-matching-achieved" class="section level2">
+<h2>What the matching achieved</h2>
 <p>A statement that two conditions were matched is a claim about a difference being small, and the usual test of the difference against zero cannot support it. The match report therefore gives, for each dimension, Cohen’s d with a 90% confidence interval, the variance ratio and an equivalence test of the two one-sided kind (Lakens, 2017) against the schema’s bound of half a standard deviation. The manipulated dimension, frequency, shows the size of the manipulation.</p>
 <pre class="r"><code>report &lt;- match_report(stim, c(&#39;frequency&#39;, &#39;length&#39;, &#39;n_density&#39;, &#39;old20&#39;), schema)
 report$comparisons</code></pre>
@@ -183,7 +183,7 @@ paste(l1$word[order(l1$trial)][1:8], collapse = &#39;, &#39;)</code></pre>
 </div>
 <div id="pseudowords-and-a-lexical-decision-trial" class="section level2">
 <h2>Pseudowords and a lexical-decision trial</h2>
-<p>A lexical-decision task needs foils. The default generator substitutes letters under the constraint that every bigram of the result is attested in the reference lexicon, which keeps the foil close to its base word, whereas the subsyllabic generator, after Wuggy (Keuleers &amp; Brysbaert, 2010), swaps whole onsets, nuclei and codas and preserves syllabic structure instead of visual similarity. Both are deterministic.</p>
+<p>A lexical-decision task needs foils. The default generator substitutes letters under the constraint that every bigram of the result is attested in the reference lexicon, which keeps the foil close to its base word, whereas the subsyllabic generator, after Wuggy (Keuleers &amp; Brysbaert, 2010), swaps whole onsets, nuclei and codas, which preserves syllabic structure at some cost to visual similarity. Both generators are deterministic, so a given base word always yields the same foil.</p>
 <pre class="r"><code>ld_pool &lt;- build_pool(lex, list(length = c(4, 7), frequency = c(3.5, 6.0)))
 nrow(ld_pool)</code></pre>
 <pre><code>#&gt; [1] 1038</code></pre>
@@ -202,7 +202,7 @@ data.frame(word = ls8$target[ls8$condition == &#39;word&#39;],
 #&gt; 6 renewal             reneral     tiniwin
 #&gt; 7 sucking             stcking     serkent
 #&gt; 8  zurich              zerich      rereng</code></pre>
-<p>The trial itself is data. The design below describes four events, a fixation cross, the target with an onset-locked condition trigger, a keyboard response and a blank whose duration is jittered per trial between 400 and 800 ms and stored as the inter-trial interval. The same description drives all three experiment targets.</p>
+<p>A trial is described in the design file as a sequence of events. The design below has four, a fixation cross, the target with an onset-locked condition trigger, a keyboard response and a blank whose duration is jittered per trial between 400 and 800 ms and stored as the inter-trial interval. The same description drives all three experiment targets.</p>
 <pre class="r"><code>design_ld &lt;- list(
   name = &#39;blog_lexdec&#39;, language = &#39;english&#39;, paradigm = &#39;lexical_decision&#39;,
   items = list(source = &#39;generate&#39;, lexicon = lexicon_path),
@@ -238,7 +238,7 @@ head(ld[, c(&#39;list&#39;, &#39;trial&#39;, &#39;set&#39;, &#39;condition&#39;,
   labs(x = &#39;Trial in list 1&#39;, y = &#39;Inter-trial interval (ms)&#39;, fill = NULL) +
   theme_minimal(base_size = 13) + theme(legend.position = &#39;top&#39;)</code></pre>
 <p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-13-1.png" alt="Bar chart of the jittered inter-trial interval of each of the 40 trials of list 1, coloured by whether the target is a word or a pseudoword" width="768" style="display: block; margin: auto;" /></p>
-<p>Exporting writes the PsychoPy script, the OpenSesame experiment and a single jsPsych HTML file. The PsychoPy script binds each trigger to the buffer flip on which the stimulus appears, through <code>win.callOnFlip</code>, instead of sending it from a later, sequence-ordered item, and holds it for 50 ms.</p>
+<p>Exporting writes the PsychoPy script, the OpenSesame experiment and a single jsPsych HTML file. The PsychoPy script binds each trigger to the buffer flip on which the stimulus appears, through <code>win.callOnFlip</code>, so the trigger and the stimulus reach the participant together, and holds it for 50 ms.</p>
 <pre class="r"><code>exp &lt;- export_experiments(ld, design_ld, schema, file.path(out_dir, &#39;handbuilt&#39;))
 basename(unlist(exp))</code></pre>
 <pre><code>#&gt; [1] &quot;blog_lexdec_english_psychopy.py&quot; &quot;blog_lexdec_english.osexp&quot;      
@@ -279,7 +279,7 @@ cat(strwrap(methods_paragraph(ds), width = 95), sep = &#39;\n&#39;)</code></pre>
 </div>
 <div id="the-same-design-files-in-one-call-in-both-engines" class="section level2">
 <h2>The same design files, in one call, in both engines</h2>
-<p>Everything above is what the pipeline does from a design file. The two files below are what a collaborator, or a preregistration, would receive, and the hand-built jsPsych experiment matches the pipeline’s byte for byte.</p>
+<p>Everything above is what <code>run_pipeline()</code> does from a design file. The two files below are what a collaborator, or a preregistration, would receive, and the hand-built jsPsych experiment matches the one the pipeline writes, byte for byte.</p>
 <pre class="r"><code>freq_yaml &lt;- c(
   &#39;name: blog_freq&#39;, &#39;language: english&#39;, paste0(&#39;lexicon: &#39;, lexicon_path),
   &quot;description: &#39;High versus low frequency English words matched on length, N and OLD20, dealt into two lists equated on those dimensions.&#39;&quot;,
@@ -379,7 +379,7 @@ for name, path in designs.items():
 #&gt; blog_lexdec_english_psychopy.py            9d0506f8ff194657
 #&gt; blog_lexdec_english.osexp                  93ff7fdff32b7351
 #&gt; blog_lexdec_english.html                   ddabe26b58c76081</code></pre>
-<p>The first trials of list 1 in the frequency design come out in the same order from the Python engine, which is the visible consequence of an order that is a hash and not a draw.</p>
+<p>The first trials of list 1 in the frequency design come out in the same order from the Python engine, which is the visible consequence of deriving the trial order from a hash of the design.</p>
 <pre class="python"><code>import os
 import pandas as pd
 out = os.path.join(os.environ[&#39;LEXSYNC_POST_OUT&#39;], &#39;python&#39;)
@@ -387,7 +387,7 @@ stim = pd.read_csv(os.path.join(out, &#39;stimuli&#39;, &#39;blog_freq_english_s
 l1 = stim[stim[&#39;list&#39;] == 1].sort_values(&#39;trial&#39;)
 print(&#39;, &#39;.join(l1[&#39;word&#39;].head(8)))</code></pre>
 <pre><code>#&gt; approve, knew, mother, loop, lost, ghana, anne, ops</code></pre>
-<p>Two limits are worth stating. The byte-level guarantee holds for the standardised Euclidean, joint and continuous matching methods; the Mahalanobis and optimal methods depend on each platform’s linear algebra, agree closely and are labelled as approximate in the datasheet. The bundled lexica, derived from wordfreq (Speer, 2022), carry proper nouns and no part-of-speech information, so a real study would join a norm table or supply its own candidate pool, which the design file allows through the <code>items</code> block.</p>
+<p>The byte-level guarantee holds for the standardised Euclidean, joint and continuous matching methods; the Mahalanobis and optimal methods depend on each platform’s linear algebra, agree closely and are labelled as approximate in the datasheet. The bundled lexica, derived from wordfreq (Speer, 2022), carry proper nouns and no part-of-speech information, so a real study would join a norm table or supply its own candidate pool, which the design file allows through the <code>items</code> block.</p>
 <div id="references" class="section level3">
 <h3>References</h3>
 <p>Keuleers, E., &amp; Brysbaert, M. (2010). Wuggy: A multilingual pseudoword generator. <em>Behavior Research Methods</em>, <em>42</em>(3), 627–633. <a href="https://doi.org/10.3758/BRM.42.3.627" class="uri">https://doi.org/10.3758/BRM.42.3.627</a></p>

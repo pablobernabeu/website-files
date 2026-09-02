@@ -40,13 +40,13 @@ Given all of the data that E&L [Evans & Levinson, 2009] cite, how could anyone m
 
 </div>
 
-Some research topics invite speculation more than others. When Pieter Vogt and I reviewed the field of language evolution a decade ago, the impression was of a literature in which conjecture outran evidence by some distance, for the understandable reason that the events under study left no direct trace (Bernabeu & Vogt, 2015). The passage from Tomasello quoted above makes a similar complaint about universal grammar. An impression of this kind can be checked, at least crudely, by counting. Authors who speculate in print often say so, in phrases such as 'we speculate that' or 'it is tempting to speculate', and those phrases are indexed when they occur in a title, an abstract or the keywords. The share of records in a literature that contain a form of the word 'speculate' is therefore a rough measure of how openly conjectural that literature is, or at least of how often its authors label their conjectures as such.
+Some research topics invite speculation more than others. When Pieter Vogt and I reviewed the field of language evolution a decade ago, the impression was of a literature in which conjecture outran evidence by some distance, for the understandable reason that the events under study left no direct trace (Bernabeu & Vogt, 2015). The passage from Tomasello quoted above makes a similar complaint about universal grammar. An impression of this kind can be checked, at least crudely, by counting. Authors who speculate in print often say so, in phrases such as 'we speculate that' or 'it is tempting to speculate', and those phrases are indexed when they occur in a title, an abstract or a keyword list. The share of records in a literature that contain a form of the word 'speculate' is therefore a rough measure of how openly conjectural that literature is, or at least of how often its authors label their conjectures as such.
 
 This post compares that share, year by year from 1980 to the present, across nine reference literatures. Six of them concern language: language evolution, language comprehension, language disorders, linguistic relativity, language teaching and the bilingual advantage. A seventh, sensorimotor simulation, is the topic of my own doctoral work on conceptual processing. The last two, artificial general intelligence and the hadron collider, sit outside the language sciences and serve as points of comparison, one being a field where speculation might be expected and the other a field of large instruments and large collaborations. Each reference literature is defined by a query on the title, abstract and keywords, and the comparison counts, within each year, the records that also match `speculat*` in the same fields.
 
 ## The searches
 
-An earlier draft of this post ran the searches through a set of functions that I had written around the rscopus package. Those functions have since become the [scopusflow package](/2026/scopusflow-a-literature-search-you-can-rerun/), and the searches now live in a script in the [website's repository](https://github.com/pablobernabeu/website-files/blob/master/scripts/update_post_searches.R) that a GitHub Actions workflow runs on request, with the Scopus key held as a repository secret. The workflow commits the counts to the post's directory, so the figures below can be rebuilt from the committed data without a key, and the searches can be refreshed by anyone with a key by dispatching the workflow. The queries are the following.
+An earlier draft of this post ran the searches through a set of functions that I had written around the rscopus package. Those functions have since become the [scopusflow package](/2026/scopusflow-a-literature-search-you-can-rerun/), and the searches now live in a script in the [website's repository](https://github.com/pablobernabeu/website-files/blob/master/scripts/update_post_searches.R) that a GitHub Actions workflow runs on request, with the Scopus key held as a repository secret. The workflow commits the counts to the post's directory, so the figures below can be rebuilt from the committed data without a key, and the searches can be refreshed by anyone with a key by dispatching the workflow. The nine queries are given below.
 
 ```{r, eval = FALSE}
 library(scopusflow)
@@ -77,7 +77,7 @@ comparisons <- lapply(names(topics), function(label) {
 })
 ```
 
-The function counts, for every year, the records matching the reference query and the records matching both the reference query and the comparison term, so the nine comparisons cost `r 9 * 2 * length(1980:2026)` count requests. Each row of the result holds a year, the count for the reference literature, the count for the comparison and the comparison as a percentage of the reference.
+The function counts, for every year, the records matching the reference query and the records matching both the reference query and the comparison term, so the nine comparisons cost `r 9 * 2 * length(unique(readRDS('searches/speculation_comparisons.rds')[[1]]$year))` count requests. Each row of the result holds a year, the count for the reference literature, the count for the comparison and the comparison as a percentage of the reference.
 
 ```{r}
 library(dplyr)
@@ -110,16 +110,19 @@ totals <- speculation |>
 totals
 ```
 
-Across the whole period, the share of records that mention speculation is highest in `r totals$topic[1]` (`r sprintf('%.1f', totals$share[1])`%) and lowest in `r totals$topic[nrow(totals)]` (`r sprintf('%.1f', totals$share[nrow(totals)])`%), with the language literatures spread between those two.
+Across the whole period, the share of records that mention speculation is highest in the literature on `r totals$topic[1]` (`r sprintf('%.1f', totals$share[1])`%) and lowest in `r totals$topic[nrow(totals)]` (`r sprintf('%.1f', totals$share[nrow(totals)])`%), with the language literatures spread between those two.
 
 ```{r, fig.width = 8, fig.height = 4, fig.alt = 'Line chart on a logarithmic axis of the number of Scopus records per year in each of the nine reference literatures from 1980 onwards'}
-okabe_ito <- c('#E69F00', '#56B4E9', '#009E73', '#F0E442', '#0072B2',
-               '#D55E00', '#CC79A7', '#999999', '#000000')
+# Nine literatures against an eight-colour palette, so the Okabe-Ito set is
+# extended with one grey. Nine lines on one panel are hard to tell apart by
+# colour alone, which is why the figure that follows gives each its own panel.
+nine_colours <- c('#E69F00', '#56B4E9', '#009E73', '#F0E442', '#0072B2',
+                  '#D55E00', '#CC79A7', '#999999', '#000000')
 ggplot(filter(speculation, reference_n > 0),
        aes(year, reference_n, colour = topic)) +
   geom_line(linewidth = 0.8) +
   scale_y_log10(labels = scales::label_comma()) +
-  scale_colour_manual(values = okabe_ito) +
+  scale_colour_manual(values = nine_colours) +
   labs(x = NULL, y = 'Records per year (log scale)', colour = NULL) +
   theme_minimal(base_size = 12) +
   theme(legend.position = 'right')
@@ -127,7 +130,7 @@ ggplot(filter(speculation, reference_n > 0),
 
 ## The share of records that mention speculation
 
-Each panel below shows one literature. The line is the yearly percentage of records that also match `speculat*`, the shaded band is a Wilson interval computed from the yearly reference count, which conveys how much the share would move with a handful of records, and the panels are ordered from the most to the least speculative literature over the whole period. The axis is cut at 15%, which clips the bands in the early years of the small literatures, where a single abstract would move the share by tens of points. Years in which a literature had no records are left blank.
+Each panel below shows one literature. The line is the yearly percentage of records that also match `speculat*`, the shaded band is a stability range computed from the yearly reference count by the Wilson method, which conveys how much the share would move with a handful of records, and the panels are ordered from the most to the least speculative literature over the whole period. The axis is cut at 15%, which clips the bands in the early years of the small literatures, where a single abstract would move the share by tens of points. Years in which a literature had no records are left blank.
 
 ```{r, fig.width = 9, fig.height = 8, fig.alt = 'Nine panels, one per literature, each showing the yearly percentage of Scopus records that mention speculation from 1980 onwards, with a shaded Wilson interval'}
 wilson <- function(k, n, z = 1.96) {
@@ -171,7 +174,7 @@ recent <- speculation |>
 recent
 ```
 
-Restricting the comparison to the last ten complete years, `r min(recent$records)` to `r format(max(recent$records), big.mark = ',')` records per literature, gives the ranking above. `r recent$topic[1]` leads with `r sprintf('%.1f', recent$share[1])`% of its records mentioning speculation, and `r recent$topic[nrow(recent)]` closes the list with `r sprintf('%.1f', recent$share[nrow(recent)])`%.
+Restricting the comparison to the last ten complete years, `r min(recent$records)` to `r format(max(recent$records), big.mark = ',')` records per literature, gives the ranking above. The literature on `r recent$topic[1]` leads with `r sprintf('%.1f', recent$share[1])`% of its records mentioning speculation, and that on `r recent$topic[nrow(recent)]` closes the list with `r sprintf('%.1f', recent$share[nrow(recent)])`%.
 
 ## What the counts can and cannot show
 
@@ -179,7 +182,7 @@ The measure is crude in ways that the figures make visible. A form of 'speculate
 
 The smallest literature, sensorimotor simulation, contains no record that mentions speculation at all, which with `r format(totals$records[totals$topic == 'sensorimotor simulation'])` records over the whole period says more about the size of the literature than about its habits.
 
-With those limits in mind, the pattern across the language sciences is consistent with the impression that started the exercise. Literatures that theorise about unobservable or contested processes carry more explicit speculation than literatures organised around a clinical population, a classroom or an instrument, and the difference is visible in abstracts before any reading of the articles themselves. Whether the speculation is a symptom of immaturity or a healthy habit of labelling conjecture is a question that counts cannot answer. The searches can be rerun as the literatures grow, and the workflow that produces them is in the repository for anyone who wants to add a topic.
+With those limits in mind, the pattern across the language sciences is consistent with the impression that started the exercise. Literatures that theorise about unobservable or contested processes carry more explicit speculation than literatures organised around a clinical population, a classroom or an instrument, and the difference is visible in abstracts before any reading of the articles themselves. Whether the speculation is a symptom of immaturity or a healthy habit of labelling conjecture is a question that counts cannot answer. Anyone who wants to add a topic, or to see how the shares have moved, can dispatch the workflow again from the repository.
 
 ### References
 

@@ -1,5 +1,5 @@
 ---
-title: "Who is through with convergence warnings? A record of publications that used allFit to compare optimisers"
+title: 'Who is through with convergence warnings? Publications that used allFit to compare optimisers'
 author: ''
 date: '2026-09-02'
 slug: publications-that-used-allfit-to-compare-optimisers
@@ -32,15 +32,15 @@ options(width = 95)
 xaringanExtra::use_clipboard()
 ```
 
-Mixed-effects models with the random-effects structure that the design justifies (Barr et al., 2013) often end their fit with a warning from lme4 that the optimiser may not have converged. The warning is a symptom rather than a diagnosis. It is raised when the gradient at the solution exceeds a tolerance, and the lme4 documentation, in the help page on convergence, explains that the check produces false positives, especially with large data sets and many random effects. A model that has struggled to find enough information to estimate every variance and correlation has other tell-tales, such as correlations of exactly 1 or variances of exactly 0 (Bates et al., 2015; Matuschek et al., 2017), and the usual advice is to look at those before simplifying the model (Brauer & Curtin, 2018; Singmann & Kellen, 2019).
+Mixed-effects models with the random-effects structure that the design justifies (Barr et al., 2013) often end their fit with a warning from lme4 that the optimiser may not have converged. The warning reports that the gradient at the solution exceeded a tolerance, which does not by itself mean that the fit is wrong. The lme4 check produces false positives, as the help page on convergence explains, especially with large data sets and many random effects. A model that has struggled to find enough information to estimate every variance and correlation has other tell-tales, such as correlations of exactly 1 or variances of exactly 0 (Bates et al., 2015; Matuschek et al., 2017), and the usual advice is to look at those before simplifying the model (Brauer & Curtin, 2018; Singmann & Kellen, 2019).
 
-The most direct check is to refit the model with every optimiser that lme4 can call, through `allFit()`, and to compare the fixed-effect estimates across the fits. If the optimisers agree to the precision that matters for the conclusions, the warning can be reported and set aside. If they disagree, the model has a problem that no change of optimiser will solve. I wrote about the practice and published a [plotting function for the comparison](/2023/a-new-function-to-plot-convergence-diagnostics-from-lme4-allfit/) some years ago, and since then I have been asked several times, by co-authors and by reviewers, whether other published studies have proceeded in the same way. This post keeps a record of the ones that can be found by searching, so that the next person asked can point to it.
+The most direct check is to refit the model with every optimiser that lme4 can call, through `allFit()`, and to compare the fixed-effect estimates across the fits. If the optimisers agree to the precision that matters for the conclusions, the warning can be reported and set aside, whereas a disagreement between them points to a problem that no change of optimiser will solve. I wrote about the practice and published a [plotting function for the comparison](/2023/a-new-function-to-plot-convergence-diagnostics-from-lme4-allfit/) some years ago, and since then I have been asked several times, by co-authors and by reviewers, whether other published studies have proceeded in the same way. This post keeps a list of the ones that can be found by searching, so that the next person asked can point to it.
 
 ## Where a function name can be found
 
 A function name is a poor search term for bibliographic databases, because it appears in the methods section of an article and almost never in its title, abstract or keywords. Three sources with different coverage are therefore searched, by a script in the [website's repository](https://github.com/pablobernabeu/website-files/blob/master/scripts/update_post_searches.R) that a GitHub Actions workflow runs on request.
 
-The first source is Scopus, through the [scopusflow package](/2026/scopusflow-a-literature-search-you-can-rerun/). Scopus indexes titles, abstracts, keywords, references and a few other fields, but not the body of the article, so the search for the function name in any indexed field finds only articles that mention it in one of those fields. A second Scopus query, drafted for the first version of this post in 2023, is a proxy: it looks for abstracts that mention lme4, lmerTest or brms alongside maximal random slopes and convergence, on the grounds that an abstract discussing convergence at that level of detail is likely to belong to a study that dealt with it. The second source is Europe PMC, which indexes the full text of open-access articles in the life sciences, including much of psychology and neuroscience, and whose search interface accepts a full-text query. The third is OpenAlex, which offers a full-text search over the articles for which it holds the text. The Europe PMC query requires a mixed-model term alongside the function name, so that unrelated uses of the string are excluded.
+Scopus, searched through the [scopusflow package](/2026/scopusflow-a-literature-search-you-can-rerun/), indexes titles, abstracts, keywords, references and a few other fields, but not the body of the article, so a search for the function name in any indexed field finds only articles that mention it in one of those. A second Scopus query, drafted for the first version of this post in 2023, is a proxy: it looks for abstracts that mention lme4, lmerTest or brms alongside maximal random slopes and convergence, on the grounds that an abstract discussing convergence at that level of detail is likely to belong to a study that dealt with it. Europe PMC indexes the full text of open-access articles in the life sciences, including much of psychology and neuroscience, and its search interface accepts a full-text query. OpenAlex offers a full-text search over the articles for which it holds the text. The Europe PMC query requires a mixed-model term alongside the function name, so that unrelated uses of the string are excluded.
 
 ```{r, eval = FALSE}
 library(scopusflow)   # reads the key from SCOPUS_API_KEY
@@ -59,7 +59,7 @@ europepmc_query <- paste(
 openalex_filter <- 'fulltext.search:"allFit"'
 ```
 
-## The record
+## The list
 
 The workflow commits its results to this post's directory, and the tables below are built from those files, so the record can be refreshed without editing the post.
 
@@ -100,7 +100,7 @@ sum(grepl(mixed_terms, scopus_any$title, ignore.case = TRUE))
 head(sort(table(scopus_any$publication), decreasing = TRUE), 4)
 ```
 
-The searches were run on `r format(as.Date(substr(retrieved, 1, 10)), '%d %B %Y')`. The Scopus search for the function name in any indexed field illustrates why a bare string is a poor query: it returned `r if (is.null(scopus_any)) 0 else nrow(scopus_any)` records, most of them in pharmacology, medicinal chemistry and materials journals, and not one of their titles mentions a mixed model, an optimiser or convergence. Scopus appears to match the string loosely against unrelated text, so those records are left out of the record below. The proxy query returned `r if (is.null(scopus_proxy)) 0 else nrow(scopus_proxy)` record(s), which shows how rarely an abstract describes the treatment of convergence at that level of detail. The two full-text sources are the ones that answer the question, since they find the function name where it is used, together with a mixed-model term that excludes unrelated uses.
+The three sources were queried on `r format(as.Date(substr(retrieved, 1, 10)), '%d %B %Y')`. The Scopus search for the function name in any indexed field illustrates why a bare string is a poor query: it returned `r if (is.null(scopus_any)) 0 else nrow(scopus_any)` records, the largest group of them in pharmacology and medicinal chemistry, and not one of their titles mentions a mixed model. Scopus appears to match the string loosely against unrelated text, so those records are left out of the list below. The proxy query returned `r if (is.null(scopus_proxy)) 0 else nrow(scopus_proxy)` record(s), which shows how rarely an abstract describes the treatment of convergence at that level of detail. The two full-text sources are the ones that answer the question, since they find the function name where it is used, together with a mixed-model term that excludes unrelated uses.
 
 ```{r}
 used_allfit <- records |>
@@ -116,7 +116,7 @@ nrow(used_allfit)
 table(used_allfit$sources)
 ```
 
-```{r, fig.width = 7, fig.height = 3.4, fig.alt = 'Bar chart of the number of publications per year that mention allFit in their full text or indexed fields'}
+```{r, fig.width = 7, fig.height = 3.4, fig.alt = 'Bar chart of the number of publications per year whose full text mentions allFit, according to Europe PMC and OpenAlex'}
 used_allfit |>
   filter(!is.na(year)) |>
   count(year) |>
@@ -127,7 +127,7 @@ used_allfit |>
   theme_minimal(base_size = 13)
 ```
 
-The table lists every publication found by the full-text searches, most recent first, with the sources in which it was found. Authors are given as the sources returned them. The overlap between the two sources is small, which says as much about their coverage as about the literature.
+The table lists every publication found by the full-text searches, most recent first, with the sources in which it was found. Authors are given as the sources returned them. The two sources overlap in a minority of records, which says as much about their coverage as about the literature.
 
 ```{r}
 short_authors <- function(a) {
@@ -157,9 +157,9 @@ records |>
   knitr::kable()
 ```
 
-## What the record misses
+## What the list misses
 
-The count is a lower bound. Europe PMC holds full text for open-access articles only, and mostly in journals within its scope, so a study behind a paywall in a linguistics or psychology journal is invisible to it unless a preprint or an accepted manuscript was deposited. OpenAlex holds text for a subset of the literature that it does not fully document. Scopus cannot see the methods section at all, and a full-text match can be an article that uses the function in a context other than a convergence check, or that mentions it in a footnote. A study that compared optimisers with its own loop, or with the `optimx` package directly, is not found by any of the three, and neither is a study that reported the comparison only in supplementary material. The table has not been screened by hand. The record is therefore a starting point for the reader who needs a precedent, and the workflow that produces it can be dispatched again as the literature grows.
+The count is a lower bound. Europe PMC holds full text for open-access articles only, and mostly in journals within its scope, so a study behind a paywall in a linguistics or psychology journal is invisible to it unless a preprint or an accepted manuscript was deposited. OpenAlex holds text for a subset of the literature that it does not fully document. Scopus cannot see the methods section at all, and a full-text match can be an article that uses the function in a context other than a convergence check, or that mentions it in a footnote. A study that compared optimisers with its own loop, or with the `optimx` package directly, is not found by any of the three, and neither is a study that reported the comparison only in supplementary material. The table has not been screened by hand. The list is therefore a starting point for the reader who needs a precedent, and it can be refreshed by dispatching the workflow again.
 
 ### References
 
