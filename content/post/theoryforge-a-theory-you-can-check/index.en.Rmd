@@ -271,7 +271,7 @@ print('identical to the R dossier:',
 print('rigour score:', switching.check()['aggregate_score'])
 ```
 
-Beyond the artefacts shown here, the package writes a Quarto report, deposits a dossier on OSF from a dry run that can be inspected before anything is sent, simulates the construct network as a dynamical system, and maps a bibliographic corpus around a theory to point out topics that the theory does not yet address, with corpora that the [scopusflow package](/2026/scopusflow-a-literature-search-you-can-rerun/) can supply. The checklist remains a structural and lexical screen. It can say that a theory forbids something and that its predictions follow from its propositions; whether the theory is true is for the tests that the document now makes easier to specify.
+Beyond the artefacts shown here, the package writes a Quarto report, deposits a dossier on OSF from a dry run that can be inspected before anything is sent, simulates the construct network as a dynamical system, and maps a bibliographic corpus around a theory to point out topics that the theory does not yet address, with corpora that the [scopusflow package](/2026/scopusflow-a-literature-search-you-can-rerun/) can supply. The checklist remains a structural and lexical screen. It can say that a theory forbids something and that its predictions follow from its propositions. Whether the theory is true is for the tests that the document now makes easier to specify.
 
 ### References
 

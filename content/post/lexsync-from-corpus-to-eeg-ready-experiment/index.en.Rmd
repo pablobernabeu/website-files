@@ -334,7 +334,7 @@ l1 = stim[stim['list'] == 1].sort_values('trial')
 print(', '.join(l1['word'].head(8)))
 ```
 
-The byte-level guarantee holds for the standardised Euclidean, joint and continuous matching methods; the Mahalanobis and optimal methods depend on each platform's linear algebra, agree closely and are labelled as approximate in the datasheet. The bundled lexica, derived from wordfreq (Speer, 2022), carry proper nouns and no part-of-speech information, so a real study would join a norm table or supply its own candidate pool, which the design file allows through the `items` block.
+The byte-level guarantee holds for the standardised Euclidean, joint and continuous matching methods. The Mahalanobis and optimal methods depend on each platform's linear algebra, agree closely and are labelled as approximate in the datasheet. The bundled lexica, derived from wordfreq (Speer, 2022), carry proper nouns and no part-of-speech information, so a real study would join a norm table or supply its own candidate pool, which the design file allows through the `items` block.
 
 ### References
 

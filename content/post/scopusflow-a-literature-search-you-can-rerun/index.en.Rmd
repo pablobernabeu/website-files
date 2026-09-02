@@ -146,7 +146,7 @@ httr2::with_mocked_responses(stand_in$handler, {
     scopus_fetch('graphene supercapacitor', field = 'TITLE-ABS-KEY',
                  years = 2019, page_size = 5),
     scopus_warning_capped = function(w) {
-      message(conditionMessage(w))
+      cat(conditionMessage(w), '\n')
       invokeRestart('muffleWarning')
     })
   by_cursor <- scopus_fetch('graphene supercapacitor', field = 'TITLE-ABS-KEY',
@@ -243,7 +243,7 @@ c(rds_keeps_time = !is.null(attr(read_scopus_records(rds), 'retrieved_at')),
 
 ## The write-up
 
-The search record is produced from the objects alone. The plan, the per-cell accounting, the retrieval time, the package version and the paging mode all travelled with the harvest, so nothing is typed in by hand. Of the 16 PRISMA-S items, a harvest supplies five and a merge a sixth, and the remaining ten, such as the databases searched and the limits applied, are listed as the author's to write.
+The search record is produced from the objects alone. The plan, the per-cell accounting, the retrieval time, the package version and the paging mode all travelled with the harvest, so nothing is typed in by hand. The record below names Scopus as the database and gives a reset time from the stand-in's headers, because the objects it reads were produced by the stand-in. On a live harvest both would be the real ones. Of the 16 PRISMA-S items, a harvest supplies five and a merge a sixth, and the remaining ten, such as the databases searched and the limits applied, are listed as the author's to write.
 
 ```{r}
 report <- scopus_search_report(records)

@@ -54,7 +54,8 @@ scopus_stand_in <- function(corpus, quota_limit = 20000L) {
         `Content-Type` = "application/json",
         `X-RateLimit-Limit` = as.character(quota_limit),
         `X-RateLimit-Remaining` = as.character(quota_limit - state$requests),
-        `X-RateLimit-Reset` = "1700000000"
+        # A fixed reset time, so that the page does not change between renders.
+        `X-RateLimit-Reset` = "1788000000"
       ),
       body = charToRaw(jsonlite::toJSON(list(`search-results` = results),
                                         auto_unbox = TRUE))

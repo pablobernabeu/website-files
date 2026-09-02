@@ -173,7 +173,7 @@ pw <- power_mixed(spec, n_sims = n_sims, workers = workers)
 pw
 ```
 
-With 30 participants and 24 items, the maximal model is richer than the design supports, and many replicates end in a boundary fit. The priming effect has reasonable power; the interaction with vocabulary, which is what a researcher would most want to claim, does not, and the estimates of it that would reach significance are exaggerated by a factor of two or more. A sweep over effect sizes, with a null condition, shows the false-positive rate of the planned analysis and how the exaggeration recedes as power grows. The base coefficients are carried along explicitly, since the sweep replaces the block of coefficients as a whole.
+With 30 participants and 24 items, the maximal model is richer than the design supports, and many replicates end in a boundary fit. The priming effect has reasonable power. The interaction with vocabulary, which is what a researcher would most want to claim, does not, and the estimates of it that would reach significance are exaggerated by a factor of two or more. A sweep over effect sizes, with a null condition, shows the false-positive rate of the planned analysis and how the exaggeration recedes as power grows. The base coefficients are carried along explicitly, since the sweep replaces the block of coefficients as a whole.
 
 ```{r}
 grid <- design_conditions(prime = c(0.03, 0.05, 0.08), .null = TRUE,
