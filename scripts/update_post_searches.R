@@ -45,10 +45,26 @@ allfit_dir <- file.path(
   "searches"
 )
 
+# Records whether anything was actually retrieved in this run, so that the
+# retrieval timestamps are only refreshed when there is new data behind them.
+wrote_anything <- FALSE
+
+# An empty result is far more often an outage, a revoked key or a changed API
+# than a literature that has emptied, and the workflow commits whatever is on
+# disk, so an empty table never replaces committed results.
 write_table <- function(x, path) {
+  x <- as.data.frame(x)
+  if (nrow(x) == 0 && file.exists(path) &&
+      nrow(utils::read.csv(path, nrows = 1)) > 0) {
+    warning("Search for ", basename(path), " returned no rows; ",
+            "keeping the committed file.", call. = FALSE, immediate. = TRUE)
+    return(invisible(FALSE))
+  }
   dir.create(dirname(path), recursive = TRUE, showWarnings = FALSE)
-  write.csv(as.data.frame(x), path, row.names = FALSE, fileEncoding = "UTF-8")
+  write.csv(x, path, row.names = FALSE, fileEncoding = "UTF-8")
   message("Wrote ", path, " (", nrow(x), " rows)")
+  wrote_anything <<- TRUE
+  invisible(TRUE)
 }
 
 # ---- Speculation across topics ------------------------------------------------
@@ -90,7 +106,9 @@ if (target %in% c("all", "speculation")) {
   saveRDS(comparisons, file.path(speculation_dir, "speculation_comparisons.rds"))
   write_table(do.call(rbind, lapply(comparisons, as.data.frame)),
               file.path(speculation_dir, "speculation_comparisons.csv"))
-  writeLines(retrieved, file.path(speculation_dir, "retrieved.txt"))
+  if (wrote_anything) writeLines(retrieved, file.path(speculation_dir, "retrieved.txt")) else
+    warning("No search produced rows; leaving retrieved.txt as it is.",
+            call. = FALSE, immediate. = TRUE)
 }
 
 # ---- Publications that used allFit ---------------------------------------------
@@ -226,7 +244,9 @@ if (target %in% c("all", "allfit")) {
   )
   write_table(oa_table, file.path(allfit_dir, "openalex_allfit_fulltext.csv"))
 
-  writeLines(retrieved, file.path(allfit_dir, "retrieved.txt"))
+  if (wrote_anything) writeLines(retrieved, file.path(allfit_dir, "retrieved.txt")) else
+    warning("No search produced rows; leaving retrieved.txt as it is.",
+            call. = FALSE, immediate. = TRUE)
 }
 
 message("Done.")
