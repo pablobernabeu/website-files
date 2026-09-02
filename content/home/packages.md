@@ -9,7 +9,7 @@ active = true  # Activate this widget? true/false
 weight = 50  # Order that this section will appear.
 
 title = "Twin R and Python Packages"
-subtitle = "<picture><source srcset='/img/twin-packages-hex.webp' type='image/webp'><img src='/img/twin-packages-hex.png' alt='Hexagonal logos of the five packages: scopusflow, lexsync, depictr, pilotr and theoryforge' width='1384' height='924' style='max-width: 100%; height: auto; margin: 0.6rem 0 1rem;' loading='lazy'></picture><span style='font-size:80%;'>Five pairs of packages, one in R and one in Python, that produce the same results from the same specification. Each pair is cross-checked in continuous integration, so an analysis can be repeated in either language.</span>"
+subtitle = "<img src='/img/twin-packages-hex.webp' alt='Hexagonal logos of the five packages: scopusflow, lexsync, depictr, pilotr and theoryforge' width='760' height='507' style='max-width: 100%; height: auto; margin: 0.6rem 0 1rem;' loading='lazy'><span style='font-size:80%;'>Five pairs of packages, one in R and one in Python, that produce the same results from the same specification. Each pair is cross-checked in continuous integration, so an analysis can be repeated in either language.</span>"
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
