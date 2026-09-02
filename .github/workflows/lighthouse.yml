@@ -2,7 +2,12 @@ name: Lighthouse
 
 # Weekly performance / accessibility / best-practices / SEO audit of the live
 # site. Assertions are soft (warnings) so normal fluctuation never fails the
-# job; the uploaded report link in the logs is the signal to watch.
+# job, and the uploaded report link in the logs is the signal to watch.
+#
+# Besides the home page and the post list, the URLs cover the three article
+# pages that carry the most weight: the emissions post for its interactive map
+# and scatterplot, the depictr post for its figure count, and the language post
+# for its photograph. A regression in page weight shows up on those first.
 
 on:
   schedule:
@@ -28,6 +33,9 @@ jobs:
           urls: |
             https://pablobernabeu.github.io/
             https://pablobernabeu.github.io/post/
+            https://pablobernabeu.github.io/2026/greenhouse-gas-emissions-in-context/
+            https://pablobernabeu.github.io/2026/depictr-one-visual-language-from-first-look-to-final-figure/
+            https://pablobernabeu.github.io/2026/how-language-shapes-our-perception-of-time-and-magnitude/
           configPath: ./.github/lighthouse/lighthouserc.json
           uploadArtifacts: true
           temporaryPublicStorage: true

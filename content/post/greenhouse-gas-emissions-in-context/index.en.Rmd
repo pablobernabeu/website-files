@@ -481,7 +481,28 @@ The residual is a descriptive contrast between a country and the others at the s
 Figure 6 maps the residuals of the model on a diverging scale centred on zero, red where a country emits more than expected at its HDI and blue where it emits less. Hovering shows the residual in log10 units and the ratio 10<sup>residual</sup>, which is easier to read. Countries without an HDI or without emissions data are shown in light grey, and the members of a territory that EDGAR reports jointly carry the value of that territory, with a note to that effect in the hover text.
 
 ```{r fig6-map, fig.alt = 'Interactive world map in which each country is coloured by its residual from the model of per-capita emissions against the Human Development Index, red for higher than expected and blue for lower than expected, with countries lacking data in light grey.'}
+# Natural Earth's medium geometry carries about 100,000 vertices, which is 3 MB
+# of coordinates in the widget below. A 5 km simplification tolerance is
+# invisible at world zoom and removes about three fifths of that. Two classes of
+# feature are exempted, because simplifying them damages the map: those crossing
+# the antimeridian, whose longitudes wrap and which are redrawn as bands across
+# the plate if their vertices are moved, and the smallest polygons, which
+# simplification empties altogether.
+simplify_for_web <- function(x, tolerance_m = 5000) {
+  longitude_span <- vapply(st_geometry(x), function(g) {
+    box <- st_bbox(g); unname(box[['xmax']] - box[['xmin']])
+  }, numeric(1))
+  y <- x
+  local <- longitude_span <= 350
+  y[local, ] <- suppressWarnings(
+    st_simplify(x[local, ], dTolerance = tolerance_m, preserveTopology = TRUE))
+  emptied <- st_is_empty(y)
+  y[emptied, ] <- x[emptied, ]
+  y
+}
+
 world_sf <- ne_countries(scale = 'medium', returnclass = 'sf') %>%
+  simplify_for_web() %>%
   # France and Norway carry -99 as iso_a3 in Natural Earth; iso_a3_eh holds the code
   mutate(iso_a3 = ifelse(iso_a3 == '-99', iso_a3_eh, iso_a3)) %>%
   filter(iso_a3 != 'ATA') %>%
