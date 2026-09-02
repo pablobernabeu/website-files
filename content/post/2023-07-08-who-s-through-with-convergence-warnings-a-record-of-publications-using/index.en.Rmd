@@ -93,9 +93,14 @@ standardise <- function(x) {
 records <- bind_rows(lapply(list(scopus_any, scopus_proxy, europepmc, openalex),
                             standardise))
 records |> count(source, name = 'records')
+
+# Do any of the Scopus any-field titles mention a mixed model at all?
+mixed_terms <- 'mixed|lme4|multilevel|random effect|convergence|optimi[sz]'
+sum(grepl(mixed_terms, scopus_any$title, ignore.case = TRUE))
+head(sort(table(scopus_any$publication), decreasing = TRUE), 4)
 ```
 
-The searches were run on `r format(as.Date(substr(retrieved, 1, 10)), '%d %B %Y')`. The Scopus search for the function name in any indexed field illustrates why a bare string is a poor query: it returned `r if (is.null(scopus_any)) 0 else nrow(scopus_any)` records, almost all from textile, dental and physics journals, in which the string is presumably matched loosely against unrelated text, and none of the titles concerns mixed models. Those records are left out of the record below. The proxy query returned `r if (is.null(scopus_proxy)) 0 else nrow(scopus_proxy)` record(s), which shows how rarely an abstract describes the treatment of convergence at that level of detail. The two full-text sources are the ones that answer the question, since they find the function name where it is used, together with a mixed-model term that excludes unrelated uses.
+The searches were run on `r format(as.Date(substr(retrieved, 1, 10)), '%d %B %Y')`. The Scopus search for the function name in any indexed field illustrates why a bare string is a poor query: it returned `r if (is.null(scopus_any)) 0 else nrow(scopus_any)` records, most of them in pharmacology, medicinal chemistry and materials journals, and not one of their titles mentions a mixed model, an optimiser or convergence. Scopus appears to match the string loosely against unrelated text, so those records are left out of the record below. The proxy query returned `r if (is.null(scopus_proxy)) 0 else nrow(scopus_proxy)` record(s), which shows how rarely an abstract describes the treatment of convergence at that level of detail. The two full-text sources are the ones that answer the question, since they find the function name where it is used, together with a mixed-model term that excludes unrelated uses.
 
 ```{r}
 used_allfit <- records |>

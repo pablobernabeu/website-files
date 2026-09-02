@@ -64,7 +64,7 @@ plan_l3 <- scopus_plan(q_l3, years = 2010:2025, partition = 'year')
 plan_l3
 ```
 
-The same plan can already be written up. The report follows PRISMA-S, the extension of the PRISMA statement for reporting literature searches (Rethlefsen et al., 2021), and every item that the plan cannot know is stated as unrecorded rather than guessed. A report written at this stage is the protocol for the search.
+The same plan can already be written up. The report follows PRISMA-S, the extension of the PRISMA statement for reporting literature searches (Rethlefsen et al., 2021), and every item that the plan cannot know is stated as unrecorded, never guessed. A report written at this stage is the protocol for the search.
 
 ```{r}
 cat(format(scopus_search_report(plan_l3), style = 'paragraph'))
