@@ -111,13 +111,16 @@ ggplot(pilot, aes(RT, fill = prime)) +
 
 Because the specification gave both participants and items random priming slopes, each participant and each item has its own priming effect, which is the variation that the analysis has to account for and that a formula ignores.
 
-```{r, fig.width = 7.5, fig.height = 3.8, fig.alt = 'Dot plots of the priming effect in milliseconds for each participant and for each item, sorted, spread on both sides of zero'}
+```{r, fig.width = 7.5, fig.height = 3.8, fig.alt = 'Dot plots of the priming effect in milliseconds for each participant and for each item, each panel sorted by effect size, spread on both sides of zero'}
 unit_effects <- function(unit) {
   m <- tapply(pilot$RT, list(pilot[[unit]], pilot$prime), mean)
   data.frame(unit = unit, id = rownames(m), effect_ms = m[, 'unrelated'] - m[, 'related'])
 }
 effs <- rbind(unit_effects('subject'), unit_effects('item'))
-effs$id <- factor(effs$id, levels = unique(effs$id[order(effs$unit, effs$effect_ms)]))
+# Subject and item identifiers both run from 1, so they are prefixed before
+# being ordered by effect size, or the levels of one unit would order the other.
+effs$id <- paste(effs$unit, effs$id)
+effs$id <- factor(effs$id, levels = effs$id[order(effs$unit, effs$effect_ms)])
 ggplot(effs, aes(effect_ms, id, colour = unit)) +
   geom_vline(xintercept = 0, colour = 'grey60') +
   geom_point(size = 2) +
@@ -137,7 +140,7 @@ round(unlist(response_variance(spec)), 4)
 model_formula(spec)
 ```
 
-Whether a simulation recovers the parameters that went into it is the check that DeBruine and Barr (2021) recommend before trusting a power analysis. One large simulated study, fitted with the implied model, returns the fixed effects below alongside their standard errors. The two vocabulary terms are attenuated, since the specification measures vocabulary with a reliability of 0.8, and the intercept and the priming effect are recovered closely.
+Whether a simulation recovers the parameters that went into it is the check that DeBruine and Barr (2021) recommend before trusting a power analysis. One large simulated study, fitted with the implied model, returns the fixed effects below alongside their standard errors and the distance of each estimate from the value that was specified.
 
 ```{r}
 big <- spec
@@ -148,10 +151,14 @@ fit <- suppressMessages(lmerTest::lmer(
   control = lme4::lmerControl(calc.derivs = FALSE)))
 truth <- c(`(Intercept)` = 6, prime = 0.05, z_freq = -0.03, z_vocab = -0.02,
            prime_z_vocab = 0.02)
-data.frame(specified = truth,
-           recovered = round(lme4::fixef(fit)[names(truth)], 4),
-           se = round(sqrt(diag(as.matrix(vcov(fit))))[names(truth)], 4))
+est <- lme4::fixef(fit)[names(truth)]
+se  <- sqrt(diag(as.matrix(vcov(fit))))[names(truth)]
+data.frame(specified = truth, recovered = round(est, 4), se = round(se, 4),
+           # Distance from the specified value, in standard errors.
+           z = round((est - truth) / se, 2))
 ```
+
+The two vocabulary terms come out smaller in magnitude than specified, the direction that measuring vocabulary with a reliability of 0.8 predicts. A single replicate cannot separate that attenuation from sampling noise, though, since the largest distance in the last column is `r sprintf('%.2f', max(abs((est - truth) / se)))` standard errors and every estimate is therefore consistent with the value it was given.
 
 The reverse direction is how a real pilot seeds a power analysis: a specification is read off a fitted model and scaled to the planned sample.
 
@@ -173,7 +180,7 @@ pw <- power_mixed(spec, n_sims = n_sims, workers = workers)
 pw
 ```
 
-With 30 participants and 24 items, the maximal model is richer than the design supports, and many replicates end in a boundary fit. The priming effect has reasonable power. The interaction with vocabulary, which is what a researcher would most want to claim, does not, and the estimates of it that would reach significance are exaggerated by a factor of two or more. A sweep over effect sizes, with a null condition, shows the false-positive rate of the planned analysis and how the exaggeration recedes as power grows. The base coefficients are carried along explicitly, since the sweep replaces the block of coefficients as a whole.
+With 30 participants and 24 items, the maximal model is richer than the design supports, and many replicates end in a boundary fit, the situation in which Matuschek et al. (2017) show that the cost in power outweighs the protection against Type I error. The priming effect has reasonable power. The interaction with vocabulary, which is what a researcher would most want to claim, does not, and the estimates of it that would reach significance are exaggerated by a factor of two or more. A sweep over effect sizes, with a null condition, shows the false-positive rate of the planned analysis and how the exaggeration recedes as power grows. The base coefficients are carried along explicitly, since the sweep replaces the block of coefficients as a whole.
 
 ```{r}
 grid <- design_conditions(prime = c(0.03, 0.05, 0.08), .null = TRUE,

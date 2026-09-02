@@ -153,11 +153,11 @@ pc</code></pre>
 </div>
 <div id="diagnostics-that-match-the-model-class" class="section level2">
 <h2>Diagnostics that match the model class</h2>
-<p>The diagnostics function recognises the class of the model. For a binomial model of accuracy, it draws binned residuals (Gelman &amp; Hill, 2007) and a quantile-quantile plot of randomised quantile residuals (Dunn &amp; Smyth, 1996), with a seed so that the randomisation is reproducible, in place of the panels that suit a linear model.</p>
+<p>The diagnostics function recognises the class of the model. For a binomial model of accuracy, it draws binned residuals (Gelman &amp; Hill, 2007) and a quantile-quantile plot of randomised quantile residuals (Dunn &amp; Smyth, 1996), with a seed so that the randomisation is reproducible, in place of the residuals-versus-fitted and ordinary quantile-quantile panels that suit a linear model. The scale-location and leverage panels are kept.</p>
 <pre class="r"><code>gfit &lt;- glm(accuracy ~ word_frequency + condition + modality,
             data = lexical_decision, family = binomial)
 residual_diagnostics_plot(gfit, seed = 1, title = &#39;Accuracy model: GLM diagnostics&#39;)</code></pre>
-<p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-15-1.png" alt="Four diagnostic panels for a binomial model of accuracy, including binned residuals and a quantile-quantile plot of randomised quantile residuals" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-15-1.png" alt="Four diagnostic panels for a binomial model of accuracy: binned residuals, a quantile-quantile plot of randomised quantile residuals, scale-location and residuals against leverage" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="the-audit" class="section level2">
 <h2>The audit</h2>
@@ -208,7 +208,7 @@ check_figure(p_density)</code></pre>
 #&gt; 7                          Lowest-contrast text #4d4d4d on #ffffff.
 #&gt; 8                        Lowest-contrast colour #e69f00 on #ffffff.
 #&gt; 9                            Colour alone distinguishes the groups.</code></pre>
-<p>Two rows fail on the default two-colour density. The orange sits at a contrast of about 2.25 to 1 against white, where the guideline for graphical objects asks for 3 to 1, and colour alone distinguishes the conditions. Both are corrected in one line, by swapping in the darker vermillion and adding line type as a redundant channel, since the plot is an ordinary ggplot2 object. Text drawn for a 17.8 cm figure arrives at half its size in an 8.9 cm journal column, and the check can be run at that width.</p>
+<p>Two rows fail on the default two-colour density. The orange sits at a contrast of about 2.25 to 1 against white, where the guideline for graphical objects asks for 3 to 1, and colour alone distinguishes the conditions. Both are corrected by swapping in the darker vermillion and adding line type as a redundant channel, shown here on the cumulative distribution, since these plots are ordinary ggplot2 objects. Text drawn for a 17.8 cm figure arrives at half its size in an 8.9 cm journal column, and the check can be run at that width.</p>
 <pre class="r"><code>p_mended &lt;- ecdf_plot(lexical_decision, RT, group = condition,
                       palette = c(&#39;#005b96&#39;, &#39;#d55e00&#39;), legend_inside = TRUE,
                       title = &#39;Corrected: darker vermillion, with line type as a second channel&#39;) +
@@ -230,7 +230,7 @@ check_figure(p_mended)[, c(&#39;check&#39;, &#39;measured&#39;, &#39;threshold&#
 #&gt;                                                             detail
 #&gt; 6 Smallest text 8.80 pt, drawn at 17.78 cm and printed at 8.90 cm.</code></pre>
 <pre class="r"><code>p_mended</code></pre>
-<p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-19-1.png" alt="Empirical cumulative distributions by priming condition in blue and vermillion with different line types, the mended version of the earlier figure" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-19-1.png" alt="Empirical cumulative distributions by priming condition in blue and vermillion with different line types, carrying the two corrections that the density figure failed on" width="672" style="display: block; margin: auto;" /></p>
 <p>The documentation states the limit of the guarantee beside the claim. The eight colours pass every colour-vision check, and the closest pair in greyscale, the orange and the sky blue, differ by about one unit of CIE lightness, so a figure that may be printed in black and white needs a second channel as well.</p>
 </div>
 <div id="composition-and-the-python-twin" class="section level2">

@@ -322,9 +322,19 @@ str(tf_appraise_amendment(switching_v2, switching))</code></pre>
 <pre class="r"><code>c(v1 = rep$aggregate_score, v2 = tf_check(switching_v2)$aggregate_score)</code></pre>
 <pre><code>#&gt;   v1   v2 
 #&gt; 85.1 82.8</code></pre>
-<pre class="r"><code>tf_check(switching_v2)$items[[3]]$score   # risk_severity, the item that moved</code></pre>
-<pre><code>#&gt; [1] 0.59</code></pre>
-<p>The rigour score falls slightly from the first version to the second, because the new prediction is directional and its severity of 0.5 sits below the mean of the four predictions it joins. A theory that gains content can therefore lose a point on a checklist item, which is a reminder that the score measures how completely a theory is specified and not how good it is. Every builder verb logs a provenance entry, so the history of the document records who changed what and when, and the version block records the lineage.</p>
+<pre class="r"><code># Every checklist item whose score changed, and what each change costs the total.
+item_scores &lt;- function(x) vapply(tf_check(x)$items, function(i) i$score, numeric(1))
+item_names  &lt;- vapply(tf_check(switching)$items, function(i) i$id, character(1))
+item_weight &lt;- vapply(tf_check(switching)$items, function(i) i$weight, numeric(1))
+moved &lt;- data.frame(item = item_names, weight = item_weight,
+                    v1 = item_scores(switching), v2 = item_scores(switching_v2))
+moved$points &lt;- round(100 * moved$weight * (moved$v2 - moved$v1), 2)
+moved[moved$v1 != moved$v2, ]</code></pre>
+<pre><code>#&gt;             item weight    v1   v2 points
+#&gt; 2      precision   0.10 0.750 0.60  -1.50
+#&gt; 3  risk_severity   0.10 0.613 0.59  -0.23
+#&gt; 10 diagnosticity   0.06 0.500 0.40  -0.60</code></pre>
+<p>The rigour score falls slightly from the first version to the second, and the table shows where. Several items are ratios over the set of predictions, so a fifth prediction that is directional, and whose severity of 0.5 sits below the mean of the four it joins, moves each of them down a little. A theory that gains content can therefore lose points on a checklist, which is a reminder that the score measures how completely a theory is specified and not how good it is. Every builder verb logs a provenance entry, so the history of the document records who changed what and when, and the version block records the lineage.</p>
 <pre class="r"><code>tail(do.call(rbind, lapply(switching_v2$provenance, as.data.frame)), 2)</code></pre>
 <pre><code>#&gt;   step            action
 #&gt; 3    3        tf_predict

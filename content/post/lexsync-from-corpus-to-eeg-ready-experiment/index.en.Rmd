@@ -86,7 +86,7 @@ sapply(design_freq$conditions,
        function(cnd) nrow(build_pool(pool, cnd$define_by)))
 ```
 
-The high-frequency band is the scarce side, with `r nrow(build_pool(pool, design_freq$conditions[[1]]$define_by))` candidates against `r nrow(build_pool(pool, design_freq$conditions[[2]]$define_by))`, which the datasheet will later record as the discretionary pool.
+The high-frequency band is the scarce side, with `r nrow(build_pool(pool, design_freq$conditions[[1]]$define_by))` candidates against `r nrow(build_pool(pool, design_freq$conditions[[2]]$define_by))`, and it is the scarcer band that limits how closely the two conditions can be matched.
 
 ## Matching on three dimensions at once
 

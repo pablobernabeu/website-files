@@ -102,7 +102,10 @@ dim(pilot)</code></pre>
   data.frame(unit = unit, id = rownames(m), effect_ms = m[, &#39;unrelated&#39;] - m[, &#39;related&#39;])
 }
 effs &lt;- rbind(unit_effects(&#39;subject&#39;), unit_effects(&#39;item&#39;))
-effs$id &lt;- factor(effs$id, levels = unique(effs$id[order(effs$unit, effs$effect_ms)]))
+# Subject and item identifiers both run from 1, so they are prefixed before
+# being ordered by effect size, or the levels of one unit would order the other.
+effs$id &lt;- paste(effs$unit, effs$id)
+effs$id &lt;- factor(effs$id, levels = effs$id[order(effs$unit, effs$effect_ms)])
 ggplot(effs, aes(effect_ms, id, colour = unit)) +
   geom_vline(xintercept = 0, colour = &#39;grey60&#39;) +
   geom_point(size = 2) +
@@ -111,7 +114,7 @@ ggplot(effs, aes(effect_ms, id, colour = unit)) +
   labs(x = &#39;Priming effect (ms), unrelated minus related&#39;, y = NULL) +
   theme_minimal(base_size = 13) +
   theme(axis.text.y = element_blank(), panel.grid.major.y = element_blank())</code></pre>
-<p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-6-1.png" alt="Dot plots of the priming effect in milliseconds for each participant and for each item, sorted, spread on both sides of zero" width="720" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-6-1.png" alt="Dot plots of the priming effect in milliseconds for each participant and for each item, each panel sorted by effect size, spread on both sides of zero" width="720" style="display: block; margin: auto;" /></p>
 </div>
 <div id="the-anatomy-of-the-design" class="section level2">
 <h2>The anatomy of the design</h2>
@@ -122,7 +125,7 @@ ggplot(effs, aes(effect_ms, id, colour = unit)) +
 <pre class="r"><code>model_formula(spec)</code></pre>
 <pre><code>#&gt; .y ~ prime + z_freq + z_vocab + prime_z_vocab + (1 + prime | 
 #&gt;     subject) + (1 + prime | item)</code></pre>
-<p>Whether a simulation recovers the parameters that went into it is the check that DeBruine and Barr (2021) recommend before trusting a power analysis. One large simulated study, fitted with the implied model, returns the fixed effects below alongside their standard errors. The two vocabulary terms are attenuated, since the specification measures vocabulary with a reliability of 0.8, and the intercept and the priming effect are recovered closely.</p>
+<p>Whether a simulation recovers the parameters that went into it is the check that DeBruine and Barr (2021) recommend before trusting a power analysis. One large simulated study, fitted with the implied model, returns the fixed effects below alongside their standard errors and the distance of each estimate from the value that was specified.</p>
 <pre class="r"><code>big &lt;- spec
 big$units$subject$n &lt;- 80
 big$units$item$n &lt;- 60
@@ -131,15 +134,18 @@ fit &lt;- suppressMessages(lmerTest::lmer(
   control = lme4::lmerControl(calc.derivs = FALSE)))
 truth &lt;- c(`(Intercept)` = 6, prime = 0.05, z_freq = -0.03, z_vocab = -0.02,
            prime_z_vocab = 0.02)
-data.frame(specified = truth,
-           recovered = round(lme4::fixef(fit)[names(truth)], 4),
-           se = round(sqrt(diag(as.matrix(vcov(fit))))[names(truth)], 4))</code></pre>
-<pre><code>#&gt;               specified recovered     se
-#&gt; (Intercept)        6.00    5.9986 0.0175
-#&gt; prime              0.05    0.0608 0.0081
-#&gt; z_freq            -0.03   -0.0319 0.0092
-#&gt; z_vocab           -0.02   -0.0072 0.0156
-#&gt; prime_z_vocab      0.02    0.0084 0.0083</code></pre>
+est &lt;- lme4::fixef(fit)[names(truth)]
+se  &lt;- sqrt(diag(as.matrix(vcov(fit))))[names(truth)]
+data.frame(specified = truth, recovered = round(est, 4), se = round(se, 4),
+           # Distance from the specified value, in standard errors.
+           z = round((est - truth) / se, 2))</code></pre>
+<pre><code>#&gt;               specified recovered     se     z
+#&gt; (Intercept)        6.00    5.9986 0.0175 -0.08
+#&gt; prime              0.05    0.0608 0.0081  1.33
+#&gt; z_freq            -0.03   -0.0319 0.0092 -0.20
+#&gt; z_vocab           -0.02   -0.0072 0.0156  0.82
+#&gt; prime_z_vocab      0.02    0.0084 0.0083 -1.41</code></pre>
+<p>The two vocabulary terms come out smaller in magnitude than specified, the direction that measuring vocabulary with a reliability of 0.8 predicts. A single replicate cannot separate that attenuation from sampling noise, though, since the largest distance in the last column is 1.41 standard errors and every estimate is therefore consistent with the value it was given.</p>
 <p>The reverse direction is how a real pilot seeds a power analysis: a specification is read off a fitted model and scaled to the planned sample.</p>
 <pre class="r"><code>from_fit &lt;- spec_from_model(fit, name = &#39;from_pilot_fit&#39;, n_subject = 60, n_item = 40,
                             family = list(family = &#39;shifted_lognormal&#39;, shift = 200),
@@ -163,7 +169,7 @@ pw</code></pre>
 #&gt;         z_freq -0.03  0.36 0.068 [0.241, 0.499]    18  0.000  1.625
 #&gt;        z_vocab -0.02  0.12 0.046 [0.056, 0.238]     6  0.167  2.418
 #&gt;  prime_z_vocab  0.02  0.20 0.057 [0.112, 0.330]    10  0.000  2.275</code></pre>
-<p>With 30 participants and 24 items, the maximal model is richer than the design supports, and many replicates end in a boundary fit. The priming effect has reasonable power. The interaction with vocabulary, which is what a researcher would most want to claim, does not, and the estimates of it that would reach significance are exaggerated by a factor of two or more. A sweep over effect sizes, with a null condition, shows the false-positive rate of the planned analysis and how the exaggeration recedes as power grows. The base coefficients are carried along explicitly, since the sweep replaces the block of coefficients as a whole.</p>
+<p>With 30 participants and 24 items, the maximal model is richer than the design supports, and many replicates end in a boundary fit, the situation in which Matuschek et al. (2017) show that the cost in power outweighs the protection against Type I error. The priming effect has reasonable power. The interaction with vocabulary, which is what a researcher would most want to claim, does not, and the estimates of it that would reach significance are exaggerated by a factor of two or more. A sweep over effect sizes, with a null condition, shows the false-positive rate of the planned analysis and how the exaggeration recedes as power grows. The base coefficients are carried along explicitly, since the sweep replaces the block of coefficients as a whole.</p>
 <pre class="r"><code>grid &lt;- design_conditions(prime = c(0.03, 0.05, 0.08), .null = TRUE,
                           .base = list(z_freq = -0.03, z_vocab = -0.02,
                                        `prime:z_vocab` = 0.02))

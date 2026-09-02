@@ -164,9 +164,9 @@ power_curve_plot(pc, x_lab = 'Number of participants',
 
 ## Diagnostics that match the model class
 
-The diagnostics function recognises the class of the model. For a binomial model of accuracy, it draws binned residuals (Gelman & Hill, 2007) and a quantile-quantile plot of randomised quantile residuals (Dunn & Smyth, 1996), with a seed so that the randomisation is reproducible, in place of the panels that suit a linear model.
+The diagnostics function recognises the class of the model. For a binomial model of accuracy, it draws binned residuals (Gelman & Hill, 2007) and a quantile-quantile plot of randomised quantile residuals (Dunn & Smyth, 1996), with a seed so that the randomisation is reproducible, in place of the residuals-versus-fitted and ordinary quantile-quantile panels that suit a linear model. The scale-location and leverage panels are kept.
 
-```{r, fig.height = 6, fig.alt = 'Four diagnostic panels for a binomial model of accuracy, including binned residuals and a quantile-quantile plot of randomised quantile residuals'}
+```{r, fig.height = 6, fig.alt = 'Four diagnostic panels for a binomial model of accuracy: binned residuals, a quantile-quantile plot of randomised quantile residuals, scale-location and residuals against leverage'}
 gfit <- glm(accuracy ~ word_frequency + condition + modality,
             data = lexical_decision, family = binomial)
 residual_diagnostics_plot(gfit, seed = 1, title = 'Accuracy model: GLM diagnostics')
@@ -191,9 +191,9 @@ p_density <- explore_distribution(lexical_decision, RT, group = condition,
 check_figure(p_density)
 ```
 
-Two rows fail on the default two-colour density. The orange sits at a contrast of about 2.25 to 1 against white, where the guideline for graphical objects asks for 3 to 1, and colour alone distinguishes the conditions. Both are corrected in one line, by swapping in the darker vermillion and adding line type as a redundant channel, since the plot is an ordinary ggplot2 object. Text drawn for a 17.8 cm figure arrives at half its size in an 8.9 cm journal column, and the check can be run at that width.
+Two rows fail on the default two-colour density. The orange sits at a contrast of about 2.25 to 1 against white, where the guideline for graphical objects asks for 3 to 1, and colour alone distinguishes the conditions. Both are corrected by swapping in the darker vermillion and adding line type as a redundant channel, shown here on the cumulative distribution, since these plots are ordinary ggplot2 objects. Text drawn for a 17.8 cm figure arrives at half its size in an 8.9 cm journal column, and the check can be run at that width.
 
-```{r, fig.alt = 'Empirical cumulative distributions by priming condition in blue and vermillion with different line types, the mended version of the earlier figure'}
+```{r, fig.alt = 'Empirical cumulative distributions by priming condition in blue and vermillion with different line types, carrying the two corrections that the density figure failed on'}
 p_mended <- ecdf_plot(lexical_decision, RT, group = condition,
                       palette = c('#005b96', '#d55e00'), legend_inside = TRUE,
                       title = 'Corrected: darker vermillion, with line type as a second channel') +

@@ -38,7 +38,7 @@ xaringanExtra::use_clipboard()
 
 Most literature searches are run twice. The first time, someone types a query into the Scopus website, exports a spreadsheet and starts screening. Months later a reviewer asks for the exact query, the date, the number of records returned by each database and the number of duplicates removed, and nobody can produce them, because nothing in the export records how it was made. Repeating the search through the application programming interface (API) has its own difficulties. Elsevier charges a weekly quota per request, offset paging stops at record 5,000, a large harvest interrupted at page 40 has to start again and the records arrive in a nested format that every laboratory reshapes in its own way.
 
-I wrote the first version of the code behind this post as a set of scripts extending the rscopus package, which I [described in 2024](/2024/rscopus-plus-an-extension-of-the-rscopus-package/). The scripts grew into scopusflow, a package that separates describing a search from running it and that ships in two versions, one for R and one for Python, tested against the same fixtures. Nothing below contacts Elsevier, and no key is needed. Scopus records may not be redistributed, so the package bundles a complete harvest of `r nrow(scopusflow::example_records)` real journal articles on graphene supercapacitors, retrieved from OpenAlex in the format the package returns, and its test suite runs the harvest functions against a stand-in server that answers the package's own requests from that corpus. The post uses the same device, so that every number in it comes from code that actually ran. Where the live API would be needed, the call is shown but not run, and a live example is in the companion post on [speculation across scientific topics](/2026/speculation-across-various-scientific-topics/), whose searches this package now performs.
+I wrote the first version of the code behind this post as a set of scripts extending the rscopus package, which I [described in 2024](/2024/rscopus-plus-an-extension-of-the-rscopus-package/). The scripts grew into scopusflow, a package that separates describing a search from running it and that ships in two versions, one for R and one for Python, tested against the same fixtures. Nothing below contacts Elsevier, and no key is needed. Scopus records may not be redistributed, so the package bundles a complete harvest of `r nrow(scopusflow::example_records)` real publication records on graphene supercapacitors, retrieved from OpenAlex in the format the package returns, and its test suite runs the harvest functions against a stand-in server that answers the package's own requests from that corpus. The post uses the same device, so that every number in it comes from code that actually ran. Where the live API would be needed, the call is shown but not run, and a live example is in the companion post on [speculation across scientific topics](/2026/speculation-across-various-scientific-topics/), whose searches this package now performs.
 
 ```{r}
 library(scopusflow)
@@ -188,7 +188,7 @@ scopus_top(records, by = 'author', n = 5)
 
 A trend asks the API for one count per year and never retrieves a record, so it costs far less than a harvest, and a topic comparison counts, for each year, the records that mention a comparison term as a share of the reference literature. Through the stand-in, the comparison terms are matched against the corpus titles, so the shares below describe the bundled corpus, whose composition differs from that of the Scopus database.
 
-```{r, fig.width = 7, fig.height = 3.6, fig.alt = 'Bar chart of the number of graphene supercapacitor records per year from 2015 to 2024 in the bundled corpus'}
+```{r, fig.width = 7, fig.height = 3.6, fig.alt = 'Line chart with a shaded area of the number of graphene supercapacitor records per year from 2015 to 2024 in the bundled corpus'}
 httr2::with_mocked_responses(stand_in$handler, {
   trend <- scopus_trend('graphene supercapacitor', years = 2015:2024,
                         field = 'TITLE-ABS-KEY')
@@ -196,7 +196,7 @@ httr2::with_mocked_responses(stand_in$handler, {
 plot_scopus_trend(trend)
 ```
 
-```{r, fig.width = 8, fig.height = 4.6, fig.alt = 'Line chart of the yearly share of graphene supercapacitor records whose titles mention flexible, laser or nitrogen, with direct labels at the right end and shaded stability bands'}
+```{r, fig.width = 8, fig.height = 4.6, fig.alt = 'Line chart of the yearly share of graphene supercapacitor records whose titles mention flexible, laser or nitrogen, with a direct label at the right end and a shaded stability band on the highlighted series and the other two drawn in grey'}
 httr2::with_mocked_responses(stand_in$handler, {
   shares <- scopus_compare_topics(
     reference_query  = 'graphene supercapacitor',
@@ -207,9 +207,9 @@ httr2::with_mocked_responses(stand_in$handler, {
 plot_scopus_comparison(shares, highlight = 'flexible')
 ```
 
-The shaded band is a Wilson interval and the function's documentation calls it an illustrative stability range rather than a confidence interval, since the API returns exact counts and nothing in them is sampled. A live comparison costs one request per term per year plus one per year for the reference, which for the nine topics and 47 years of the companion post comes to `r 9 * 47 * 2` requests, well within a weekly quota. The intersection of concepts is counted the same way, one request per row.
+The shaded band is a Wilson interval and the function's documentation calls it an illustrative stability range rather than a confidence interval, since the API returns exact counts and nothing in them is sampled. A live comparison costs, for each topic, one request per year for its reference literature and one per year for the comparison term, which for the nine topics and 47 years of the companion post comes to `r 9 * 47 * 2` requests, well within a weekly quota. The intersection of concepts is counted the same way, one request per row.
 
-```{r, fig.width = 7, fig.height = 3.2, fig.alt = 'Horizontal bar chart on a logarithmic axis of the number of records matching graphene supercapacitor, flexible and laser, and of their intersections'}
+```{r, fig.width = 7, fig.height = 3.2, fig.alt = 'Lollipop chart on a logarithmic axis of the number of records matching graphene supercapacitor, flexible and laser, and of their intersections'}
 httr2::with_mocked_responses(stand_in$handler, {
   sets <- scopus_intersections(
     concepts = c('graphene supercapacitor' = 'graphene supercapacitor',
@@ -243,7 +243,7 @@ c(rds_keeps_time = !is.null(attr(read_scopus_records(rds), 'retrieved_at')),
 
 ## The write-up
 
-The search record is produced from the objects alone. The plan, the per-cell accounting, the retrieval time, the package version and the paging mode all travelled with the harvest, so nothing is typed in by hand. The record below names Scopus as the database and gives a reset time from the stand-in's headers, because the objects it reads were produced by the stand-in. On a live harvest both would be the real ones. Of the 16 PRISMA-S items, a harvest supplies five and a merge a sixth, and the remaining ten, such as the databases searched and the limits applied, are listed as the author's to write.
+The search record is produced from the objects alone. The plan, the per-cell accounting, the retrieval time, the package version and the paging mode all travelled with the harvest, so nothing is typed in by hand. The record below names Scopus as the database and dates the search to the moment this page was rendered, because the objects it reads were produced by the stand-in. On a live harvest both would describe the real search. Of the 16 PRISMA-S items, a harvest supplies five and a merge a sixth, and the remaining ten, such as any citation searching and any peer review of the strategy, are listed as the author's to write.
 
 ```{r}
 report <- scopus_search_report(records)
