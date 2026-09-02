@@ -1,0 +1,548 @@
+---
+title: 'Greenhouse gas emissions in context: raw totals, income groups and human development'
+author: ''
+date: '2026-09-01'
+slug: greenhouse-gas-emissions-in-context
+categories:
+  - research methods
+tags:
+  - visualisation
+  - data science
+  - open science
+subtitle: ''
+summary: 'Greenhouse-gas emissions are usually reported as raw totals or per capita, and both neglect the circumstances of each country. Using the 2025 EDGAR release, the World Bank income classification and the Human Development Index, this post moves from raw totals to per-capita figures by income group, and then to emissions read against human development.'
+authors: []
+lastmod: ''
+featured: no
+draft: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = TRUE, fig.align = 'center',
+                      comment = '#>', fig.width = 8, fig.retina = 2)
+```
+
+Everything happens in a context that determines, at least in part, the possibilities and the freedom of those involved. The global warming crisis is likewise subject to circumstances. Countries all around the world are under pressure to abandon fossil fuels as quickly as possible in favour of renewable energy. This is a healthy and necessary switch, but it is not free. Replacing coal and oil with solar and wind energy is so expensive that countries have to approach such shifts with caution, to avoid laying off thousands of workers as industrial production decreases. The question, therefore, cannot be limited to who pollutes most. The [socioeconomic conditions of each country](https://www.theguardian.com/global-development/2025/nov/14/china-and-saudi-arabia-among-nations-receiving-climate-loans-analysis-reveals) must be considered too, although many of the [details escape the general public](https://www.theguardian.com/commentisfree/2025/nov/14/climate-crisis-communication-super-rich), as [a video report by the Guardian](https://www.youtube.com/watch?v=CWUtS_1k93o) illustrates.
+
+Greenhouse gases are the main driver of global warming, and their emissions are monitored in the Emissions Database for Global Atmospheric Research (EDGAR), [published by the European Commission](https://edgar.jrc.ec.europa.eu/report_2025) ([Crippa et al., 2025](https://data.europa.eu/doi/10.2760/9816914)). As is often the case, the database reports raw figures, whether per country, per region or per capita. Raw figures are necessary but not sufficient, as they neglect the circumstances of each country. Can India convert its energy production system as fast as the United States? Barack Obama addressed this question in reference to the Paris Agreement in [an interview](https://www.youtube.com/watch?v=nU3E8r0n27w&t=2242s): 'Look, I understand you can't leave half a billion people in poverty. [...] If I don't see their perspective, then, not only am I not going to get their cooperation, I'm not going to solve the problem that's in my interest to solve.'
+
+Socioeconomic status is one covariate to consider alongside raw emission statistics. The figures below move from raw totals to per-capita emissions by income group, and then to emissions read against human development. The original version of this analysis, prepared as a data-visualisation task and kept in this repository as a PDF, weighted emissions by a commercial 'standard of living' score from a country-ranking website; the finished version uses the Human Development Index (HDI) of the United Nations Development Programme (2025), an official and documented composite of health, education and income.
+
+
+## Data and preparation
+
+All emissions come from the 2025 EDGAR booklet (Crippa et al., 2025), which runs from 1970 to 2024. Greenhouse gas (GHG) here covers fossil CO<sub>2</sub>, CH<sub>4</sub>, N<sub>2</sub>O and fluorinated gases, aggregated with the 100-year global warming potentials of the IPCC Fifth Assessment Report, and excludes land use, land-use change and forestry. The booklet reports totals in million tonnes of CO<sub>2</sub> equivalent per year (Mt CO<sub>2</sub>eq) and per-capita emissions in tonnes per person, and it includes the EU27 and the world as rows of their own, which are used as such throughout and never recomputed from the countries.
+
+This post reads three compact files that were derived from the booklet and from three context sources in the [companion repository](https://github.com/pablobernabeu/ECB-task), where the document that builds them from the original workbooks also lives. `ghg_long.csv` holds one row per territory and year with its continent, income group, total, per-capita figure, derived population and euro-area membership; `hdi_2023.csv` holds the Human Development Index for 2023 from the 2025 Human Development Report (United Nations Development Programme, 2025); and `sectors_2024.csv` holds the 2024 emissions of each territory by EDGAR sector, summed over the four substances. Continents come from the ISO 3166 dataset maintained by Duncalfe (n.d.) and income groups from the World Bank classification for fiscal year 2026 (World Bank, 2025).
+
+The population of each territory and year is the total divided by the per-capita figure, which recovers the population series behind EDGAR's own per-capita values without a further source. EDGAR reports Serbia and Montenegro (code SCG) and Sudan and South Sudan (code SDN) as combined territories, and likewise folds Liechtenstein into Switzerland, Andorra into Spain, Monaco into France, San Marino and the Holy See into Italy and the State of Palestine into Israel. These rows are kept exactly as reported and are later compared with the HDI of the member whose code they carry. The first chunk loads the packages, sets one theme for all static figures and fixes the colours, taken from the Okabe-Ito palette, that each continent and income group keeps throughout.
+
+```{r packages}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(patchwork)
+library(scales)
+library(ggrepel)
+library(ggtext)
+library(plotly)
+library(htmltools)
+library(leaflet)
+library(sf)
+library(rnaturalearth)
+library(RColorBrewer)
+library(knitr)
+
+theme_set(theme_minimal(base_size = 13))
+theme_update(
+  axis.title = element_markdown(),
+  plot.title = element_text(size = 13, face = 'bold'),
+  plot.title.position = 'plot',
+  # element_textbox_simple wraps at the width of the figure; element_markdown
+  # would run the caption off the right edge of a wide plot
+  plot.caption = element_textbox_simple(hjust = 0, colour = 'grey30', size = 10,
+                                        lineheight = 1.25, width = unit(1, 'npc'),
+                                        margin = margin(t = 10)),
+  plot.caption.position = 'plot',
+  panel.grid.minor = element_blank(),
+  legend.position = 'bottom'
+)
+
+continent_colours <- c(Asia = '#D55E00', America = '#0072B2', Europe = '#009E73',
+                       Africa = '#E69F00', Oceania = '#CC79A7',
+                       `International transport` = '#56B4E9')
+income_colours <- c(`High income` = '#D55E00', `Upper middle income` = '#E69F00',
+                    `Lower middle income` = '#0072B2', `Low income` = '#009E73')
+
+fmt <- function(x, digits = 0) formatC(x, format = 'f', digits = digits, big.mark = ',')
+pct <- function(x, digits = 1) paste0(fmt(x, digits), '%')
+ordinal <- label_ordinal()
+edgar_caption <- 'Source: EDGAR 2025 (Crippa et al., 2025).'
+caption_theme <- theme(
+  plot.caption = element_textbox_simple(hjust = 0, colour = 'grey30', size = 10,
+                                        lineheight = 1.25, width = unit(1, 'npc'),
+                                        margin = margin(t = 10)))
+```
+
+The next chunk reads the sheets of totals and per-capita emissions, moves the years from columns into rows, derives the population of each territory and year as the ratio of the total to the per-capita figure (Mt divided by tonnes per person gives millions of people) and checks that the country rows plus international aviation and shipping add up to EDGAR's global total.
+
+```{r data}
+ghg <- read.csv('data/ghg_long.csv', stringsAsFactors = FALSE)
+hdi <- read.csv('data/hdi_2023.csv', stringsAsFactors = FALSE)
+sectors_2024 <- read.csv('data/sectors_2024.csv', stringsAsFactors = FALSE)
+
+world <- ghg %>% filter(iso3 == 'GLOBAL TOTAL') %>% select(year, world_mt = total_mt)
+eu27 <- ghg %>% filter(iso3 == 'EU27') %>% select(year, eu27_mt = total_mt)
+world_2024 <- world$world_mt[world$year == 2024]
+
+# Countries, plus international aviation (AIR) and shipping (SEA)
+countries <- ghg %>% filter(!iso3 %in% c('EU27', 'GLOBAL TOTAL'))
+
+# Territories that EDGAR reports jointly under one code, with their members
+combined <- tribble(
+  ~iso3, ~member_iso3, ~member,
+  'SCG', 'SRB', 'Serbia',       'SCG', 'MNE', 'Montenegro',
+  'SDN', 'SDN', 'Sudan',        'SDN', 'SSD', 'South Sudan',
+  'ISR', 'ISR', 'Israel',       'ISR', 'PSE', 'State of Palestine',
+  'CHE', 'CHE', 'Switzerland',  'CHE', 'LIE', 'Liechtenstein',
+  'ESP', 'ESP', 'Spain',        'ESP', 'AND', 'Andorra',
+  'FRA', 'FRA', 'France',       'FRA', 'MCO', 'Monaco',
+  'ITA', 'ITA', 'Italy',        'ITA', 'SMR', 'San Marino', 'ITA', 'VAT', 'Holy See'
+)
+
+# A row without a continent would otherwise vanish silently from figure 1
+stopifnot(!anyNA(countries$continent))
+c(territories = n_distinct(countries$iso3), years = n_distinct(ghg$year),
+  countries_with_hdi = nrow(hdi), sector_rows = nrow(sectors_2024))
+```
+
+## World and regional totals
+
+Figure 1 shows the world total by continent since 1970, with international aviation and shipping kept as a category of their own because EDGAR attributes them to no country, and, below it, the emissions of the EU27 and of the euro area as a percentage of the world total. The second panel is where the trajectory of European emissions becomes visible, since on the scale of the world total the European series are too small to read.
+
+```{r fig1-world-regions, fig.height = 9.5, fig.alt = paste0('Two panels. Panel a is a stacked area chart of world greenhouse gas emissions from 1970 to 2024 by continent, rising from about ', fmt(world$world_mt[world$year == 1970]), ' to about ', fmt(world_2024), ' million tonnes of CO2 equivalent, with Asia growing to more than half of the total. Panel b shows the EU27 and euro-area emissions as a percentage of the world total, both falling from about a fifth and a seventh in 1970 to a few per cent in 2024, with a dotted line marking the year in which EU27 emissions peaked in absolute terms.')}
+by_continent <- countries %>%
+  group_by(continent, year) %>%
+  summarise(total_mt = sum(total_mt), .groups = 'drop')
+
+continent_order <- by_continent %>%
+  filter(year == 2024) %>%
+  arrange(desc(total_mt)) %>%
+  pull(continent)
+
+by_continent <- by_continent %>%
+  mutate(continent = factor(continent, levels = continent_order))
+
+continent_share <- function(cont, yr) {
+  100 * by_continent$total_mt[by_continent$continent == cont & by_continent$year == yr] /
+    world$world_mt[world$year == yr]
+}
+
+p1a <- ggplot(by_continent, aes(year, total_mt, fill = continent)) +
+  geom_area(position = position_stack(reverse = TRUE), colour = 'white', linewidth = 0.3) +
+  scale_fill_manual(values = continent_colours, guide = guide_legend(reverse = TRUE)) +
+  scale_x_continuous(breaks = seq(1970, 2020, 10), expand = c(0, 0)) +
+  scale_y_continuous(labels = comma, expand = expansion(mult = c(0, 0.04))) +
+  labs(title = 'a. World total by continent',
+       x = NULL, y = 'Mt CO<sub>2</sub>eq per year', fill = NULL) +
+  theme(legend.position = 'right')
+
+# Shares of the world total: EU27 from EDGAR's own row, euro area summed over members
+shares <- world %>%
+  left_join(eu27, by = 'year') %>%
+  left_join(countries %>%
+              filter(euro_area) %>%
+              group_by(year) %>%
+              summarise(euro_area_mt = sum(total_mt), .groups = 'drop'),
+            by = 'year') %>%
+  mutate(EU27 = 100 * eu27_mt / world_mt,
+         `Euro area` = 100 * euro_area_mt / world_mt)
+
+eu27_peak_year <- shares$year[which.max(shares$eu27_mt)]
+eu27_peak_mt <- max(shares$eu27_mt)
+eu27_value <- function(yr) shares$eu27_mt[shares$year == yr]
+share_value <- function(bloc, yr) shares[[bloc]][shares$year == yr]
+
+shares_long <- shares %>%
+  select(year, EU27, `Euro area`) %>%
+  pivot_longer(-year, names_to = 'bloc', values_to = 'share')
+
+p1b <- ggplot(shares_long, aes(year, share, colour = bloc)) +
+  annotate('segment', x = eu27_peak_year, xend = eu27_peak_year, y = 0,
+           yend = share_value('EU27', eu27_peak_year), linetype = 'dotted', colour = 'grey40') +
+  annotate('text', x = eu27_peak_year + 1, y = 0.8,
+           label = paste0('Peak of EU27 emissions in absolute terms:\n',
+                          eu27_peak_year, ', ', fmt(eu27_peak_mt), ' Mt'),
+           hjust = 0, vjust = 0, size = 3.6, colour = 'grey30', lineheight = 0.95) +
+  geom_line(linewidth = 1) +
+  geom_text_repel(data = filter(shares_long, year == max(year)),
+                  aes(label = paste0(bloc, ', ', fmt(share, 1), '%')),
+                  hjust = 0, nudge_x = 1, direction = 'y', segment.colour = NA,
+                  size = 4, show.legend = FALSE) +
+  scale_colour_manual(values = c(EU27 = '#0072B2', `Euro area` = '#D55E00')) +
+  scale_x_continuous(breaks = seq(1970, 2020, 10), expand = expansion(mult = c(0, 0.22))) +
+  scale_y_continuous(limits = c(0, NA), labels = function(x) paste0(x, '%'),
+                     expand = expansion(mult = c(0, 0.08))) +
+  coord_cartesian(clip = 'off') +
+  labs(title = 'b. EU27 and euro-area emissions as a share of the world total',
+       x = NULL, y = 'Share of the world total') +
+  theme(legend.position = 'none')
+
+p1a / p1b +
+  plot_layout(heights = c(1.15, 1)) +
+  plot_annotation(
+    caption = paste0(edgar_caption, ' Units: million tonnes of CO<sub>2</sub> equivalent per year',
+                     ' (panel a) and per cent of the world total (panel b).<br>',
+                     'EU27: EDGAR\'s own row. Euro area: the sum of its 21 members as of 2026,',
+                     ' including Bulgaria.'),
+    theme = caption_theme
+  )
+```
+
+World emissions reached `r fmt(world_2024)` Mt CO<sub>2</sub>eq in 2024, `r pct(100 * (world_2024 / world$world_mt[world$year == 1970] - 1), 0)` more than in 1970. Asia accounted for `r pct(continent_share('Asia', 2024))` of the 2024 total, up from `r pct(continent_share('Asia', 1970))` in 1970, while the share of Europe fell from `r pct(continent_share('Europe', 1970))` to `r pct(continent_share('Europe', 2024))` and that of America from `r pct(continent_share('America', 1970))` to `r pct(continent_share('America', 2024))`. International aviation and shipping add `r pct(continent_share('International transport', 2024))`. The EU27 emitted `r fmt(eu27_value(2024))` Mt in 2024, `r pct(share_value('EU27', 2024))` of the world total against `r pct(share_value('EU27', 1970))` in 1970, and the euro area `r pct(share_value('Euro area', 2024))` against `r pct(share_value('Euro area', 1970))`. In absolute terms, EU27 emissions peaked in `r eu27_peak_year` at `r fmt(eu27_peak_mt)` Mt, stayed within `r pct(100 * (1 - min(shares$eu27_mt[shares$year %in% 1980:1989]) / eu27_peak_mt), 0)` of that peak throughout the 1980s, and have since fallen by `r pct(100 * (1 - eu27_value(2024) / eu27_peak_mt), 0)`, or by `r pct(100 * (1 - eu27_value(2024) / eu27_value(1990)), 0)` relative to 1990, the reference year of most climate targets. Panel (a) cannot show this decline because the world total grew by `r pct(100 * (world_2024 / world$world_mt[world$year == eu27_peak_year] - 1), 0)` over the same years.
+
+
+## Income groups
+
+The original version summed per-capita values across the countries of each income group, which produces a number with no interpretation, since per-capita figures cannot be added. The finished version uses the population-weighted mean, the total emissions of the group divided by its population, which is the per-capita emission of the group treated as one territory. Panel (a) of figure 2 shows this quantity for the four World Bank income groups of fiscal year 2026 (World Bank, 2025), and panel (b) shows, for each group, its share of world emissions as a solid line and its share of world population as a dashed line, so that the distance between the two lines is the gap between what a group emits and what it would emit at the world average.
+
+```{r fig2-income-groups, fig.height = 10, fig.alt = 'Two panels. Panel a shows population-weighted mean per-capita emissions from 1970 to 2024 for four World Bank income groups: the high-income line stays far above the others and declines after 2005, the upper-middle-income line rises steeply after 2000 to more than half the high-income level, and the lower-middle-income and low-income lines stay below 3 tonnes per person. Panel b has one small panel per income group with its share of world emissions as a solid line and of world population as a dashed line: the high-income share of emissions falls from two thirds to one third while its population share stays below a fifth, and in the two lowest groups the population share lies far above the emission share.'}
+world_population <- countries %>%
+  filter(!is.na(population)) %>%
+  group_by(year) %>%
+  summarise(world_population = sum(population), .groups = 'drop')
+
+no_income_group <- countries %>%
+  filter(year == 2024, !iso3 %in% c('AIR', 'SEA'), is.na(income_group))
+
+by_income <- countries %>%
+  filter(!is.na(income_group)) %>%
+  group_by(income_group, year) %>%
+  summarise(total_mt = sum(total_mt), population = sum(population),
+            n_countries = n_distinct(iso3), .groups = 'drop') %>%
+  left_join(world, by = 'year') %>%
+  left_join(world_population, by = 'year') %>%
+  mutate(per_capita_t = total_mt / population * 1e6,
+         emission_share = 100 * total_mt / world_mt,
+         population_share = 100 * population / world_population,
+         income_group = factor(income_group, levels = names(income_colours)))
+
+income_value <- function(group, yr, variable) {
+  by_income[[variable]][by_income$income_group == group & by_income$year == yr]
+}
+
+p2a <- ggplot(by_income, aes(year, per_capita_t, colour = income_group)) +
+  geom_line(linewidth = 1) +
+  geom_text_repel(data = filter(by_income, year == max(year)),
+                  aes(label = paste0(income_group, ', ', fmt(per_capita_t, 1), ' t')),
+                  hjust = 0, nudge_x = 1, direction = 'y', segment.colour = NA,
+                  size = 3.8, show.legend = FALSE) +
+  scale_colour_manual(values = income_colours) +
+  scale_x_continuous(breaks = seq(1970, 2020, 10), expand = expansion(mult = c(0, 0.34))) +
+  scale_y_continuous(limits = c(0, NA), expand = expansion(mult = c(0, 0.05))) +
+  coord_cartesian(clip = 'off') +
+  labs(title = 'a. Population-weighted mean per-capita emissions by World Bank income group',
+       x = NULL, y = 't CO<sub>2</sub>eq per person') +
+  theme(legend.position = 'none')
+
+shares_by_income <- by_income %>%
+  select(income_group, year, emission_share, population_share) %>%
+  pivot_longer(c(emission_share, population_share), names_to = 'measure', values_to = 'share') %>%
+  mutate(measure = factor(measure, levels = c('emission_share', 'population_share'),
+                          labels = c('of emissions', 'of population')))
+
+p2b <- ggplot(shares_by_income, aes(year, share, colour = income_group, linetype = measure)) +
+  geom_line(linewidth = 0.9) +
+  geom_text_repel(data = filter(shares_by_income, year == max(year)),
+                  aes(label = paste0(fmt(share, 0), '% ', measure)),
+                  hjust = 0, nudge_x = 1, direction = 'y', segment.colour = NA,
+                  size = 3.3, show.legend = FALSE) +
+  facet_wrap(~ income_group, nrow = 2) +
+  scale_colour_manual(values = income_colours, guide = 'none') +
+  scale_linetype_manual(values = c('solid', '22'), guide = 'none') +
+  scale_x_continuous(breaks = seq(1970, 2010, 20), expand = expansion(mult = c(0, 0.5))) +
+  scale_y_continuous(limits = c(0, NA), labels = function(x) paste0(x, '%'),
+                     expand = expansion(mult = c(0, 0.08))) +
+  coord_cartesian(clip = 'off') +
+  labs(title = 'b. Share of world emissions (solid) and of world population (dashed)',
+       x = NULL, y = 'Share of the world total') +
+  theme(legend.position = 'none', strip.text = element_text(hjust = 0, face = 'bold'),
+        panel.spacing.x = unit(1.5, 'lines'))
+
+p2a / p2b +
+  plot_layout(heights = c(1, 1.25)) +
+  plot_annotation(
+    caption = paste0(edgar_caption, ' Income groups: World Bank (2025), fiscal year 2026.',
+                     ' Units: tonnes of CO<sub>2</sub> equivalent per person per year (panel a)',
+                     ' and per cent of the world total (panel b).<br>',
+                     'Population is the EDGAR total divided by the per-capita figure. ',
+                     nrow(no_income_group), ' territories without an income group are omitted.'),
+    theme = caption_theme
+  )
+```
+
+In 2024, a resident of a high-income country emitted `r fmt(income_value('High income', 2024, 'per_capita_t'), 1)` t on average, `r fmt(income_value('High income', 2024, 'per_capita_t') / income_value('Low income', 2024, 'per_capita_t'), 1)` times the `r fmt(income_value('Low income', 2024, 'per_capita_t'), 1)` t of a resident of a low-income country. The high-income mean peaked at `r fmt(max(by_income$per_capita_t[by_income$income_group == 'High income']), 1)` t in `r by_income$year[by_income$income_group == 'High income'][which.max(by_income$per_capita_t[by_income$income_group == 'High income'])]` and has fallen since, whereas the upper-middle-income mean, a group that includes China, rose from `r fmt(income_value('Upper middle income', 2000, 'per_capita_t'), 1)` t in 2000 to `r fmt(income_value('Upper middle income', 2024, 'per_capita_t'), 1)` t in 2024, and the group's share of world emissions overtook that of the high-income group in `r min(by_income$year[by_income$income_group == 'Upper middle income' & by_income$emission_share > by_income$emission_share[by_income$income_group == 'High income']])`. Panel (b) shows the imbalance between people and emissions: high-income countries hold `r pct(income_value('High income', 2024, 'population_share'))` of the world's population and emit `r pct(income_value('High income', 2024, 'emission_share'))` of the total, while the lower-middle-income and low-income groups together hold `r pct(income_value('Lower middle income', 2024, 'population_share') + income_value('Low income', 2024, 'population_share'))` of the population and emit `r pct(income_value('Lower middle income', 2024, 'emission_share') + income_value('Low income', 2024, 'emission_share'))`. The `r nrow(no_income_group)` territories without an income group, which include Ethiopia and Venezuela, left unclassified by the World Bank this year, and small dependencies such as Guadeloupe and the Falkland Islands, emitted `r pct(100 * sum(no_income_group$total_mt) / world_2024)` of the 2024 total between them.
+
+
+## The twenty largest emitters
+
+Figure 3 ranks countries by their 2024 total, coloured by continent, with each country's share of the world total printed at the end of its bar and its per-capita emissions in a dot plot beside it. The original version drew confidence intervals around these bars, computed as the standard error of a mean across years, which measure the year-to-year variation of a series and say nothing about the uncertainty of a sum, so they are omitted here.
+
+```{r fig3-top-emitters, fig.height = 7, fig.alt = 'Horizontal bar chart of the twenty largest emitters in 2024, coloured by continent, with China far ahead, followed by the United States, India, Russia, Indonesia, Brazil, Japan and Iran. A dot plot beside the bars shows per-capita emissions, which are highest for Saudi Arabia, Australia, Canada, Russia and the United States and lowest for Pakistan, India and Indonesia.'}
+top20 <- countries %>%
+  filter(year == 2024, !iso3 %in% c('AIR', 'SEA')) %>%
+  mutate(share = 100 * total_mt / world_2024) %>%
+  arrange(desc(total_mt)) %>%
+  slice_head(n = 20) %>%
+  mutate(country = factor(country, levels = rev(country)))
+
+top_value <- function(code, variable) top20[[variable]][top20$iso3 == code]
+world_per_capita <- world_2024 / world_population$world_population[world_population$year == 2024] * 1e6
+
+p3a <- ggplot(top20, aes(total_mt, country, fill = continent)) +
+  geom_col(width = 0.72) +
+  geom_text(aes(label = pct(share)), hjust = -0.15, size = 3.5, colour = 'grey20') +
+  scale_fill_manual(values = continent_colours, breaks = names(continent_colours)) +
+  scale_x_continuous(labels = comma, expand = expansion(mult = c(0, 0.16))) +
+  labs(title = 'a. Total emissions and share of the world total',
+       x = 'Mt CO<sub>2</sub>eq', y = NULL, fill = NULL) +
+  theme(panel.grid.major.y = element_blank())
+
+p3b <- ggplot(top20, aes(per_capita_t, country, colour = continent)) +
+  geom_vline(xintercept = world_per_capita, linetype = 'dotted', colour = 'grey40') +
+  geom_segment(aes(x = 0, xend = per_capita_t, yend = country), colour = 'grey75', linewidth = 0.5) +
+  geom_point(size = 3) +
+  geom_text(aes(label = fmt(per_capita_t, 1)), hjust = -0.45, size = 3.5, colour = 'grey20') +
+  scale_colour_manual(values = continent_colours, guide = 'none') +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.28))) +
+  labs(title = 'b. Per capita', x = 't CO<sub>2</sub>eq per person', y = NULL) +
+  theme(axis.text.y = element_blank(), panel.grid.major.y = element_blank())
+
+p3a + p3b +
+  plot_layout(widths = c(2.4, 1), guides = 'collect') +
+  plot_annotation(
+    caption = paste0(edgar_caption, ' Units: million tonnes of CO<sub>2</sub> equivalent (panel a)',
+                     ' and tonnes per person (panel b), both for 2024.<br>',
+                     'The dotted line in panel b is the world average of ',
+                     fmt(world_per_capita, 1), ' t per person.'),
+    theme = caption_theme
+  ) &
+  theme(legend.position = 'bottom')
+```
+
+China alone emitted `r pct(top_value('CHN', 'share'))` of the world total in 2024, the United States `r pct(top_value('USA', 'share'))` and India `r pct(top_value('IND', 'share'))`, and the twenty countries together account for `r pct(sum(top20$share), 0)`. Per-capita emissions reorder the list. Saudi Arabia, Australia and Canada, ranked `r ordinal(which(top20$iso3 == 'SAU'))`, `r ordinal(which(top20$iso3 == 'AUS'))` and `r ordinal(which(top20$iso3 == 'CAN'))` by total, emit `r fmt(top_value('SAU', 'per_capita_t'), 1)`, `r fmt(top_value('AUS', 'per_capita_t'), 1)` and `r fmt(top_value('CAN', 'per_capita_t'), 1)` t per person, above the `r fmt(top_value('USA', 'per_capita_t'), 1)` t of the United States and the `r fmt(top_value('CHN', 'per_capita_t'), 1)` t of China, while India and Pakistan sit at `r fmt(top_value('IND', 'per_capita_t'), 1)` and `r fmt(top_value('PAK', 'per_capita_t'), 1)` t. The population-weighted world average is `r fmt(world_per_capita, 1)` t per person, and `r sum(top20$per_capita_t > world_per_capita)` of the twenty countries lie above it.
+
+
+## What the largest emitters emit
+
+Figure 4 breaks the 2024 emissions of the eight largest emitters and of the world down by EDGAR sector, summed over the four substances. This composition was absent from the original version, and it explains part of the per-capita differences above: where power generation and industry dominate, emissions follow the fuel mix of the grid, whereas a large agricultural share reflects livestock and rice paddies, which no change of energy source removes.
+
+```{r fig4-sectors, fig.height = 4.8, fig.alt = 'Stacked horizontal bars showing the percentage of 2024 emissions in each of eight EDGAR sectors for the world and the eight largest emitters. Power industry is the largest sector for the world, China, India, Japan, Russia and Indonesia; transport is the largest for the United States; agriculture makes up about half of the emissions of Brazil; fuel exploitation is the largest sector in Iran.'}
+sector_order <- sectors_2024 %>%
+  filter(iso3 == 'GLOBAL TOTAL') %>%
+  arrange(desc(mt)) %>%
+  pull(sector)
+
+sector_colours <- setNames(c('#0072B2', '#E69F00', '#D55E00', '#009E73',
+                             '#8C5BA8', '#CC79A7', '#56B4E9', '#A08C00'), sector_order)
+
+top8_iso3 <- as.character(top20$iso3[1:8])
+
+sector_shares <- sectors_2024 %>%
+  filter(iso3 %in% c(top8_iso3, 'GLOBAL TOTAL')) %>%
+  group_by(iso3) %>%
+  mutate(share = 100 * mt / sum(mt)) %>%
+  ungroup() %>%
+  mutate(country = ifelse(iso3 == 'GLOBAL TOTAL', 'World', country),
+         country = factor(country, levels = rev(c('World', as.character(top20$country[1:8])))),
+         sector = factor(sector, levels = sector_order))
+
+sector_share <- function(code, sec) sector_shares$share[sector_shares$iso3 == code & sector_shares$sector == sec]
+
+largest_sector <- sector_shares %>%
+  filter(iso3 != 'GLOBAL TOTAL') %>%
+  group_by(country) %>%
+  slice_max(share, n = 1) %>%
+  ungroup()
+countries_led_by <- function(sec) paste(largest_sector$country[largest_sector$sector == sec], collapse = ' and ')
+
+ggplot(sector_shares, aes(share, country, fill = sector)) +
+  geom_col(width = 0.72, colour = 'white', linewidth = 0.5, position = position_stack(reverse = TRUE)) +
+  geom_text(data = filter(sector_shares, share >= 8),
+            aes(label = round(share)),
+            position = position_stack(vjust = 0.5, reverse = TRUE), size = 3.3, colour = 'white') +
+  scale_fill_manual(values = sector_colours) +
+  scale_x_continuous(labels = function(x) paste0(x, '%'), expand = expansion(mult = c(0, 0.02))) +
+  guides(fill = guide_legend(nrow = 2, byrow = TRUE)) +
+  labs(x = NULL, y = NULL, fill = NULL,
+       caption = paste0(edgar_caption, ' Sheet GHG_by_sector_and_country, 2024, summed over substances.<br>',
+                        'Units: per cent of each emitter\'s total. Labels are shown for shares of 8% or more.')) +
+  theme(panel.grid.major.y = element_blank(), legend.position = 'bottom',
+        plot.margin = margin(5.5, 14, 5.5, 5.5))
+```
+
+Power generation is the largest sector for the world as a whole, at `r pct(sector_share('GLOBAL TOTAL', 'Power Industry'), 0)` of emissions, and for `r sum(largest_sector$sector == 'Power Industry')` of the eight countries, with the largest shares in China (`r pct(sector_share('CHN', 'Power Industry'), 0)`) and Japan (`r pct(sector_share('JPN', 'Power Industry'), 0)`). Transport comes first in `r countries_led_by('Transport')` only, at `r pct(sector_share('USA', 'Transport'), 0)`, agriculture in `r countries_led_by('Agriculture')` only, at `r pct(sector_share('BRA', 'Agriculture'), 0)`, and fuel exploitation, the extraction and processing of coal, oil and gas, in `r countries_led_by('Fuel Exploitation')` only, at `r pct(sector_share('IRN', 'Fuel Exploitation'), 0)`. That last sector also accounts for `r pct(sector_share('IDN', 'Fuel Exploitation'), 0)` of Indonesia's emissions and `r pct(sector_share('RUS', 'Fuel Exploitation'), 0)` of Russia's, against `r pct(sector_share('GLOBAL TOTAL', 'Fuel Exploitation'), 0)` for the world. These compositions matter for the comparison that follows, because methane from livestock and fugitive emissions from fuel extraction do not scale with a country's development in the way that power and transport do.
+
+
+## Emissions against human development
+
+Per-capita emissions rise with development, and the question that opened this post is how far a country's emissions depart from what its level of development would lead one to expect. Figure 5 plots per-capita emissions, averaged over 2015 to 2024 to smooth the pandemic dip and year-to-year variation, against the HDI for 2023 on a logarithmic axis, with each marker scaled to the country's 2024 population and coloured by continent. The chunk below fits the linear model `log10(per_capita) ~ hdi`, whose line is drawn through the points, and stores each country's residual from it, the vertical distance to the line in log10 units, which is the quantity carried into figure 6.
+
+```{r hdi-model}
+hdi_data <- countries %>%
+  filter(!iso3 %in% c('AIR', 'SEA'), year >= 2015) %>%
+  group_by(iso3, country, continent) %>%
+  summarise(per_capita_t = mean(per_capita_t), .groups = 'drop') %>%
+  left_join(countries %>% filter(year == 2024) %>% select(iso3, total_mt, population),
+            by = 'iso3') %>%
+  # Jointly reported territories take the HDI of the member whose code they carry
+  mutate(hdi_iso3 = ifelse(iso3 == 'SCG', 'SRB', iso3)) %>%
+  left_join(hdi %>% select(hdi_iso3 = iso3, hdi_2023, hdicode), by = 'hdi_iso3')
+
+n_no_hdi <- sum(is.na(hdi_data$hdi_2023))
+hdi_data <- hdi_data %>% filter(!is.na(hdi_2023))
+
+hdi_model <- lm(log10(per_capita_t) ~ hdi_2023, data = hdi_data)
+
+hdi_data <- hdi_data %>%
+  mutate(fitted = fitted(hdi_model),
+         residual = residuals(hdi_model),
+         expected_t = 10^fitted,
+         ratio = 10^residual)
+
+hdi_slope <- coef(hdi_model)[['hdi_2023']]
+hdi_r2 <- summary(hdi_model)$r.squared
+hdi_n <- nobs(hdi_model)
+ratio_of <- function(code) hdi_data$ratio[hdi_data$iso3 == code]
+```
+
+The model object and the residuals are kept for the map and the table below, and the figure itself is a ggplot converted with `ggplotly`, so that hovering over a marker shows the country, its HDI, its per-capita emissions, its 2024 total and its ratio to the fitted line.
+
+```{r fig5-hdi-scatter, fig.height = 6, fig.alt = 'Interactive scatterplot of per-capita greenhouse gas emissions, averaged over 2015 to 2024 on a logarithmic axis, against the Human Development Index for 2023, with one marker per country sized by population and coloured by continent, and a fitted straight line rising from left to right.'}
+fit_line <- tibble(hdi_2023 = seq(min(hdi_data$hdi_2023), max(hdi_data$hdi_2023), length.out = 50)) %>%
+  mutate(per_capita_t = 10^predict(hdi_model, newdata = .))
+
+hdi_data <- hdi_data %>%
+  mutate(tooltip = paste0('<b>', country, '</b>',
+                          '<br>HDI 2023: ', fmt(hdi_2023, 3),
+                          '<br>Per capita, 2015 to 2024: ', fmt(per_capita_t, 1), ' t',
+                          '<br>Total, 2024: ', fmt(total_mt), ' Mt',
+                          '<br>', fmt(ratio, 2), ' times the level expected at its HDI'))
+
+p5 <- ggplot(hdi_data, aes(hdi_2023, per_capita_t)) +
+  geom_line(data = fit_line, colour = 'grey40', linewidth = 0.8) +
+  geom_point(aes(size = population, colour = continent, text = tooltip), alpha = 0.7) +
+  scale_y_log10(labels = comma) +
+  scale_size_area(max_size = 20, guide = 'none') +
+  scale_colour_manual(values = continent_colours, name = NULL) +
+  labs(x = 'Human Development Index, 2023',
+       y = 'Per-capita emissions, 2015 to 2024 (t CO<sub>2</sub>eq, log scale)') +
+  # A complete theme, so that ggplotly does not merge the ggtext elements of the global theme
+  theme_minimal(base_size = 13)
+
+ggplotly(p5, tooltip = 'text') %>%
+  layout(legend = list(orientation = 'h', y = -0.18, x = 0.5, xanchor = 'center',
+                       itemsizing = 'constant'),
+         margin = list(l = 70, r = 20, b = 70, t = 20))
+```
+
+<p class="caption">Figure 5. Source: EDGAR 2025 (Crippa et al., 2025) and the Human Development Report 2025 (United Nations Development Programme, 2025). Units: tonnes of CO<sub>2</sub> equivalent per person per year, averaged over 2015 to 2024; marker area proportional to 2024 population.</p>
+
+The model is fitted to the `r hdi_n` countries with both an HDI and emissions, and the `r n_no_hdi` territories without an HDI, mostly dependencies and overseas territories such as Puerto Rico, Greenland and Macao, plus Taiwan, North Korea and Western Sahara, are left out. The slope is `r fmt(hdi_slope, 2)` log10 units per unit of HDI, so each additional 0.1 of HDI multiplies expected per-capita emissions by `r fmt(10^(hdi_slope / 10), 2)`, and the model explains `r pct(100 * hdi_r2, 0)` of the variance in log emissions (R<sup>2</sup> = `r fmt(hdi_r2, 2)`, n = `r hdi_n`). `r pct(100 * mean(abs(hdi_data$residual) < log10(2)), 0)` of the countries lie within a factor of two of the line. Qatar and Kuwait emit `r fmt(ratio_of('QAT'), 1)` and `r fmt(ratio_of('KWT'), 1)` times the level expected at their HDI, Russia `r fmt(ratio_of('RUS'), 1)` and the United States `r fmt(ratio_of('USA'), 1)`, whereas Sweden and Switzerland emit `r fmt(ratio_of('SWE'), 2)` and `r fmt(ratio_of('CHE'), 2)` times theirs. China sits at `r fmt(ratio_of('CHN'), 1)` and India at `r fmt(ratio_of('IND'), 2)`.
+
+The residual is a descriptive contrast between a country and the others at the same HDI, and it is no judgement of fairness. Four caveats apply to any reading of it. The HDI includes gross national income, so it partly encodes the energy use that it is meant to contextualise, and the line therefore absorbs some of the effect of wealth that a reader might want to see. EDGAR is production-based, so the emissions embodied in goods that a country imports are attributed to the exporter, which favours importers of manufactured goods in this comparison and counts against exporters such as China. Land use, land-use change and forestry are excluded, which matters for countries such as Brazil and Indonesia. The model is also a single straight line through `r hdi_n` points, and small states whose per-capita figure depends on one plant or fleet, oil and gas exporters and pastoral economies pull it in ways that a fuller treatment would handle differently. That fuller treatment, with capability-based fair shares of the remaining carbon budget, is in the [manuscript in this repository](https://github.com/pablobernabeu/ECB-task/blob/main/manuscript.qmd) and in the `fairshare` [packages for R and Python](https://github.com/pablobernabeu/ECB-task/tree/main/packages) that accompany it.
+
+
+## Mapping the residuals
+
+Figure 6 maps the residuals of the model on a diverging scale centred on zero, red where a country emits more than expected at its HDI and blue where it emits less. Hovering shows the residual in log10 units and the ratio 10<sup>residual</sup>, which is easier to read. Countries without an HDI or without emissions data are shown in light grey, and the members of a territory that EDGAR reports jointly carry the value of that territory, with a note to that effect in the hover text.
+
+```{r fig6-map, fig.alt = 'Interactive world map in which each country is coloured by its residual from the model of per-capita emissions against the Human Development Index, red for higher than expected and blue for lower than expected, with countries lacking data in light grey.'}
+world_sf <- ne_countries(scale = 'medium', returnclass = 'sf') %>%
+  # France and Norway carry -99 as iso_a3 in Natural Earth; iso_a3_eh holds the code
+  mutate(iso_a3 = ifelse(iso_a3 == '-99', iso_a3_eh, iso_a3)) %>%
+  filter(iso_a3 != 'ATA') %>%
+  select(iso_a3, name_long) %>%
+  mutate(edgar_iso3 = coalesce(combined$iso3[match(iso_a3, combined$member_iso3)], iso_a3),
+         jointly = iso_a3 %in% combined$member_iso3) %>%
+  left_join(hdi_data %>% select(iso3, country, hdi_2023, per_capita_t, expected_t, residual, ratio),
+            by = c('edgar_iso3' = 'iso3'))
+
+residual_limit <- max(abs(world_sf$residual), na.rm = TRUE)
+residual_palette <- colorNumeric(rev(brewer.pal(11, 'RdBu')),
+                                 domain = c(-residual_limit, residual_limit),
+                                 na.color = '#d9d9d9')
+
+map_labels <- with(world_sf, ifelse(
+  is.na(residual),
+  paste0('<b>', name_long, '</b><br>no data'),
+  paste0('<b>', name_long, '</b>',
+         ifelse(jointly, paste0('<br>Reported by EDGAR as ', country), ''),
+         '<br>HDI 2023: ', fmt(hdi_2023, 3),
+         '<br>Per capita, 2015 to 2024: ', fmt(per_capita_t, 1), ' t (expected ', fmt(expected_t, 1), ' t)',
+         '<br>Residual: ', formatC(residual, format = 'f', digits = 2, flag = '+'), ' log10 units',
+         '<br>', fmt(ratio, 2), ' times the level expected at its HDI')
+# unname(): with() carries the sf row names onto the result, and htmlwidgets
+# rejects a partially named list when it scans the widget for JS() markers
+)) %>% unname() %>% lapply(HTML)
+
+leaflet(world_sf, width = '100%', height = 520,
+        options = leafletOptions(minZoom = 1, maxZoom = 6, worldCopyJump = TRUE)) %>%
+  addPolygons(fillColor = ~ residual_palette(residual), fillOpacity = 0.9,
+              color = 'white', weight = 0.6, smoothFactor = 0.3,
+              label = map_labels,
+              highlightOptions = highlightOptions(weight = 2, color = '#333333', bringToFront = TRUE)) %>%
+  addLegend(pal = residual_palette, values = c(-residual_limit, residual_limit),
+            title = 'Residual (log10)', position = 'bottomleft', opacity = 0.9) %>%
+  addLegend(colors = '#d9d9d9', labels = 'no data', position = 'bottomleft', opacity = 0.9) %>%
+  setView(lng = 10, lat = 20, zoom = 1) %>%
+  htmlwidgets::prependContent(tags$style('.leaflet-container { background: #f4f6f8; }'))
+```
+
+<p class="caption">Figure 6. Source: EDGAR 2025 (Crippa et al., 2025), the Human Development Report 2025 (United Nations Development Programme, 2025) and Natural Earth boundaries via rnaturalearth. Units: residual of log10 per-capita emissions (2015 to 2024 mean) from the linear model on HDI 2023; 10<sup>residual</sup> is the ratio of actual to expected emissions. Boundaries carry no political meaning.</p>
+
+The largest positive residual belongs to `r hdi_data$country[which.max(hdi_data$residual)]`, at `r fmt(max(hdi_data$ratio), 1)` times its expected level, and the largest negative one to `r hdi_data$country[which.min(hdi_data$residual)]`, at `r fmt(min(hdi_data$ratio), 2)` times. The table below lists the ten countries at each end. Oil and gas exporters (Qatar, Kuwait, Bahrain, Turkmenistan, Brunei and Libya) and small states whose per-capita figure is set by one power plant or one fleet (Palau, with `r fmt(hdi_data$population[hdi_data$iso3 == 'PLW'] / 1e3)` thousand inhabitants, and Trinidad and Tobago) fill the positive end, together with Mongolia, where fuel extraction and livestock account for `r pct(sum(sectors_2024$mt[sectors_2024$iso3 == 'MNG' & sectors_2024$sector %in% c('Fuel Exploitation', 'Agriculture')]) / sum(sectors_2024$mt[sectors_2024$iso3 == 'MNG']) * 100, 0)` of emissions, and with Chad and the Central African Republic, where agriculture makes up `r pct(sectors_2024$mt[sectors_2024$iso3 == 'TCD' & sectors_2024$sector == 'Agriculture'] / sum(sectors_2024$mt[sectors_2024$iso3 == 'TCD']) * 100, 0)` and `r pct(sectors_2024$mt[sectors_2024$iso3 == 'CAF' & sectors_2024$sector == 'Agriculture'] / sum(sectors_2024$mt[sectors_2024$iso3 == 'CAF']) * 100, 0)` of emissions and methane from herds counts in full at a low HDI. The negative end mixes small island states, countries of South Asia and Sub-Saharan Africa with low emissions for their HDI and, at the top of the HDI range, Switzerland (reported by EDGAR together with Liechtenstein), whose electricity comes largely from hydropower and nuclear plants. Because EDGAR reports Sudan and South Sudan as one territory, their combined per-capita figure is compared with the HDI of Sudan and mapped onto both countries.
+
+```{r residual-table}
+bind_rows(hdi_data %>% slice_max(residual, n = 10),
+          hdi_data %>% slice_min(residual, n = 10) %>% arrange(desc(residual))) %>%
+  transmute(Country = country, Continent = continent, `HDI 2023` = fmt(hdi_2023, 3),
+            `Per capita (t)` = fmt(per_capita_t, 2), `Expected (t)` = fmt(expected_t, 2),
+            Ratio = fmt(ratio, 2)) %>%
+  kable(align = 'llrrrr',
+        caption = paste('The ten countries emitting most above (top) and most below (bottom)',
+                        'the level expected at their HDI. Per capita is the 2015 to 2024 mean',
+                        'in t CO2eq per person, expected is the fitted value and ratio is',
+                        'actual over expected.'))
+```
+
+The table shows how different the two ends are in kind: the positive end is dominated by fuel exporters and by pastoral or very small economies, whereas the negative end has no single cause and ranges from an HDI of `r fmt(min(hdi_data$hdi_2023[order(hdi_data$residual)][1:10]), 2)` to `r fmt(max(hdi_data$hdi_2023[order(hdi_data$residual)][1:10]), 2)`.
+
+
+## Analysis details
+
+```{r session, include = FALSE}
+packages_used <- c('dplyr', 'tidyr', 'ggplot2', 'patchwork', 'scales', 'ggrepel',
+                   'ggtext', 'plotly', 'htmltools', 'leaflet', 'sf', 'rnaturalearth',
+                   'rnaturalearthdata', 'RColorBrewer', 'knitr', 'rmarkdown')
+package_versions <- paste(packages_used, sapply(packages_used, function(p) as.character(packageVersion(p))))
+package_text <- paste0(paste(head(package_versions, -1), collapse = ', '), ' and ', tail(package_versions, 1))
+```
+
+The EDGAR sheets store years as columns, so each was reshaped to one row per territory and year before the totals and per-capita figures were joined by country code and year, in the companion document that produced the three files read here. The population of each territory and year is the total divided by the per-capita figure, which recovers the population series behind EDGAR's own per-capita values without a further source. Population-weighted means and population shares were computed from it, and the world population is the sum over the territories that report a per-capita figure. Continents, income groups and the HDI were joined by ISO 3166 alpha-3 code, with a few exceptions handled by hand: Taiwan has no region in the ISO 3166 dataset, EDGAR uses the former Netherlands Antilles code for Curaçao and has no row for Kosovo, and the jointly reported territories keep the code under which EDGAR reports them. The model of figure 5 is an ordinary least-squares regression of log10 per-capita emissions, averaged over 2015 to 2024, on the HDI for 2023, fitted to `r hdi_n` countries, and its residuals feed figure 6 and the table. The LULUCF sheets of the booklet were not used, because land use is excluded from the totals throughout. The document was rendered with `r R.version.string` and the packages `r package_text`.
+
+
+### References
+
+Crippa, M., Guizzardi, D., Pagani, F., Banja, M., Muntean, M., Schaaf, E., Quadrelli, R., Risquez Martin, A., Taghavi-Moharamli, P., Grassi, G., Rossi, S., Melo, J., Oom, D., Branco, A., Suarez Moreno, M., Sedano, F., San-Miguel, J., Manca, G., Pisoni, E., & Pekar, F. (2025). *GHG emissions of all world countries: JRC/IEA 2025 report*. Publications Office of the European Union. https://data.europa.eu/doi/10.2760/9816914
+
+Duncalfe, L. (n.d.). *ISO-3166-Countries-with-Regional-Codes* [Data set]. GitHub. https://github.com/lukes/ISO-3166-Countries-with-Regional-Codes
+
+United Nations Development Programme. (2025). *Human development report 2025: A matter of choice. People and possibilities in the age of AI*. https://hdr.undp.org
+
+World Bank. (2025). *World Bank country and lending groups: Country classification by income level for fiscal year 2026* [Data set]. https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups
