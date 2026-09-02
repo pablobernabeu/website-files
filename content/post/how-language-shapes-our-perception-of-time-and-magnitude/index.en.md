@@ -7,6 +7,7 @@ categories:
   - psycholinguistics
 tags:
   - psycholinguistics
+  - language
   - linguistic relativity
   - language and thought
   - numerical cognition
