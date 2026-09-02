@@ -131,7 +131,7 @@ ggplot(effs, aes(effect_ms, id, colour = unit)) +
   theme(axis.text.y = element_blank(), panel.grid.major.y = element_blank())
 ```
 
-## The anatomy of the design
+## What the specification implies
 
 The specification implies a decomposition of the variance of the linear predictor and an analysis model, and both can be read off it before any data exist.
 

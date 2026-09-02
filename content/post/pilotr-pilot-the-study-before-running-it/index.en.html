@@ -116,8 +116,8 @@ ggplot(effs, aes(effect_ms, id, colour = unit)) +
   theme(axis.text.y = element_blank(), panel.grid.major.y = element_blank())</code></pre>
 <p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-6-1.png" alt="Dot plots of the priming effect in milliseconds for each participant and for each item, each panel sorted by effect size, spread on both sides of zero" width="720" style="display: block; margin: auto;" /></p>
 </div>
-<div id="the-anatomy-of-the-design" class="section level2">
-<h2>The anatomy of the design</h2>
+<div id="what-the-specification-implies" class="section level2">
+<h2>What the specification implies</h2>
 <p>The specification implies a decomposition of the variance of the linear predictor and an analysis model, and both can be read off it before any data exist.</p>
 <pre class="r"><code>round(unlist(response_variance(spec)), 4)</code></pre>
 <pre><code>#&gt;    fixed  subject     item residual    total 

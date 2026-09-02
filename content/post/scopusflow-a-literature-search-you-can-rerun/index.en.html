@@ -128,7 +128,7 @@ n</code></pre>
 })
 records</code></pre>
 <pre><code>#&gt; &lt;scopus_records&gt; 138 records
-#&gt; retrieved: 2026-09-02 13:53:31 UTC (scopusflow 0.4.0)
+#&gt; retrieved: 2026-09-02 19:35:52 UTC (scopusflow 0.4.0)
 #&gt; query: &quot;TITLE-ABS-KEY(graphene supercapacitor)&quot;
 #&gt; # A tibble: 138 × 9
 #&gt;    entry_number scopus_id doi              title authors  year date  publication citations
@@ -355,7 +355,7 @@ c(rds_keeps_time = !is.null(attr(read_scopus_records(rds), &#39;retrieved_at&#39
 </div>
 <div id="the-write-up" class="section level2">
 <h2>The write-up</h2>
-<p>The search record is produced from the objects alone. The plan, the per-cell accounting, the retrieval time, the package version and the paging mode all travelled with the harvest, so nothing is typed in by hand. The record below names Scopus as the database and dates the search to the moment this page was rendered, because the objects it reads were produced by the stand-in. On a live harvest both would describe the real search. Of the 16 PRISMA-S items, a harvest supplies five and a merge a sixth, and the remaining ten, such as any citation searching and any peer review of the strategy, are listed as the author’s to write.</p>
+<p>The search record is produced from the objects alone. The plan, the per-cell accounting, the retrieval time, the package version and the paging mode all travelled with the harvest, so nothing is typed in by hand. The record below names Scopus as the database and dates the search to the moment this page was rendered, because the objects it reads were produced by the stand-in. On a live harvest, both would describe the real search. Of the 16 PRISMA-S items, a harvest supplies five and a merge a sixth, and the remaining ten, such as any citation searching and any peer review of the strategy, are listed as the author’s to write.</p>
 <pre class="r"><code>report &lt;- scopus_search_report(records)
 report</code></pre>
 <pre><code>#&gt; Search strategy record (PRISMA-S)
@@ -368,7 +368,7 @@ report</code></pre>
 #&gt; View: STANDARD
 #&gt; Page size: 200 records per request
 #&gt; Paging: offset
-#&gt; Date searched: 2026-09-02 13:53:31 UTC
+#&gt; Date searched: 2026-09-02 19:35:52 UTC
 #&gt; Software: scopusflow 0.4.0
 #&gt; Records retrieved: 138
 #&gt; Records reported as matching: 138
@@ -396,7 +396,7 @@ report</code></pre>
 #&gt;   1 Database name. Scopus, searched on the Elsevier Scopus Search API.
 #&gt;   8 Full search strategies. The search expression, field tag and year limit of every cell, as the plan sends them.
 #&gt;   9 Limits and restrictions. Publication years 2015 to 2024. scopusflow applies no document type, language or subject area limit of its own.
-#&gt;   13 Dates of searches. 2026-09-02 13:53:31 UTC.
+#&gt;   13 Dates of searches. 2026-09-02 19:35:52 UTC.
 #&gt;   15 Total records. 138 records retrieved from Scopus, of 138 the API reported as matching.
 #&gt; 
 #&gt; PRISMA-S items only you can supply
