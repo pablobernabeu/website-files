@@ -6,11 +6,6 @@ name: Update post searches
 # locally. Dispatch-only: nothing here runs on a schedule or on push.
 
 on:
-  push:
-    branches:
-      - claude/website-packages-blog-posts-s9oxz4
-    paths:
-      - scripts/update_post_searches.R
   workflow_dispatch:
     inputs:
       target:
@@ -66,9 +61,11 @@ jobs:
           SCOPUS_API_KEY: ${{ secrets.SCOPUS_API_KEY }}
 
       - name: Upload results
+        # Also after a failure, so that the searches that did complete are kept.
+        if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: post-searches
           path: content/post/*/searches/
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 30

@@ -99,11 +99,32 @@ if (target %in% c("all", "allfit")) {
   if (!scopus_has_key()) stop("No Scopus API key found in SCOPUS_API_KEY.")
   dir.create(allfit_dir, recursive = TRUE, showWarnings = FALSE)
 
+  # A failure in one source must not lose the others, so each search is
+  # wrapped and reported. `try_search()` returns NULL on failure.
+  try_search <- function(label, expr) {
+    tryCatch(expr, error = function(e) {
+      message("Search failed (", label, "): ", conditionMessage(e))
+      NULL
+    })
+  }
+
   # 1. Scopus: the function name in any indexed field (title, abstract,
-  #    keywords, references and so on; not the body of the article).
-  q_all <- 'ALL("allFit")'
-  records_all <- scopus_fetch(q_all)
-  write_table(records_all, file.path(allfit_dir, "scopus_allfit_any_field.csv"))
+  #    keywords, references and so on; not the body of the article). The
+  #    ALL() field tag is tried first; the run of 1 September 2026 had it
+  #    rejected as malformed, so two fallbacks follow.
+  records_all <- NULL
+  for (q_all in c('ALL("allFit")', 'ALL(allFit)',
+                  'TITLE-ABS-KEY(allFit) OR REF(allFit)')) {
+    records_all <- try_search(q_all, scopus_fetch(q_all))
+    if (!is.null(records_all)) {
+      attr(records_all, "query_used") <- q_all
+      break
+    }
+  }
+  if (!is.null(records_all)) {
+    write_table(records_all, file.path(allfit_dir, "scopus_allfit_any_field.csv"))
+    writeLines(q_all, file.path(allfit_dir, "scopus_allfit_any_field_query.txt"))
+  }
 
   # 2. Scopus: the proxy query drafted in 2023, which targets abstracts that
   #    describe maximal random-effects structures and convergence.
@@ -111,8 +132,10 @@ if (target %in% c("all", "allfit")) {
     '("lme4" OR "lmerTest" OR "brms") AND maximal AND "random slopes"',
     'AND (convergence OR converge OR converged OR converging)'
   )
-  records_proxy <- scopus_fetch(q_proxy, field = "TITLE-ABS-KEY")
-  write_table(records_proxy, file.path(allfit_dir, "scopus_convergence_proxy.csv"))
+  records_proxy <- try_search("proxy", scopus_fetch(q_proxy, field = "TITLE-ABS-KEY"))
+  if (!is.null(records_proxy)) {
+    write_table(records_proxy, file.path(allfit_dir, "scopus_convergence_proxy.csv"))
+  }
 
   # 3. Europe PMC: full text of open-access articles. The phrase must occur in
   #    the article together with a mixed-model term, which excludes unrelated
@@ -123,7 +146,7 @@ if (target %in% c("all", "allfit")) {
   )
   epmc <- list()
   cursor <- "*"
-  repeat {
+  try_search("Europe PMC", repeat {
     resp <- request("https://www.ebi.ac.uk/europepmc/webservices/rest/search") |>
       req_url_query(query = epmc_query, format = "json", pageSize = 1000,
                     cursorMark = cursor, resultType = "lite") |>
@@ -137,7 +160,7 @@ if (target %in% c("all", "allfit")) {
     nxt <- resp$nextCursorMark
     if (is.null(nxt) || identical(nxt, cursor)) break
     cursor <- nxt
-  }
+  })
   pick <- function(x, field) {
     v <- x[[field]]
     if (is.null(v)) NA_character_ else as.character(v)
@@ -158,7 +181,7 @@ if (target %in% c("all", "allfit")) {
   # 4. OpenAlex: full-text search, where the text is available to OpenAlex.
   oa <- list()
   cursor <- "*"
-  repeat {
+  try_search("OpenAlex", repeat {
     resp <- request("https://api.openalex.org/works") |>
       req_url_query(
         filter = 'fulltext.search:"allFit"',
@@ -176,7 +199,7 @@ if (target %in% c("all", "allfit")) {
     nxt <- resp$meta$next_cursor
     if (is.null(nxt)) break
     cursor <- nxt
-  }
+  })
   oa_table <- data.frame(
     id      = vapply(oa, pick, character(1), "id"),
     doi     = vapply(oa, pick, character(1), "doi"),
