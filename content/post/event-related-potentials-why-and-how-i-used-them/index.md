@@ -106,7 +106,7 @@ An EEG/ERP experiment is time-consuming. The preparation (especially conductance
 
 ERPs are not the first signal collected in experiments. They are obtained after considerable, systematic preprocessing of the EEG signal. 
 
-<a href='https://www.researchgate.net/post/EEG_error_datasets_missing_channels_Its_strange_because_they_were_recorded_well_and_faulty_files_are_quite_as_heavy_as_the_good_ones_Any_ideas'><img src="https://www.researchgate.net/profile/Nikolay_Novitskiy/post/EEG_error_datasets_missing_channels_Its_strange_because_they_were_recorded_well_and_faulty_files_are_quite_as_heavy_as_the_good_ones_Any_ideas/attachment/59d6391b79197b8077996520/AS%3A400433085468672%401472482095219/image/41_64ch.png" alt="Brain Vision waveforms" width='70%'></a>
+<a href='https://www.researchgate.net/post/EEG_error_datasets_missing_channels_Its_strange_because_they_were_recorded_well_and_faulty_files_are_quite_as_heavy_as_the_good_ones_Any_ideas'><img loading="lazy" decoding="async" src="https://www.researchgate.net/profile/Nikolay_Novitskiy/post/EEG_error_datasets_missing_channels_Its_strange_because_they_were_recorded_well_and_faulty_files_are_quite_as_heavy_as_the_good_ones_Any_ideas/attachment/59d6391b79197b8077996520/AS%3A400433085468672%401472482095219/image/41_64ch.png" alt="Brain Vision waveforms" width='70%'></a>
 
 For Bernabeu et al. (2017), I used Brain Vision software, and followed the [tutorials from the well-known ERP Boot Camp](https://erpinfo.org/resources) of Steve Luck and Emily Kappenman. I applied the following pipeline for each participant:
 
@@ -116,7 +116,7 @@ For Bernabeu et al. (2017), I used Brain Vision software, and followed the [tuto
 
 3. re-referencing the signal offline to the right mastoid (RM), having referenced online to the left mastoid (Ref);
 
-<img src='EEG montage.png' alt="Custom equidistant ActiCAP electrode montage split into anterior and posterior groups, beside the International 10-20 system for comparison"></img>
+<img loading="lazy" decoding="async" src='EEG montage.png' alt="Custom equidistant ActiCAP electrode montage split into anterior and posterior groups, beside the International 10-20 system for comparison"></img>
 
 4. separating my three experimental conditions;
 
@@ -154,7 +154,7 @@ This pipeline is reflected in the [scripts exported from Brain Vision](https://o
 
 Word reading ERPs can look somewhat like this after the preprocessing (<a href='https://osf.io/bz7ae/'>plots made in R</a>).
 
-<img src='Four main waveform plots stacked.png' alt="Four stacked ERP waveform plots over 0-800 ms for quick and slow groups at anterior and posterior electrodes, comparing auditory, haptic and visual conditions"></img>
+<img loading="lazy" decoding="async" src='Four main waveform plots stacked.png' alt="Four stacked ERP waveform plots over 0-800 ms for quick and slow groups at anterior and posterior electrodes, comparing auditory, haptic and visual conditions"></img>
 
 To visualise these waveforms throughout the different sections of the data, a [dashboard is available](https://pablobernabeu.shinyapps.io/ERP-waveform-visualization_CMS-experiment).
 

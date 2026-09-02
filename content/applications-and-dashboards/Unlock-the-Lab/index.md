@@ -69,7 +69,7 @@ The application targets several interconnected competencies in scientific reason
 
 The workshop unfolds across three main phases. The first is an **educational introduction** in which participants read background material on how to assess research, covering key concepts in study design, transparency and publication ethics. A glossary of 21 scientific terms with accessible definitions is available throughout and can be consulted at any point. The second phase is **scenario evaluation**: participants work through 48 fictional research scenarios one at a time, providing two ratings for each study on a 1–7 scale — a prediction of the peer consensus score followed by the participant's own rating. The scenarios span a range of disciplines and vary in quality, methodology and framing. The third phase, **results and reflection**, invites participants to view their leaderboard position and explore the [live analytics dashboard](https://unlock-the-lab.web.app/dashboard.html) to see how their ratings compare with the community as a whole.
 
-<img src="img/screenshot-scenario.png" alt="Research scenario evaluation screen" style="max-width:100%; border-radius:6px; margin: 1em 0;">
+<img loading="lazy" decoding="async" src="img/screenshot-scenario.png" alt="Research scenario evaluation screen" style="max-width:100%; border-radius:6px; margin: 1em 0;">
 <p style="font-size:0.85em; color:#555; margin-top:-0.5em;"><em>Example research scenario with dual rating interface</em></p>
 
 ## Scoring System
@@ -86,17 +86,17 @@ Scores are capped between 0 and 100. The aggregate score is the sum across all 4
 
 A real-time leaderboard ranks participants by their aggregate prediction score. Two views are available: the **top 200 of the last 24 hours** and the **all-time top 200**. Participants are identified by automatically assigned anonymous usernames (e.g., "Cheerful Penguin"), ensuring data privacy while still enabling a competitive and engaging ranking experience.
 
-<img src="img/screenshot-leaderboard.png" alt="Leaderboard in Unlock the Lab" style="max-width:100%; border-radius:6px; margin: 1em 0;">
+<img loading="lazy" decoding="async" src="img/screenshot-leaderboard.png" alt="Leaderboard in Unlock the Lab" style="max-width:100%; border-radius:6px; margin: 1em 0;">
 <p style="font-size:0.85em; color:#555; margin-top:-0.5em;"><em>Real-time leaderboard showing prediction accuracy rankings</em></p>
 
 ## Analytics Dashboard
 
 A publicly accessible [live analytics dashboard](https://unlock-the-lab.web.app/dashboard.html) provides visualisations of the aggregate data collected across all participants. In addition to the leaderboard shown above, the dashboard includes a criterion importance chart showing the degree of importance that participants assigned to each evaluation criterion (title, access, source, theory, methods and data, and conclusion), and a study-level bar chart of mean quality ratings with 95% confidence intervals across all 48 studies. The dashboard is intended both for participants reviewing their own results and for facilitators and researchers interested in population-level patterns.
 
-<img src="img/screenshot-dashboard-1.png" alt="Top Predictors leaderboard and Criterion Importance chart" style="max-width:100%; border-radius:6px; margin: 1em 0;">
+<img loading="lazy" decoding="async" src="img/screenshot-dashboard-1.png" alt="Top Predictors leaderboard and Criterion Importance chart" style="max-width:100%; border-radius:6px; margin: 1em 0;">
 <p style="font-size:0.85em; color:#555; margin-top:-0.5em;"><em>Dashboard section showing the Criterion Importance chart, which displays the average token allocation per evaluation criterion across participants</em></p>
 
-<img src="img/screenshot-dashboard-2.png" alt="Average Quality Ratings by Study chart" style="max-width:100%; border-radius:6px; margin: 1em 0;">
+<img loading="lazy" decoding="async" src="img/screenshot-dashboard-2.png" alt="Average Quality Ratings by Study chart" style="max-width:100%; border-radius:6px; margin: 1em 0;">
 <p style="font-size:0.85em; color:#555; margin-top:-0.5em;"><em>Dashboard section showing mean quality ratings (1–7 scale) with 95% confidence intervals for each of the 48 studies; bars are colour-coded and clickable for detailed study information</em></p>
 
 ## Broader Themes for Discussion

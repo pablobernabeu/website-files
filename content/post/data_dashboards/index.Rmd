@@ -39,9 +39,9 @@ projects: []
 
 Visualisation apps run on internet browsers. This allows for three options: private viewing (useful during analysis), selective sharing (used within work groups), or internet publication. Among the available platforms, [R Shiny](https://shiny.rstudio.com/) and [Tableau](https://www.tableau.com/) stand out due to being relatively accessible to new users. Apps serve a broad variety of purposes (see [this gallery](https://shiny.rstudio.com/gallery/) and [this one](https://www.tableau.com/products/desktop)). In science and beyond, these apps allow us to go [the extra mile in sharing data](https://www.frontiersin.org/articles/10.3389/fpsyg.2015.01782/full). Alongside files and code shared in repositories, we can present the data in a website, in the form of plots or tables. This facilitates the public exploration of each section of the data (groups, participants, trials...) [to anyone interested, and allows researchers to account for their proceeding](https://www.nature.com/articles/d41586-019-01506-x) in the analysis.
 
-<img width = '70%' src='https://pablobernabeu.github.io/2017/the-case-for-data-dashboards-first-steps-in-r-shiny/2.png' alt="Graphic titled Online visualisation apps in science, with The Extra Mile logo over an ERP waveform dashboard" />
+<img loading="lazy" decoding="async" width = '70%' src='https://pablobernabeu.github.io/2017/the-case-for-data-dashboards-first-steps-in-r-shiny/2.png' alt="Graphic titled Online visualisation apps in science, with The Extra Mile logo over an ERP waveform dashboard" />
 
-<img style = "float: right; margin-left: 30px;" width = '60%' src='https://pablobernabeu.github.io/2017/the-case-for-data-dashboards-first-steps-in-r-shiny/3.png' alt="Elsevier author services Data Visualization page encouraging researchers to share their data" />
+<img loading="lazy" decoding="async" style = "float: right; margin-left: 30px;" width = '60%' src='https://pablobernabeu.github.io/2017/the-case-for-data-dashboards-first-steps-in-r-shiny/3.png' alt="Elsevier author services Data Visualization page encouraging researchers to share their data" />
 
 Publishers and journals highly encourage authors to make the most of their data by facilitating its easy exploration by the readership--even though they don't normally offer the possibility of hosting any web applications yet.
 
@@ -59,7 +59,7 @@ There are several platforms for creating apps (e.g., Tableau, D3.js, and R Shiny
 
 #### How to Shiny
 
-<img style = "float: right; margin-left: 30px;" width = '30%' src='https://pablobernabeu.github.io/2017/the-case-for-data-dashboards-first-steps-in-r-shiny/6.png' alt="The five file areas of a Shiny app: Data, server, ui, Shiny deployer, and rsconnect folder" />
+<img loading="lazy" decoding="async" style = "float: right; margin-left: 30px;" width = '30%' src='https://pablobernabeu.github.io/2017/the-case-for-data-dashboards-first-steps-in-r-shiny/6.png' alt="The five file areas of a Shiny app: Data, server, ui, Shiny deployer, and rsconnect folder" />
 
 Shiny apps draw on any standard R code that you may already have. This is most commonly plots or tables, but other stuff such as images or Markdown texts are valid too. This is a nice thing to keep in mind when having to create a new app. Part of the job may already be done! The app is distributed among five different areas.
 
