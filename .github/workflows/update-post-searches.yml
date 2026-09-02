@@ -1,9 +1,10 @@
 name: Update post searches
 
 # Re-runs the bibliographic searches behind two posts (see
-# scripts/update_post_searches.R) and publishes the results as an artifact, so
-# that the posts can be rebuilt from fresh counts without holding the Scopus key
-# locally. Dispatch-only: nothing here runs on a schedule or on push.
+# scripts/update_post_searches.R), commits the results to the branch the run was
+# dispatched from and also publishes them as an artifact, so that the posts can
+# be rebuilt from fresh counts without holding the Scopus key locally.
+# Dispatch-only: nothing here runs on a schedule or on push.
 
 on:
   workflow_dispatch:
@@ -17,9 +18,9 @@ on:
           - speculation
           - allfit
 
-# The job only reads the checkout and uploads an artifact.
+# The job commits the search results back to the dispatching branch.
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   search:
@@ -29,8 +30,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
 
       - name: Set up R
         uses: r-lib/actions/setup-r@d3c5be51b12e724e68f33216ca3c148b66d5f0b6 # v2
@@ -59,6 +58,20 @@ jobs:
         env:
           TARGET: ${{ inputs.target || 'all' }}
           SCOPUS_API_KEY: ${{ secrets.SCOPUS_API_KEY }}
+
+      - name: Commit results
+        # Also after a failure, so that the searches that did complete are kept.
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/post/*/searches/
+          if git diff --cached --quiet; then
+            echo "No search results to commit."
+            exit 0
+          fi
+          git commit -m "Update post searches"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
 
       - name: Upload results
         # Also after a failure, so that the searches that did complete are kept.
