@@ -5417,6 +5417,19 @@ article .article-container.pt-3 > div > .btn-links:has(a.scholar-icon-link)::bef
   text-decoration: none;
 }
 
+// The rule above clears `outline` unconditionally, which removes the browser's
+// focus ring as well as the hover one, leaving keyboard users with no visible
+// position among the tag links. This puts one back for keyboard focus only.
+// The three selectors mirror the ones above, so that the focus ring wins on
+// publication and article pages too, where the ID-scoped rule is more specific.
+#top > div.pub > div > div.article-tags > a:focus-visible,
+#top > article > div > div.article-tags > a:focus-visible,
+.article-tags a:focus-visible {
+  outline: 3px solid var(--text-primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 // article tag count subscripts (via data-count attribute set by JS)
 .article-tags a[data-count]::after {
   content: attr(data-count);
@@ -7730,6 +7743,15 @@ body.dark .taxonomy-page-type {
   outline: 3px solid #67e8f9 !important;
   outline-offset: 2px !important;
   box-shadow: none !important;
+}
+
+// The navbar is dark in the light theme and light in the dark theme, so the
+// pale cyan above is 10.1:1 on the light-theme navbar but only 1.18:1 on the
+// dark-theme one. A dark cyan of the same family restores it to 4.35:1.
+body.dark #navbar-main .nav-link:focus-visible,
+body.dark #navbar-main .navbar-toggler:focus-visible,
+body.dark #navbar-main .dropdown-item:focus-visible {
+  outline-color: #0e7490 !important;
 }
 
 // Search opens a dialog rather than navigating to a page section, so Scrollspy
