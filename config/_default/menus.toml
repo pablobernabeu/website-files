@@ -9,6 +9,11 @@
   weight = 10
 
 [[main]]
+  name = '<span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Twin R and Python packages &nbsp; ">Packages</span>'
+  url = '#packages'
+  weight = 15
+
+[[main]]
   name = '<span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Web applications and data dashboards &nbsp; ">Web Apps</span>'
   url = '#applications-and-dashboards'
   weight = 20

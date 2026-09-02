@@ -1,0 +1,349 @@
+---
+title: 'lexsync: from a word-frequency corpus to an EEG-ready experiment, in R and Python'
+author: ''
+date: '2026-09-01'
+slug: lexsync-from-corpus-to-eeg-ready-experiment
+categories:
+  - psycholinguistics
+  - research methods
+tags:
+  - psycholinguistics
+  - stimuli
+  - electroencephalography
+  - reproducibility
+  - Python
+  - PsychoPy
+  - OpenSesame
+  - jsPsych
+subtitle: ''
+summary: 'Selecting stimuli for a word-recognition experiment means matching conditions on several lexical dimensions at once, dealing the items into lists that are themselves equated, generating pseudowords, and building the experiment that presents everything with triggers for electroencephalography. lexsync does all of this from a short design file, in R and in Python, and the two engines select byte-identical stimuli and write byte-identical experiment scripts. This post walks through a high- against low-frequency contrast and a lexical-decision task on the bundled English lexicon, reports the realised control as effect sizes with equivalence tests, and ends with the SHA-256 checksums that both engines produce.'
+authors: []
+lastmod: ''
+featured: no
+draft: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = TRUE,
+                      fig.align = 'center', fig.retina = 2, comment = '#>')
+knitr::opts_chunk$set(python.reticulate = FALSE, engine.path = list(
+  python = '/tmp/claude-0/-home-user/22b7e646-ecfa-5c99-a752-a7e5438334ea/scratchpad/pyenv/bin/python'
+))
+options(width = 95)
+xaringanExtra::use_clipboard()
+out_dir <- file.path(tempdir(), 'lexsync-post')
+dir.create(out_dir, showWarnings = FALSE)
+Sys.setenv(LEXSYNC_POST_OUT = out_dir)
+```
+
+Every study of word recognition begins with a list of words, and every reviewer of such a study asks how the list was made. In a contrast between high- and low-frequency words, the two conditions have to be equated on length, on orthographic neighbourhood and on whatever else predicts reading times, and when the items are dealt into counterbalancing lists, the lists have to be equated too, or the groups that receive them differ in the materials before they differ in anything else. Packages such as LexOPS match words but stop short of the experiment, and experiment builders present stimuli without matching them. In the studies I have worked on, the two halves were joined by hand, in scripts that no one else could run.
+
+lexsync joins them. From a word-frequency corpus in any of dozens of languages, it selects items matched in parallel on several dimensions, counterbalances them across conditions and lists, generates pseudowords where the paradigm needs them, and writes the experiment for PsychoPy, OpenSesame or the browser through jsPsych, with electroencephalography (EEG) triggers bound to the screen refresh on which the stimulus appears. It ships as two packages of the same name, one in R and one in Python, built from one repository and released under one version, and under its deterministic matching methods the two engines select byte-identical stimuli. Nothing in either package draws a random number: trial order and jitter come from keyed SHA-256 hashes of the design and the seed, which is what allows a seeded shuffle to mean the same thing in both languages. The post runs the R package on the 3,000-word English lexicon bundled with it and closes by running the Python package on the same design files.
+
+```{r}
+library(lexsync)
+packageVersion('lexsync')
+schema_path  <- system.file('extdata', 'schema.yaml', package = 'lexsync')
+lexicon_path <- system.file('extdata', 'en_example.csv', package = 'lexsync')
+schema <- yaml::read_yaml(schema_path)
+c(seed = schema$seed, equivalence_bound_d = schema$equivalence$bound_d,
+  matching = schema$matching$method)
+```
+
+## The pool
+
+The bundled lexicon carries a Zipf frequency (van Heuven et al., 2014), the orthographic neighbourhood density N and OLD20 (Yarkoni et al., 2008) for each word, and loading it adds length and an orthographic estimate of syllable count. The estimate is worth inspecting before it is used, since it counts vowel runs and gets 'rhythm' and 'chocolate' wrong in opposite directions.
+
+```{r}
+lex <- load_lexicon(lexicon_path, schema, language = 'english')
+dim(lex)
+head(lex[, c('word', 'frequency', 'length', 'n_syllables', 'n_density', 'old20')])
+probe <- c('cat', 'table', 'rhythm', 'being', 'chocolate')
+setNames(count_syllables(probe), probe)
+```
+
+A design is a list, or a YAML file, that names the conditions, the dimensions to match and the number of items, together with the filters that narrow the lexicon to a candidate pool. The pool has to be built explicitly, since the matching functions never read the filters themselves.
+
+```{r}
+design_freq <- list(
+  name = 'blog_freq', language = 'english',
+  n_per_condition = 40,
+  pool_filters = list(length = c(3, 7), frequency = c(3.8, 7.0)),
+  conditions = list(
+    list(name = 'high_frequency', define_by = list(frequency = c(5.2, 7.0))),
+    list(name = 'low_frequency',  define_by = list(frequency = c(3.8, 4.4)))),
+  match_on = c('length', 'n_density', 'old20'),
+  counterbalance = list(lists = 2, optimise = TRUE,
+                        balance_on = c('length', 'n_density', 'old20', 'frequency')))
+pool <- build_pool(lex, design_freq$pool_filters)
+nrow(pool)
+sapply(design_freq$conditions,
+       function(cnd) nrow(build_pool(pool, cnd$define_by)))
+```
+
+The high-frequency band is the scarce side, with `r nrow(build_pool(pool, design_freq$conditions[[1]]$define_by))` candidates against `r nrow(build_pool(pool, design_freq$conditions[[2]]$define_by))`, which the datasheet will later record as the discretionary pool.
+
+## Matching on three dimensions at once
+
+The default method spreads the anchor condition evenly over its band and chooses, for each anchor word, the nearest low-frequency neighbour in the standardised space of the matched dimensions. The first sets show what that produces: 'knew' is paired with 'myth', both four letters long with three neighbours and the same OLD20.
+
+```{r}
+stim <- match_stimuli(pool, design_freq, schema)
+dim(stim)
+first <- stim[stim$set <= 4, c('set', 'condition', 'word', 'frequency', 'length',
+                               'n_density', 'old20')]
+first[order(first$set, first$condition), ]
+```
+
+```{r, fig.width = 7, fig.height = 4.3, fig.alt = 'Scatterplot of Zipf frequency against OLD20 for the candidate pool in grey, with the 40 high-frequency and 40 low-frequency selected words coloured by condition'}
+library(ggplot2)
+ggplot() +
+  geom_point(data = pool, aes(frequency, old20), colour = 'grey80', size = 1) +
+  geom_point(data = stim, aes(frequency, old20, colour = condition), size = 2) +
+  scale_colour_manual(values = c('#D55E00', '#0072B2')) +
+  labs(x = 'Zipf frequency', y = 'OLD20', colour = NULL) +
+  theme_minimal(base_size = 13) + theme(legend.position = 'top')
+```
+
+## The receipts
+
+A statement that two conditions were matched is a claim about a difference being small, and the usual test of the difference against zero cannot support it. The match report therefore gives, for each dimension, Cohen's d with a 90% confidence interval, the variance ratio and an equivalence test of the two one-sided kind (Lakens, 2017) against the schema's bound of half a standard deviation. The manipulated dimension, frequency, shows the size of the manipulation.
+
+```{r}
+report <- match_report(stim, c('frequency', 'length', 'n_density', 'old20'), schema)
+report$comparisons
+```
+
+```{r, fig.width = 7, fig.height = 3.2, fig.alt = 'Dot-and-whisker plot of Cohen’s d with 90% confidence intervals for length, neighbourhood density and OLD20, all within the dashed equivalence bounds at plus and minus 0.5'}
+ctrl <- subset(report$comparisons, dimension != 'frequency')
+ctrl$dimension <- factor(ctrl$dimension, levels = rev(c('length', 'n_density', 'old20')))
+ggplot(ctrl, aes(cohens_d, dimension)) +
+  geom_vline(xintercept = c(-0.5, 0.5), linetype = 'dashed') +
+  geom_vline(xintercept = 0, colour = 'grey60') +
+  geom_pointrange(aes(xmin = d_ci_low, xmax = d_ci_high)) +
+  labs(x = 'Standardised mean difference (low minus high), 90% CI', y = NULL) +
+  theme_minimal(base_size = 13)
+```
+
+The verdicts depend on the number of items as much as on the means. With 20 items per condition, the same design gives a confidence interval of about ±0.53 on every d, and every equivalence test fails against the 0.5 bound although the point estimates stay near zero. The interval is the quantity to report.
+
+```{r}
+small <- design_freq
+small$n_per_condition <- 20
+small_report <- match_report(match_stimuli(pool, small, schema),
+                             c('length', 'n_density', 'old20'), schema)
+small_report$comparisons[, c('dimension', 'cohens_d', 'd_ci_low', 'd_ci_high',
+                             'tost_p', 'equivalent')]
+```
+
+## Lists that are themselves balanced
+
+Dealing the matched sets into two lists by rank leaves the lists unequal in neighbourhood density, which matters when, as in a study of learners of a third language, the lists are crossed with a between-participants group. The balancing step runs an integer descent that swaps item sets between lists until no single exchange lowers the imbalance, with a keyed-hash tie-break so that the result is the same in both engines.
+
+```{r}
+bl <- balance_lists(stim, design_freq, schema)
+c(cost_before = bl$report$cost_before, cost_after = bl$report$cost_after,
+  swaps = bl$report$n_swaps)
+plain    <- counterbalance(stim, list(counterbalance = list(lists = 2)), schema)
+balanced <- counterbalance(stim, design_freq, schema, bl$list_of_set)
+per_list <- function(d) aggregate(d[, c('frequency', 'length', 'n_density', 'old20')],
+                                  by = list(list = d$list), FUN = function(x) round(mean(x), 3))
+per_list(plain)
+per_list(balanced)
+```
+
+The trial order within each list is the rank of a SHA-256 digest of the seed, list, set and condition, which is why the first eight trials of list 1 below will reappear unchanged from the Python engine at the end of the post.
+
+```{r}
+l1 <- balanced[balanced$list == 1, ]
+paste(l1$word[order(l1$trial)][1:8], collapse = ', ')
+participant_table(list(list = 1:2, group = c('L1', 'L3')), 8)
+```
+
+## Pseudowords and a lexical-decision trial
+
+A lexical-decision task needs foils. The default generator substitutes letters under the constraint that every bigram of the result is attested in the reference lexicon, which keeps the foil close to its base word, whereas the subsyllabic generator, after Wuggy (Keuleers & Brysbaert, 2010), swaps whole onsets, nuclei and codas and preserves syllabic structure instead of visual similarity. Both are deterministic.
+
+```{r}
+ld_pool <- build_pool(lex, list(length = c(4, 7), frequency = c(3.5, 6.0)))
+nrow(ld_pool)
+ls8 <- build_lexdec_stimuli(ld_pool, n = 8, reference_words = lex$word)
+ss8 <- build_lexdec_stimuli(ld_pool, n = 8, reference_words = lex$word,
+                            method = 'subsyllabic')
+data.frame(word = ls8$target[ls8$condition == 'word'],
+           letter_substitution = ls8$target[ls8$condition == 'pseudoword'],
+           subsyllabic = ss8$target[ss8$condition == 'pseudoword'])
+```
+
+The trial itself is data. The design below describes four events, a fixation cross, the target with an onset-locked condition trigger, a keyboard response and a blank whose duration is jittered per trial between 400 and 800 ms and stored as the inter-trial interval. The same description drives all three experiment targets.
+
+```{r}
+design_ld <- list(
+  name = 'blog_lexdec', language = 'english', paradigm = 'lexical_decision',
+  items = list(source = 'generate', lexicon = lexicon_path),
+  n_per_condition = 40,
+  pool_filters = list(length = c(4, 7), frequency = c(3.5, 6.0)),
+  events = list(
+    list(type = 'fixation', content = '+', duration_ms = 500),
+    list(type = 'text', content = '{target}', duration_ms = 800,
+         trigger = 'condition', onset_locked = TRUE),
+    list(type = 'response', keys = c('f', 'j'), timeout_ms = 2000),
+    list(type = 'blank', duration = list(jitter = c(400, 800), as = 'iti_ms'))),
+  counterbalance = list(lists = 2))
+ld <- build_lexdec_stimuli(ld_pool, n = design_ld$n_per_condition,
+                           reference_words = lex$word)
+ld <- counterbalance(ld, design_ld, schema)
+ld <- resolve_trial_timing(ld, design_ld, schema)
+ld <- assign_triggers(ld)
+ld <- ld[order(ld$list, ld$trial), ]
+head(ld[, c('list', 'trial', 'set', 'condition', 'target', 'iti_ms',
+            'condition_trigger', 'item_trigger')])
+range(ld$iti_ms)
+```
+
+```{r, fig.width = 8, fig.height = 3.2, fig.alt = 'Bar chart of the jittered inter-trial interval of each of the 40 trials of list 1, coloured by whether the target is a word or a pseudoword'}
+ggplot(ld[ld$list == 1, ], aes(trial, iti_ms, fill = condition)) +
+  geom_col() +
+  scale_fill_manual(values = c('#D55E00', '#0072B2')) +
+  labs(x = 'Trial in list 1', y = 'Inter-trial interval (ms)', fill = NULL) +
+  theme_minimal(base_size = 13) + theme(legend.position = 'top')
+```
+
+Exporting writes the PsychoPy script, the OpenSesame experiment and a single jsPsych HTML file. The PsychoPy script binds each trigger to the buffer flip on which the stimulus appears, through `win.callOnFlip`, instead of sending it from a later, sequence-ordered item, and holds it for 50 ms.
+
+```{r}
+exp <- export_experiments(ld, design_ld, schema, file.path(out_dir, 'handbuilt'))
+basename(unlist(exp))
+py <- readLines(exp$psychopy, warn = FALSE)
+grep('callOnFlip|^TRIGGER_HOLD_MS', py, value = TRUE)
+```
+
+## The datasheet
+
+The materials record is built from the same objects and includes a paragraph that a methods section can take as it stands, with the realised control, the size of the candidate pool, the seed and the package version.
+
+```{r}
+ld_report <- match_report(ld, 'length', schema)
+stim_csv <- file.path(out_dir, 'handbuilt', 'blog_lexdec_stimuli.csv')
+write.csv(ld, stim_csv, row.names = FALSE)
+ds <- build_datasheet(design_ld, schema, ld_report, ld, lexicon_path,
+                      list(stimuli = stim_csv, experiments = exp), schema$seed,
+                      engine = 'R',
+                      candidate_pool = list(list(condition = 'words in band',
+                                                 n_candidates = nrow(ld_pool))))
+cat(strwrap(methods_paragraph(ds), width = 95), sep = '\n')
+ds$analysis$suggested_model
+```
+
+## The same design files, in one call, in both engines
+
+Everything above is what the pipeline does from a design file. The two files below are what a collaborator, or a preregistration, would receive, and the hand-built jsPsych experiment matches the pipeline's byte for byte.
+
+```{r}
+freq_yaml <- c(
+  'name: blog_freq', 'language: english', paste0('lexicon: ', lexicon_path),
+  "description: 'High versus low frequency English words matched on length, N and OLD20, dealt into two lists equated on those dimensions.'",
+  'n_per_condition: 40',
+  'pool_filters:', '  length: [3, 7]', '  frequency: [3.8, 7.0]',
+  'conditions:',
+  '  - name: high_frequency', '    define_by:', '      frequency: [5.2, 7.0]',
+  '  - name: low_frequency',  '    define_by:', '      frequency: [3.8, 4.4]',
+  'match_on: [length, n_density, old20]',
+  'counterbalance:', '  lists: 2', '  optimise: true',
+  '  balance_on: [length, n_density, old20, frequency]',
+  'timing:', '  fixation_ms: 500', '  word_ms: 500', '  isi_ms: 250')
+lexdec_yaml <- c(
+  'name: blog_lexdec', 'language: english', 'paradigm: lexical_decision',
+  "description: 'Lexical decision: real words versus length-matched, letter-substitution pseudowords, with a jittered inter-trial interval.'",
+  'items:', '  source: generate', paste0('  lexicon: ', lexicon_path),
+  'n_per_condition: 40',
+  'pool_filters:', '  length: [4, 7]', '  frequency: [3.5, 6.0]',
+  'events:',
+  '  - type: fixation', "    content: '+'", '    duration_ms: 500',
+  '  - type: text', "    content: '{target}'", '    duration_ms: 800',
+  '    trigger: condition', '    onset_locked: true',
+  '  - type: response', '    keys: [f, j]', '    timeout_ms: 2000',
+  '  - type: blank', '    duration: {jitter: [400, 800], as: iti_ms}',
+  'counterbalance:', '  lists: 2')
+p_freq <- file.path(out_dir, 'design_blog_freq.yaml')
+p_lexdec <- file.path(out_dir, 'design_blog_lexdec.yaml')
+writeLines(freq_yaml, p_freq, useBytes = TRUE)
+writeLines(lexdec_yaml, p_lexdec, useBytes = TRUE)
+res_freq   <- run_pipeline(p_freq, schema_path, outdir = out_dir, verbose = FALSE)
+res_lexdec <- run_pipeline(p_lexdec, schema_path, outdir = out_dir, verbose = FALSE)
+sha256 <- function(path) digest::digest(file = path, algo = 'sha256')
+sha256(exp$jspsych) == sha256(res_lexdec$experiments$jspsych)
+fingerprint <- function(res) {
+  files <- c(res$stimuli, res$descriptives, res$comparisons, unlist(res$experiments))
+  data.frame(file = basename(files), sha256 = substr(vapply(files, sha256, ''), 1, 16),
+             row.names = NULL)
+}
+rbind(fingerprint(res_freq), fingerprint(res_lexdec))
+```
+
+The Python package reads its own bundled copies of the lexicon and the schema, which are byte-identical to the R ones, runs the same two design files and prints the same checksums, shortened here to their first 16 hexadecimal digits. The datasheets and run logs differ by design, since they record the engine, the package versions and the time.
+
+```{python}
+import hashlib, os
+from importlib.resources import files
+import lexsync
+
+data = files('lexsync') / 'data'
+schema_path, lexicon_path = str(data / 'schema.yaml'), str(data / 'en_example.csv')
+out = os.path.join(os.environ['LEXSYNC_POST_OUT'], 'python')
+os.makedirs(out, exist_ok=True)
+
+def sha256(path):
+    with open(path, 'rb') as fh:
+        return hashlib.sha256(fh.read()).hexdigest()[:16]
+
+designs = {}
+for name in ('blog_freq', 'blog_lexdec'):
+    src = os.path.join(os.environ['LEXSYNC_POST_OUT'], f'design_{name}.yaml')
+    with open(src, encoding='utf-8') as fh:
+        text = fh.read()
+    # The only line that differs between the engines names the bundled lexicon.
+    text = '\n'.join(
+        line.split('lexicon:')[0] + 'lexicon: ' + lexicon_path if 'lexicon:' in line else line
+        for line in text.splitlines()) + '\n'
+    designs[name] = os.path.join(out, f'design_{name}.yaml')
+    with open(designs[name], 'w', encoding='utf-8', newline='\n') as fh:
+        fh.write(text)
+
+print('lexsync', lexsync.__version__)
+for name, path in designs.items():
+    res = lexsync.run_pipeline(path, schema_path, out, verbose=False)
+    for p in [res['stimuli'], res['descriptives'], res['comparisons'],
+              *res['experiments'].values()]:
+        print(f'{os.path.basename(p):42s} {sha256(p)}')
+```
+
+The first trials of list 1 in the frequency design come out in the same order from the Python engine, which is the visible consequence of an order that is a hash and not a draw.
+
+```{python}
+import os
+import pandas as pd
+out = os.path.join(os.environ['LEXSYNC_POST_OUT'], 'python')
+stim = pd.read_csv(os.path.join(out, 'stimuli', 'blog_freq_english_stimuli_py.csv'))
+l1 = stim[stim['list'] == 1].sort_values('trial')
+print(', '.join(l1['word'].head(8)))
+```
+
+Two limits are worth stating. The byte-level guarantee holds for the standardised Euclidean, joint and continuous matching methods; the Mahalanobis and optimal methods depend on each platform's linear algebra, agree closely and are labelled as approximate in the datasheet. The bundled lexica, derived from wordfreq (Speer, 2022), carry proper nouns and no part-of-speech information, so a real study would join a norm table or supply its own candidate pool, which the design file allows through the `items` block.
+
+### References
+
+Keuleers, E., & Brysbaert, M. (2010). Wuggy: A multilingual pseudoword generator. *Behavior Research Methods*, *42*(3), 627–633. https://doi.org/10.3758/BRM.42.3.627
+
+Lakens, D. (2017). Equivalence tests: A practical primer for t tests, correlations, and meta-analyses. *Social Psychological and Personality Science*, *8*(4), 355–362. https://doi.org/10.1177/1948550617697177
+
+Speer, R. (2022). *rspeer/wordfreq: v3.0* (Version 3.0.2) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.7199437
+
+van Heuven, W. J. B., Mandera, P., Keuleers, E., & Brysbaert, M. (2014). SUBTLEX-UK: A new and improved word frequency database for British English. *Quarterly Journal of Experimental Psychology*, *67*(6), 1176–1190. https://doi.org/10.1080/17470218.2013.850521
+
+Yarkoni, T., Balota, D., & Yap, M. (2008). Moving beyond Coltheart's N: A new measure of orthographic similarity. *Psychonomic Bulletin & Review*, *15*(5), 971–979. https://doi.org/10.3758/PBR.15.5.971

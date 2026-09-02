@@ -1,0 +1,339 @@
+---
+title: 'scopusflow: a literature search you can rerun'
+author: ''
+date: '2026-09-01'
+slug: scopusflow-a-literature-search-you-can-rerun
+categories:
+  - bibliometrics
+  - research methods
+tags:
+  - bibliometrics
+  - literature review
+  - reproducibility
+  - open science
+  - Python
+  - Scopus
+subtitle: ''
+summary: 'A Scopus export that nobody can reproduce is a common start to a review. The scopusflow packages, one in R and one in Python, separate describing a search from running it, checkpoint every page against the weekly quota, keep the provenance of each record and write the search up to the PRISMA-S standard from the objects alone. This post runs the whole workflow offline, against a stand-in server that answers the package''s own requests from its bundled corpus, and ends with the R and Python twins rendering the same search record byte for byte.'
+authors: []
+lastmod: ''
+featured: no
+draft: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = TRUE,
+                      fig.align = 'center', fig.retina = 2, comment = '#>')
+knitr::opts_chunk$set(python.reticulate = FALSE, engine.path = list(
+  python = '/tmp/claude-0/-home-user/22b7e646-ecfa-5c99-a752-a7e5438334ea/scratchpad/pyenv/bin/python'
+))
+options(width = 90, cli.num_colors = 1, cli.hyperlink = FALSE, crayon.enabled = FALSE)
+xaringanExtra::use_clipboard()
+```
+
+Most literature searches begin twice. The first time, someone types a query into the Scopus website, exports a spreadsheet and starts screening. The second time, months later, a reviewer asks for the exact query, the date, the number of records returned by each database and the number of duplicates removed, and nobody can produce them. The export has no memory of how it was made. Repeating the search through the application programming interface (API) has its own difficulties. Elsevier charges a weekly quota per request, offset paging stops at record 5,000, a large harvest interrupted at page 40 has to start again and the records arrive in a nested format that every laboratory reshapes in its own way.
+
+I wrote the first version of the code behind this post as a set of scripts extending the rscopus package, which I [described in 2024](/2024/rscopus-plus-an-extension-of-the-rscopus-package/). The scripts grew into scopusflow, a package that separates describing a search from running it and that ships in two versions, one for R and one for Python, tested against the same fixtures. Nothing below contacts Elsevier, and no key is needed. Scopus records may not be redistributed, so the package bundles a complete harvest of 138 real journal articles on graphene supercapacitors, retrieved from OpenAlex in the format the package returns, and its test suite runs the harvest functions against a stand-in server that answers the package's own requests from that corpus. The post uses the same device, so that every number in it comes from code that actually ran. Where the live API would be needed, the call is shown but not run, and a live example is in the companion post on [speculation across scientific topics](/2026/speculation-across-various-scientific-topics/), whose searches this package now performs.
+
+```{r}
+library(scopusflow)
+packageVersion('scopusflow')
+```
+
+## Writing the search before running it
+
+A query in scopusflow is a character string that the API will receive verbatim, and the package builds it so that field tags and Boolean operators cannot be mistyped. The example is a review that I might plausibly run, on electroencephalography (EEG) studies of conceptual processing in learners of a third language.
+
+```{r}
+q_cp  <- scopus_query('conceptual processing', 'EEG', .field = 'TITLE-ABS-KEY')
+q_l3  <- scopus_query('third language', 'L3 learning', .op = 'OR',
+                      .field = 'TITLE-ABS-KEY')
+q_not <- scopus_query('python', 'snake', .op = 'AND NOT', .field = 'TITLE-ABS-KEY')
+cat(q_cp, q_l3, q_not, sep = '\n')
+```
+
+A search plan turns a query into a table of cells, typically one per year, with the page size set to the largest the API allows for the chosen view (200 records for the standard view, 25 for the complete view), since quota is charged per request. The plan is a plain object that can be printed, saved and put under version control before a single request is spent.
+
+```{r}
+plan_l3 <- scopus_plan(q_l3, years = 2010:2025, partition = 'year')
+plan_l3
+```
+
+The same plan can already be written up. The report follows PRISMA-S, the extension of the PRISMA statement for reporting literature searches (Rethlefsen et al., 2021), and every item that the plan cannot know is stated as unrecorded rather than guessed. A report written at this stage is the protocol for the search.
+
+```{r}
+cat(format(scopus_search_report(plan_l3), style = 'paragraph'))
+```
+
+## A harvest that remembers where it stopped
+
+The bundled corpus stands in for a live harvest from here on. The stand-in server is defined in a [separate file](stand_in.R) that mirrors the package's own test helper, and the key it sees is a placeholder that never leaves the R session.
+
+```{r}
+source('stand_in.R')
+stand_in <- scopus_stand_in(example_records)
+options(scopusflow.api_key = 'offline-demo-key')
+
+plan <- scopus_plan('graphene supercapacitor', years = 2015:2024,
+                    field = 'TITLE-ABS-KEY', partition = 'year')
+cache <- file.path(tempdir(), 'graphene-cache')
+```
+
+The first thing to do with a plan is to size it, which costs one request and returns the quota headers along with the total.
+
+```{r}
+httr2::with_mocked_responses(stand_in$handler, {
+  n <- scopus_count('graphene supercapacitor', years = 2015:2024,
+                    field = 'TITLE-ABS-KEY')
+})
+n
+attr(n, 'quota')
+```
+
+Running the plan writes a checkpoint per cell, so an interrupted harvest resumes from the last complete cell and a finished one can be reloaded without touching the API. The records come back in one tidy format with the plan, the retrieval time, the package version and the per-cell accounting attached.
+
+```{r}
+httr2::with_mocked_responses(stand_in$handler, {
+  records <- scopus_fetch_plan(plan, cache_dir = cache, resume = TRUE)
+})
+records
+attr(records, 'cell_totals')
+c(requests_spent = stand_in$state$requests,
+  quota_remaining = attr(records, 'quota')$remaining)
+```
+
+Rerunning the same plan against the same cache costs nothing, and a smaller request is served trimmed from the complete checkpoints.
+
+```{r}
+before <- stand_in$state$requests
+httr2::with_mocked_responses(stand_in$handler, {
+  again <- scopus_fetch_plan(plan, cache_dir = cache, resume = TRUE)
+  few   <- scopus_fetch_plan(plan, max_results = 5, cache_dir = cache, resume = TRUE)
+})
+c(rows_again = nrow(again), rows_few = nrow(few),
+  requests_spent = stand_in$state$requests - before)
+```
+
+A checkpoint records the query, the date range, the view and the page size under which it was written. A different plan pointed at the same directory is refused those checkpoints with a typed warning and fetched afresh, which is the guard doing its job and the reason to give each plan its own cache directory.
+
+```{r}
+other <- scopus_plan('graphene supercapacitor', years = 2015:2024,
+                     field = 'TITLE-ABS-KEY', partition = 'year', page_size = 50)
+n_mismatch <- 0L
+httr2::with_mocked_responses(stand_in$handler, {
+  withCallingHandlers(
+    other_records <- scopus_fetch_plan(other, cache_dir = cache, resume = TRUE),
+    scopus_warning_cache_mismatch = function(w) {
+      n_mismatch <<- n_mismatch + 1L
+      invokeRestart('muffleWarning')
+    })
+})
+c(checkpoints_rejected = n_mismatch, records_refetched = nrow(other_records))
+```
+
+## The 5,000-record ceiling
+
+Offset paging in the Scopus API refuses any start position of 5,000 or more, so a query with more matches than that silently returns its first 5,000 records unless the client notices. scopusflow raises a typed warning when the ceiling is hit, and cursor paging goes past it. The ceiling is lowered to six records here to show both behaviours on the small corpus.
+
+```{r}
+options(scopusflow.hard_cap = 6L)
+httr2::with_mocked_responses(stand_in$handler, {
+  capped <- withCallingHandlers(
+    scopus_fetch('graphene supercapacitor', field = 'TITLE-ABS-KEY',
+                 years = 2019, page_size = 5),
+    scopus_warning_capped = function(w) {
+      message(conditionMessage(w))
+      invokeRestart('muffleWarning')
+    })
+  by_cursor <- scopus_fetch('graphene supercapacitor', field = 'TITLE-ABS-KEY',
+                            years = 2019, page_size = 5, cursor = TRUE)
+})
+options(scopusflow.hard_cap = NULL)
+c(offset = nrow(capped), reported = attr(capped, 'total_results'),
+  cursor = nrow(by_cursor))
+```
+
+## A year later: what changed
+
+A search that will be rerun needs a way to say what changed. The baseline below is the harvest as it would have stood at the end of 2023, and the later set gains the 2024 records and loses one record that the database has since re-indexed.
+
+```{r}
+baseline <- records[records$year <= 2023, ]
+later    <- records[-1, ]
+changes  <- scopus_diff_dois(old = baseline, new = later)
+changes
+```
+
+Merging the two sets with de-duplication is where the corpus shows one of its own limits. These records carry no Scopus identifier, so matching falls back to the DOI, and the `r sum(is.na(example_records$doi))` records without a DOI cannot be matched to their own copies. A live harvest carries an identifier on every record and returns each article once. The merged object records what was removed, which becomes item 16 of the PRISMA-S report later on.
+
+```{r}
+merged <- scopus_combine(baseline, later, dedupe = TRUE)
+nrow(merged)
+str(attr(merged, 'combined'))
+```
+
+## Describing the harvest
+
+The summary method and the tallies of sources and first authors give the descriptive statistics that a review's methods section reports. The corpus names only first authors, so the author tally is a first-author tally.
+
+```{r}
+summary(records)
+scopus_top(records, by = 'source')
+```
+
+Counting is cheaper than downloading. A trend asks the API for one count per year and never retrieves a record, and a topic comparison counts, for each year, the records that mention a comparison term as a share of the reference literature. Through the stand-in, the comparison terms are matched against the corpus titles, so the shares below are real properties of the bundled corpus and not of the Scopus database.
+
+```{r, fig.width = 7, fig.height = 3.6, fig.alt = 'Bar chart of the number of graphene supercapacitor records per year from 2015 to 2024 in the bundled corpus'}
+httr2::with_mocked_responses(stand_in$handler, {
+  trend <- scopus_trend('graphene supercapacitor', years = 2015:2024,
+                        field = 'TITLE-ABS-KEY')
+})
+plot_scopus_trend(trend)
+```
+
+```{r, fig.width = 8, fig.height = 4.6, fig.alt = 'Line chart of the yearly share of graphene supercapacitor records whose titles mention flexible, laser or nitrogen, with direct labels at the right end and shaded stability bands'}
+httr2::with_mocked_responses(stand_in$handler, {
+  shares <- scopus_compare_topics(
+    reference_query  = 'graphene supercapacitor',
+    comparison_terms = c('flexible', 'laser', 'nitrogen'),
+    years            = 2015:2024,
+    field            = 'TITLE-ABS-KEY')
+})
+plot_scopus_comparison(shares, highlight = 'flexible')
+```
+
+The shaded band is a Wilson interval and the function's documentation calls it an illustrative stability range rather than a confidence interval, since the API returns exact counts and nothing in them is sampled. A live comparison costs one request per term per year plus one per year for the reference, which for the nine topics and 47 years of the companion post comes to `r 9 * 47 * 2` requests, well within a weekly quota. The intersection of concepts is counted the same way, one request per row.
+
+```{r, fig.width = 7, fig.height = 3.2, fig.alt = 'Horizontal bar chart on a logarithmic axis of the number of records matching graphene supercapacitor, flexible and laser, and of their intersections'}
+httr2::with_mocked_responses(stand_in$handler, {
+  sets <- scopus_intersections(
+    concepts = c('graphene supercapacitor' = 'graphene supercapacitor',
+                 'flexible' = 'flexible', 'laser' = 'laser'),
+    intersections = list(c('graphene supercapacitor', 'flexible'),
+                         c('flexible', 'laser')),
+    field = 'TITLE-ABS-KEY')
+})
+sets
+plot_scopus_intersections(sets, highlight = paste('flexible', intToUtf8(215L), 'laser'))
+```
+
+## Leaving the package
+
+The records leave R in the formats that the next stage of a review needs: a DOI list for de-duplication against other databases, BibTeX or RIS for a reference manager and a data frame for the bibliometrix package. A record without a DOI simply has no DOI line. Saving to an .rds file keeps every attribute, including the retrieval time and the plan, whereas a .csv file keeps only the columns, and the report will say so.
+
+```{r}
+dois <- scopus_extract_dois(records)
+length(dois)
+cat(substr(as_bibtex(records[1, ]), 1, 400))
+rds <- file.path(tempdir(), 'harvest.rds')
+csv <- file.path(tempdir(), 'harvest.csv')
+write_scopus_records(records, rds)
+write_scopus_records(records, csv)
+c(rds_keeps_time = !is.null(attr(read_scopus_records(rds), 'retrieved_at')),
+  csv_keeps_time = !is.null(attr(read_scopus_records(csv), 'retrieved_at')))
+```
+
+## The write-up
+
+The search record is produced from the objects alone. The plan, the per-cell accounting, the retrieval time, the package version and the paging mode all travelled with the harvest, so nothing is typed in by hand. Of the 16 PRISMA-S items, a harvest supplies five and a merge a sixth, and the remaining ten, such as the databases searched and the limits applied, are listed as the author's to write.
+
+```{r}
+report <- scopus_search_report(records)
+report
+cat(format(report, style = 'paragraph'))
+report$prisma[, c('item', 'name', 'source')]
+```
+
+The record refuses to invent. Built from the CSV copy, which lost its provenance, it says that the retrieval date and the totals are unrecorded instead of substituting the current time or the row count.
+
+```{r}
+cat(format(scopus_search_report(read_scopus_records(csv), plan = plan),
+           style = 'paragraph'))
+```
+
+The merged set carries its de-duplication count into item 16.
+
+```{r}
+scopus_search_report(merged, plan = plan)$prisma[16, ]
+```
+
+The Markdown version of the record, written with the `file` argument, ends with a code snippet that rebuilds the plan, so a reader of the paper can repeat the search from the appendix.
+
+## The same record from Python
+
+The Python package offers the same workflow over pybliometrics, with the same function names in snake case, and the two test suites pin the same rendering of the search record. The fixture below sets on the bundled corpus the provenance that a live harvest would carry, renders the record and hashes it. The R and Python packages both hold this file as a golden test, and the pinned MD5 checksum is `56a132a18a4aa3b8a1097ac15342a5dd`.
+
+```{r}
+fixture <- example_records
+attr(fixture, 'plan') <- plan
+attr(fixture, 'retrieved_at') <- as.POSIXct('2026-07-22 09:15:00', tz = 'UTC')
+attr(fixture, 'scopusflow_version') <- '0.3.0'
+attr(fixture, 'paging') <- 'offset'
+per_year <- as.integer(table(example_records$year))
+attr(fixture, 'cell_totals') <- tibble::tibble(
+  cell = 1:10, date = as.character(2015:2024),
+  n_records = per_year, reported_total = as.numeric(per_year))
+attr(fixture, 'combined') <- list(n_in = 149L, n_out = 138L, n_removed = 11L,
+                                  deduplicated = TRUE)
+golden <- scopus_search_report(fixture)
+rendered <- paste0(format(golden, style = 'report'), '\n\n',
+                   format(golden, style = 'paragraph'), '\n')
+golden_path <- file.path(tempdir(), 'golden-search-record-R.txt')
+con <- file(golden_path, open = 'wb'); writeLines(rendered, con, sep = ''); close(con)
+unname(tools::md5sum(golden_path))
+```
+
+```{python}
+import hashlib
+from datetime import datetime, timezone
+import pandas as pd
+import scopusflow as sf
+
+records = sf.example_records()
+plan = sf.SearchPlan('graphene supercapacitor', years=range(2015, 2025),
+                     field='TITLE-ABS-KEY', partition='year')
+per_year = records['year'].value_counts().sort_index()
+records.attrs.update({
+    'plan': plan,
+    'retrieved_at': datetime(2026, 7, 22, 9, 15, tzinfo=timezone.utc),
+    'scopusflow_version': '0.3.0',
+    'paging': 'offset',
+    'cell_totals': pd.DataFrame({
+        'cell': range(1, 11), 'date': [str(y) for y in range(2015, 2025)],
+        'n_records': per_year.values, 'reported_total': per_year.values.astype(float)}),
+    'combined': {'n_in': 149, 'n_out': 138, 'n_removed': 11, 'deduplicated': True},
+})
+report = sf.scopus_search_report(records)
+rendered = report.format(style='report') + '\n\n' + report.format(style='paragraph') + '\n'
+print(sf.__version__, hashlib.md5(rendered.encode('utf-8')).hexdigest())
+```
+
+Only the reproduction snippet at the end of the Markdown record differs between the two languages, because it is code in the host language. The consequence for a laboratory is that a search written up in one language reads identically in the other, and a collaborator who works in Python can rerun a plan that was registered from R.
+
+## Running it live
+
+With a key in the `SCOPUS_API_KEY` environment variable, the same objects go to the API. The comparison below, which produced the figures of the companion post, spends one count request per year for the reference literature and one per year for the comparison term.
+
+```{r, eval = FALSE}
+scopus_compare_topics(
+  reference_query  = '"linguistic relativity"',
+  comparison_terms = 'speculat*',
+  years            = 1980:2026,
+  field            = 'TITLE-ABS-KEY')
+```
+
+Two limits of the live API deserve a mention. The complete view pages at 25 records, eight times the requests of the standard view, and the abstract retrieval endpoint used by `scopus_abstract()` and `scopus_corpus()` draws on a separate, smaller weekly quota, one request per identifier. Both are reasons to size a plan with a count before running it, and to keep the checkpoints.
+
+```{r, include = FALSE}
+options(scopusflow.api_key = NULL)
+unlink(cache, recursive = TRUE)
+```
+
+### References
+
+Rethlefsen, M. L., Kirtley, S., Waffenschmidt, S., Ayala, A. P., Moher, D., Page, M. J., & Koffel, J. B. (2021). PRISMA-S: An extension to the PRISMA statement for reporting literature searches in systematic reviews. *Systematic Reviews*, *10*(1), Article 39. https://doi.org/10.1186/s13643-020-01542-z
