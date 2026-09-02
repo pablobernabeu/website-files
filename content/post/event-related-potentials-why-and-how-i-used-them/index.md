@@ -162,7 +162,7 @@ To visualise these waveforms throughout the different sections of the data, a [d
 
 With the myriad repeated measures involved in EEG, linear mixed-effects models are a good option, allowing the registration of electrodes and time points in the error term per participant (and trial, too, if these are not aggregated). The statistical analysis is [available on OSF](https://osf.io/sx3nw) (to view the plots, please [download the document](https://osf.io/download/sx3nw)).
 
-<iframe src="https://mfr.osf.io/render?url=https%3A%2F%2Fosf.io%2Fdownload%2Fsx3nw%2F%3Fdirect%26mode%3Drender"
+<iframe title="Document: Event-related potentials: Why and how I used them" src="https://mfr.osf.io/render?url=https%3A%2F%2Fosf.io%2Fdownload%2Fsx3nw%2F%3Fdirect%26mode%3Drender"
         width="100%"
         scrolling="yes"
         height="677px"

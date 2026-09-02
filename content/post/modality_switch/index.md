@@ -96,7 +96,7 @@ Although the interaction of Group and CMS was only significant in Time Windows 1
 
 The statistical analysis is [available on OSF](https://osf.io/sx3nw) (to view the plots, please [download the document](https://osf.io/download/sx3nw)).
 
-<iframe src="https://mfr.osf.io/render?url=https%3A%2F%2Fosf.io%2Fdownload%2Fsx3nw%2F%3Fdirect%26mode%3Drender"
+<iframe title="Document: Modality switch effects emerge early and increase throughout conceptual processing: Evidence from ERPs" src="https://mfr.osf.io/render?url=https%3A%2F%2Fosf.io%2Fdownload%2Fsx3nw%2F%3Fdirect%26mode%3Drender"
         width="100%"
         scrolling="yes"
         height="677px"

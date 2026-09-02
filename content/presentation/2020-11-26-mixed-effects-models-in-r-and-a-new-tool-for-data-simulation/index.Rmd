@@ -62,7 +62,7 @@ graph TD
 ```
 ### Slides &nbsp; [<i class="fas fa-external-link-alt"></i>](https://hackmd.io/@pablobernabeu/SkRyLbaqw)
 
-<iframe width="100%" height="500" src="https://hackmd.io/@pablobernabeu/SkRyLbaqw" frameborder="0" style="padding-top:5px"></iframe>
+<iframe title="Slides: Mixed-effects models in R and a new tool for data simulation" width="100%" height="500" src="https://hackmd.io/@pablobernabeu/SkRyLbaqw" frameborder="0" style="padding-top:5px"></iframe>
 
 ### Abstract
 

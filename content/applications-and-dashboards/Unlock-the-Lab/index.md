@@ -111,7 +111,7 @@ It is tempting to trace the open science movement to a gradual, principled awake
 
 <div>
   <div style="position: relative; padding-top: 56.25%; margin-top: 3%; margin-bottom: 4%;">
-  <iframe src="https://www.youtube.com/embed/WUGh2VWR4JA" frameborder="0" allowfullscreen
+  <iframe title="Video: Unlock the Lab: Your guide to reading science like a scientist" src="https://www.youtube.com/embed/WUGh2VWR4JA" frameborder="0" allowfullscreen
       style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
   </div>
 </div>
