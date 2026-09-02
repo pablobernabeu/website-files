@@ -466,7 +466,12 @@ p5 <- ggplot(hdi_data, aes(hdi_2023, per_capita_t)) +
 ggplotly(p5, tooltip = 'text') %>%
   layout(legend = list(orientation = 'h', y = -0.18, x = 0.5, xanchor = 'center',
                        itemsizing = 'constant'),
-         margin = list(l = 70, r = 20, b = 70, t = 20))
+         margin = list(l = 70, r = 20, b = 70, t = 20)) %>%
+  # The full plotly bundle is about 3.4 MB, most of it chart types this figure
+  # does not use. partial_bundle() substitutes the smallest build that still
+  # covers the traces present. It fetches that build from the plotly CDN, so it
+  # needs network access at render time.
+  partial_bundle()
 ```
 
 <p class="caption">Figure 5. Source: EDGAR 2025 (Crippa et al., 2025) and the Human Development Report 2025 (United Nations Development Programme, 2025). Units: tonnes of CO<sub>2</sub> equivalent per person per year, averaged over 2015 to 2024. Marker area proportional to 2024 population.</p>
