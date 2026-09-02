@@ -127,7 +127,7 @@ ggplot(filter(speculation, reference_n > 0),
 
 ## The share of records that mention speculation
 
-Each panel below shows one literature. The line is the yearly percentage of records that also match `speculat*`, the shaded band is a Wilson interval computed from the yearly reference count, which conveys how much the share would move with a handful of records, and the panels are ordered from the most to the least speculative literature over the whole period. Years in which a literature had no records are left blank.
+Each panel below shows one literature. The line is the yearly percentage of records that also match `speculat*`, the shaded band is a Wilson interval computed from the yearly reference count, which conveys how much the share would move with a handful of records, and the panels are ordered from the most to the least speculative literature over the whole period. The axis is cut at 15%, which clips the bands in the early years of the small literatures, where a single abstract would move the share by tens of points. Years in which a literature had no records are left blank.
 
 ```{r, fig.width = 9, fig.height = 8, fig.alt = 'Nine panels, one per literature, each showing the yearly percentage of Scopus records that mention speculation from 1980 onwards, with a shaded Wilson interval'}
 wilson <- function(k, n, z = 1.96) {
@@ -153,8 +153,8 @@ ggplot(panel_data, aes(year, percentage)) +
   geom_line(colour = '#0072B2', linewidth = 0.7) +
   geom_point(colour = '#0072B2', size = 0.9) +
   facet_wrap(~ topic, ncol = 3, labeller = as_labeller(labeller_topic)) +
-  scale_y_continuous(labels = scales::label_percent(scale = 1),
-                     limits = c(0, NA)) +
+  scale_y_continuous(labels = scales::label_percent(scale = 1)) +
+  coord_cartesian(ylim = c(0, 15)) +
   labs(x = NULL, y = 'Records mentioning speculation') +
   theme_minimal(base_size = 12) +
   theme(strip.text = element_text(size = 10, hjust = 0),
@@ -176,6 +176,8 @@ Restricting the comparison to the last ten complete years, `r min(recent$records
 ## What the counts can and cannot show
 
 The measure is crude in ways that the figures make visible. A form of 'speculate' in an abstract is as often a mark of candour as of conjecture, since the authors who write 'we speculate that' are labelling a claim that others would present without a label, and a literature with a strong convention of hedged abstracts will score higher for that reason alone. The wildcard also catches 'speculative' in senses that have nothing to do with scientific conjecture, such as speculative execution in computing or speculative investment in economics, and both senses can occur in the literatures on artificial general intelligence and on the hadron collider, whose funding is discussed in economic terms. The queries define each literature by a phrase, so records that belong to a field without using its name are missed, and the literatures on language teaching and language disorders are far larger than their phrases suggest. Percentages for the early years, when a literature had a handful of records, are shown with their intervals so that a single abstract is not read as a trend.
+
+The smallest literature, sensorimotor simulation, contains no record that mentions speculation at all, which with `r format(totals$records[totals$topic == 'sensorimotor simulation'])` records over the whole period says more about the size of the literature than about its habits.
 
 With those limits in mind, the pattern across the language sciences is consistent with the impression that started the exercise. Literatures that theorise about unobservable or contested processes carry more explicit speculation than literatures organised around a clinical population, a classroom or an instrument, and the difference is visible in abstracts before any reading of the articles themselves. Whether the speculation is a symptom of immaturity or a healthy habit of labelling conjecture is a question that counts cannot answer. The searches can be rerun as the literatures grow, and the workflow that produces them is in the repository for anyone who wants to add a topic.
 

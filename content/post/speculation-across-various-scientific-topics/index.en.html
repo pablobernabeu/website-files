@@ -1,0 +1,193 @@
+---
+title: Speculation across various scientific topics
+author: ''
+date: '2026-09-02'
+slug: speculation-across-various-scientific-topics
+categories:
+  - science
+  - bibliometrics
+tags:
+  - linguistics
+  - language
+  - bibliometrics
+  - Scopus
+  - research methods
+subtitle: ''
+summary: 'Scopus searches comparing, year by year since 1980, the share of publications that mention speculation within nine literatures: language evolution, language comprehension, language disorders, linguistic relativity, language teaching, the bilingual advantage, sensorimotor simulation, artificial general intelligence and the hadron collider. The searches are run through the scopusflow package by a workflow that anyone with a key can rerun.'
+authors: []
+lastmod: ''
+featured: no
+draft: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+<script src="{{< blogdown/postref >}}index.en_files/clipboard/clipboard.min.js"></script>
+<link href="{{< blogdown/postref >}}index.en_files/xaringanExtra-clipboard/xaringanExtra-clipboard.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index.en_files/xaringanExtra-clipboard/xaringanExtra-clipboard.js"></script>
+<script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+
+
+<div class="alert alert-info" role="alert" style="padding-bottom: 0; margin-bottom: 6%;">
+<p>Given all of the data that E&amp;L [Evans &amp; Levinson, 2009] cite, how could anyone maintain the notion of a universal grammar with linguistic content? Traditionally, there have been three basic strategies. First, just as we may force English grammar into the Procrustean bed of Latin grammar – that is how I was taught the structure of English in grade school – the grammars of the world’s so-called exotic languages may be forced into an abstract scheme based mainly on European languages.</p>
+<p>— Tomasello (2009)</p>
+</div>
+<p>Some research topics invite speculation more than others. When Pieter Vogt and I reviewed the field of language evolution a decade ago, the impression was of a literature in which conjecture outran evidence by some distance, for the understandable reason that the events under study left no direct trace (Bernabeu &amp; Vogt, 2015). The passage from Tomasello quoted above makes a similar complaint about universal grammar. An impression of this kind can be checked, at least crudely, by counting. Authors who speculate in print often say so, in phrases such as ‘we speculate that’ or ‘it is tempting to speculate’, and those phrases are indexed when they occur in a title, an abstract or the keywords. The share of records in a literature that contain a form of the word ‘speculate’ is therefore a rough measure of how openly conjectural that literature is, or at least of how often its authors label their conjectures as such.</p>
+<p>This post compares that share, year by year from 1980 to the present, across nine reference literatures. Six of them concern language: language evolution, language comprehension, language disorders, linguistic relativity, language teaching and the bilingual advantage. A seventh, sensorimotor simulation, is the topic of my own doctoral work on conceptual processing. The last two, artificial general intelligence and the hadron collider, sit outside the language sciences and serve as points of comparison, one being a field where speculation might be expected and the other a field of large instruments and large collaborations. Each reference literature is defined by a query on the title, abstract and keywords, and the comparison counts, within each year, the records that also match <code>speculat*</code> in the same fields.</p>
+<div id="the-searches" class="section level2">
+<h2>The searches</h2>
+<p>An earlier draft of this post ran the searches through a set of functions that I had written around the rscopus package. Those functions have since become the <a href="/2026/scopusflow-a-literature-search-you-can-rerun/">scopusflow package</a>, and the searches now live in a script in the <a href="https://github.com/pablobernabeu/website-files/blob/master/scripts/update_post_searches.R">website’s repository</a> that a GitHub Actions workflow runs on request, with the Scopus key held as a repository secret. The workflow commits the counts to the post’s directory, so the figures below can be rebuilt from the committed data without a key, and the searches can be refreshed by anyone with a key by dispatching the workflow. The queries are the following.</p>
+<pre class="r"><code>library(scopusflow)
+
+years &lt;- 1980:as.integer(format(Sys.Date(), &#39;%Y&#39;))
+
+topics &lt;- c(
+  &#39;language evolution&#39;              = &#39;&quot;language evolution&quot; OR &quot;evolution of language&quot;&#39;,
+  &#39;language comprehension&#39;          = &#39;&quot;language comprehension&quot;&#39;,
+  &#39;language disorders&#39;              = &#39;&quot;language disorders&quot; OR &quot;language disorder&quot;&#39;,
+  &#39;linguistic relativity&#39;           = &#39;&quot;linguistic relativity&quot;&#39;,
+  &#39;language teaching&#39;               = &#39;&quot;language teaching&quot;&#39;,
+  &#39;bilingual advantage&#39;             = &#39;&quot;bilingual advantage&quot; OR &quot;bilingual advantages&quot;&#39;,
+  &#39;sensorimotor simulation&#39;         = &#39;&quot;sensorimotor simulation&quot;&#39;,
+  &#39;artificial general intelligence&#39; = &#39;&quot;artificial general intelligence&quot;&#39;,
+  &#39;hadron collider&#39;                 = &#39;&quot;hadron collider&quot;&#39;
+)
+
+comparisons &lt;- lapply(names(topics), function(label) {
+  cmp &lt;- scopus_compare_topics(
+    reference_query  = topics[[label]],
+    comparison_terms = &#39;speculat*&#39;,
+    years            = years,
+    field            = &#39;TITLE-ABS-KEY&#39;
+  )
+  cmp$topic &lt;- label
+  cmp
+})</code></pre>
+<p>The function counts, for every year, the records matching the reference query and the records matching both the reference query and the comparison term, so the nine comparisons cost 846 count requests. Each row of the result holds a year, the count for the reference literature, the count for the comparison and the comparison as a percentage of the reference.</p>
+<pre class="r"><code>library(dplyr)
+library(ggplot2)
+
+comparisons &lt;- readRDS(&#39;searches/speculation_comparisons.rds&#39;)
+retrieved &lt;- attr(comparisons, &#39;retrieved&#39;)
+retrieved</code></pre>
+<pre><code>#&gt; [1] &quot;2026-09-02 06:36 UTC&quot;</code></pre>
+<pre class="r"><code>speculation &lt;- bind_rows(comparisons) |&gt;
+  filter(query_type == &#39;comparison&#39;) |&gt;
+  transmute(topic, year, reference_n, n,
+            percentage = comparison_percentage)
+head(speculation)</code></pre>
+<pre><code>#&gt; # A tibble: 6 × 5
+#&gt;   topic               year reference_n     n percentage
+#&gt;   &lt;chr&gt;              &lt;int&gt;       &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;
+#&gt; 1 language evolution  1980           5     0          0
+#&gt; 2 language evolution  1981           4     0          0
+#&gt; 3 language evolution  1982           4     0          0
+#&gt; 4 language evolution  1983           1     0          0
+#&gt; 5 language evolution  1984           5     0          0
+#&gt; 6 language evolution  1985           6     0          0</code></pre>
+<p>The searches were run on 02 September 2026, so the final year is incomplete and its share rests on fewer records than the years before it.</p>
+</div>
+<div id="sizes-of-the-literatures" class="section level2">
+<h2>Sizes of the literatures</h2>
+<p>The nine literatures differ in size by orders of magnitude, and the size matters for reading the percentages. A share computed on a few dozen records moves by several points when one or two abstracts mention speculation, whereas a share computed on thousands of records barely moves at all.</p>
+<pre class="r"><code>totals &lt;- speculation |&gt;
+  group_by(topic) |&gt;
+  summarise(records = sum(reference_n), with_speculation = sum(n),
+            share = 100 * with_speculation / records,
+            first_year_with_records = min(year[reference_n &gt; 0])) |&gt;
+  arrange(desc(share))
+totals</code></pre>
+<pre><code>#&gt; # A tibble: 9 × 5
+#&gt;   topic                           records with_speculation share first_year_with_records
+#&gt;   &lt;chr&gt;                             &lt;dbl&gt;            &lt;dbl&gt; &lt;dbl&gt;                   &lt;int&gt;
+#&gt; 1 artificial general intelligence    1913               49 2.56                     2006
+#&gt; 2 language evolution                 3376               48 1.42                     1980
+#&gt; 3 linguistic relativity               739                9 1.22                     1980
+#&gt; 4 bilingual advantage                 637                4 0.628                    1993
+#&gt; 5 language comprehension             6543               24 0.367                    1980
+#&gt; 6 language disorders                14255               36 0.253                    1980
+#&gt; 7 language teaching                 22957               42 0.183                    1980
+#&gt; 8 hadron collider                   18457               20 0.108                    1980
+#&gt; 9 sensorimotor simulation             132                0 0                        2003</code></pre>
+<p>Across the whole period, the share of records that mention speculation is highest in artificial general intelligence (2.6%) and lowest in sensorimotor simulation (0.0%), with the language literatures spread between those two.</p>
+<pre class="r"><code>okabe_ito &lt;- c(&#39;#E69F00&#39;, &#39;#56B4E9&#39;, &#39;#009E73&#39;, &#39;#F0E442&#39;, &#39;#0072B2&#39;,
+               &#39;#D55E00&#39;, &#39;#CC79A7&#39;, &#39;#999999&#39;, &#39;#000000&#39;)
+ggplot(filter(speculation, reference_n &gt; 0),
+       aes(year, reference_n, colour = topic)) +
+  geom_line(linewidth = 0.8) +
+  scale_y_log10(labels = scales::label_comma()) +
+  scale_colour_manual(values = okabe_ito) +
+  labs(x = NULL, y = &#39;Records per year (log scale)&#39;, colour = NULL) +
+  theme_minimal(base_size = 12) +
+  theme(legend.position = &#39;right&#39;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-4-1.png" alt="Line chart on a logarithmic axis of the number of Scopus records per year in each of the nine reference literatures from 1980 onwards" width="768" style="display: block; margin: auto;" /></p>
+</div>
+<div id="the-share-of-records-that-mention-speculation" class="section level2">
+<h2>The share of records that mention speculation</h2>
+<p>Each panel below shows one literature. The line is the yearly percentage of records that also match <code>speculat*</code>, the shaded band is a Wilson interval computed from the yearly reference count, which conveys how much the share would move with a handful of records, and the panels are ordered from the most to the least speculative literature over the whole period. The axis is cut at 15%, which clips the bands in the early years of the small literatures, where a single abstract would move the share by tens of points. Years in which a literature had no records are left blank.</p>
+<pre class="r"><code>wilson &lt;- function(k, n, z = 1.96) {
+  p &lt;- k / n
+  centre &lt;- (p + z^2 / (2 * n)) / (1 + z^2 / n)
+  half &lt;- z * sqrt(p * (1 - p) / n + z^2 / (4 * n^2)) / (1 + z^2 / n)
+  data.frame(lower = 100 * pmax(0, centre - half), upper = 100 * pmin(1, centre + half))
+}
+
+panel_data &lt;- speculation |&gt;
+  filter(reference_n &gt; 0) |&gt;
+  mutate(topic = factor(topic, levels = totals$topic)) |&gt;
+  bind_cols(wilson(speculation$n[speculation$reference_n &gt; 0],
+                   speculation$reference_n[speculation$reference_n &gt; 0]))
+
+panel_labels &lt;- totals |&gt;
+  mutate(label = sprintf(&#39;%s\n%s records, %.1f%% with speculat*&#39;,
+                         topic, format(records, big.mark = &#39;,&#39;), share))
+labeller_topic &lt;- setNames(panel_labels$label, panel_labels$topic)
+
+ggplot(panel_data, aes(year, percentage)) +
+  geom_ribbon(aes(ymin = lower, ymax = upper), fill = &#39;#0072B2&#39;, alpha = 0.15) +
+  geom_line(colour = &#39;#0072B2&#39;, linewidth = 0.7) +
+  geom_point(colour = &#39;#0072B2&#39;, size = 0.9) +
+  facet_wrap(~ topic, ncol = 3, labeller = as_labeller(labeller_topic)) +
+  scale_y_continuous(labels = scales::label_percent(scale = 1)) +
+  coord_cartesian(ylim = c(0, 15)) +
+  labs(x = NULL, y = &#39;Records mentioning speculation&#39;) +
+  theme_minimal(base_size = 12) +
+  theme(strip.text = element_text(size = 10, hjust = 0),
+        panel.spacing = unit(1.2, &#39;lines&#39;))</code></pre>
+<p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-5-1.png" alt="Nine panels, one per literature, each showing the yearly percentage of Scopus records that mention speculation from 1980 onwards, with a shaded Wilson interval" width="864" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>recent &lt;- speculation |&gt;
+  filter(year &gt;= 2016, year &lt;= max(year) - 1) |&gt;
+  group_by(topic) |&gt;
+  summarise(records = sum(reference_n),
+            share = 100 * sum(n) / sum(reference_n)) |&gt;
+  arrange(desc(share))
+recent</code></pre>
+<pre><code>#&gt; # A tibble: 9 × 3
+#&gt;   topic                           records  share
+#&gt;   &lt;chr&gt;                             &lt;dbl&gt;  &lt;dbl&gt;
+#&gt; 1 artificial general intelligence    1377 2.54  
+#&gt; 2 linguistic relativity               374 1.60  
+#&gt; 3 language evolution                 1734 1.56  
+#&gt; 4 bilingual advantage                 445 0.449 
+#&gt; 5 language comprehension             3298 0.334 
+#&gt; 6 language disorders                 6511 0.230 
+#&gt; 7 language teaching                 15193 0.178 
+#&gt; 8 hadron collider                    7682 0.0781
+#&gt; 9 sensorimotor simulation              88 0</code></pre>
+<p>Restricting the comparison to the last ten complete years, 88 to 15,193 records per literature, gives the ranking above. artificial general intelligence leads with 2.5% of its records mentioning speculation, and sensorimotor simulation closes the list with 0.0%.</p>
+</div>
+<div id="what-the-counts-can-and-cannot-show" class="section level2">
+<h2>What the counts can and cannot show</h2>
+<p>The measure is crude in ways that the figures make visible. A form of ‘speculate’ in an abstract is as often a mark of candour as of conjecture, since the authors who write ‘we speculate that’ are labelling a claim that others would present without a label, and a literature with a strong convention of hedged abstracts will score higher for that reason alone. The wildcard also catches ‘speculative’ in senses that have nothing to do with scientific conjecture, such as speculative execution in computing or speculative investment in economics, and both senses can occur in the literatures on artificial general intelligence and on the hadron collider, whose funding is discussed in economic terms. The queries define each literature by a phrase, so records that belong to a field without using its name are missed, and the literatures on language teaching and language disorders are far larger than their phrases suggest. Percentages for the early years, when a literature had a handful of records, are shown with their intervals so that a single abstract is not read as a trend.</p>
+<p>The smallest literature, sensorimotor simulation, contains no record that mentions speculation at all, which with 132 records over the whole period says more about the size of the literature than about its habits.</p>
+<p>With those limits in mind, the pattern across the language sciences is consistent with the impression that started the exercise. Literatures that theorise about unobservable or contested processes carry more explicit speculation than literatures organised around a clinical population, a classroom or an instrument, and the difference is visible in abstracts before any reading of the articles themselves. Whether the speculation is a symptom of immaturity or a healthy habit of labelling conjecture is a question that counts cannot answer. The searches can be rerun as the literatures grow, and the workflow that produces them is in the repository for anyone who wants to add a topic.</p>
+<div id="references" class="section level3">
+<h3>References</h3>
+<p>Bernabeu, P., &amp; Vogt, P. (2015). Language evolution: Current status and future directions [Paper presentation]. Tenth Language at the University of Essex (LangUE) Postgraduate Conference, Colchester, United Kingdom. <a href="https://www.researchgate.net/publication/280858062_Language_evolution_Current_status_and_future_directions" class="uri">https://www.researchgate.net/publication/280858062_Language_evolution_Current_status_and_future_directions</a></p>
+<p>Evans, N., &amp; Levinson, S. C. (2009). The myth of language universals: Language diversity and its importance for cognitive science. <em>Behavioral and Brain Sciences</em>, <em>32</em>(5), 429–492. <a href="https://doi.org/10.1017/S0140525X0999094X" class="uri">https://doi.org/10.1017/S0140525X0999094X</a></p>
+<p>Tomasello, M. (2009). Universal grammar is dead. <em>Behavioral and Brain Sciences</em>, <em>32</em>(5), 470–471. <a href="https://doi.org/10.1017/S0140525X09990744" class="uri">https://doi.org/10.1017/S0140525X09990744</a></p>
+</div>
+</div>
