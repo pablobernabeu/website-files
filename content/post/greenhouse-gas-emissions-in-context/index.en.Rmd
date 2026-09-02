@@ -373,7 +373,21 @@ largest_sector <- sector_shares %>%
   group_by(country) %>%
   slice_max(share, n = 1) %>%
   ungroup()
-countries_led_by <- function(sec) paste(largest_sector$country[largest_sector$sector == sec], collapse = ' and ')
+# Country names that take the definite article in running prose.
+article <- function(x) ifelse(grepl('^(United|Netherlands|Philippines|Gambia)', x), paste('the', x), x)
+
+# The emitters whose largest sector is `sec`, and the share it takes in each,
+# so that the name and the percentage in the prose always come from one lookup.
+led_by <- function(sec) filter(largest_sector, sector == sec) %>% arrange(desc(share))
+countries_led_by <- function(sec)
+  paste(article(as.character(led_by(sec)$country)), collapse = ' and ')
+share_led_by <- function(sec, digits = 0) paste(pct(led_by(sec)$share, digits), collapse = ' and ')
+
+# Small counts read better as words in prose.
+spell <- function(n) {
+  words <- c('one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten')
+  ifelse(n >= 1 & n <= 10, words[pmax(n, 1)], as.character(n))
+}
 
 ggplot(sector_shares, aes(share, country, fill = sector)) +
   geom_col(width = 0.72, colour = 'white', linewidth = 0.5, position = position_stack(reverse = TRUE)) +
@@ -390,7 +404,7 @@ ggplot(sector_shares, aes(share, country, fill = sector)) +
         plot.margin = margin(5.5, 14, 5.5, 5.5))
 ```
 
-Power generation is the largest sector for the world as a whole, at `r pct(sector_share('GLOBAL TOTAL', 'Power Industry'), 0)` of emissions, and for `r sum(largest_sector$sector == 'Power Industry')` of the eight countries, with the largest shares in China (`r pct(sector_share('CHN', 'Power Industry'), 0)`) and Japan (`r pct(sector_share('JPN', 'Power Industry'), 0)`). Transport comes first in `r countries_led_by('Transport')` only, at `r pct(sector_share('USA', 'Transport'), 0)`, agriculture in `r countries_led_by('Agriculture')` only, at `r pct(sector_share('BRA', 'Agriculture'), 0)`, and fuel exploitation, the extraction and processing of coal, oil and gas, in `r countries_led_by('Fuel Exploitation')` only, at `r pct(sector_share('IRN', 'Fuel Exploitation'), 0)`. That last sector also accounts for `r pct(sector_share('IDN', 'Fuel Exploitation'), 0)` of Indonesia's emissions and `r pct(sector_share('RUS', 'Fuel Exploitation'), 0)` of Russia's, against `r pct(sector_share('GLOBAL TOTAL', 'Fuel Exploitation'), 0)` for the world. These compositions matter for the comparison that follows, because methane from livestock and fugitive emissions from fuel extraction do not scale with a country's development in the way that power and transport do.
+Power generation is the largest sector for the world as a whole, at `r pct(sector_share('GLOBAL TOTAL', 'Power Industry'), 0)` of emissions, and for `r spell(sum(largest_sector$sector == 'Power Industry'))` of the eight countries, with the largest shares in China (`r pct(sector_share('CHN', 'Power Industry'), 0)`) and Japan (`r pct(sector_share('JPN', 'Power Industry'), 0)`). Transport comes first in `r countries_led_by('Transport')` only, at `r share_led_by('Transport')`, agriculture in `r countries_led_by('Agriculture')` only, at `r share_led_by('Agriculture')`, and fuel exploitation, the extraction and processing of coal, oil and gas, in `r countries_led_by('Fuel Exploitation')` only, at `r share_led_by('Fuel Exploitation')`. That last sector also accounts for `r pct(sector_share('IDN', 'Fuel Exploitation'), 0)` of Indonesia's emissions and `r pct(sector_share('RUS', 'Fuel Exploitation'), 0)` of Russia's, against `r pct(sector_share('GLOBAL TOTAL', 'Fuel Exploitation'), 0)` for the world. These compositions matter for the comparison that follows, because methane from livestock and fugitive emissions from fuel extraction do not scale with a country's development in the way that power and transport do.
 
 
 ## Emissions against human development
