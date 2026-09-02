@@ -1847,11 +1847,20 @@ body.dark {
   color: #e2e8f0;
 }
 
+// The theme paints section subtitles #b2b2b2, which is 2.12:1 on white. Following
+// the muted-text token instead passes AA in both themes (4.95:1 and 6.96:1).
+.section-heading p {
+  color: var(--text-secondary);
+}
+
 // CSS Custom Properties for Light/Dark Theme Support
 :root {
   // Light theme colors (default)
   --text-primary: #00032F;
-  --text-secondary: darkgrey;
+  // `darkgrey` (#a9a9a9) is 2.35:1 on white, well under the 4.5:1 that WCAG AA
+  // asks of body text. #707070 is the same neutral grey, dark enough to pass at
+  // 4.95:1.
+  --text-secondary: #707070;
   --text-tertiary: #4F6C89;
   --text-quaternary: #24494F;
   --text-visited: purple;
