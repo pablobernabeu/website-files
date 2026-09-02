@@ -110,12 +110,13 @@ if (target %in% c("all", "allfit")) {
 
   # 1. Scopus: the function name in any indexed field (title, abstract,
   #    keywords, references and so on; not the body of the article). The
-  #    ALL() field tag is tried first; the run of 1 September 2026 had it
-  #    rejected as malformed, so two fallbacks follow.
+  #    ALL() field tag is tried first, with two fallbacks. Pages of 25 records
+  #    are the most the API serves to a key used outside its institution's
+  #    network; larger pages are rejected as malformed.
   records_all <- NULL
   for (q_all in c('ALL("allFit")', 'ALL(allFit)',
                   'TITLE-ABS-KEY(allFit) OR REF(allFit)')) {
-    records_all <- try_search(q_all, scopus_fetch(q_all))
+    records_all <- try_search(q_all, scopus_fetch(q_all, page_size = 25))
     if (!is.null(records_all)) {
       attr(records_all, "query_used") <- q_all
       break
@@ -132,7 +133,8 @@ if (target %in% c("all", "allfit")) {
     '("lme4" OR "lmerTest" OR "brms") AND maximal AND "random slopes"',
     'AND (convergence OR converge OR converged OR converging)'
   )
-  records_proxy <- try_search("proxy", scopus_fetch(q_proxy, field = "TITLE-ABS-KEY"))
+  records_proxy <- try_search("proxy",
+                              scopus_fetch(q_proxy, field = "TITLE-ABS-KEY", page_size = 25))
   if (!is.null(records_proxy)) {
     write_table(records_proxy, file.path(allfit_dir, "scopus_convergence_proxy.csv"))
   }
@@ -179,12 +181,17 @@ if (target %in% c("all", "allfit")) {
   write_table(epmc_table, file.path(allfit_dir, "europepmc_allfit_fulltext.csv"))
 
   # 4. OpenAlex: full-text search, where the text is available to OpenAlex.
+  #    On its own, the function name also matches unrelated text (the search
+  #    is not case-sensitive and tolerates near matches), so a mixed-model
+  #    term is required alongside it.
   oa <- list()
   cursor <- "*"
   try_search("OpenAlex", repeat {
     resp <- request("https://api.openalex.org/works") |>
       req_url_query(
-        filter = 'fulltext.search:"allFit"',
+        filter = paste0('fulltext.search:allFit AND (lme4 OR lmer OR ',
+                        '"mixed effects" OR "mixed-effects" OR "mixed model" OR ',
+                        '"mixed models" OR multilevel)'),
         `per-page` = 200, cursor = cursor,
         select = "id,doi,title,publication_year,authorships,primary_location",
         mailto = "pcbernabeu@gmail.com"
