@@ -6,6 +6,7 @@ slug: how-language-shapes-our-perception-of-time-and-magnitude
 categories:
   - psycholinguistics
 tags:
+  - s
   - psycholinguistics
   - language
   - linguistic relativity

@@ -7,28 +7,7 @@
   <div class="article-style">{{ . }}</div>
   {{ end }}
 
-  {{- /* Filter pages: exclude posts without the "s" tag */ -}}
-  {{- $filteredPages := slice -}}
-  {{- range .Data.Pages -}}
-    {{- $shouldInclude := true -}}
-    {{- /* If this is a post (Section = "post"), check for "s" tag */ -}}
-    {{- if eq .Section "post" -}}
-      {{- $hasStag := false -}}
-      {{- range .Params.Tags -}}
-        {{- if eq . "s" -}}
-          {{- $hasStag = true -}}
-        {{- end -}}
-      {{- end -}}
-      {{- if not $hasStag -}}
-        {{- $shouldInclude = false -}}
-      {{- end -}}
-    {{- end -}}
-    {{- if $shouldInclude -}}
-      {{- $filteredPages = $filteredPages | append . -}}
-    {{- end -}}
-  {{- end -}}
-
-  {{ $paginator := .Paginate $filteredPages }}
+  {{ $paginator := .Paginate .Data.Pages }}
   {{ range $paginator.Pages }}
     {{ $link := .RelPermalink }}
     {{ $target := "" }}

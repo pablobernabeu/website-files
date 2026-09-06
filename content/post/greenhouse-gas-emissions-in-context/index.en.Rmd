@@ -1,11 +1,12 @@
 ---
-title: 'Greenhouse gas emissions in context: raw totals, income groups and human development'
+title: 'Greenhouse gas emissions in context: Raw totals, income groups and human development'
 author: ''
 date: '2026-09-01'
 slug: greenhouse-gas-emissions-in-context
 categories:
   - research methods
 tags:
+  - s
   - visualisation
   - data science
   - open science
@@ -69,7 +70,11 @@ library(knitr)
 
 theme_set(theme_minimal(base_size = 13))
 theme_update(
-  axis.title = element_markdown(),
+  # Set the leaf elements, not the axis.title parent: under ggplot2 4.0 the parent no
+  # longer propagates the element_markdown class down to axis.title.x/axis.title.y, so
+  # the axes print a literal "CO<sub>2</sub>" instead of a subscript
+  axis.title.x = element_markdown(),
+  axis.title.y = element_markdown(angle = 90),
   plot.title = element_text(size = 13, face = 'bold'),
   plot.title.position = 'plot',
   # element_textbox_simple wraps at the width of the figure; element_markdown
@@ -488,7 +493,7 @@ ggplotly(p5, tooltip = 'text') %>%
 
 <p class="caption">Figure 5. Source: EDGAR 2025 (Crippa et al., 2025) and the Human Development Report 2025 (United Nations Development Programme, 2025). Units: tonnes of CO<sub>2</sub> equivalent per person per year, averaged over 2015 to 2024. Marker area proportional to 2024 population.</p>
 
-The model is fitted to the `r hdi_n` countries with both an HDI and emissions. The `r n_no_hdi` territories without an HDI are left out: mostly dependencies and overseas territories such as Puerto Rico, Greenland and Macao, plus Taiwan, North Korea and Western Sahara. The slope is `r fmt(hdi_slope, 2)` log10 units per unit of HDI, so each additional 0.1 of HDI multiplies expected per-capita emissions by `r fmt(10^(hdi_slope / 10), 2)`. The model explains `r pct(100 * hdi_r2, 0)` of the variance in log emissions (R<sup>2</sup> = `r fmt(hdi_r2, 2)`, n = `r hdi_n`). `r pct(100 * mean(abs(hdi_data$residual) < log10(2)), 0)` of the countries lie within a factor of two of the line. Qatar and Kuwait emit `r fmt(ratio_of('QAT'), 1)` and `r fmt(ratio_of('KWT'), 1)` times the level expected at their HDI, Russia `r fmt(ratio_of('RUS'), 1)` and the United States `r fmt(ratio_of('USA'), 1)`. Sweden and Switzerland, by comparison, emit `r fmt(ratio_of('SWE'), 2)` and `r fmt(ratio_of('CHE'), 2)` times theirs. China sits at `r fmt(ratio_of('CHN'), 1)` and India at `r fmt(ratio_of('IND'), 2)`.
+The model is fitted to the `r hdi_n` countries with both an HDI and emissions. The `r n_no_hdi` territories without an HDI are left out: mostly dependencies and overseas territories such as Puerto Rico, Greenland and Macao, plus Taiwan, North Korea and Western Sahara. The slope is `r fmt(hdi_slope, 2)` log10 units per unit of HDI, so each additional 0.1 of HDI multiplies expected per-capita emissions by `r fmt(10^(hdi_slope / 10), 2)`. The model explains `r pct(100 * hdi_r2, 0)` of the variance in log emissions (R<sup>2</sup> = `r fmt(hdi_r2, 2)`, n = `r hdi_n`). Of the countries, `r pct(100 * mean(abs(hdi_data$residual) < log10(2)), 0)` lie within a factor of two of the line. Qatar and Kuwait emit `r fmt(ratio_of('QAT'), 1)` and `r fmt(ratio_of('KWT'), 1)` times the level expected at their HDI, Russia `r fmt(ratio_of('RUS'), 1)` and the United States `r fmt(ratio_of('USA'), 1)`. Sweden and Switzerland, by comparison, emit `r fmt(ratio_of('SWE'), 2)` and `r fmt(ratio_of('CHE'), 2)` times theirs. China sits at `r fmt(ratio_of('CHN'), 1)` and India at `r fmt(ratio_of('IND'), 2)`.
 
 The residual is a descriptive contrast between a country and the others at the same HDI, and it is no judgement of fairness. Four caveats apply to any reading of it. The HDI includes gross national income, so it partly encodes the energy use that it is meant to contextualise, and the line therefore absorbs some of the effect of wealth that a reader might want to see. EDGAR is production-based, so the emissions embodied in goods that a country imports are attributed to the exporter, which favours importers of manufactured goods in this comparison and counts against exporters such as China. Land use, land-use change and forestry are excluded, which matters for countries such as Brazil and Indonesia. The model is also a single straight line through `r hdi_n` points, and small states whose per-capita figure depends on one plant or fleet, oil and gas exporters and pastoral economies pull it in ways that a fuller treatment would handle differently. That fuller treatment, with capability-based fair shares of the remaining carbon budget, is in the [manuscript in the companion repository](https://github.com/pablobernabeu/ECB-task/blob/main/manuscript.qmd) and in the `fairshare` [packages for R and Python](https://github.com/pablobernabeu/ECB-task/tree/main/packages) that accompany it.
 
@@ -547,7 +552,7 @@ leaflet(world_sf, width = '100%', height = 520,
   htmlwidgets::prependContent(tags$style('.leaflet-container { background: #f4f6f8; }'))
 ```
 
-<p class="caption">Figure 6. Source: EDGAR 2025 (Crippa et al., 2025), the Human Development Report 2025 (United Nations Development Programme, 2025) and Natural Earth boundaries via rnaturalearth. Units: residual of log10 per-capita emissions (2015 to 2024 mean) from the linear model on HDI 2023. 10<sup>residual</sup> is the ratio of actual to expected emissions. Boundaries carry no political meaning.</p>
+<p class="caption">Figure 6. Source: EDGAR 2025 (Crippa et al., 2025), the Human Development Report 2025 (United Nations Development Programme, 2025) and Natural Earth boundaries via rnaturalearth. Units: residual of log10 per-capita emissions (2015 to 2024 mean) from the linear model on HDI 2023. The ratio of actual to expected emissions is 10<sup>residual</sup>. Boundaries carry no political meaning.</p>
 
 The largest positive residual belongs to `r hdi_data$country[which.max(hdi_data$residual)]`, at `r fmt(max(hdi_data$ratio), 1)` times its expected level, and the largest negative one to `r hdi_data$country[which.min(hdi_data$residual)]`, at `r fmt(min(hdi_data$ratio), 2)` times. The table below lists the ten countries at each end. Oil and gas exporters fill most of the positive end, together with small states whose per-capita figure is set by one power plant or one fleet, such as Palau, with `r fmt(hdi_data$population[hdi_data$iso3 == 'PLW'] / 1e3)` thousand inhabitants. Two pastoral economies also appear there. In Mongolia, fuel extraction and livestock account for `r pct(sum(sectors_2024$mt[sectors_2024$iso3 == 'MNG' & sectors_2024$sector %in% c('Fuel Exploitation', 'Agriculture')]) / sum(sectors_2024$mt[sectors_2024$iso3 == 'MNG']) * 100, 0)` of emissions, and in Chad agriculture accounts for `r pct(sectors_2024$mt[sectors_2024$iso3 == 'TCD' & sectors_2024$sector == 'Agriculture'] / sum(sectors_2024$mt[sectors_2024$iso3 == 'TCD']) * 100, 0)`. Methane from herds enters the total in full, and the model expects little of it at a low HDI, so a country whose emissions are mostly livestock lands above the line. The negative end mixes small island states with countries of South Asia and Sub-Saharan Africa whose emissions are low for their HDI. At the top of the HDI range it also holds Switzerland, reported by EDGAR together with Liechtenstein, whose electricity comes largely from hydropower and nuclear plants. Because EDGAR reports Sudan and South Sudan as one territory, their combined per-capita figure is compared with the HDI of Sudan and mapped onto both countries.
 

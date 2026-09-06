@@ -5869,9 +5869,22 @@ textarea {
   scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
 
-// margin after code snippets
-pre {
-  margin-bottom: 5%;
+// Keep rendered output visually attached to the code that produced it. The selector
+// has to key off the <details>, not the <pre>: the "Fold code chunks" pass in
+// academic.js moves every <pre class="..."> inside a generated <details> at DOM-ready,
+// so on the rendered page the code block has no next sibling at all and a
+// `pre.r + pre` rule silently matches nothing. The <details> carries no border or
+// padding, so the code block's own 1rem bottom margin collapses through it and this
+// negative top margin nets 0.25rem. The [open] guard matters because a collapsed chunk
+// hides the <pre>, leaving no margin to collapse through, and the negative value would
+// then drag the output up over the "Expand" summary. The paragraph arms cover plot
+// output, which blogdown emits as a bare paragraph wrapping the figure rather than as
+// a second <pre>.
+.article-style details[open]:has(> pre.r) + pre,
+.article-style details[open]:has(> pre.python) + pre,
+.article-style details[open]:has(> pre.r) + p:has(> img:only-child),
+.article-style details[open]:has(> pre.python) + p:has(> img:only-child) {
+  margin-top: -0.75rem;
 }
 
 // in desktop view only

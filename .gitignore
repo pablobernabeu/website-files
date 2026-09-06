@@ -10,6 +10,9 @@ content/post/a-new-function-to-plot-convergence-diagnostics-from-lme4-allfit/m1_
 # so a committed copy here is redundant build output (it was ~1.5 GB / 3,000+
 # files bloating history). Kept out of tracking; still generated on disk locally.
 /public/
+# Local test builds. Same build output as ./public, written to a second directory
+# when a change needs checking against a clean render before it is committed.
+/public_test/
 # API keys and secrets (never commit — keys belong in GitHub Actions secrets)
 **/scopus_key.txt
 **/Scopus API key.txt

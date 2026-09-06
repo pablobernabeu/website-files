@@ -1,5 +1,5 @@
 ---
-title: 'EEG error: datasets missing channels'
+title: 'EEG error: Datasets missing channels'
 authors: ''
 date: '2016-08-16'
 slug: eeg-error-datasets-missing-channels

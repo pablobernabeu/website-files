@@ -1,5 +1,5 @@
 ---
-title: 'depictr: one visual language from the first look at the data to the audited figure'
+title: 'depictr: One visual language from first look to final figure'
 author: ''
 date: '2026-09-01'
 slug: depictr-one-visual-language-from-first-look-to-final-figure
@@ -7,6 +7,7 @@ categories:
   - data visualisation
   - statistics
 tags:
+  - s
   - visualisation
   - linear mixed-effects models
   - Bayesian statistics
@@ -14,7 +15,7 @@ tags:
   - Python
   - psycholinguistics
 subtitle: ''
-summary: 'The figures of an analysis are usually made with a different tool at each stage, and they show it. depictr gives one theme, one colourblind-safe palette and one set of conventions to the plots of exploration, model estimates, diagnostics, uncertainty and power, in R and in Python, and adds a check of each figure against measured accessibility thresholds. This post takes a bundled lexical-decision experiment from the first density plot to a mended, audited figure, with a mixed model, seven optimisers and a Bayesian posterior along the way.'
+summary: 'Figures often change visual language as an analysis moves from exploration to reporting. This post uses depictr to examine a lexical-decision experiment, plot its mixed-model estimates, audit a figure and correct the accessibility problems that the audit finds.'
 authors: []
 lastmod: ''
 featured: no
@@ -29,251 +30,124 @@ projects: []
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = TRUE,
                       fig.align = 'center', fig.retina = 2, comment = '#>',
-                      fig.width = 7, fig.height = 4.5)
-knitr::opts_chunk$set(python.reticulate = FALSE, engine.path = list(
-  python = '/tmp/claude-0/-home-user/22b7e646-ecfa-5c99-a752-a7e5438334ea/scratchpad/pyenv/bin/python'
-))
-options(width = 95)
+                      fig.width = 7.5, fig.height = 4.5)
+options(width = 92)
 xaringanExtra::use_clipboard()
-parity_dir <- file.path(tempdir(), 'depictr-parity')
-dir.create(parity_dir, showWarnings = FALSE)
-Sys.setenv(DEPICTR_PARITY = parity_dir)
 ```
 
-A paper's figures are made at different moments with different tools. The density plot from the first afternoon with the data has one look, the forest plot of the mixed model another, the diagnostics a third, and the Bayesian posterior, added at a reviewer's request, a fourth. The reader has to learn four conventions to follow one argument, and the author has to remember, at each stage, which colours are safe for readers with a colour-vision deficiency and which are not. depictr is my attempt to settle these questions once. It provides a single theme, palette and set of conventions for the plots an analysis produces, from exploration through to reporting. Every function returns a ggplot2 object that can be refined further. A checking function then measures the finished figure against thresholds for contrast, text size and reliance on colour. A Python package of the same name does the same over plotnine.
+The figures in an analysis are rarely made all at once. An exploratory density plot may survive into a talk, a model adds a forest plot and a reviewer asks for a diagnostic or a Bayesian comparison. When each stage uses different defaults, one analysis acquires several palettes, type sizes and conventions. Accessibility is then checked, if at all, after the visual decisions have already spread through the project.
 
-The data below are the experiment bundled with the package: `r length(unique(depictr::lexical_decision$participant))` participants, `r length(unique(depictr::lexical_decision$item))` items, a semantic-priming manipulation with related and unrelated primes, a visual or auditory presentation and the Zipf frequency of each word, with reaction times and accuracy. The design is what I would expect from a lexical-decision study in my own laboratory. The Python package is on [PyPI](https://pypi.org/project/depictr) and the R one is installed from [GitHub](https://github.com/pablobernabeu/depictr), which also hosts the [R](https://pablobernabeu.github.io/depictr/) and [Python](https://pablobernabeu.github.io/depictr-py/) documentation.
+I wrote [depictr](https://github.com/pablobernabeu/depictr) to give those stages a shared visual language. It provides plotting functions for common statistical objects, but each function returns an ordinary ggplot2 object that can still be changed. It also measures the finished figure against explicit checks for contrast, text size and reliance on colour. The same conventions are available in the [R package](https://pablobernabeu.github.io/depictr/) and the [Python package](https://pablobernabeu.github.io/depictr-py/).
+
+The example data come from a lexical-decision experiment bundled with the package. Participants responded to words preceded by semantically related or unrelated primes, presented visually or auditorily.
 
 ```{r}
 library(depictr)
 library(ggplot2)
-library(patchwork)
 packageVersion('depictr')
-str(lexical_decision)
+
+data('lexical_decision', package = 'depictr')
 correct <- subset(lexical_decision, accuracy == 1)
+c(participants = length(unique(lexical_decision$participant)),
+  items = length(unique(lexical_decision$item)),
+  trials = nrow(lexical_decision))
 ```
 
-## The first look
+## Begin with the observed distribution
 
-Column names can be given bare or quoted, and a legend can be tucked into the corner that a unimodal density leaves empty. The empirical cumulative distribution is the plot I prefer for reaction times, since it is free of bins and the quartiles can be read from it directly.
+Reaction times are skewed, so a mean and standard deviation do not show the whole pattern. An empirical cumulative distribution avoids a choice of bins and makes the quartiles directly visible.
 
-```{r, fig.alt = 'Density plot of lexical-decision reaction times by priming condition, related in blue and unrelated in orange, with the legend inside the panel'}
-explore_distribution(lexical_decision, RT, group = condition, type = 'density',
-                     legend_inside = TRUE,
-                     title = 'Lexical-decision RT by priming condition')
+```{r distribution, fig.alt = 'Empirical cumulative distributions of lexical-decision reaction times for related and unrelated primes, with horizontal and vertical guides at the quartiles'}
+ecdf_plot(
+  lexical_decision,
+  RT,
+  group = condition,
+  reference_quantiles = c(0.25, 0.5, 0.75),
+  legend_inside = TRUE,
+  title = 'Related primes are faster across the distribution'
+) +
+  labs(x = 'Reaction time (ms)', colour = NULL)
 ```
 
-```{r, fig.alt = 'Empirical cumulative distribution of reaction times by priming condition, with reference lines at the quartiles'}
-ecdf_plot(lexical_decision, RT, group = condition,
-          reference_quantiles = c(0.25, 0.5, 0.75), legend_inside = TRUE,
-          title = 'Related primes are faster throughout the distribution')
-```
+The separation is not confined to a handful of slow responses. Related trials remain shifted towards shorter reaction times through much of the distribution, which gives the later model result a visible empirical context.
 
-A summary table in the format of a paper's first table comes from the same data with one call, giving means and standard deviations for numeric variables and counts for categorical ones. An estimation plot in the style of Gardner and Altman (Ho et al., 2019) shows the raw data above the mean difference, with a bootstrap interval and Hedges' g.
+## Keep the same language for the model
+
+The model includes priming condition, presentation modality and word frequency, with crossed random intercepts for participants and items. `coefficient_plot()` reads the fitted object directly and places the fixed effects on a common standardised scale.
 
 ```{r}
-summary_table(lexical_decision, vars = c('RT', 'accuracy', 'word_frequency', 'modality'),
-              group = 'condition')
-```
+fit <- lmerTest::lmer(
+  RT ~ condition + modality + word_frequency +
+    (1 | participant) + (1 | item),
+  data = correct
+)
 
-```{r, fig.height = 5.5, fig.alt = 'Estimation plot with the raw reaction times and means of the two priming conditions above and the mean difference with its bootstrap confidence interval below'}
-set.seed(1)
-estimation_plot(lexical_decision, RT, condition,
-                title = 'RT difference: unrelated minus related priming')
-```
+term_labels <- c(
+  conditionunrelated = 'Unrelated priming',
+  modalityauditory = 'Auditory modality',
+  word_frequency = 'Word frequency (Zipf)'
+)
 
-## The model and its estimates
-
-The analysis is a mixed model with crossed random intercepts for participants and items, fitted to the correct trials. The package tidies fitted models from lm, glm and lme4 into one table of estimates with intervals, and the forest plot reads from that table, so the same function serves a regression, a mixed model or a data frame of estimates from elsewhere.
-
-```{r}
-fit <- lmerTest::lmer(RT ~ condition + modality + word_frequency +
-                        (1 | participant) + (1 | item), data = correct)
 tidy_estimates(fit)
 ```
 
-```{r, fig.alt = 'Forest plot of the three fixed effects of the mixed model, standardised per standard deviation of the predictor, with 95% confidence intervals'}
-term_labels <- c(conditionunrelated = 'Unrelated priming',
-                 modalityauditory   = 'Auditory modality',
-                 word_frequency     = 'Word frequency (Zipf)')
-coefficient_plot(fit, standardise = TRUE, order = 'ascending', labels = term_labels,
-                 title = 'Effects on RT per SD of each predictor')
+```{r model-estimates, fig.alt = 'Forest plot of the standardised fixed effects for unrelated priming, auditory presentation and word frequency, with 95 per cent confidence intervals'}
+coefficient_plot(
+  fit,
+  standardise = TRUE,
+  order = 'ascending',
+  labels = term_labels,
+  title = 'Estimated effects on reaction time',
+  x_lab = 'Change in reaction time (ms) per SD of predictor'
+)
 ```
 
-Standardising by the predictor's standard deviation puts a slope per Zipf unit and a contrast between two categories on one comparable axis, and the axis label records the convention. Predicted values come from the fixed effects with a band from the design matrix and the covariance of the estimates, and the conditional modes of the random effects are drawn as a caterpillar plot, one panel per grouping factor.
+This continuity keeps the colour, typography and interval conventions stable as the analysis moves from observations to estimates, so the reader can concentrate on the result.
 
-```{r, fig.alt = 'Predicted reaction time across word frequency with a confidence band'}
-effects_plot(fit, 'word_frequency', title = 'Predicted RT across word frequency')
-```
+## Audit the figure that will be published
 
-```{r, fig.height = 6, fig.alt = 'Caterpillar plots of the by-participant and by-item random intercepts, sorted, with conditional intervals'}
-random_effects_plot(fit, title = 'By-participant and by-item departures')
-```
-
-Two specifications can be overlaid on one forest plot to show whether dropping a predictor moves the other estimates, and a fit table collects the usual comparison statistics.
-
-```{r, fig.alt = 'Forest plot comparing the estimates of the full model and a reduced model without modality'}
-reduced <- lmerTest::lmer(RT ~ condition + word_frequency +
-                            (1 | participant) + (1 | item), data = correct)
-compare_models(Reduced = reduced, Full = fit, order = 'descending',
-               labels = term_labels,
-               title = 'Does dropping modality move the other effects?')
-model_fit_table(Reduced = reduced, Full = fit)
-```
-
-## Convergence, a Bayesian check and power
-
-A convergence warning from lme4 is best answered by refitting with every optimiser and comparing the estimates, a practice I have [written about before](/2023/a-new-function-to-plot-convergence-diagnostics-from-lme4-allfit/). depictr's plot for that comparison takes a tidy data frame of optimiser, term and value, and the package ships the summary of an `allFit()` run on this very model, so the figure is drawn without the refits.
-
-```{r, fig.alt = 'Dot plot of each fixed effect as estimated by seven optimisers, one panel per term, showing that the estimates coincide'}
-af <- readRDS(system.file('extdata', 'allfit_lexdec.rds', package = 'depictr'))
-fx <- af$fixef
-opt_long <- data.frame(optimizer = rep(rownames(fx), times = ncol(fx)),
-                       term = rep(colnames(fx), each = nrow(fx)),
-                       value = as.vector(fx))
-rownames(fx)
-optimizer_fixef_plot(opt_long, labels = term_labels,
-                     title = 'Fixed effects across seven optimisers')
-```
-
-A Bayesian version of the same model answers the next question. The package bundles a thousand draws from the posterior of the same model fitted with brms, and the plot overlays the frequentist estimate on the full posterior of each term, with a note that the frequentist analysis had no prior. The posterior can also be drawn on its own, with a region of practical equivalence and the probability of direction annotated per parameter (Kruschke, 2018).
-
-```{r, fig.height = 5, fig.alt = 'Half-eye plots of the posterior of each fixed effect with the frequentist point estimate and interval overlaid'}
-draws <- readRDS(system.file('extdata', 'lexdec_draws.rds', package = 'depictr'))
-dim(draws)
-frequentist_bayesian_plot(fit, draws, intercept = FALSE,
-                          note_frequentist_no_prior = TRUE, labels = term_labels,
-                          title = 'Frequentist estimate over the Bayesian posterior')
-```
-
-```{r, fig.alt = 'Posterior distributions of the three slopes with a region of practical equivalence of plus or minus five milliseconds and the probability of direction'}
-slopes <- draws[c('conditionunrelated', 'modalityauditory', 'word_frequency')]
-posterior_plot(slopes, style = 'halfeye', rope = c(-5, 5), pd = TRUE,
-               labels = term_labels,
-               title = 'Fixed-effect posteriors (ms), with ROPE and pd')
-```
-
-Whether the study was large enough is the third question. The package ships the summary of a simr power curve for the word-frequency slope at five sample sizes, and the plotting function accepts such a summary as a data frame, so simr is not needed to draw it. A fuller treatment of design analysis by simulation is the subject of the [pilotr post](/2026/pilotr-pilot-the-study-before-running-it/).
-
-```{r, fig.alt = 'Power curve for the word-frequency effect at 12 to 60 participants with confidence intervals'}
-pc <- readRDS(system.file('extdata', 'powercurve_lexdec_summary.rds', package = 'depictr'))
-pc
-power_curve_plot(pc, x_lab = 'Number of participants',
-                 title = 'Power for the word-frequency effect')
-```
-
-## Diagnostics that match the model class
-
-The diagnostics function recognises the class of the model. For a binomial model of accuracy, it draws binned residuals (Gelman & Hill, 2007) and a quantile-quantile plot of randomised quantile residuals (Dunn & Smyth, 1996), seeded so that the randomisation is reproducible. Those replace the residuals-versus-fitted and ordinary quantile-quantile panels that suit a linear model. The scale-location and leverage panels are kept.
-
-```{r, fig.height = 6, fig.alt = 'Four diagnostic panels for a binomial model of accuracy: binned residuals, a quantile-quantile plot of randomised quantile residuals, scale-location and residuals against leverage'}
-gfit <- glm(accuracy ~ word_frequency + condition + modality,
-            data = lexical_decision, family = binomial)
-residual_diagnostics_plot(gfit, seed = 1, title = 'Accuracy model: GLM diagnostics')
-```
-
-## The audit
-
-The palette is based on the eight colours of Okabe and Ito (2008), with the package's own blue leading and a grey in place of black. The package checks it the way it checks any palette: by the CIE76 colour difference between every pair, under normal vision and under each dichromacy, simulated at full severity with the model of Machado et al. (2009). Palette safety does not settle figure safety, so a second function inspects a built plot and reports nine measurements beside their thresholds.
+A colourblind-safe palette does not guarantee an accessible figure. Contrast against the background and the use of a second visual channel depend on the particular plot. The package therefore audits a built plot, not only its palette.
 
 ```{r}
-depictr_palette()
-palette_safety()
+first_draft <- explore_distribution(
+  lexical_decision,
+  RT,
+  group = condition,
+  type = 'density',
+  legend_inside = TRUE,
+  title = 'Lexical-decision time by priming condition'
+)
+check_figure(first_draft)
 ```
 
-```{r, fig.height = 2.6, fig.alt = 'Swatches of the eight palette colours as a person with deuteranopia sees them, labelled with the original hexadecimal codes'}
-palette_preview(cvd = 'deutan')
+The default density fails two checks. Its orange fill falls below the package's contrast threshold against white, and colour is the only channel separating the conditions. The corrected density plot uses a darker vermillion and adds line type. Those changes address the measured failures without changing the data or the statistical display.
+
+```{r audited-figure, fig.alt = 'Corrected density curves of reaction times for related and unrelated primes, distinguished by both colour and line type'}
+final_figure <- explore_distribution(
+  lexical_decision,
+  RT,
+  group = condition,
+  type = 'density',
+  palette = c('#005B96', '#B44600'),
+  legend_inside = TRUE,
+  title = 'Priming conditions separated by colour and line type'
+) +
+  aes(linetype = condition) +
+  labs(x = 'Reaction time (ms)', colour = NULL, fill = NULL, linetype = NULL)
+
+check_figure(final_figure)[, c('check', 'measured', 'threshold', 'verdict')]
+final_figure
 ```
 
-```{r}
-p_density <- explore_distribution(lexical_decision, RT, group = condition,
-                                  type = 'density', legend_inside = TRUE)
-check_figure(p_density)
-```
+The palette starts from the colours proposed by Okabe and Ito (2008), and colour-vision simulations use the model of Machado et al. (2009). The audit still reports measurements beside thresholds because a journal, display size or printing process may require a different decision.
 
-Two rows fail on the default two-colour density. The orange sits at a contrast of about 2.25 to 1 against white, where the guideline for graphical objects asks for 3 to 1, and colour alone distinguishes the conditions. Both are corrected by swapping in the darker vermillion and adding line type as a redundant channel, shown here on the cumulative distribution, since these plots are ordinary ggplot2 objects. Text drawn for a 17.8 cm figure arrives at half its size in an 8.9 cm journal column, and the check can be run at that width.
+## Limits
 
-```{r, fig.alt = 'Empirical cumulative distributions by priming condition in blue and vermillion with different line types, carrying the two corrections that the density figure failed on'}
-p_mended <- ecdf_plot(lexical_decision, RT, group = condition,
-                      palette = c('#005b96', '#d55e00'), legend_inside = TRUE,
-                      title = 'Corrected: darker vermillion, with line type as a second channel') +
-  aes(linetype = condition)
-check_figure(p_mended)[, c('check', 'measured', 'threshold', 'verdict')]
-subset(check_figure(p_density, width_cm = 8.9), check == 'text_size')
-p_mended
-```
+depictr draws and checks figures. It does not choose the model, contrasts or prior. A polished plot can faithfully present a poor analysis. The checks also cover measurable properties, not every barrier a reader may face. Alt text, a meaningful caption and a sensible figure order remain editorial work.
 
-The documentation states the limit of the guarantee beside the claim. The eight colours pass every colour-vision check. In greyscale, though, the closest pair, the orange and the sky blue, differ by about one unit of CIE lightness. A figure that may be printed in black and white therefore needs a second channel as well.
-
-## Composition and the Python twin
-
-Panels are composed with duplicate legends collected, an overall title and tags, and the package options set the base size and the accent colour once for every theme, scale and plot.
-
-```{r, fig.width = 11, fig.height = 8, fig.alt = 'Four-panel composite with the density plot, the mixed-model forest plot, the posterior with the frequentist overlay and the mended cumulative distribution'}
-p_coef <- coefficient_plot(fit, order = 'ascending', labels = term_labels)
-p_fbp <- frequentist_bayesian_plot(fit, draws, intercept = FALSE, labels = term_labels)
-arrange_plots(p_density + labs(title = 'A first look'),
-              p_coef    + labs(title = 'Mixed-model estimates'),
-              p_fbp     + labs(title = 'Posterior with frequentist overlay'),
-              p_mended  + labs(title = 'Audited and mended'),
-              ncol = 2, title = 'One visual language, from exploration to audit',
-              tag_levels = 'A')
-```
-
-The Python package uses the same function names and the same thresholds. Below, the R session writes the data, the density audit and the colour-vision simulation to disk. The Python session then reads the data, repeats the audit and the simulation, and compares the two sets of results. The mixed model is the one place where the engines differ by construction, lme4 against statsmodels, so the comparison below uses an ordinary regression on the correct trials, which both fit identically once the reference level of the categorical predictor is set to match.
-
-```{r}
-write.csv(lexical_decision, file.path(parity_dir, 'lexical_decision.csv'), row.names = FALSE)
-write.csv(check_figure(p_density), file.path(parity_dir, 'audit_R.csv'), row.names = FALSE)
-writeLines(simulate_cvd(depictr_palette(), 'deutan'), file.path(parity_dir, 'deutan_R.txt'))
-ols <- lm(RT ~ condition + modality + word_frequency, data = correct)
-write.csv(tidy_estimates(ols), file.path(parity_dir, 'ols_R.csv'), row.names = FALSE)
-```
-
-```{python}
-import os
-import numpy as np, pandas as pd
-import statsmodels.formula.api as smf
-import depictr as dp
-
-parity = os.environ['DEPICTR_PARITY']
-ld = pd.read_csv(os.path.join(parity, 'lexical_decision.csv'))
-correct = ld[ld['accuracy'] == 1]
-
-audit_py = dp.check_figure(dp.explore_distribution(
-    ld, 'RT', group='condition', kind='density', legend_inside=True))
-audit_r = pd.read_csv(os.path.join(parity, 'audit_R.csv'))
-deutan_r = open(os.path.join(parity, 'deutan_R.txt')).read().split()
-# R's factor keeps the levels of `modality` in the order 'visual', 'auditory';
-# pandas reads the column as text and patsy would sort it alphabetically, which
-# would silently flip the sign of that contrast. The reference is set explicitly.
-formula = ("RT ~ condition + C(modality, Treatment(reference='visual')) "
-           "+ word_frequency")
-ols_py = dp.tidy_estimates(smf.ols(formula, data=correct).fit())
-ols_r = pd.read_csv(os.path.join(parity, 'ols_R.csv'))
-
-print('depictr', dp.__version__)
-print('audit verdicts identical:', audit_py['verdict'].tolist() == audit_r['verdict'].tolist())
-print('audit measurements within 0.005:',
-      np.allclose(audit_py['measured'].astype(float), audit_r['measured'].astype(float), atol=0.005))
-print('deuteranopia simulation identical:',
-      dp.simulate_cvd(dp.depictr_palette(), 'deutan') == deutan_r)
-print('OLS estimates and intervals within 1e-6:',
-      np.allclose(ols_py[['estimate', 'conf_low', 'conf_high']].to_numpy(),
-                  ols_r[['estimate', 'conf.low', 'conf.high']].to_numpy(), atol=1e-6))
-```
-
-The package does not fit models, so the choice of model, contrasts and priors remains the analyst's, and the plots show what was fitted. The colour-difference thresholds are conventions, and the audit reports measurements against them so that a different threshold can be applied. Beyond eight categories, the palette interpolates and warns, and the guarantee lapses, which is one more reason to prefer facets to colour when a figure has many groups.
+The [R reference](https://pablobernabeu.github.io/depictr/reference/) and [Python reference](https://pablobernabeu.github.io/depictr-py/) cover diagnostics, posterior plots, power curves, model comparisons and multi-panel composition. Their place is in the reference material. The useful habit for an analysis is smaller: use one set of conventions throughout, then audit the exact figure that will leave the project.
 
 ### References
-
-Dunn, P. K., & Smyth, G. K. (1996). Randomized quantile residuals. *Journal of Computational and Graphical Statistics*, *5*(3), 236–244. https://doi.org/10.1080/10618600.1996.10474708
-
-Gelman, A., & Hill, J. (2007). *Data analysis using regression and multilevel/hierarchical models*. Cambridge University Press. https://doi.org/10.1017/CBO9780511790942
-
-Kruschke, J. K. (2018). Rejecting or accepting parameter values in Bayesian estimation. *Advances in Methods and Practices in Psychological Science*, *1*(2), 270–280. https://doi.org/10.1177/2515245918771304
-
-Ho, J., Tumkaya, T., Aryal, S., Choi, H., & Claridge-Chang, A. (2019). Moving beyond P values: Data analysis with estimation graphics. *Nature Methods*, *16*(7), 565–566. https://doi.org/10.1038/s41592-019-0470-3
 
 Machado, G. M., Oliveira, M. M., & Fernandes, L. A. F. (2009). A physiologically-based model for simulation of color vision deficiency. *IEEE Transactions on Visualization and Computer Graphics*, *15*(6), 1291–1298. https://doi.org/10.1109/TVCG.2009.113
 

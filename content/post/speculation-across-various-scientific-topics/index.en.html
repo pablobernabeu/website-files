@@ -7,6 +7,7 @@ categories:
   - science
   - bibliometrics
 tags:
+  - s
   - linguistics
   - language
   - bibliometrics
@@ -157,7 +158,7 @@ ggplot(panel_data, aes(year, percentage)) +
   facet_wrap(~ topic, ncol = 3, labeller = as_labeller(labeller_topic)) +
   scale_y_continuous(labels = scales::label_percent(scale = 1)) +
   coord_cartesian(ylim = c(0, 15)) +
-  labs(x = NULL, y = &#39;Records mentioning speculation&#39;) +
+  labs(x = NULL, y = &#39;Records mentioning speculation (%)&#39;) +
   theme_minimal(base_size = 12) +
   theme(strip.text = element_text(size = 10, hjust = 0),
         panel.spacing = unit(1.2, &#39;lines&#39;))</code></pre>
