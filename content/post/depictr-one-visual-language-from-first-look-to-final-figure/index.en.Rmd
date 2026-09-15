@@ -120,7 +120,7 @@ first_draft <- explore_distribution(
 check_figure(first_draft)
 ```
 
-The default density fails two checks. Its orange fill falls below the package's contrast threshold against white, and colour is the only channel separating the conditions. The corrected density plot uses a darker vermillion and adds line type. Those changes address the measured failures without changing the data or the statistical display.
+The default density fails two checks. Its orange fill falls below the package's contrast threshold against white, and colour is the only channel separating the conditions. The corrected density plot uses a darker vermilion and adds line type. Those changes address the measured failures without changing the data or the statistical display.
 
 ```{r audited-figure, fig.alt = 'Corrected density curves of reaction times for related and unrelated primes, distinguished by both colour and line type'}
 final_figure <- explore_distribution(

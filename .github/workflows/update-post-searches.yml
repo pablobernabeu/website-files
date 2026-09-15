@@ -32,7 +32,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up R
-        uses: r-lib/actions/setup-r@d3c5be51b12e724e68f33216ca3c148b66d5f0b6 # v2
+        uses: r-lib/actions/setup-r@465b7d8e732ca3921382b1674c59bada9cbf3399 # v2.13.0
         with:
           r-version: release
           use-public-rspm: true
@@ -48,7 +48,10 @@ jobs:
         run: |
           repos <- c(RSPM = Sys.getenv("RSPM"), CRAN = "https://cloud.r-project.org")
           install.packages(c("remotes", "httr2", "jsonlite"), repos = repos)
-          remotes::install_github("pablobernabeu/scopusflow", repos = repos)
+          remotes::install_github(
+            "pablobernabeu/scopusflow@623649a2f4812da1a4850bf2c58d4fac4fc771f3",
+            repos = repos
+          )
         shell: Rscript {0}
         env:
           GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
