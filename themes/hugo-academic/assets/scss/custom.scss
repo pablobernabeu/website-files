@@ -299,7 +299,7 @@ body.dark .article-header .article-header-caption a {
 #top > div:nth-child(4) > div:nth-child(1) > h2 > a,
 #top > div > div > h2 > a,
 #blog > div > div > div.col-12.section-heading > p > span a,
-#applications-and-dashboards > div > div > div.col-12.section-heading > p a,
+#software > div > div > div.col-12.section-heading > p a,
 #skills > div > div > div > table > tbody a,
 #multimedia > div > div > div > div:nth-child(3) > div:nth-child(2) a,
 #multimedia > div > div > div > div > div > a,
@@ -349,7 +349,7 @@ body.dark #top > div:nth-child(4) > div:nth-child(1) > h2 > a,
 body.dark #top > div:nth-child(4) > div > div.media-body > h3 > a,
 body.dark #top > div > div > h2 > a,
 body.dark #blog > div > div > div.col-12.section-heading > p > span a,
-body.dark #applications-and-dashboards > div > div > div.col-12.section-heading > p a,
+body.dark #software > div > div > div.col-12.section-heading > p a,
 body.dark #skills > div > div > div > table > tbody a,
 body.dark #multimedia > div > div > div > div:nth-child(3) > div:nth-child(2) a,
 body.dark #multimedia > div > div > div > div > div > a,
@@ -825,7 +825,7 @@ section.home-section .container {
 
 // Set max-width for publications and applications sections (760px to match blog posts)
 #publication .container,
-#applications-and-dashboards .container,
+#software .container,
 #workshops .container,
 #presentations .container,
 #funding-awards .container,
@@ -855,12 +855,12 @@ body.dark .modal-footer .btn-outline-primary:not(:hover):not(:active) {
 }
 
 // Reduce bottom margin in section headings
-#applications-and-dashboards > div > div > div.col-12.section-heading > h1 {
+#software > div > div > div.col-12.section-heading > h1 {
   margin-bottom: 0.25rem !important;
 }
 
 // Ensure consistent top padding for applications section
-#applications-and-dashboards {
+#software {
   padding-top: 0.8rem !important;
 }
 
@@ -922,7 +922,7 @@ div > div > div.col-12.section-heading > p {
 .section-heading h1,
 .home-section .section-heading h1,
 #blog > div > div > div.col-12.section-heading > h1,
-#applications-and-dashboards > div > div > div.col-12.section-heading > h1,
+#software > div > div > div.col-12.section-heading > h1,
 #publication > div > div > div.col-12.section-heading > h1,
 div.col-12.section-heading > h1 {
   margin-top: 0.5rem !important;
@@ -960,7 +960,7 @@ div.col-12.section-heading > h1 {
 }
 
 // Increase top margin for applications-and-dashboards section heading
-#applications-and-dashboards > div > div > div.col-12.section-heading > h1 {
+#software > div > div > div.col-12.section-heading > h1 {
   margin-top: 0.8rem !important;
 }
 
@@ -3651,25 +3651,25 @@ h3 {
 // Gap between an expanded blog abstract and its "View complete content" button.
 // The abstract carries margin-bottom: -0.5rem (shared collapsed-abstract rule
 // further down), so this top margin moves the gap almost 1:1 and 1rem renders as
-// a 0.5rem gap -- the same gap as #publication and #applications-and-dashboards.
+// a 0.5rem gap -- the same gap as #publication and #software.
 #blog > div > div > div.col-12 > div > div.media-body.is-expanded > a {
   margin-bottom: 0.5rem !important;
   margin-top: 1rem !important;
 }
 
-#applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.stream-meta.article-metadata {
+#software > div > div > div.col-12 > div > div.media-body > div.stream-meta.article-metadata {
   margin-top: 0.7rem !important;
   margin-bottom: 0.7rem !important;
   line-height: 1.4 !important;
 }
 
-#applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.stream-meta.article-metadata > div {
+#software > div > div > div.col-12 > div > div.media-body > div.stream-meta.article-metadata > div {
   margin-top: 0 !important;
   font-size: 0.85rem !important;
   line-height: 1.4 !important;
 }
 
-#applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.stream-meta.article-metadata * {
+#software > div > div > div.col-12 > div > div.media-body > div.stream-meta.article-metadata * {
   line-height: 1.4 !important;
 }
 
@@ -3677,7 +3677,7 @@ h3 {
 // link is display:inline-block, so its margin does not collapse with the
 // abstract's -0.5rem bottom margin; the two add up and 1rem renders as a 0.5rem
 // gap -- the same gap as #publication and #blog.
-#applications-and-dashboards > div > div > div.col-12 > div > div.media-body.is-expanded > a {
+#software > div > div > div.col-12 > div > div.media-body.is-expanded > a {
   margin-top: 1rem !important;
 }
 
@@ -4419,12 +4419,12 @@ body.dark h3 a:hover, body.dark div a:hover {
 }
 
 // Hide tags in general home page, along with the preceding divider
-:is(#publication, #applications-and-dashboards, #blog) span.article-categories, :is(#publication, #applications-and-dashboards, #blog) span.middot-divider:has(+ span.article-categories) {
+:is(#publication, #software, #blog) span.article-categories, :is(#publication, #software, #blog) span.middot-divider:has(+ span.article-categories) {
   display: none;
 }
 
 // Reduce margin above button links in home page
-:is(#publication, #applications-and-dashboards, #blog) .btn-links {
+:is(#publication, #software, #blog) .btn-links {
   margin-top: -14%;
 }
 
@@ -4434,20 +4434,20 @@ body.dark h3 a:hover, body.dark div a:hover {
 }
 
 // Override the generic -14% negative margin for apps section (no complex stream-meta offset here)
-#applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links {
+#software > div > div > div.col-12 > div > div.media-body > div.btn-links {
   margin-top: 0.3rem !important;
 }
 
 // Match apps section button size and style to publication buttons
-body #applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links,
-body #applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links a,
-body #applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links button {
+body #software > div > div > div.col-12 > div > div.media-body > div.btn-links,
+body #software > div > div > div.col-12 > div > div.media-body > div.btn-links a,
+body #software > div > div > div.col-12 > div > div.media-body > div.btn-links button {
   font-size: 0.8rem !important;
   line-height: 1.3 !important;
 }
 
-body #applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links a,
-body #applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links button {
+body #software > div > div > div.col-12 > div > div.media-body > div.btn-links a,
+body #software > div > div > div.col-12 > div > div.media-body > div.btn-links button {
   height: 2em !important;
   min-height: 2em !important;
   max-height: 2em !important;
@@ -4456,27 +4456,27 @@ body #applications-and-dashboards > div > div > div.col-12 > div > div.media-bod
 
 // Match apps section button backgrounds to publication buttons (override transparent rule from icon hover block)
 // Light mode: use white for contrast against the greyish section background
-#applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links > a,
-#applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links > button {
+#software > div > div > div.col-12 > div > div.media-body > div.btn-links > a,
+#software > div > div > div.col-12 > div > div.media-body > div.btn-links > button {
   background-color: white !important;
   border-color: var(--border-color) !important;
   color: var(--text-hover) !important;
 }
 
 // Dark mode: revert to the standard dark button background
-body.dark #applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links > a,
-body.dark #applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links > button {
+body.dark #software > div > div > div.col-12 > div > div.media-body > div.btn-links > a,
+body.dark #software > div > div > div.col-12 > div > div.media-body > div.btn-links > button {
   background-color: var(--bg-button) !important;
 }
 
-#applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links > a:visited {
+#software > div > div > div.col-12 > div > div.media-body > div.btn-links > a:visited {
   background-color: var(--bg-button-secondary) !important;
   border-color: var(--text-visited) !important;
   color: var(--text-visited) !important;
 }
 
-#applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links > a:hover,
-#applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.btn-links > button:hover {
+#software > div > div > div.col-12 > div > div.media-body > div.btn-links > a:hover,
+#software > div > div > div.col-12 > div > div.media-body > div.btn-links > button:hover {
   background-color: var(--bg-button-hover) !important;
   color: var(--text-hover) !important;
 }
@@ -4509,7 +4509,7 @@ body.dark #applications-and-dashboards > div > div > div.col-12 > div > div.medi
 // button. Unlike the other two sections, an expanded abstract here keeps a
 // POSITIVE 0.5rem bottom margin (see the rule below), and this link is
 // display:block, so the two margins collapse to the larger of the pair: 0.5rem
-// renders as a 0.5rem gap, the same gap as #blog and #applications-and-dashboards.
+// renders as a 0.5rem gap, the same gap as #blog and #software.
 #publication > div > div > div.col-12 > div > div.media-body.is-expanded > a {
   margin-top: 0.5rem !important;
   margin-bottom: 0rem !important;
@@ -4573,7 +4573,7 @@ body.dark #applications-and-dashboards > div > div > div.col-12 > div > div.medi
 }
 
 @media (max-width: 991px) {
-  :is(#publication, #applications-and-dashboards, #blog) .btn-links {
+  :is(#publication, #software, #blog) .btn-links {
     margin-top: -4%;
   }
 }
@@ -4616,17 +4616,17 @@ article #top > div.pub > div.article-container.pt-3 > div.btn-links.mb-3 {
 #bio > div > div > div.col-12.col-lg-8 > p,
 #bio > div > div > div.col-12.col-lg-8 > div.row > div > ul > li > div > p,
 div > div > div > table > tbody > tr > td,
-:is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style,
-:is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body > div.stream-meta.article-metadata > div,
-:is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body > div.stream-meta.article-metadata > div > span,
-:is(#publication, #applications-and-dashboards, #blog) .stream-meta.article-metadata,
-:is(#publication, #applications-and-dashboards, #blog) .stream-meta.article-metadata * {
+:is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style,
+:is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body > div.stream-meta.article-metadata > div,
+:is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body > div.stream-meta.article-metadata > div > span,
+:is(#publication, #software, #blog) .stream-meta.article-metadata,
+:is(#publication, #software, #blog) .stream-meta.article-metadata * {
   font-size: #{"clamp(15px, 0.85vw + 0.2rem, 15.5px)"} !important;
 }
 
 // Collapsible abstracts on home page - collapsed by default, expandable on click
 // Applied to publication, applications-and-dashboards, and blog sections
-:is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style {
+:is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style {
   max-height: 3.6em !important; // Show ~2-3 lines initially
   overflow: hidden !important;
   position: relative !important;
@@ -4680,37 +4680,37 @@ div > div > div > table > tbody > tr > td,
 }
 
 // Dark theme: invert Expand button colours
-body.dark :is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style::before {
+body.dark :is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style::before {
   background-color: #ddd;
   color: #333;
   border: 1px solid #ccc;
   opacity: 0.2;
 }
 
-body.dark :is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style:hover::before {
+body.dark :is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style:hover::before {
   background-color: #ccc;
   color: #222;
   opacity: 1;
 }
 
 // Specific gradient for applications-and-dashboards section (even section with different background)
-#applications-and-dashboards > div > div > div.col-12 > div > div.media-body > div.article-style::after {
+#software > div > div > div.col-12 > div > div.media-body > div.article-style::after {
   background: linear-gradient(to bottom, transparent 0%, rgba(247, 250, 252, 0.7) 40%, rgba(247, 250, 252, 0.95) 70%, rgba(247, 250, 252, 1) 100%);
 }
 
 // Remove fade gradient and button when expanded
-:is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body.is-expanded > div.article-style::after,
-:is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body.is-expanded > div.article-style::before {
+:is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body.is-expanded > div.article-style::after,
+:is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body.is-expanded > div.article-style::before {
   display: none;
 }
 
 // Dark theme fade gradient - more visible with stronger opacity gradient
-body.dark :is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style::after {
+body.dark :is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style::after {
   background: linear-gradient(to bottom, transparent 0%, rgba(31, 41, 55, 0.7) 40%, rgba(31, 41, 55, 0.95) 70%, rgba(31, 41, 55, 1) 100%);
 }
 
 // When expanded, show full content and remove padding
-:is(#publication, #applications-and-dashboards, #blog) > div > div > div.col-12 > div > div.media-body.is-expanded > div.article-style {
+:is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body.is-expanded > div.article-style {
   max-height: none !important;
   padding-bottom: 0;
   cursor: default !important;
@@ -4873,7 +4873,7 @@ body.dark .document-viewer-toolbar {
 }
 
 // Reduce margin under article-metadata in web applications section
-#applications-and-dashboards .article-metadata > div {
+#software .article-metadata > div {
   margin-bottom: -0.3rem !important;
 }
 // Blog: don't pull the inner div up — the negative margin shrinks the metadata
@@ -4914,7 +4914,7 @@ body.dark .document-viewer-toolbar {
 // clips the bottom of the year because the box (~24px) is shorter than the line
 // (~25.6px). The categories line is display:none, so making overflow visible
 // simply un-clips the year — no second line appears. Scoped to #blog so the
-// #publication / #applications-and-dashboards / single-post metadata keep their
+// #publication / #software / single-post metadata keep their
 // original overflow behaviour.
 #blog .stream-meta.article-metadata,
 #blog .stream-meta.article-metadata > div.article-metadata {
@@ -4955,9 +4955,9 @@ body.dark .document-viewer-toolbar {
     font-size: 0.8rem !important;
   }
   
-  #applications-and-dashboards .stream-meta.article-metadata,
-  #applications-and-dashboards .stream-meta.article-metadata *,
-  #applications-and-dashboards .stream-meta.article-metadata span {
+  #software .stream-meta.article-metadata,
+  #software .stream-meta.article-metadata *,
+  #software .stream-meta.article-metadata span {
     font-size: 0.8rem !important;
   }
   
@@ -5014,15 +5014,15 @@ body.dark .document-viewer-toolbar {
 #publication div.media-body > h3 > a,
 #publication div.media-body > h3 > a:link,
 #publication div.media-body > h3 > a:visited,
-#applications-and-dashboards h3 a,
-#applications-and-dashboards h3 a:link,
-#applications-and-dashboards h3 a:visited,
-#applications-and-dashboards .media-body h3 a,
-#applications-and-dashboards .media-body h3 a:link,
-#applications-and-dashboards .media-body h3 a:visited,
-#applications-and-dashboards div.media-body > h3 > a,
-#applications-and-dashboards div.media-body > h3 > a:link,
-#applications-and-dashboards div.media-body > h3 > a:visited,
+#software h3 a,
+#software h3 a:link,
+#software h3 a:visited,
+#software .media-body h3 a,
+#software .media-body h3 a:link,
+#software .media-body h3 a:visited,
+#software div.media-body > h3 > a,
+#software div.media-body > h3 > a:link,
+#software div.media-body > h3 > a:visited,
 .home-section h3 a,
 .home-section h3 a:link,
 .home-section h3 a:visited,
@@ -5048,12 +5048,12 @@ body.dark .document-viewer-toolbar {
 #publication .media-body h3 a:active,
 #publication div.media-body > h3 > a:hover,
 #publication div.media-body > h3 > a:active,
-#applications-and-dashboards h3 a:hover,
-#applications-and-dashboards h3 a:active,
-#applications-and-dashboards .media-body h3 a:hover,
-#applications-and-dashboards .media-body h3 a:active,
-#applications-and-dashboards div.media-body > h3 > a:hover,
-#applications-and-dashboards div.media-body > h3 > a:active,
+#software h3 a:hover,
+#software h3 a:active,
+#software .media-body h3 a:hover,
+#software .media-body h3 a:active,
+#software div.media-body > h3 > a:hover,
+#software div.media-body > h3 > a:active,
 .home-section h3 a:hover,
 .home-section h3 a:active,
 .home-section .media-body h3 a:hover,
@@ -5068,7 +5068,7 @@ body.dark .document-viewer-toolbar {
 /* Increase font size for home page h3 headings with links */
 #blog div.media-body > h3 > a,
 #publication div.media-body > h3 > a,
-#applications-and-dashboards div.media-body > h3 > a,
+#software div.media-body > h3 > a,
 .home-section div.media-body > h3 > a {
   font-size: 1.3rem !important;
   line-height: 1.5 !important;
@@ -5081,9 +5081,9 @@ body.dark #blog div.media-body > h3 > a:visited,
 body.dark #publication div.media-body > h3 > a,
 body.dark #publication div.media-body > h3 > a:link,
 body.dark #publication div.media-body > h3 > a:visited,
-body.dark #applications-and-dashboards div.media-body > h3 > a,
-body.dark #applications-and-dashboards div.media-body > h3 > a:link,
-body.dark #applications-and-dashboards div.media-body > h3 > a:visited,
+body.dark #software div.media-body > h3 > a,
+body.dark #software div.media-body > h3 > a:link,
+body.dark #software div.media-body > h3 > a:visited,
 body.dark .home-section div.media-body > h3 > a,
 body.dark .home-section div.media-body > h3 > a:link,
 body.dark .home-section div.media-body > h3 > a:visited {
@@ -5099,8 +5099,8 @@ body.dark #blog div.media-body > h3 > a:hover,
 body.dark #blog div.media-body > h3 > a:active,
 body.dark #publication div.media-body > h3 > a:hover,
 body.dark #publication div.media-body > h3 > a:active,
-body.dark #applications-and-dashboards div.media-body > h3 > a:hover,
-body.dark #applications-and-dashboards div.media-body > h3 > a:active,
+body.dark #software div.media-body > h3 > a:hover,
+body.dark #software div.media-body > h3 > a:active,
 body.dark .home-section div.media-body > h3 > a:hover,
 body.dark .home-section div.media-body > h3 > a:active {
   color: #5fe0d0 !important;
@@ -5664,7 +5664,7 @@ div.col-12.col-lg-4.section-heading > h1 > span > a > i {
   background-image: none;
 }
 
-a > i:hover, #profile > div > div > span > span > a:hover, #navbar-main > div > button > span > i:hover, :is(#navbar-main, #publication, #applications-and-dashboards, #blog) :is(a:has(i):not(.view-complete-content-btn), i:hover, button:hover:not(.view-complete-content-btn)), #navbar-main > div > button:hover, #navbar-main > div > button > span:hover {
+a > i:hover, #profile > div > div > span > span > a:hover, #navbar-main > div > button > span > i:hover, :is(#navbar-main, #publication, #software, #blog) :is(a:has(i):not(.view-complete-content-btn), i:hover, button:hover:not(.view-complete-content-btn)), #navbar-main > div > button:hover, #navbar-main > div > button > span:hover {
   color: var(--accent-primary);
   background-color: transparent !important;
   background-image: none !important;

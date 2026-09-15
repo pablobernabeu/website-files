@@ -16,6 +16,7 @@ tags:
   - psycholinguistics
 subtitle: ''
 summary: 'Figures often change visual language as an analysis moves from exploration to reporting. This post uses depictr to examine a lexical-decision experiment, plot its mixed-model estimates, audit a figure and correct the accessibility problems that the audit finds.'
+abstract: 'This tutorial follows one lexical-decision analysis from an observed reaction-time distribution to mixed-model estimates and an accessibility-audited final figure. It demonstrates how depictr keeps visual conventions stable across exploratory and confirmatory stages while leaving the underlying ggplot2 objects editable.'
 authors: []
 lastmod: ''
 featured: no
@@ -35,11 +36,17 @@ options(width = 92)
 xaringanExtra::use_clipboard()
 ```
 
+## Introduction
+
 The figures in an analysis are rarely made all at once. An exploratory density plot may survive into a talk, a model adds a forest plot and a reviewer asks for a diagnostic or a Bayesian comparison. When each stage uses different defaults, one analysis acquires several palettes, type sizes and conventions. Accessibility is then checked, if at all, after the visual decisions have already spread through the project.
 
 I wrote [depictr](https://github.com/pablobernabeu/depictr) to give those stages a shared visual language. It provides plotting functions for common statistical objects, but each function returns an ordinary ggplot2 object that can still be changed. It also measures the finished figure against explicit checks for contrast, text size and reliance on colour. The same conventions are available in the [R package](https://pablobernabeu.github.io/depictr/) and the [Python package](https://pablobernabeu.github.io/depictr-py/).
 
 The example data come from a lexical-decision experiment bundled with the package. Participants responded to words preceded by semantically related or unrelated primes, presented visually or auditorily.
+
+## Development
+
+The analysis below develops one visual argument in stages: first describe the observations, then estimate the planned effects and finally audit the exact figure that will be shared.
 
 ```{r}
 library(depictr)
@@ -53,7 +60,7 @@ c(participants = length(unique(lexical_decision$participant)),
   trials = nrow(lexical_decision))
 ```
 
-## Begin with the observed distribution
+### Begin with the observed distribution
 
 Reaction times are skewed, so a mean and standard deviation do not show the whole pattern. An empirical cumulative distribution avoids a choice of bins and makes the quartiles directly visible.
 
@@ -71,7 +78,7 @@ ecdf_plot(
 
 The separation is not confined to a handful of slow responses. Related trials remain shifted towards shorter reaction times through much of the distribution, which gives the later model result a visible empirical context.
 
-## Keep the same language for the model
+### Keep the same language for the model
 
 The model includes priming condition, presentation modality and word frequency, with crossed random intercepts for participants and items. `coefficient_plot()` reads the fitted object directly and places the fixed effects on a common standardised scale.
 
@@ -104,7 +111,7 @@ coefficient_plot(
 
 This continuity keeps the colour, typography and interval conventions stable as the analysis moves from observations to estimates, so the reader can concentrate on the result.
 
-## Audit the figure that will be published
+### Audit the figure that will be published
 
 A colourblind-safe palette does not guarantee an accessible figure. Contrast against the background and the use of a second visual channel depend on the particular plot. The package therefore audits a built plot, not only its palette.
 
@@ -141,13 +148,17 @@ final_figure
 
 The palette starts from the colours proposed by Okabe and Ito (2008), and colour-vision simulations use the model of Machado et al. (2009). The audit still reports measurements beside thresholds because a journal, display size or printing process may require a different decision.
 
-## Limits
+## Discussion
+
+The example makes a modest but useful claim: accessibility is part of figure development, not a cosmetic check added at the end. A stable visual grammar helps readers compare plots, while the audit identifies concrete properties to repair. Neither step replaces decisions about the model, estimand, uncertainty or the audience. The best result is therefore a reproducible hand-off from analysis code to an editable, interpretable and checked figure.
+
+### Limits
 
 depictr draws and checks figures. It does not choose the model, contrasts or prior. A polished plot can faithfully present a poor analysis. The checks also cover measurable properties, not every barrier a reader may face. Alt text, a meaningful caption and a sensible figure order remain editorial work.
 
 The [R reference](https://pablobernabeu.github.io/depictr/reference/) and [Python reference](https://pablobernabeu.github.io/depictr-py/) cover diagnostics, posterior plots, power curves, model comparisons and multi-panel composition. Their place is in the reference material. The useful habit for an analysis is smaller: use one set of conventions throughout, then audit the exact figure that will leave the project.
 
-### References
+## References
 
 Machado, G. M., Oliveira, M. M., & Fernandes, L. A. F. (2009). A physiologically-based model for simulation of color vision deficiency. *IEEE Transactions on Visualization and Computer Graphics*, *15*(6), 1291–1298. https://doi.org/10.1109/TVCG.2009.113
 

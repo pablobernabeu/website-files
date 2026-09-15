@@ -22,6 +22,9 @@
 {{ else if eq $item.Type "applications-and-dashboards" }}
 {{ $show_authors_only = false }}
 {{ $show_buttons = true }}
+{{ else if eq $item.Type "software" }}
+{{ $show_authors_only = false }}
+{{ $show_buttons = true }}
 {{ end }}
 {{ $summary := "" }}
 {{ if $item.Params.summary }}

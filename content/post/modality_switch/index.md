@@ -51,7 +51,7 @@ Research has extensively investigated whether conceptual processing is modality-
 
 - [Early discussion on ResearchGate](https://www.researchgate.net/post/Conceptual_modality_switch_effect_measured_at_first_word)
 - [Data and code](https://osf.io/97unm/)
-- [Data dashboard](/applications-and-dashboards/bernabeu-etal-2017-modalityswitch/)
+- [Data dashboard](/software/bernabeu-etal-2017-modalityswitch/)
 
 
 In the Conceptual Modality Switch (CMS) paradigm, participants perform a property verification task, deciding whether certain property words can reasonably describe concept words. Covertly, the conceptual modality of consecutive trials is manipulated in order to produce specific switches in conceptual modality. For instance, after the trial *Soundless Answer*, which is primarily auditory, the following trial may match in modality—*Loud Welcome*—or mismatch—*Fine Selection* (visual).

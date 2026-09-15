@@ -1,0 +1,28 @@
+{{/* Software widget: show every application, dashboard and package in /software/. */}}
+{{ $st := .page }}
+{{ $items := where site.RegularPages "Section" "software" }}
+{{ $items = sort $items "Date" "desc" }}
+
+<span id="applications-and-dashboards" class="software-legacy-anchor" aria-hidden="true"></span>
+
+<div class="row">
+  <div class="col-12 section-heading">
+    {{ with $st.Title | markdownify | emojify }}<h2>{{ . }}</h2>{{ end }}
+    {{ with $st.Params.subTitle | markdownify | emojify }}<p>{{ . }}</p>{{ end }}
+  </div>
+  <div class="col-12">
+    {{ with $st.Content }}{{ . }}{{ end }}
+    {{ range $items }}
+      {{ if eq $st.Params.design.view 1 }}
+        {{ partial "li_list" . }}
+      {{ else if eq $st.Params.design.view 3 }}
+        {{ partial "li_card" . }}
+      {{ else }}
+        {{ partial "li_compact" . }}
+      {{ end }}
+    {{ end }}
+    <div class="see-all">
+      <a href="{{ "/software/" | relURL }}">Browse all software <i class="fas fa-angle-right"></i></a>
+    </div>
+  </div>
+</div>

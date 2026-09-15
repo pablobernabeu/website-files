@@ -1,0 +1,18 @@
+{{- define "main" -}}
+
+<div class="software-page">
+  {{ partial "page_header.html" . }}
+
+  <div class="article-container">
+    {{ with .Params.abstract }}
+    <h2>{{ i18n "abstract" }}</h2>
+    <p class="pub-abstract">{{ . | markdownify }}</p>
+    {{ end }}
+
+    <div class="article-style">{{ .Content }}</div>
+
+    {{ partial "page_footer" . }}
+  </div>
+</div>
+
+{{- end -}}

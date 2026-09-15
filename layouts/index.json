@@ -116,8 +116,8 @@
       {{- $formattedType = "Post" -}}
     {{- else if eq .Section "publication" -}}
       {{- $formattedType = "Publication" -}}
-    {{- else if eq .Section "applications-and-dashboards" -}}
-      {{- $formattedType = "Applications and dashboards" -}}
+    {{- else if eq .Section "software" -}}
+      {{- $formattedType = "Software" -}}
     {{- else if eq .Section "presentation" -}}
       {{- $formattedType = "Presentation" -}}
     {{- end -}}

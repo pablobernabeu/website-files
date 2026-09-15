@@ -1,0 +1,22 @@
+{{- define "main" -}}
+
+<article class="article">
+  {{ partial "page_header" . }}
+
+  <div class="article-container">
+    {{ with .Params.abstract }}
+    <section class="article-abstract mb-4" aria-labelledby="article-abstract-heading">
+      <h2 id="article-abstract-heading">{{ i18n "abstract" }}</h2>
+      <p>{{ . | markdownify }}</p>
+    </section>
+    {{ end }}
+
+    <div class="article-style">
+      {{ .Content }}
+    </div>
+
+    {{ partial "page_footer" . }}
+  </div>
+</article>
+
+{{- end -}}

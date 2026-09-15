@@ -1842,7 +1842,7 @@
   // Collapsible abstracts on home page - click to expand
   $(document).on(
     "click",
-    "#publication .media-body .article-style, #applications-and-dashboards .media-body .article-style, #blog .media-body .article-style",
+    "#publication .media-body .article-style, #software .media-body .article-style, #blog .media-body .article-style",
     function (e) {
       const $abstract = $(this);
       const $mediaBody = $abstract.closest(".media-body");

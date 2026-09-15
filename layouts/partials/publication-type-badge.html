@@ -1,5 +1,5 @@
 {{ $page := . }}
-{{ if eq $page.Type "publication" }}
+{{ if or (eq $page.Type "publication") (and (eq $page.Type "software") $page.Params.publication_types) }}
 <span class="publication-badges">
 {{ $pub_types := slice "pub_uncat" "pub_conf" "pub_journal" "pub_preprint" "pub_report" "pub_book" "pub_book_section" "pub_thesis" "pub_patent" "pub_software" }}
 {{ $pub_icons := slice "fa-file" "fa-users" "fa-file-text" "fa-briefcase" "fa-briefcase" "fa-book" "fa-book" "fa-graduation-cap" "fa-lightbulb-o" "fa-code" }}
