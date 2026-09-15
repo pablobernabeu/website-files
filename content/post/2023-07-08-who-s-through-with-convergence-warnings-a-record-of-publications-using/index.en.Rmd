@@ -14,7 +14,8 @@ tags:
   - research methods
   - bibliometrics
 subtitle: ''
-summary: 'A convergence warning from lme4 is a symptom, and refitting the model with every available optimiser through allFit is the usual way to find out whether it matters. Reviewers sometimes ask for a precedent. This post keeps a record of published studies that used allFit, gathered from Scopus, Europe PMC and OpenAlex by a workflow that can be rerun, and explains what each source can and cannot find.'
+summary: 'A convergence warning from lme4 is a diagnostic, not a verdict. One recommended check is to refit with allFit and compare practically relevant estimates across optimisers. This post records candidate publications found through Scopus, Europe PMC and OpenAlex in a reproducible search, and explains why the result is a screening set rather than a complete precedent list.'
+abstract: 'This reproducible bibliographic audit searches Scopus, Europe PMC and OpenAlex for publications whose indexed records or full text mention lme4::allFit. It distinguishes direct full-text matches from a broad Scopus proxy, deduplicates records by DOI and presents the result as a lower-bound screening set rather than evidence that every listed study used allFit to resolve a convergence warning.'
 authors: []
 lastmod: ''
 featured: no
@@ -33,11 +34,13 @@ options(width = 95)
 xaringanExtra::use_clipboard()
 ```
 
-Mixed-effects models with the random-effects structure that the design justifies (Barr et al., 2013) often end their fit with a warning from lme4 that the optimiser may not have converged. The warning reports that the gradient at the solution exceeded a tolerance, which does not by itself mean that the fit is wrong. The lme4 check produces false positives, as the help page on convergence explains, especially with large data sets and many random effects. A model that has struggled to find enough information to estimate every variance and correlation has other tell-tales, such as correlations of exactly 1 or variances of exactly 0 (Bates et al., 2015; Matuschek et al., 2017), and the usual advice is to look at those before simplifying the model (Brauer & Curtin, 2018; Singmann & Kellen, 2019).
+## Introduction
 
-The most direct check is to refit the model with every optimiser that lme4 can call, through `allFit()`, and to compare the fixed-effect estimates across the fits. If the optimisers agree to the precision that matters for the conclusions, the warning can be reported and set aside, whereas a disagreement between them points to a problem that no change of optimiser will solve. I wrote about the practice and published a [plotting function for the comparison](/2023/a-new-function-to-plot-convergence-diagnostics-from-lme4-allfit/) some years ago, and since then I have been asked several times, by co-authors and by reviewers, whether other published studies have proceeded in the same way. This post keeps a list of the ones that can be found by searching, so that the next person asked can point to it.
+Mixed-effects models with the random-effects structure that the design justifies (Barr et al., 2013) can end their fit with an lme4 warning that an optimiser may not have converged. The warning reports that a numerical check exceeded a tolerance; it does not, by itself, establish that the fitted model is wrong. The lme4 documentation notes that approximate derivative calculations can yield false positives, particularly for large or complex fits, but warnings still warrant investigation. A model with too little information to estimate every variance and correlation may also show boundary estimates, such as a variance near zero or a correlation near one (Bates et al., 2015; Matuschek et al., 2017).
 
-## Where a function name can be found
+One diagnostic recommended by lme4 is to refit the model with the available optimisers through `allFit()` and compare estimates that matter for the intended conclusions. Practical agreement is consistent with a false-positive warning, but it does not prove that the model is otherwise appropriate; disagreement calls for closer inspection of the data, specification and optimisation settings. I wrote about the practice and published a [plotting function for the comparison](/2023/a-new-function-to-plot-convergence-diagnostics-from-lme4-allfit/) some years ago. This post keeps a reproducible record of candidate publications that can be found by searching, so that readers can inspect the evidence rather than treat the list as a definitive catalogue.
+
+## Development: finding a function name
 
 A function name is a poor search term for bibliographic databases, because it appears in the methods section of an article and almost never in its title, abstract or keywords. Three sources with different coverage are therefore searched, by a script in the [website's repository](https://github.com/pablobernabeu/website-files/blob/master/scripts/update_post_searches.R) that a GitHub Actions workflow runs on request.
 
@@ -60,7 +63,7 @@ cat(readLines('searches/europepmc_query.txt'), sep = '\n')
 cat(readLines('searches/openalex_filter.txt'), sep = '\n')
 ```
 
-## The list
+## Results: the search record
 
 The workflow commits its results to this post's directory, and the tables below are built from those files, so the record can be refreshed without editing the post.
 
@@ -166,15 +169,15 @@ records |>
   knitr::kable()
 ```
 
-## What the list misses
+## Discussion: what the list misses
 
 The count is a lower bound. Europe PMC holds full text mostly for open-access articles, and mostly in journals within its scope, so a study behind a paywall in a linguistics or psychology journal is usually invisible to it unless a preprint or an accepted manuscript was deposited. OpenAlex holds text for a subset of the literature that it does not fully document. Scopus cannot see the methods section at all, and a full-text match can be an article that uses the function in a context other than a convergence check, or that mentions it in a footnote. A study that compared optimisers with its own loop, or with the `optimx` package directly, is not found by any of the three, and neither is a study that reported the comparison only in supplementary material. Records published before the function existed have been dropped, but the table has not otherwise been screened by hand, so it lists the publications whose full text matches the name rather than the publications that are known to have used it. The list is therefore a starting point for the reader who needs a precedent, and it can be refreshed by dispatching the workflow again.
 
-### References
+## References
 
 Barr, D. J., Levy, R., Scheepers, C., & Tily, H. J. (2013). Random effects structure for confirmatory hypothesis testing: Keep it maximal. *Journal of Memory and Language*, *68*(3), 255–278. https://doi.org/10.1016/j.jml.2012.11.001
 
-Bates, D., Kliegl, R., Vasishth, S., & Baayen, H. (2015). Parsimonious mixed models. *arXiv*. https://doi.org/10.48550/arXiv.1506.04967
+Bates, D., Kliegl, R., Vasishth, S., & Baayen, H. (2015). *Parsimonious mixed models* [Preprint]. arXiv. https://doi.org/10.48550/arXiv.1506.04967
 
 Bates, D., Mächler, M., Bolker, B., & Walker, S. (2015). Fitting linear mixed-effects models using lme4. *Journal of Statistical Software*, *67*(1), 1–48. https://doi.org/10.18637/jss.v067.i01
 

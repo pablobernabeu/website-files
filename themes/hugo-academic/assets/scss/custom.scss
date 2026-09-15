@@ -4626,7 +4626,7 @@ div > div > div > table > tbody > tr > td,
 
 // Collapsible abstracts on home page - collapsed by default, expandable on click
 // Applied to publication, applications-and-dashboards, and blog sections
-:is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style {
+:is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style.is-collapsible {
   max-height: 3.6em !important; // Show ~2-3 lines initially
   overflow: hidden !important;
   position: relative !important;
@@ -4680,21 +4680,21 @@ div > div > div > table > tbody > tr > td,
 }
 
 // Dark theme: invert Expand button colours
-body.dark :is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style::before {
+body.dark :is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style.is-collapsible::before {
   background-color: #ddd;
   color: #333;
   border: 1px solid #ccc;
   opacity: 0.2;
 }
 
-body.dark :is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style:hover::before {
+body.dark :is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style.is-collapsible:hover::before {
   background-color: #ccc;
   color: #222;
   opacity: 1;
 }
 
 // Specific gradient for applications-and-dashboards section (even section with different background)
-#software > div > div > div.col-12 > div > div.media-body > div.article-style::after {
+#software > div > div > div.col-12 > div > div.media-body > div.article-style.is-collapsible::after {
   background: linear-gradient(to bottom, transparent 0%, rgba(247, 250, 252, 0.7) 40%, rgba(247, 250, 252, 0.95) 70%, rgba(247, 250, 252, 1) 100%);
 }
 
@@ -4705,7 +4705,7 @@ body.dark :is(#publication, #software, #blog) > div > div > div.col-12 > div > d
 }
 
 // Dark theme fade gradient - more visible with stronger opacity gradient
-body.dark :is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style::after {
+body.dark :is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style.is-collapsible::after {
   background: linear-gradient(to bottom, transparent 0%, rgba(31, 41, 55, 0.7) 40%, rgba(31, 41, 55, 0.95) 70%, rgba(31, 41, 55, 1) 100%);
 }
 
@@ -7818,4 +7818,73 @@ body.dark #navbar-main .dropdown-item:focus-visible {
 // reaches the content. Taken out of flow so it is not a flex item of the navbar.
 .skip-target {
   position: absolute;
+}
+
+// Article outputs should read as results, rather than as a narrow, scrolling
+// line of source code. Source chunks keep horizontal scrolling; unclassified
+// knitr outputs wrap at the article width and retain their line breaks.
+.article-style pre {
+  position: relative;
+  margin: 1.25rem 0 2.25rem;
+  padding: 0.9rem 1rem;
+  line-height: 1.55;
+  border: 1px solid rgba(71, 85, 105, 0.28);
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+}
+
+.article-style pre > code {
+  display: block;
+  padding: 0;
+  background: transparent !important;
+}
+
+.article-style pre:not([class]) {
+  overflow-x: hidden;
+}
+
+.article-style pre:not([class]) > code {
+  white-space: pre-wrap !important;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.article-style pre[class],
+.article-style pre:has(> code[class]) {
+  overflow-x: auto;
+}
+
+body.dark .article-style pre {
+  border-color: rgba(148, 163, 184, 0.34);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
+}
+
+.article-style pre .xaringanextra-clipboard-button {
+  z-index: 1;
+  padding: 0.35rem 0.55rem !important;
+  border: 1px solid currentColor !important;
+  border-radius: 0.25rem !important;
+  background-color: rgba(15, 23, 42, 0.1) !important;
+  color: inherit !important;
+}
+
+body.dark .article-style pre .xaringanextra-clipboard-button {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+// Tables are data displays, so leave a clear visual boundary before the next
+// paragraph or figure. Reset nested syntax-highlight tables and responsive
+// wrappers so the spacing is applied only once.
+.article-style table {
+  margin-top: 1.25rem;
+  margin-bottom: 2.25rem;
+}
+
+.article-style .table-responsive {
+  margin: 1.25rem 0 2.25rem;
+}
+
+.article-style .table-responsive > table,
+.article-style pre table {
+  margin: 0;
 }
