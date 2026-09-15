@@ -16,6 +16,7 @@ tags:
   - psycholinguistics
 subtitle: ''
 summary: 'Figures often change visual language as an analysis moves from exploration to reporting. This post uses depictr to examine a lexical-decision experiment, plot its mixed-model estimates, audit a figure and correct the accessibility problems that the audit finds.'
+abstract: 'This tutorial follows one lexical-decision analysis from an observed reaction-time distribution to mixed-model estimates and an accessibility-audited final figure. It demonstrates how depictr keeps visual conventions stable across exploratory and confirmatory stages while leaving the underlying ggplot2 objects editable.'
 authors: []
 lastmod: ''
 featured: no
@@ -33,9 +34,12 @@ projects: []
 <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
 
 
+<h2>Introduction</h2>
 <p>The figures in an analysis are rarely made all at once. An exploratory density plot may survive into a talk, a model adds a forest plot and a reviewer asks for a diagnostic or a Bayesian comparison. When each stage uses different defaults, one analysis acquires several palettes, type sizes and conventions. Accessibility is then checked, if at all, after the visual decisions have already spread through the project.</p>
 <p>I wrote <a href="https://github.com/pablobernabeu/depictr">depictr</a> to give those stages a shared visual language. It provides plotting functions for common statistical objects, but each function returns an ordinary ggplot2 object that can still be changed. It also measures the finished figure against explicit checks for contrast, text size and reliance on colour. The same conventions are available in the <a href="https://pablobernabeu.github.io/depictr/">R package</a> and the <a href="https://pablobernabeu.github.io/depictr-py/">Python package</a>.</p>
 <p>The example data come from a lexical-decision experiment bundled with the package. Participants responded to words preceded by semantically related or unrelated primes, presented visually or auditorily.</p>
+<h2>Development</h2>
+<p>The analysis below develops one visual argument in stages: first describe the observations, then estimate the planned effects and finally audit the exact figure that will be shared.</p>
 <pre class="r"><code>library(depictr)
 library(ggplot2)
 packageVersion(&#39;depictr&#39;)</code></pre>
@@ -47,8 +51,8 @@ c(participants = length(unique(lexical_decision$participant)),
   trials = nrow(lexical_decision))</code></pre>
 <pre><code>#&gt; participants        items       trials 
 #&gt;           24           40          960</code></pre>
-<div id="begin-with-the-observed-distribution" class="section level2">
-<h2>Begin with the observed distribution</h2>
+<div id="begin-with-the-observed-distribution" class="section level3">
+<h3>Begin with the observed distribution</h3>
 <p>Reaction times are skewed, so a mean and standard deviation do not show the whole pattern. An empirical cumulative distribution avoids a choice of bins and makes the quartiles directly visible.</p>
 <pre class="r"><code>ecdf_plot(
   lexical_decision,
@@ -62,8 +66,8 @@ c(participants = length(unique(lexical_decision$participant)),
 <p><img src="{{< blogdown/postref >}}index.en_files/figure-html/distribution-1.png" alt="Empirical cumulative distributions of lexical-decision reaction times for related and unrelated primes, with horizontal and vertical guides at the quartiles" width="720" style="display: block; margin: auto;" /></p>
 <p>The separation is not confined to a handful of slow responses. Related trials remain shifted towards shorter reaction times through much of the distribution, which gives the later model result a visible empirical context.</p>
 </div>
-<div id="keep-the-same-language-for-the-model" class="section level2">
-<h2>Keep the same language for the model</h2>
+<div id="keep-the-same-language-for-the-model" class="section level3">
+<h3>Keep the same language for the model</h3>
 <p>The model includes priming condition, presentation modality and word frequency, with crossed random intercepts for participants and items. <code>coefficient_plot()</code> reads the fitted object directly and places the fixed effects on a common standardised scale.</p>
 <pre class="r"><code>fit &lt;- lmerTest::lmer(
   RT ~ condition + modality + word_frequency +
@@ -94,8 +98,8 @@ tidy_estimates(fit)</code></pre>
 <p><img src="{{< blogdown/postref >}}index.en_files/figure-html/model-estimates-1.png" alt="Forest plot of the standardised fixed effects for unrelated priming, auditory presentation and word frequency, with 95 per cent confidence intervals" width="720" style="display: block; margin: auto;" /></p>
 <p>This continuity keeps the colour, typography and interval conventions stable as the analysis moves from observations to estimates, so the reader can concentrate on the result.</p>
 </div>
-<div id="audit-the-figure-that-will-be-published" class="section level2">
-<h2>Audit the figure that will be published</h2>
+<div id="audit-the-figure-that-will-be-published" class="section level3">
+<h3>Audit the figure that will be published</h3>
 <p>A colourblind-safe palette does not guarantee an accessible figure. Contrast against the background and the use of a second visual channel depend on the particular plot. The package therefore audits a built plot, not only its palette.</p>
 <pre class="r"><code>first_draft &lt;- explore_distribution(
   lexical_decision,
@@ -154,12 +158,14 @@ check_figure(final_figure)[, c(&#39;check&#39;, &#39;measured&#39;, &#39;thresho
 <p><img src="{{< blogdown/postref >}}index.en_files/figure-html/audited-figure-1.png" alt="Corrected density curves of reaction times for related and unrelated primes, distinguished by both colour and line type" width="720" style="display: block; margin: auto;" /></p>
 <p>The palette starts from the colours proposed by Okabe and Ito (2008), and colour-vision simulations use the model of Machado et al. (2009). The audit still reports measurements beside thresholds because a journal, display size or printing process may require a different decision.</p>
 </div>
-<div id="limits" class="section level2">
-<h2>Limits</h2>
+<h2>Discussion</h2>
+<p>The example makes a modest but useful claim: accessibility is part of figure development, not a cosmetic check added at the end. A stable visual grammar helps readers compare plots, while the audit identifies concrete properties to repair. Neither step replaces decisions about the model, estimand, uncertainty or the audience. The best result is therefore a reproducible hand-off from analysis code to an editable, interpretable and checked figure.</p>
+<div id="limits" class="section level3">
+<h3>Limits</h3>
 <p>depictr draws and checks figures. It does not choose the model, contrasts or prior. A polished plot can faithfully present a poor analysis. The checks also cover measurable properties, not every barrier a reader may face. Alt text, a meaningful caption and a sensible figure order remain editorial work.</p>
 <p>The <a href="https://pablobernabeu.github.io/depictr/reference/">R reference</a> and <a href="https://pablobernabeu.github.io/depictr-py/">Python reference</a> cover diagnostics, posterior plots, power curves, model comparisons and multi-panel composition. Their place is in the reference material. The useful habit for an analysis is smaller: use one set of conventions throughout, then audit the exact figure that will leave the project.</p>
-<div id="references" class="section level3">
-<h3>References</h3>
+<div id="references" class="section level2">
+<h2>References</h2>
 <p>Machado, G. M., Oliveira, M. M., &amp; Fernandes, L. A. F. (2009). A physiologically-based model for simulation of color vision deficiency. <em>IEEE Transactions on Visualization and Computer Graphics</em>, <em>15</em>(6), 1291–1298. <a href="https://doi.org/10.1109/TVCG.2009.113" class="uri">https://doi.org/10.1109/TVCG.2009.113</a></p>
 <p>Okabe, M., &amp; Ito, K. (2008). <em>Color universal design (CUD): How to make figures and presentations that are friendly to colorblind people</em>. <a href="https://jfly.uni-koeln.de/color/" class="uri">https://jfly.uni-koeln.de/color/</a> (Original work published 2002)</p>
 </div>
