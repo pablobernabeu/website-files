@@ -1,0 +1,156 @@
+---
+title: 'scopusflow: A literature search you can rerun'
+author: ''
+date: '2026-09-01'
+slug: scopusflow-a-literature-search-you-can-rerun
+categories:
+  - bibliometrics
+  - research methods
+tags:
+  - s
+  - bibliometrics
+  - literature review
+  - reproducibility
+  - open science
+  - Python
+  - Scopus
+subtitle: ''
+summary: 'A literature-search export does not preserve the decisions that produced it. This post uses scopusflow to define a search in advance, resume it from checkpoints and generate a PRISMA-S search record from the resulting data.'
+authors: []
+lastmod: ''
+featured: no
+draft: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = TRUE,
+                      fig.align = 'center', fig.retina = 2, comment = '#>')
+options(width = 90, cli.num_colors = 1, cli.hyperlink = FALSE,
+        crayon.enabled = FALSE)
+xaringanExtra::use_clipboard()
+```
+
+A spreadsheet exported from Scopus contains papers, but it does not contain the search that found them. The exact query, retrieval date, paging choices and number of records returned by each part of the search often end up in notes or browser history. When the search has to be updated, it can be difficult to tell whether a changed result reflects the literature or the method.
+
+I wrote [scopusflow](https://pablobernabeu.github.io/scopusflow/) to keep those decisions with the records. A search begins as a plan, each completed part is cached and the final object can write its own search record. There are matching packages for [R](https://CRAN.R-project.org/package=scopusflow) and [Python](https://pypi.org/project/scopusflow), developed in the same [GitHub repository](https://github.com/pablobernabeu/scopusflow).
+
+This example uses a small corpus bundled with the R package. A stand-in server answers the same requests as the Scopus API, so the article can be rebuilt without an API key or a network request to Elsevier.
+
+```{r}
+library(scopusflow)
+packageVersion('scopusflow')
+```
+
+## Describe the search first
+
+The bundled example follows research on graphene supercapacitors. Query helpers add the field syntax, while `scopus_plan()` divides the work into yearly cells. The resulting object can be inspected and saved before any quota is spent.
+
+```{r}
+query <- scopus_query('graphene supercapacitor', .field = 'TITLE-ABS-KEY')
+plan <- scopus_plan(query, years = 2015:2024, partition = 'year')
+query
+plan
+```
+
+The plan already supports a draft methods description. Any details unavailable at this stage are marked as unrecorded. The report follows PRISMA-S, the reporting extension for literature searches (Rethlefsen et al., 2021).
+
+```{r}
+cat(format(scopus_search_report(plan), style = 'paragraph'))
+```
+
+## Resume from the last completed cell
+
+The bundled corpus now stands in for the result of that same plan. The cache is deliberately empty at the start of the example.
+
+```{r}
+source('stand_in.R')
+stand_in <- scopus_stand_in(example_records)
+options(scopusflow.api_key = 'offline-demo-key')
+
+cache <- file.path(tempdir(), 'scopusflow-blog-cache')
+unlink(cache, recursive = TRUE)
+
+httr2::with_mocked_responses(stand_in$handler, {
+  records <- scopus_fetch_plan(plan, cache_dir = cache, resume = TRUE)
+})
+c(records = nrow(records), requests = stand_in$state$requests)
+```
+
+Each year is written to its own checkpoint. Repeating the plan reloads those files and makes no further request.
+
+```{r}
+requests_before <- stand_in$state$requests
+httr2::with_mocked_responses(stand_in$handler, {
+  repeated <- scopus_fetch_plan(plan, cache_dir = cache, resume = TRUE)
+})
+c(records = nrow(repeated),
+  new_requests = stand_in$state$requests - requests_before)
+```
+
+The practical benefit is clearest after an interruption. Work already completed is retained, while the query, years, view and page size stored beside each checkpoint prevent an incompatible plan from silently reusing it.
+
+## Inspect the result
+
+The records retain their plan, retrieval time, package version and count for each cell. That provenance is enough to plot the development of the bundled literature and later distinguish a changed search from a changed method.
+
+```{r records-per-year, fig.width = 7.5, fig.height = 4.2, fig.alt = 'Line chart showing the number of graphene-supercapacitor records in the bundled corpus for each year from 2015 to 2024'}
+httr2::with_mocked_responses(stand_in$handler, {
+  trend <- scopus_trend('graphene supercapacitor', years = 2015:2024,
+                        field = 'TITLE-ABS-KEY')
+})
+plot_scopus_trend(trend) +
+  ggplot2::labs(
+    title = 'Records in the demonstration corpus',
+    caption = 'Offline OpenAlex-derived demonstration records, 2015-2024'
+  ) +
+  ggplot2::theme(
+    plot.title = ggplot2::element_text(size = 11, face = 'bold'),
+    axis.title = ggplot2::element_text(size = 10),
+    axis.text = ggplot2::element_text(size = 9),
+    plot.caption = ggplot2::element_text(size = 8.5, colour = 'grey35')
+  )
+```
+
+An update can be compared by DOI. In this illustration, the baseline ends in 2023 and the later harvest includes the 2024 records.
+
+```{r}
+baseline <- records[records$year <= 2023, ]
+changes <- scopus_diff_dois(old = baseline, new = records)
+changes
+```
+
+## Let the result write the record
+
+The search record is generated from the object that contains the publications. It reports what the software knows and identifies the PRISMA-S items that still require the review author's judgement, such as citation searching or peer review of the strategy. Because this run used a stand-in rather than Scopus, the compact summary below omits the database, platform and retrieval date that a live report would supply.
+
+```{r report-summary, echo = FALSE}
+report <- scopus_search_report(records)
+knitr::kable(data.frame(
+  Detail = c('Search expression', 'Years', 'Records in bundled corpus',
+             'Records with a DOI', 'PRISMA-S checklist items'),
+  Value = c(report$expression, report$years, report$n_records,
+            report$n_with_doi, nrow(report$prisma))
+), row.names = FALSE)
+```
+
+The same records can then leave R as a DOI list, BibTeX, RIS or a table for bibliometrix. Saving the native object preserves the attached provenance for a future update.
+
+## Limits
+
+The offline corpus demonstrates the workflow. Its results do not represent the contents of Scopus. A live search still depends on Elsevier's coverage, indexing and quota, and abstract retrieval uses a separate allowance. Scopus records also cannot be redistributed, which is why this article uses records obtained from OpenAlex and reshaped to the package's return format.
+
+The [R reference](https://pablobernabeu.github.io/scopusflow/reference/) and [Python reference](https://pablobernabeu.github.io/scopusflow-py/) cover cursor paging, de-duplication, topic comparisons and live authentication. For a review, I would keep the plan under version control, save the native result object and archive the generated search record with the screening data.
+
+```{r cleanup, include = FALSE}
+options(scopusflow.api_key = NULL)
+unlink(cache, recursive = TRUE)
+```
+
+### References
+
+Rethlefsen, M. L., Kirtley, S., Waffenschmidt, S., Ayala, A. P., Moher, D., Page, M. J., & Koffel, J. B. (2021). PRISMA-S: An extension to the PRISMA statement for reporting literature searches in systematic reviews. *Systematic Reviews*, *10*(1), Article 39. https://doi.org/10.1186/s13643-020-01542-z

@@ -1659,6 +1659,17 @@
     let currentIndex = 0;
     let modalImages = [];
 
+    if (
+      !imageModal ||
+      !modalImageWrapper ||
+      !prev ||
+      !next ||
+      !imageClose ||
+      images.length === 0
+    ) {
+      return;
+    }
+
     // Function to create modal images only once
     function initializeModalImages() {
       if (modalImages.length === 0) {
@@ -1704,20 +1715,26 @@
       }
     });
 
-    // Navigation for next and previous images
+    // Navigation for next and previous images. The guards matter because the swipe
+    // handlers below call these directly, and modalImages stays empty until the
+    // modal has been opened once; the modulo would then yield NaN.
     next.onclick = function () {
+      if (!modalImages.length) return;
       currentIndex = (currentIndex + 1) % modalImages.length; // Wrap around to first image
       showImage(currentIndex);
     };
 
     prev.onclick = function () {
+      if (!modalImages.length) return;
       currentIndex =
         (currentIndex - 1 + modalImages.length) % modalImages.length; // Wrap around to last image
       showImage(currentIndex);
     };
 
-    // Arrow key navigation
+    // Arrow key navigation, only while the modal is open, so the arrow keys keep
+    // scrolling the page the rest of the time.
     window.addEventListener("keydown", (e) => {
+      if (imageModal.style.display !== "block") return;
       if (e.key === "ArrowRight") {
         next.click();
       } else if (e.key === "ArrowLeft") {

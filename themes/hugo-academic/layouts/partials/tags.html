@@ -2,7 +2,12 @@
 {{ with .Param $taxonomy }}
 <div class="article-tags">
   {{ range $index, $value := . }}
-  <a class="badge badge-light" href="{{ (site.GetPage (printf "/%s/%s" $taxonomy (. | urlize))).RelPermalink }}">{{ . }}</a>
+  {{/* urlize percent-encodes non-ASCII ("Tromsø" -> "troms%C3%B8"), which does not match
+       the term page's path key, so GetPage returns nil and the href would render empty.
+       Fall back to the URL Hugo itself emits for that term. */}}
+  {{ $slug := $value | urlize }}
+  {{ $term := site.GetPage (printf "/%s/%s" $taxonomy $slug) }}
+  <a class="badge badge-light" href="{{ with $term }}{{ .RelPermalink }}{{ else }}{{ printf "/%s/%s/" $taxonomy $slug | relURL }}{{ end }}">{{ $value }}</a>
   {{ end }}
 </div>
 {{ end }}

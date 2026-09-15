@@ -181,7 +181,7 @@ Mendes, W. B., & Koslov, K. (2013). Brittle smiles: Positive biases toward stigm
 
 
 <div style = 'position: relative; margin-top: 30px; padding-top: 56.25%; margin-bottom: 10%;'>
-<iframe src = 'https://www.youtube-nocookie.com/embed/XaI5IRuS2aE' frameborder = '0' allowfullscreen
+<iframe title="Video: Surviving discrimination and confronting it" src = 'https://www.youtube-nocookie.com/embed/XaI5IRuS2aE' frameborder = '0' allowfullscreen
 style = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%;'></iframe>
 </div>
 

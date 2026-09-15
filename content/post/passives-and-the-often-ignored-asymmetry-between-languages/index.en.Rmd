@@ -41,11 +41,11 @@ Researchers often make participants jump through hoops. Due to our personal blin
 
 The ratio of 8 to 5,300 results suggests that *be*-passives are much less common than the construction implementing a preverbal clitic. In the light of this ratio, it is surprising to find linguistic research that seems to overlook the asymmetry between English and Spanish regarding passives. For instance, in a study on crosslinguistic syntactic priming in bilingual children, Vasilyeva et al. (2010) used stimuli such as *El gato fue lavado por el perro* 'The cat was washed by the dog'. Through a quick-and-dirty corpus analysis using a search engine, we can examine the limitations of these stimuli. Whereas the English form 'The cat was washed' is common enough, the literal translations *El gato fue lavado* and *La gata fue lavada* are essentially negligible.
 
-<img src='images/cat-washed.png' alt='Comparing the frequency of passive constructions in English and in Spanish.' style='margin-top:2px; margin-bottom:-2px;'></img>
+<img loading="lazy" decoding="async" src='images/cat-washed.png' alt='Comparing the frequency of passive constructions in English and in Spanish.' style='margin-top:2px; margin-bottom:-2px;'></img>
 
-<img src='images/gato-lavado.png' alt='Comparing the frequency of passive constructions in English and in Spanish.' style='margin-top:2px; margin-bottom:-2px;'></img>
+<img loading="lazy" decoding="async" src='images/gato-lavado.png' alt='Comparing the frequency of passive constructions in English and in Spanish.' style='margin-top:2px; margin-bottom:-2px;'></img>
 
-<img src='images/gata-lavada.png' alt='Comparing the frequency of passive constructions in English and in Spanish.' style='margin-top:2px; margin-bottom:-2px;'></img>
+<img loading="lazy" decoding="async" src='images/gata-lavada.png' alt='Comparing the frequency of passive constructions in English and in Spanish.' style='margin-top:2px; margin-bottom:-2px;'></img>
 
 <span style='font-size:90%; color: #899499;'>Comparing the frequency of passive constructions in English and in Spanish.</span>
 

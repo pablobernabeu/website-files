@@ -1,0 +1,154 @@
+---
+title: 'depictr: One visual language from first look to final figure'
+author: ''
+date: '2026-09-01'
+slug: depictr-one-visual-language-from-first-look-to-final-figure
+categories:
+  - data visualisation
+  - statistics
+tags:
+  - s
+  - visualisation
+  - linear mixed-effects models
+  - Bayesian statistics
+  - accessibility
+  - Python
+  - psycholinguistics
+subtitle: ''
+summary: 'Figures often change visual language as an analysis moves from exploration to reporting. This post uses depictr to examine a lexical-decision experiment, plot its mixed-model estimates, audit a figure and correct the accessibility problems that the audit finds.'
+authors: []
+lastmod: ''
+featured: no
+draft: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = TRUE,
+                      fig.align = 'center', fig.retina = 2, comment = '#>',
+                      fig.width = 7.5, fig.height = 4.5)
+options(width = 92)
+xaringanExtra::use_clipboard()
+```
+
+The figures in an analysis are rarely made all at once. An exploratory density plot may survive into a talk, a model adds a forest plot and a reviewer asks for a diagnostic or a Bayesian comparison. When each stage uses different defaults, one analysis acquires several palettes, type sizes and conventions. Accessibility is then checked, if at all, after the visual decisions have already spread through the project.
+
+I wrote [depictr](https://github.com/pablobernabeu/depictr) to give those stages a shared visual language. It provides plotting functions for common statistical objects, but each function returns an ordinary ggplot2 object that can still be changed. It also measures the finished figure against explicit checks for contrast, text size and reliance on colour. The same conventions are available in the [R package](https://pablobernabeu.github.io/depictr/) and the [Python package](https://pablobernabeu.github.io/depictr-py/).
+
+The example data come from a lexical-decision experiment bundled with the package. Participants responded to words preceded by semantically related or unrelated primes, presented visually or auditorily.
+
+```{r}
+library(depictr)
+library(ggplot2)
+packageVersion('depictr')
+
+data('lexical_decision', package = 'depictr')
+correct <- subset(lexical_decision, accuracy == 1)
+c(participants = length(unique(lexical_decision$participant)),
+  items = length(unique(lexical_decision$item)),
+  trials = nrow(lexical_decision))
+```
+
+## Begin with the observed distribution
+
+Reaction times are skewed, so a mean and standard deviation do not show the whole pattern. An empirical cumulative distribution avoids a choice of bins and makes the quartiles directly visible.
+
+```{r distribution, fig.alt = 'Empirical cumulative distributions of lexical-decision reaction times for related and unrelated primes, with horizontal and vertical guides at the quartiles'}
+ecdf_plot(
+  lexical_decision,
+  RT,
+  group = condition,
+  reference_quantiles = c(0.25, 0.5, 0.75),
+  legend_inside = TRUE,
+  title = 'Related primes are faster across the distribution'
+) +
+  labs(x = 'Reaction time (ms)', colour = NULL)
+```
+
+The separation is not confined to a handful of slow responses. Related trials remain shifted towards shorter reaction times through much of the distribution, which gives the later model result a visible empirical context.
+
+## Keep the same language for the model
+
+The model includes priming condition, presentation modality and word frequency, with crossed random intercepts for participants and items. `coefficient_plot()` reads the fitted object directly and places the fixed effects on a common standardised scale.
+
+```{r}
+fit <- lmerTest::lmer(
+  RT ~ condition + modality + word_frequency +
+    (1 | participant) + (1 | item),
+  data = correct
+)
+
+term_labels <- c(
+  conditionunrelated = 'Unrelated priming',
+  modalityauditory = 'Auditory modality',
+  word_frequency = 'Word frequency (Zipf)'
+)
+
+tidy_estimates(fit)
+```
+
+```{r model-estimates, fig.alt = 'Forest plot of the standardised fixed effects for unrelated priming, auditory presentation and word frequency, with 95 per cent confidence intervals'}
+coefficient_plot(
+  fit,
+  standardise = TRUE,
+  order = 'ascending',
+  labels = term_labels,
+  title = 'Estimated effects on reaction time',
+  x_lab = 'Change in reaction time (ms) per SD of predictor'
+)
+```
+
+This continuity keeps the colour, typography and interval conventions stable as the analysis moves from observations to estimates, so the reader can concentrate on the result.
+
+## Audit the figure that will be published
+
+A colourblind-safe palette does not guarantee an accessible figure. Contrast against the background and the use of a second visual channel depend on the particular plot. The package therefore audits a built plot, not only its palette.
+
+```{r}
+first_draft <- explore_distribution(
+  lexical_decision,
+  RT,
+  group = condition,
+  type = 'density',
+  legend_inside = TRUE,
+  title = 'Lexical-decision time by priming condition'
+)
+check_figure(first_draft)
+```
+
+The default density fails two checks. Its orange fill falls below the package's contrast threshold against white, and colour is the only channel separating the conditions. The corrected density plot uses a darker vermilion and adds line type. Those changes address the measured failures without changing the data or the statistical display.
+
+```{r audited-figure, fig.alt = 'Corrected density curves of reaction times for related and unrelated primes, distinguished by both colour and line type'}
+final_figure <- explore_distribution(
+  lexical_decision,
+  RT,
+  group = condition,
+  type = 'density',
+  palette = c('#005B96', '#B44600'),
+  legend_inside = TRUE,
+  title = 'Priming conditions separated by colour and line type'
+) +
+  aes(linetype = condition) +
+  labs(x = 'Reaction time (ms)', colour = NULL, fill = NULL, linetype = NULL)
+
+check_figure(final_figure)[, c('check', 'measured', 'threshold', 'verdict')]
+final_figure
+```
+
+The palette starts from the colours proposed by Okabe and Ito (2008), and colour-vision simulations use the model of Machado et al. (2009). The audit still reports measurements beside thresholds because a journal, display size or printing process may require a different decision.
+
+## Limits
+
+depictr draws and checks figures. It does not choose the model, contrasts or prior. A polished plot can faithfully present a poor analysis. The checks also cover measurable properties, not every barrier a reader may face. Alt text, a meaningful caption and a sensible figure order remain editorial work.
+
+The [R reference](https://pablobernabeu.github.io/depictr/reference/) and [Python reference](https://pablobernabeu.github.io/depictr-py/) cover diagnostics, posterior plots, power curves, model comparisons and multi-panel composition. Their place is in the reference material. The useful habit for an analysis is smaller: use one set of conventions throughout, then audit the exact figure that will leave the project.
+
+### References
+
+Machado, G. M., Oliveira, M. M., & Fernandes, L. A. F. (2009). A physiologically-based model for simulation of color vision deficiency. *IEEE Transactions on Visualization and Computer Graphics*, *15*(6), 1291–1298. https://doi.org/10.1109/TVCG.2009.113
+
+Okabe, M., & Ito, K. (2008). *Color universal design (CUD): How to make figures and presentations that are friendly to colorblind people*. https://jfly.uni-koeln.de/color/ (Original work published 2002)

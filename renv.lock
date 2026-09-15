@@ -949,6 +949,42 @@
       "Maintainer": "Torsten Hothorn <Torsten.Hothorn@R-project.org>",
       "Repository": "CRAN"
     },
+    "V8": {
+      "Package": "V8",
+      "Version": "8.2.0",
+      "Source": "Repository",
+      "Type": "Package",
+      "Title": "Embedded JavaScript and WebAssembly Engine for R",
+      "Authors@R": "c( person(\"Jeroen\", \"Ooms\", role = c(\"aut\", \"cre\"), email = \"jeroenooms@gmail.com\", comment = c(ORCID = \"0000-0002-4035-0289\")), person(\"George\", \"Stagg\", role = \"ctb\", comment = c(ORCID = \"0009-0006-3173-9846\")), person(\"Jan Marvin\", \"Garbuszus\", role = \"ctb\"))",
+      "Description": "An R interface to V8 <https://v8.dev>: Google's open source JavaScript and WebAssembly engine. This package can be compiled either with V8 or NodeJS  when built as a shared library.",
+      "License": "MIT + file LICENSE",
+      "URL": "https://jeroen.r-universe.dev/V8",
+      "BugReports": "https://github.com/jeroen/v8/issues",
+      "SystemRequirements": "On Linux you can build against libv8-dev (Debian) or v8-devel (Fedora). We also provide static libv8 binaries for most platforms, see the README for details.",
+      "NeedsCompilation": "yes",
+      "VignetteBuilder": "knitr",
+      "Imports": [
+        "Rcpp (>= 0.12.12)",
+        "jsonlite (>= 1.0)",
+        "curl (>= 1.0)",
+        "utils"
+      ],
+      "LinkingTo": [
+        "Rcpp"
+      ],
+      "Suggests": [
+        "testthat",
+        "knitr",
+        "rmarkdown"
+      ],
+      "RoxygenNote": "7.3.1",
+      "Language": "en-US",
+      "Encoding": "UTF-8",
+      "Biarch": "true",
+      "Author": "Jeroen Ooms [aut, cre] (ORCID: <https://orcid.org/0000-0002-4035-0289>), George Stagg [ctb] (ORCID: <https://orcid.org/0009-0006-3173-9846>), Jan Marvin Garbuszus [ctb]",
+      "Maintainer": "Jeroen Ooms <jeroenooms@gmail.com>",
+      "Repository": "CRAN"
+    },
     "abind": {
       "Package": "abind",
       "Version": "1.4-8",
@@ -2448,6 +2484,50 @@
       "Maintainer": "Jeroen Ooms <jeroenooms@gmail.com>",
       "Repository": "https://packagemanager.posit.co/cran/latest"
     },
+    "dagitty": {
+      "Package": "dagitty",
+      "Version": "0.3-4",
+      "Source": "Repository",
+      "Type": "Package",
+      "Title": "Graphical Analysis of Structural Causal Models",
+      "Date": "2023-12-07",
+      "Author": "Johannes Textor, Benito van der Zander, Ankur Ankan",
+      "Maintainer": "Johannes Textor <johannes.textor@gmx.de>",
+      "Description": "A port of the web-based software 'DAGitty', available at  <https://dagitty.net>, for analyzing structural causal models  (also known as directed acyclic graphs or DAGs). This package computes covariate adjustment sets for estimating causal effects, enumerates instrumental variables, derives testable implications (d-separation and vanishing tetrads), generates equivalent models, and includes a simple facility for data simulation.",
+      "VignetteBuilder": "knitr",
+      "Encoding": "UTF-8",
+      "License": "GPL-2",
+      "URL": "https://www.dagitty.net, https://github.com/jtextor/dagitty",
+      "BugReports": "https://github.com/jtextor/dagitty/issues",
+      "Depends": [
+        "R (>= 3.0.0)"
+      ],
+      "Imports": [
+        "V8",
+        "jsonlite",
+        "boot",
+        "MASS",
+        "methods",
+        "grDevices",
+        "stats",
+        "utils",
+        "graphics"
+      ],
+      "Suggests": [
+        "igraph",
+        "knitr",
+        "base64enc (>= 0.1-3)",
+        "testthat",
+        "markdown",
+        "rmarkdown",
+        "lavaan",
+        "CCP",
+        "fastDummies"
+      ],
+      "RoxygenNote": "7.2.1",
+      "NeedsCompilation": "no",
+      "Repository": "CRAN"
+    },
     "data.table": {
       "Package": "data.table",
       "Version": "1.18.4",
@@ -2545,6 +2625,60 @@
       "NeedsCompilation": "no",
       "Author": "Hadley Wickham [aut, cre], Maximilian Girlich [aut], Edgar Ruiz [aut], Posit Software, PBC [cph, fnd]",
       "Maintainer": "Hadley Wickham <hadley@posit.co>",
+      "Repository": "CRAN"
+    },
+    "depictr": {
+      "Package": "depictr",
+      "Version": "0.3.0",
+      "Source": "Repository",
+      "Type": "Package",
+      "Title": "A Unified Toolkit for Visualising Statistical Models and Data",
+      "Authors@R": "person(given = \"Pablo\", family = \"Bernabeu\", email = \"pcbernabeu@gmail.com\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0003-1083-2460\"))",
+      "Description": "A cohesive, publication-ready toolkit of plots that span the whole analysis workflow with one consistent look. It covers exploratory data analysis (distributions, categorical summaries, bivariate plots, scatter-plot matrices, correlation heatmaps, missing-data maps, outliers, estimation statistics and descriptive tables); multivariate analysis, clustering with diagnostics and Kaplan-Meier survival curves; time series (trends, autocorrelation, decomposition, seasonality and forecasting); model estimates and inference (forest plots, model comparison, frequentist and Bayesian estimates, predicted values, interactions, random effects and optimiser checks); diagnostics and classification (residual panels, binned residuals, influence, quantile-quantile, receiver operating characteristic (ROC) curves, calibration, threshold tuning and confusion matrices); uncertainty and power; and reporting helpers (a shared theme, colourblind-aware palettes, plot composition and saving). Every plotting function returns a 'ggplot2' object (or a 'patchwork' object for composite panels), heavier modelling back-ends are optional, and the package ships with reproducibly simulated datasets so that every example and vignette runs without further setup.",
+      "License": "MIT + file LICENSE",
+      "Encoding": "UTF-8",
+      "Language": "en-GB",
+      "LazyData": "true",
+      "Depends": [
+        "R (>= 4.1.0)"
+      ],
+      "Imports": [
+        "ggplot2 (>= 3.5.0)",
+        "stringr",
+        "scales",
+        "patchwork (>= 1.3.0)",
+        "rlang",
+        "stats",
+        "grDevices",
+        "utils",
+        "Rdpack"
+      ],
+      "Suggests": [
+        "lme4",
+        "lmerTest",
+        "broom",
+        "simr",
+        "knitr",
+        "rmarkdown",
+        "survival",
+        "ggdist",
+        "posterior",
+        "boot",
+        "cluster",
+        "colorspace",
+        "testthat (>= 3.0.0)",
+        "withr"
+      ],
+      "VignetteBuilder": "knitr",
+      "RdMacros": "Rdpack",
+      "Config/testthat/edition": "3",
+      "Config/Needs/website": "pkgdown",
+      "URL": "https://pablobernabeu.github.io/depictr/, https://github.com/pablobernabeu/depictr",
+      "BugReports": "https://github.com/pablobernabeu/depictr/issues",
+      "Config/roxygen2/version": "8.0.0",
+      "NeedsCompilation": "no",
+      "Author": "Pablo Bernabeu [aut, cre] (ORCID: <https://orcid.org/0000-0003-1083-2460>)",
+      "Maintainer": "Pablo Bernabeu <pcbernabeu@gmail.com>",
       "Repository": "CRAN"
     },
     "desc": {
@@ -5187,6 +5321,59 @@
       "Maintainer": "Barret Schloerke <barret@posit.co>",
       "Repository": "https://packagemanager.posit.co/cran/latest"
     },
+    "lexsync": {
+      "Package": "lexsync",
+      "Version": "0.1.0",
+      "Source": "GitHub",
+      "Type": "Package",
+      "Title": "Lexical Optimisation and Hardware-Timed Experiment Generation",
+      "Authors@R": "person(\"Pablo\", \"Bernabeu\", email = \"pcbernabeu@gmail.com\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0003-1083-2460\"))",
+      "Description": "A cross-platform toolkit that unifies many-language lexical-corpus access, parallel multidimensional stimulus matching, deterministic pseudoword generation, counterbalancing and the automated generation of experiments from a declarative trial-event model, for 'PsychoPy', 'OpenSesame' and the browser ('jsPsych'). The laboratory targets bind electroencephalography onset triggers to the stimulus flip. It is the R member of a dual-language pair; a structurally identical 'Python' package is also provided. Several paradigms (factorial word contrasts, lexical decision, priming, self-paced reading and cued categorisation) are supported, and each design is accompanied by a machine- and human-readable materials datasheet for reproducibility.",
+      "License": "MIT + file LICENSE",
+      "Copyright": "The MIT licence covers the source code only. The example lexica in inst/extdata are derived from third-party data and are distributed under CC BY-SA 4.0; the terms and the attribution they require are in the LICENSE.note file.",
+      "Encoding": "UTF-8",
+      "Language": "en-GB",
+      "Depends": [
+        "R (>= 4.0.0)"
+      ],
+      "Imports": [
+        "readr",
+        "yaml",
+        "stringdist",
+        "stringi",
+        "jsonlite",
+        "digest",
+        "stats",
+        "tools",
+        "utils"
+      ],
+      "Suggests": [
+        "testthat (>= 3.0.0)",
+        "knitr",
+        "rmarkdown",
+        "spelling",
+        "clue",
+        "shiny",
+        "bslib",
+        "DT",
+        "zip"
+      ],
+      "VignetteBuilder": "knitr",
+      "URL": "https://github.com/pablobernabeu/lexsync, https://pablobernabeu.github.io/lexsync/r/",
+      "BugReports": "https://github.com/pablobernabeu/lexsync/issues",
+      "Roxygen": "list(markdown = TRUE)",
+      "Config/testthat/edition": "3",
+      "Config/roxygen2/version": "8.0.0",
+      "Author": "Pablo Bernabeu [aut, cre] (ORCID: <https://orcid.org/0000-0003-1083-2460>)",
+      "Maintainer": "Pablo Bernabeu <pcbernabeu@gmail.com>",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "pablobernabeu",
+      "RemoteRepo": "lexsync",
+      "RemoteSubdir": "R_workflow",
+      "RemoteRef": "main",
+      "RemoteSha": "398eb5b5a40273c9f2a3289efbd674b9ba5f93cb"
+    },
     "lgr": {
       "Package": "lgr",
       "Version": "0.5.2",
@@ -6546,6 +6733,53 @@
       "Author": "Kirill Müller [aut, cre] (ORCID: <https://orcid.org/0000-0002-1416-3412>), Hadley Wickham [aut], RStudio [cph]",
       "Maintainer": "Kirill Müller <kirill@cynkra.com>",
       "Repository": "CRAN"
+    },
+    "pilotr": {
+      "Package": "pilotr",
+      "Version": "0.3.0",
+      "Source": "GitHub",
+      "Title": "Simulate Experimental and Behavioural Data from a Portable Design Specification",
+      "Authors@R": "person(\"Pablo\", \"Bernabeu\", role = c(\"aut\", \"cre\"), email = \"pcbernabeu@gmail.com\", comment = c(ORCID = \"0000-0003-1083-2460\"))",
+      "Description": "Generative simulation of experimental and behavioural data sets from a portable JavaScript Object Notation (JSON) design specification shared with the 'Python' package of the same name. Supports user-specified fixed effect sizes, crossed by-subject and by-item random intercepts and slopes, predictors measured with error, realistic response families (Gaussian, lognormal, shifted lognormal, ex-Gaussian, Bernoulli, Poisson, ordinal and Beta), and simulation-based power and precision-based design analysis, including the Type S and Type M errors of Gelman and Carlin (2014) <doi:10.1177/1745691614551642> and a region of practical equivalence. A shared cross-language random-number generator means that, given the same specification and seed, the R and 'Python' implementations produce identical data: exactly for the Gaussian family and for any family with rounding set, and to within the last unit in the last place for families applying a transcendental function to the linear predictor, whose rounding the IEEE-754 standard does not fix.",
+      "License": "MIT + file LICENSE",
+      "URL": "https://pablobernabeu.github.io/pilotr/r/, https://github.com/pablobernabeu/pilotr",
+      "BugReports": "https://github.com/pablobernabeu/pilotr/issues",
+      "Encoding": "UTF-8",
+      "Depends": [
+        "R (>= 4.0.0)"
+      ],
+      "Imports": [
+        "jsonlite",
+        "parallel",
+        "stats"
+      ],
+      "Suggests": [
+        "shiny",
+        "future",
+        "promises",
+        "ggplot2 (>= 3.4.0)",
+        "lme4",
+        "lmerTest",
+        "callr",
+        "knitr",
+        "rmarkdown",
+        "testthat (>= 3.0.0)",
+        "MASS"
+      ],
+      "VignetteBuilder": "knitr",
+      "Config/testthat/edition": "3",
+      "Roxygen": "list(markdown = TRUE)",
+      "Config/roxygen2/version": "8.0.0",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "pilotr",
+      "RemoteUsername": "pablobernabeu",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "dfc1f54f0bdab61d7f0f25910509c19183c4c87b",
+      "RemoteSubdir": "r/pilotr",
+      "NeedsCompilation": "no",
+      "Author": "Pablo Bernabeu [aut, cre] (ORCID: <https://orcid.org/0000-0003-1083-2460>)",
+      "Maintainer": "Pablo Bernabeu <pcbernabeu@gmail.com>"
     },
     "pkgbuild": {
       "Package": "pkgbuild",
@@ -8281,6 +8515,55 @@
       "Maintainer": "Frank E Harrell Jr <fh@fharrell.com>",
       "Repository": "CRAN"
     },
+    "rnaturalearth": {
+      "Package": "rnaturalearth",
+      "Version": "1.2.0",
+      "Source": "Repository",
+      "Title": "World Map Data from Natural Earth",
+      "Authors@R": "c( person( family = \"Massicotte\", given = \"Philippe\", email = \"pmassicotte@hotmail.com\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-5919-4116\") ), person( family = \"South\", given = \"Andy\", email = \"southandy@gmail.com\", role = c(\"aut\") ), person( family = \"Hufkens\", given = \"Koen\", email = \"koen.hufkens@gmail.com\", role = c(\"ctb\"), comment = c(ORCID = \"0000-0002-5070-8109\") ))",
+      "Description": "Facilitates mapping by making natural earth map data from <https://www.naturalearthdata.com/> more easily available to R users.",
+      "License": "MIT + file LICENSE",
+      "LazyData": "true",
+      "LazyDataCompression": "xz",
+      "Encoding": "UTF-8",
+      "URL": "https://docs.ropensci.org/rnaturalearth/, https://github.com/ropensci/rnaturalearth, https://docs.ropensci.org/rnaturalearthhires/",
+      "BugReports": "https://github.com/ropensci/rnaturalearth/issues",
+      "Additional_repositories": "https://ropensci.r-universe.dev",
+      "Depends": [
+        "R (>= 3.1.1)"
+      ],
+      "Imports": [
+        "cli",
+        "httr (>= 1.1.0)",
+        "jsonlite",
+        "sf (>= 0.3-4)",
+        "terra",
+        "utils (>= 3.2.3)"
+      ],
+      "Suggests": [
+        "pak",
+        "dplyr",
+        "ggplot2",
+        "ggrepel",
+        "knitr (>= 1.12.3)",
+        "lifecycle (>= 1.0.3)",
+        "pbapply",
+        "purrr",
+        "rlang",
+        "rmarkdown",
+        "rnaturalearthdata (>= 1.0.0)",
+        "rnaturalearthhires (>= 1.0.0)",
+        "testthat (>= 0.9.1)",
+        "tmap"
+      ],
+      "Config/Needs/website": "ropensci/rnaturalearthhires",
+      "VignetteBuilder": "knitr",
+      "RoxygenNote": "7.3.3",
+      "NeedsCompilation": "no",
+      "Author": "Philippe Massicotte [aut, cre] (ORCID: <https://orcid.org/0000-0002-5919-4116>), Andy South [aut], Koen Hufkens [ctb] (ORCID: <https://orcid.org/0000-0002-5070-8109>)",
+      "Maintainer": "Philippe Massicotte <pmassicotte@hotmail.com>",
+      "Repository": "CRAN"
+    },
     "roxygen2": {
       "Package": "roxygen2",
       "Version": "8.0.0",
@@ -8808,6 +9091,53 @@
       "Maintainer": "Thomas Lin Pedersen <thomas.pedersen@posit.co>",
       "Repository": "https://packagemanager.posit.co/cran/latest"
     },
+    "scopusflow": {
+      "Package": "scopusflow",
+      "Version": "0.4.0",
+      "Source": "Repository",
+      "Title": "A Reproducible Workflow Layer for 'Scopus' Bibliographic Searches",
+      "Authors@R": "person(\"Pablo\", \"Bernabeu\", , \"pcbernabeu@gmail.com\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0003-1083-2460\"))",
+      "Description": "A coherent, quota-aware workflow layer over the Elsevier 'Scopus' Search 'API' <https://dev.elsevier.com/sc_apis.html>. It builds reproducible search plans, retrieves records with rate-limit handling, retry with back-off and optional resumable caching, normalises results to a stable tidy schema, extracts and tracks changes in Digital Object Identifiers (DOIs), sizes sets of concepts and their intersections, compares publication trends across topics, writes the search up as a reproducible record for a methods section following the 'PRISMA-S' reporting standard (Rethlefsen and others, 2021) <doi:10.1186/s13643-020-01542-z> and exports to formats compatible with downstream bibliometric tools. Network and 'API' errors are surfaced as typed conditions so that callers can respond to them programmatically. 'Scopus' is a trademark of Elsevier. This package is an independent client and is not affiliated with or endorsed by Elsevier.",
+      "License": "MIT + file LICENSE",
+      "URL": "https://github.com/pablobernabeu/scopusflow, https://pablobernabeu.github.io/scopusflow/",
+      "BugReports": "https://github.com/pablobernabeu/scopusflow/issues",
+      "Depends": [
+        "R (>= 4.1.0)"
+      ],
+      "Imports": [
+        "cli",
+        "httr2 (>= 1.0.0)",
+        "jsonlite",
+        "rlang (>= 1.1.0)",
+        "stats",
+        "tibble",
+        "tools",
+        "utils"
+      ],
+      "Suggests": [
+        "bslib",
+        "callr",
+        "fansi",
+        "ggplot2",
+        "grid",
+        "knitr",
+        "rmarkdown",
+        "shiny",
+        "spelling",
+        "testthat (>= 3.0.0)",
+        "withr"
+      ],
+      "VignetteBuilder": "knitr",
+      "Config/testthat/edition": "3",
+      "Encoding": "UTF-8",
+      "LazyData": "true",
+      "Language": "en-GB",
+      "Config/roxygen2/version": "8.0.0",
+      "NeedsCompilation": "no",
+      "Author": "Pablo Bernabeu [aut, cre] (ORCID: <https://orcid.org/0000-0003-1083-2460>)",
+      "Maintainer": "Pablo Bernabeu <pcbernabeu@gmail.com>",
+      "Repository": "CRAN"
+    },
     "selectr": {
       "Package": "selectr",
       "Version": "0.6-0",
@@ -9322,6 +9652,34 @@
       "Maintainer": "Kenneth Benoit <kbenoit@lse.ac.uk>",
       "Repository": "CRAN"
     },
+    "stringdist": {
+      "Package": "stringdist",
+      "Version": "0.9.17",
+      "Source": "Repository",
+      "Maintainer": "Mark van der Loo <mark.vanderloo@gmail.com>",
+      "License": "GPL-3",
+      "Title": "Approximate String Matching, Fuzzy Text Search, and String Distance Functions",
+      "Type": "Package",
+      "LazyLoad": "yes",
+      "Authors@R": "c( person(\"Mark\", \"van der Loo\", role=c(\"aut\",\"cre\") , email=\"mark.vanderloo@gmail.com\" , comment= c(ORCID=\"0000-0002-9807-4686\")) , person(\"Jan\", \"van der Laan\", role=\"ctb\") , person(\"R Core Team\",\"\"     , role=\"ctb\") , person(\"Nick\",\"Logan\"       , role=\"ctb\") , person(\"Chris\",\"Muir\"       , role=\"ctb\") , person(\"Johannes\", \"Gruber\" , role=\"ctb\") , person(\"Brian\",\"Ripley\"     , role=\"ctb\"))",
+      "Description": "Implements an approximate string matching version of R's native 'match' function. Also offers fuzzy text search based on various string distance measures. Can calculate various string distances based on edits (Damerau-Levenshtein, Hamming, Levenshtein, optimal sting alignment), qgrams (q- gram, cosine, jaccard distance) or heuristic metrics (Jaro, Jaro-Winkler). An implementation of soundex is provided as well. Distances can be computed between character vectors while taking proper care of encoding or between integer vectors representing generic sequences. This package is built for speed and runs in parallel by using 'openMP'. An API for C or C++ is exposed as well. Reference: MPJ van der Loo (2014) <doi:10.32614/RJ-2014-011>.",
+      "Depends": [
+        "R (>= 2.15.3)"
+      ],
+      "URL": "https://github.com/markvanderloo/stringdist",
+      "BugReports": "https://github.com/markvanderloo/stringdist/issues",
+      "Suggests": [
+        "tinytest"
+      ],
+      "Imports": [
+        "parallel"
+      ],
+      "Encoding": "UTF-8",
+      "RoxygenNote": "7.3.2",
+      "NeedsCompilation": "yes",
+      "Author": "Mark van der Loo [aut, cre] (ORCID: <https://orcid.org/0000-0002-9807-4686>), Jan van der Laan [ctb], R Core Team [ctb], Nick Logan [ctb], Chris Muir [ctb], Johannes Gruber [ctb], Brian Ripley [ctb]",
+      "Repository": "CRAN"
+    },
     "stringi": {
       "Package": "stringi",
       "Version": "1.8.7",
@@ -9745,6 +10103,49 @@
       "NeedsCompilation": "yes",
       "Author": "Thomas Lin Pedersen [cre, aut] (ORCID: <https://orcid.org/0000-0002-5147-4711>), Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>)",
       "Maintainer": "Thomas Lin Pedersen <thomas.pedersen@posit.co>",
+      "Repository": "CRAN"
+    },
+    "theoryforge": {
+      "Package": "theoryforge",
+      "Version": "0.6.0",
+      "Source": "Repository",
+      "Title": "Systematic Theory Development",
+      "Authors@R": "person(given = \"Pablo\", family = \"Bernabeu\", role = c(\"aut\", \"cre\"), email = \"pcbernabeu@gmail.com\", comment = c(ORCID = \"0000-0003-1083-2460\"))",
+      "Description": "Provides a rigorous, reproducible workflow for building, developing and testing scientific theories represented as versioned, machine-checkable objects. Functions read and validate theory objects, score them against a versioned rigour checklist, screen constructs for lexical redundancy, and emit byte-identical diagram intermediate representations. The package is the feature-parity twin of a 'Python' package of the same name, with behaviour pinned by a shared specification so the two implementations produce identical verdicts.",
+      "License": "MIT + file LICENSE",
+      "URL": "https://github.com/pablobernabeu/theoryforge, https://pablobernabeu.github.io/theoryforge/r/",
+      "BugReports": "https://github.com/pablobernabeu/theoryforge/issues",
+      "Encoding": "UTF-8",
+      "Language": "en-GB",
+      "Depends": [
+        "R (>= 4.1.0)"
+      ],
+      "Imports": [
+        "jsonlite",
+        "stats",
+        "tools",
+        "utils",
+        "yaml"
+      ],
+      "Suggests": [
+        "testthat (>= 3.0.0)",
+        "knitr",
+        "rmarkdown",
+        "httr",
+        "curl",
+        "dagitty",
+        "ggm",
+        "DiagrammeR",
+        "DiagrammeRsvg",
+        "htmltools",
+        "spelling"
+      ],
+      "VignetteBuilder": "knitr",
+      "Config/testthat/edition": "3",
+      "RoxygenNote": "8.0.0",
+      "NeedsCompilation": "no",
+      "Author": "Pablo Bernabeu [aut, cre] (ORCID: <https://orcid.org/0000-0003-1083-2460>)",
+      "Maintainer": "Pablo Bernabeu <pcbernabeu@gmail.com>",
       "Repository": "CRAN"
     },
     "tibble": {

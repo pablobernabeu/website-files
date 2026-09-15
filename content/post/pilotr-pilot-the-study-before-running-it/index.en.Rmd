@@ -1,0 +1,285 @@
+---
+title: 'pilotr: Pilot the study before running it'
+author: ''
+date: '2026-09-01'
+slug: pilotr-pilot-the-study-before-running-it
+categories:
+  - statistics
+  - research methods
+tags:
+  - s
+  - power analysis
+  - simulation
+  - linear mixed-effects models
+  - research methods
+  - Python
+  - psycholinguistics
+subtitle: ''
+summary: 'A simulated semantic-priming study shows why power alone is not enough and how sign errors, magnitude errors, precision and singular fits can be examined before choosing a design.'
+authors: []
+lastmod: ''
+featured: no
+draft: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, warning = FALSE, echo = FALSE,
+  fig.align = 'center', fig.retina = 2, out.width = '100%',
+  fig.width = 7.5, fig.height = 4.2, comment = '#>'
+)
+options(width = 90)
+xaringanExtra::use_clipboard()
+library(pilotr)
+library(ggplot2)
+workers <- 4L
+n_sims <- 12L # An executable smoke test; planning runs need hundreds or more.
+
+blog_theme <- theme_minimal(base_size = 11) +
+  theme(
+    axis.title = element_text(size = 10),
+    axis.text = element_text(size = 9),
+    legend.text = element_text(size = 9),
+    strip.text = element_text(size = 10),
+    plot.caption = element_text(size = 8.5, colour = 'grey35'),
+    plot.margin = margin(10, 14, 10, 14)
+  )
+```
+
+Power calculations can feel reassuringly final. Choose an effect, enter a sample size and read off a percentage. That simplicity disappears in experiments where participants respond to many items. Participants and items both vary, their responses are crossed, and the model usually needs random slopes as well as random intercepts. The design has become too structured for a single formula.
+
+I built [pilotr](/publication/pilotr/) to make those assumptions visible before data collection. It stores a proposed study as a portable specification, simulates the observations implied by it and fits the planned analysis repeatedly. The R and Python packages read the same specification and generate the same data from the same seed. Here I use it on a semantic-priming study with 30 participants and 24 items, to show what a design analysis has to weigh besides power.
+
+## A study that does not exist yet
+
+The imagined experiment is a lexical-decision task. Every participant sees every target word after related and unrelated primes. Reaction times follow a shifted lognormal distribution, and the model includes item frequency, participant vocabulary and an interaction between vocabulary and priming.
+
+The assumptions are deliberately concrete:
+
+| Part of the design | Assumption |
+|---|---|
+| Participants | 30 |
+| Items | 24 |
+| Priming effect | 0.05 on the log scale, about 20 ms |
+| Participant variation | Random intercept and priming slope |
+| Item variation | Random intercept and priming slope |
+| Response | Shifted lognormal reaction time |
+
+```{r define-spec}
+spec <- list(
+  spec_version = '0.3',
+  name = 'semantic_priming_ldt',
+  seed = 90210,
+  units = list(subject = list(n = 30), item = list(n = 24)),
+  factors = list(list(
+    name = 'prime', levels = c('related', 'unrelated'),
+    contrasts = list(prime = c(-0.5, 0.5)),
+    vary_within = c('subject', 'item'))),
+  predictors = list(
+    list(name = 'z_freq', varies_by = 'item', mean = 0, sd = 1),
+    list(name = 'z_vocab', varies_by = 'subject', mean = 0, sd = 1,
+         reliability = 0.8)),
+  fixed = list(
+    intercept = 6,
+    coefficients = list(prime = 0.05, z_freq = -0.03, z_vocab = -0.02,
+                        `prime:z_vocab` = 0.02)),
+  random = list(
+    subject = list(intercept_sd = 0.12, slopes = list(prime = 0.04),
+                   correlations = list(`intercept,prime` = 0.2)),
+    item = list(intercept_sd = 0.08, slopes = list(prime = 0.02),
+                correlations = list(`intercept,prime` = -0.1))),
+  response = list(family = 'shifted_lognormal', name = 'RT', sigma = 0.30,
+                  shift = 200, round = 4)
+)
+validate_spec(spec)
+```
+
+The specification determines the analysis formula as well as the data generator. That prevents a quiet mismatch between the design used for power and the model eventually fitted.
+
+```{r show-formula, echo = TRUE}
+model_formula(spec)
+```
+
+## Looking at the imagined data
+
+A single simulated data set is useful before any power calculation (DeBruine & Barr, 2021). It shows whether the assumptions produce recognisable observations. Here the reaction times are right-skewed, as intended, and unrelated primes shift the distribution slightly to the right.
+
+```{r simulate-data}
+pilot <- simulate_design(spec)
+```
+
+```{r response-distribution, fig.height = 3.8, fig.alt = 'Overlapping density curves of simulated reaction times for related and unrelated primes, with the unrelated distribution shifted slightly to the right'}
+ggplot(pilot, aes(RT, fill = prime)) +
+  geom_density(alpha = 0.45, colour = NA) +
+  scale_fill_manual(values = c(related = '#0072B2', unrelated = '#D55E00')) +
+  labs(x = 'Reaction time (ms)', y = 'Density', fill = NULL) +
+  blog_theme +
+  theme(legend.position = 'top')
+```
+
+The average priming effect is only part of the picture. Because the specification gives participants and items their own priming slopes, some show a much larger difference than others, and in about a third of each set the difference runs the other way.
+
+```{r unit-effects, fig.height = 4.4, fig.alt = 'Dot plots of simulated priming effects for each item and participant, sorted within two panels and spread around zero'}
+unit_effects <- function(unit) {
+  means <- tapply(pilot$RT, list(pilot[[unit]], pilot$prime), mean)
+  data.frame(unit = unit, id = rownames(means),
+             effect_ms = means[, 'unrelated'] - means[, 'related'])
+}
+effects <- rbind(unit_effects('item'), unit_effects('subject'))
+effects$id <- factor(
+  paste(effects$unit, effects$id),
+  levels = paste(effects$unit, effects$id)[order(effects$unit, effects$effect_ms)]
+)
+
+ggplot(effects, aes(effect_ms, id, colour = unit)) +
+  geom_vline(xintercept = 0, colour = 'grey60') +
+  geom_point(size = 2) +
+  facet_wrap(
+    ~ unit, scales = 'free_y',
+    labeller = as_labeller(c(item = 'Items', subject = 'Participants'))
+  ) +
+  scale_colour_manual(values = c(item = '#D55E00', subject = '#0072B2'),
+                      guide = 'none') +
+  labs(
+    x = 'Priming effect (ms)', y = NULL,
+    caption = 'Difference between unrelated and related trials'
+  ) +
+  blog_theme +
+  theme(axis.text.y = element_blank(), panel.grid.major.y = element_blank())
+```
+
+## Detection is not estimation
+
+The first design analysis repeatedly simulates the study and fits its mixed model. It records conventional power and singular fits. It also reports Type S error, the chance that a significant estimate has the wrong sign, and Type M error, the factor by which significant estimates exaggerate the true effect (Gelman & Carlin, 2014). To keep this article executable during a site build, the run below uses twelve replicates.
+
+```{r planned-power, echo = TRUE}
+power_at_plan <- power_mixed(spec, n_sims = n_sims, workers = workers)
+power_at_plan
+```
+
+Twelve replicates are enough to prove the pipeline runs and nowhere near enough to pin down the estimate, since one simulated success moves the figure by more than eight percentage points. Everything below therefore shows the shape of each diagnostic and the quantity to read from it, and a planning run would repeat the same code a few hundred times, until its Monte Carlo error was acceptably small.
+
+```{r power-curve-data}
+power_curve <- power_curve_mixed(
+  spec,
+  subject_ns = c(16, 24, 32, 48, 64, 96),
+  n_sims = n_sims,
+  workers = workers
+)
+priming_curve <- power_curve[power_curve$effect == 'prime', ]
+```
+
+```{r power-curve, fig.height = 4.2, fig.alt = 'Illustrative power estimates for the priming effect across sample sizes, with an 80 percent reference line'}
+ggplot(priming_curve, aes(n_subject, power)) +
+  geom_hline(yintercept = 0.8, linetype = 2, colour = 'grey55') +
+  geom_ribbon(aes(ymin = power_lo, ymax = power_hi),
+              alpha = 0.15, fill = '#0072B2') +
+  geom_line(colour = '#0072B2', linewidth = 0.8) +
+  geom_point(colour = '#0072B2', size = 2.4) +
+  scale_y_continuous(limits = c(0, 1)) +
+  labs(x = 'Number of participants', y = 'Power for the priming effect',
+       caption = sprintf('%s replicates per design. All simulated designs contain 24 items', n_sims)) +
+  blog_theme
+```
+
+Power asks whether an effect would clear a threshold. I also want to know whether its interval would exclude effects too small to matter. With a region of practical equivalence (ROPE; Kruschke, 2018) of plus or minus 0.02 on the log scale, roughly 8 ms here, precision becomes a separate design criterion.
+
+```{r precision-data}
+precision <- precision_curve(
+  spec,
+  focal = c(prime = 0.05),
+  subject_ns = c(16, 32, 64, 96, 128, 160, 200),
+  rope = 0.02,
+  n_sims = n_sims,
+  workers = workers
+)
+```
+
+```{r precision-curve, fig.height = 3.8, fig.alt = 'Two panels of illustrative estimates showing the probability that an interval excludes negligible effects and its mean width as the number of participants increases'}
+p_probability <- ggplot(precision, aes(n_subject, p_meaningful)) +
+  geom_hline(yintercept = 0.8, linetype = 2, colour = 'grey55') +
+  geom_ribbon(aes(ymin = p_meaningful_lo, ymax = p_meaningful_hi),
+              alpha = 0.15, fill = '#0072B2') +
+  geom_line(colour = '#0072B2', linewidth = 0.8) +
+  geom_point(colour = '#0072B2', size = 2.1) +
+  labs(x = 'Number of participants', y = 'Probability the 95% CI excludes the ROPE') +
+  blog_theme
+
+p_width <- ggplot(precision, aes(n_subject, mean_ci_width)) +
+  geom_hline(yintercept = 2 * (0.05 - 0.02), linetype = 2, colour = 'grey55') +
+  geom_line(colour = '#0072B2', linewidth = 0.8) +
+  geom_point(colour = '#0072B2', size = 2.1) +
+  labs(x = 'Number of participants', y = 'Mean 95% CI width (log scale)') +
+  blog_theme
+
+patchwork::wrap_plots(p_probability, p_width) +
+  patchwork::plot_annotation(
+    caption = sprintf(
+      '%s replicates per design. All simulated designs contain 24 items',
+      n_sims
+    ),
+    theme = theme(plot.caption = element_text(size = 8.5, colour = 'grey35'))
+  )
+```
+
+## The significant estimates are the misleading ones
+
+A low-powered study misses real effects, and it also distorts the ones it finds. Only unusually large estimates pass the significance threshold, so significance selects for exaggeration. To see that selection directly, I varied both the true effect and the number of participants.
+
+```{r type-m-data}
+effect_grid <- design_conditions(
+  prime = c(0.03, 0.05, 0.08),
+  .null = TRUE,
+  .base = list(z_freq = -0.03, z_vocab = -0.02, `prime:z_vocab` = 0.02)
+)
+effect_sweep <- sweep_spec(
+  spec, 'fixed$coefficients', effect_grid, power_mixed,
+  n_sims = n_sims, workers = workers, .name = 'condition'
+)
+effect_sweep <- effect_sweep[effect_sweep$effect == 'prime', ]
+type_m <- rbind(
+  data.frame(series = 'Effect size (30 participants)', power = effect_sweep$power,
+             type_m = effect_sweep$type_m),
+  data.frame(series = 'Sample size (effect = 0.05)', power = priming_curve$power,
+             type_m = priming_curve$type_m)
+)
+type_m <- type_m[is.finite(type_m$type_m), ]
+```
+
+```{r type-m-plot, fig.height = 4.4, fig.alt = 'Type M error falls towards one as power increases in both an effect-size sweep and a sample-size curve'}
+ggplot(type_m, aes(power, type_m, colour = series)) +
+  geom_hline(yintercept = 1, linetype = 2, colour = 'grey55') +
+  geom_line(linewidth = 0.7) +
+  geom_point(size = 2.2) +
+  scale_colour_manual(values = c('#0072B2', '#D55E00')) +
+  labs(
+    x = 'Power', y = 'Type M error', colour = NULL,
+    caption = sprintf(
+      'A value of 1 means no average exaggeration among significant estimates\n%s replicates per design',
+      n_sims
+    )
+  ) +
+  blog_theme +
+  theme(legend.position = 'top')
+```
+
+This run shows what a defensible planning run must examine together: detection, precision, magnitude error and singular fits. The warnings here would prompt me to increase the simulation count and reconsider the random-effects structure before recruiting a participant. Keeping that structure maximal protects the Type I error rate (Barr et al., 2013), and trimming it when the data cannot support it protects power (Matuschek et al., 2017). A planning run is where that trade-off can be examined instead of assumed. That ability to expose a design's weak points is the useful result of the exercise.
+
+The complete specification format, response families, mixed-model options and browser interface are in the [R documentation](https://pablobernabeu.github.io/pilotr/r/), [Python documentation](https://pablobernabeu.github.io/pilotr/python/) and [no-code app](https://pablobernabeu.github.io/pilotr/app/).
+
+### References
+
+Barr, D. J., Levy, R., Scheepers, C., & Tily, H. J. (2013). Random effects structure for confirmatory hypothesis testing: Keep it maximal. *Journal of Memory and Language*, *68*(3), 255–278. https://doi.org/10.1016/j.jml.2012.11.001
+
+DeBruine, L. M., & Barr, D. J. (2021). Understanding mixed-effects models through data simulation. *Advances in Methods and Practices in Psychological Science*, *4*(1). https://doi.org/10.1177/2515245920965119
+
+Gelman, A., & Carlin, J. (2014). Beyond power calculations: Assessing Type S (sign) and Type M (magnitude) errors. *Perspectives on Psychological Science*, *9*(6), 641–651. https://doi.org/10.1177/1745691614551642
+
+Kruschke, J. K. (2018). Rejecting or accepting parameter values in Bayesian estimation. *Advances in Methods and Practices in Psychological Science*, *1*(2), 270–280. https://doi.org/10.1177/2515245918771304
+
+Matuschek, H., Kliegl, R., Vasishth, S., Baayen, H., & Bates, D. (2017). Balancing Type I error and power in linear mixed models. *Journal of Memory and Language*, *94*, 305–315. https://doi.org/10.1016/j.jml.2017.01.001

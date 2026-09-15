@@ -1,0 +1,196 @@
+---
+title: 'theoryforge: A theory you can check'
+author: ''
+date: '2026-09-01'
+slug: theoryforge-a-theory-you-can-check
+categories:
+  - research methods
+  - science
+tags:
+  - s
+  - theory
+  - philosophy of science
+  - preregistration
+  - causal inference
+  - structural equation modelling
+  - Python
+  - conceptual processing
+subtitle: ''
+summary: 'A theory written only in prose cannot be checked mechanically. This post represents a theory of modality switching as structured data, derives the conditional independencies it forbids and tests those claims against data from the theory and a rival account.'
+authors: []
+lastmod: ''
+featured: no
+draft: no
+diagram: true
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = TRUE,
+                      fig.align = 'center', fig.retina = 2, comment = '#>')
+options(width = 92)
+xaringanExtra::use_clipboard()
+```
+
+A verbal theory can sound precise while leaving its structure uncertain. Its constructs may overlap, a prediction may not follow from any proposition and an amendment may protect the theory without adding a new risk. These are properties of the theory's specification, yet ordinary prose gives software nothing to inspect.
+
+I wrote [theoryforge](https://github.com/pablobernabeu/theoryforge) to store that specification as a small YAML or JSON document. The document records constructs, propositions, predictions, alternatives, versions and provenance under a published schema. The package can then validate references between those parts, derive implications from the causal graph and produce a dossier for review. Matching [R](https://pablobernabeu.github.io/theoryforge/r/) and [Python](https://pablobernabeu.github.io/theoryforge/python/) implementations use the same format.
+
+The example is a theory of modality switching in grounded conceptual processing. People are slower to verify a conceptual property after the preceding trial involved a different perceptual modality (Pecher et al., 2003). This effect has been interpreted as evidence that conceptual access recruits modality-specific systems (Barsalou, 1999).
+
+```{r}
+library(theoryforge)
+packageVersion('theoryforge')
+
+switching <- tf_read(tf_example_path('modality-switching.theory.yaml'))
+c(id = switching$id,
+  maturity = switching$maturity,
+  constructs = length(switching$constructs),
+  propositions = length(switching$propositions),
+  predictions = length(switching$predictions))
+```
+
+## Treat the theory as a checked document
+
+Structural validation checks required fields and allowed values. Full validation also follows identifiers across the document, so a prediction cannot claim to derive from a proposition that does not exist.
+
+```{r}
+tf_validate(switching, full = TRUE)
+
+check <- tf_check(switching)
+c(score = check$aggregate_score,
+  gate = check$gate,
+  blockers_failed = check$n_blockers_failed)
+```
+
+The checklist is based on features that make a theory appraisable, including explicit prohibitions and predictions linked to propositions (Meehl, 1990). Its score describes completeness of specification, not truth. A well-specified theory can be wrong, while a promising informal account can score poorly because it is not yet explicit enough to test.
+
+## Read the graph
+
+The theory's propositions form a causal graph. Because the source is structured data, the same graph can be rendered for a reader or exported for another program.
+
+```{r diagram-helper, include = FALSE}
+mermaid_graph <- function(theory) {
+  escape_label <- function(text) gsub('"', "'", text, fixed = TRUE)
+  lines <- 'flowchart LR'
+  for (construct in theory$constructs) {
+    lines <- c(lines, sprintf('  %s["%s"]', construct$id,
+                              escape_label(construct$label)))
+  }
+  for (proposition in theory$propositions) {
+    lines <- c(lines, sprintf('  %s -->|%s| %s', proposition$from,
+                              proposition$relation, proposition$to))
+  }
+  paste0(paste(lines, collapse = '\n'), '\n')
+}
+```
+
+```{r theory-diagram, echo = FALSE, results = 'asis'}
+cat('```mermaid\n', mermaid_graph(switching), '```\n', sep = '')
+```
+
+An acyclic causal graph does more than display arrows. It implies conditional independencies: associations that should disappear, or never arise, if the graph is correct. Those claims define what the theory forbids in observed data.
+
+```{r implications, include = FALSE}
+implications <- tf_implications(switching)
+statements <- vapply(implications$implications, `[[`, character(1), 'statement')
+```
+
+The graph contains four arrows and entails six testable independencies. The most discriminating one is that sensorimotor experience and lexical familiarity should be uncorrelated, because the only path between them meets at a collider. An observed correlation between the two, with nothing conditioned on, would count against the graph.
+
+## Give the claims a discriminating test
+
+The example below generates two data sets. The first follows the theory's graph. The second represents a rival account in which sensorimotor experience also contributes to lexical familiarity, with all other paths held constant.
+
+```{r discriminating-test, echo = FALSE}
+causal_graph <- dagitty::dagitty(tf_diagram(switching, type = 'causal_dag'))
+tests <- lapply(
+  implications$implications,
+  function(implication) structure(
+    list(X = implication$a,
+         Y = implication$b,
+         Z = as.character(unlist(implication$given))),
+    class = 'dagitty.ci'
+  )
+)
+
+set.seed(2026)
+sample_size <- 4000L
+simulate_world <- function(rival = FALSE) {
+  experience <- rnorm(sample_size)
+  familiarity <- if (rival) 0.5 * experience + rnorm(sample_size) else
+    rnorm(sample_size)
+  activation <- 0.7 * experience + rnorm(sample_size)
+  switch_cost <- 0.6 * activation + rnorm(sample_size)
+  access <- 0.5 * activation + 0.5 * familiarity + rnorm(sample_size)
+
+  data.frame(
+    c_sensorimotor_experience = experience,
+    c_modality_activation = activation,
+    c_switch_cost = switch_cost,
+    c_conceptual_access = access,
+    c_lexical_familiarity = familiarity
+  )
+}
+
+theory_tests <- dagitty::localTests(
+  causal_graph,
+  data = simulate_world(FALSE),
+  type = 'cis',
+  tests = tests
+)
+rival_tests <- dagitty::localTests(
+  causal_graph,
+  data = simulate_world(TRUE),
+  type = 'cis',
+  tests = tests
+)
+
+key_claim <- match(
+  'c_sensorimotor_experience _||_ c_lexical_familiarity',
+  statements
+)
+knitr::kable(data.frame(
+  World = c('Data generated from the theory', 'Data generated from the rival'),
+  Correlation = round(c(theory_tests$estimate[key_claim],
+                        rival_tests$estimate[key_claim]), 3),
+  `p value` = format.pval(c(theory_tests$p.value[key_claim],
+                            rival_tests$p.value[key_claim]),
+                          digits = 2, eps = 1e-99),
+  check.names = FALSE
+), row.names = FALSE)
+```
+
+All six implied independencies are compatible with data generated from the theory. The table isolates the one claim that fails in the rival world: sensorimotor experience and lexical familiarity become strongly associated, while the other claims remain close to zero. The pattern identifies which part of the graph conflicts with the data. A single global score would not provide that diagnosis.
+
+## Preserve the result with the theory
+
+The dossier brings the definitions, propositions, predictions, checks and provenance into one Markdown record. Its checksum identifies the exact state of the theory independently of whether R or Python produced it. For readability, the compact summary below shows only the checksum prefix.
+
+```{r dossier-summary, echo = FALSE}
+dossier <- tf_dossier(switching)
+fingerprint <- digest::digest(dossier, algo = 'sha256', serialize = FALSE)
+knitr::kable(data.frame(
+  Detail = c('Rigour score', 'Gate', 'SHA-256 prefix'),
+  Value = c(sprintf('%.1f/100', check$aggregate_score), check$gate,
+            substr(fingerprint, 1, 12))
+), row.names = FALSE)
+```
+
+## Limits
+
+Formalisation moves judgement into the open without removing it. Researchers still decide which constructs and arrows belong in the graph, how they are measured and whether an observed departure is scientifically important. The checklist is a structural and lexical screen, and its score must not be read as evidence that the theory is true. Feedback loops also require methods beyond the conditional-independence analysis used here.
+
+The package documentation covers structural equation model compilation, severity scoring, preregistration, amendment appraisal, version differences and OSF deposits. Those tools are useful after the core move shown here: write the theory in a form that exposes what it claims and what observations would count against it.
+
+### References
+
+Barsalou, L. W. (1999). Perceptual symbol systems. *Behavioral and Brain Sciences*, *22*(4), 577–660. https://doi.org/10.1017/S0140525X99002149
+
+Meehl, P. E. (1990). Appraising and amending theories: The strategy of Lakatosian defense and two principles that warrant it. *Psychological Inquiry*, *1*(2), 108–141. https://doi.org/10.1207/s15327965pli0102_1
+
+Pecher, D., Zeelenberg, R., & Barsalou, L. W. (2003). Verifying different-modality properties for concepts produces switching costs. *Psychological Science*, *14*(2), 119–124. https://doi.org/10.1111/1467-9280.t01-1-01429

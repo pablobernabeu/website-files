@@ -1,0 +1,87 @@
+name: Update post searches
+
+# Re-runs the bibliographic searches behind two posts (see
+# scripts/update_post_searches.R), commits the results to the branch the run was
+# dispatched from and also publishes them as an artifact, so that the posts can
+# be rebuilt from fresh counts without holding the Scopus key locally.
+# Dispatch-only: nothing here runs on a schedule or on push.
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: Which searches to run
+        type: choice
+        default: all
+        options:
+          - all
+          - speculation
+          - allfit
+
+# The job commits the search results back to the dispatching branch.
+permissions:
+  contents: write
+
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@465b7d8e732ca3921382b1674c59bada9cbf3399 # v2.13.0
+        with:
+          r-version: release
+          use-public-rspm: true
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
+
+      - name: Install R packages
+        # Linux binaries from the Posit package manager where available, so that
+        # the run does not compile every dependency from source.
+        run: |
+          repos <- c(RSPM = Sys.getenv("RSPM"), CRAN = "https://cloud.r-project.org")
+          install.packages(c("remotes", "httr2", "jsonlite"), repos = repos)
+          remotes::install_github(
+            "pablobernabeu/scopusflow@623649a2f4812da1a4850bf2c58d4fac4fc771f3",
+            repos = repos
+          )
+        shell: Rscript {0}
+        env:
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run searches
+        run: Rscript scripts/update_post_searches.R "$TARGET"
+        env:
+          TARGET: ${{ inputs.target || 'all' }}
+          SCOPUS_API_KEY: ${{ secrets.SCOPUS_API_KEY }}
+
+      - name: Commit results
+        # Also after a failure, so that the searches that did complete are kept.
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/post/*/searches/
+          if git diff --cached --quiet; then
+            echo "No search results to commit."
+            exit 0
+          fi
+          git commit -m "Update post searches"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+
+      - name: Upload results
+        # Also after a failure, so that the searches that did complete are kept.
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: post-searches
+          path: content/post/*/searches/
+          if-no-files-found: warn
+          retention-days: 30

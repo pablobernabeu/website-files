@@ -4,14 +4,9 @@
     {
       "label": "Serve site",
       "type": "shell",
-      "command": "Rscript -e \"blogdown::serve_site()\"",
+      "command": "python -m http.server 4321 --bind 127.0.0.1 --directory public",
       "isBackground": true,
       "problemMatcher": [],
-      "options": {
-        "env": {
-          "RSTUDIO_PANDOC": "C:\\Program Files\\RStudio\\resources\\app\\bin\\quarto\\bin\\tools"
-        }
-      },
       "runOptions": {
         "runOn": "folderOpen"
       },

@@ -44,7 +44,7 @@ projects: []
 
 <br>
 
-<iframe src="https://www.slideshare.net/slideshow/embed_code/key/rpKeB2wZNGw6o1" width="700" height="394" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <a href="https://www.slideshare.net/PabloBernabeu/presentation-of-jost-et-al-2019" title="Discussion of Labotka et al. (2023)" target="_blank">Slideshare</a></div>
+<iframe title="Slides: Discussion of Jost et al. (2019)" src="https://www.slideshare.net/slideshow/embed_code/key/rpKeB2wZNGw6o1" width="700" height="394" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <a href="https://www.slideshare.net/PabloBernabeu/presentation-of-jost-et-al-2019" title="Discussion of Labotka et al. (2023)" target="_blank">Slideshare</a></div>
 
 
 <hr>
