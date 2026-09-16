@@ -9,7 +9,7 @@
     <p class="pub-abstract">{{ . | markdownify }}</p>
     {{ end }}
 
-    <div class="article-style">{{ .Content }}</div>
+    <div class="article-style">{{ .Content }}{{ with .Resources.GetMatch "related-references.html" }}{{ .Content | safeHTML }}{{ end }}</div>
 
     {{ partial "page_footer" . }}
   </div>

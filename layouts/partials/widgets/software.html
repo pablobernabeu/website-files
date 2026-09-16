@@ -1,4 +1,4 @@
-{{/* Software widget: show every application, dashboard and package in /software/. */}}
+{{/* Software widget: list every page in /software/, newest first, whatever its software_kind. */}}
 {{ $st := .page }}
 {{ $items := where site.RegularPages "Section" "software" }}
 {{ $items = sort $items "Date" "desc" }}

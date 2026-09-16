@@ -1,5 +1,11 @@
 {{ $page := . }}
-{{ if or (eq $page.Type "publication") (and (eq $page.Type "software") $page.Params.publication_types) }}
+{{- /* Software pages get their own badge in place of a publication-type badge. The IsPage guard keeps the badge off the /software/ section header, whose Type is also "software". */ -}}
+{{ if and (eq $page.Type "software") $page.IsPage }}
+<span class="software-badges">
+{{ partial "software-type-badge.html" $page }}
+{{ partial "open-science-badges.html" $page }}
+</span>
+{{ else if eq $page.Type "publication" }}
 <span class="publication-badges">
 {{ $pub_types := slice "pub_uncat" "pub_conf" "pub_journal" "pub_preprint" "pub_report" "pub_book" "pub_book_section" "pub_thesis" "pub_patent" "pub_software" }}
 {{ $pub_icons := slice "fa-file" "fa-users" "fa-file-text" "fa-briefcase" "fa-briefcase" "fa-book" "fa-book" "fa-graduation-cap" "fa-lightbulb-o" "fa-code" }}
@@ -10,8 +16,6 @@
 {{ $pub_class := index $pub_classes (int $type) }}
 <span class="pub-type-badge {{ $pub_class }}" data-pub-type-url="/publication/#{{ $type }}" data-pub-type-name="{{ i18n $pub_type }}"><i class="fa {{ $pub_icon }}"></i> {{ i18n $pub_type }}</span>
 {{ end }}
-{{ if $page.Params.preregistered }}{{ $preregUrl := "" }}{{ range $page.Params.links }}{{ if or (eq .name "Preregistration") (eq .name "Stage 1 Registered Report") }}{{ $preregUrl = .url }}{{ end }}{{ end }}<img loading="lazy" decoding="async" src="{{ "img/preregistered_large_color.png" | relURL }}" alt="Preregistered" class="open-science-badge" data-badge-type="Preregistered" data-badge-url="{{ $preregUrl }}">{{ end }}
-{{ if $page.Params.open_materials }}<img loading="lazy" decoding="async" src="{{ "img/materials_large_color.png" | relURL }}" alt="Open Materials" class="open-science-badge" data-badge-type="Open Materials" data-badge-url="{{ $page.Params.url_code }}">{{ end }}
-{{ if $page.Params.open_data }}<img loading="lazy" decoding="async" src="{{ "img/data_large_color.png" | relURL }}" alt="Open Data" class="open-science-badge" data-badge-type="Open Data" data-badge-url="{{ $page.Params.url_data }}">{{ end }}
+{{ partial "open-science-badges.html" $page }}
 </span>
 {{ end }}

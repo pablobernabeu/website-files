@@ -184,8 +184,10 @@ repair_one <- function(p) {
 
 # ---------------------------------------------------------------------------
 
-files <- list.files("content/publication", pattern = "related-references\\.html$",
-                    recursive = TRUE, full.names = TRUE)
+# The collector's own listing, so a page it maintains outside content/publication
+# is repaired too. prune_reference_abstracts.py sends pages here before it will
+# prune them.
+files <- list_refs_html_files()
 cache <- new.env(parent = emptyenv())
 n_repaired <- n_failed <- n_dropped <- 0L
 failures <- character(0)

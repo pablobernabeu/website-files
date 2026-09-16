@@ -1,0 +1,5 @@
+{{- /* Center for Open Science badges, shared by the publication and software badge partials so both keep the markup and data attributes that static/js/open-science-badges.js reads. Context: the page. */ -}}
+{{ $page := . }}
+{{ if $page.Params.preregistered }}{{ $preregUrl := "" }}{{ range $page.Params.links }}{{ if or (eq .name "Preregistration") (eq .name "Stage 1 Registered Report") }}{{ $preregUrl = .url }}{{ end }}{{ end }}<img loading="lazy" decoding="async" src="{{ "img/preregistered_large_color.png" | relURL }}" alt="Preregistered" class="open-science-badge" data-badge-type="Preregistered" data-badge-url="{{ $preregUrl }}">{{ end }}
+{{ if $page.Params.open_materials }}<img loading="lazy" decoding="async" src="{{ "img/materials_large_color.png" | relURL }}" alt="Open Materials" class="open-science-badge" data-badge-type="Open Materials" data-badge-url="{{ $page.Params.url_code }}">{{ end }}
+{{ if $page.Params.open_data }}<img loading="lazy" decoding="async" src="{{ "img/data_large_color.png" | relURL }}" alt="Open Data" class="open-science-badge" data-badge-type="Open Data" data-badge-url="{{ $page.Params.url_data }}">{{ end }}

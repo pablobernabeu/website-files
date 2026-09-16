@@ -1,0 +1,14 @@
+{{- /* Badge naming the primary form of a Software page, set by software_kind in its front matter. Context: the page. Icon names follow Font Awesome 6, the version pinned in themes/hugo-academic/data/assets.toml. */ -}}
+{{- $kinds := dict "package" (dict "label" "Package" "icon" "fa-cube") "web-application" (dict "label" "Web application" "icon" "fa-globe") "pipeline" (dict "label" "Pipeline" "icon" "fa-diagram-project") -}}
+{{- $kind := .Params.software_kind | default "" -}}
+{{- $spec := index $kinds $kind -}}
+{{- if not $spec -}}
+  {{- /* A missing or misspelt kind should not blank the badge, but it should not pass unnoticed either. */ -}}
+  {{- $known := slice -}}
+  {{- range $name, $_ := $kinds -}}{{- $known = $known | append $name -}}{{- end -}}
+  {{- warnf "%s: software_kind %q is not one of %s; showing a generic Software badge" .File.Path $kind (delimit $known ", ") -}}
+  {{- $kind = "software" -}}
+  {{- $spec = dict "label" "Software" "icon" "fa-code" -}}
+{{- end -}}
+{{- /* No space after </i>: hugo --minify would strip it, so the gap comes from the icon's margin in software-type-badges.css. */ -}}
+<span class="software-type-badge software-type-{{ $kind }}"><i class="fa {{ $spec.icon }}" aria-hidden="true"></i>{{ $spec.label }}</span>

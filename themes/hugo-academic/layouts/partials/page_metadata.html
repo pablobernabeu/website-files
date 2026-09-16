@@ -11,7 +11,7 @@
   <span style='font-size:75%;'>
     {{ partial "page_metadata_authors" $page }}
   </span>
-  {{ else if (in (slice "applications-and-dashboards" "software" "page") $page.Type) }}
+  {{ else if (in (slice "software" "page") $page.Type) }}
   <span style='font-size:112%;'>
     {{ partial "page_metadata_authors" $page }}
   </span>

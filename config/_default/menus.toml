@@ -9,7 +9,7 @@
   weight = 10
 
 [[main]]
-  name = '<span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Applications, dashboards and research packages &nbsp; ">Software</span>'
+  name = '<span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Packages, web applications and pipelines &nbsp; ">Software</span>'
   url = '#software'
   weight = 20
   

@@ -423,7 +423,12 @@ def main():
     KEEP = args.keep
 
     rows = []
-    for publication_dir in sorted(glob.glob('content/publication/*/')):
+    # Software pages are pruned too, since the collector fills those that have
+    # related references. prune_publication() returns early for any folder
+    # without a related-references.html, so no other software page is read.
+    bundle_dirs = (sorted(glob.glob('content/publication/*/'))
+                   + sorted(glob.glob('content/software/*/')))
+    for publication_dir in bundle_dirs:
         result = prune_publication(publication_dir, args.apply)
         if result:
             rows.append(result)

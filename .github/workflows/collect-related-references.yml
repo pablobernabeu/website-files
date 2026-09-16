@@ -15,13 +15,13 @@ concurrency:
 
 jobs:
   # -----------------------------------------------------------------------
-  # 1. Discover publications & run one-time PDF query generation
+  # 1. Discover bundles & run one-time PDF query generation
   # -----------------------------------------------------------------------
   discover:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     outputs:
-      publications: ${{ steps.list.outputs.publications }}
+      bundles: ${{ steps.list.outputs.bundles }}
 
     steps:
       - name: Checkout repository
@@ -47,28 +47,54 @@ jobs:
           path: content/publication/**/related references/
           if-no-files-found: ignore
 
-      - name: List publications
+      - name: List bundles
         id: list
+        # Every publication is listed. A software page is listed only once it
+        # has a related-references.html or a related references folder, as in
+        # list_bundle_dirs() in the collector, so that a new package or app
+        # page is not given generated queries. Each entry keeps its section
+        # because the same folder name can exist in both, and every later step
+        # has to write back to the right one.
         run: |
-          pubs=$(ls -d content/publication/*/ 2>/dev/null \
-            | xargs -I{} basename {} \
-            | grep -v '^[_.]' \
-            | jq -R -s -c 'split("\n") | map(select(length > 0))')
-          echo "publications=$pubs" >> $GITHUB_OUTPUT
-          echo "Found publications: $pubs"
+          bundles=$(
+            {
+              # Names are filtered in jq because grep exits 1 when no line
+              # survives. With pipefail, which an explicit `shell: bash` turns
+              # on, that would fail the step whenever no software page
+              # qualifies.
+              ls -d content/publication/*/ 2>/dev/null \
+                | xargs -I{} basename {} \
+                | jq -R -c 'select(test("^[_.]") | not) | {section: "publication", name: .}'
+              for dir in content/software/*/; do
+                if [ -f "${dir}related-references.html" ] \
+                  || [ -d "${dir}related references" ] \
+                  || [ -d "${dir}related-references" ]; then
+                  basename "$dir"
+                fi
+              done \
+                | jq -R -c 'select(test("^[_.]") | not) | {section: "software", name: .}'
+            } | jq -s -c '.'
+          )
+          echo "bundles=$bundles" >> $GITHUB_OUTPUT
+          echo "Found bundles: $bundles"
 
   # -----------------------------------------------------------------------
-  # 2. Collect references — one parallel job per publication
+  # 2. Collect references: one parallel job per bundle
   # -----------------------------------------------------------------------
   collect:
+    name: collect (${{ matrix.bundle.section }}/${{ matrix.bundle.name }})
     needs: discover
     runs-on: ubuntu-latest
     timeout-minutes: 355
     strategy:
       matrix:
-        publication: ${{ fromJSON(needs.discover.outputs.publications) }}
+        bundle: ${{ fromJSON(needs.discover.outputs.bundles) }}
       fail-fast: false
       max-parallel: 2
+    env:
+      # SECTION/NAME, the form the collector's --pub resolves without
+      # ambiguity, and the bundle's path below content/.
+      BUNDLE: ${{ matrix.bundle.section }}/${{ matrix.bundle.name }}
 
     steps:
       - name: Checkout repository
@@ -76,6 +102,8 @@ jobs:
         with:
           persist-credentials: false
 
+      # The PDF query generator only reads publications, so this destination
+      # is the same whichever section the job's bundle is in.
       - name: Download generated queries
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
@@ -106,29 +134,36 @@ jobs:
           install.packages(c("yaml", "rscopus", "rcrossref", "dplyr", "httr", "jsonlite"), repos = "https://cloud.r-project.org")
         shell: Rscript {0}
 
-      - name: Collect references for ${{ matrix.publication }}
+      - name: Collect references for ${{ matrix.bundle.section }}/${{ matrix.bundle.name }}
         run: |
-          Rscript scripts/collect_related_references.R --pub "${{ matrix.publication }}"
+          Rscript scripts/collect_related_references.R --pub "$BUNDLE"
         env:
           SCOPUS_API_KEY: ${{ secrets.SCOPUS_API_KEY }}
 
+      # Checked with git status because git diff ignores untracked files. A
+      # bundle's first collection creates related-references.html and
+      # pending-dois.json, and a check blind to new files would discard them
+      # on every run.
       - name: Check for changes
         id: changes
         run: |
-          if git diff --quiet -- "content/publication/${{ matrix.publication }}"; then
+          if [ -z "$(git status --porcelain -- "content/$BUNDLE")" ]; then
             echo "changed=false" >> $GITHUB_OUTPUT
           else
             echo "changed=true" >> $GITHUB_OUTPUT
             echo "Changed files:"
-            git diff --name-only -- "content/publication/${{ matrix.publication }}"
+            git status --porcelain --untracked-files=all -- "content/$BUNDLE"
           fi
 
+      # Artifact names cannot contain "/", so the section is joined to the
+      # folder name with a hyphen. The commit job splits it at the first one,
+      # which is safe because no section name contains a hyphen.
       - name: Upload changed files
         if: steps.changes.outputs.changed == 'true'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: changes-${{ matrix.publication }}
-          path: content/publication/${{ matrix.publication }}/
+          name: changes-${{ matrix.bundle.section }}-${{ matrix.bundle.name }}
+          path: content/${{ env.BUNDLE }}/
 
   # -----------------------------------------------------------------------
   # 3. Commit — merge all changes and open a PR
@@ -160,9 +195,20 @@ jobs:
           any=false
           if [ -d _artifacts ]; then
             for dir in _artifacts/changes-*/; do
-              pub=$(basename "$dir" | sed 's/^changes-//')
-              echo "Applying changes for: $pub"
-              cp -r "$dir"* "content/publication/$pub/"
+              # changes-SECTION-NAME, named by the collect job's upload step.
+              id=$(basename "$dir" | sed 's/^changes-//')
+              section=${id%%-*}
+              name=${id#*-}
+              target="content/$section/$name"
+              # Checked here because cp does not always fail on a missing
+              # target: given a single folder it creates the target, and a
+              # misread name would then publish a stray page.
+              if [ ! -d "$target" ]; then
+                echo "::error::Artifact $(basename "$dir") does not match an existing bundle: $target"
+                exit 1
+              fi
+              echo "Applying changes for: $section/$name"
+              cp -r "$dir"* "$target/"
               any=true
             done
             rm -rf _artifacts/
@@ -171,16 +217,18 @@ jobs:
             echo "No artifacts to apply"
           fi
 
+      # git status for the same reason as in the collect job: files new to the
+      # repository are invisible to git diff.
       - name: Check for changes
         id: changes
         run: |
-          if git diff --quiet; then
+          if [ -z "$(git status --porcelain)" ]; then
             echo "No changes detected"
             echo "changed=false" >> $GITHUB_OUTPUT
           else
             echo "changed=true" >> $GITHUB_OUTPUT
             echo "Changed files:"
-            git diff --name-only
+            git status --porcelain --untracked-files=all
           fi
 
       - name: Set date
