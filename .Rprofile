@@ -28,15 +28,34 @@ if (!nzchar(Sys.getenv("CI"))) {
 
   # DOWNLOAD CV FROM OSF
   message('Downloading CV from OSF to /static...')
-  tryCatch(
-    download.file(
-      url = 'https://osf.io/download/84ktq',
-      destfile = 'static/cv-pablo-bernabeu.pdf',
-      mode = 'wb'
-    ),
-    # Offline or OSF unavailable: keep the copy already in /static rather than
-    # aborting startup.
-    error = function(e) message('Could not download CV: ', conditionMessage(e))
-  )
+  # Download to a temporary file and replace the tracked copy only once the
+  # download is complete. Writing straight to static/ deleted the committed CV
+  # whenever OSF answered with an error (a 404 in September 2026), so every R
+  # session in the project left a deletion in the working tree. The checks
+  # mirror .github/workflows/update-cv.yml: a PDF header and a %%EOF trailer,
+  # which a truncated transfer lacks.
+  cv_tmp <- tempfile(fileext = '.pdf')
+  cv_ok <- tryCatch({
+    download.file(url = 'https://osf.io/download/84ktq', destfile = cv_tmp,
+                  mode = 'wb', quiet = TRUE)
+    bytes <- readBin(cv_tmp, 'raw', file.size(cv_tmp))
+    tail_text <- rawToChar(bytes[max(1, length(bytes) - 2047):length(bytes)][
+      bytes[max(1, length(bytes) - 2047):length(bytes)] != as.raw(0)])
+    length(bytes) > 1000 &&
+      identical(rawToChar(bytes[1:4]), '%PDF') &&
+      grepl('%%EOF', tail_text, fixed = TRUE)
+  }, error = function(e) {
+    message('Could not download CV: ', conditionMessage(e))
+    FALSE
+  }, warning = function(w) {
+    message('Could not download CV: ', conditionMessage(w))
+    FALSE
+  })
+  if (isTRUE(cv_ok)) {
+    file.copy(cv_tmp, 'static/cv-pablo-bernabeu.pdf', overwrite = TRUE)
+  } else {
+    message('Keeping the CV already in /static.')
+  }
+  unlink(cv_tmp)
   options(blogdown.fast_preview = FALSE)
 }
