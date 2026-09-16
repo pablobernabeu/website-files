@@ -27,6 +27,9 @@ content/post/a-new-function-to-plot-convergence-diagnostics-from-lme4-allfit/m1_
 content/publication/**/DOIs, *.csv
 content/publication/**/additional DOIs, *.csv
 content/publication/**/date and time of previous retrieval of DOIs.txt
+content/software/**/DOIs, *.csv
+content/software/**/additional DOIs, *.csv
+content/software/**/date and time of previous retrieval of DOIs.txt
 
 # blogdown lock files. These are transient guards left behind by an interrupted
 # render, but blogdown treats any that it finds as "a render is in progress" and

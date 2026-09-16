@@ -13,6 +13,8 @@
 # - Retrieves APA 7 formatted citations via CrossRef content negotiation
 # - Appends citations not already listed to each bundle's
 #   related-references.html
+# - Records the query in that file for the page's query viewer, and rewrites
+#   the record when the query changes
 # - Persists unfetched DOI candidates so time-limited runs resume collection
 #   before moving on to newly discovered results
 #
@@ -21,6 +23,9 @@
 #   Rscript scripts/collect_related_references.R --pub NAME      # one bundle, by folder name
 #   Rscript scripts/collect_related_references.R --pub software/NAME   # one bundle, section given
 #   Rscript scripts/collect_related_references.R --lint-only     # repair files only
+#
+# --pub must be followed by a bundle name. Without one, the script stops,
+# since carrying on would collect for every bundle.
 #
 # Environment variables:
 #   SCOPUS_API_KEY  — Elsevier Scopus API key (required)
@@ -582,8 +587,13 @@ format_citation_for_hugo <- function(citation, doi) {
 }
 
 # ===========================================================================
-#  INDEX FILE READ / WRITE
+#  RELATED-REFERENCES.HTML AND DOI BACKLOG READ / WRITE
 # ===========================================================================
+#
+# Several functions below take the file as `index_path`. Citations and their
+# JSON blocks were written into each page's index file until they moved to a
+# standalone related-references.html in April 2026, and the parameter kept its
+# old name. It now always points to related-references.html.
 
 #' Convert a markdown-formatted citation to HTML for insertion into .html files.
 #' Handles *italic* -> <em>, <URL> -> <a>, and & -> &amp;.
@@ -598,8 +608,12 @@ citation_md_to_html <- function(citation) {
   html
 }
 
-#' Extract DOIs already present in a publication's index file.
+#' Extract the DOIs already listed in a bundle's related-references.html, plus
+#' any DOIs skipped by hand in the bundle's skip.csv.
 #' Handles both markdown angle-bracket format and HTML <a> tag format.
+#' @param index_path Path to the bundle's related-references.html. A missing
+#'   file yields no DOIs.
+#' @return Lower-cased, trimmed, unique DOIs.
 extract_existing_dois <- function(index_path) {
   if (!file.exists(index_path)) return(character(0))
   content <- readLines(index_path, encoding = "UTF-8", warn = FALSE)
@@ -613,7 +627,9 @@ extract_existing_dois <- function(index_path) {
   dois <- gsub('^href="https?://doi\\.org/', "", dois)
   dois <- gsub('"$', "", dois)
 
-  # Also load any manually skipped DOIs from skip.csv in the same refs dir
+  # Also load any manually skipped DOIs from skip.csv in the related references
+  # folder beside the file, under either spelling. Despite its name, refs_dir
+  # here is the bundle folder.
   refs_dir <- dirname(index_path)
   refs_dirs <- c(
     file.path(refs_dir, "related references"),
@@ -771,11 +787,14 @@ insert_references_into_refs_html <- function(refs_html_path, new_citations) {
 }
 
 # ===========================================================================
-#  METADATA JSON BLOCK (embedded in index file for JS to read)
+#  METADATA JSON BLOCK (embedded in related-references.html for JS to read)
 # ===========================================================================
 
-#' Read existing ref-metadata JSON from the index file's <script> block.
-#' Returns a named list (DOI -> list(abstract, type)).
+#' Read existing ref-metadata JSON from the <script> block in a bundle's
+#' related-references.html.
+#' @param index_path Path to the bundle's related-references.html.
+#' @return A named list (DOI -> list(abstract, type, ...)), empty when the
+#'   block is absent or unreadable.
 read_ref_metadata <- function(index_path) {
   content <- readLines(index_path, encoding = "UTF-8", warn = FALSE)
   start <- grep('<script[^>]*class="ref-metadata"', content)
@@ -793,9 +812,10 @@ read_ref_metadata <- function(index_path) {
   )
 }
 
-#' Insert or update the <script class="ref-metadata"> JSON block in the index
-#' file. The block goes inside the <div class="related-references"> div but
-#' *after* the citations, immediately before the section's closing tag.
+#' Insert or update the <script class="ref-metadata"> JSON block in a bundle's
+#' related-references.html. The block goes inside the
+#' <div class="related-references"> div but *after* the citations, immediately
+#' before the section's closing tag.
 #'
 #' Position matters for how the page loads. The block reaches 7.9 MB on the
 #' largest publication, some 78% of that page, and while it sat at the top of
@@ -805,6 +825,11 @@ read_ref_metadata <- function(index_path) {
 #' and over a real connection the gap is however long it takes to fetch 2.6 MB
 #' of gzipped JSON rather than milliseconds. The reader's JavaScript finds the
 #' block by class, so moving it costs nothing.
+#' @param index_path Path to the bundle's related-references.html, rewritten in
+#'   place.
+#' @param metadata Named list (DOI -> entry) to store. An empty list writes
+#'   nothing.
+#' @return TRUE when the file was written, FALSE otherwise.
 write_ref_metadata <- function(index_path, metadata) {
   if (length(metadata) == 0) return(FALSE)
 
@@ -858,8 +883,59 @@ write_ref_metadata <- function(index_path, metadata) {
 #  SCOPUS QUERY JSON BLOCK (embedded for JS viewer)
 # ===========================================================================
 
-#' Insert or update the <script class="scopus-queries"> JSON block in the
-#' index file, inside the <div class="related-references"> section.
+#' Decide whether the <script class="scopus-queries"> block in a bundle's
+#' related-references.html needs writing for the query this run searched with.
+#'
+#' Only the query is compared. An auto-generated query's period ends in the
+#' current year, so comparing periods would rewrite every such block each
+#' January and reset its collection date although the query had not changed.
+#' @param index_path Path to the bundle's related-references.html.
+#' @param query The Scopus query string used on this run.
+#' @return "absent" when the file has no block, "current" when the stored query
+#'   matches `query`, "changed" when a readable block holds a different query or
+#'   none, and "unreadable" when a block is there but cannot be parsed.
+scopus_queries_status <- function(index_path, query) {
+  content <- readLines(index_path, encoding = "UTF-8", warn = FALSE)
+  start <- grep('<script[^>]*class="scopus-queries"', content)
+  if (length(start) == 0) return("absent")
+  end <- grep("</script>", content)
+  end <- end[end > start[1]]
+  # write_scopus_queries() removes an old block up to the first closing tag
+  # after its opening one. If this block were collapsed onto a single line,
+  # that tag would belong to the ref-metadata block at the foot of the file,
+  # and every citation in between would go with it. Rewriting is therefore
+  # allowed only when what lies between the tags parses as JSON.
+  if (length(end) == 0 || end[1] - start[1] < 2) return("unreadable")
+  stored <- tryCatch(
+    jsonlite::fromJSON(paste(content[(start[1] + 1):(end[1] - 1)], collapse = "\n"),
+                       simplifyVector = FALSE),
+    error = function(e) NULL
+  )
+  if (!is.list(stored)) return("unreadable")
+  # Exact [[ ]] indexing, since $ partial-matches names.
+  stored_query <- stored[["query"]]
+  if (is.character(stored_query) && length(stored_query) == 1L &&
+      identical(enc2utf8(stored_query), enc2utf8(query))) {
+    "current"
+  } else {
+    "changed"
+  }
+}
+
+#' Insert or update the <script class="scopus-queries"> JSON block in a bundle's
+#' related-references.html, just inside the <div class="related-references">
+#' section.
+#' @param index_path Path to the bundle's related-references.html, rewritten in
+#'   place.
+#' @param query The Scopus query string.
+#' @param query_source "script" when the query came from the bundle's related
+#'   references R script, "auto" when it was built from the page's front matter.
+#' @param search_period A "YYYY-YYYY" string or a vector of years.
+#' @param script_path Repository path the viewer links to as the collection
+#'   script, or NULL to omit the link.
+#' @param date_collected Date recorded as the collection date.
+#' @return TRUE when the file was written, FALSE when it has no
+#'   related-references section.
 write_scopus_queries <- function(index_path, query, query_source,
                                  search_period, script_path = NULL,
                                  date_collected = Sys.Date()) {
@@ -954,10 +1030,18 @@ args <- commandArgs(trailingOnly = TRUE)
 single_pub <- NULL
 if ("--pub" %in% args) {
   idx <- which(args == "--pub")
-  if (idx < length(args)) {
-    single_pub <- args[idx + 1]
-    cat("Single-bundle mode:", single_pub, "\n")
+  if (length(idx) > 1) {
+    stop("--pub was given more than once. Pass a single bundle name.")
   }
+  pub_arg <- if (idx < length(args)) args[idx + 1] else NA_character_
+  # A missing name used to leave single_pub NULL, and the script then collected
+  # for every bundle. An empty string or a following flag (--pub --lint-only)
+  # counts as a missing name too.
+  if (is.na(pub_arg) || !nzchar(trimws(pub_arg)) || startsWith(pub_arg, "--")) {
+    stop("--pub needs a bundle name, as in --pub NAME or --pub software/NAME.")
+  }
+  single_pub <- pub_arg
+  cat("Single-bundle mode:", single_pub, "\n")
 }
 
 pub_dirs <- list_bundle_dirs()
@@ -1349,15 +1433,20 @@ for (pub_dir in pub_dirs) {
     cat("  Updated metadata for", length(new_metadata), "DOIs\n")
   }
 
-  # Embed Scopus query info for the JS viewer.
+  # Embed Scopus query info for the JS viewer, and rewrite it when the query
+  # has changed. The block used to be written only when absent, so once a
+  # script had been edited, the viewer went on showing the query as it was
+  # first embedded. One page displayed 2 titles while its script searched 19.
   sp <- "scripts/collect_related_references.R"
-  # Only write if not already present
-  refs_html_content <- readLines(refs_html_path, encoding = "UTF-8", warn = FALSE)
-  if (!any(grepl('class="scopus-queries"', refs_html_content))) {
+  query_status <- scopus_queries_status(refs_html_path, query)
+  if (query_status %in% c("absent", "changed")) {
     write_scopus_queries(refs_html_path, query, query_source, search_period,
                          script_path = sp)
     any_changes <- TRUE
-    cat("  Embedded Scopus query info\n")
+    cat(if (query_status == "absent") "  Embedded Scopus query info\n" else
+      "  Updated Scopus query info: the query has changed\n")
+  } else if (query_status == "unreadable") {
+    cat("  Warning: scopus-queries block could not be parsed and was left untouched\n")
   }
 }
 
