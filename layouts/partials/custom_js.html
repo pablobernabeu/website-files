@@ -1,3 +1,19 @@
+<!-- Bootstrap tooltips without Popper.js -->
+<script>
+// The theme bundles Bootstrap 4.4.1 without Popper.js, and Bootstrap's tooltip
+// and popover plugins throw "Bootstrap's tooltips require Popper.js" as soon
+// as they are initialised on an element. academic.js initialises every
+// data-toggle="tooltip1" label, and the navbar carries such labels on every
+// page, so every page logged that error while the labels fell back to the
+// browser's native title tooltip. Turning both plugins into no-ops while
+// Popper is absent keeps that native tooltip and silences the error. This
+// script runs before jQuery's ready handlers, which is when academic.js makes
+// the call.
+if (window.jQuery && typeof window.Popper === 'undefined') {
+  jQuery.fn.tooltip = jQuery.fn.popover = function() { return this; };
+}
+</script>
+
 <!-- Custom JavaScript for mobile navbar hover trigger -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
