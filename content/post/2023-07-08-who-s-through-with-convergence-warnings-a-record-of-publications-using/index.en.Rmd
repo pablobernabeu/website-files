@@ -97,7 +97,7 @@ records <- bind_rows(lapply(list(scopus_any, scopus_proxy, europepmc, openalex),
                             standardise))
 records |> count(source, name = 'records')
 
-# Do any of the Scopus any-field titles mention a mixed model at all?
+# Count the Scopus any-field titles that mention a mixed model at all.
 mixed_terms <- 'mixed|lme4|multilevel|random effect|convergence|optimi[sz]'
 sum(grepl(mixed_terms, scopus_any$title, ignore.case = TRUE))
 head(sort(table(scopus_any$publication), decreasing = TRUE), 4)
@@ -189,4 +189,4 @@ Brauer, M., & Curtin, J. J. (2018). Linear mixed-effects models and the analysis
 
 Matuschek, H., Kliegl, R., Vasishth, S., Baayen, H., & Bates, D. (2017). Balancing Type I error and power in linear mixed models. *Journal of Memory and Language*, *94*, 305–315. https://doi.org/10.1016/j.jml.2017.01.001
 
-Singmann, H., & Kellen, D. (2019). An introduction to mixed models for experimental psychology. In D. H. Spieler & E. Schumacher (Eds.), *New methods in cognitive psychology* (pp. 4–31). Routledge. https://doi.org/10.4324/9780429318405-2
+Singmann, H., & Kellen, D. (2019). An introduction to mixed models for experimental psychology. In D. Spieler & E. Schumacher (Eds.), *New methods in cognitive psychology* (pp. 4–31). Routledge. https://doi.org/10.4324/9780429318405-2

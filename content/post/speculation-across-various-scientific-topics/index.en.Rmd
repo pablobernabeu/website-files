@@ -83,7 +83,7 @@ comparisons <- lapply(names(topics), function(label) {
 })
 ```
 
-For every year, `scopus_compare_topics()` counts the records that match the reference query and those that also match the comparison term. The nine comparisons therefore take `r 9 * 2 * length(unique(readRDS('searches/speculation_comparisons.rds')[[1]]$year))` requests to the Scopus API. Each row of the result holds a year, the count for the reference literature, the count for the comparison and the comparison as a percentage of the reference.
+For every year, `scopus_compare_topics()` counts the records that match the reference query and those that also match the comparison term. The nine comparisons therefore take `r local({cmp <- readRDS('searches/speculation_comparisons.rds'); length(cmp) * 2 * length(unique(cmp[[1]]$year))})` requests to the Scopus API. Each row of the result holds a year, the count for the reference literature, the count for the comparison and the comparison as a percentage of the reference.
 
 ```{r}
 library(dplyr)
@@ -195,7 +195,7 @@ With those limits in mind, the differences describe how the records retrieved by
 
 Bernabeu, P. (2026). *scopusflow: A reproducible workflow layer for Scopus bibliographic searches* (Version 0.4.0) [Computer software]. CRAN. https://doi.org/10.32614/CRAN.package.scopusflow
 
-Bernabeu, P., & Vogt, P. (2015, June 18). *Language evolution: Current status and future directions* [Paper presentation]. Tenth Language at the University of Essex (LangUE) Postgraduate Conference, Colchester, United Kingdom. https://www.researchgate.net/publication/280858062_Language_evolution_Current_status_and_future_directions
+Bernabeu, P., & Vogt, P. (2015, June 18). *Language evolution: Current status and future directions* [Paper presentation]. 10th Language at the University of Essex Postgraduate Conference (LangUE), Colchester, United Kingdom. https://eprints.lancs.ac.uk/id/eprint/130664/
 
 Evans, N., & Levinson, S. C. (2009). The myth of language universals: Language diversity and its importance for cognitive science. *Behavioral and Brain Sciences*, *32*(5), 429–448. https://doi.org/10.1017/S0140525X0999094X
 

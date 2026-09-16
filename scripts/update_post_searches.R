@@ -23,10 +23,16 @@
 #
 # Environment variables:
 #   SCOPUS_API_KEY  Elsevier Scopus API key, read by scopusflow and never
-#                   printed. Without it, the speculation searches stop with an
-#                   error, which also ends an `all` run before the allfit
-#                   searches, whereas an `allfit` run skips only the Scopus
-#                   searches.
+#                   printed. Without it, a `speculation` run stops with an
+#                   error. An `all` run warns and skips the speculation
+#                   searches. Both `all` and `allfit` runs also skip the two
+#                   Scopus searches for allFit but still run those of Europe
+#                   PMC and OpenAlex.
+#
+# A table is written only when its search has finished. If a search fails, even
+# part-way through its pages, or returns no rows where the committed table has
+# some, the committed file is left as it is. The speculation RDS is saved only
+# together with its CSV, so that the two always come from the same run.
 #
 # A bundle's searches/retrieved.txt holds the time (UTC) of the latest run in
 # which at least one of that bundle's searches wrote a table.
@@ -78,9 +84,18 @@ write_table <- function(x, path) {
 
 # ---- Speculation across topics ------------------------------------------------
 
-if (target %in% c("all", "speculation")) {
-  if (!scopus_has_key()) stop("No Scopus API key found in SCOPUS_API_KEY.")
+# Only a `speculation` run stops without a key. An `all` run skips these
+# searches with a warning, because stopping here would also prevent the
+# keyless Europe PMC and OpenAlex searches further down.
+run_speculation <- target %in% c("all", "speculation")
+if (run_speculation && !scopus_has_key()) {
+  if (target == "speculation") stop("No Scopus API key found in SCOPUS_API_KEY.")
+  warning("No Scopus API key found in SCOPUS_API_KEY; ",
+          "skipping the speculation searches.", call. = FALSE, immediate. = TRUE)
+  run_speculation <- FALSE
+}
 
+if (run_speculation) {
   # The current year is included so that the plots reach the latest records,
   # and the post notes that this final year is incomplete.
   years <- 1980:as.integer(format(Sys.Date(), "%Y"))
@@ -112,9 +127,12 @@ if (target %in% c("all", "speculation")) {
   attr(comparisons, "retrieved") <- retrieved
 
   dir.create(speculation_dir, recursive = TRUE, showWarnings = FALSE)
-  saveRDS(comparisons, file.path(speculation_dir, "speculation_comparisons.rds"))
-  write_table(do.call(rbind, lapply(comparisons, as.data.frame)),
-              file.path(speculation_dir, "speculation_comparisons.csv"))
+  # The post reads the RDS, and the CSV holds the same data. The RDS is saved
+  # only if write_table() wrote the CSV, so that a kept CSV never sits beside
+  # an RDS from a different run.
+  if (write_table(do.call(rbind, lapply(comparisons, as.data.frame)),
+                  file.path(speculation_dir, "speculation_comparisons.csv")))
+    saveRDS(comparisons, file.path(speculation_dir, "speculation_comparisons.rds"))
   if (normalizePath(speculation_dir, mustWork = FALSE) %in% written_to)
     writeLines(retrieved, file.path(speculation_dir, "retrieved.txt"))
   else
@@ -143,6 +161,17 @@ if (target %in% c("all", "allfit")) {
     })
   }
 
+  # A paging loop yields NULL whether it ends with `break` or try_search()
+  # catches an error part-way, so this wrapper returns TRUE only if the loop
+  # ran to its end. The pages gathered before a failure are then never
+  # written over a complete committed table.
+  paging_finished <- function(label, expr) {
+    !is.null(try_search(label, {
+      expr
+      TRUE
+    }))
+  }
+
   # 1. Scopus: the function name in any indexed field (title, abstract,
   #    keywords, references and others, but not the body of the article). If
   #    the quoted ALL() query fails, two alternative forms are tried in turn.
@@ -157,10 +186,12 @@ if (target %in% c("all", "allfit")) {
       break
     }
   }
-  if (!is.null(records_all)) {
-    write_table(records_all, file.path(allfit_dir, "scopus_allfit_any_field.csv"))
+  # Each query file describes the table saved beside it, so it is written only
+  # when that table is. Otherwise a kept table could sit beside the query of a
+  # search that returned nothing, such as a fallback form of this one.
+  if (!is.null(records_all) &&
+      write_table(records_all, file.path(allfit_dir, "scopus_allfit_any_field.csv")))
     writeLines(q_all, file.path(allfit_dir, "scopus_allfit_any_field_query.txt"))
-  }
 
   # 2. Scopus: a proxy query for titles, abstracts and keywords that describe
   #    maximal random-effects structures and convergence, since studies that
@@ -183,10 +214,9 @@ if (target %in% c("all", "allfit")) {
     '"allFit" AND (lme4 OR "mixed-effects" OR "mixed effects" OR',
     '"mixed model" OR "mixed models" OR "multilevel")'
   )
-  writeLines(epmc_query, file.path(allfit_dir, "europepmc_query.txt"))
   epmc <- list()
   cursor <- "*"
-  try_search("Europe PMC", repeat {
+  epmc_finished <- paging_finished("Europe PMC", repeat {
     resp <- request("https://www.ebi.ac.uk/europepmc/webservices/rest/search") |>
       req_url_query(query = epmc_query, format = "json", pageSize = 1000,
                     cursorMark = cursor, resultType = "lite") |>
@@ -218,7 +248,11 @@ if (target %in% c("all", "allfit")) {
     is_open_access = vapply(epmc, pick, character(1), "isOpenAccess"),
     stringsAsFactors = FALSE
   )
-  write_table(epmc_table, file.path(allfit_dir, "europepmc_allfit_fulltext.csv"))
+  if (!epmc_finished)
+    warning("The Europe PMC search did not finish; leaving ",
+            "europepmc_allfit_fulltext.csv as it is.", call. = FALSE, immediate. = TRUE)
+  else if (write_table(epmc_table, file.path(allfit_dir, "europepmc_allfit_fulltext.csv")))
+    writeLines(epmc_query, file.path(allfit_dir, "europepmc_query.txt"))
 
   # 4. OpenAlex: full-text search over the works whose text OpenAlex holds.
   #    On its own, the function name also matches unrelated text (the search
@@ -227,10 +261,9 @@ if (target %in% c("all", "allfit")) {
   openalex_filter <- paste0('fulltext.search:allFit AND (lme4 OR lmer OR ',
                             '"mixed effects" OR "mixed-effects" OR "mixed model" OR ',
                             '"mixed models" OR multilevel)')
-  writeLines(openalex_filter, file.path(allfit_dir, "openalex_filter.txt"))
   oa <- list()
   cursor <- "*"
-  try_search("OpenAlex", repeat {
+  oa_finished <- paging_finished("OpenAlex", repeat {
     resp <- request("https://api.openalex.org/works") |>
       req_url_query(
         filter = openalex_filter,
@@ -266,7 +299,11 @@ if (target %in% c("all", "allfit")) {
     }, character(1)),
     stringsAsFactors = FALSE
   )
-  write_table(oa_table, file.path(allfit_dir, "openalex_allfit_fulltext.csv"))
+  if (!oa_finished)
+    warning("The OpenAlex search did not finish; leaving ",
+            "openalex_allfit_fulltext.csv as it is.", call. = FALSE, immediate. = TRUE)
+  else if (write_table(oa_table, file.path(allfit_dir, "openalex_allfit_fulltext.csv")))
+    writeLines(openalex_filter, file.path(allfit_dir, "openalex_filter.txt"))
 
   if (normalizePath(allfit_dir, mustWork = FALSE) %in% written_to)
     writeLines(retrieved, file.path(allfit_dir, "retrieved.txt"))
