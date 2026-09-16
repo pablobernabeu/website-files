@@ -78,7 +78,7 @@ Bernabeu, P. (2017). *Modality switches occur early and extend late in conceptua
 
 ### Related podcasts
 
-<i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using NotebookLM, with all the benefits and blind spots of human editing.</span>
+<i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey;'></i>&nbsp;<span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using NotebookLM, with all the benefits and blind spots of human editing.</span>
 
 <iframe title="Podcast episode: Modality switch effects: The brain friction of switching senses" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style="width:100%;max-width:720px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.podcasts.apple.com/us/podcast/modality-switch-effects-the-brain-friction-of/id1837010092?i=1000749632781"></iframe>
 

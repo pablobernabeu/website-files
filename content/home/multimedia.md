@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div class="multimedia-summary">
 
-<div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using NotebookLM, with all the benefits and blind spots of human editing.</span></div>
+<div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i>&nbsp;<span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using NotebookLM, with all the benefits and blind spots of human editing.</span></div>
 
 In this episode of Codex Mentis, we explore the underlying machinery of scientific truth to understand how research reaches the public and why a healthy dose of scepticism is vital for its evaluation. The conversation begins with an overview of Dr Pablo Bernabeu's interactive web application which uses a unique peer-anchored design to help users calibrate their judgements by predicting community standards across forty-eight fictional research scenarios. We discuss how this tool trains participants to identify critical red flags such as predatory publishing models, underpowered sample sizes and overblown conclusions that often mask mundane data behind sensationalised media narratives. Transitioning to real-world research integrity, the episode reviews a systematic meta-analysis quantifying the prevalence of misconduct and explores the pervasive culture of silence revealed by the stark discrepancy between those admitting to questionable research practices and those witnessing them in colleagues. We examine granular behaviours like hypothesising after results are known (HARKing) and salami publication before explaining the randomised response technique which is a mathematical method used in large-scale surveys to elicit honest answers about sensitive misconduct. The discussion also addresses qualitative findings that characterise academia as a 'bad barrel' where systemic 'publish or perish' pressures and an over-reliance on journal impact factors actively discourage the publication of valid negative results. Finally, we analyse a massive quantitative study of over forty-one million papers revealing a structural paradox where artificial intelligence tools accelerate individual careers and impact while simultaneously contracting the collective focus of science by automating established centres of knowledge rather than exploring unknown frontiers.
 
@@ -157,7 +157,7 @@ style = "position:absolute; top:0; left:2.5%; width:95%; height:95%;"></iframe>
 
 <div class="multimedia-summary">
 
-<div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using NotebookLM, with all the benefits and blind spots of human editing.</span></div>
+<div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i>&nbsp;<span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using NotebookLM, with all the benefits and blind spots of human editing.</span></div>
 
 This episode explores whether the human mind functions as an abstract symbol processor or a physical simulator deeply rooted in bodily experience. We delve into the 'modality switch effect', a phenomenon where shifting from one sensory modality to another, such as from sound to sight, incurs a measurable cognitive penalty. Foundational research initially showed that people are consistently slower when verifying properties of concepts across different senses, suggesting the brain must physically reconfigure its neural resources to understand language. However, later studies proposed that our brains might be efficient rather than thorough, often relying on 'quick and fuzzy' linguistic shortcuts before booting up heavy sensory simulations. New evidence from event-related potential studies shows that this sensory activation occurs as early as 160 milliseconds after seeing a word, reinforcing the idea that grounding is a fundamental part of accessing meaning. We also discuss findings that demonstrate how even second languages, typically learned in abstract classroom settings, recruit the body's native sensory systems. Furthermore, the latest research indicates that these perceptual simulations are so automatic they activate even during 'shallow' tasks where participants are not explicitly trying to process word meaning. Finally, we consider what this means for a world increasingly dominated by flat screens and artificial intelligence, questioning if a lack of physical interaction might lead to a shallowing of human thought.
 
@@ -193,7 +193,7 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 
 <div class="multimedia-summary">
 
-<div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using NotebookLM, with all the benefits and blind spots of human editing.</span></div>
+<div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i>&nbsp;<span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using NotebookLM, with all the benefits and blind spots of human editing.</span></div>
 
 In 2009, a deceased Atlantic salmon was placed inside a functional magnetic resonance imaging scanner to test its calibration parameters. Although the subject was undeniably dead, the standard statistical software produced results suggesting the fish was actively contemplating human emotions. This bizarre outcome highlights a systemic fragility in modern science known as the multiple tests trap, where conducting thousands of tests without adjustment guarantees that random noise will eventually look like a discovery. Just as flipping a coin enough times will inevitably produce a streak of ten heads, asking too many questions of a large dataset ensures that a researcher will find significant results purely by luck.
 
@@ -235,7 +235,7 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 
 <div class="multimedia-summary">
 
-<div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using NotebookLM, with all the benefits and blind spots of human editing.</span></div>
+<div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i>&nbsp;<span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using NotebookLM, with all the benefits and blind spots of human editing.</span></div>
 
 Can a machine that writes Shakespearean sonnets about traffic jams actually help us understand the human soul? In this episode of Codex Mentis, we dive into a 'potential bomb' thrown into the heart of cognitive science: the rise of Large Language Models (LLMs) and their challenge to how we think humans learn to speak.
 
@@ -286,7 +286,7 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 
 <div class="multimedia-summary">
 
-<div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using NotebookLM, with all the benefits and blind spots of human editing.</span></div>
+<div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i>&nbsp;<span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using NotebookLM, with all the benefits and blind spots of human editing.</span></div>
 
 In this episode of Codex Mentis, we explore the critical intersection of generative AI and research methodology, focusing on a production-ready, open-source workflow for secure speech transcription developed by Dr Pablo Bernabeu. While OpenAI’s Whisper models have set a new gold standard for speech-to-text accuracy, relying on consumer-grade cloud interfaces like ChatGPT or Google Gemini often proves incompatible with the rigorous demands of academic and clinical research. We dissect the three primary limitations of these cloud-based tools—restrictive file size caps, a lack of methodological reproducibility, and the significant privacy and GDPR risks inherent in transmitting sensitive human data to third-party servers. The discussion highlights a sophisticated alternative that leverages high-performance computing environments to achieve complete data sovereignty by running transcription entirely offline within a secure institutional perimeter. We break down the engineering behind this transition, including the use of SLURM job scheduling for unlimited scalability across GPU nodes and the implementation of advanced quality controls to fix common AI hallucinations such as spurious repetitions and accidental language switching. Furthermore, we examine the system's intelligent, multi-tiered approach to personal name masking and speaker diarisation, which ensures participant anonymity and structured dialogue without compromising the semantic integrity of the research data. This episode provides a comprehensive look at how researchers can balance the power of modern AI with the non-negotiable requirements of ethical compliance and long-term scientific sustainability.
 
@@ -304,7 +304,7 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 
 <div class="multimedia-summary">
 
-<div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using NotebookLM, with all the benefits and blind spots of human editing.</span></div>
+<div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i>&nbsp;<span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using NotebookLM, with all the benefits and blind spots of human editing.</span></div>
 
 In the high-stakes world of scientific inquiry, methods and findings are inextricable. Yet, issues of reproducibility remain a challenge, especially in experimental linguistics and cognitive science. As the old adage goes, "To err is human", but when creating research materials, adhering to best practices can significantly reduce mistakes and enhance long-term efficiency.
 
@@ -342,7 +342,7 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 
 <div class="multimedia-summary">
 
-<div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using NotebookLM, with all the benefits and blind spots of human editing.</span></div>
+<div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i>&nbsp;<span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using NotebookLM, with all the benefits and blind spots of human editing.</span></div>
 
 In this episode of Codex Mentis, we unpack why learning a third language is not simply ‘second language learning, but easier’. Third Language Acquisition (L3) forces the brain to juggle two existing linguistic systems, creating a ‘two-blueprint’ problem where prior knowledge can help or hinder in unexpected ways. We explore cross-linguistic influence, including evidence that learners may borrow rules from the ‘wrong’ prior language, and the central idea of cognitive economy: the mind reuses what it already has, even when that reuse carries costs.
 
@@ -362,7 +362,7 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 
 <div class="multimedia-summary">
 
-<div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using NotebookLM, with all the benefits and blind spots of human editing.</span></div>
+<div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i>&nbsp;<span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using NotebookLM, with all the benefits and blind spots of human editing.</span></div>
 
 How do scientists measure a thought? While the great philosophical questions about the nature of meaning have been debated for centuries, the last few decades have seen the development of a sophisticated scientific toolkit designed to turn these abstract queries into concrete, measurable data. In this episode of Codex Mentis, we go behind the curtains of cognitive science to explore the very methods used to investigate how the human brain processes language and constructs meaning.
 
@@ -386,7 +386,7 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 
 <div class="multimedia-summary">
 
-<div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i> <span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using NotebookLM, with all the benefits and blind spots of human editing.</span></div>
+<div style='margin: -5px 0 2px 0;'><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey; font-size:75%;'></i>&nbsp;<span style='color:darkgrey; font-style:italic; font-size:85%;'>Created using NotebookLM, with all the benefits and blind spots of human editing.</span></div>
 
 What happens in your brain when you understand a simple word? It seems instantaneous, but this seemingly simple act is at the heart of one of the deepest mysteries of the human mind and has sparked one of the longest-running debates in cognitive science.
 
