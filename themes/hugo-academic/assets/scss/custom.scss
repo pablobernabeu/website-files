@@ -5874,17 +5874,47 @@ textarea {
 // academic.js moves every <pre class="..."> inside a generated <details> at DOM-ready,
 // so on the rendered page the code block has no next sibling at all and a
 // `pre.r + pre` rule silently matches nothing. The <details> carries no border or
-// padding, so the code block's own 1rem bottom margin collapses through it and this
-// negative top margin nets 0.25rem. The [open] guard matters because a collapsed chunk
-// hides the <pre>, leaving no margin to collapse through, and the negative value would
-// then drag the output up over the "Expand" summary. The paragraph arms cover plot
-// output, which blogdown emits as a bare paragraph wrapping the figure rather than as
-// a second <pre>.
+// padding, so the code block's own 2.25rem bottom margin collapses through it and this
+// negative top margin nets 1.5rem, closer than the 2.25rem that separates a chunk from
+// the prose after it. The [open] guard matters because a collapsed chunk hides the
+// <pre>, leaving no margin to collapse through, and the negative value would then drag
+// the output up over the "Expand" summary. The paragraph arms cover plot output, which
+// blogdown emits as a bare paragraph wrapping the figure rather than as a second <pre>.
 .article-style details[open]:has(> pre.r) + pre,
 .article-style details[open]:has(> pre.python) + pre,
 .article-style details[open]:has(> pre.r) + p:has(> img:only-child),
 .article-style details[open]:has(> pre.python) + p:has(> img:only-child) {
   margin-top: -0.75rem;
+}
+
+// Give a plot clear space before the prose that follows, so the next paragraph does
+// not read as its caption. _content.scss gives article images a 2rem bottom margin,
+// but knitr centres a plot (fig.align = "center") with an inline `margin: auto`,
+// which zeroes that margin and leaves only the paragraph's 2%-of-width margin (about
+// 14px on desktop and 7px on a phone). The space therefore goes on the paragraph that
+// wraps the plot, where it collapses with the next block's top margin. Matching
+// knitr's inline style, in both its minified and unminified spellings, leaves out
+// images whose authors set the margins by hand, such as screenshots held tight above
+// a caption line or floated beside the text. A plot followed by a blockquote is left
+// out too, because the Bayesian workflow post (2022) uses the blockquote as the
+// plot's caption.
+.article-style p:has(> img:only-child:is([style*="margin:auto" i], [style*="margin: auto" i])):not(:has(+ blockquote)) {
+  margin-bottom: 2rem;
+}
+
+// A captioned figure ends in small caption text, which can read as the start of the
+// next paragraph unless the gap below it is a little wider than below a bare plot.
+// The caption's own 1.65rem bottom margin (_root.scss) collapses into this one.
+.article-style figure:has(> figcaption) {
+  margin-bottom: 2.5rem;
+}
+
+// The same goes for a caption written as <p class="caption">, which knitr emits for a
+// chunk with fig.cap and which some posts write by hand under an interactive figure.
+// Inside knitr's <div class="figure">, which Bootstrap displays as inline-block, this
+// margin cannot collapse, and the line box adds about 0.5rem below it.
+.article-style p.caption {
+  margin-bottom: 2.5rem;
 }
 
 // in desktop view only
@@ -6945,10 +6975,12 @@ html body.dark .search-hit a h6 {
   padding-left: 0; /* Optional: Removes the default list indentation */
 }
 
-// Collapsed code chunks styling - center the Expand/Collapse button
+// Collapsed code chunks styling - centre the Expand/Collapse button. The summary
+// margins are left to static/css/publication-type-badges.css, which loads after this
+// bundle and sets them with !important on `details summary` and
+// `details[open] summary`, so a margin set here on those selectors would never apply.
 details summary {
   cursor: pointer !important;
-  margin-bottom: 1rem !important;
   text-align: center !important;
   display: block !important;
   list-style: none !important;
@@ -6959,8 +6991,21 @@ details summary {
   }
 }
 
-details[open] summary {
-  margin-bottom: 0.5rem; // Slightly less margin when expanded
+// The "Collapse" link of an open code chunk labels the code directly beneath it, so
+// it sits close to the block. That takes two rules. The summary's bottom margin and
+// the 1.25rem top margin that `.article-style pre` gives the code block are adjoining
+// sibling margins, which collapse to the larger of the two, so shrinking the summary
+// margin alone would leave the gap at 1.25rem. publication-type-badges.css already
+// gives `details[open] summary` 0.3rem. The value is repeated here, with the extra
+// class and the !important needed to outrank that rule, so the gap does not depend on
+// a stylesheet loaded elsewhere. A collapsed chunk keeps that file's 0.5rem, which
+// holds the "Expand" link clear of whatever follows.
+.article-style details[open] > summary {
+  margin-bottom: 0.3rem !important;
+}
+
+.article-style details > summary + pre {
+  margin-top: 0;
 }
 
 // Left-align only summary elements that contain code blocks (pre elements)
