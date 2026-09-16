@@ -1,11 +1,12 @@
 ---
-abstract: 'This app presents linguistic data over several tabs. The code combines the great front-end of Flexdashboard—based on R Markdown and yielding an unmatched user interface—, with the great back-end of Shiny—allowing users to download sections of data they select, in various formats. The hardest nuts to crack included modifying the rows/columns orientation without affecting the functionality of tables. A cool, recent finding was the reactable package. A nice feature, allowed by Flexdashboard, was the use of quite different formats in different tabs.'
+abstract: 'This app presents linguistic data over several tabs. It combines the R Markdown-based user interface of Flexdashboard with a Shiny back-end that lets users download the sections of data they select in various formats. One of the hardest nuts to crack was changing the orientation of rows and columns without breaking the reactable tables. Flexdashboard also made it possible to use quite different formats in different tabs.'
 type: software
+software_kind: web-application
 aliases:
   - '/applications-and-dashboards/bernabeu-2018-modalitynorms/'
 authors:
 date: "2018-01-01"
-doi: "https://doi.org/10.31234/osf.io/a5pcz"
+doi: "https://doi.org/10.31234/osf.io/s2c5h"
 featured: false
 diagram: true
 image:
@@ -26,10 +27,8 @@ links:
 # - internal-project
 publication:
 publication_short:
-publication_types:
-- "1"
 # slides: example
-summary: 'This app presents linguistic data over several tabs. The code combines the great front-end of Flexdashboard—based on R Markdown and yielding an unmatched user interface—, with the great back-end of Shiny—allowing users to download sections of data they select, in various formats. The hardest nuts to crack included modifying the rows/columns orientation without affecting the functionality of tables. A cool, recent finding was the reactable package. A nice feature, allowed by Flexdashboard, was the use of quite different formats in different tabs.'
+summary: 'This app presents linguistic data over several tabs. It combines the R Markdown-based user interface of Flexdashboard with a Shiny back-end that lets users download the sections of data they select in various formats. One of the hardest nuts to crack was changing the orientation of rows and columns without breaking the reactable tables. Flexdashboard also made it possible to use quite different formats in different tabs.'
 categories:
   - web application
   - research and teaching applications
@@ -87,9 +86,9 @@ graph TD
   C --> F["Plot tab: plotly<br/>(PCA scatter, tooltips)"]
   B --> G["Static Flexdashboard-only version<br/>on RPubs (Shiny removed)"]
 {{< /diagram >}}
-This web application presents linguistic data over several tabs. The code combines the great front-end of Flexdashboard—based on R Markdown and yielding an unmatched user interface—, with the great back-end of Shiny—allowing users to download sections of data they select, in various formats.
+This web application presents linguistic data over several tabs. The code combines a Flexdashboard front-end, based on R Markdown and offering an excellent user interface, with a Shiny back-end that lets users download the sections of data they select in various formats.
 
-- A nice find was the 'reactable' package, which implements Javascript under the hood to allow the use of colours, bar charts, etc.
+- A nice find was the reactable package, which uses JavaScript to add colours, bar charts and other features to tables.
 
    ```
    Auditory = colDef(header = with_tooltip('Auditory Rating',
@@ -103,7 +102,7 @@ This web application presents linguistic data over several tabs. The code combin
    ```
 
 
-- One of the hardest nuts to crack was allowing the full functionality of tables—i.e., scaling to screen, frozen header, and vertical and horizontal scrolling—whilst having tweaked the vertical/horizontal orientation of the dashboard sections. Initial clashes were resolved by adjusting the section's CSS styles
+- One of the hardest nuts to crack was keeping the full functionality of the tables (scaling to the screen, a frozen header, and vertical and horizontal scrolling) after changing the orientation of the dashboard sections. The initial clashes were resolved by adjusting the CSS styles of the section
 
       
       Table {#table style="background-color:#FCFCFC;"}
@@ -113,7 +112,7 @@ This web application presents linguistic data over several tabs. The code combin
       -----------------------------------------------------------------------
 
 
-   and by also adjusting the reactable settings.
+   and the settings of reactable.
    
    ```
    renderReactable({
@@ -124,7 +123,7 @@ This web application presents linguistic data over several tabs. The code combin
    ```
 
 
-- A nice feature, especially suited to Flexdashboard, was the use of different formats across tabs. Whereas the Info tab presents long text using HTML and CSS styling, along with rmarkdown code output, the other tabs rely more strongly on Javascript features, enabled by R packages such as ‘shiny’ and sweetalert (e.g., allowing modal dialogs—pop-ups), reactable and plotly (e.g., allowing information opened by hovering—tooltips).
+- Flexdashboard is well suited to using different formats across tabs. The Info tab presents long text styled with HTML and CSS, along with the output of R Markdown code. The other tabs rely more on JavaScript features from R packages, with shiny and sweetalert providing modal dialogues (pop-ups) and reactable and plotly displaying information on hover (tooltips).
 
    ````
    ```{r}
@@ -205,7 +204,7 @@ This web application presents linguistic data over several tabs. The code combin
    ````
 
   
-   The only instance in which I drew on JavaScript code outside R packages was to enable tooltips beyond the packages’ limits—for instance, in the sidebar. This JavaScript feature is created at the top of the script, in the head area.
+   The only JavaScript I wrote myself, outside the R packages, enabled tooltips in places the packages could not reach, such as the sidebar. This function is defined in the head area at the top of the script.
    
    ```
    <!-- Javascript function to enable a hovering tooltip -->
@@ -216,7 +215,7 @@ This web application presents linguistic data over several tabs. The code combin
    </script>
    ```
    
-- In the sidebar, I added a reactive mean for each variable, complementing the range selector.
+- In the sidebar, I added a reactive mean for each variable to accompany the range selector.
    
    ```
    reactive(cat(paste0('Mean = ', 
@@ -225,9 +224,9 @@ This web application presents linguistic data over several tabs. The code combin
 
 ## Static version published on RPubs
 
-A reduced, [*static* version](https://rpubs.com/pcbernabeu/Dutch-modality-exclusivity-norms) was also created to increase the availability of the content. Removing some reactivity features allows the dashboard to be published as a standard website (i.e., on a personal website, on [RPubs](https://rpubs.com/), etc.), without the need for a back-end Shiny server. Note that this type of website is dubbed 'static', but it can retain multiple interactive features thanks to Javascript-based tools under the hood, allowed by R packages such as `leaflet` for maps, `DT` for tables, `plotly` for plots, etc. 
+A reduced, [*static* version](https://rpubs.com/pcbernabeu/Dutch-modality-exclusivity-norms) makes the content more widely available. Without some of the reactive features, the dashboard can be published as a standard website (e.g., on a personal website or on [RPubs](https://rpubs.com/)) with no need for a Shiny server. Although this type of website is called 'static', it can keep many interactive features through JavaScript-based R packages such as `leaflet` for maps, `DT` for tables and `plotly` for plots.
 
-To create the Flexdashboard-only version departing from the Flexdashboard-Shiny version, I deleted `runtime: shiny` from the YAML header, and disabled Shiny reactive inputs and objects, as below.
+To create the Flexdashboard-only version from the Flexdashboard-Shiny version, I deleted `runtime: shiny` from the YAML header and disabled the Shiny reactive inputs and objects, as shown below.
 
 ````
 ```{r}
@@ -239,4 +238,4 @@ To create the Flexdashboard-only version departing from the Flexdashboard-Shiny 
 
 ## Reference
 
-Bernabeu, P. (2018). Dutch modality exclusivity norms for 336 properties and 411 concepts [Web application]. Retrieved from https://pablobernabeu.shinyapps.io/Dutch-Modality-Exclusivity-Norms
+Bernabeu, P. (2018). *Dutch modality exclusivity norms for 336 properties and 411 concepts* [Web application]. https://pablobernabeu.shinyapps.io/Dutch-modality-exclusivity-norms/

@@ -1,14 +1,13 @@
 ---
 title: "theoryforge: Systematic theory development"
 type: software
+software_kind: package
 aliases:
   - '/publication/theoryforge/'
 authors:
   - 'Bernabeu, P.'
 date: '2026-09-01'
 slug: theoryforge
-publication_types:
-  - '9'
 publication: 'Version 0.6.0 [Computer software]. CRAN'
 doi: 10.32614/CRAN.package.theoryforge
 categories:
@@ -46,11 +45,11 @@ projects: []
 
 ## Overview
 
-theoryforge represents a scientific theory as a versioned, machine-checkable document. Constructs, propositions, predictions, alternatives and provenance are linked by identifiers, so the package can validate the specification, derive implications, compare amendments and export a reviewable dossier. The checks describe the completeness and internal coherence of a specification; they do not establish that the theory is true.
+theoryforge (Bernabeu, 2026) represents a scientific theory as a versioned, machine-checkable document. Constructs, propositions, predictions, alternatives and provenance are linked by identifiers, so the package can validate the specification, derive implications, compare amendments and export a reviewable dossier. The checks assess the completeness and internal coherence of a specification, which is a separate matter from whether the theory is true.
 
 ## Illustrative workflow
 
-The workflow makes the path from a theory file to a discriminating test explicit.
+The diagram below traces the path from a theory file to a discriminating test, through validation, derived implications and a comparison with a rival theory.
 
 <figure>
 <img src="images/theoryforge-workflow.svg" alt="Workflow diagram: a structured theory file is validated, used to derive testable implications, compared with a rival theory and preserved as a versioned dossier" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">

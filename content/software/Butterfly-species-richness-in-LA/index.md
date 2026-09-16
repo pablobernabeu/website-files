@@ -1,6 +1,7 @@
 ---
-abstract: 'Dashboard with open data from a study by Prudic et al. (2018), that compares citizen science with traditional methods in butterfly sampling. Coding tasks included long-transforming, merging, and as ever, wrangling with a table.'
+abstract: 'Dashboard presenting open data from Prudic et al. (2018), who compared three ways of recording butterfly species richness in Los Angeles: Pollard walks by trained volunteers, Malaise traps with expert identification, and crowd-sourced iNaturalist observations. The coding involved reshaping the data to a long format, merging data sets and, as ever, wrangling with the layout of a table.'
 type: software
+software_kind: web-application
 aliases:
   - '/applications-and-dashboards/butterfly-species-richness-in-la/'
 authors:
@@ -20,8 +21,6 @@ links:
 # - internal-project
 publication:
 publication_short:
-publication_types:
-- "1"
 # slides: example
 summary: 
 categories:
@@ -68,16 +67,16 @@ url_data: 'https://github.com/jcoliver/bioscan'
 ### How it works
 {{< diagram >}}
 graph TD
-  A["Open data from<br/>Prudic et al. (2018)"] --> B["iNaturalist (citizen science)"]
-  A --> C["BioScan (traditional traps)"]
-  B --> D["Transform, merge,<br/>and wrangle in R"]
+  A["Open data from<br/>Prudic et al. (2018)"] --> B["iNaturalist<br/>(crowd-sourced observations)"]
+  A --> C["BioScan<br/>(Pollard walks and Malaise traps)"]
+  B --> D["Reshape, merge<br/>and wrangle in R"]
   C --> D
   D --> E["Dashboard: butterfly species<br/>richness in Los Angeles"]
 {{< /diagram >}}
 
-This dashboard presents open data (<a href='https://github.com/jcoliver/bioscan/blob/master/data/iNaturalist-clean-reduced.csv'>iNaturalist</a> and <a href='https://github.com/jcoliver/bioscan/blob/master/data/BioScanDataComplete.csv'>BioScan</a>) from [Prudic et al. (2018)](https://doi.org/10.3390/insects9040186). In their study, Prudic et al. compared citizen science with traditional methods in the measurement of butterfly populations.
+This dashboard presents open data (<a href='https://github.com/jcoliver/bioscan/blob/master/data/iNaturalist-clean-reduced.csv'>iNaturalist</a> and <a href='https://github.com/jcoliver/bioscan/blob/master/data/BioScanDataComplete.csv'>BioScan</a>) from [Prudic et al. (2018)](https://doi.org/10.3390/insects9040186). The authors compared three ways of recording butterfly species richness in Los Angeles: Pollard walks by trained volunteers, Malaise traps with expert identification (both recorded in the BioScan data) and crowd-sourced iNaturalist observations.
 
-I developed this dashboard after reproducing the [analyses of the original study](https://github.com/jcoliver/bioscan) in a [Reprohack session](https://github.com/reprohack/reprohack-hq/blob/master/README.md). 
+I developed this dashboard after reproducing the [analyses of the original study](https://github.com/jcoliver/bioscan) in a [ReproHack session](https://github.com/reprohack/reprohack-hq/blob/master/README.md).
 
 My coding tasks included transforming the data to a long format,
 
@@ -113,7 +112,7 @@ iNaturalist = merge(iNaturalist,
 ```
 
 
-and, as ever, wrangling with the format of the dashboard pages to preserve the format of a table.
+and, as ever, wrangling with the layout of the dashboard pages to preserve the format of a table.
 
 ```
 Species details {style="background-color: #FCFCFC;"}

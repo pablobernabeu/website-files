@@ -1,6 +1,6 @@
 +++
 # A Software section created with the custom Software widget.
-# It displays applications, dashboards and reusable research packages from
+# It displays the packages, web applications and pipelines in
 # `content/software/`.
 
 widget = "software"
@@ -9,7 +9,7 @@ active = true  # Activate this widget? true/false
 weight = 60  # Order that this section will appear.
 
 title = "Software"
-subtitle = "<span style='font-size:80%;'>Applications, dashboards and reusable packages for research, teaching and reproducible analysis.</span>"
+subtitle = "<span style='font-size:80%;'>Packages, web applications and pipelines for research, teaching and reproducible analysis.</span>"
 
 [content]
   # Page type to display. E.g. post, talk, publication, or data dashboard.

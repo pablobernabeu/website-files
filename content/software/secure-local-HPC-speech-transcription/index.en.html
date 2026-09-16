@@ -1,5 +1,9 @@
 ---
 title: "Secure and scalable speech transcription for local and HPC"
+type: software
+software_kind: pipeline
+aliases:
+  - '/publication/secure-local-HPC-speech-transcription/'
 authors: ['Bernabeu, P.']
 date: '2025-11-12'
 slug: secure-local-HPC-speech-transcription
@@ -23,17 +27,15 @@ tags:
   - high-performance computing
   - privacy
 doi: 10.5281/zenodo.17624830
-publication_types:
-  - 9
 preregistered: false
 google_scholar: false
 open_materials: true
 open_data: true
-publication: 'Zenodo'
+publication: 'Version 1.0.0 [Computer software]. Zenodo'
 publication_short: ''
 diagram: true
-abstract: "Cloud-based speech-to-text services are convenient, but they often have file size limits, lack transparency for reproducible research, and can pose privacy risks under regulations like GDPR. To address these limitations, this project introduces a production-ready, local transcription workflow using OpenAI's Whisper models. This self-contained system ensures complete data sovereignty and is designed for scalability, supporting batch operations on high-performance computing (HPC) clusters with GPU acceleration. The workflow includes advanced quality control, such as algorithms to detect and remove AI-generated repetitions, context-aware name masking for privacy, speaker diarisation, and a flexible audio enhancement pipeline. Implemented as a single Python script, this system offers a robust, reproducible, and secure alternative for academic and enterprise transcription."
-summary: "A production-ready, local transcription workflow using OpenAI's Whisper, designed for security, scalability on HPC, and advanced quality control. It overcomes the privacy and reproducibility limitations of cloud-based services, offering a robust alternative for academic and enterprise use."
+abstract: "Cloud-based speech-to-text services are convenient, but they often have file size limits, lack transparency for reproducible research and can pose privacy risks under regulations such as the General Data Protection Regulation (GDPR). This production-ready workflow runs OpenAI's Whisper models locally, so audio and transcripts stay on the user's own infrastructure. It scales to batch jobs on high-performance computing (HPC) clusters with GPU acceleration. For quality control and privacy, it can enhance the audio, attribute speech to speakers (diarisation), remove spurious repetitions produced by Whisper and mask personal names with context-aware filtering. Built around a single Python script, the workflow offers a reproducible and secure alternative for academic and enterprise transcription."
+summary: "A secure, local transcription workflow using OpenAI's Whisper, with batch processing on HPC clusters and built-in quality control. Designed for academic and enterprise use, it avoids the privacy and reproducibility limitations of cloud-based services."
 featured: no
 url_fulltext: https://github.com/pablobernabeu/secure_local_HPC_speech_transcription/blob/main/README.md
 url_code: https://github.com/pablobernabeu/secure_local_HPC_speech_transcription
@@ -99,7 +101,7 @@ Bernabeu, P. (2025). <em>Secure and scalable speech transcription for local and 
 </div>
 <div id="podcast" class="section level2">
 <h2>Podcast</h2>
-<p><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey;'></i> <span style="color:darkgrey; font-style:italic; font-size:85%;">Created using NotebookLM, with all the benefits and blind spots of human editing.</span></p>
+<p><i class="fa-solid fa-wand-magic-sparkles" style='color:darkgrey;'></i> <span style="color:darkgrey; font-style:italic; font-size:85%;">Created using NotebookLM, with all the benefits and blind spots of human editing.</span></p>
 <iframe title="Podcast episode: Beyond the cloud: Reclaiming data sovereignty in speech transcription" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style="width:100%;max-width:720px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.podcasts.apple.com/us/podcast/beyond-the-cloud-reclaiming-data-sovereignty-in/id1837010092?i=1000743877256">
 </iframe>
 </div>

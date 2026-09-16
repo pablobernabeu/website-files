@@ -1,14 +1,13 @@
 ---
 title: "scopusflow: A reproducible workflow layer for Scopus bibliographic searches"
 type: software
+software_kind: package
 aliases:
   - '/publication/scopusflow/'
 authors:
   - 'Bernabeu, P.'
 date: '2026-08-21'
 slug: scopusflow
-publication_types:
-  - '9'
 publication: 'Version 0.4.0 [Computer software]. CRAN'
 doi: 10.32614/CRAN.package.scopusflow
 categories:
@@ -44,11 +43,11 @@ projects: []
 
 ## Overview
 
-scopusflow treats a bibliographic search as a versioned workflow rather than a one-off export. A plan records the query and partitions, completed cells are cached for safe resumption, and the resulting object retains retrieval metadata, package version and DOI-level changes. The R and Python packages use the same workflow concepts while respecting the access and redistribution limits of the source database.
+scopusflow (Bernabeu, 2026) turns a bibliographic search from a one-off export into a versioned workflow. A plan records the query and can divide it into yearly cells. Completed cells can be cached so that an interrupted retrieval resumes where it stopped, and the resulting object retains the retrieval metadata, package version and DOI-level changes. The R and Python packages use the same workflow concepts while respecting the access and redistribution limits of the source database.
 
 ## Illustrative output
 
-The example below uses the package's offline stand-in corpus, so the plot demonstrates the workflow rather than claiming to describe the live Scopus literature.
+The example below uses a small demonstration corpus bundled with the R package, so the plot illustrates the workflow and says nothing about the Scopus literature on the topic.
 
 <figure>
 <img src="images/records-per-year-1.png" alt="Line chart showing the number of graphene-supercapacitor records in an offline demonstration corpus from 2015 to 2024" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">

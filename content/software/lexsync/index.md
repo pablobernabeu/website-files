@@ -1,15 +1,14 @@
 ---
 title: "lexsync: Lexical optimisation and hardware-timed experiment generation"
 type: software
+software_kind: package
 aliases:
   - '/publication/lexsync/'
 authors:
   - 'Bernabeu, P.'
 date: '2026-06-07'
 slug: lexsync
-publication_types:
-  - '9'
-publication: 'Version 0.1.0 [Computer software]'
+publication: 'Version 0.1.0 [Computer software]. GitHub'
 categories:
   - software
 tags:
@@ -39,15 +38,15 @@ projects: []
 
 ## Overview
 
-lexsync turns a lexical design into a checked set of stimuli and experiment files. It separates the candidate corpus from the design specification, reports whether matching and counterbalancing succeeded, and carries the resulting item table into PsychoPy, OpenSesame or jsPsych. The shared R/Python format makes the design inspectable before presentation software is involved.
+lexsync (Bernabeu, 2026) turns a lexical design into a checked set of stimuli and experiment files. It separates the candidate corpus from the design specification, reports whether matching and counterbalancing succeeded, and carries the resulting item table into PsychoPy, OpenSesame or jsPsych. The shared R/Python format makes the design inspectable before any presentation software is involved.
 
 ## Illustrative output
 
-The balance plot makes the main quality-control question visible: do the conditions differ on the intended frequency measure while remaining comparable on the controls selected by the researcher?
+The main quality-control question for a set of lexical materials is whether the conditions remain comparable on the control variables chosen by the researcher. The plot below comes from the matching report in the companion blog post. It shows the standardised difference between the low- and high-frequency conditions on each control, with a 90 per cent confidence interval and a prespecified equivalence region.
 
 <figure>
-<img src="images/balance-plot-1.png" alt="Balance plot comparing high- and low-frequency lexical conditions on frequency, word length, neighbourhood density and OLD20" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
-<figcaption>Condition differences and matching diagnostics for the lexical materials.</figcaption>
+<img src="images/balance-plot-1.png" alt="Standardised differences between low- and high-frequency conditions on word length, neighbourhood density and OLD20, with 90 per cent confidence intervals inside a shaded equivalence region from minus to plus 0.5" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
+<figcaption>Realised balance between the frequency conditions on the control variables.</figcaption>
 </figure>
 
 ## Reproducible hand-off
@@ -56,4 +55,4 @@ Save the design, the source lexicon, the matching report and the generated exper
 
 ## Reference
 
-Bernabeu, P. (2026). *lexsync: Lexical optimisation and hardware-timed experiment generation* (Version 0.1.0) [Computer software]. https://github.com/pablobernabeu/lexsync
+Bernabeu, P. (2026). *lexsync: Lexical optimisation and hardware-timed experiment generation* (Version 0.1.0) [Computer software]. GitHub. https://github.com/pablobernabeu/lexsync

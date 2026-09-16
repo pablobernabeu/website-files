@@ -1,6 +1,7 @@
 ---
 abstract: 'We tested whether conceptual processing is modality-specific by tracking the time course of the Conceptual Modality Switch effect. Forty-six participants verified the relation between property words and concept words. The conceptual modality of consecutive trials was manipulated in order to produce an Auditory-to-visual switch condition, a Haptic-to-visual switch condition, and a Visual-to-visual, no-switch condition. Event-Related Potentials (ERPs) were time-locked to the onset of the first word (property) in the target trials so as to measure the effect online and to avoid a within-trial confound. A switch effect was found, characterized by more negative ERP amplitudes for modality switches than no-switches. It proved significant in four typical time windows from 160 to 750 milliseconds post word onset, with greater strength in posterior brain regions, and after 350 milliseconds. These results suggest that conceptual processing may be modality-specific in certain tasks, but also that the early stage of processing is relatively amodal.'
 type: software
+software_kind: web-application
 aliases:
   - '/applications-and-dashboards/bernabeu-etal-2017-modalityswitch/'
 authors:
@@ -24,10 +25,8 @@ links:
 publishDate: "2017-01-01"
 publication:
 publication_short:
-publication_types:
-- "1"
 # slides: example
-summary: 'We tested whether conceptual processing is modality-specific by tracking the time course of the Conceptual Modality Switch effect. Forty-six participants verified the relation between property words and concept words. The conceptual modality of consecutive trials was manipulated in order to produce an Auditory-to-visual switch condition, a Haptic-to-visual switch condition, and a Visual-to-visual, no-switch condition. Event-Related Potentials (ERPs) were time-locked to the onset of the first word (property) in the target trials so as to measure the effect online and to avoid a within-trial confound. A switch effect was found, characterized by more negative ERP amplitudes for modality switches than no-switches. It proved significant in four typical time windows from 160 to 750 milliseconds post word onset, with greater strength in posterior brain regions, and after 350 milliseconds. These results suggest that conceptual processing may be modality-specific in certain tasks, but also that the early stage of processing is relatively amodal.'
+summary: 'Shiny web application for exploring the event-related potentials (ERPs) from a conceptual modality switch experiment by group of participants, individual participant, brain area and electrode.'
 categories:
 - conceptual processing
 - R
@@ -76,17 +75,13 @@ graph TD
   B --> G["Download HD plots, view<br/>95% confidence intervals"]
 {{< /diagram >}}
 
-**Content**
+The data come from a psychology experiment on word comprehension in which electroencephalographic (EEG) responses were measured. The plots span the first 800 milliseconds of word processing. The app is intended to help researchers and the public explore the data at four levels, from the broadest to the most specific: groups of participants, individual participants, brain areas and electrodes.
 
-The data are from a psychology experiment on the comprehension of words, in which electroencephalographic (EEG) responses were measured. The data are presented in plots spanning 800 milliseconds (the duration of word processing). The aim of this Shiny app is to facilitate the exploration of the data by researchers and the public. Users can delve into the different sections of the data. In a hierarchical order, these sections are groups of participants, individual participants, brain areas, and electrodes. 
+By creating this app, I tried to reach beyond the scope of open science at the time, which was often confined to files shared on data repositories. I made the case for using Shiny apps in science in a [blog post](/2017/the-case-for-data-dashboards-first-steps-in-r-shiny/) and in [slides](https://www.slideshare.net/PabloBernabeu/presenting-data-interactively-online-using-r-shiny-126064157).
 
-**Shiny apps in science**
+### Technical details
 
-By creating this app, I tried to reach beyond the scope of current *open science*, which is often confined to files shared on data repositories. I believe that Shiny apps will become general practice in science within a few years ([see blog post or slides for more information](http://www.research.lancs.ac.uk/portal/en/activities/presenting-data-interactively-online-using-r-shiny(c9ce06ac-987e-4141-9121-016f6ee6d16b).html)).
-
-**Technical details**
-
-I used tabs on the upper area of the application page to avoid cramming the side bar with widgets. I adjusted the appearance of these tabs, and by means of 'reactivity' conditions, modified the inputs in the side bar depending on the active tab.
+I placed tabs at the top of the page to avoid cramming the sidebar with widgets. I adjusted the appearance of these tabs and used reactive conditions to change the inputs in the sidebar depending on the active tab.
 
 ```
 mainPanel(
@@ -128,16 +123,16 @@ mainPanel(
 	),
 ```
 
-The data set was fairly large, considering the fact that it's hosted with the free plan. In order to lighten the processing, I split the data into various files, reducing the total size. Furthermore, I outsourced a particularly heavy set of plots (those with Confidence Intervals) to PDF files, to which I linked in the app. 
+The data set was fairly large for an app hosted on a free plan. To lighten the processing, I split the data into several files and reduced their total size. I also moved a particularly heavy set of plots, those with confidence intervals, to PDF files linked from the app.
 
 ```
 h5(a(strong('See plots with 95% Confidence Intervals'), href='https://osf.io/dvs2z/',
 			target='_blank'), style='text-decoration: underline;'),
 ```
 
-I also used web links to the published paper and raw data, as well as to the _server_ and _ui_ scripts. These files, along with the data, are publicly available [in this repository](https://osf.io/97unm/); they may be accessed within the "Files" section, by opening the folders "ERPs" -> "Analyses of ERPs averaged across trials" -> "Shiny app".
+The app links to the published paper, the raw data and its own _server_ and _ui_ scripts. The scripts and the data used by the app are available [on GitHub](https://github.com/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing/tree/master/Shiny-app).
 
-Another feature I added was the download button.
+Each tab has a button to download the plot in high resolution, as shown below for the first tab.
 
 
 ```
@@ -195,17 +190,17 @@ output$downloadPlot.1 <- downloadHandler(
 downloadButton('downloadPlot.1', 'Download HD plot')
 ```
 
-**_Rising to the challenge_**
+### Rising to the challenge
 
-My experience with R Shiny has been so good I've been [sharing it](/2017/the-case-for-data-dashboards-first-steps-in-r-shiny/). Yet, on my first crawling days, I spent an eternity stuck with this elephant in my room: "μ". This _μ_ letter (micro-souvenir from hell, as I later knew it), was part of the labels of my plots. All I knew was that I could not deploy the app online, even while I could perfectly launch it locally in my laptop. So, I wondered what use it was to deploy locally if I couldn't publish the app?! Eventually, I read about UTF-8 encoding in one forum. Bless them forums. All I had to do was use "Âμ" instead of the single "μ". A better option I found later was: `expression("\u03bc")`.
+In my first days with Shiny, I spent an eternity stuck on a single letter, "μ", which appeared in the labels of my plots (a micro-souvenir from hell, as I came to know it). The app ran perfectly on my laptop but could not be deployed online. Eventually, I read about UTF-8 encoding in a forum, and all I had to do was write "Âμ" instead of "μ". A better option I found later was `expression("\u03bc")`.
 
-Beyond encoding issues, I had a tough time embedding images. You know, the 'www' folder... To be honest, I still haven't handled the 'www' way--but where there's a will, there's a way. I managed to include my images by uploading them to a website and then entering their URL in "img(src", avoiding the use of folder paths.
+Embedding images was also tricky, as I could not get the usual `www` folder to work. Instead, I uploaded the images to a website and entered their URLs in `img(src)`, which avoided folder paths altogether.
 
 ```
 img(src="https://preview.ibb.co/n7qiYR/EEG_montage.png 1", height=500, width=1000)
 ```
 
-Long after I had built the app, I added another image--the _favicon_ (the little icon on the browser tab). 
+Later, I added one more image in the same way: the _favicon_, the small icon shown on the browser tab.
 
 ```
 tags$head(tags$link(rel="shortcut icon", href="https://image.ibb.co/fXUwzb/favic.png")),  # web favicon
@@ -213,4 +208,4 @@ tags$head(tags$link(rel="shortcut icon", href="https://image.ibb.co/fXUwzb/favic
 
 ### Reference
 
-Bernabeu, P., Willems, R. M., & Louwerse, M. M. (2017). Modality switch effects emerge early and increase throughout conceptual processing: Evidence from ERPs [Web application]. Retrieved from https://pablobernabeu.shinyapps.io/ERP-waveform-visualization_CMS-experiment
+Bernabeu, P., Willems, R. M., & Louwerse, M. M. (2017). *Modality switch effects emerge early and increase throughout conceptual processing: Evidence from ERPs* [Web application]. https://pablobernabeu.shinyapps.io/ERP-waveform-visualization_CMS-experiment/

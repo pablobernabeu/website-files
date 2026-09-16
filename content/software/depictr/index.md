@@ -1,14 +1,13 @@
 ---
 title: "depictr: A unified toolkit for visualising statistical models and data"
 type: software
+software_kind: package
 aliases:
   - '/publication/depictr/'
 authors:
   - 'Bernabeu, P.'
 date: '2026-09-01'
 slug: depictr
-publication_types:
-  - '9'
 publication: 'Version 0.3.0 [Computer software]. CRAN'
 doi: 10.32614/CRAN.package.depictr
 categories:
@@ -44,11 +43,11 @@ projects: []
 
 ## Overview
 
-depictr provides a shared visual language for exploratory graphics, model estimates, diagnostics, uncertainty and power analyses. Its R and Python implementations use the same naming and colour conventions, while returning ordinary plot objects that can still be adapted to a study's needs. The accessibility audit checks the rendered figure rather than assuming that a palette is sufficient.
+depictr (Bernabeu, 2026) provides a shared visual language for exploratory graphics, model estimates, diagnostics, uncertainty and power analyses. Its R and Python implementations use the same naming and colour conventions, and both return ordinary plot objects that can still be adapted to the needs of a study. The accessibility audit examines the rendered figure itself, since a colourblind-aware palette alone cannot guarantee an accessible figure.
 
 ## Illustrative outputs
 
-The figures below are larger examples from the companion article. They show how a single analysis can move from an observed distribution to model estimates and then to an audited, publication-ready display.
+The figures below come from the companion blog post and follow a single analysis from an observed distribution to model estimates and then to an audited, publication-ready display.
 
 <figure>
 <img src="images/distribution-1.png" alt="Empirical cumulative distributions of lexical-decision reaction times for related and unrelated primes, with quartile guides" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
@@ -56,7 +55,7 @@ The figures below are larger examples from the companion article. They show how 
 </figure>
 
 <figure>
-<img src="images/model-estimates-1.png" alt="Forest plot of standardised fixed effects for priming condition, presentation modality and word frequency with 95 percent confidence intervals" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
+<img src="images/model-estimates-1.png" alt="Forest plot of the fixed effects, each per standard deviation of its predictor, for priming condition, presentation modality and word frequency, with 95 per cent confidence intervals" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
 <figcaption>Model estimates presented with a consistent interval convention.</figcaption>
 </figure>
 

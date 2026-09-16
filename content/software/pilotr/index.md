@@ -1,16 +1,15 @@
 ---
 title: "pilotr: Simulate experimental and behavioural data from a portable design specification"
 type: software
+software_kind: package
 aliases:
   - '/publication/pilotr/'
 authors:
   - 'Bernabeu, P.'
 date: '2026-08-21'
 slug: pilotr
-publication_types:
-  - '9'
-publication: 'Version 0.3.0 [Computer software]. Zenodo'
-doi: 10.5281/zenodo.21266313
+publication: 'Version 0.3.0 [Computer software]. CRAN'
+doi: 10.32614/CRAN.package.pilotr
 categories:
   - software
 tags:
@@ -31,6 +30,8 @@ links:
     url: https://pablobernabeu.github.io/pilotr/python/
   - name: Browser app
     url: https://pablobernabeu.github.io/pilotr/app/
+  - name: CRAN
+    url: https://CRAN.R-project.org/package=pilotr
   - name: PyPI
     url: https://pypi.org/project/pilotr/
   - name: Blog post
@@ -44,14 +45,14 @@ projects: []
 
 ## Overview
 
-pilotr makes a planned study executable before data collection. A portable specification describes the units, predictors, response family, fixed effects and random-effects structure; the same specification can then be simulated and analysed from R or Python. The important output is not a single power percentage, but a design diagnosis that includes detection, precision, Type S and Type M errors, and model warnings.
+pilotr (Bernabeu, 2026) makes a planned study executable before any data are collected. A portable specification describes the units, predictors, response family, fixed effects and random-effects structure, and the same specification can then be simulated and analysed in R or Python. The main output is a design diagnosis that goes beyond a single power percentage to cover detection, precision, Type S and Type M errors, and model warnings.
 
 ## Illustrative outputs
 
-These plots show the complementary questions that a simulation-based design analysis should answer: how often the target effect is detected, how precisely it is estimated and how much significant estimates are exaggerated.
+A simulation-based design analysis should establish how often the target effect is detected, how precisely it is estimated and how much the statistically significant estimates exaggerate it. The plots below address each of these questions in turn.
 
 <figure>
-<img src="images/power-curve-1.png" alt="Illustrative power curve for a priming effect across sample sizes, with an 80 percent reference line" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
+<img src="images/power-curve-1.png" alt="Illustrative power curve for a priming effect across sample sizes, with an 80 per cent reference line" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
 <figcaption>Detection probability across participant counts.</figcaption>
 </figure>
 
@@ -67,8 +68,8 @@ These plots show the complementary questions that a simulation-based design anal
 
 ## Reproducible planning
 
-Treat the specification, simulation seed, package version, number of replicates and fitted model as part of the planning record. The smoke-test settings in the [companion blog post](/2026/pilotr-pilot-the-study-before-running-it/) demonstrate the pipeline; a real design decision requires many more replicates and a sensitivity analysis over plausible assumptions. Explore the full [R documentation](https://pablobernabeu.github.io/pilotr/r/), [Python documentation](https://pablobernabeu.github.io/pilotr/python/) or [browser app](https://pablobernabeu.github.io/pilotr/app/).
+Treat the specification, simulation seed, package version, number of replicates and fitted model as part of the planning record. The [companion blog post](/2026/pilotr-pilot-the-study-before-running-it/) keeps its examples quick by running each analysis with a small number of replicates. A real design decision requires many more replicates and a sensitivity analysis over plausible assumptions. The [R documentation](https://pablobernabeu.github.io/pilotr/r/), [Python documentation](https://pablobernabeu.github.io/pilotr/python/) and [browser app](https://pablobernabeu.github.io/pilotr/app/) cover the full workflow.
 
 ## Reference
 
-Bernabeu, P. (2026). *pilotr: Simulate experimental and behavioural data from a portable design specification* (Version 0.3.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.21266313
+Bernabeu, P. (2026). *pilotr: Simulate experimental and behavioural data from a portable design specification* (Version 0.3.0) [Computer software]. CRAN. https://doi.org/10.32614/CRAN.package.pilotr
