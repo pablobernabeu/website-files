@@ -53,6 +53,7 @@ subtitle = ""
 
 | Date     | Format   | Title                  | Event                  |
 | -------- | -------- | ---------------------- | ---------------------- |
+| Sept 2026 | Talk | [On the same wavelength: Words, brainwaves and HPC](https://pablobernabeu.github.io/wavelength_presentation_ARC) | Oxford Research Computing Community Event, University of Oxford |
 | Apr 2026 | Talk | Is third language learning influenced by working memory, implicit learning, and inhibitory control? [Hoang, DeLuca, & Bernabeu] | [Bilingualism Matters Symposium 2026](https://www.bilingualism-matters.org/events/bilingualism-matters-symposium-2026), Milan, Italy |
 | Dec 2025 | Talk | Designing a study on the interplay of text, reader and context in children’s digital reading comprehension | Developmental Hour seminar, Department of Experimental Psychology, University of Oxford |
 | Nov 2025 | Lightning talk | [Scaling systematic reviews: A solo researcher's workflow with Gemini](/presentation/scaling-systematic-reviews-a-solo-researchers-workflow-with-gemini) | [Gemini Pro Pilot Showcase and Wrap-up Event](https://oerc.ox.ac.uk/ai-centre/ai-centre-events/gemini-pro-pilot-showcase), University of Oxford |
