@@ -14,8 +14,8 @@ tags:
   - Scopus
   - research methods
 subtitle: ''
-summary: 'This reproducible descriptive analysis uses annual Scopus counts to compare how often records in nine query-defined literatures use a form of “speculate” in their titles, abstracts or keywords. The count is a proxy for explicit wording in indexed records, not a measure of evidential quality.'
-abstract: 'This descriptive bibliometric analysis compares annual Scopus counts that mention speculat* in the title, abstract or keywords across nine query-defined literatures. It treats the percentage as an indicator of explicit wording in indexed records, not as a direct measure of evidential quality, theoretical progress or the amount of speculation in the full literature, and makes the queries and refreshed data available for inspection.'
+summary: 'This reproducible descriptive analysis uses annual Scopus counts to compare how often records in nine query-defined literatures use a form of “speculate” in their titles, abstracts or keywords. The count is a proxy for explicit wording in indexed records and says little about the quality of the evidence.'
+abstract: 'This descriptive bibliometric analysis compares, across nine query-defined literatures, the annual share of Scopus records that mention speculat* in the title, abstract or keywords. The percentage is treated as an indicator of explicit wording in indexed records. It is no direct measure of evidential quality, theoretical progress or the amount of speculation in the full literature. The queries and data are available for inspection.'
 authors: []
 lastmod: ''
 featured: no
@@ -40,19 +40,19 @@ xaringanExtra::use_clipboard()
 
 Given all of the data that E&L [Evans & Levinson, 2009] cite, how could anyone maintain the notion of a universal grammar with linguistic content? Traditionally, there have been three basic strategies. First, just as we may force English grammar into the Procrustean bed of Latin grammar – that is how I was taught the structure of English in grade school – the grammars of the world's so-called exotic languages may be forced into an abstract scheme based mainly on European languages.
 
-— Tomasello (2009)
+— Tomasello (2009, p. 470)
 
 </div>
 
-Some research topics invite more explicit conjecture than others. In a review of language evolution, Pieter Vogt and I noted that direct evidence is necessarily limited for many proposed historical processes (Bernabeu & Vogt, 2015). That observation is not an empirical ranking of literatures, and database counts cannot supply one. They can, however, show how often authors use a particular family of words in the title, abstract or keyword fields that Scopus indexes.
+Some research topics invite more explicit conjecture than others. In a review of language evolution, Paul Vogt and I noted that the field has little direct evidence to work with and a high degree of speculation (Bernabeu & Vogt, 2015). Comparing fields on this score is hard, and database counts cannot rank them by how much they speculate. They can, however, show how often authors use a particular family of words in the title, abstract and keyword fields that Scopus indexes.
 
 Authors who speculate in print sometimes say so, in phrases such as “we speculate that” or “it is tempting to speculate”. The share of records that contain a form of `speculat*` is therefore an indicator of explicit wording in indexed metadata. It is not a measure of how much speculation an article contains, how well supported its claims are or how mature a research area is. Conventions for hedging, abstract writing and indexing can all affect the count.
 
-This post compares that share, year by year from 1980 to the present, across nine reference literatures. Six of them concern language: language evolution, language comprehension, language disorders, linguistic relativity, language teaching and the bilingual advantage. A seventh, sensorimotor simulation, is the topic of my own doctoral work on conceptual processing. The last two, artificial general intelligence and the hadron collider, sit outside the language sciences and serve as points of comparison, one being a field where speculation might be expected and the other a field of large instruments and large collaborations. Each reference literature is defined by a query on the title, abstract and keywords, and the comparison counts, within each year, the records that also match `speculat*` in the same fields.
+This post compares that share, year by year from 1980 to the present, across nine reference literatures. Six of them concern language: language evolution, language comprehension, language disorders, linguistic relativity, language teaching and the bilingual advantage. A seventh, sensorimotor simulation, is the topic of my own doctoral work on conceptual processing. The last two, artificial general intelligence and the hadron collider, lie outside the language sciences and serve as points of comparison. Speculation might be expected in the first, whereas the second is a field of large instruments and large collaborations. Each reference literature is defined by a query on the title, abstract and keywords. Within each year, the comparison counts the records that also match `speculat*` in those fields.
 
 ## Development: the searches
 
-An earlier draft of this post ran the searches through a set of functions that I had written around the rscopus package. Those functions have since become the [scopusflow package](/2026/scopusflow-a-literature-search-you-can-rerun/), and the searches now live in a script in the [website's repository](https://github.com/pablobernabeu/website-files/blob/master/scripts/update_post_searches.R) that a GitHub Actions workflow runs on request, with the Scopus key held as a repository secret. The workflow commits the counts to the post's directory, so the figures below can be rebuilt from the committed data without a key, and the searches can be refreshed by anyone with a key by dispatching the workflow. The nine queries are given below.
+The searches use my [scopusflow](/2026/scopusflow-a-literature-search-you-can-rerun/) package (Bernabeu, 2026) and are run by a [script in the website's repository](https://github.com/pablobernabeu/website-files/blob/master/scripts/update_post_searches.R). The counts it returns are saved with the post, so the figures can be reproduced without a Scopus API key. The nine queries are as follows.
 
 ```{r, eval = FALSE}
 library(scopusflow)
@@ -83,7 +83,7 @@ comparisons <- lapply(names(topics), function(label) {
 })
 ```
 
-The function counts, for every year, the records matching the reference query and the records matching both the reference query and the comparison term, so the nine comparisons cost `r 9 * 2 * length(unique(readRDS('searches/speculation_comparisons.rds')[[1]]$year))` count requests. Each row of the result holds a year, the count for the reference literature, the count for the comparison and the comparison as a percentage of the reference.
+For every year, `scopus_compare_topics()` counts the records that match the reference query and those that also match the comparison term. The nine comparisons therefore take `r 9 * 2 * length(unique(readRDS('searches/speculation_comparisons.rds')[[1]]$year))` requests to the Scopus API. Each row of the result holds a year, the count for the reference literature, the count for the comparison and the comparison as a percentage of the reference.
 
 ```{r}
 library(dplyr)
@@ -116,7 +116,7 @@ totals <- speculation |>
 totals
 ```
 
-Across the whole period, the share of records that mention speculation is highest in the literature on `r totals$topic[1]` (`r sprintf('%.1f', totals$share[1])`%) and lowest in `r totals$topic[nrow(totals)]` (`r sprintf('%.1f', totals$share[nrow(totals)])`%), with the language literatures spread between those two.
+Across the whole period, the literature on `r totals$topic[1]` has the highest share of records mentioning speculation (`r sprintf('%.1f', totals$share[1])`%) and that on `r totals$topic[nrow(totals)]` the lowest (`r sprintf('%.1f', totals$share[nrow(totals)])`%), with the language literatures spread between them.
 
 ```{r, fig.width = 8, fig.height = 4, fig.alt = 'Line chart on a logarithmic axis of the number of Scopus records per year in each of the nine reference literatures from 1980 onwards'}
 # Nine literatures against an eight-colour palette, so the Okabe-Ito set is
@@ -136,7 +136,7 @@ ggplot(filter(speculation, reference_n > 0),
 
 ### The share of records that mention speculation
 
-Each panel below shows one literature. The line is the yearly percentage of records that also match `speculat*`, the shaded band is a stability range computed by the Wilson method from the two yearly counts, which conveys how much the share would move with a handful of records, and the panels are ordered from the most to the least speculative literature over the whole period. The axis is cut at 15%, which clips the bands in the early years of the small literatures, where a single abstract would move the share by tens of points. The highest share in the data, `r with(speculation[which.max(speculation$percentage), ], sprintf('the %.0f%% that %d of the %d records on %s in %d represent', percentage, n, reference_n, topic, year))`, sits above that cut and is clipped with them. Years in which a literature has no records break the line.
+Each panel below shows one literature, and the panels are ordered by their overall share, from highest to lowest. The line is the yearly percentage of records that also match `speculat*`. The shaded band is a stability range computed with the Wilson method from the two yearly counts, and it shows how far the share would move with a handful of records. The axis is cut at 15%, which clips the bands in the early years of the small literatures, where a single abstract would move the share by tens of points. The highest share in the data, `r with(speculation[which.max(speculation$percentage), ], sprintf('the %.0f%% that %d of the %d records on %s in %d represent', percentage, n, reference_n, topic, year))`, is clipped as well. Years in which a literature has no records break the line.
 
 ```{r, fig.width = 9, fig.height = 8, fig.alt = 'Nine panels, one per literature, each showing the yearly percentage of Scopus records that mention speculation over the years in which that literature has records, with a shaded Wilson interval'}
 wilson <- function(k, n, z = 1.96) {
@@ -181,20 +181,22 @@ recent <- speculation |>
 recent
 ```
 
-Restricting the comparison to the last ten complete years, `r min(recent$records)` to `r format(max(recent$records), big.mark = ',')` records per literature, gives the ranking above. The literature on `r recent$topic[1]` leads with `r sprintf('%.1f', recent$share[1])`% of its records mentioning speculation, and that on `r recent$topic[nrow(recent)]` closes the list with `r sprintf('%.1f', recent$share[nrow(recent)])`%.
+Restricting the comparison to the complete years from 2016 onwards, which leaves between `r min(recent$records)` and `r format(max(recent$records), big.mark = ',')` records per literature, gives the ranking above. The literature on `r recent$topic[1]` leads, with `r sprintf('%.1f', recent$share[1])`% of its records mentioning speculation, and that on `r recent$topic[nrow(recent)]` closes the list with `r sprintf('%.1f', recent$share[nrow(recent)])`%.
 
 ## Discussion: what the counts can and cannot show
 
-The measure is crude in ways that the figures make visible. A form of 'speculate' in an abstract is as often a mark of candour as of conjecture, since the authors who write 'we speculate that' are labelling a claim that others would present without a label, and a literature with a strong convention of hedged abstracts will score higher for that reason alone. The wildcard also catches 'speculative' in senses that have nothing to do with scientific conjecture, such as speculative execution in computing or speculative investment in economics, and both senses can occur in the literatures on artificial general intelligence and on the hadron collider, whose funding is discussed in economic terms. The queries define each literature by a phrase, so records that belong to a field without using its name are missed, and the literatures on language teaching and language disorders are far larger than their phrases suggest. Percentages for the early years, when a literature had a handful of records, are shown with their intervals so that a single abstract is not read as a trend.
+The measure is crude in at least three ways. First, a form of “speculate” in an abstract can be a mark of candour as much as of conjecture. Authors who write “we speculate that” are labelling a claim that others would present without a label, so a literature with a strong convention of hedged abstracts will score higher for that reason alone. Second, the wildcard catches “speculative” in senses that have nothing to do with scientific conjecture, such as speculative execution in computing or speculative investment in economics. Both senses can occur in the literatures on artificial general intelligence and on the hadron collider, whose funding is discussed in economic terms. Third, the queries define each literature by a phrase, so records that belong to a field without using its name are missed. The literatures on language teaching and language disorders, in particular, are far larger than their phrases suggest.
 
-The smallest literature, sensorimotor simulation, contains no record that mentions speculation at all, which with `r format(totals$records[totals$topic == 'sensorimotor simulation'])` records over the whole period says more about the size of the literature than about its habits.
+The smallest literature, sensorimotor simulation, contains no record that mentions speculation. With `r format(totals$records[totals$topic == 'sensorimotor simulation'])` records over the whole period, that absence says more about the size of the literature than about its habits.
 
-With those limits in mind, the observed differences describe the wording of these particular queries and records, rather than an ordering of fields by evidence or maturity. Some literatures may use more explicit hedging in abstracts, and query design can change both the numerator and denominator. The data are most useful as a transparent starting point for reading records and revising searches. Anyone who wants to add a topic or inspect a later refresh can dispatch the workflow from the repository.
+With those limits in mind, the differences describe how the records retrieved by these particular queries are worded. The data are most useful as a transparent starting point for reading the records and revising the searches.
 
 ## References
 
-Bernabeu, P., & Vogt, P. (2015). *Language evolution: Current status and future directions* [Paper presentation]. Tenth Language at the University of Essex (LangUE) Postgraduate Conference, Colchester, United Kingdom. https://www.researchgate.net/publication/280858062_Language_evolution_Current_status_and_future_directions
+Bernabeu, P. (2026). *scopusflow: A reproducible workflow layer for Scopus bibliographic searches* (Version 0.4.0) [Computer software]. CRAN. https://doi.org/10.32614/CRAN.package.scopusflow
 
-Evans, N., & Levinson, S. C. (2009). The myth of language universals: Language diversity and its importance for cognitive science. *Behavioral and Brain Sciences*, *32*(5), 429–492. https://doi.org/10.1017/S0140525X0999094X
+Bernabeu, P., & Vogt, P. (2015, June 18). *Language evolution: Current status and future directions* [Paper presentation]. Tenth Language at the University of Essex (LangUE) Postgraduate Conference, Colchester, United Kingdom. https://www.researchgate.net/publication/280858062_Language_evolution_Current_status_and_future_directions
+
+Evans, N., & Levinson, S. C. (2009). The myth of language universals: Language diversity and its importance for cognitive science. *Behavioral and Brain Sciences*, *32*(5), 429–448. https://doi.org/10.1017/S0140525X0999094X
 
 Tomasello, M. (2009). Universal grammar is dead. *Behavioral and Brain Sciences*, *32*(5), 470–471. https://doi.org/10.1017/S0140525X09990744

@@ -16,7 +16,7 @@ tags:
   - Scopus
 subtitle: ''
 summary: 'A literature-search export does not preserve the decisions that produced it. This post uses scopusflow to define a search in advance, resume it from checkpoints and generate a PRISMA-S search record from the resulting data.'
-abstract: 'This tutorial treats a Scopus search as a versioned, resumable workflow. It defines a query and yearly plan, retrieves an offline demonstration corpus through checkpoints, compares DOI sets and generates a PRISMA-S-oriented record while making clear which claims still require review-author judgement.'
+abstract: 'This tutorial treats a Scopus search as a versioned, resumable workflow. It defines a query and a yearly plan, retrieves an offline demonstration corpus through checkpoints, compares DOI sets and generates a PRISMA-S search record that names the items left for the review authors to report.'
 authors: []
 lastmod: ''
 featured: no
@@ -40,13 +40,13 @@ xaringanExtra::use_clipboard()
 
 A spreadsheet exported from Scopus contains papers, but it does not contain the search that found them. The exact query, retrieval date, paging choices and number of records returned by each part of the search often end up in notes or browser history. When the search has to be updated, it can be difficult to tell whether a changed result reflects the literature or the method.
 
-I wrote [scopusflow](https://pablobernabeu.github.io/scopusflow/) to keep those decisions with the records. A search begins as a plan, each completed part is cached and the final object can write its own search record. There are matching packages for [R](https://CRAN.R-project.org/package=scopusflow) and [Python](https://pypi.org/project/scopusflow), developed in the same [GitHub repository](https://github.com/pablobernabeu/scopusflow).
+I wrote [scopusflow](https://pablobernabeu.github.io/scopusflow/) (Bernabeu, 2026) to keep those decisions with the records. A search begins as a plan, each completed part is cached and the final object can write its own search record. Matching packages are available for R ([CRAN](https://CRAN.R-project.org/package=scopusflow), [GitHub](https://github.com/pablobernabeu/scopusflow)) and Python ([PyPI](https://pypi.org/project/scopusflow), [GitHub](https://github.com/pablobernabeu/scopusflow-py)).
 
-This example uses a small corpus bundled with the R package. A stand-in server answers the same requests as the Scopus API, so the article can be rebuilt without an API key or a network request to Elsevier.
+The example below uses a small corpus bundled with the R package. A stand-in server, defined in [a short script](https://github.com/pablobernabeu/website-files/blob/master/content/post/scopusflow-a-literature-search-you-can-rerun/stand_in.R), answers the requests that would otherwise go to the Scopus API, so the code runs without an API key or any connection to Elsevier.
 
 ## Development
 
-The workflow below separates planning, retrieval, inspection and reporting. The bundled stand-in server keeps the example reproducible without an API key; a live search adds authentication, quota and database-coverage decisions.
+The workflow below separates planning, retrieval, inspection and reporting.
 
 ```{r}
 library(scopusflow)
@@ -55,7 +55,7 @@ packageVersion('scopusflow')
 
 ### Describe the search first
 
-The bundled example follows research on graphene supercapacitors. Query helpers add the field syntax, while `scopus_plan()` divides the work into yearly cells. The resulting object can be inspected and saved before any quota is spent.
+The bundled example concerns research on graphene supercapacitors. `scopus_query()` adds the field syntax, and `scopus_plan()` divides the search into yearly cells. The plan can be inspected and saved before any quota is spent.
 
 ```{r}
 query <- scopus_query('graphene supercapacitor', .field = 'TITLE-ABS-KEY')
@@ -64,7 +64,7 @@ query
 plan
 ```
 
-The plan already supports a draft methods description. Any details unavailable at this stage are marked as unrecorded. The report follows PRISMA-S, the reporting extension for literature searches (Rethlefsen et al., 2021).
+The plan already yields a draft methods description, written to PRISMA-S, the extension of the PRISMA statement for reporting literature searches (Rethlefsen et al., 2021). The draft also flags the items that the review authors will have to report themselves.
 
 ```{r}
 cat(format(scopus_search_report(plan), style = 'paragraph'))
@@ -72,7 +72,7 @@ cat(format(scopus_search_report(plan), style = 'paragraph'))
 
 ### Resume from the last completed cell
 
-The bundled corpus now stands in for the result of that same plan. The cache is deliberately empty at the start of the example.
+The bundled corpus now stands in for the result of that plan. The cache starts empty, so every yearly cell has to be requested.
 
 ```{r}
 source('stand_in.R')
@@ -99,11 +99,11 @@ c(records = nrow(repeated),
   new_requests = stand_in$state$requests - requests_before)
 ```
 
-The practical benefit is clearest after an interruption. Work already completed is retained, while the query, years, view and page size stored beside each checkpoint prevent an incompatible plan from silently reusing it.
+The practical benefit is clearest after an interruption, since the completed cells are kept. Each checkpoint also stores the query, year, view and page size it was fetched under, which prevents an incompatible plan from silently reusing it.
 
 ### Inspect the result
 
-The records retain their plan, retrieval time, package version and count for each cell. That provenance is enough to plot the development of the bundled literature and later distinguish a changed search from a changed method.
+The records carry their plan, retrieval time and package version, along with the count for each cell. That provenance later helps to tell a change in the literature apart from a change in the method. The plot below counts the bundled records for each year.
 
 ```{r records-per-year, fig.width = 7.5, fig.height = 4.2, fig.alt = 'Line chart showing the number of graphene-supercapacitor records in the bundled corpus for each year from 2015 to 2024'}
 httr2::with_mocked_responses(stand_in$handler, {
@@ -123,7 +123,7 @@ plot_scopus_trend(trend) +
   )
 ```
 
-An update can be compared by DOI. In this illustration, the baseline ends in 2023 and the later harvest includes the 2024 records.
+Successive harvests can be compared by DOI. In this illustration, the baseline ends in 2023 and the later harvest adds the 2024 records.
 
 ```{r}
 baseline <- records[records$year <= 2023, ]
@@ -133,7 +133,7 @@ changes
 
 ### Let the result write the record
 
-The search record is generated from the object that contains the publications. It reports what the software knows and identifies the PRISMA-S items that still require the review author's judgement, such as citation searching or peer review of the strategy. Because this run used a stand-in rather than Scopus, the compact summary below omits the database, platform and retrieval date that a live report would supply.
+The search record is generated from the object that holds the publications. It reports what the software knows and identifies the PRISMA-S items that still require the review authors' judgement, such as citation searching or peer review of the search strategy. As this run never reached Scopus, the summary below leaves out the database, platform and retrieval date that a live report would include.
 
 ```{r report-summary, echo = FALSE}
 report <- scopus_search_report(records)
@@ -149,13 +149,13 @@ The same records can then leave R as a DOI list, BibTeX, RIS or a table for bibl
 
 ## Discussion
 
-The central result is provenance rather than the demonstration trend. A rerunnable search records enough of the method to explain why a later DOI set differs, but it does not make database coverage, query design or screening judgement objective. Those decisions belong in the review protocol and should be reported with the generated search record. The offline plot is therefore a test of the workflow's traceability, not evidence about graphene research itself.
+The result that matters in this example is the provenance. A rerunnable search records enough of the method to explain why a later DOI set differs, although database coverage, query design and screening remain matters of judgement. Those decisions belong in the review protocol and should be reported with the generated search record. For a review, I would keep the plan under version control, save the native result object and archive the search record alongside the screening data.
+
+The [R reference](https://pablobernabeu.github.io/scopusflow/reference/) and the [Python documentation](https://pablobernabeu.github.io/scopusflow-py/) cover cursor paging, de-duplication, topic comparisons and authentication for live searches.
 
 ### Limits
 
-The offline corpus demonstrates the workflow. Its results do not represent the contents of Scopus. A live search still depends on Elsevier's coverage, indexing and quota, and abstract retrieval uses a separate allowance. Scopus records also cannot be redistributed, which is why this article uses records obtained from OpenAlex and reshaped to the package's return format.
-
-The [R reference](https://pablobernabeu.github.io/scopusflow/reference/) and [Python reference](https://pablobernabeu.github.io/scopusflow-py/) cover cursor paging, de-duplication, topic comparisons and live authentication. For a review, I would keep the plan under version control, save the native result object and archive the generated search record with the screening data.
+The offline corpus only demonstrates the workflow, so its counts are not evidence about the contents of Scopus or about graphene research. Elsevier's terms do not allow Scopus records to be redistributed, which is why the example uses 138 records retrieved from OpenAlex on 22 July 2026 and reshaped to the package's return format. A live search still depends on Elsevier's coverage, indexing and quota, and abstract retrieval draws on a separate allowance.
 
 ```{r cleanup, include = FALSE}
 options(scopusflow.api_key = NULL)
@@ -164,4 +164,6 @@ unlink(cache, recursive = TRUE)
 
 ## References
 
-Rethlefsen, M. L., Kirtley, S., Waffenschmidt, S., Ayala, A. P., Moher, D., Page, M. J., & Koffel, J. B. (2021). PRISMA-S: An extension to the PRISMA statement for reporting literature searches in systematic reviews. *Systematic Reviews*, *10*(1), Article 39. https://doi.org/10.1186/s13643-020-01542-z
+Bernabeu, P. (2026). *scopusflow: A reproducible workflow layer for Scopus bibliographic searches* (Version 0.4.0) [Computer software]. CRAN. https://doi.org/10.32614/CRAN.package.scopusflow
+
+Rethlefsen, M. L., Kirtley, S., Waffenschmidt, S., Ayala, A. P., Moher, D., Page, M. J., Koffel, J. B., & PRISMA-S Group. (2021). PRISMA-S: An extension to the PRISMA statement for reporting literature searches in systematic reviews. *Systematic Reviews*, *10*(1), Article 39. https://doi.org/10.1186/s13643-020-01542-z

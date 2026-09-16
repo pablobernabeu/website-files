@@ -8,21 +8,28 @@
 #     literatures (Scopus, through scopusflow::scopus_compare_topics()).
 #
 #   content/post/2023-07-08-who-s-through-with-convergence-warnings-a-record-of-publications-using
-#     Publications that used lme4::allFit(), from three sources: Scopus (the
-#     function name in any indexed field, and a proxy query on the abstract),
-#     Europe PMC (full text of open-access articles) and OpenAlex (full text).
+#     Publications that mention lme4::allFit(), from three sources: Scopus (the
+#     function name in any indexed field, and a proxy query on titles, abstracts
+#     and keywords), Europe PMC (full text, mostly of open-access articles) and
+#     OpenAlex (full text).
 #
 # Results are written under a `searches/` directory in each post bundle. The
-# workflow .github/workflows/update-post-searches.yml runs this script and
-# uploads those directories as an artifact.
+# workflow .github/workflows/update-post-searches.yml runs this script, commits
+# those directories to the branch it was dispatched from and uploads them as an
+# artifact.
 #
 # Usage:
 #   Rscript scripts/update_post_searches.R [all|speculation|allfit]
 #
 # Environment variables:
-#   SCOPUS_API_KEY  Elsevier Scopus API key (read by scopusflow; never printed)
+#   SCOPUS_API_KEY  Elsevier Scopus API key, read by scopusflow and never
+#                   printed. Without it, the speculation searches stop with an
+#                   error, which also ends an `all` run before the allfit
+#                   searches, whereas an `allfit` run skips only the Scopus
+#                   searches.
 #
-# Each run writes the retrieval date to searches/retrieved.txt in both bundles.
+# A bundle's searches/retrieved.txt holds the time (UTC) of the latest run in
+# which at least one of that bundle's searches wrote a table.
 
 suppressPackageStartupMessages({
   library(scopusflow)
@@ -45,15 +52,15 @@ allfit_dir <- file.path(
   "searches"
 )
 
-# Records which search directories actually received data in this run, so that
-# each bundle's retrieval timestamp only moves when its own searches returned
-# something. One flag shared between the bundles would let a successful search
+# Tracks which search directories received a table in this run, so that a
+# bundle's retrieval time moves only when one of its own searches wrote a
+# table. A single flag shared by both bundles would let a successful search
 # in one stamp a fresh date on the other's stale files.
 written_to <- character(0)
 
-# An empty result is far more often an outage, a revoked key or a changed API
+# An empty result far more often means an outage, a revoked key or a changed API
 # than a literature that has emptied, and the workflow commits whatever is on
-# disk, so an empty table never replaces committed results.
+# disk, so an empty table never replaces an existing file that holds rows.
 write_table <- function(x, path) {
   x <- as.data.frame(x)
   if (nrow(x) == 0 && file.exists(path) &&
@@ -74,8 +81,8 @@ write_table <- function(x, path) {
 if (target %in% c("all", "speculation")) {
   if (!scopus_has_key()) stop("No Scopus API key found in SCOPUS_API_KEY.")
 
-  # The current year is included so that the plots run up to the latest
-  # records; the post notes that the last year is incomplete.
+  # The current year is included so that the plots reach the latest records,
+  # and the post notes that this final year is incomplete.
   years <- 1980:as.integer(format(Sys.Date(), "%Y"))
 
   topics <- c(
@@ -118,8 +125,8 @@ if (target %in% c("all", "speculation")) {
 # ---- Publications that used allFit ---------------------------------------------
 
 if (target %in% c("all", "allfit")) {
-  # Europe PMC and OpenAlex need no key, so a missing one skips the two Scopus
-  # searches rather than abandoning the bundle.
+  # Europe PMC and OpenAlex need no key, so a missing key skips only the two
+  # Scopus searches and the rest of the bundle still runs.
   have_key <- scopus_has_key()
   if (!have_key)
     warning("No Scopus API key found in SCOPUS_API_KEY; ",
@@ -127,8 +134,8 @@ if (target %in% c("all", "allfit")) {
             call. = FALSE, immediate. = TRUE)
   dir.create(allfit_dir, recursive = TRUE, showWarnings = FALSE)
 
-  # A failure in one source must not lose the others, so each search is
-  # wrapped and reported. `try_search()` returns NULL on failure.
+  # A failure in one source must not lose the others, so each search catches
+  # its own error, reports it and returns NULL.
   try_search <- function(label, expr) {
     tryCatch(expr, error = function(e) {
       message("Search failed (", label, "): ", conditionMessage(e))
@@ -137,10 +144,10 @@ if (target %in% c("all", "allfit")) {
   }
 
   # 1. Scopus: the function name in any indexed field (title, abstract,
-  #    keywords, references and so on; not the body of the article). The
-  #    ALL() field tag is tried first, with two fallbacks. Pages of 25 records
-  #    are the most the API serves to a key used outside its institution's
-  #    network; larger pages are rejected as malformed.
+  #    keywords, references and others, but not the body of the article). If
+  #    the quoted ALL() query fails, two alternative forms are tried in turn.
+  #    Pages of 25 records are the most the API serves to a key used outside
+  #    its institution's network, and larger pages are rejected as malformed.
   records_all <- NULL
   for (q_all in if (have_key) c('ALL("allFit")', 'ALL(allFit)',
                                 'TITLE-ABS-KEY(allFit) OR REF(allFit)') else character(0)) {
@@ -155,8 +162,9 @@ if (target %in% c("all", "allfit")) {
     writeLines(q_all, file.path(allfit_dir, "scopus_allfit_any_field_query.txt"))
   }
 
-  # 2. Scopus: the proxy query drafted in 2023, which targets abstracts that
-  #    describe maximal random-effects structures and convergence.
+  # 2. Scopus: a proxy query for titles, abstracts and keywords that describe
+  #    maximal random-effects structures and convergence, since studies that
+  #    compared optimisers seldom name the function in a field Scopus indexes.
   q_proxy <- paste(
     '("lme4" OR "lmerTest" OR "brms") AND maximal AND "random slopes"',
     'AND (convergence OR converge OR converged OR converging)'
@@ -167,9 +175,10 @@ if (target %in% c("all", "allfit")) {
     write_table(records_proxy, file.path(allfit_dir, "scopus_convergence_proxy.csv"))
   }
 
-  # 3. Europe PMC: full text of open-access articles. The phrase must occur in
-  #    the article together with a mixed-model term, which excludes unrelated
-  #    uses of the string.
+  # 3. Europe PMC: full text, held mostly for open-access articles. The
+  #    function name must occur in the article together with a mixed-model
+  #    term, which excludes some unrelated uses of the string. A page size of
+  #    1000 is the largest the API accepts.
   epmc_query <- paste(
     '"allFit" AND (lme4 OR "mixed-effects" OR "mixed effects" OR',
     '"mixed model" OR "mixed models" OR "multilevel")'
@@ -192,6 +201,8 @@ if (target %in% c("all", "allfit")) {
     if (is.null(nxt) || identical(nxt, cursor)) break
     cursor <- nxt
   })
+  # Absent JSON fields arrive as NULL, which vapply() cannot hold, so they
+  # become NA.
   pick <- function(x, field) {
     v <- x[[field]]
     if (is.null(v)) NA_character_ else as.character(v)
@@ -209,10 +220,10 @@ if (target %in% c("all", "allfit")) {
   )
   write_table(epmc_table, file.path(allfit_dir, "europepmc_allfit_fulltext.csv"))
 
-  # 4. OpenAlex: full-text search, where the text is available to OpenAlex.
+  # 4. OpenAlex: full-text search over the works whose text OpenAlex holds.
   #    On its own, the function name also matches unrelated text (the search
-  #    is not case-sensitive and tolerates near matches), so a mixed-model
-  #    term is required alongside it.
+  #    ignores case and tolerates near matches), so a mixed-model term is
+  #    required alongside it. Pages of 200 records are the largest it accepts.
   openalex_filter <- paste0('fulltext.search:allFit AND (lme4 OR lmer OR ',
                             '"mixed effects" OR "mixed-effects" OR "mixed model" OR ',
                             '"mixed models" OR multilevel)')

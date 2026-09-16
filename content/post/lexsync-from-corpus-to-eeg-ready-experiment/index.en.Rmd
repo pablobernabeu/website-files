@@ -18,7 +18,7 @@ tags:
   - jsPsych
 subtitle: ''
 summary: 'Selecting words is only the first step in preparing a psycholinguistic experiment. This post uses lexsync to match high- and low-frequency items, balance them across lists and export presentation scripts with recorded timing and EEG triggers.'
-abstract: 'This tutorial shows how lexsync turns a lexical design into checked stimulus lists and experiment files. It separates candidate selection from matching, evaluates balance on intended controls and carries the resulting item table into PsychoPy, OpenSesame or jsPsych with recorded timing and EEG trigger information.'
+abstract: 'This tutorial shows how lexsync turns a lexical design into checked stimulus lists and experiment files. It separates candidate selection from matching, evaluates balance on the intended controls and carries the resulting item table into PsychoPy, OpenSesame or jsPsych with recorded timing and EEG trigger information.'
 authors: []
 lastmod: ''
 featured: no
@@ -44,11 +44,11 @@ dir.create(output_dir, showWarnings = FALSE)
 
 A high- versus low-frequency word experiment sounds simple until the materials are assembled. The frequency bands must differ, while length and orthographic similarity should not. The selected words then need to be divided across presentation lists without creating a new imbalance. Finally, the same item table must reach the experiment software with its trial order, timing and electroencephalography (EEG) triggers intact.
 
-I wrote [lexsync](https://github.com/pablobernabeu/lexsync) to keep those stages in one reproducible workflow. The package stores the design separately from the candidate corpus, reports the balance that was achieved and exports runnable experiments for PsychoPy, OpenSesame and jsPsych. The R and Python implementations use the same design format. This article uses R for brevity.
+I wrote [lexsync](https://github.com/pablobernabeu/lexsync) (Bernabeu, 2026) to keep those stages in one reproducible workflow. The package stores the design separately from the candidate corpus, reports the balance that was achieved and exports runnable experiments for PsychoPy, OpenSesame and jsPsych. Its R and Python implementations read the same design format, and the examples below use R.
 
 ## Development
 
-The workflow below keeps the design decisions visible: define the candidate pool, check the realised balance and export the same specification to the presentation environment.
+The workflow below keeps each design decision in view as it defines the candidate pool, checks the realised balance and passes the same specification on to the presentation software.
 
 ```{r}
 library(lexsync)
@@ -63,7 +63,7 @@ lexicon <- load_lexicon(lexicon_path, schema, language = 'english')
 
 ### Put the design in data
 
-The design below asks for 40 words in each frequency condition. Length, neighbourhood density and OLD20 are controls. The two lists will also be balanced on those controls and on frequency. Zipf frequency follows van Heuven et al. (2014), while OLD20 measures orthographic similarity as the mean edit distance from a word's 20 nearest neighbours (Yarkoni et al., 2008).
+The design below asks for 40 words in each frequency condition, matched on length, neighbourhood density and OLD20. Those three controls and frequency itself are then balanced across two presentation lists. Frequency is expressed on the Zipf scale (van Heuven et al., 2014), and OLD20 measures orthographic similarity as the mean edit distance between a word and its 20 nearest neighbours (Yarkoni et al., 2008).
 
 ```{r}
 design <- list(
@@ -93,7 +93,7 @@ names(candidate_counts) <- vapply(design$conditions, `[[`, character(1), 'name')
 candidate_counts
 ```
 
-The high-frequency band is the smaller candidate set, so it limits the number and quality of possible matches. Keeping that count beside the design makes a shortfall interpretable instead of leaving it to appear as a mysterious matching failure.
+The high-frequency band is the smaller candidate set, so it limits both the number and the quality of possible matches. Counting the candidates before matching shows whether a later shortfall stems from the size of this pool.
 
 ### Select and check the words
 
@@ -105,7 +105,7 @@ head(stimuli[, c('set', 'condition', 'word', 'frequency', 'length',
                   'n_density', 'old20')])
 ```
 
-The report treats matching as an equivalence claim. For each control, it gives Cohen's $d$ with a 90% confidence interval and tests that interval against the design's bound of half a standard deviation (Lakens, 2017). The frequency row describes the intended manipulation and is omitted from the figure.
+The report treats matching as a claim of equivalence. For each control, it gives Cohen's $d$ with a 90% confidence interval and applies the two one-sided tests (TOST) procedure against the schema's bound of half a standard deviation (Lakens, 2017). The frequency row reflects the intended manipulation, so the figure leaves it out.
 
 ```{r}
 report <- match_report(
@@ -143,11 +143,11 @@ ggplot(controls, aes(cohens_d, dimension)) +
         axis.text = element_text(size = 9))
 ```
 
-The point estimates are useful, but the intervals carry the uncertainty. With only a few items, near-zero estimates can still be too imprecise to support an equivalence claim.
+The intervals deserve more attention than the point estimates, because they carry the uncertainty. With few items per condition, an estimate near zero can still be too imprecise to support a claim of equivalence.
 
 ### Carry the items into the experiment
 
-The design also describes a trial. A fixation is followed by the word, an onset-locked condition trigger, a response window and a jittered blank interval. Jitter is derived from a keyed hash of the design and seed, so rebuilding the experiment preserves the realised timing.
+The design also describes each trial, which presents a fixation cross, the word with a condition trigger locked to its onset, a response window and a blank interval of jittered length. The jitter is derived from a keyed hash of the design and seed, so rebuilding the experiment reproduces the same timing.
 
 ```{r}
 design$events <- list(
@@ -170,7 +170,7 @@ head(trials[, c('list', 'trial', 'condition', 'word', 'iti_ms',
                 'condition_trigger')])
 ```
 
-The exported files all read from this trial table. In the PsychoPy script, `win.callOnFlip` sends the trigger on the refresh that presents the word.
+All three exported files read from this trial table. In the PsychoPy script, `win.callOnFlip` sends the trigger on the refresh that presents the word.
 
 ```{r}
 experiments <- export_experiments(trials, design, schema, output_dir)
@@ -183,19 +183,21 @@ grep('^\\s*(TRIGGER_HOLD_MS\\s*=|win\\.callOnFlip\\()', psychopy_code,
 
 ## Discussion
 
-The balance plot is a diagnostic, not a guarantee that the materials are theoretically adequate. A successful match can still leave a weak manipulation, a confounded norm or an implausible trial sequence. Its value is that those choices are visible before data collection and can be reviewed alongside the exported files. In an EEG study, that audit should be extended to the actual trigger stream and hardware timing on the recording computer.
+As a diagnostic, the balance plot cannot show that the materials are theoretically adequate. A successful match can still leave a weak manipulation, a confounded norm or an implausible trial sequence. The workflow's value lies in making those choices visible before data collection, so that they can be reviewed alongside the exported files. In an EEG study, that review should extend to the trigger stream and hardware timing measured on the recording computer.
 
 ### Limits
 
-Matching can only use what the candidate corpus contains. The bundled lexicon is suitable for this demonstration, but it includes proper nouns, estimates syllables from spelling and has no part-of-speech information. A study should therefore supply its own exclusions and any norms needed for the research question. Equivalence also depends on the bound chosen before selection. The default half-standard-deviation region is not a universal definition of an acceptable match.
+Matching can only draw on what the candidate corpus contains. The bundled lexicon serves this demonstration, but it includes proper nouns, estimates syllables from spelling and has no part-of-speech information. A study should therefore supply its own exclusions and whatever norms it needs. Equivalence also depends on the bound chosen before selection, and the default of half a standard deviation is only a starting point. Each study should derive its own bound from the smallest difference that would matter for its research question (Lakens, 2017).
 
-The [R documentation](https://pablobernabeu.github.io/lexsync/r/) and [Python documentation](https://pablobernabeu.github.io/lexsync/python/) cover pseudoword generation, semantic norms, continuous designs, Latin-square counterbalancing and the full file-based pipeline. The useful boundary is simple: the design records the intended experiment, while the generated tables and reports record what was realised.
+The [R documentation](https://pablobernabeu.github.io/lexsync/r/) and [Python documentation](https://pablobernabeu.github.io/lexsync/python/) cover pseudoword generation, semantic norms, continuous designs, Latin-square counterbalancing and the full file-based pipeline. Across the package, the design records the experiment as intended, while the generated tables and reports record it as realised.
 
 ```{r cleanup, include = FALSE}
 unlink(output_dir, recursive = TRUE)
 ```
 
 ## References
+
+Bernabeu, P. (2026). *lexsync: Lexical optimisation and hardware-timed experiment generation* (Version 0.1.0) [Computer software]. GitHub. https://github.com/pablobernabeu/lexsync
 
 Lakens, D. (2017). Equivalence tests: A practical primer for *t* tests, correlations, and meta-analyses. *Social Psychological and Personality Science*, *8*(4), 355–362. https://doi.org/10.1177/1948550617697177
 
