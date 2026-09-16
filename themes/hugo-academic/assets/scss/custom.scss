@@ -1608,7 +1608,7 @@ body.dark .btn-links a[title*="open science"] {
 
 // Override dark theme link hover color in open science popups (white background needs dark hover color)
 body.dark #open-science-popup a:hover {
-  color: #009688 !important;
+  color: #00796B !important; // 5.3:1 on the white popup; #009688 gave 3.7:1
 }
 
 // Reduce margin above separator in open science popups
