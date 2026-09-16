@@ -82,6 +82,8 @@ Performance is measured by how accurately participants predict the peer consensu
 
 > **score = 100 − |predicted\_rating − actual\_peer\_average| × 12**
 
+The peer average of each study also counts an expert rating as if 100 participants had given it, so this rating still carries half the weight once 100 participants have rated the study.
+
 Because ratings are on a 1–7 scale, the largest possible error is 6, so even the worst prediction scores 28 (100 − 6 × 12). A multiplier of about 17 would bring that score down to zero. The more forgiving multiplier of 12 ensures that no single poor estimate is penalised completely, and this helps to keep participants engaged throughout the task.
 
 The aggregate score is the sum across the studies rated, up to a maximum of 4,800 for all 48. The design thus rewards participants for understanding how their peers reason about research quality.
@@ -95,7 +97,7 @@ A real-time leaderboard ranks participants by their aggregate prediction score, 
 
 ## Analytics dashboard
 
-A public [live analytics dashboard](https://unlock-the-lab.web.app/dashboard.html) visualises the data aggregated across all participants. Besides the leaderboard described above, it includes a criterion importance chart showing the share of tokens that participants assigned to each of the six rubric criteria. A bar chart also shows the mean quality rating of each of the 48 studies, with 95% confidence intervals. The dashboard serves both participants reviewing their own results and facilitators or researchers interested in patterns across the whole group.
+A public [live analytics dashboard](https://unlock-the-lab.web.app/dashboard.html) visualises the data aggregated across all participants. Besides the leaderboard described above, it includes a criterion importance chart showing the share of tokens that participants assigned to each of the six rubric criteria. A bar chart also shows the mean quality rating of each of the 48 studies, with 95% confidence intervals. As in the scoring, these means and confidence intervals include the weighted expert rating of each study. The dashboard serves both participants reviewing their own results and facilitators or researchers interested in patterns across the whole group.
 
 <img loading="lazy" decoding="async" src="img/screenshot-dashboard-1.png" alt="Top Predictors leaderboard and Criterion Importance chart" style="max-width:100%; border-radius:6px; margin: 1em 0;">
 <p style="font-size:0.85em; color:#555; margin-top:-0.5em;"><em>The criterion importance chart, showing the average share of tokens that participants allocated to each evaluation criterion</em></p>
@@ -111,7 +113,7 @@ Most discussions of science communication raise the question of whether scientis
 
 Closely related to the question of outreach is a broader set of pressures that shape what research is produced and how. Incentives acting on individuals, institutions and journals govern both the quantity and the quality of research. The pressure to publish frequently, often summed up as 'publish or perish', has been associated with a range of questionable research practices. These include selective reporting, inflated effect sizes and the suppression of null results, known as the file-drawer problem. Journal impact factors, though widely criticised as crude proxies for the quality of an article, still influence hiring and promotion in ways that reward prestige over reproducibility. Funding bodies, which typically favour novelty over replication, have contributed to a research landscape that systematically undervalues confirmation. These pressures operate subtly. Few researchers consciously intend to distort the scientific record, yet the cumulative effect of individually rational decisions can be a literature that overstates certainty. Recognising these dynamics is itself a form of science literacy, and the evaluation scenarios in Unlock the Lab are designed to exercise it.
 
-It is tempting to see the open science movement as a gradual, idealistic awakening, but the reality is less flattering, as some of its strongest catalysts were scandals. The case of Diederik Stapel, the Dutch social psychologist whose fabrication of data across dozens of studies was uncovered in 2011, became one of the most widely discussed episodes of scientific fraud in recent memory. Stapel had built a prolific career on results that were, in some cases, entirely invented. His exposure prompted sustained reflection on individual responsibility and on the structural conditions that had allowed the fraud to go undetected for so long. In 2013, Stapel spoke about his downfall in the talk below, given on the TEDx Braintrain and recorded by Omroep Brabant.
+It is tempting to see the open science movement as a gradual, idealistic awakening, but the reality is less flattering, as some of its strongest catalysts were scandals. The case of Diederik Stapel, the Dutch social psychologist whose fabrication of data across dozens of studies was uncovered in 2011, became one of the most widely discussed episodes of scientific fraud in recent memory. Stapel had built a prolific career on results that were, in some cases, entirely invented. His exposure prompted sustained reflection on individual responsibility and on the structural conditions that had allowed the fraud to go undetected for so long. During the TEDx Braintrain in 2013, Stapel gave a talk in English about his downfall, and Omroep Brabant published the recording below.
 
 <div>
   <div style="position: relative; padding-top: 56.25%; margin-top: 3%; margin-bottom: 4%;">
@@ -128,9 +130,11 @@ At a larger scale, [Hao et al. (2026)](https://doi.org/10.1038/s41586-025-09922-
 
 ## Source code and contributions
 
-The application is written in HTML, CSS and JavaScript. Its charts are drawn with [Chart.js](https://www.chartjs.org/), and Firebase provides the real-time database and the anonymous authentication of participants. The [source code is available on GitHub](https://github.com/pablobernabeu/Unlock_the_Lab) under a [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) licence. The application can be extended or adapted through pull requests. Feature requests, bug reports and other suggestions can be submitted as [issues](https://github.com/pablobernabeu/Unlock_the_Lab/issues).
+The application is written in HTML, CSS and JavaScript. Its charts are drawn with [Chart.js](https://www.chartjs.org/), and Firebase provides the real-time database and the anonymous authentication of participants. The [source code is available on GitHub](https://github.com/pablobernabeu/Unlock_the_Lab) under a [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) licence and archived on Zenodo ([Bernabeu, 2026](https://doi.org/10.5281/zenodo.19153148)). The application can be extended or adapted through pull requests. Feature requests, bug reports and other suggestions can be submitted as [issues](https://github.com/pablobernabeu/Unlock_the_Lab/issues).
 
 ## References
+
+Bernabeu, P. (2026). *Unlock the Lab: Your guide to reading science like a scientist* (Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.19153148
 
 Bruton, S. V., Medlin, M., Brown, M., & Sacco, D. F. (2020). Personal motivations and systemic incentives: Scientists on questionable research practices. *Science and Engineering Ethics, 26*(3), 1531–1547. https://doi.org/10.1007/s11948-020-00182-9
 

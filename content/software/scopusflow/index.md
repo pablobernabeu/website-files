@@ -24,6 +24,8 @@ summary: 'Reproducible, quota-aware Scopus searches in R and Python.'
 featured: no
 url_code: https://github.com/pablobernabeu/scopusflow
 links:
+  - name: Python code
+    url: https://github.com/pablobernabeu/scopusflow-py
   - name: R documentation
     url: https://pablobernabeu.github.io/scopusflow/
   - name: Python documentation

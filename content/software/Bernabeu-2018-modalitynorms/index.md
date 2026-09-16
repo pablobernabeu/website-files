@@ -6,7 +6,7 @@ aliases:
   - '/applications-and-dashboards/bernabeu-2018-modalitynorms/'
 authors:
 date: "2018-01-01"
-doi: "https://doi.org/10.31234/osf.io/s2c5h"
+doi: "10.31234/osf.io/s2c5h"
 featured: false
 diagram: true
 image:
@@ -86,7 +86,7 @@ graph TD
   C --> F["Plot tab: plotly<br/>(PCA scatter, tooltips)"]
   B --> G["Static Flexdashboard-only version<br/>on RPubs (Shiny removed)"]
 {{< /diagram >}}
-This web application presents linguistic data over several tabs. The code combines a Flexdashboard front-end, based on R Markdown and offering an excellent user interface, with a Shiny back-end that lets users download the sections of data they select in various formats.
+This web application presents linguistic data over several tabs. The code combines a Flexdashboard front-end, based on R Markdown and offering an excellent user interface, with a Shiny back-end that lets users download the sections of data they select in various formats. The data, the analysis code and the application code are archived on Zenodo (Bernabeu, 2024).
 
 - A nice find was the reactable package, which uses JavaScript to add colours, bar charts and other features to tables.
 
@@ -236,6 +236,8 @@ To create the Flexdashboard-only version from the Flexdashboard-Shiny version, I
 ````
 
 
-## Reference
+## References
 
 Bernabeu, P. (2018). *Dutch modality exclusivity norms for 336 properties and 411 concepts* [Web application]. https://pablobernabeu.shinyapps.io/Dutch-modality-exclusivity-norms/
+
+Bernabeu, P. (2024). *Dutch-modality-exclusivity-norms-Bernabeu-2018* (Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.10615943

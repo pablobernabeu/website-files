@@ -8,7 +8,7 @@ diagram: true
 authors:
 - '**Bernabeu, P.**, & Lynott, D.'
 date: "2020-06-01"
-doi: ""
+doi: "10.5281/zenodo.10615947"
 featured: false
 image:
   caption: ''
@@ -113,7 +113,7 @@ Bernabeu, P., & Lynott, D. (2020). *Web application for the simulation of experi
 
 ### Code
 
-This web application was developed in [R](https://www.r-project.org/about.html) (R Core Team, 2020). The code is [available on GitHub](https://github.com/pablobernabeu/Experimental-data-simulation/blob/master/index.Rmd), where contributions are welcome. The initial code drew on Section 5.7 ([*Simulating data for multi-factor designs*](https://www.crumplab.com/programmingforpsych/simulating-and-analyzing-data-in-r.html#simulating-data-for-multi-factor-designs){target='_blank'}) of Crump (2017). The R packages used include dplyr (Wickham et al., 2020), DT (Xie et al., 2020), flexdashboard (Iannone et al., 2020), shiny (Chang et al., 2020) and stringr (Wickham, 2019).
+This web application was developed in [R](https://www.r-project.org/about.html) (R Core Team, 2020). The code is [available on GitHub](https://github.com/pablobernabeu/Experimental-data-simulation/blob/master/index.Rmd), where contributions are welcome. A copy is archived on Zenodo (Bernabeu & Lynott, 2024). The initial code drew on Section 5.7 ([*Simulating data for multi-factor designs*](https://www.crumplab.com/programmingforpsych/simulating-and-analyzing-data-in-r.html#simulating-data-for-multi-factor-designs){target='_blank'}) of Crump (2017). The R packages used include dplyr (Wickham et al., 2020), DT (Xie et al., 2020), flexdashboard (Iannone et al., 2020), shiny (Chang et al., 2020) and stringr (Wickham, 2019).
 
 ### Options for development and local use of the app
 
@@ -149,6 +149,8 @@ This web application was developed in [R](https://www.r-project.org/about.html) 
 Thank you to RStudio (now Posit) for hosting this application free of charge on [shinyapps.io](https://www.shinyapps.io/).
 
 ### References
+
+Bernabeu, P., & Lynott, D. (2024). *Experimental-data-simulation* (Version 1.4.0) [Computer software]. Zenodo. [https://doi.org/10.5281/zenodo.10615947](https://doi.org/10.5281/zenodo.10615947)
 
 Chang, W., Cheng, J., Allaire, J. J., Xie, Y., & McPherson, J. (2020). *shiny: Web application framework for R* (Version 1.5.0) [Computer software]. CRAN. [https://doi.org/10.32614/CRAN.package.shiny](https://doi.org/10.32614/CRAN.package.shiny)
 

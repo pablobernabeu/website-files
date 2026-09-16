@@ -130,7 +130,7 @@ h5(a(strong('See plots with 95% Confidence Intervals'), href='https://osf.io/dvs
 			target='_blank'), style='text-decoration: underline;'),
 ```
 
-The app links to the published paper, the raw data and its own _server_ and _ui_ scripts. The scripts and the data used by the app are available [on GitHub](https://github.com/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing/tree/master/Shiny-app).
+The app links to the published paper, the raw data and its own _server_ and _ui_ scripts. The scripts and the data used by the app are available [on GitHub](https://github.com/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing/tree/master/Shiny-app) and archived on Zenodo (Bernabeu, 2024).
 
 Each tab has a button to download the plot in high resolution, as shown below for the first tab.
 
@@ -206,6 +206,8 @@ Later, I added one more image in the same way: the _favicon_, the small icon sho
 tags$head(tags$link(rel="shortcut icon", href="https://image.ibb.co/fXUwzb/favic.png")),  # web favicon
 ```
 
-### Reference
+### References
+
+Bernabeu, P. (2024). *Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing* (Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.10616354
 
 Bernabeu, P., Willems, R. M., & Louwerse, M. M. (2017). *Modality switch effects emerge early and increase throughout conceptual processing: Evidence from ERPs* [Web application]. https://pablobernabeu.shinyapps.io/ERP-waveform-visualization_CMS-experiment/
