@@ -170,6 +170,8 @@ head(trials[, c('list', 'trial', 'condition', 'word', 'iti_ms',
                 'condition_trigger')])
 ```
 
+The imbalance cost sums each list's departure from its fair share on every balanced variable, scaled to that variable's mean. Each swap exchanged a matched word pair in one list for a pair in the other.
+
 All three exported files read from this trial table. In the PsychoPy script, `win.callOnFlip` sends the trigger on the refresh that presents the word.
 
 ```{r}
@@ -187,7 +189,7 @@ As a diagnostic, the balance plot cannot show that the materials are theoretical
 
 ### Limits
 
-Matching can only draw on what the candidate corpus contains. The bundled lexicon serves this demonstration, but it includes proper nouns, estimates syllables from spelling and has no part-of-speech information. A study should therefore supply its own exclusions and whatever norms it needs. Equivalence also depends on the bound chosen before selection, and the default of half a standard deviation is only a starting point. Each study should derive its own bound from the smallest difference that would matter for its research question (Lakens, 2017).
+Matching can only draw on what the candidate corpus contains. The bundled English lexicon takes its words and Zipf frequencies from wordfreq (Speer, 2022). It serves this demonstration, but it includes proper nouns, estimates syllables from spelling and has no part-of-speech information. A study should therefore supply its own exclusions and whatever norms it needs. Equivalence also depends on the bound chosen before selection, and the default of half a standard deviation is only a starting point. Each study should derive its own bound from the smallest difference that would matter for its research question (Lakens, 2017).
 
 The [R documentation](https://pablobernabeu.github.io/lexsync/r/) and [Python documentation](https://pablobernabeu.github.io/lexsync/python/) cover pseudoword generation, semantic norms, continuous designs, Latin-square counterbalancing and the full file-based pipeline. Across the package, the design records the experiment as intended, while the generated tables and reports record it as realised.
 
@@ -200,6 +202,8 @@ unlink(output_dir, recursive = TRUE)
 Bernabeu, P. (2026). *lexsync: Lexical optimisation and hardware-timed experiment generation* (Version 0.1.0) [Computer software]. GitHub. https://github.com/pablobernabeu/lexsync
 
 Lakens, D. (2017). Equivalence tests: A practical primer for *t* tests, correlations, and meta-analyses. *Social Psychological and Personality Science*, *8*(4), 355–362. https://doi.org/10.1177/1948550617697177
+
+Speer, R. (2022). *rspeer/wordfreq: v3.0* (Version 3.0.2) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.7199437
 
 van Heuven, W. J. B., Mandera, P., Keuleers, E., & Brysbaert, M. (2014). SUBTLEX-UK: A new and improved word frequency database for British English. *Quarterly Journal of Experimental Psychology*, *67*(6), 1176–1190. https://doi.org/10.1080/17470218.2013.850521
 

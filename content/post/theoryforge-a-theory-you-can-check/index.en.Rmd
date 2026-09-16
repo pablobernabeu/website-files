@@ -111,7 +111,7 @@ The graph contains four arrows and entails six testable independencies. These si
 
 ### Give the claims a discriminating test
 
-To test these claims, I simulated two data sets. One follows the theory's graph, and the other follows a rival account in which sensorimotor experience also contributes to lexical familiarity, with every other path unchanged. The table below shows how the key claim fares in each.
+To test these claims, I simulated two data sets of 4,000 observations each. One follows the theory's graph, and the other follows a rival account in which sensorimotor experience also contributes to lexical familiarity, with every other path unchanged. In each data set, I assessed all six independencies with the linear conditional-independence tests in the dagitty package (Textor et al., 2016). The table below shows how the key claim fares in both.
 
 ```{r discriminating-test, echo = FALSE}
 causal_graph <- dagitty::dagitty(tf_diagram(switching, type = 'causal_dag'))
@@ -207,3 +207,5 @@ Bernabeu, P. (2026). *theoryforge: Systematic theory development* (Version 0.6.0
 Meehl, P. E. (1990). Appraising and amending theories: The strategy of Lakatosian defense and two principles that warrant it. *Psychological Inquiry*, *1*(2), 108–141. https://doi.org/10.1207/s15327965pli0102_1
 
 Pecher, D., Zeelenberg, R., & Barsalou, L. W. (2003). Verifying different-modality properties for concepts produces switching costs. *Psychological Science*, *14*(2), 119–124. https://doi.org/10.1111/1467-9280.t01-1-01429
+
+Textor, J., van der Zander, B., Gilthorpe, M. S., Liśkiewicz, M., & Ellison, G. T. H. (2016). Robust causal inference using directed acyclic graphs: The R package 'dagitty'. *International Journal of Epidemiology*, *45*(6), 1887–1894. https://doi.org/10.1093/ije/dyw341

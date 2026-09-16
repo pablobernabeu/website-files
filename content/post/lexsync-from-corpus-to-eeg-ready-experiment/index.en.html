@@ -171,6 +171,7 @@ c(cost_before = list_plan$report$cost_before,
 #&gt; 4    1     4  low_frequency    loop    688               101
 #&gt; 5    1     5 high_frequency    lost    489               102
 #&gt; 6    1     6  low_frequency   ghana    498               101</code></pre>
+<p>The imbalance cost sums each list’s departure from its fair share on every balanced variable, scaled to that variable’s mean. Each swap exchanged a matched word pair in one list for a pair in the other.</p>
 <p>All three exported files read from this trial table. In the PsychoPy script, <code>win.callOnFlip</code> sends the trigger on the refresh that presents the word.</p>
 <pre class="r"><code>experiments &lt;- export_experiments(trials, design, schema, output_dir)
 basename(unlist(experiments))</code></pre>
@@ -192,7 +193,7 @@ grep(&#39;^\\s*(TRIGGER_HOLD_MS\\s*=|win\\.callOnFlip\\()&#39;, psychopy_code,
 <p>As a diagnostic, the balance plot cannot show that the materials are theoretically adequate. A successful match can still leave a weak manipulation, a confounded norm or an implausible trial sequence. The workflow’s value lies in making those choices visible before data collection, so that they can be reviewed alongside the exported files. In an EEG study, that review should extend to the trigger stream and hardware timing measured on the recording computer.</p>
 <div id="limits" class="section level3">
 <h3>Limits</h3>
-<p>Matching can only draw on what the candidate corpus contains. The bundled lexicon serves this demonstration, but it includes proper nouns, estimates syllables from spelling and has no part-of-speech information. A study should therefore supply its own exclusions and whatever norms it needs. Equivalence also depends on the bound chosen before selection, and the default of half a standard deviation is only a starting point. Each study should derive its own bound from the smallest difference that would matter for its research question (Lakens, 2017).</p>
+<p>Matching can only draw on what the candidate corpus contains. The bundled English lexicon takes its words and Zipf frequencies from wordfreq (Speer, 2022). It serves this demonstration, but it includes proper nouns, estimates syllables from spelling and has no part-of-speech information. A study should therefore supply its own exclusions and whatever norms it needs. Equivalence also depends on the bound chosen before selection, and the default of half a standard deviation is only a starting point. Each study should derive its own bound from the smallest difference that would matter for its research question (Lakens, 2017).</p>
 <p>The <a href="https://pablobernabeu.github.io/lexsync/r/">R documentation</a> and <a href="https://pablobernabeu.github.io/lexsync/python/">Python documentation</a> cover pseudoword generation, semantic norms, continuous designs, Latin-square counterbalancing and the full file-based pipeline. Across the package, the design records the experiment as intended, while the generated tables and reports record it as realised.</p>
 </div>
 </div>
@@ -200,6 +201,7 @@ grep(&#39;^\\s*(TRIGGER_HOLD_MS\\s*=|win\\.callOnFlip\\()&#39;, psychopy_code,
 <h2>References</h2>
 <p>Bernabeu, P. (2026). <em>lexsync: Lexical optimisation and hardware-timed experiment generation</em> (Version 0.1.0) [Computer software]. GitHub. <a href="https://github.com/pablobernabeu/lexsync" class="uri">https://github.com/pablobernabeu/lexsync</a></p>
 <p>Lakens, D. (2017). Equivalence tests: A practical primer for <em>t</em> tests, correlations, and meta-analyses. <em>Social Psychological and Personality Science</em>, <em>8</em>(4), 355–362. <a href="https://doi.org/10.1177/1948550617697177" class="uri">https://doi.org/10.1177/1948550617697177</a></p>
+<p>Speer, R. (2022). <em>rspeer/wordfreq: v3.0</em> (Version 3.0.2) [Computer software]. Zenodo. <a href="https://doi.org/10.5281/zenodo.7199437" class="uri">https://doi.org/10.5281/zenodo.7199437</a></p>
 <p>van Heuven, W. J. B., Mandera, P., Keuleers, E., &amp; Brysbaert, M. (2014). SUBTLEX-UK: A new and improved word frequency database for British English. <em>Quarterly Journal of Experimental Psychology</em>, <em>67</em>(6), 1176–1190. <a href="https://doi.org/10.1080/17470218.2013.850521" class="uri">https://doi.org/10.1080/17470218.2013.850521</a></p>
 <p>Yarkoni, T., Balota, D., &amp; Yap, M. (2008). Moving beyond Coltheart’s N: A new measure of orthographic similarity. <em>Psychonomic Bulletin &amp; Review</em>, <em>15</em>(5), 971–979. <a href="https://doi.org/10.3758/PBR.15.5.971" class="uri">https://doi.org/10.3758/PBR.15.5.971</a></p>
 </div>
