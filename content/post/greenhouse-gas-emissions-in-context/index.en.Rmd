@@ -53,7 +53,7 @@ The figures move from totals to per-capita emissions by income group, then to se
 
 All emissions come from the 2025 EDGAR booklet (Crippa et al., 2025), which runs from 1970 to 2024. Greenhouse gas (GHG) here covers fossil CO<sub>2</sub>, CH<sub>4</sub>, N<sub>2</sub>O and fluorinated gases, aggregated with the 100-year global warming potentials of the IPCC Fifth Assessment Report, and excludes land use, land-use change and forestry. The booklet reports totals in million tonnes of CO<sub>2</sub> equivalent per year (Mt CO<sub>2</sub>eq) and per-capita emissions in tonnes per person. It also includes the EU27 and the world as rows of their own, and their totals are used as reported. The world population and the world per-capita figure are instead recomputed from the territories. This puts the world per-capita figure slightly below EDGAR's own, because the emissions of international aviation and shipping drop out of the numerator while the population stays the same.
 
-The analysis reads three compact files, derived from the booklet and from three context sources by a document in the [companion repository](https://github.com/pablobernabeu/ECB-task). `ghg_long.csv` has one row per territory and year, with its continent, income group, total, per-capita figure, derived population and euro-area membership. `hdi_2023.csv` gives the Human Development Index for 2023 from the 2025 Human Development Report (United Nations Development Programme, 2025), and `sectors_2024.csv` gives the 2024 emissions of each territory by EDGAR sector, summed over the four substances. Continents come from the ISO 3166 dataset maintained by Duncalfe (n.d.) and income groups from the World Bank classification for fiscal year 2026 (World Bank, 2025).
+The analysis reads three compact files that were derived from the booklet and from three context sources in a preparation step described at the end of this post. `ghg_long.csv` has one row per territory and year, with its continent, income group, total, per-capita figure, derived population and euro-area membership. `hdi_2023.csv` gives the Human Development Index for 2023 from the 2025 Human Development Report (United Nations Development Programme, 2025), and `sectors_2024.csv` gives the 2024 emissions of each territory by EDGAR sector, summed over the four substances. Continents come from the ISO 3166 dataset maintained by Duncalfe (n.d.) and income groups from the World Bank classification for fiscal year 2026 (World Bank, 2025).
 
 The population of each territory and year is the total divided by the per-capita figure, which recovers the population series behind EDGAR's own per-capita values without a further source. EDGAR reports Serbia and Montenegro (code SCG) and Sudan and South Sudan (code SDN) as combined territories. It likewise folds Liechtenstein into Switzerland, Andorra into Spain, Monaco into France, San Marino and the Holy See into Italy, and the State of Palestine into Israel. These rows are kept exactly as reported and are later compared with the HDI of the member whose code they carry, except Serbia and Montenegro, whose code belongs to neither member and is matched to Serbia by hand. The first chunk loads the packages, sets one theme for all static figures and fixes the colours, taken from the Okabe-Ito palette, that each continent and income group keeps throughout.
 
@@ -92,6 +92,12 @@ theme_update(
   legend.position = 'bottom'
 )
 
+# ggrepel places labels partly at random, so an unseeded knit can move the
+# end-of-line labels of figures 1 and 2. Some draws overlap two labels in the
+# Low income panel of figure 2. This seed was checked to keep every repelled
+# label apart at the figure sizes used below.
+repel_seed <- 2025
+
 continent_colours <- c(Asia = '#D55E00', America = '#0072B2', Europe = '#009E73',
                        Africa = '#E69F00', Oceania = '#CC79A7',
                        `International transport` = '#56B4E9')
@@ -108,7 +114,7 @@ caption_theme <- theme(
                                         margin = margin(t = 10)))
 ```
 
-The next chunk reads the three files and separates EDGAR's own EU27 and world rows from the territories. It also lists the jointly reported territories with their members, so that the map in figure 6 can colour each member.
+The next chunk reads the three files and separates EDGAR's own EU27 and world rows from the territories. It then gives an income group to Curaçao and to Serbia and Montenegro, two territories that EDGAR reports under legacy codes absent from the World Bank classification. For fiscal year 2026, the World Bank classified Curaçao as high income and both Serbia and Montenegro as upper middle income (World Bank, 2025). The chunk also lists the jointly reported territories with their members, so that the map in figure 6 can colour each member.
 
 ```{r data}
 ghg <- read.csv('data/ghg_long.csv', stringsAsFactors = FALSE)
@@ -121,6 +127,18 @@ world_2024 <- world$world_mt[world$year == 2024]
 
 # Countries, plus international aviation (AIR) and shipping (SEA)
 countries <- ghg %>% filter(!iso3 %in% c('EU27', 'GLOBAL TOTAL'))
+
+# EDGAR reports two territories under legacy codes that match no economy in the
+# World Bank classification, so the join by code left them without an income
+# group. ANT is the former Netherlands Antilles, which EDGAR labels Curaçao, and
+# SCG is Serbia and Montenegro. In the World Bank's file for fiscal year 2026
+# (CLASS_2025_07_02.xlsx), Curaçao and Sint Maarten are both high income. Serbia
+# and Montenegro are both upper middle income, as is Kosovo, which has no EDGAR
+# row of its own. Each code therefore takes the group that all its classified
+# successors share, whichever of them its row covers.
+legacy_income_groups <- c(ANT = 'High income', SCG = 'Upper middle income')
+countries <- countries %>%
+  mutate(income_group = coalesce(income_group, unname(legacy_income_groups[iso3])))
 
 # Territories that EDGAR reports jointly under one code, with their members
 combined <- tribble(
@@ -202,7 +220,7 @@ p1b <- ggplot(shares_long, aes(year, share, colour = bloc)) +
   geom_text_repel(data = filter(shares_long, year == max(year)),
                   aes(label = paste0(bloc, ', ', fmt(share, 1), '%')),
                   hjust = 0, nudge_x = 1, direction = 'y', segment.colour = NA,
-                  size = 4, show.legend = FALSE) +
+                  size = 4, show.legend = FALSE, seed = repel_seed) +
   scale_colour_manual(values = c(EU27 = '#0072B2', `Euro area` = '#D55E00')) +
   scale_x_continuous(breaks = seq(1970, 2020, 10), expand = expansion(mult = c(0, 0.22))) +
   scale_y_continuous(limits = c(0, NA), labels = function(x) paste0(x, '%'),
@@ -260,7 +278,7 @@ p2a <- ggplot(by_income, aes(year, per_capita_t, colour = income_group)) +
   geom_text_repel(data = filter(by_income, year == max(year)),
                   aes(label = paste0(income_group, ', ', fmt(per_capita_t, 1), ' t')),
                   hjust = 0, nudge_x = 1, direction = 'y', segment.colour = NA,
-                  size = 3.8, show.legend = FALSE) +
+                  size = 3.8, show.legend = FALSE, seed = repel_seed) +
   scale_colour_manual(values = income_colours) +
   scale_x_continuous(breaks = seq(1970, 2020, 10), expand = expansion(mult = c(0, 0.34))) +
   scale_y_continuous(limits = c(0, NA), expand = expansion(mult = c(0, 0.05))) +
@@ -280,7 +298,7 @@ p2b <- ggplot(shares_by_income, aes(year, share, colour = income_group, linetype
   geom_text_repel(data = filter(shares_by_income, year == max(year)),
                   aes(label = paste0(fmt(share, 0), '% ', measure)),
                   hjust = 0, nudge_x = 1, direction = 'y', segment.colour = NA,
-                  size = 3.3, show.legend = FALSE) +
+                  size = 3.3, show.legend = FALSE, seed = repel_seed) +
   facet_wrap(~ income_group, nrow = 2) +
   scale_colour_manual(values = income_colours, guide = 'none') +
   scale_linetype_manual(values = c('solid', '22'), guide = 'none') +
@@ -498,9 +516,9 @@ ggplotly(p5, tooltip = 'text') %>%
 
 <p class="caption">Figure 5. Source: EDGAR 2025 (Crippa et al., 2025) and the Human Development Report 2025 (United Nations Development Programme, 2025). Units: tonnes of CO<sub>2</sub> equivalent per person per year, averaged over 2015 to 2024. Marker area proportional to 2024 population.</p>
 
-The model is fitted to the `r hdi_n` countries with both an HDI and emissions. The `r n_no_hdi` territories without an HDI are left out: mostly dependencies and overseas territories such as Puerto Rico, Greenland and Macao, plus Taiwan, North Korea and Western Sahara. The slope is `r fmt(hdi_slope, 2)` log10 units per unit of HDI, so each additional 0.1 of HDI multiplies expected per-capita emissions by `r fmt(10^(hdi_slope / 10), 2)`. The model explains `r pct(100 * hdi_r2, 0)` of the variance in log emissions (R<sup>2</sup> = `r fmt(hdi_r2, 2)`, n = `r hdi_n`). Of the countries, `r pct(100 * mean(abs(hdi_data$residual) < log10(2)), 0)` lie within a factor of two of the line. Qatar and Kuwait emit `r fmt(ratio_of('QAT'), 1)` and `r fmt(ratio_of('KWT'), 1)` times the level expected at their HDI, Russia `r fmt(ratio_of('RUS'), 1)` and the United States `r fmt(ratio_of('USA'), 1)`. Sweden and Switzerland, by comparison, emit `r fmt(ratio_of('SWE'), 2)` and `r fmt(ratio_of('CHE'), 2)` times theirs. China sits at `r fmt(ratio_of('CHN'), 1)` and India at `r fmt(ratio_of('IND'), 2)`.
+The model is fitted to the `r hdi_n` countries with both an HDI and emissions. The `r n_no_hdi` territories without an HDI are left out: mostly dependencies and overseas territories such as Puerto Rico, Greenland and Macao, plus Taiwan, North Korea and Western Sahara. The slope is `r fmt(hdi_slope, 2)` log10 units per unit of HDI, so each additional 0.1 of HDI multiplies expected per-capita emissions by `r fmt(10^(hdi_slope / 10), 2)`. The model explains `r pct(100 * hdi_r2, 0)` of the variance in log emissions (*R*<sup>2</sup> = `r fmt(hdi_r2, 2)`, *n* = `r hdi_n`). Of the countries, `r pct(100 * mean(abs(hdi_data$residual) < log10(2)), 0)` lie within a factor of two of the line. Qatar and Kuwait emit `r fmt(ratio_of('QAT'), 1)` and `r fmt(ratio_of('KWT'), 1)` times the level expected at their HDI, Russia `r fmt(ratio_of('RUS'), 1)` and the United States `r fmt(ratio_of('USA'), 1)`. Sweden and Switzerland, by comparison, emit `r fmt(ratio_of('SWE'), 2)` and `r fmt(ratio_of('CHE'), 2)` times theirs. China sits at `r fmt(ratio_of('CHN'), 1)` and India at `r fmt(ratio_of('IND'), 2)`.
 
-The residual describes how a country compares with others at the same HDI, and four caveats apply to any reading of it. The HDI includes gross national income, so it partly encodes the energy use that it is meant to contextualise, and the line therefore absorbs some of the effect of wealth that a reader might want to see. EDGAR is production-based, so the emissions embodied in goods that a country imports are attributed to the exporter, which favours importers of manufactured goods in this comparison and counts against exporters such as China. The exclusion of land use, land-use change and forestry matters for countries such as Brazil and Indonesia. Finally, the model is a single straight line through `r hdi_n` points. Oil and gas exporters, pastoral economies and small states whose per-capita figure depends on one plant or fleet all pull on it in ways that a fuller treatment would handle differently. Such a treatment, deriving capability-based fair shares of the remaining carbon budget, is set out in a [manuscript](https://github.com/pablobernabeu/ECB-task/blob/main/manuscript.qmd) in the companion repository and in the `fairshare` [packages for R and Python](https://github.com/pablobernabeu/ECB-task/tree/main/packages) that accompany it.
+The residual describes how a country compares with others at the same HDI, and four caveats apply to any reading of it. The HDI includes gross national income, so it partly encodes the energy use that it is meant to contextualise, and the line therefore absorbs some of the effect of wealth that a reader might want to see. EDGAR is production-based, so the emissions embodied in goods that a country imports are attributed to the exporter, which favours importers of manufactured goods in this comparison and counts against exporters such as China. The exclusion of land use, land-use change and forestry matters for countries such as Brazil and Indonesia. Finally, the model is a single straight line through `r hdi_n` points. Oil and gas exporters, pastoral economies and small states whose per-capita figure depends on one plant or fleet all pull on it in ways that a fuller treatment would handle differently.
 
 
 ### Mapping the residuals
@@ -602,4 +620,4 @@ Duncalfe, L. (n.d.). *ISO-3166-Countries-with-Regional-Codes* [Data set]. GitHub
 
 United Nations Development Programme. (2025). *Human development report 2025: A matter of choice: People and possibilities in the age of AI*. United Nations. https://doi.org/10.18356/9789211542639
 
-World Bank. (2025). *World Bank country and lending groups: Country classification by income level for fiscal year 2026* [Data set]. https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups
+World Bank. (2025). *World Bank country and lending groups: Current classification by income* (Version 2025-07-02) [Data set]. https://datacatalogfiles.worldbank.org/ddh-published/0037712/DR0095333/CLASS_2025_07_02.xlsx
