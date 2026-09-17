@@ -214,17 +214,37 @@
      ever. The enhancer clears this timer the moment it does execute -- and if
      the library only turns up after the deadline, the enhancer takes this
      verdict back and renders the diagrams anyway, so the delay can afford to be
-     long enough that a merely slow connection is not called a failure. */
-  window.mermaidWatchdog = setTimeout(function () {
-    var els = document.querySelectorAll(".mermaid:not(.mermaid-ready)");
-    for (var i = 0; i < els.length; i++) {
-      els[i].setAttribute("data-mermaid-state", "error");
-      els[i].classList.add("mermaid-error");
-      els[i].removeAttribute("aria-busy");
-      els[i].setAttribute("role", "img");
-      els[i].setAttribute("aria-label", "Diagram unavailable");
+     long enough that a merely slow connection is not called a failure.
+
+     The countdown starts once the document has finished parsing, not here in
+     the <head>. Deferred scripts cannot run before that point however early
+     they download, so a clock started in the <head> charged the page's own
+     parsing time to the CDN: on a long page over a slow connection (a Related
+     References list, throttled to "Fast 3G") it ran out while the HTML was
+     still arriving, and the diagram showed "Diagram unavailable" for several
+     seconds before rendering after all. The document leaves the "loading"
+     state even when a deferred script hangs, so a stalled download is still
+     caught. */
+  (function () {
+    function arm() {
+      window.mermaidWatchdog = setTimeout(function () {
+        var els = document.querySelectorAll(".mermaid:not(.mermaid-ready)");
+        for (var i = 0; i < els.length; i++) {
+          els[i].setAttribute("data-mermaid-state", "error");
+          els[i].classList.add("mermaid-error");
+          els[i].removeAttribute("aria-busy");
+          els[i].setAttribute("role", "img");
+          els[i].setAttribute("aria-label", "Diagram unavailable");
+        }
+      }, 20000);
     }
-  }, 20000);
+    if (document.readyState !== "loading") return arm();
+    document.addEventListener("readystatechange", function parsed() {
+      if (document.readyState === "loading") return;
+      document.removeEventListener("readystatechange", parsed);
+      arm();
+    });
+  })();
 </script>
 {{ $mermaid := site.Data.assets.js.mermaid }}
 {{ printf "<script defer src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" title=\"mermaid\"></script>" (printf $mermaid.url $mermaid.version) $mermaid.sri | safeHTML }}
