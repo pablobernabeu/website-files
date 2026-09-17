@@ -123,7 +123,7 @@ This web application presents linguistic data over several tabs. The code combin
    ```
 
 
-- Flexdashboard is well suited to using different formats across tabs. The Info tab presents long text styled with HTML and CSS, along with the output of R Markdown code. The other tabs rely more on JavaScript features from R packages, with shiny and sweetalert providing modal dialogues (pop-ups) and reactable and plotly displaying information on hover (tooltips).
+- Flexdashboard is well suited to using different formats across tabs. The Info tab presents long text styled with HTML and CSS, along with the output of R Markdown code. The other tabs rely more on JavaScript features from R packages, with shiny and sweetalert providing modal dialogues (pop-ups), and reactable and plotly displaying information on hover (tooltips).
 
    ````
    ```{r}

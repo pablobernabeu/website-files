@@ -19,7 +19,7 @@ tags:
   - theory
   - metascience
   - preregistration
-abstract: 'Twin R and Python packages for representing scientific theories as versioned, machine-checkable objects. theoryforge validates theory files, evaluates their specification, derives testable implications, compares amendments and exports diagrams and preregistration materials.'
+abstract: 'Twin R and Python packages for representing scientific theories as versioned, machine-checkable objects. theoryforge validates theory files, evaluates their specification, derives testable implications, compares amendments, and exports diagrams and preregistration materials.'
 summary: 'Versioned, machine-checkable scientific theories in R and Python.'
 featured: no
 url_code: https://github.com/pablobernabeu/theoryforge

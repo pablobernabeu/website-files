@@ -19,7 +19,7 @@ tags:
   - bibliometrics
   - literature review
   - reproducibility
-abstract: 'Twin R and Python packages for planning, running and documenting reproducible Scopus searches. scopusflow handles quotas and retries, supports resumable retrieval, normalises records, tracks changes in DOI sets and produces PRISMA-S search records.'
+abstract: 'Twin R and Python packages for planning, running and documenting reproducible Scopus searches. scopusflow handles quotas and retries, supports resumable retrieval, normalises records, tracks changes in DOI sets, and produces PRISMA-S search records.'
 summary: 'Reproducible, quota-aware Scopus searches in R and Python.'
 featured: no
 url_code: https://github.com/pablobernabeu/scopusflow
@@ -53,7 +53,7 @@ The example below uses a small demonstration corpus bundled with the R package, 
 
 <figure>
 <img src="images/records-per-year-1.png" alt="Line chart showing the number of graphene-supercapacitor records in an offline demonstration corpus from 2015 to 2024" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
-<figcaption>Records per year in the reproducible offline demonstration.</figcaption>
+<figcaption>A trend plot drawn from the offline demonstration corpus, without an API key.</figcaption>
 </figure>
 
 ## Reproducible reporting

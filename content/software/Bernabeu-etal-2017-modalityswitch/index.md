@@ -130,7 +130,7 @@ h5(a(strong('See plots with 95% Confidence Intervals'), href='https://osf.io/dvs
 			target='_blank'), style='text-decoration: underline;'),
 ```
 
-The app links to the published paper, the raw data and its own _server_ and _ui_ scripts. The scripts and the data used by the app are available [on GitHub](https://github.com/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing/tree/master/Shiny-app) and archived on Zenodo (Bernabeu, 2024).
+The app links to the published paper, the raw data, and its own _server_ and _ui_ scripts. The scripts and the data used by the app are available [on GitHub](https://github.com/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing/tree/master/Shiny-app) and archived on Zenodo (Bernabeu, 2024).
 
 Each tab has a button to download the plot in high resolution, as shown below for the first tab.
 
