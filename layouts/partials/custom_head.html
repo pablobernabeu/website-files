@@ -108,15 +108,48 @@
   .mermaid { visibility: hidden; }
   .mermaid.mermaid-ready { visibility: visible; }
 
-  /* Allow a little more width than the prose column (viewport-safe).
+  /* Allow a little more width than the prose column (viewport-safe). The
+     element qualifier matters: the theme's own `div.mermaid { width: 100% }`,
+     in academic/_integrations.scss, outranks a bare class selector, so this
+     rule used to lose the cascade and every diagram was drawn at the width of
+     the prose column after all. That cost the labels up to a third of their
+     size, because Mermaid lays a graph out at the page's own font size and the
+     fit-to-width rule below then scales the finished drawing, glyphs included.
      Horizontal scrolling is scoped to the ready state so that it cannot compete
-     with the placeholder's clipping below. */
-  .mermaid {
+     with the placeholder's clipping below. A sideways flick inside a diagram
+     should not also take the browser back a page, hence the overscroll rule.
+     Both element names are listed because a fenced block knitted by blogdown
+     arrives as <pre class="mermaid"> and is only swapped for a <div> once
+     mermaid-enhance.js runs, which leaves the placeholder at the prose column's
+     width on a page whose library never arrives. */
+  div.mermaid,
+  pre.mermaid {
     position: relative; left: 50%; transform: translateX(-50%);
     width: 94vw; max-width: 960px; margin: 1rem auto 2rem;
   }
-  .mermaid.mermaid-ready { overflow-x: auto; }
+  .mermaid.mermaid-ready { overflow-x: auto; overscroll-behavior-x: contain; }
   .mermaid > svg { max-width: 100% !important; height: auto !important; display: block; margin: 0 auto; }
+
+  /* Sits under a diagram that does not fit, in the same muted grey as the
+     "Loading diagram" caption above. It is inserted by mermaid-enhance.js only
+     while the block actually overflows, so it costs nothing on a wide screen. */
+  .mermaid-scroll-hint {
+    margin: -1.4rem auto 2rem;
+    max-width: 960px;
+    text-align: center;
+    font-size: 0.82rem;
+    font-style: italic;
+    opacity: 0.6;
+  }
+
+  /* A diagram wide enough to scroll is given a tab stop by mermaid-enhance.js,
+     and the theme rings only links and form controls, so the ring has to be
+     drawn here. currentColor follows the body text in both themes, so no dark
+     variant is needed. */
+  .mermaid.mermaid-ready:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
 
   /* Placeholder, shared by the loading and error states. Clipping matters as
      much as the height: the hidden source is still laid out, and would

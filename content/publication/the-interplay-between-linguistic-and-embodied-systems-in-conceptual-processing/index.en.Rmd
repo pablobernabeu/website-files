@@ -53,16 +53,16 @@ slides: ''
 ```{=html}
 <div class="mermaid">
 graph TD
-  A["Conceptual processing"] --> B["Linguistic distributional<br/>systems"]
-  A --> C["Embodied systems"]
-  B --> D["Word co-occurrence"]
-  B --> E["Word association"]
-  C --> F["Sensorimotor information"]
-  C --> G["Emotional information"]
-  H["Calgary Semantic Decision<br/>project data"] --> I["Confirmatory<br/>research questions"]
+  A["Conceptual processing"] --> B["Linguistic<br/>distributional<br/>systems"]
+  A --> C["Embodied<br/>systems"]
+  B --> D["Word<br/>co-occurrence"]
+  B --> E["Word<br/>association"]
+  C --> F["Sensorimotor<br/>information"]
+  C --> G["Emotional<br/>information"]
+  H["Calgary Semantic<br/>Decision<br/>project data"] --> I["Confirmatory<br/>research<br/>questions"]
   B --> I
   C --> I
-  J["Individual differences<br/>in vocabulary size"] -->|moderates| I
+  J["Individual<br/>differences in<br/>vocabulary size"] -->|moderates| I
 </div>
 ```
 

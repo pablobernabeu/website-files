@@ -82,13 +82,13 @@ slides: ''
 ### Study at a glance
 {{< diagram >}}
 graph TD
-  A["Conceptual processing:<br/>language-based and<br/>sensorimotor information"] --> B["Study 1: multi-lab replication<br/>of the object orientation effect"]
+  A["Conceptual processing:<br/>language-based and<br/>sensorimotor information"] --> B["Study 1: multi-lab<br/>replication of the object<br/>orientation effect"]
   A --> C["Study 2: semantic priming,<br/>semantic decision and<br/>lexical decision"]
   A --> D["Power analysis:<br/>required sample sizes"]
-  B --> E["No effect across 18 languages;<br/>no link to mental rotation"]
-  C --> F["Language-based information<br/>more important than vision-based"]
-  C --> G["Task-relevance advantage in<br/>higher-vocabulary participants"]
-  D --> H["300 participants for language effects;<br/>over 1,000 for vision effects"]
+  B --> E["No effect across 18<br/>languages; no link<br/>to mental rotation"]
+  C --> F["Language-based<br/>information more<br/>important than<br/>vision-based"]
+  C --> G["Task-relevance advantage<br/>in higher-vocabulary<br/>participants"]
+  D --> H["300 participants for<br/>language effects; over<br/>1,000 for vision effects"]
 {{< /diagram >}}
 
 ### Podcasts

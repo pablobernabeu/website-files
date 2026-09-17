@@ -55,15 +55,15 @@ doi: 10.31234/osf.io/s2c5h
 
 {{< diagram >}}
 graph TD
-  A["42 Dutch speakers"] --> B["Rate auditory, haptic and visual strength<br/>of 336 properties + 411 concepts"]
+  A["42 Dutch speakers"] --> B["Rate auditory, haptic and<br/>visual strength of 336<br/>properties + 411 concepts"]
   B --> C["Mean ratings per word<br/>(acceptable reliability)"]
-  C --> D["Derived measures:<br/>modality exclusivity, perceptual strength"]
-  C --> E["Linked corpus variables:<br/>length, frequency, distinctiveness,<br/>concreteness, age of acquisition"]
+  C --> D["Derived measures:<br/>modality exclusivity,<br/>perceptual strength"]
+  C --> E["Linked corpus variables:<br/>length, frequency,<br/>distinctiveness,<br/>concreteness,<br/>age of acquisition"]
   D --> F["Replicate Lynott and<br/>Connell (2009, 2013)"]
-  F --> G["Uni-, bi- and tri-modal words;<br/>vision most prevalent"]
-  F --> H["Vision and touch related;<br/>audition more independent"]
-  F --> I["Properties more perceptual<br/>than concepts"]
-  F --> J["Sound symbolism: auditory strength<br/>best predicts lexical properties"]
+  F --> G["Uni-, bi- and<br/>tri-modal words;<br/>vision most prevalent"]
+  F --> H["Vision and touch<br/>related; audition<br/>more independent"]
+  F --> I["Properties more<br/>perceptual than<br/>concepts"]
+  F --> J["Sound symbolism:<br/>auditory strength<br/>best predicts<br/>lexical properties"]
 {{< /diagram >}}
 
 ### Reference
