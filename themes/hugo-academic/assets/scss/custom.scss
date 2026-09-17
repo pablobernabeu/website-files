@@ -2023,7 +2023,8 @@ body.dark {
     &[style*="#333"], &[style*="#333333"] {
       color: #cbd5e1 !important;
     }
-    &[style*="#666"], &[style*="#666666"] {
+    &[style*="#666"], &[style*="#666666"],
+    &[style*="#555"], &[style*="#555555"] {
       color: #94a3b8 !important;
     }
     &[style*="#000"], &[style*="#000000"] {
@@ -3334,6 +3335,39 @@ section.home-section:first-of-type {
   padding-top: 0 !important;
 }
 
+// Software pages. The navbar padding above (50px, or 40px below 992px) lands on every
+// .article-container, not only on the page header, and the post and publication rules
+// that take it back off the containers after the header key off `#top > article` and
+// `#top > div.pub`, so they never reach the div.software-page wrapper of
+// layouts/software/single.html. The container holding the abstract therefore kept the
+// full padding, which with the 1rem margin under the link buttons put the Abstract
+// heading 65px below them on desktop and 55px on a phone, against 26px on a post. A
+// featured image (on the pages that do not set image.preview_only) sits in a container
+// too: its 50px padding pushed the image down inside an inline max-height equal to the
+// image's stored height, while the 850px software column draws the image taller than
+// that, so the picture spilled out of its box and covered the Abstract heading.
+//
+// The body container's 0.75rem padding plus the collapsed 1rem margin above it gives
+// the post gap. A featured image sits the same distance below the buttons (its 1.75rem
+// top margin collapses with the image's own 1rem and the buttons' 1rem), and 1.2rem
+// below it, collapsing with the body container's 0.5rem top margin, plus that 0.75rem
+// padding, matches the 29px between a publication's image and its abstract. The inner
+// div loses the -5% pull-up that `div:has(> img.featured-image)` gives it.
+#top > div.software-page > div.article-container:not(.pt-3):not(.featured-image-wrapper) {
+  padding-top: 0.75rem !important;
+}
+
+#top > div.software-page > div.featured-image-wrapper {
+  padding-top: 0 !important;
+  max-height: none !important;
+  margin-top: 1.75rem !important;
+  margin-bottom: 1.2rem !important;
+}
+
+#top > div.software-page > div.featured-image-wrapper > div {
+  margin-top: 0 !important;
+}
+
 // Reduce margin above first publication title on home page (desktop)
 @media (min-width: 992px) {
   #publication > div > div > div:nth-child(2) > div:nth-child(1) > div.media-body > h3 {
@@ -4309,6 +4343,18 @@ body.dark h3 a:hover, body.dark div a:hover {
   line-height: 1.8 !important;
 }
 
+// The theme keeps a whole category list on one line, so on a phone a long list
+// ("research and teaching applications, web application, R") widened its list entry
+// past the screen edge, where the page clipped it. The list may now wrap between
+// categories, while each category name stays in one piece.
+.article-categories {
+  white-space: normal;
+}
+
+.article-categories a {
+  white-space: nowrap;
+}
+
 // visited category and tag cloud links
 .article-categories a:visited, .tag-cloud > a:visited {
   color: var(--accent-visited-categories) !important;
@@ -4625,7 +4671,48 @@ div > div > div > table > tbody > tr > td,
 }
 
 // Collapsible abstracts on home page - collapsed by default, expandable on click
-// Applied to publication, applications-and-dashboards, and blog sections
+// Applied to publication, software and blog sections
+//
+// academic.js measures each summary once the page and its scripts have loaded and marks
+// it .is-collapsible when its text runs past the collapsed height, or .is-short when it
+// fits. That comes seconds after the first paint, so the summaries used to paint at full
+// length and then snap shut, pulling everything below them up. A summary that has not
+// been measured yet (it has neither class) is therefore collapsed from the start. This
+// only applies while scripting is enabled, so that without JavaScript, when nothing
+// would ever offer to expand a summary, each one stays whole. The 3.6em cap leaves a
+// summary that fits whole, as whole lines of text never fall within the script's 2px
+// tolerance above the cap, but the -0.5rem margin and the fade and "Expand" overlays
+// belong only on a summary that overflows. Where scroll-driven animations are
+// supported, an animation on the summary's own scroll timeline supplies them, because
+// that timeline is active only when the text overflows the box (the animation moves
+// nothing, it only holds those values). Other browsers take the margin for every pending
+// summary, which holds the long ones still and moves a short one down by 0.5rem when it
+// is measured, and show the overlays once the summary is marked.
+@media (scripting: enabled) {
+  :is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body:not(.is-expanded) > div.article-style:not(.is-collapsible):not(.is-short) {
+    max-height: 3.6em;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: -0.5rem;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    :is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body:not(.is-expanded) > div.article-style:not(.is-collapsible):not(.is-short) {
+      margin-bottom: 0;
+      animation: home-abstract-overflows linear both;
+      animation-timeline: scroll(self block);
+    }
+  }
+}
+
+@keyframes home-abstract-overflows {
+  from,
+  to {
+    margin-bottom: -0.5rem;
+    --home-abstract-overlay: block;
+  }
+}
+
 :is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style.is-collapsible {
   max-height: 3.6em !important; // Show ~2-3 lines initially
   overflow: hidden !important;
@@ -4633,10 +4720,16 @@ div > div > div > table > tbody > tr > td,
   transition: max-height 0.3s ease !important;
   cursor: pointer !important; // Make entire area clickable
   margin-bottom: -0.5rem !important; // Reduced margin under collapsed abstract
-  
+  --home-abstract-overlay: block; // Shows the fade and the Expand button below
+}
+
+// The overlays are drawn only where --home-abstract-overlay is set: on a summary marked
+// .is-collapsible, or on a pending one that the animation above finds overflowing.
+:is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style:not(.is-short) {
   // Add prominent fade gradient at bottom to indicate more content
   &::after {
     content: '';
+    display: var(--home-abstract-overlay, none);
     position: absolute;
     bottom: 0;
     left: 0;
@@ -4650,6 +4743,7 @@ div > div > div > table > tbody > tr > td,
   // Reduced padding with compact styling
   // Faded by default, fully visible on hover
   &::before {
+    display: var(--home-abstract-overlay, none);
     content: '▼▼▼▼▼▼▼';
     position: absolute;
     bottom: 12px;
@@ -4668,8 +4762,9 @@ div > div > div > table > tbody > tr > td,
     pointer-events: none;
   }
   
-  // Hover effect for the entire abstract - show button and arrows
-  &:hover::before {
+  // Hover effect for the entire abstract - show button and arrows. Only a marked
+  // summary expands on click, so a pending one does not offer it on hover.
+  &.is-collapsible:hover::before {
     content: '▼▼▼      Expand summary      ▼▼▼';
     opacity: 1;
     background-color: #444;
@@ -4680,7 +4775,7 @@ div > div > div > table > tbody > tr > td,
 }
 
 // Dark theme: invert Expand button colours
-body.dark :is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style.is-collapsible::before {
+body.dark :is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style:not(.is-short)::before {
   background-color: #ddd;
   color: #333;
   border: 1px solid #ccc;
@@ -4694,7 +4789,7 @@ body.dark :is(#publication, #software, #blog) > div > div > div.col-12 > div > d
 }
 
 // Specific gradient for applications-and-dashboards section (even section with different background)
-#software > div > div > div.col-12 > div > div.media-body > div.article-style.is-collapsible::after {
+#software > div > div > div.col-12 > div > div.media-body > div.article-style:not(.is-short)::after {
   background: linear-gradient(to bottom, transparent 0%, rgba(247, 250, 252, 0.7) 40%, rgba(247, 250, 252, 0.95) 70%, rgba(247, 250, 252, 1) 100%);
 }
 
@@ -4705,7 +4800,7 @@ body.dark :is(#publication, #software, #blog) > div > div > div.col-12 > div > d
 }
 
 // Dark theme fade gradient - more visible with stronger opacity gradient
-body.dark :is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style.is-collapsible::after {
+body.dark :is(#publication, #software, #blog) > div > div > div.col-12 > div > div.media-body > div.article-style:not(.is-short)::after {
   background: linear-gradient(to bottom, transparent 0%, rgba(31, 41, 55, 0.7) 40%, rgba(31, 41, 55, 0.95) 70%, rgba(31, 41, 55, 1) 100%);
 }
 
@@ -7006,6 +7101,24 @@ details summary {
 
 .article-style details > summary + pre {
   margin-top: 0;
+}
+
+// A closed chunk shows only its "Expand" link, whose 0.5rem margin left a plot,
+// paragraph or interactive widget straight after it crowded against the link, while
+// an output block kept its own 1.25rem. Matching that gap makes closed chunks, the
+// default on posts with `code_folding: hide`, read the same whatever follows them.
+.article-style details:not([open]):has(> pre) + :is(p, .html-widget, .figure, div) {
+  margin-top: 1.25rem;
+}
+
+// The "Expand" link's teal, set inline by academic.js through this variable: #237A69
+// reaches 5.2:1 on the white page, and the lighter #379E8A 5.5:1 on the dark one.
+:root {
+  --code-fold-expand: #237A69;
+}
+
+body.dark {
+  --code-fold-expand: #379E8A;
 }
 
 // Left-align only summary elements that contain code blocks (pre elements)

@@ -1799,38 +1799,42 @@
     }
   });
 
-  // Fold code chunks
+  // Fold code chunks. Chunks start open, unless the post opts into starting them
+  // closed with `code_folding: hide` in its front matter, which layouts/post/single.html
+  // exposes as data-code-folding="hide" on the post body.
+
+  function styleCodeFoldSummary(summary, open) {
+    if (open) {
+      summary.textContent = "Collapse";
+      summary.style.fontWeight = "normal";
+      summary.style.fontSize = "90%";
+      summary.style.color = "darkgrey";
+    } else {
+      summary.textContent = "Expand";
+      summary.style.fontWeight = "bold";
+      summary.style.fontSize = "103%";
+      // Theme-dependent (custom.scss), because no single teal reaches 4.5:1 on
+      // both the white and the dark page background.
+      summary.style.color = "var(--code-fold-expand, #237A69)";
+    }
+  }
 
   document
     .querySelectorAll(
       `
-    pre[class]:not(.emgithub-container pre),
-    pre > code[class]:not(.emgithub-container code)
+    pre[class]:not(.emgithub-container pre):not(.mermaid),
+    pre > code[class]:not(.emgithub-container code):not(.mermaid > code)
   `
     )
     .forEach((el) => {
       const d = document.createElement("details");
       const summary = document.createElement("summary");
 
-      // Style the summary text
-      summary.style.color = "darkgrey";
-      summary.style.fontSize = "90%";
-      summary.textContent = "Collapse";
-      summary.style.fontWeight = "normal";
-      d.open = true;
+      d.open = !el.closest('[data-code-folding="hide"]');
+      styleCodeFoldSummary(summary, d.open);
 
       d.addEventListener("toggle", () => {
-        if (d.open) {
-          summary.textContent = "Collapse";
-          summary.style.fontWeight = "normal";
-          summary.style.fontSize = "90%";
-          summary.style.color = "darkgrey";
-        } else {
-          summary.textContent = "Expand";
-          summary.style.fontWeight = "bold";
-          summary.style.fontSize = "103%";
-          summary.style.color = "#379E8A";
-        }
+        styleCodeFoldSummary(summary, d.open);
       });
 
       const pre = el.tagName === "CODE" ? el.parentNode : el;
@@ -1841,25 +1845,30 @@
 
   // Only summaries that exceed the collapsed height need a fade or an expand
   // affordance. In particular, short software abstracts should remain wholly
-  // visible instead of having the overlay drawn across their only line.
+  // visible instead of having the overlay drawn across their only line. Until a
+  // summary is marked here as .is-collapsible or .is-short, custom.scss already
+  // shows it collapsed, so that it does not paint at full length first. Neither
+  // the collapsed height cap nor the classes change scrollHeight, so every summary
+  // is measured before any class is written, which costs a single layout.
   const homeAbstractSelector =
     "#publication .media-body .article-style, #software .media-body .article-style, #blog .media-body .article-style";
 
   function refreshHomeAbstractCollapsing() {
-    $(homeAbstractSelector).each(function () {
-      const $abstract = $(this);
-      const $mediaBody = $abstract.closest(".media-body");
+    const measured = $(homeAbstractSelector)
+      .filter(function () {
+        return !$(this).closest(".media-body").hasClass("is-expanded");
+      })
+      .map(function () {
+        const fontSize = parseFloat(window.getComputedStyle(this).fontSize);
+        const collapsedHeight = fontSize * 3.6;
+        return { el: this, hasOverflow: this.scrollHeight > collapsedHeight + 2 };
+      })
+      .get();
 
-      if ($mediaBody.hasClass("is-expanded")) {
-        return;
-      }
-
-      $abstract.removeClass("is-collapsible");
-      const fontSize = parseFloat(window.getComputedStyle(this).fontSize);
-      const collapsedHeight = fontSize * 3.6;
-      const hasOverflow = this.scrollHeight > collapsedHeight + 2;
-
-      $abstract.toggleClass("is-collapsible", hasOverflow);
+    measured.forEach(function (item) {
+      $(item.el)
+        .toggleClass("is-collapsible", item.hasOverflow)
+        .toggleClass("is-short", !item.hasOverflow);
     });
   }
 

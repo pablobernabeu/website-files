@@ -9,7 +9,7 @@ active = true  # Activate this widget? true/false
 weight = 60  # Order that this section will appear.
 
 title = "Software"
-subtitle = "<span style='font-size:80%;'>Packages, web applications and pipelines for research, teaching and reproducible analysis.</span>"
+subtitle = ""
 
 [content]
   # Page type to display. E.g. post, talk, publication, or data dashboard.

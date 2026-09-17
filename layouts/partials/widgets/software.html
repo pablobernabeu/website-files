@@ -1,4 +1,7 @@
-{{/* Software widget: list every page in /software/, newest first, whatever its software_kind. */}}
+{{/* Software widget: list every page in /software/, newest first, whatever its software_kind.
+     The list is complete, so it ends without a "Browse all software" link, which would
+     suggest a truncated list (the Publications and Blog widgets likewise only show their
+     "See all" link when they hold back entries). */}}
 {{ $st := .page }}
 {{ $items := where site.RegularPages "Section" "software" }}
 {{ $items = sort $items "Date" "desc" }}
@@ -21,8 +24,5 @@
         {{ partial "li_compact" . }}
       {{ end }}
     {{ end }}
-    <div class="see-all">
-      <a href="{{ "/software/" | relURL }}">Browse all software <i class="fas fa-angle-right"></i></a>
-    </div>
   </div>
 </div>

@@ -11,7 +11,10 @@
     </section>
     {{ end }}
 
-    <div class="article-style">
+    {{/* `code_folding: hide` in a post's front matter makes academic.js fold its code
+         chunks closed on load, each behind an "Expand" link. Without the parameter they
+         start open, as on every other page. */}}
+    <div class="article-style"{{ if eq (lower (printf "%v" .Params.code_folding)) "hide" }} data-code-folding="hide"{{ end }}>
       {{ .Content }}
     </div>
 
