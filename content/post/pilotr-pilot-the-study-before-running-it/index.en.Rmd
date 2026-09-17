@@ -3,6 +3,7 @@ title: 'pilotr: Pilot the study before running it'
 author: ''
 date: '2026-09-01'
 slug: pilotr-pilot-the-study-before-running-it
+code_folding: hide
 categories:
   - statistics
   - research methods
@@ -41,20 +42,30 @@ library(ggplot2)
 workers <- 4L
 n_sims <- 12L # An executable smoke test; planning runs need hundreds or more.
 
-blog_theme <- theme_minimal(base_size = 11) +
+# Posts display figures at about 720 px, half their 1440 px width, so 1 pt
+# reads as about 1.3 px on screen and axis text at 10 pt shows at about 13 px.
+blog_theme <- theme_minimal(base_size = 12) +
   theme(
-    axis.title = element_text(size = 10),
-    axis.text = element_text(size = 9),
-    legend.text = element_text(size = 9),
-    strip.text = element_text(size = 10),
-    plot.caption = element_text(size = 8.5, colour = 'grey35'),
-    plot.margin = margin(10, 14, 10, 14)
+    axis.title = element_text(size = 11),
+    axis.text = element_text(size = 10),
+    strip.text = element_text(size = 11),
+    plot.title = element_text(size = 11.5, margin = margin(b = 8)),
+    plot.title.position = 'plot',
+    plot.caption = element_text(size = 9.5, colour = 'grey35', hjust = 0,
+                                margin = margin(t = 10)),
+    plot.caption.position = 'plot',
+    panel.grid.minor = element_blank(),
+    plot.margin = margin(10, 14, 10, 10)
   )
+percent_axis <- scales::label_percent(accuracy = 1)
+# The orange used for fills and lines is too light for small text on white
+# (3.9:1), so text labels use a darker shade of the same hue (5.3:1).
+text_orange <- '#B34D00'
 ```
 
 ## Introduction
 
-Power calculations can feel reassuringly final. Choose an effect, enter a sample size and read off a percentage. That simplicity disappears in experiments where participants respond to many items. Participants and items both vary, their responses are crossed and the model usually needs random slopes as well as random intercepts. The design has become too structured for a single formula.
+Power calculations can feel reassuringly final. Choose an effect, enter a sample size and read off a percentage. That simplicity disappears in experiments where participants respond to many items. Participants and items both vary, their responses are crossed, and the model usually needs random slopes as well as random intercepts. The design has become too structured for a single formula.
 
 I built [pilotr](/software/pilotr/) (Bernabeu, 2026) to make the assumptions behind such a design visible before data collection. It stores a proposed study as a portable specification, simulates the observations that the specification implies and fits the planned analysis to them repeatedly. The R and Python packages read the same specification and generate the same data from the same seed. Below, I apply it to a semantic-priming study with 30 participants and 24 items to show what a design analysis has to weigh besides power.
 
@@ -64,7 +75,7 @@ The example moves from a transparent design specification to simulated observati
 
 ### A study that does not exist yet
 
-The imagined experiment is a lexical-decision task. Every participant sees every target word after both a related and an unrelated prime. Reaction times follow a shifted lognormal distribution, and the model includes item frequency, participant vocabulary and an interaction between vocabulary and priming.
+The imagined experiment is a lexical-decision task. Every participant sees every target word after both a related and an unrelated prime. Reaction times follow a shifted lognormal distribution, and the model includes item frequency, participant vocabulary, and an interaction between vocabulary and priming.
 
 The main assumptions are set out below.
 
@@ -120,13 +131,36 @@ A single simulated data set is useful before any power calculation (DeBruine & B
 pilot <- simulate_design(spec)
 ```
 
-```{r response-distribution, fig.height = 3.8, fig.alt = 'Overlapping density curves of simulated reaction times for related and unrelated primes, with the unrelated distribution shifted slightly to the right'}
+```{r response-distribution, fig.height = 3.6, fig.alt = 'Overlapping density curves of simulated reaction times for related and unrelated primes, with the unrelated distribution shifted slightly to the right'}
+# Label each curve directly instead of using a legend: related primes to
+# the left of the rising edge near their peak, and unrelated primes to the
+# right of the shoulder where that distribution stands furthest above the
+# other. geom_density() uses the same kernel and bandwidth as density().
+rt_range <- range(pilot$RT)
+rt_density <- lapply(split(pilot$RT, pilot$prime), density,
+                     from = rt_range[1], to = rt_range[2])
+related_y <- 0.9 * max(rt_density$related$y)
+related_edge <- which(rt_density$related$y >= related_y)[1]
+unrelated_shoulder <- which.max(rt_density$unrelated$y - rt_density$related$y)
+prime_labels <- data.frame(
+  prime = c('related', 'unrelated'),
+  RT = c(rt_density$related$x[related_edge] - 30,
+         rt_density$unrelated$x[unrelated_shoulder] + 30),
+  density = c(related_y, rt_density$unrelated$y[unrelated_shoulder]),
+  label = c('Related primes', 'Unrelated primes'),
+  hjust = c(1, 0)
+)
+
 ggplot(pilot, aes(RT, fill = prime)) +
   geom_density(alpha = 0.45, colour = NA) +
-  scale_fill_manual(values = c(related = '#0072B2', unrelated = '#D55E00')) +
-  labs(x = 'Reaction time (ms)', y = 'Density', fill = NULL) +
-  blog_theme +
-  theme(legend.position = 'top')
+  geom_text(aes(RT, density, label = label, colour = prime, hjust = hjust),
+            data = prime_labels, inherit.aes = FALSE, size = 10.5 / .pt) +
+  scale_fill_manual(values = c(related = '#0072B2', unrelated = '#D55E00'),
+                    guide = 'none') +
+  scale_colour_manual(values = c(related = '#0072B2', unrelated = text_orange),
+                      guide = 'none') +
+  labs(x = 'Reaction time (ms)', y = 'Density') +
+  blog_theme
 ```
 
 The average priming effect is only part of the picture. The specification gives participants and items their own priming slopes, and trial-level noise adds to that variation, so some show a much larger difference than others. In about a third of each set, the difference runs the other way.
@@ -145,24 +179,22 @@ effects$id <- factor(
 
 ggplot(effects, aes(effect_ms, id, colour = unit)) +
   geom_vline(xintercept = 0, colour = 'grey60') +
-  geom_point(size = 2) +
+  geom_point(size = 2.2) +
   facet_wrap(
     ~ unit, scales = 'free_y',
     labeller = as_labeller(c(item = 'Items', subject = 'Participants'))
   ) +
   scale_colour_manual(values = c(item = '#D55E00', subject = '#0072B2'),
                       guide = 'none') +
-  labs(
-    x = 'Priming effect (ms)', y = NULL,
-    caption = 'Difference between unrelated and related trials'
-  ) +
+  labs(x = 'Priming effect (unrelated minus related trials, ms)', y = NULL) +
   blog_theme +
-  theme(axis.text.y = element_blank(), panel.grid.major.y = element_blank())
+  theme(axis.text.y = element_blank(), panel.grid.major.y = element_blank(),
+        panel.spacing.x = unit(1.5, 'lines'))
 ```
 
 ### Detection is not estimation
 
-The first design analysis simulates the study repeatedly, fits the mixed model to each simulated data set and records conventional power and the number of singular fits. It also reports Type S error, the chance that a significant estimate has the wrong sign, and Type M error, the factor by which significant estimates exaggerate the true effect (Gelman & Carlin, 2014).
+The first design analysis simulates the study repeatedly, fits the mixed model to each simulated data set, and records conventional power and the number of singular fits. It also reports Type S error, the chance that a significant estimate has the wrong sign, and Type M error, the factor by which significant estimates exaggerate the true effect (Gelman & Carlin, 2014).
 
 ```{r planned-power, echo = TRUE}
 power_at_plan <- power_mixed(spec, n_sims = n_sims, workers = workers)
@@ -188,7 +220,9 @@ ggplot(priming_curve, aes(n_subject, power)) +
               alpha = 0.15, fill = '#0072B2') +
   geom_line(colour = '#0072B2', linewidth = 0.8) +
   geom_point(colour = '#0072B2', size = 2.4) +
-  scale_y_continuous(limits = c(0, 1)) +
+  scale_x_continuous(breaks = priming_curve$n_subject) +
+  scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, 0.2),
+                     labels = percent_axis) +
   labs(x = 'Number of participants', y = 'Power for the priming effect',
        caption = sprintf('%s replicates per design. All simulated designs contain 24 items', n_sims)) +
   blog_theme
@@ -208,29 +242,41 @@ precision <- precision_curve(
 ```
 
 ```{r precision-curve, fig.height = 3.8, fig.alt = 'Two panels of illustrative estimates showing the probability that an interval excludes negligible effects and its mean width as the number of participants increases'}
+# Rotated beside panels this short, the long y-axis descriptions would run
+# the full panel height, so each becomes its panel's title instead. The
+# shared x-axis title is drawn once.
 p_probability <- ggplot(precision, aes(n_subject, p_meaningful)) +
   geom_hline(yintercept = 0.8, linetype = 2, colour = 'grey55') +
   geom_ribbon(aes(ymin = p_meaningful_lo, ymax = p_meaningful_hi),
               alpha = 0.15, fill = '#0072B2') +
   geom_line(colour = '#0072B2', linewidth = 0.8) +
-  geom_point(colour = '#0072B2', size = 2.1) +
-  labs(x = 'Number of participants', y = 'Probability the 95% CI excludes the ROPE') +
-  blog_theme
+  geom_point(colour = '#0072B2', size = 2.2) +
+  scale_y_continuous(breaks = seq(0, 1, 0.2), labels = percent_axis) +
+  labs(x = 'Number of participants', y = NULL,
+       title = 'Probability the 95% CI excludes the ROPE') +
+  blog_theme +
+  theme(plot.margin = margin(10, 30, 0, 10))
 
 p_width <- ggplot(precision, aes(n_subject, mean_ci_width)) +
   geom_hline(yintercept = 2 * (0.05 - 0.02), linetype = 2, colour = 'grey55') +
   geom_line(colour = '#0072B2', linewidth = 0.8) +
-  geom_point(colour = '#0072B2', size = 2.1) +
-  labs(x = 'Number of participants', y = 'Mean 95% CI width (log scale)') +
-  blog_theme
+  geom_point(colour = '#0072B2', size = 2.2) +
+  scale_y_continuous(breaks = seq(0.03, 0.12, 0.03)) +
+  labs(x = 'Number of participants', y = NULL,
+       title = 'Mean 95% CI width (log scale)') +
+  blog_theme +
+  theme(plot.margin = margin(10, 14, 0, 10))
 
 patchwork::wrap_plots(p_probability, p_width) +
+  patchwork::plot_layout(axis_titles = 'collect') +
   patchwork::plot_annotation(
     caption = sprintf(
       '%s replicates per design. All simulated designs contain 24 items',
       n_sims
     ),
-    theme = theme(plot.caption = element_text(size = 8.5, colour = 'grey35'))
+    theme = theme(plot.caption = blog_theme$plot.caption,
+                  plot.caption.position = 'plot',
+                  plot.margin = margin(0, 0, 10, 0))
   )
 ```
 
@@ -259,20 +305,36 @@ type_m <- type_m[is.finite(type_m$type_m), ]
 ```
 
 ```{r type-m-plot, fig.height = 4.4, fig.alt = 'Type M error falls towards one as power increases in both an effect-size sweep and a sample-size curve'}
+# Each series is labelled beside its lowest-power point instead of in a
+# legend: the steep effect-size series just above and to the right of it,
+# and the flatter sample-size series below its first segment.
+series_labels <- do.call(rbind, lapply(
+  split(type_m, type_m$series), function(d) d[which.min(d$power), ]
+))
+# Rows follow the alphabetical series order: effect size, then sample size.
+series_labels$power <- series_labels$power + c(0.015, -0.005)
+series_labels$type_m <- series_labels$type_m + c(0.01, -0.07)
+series_labels$vjust <- c(0, 1)
+series_labels$text_colour <- c('#0072B2', text_orange)
+
 ggplot(type_m, aes(power, type_m, colour = series)) +
   geom_hline(yintercept = 1, linetype = 2, colour = 'grey55') +
-  geom_line(linewidth = 0.7) +
+  annotate('text', x = max(type_m$power), y = 1, vjust = -0.6, hjust = 1,
+           label = 'No average exaggeration', colour = 'grey35',
+           size = 9.5 / .pt) +
+  geom_line(linewidth = 0.8) +
   geom_point(size = 2.2) +
-  scale_colour_manual(values = c('#0072B2', '#D55E00')) +
+  geom_text(aes(label = series, vjust = vjust), data = series_labels,
+            colour = series_labels$text_colour, hjust = 0,
+            size = 10.5 / .pt) +
+  scale_colour_manual(values = c('#0072B2', '#D55E00'), guide = 'none') +
+  scale_x_continuous(breaks = seq(0, 1, 0.2), labels = percent_axis) +
+  scale_y_continuous(expand = expansion(mult = c(0.05, 0.1))) +
   labs(
-    x = 'Power', y = 'Type M error', colour = NULL,
-    caption = sprintf(
-      'A value of 1 means no average exaggeration among significant estimates\n%s replicates per design',
-      n_sims
-    )
+    x = 'Power', y = 'Type M error',
+    caption = sprintf('%s replicates per design', n_sims)
   ) +
-  blog_theme +
-  theme(legend.position = 'top')
+  blog_theme
 ```
 
 Type M error falls towards 1 as power rises in both series. Together, these diagnostics cover what a planning run has to examine: detection, precision, magnitude error and singular fits. The frequent singular fits in this example call for a second look at the random-effects structure before anyone is recruited. Keeping that structure maximal protects the Type I error rate (Barr et al., 2013), and trimming it when the data cannot support it protects power (Matuschek et al., 2017). A planning run lets me weigh that trade-off while the design can still change.

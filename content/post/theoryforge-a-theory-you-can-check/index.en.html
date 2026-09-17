@@ -3,6 +3,7 @@ title: 'theoryforge: A theory you can check'
 author: ''
 date: '2026-09-01'
 slug: theoryforge-a-theory-you-can-check
+code_folding: hide
 categories:
   - research methods
   - science
@@ -16,8 +17,8 @@ tags:
   - Python
   - conceptual processing
 subtitle: ''
-summary: 'A theory written only in prose cannot be checked mechanically. This post represents a theory of modality switching as structured data, derives the conditional independencies it implies and tests them against data simulated from the theory and from a rival account.'
-abstract: 'This tutorial represents a theory of modality switching as structured data, validates its constructs and propositions, derives conditional independencies from its causal graph and tests them against data simulated from the theory and from a rival account. It shows how theoryforge opens the claims and revisions of a theory to inspection without treating a structural score as evidence of truth.'
+summary: 'A theory written only in prose cannot be checked mechanically. This post represents a theory of modality switching as structured data, derives the conditional independencies it implies, and tests them against data simulated from the theory and from a rival account.'
+abstract: 'This tutorial represents a theory of modality switching as structured data, validates its constructs and propositions, derives conditional independencies from its causal graph, and tests them against data simulated from the theory and from a rival account. It shows how theoryforge opens the claims and revisions of a theory to inspection without treating a structural score as evidence of truth.'
 authors: []
 lastmod: ''
 featured: no
@@ -69,17 +70,17 @@ c(score = check$aggregate_score,
   blockers_failed = check$n_blockers_failed)</code></pre>
 <pre><code>#&gt;           score            gate blockers_failed 
 #&gt;          &quot;85.1&quot;          &quot;pass&quot;             &quot;0&quot;</code></pre>
-<p>The checklist has 12 items, each tied to a source in the methodological literature. They cover features that make a theory appraisable, such as whether it states what it prohibits, whether its predictions derive from stated propositions and how precise and risky those predictions are (e.g., Meehl, 1990). The score measures how completely the theory is specified. A well-specified theory can still be wrong, while a promising informal account can score poorly because it is not yet explicit enough to test.</p>
+<p>The checklist has 12 items, each tied to a source in the methodological literature. They cover features that make a theory appraisable, such as whether it states what it prohibits, whether its predictions derive from stated propositions, and how precise and risky those predictions are (e.g., Meehl, 1990). The score measures how completely the theory is specified. A well-specified theory can still be wrong, while a promising informal account can score poorly because it is not yet explicit enough to test.</p>
 </div>
 <div id="read-the-graph" class="section level3">
 <h3>Read the graph</h3>
 <p>The theory’s propositions form a causal graph. Because the source is structured data, the same graph can be rendered for a reader or exported for another program.</p>
-<pre class="mermaid"><code>flowchart LR
-  c_sensorimotor_experience[&quot;Sensorimotor experience with a concept&quot;]
-  c_modality_activation[&quot;Modality-specific perceptual activation&quot;]
-  c_switch_cost[&quot;Cost of switching modality between consecutive trials&quot;]
+<pre class="mermaid"><code>flowchart TB
+  c_sensorimotor_experience[&quot;Sensorimotor experience&lt;br&gt;with a concept&quot;]
+  c_modality_activation[&quot;Modality-specific&lt;br&gt;perceptual activation&quot;]
+  c_switch_cost[&quot;Cost of switching modality&lt;br&gt;between consecutive trials&quot;]
   c_conceptual_access[&quot;Ease of conceptual access&quot;]
-  c_lexical_familiarity[&quot;Lexical familiarity with the word form&quot;]
+  c_lexical_familiarity[&quot;Lexical familiarity with&lt;br&gt;the word form&quot;]
   c_sensorimotor_experience --&gt;|increases| c_modality_activation
   c_modality_activation --&gt;|increases| c_switch_cost
   c_modality_activation --&gt;|increases| c_conceptual_access
@@ -95,19 +96,19 @@ c(score = check$aggregate_score,
 <tr class="header">
 <th align="left">World</th>
 <th align="right">Correlation</th>
-<th align="left">p value</th>
+<th align="left"><em>p</em></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="left">Data generated from the theory</td>
-<td align="right">-0.009</td>
+<td align="right">−0.009</td>
 <td align="left">0.56</td>
 </tr>
 <tr class="even">
 <td align="left">Data generated from the rival</td>
 <td align="right">0.445</td>
-<td align="left">&lt;1e-99</td>
+<td align="left">&lt;1e−99</td>
 </tr>
 </tbody>
 </table>
@@ -146,7 +147,7 @@ c(score = check$aggregate_score,
 <p>The package documentation covers structural equation model compilation, severity scoring, preregistration, amendment appraisal, version differences and deposits to the Open Science Framework. Those tools build on the step shown here, which is to write the theory in a form that states what it claims and what it forbids.</p>
 <div id="limits" class="section level3">
 <h3>Limits</h3>
-<p>Formalisation moves judgement into the open without removing it. Researchers still decide which constructs and arrows belong in the graph, how the constructs are measured and whether an observed departure matters scientifically. The theory document records where each of those judgements enters. The checklist screens the structure and wording of a specification, so it cannot tell whether the constructs themselves are well chosen. Theories with feedback loops also need methods beyond the conditional-independence analysis used here, because theoryforge derives implications only from acyclic graphs.</p>
+<p>Formalisation moves judgement into the open without removing it. Researchers still decide which constructs and arrows belong in the graph, how the constructs are measured, and whether an observed departure matters scientifically. The theory document records where each of those judgements enters. The checklist screens the structure and wording of a specification, so it cannot tell whether the constructs themselves are well chosen. Theories with feedback loops also need methods beyond the conditional-independence analysis used here, because theoryforge derives implications only from acyclic graphs.</p>
 </div>
 </div>
 <div id="references" class="section level2">

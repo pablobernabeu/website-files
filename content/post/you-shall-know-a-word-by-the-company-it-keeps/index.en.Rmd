@@ -60,7 +60,7 @@ xaringanExtra::use_clipboard()
 }
 @media (max-width: 767px) {
   .html-widget {
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 4 / 5;
   }
 }
 ```
@@ -107,9 +107,169 @@ library(tm)
 library(ggplot2)
 library(plotly)
 
+# --- Label placement ----------------------------------------------------
+# Printed at their own coordinates, the words in a dense cluster land on
+# top of one another. This finds each label the nearest free spot around
+# its point, in screen pixels for a plot area of the given size. Points in
+# crowded regions are placed first, and their labels try the directions
+# that face away from their neighbours first. A label that ends up away
+# from its point gets a leader line.
+repel_labels <- function(x, y, words, xlim, ylim, width, height, font_px,
+                         clearance = 3, step = 5, rings = 50) {
+  sx <- width / diff(xlim)
+  sy <- height / diff(ylim)
+  px <- (x - xlim[1]) * sx
+  py <- (y - ylim[1]) * sy
+  hw <- nchar(words) * font_px * 0.28 + 1   # half width of each label
+  hh <- font_px * 0.6                       # half height
+  angles <- seq(0, 345, by = 15) * pi / 180
+  # Offsets that put a label's nearest edge or corner at a given distance
+  ox <- sign(cos(angles)) * pmin(1, abs(cos(angles)) * sqrt(2))
+  oy <- sign(sin(angles)) * pmin(1, abs(sin(angles)) * sqrt(2))
+  near <- abs(outer(px, px, "-")) < 80 & abs(outer(py, py, "-")) < 40
+  diag(near) <- FALSE
+  lx <- ly <- rep(NA_real_, length(words))
+  for (i in order(-rowSums(near))) {
+    away <- if (any(near[i, ])) {
+      atan2(py[i] - mean(py[near[i, ]]), px[i] - mean(px[near[i, ]]))
+    } else pi / 2
+    turn <- abs(atan2(sin(angles - away), cos(angles - away)))
+    cand <- expand.grid(a = order(turn), ring = 0:rings)
+    gap  <- clearance + 0.5 + cand$ring * step
+    cx <- px[i] + ox[cand$a] * (hw[i] + gap)
+    cy <- py[i] + oy[cand$a] * (hh + gap)
+    # A candidate must stay inside the plot and clear of every point and
+    # of every label placed so far
+    ok <- cx >= hw[i] & cx <= width - hw[i] & cy >= hh & cy <= height - hh &
+      rowSums(abs(outer(cx, px, "-")) < hw[i] + clearance &
+                abs(outer(cy, py, "-")) < hh + clearance) == 0
+    placed <- which(!is.na(lx))
+    if (length(placed)) {
+      ok <- ok & rowSums(abs(outer(cx, lx[placed], "-")) <
+                           rep(hw[i] + hw[placed], each = length(cx)) &
+                           abs(outer(cy, ly[placed], "-")) < 2 * hh) == 0
+    }
+    pick <- if (any(ok)) which(ok)[1] else 1
+    lx[i] <- cx[pick]
+    ly[i] <- cy[pick]
+  }
+  ex <- pmin(pmax(px, lx - hw), lx + hw)    # nearest point of the label box
+  ey <- pmin(pmax(py, ly - hh), ly + hh)
+  data.frame(x = xlim[1] + lx / sx, y = ylim[1] + ly / sy,
+             end_x = xlim[1] + ex / sx, end_y = ylim[1] + ey / sy,
+             leader = sqrt((ex - px)^2 + (ey - py)^2) > clearance + step + 1)
+}
+
+# --- Interactive word map -----------------------------------------------
+# Points coloured by group, each with its word label. The labels are laid
+# out twice: for the plot area of the 720 x 540 px desktop figure, and for
+# that of a 350 px wide phone figure, which is less than half as wide (the
+# CSS for this post sets both aspect ratios). A snippet of JavaScript swaps
+# in the phone layout, with larger text on phones that have room to spare,
+# when the figure is drawn narrower than 500 px. It makes that choice again
+# whenever the figure is resized, as when a phone or tablet is rotated.
+word_map <- function(cd, groups, colours) {
+  names(colours) <- groups
+  phone_area <- c(280, 320)
+  pad_x <- diff(range(cd$PC1)) * 0.06
+  pad_y <- diff(range(cd$PC2)) * 0.06
+  xlim  <- range(cd$PC1) + c(-pad_x, pad_x)
+  ylim  <- range(cd$PC2) + c(-pad_y, pad_y)
+  wide   <- repel_labels(cd$PC1, cd$PC2, cd$word, xlim, ylim,
+                         width = 650, height = 424, font_px = 12)
+  narrow <- repel_labels(cd$PC1, cd$PC2, cd$word, xlim, ylim,
+                         width = phone_area[1], height = phone_area[2],
+                         font_px = 10)
+  # One segment per word, of zero length where the label sits by its point,
+  # so that both layouts give every group a path of the same shape
+  leader_path <- function(lab, rows) {
+    end_x <- ifelse(lab$leader, lab$end_x, cd$PC1)
+    end_y <- ifelse(lab$leader, lab$end_y, cd$PC2)
+    list(x = as.vector(rbind(cd$PC1[rows], end_x[rows], NA)),
+         y = as.vector(rbind(cd$PC2[rows], end_y[rows], NA)))
+  }
+
+  p <- ggplot(transform(cd, topic = factor(topic, levels = groups)),
+              aes(PC1, PC2, colour = topic,
+                  text = paste0(word, " (", topic, ")"))) +
+    geom_point(size = 1.4) +
+    scale_colour_manual(values = colours) +
+    labs(x = "Principal Component 1", y = "Principal Component 2",
+         colour = NULL) +
+    theme_minimal(base_size = 12) +
+    theme(axis.text  = element_text(size = 9),
+          axis.title = element_text(size = 10.5))
+  pp <- ggplotly(p, tooltip = "text")
+
+  # Leader lines and labels share their group's legend entry, so clicking
+  # a group in the legend hides or shows its points, lines and labels
+  for (grp in groups) {
+    rows <- cd$topic == grp
+    if (!any(rows)) next
+    wide_path   <- leader_path(wide, rows)
+    narrow_path <- leader_path(narrow, rows)
+    pp <- pp %>% add_trace(
+      x = wide_path$x, y = wide_path$y, type = "scatter", mode = "lines",
+      line = list(color = colours[[grp]], width = 0.8), opacity = 0.6,
+      meta = list(narrow = list(x = I(narrow_path$x), y = I(narrow_path$y))),
+      legendgroup = grp, showlegend = FALSE, hoverinfo = "skip",
+      inherit = FALSE)
+    pp <- pp %>% add_trace(
+      x = wide$x[rows], y = wide$y[rows], type = "scatter", mode = "text",
+      text = cd$word[rows], textfont = list(size = 12, color = colours[[grp]]),
+      meta = list(narrow = list(x = I(narrow$x[rows]), y = I(narrow$y[rows]))),
+      cliponaxis = FALSE, legendgroup = grp, showlegend = FALSE,
+      hoverinfo = "text", hovertext = paste0(cd$word[rows], " (", grp, ")"),
+      inherit = FALSE)
+  }
+
+  pp <- pp %>%
+    layout(
+      legend = list(orientation = "h", x = 0.5, xanchor = "center",
+                    y = 0, yref = "container", yanchor = "bottom",
+                    itemsizing = "constant", font = list(size = 13)),
+      xaxis = list(tickmode = "auto", nticks = 6, range = xlim,
+                   title = list(text = "Principal Component 1", standoff = 8)),
+      yaxis = list(tickmode = "auto", nticks = 6, range = ylim,
+                   title = list(text = "Principal Component 2", standoff = 8)),
+      margin = list(t = 32, r = 8, b = 84)
+    ) %>%
+    config(displaylogo = FALSE,
+           modeBarButtonsToRemove = c("select2d", "lasso2d"))
+  pp$x$config$modeBarButtonsToAdd <- NULL   # hover-mode buttons plotly adds
+  htmlwidgets::onRender(pp, "
+    function(el, x, phoneArea) {
+      var traces = [], texts = [], wide = {x: [], y: []}, narrow = {x: [], y: []};
+      el.data.forEach(function(trace, i) {
+        if (!trace.meta || !trace.meta.narrow) return;
+        traces.push(i);
+        wide.x.push(trace.x);
+        wide.y.push(trace.y);
+        narrow.x.push(trace.meta.narrow.x);
+        narrow.y.push(trace.meta.narrow.y);
+        if (trace.mode === 'text') texts.push(i);
+      });
+      var current = 'wide 12';
+      function fit() {
+        var size = el._fullLayout._size;
+        var isWide = el.getBoundingClientRect().width >= 500;
+        var font = isWide ? 12 : Math.max(10, Math.min(12, Math.floor(10 *
+          Math.min(size.w / phoneArea[0], size.h / phoneArea[1]))));
+        var next = (isWide ? 'wide ' : 'narrow ') + font;
+        if (next === current) return;
+        current = next;
+        var xy = isWide ? wide : narrow;
+        Plotly.restyle(el, {x: xy.x, y: xy.y}, traces);
+        Plotly.restyle(el, {'textfont.size': font}, texts);
+      }
+      fit();
+      el.on('plotly_relayout', fit);
+    }", data = phone_area)
+}
+
 # --- Reusable helper: LSA + PCA plot ------------------------------------
 # Builds a TF-IDF term-document matrix, computes a truncated SVD,
-# selects the most distinctive and most shared words and projects them
+# selects the most distinctive and most shared words, and projects them
 # to 2D via PCA *on the selected words only* for maximum spread.
 
 lsa_pipeline <- function(doc_list, labels, grp_a, grp_b,
@@ -150,25 +310,6 @@ lsa_pipeline <- function(doc_list, labels, grp_a, grp_b,
   cd$topic <- ifelse(cd$word %in% top_a & !cd$word %in% top_b, lab_a,
               ifelse(cd$word %in% top_b & !cd$word %in% top_a, lab_b,
                      "Shared"))
-  p <- ggplot(cd, aes(PC1, PC2, colour = topic,
-                      text = paste0(word, " (", topic, ")"))) +
-    geom_point(size = 0, alpha = 0) +
-    scale_colour_manual(values = setNames(c(colour_a, colour_b, "#7B2D8E"),
-                                          c(lab_a, lab_b, "Shared")),
-                        guide = guide_legend(override.aes = list(size = 3, alpha = 1))) +
-    labs(x = "Principal Component 1", y = "Principal Component 2",
-         colour = NULL) +
-    theme_minimal(base_size = 12) +
-    theme(legend.position = "bottom",
-          legend.margin   = margin(t = -5),
-          axis.title.x    = element_text(margin = margin(t = 12)),
-          axis.title.y    = element_text(margin = margin(r = 12)),
-          plot.margin     = margin(0, 0, 0, 0))
-
-  # Map each word to its group colour for label text
-  col_map <- setNames(c(colour_a, colour_b, "#7B2D8E"),
-                      c(lab_a, lab_b, "Shared"))
-  cd$label_col <- col_map[cd$topic]
 
   # Trim spatial outliers so the dense cluster is readable.
   # Words beyond the IQR fence are dropped from the plot (not from LSA).
@@ -180,62 +321,8 @@ lsa_pipeline <- function(doc_list, labels, grp_a, grp_b,
   keep <- keep & cd$PC2 >= (q1y - fence * iqry) & cd$PC2 <= (q3y + fence * iqry)
   cd <- cd[keep, , drop = FALSE]
 
-  pp <- ggplotly(p, tooltip = "text")
-  # Hide all ggplot traces from plot AND legend
-  for (k in seq_along(pp$x$data)) {
-    pp$x$data[[k]]$marker$size    <- 0.1
-    pp$x$data[[k]]$marker$opacity <- 0
-    pp$x$data[[k]]$showlegend <- FALSE
-  }
-  # Constrain axes to the data range (with a small pad)
-  pad_x <- diff(range(cd$PC1)) * 0.06
-  pad_y <- diff(range(cd$PC2)) * 0.06
-  # Add text traces per group (toggleable via legend)
-  legend_groups <- c(lab_a, lab_b, "Shared")
-  legend_cols   <- c(colour_a, colour_b, "#7B2D8E")
-  offscreen_x <- max(cd$PC1) + pad_x * 50
-  offscreen_y <- max(cd$PC2) + pad_y * 50
-  for (i in seq_along(legend_groups)) {
-    grp <- legend_groups[i]
-    grp_data <- cd[cd$topic == grp, , drop = FALSE]
-    if (nrow(grp_data) == 0) next
-    # Text trace at actual positions (no legend entry)
-    pp <- pp %>% add_trace(
-      x = grp_data$PC1, y = grp_data$PC2,
-      type = "scatter", mode = "text",
-      text = grp_data$word,
-      textfont = list(size = 11, color = legend_cols[i]),
-      name = grp, legendgroup = grp, showlegend = FALSE,
-      hoverinfo = "text",
-      hovertext = paste0(grp_data$word, " (", grp, ")"),
-      inherit = FALSE
-    )
-    # Legend-only marker trace (off-screen, linked via legendgroup)
-    pp <- pp %>% add_trace(
-      x = offscreen_x, y = offscreen_y, type = "scatter", mode = "markers",
-      marker = list(size = 12, color = legend_cols[i], opacity = 1,
-                    symbol = "circle"),
-      name = grp, legendgroup = grp, showlegend = TRUE,
-      hoverinfo = "skip", inherit = FALSE
-    )
-  }
-  pp <- pp %>% layout(
-    legend = list(orientation = "h", x = 0.5, xanchor = "center",
-                  y = -0.12, yanchor = "top",
-                  tracegroupgap = 2, itemwidth = 30,
-                  itemsizing = "constant",
-                  font = list(size = 11),
-                  bordercolor = "#CCCCCC", borderwidth = 1,
-                  bgcolor = "#FAFAFA",
-                  xpad = 4, ypad = 4),
-    xaxis = list(title = list(text = "Principal Component 1",
-                              standoff = 8),
-                 range = c(min(cd$PC1) - pad_x, max(cd$PC1) + pad_x)),
-    yaxis = list(title = list(text = "Principal Component 2",
-                              standoff = 8),
-                 range = c(min(cd$PC2) - pad_y, max(cd$PC2) + pad_y)),
-    margin = list(b = 55)
-  )
+  pp <- word_map(cd, groups = c(lab_a, lab_b, "Shared"),
+                 colours = c(colour_a, colour_b, "#7B2D8E"))
   # The full plotly bundle is about 3.5 MB, most of it chart types these figures
   # do not use. partial_bundle() substitutes the smallest build that still covers
   # the traces present. It fetches that build from the plotly CDN, so the render

@@ -3,6 +3,7 @@ title: 'depictr: One visual language from first look to final figure'
 author: ''
 date: '2026-09-01'
 slug: depictr-one-visual-language-from-first-look-to-final-figure
+code_folding: hide
 categories:
   - data visualisation
   - statistics
@@ -51,6 +52,15 @@ The analysis below develops one visual argument in three stages. It describes th
 ```{r}
 library(depictr)
 library(ggplot2)
+
+# Slightly larger axis and legend text for reading on screen, with titles
+# centred on the whole figure instead of the panel
+web_theme <- theme(
+  plot.title.position = 'plot',
+  axis.text = element_text(size = rel(0.9)),
+  legend.text = element_text(size = rel(0.9))
+)
+
 packageVersion('depictr')
 
 data('lexical_decision', package = 'depictr')
@@ -73,7 +83,8 @@ ecdf_plot(
   legend_inside = TRUE,
   title = 'Related primes are faster across the distribution'
 ) +
-  labs(x = 'Reaction time (ms)', colour = NULL)
+  labs(x = 'Reaction time (ms)', colour = NULL) +
+  web_theme
 ```
 
 The separation extends well beyond a handful of slow responses. Related trials remain shifted towards shorter reaction times through much of the distribution, which gives a visible empirical context to the model estimates that follow.
@@ -98,15 +109,19 @@ term_labels <- c(
 tidy_estimates(fit)
 ```
 
-```{r model-estimates, fig.alt = 'Forest plot of the fixed effects, each per standard deviation of its predictor, for unrelated priming, auditory presentation and word frequency, with 95 per cent confidence intervals'}
+```{r model-estimates, fig.height = 3.3, fig.alt = 'Forest plot of the fixed effects, each per standard deviation of its predictor, for unrelated priming, auditory presentation and word frequency, with 95 per cent confidence intervals'}
 coefficient_plot(
   fit,
   standardise = TRUE,
   order = 'ascending',
   labels = term_labels,
+  point_size = 3.4,
+  line_size = 1.1,
   title = 'Estimated effects on reaction time',
   x_lab = 'Change in reaction time (ms) per SD of predictor'
-)
+) +
+  scale_x_continuous(breaks = scales::breaks_width(10)) +
+  web_theme
 ```
 
 The forest plot keeps the colours and typography of the distribution plot, so a reader moving from observations to estimates can concentrate on the result.
@@ -123,7 +138,9 @@ first_draft <- explore_distribution(
   type = 'density',
   legend_inside = TRUE,
   title = 'Lexical-decision time by priming condition'
-)
+) +
+  web_theme
+
 check_figure(first_draft)
 ```
 
@@ -136,11 +153,13 @@ final_figure <- explore_distribution(
   group = condition,
   type = 'density',
   palette = c('#005B96', '#B44600'),
+  alpha = 0.35,
   legend_inside = TRUE,
   title = 'Priming conditions separated by colour and line type'
 ) +
   aes(linetype = condition) +
-  labs(x = 'Reaction time (ms)', colour = NULL, fill = NULL, linetype = NULL)
+  labs(x = 'Reaction time (ms)', colour = NULL, fill = NULL, linetype = NULL) +
+  web_theme
 
 check_figure(final_figure)[, c('check', 'measured', 'threshold', 'verdict')]
 final_figure

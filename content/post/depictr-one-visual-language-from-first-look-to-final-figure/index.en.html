@@ -3,6 +3,7 @@ title: 'depictr: One visual language from first look to final figure'
 author: ''
 date: '2026-09-01'
 slug: depictr-one-visual-language-from-first-look-to-final-figure
+code_folding: hide
 categories:
   - data visualisation
   - statistics
@@ -45,6 +46,15 @@ projects: []
 <p>The analysis below develops one visual argument in three stages. It describes the observations, estimates the planned effects and finally audits the figure that will be shared.</p>
 <pre class="r"><code>library(depictr)
 library(ggplot2)
+
+# Slightly larger axis and legend text for reading on screen, with titles
+# centred on the whole figure instead of the panel
+web_theme &lt;- theme(
+  plot.title.position = &#39;plot&#39;,
+  axis.text = element_text(size = rel(0.9)),
+  legend.text = element_text(size = rel(0.9))
+)
+
 packageVersion(&#39;depictr&#39;)</code></pre>
 <pre><code>#&gt; [1] &#39;0.3.0&#39;</code></pre>
 <pre class="r"><code>data(&#39;lexical_decision&#39;, package = &#39;depictr&#39;)
@@ -65,7 +75,8 @@ c(participants = length(unique(lexical_decision$participant)),
   legend_inside = TRUE,
   title = &#39;Related primes are faster across the distribution&#39;
 ) +
-  labs(x = &#39;Reaction time (ms)&#39;, colour = NULL)</code></pre>
+  labs(x = &#39;Reaction time (ms)&#39;, colour = NULL) +
+  web_theme</code></pre>
 <p><img src="{{< blogdown/postref >}}index.en_files/figure-html/distribution-1.png" alt="Empirical cumulative distributions of lexical-decision reaction times for related and unrelated primes, with horizontal guides at the quartiles" width="720" style="display: block; margin: auto;" /></p>
 <p>The separation extends well beyond a handful of slow responses. Related trials remain shifted towards shorter reaction times through much of the distribution, which gives a visible empirical context to the model estimates that follow.</p>
 </div>
@@ -95,9 +106,13 @@ tidy_estimates(fit)</code></pre>
   standardise = TRUE,
   order = &#39;ascending&#39;,
   labels = term_labels,
+  point_size = 3.4,
+  line_size = 1.1,
   title = &#39;Estimated effects on reaction time&#39;,
   x_lab = &#39;Change in reaction time (ms) per SD of predictor&#39;
-)</code></pre>
+) +
+  scale_x_continuous(breaks = scales::breaks_width(10)) +
+  web_theme</code></pre>
 <p><img src="{{< blogdown/postref >}}index.en_files/figure-html/model-estimates-1.png" alt="Forest plot of the fixed effects, each per standard deviation of its predictor, for unrelated priming, auditory presentation and word frequency, with 95 per cent confidence intervals" width="720" style="display: block; margin: auto;" /></p>
 <p>The forest plot keeps the colours and typography of the distribution plot, so a reader moving from observations to estimates can concentrate on the result.</p>
 </div>
@@ -111,7 +126,9 @@ tidy_estimates(fit)</code></pre>
   type = &#39;density&#39;,
   legend_inside = TRUE,
   title = &#39;Lexical-decision time by priming condition&#39;
-)
+) +
+  web_theme
+
 check_figure(first_draft)</code></pre>
 <pre><code>#&gt;                        check measured threshold verdict
 #&gt; 1        colour_separability   119.21       5.0    pass
@@ -119,7 +136,7 @@ check_figure(first_draft)</code></pre>
 #&gt; 3 colour_separability_deutan   121.29       5.0    pass
 #&gt; 4 colour_separability_tritan    77.90       5.0    pass
 #&gt; 5     greyscale_separability    33.34       5.0    pass
-#&gt; 6                  text_size     8.80       6.0    pass
+#&gt; 6                  text_size     9.90       6.0    pass
 #&gt; 7              text_contrast     7.15       4.5    pass
 #&gt; 8          geometry_contrast     2.25       3.0    fail
 #&gt; 9         redundant_encoding     0.00       1.0    fail
@@ -129,7 +146,7 @@ check_figure(first_draft)</code></pre>
 #&gt; 3           Closest pair #005b96 and #e69f00 of 2 encoding colours.
 #&gt; 4           Closest pair #005b96 and #e69f00 of 2 encoding colours.
 #&gt; 5                Closest pair #005b96 and #e69f00 in CIE lightness.
-#&gt; 6 Smallest text 8.80 pt, drawn at 17.78 cm and printed at 17.78 cm.
+#&gt; 6 Smallest text 9.90 pt, drawn at 17.78 cm and printed at 17.78 cm.
 #&gt; 7                          Lowest-contrast text #005b96 on #ffffff.
 #&gt; 8                        Lowest-contrast colour #e69f00 on #ffffff.
 #&gt; 9                            Colour alone distinguishes the groups.</code></pre>
@@ -140,11 +157,13 @@ check_figure(first_draft)</code></pre>
   group = condition,
   type = &#39;density&#39;,
   palette = c(&#39;#005B96&#39;, &#39;#B44600&#39;),
+  alpha = 0.35,
   legend_inside = TRUE,
   title = &#39;Priming conditions separated by colour and line type&#39;
 ) +
   aes(linetype = condition) +
-  labs(x = &#39;Reaction time (ms)&#39;, colour = NULL, fill = NULL, linetype = NULL)
+  labs(x = &#39;Reaction time (ms)&#39;, colour = NULL, fill = NULL, linetype = NULL) +
+  web_theme
 
 check_figure(final_figure)[, c(&#39;check&#39;, &#39;measured&#39;, &#39;threshold&#39;, &#39;verdict&#39;)]</code></pre>
 <pre><code>#&gt;                        check measured threshold verdict
@@ -153,7 +172,7 @@ check_figure(final_figure)[, c(&#39;check&#39;, &#39;measured&#39;, &#39;thresho
 #&gt; 3 colour_separability_deutan    96.85       5.0    pass
 #&gt; 4 colour_separability_tritan    93.25       5.0    pass
 #&gt; 5     greyscale_separability     7.09       5.0    pass
-#&gt; 6                  text_size     8.80       6.0    pass
+#&gt; 6                  text_size     9.90       6.0    pass
 #&gt; 7              text_contrast     7.15       4.5    pass
 #&gt; 8          geometry_contrast     5.50       3.0    pass
 #&gt; 9         redundant_encoding     1.00       1.0    pass</code></pre>

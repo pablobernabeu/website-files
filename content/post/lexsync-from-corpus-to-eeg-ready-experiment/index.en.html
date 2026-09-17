@@ -3,6 +3,7 @@ title: 'lexsync: From a word-frequency corpus to an EEG-ready experiment'
 author: ''
 date: '2026-09-01'
 slug: lexsync-from-corpus-to-eeg-ready-experiment
+code_folding: hide
 categories:
   - psycholinguistics
   - research methods
@@ -17,8 +18,8 @@ tags:
   - OpenSesame
   - jsPsych
 subtitle: ''
-summary: 'Selecting words is only the first step in preparing a psycholinguistic experiment. This post uses lexsync to match high- and low-frequency items, balance them across lists and export presentation scripts with recorded timing and EEG triggers.'
-abstract: 'This tutorial shows how lexsync turns a lexical design into checked stimulus lists and experiment files. It separates candidate selection from matching, evaluates balance on the intended controls and carries the resulting item table into PsychoPy, OpenSesame or jsPsych with recorded timing and EEG trigger information.'
+summary: 'Selecting words is only the first step in preparing a psycholinguistic experiment. This post uses lexsync to match high- and low-frequency items, balance them across lists, and export presentation scripts with recorded timing and EEG triggers.'
+abstract: 'This tutorial shows how lexsync turns a lexical design into checked stimulus lists and experiment files. It separates candidate selection from matching, evaluates balance on the intended controls, and carries the resulting item table into PsychoPy, OpenSesame or jsPsych with recorded timing and EEG trigger information.'
 authors: []
 lastmod: ''
 featured: no
@@ -39,7 +40,7 @@ projects: []
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
 <p>A high- versus low-frequency word experiment sounds simple until the materials are assembled. The frequency bands must differ, while length and orthographic similarity should not. The selected words then need to be divided across presentation lists without creating a new imbalance. Finally, the same item table must reach the experiment software with its trial order, timing and electroencephalography (EEG) triggers intact.</p>
-<p>I wrote <a href="https://github.com/pablobernabeu/lexsync">lexsync</a> (Bernabeu, 2026) to keep those stages in one reproducible workflow. The package stores the design separately from the candidate corpus, reports the balance that was achieved and exports runnable experiments for PsychoPy, OpenSesame and jsPsych. Its R and Python implementations read the same design format, and the examples below use R.</p>
+<p>I wrote <a href="https://github.com/pablobernabeu/lexsync">lexsync</a> (Bernabeu, 2026) to keep those stages in one reproducible workflow. The package stores the design separately from the candidate corpus, reports the balance that was achieved, and exports runnable experiments for PsychoPy, OpenSesame and jsPsych. Its R and Python implementations read the same design format, and the examples below use R.</p>
 </div>
 <div id="development" class="section level2">
 <h2>Development</h2>
@@ -126,18 +127,25 @@ ggplot(controls, aes(cohens_d, dimension)) +
            fill = &#39;#E8F1F5&#39;) +
   geom_vline(xintercept = 0, colour = &#39;#66747B&#39;, linewidth = 0.5) +
   geom_pointrange(aes(xmin = d_ci_low, xmax = d_ci_high),
-                  colour = &#39;#006D77&#39;, linewidth = 0.7) +
-  scale_x_continuous(limits = c(-0.65, 0.65), breaks = c(-0.5, 0, 0.5)) +
+                  colour = &#39;#006D77&#39;, linewidth = 0.8, size = 0.7) +
+  scale_x_continuous(
+    breaks = c(-0.5, 0, 0.5), expand = expansion(0),
+    labels = scales::label_number(accuracy = 0.1, style_negative = &#39;minus&#39;)
+  ) +
+  coord_cartesian(xlim = c(-0.56, 0.56)) +
   labs(x = &#39;Standardised difference (low minus high), 90% CI&#39;, y = NULL,
        title = &#39;Realised balance on the control variables&#39;,
        subtitle = &#39;Shading marks the prespecified equivalence region&#39;) +
-  theme_minimal(base_size = 11) +
-  theme(panel.grid.major.y = element_blank(),
+  theme_minimal(base_size = 12) +
+  theme(panel.grid = element_blank(),
         plot.title.position = &#39;plot&#39;,
-        plot.title = element_text(size = 11, face = &#39;bold&#39;),
-        plot.subtitle = element_text(size = 10),
-        axis.title = element_text(size = 10),
-        axis.text = element_text(size = 9))</code></pre>
+        plot.title = element_text(size = 13, face = &#39;bold&#39;),
+        plot.subtitle = element_text(size = 11, margin = margin(b = 10)),
+        axis.title.x = element_text(size = 10.5, margin = margin(t = 6)),
+        axis.text.x = element_text(size = 10),
+        axis.text.y = element_text(size = 11, hjust = 0, colour = &#39;grey20&#39;,
+                                   margin = margin(r = 10)),
+        plot.margin = margin(8, 10, 8, 8))</code></pre>
 <p><img src="{{< blogdown/postref >}}index.en_files/figure-html/balance-plot-1.png" alt="Dot-and-whisker plot showing standardised differences and 90 per cent confidence intervals for word length, neighbourhood density and OLD20, with equivalence bounds at minus and plus 0.5" width="720" style="display: block; margin: auto;" /></p>
 <p>The intervals deserve more attention than the point estimates, because they carry the uncertainty. With few items per condition, an estimate near zero can still be too imprecise to support a claim of equivalence.</p>
 </div>

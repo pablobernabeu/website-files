@@ -3,6 +3,7 @@ title: 'Who is through with convergence warnings? Publications that used allFit 
 author: ''
 date: '2026-09-02'
 slug: publications-that-used-allfit-to-compare-optimisers
+code_folding: hide
 categories:
   - statistics
   - bibliometrics
@@ -132,14 +133,28 @@ c(matched = nrow(used_allfit) + nrow(too_early),
 #&gt;                        OpenAlex, full text 
 #&gt;                                         47</code></pre>
 <p>The figure below shows how many of the kept publications appeared in each year.</p>
-<pre class="r"><code>used_allfit |&gt;
+<pre class="r"><code>per_year &lt;- used_allfit |&gt;
   filter(!is.na(year)) |&gt;
-  count(year) |&gt;
-  ggplot(aes(year, n)) +
-  geom_col(fill = &#39;#0072B2&#39;) +
-  scale_x_continuous(breaks = scales::breaks_pretty(8)) +
-  labs(x = NULL, y = &#39;Publications mentioning allFit&#39;) +
-  theme_minimal(base_size = 13)</code></pre>
+  count(year)
+
+# The year of the search was still under way, so its label says where the
+# count stops.
+searched &lt;- as.Date(substr(retrieved, 1, 10))
+year_label &lt;- function(y) {
+  ifelse(y == as.integer(format(searched, &#39;%Y&#39;)),
+         paste0(y, &#39;\nto &#39;, trimws(format(searched, &#39;%e %b&#39;))), y)
+}
+
+ggplot(per_year, aes(year, n)) +
+  geom_col(fill = &#39;#0072B2&#39;, width = 0.8) +
+  geom_text(aes(label = n), vjust = -0.5, size = 3.4) +
+  scale_x_continuous(breaks = min(per_year$year):max(per_year$year),
+                     labels = year_label) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
+  labs(x = NULL, y = NULL, title = &#39;Publications mentioning allFit&#39;) +
+  theme_minimal(base_size = 12) +
+  theme(plot.title.position = &#39;plot&#39;, plot.title = element_text(size = rel(1)),
+        axis.text.y = element_blank(), panel.grid = element_blank())</code></pre>
 <p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-5-1.png" alt="Bar chart of the number of publications per year, from 2017 to 2026, whose full text mentions allFit, according to Europe PMC and OpenAlex" width="672" style="display: block; margin: auto;" /></p>
 <p>The table below lists the same publications, most recent first, with the sources in which each was found. Authors are given as the sources returned them. The two sources overlap in a minority of records, which says as much about their coverage as about the literature.</p>
 <pre class="r"><code>short_authors &lt;- function(a) {

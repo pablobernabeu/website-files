@@ -3,6 +3,7 @@ title: 'theoryforge: A theory you can check'
 author: ''
 date: '2026-09-01'
 slug: theoryforge-a-theory-you-can-check
+code_folding: hide
 categories:
   - research methods
   - science
@@ -16,8 +17,8 @@ tags:
   - Python
   - conceptual processing
 subtitle: ''
-summary: 'A theory written only in prose cannot be checked mechanically. This post represents a theory of modality switching as structured data, derives the conditional independencies it implies and tests them against data simulated from the theory and from a rival account.'
-abstract: 'This tutorial represents a theory of modality switching as structured data, validates its constructs and propositions, derives conditional independencies from its causal graph and tests them against data simulated from the theory and from a rival account. It shows how theoryforge opens the claims and revisions of a theory to inspection without treating a structural score as evidence of truth.'
+summary: 'A theory written only in prose cannot be checked mechanically. This post represents a theory of modality switching as structured data, derives the conditional independencies it implies, and tests them against data simulated from the theory and from a rival account.'
+abstract: 'This tutorial represents a theory of modality switching as structured data, validates its constructs and propositions, derives conditional independencies from its causal graph, and tests them against data simulated from the theory and from a rival account. It shows how theoryforge opens the claims and revisions of a theory to inspection without treating a structural score as evidence of truth.'
 authors: []
 lastmod: ''
 featured: no
@@ -74,19 +75,26 @@ c(score = check$aggregate_score,
   blockers_failed = check$n_blockers_failed)
 ```
 
-The checklist has 12 items, each tied to a source in the methodological literature. They cover features that make a theory appraisable, such as whether it states what it prohibits, whether its predictions derive from stated propositions and how precise and risky those predictions are (e.g., Meehl, 1990). The score measures how completely the theory is specified. A well-specified theory can still be wrong, while a promising informal account can score poorly because it is not yet explicit enough to test.
+The checklist has 12 items, each tied to a source in the methodological literature. They cover features that make a theory appraisable, such as whether it states what it prohibits, whether its predictions derive from stated propositions, and how precise and risky those predictions are (e.g., Meehl, 1990). The score measures how completely the theory is specified. A well-specified theory can still be wrong, while a promising informal account can score poorly because it is not yet explicit enough to test.
 
 ### Read the graph
 
 The theory's propositions form a causal graph. Because the source is structured data, the same graph can be rendered for a reader or exported for another program.
 
 ```{r diagram-helper, include = FALSE}
-mermaid_graph <- function(theory) {
+mermaid_graph <- function(theory, wrap = 26) {
   escape_label <- function(text) gsub('"', "'", text, fixed = TRUE)
-  lines <- 'flowchart LR'
+  # Laid out left to right on one line each, the labels made the graph about
+  # 1,200px wide, so fitting it to the text column shrank its text to 9px (4px
+  # on a phone). Labels of at most `wrap` characters per line in a top-down
+  # layout keep the graph narrow enough to show at full size.
+  wrap_label <- function(text) {
+    paste(strwrap(escape_label(text), width = wrap + 1), collapse = '<br>')
+  }
+  lines <- 'flowchart TB'
   for (construct in theory$constructs) {
     lines <- c(lines, sprintf('  %s["%s"]', construct$id,
-                              escape_label(construct$label)))
+                              wrap_label(construct$label)))
   }
   for (proposition in theory$propositions) {
     lines <- c(lines, sprintf('  %s -->|%s| %s', proposition$from,
@@ -161,15 +169,18 @@ key_claim <- match(
   'c_sensorimotor_experience _||_ c_lexical_familiarity',
   statements
 )
+# A true minus sign, unlike a hyphen, is not a line-break opportunity, so
+# '<1e-99' cannot split across two lines in the narrow table on a phone
+minus <- function(x) gsub('-', '\u2212', x, fixed = TRUE)
 knitr::kable(data.frame(
   World = c('Data generated from the theory', 'Data generated from the rival'),
-  Correlation = round(c(theory_tests$estimate[key_claim],
-                        rival_tests$estimate[key_claim]), 3),
-  `p value` = format.pval(c(theory_tests$p.value[key_claim],
-                            rival_tests$p.value[key_claim]),
-                          digits = 2, eps = 1e-99),
+  Correlation = minus(sprintf('%.3f', round(c(theory_tests$estimate[key_claim],
+                                              rival_tests$estimate[key_claim]), 3))),
+  `*p*` = minus(format.pval(c(theory_tests$p.value[key_claim],
+                              rival_tests$p.value[key_claim]),
+                            digits = 2, eps = 1e-99)),
   check.names = FALSE
-), row.names = FALSE)
+), row.names = FALSE, align = c('l', 'r', 'l'))
 ```
 
 All six implied independencies are compatible with the data generated from the theory. In the data generated from the rival, only the claim shown in the table fails. There, sensorimotor experience and lexical familiarity are substantially correlated, while the estimates for the other five claims stay close to zero. The failure therefore locates the part of the graph that conflicts with the data, a diagnosis that no single global score could give.
@@ -196,7 +207,7 @@ The package documentation covers structural equation model compilation, severity
 
 ### Limits
 
-Formalisation moves judgement into the open without removing it. Researchers still decide which constructs and arrows belong in the graph, how the constructs are measured and whether an observed departure matters scientifically. The theory document records where each of those judgements enters. The checklist screens the structure and wording of a specification, so it cannot tell whether the constructs themselves are well chosen. Theories with feedback loops also need methods beyond the conditional-independence analysis used here, because theoryforge derives implications only from acyclic graphs.
+Formalisation moves judgement into the open without removing it. Researchers still decide which constructs and arrows belong in the graph, how the constructs are measured, and whether an observed departure matters scientifically. The theory document records where each of those judgements enters. The checklist screens the structure and wording of a specification, so it cannot tell whether the constructs themselves are well chosen. Theories with feedback loops also need methods beyond the conditional-independence analysis used here, because theoryforge derives implications only from acyclic graphs.
 
 ## References
 

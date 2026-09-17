@@ -3,6 +3,7 @@ title: 'Greenhouse gas emissions in context: Raw totals, income groups and human
 author: ''
 date: '2026-09-01'
 slug: greenhouse-gas-emissions-in-context
+code_folding: hide
 categories:
   - research methods
 tags:
@@ -55,7 +56,7 @@ All emissions come from the 2025 EDGAR booklet (Crippa et al., 2025), which runs
 
 The analysis reads three compact files that were derived from the booklet and from three context sources in a preparation step described at the end of this post. `ghg_long.csv` has one row per territory and year, with its continent, income group, total, per-capita figure, derived population and euro-area membership. `hdi_2023.csv` gives the Human Development Index for 2023 from the 2025 Human Development Report (United Nations Development Programme, 2025), and `sectors_2024.csv` gives the 2024 emissions of each territory by EDGAR sector, summed over the four substances. Continents come from the ISO 3166 dataset maintained by Duncalfe (n.d.) and income groups from the World Bank classification for fiscal year 2026 (World Bank, 2025).
 
-The population of each territory and year is the total divided by the per-capita figure, which recovers the population series behind EDGAR's own per-capita values without a further source. EDGAR reports Serbia and Montenegro (code SCG) and Sudan and South Sudan (code SDN) as combined territories. It likewise folds Liechtenstein into Switzerland, Andorra into Spain, Monaco into France, San Marino and the Holy See into Italy, and the State of Palestine into Israel. These rows are kept exactly as reported and are later compared with the HDI of the member whose code they carry, except Serbia and Montenegro, whose code belongs to neither member and is matched to Serbia by hand. The first chunk loads the packages, sets one theme for all static figures and fixes the colours, taken from the Okabe-Ito palette, that each continent and income group keeps throughout.
+The population of each territory and year is the total divided by the per-capita figure, which recovers the population series behind EDGAR's own per-capita values without a further source. EDGAR reports Serbia and Montenegro (code SCG) and Sudan and South Sudan (code SDN) as combined territories. It likewise folds Liechtenstein into Switzerland, Andorra into Spain, Monaco into France, San Marino and the Holy See into Italy, and the State of Palestine into Israel. These rows are kept exactly as reported and are later compared with the HDI of the member whose code they carry, except Serbia and Montenegro, whose code belongs to neither member and is matched to Serbia by hand. The first chunk loads the packages, sets one theme for all static figures, and fixes the colours, taken from the Okabe-Ito palette, that each continent and income group keeps throughout.
 
 ```{r packages}
 library(dplyr)
@@ -180,14 +181,36 @@ continent_share <- function(cont, yr) {
     world$world_mt[world$year == yr]
 }
 
+# Both panels print their labels in a right margin of the same width, and both
+# fix the x limits to the years of the data, which the nudged labels would
+# otherwise stretch, so that the years of the two panels line up vertically
+label_space <- 95
+label_margin <- margin(5.5, label_space, 5.5, 5.5)
+year_limits <- range(by_continent$year)
+
+# One label per band, level with the middle of the band in the last year.
+# position_stack(reverse = TRUE) stacks the first level at the bottom.
+continent_labels <- by_continent %>%
+  filter(year == max(year)) %>%
+  arrange(continent) %>%
+  mutate(label_y = cumsum(total_mt) - total_mt / 2,
+         label = sub(' ', '\n', continent))
+
 p1a <- ggplot(by_continent, aes(year, total_mt, fill = continent)) +
   geom_area(position = position_stack(reverse = TRUE), colour = 'white', linewidth = 0.3) +
-  scale_fill_manual(values = continent_colours, guide = guide_legend(reverse = TRUE)) +
-  scale_x_continuous(breaks = seq(1970, 2020, 10), expand = c(0, 0)) +
+  geom_text_repel(data = continent_labels, aes(year, label_y, label = label),
+                  inherit.aes = FALSE, hjust = 0, nudge_x = 1.5, direction = 'y',
+                  xlim = c(-Inf, Inf), ylim = c(-Inf, Inf), size = 3.8, lineheight = 0.9,
+                  colour = 'grey20', segment.colour = 'grey50', segment.size = 0.3,
+                  min.segment.length = 0, box.padding = 0.15, seed = repel_seed) +
+  scale_fill_manual(values = continent_colours, guide = 'none') +
+  scale_x_continuous(breaks = seq(1970, 2020, 10), limits = year_limits, oob = oob_keep,
+                     expand = c(0, 0)) +
   scale_y_continuous(labels = comma, expand = expansion(mult = c(0, 0.04))) +
+  coord_cartesian(clip = 'off') +
   labs(title = 'a. World total by continent',
-       x = NULL, y = 'Mt CO<sub>2</sub>eq per year', fill = NULL) +
-  theme(legend.position = 'right')
+       x = NULL, y = 'Mt CO<sub>2</sub>eq per year') +
+  theme(plot.margin = label_margin)
 
 # Shares of the world total: EU27 from EDGAR's own row, euro area summed over members
 shares <- world %>%
@@ -219,16 +242,17 @@ p1b <- ggplot(shares_long, aes(year, share, colour = bloc)) +
   geom_line(linewidth = 1) +
   geom_text_repel(data = filter(shares_long, year == max(year)),
                   aes(label = paste0(bloc, ', ', fmt(share, 1), '%')),
-                  hjust = 0, nudge_x = 1, direction = 'y', segment.colour = NA,
-                  size = 4, show.legend = FALSE, seed = repel_seed) +
+                  hjust = 0, nudge_x = 1.5, direction = 'y', segment.colour = NA,
+                  xlim = c(-Inf, Inf), size = 3.8, show.legend = FALSE, seed = repel_seed) +
   scale_colour_manual(values = c(EU27 = '#0072B2', `Euro area` = '#D55E00')) +
-  scale_x_continuous(breaks = seq(1970, 2020, 10), expand = expansion(mult = c(0, 0.22))) +
+  scale_x_continuous(breaks = seq(1970, 2020, 10), limits = year_limits, oob = oob_keep,
+                     expand = c(0, 0)) +
   scale_y_continuous(limits = c(0, NA), labels = function(x) paste0(x, '%'),
                      expand = expansion(mult = c(0, 0.08))) +
   coord_cartesian(clip = 'off') +
   labs(title = 'b. EU27 and euro-area emissions as a share of the world total',
        x = NULL, y = 'Share of the world total') +
-  theme(legend.position = 'none')
+  theme(legend.position = 'none', plot.margin = label_margin)
 
 p1a / p1b +
   plot_layout(heights = c(1.15, 1)) +
@@ -237,7 +261,11 @@ p1a / p1b +
                      ' (panel a) and per cent of the world total (panel b).<br>',
                      'EU27: EDGAR\'s own row. Euro area: the sum of its 21 members as of 2026,',
                      ' including Bulgaria.'),
-    theme = caption_theme
+    # patchwork sets the caption across the panels but not the plot margins, so
+    # the caption box is widened by the label margin to span the whole figure
+    theme = theme(plot.caption = element_textbox_simple(
+      hjust = 0, colour = 'grey30', size = 10, lineheight = 1.25, margin = margin(t = 10),
+      width = unit(1, 'npc') + unit(label_space - 5.5, 'pt')))
   )
 ```
 
@@ -278,9 +306,9 @@ p2a <- ggplot(by_income, aes(year, per_capita_t, colour = income_group)) +
   geom_text_repel(data = filter(by_income, year == max(year)),
                   aes(label = paste0(income_group, ', ', fmt(per_capita_t, 1), ' t')),
                   hjust = 0, nudge_x = 1, direction = 'y', segment.colour = NA,
-                  size = 3.8, show.legend = FALSE, seed = repel_seed) +
+                  xlim = c(-Inf, Inf), size = 3.8, show.legend = FALSE, seed = repel_seed) +
   scale_colour_manual(values = income_colours) +
-  scale_x_continuous(breaks = seq(1970, 2020, 10), expand = expansion(mult = c(0, 0.34))) +
+  scale_x_continuous(breaks = seq(1970, 2020, 10), expand = expansion(mult = c(0, 0.38))) +
   scale_y_continuous(limits = c(0, NA), expand = expansion(mult = c(0, 0.05))) +
   coord_cartesian(clip = 'off') +
   labs(title = 'a. Population-weighted mean per-capita emissions by World Bank income group',
@@ -298,11 +326,11 @@ p2b <- ggplot(shares_by_income, aes(year, share, colour = income_group, linetype
   geom_text_repel(data = filter(shares_by_income, year == max(year)),
                   aes(label = paste0(fmt(share, 0), '% ', measure)),
                   hjust = 0, nudge_x = 1, direction = 'y', segment.colour = NA,
-                  size = 3.3, show.legend = FALSE, seed = repel_seed) +
+                  xlim = c(-Inf, Inf), size = 3.5, show.legend = FALSE, seed = repel_seed) +
   facet_wrap(~ income_group, nrow = 2) +
   scale_colour_manual(values = income_colours, guide = 'none') +
   scale_linetype_manual(values = c('solid', '22'), guide = 'none') +
-  scale_x_continuous(breaks = seq(1970, 2010, 20), expand = expansion(mult = c(0, 0.5))) +
+  scale_x_continuous(breaks = seq(1970, 2010, 20), expand = expansion(mult = c(0, 0.56))) +
   scale_y_continuous(limits = c(0, NA), labels = function(x) paste0(x, '%'),
                      expand = expansion(mult = c(0, 0.08))) +
   coord_cartesian(clip = 'off') +
@@ -358,7 +386,10 @@ p3b <- ggplot(top20, aes(per_capita_t, country, colour = continent)) +
   geom_vline(xintercept = world_per_capita, linetype = 'dotted', colour = 'grey40') +
   geom_segment(aes(x = 0, xend = per_capita_t, yend = country), colour = 'grey75', linewidth = 0.5) +
   geom_point(size = 3) +
-  geom_text(aes(label = fmt(per_capita_t, 1)), hjust = -0.45, size = 3.5, colour = 'grey20') +
+  # A borderless white box behind each value keeps the dotted average line from
+  # striking through the numbers that sit beside it
+  geom_label(aes(label = fmt(per_capita_t, 1)), hjust = -0.3, size = 3.5, colour = 'grey20',
+             fill = 'white', border.colour = NA, label.padding = unit(0.1, 'lines')) +
   scale_colour_manual(values = continent_colours, guide = 'none') +
   scale_x_continuous(expand = expansion(mult = c(0, 0.28))) +
   labs(title = 'b. Per capita', x = 't CO<sub>2</sub>eq per person', y = NULL) +
@@ -391,6 +422,17 @@ sector_order <- sectors_2024 %>%
 
 sector_colours <- setNames(c('#0072B2', '#E69F00', '#D55E00', '#009E73',
                              '#8C5BA8', '#CC79A7', '#56B4E9', '#A08C00'), sector_order)
+
+# White text is unreadable on the lighter fills, so each segment label takes
+# whichever of white or near-black has the higher WCAG contrast with its fill.
+# The two contrasts are equal at a relative luminance of about 0.18.
+relative_luminance <- function(hex) {
+  channel <- grDevices::col2rgb(hex) / 255
+  channel <- ifelse(channel <= 0.04045, channel / 12.92, ((channel + 0.055) / 1.055)^2.4)
+  colSums(channel * c(0.2126, 0.7152, 0.0722))
+}
+sector_text_colours <- setNames(ifelse(relative_luminance(sector_colours) > 0.18, 'grey10', 'white'),
+                                names(sector_colours))
 
 top8_iso3 <- as.character(top20$iso3[1:8])
 
@@ -432,9 +474,11 @@ ggplot(sector_shares, aes(share, country, fill = sector)) +
   # position_stack() restacks whatever data it is given: filtering the rows out
   # here instead would place each remaining label as though the omitted sectors
   # did not exist.
-  geom_text(aes(label = ifelse(share >= 8, round(share), '')),
-            position = position_stack(vjust = 0.5, reverse = TRUE), size = 3.3, colour = 'white') +
+  geom_text(aes(label = ifelse(share >= 8, round(share), ''), colour = sector),
+            position = position_stack(vjust = 0.5, reverse = TRUE), size = 3.5,
+            show.legend = FALSE) +
   scale_fill_manual(values = sector_colours) +
+  scale_colour_manual(values = sector_text_colours, guide = 'none') +
   scale_x_continuous(labels = function(x) paste0(x, '%'), expand = expansion(mult = c(0, 0.02))) +
   guides(fill = guide_legend(nrow = 2, byrow = TRUE)) +
   labs(x = NULL, y = NULL, fill = NULL,
@@ -498,27 +542,43 @@ p5 <- ggplot(hdi_data, aes(hdi_2023, per_capita_t)) +
   scale_y_log10(labels = comma) +
   scale_size_area(max_size = 20, guide = 'none') +
   scale_colour_manual(values = continent_colours, name = NULL) +
+  # On two lines, because on one the title is longer than the plot is tall
   labs(x = 'Human Development Index, 2023',
-       y = 'Per-capita emissions, 2015 to 2024 (t CO<sub>2</sub>eq, log scale)') +
+       y = 'Per-capita emissions, 2015 to 2024\n(t CO<sub>2</sub>eq, log scale)') +
   # A complete theme, so that ggplotly does not merge the ggtext elements of the global theme
   theme_minimal(base_size = 13)
 
-ggplotly(p5, tooltip = 'text') %>%
+fig5 <- ggplotly(p5, tooltip = 'text') %>%
   layout(legend = list(orientation = 'h', y = -0.18, x = 0.5, xanchor = 'center',
                        itemsizing = 'constant'),
-         margin = list(l = 70, r = 20, b = 70, t = 20)) %>%
+         margin = list(l = 80, r = 20, b = 70, t = 20),
+         hoverlabel = list(align = 'left')) %>%
   # The full plotly bundle is about 3.4 MB, most of it chart types this figure
   # does not use. partial_bundle() substitutes the smallest build that still
   # covers the traces present. It fetches that build from the plotly CDN, so it
   # falls back to the full bundle when the render has no network access.
   lighter_bundle()
+
+# knitr would otherwise fix the widget at fig.width x dpi, 768 px, which is
+# wider than the 720 px text column and runs off the side of a phone screen.
+# At 100% the widget follows its column and plotly redraws to that width.
+fig5$width <- '100%'
+
+# At the size that suits the desktop column, the x-axis title is wider than the
+# plot on a 360 px phone and loses its last characters, so narrow screens get
+# smaller axis titles
+htmlwidgets::onRender(fig5, 'function(el) {
+  if (el.offsetWidth < 400) {
+    Plotly.relayout(el, {"xaxis.title.font.size": 15, "yaxis.title.font.size": 15});
+  }
+}')
 ```
 
 <p class="caption">Figure 5. Source: EDGAR 2025 (Crippa et al., 2025) and the Human Development Report 2025 (United Nations Development Programme, 2025). Units: tonnes of CO<sub>2</sub> equivalent per person per year, averaged over 2015 to 2024. Marker area proportional to 2024 population.</p>
 
-The model is fitted to the `r hdi_n` countries with both an HDI and emissions. The `r n_no_hdi` territories without an HDI are left out: mostly dependencies and overseas territories such as Puerto Rico, Greenland and Macao, plus Taiwan, North Korea and Western Sahara. The slope is `r fmt(hdi_slope, 2)` log10 units per unit of HDI, so each additional 0.1 of HDI multiplies expected per-capita emissions by `r fmt(10^(hdi_slope / 10), 2)`. The model explains `r pct(100 * hdi_r2, 0)` of the variance in log emissions (*R*<sup>2</sup> = `r fmt(hdi_r2, 2)`, *n* = `r hdi_n`). Of the countries, `r pct(100 * mean(abs(hdi_data$residual) < log10(2)), 0)` lie within a factor of two of the line. Qatar and Kuwait emit `r fmt(ratio_of('QAT'), 1)` and `r fmt(ratio_of('KWT'), 1)` times the level expected at their HDI, Russia `r fmt(ratio_of('RUS'), 1)` and the United States `r fmt(ratio_of('USA'), 1)`. Sweden and Switzerland, by comparison, emit `r fmt(ratio_of('SWE'), 2)` and `r fmt(ratio_of('CHE'), 2)` times theirs. China sits at `r fmt(ratio_of('CHN'), 1)` and India at `r fmt(ratio_of('IND'), 2)`.
+The model is fitted to the `r hdi_n` countries with both an HDI and emissions. The `r n_no_hdi` territories without an HDI are left out: mostly dependencies and overseas territories such as Puerto Rico, Greenland and Macao, plus Taiwan, North Korea and Western Sahara. The slope is `r fmt(hdi_slope, 2)` log10 units per unit of HDI, so each additional 0.1 of HDI multiplies expected per-capita emissions by `r fmt(10^(hdi_slope / 10), 2)`. The model explains `r pct(100 * hdi_r2, 0)` of the variance in log emissions (*R*<sup>2</sup> = `r fmt(hdi_r2, 2)`, *n* = `r hdi_n`). Of the countries, `r pct(100 * mean(abs(hdi_data$residual) < log10(2)), 0)` lie within a factor of two of the line. Qatar and Kuwait emit `r fmt(ratio_of('QAT'), 1)` and `r fmt(ratio_of('KWT'), 1)` times the level expected at their HDI, Russia `r fmt(ratio_of('RUS'), 1)`, and the United States `r fmt(ratio_of('USA'), 1)`. Sweden and Switzerland, by comparison, emit `r fmt(ratio_of('SWE'), 2)` and `r fmt(ratio_of('CHE'), 2)` times theirs. China sits at `r fmt(ratio_of('CHN'), 1)` and India at `r fmt(ratio_of('IND'), 2)`.
 
-The residual describes how a country compares with others at the same HDI, and four caveats apply to any reading of it. The HDI includes gross national income, so it partly encodes the energy use that it is meant to contextualise, and the line therefore absorbs some of the effect of wealth that a reader might want to see. EDGAR is production-based, so the emissions embodied in goods that a country imports are attributed to the exporter, which favours importers of manufactured goods in this comparison and counts against exporters such as China. The exclusion of land use, land-use change and forestry matters for countries such as Brazil and Indonesia. Finally, the model is a single straight line through `r hdi_n` points. Oil and gas exporters, pastoral economies and small states whose per-capita figure depends on one plant or fleet all pull on it in ways that a fuller treatment would handle differently.
+The residual describes how a country compares with others at the same HDI, and four caveats apply to any reading of it. The HDI includes gross national income, so it partly encodes the energy use that it is meant to contextualise, and the line therefore absorbs some of the effect of wealth that a reader might want to see. EDGAR is production-based, so the emissions embodied in goods that a country imports are attributed to the exporter, which favours importers of manufactured goods in this comparison and counts against exporters such as China. The exclusion of land use, land-use change and forestry matters for countries such as Brazil and Indonesia. Finally, the model is a single straight line through `r hdi_n` points. Oil and gas exporters, pastoral economies, and small states whose per-capita figure depends on one plant or fleet all pull on it in ways that a fuller treatment would handle differently.
 
 
 ### Mapping the residuals
@@ -562,17 +622,39 @@ map_labels <- with(world_sf, ifelse(
 # rejects a partially named list when it scans the widget for JS() markers
 )) %>% unname() %>% lapply(HTML)
 
-leaflet(world_sf, width = '100%', height = 520,
-        options = leafletOptions(minZoom = 1, maxZoom = 6, worldCopyJump = TRUE)) %>%
+# A fixed zoom shows a 512 px wide world, which a phone crops on both sides, so
+# the map instead fits the inhabited latitudes to its container at a fractional
+# zoom. On a narrow screen the fitted world is only about 240 px tall, so the
+# container is shorter there and the world is fitted above the legend, which
+# would otherwise cover South America.
+leaflet(world_sf, width = '100%', height = 520, elementId = 'residual-map',
+        options = leafletOptions(minZoom = 0, maxZoom = 6, zoomSnap = 0.1, zoomDelta = 0.5,
+                                 worldCopyJump = TRUE)) %>%
   addPolygons(fillColor = ~ residual_palette(residual), fillOpacity = 0.9,
               color = 'white', weight = 0.6, smoothFactor = 0.3,
               label = map_labels,
               highlightOptions = highlightOptions(weight = 2, color = '#333333', bringToFront = TRUE)) %>%
-  addLegend(pal = residual_palette, values = c(-residual_limit, residual_limit),
-            title = 'Residual (log10)', position = 'bottomleft', opacity = 0.9) %>%
-  addLegend(colors = '#d9d9d9', labels = 'no data', position = 'bottomleft', opacity = 0.9) %>%
-  setView(lng = 10, lat = 20, zoom = 1) %>%
-  htmlwidgets::prependContent(tags$style('.leaflet-container { background: #f4f6f8; }'))
+  # One legend box, with the no-data swatch under the scale, covers less of the map
+  addLegend(pal = residual_palette, values = c(-residual_limit, residual_limit, NA),
+            na.label = 'no data', title = 'Residual (log10)', position = 'bottomleft',
+            opacity = 0.9) %>%
+  fitBounds(lng1 = -170, lat1 = -56, lng2 = 180, lat2 = 84) %>%
+  htmlwidgets::onRender(
+    'function(el, x) {
+       if (window.matchMedia("(max-width: 600px)").matches) {
+         this.fitBounds([[-56, -170], [84, 180]], {paddingBottomRight: [0, 150], animate: false});
+       }
+     }') %>%
+  # leaflet floats the colour scale and its labels without clearing the float,
+  # so the no-data row would otherwise sit beside the scale instead of under it.
+  # The site's dark theme gives every link near-white text, which would leave the
+  # white zoom buttons and the attribution blank, so the map's links stay dark.
+  htmlwidgets::prependContent(tags$style(HTML(
+    '.leaflet-container { background: #f4f6f8; }
+     #residual-map .info.legend > div:last-child { clear: both; padding-top: 4px; }
+     #residual-map .leaflet-control a { color: #333 !important; -webkit-text-fill-color: #333 !important;
+       text-decoration: none !important; }
+     @media (max-width: 600px) { #residual-map { height: 410px !important; } }')))
 ```
 
 <p class="caption">Figure 6. Source: EDGAR 2025 (Crippa et al., 2025), the Human Development Report 2025 (United Nations Development Programme, 2025) and Natural Earth boundaries via rnaturalearth. Units: residual of log10 per-capita emissions (2015 to 2024 mean) from the linear model on HDI 2023. The ratio of actual to expected emissions is 10<sup>residual</sup>. Boundaries carry no political meaning.</p>
@@ -597,7 +679,7 @@ Whereas a few recurring causes account for the positive end of the table, the ne
 
 ## Discussion
 
-Read together, the figures give a contextual account of emissions. Total emissions describe the size of each country's annual contribution to the global total, and per-capita values describe the average emissions of its residents. Sector shares suggest where mitigation could begin, and the HDI residuals show departures from a broad relationship between development and emissions. These are complementary summaries, and their interpretation depends on the boundary choices documented above, especially the exclusion of land use, land-use change and forestry and the treatment of international transport.
+Read together, the figures give a contextual account of emissions. Total emissions describe the size of each country's annual contribution to the global total, and per-capita values describe the average emissions of its residents. Sector shares suggest where mitigation could begin, and the HDI residuals show departures from a broad relationship between development and emissions. These are complementary summaries, and their interpretation depends on the boundary choices documented above, especially the exclusion of land use, land-use change and forestry, and the treatment of international transport.
 
 ### How the figures were produced
 

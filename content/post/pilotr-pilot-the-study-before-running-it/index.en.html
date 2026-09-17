@@ -3,6 +3,7 @@ title: 'pilotr: Pilot the study before running it'
 author: ''
 date: '2026-09-01'
 slug: pilotr-pilot-the-study-before-running-it
+code_folding: hide
 categories:
   - statistics
   - research methods
@@ -36,7 +37,7 @@ projects: []
 
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>Power calculations can feel reassuringly final. Choose an effect, enter a sample size and read off a percentage. That simplicity disappears in experiments where participants respond to many items. Participants and items both vary, their responses are crossed and the model usually needs random slopes as well as random intercepts. The design has become too structured for a single formula.</p>
+<p>Power calculations can feel reassuringly final. Choose an effect, enter a sample size and read off a percentage. That simplicity disappears in experiments where participants respond to many items. Participants and items both vary, their responses are crossed, and the model usually needs random slopes as well as random intercepts. The design has become too structured for a single formula.</p>
 <p>I built <a href="/software/pilotr/">pilotr</a> (Bernabeu, 2026) to make the assumptions behind such a design visible before data collection. It stores a proposed study as a portable specification, simulates the observations that the specification implies and fits the planned analysis to them repeatedly. The R and Python packages read the same specification and generate the same data from the same seed. Below, I apply it to a semantic-priming study with 30 participants and 24 items to show what a design analysis has to weigh besides power.</p>
 </div>
 <div id="development" class="section level2">
@@ -44,7 +45,7 @@ projects: []
 <p>The example moves from a transparent design specification to simulated observations and then to a set of planning diagnostics. Each analysis uses only twelve replicates, which keeps the code quick to run. The results therefore show the shape of each diagnostic and the quantity to read from it, but they cannot settle a sample size.</p>
 <div id="a-study-that-does-not-exist-yet" class="section level3">
 <h3>A study that does not exist yet</h3>
-<p>The imagined experiment is a lexical-decision task. Every participant sees every target word after both a related and an unrelated prime. Reaction times follow a shifted lognormal distribution, and the model includes item frequency, participant vocabulary and an interaction between vocabulary and priming.</p>
+<p>The imagined experiment is a lexical-decision task. Every participant sees every target word after both a related and an unrelated prime. Reaction times follow a shifted lognormal distribution, and the model includes item frequency, participant vocabulary, and an interaction between vocabulary and priming.</p>
 <p>The main assumptions are set out below.</p>
 <table>
 <thead>
@@ -94,7 +95,7 @@ projects: []
 </div>
 <div id="detection-is-not-estimation" class="section level3">
 <h3>Detection is not estimation</h3>
-<p>The first design analysis simulates the study repeatedly, fits the mixed model to each simulated data set and records conventional power and the number of singular fits. It also reports Type S error, the chance that a significant estimate has the wrong sign, and Type M error, the factor by which significant estimates exaggerate the true effect (Gelman &amp; Carlin, 2014).</p>
+<p>The first design analysis simulates the study repeatedly, fits the mixed model to each simulated data set, and records conventional power and the number of singular fits. It also reports Type S error, the chance that a significant estimate has the wrong sign, and Type M error, the factor by which significant estimates exaggerate the true effect (Gelman &amp; Carlin, 2014).</p>
 <pre class="r"><code>power_at_plan &lt;- power_mixed(spec, n_sims = n_sims, workers = workers)
 power_at_plan</code></pre>
 <pre><code>#&gt; Simulation-based power over 12 replicates (alpha = 0.05)

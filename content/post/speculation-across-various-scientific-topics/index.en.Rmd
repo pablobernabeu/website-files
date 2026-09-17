@@ -3,6 +3,7 @@ title: Speculation across various scientific topics
 author: ''
 date: '2026-09-02'
 slug: speculation-across-various-scientific-topics
+code_folding: hide
 categories:
   - science
   - bibliometrics
@@ -118,27 +119,51 @@ totals
 
 Across the whole period, the literature on `r totals$topic[1]` has the highest share of records mentioning speculation (`r sprintf('%.1f', totals$share[1])`%) and that on `r totals$topic[nrow(totals)]` the lowest (`r sprintf('%.1f', totals$share[nrow(totals)])`%), with the language literatures spread between them.
 
-```{r, fig.width = 8, fig.height = 4, fig.alt = 'Line chart on a logarithmic axis of the number of Scopus records per year in each of the nine reference literatures from 1980 onwards'}
+```{r, fig.width = 8, fig.height = 4.5, fig.alt = 'Line chart on a logarithmic axis of the number of Scopus records per year in each of the nine reference literatures from 1980 onwards'}
 # Nine literatures against an eight-colour palette, so the Okabe-Ito set is
-# extended with one grey. Nine lines on one panel are hard to tell apart by
-# colour alone, which is why the figure that follows gives each its own panel.
-nine_colours <- c('#E69F00', '#56B4E9', '#009E73', '#F0E442', '#0072B2',
+# extended with one grey. Its yellow barely shows against the white background,
+# so it is replaced with a wine red, which also stays apart from the orange and
+# vermilion lines for colour-blind readers. Nine lines on one panel are hard to
+# tell apart by colour alone, so each line is named at its end, and the figure
+# that follows gives each literature its own panel.
+nine_colours <- c('#E69F00', '#56B4E9', '#009E73', '#882255', '#0072B2',
                   '#D55E00', '#CC79A7', '#999999', '#000000')
-ggplot(filter(speculation, reference_n > 0),
-       aes(year, reference_n, colour = topic)) +
+
+# Years without records are left empty, so that a line breaks there instead of
+# bridging the gap, and a year with no records on either side becomes a point.
+sizes <- speculation |>
+  mutate(records = ifelse(reference_n > 0, reference_n, NA),
+         isolated = reference_n > 0 & lag(reference_n, default = 0) == 0 &
+           lead(reference_n, default = 0) == 0,
+         .by = topic)
+
+ggplot(sizes, aes(year, records, colour = topic)) +
   geom_line(linewidth = 0.8) +
+  geom_point(data = filter(sizes, isolated), size = 1.3) +
+  # Each label sits at the last year with records, which need not be the
+  # current year, since that year is still in progress. The labels take a
+  # darker shade of each line's colour, which reads better as text, and the
+  # seed fixes where ggrepel places them.
+  ggrepel::geom_text_repel(
+    aes(label = topic,
+        colour = stage(topic, after_scale = colorspace::darken(colour, 0.25))),
+    data = filter(sizes, !is.na(records)) |> filter(year == max(year), .by = topic),
+    hjust = 0, direction = 'y', nudge_x = 1.5,
+    xlim = c(max(sizes$year) + 1.5, Inf), size = 3.9,
+    segment.size = 0.3, box.padding = 0.12, min.segment.length = 0, seed = 1) +
   scale_y_log10(labels = scales::label_comma()) +
-  scale_colour_manual(values = nine_colours) +
-  labs(x = NULL, y = 'Records per year (log scale)', colour = NULL) +
-  theme_minimal(base_size = 12) +
-  theme(legend.position = 'right')
+  scale_colour_manual(values = nine_colours, guide = 'none') +
+  coord_cartesian(clip = 'off') +
+  labs(x = NULL, y = 'Records per year (log scale)') +
+  theme_minimal(base_size = 13) +
+  theme(plot.margin = margin(6, 145, 6, 6))
 ```
 
 ### The share of records that mention speculation
 
-Each panel below shows one literature, and the panels are ordered by their overall share, from highest to lowest. The line is the yearly percentage of records that also match `speculat*`. The shaded band is a stability range computed with the Wilson method from the two yearly counts, and it shows how far the share would move with a handful of records. The axis is cut at 15%, which clips the bands in the early years of the small literatures, where a single abstract would move the share by tens of points. The highest share in the data, `r with(speculation[which.max(speculation$percentage), ], sprintf('the %.0f%% that %d of the %d records on %s in %d represent', percentage, n, reference_n, topic, year))`, is clipped as well. Years in which a literature has no records break the line.
+Each panel below shows one literature, and the panels are ordered by their overall share, from highest to lowest. The line is the yearly percentage of records that also match `speculat*`. The shaded band, drawn as a step for each year, is a stability range computed with the Wilson method from the two yearly counts, and it shows how far the share would move with a handful of records. The axis is cut at 15%. Wherever a year's range would run past that cut, as it does in the early years of several literatures and in many years of the smallest ones, a triangle at the top of the panel takes the place of the band. In the sparsest years, a single abstract would move the share by tens of points. The line itself runs off the top of its panel at the highest share in the data, `r with(speculation[which.max(speculation$percentage), ], sprintf('the %.0f%% that %d of the %d records on %s in %d represent', percentage, n, reference_n, topic, year))`. Years in which a literature has no records break the line.
 
-```{r, fig.width = 9, fig.height = 8, fig.alt = 'Nine panels, one per literature, each showing the yearly percentage of Scopus records that mention speculation over the years in which that literature has records, with a shaded Wilson interval'}
+```{r, fig.width = 9, fig.height = 8, fig.alt = 'Nine panels, one per literature, each showing the yearly percentage of Scopus records that mention speculation over the years in which that literature has records, with a shaded Wilson interval for each year and a triangle at the top of the panel wherever the interval runs past the 15 per cent cut of the axis'}
 wilson <- function(k, n, z = 1.96) {
   p <- k / n
   centre <- (p + z^2 / (2 * n)) / (1 + z^2 / n)
@@ -155,19 +180,31 @@ panel_data <- speculation |>
 
 panel_labels <- totals |>
   mutate(label = sprintf('%s\n%s records, %.1f%% with speculat*',
-                         topic, format(records, big.mark = ','), share))
+                         topic, scales::label_comma()(records), share))
 labeller_topic <- setNames(panel_labels$label, panel_labels$topic)
 
+# The axis stops at 15%. A band that would run past it is replaced by a
+# triangle at the top of the panel, so that the least stable years do not fill
+# the panels of the small literatures. Each band is a step one year wide, which
+# keeps a single year visible between two years that run past the cut.
+y_limit <- 15
+
 ggplot(panel_data, aes(year, percentage)) +
-  geom_ribbon(aes(ymin = lower, ymax = upper), fill = '#0072B2', alpha = 0.15) +
+  geom_rect(aes(xmin = year - 0.5, xmax = year + 0.5, ymin = lower, ymax = upper),
+            data = filter(panel_data, upper <= y_limit),
+            fill = '#0072B2', alpha = 0.17) +
+  geom_point(aes(y = y_limit), data = filter(panel_data, upper > y_limit),
+             shape = 17, size = 1.2, colour = '#80B3D8') +
   geom_line(colour = '#0072B2', linewidth = 0.7) +
   geom_point(colour = '#0072B2', size = 0.9) +
   facet_wrap(~ topic, ncol = 3, labeller = as_labeller(labeller_topic)) +
+  scale_x_continuous(breaks = c(1980, 2000, 2020)) +
   scale_y_continuous(labels = scales::label_percent(scale = 1)) +
-  coord_cartesian(ylim = c(0, 15)) +
+  coord_cartesian(ylim = c(0, y_limit)) +
   labs(x = NULL, y = 'Records mentioning speculation (%)') +
-  theme_minimal(base_size = 12) +
-  theme(strip.text = element_text(size = 10, hjust = 0),
+  theme_minimal(base_size = 13) +
+  theme(axis.text = element_text(size = rel(0.85)),
+        strip.text = element_text(size = rel(0.85), hjust = 0),
         panel.spacing = unit(1.2, 'lines'))
 ```
 
