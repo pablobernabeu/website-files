@@ -44,7 +44,6 @@ tags:
 - Software Sustainability Institute Fellowship
 title: 'Data dashboard: Butterfly species richness in Los Angeles'
 open_materials: true
-open_data: true
 url_code: 'https://github.com/pablobernabeu/Data-is-present/blob/master/examples-documents-dashboards/Dashboards/Flexdashboard/Butterfly-species-richness-in-LA.Rmd'
 url_data: 'https://github.com/jcoliver/bioscan'
 # url_fulltext: ''
