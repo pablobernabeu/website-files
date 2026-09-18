@@ -14,7 +14,7 @@
 {{ $pub_type := index $pub_types (int $type) }}
 {{ $pub_icon := index $pub_icons (int $type) }}
 {{ $pub_class := index $pub_classes (int $type) }}
-<span class="pub-type-badge {{ $pub_class }}" data-pub-type-url="/publication/#{{ $type }}" data-pub-type-name="{{ i18n $pub_type }}"><i class="fa {{ $pub_icon }}"></i> {{ i18n $pub_type }}</span>
+<span class="pub-type-badge {{ $pub_class }}"><i class="fa {{ $pub_icon }}"></i> {{ i18n $pub_type }}</span>
 {{ end }}
 {{ partial "open-science-badges.html" $page }}
 </span>
