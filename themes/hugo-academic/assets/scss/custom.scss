@@ -7855,6 +7855,18 @@ div > div > div > table > thead > tr > th {
   font-size: 1rem !important;
 }
 
+// Keep a column header on one line. A header that wrapped read as two headers:
+// "HDI 2023" broke after "HDI" above a column of three-decimal numbers, and
+// "Per capita (t)" broke before its unit, so the unit sat over the first figure.
+// Widening the table is the trade, and it costs nothing here because these
+// tables already scroll sideways when they outgrow the column -- every pixel the
+// header adds stays reachable, which was checked at 1400, 900 and 390px. Scoped
+// to .article-container so it reaches the body of a single post, publication or
+// software page and not the .article-style summaries on the listings.
+.article-container .article-style table th {
+  white-space: nowrap;
+}
+
 // Reduce bottom margin in embedded audio player
 #top > div.pub > div > div.article-style > iframe {
   margin-bottom: 10px !important;
