@@ -48,6 +48,8 @@ tags:
 - HTML
 - CSS
 title: 'Dutch modality exclusivity norms'
+open_materials: true
+open_data: true
 url_code: 'https://github.com/pablobernabeu/Dutch-modality-exclusivity-norms-Bernabeu-2018/blob/master/Shiny-app/index.Rmd'
 url_data: 'https://github.com/pablobernabeu/Dutch-modality-exclusivity-norms-Bernabeu-2018'
 # url_fulltext: ''

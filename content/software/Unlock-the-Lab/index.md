@@ -30,6 +30,7 @@ tags:
 - education
 - open scholarship
 - clickbait
+open_materials: true
 url_code: 'https://github.com/pablobernabeu/Unlock_the_Lab'
 links:
 - name: Web application

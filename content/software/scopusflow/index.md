@@ -22,6 +22,7 @@ tags:
 abstract: 'Twin R and Python packages for planning, running and documenting reproducible Scopus searches. scopusflow handles quotas and retries, supports resumable retrieval, normalises records, tracks changes in DOI sets, and produces PRISMA-S search records.'
 summary: 'Reproducible, quota-aware Scopus searches in R and Python.'
 featured: no
+open_materials: true
 url_code: https://github.com/pablobernabeu/scopusflow
 links:
   - name: Python code

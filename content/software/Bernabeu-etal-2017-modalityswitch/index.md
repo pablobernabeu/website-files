@@ -46,6 +46,8 @@ tags:
 - HTML
 - CSS
 title: 'Modality switch effects emerge early and increase throughout conceptual processing'
+open_materials: true
+open_data: true
 url_code: 'https://github.com/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing/tree/master/Shiny-app'
 url_data: 'https://github.com/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing/tree/master/Shiny-app'
 url_fulltext: 'https://psyarxiv.com/a5pcz'

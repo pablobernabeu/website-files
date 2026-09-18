@@ -22,6 +22,7 @@ tags:
 abstract: 'Twin R and Python packages for producing consistent, publication-ready statistical graphics from exploratory analysis through model estimates, diagnostics, uncertainty and power. The toolkit includes colourblind-aware palettes and measurable accessibility checks.'
 summary: 'A consistent, accessible visual language for statistical analysis in R and Python.'
 featured: no
+open_materials: true
 url_code: https://github.com/pablobernabeu/depictr
 links:
   - name: R documentation

@@ -44,6 +44,7 @@ tags:
 - R Shiny
 - Flexdashboard
 - software
+open_materials: true
 url_code: 'https://github.com/pablobernabeu/VTT-Transcription-App/blob/main/index.Rmd'
 #url_data: ''
 # url_fulltext: ''

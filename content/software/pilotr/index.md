@@ -22,6 +22,7 @@ tags:
 abstract: 'Twin R and Python packages for simulating experimental and behavioural data from a portable design specification. pilotr supports crossed mixed-effects designs, power and precision analyses, and reproducible generation from the same specification in either language.'
 summary: 'Simulation-based design analysis from a portable R and Python specification.'
 featured: no
+open_materials: true
 url_code: https://github.com/pablobernabeu/pilotr
 links:
   - name: R documentation

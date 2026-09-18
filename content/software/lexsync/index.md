@@ -21,6 +21,7 @@ tags:
 abstract: 'Twin R and Python packages for selecting and matching lexical stimuli, counterbalancing lists, generating pseudowords, and writing PsychoPy, OpenSesame and jsPsych experiments with hardware-timed EEG triggers.'
 summary: 'Lexical stimulus matching and experiment generation in R and Python.'
 featured: no
+open_materials: true
 url_code: https://github.com/pablobernabeu/lexsync
 links:
   - name: R documentation
