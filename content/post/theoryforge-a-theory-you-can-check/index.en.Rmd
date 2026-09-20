@@ -71,7 +71,7 @@ c(id = switching$id,
   predictions = length(switching$predictions))
 ```
 
-### Treat the theory as a checked document
+### Treat the Theory as a Checked Document
 
 Structural validation checks required fields and allowed values. Full validation also follows identifiers across the document, so a prediction cannot claim to derive from a proposition that does not exist.
 
@@ -86,9 +86,9 @@ c(score = check$aggregate_score,
 
 The checklist has 12 items, each tied to a source in the methodological literature. They cover features that make a theory appraisable, such as whether it states what it prohibits, whether its predictions derive from stated propositions, and how precise and risky those predictions are (e.g., Meehl, 1990). The score measures how completely the theory is specified. A well-specified theory can still be wrong, while a promising informal account can score poorly because it is not yet explicit enough to test.
 
-### Read the graph
+### Read the Graph
 
-The theory's propositions form a causal graph. Because the source is structured data, the same graph can be rendered for a reader or exported for another program.
+The theory's propositions form a causal graph. Because the source is structured data, the same graph can be rendered for a reader, as in Figure 1, or exported for another program.
 
 ```{r diagram-helper, include = FALSE}
 mermaid_graph <- function(theory, wrap = 26) {
@@ -128,9 +128,9 @@ statements <- vapply(implications$implications, `[[`, character(1), 'statement')
 
 The graph contains four arrows and entails six testable independencies. These six form a basis set, so every other independence the graph implies follows from them. The most discriminating one is that sensorimotor experience and lexical familiarity should be uncorrelated, because the only path between them is blocked by a collider at conceptual access. An observed correlation between the two, with nothing conditioned on, would count against the graph.
 
-### Give the claims a discriminating test
+### Give the Claims a Discriminating Test
 
-To test these claims, I simulated two data sets of 4,000 observations each. One follows the theory's graph, and the other follows a rival account in which sensorimotor experience also contributes to lexical familiarity, with every other path unchanged. In each data set, I assessed all six independencies with the linear conditional-independence tests in the dagitty package (Textor et al., 2016). The table below shows how the key claim fares in both.
+To test these claims, I simulated two data sets of 4,000 observations each. One follows the theory's graph, and the other follows a rival account in which sensorimotor experience also contributes to lexical familiarity, with every other path unchanged. In each data set, I assessed all six independencies with the linear conditional-independence tests in the dagitty package (Textor et al., 2016). Table 1 shows how the key claim fares in both.
 
 ```{r discriminating-test, echo = FALSE}
 causal_graph <- dagitty::dagitty(tf_diagram(switching, type = 'causal_dag'))
@@ -196,9 +196,9 @@ knitr::kable(caption = 'The Claim That Separates the Two Theories, Tested in Dat
 
 All six implied independencies are compatible with the data generated from the theory. In the data generated from the rival, only the claim shown in the table fails. There, sensorimotor experience and lexical familiarity are substantially correlated, while the estimates for the other five claims stay close to zero. The failure therefore locates the part of the graph that conflicts with the data, a diagnosis that no single global score could give.
 
-### Preserve the result with the theory
+### Preserve the Result With the Theory
 
-The dossier gathers the rigour checklist, the severity of each prediction, the theory's provenance and a preregistration of its hypotheses into one Markdown record. The R and Python packages produce the same dossier for the same theory, so a checksum of that record identifies the audited state of the theory in either language. The summary below repeats the score and gate and shows the first characters of the SHA-256 checksum.
+The dossier gathers the rigour checklist, the severity of each prediction, the theory's provenance and a preregistration of its hypotheses into one Markdown record. The R and Python packages produce the same dossier for the same theory, so a checksum of that record identifies the audited state of the theory in either language. Table 2 repeats the score and gate and shows the first characters of the SHA-256 checksum.
 
 ```{r dossier-summary, echo = FALSE}
 dossier <- tf_dossier(switching)

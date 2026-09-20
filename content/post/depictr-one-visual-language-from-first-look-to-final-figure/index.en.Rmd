@@ -74,9 +74,9 @@ c(participants = length(unique(lexical_decision$participant)),
   trials = nrow(lexical_decision))
 ```
 
-### Begin with the observed distribution
+### Begin With the Observed Distribution
 
-Reaction times are right-skewed, so a mean and a standard deviation do not show the whole pattern. An empirical cumulative distribution avoids a choice of bins and makes the quartiles directly visible.
+Reaction times are right-skewed, so a mean and a standard deviation do not show the whole pattern. An empirical cumulative distribution avoids a choice of bins and makes the quartiles directly visible, as Figure 1 shows.
 
 ```{r distribution, fig.cap = 'Observed Reaction-Time Distributions After Related and Unrelated Primes, With the Quartiles Marked.', fig.alt = 'Empirical cumulative distributions of lexical-decision reaction times for related and unrelated primes, with horizontal guides at the quartiles'}
 ecdf_plot(
@@ -93,9 +93,9 @@ ecdf_plot(
 
 The separation extends well beyond a handful of slow responses. Related trials remain shifted towards shorter reaction times through much of the distribution, which gives a visible empirical context to the model estimates that follow.
 
-### Keep the same language for the model
+### Keep the Same Language for the Model
 
-The model, fitted to correct trials, includes priming condition, presentation modality and word frequency, with crossed random intercepts for participants and items. `coefficient_plot()` reads the fitted object directly and puts the fixed effects on a common scale, expressing each as the change in reaction time per standard deviation of its predictor.
+The model, fitted to correct trials, includes priming condition, presentation modality and word frequency, with crossed random intercepts for participants and items. `coefficient_plot()` reads the fitted object directly and puts the fixed effects on a common scale in Figure 2, expressing each as the change in reaction time per standard deviation of its predictor.
 
 ```{r}
 fit <- lmerTest::lmer(
@@ -130,7 +130,7 @@ coefficient_plot(
 
 The forest plot keeps the colours and typography of the distribution plot, so a reader moving from observations to estimates can concentrate on the result. That continuity is the point of a shared visual language, since nothing in the second figure has to be learned again.
 
-### Audit the figure that will be published
+### Audit the Figure That Will Be Published
 
 A colourblind-safe palette does not guarantee an accessible figure. Contrast against the background and the use of a second visual channel depend on the particular plot. The package therefore audits the whole built plot, including its palette.
 
@@ -148,7 +148,7 @@ first_draft <- explore_distribution(
 check_figure(first_draft)
 ```
 
-The default density plot fails two checks. Its orange falls below the package's contrast threshold for graphical elements on a white panel, and colour is the only channel separating the conditions. The corrected plot replaces the orange with a darker vermilion and adds line type as a second channel. Both checks then pass, and neither change touches the data or the statistical display.
+The default density plot fails two checks. Its orange falls below the package's contrast threshold for graphical elements on a white panel, and colour is the only channel separating the conditions. The corrected plot in Figure 3 replaces the orange with a darker vermilion and adds line type as a second channel. Both checks then pass, and neither change touches the data or the statistical display.
 
 ```{r audited-figure, fig.cap = 'The Corrected Figure, in Which Colour and Line Type Both Separate the Priming Conditions.', fig.alt = 'Corrected density curves of reaction times for related and unrelated primes, distinguished by both colour and line type'}
 final_figure <- explore_distribution(

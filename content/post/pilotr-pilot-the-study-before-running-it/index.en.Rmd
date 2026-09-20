@@ -79,7 +79,7 @@ I built [pilotr](/software/pilotr/) (Bernabeu, 2026) to make the assumptions beh
 
 The example moves from a transparent design specification to simulated observations and then to a set of planning diagnostics. Each analysis uses only twelve replicates, which keeps the code quick to run. The results therefore show the shape of each diagnostic and the quantity to read from it, but they cannot settle a sample size.
 
-### A study that does not exist yet
+### A Study That Does Not Exist Yet
 
 The imagined experiment is a lexical-decision task. Every participant sees every target word after both a related and an unrelated prime. Reaction times follow a shifted lognormal distribution, and the model includes item frequency, participant vocabulary, and an interaction between vocabulary and priming. The main assumptions are set out in Table 1.
 
@@ -130,9 +130,9 @@ The specification determines the analysis formula as well as the data generator.
 model_formula(spec)
 ```
 
-### Looking at the imagined data
+### Looking at the Imagined Data
 
-A single simulated data set is useful before any power calculation (DeBruine & Barr, 2021). It shows whether the assumptions produce recognisable observations. The simulated reaction times are right-skewed, as intended, and unrelated primes shift the distribution slightly to the right.
+A single simulated data set is useful before any power calculation (DeBruine & Barr, 2021). It shows whether the assumptions produce recognisable observations. In Figure 1 the simulated reaction times are right-skewed, as intended, and unrelated primes shift the distribution slightly to the right.
 
 ```{r simulate-data}
 pilot <- simulate_design(spec)
@@ -170,7 +170,7 @@ ggplot(pilot, aes(RT, fill = prime)) +
   blog_theme
 ```
 
-The average priming effect is only part of the picture. The specification gives participants and items their own priming slopes, and trial-level noise adds to that variation, so some show a much larger difference than others. In about a third of each set, the difference runs the other way.
+The average priming effect is only part of the picture. The specification gives participants and items their own priming slopes, and trial-level noise adds to that variation, so some show a much larger difference than others. Figure 2 gives each unit its own row, and in about a third of each set the difference runs the other way.
 
 ```{r unit-effects, fig.height = 4.4, fig.cap = 'Simulated Priming Effects for Each Item and Each Participant.', fig.alt = 'Dot plots of simulated priming effects for each item and participant, sorted within two panels and spread around zero'}
 unit_effects <- function(unit) {
@@ -199,7 +199,7 @@ ggplot(effects, aes(effect_ms, id, colour = unit)) +
         panel.spacing.x = unit(1.5, 'lines'))
 ```
 
-### Detection is not estimation
+### Detection Is Not Estimation
 
 The first design analysis simulates the study repeatedly, fits the mixed model to each simulated data set, and records conventional power and the number of singular fits. It also reports Type S error, the chance that a significant estimate has the wrong sign, and Type M error, the factor by which significant estimates exaggerate the true effect (Gelman & Carlin, 2014).
 
@@ -208,7 +208,7 @@ power_at_plan <- power_mixed(spec, n_sims = n_sims, workers = workers)
 power_at_plan
 ```
 
-With twelve replicates, one simulated success moves a power figure by more than eight percentage points. A planning run would use the same code with several hundred replicates, enough to bring the Monte Carlo standard error in the `mcse` column down to an acceptable level. The power curve below comes from repeating the analysis at six sample sizes, from 16 to 96 participants.
+With twelve replicates, one simulated success moves a power figure by more than eight percentage points. A planning run would use the same code with several hundred replicates, enough to bring the Monte Carlo standard error in the `mcse` column down to an acceptable level. The power curve in Figure 3 comes from repeating the analysis at six sample sizes, from 16 to 96 participants.
 
 ```{r power-curve-data}
 power_curve <- power_curve_mixed(
@@ -234,7 +234,7 @@ ggplot(priming_curve, aes(n_subject, power)) +
   blog_theme
 ```
 
-Power asks whether an effect would clear a threshold. I also want to know whether its interval would exclude effects too small to matter. With a region of practical equivalence (ROPE; Kruschke, 2018) of plus or minus 0.02 on the log scale, about 8 ms here, precision becomes a separate design criterion. Across samples of 16 to 200 participants, the left panel below shows how often the 95% confidence interval excludes the ROPE and the right panel shows the interval's mean width. The dashed line in the right panel marks a width of 0.06, below which an interval centred on the true effect of 0.05 would exclude the ROPE.
+Power asks whether an effect would clear a threshold. I also want to know whether its interval would exclude effects too small to matter. With a region of practical equivalence (ROPE; Kruschke, 2018) of plus or minus 0.02 on the log scale, about 8 ms here, precision becomes a separate design criterion. Across samples of 16 to 200 participants, the left panel of Figure 4 shows how often the 95% confidence interval excludes the ROPE and the right panel shows the interval's mean width. The dashed line in the right panel marks a width of 0.06, below which an interval centred on the true effect of 0.05 would exclude the ROPE.
 
 ```{r precision-data}
 precision <- precision_curve(
@@ -277,9 +277,9 @@ patchwork::wrap_plots(p_probability, p_width) +
   patchwork::plot_layout(axis_titles = 'collect')
 ```
 
-### The significant estimates are the misleading ones
+### The Significant Estimates Are the Misleading Ones
 
-A low-powered study misses real effects, and it also distorts the ones it finds. When power is low, only unusually large estimates pass the significance threshold, so significance selects for exaggeration. To see that selection directly, I varied the true effect with 30 participants and set the result beside the sample-size curve from above, in which the effect stays at 0.05.
+A low-powered study misses real effects, and it also distorts the ones it finds. When power is low, only unusually large estimates pass the significance threshold, so significance selects for exaggeration. To see that selection directly, I varied the true effect with 30 participants and set the result, in Figure 5, beside the sample-size curve from above, in which the effect stays at 0.05.
 
 ```{r type-m-data}
 effect_grid <- design_conditions(

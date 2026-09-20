@@ -68,7 +68,7 @@ schema <- yaml::read_yaml(schema_path)
 lexicon <- load_lexicon(lexicon_path, schema, language = 'english')
 ```
 
-### Put the design in data
+### Put the Design in Data
 
 The design below asks for 40 words in each frequency condition, matched on length, neighbourhood density and OLD20. Those three controls and frequency itself are then balanced across two presentation lists. Frequency is expressed on the Zipf scale (van Heuven et al., 2014), and OLD20 measures orthographic similarity as the mean edit distance between a word and its 20 nearest neighbours (Yarkoni et al., 2008).
 
@@ -102,7 +102,7 @@ candidate_counts
 
 The high-frequency band is the smaller candidate set, so it limits both the number and the quality of possible matches. Counting the candidates before matching shows whether a later shortfall stems from the size of this pool.
 
-### Select and check the words
+### Select and Check the Words
 
 `match_stimuli()` spreads anchor words across the smaller frequency band and finds nearby words from the other condition in the standardised space of the control variables. Standardising first means that a given distance counts the same whichever control it falls on.
 
@@ -112,7 +112,7 @@ head(stimuli[, c('set', 'condition', 'word', 'frequency', 'length',
                   'n_density', 'old20')])
 ```
 
-The report treats matching as a claim of equivalence. For each control, it gives Cohen's $d$ with a 90% confidence interval and applies the two one-sided tests (TOST) procedure against the schema's bound of half a standard deviation (Lakens, 2017). The frequency row reflects the intended manipulation, so the figure leaves it out.
+The report treats matching as a claim of equivalence. For each control, it gives Cohen's $d$ with a 90% confidence interval and applies the two one-sided tests (TOST) procedure against the schema's bound of half a standard deviation (Lakens, 2017). The frequency row reflects the intended manipulation, so Figure 1 leaves it out.
 
 ```{r}
 report <- match_report(
@@ -159,7 +159,7 @@ ggplot(controls, aes(cohens_d, dimension)) +
 
 The intervals deserve more attention than the point estimates, because they carry the uncertainty. With few items per condition, an estimate near zero can still be too imprecise to support a claim of equivalence.
 
-### Carry the items into the experiment
+### Carry the Items Into the Experiment
 
 The design also describes each trial, which presents a fixation cross, the word with a condition trigger locked to its onset, a response window and a blank interval of jittered length. The jitter is derived from a keyed hash of the design and seed, so rebuilding the experiment reproduces the same timing.
 

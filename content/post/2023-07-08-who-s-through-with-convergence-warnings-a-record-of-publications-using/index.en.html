@@ -164,7 +164,7 @@ ggplot(per_year, aes(year, n)) +
 Figure 1: Publications per Year Whose Full Text Mentions allFit, According to Europe PMC and OpenAlex. The bar for the current year stops at the date of the search.
 </p>
 </div>
-<p>The table below lists the same publications, most recent first, with the sources in which each was found. Authors are given as the sources returned them. The two sources overlap in a minority of records, which says as much about their coverage as about the literature.</p>
+<p>Table 1 lists the same publications, most recent first, with the sources in which each was found. Authors are given as the sources returned them. The two sources overlap in a minority of records, which says as much about their coverage as about the literature.</p>
 <pre class="r"><code>short_authors &lt;- function(a) {
   a &lt;- ifelse(is.na(a), &#39;&#39;, a)
   first &lt;- sub(&#39;[;,].*$&#39;, &#39;&#39;, a)
@@ -810,7 +810,7 @@ used_allfit |&gt;
 </tr>
 </tbody>
 </table>
-<p>The only hit of the proxy query, listed below, is an erratum notice that carries the abstract of the original article. A wider proxy query would be a reasonable place to look for further precedents, since studies that compared optimisers rarely name the function in a field that Scopus indexes.</p>
+<p>The only hit of the proxy query, in Table 2, is an erratum notice that carries the abstract of the original article. A wider proxy query would be a reasonable place to look for further precedents, since studies that compared optimisers rarely name the function in a field that Scopus indexes.</p>
 <pre class="r"><code>records |&gt;
   filter(source == &#39;Scopus, convergence proxy&#39;) |&gt;
   transmute(Year = year, Authors = short_authors(authors), Title = title, Venue = venue,

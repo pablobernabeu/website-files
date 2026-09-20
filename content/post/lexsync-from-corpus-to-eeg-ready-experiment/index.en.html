@@ -59,7 +59,7 @@ lexicon_path &lt;- system.file(&#39;extdata&#39;, &#39;en_example.csv&#39;, pack
 schema &lt;- yaml::read_yaml(schema_path)
 lexicon &lt;- load_lexicon(lexicon_path, schema, language = &#39;english&#39;)</code></pre>
 <div id="put-the-design-in-data" class="section level3">
-<h3>Put the design in data</h3>
+<h3>Put the Design in Data</h3>
 <p>The design below asks for 40 words in each frequency condition, matched on length, neighbourhood density and OLD20. Those three controls and frequency itself are then balanced across two presentation lists. Frequency is expressed on the Zipf scale (van Heuven et al., 2014), and OLD20 measures orthographic similarity as the mean edit distance between a word and its 20 nearest neighbours (Yarkoni et al., 2008).</p>
 <pre class="r"><code>design &lt;- list(
   name = &#39;frequency_eeg&#39;,
@@ -91,7 +91,7 @@ candidate_counts</code></pre>
 <p>The high-frequency band is the smaller candidate set, so it limits both the number and the quality of possible matches. Counting the candidates before matching shows whether a later shortfall stems from the size of this pool.</p>
 </div>
 <div id="select-and-check-the-words" class="section level3">
-<h3>Select and check the words</h3>
+<h3>Select and Check the Words</h3>
 <p><code>match_stimuli()</code> spreads anchor words across the smaller frequency band and finds nearby words from the other condition in the standardised space of the control variables. Standardising first means that a given distance counts the same whichever control it falls on.</p>
 <pre class="r"><code>stimuli &lt;- match_stimuli(pool, design, schema)
 head(stimuli[, c(&#39;set&#39;, &#39;condition&#39;, &#39;word&#39;, &#39;frequency&#39;, &#39;length&#39;,
@@ -103,7 +103,7 @@ head(stimuli[, c(&#39;set&#39;, &#39;condition&#39;, &#39;word&#39;, &#39;freque
 #&gt; 4   4 high_frequency  points      5.23      6         5  1.65
 #&gt; 5   5 high_frequency running      5.23      7         3  1.80
 #&gt; 6   6 high_frequency    term      5.23      4         4  1.65</code></pre>
-<p>The report treats matching as a claim of equivalence. For each control, it gives Cohen’s <span class="math inline">\(d\)</span> with a 90% confidence interval and applies the two one-sided tests (TOST) procedure against the schema’s bound of half a standard deviation (Lakens, 2017). The frequency row reflects the intended manipulation, so the figure leaves it out.</p>
+<p>The report treats matching as a claim of equivalence. For each control, it gives Cohen’s <span class="math inline">\(d\)</span> with a 90% confidence interval and applies the two one-sided tests (TOST) procedure against the schema’s bound of half a standard deviation (Lakens, 2017). The frequency row reflects the intended manipulation, so Figure 1 leaves it out.</p>
 <pre class="r"><code>report &lt;- match_report(
   stimuli,
   c(&#39;frequency&#39;, &#39;length&#39;, &#39;n_density&#39;, &#39;old20&#39;),
@@ -160,7 +160,7 @@ Figure 1: Realised Balance Between the Frequency Conditions on Each Control Vari
 <p>The intervals deserve more attention than the point estimates, because they carry the uncertainty. With few items per condition, an estimate near zero can still be too imprecise to support a claim of equivalence.</p>
 </div>
 <div id="carry-the-items-into-the-experiment" class="section level3">
-<h3>Carry the items into the experiment</h3>
+<h3>Carry the Items Into the Experiment</h3>
 <p>The design also describes each trial, which presents a fixation cross, the word with a condition trigger locked to its onset, a response window and a blank interval of jittered length. The jitter is derived from a keyed hash of the design and seed, so rebuilding the experiment reproduces the same timing.</p>
 <pre class="r"><code>design$events &lt;- list(
   list(type = &#39;fixation&#39;, content = &#39;+&#39;, duration_ms = 500),

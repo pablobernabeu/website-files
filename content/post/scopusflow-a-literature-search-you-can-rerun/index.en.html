@@ -54,7 +54,7 @@ projects: []
 packageVersion(&#39;scopusflow&#39;)</code></pre>
 <pre><code>#&gt; [1] &#39;0.4.0&#39;</code></pre>
 <div id="describe-the-search-first" class="section level3">
-<h3>Describe the search first</h3>
+<h3>Describe the Search First</h3>
 <p>The bundled example concerns research on graphene supercapacitors. <code>scopus_query()</code> adds the field syntax, and <code>scopus_plan()</code> divides the search into yearly cells. The plan can be inspected and saved before any quota is spent.</p>
 <pre class="r"><code>query &lt;- scopus_query(&#39;graphene supercapacitor&#39;, .field = &#39;TITLE-ABS-KEY&#39;)
 plan &lt;- scopus_plan(query, years = 2015:2024, partition = &#39;year&#39;)
@@ -80,7 +80,7 @@ query</code></pre>
 <pre><code>#&gt; The search described here has not been run. The search expression is TITLE-ABS-KEY(graphene supercapacitor), limited to publication years 2015 to 2024. It would be partitioned into 10 cells, one per year, each retrieved through the STANDARD view in pages of 200 records, under a paging mode chosen when the search is run. The PRISMA-S items this record cannot supply, among them peer review of the strategy, grey literature and any other database searched, remain yours to report.</code></pre>
 </div>
 <div id="resume-from-the-last-completed-cell" class="section level3">
-<h3>Resume from the last completed cell</h3>
+<h3>Resume From the Last Completed Cell</h3>
 <p>The bundled corpus now stands in for the result of that plan. The cache starts empty, so every yearly cell has to be requested.</p>
 <pre class="r"><code>source(&#39;stand_in.R&#39;)
 stand_in &lt;- scopus_stand_in(example_records)
@@ -107,8 +107,8 @@ c(records = nrow(repeated),
 <p>The practical benefit is clearest after an interruption, since the completed cells are kept. Each checkpoint also stores the query, year, view and page size it was fetched under, which prevents an incompatible plan from silently reusing it.</p>
 </div>
 <div id="inspect-the-result" class="section level3">
-<h3>Inspect the result</h3>
-<p>The records carry their plan, retrieval time and package version, along with the count for each cell. That provenance later helps to tell a change in the literature apart from a change in the method. The plot below counts the bundled records for each year.</p>
+<h3>Inspect the Result</h3>
+<p>The records carry their plan, retrieval time and package version, along with the count for each cell. That provenance later helps to tell a change in the literature apart from a change in the method. Figure 1 counts the bundled records for each year.</p>
 <pre class="r"><code>httr2::with_mocked_responses(stand_in$handler, {
   trend &lt;- scopus_trend(&#39;graphene supercapacitor&#39;, years = 2015:2024,
                         field = &#39;TITLE-ABS-KEY&#39;)
@@ -151,8 +151,8 @@ changes</code></pre>
 #&gt; # ℹ 117 more rows</code></pre>
 </div>
 <div id="let-the-result-write-the-record" class="section level3">
-<h3>Let the result write the record</h3>
-<p>The search record is generated from the object that holds the publications. It reports what the software knows and identifies the PRISMA-S items that still require the review authors’ judgement, such as citation searching or peer review of the search strategy. As this run never reached Scopus, the summary below leaves out the database, platform and retrieval date that a live report would include.</p>
+<h3>Let the Result Write the Record</h3>
+<p>The search record in Table 1 is generated from the object that holds the publications. It reports what the software knows and identifies the PRISMA-S items that still require the review authors’ judgement, such as citation searching or peer review of the search strategy. As this run never reached Scopus, the summary below leaves out the database, platform and retrieval date that a live report would include.</p>
 <table>
 <caption><span id="tab:report-summary">Table 1: </span>What the Search Retrieved, as the PRISMA-S Record Reports It.</caption>
 <thead>

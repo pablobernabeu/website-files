@@ -61,7 +61,7 @@ library(scopusflow)
 packageVersion('scopusflow')
 ```
 
-### Describe the search first
+### Describe the Search First
 
 The bundled example concerns research on graphene supercapacitors. `scopus_query()` adds the field syntax, and `scopus_plan()` divides the search into yearly cells. The plan can be inspected and saved before any quota is spent.
 
@@ -78,7 +78,7 @@ The plan already yields a draft methods description, written to PRISMA-S, the ex
 cat(format(scopus_search_report(plan), style = 'paragraph'))
 ```
 
-### Resume from the last completed cell
+### Resume From the Last Completed Cell
 
 The bundled corpus now stands in for the result of that plan. The cache starts empty, so every yearly cell has to be requested.
 
@@ -109,9 +109,9 @@ c(records = nrow(repeated),
 
 The practical benefit is clearest after an interruption, since the completed cells are kept. Each checkpoint also stores the query, year, view and page size it was fetched under, which prevents an incompatible plan from silently reusing it.
 
-### Inspect the result
+### Inspect the Result
 
-The records carry their plan, retrieval time and package version, along with the count for each cell. That provenance later helps to tell a change in the literature apart from a change in the method. The plot below counts the bundled records for each year.
+The records carry their plan, retrieval time and package version, along with the count for each cell. That provenance later helps to tell a change in the literature apart from a change in the method. Figure 1 counts the bundled records for each year.
 
 ```{r records-per-year, fig.width = 7.5, fig.height = 4.2, fig.cap = 'Offline OpenAlex-Derived Demonstration Records, 2015 to 2024, From the Corpus Bundled With the Package. The counts show the workflow and say nothing about the Scopus literature on the topic.', fig.alt = 'Line chart showing the number of graphene-supercapacitor records in the bundled corpus for each year from 2015 to 2024'}
 httr2::with_mocked_responses(stand_in$handler, {
@@ -139,9 +139,9 @@ changes <- scopus_diff_dois(old = baseline, new = records)
 changes
 ```
 
-### Let the result write the record
+### Let the Result Write the Record
 
-The search record is generated from the object that holds the publications. It reports what the software knows and identifies the PRISMA-S items that still require the review authors' judgement, such as citation searching or peer review of the search strategy. As this run never reached Scopus, the summary below leaves out the database, platform and retrieval date that a live report would include.
+The search record in Table 1 is generated from the object that holds the publications. It reports what the software knows and identifies the PRISMA-S items that still require the review authors' judgement, such as citation searching or peer review of the search strategy. As this run never reached Scopus, the summary below leaves out the database, platform and retrieval date that a live report would include.
 
 ```{r report-summary, echo = FALSE}
 report <- scopus_search_report(records)

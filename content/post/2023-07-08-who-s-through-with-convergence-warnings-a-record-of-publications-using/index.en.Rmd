@@ -162,7 +162,7 @@ ggplot(per_year, aes(year, n)) +
         axis.text.y = element_blank(), panel.grid = element_blank())
 ```
 
-The table below lists the same publications, most recent first, with the sources in which each was found. Authors are given as the sources returned them. The two sources overlap in a minority of records, which says as much about their coverage as about the literature.
+Table 1 lists the same publications, most recent first, with the sources in which each was found. Authors are given as the sources returned them. The two sources overlap in a minority of records, which says as much about their coverage as about the literature.
 
 ```{r publications-table}
 short_authors <- function(a) {
@@ -181,7 +181,7 @@ used_allfit |>
   knitr::kable(caption = 'Candidate Publications Whose Full Text Mentions allFit, Most Recent First, With the Source in Which Each Was Found.')
 ```
 
-The only hit of the proxy query, listed below, is an erratum notice that carries the abstract of the original article. A wider proxy query would be a reasonable place to look for further precedents, since studies that compared optimisers rarely name the function in a field that Scopus indexes.
+The only hit of the proxy query, in Table 2, is an erratum notice that carries the abstract of the original article. A wider proxy query would be a reasonable place to look for further precedents, since studies that compared optimisers rarely name the function in a field that Scopus indexes.
 
 ```{r proxy-table}
 records |>
