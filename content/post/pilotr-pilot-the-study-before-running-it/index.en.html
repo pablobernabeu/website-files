@@ -2,13 +2,17 @@
 title: 'pilotr: Pilot the study before running it'
 author: ''
 date: '2026-09-01'
+apa_captions: true
 slug: pilotr-pilot-the-study-before-running-it
 code_folding: hide
+editable_r: true
 categories:
+  - R
   - statistics
   - research methods
 tags:
   - s
+  - R
   - power analysis
   - simulation
   - linear mixed-effects models
@@ -26,6 +30,13 @@ image:
   caption: ''
   focal_point: ''
   preview_only: no
+package_docs:
+  - name: R documentation
+    url: https://pablobernabeu.github.io/pilotr/r/
+  - name: Python documentation
+    url: https://pablobernabeu.github.io/pilotr/python/
+  - name: Browser app
+    url: https://pablobernabeu.github.io/pilotr/app/
 projects: []
 ---
 
@@ -35,11 +46,8 @@ projects: []
 <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
 
 
-<div id="introduction" class="section level2">
-<h2>Introduction</h2>
 <p>Power calculations can feel reassuringly final. Choose an effect, enter a sample size and read off a percentage. That simplicity disappears in experiments where participants respond to many items. Participants and items both vary, their responses are crossed, and the model usually needs random slopes as well as random intercepts. The design has become too structured for a single formula.</p>
 <p>I built <a href="/software/pilotr/">pilotr</a> (Bernabeu, 2026) to make the assumptions behind such a design visible before data collection. It stores a proposed study as a portable specification, simulates the observations that the specification implies and fits the planned analysis to them repeatedly. The R and Python packages read the same specification and generate the same data from the same seed. Below, I apply it to a semantic-priming study with 30 participants and 24 items to show what a design analysis has to weigh besides power.</p>
-</div>
 <div id="development" class="section level2">
 <h2>Development</h2>
 <p>The example moves from a transparent design specification to simulated observations and then to a set of planning diagnostics. Each analysis uses only twelve replicates, which keeps the code quick to run. The results therefore show the shape of each diagnostic and the quantity to read from it, but they cannot settle a sample size.</p>
@@ -48,36 +56,37 @@ projects: []
 <p>The imagined experiment is a lexical-decision task. Every participant sees every target word after both a related and an unrelated prime. Reaction times follow a shifted lognormal distribution, and the model includes item frequency, participant vocabulary, and an interaction between vocabulary and priming.</p>
 <p>The main assumptions are set out below.</p>
 <table>
+<caption><span id="tab:design-assumptions">Table 1: </span>The Assumptions Behind the Imagined Study.</caption>
 <thead>
 <tr class="header">
-<th>Part of the design</th>
-<th>Assumption</th>
+<th align="left">Part of the design</th>
+<th align="left">Assumption</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Participants</td>
-<td>30</td>
+<td align="left">Participants</td>
+<td align="left">30</td>
 </tr>
 <tr class="even">
-<td>Items</td>
-<td>24</td>
+<td align="left">Items</td>
+<td align="left">24</td>
 </tr>
 <tr class="odd">
-<td>Priming effect</td>
-<td>0.05 on the log scale, about 20 ms</td>
+<td align="left">Priming effect</td>
+<td align="left">0.05 on the log scale, about 20 ms</td>
 </tr>
 <tr class="even">
-<td>Participant variation</td>
-<td>Random intercept and priming slope</td>
+<td align="left">Participant variation</td>
+<td align="left">Random intercept and priming slope</td>
 </tr>
 <tr class="odd">
-<td>Item variation</td>
-<td>Random intercept and priming slope</td>
+<td align="left">Item variation</td>
+<td align="left">Random intercept and priming slope</td>
 </tr>
 <tr class="even">
-<td>Response</td>
-<td>Shifted lognormal reaction time</td>
+<td align="left">Response</td>
+<td align="left">Shifted lognormal reaction time</td>
 </tr>
 </tbody>
 </table>
@@ -89,9 +98,19 @@ projects: []
 <div id="looking-at-the-imagined-data" class="section level3">
 <h3>Looking at the imagined data</h3>
 <p>A single simulated data set is useful before any power calculation (DeBruine &amp; Barr, 2021). It shows whether the assumptions produce recognisable observations. The simulated reaction times are right-skewed, as intended, and unrelated primes shift the distribution slightly to the right.</p>
-<p><img src="{{< blogdown/postref >}}index.en_files/figure-html/response-distribution-1.png" alt="Overlapping density curves of simulated reaction times for related and unrelated primes, with the unrelated distribution shifted slightly to the right" width="100%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:response-distribution"></span>
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/response-distribution-1.png" alt="Overlapping density curves of simulated reaction times for related and unrelated primes, with the unrelated distribution shifted slightly to the right" width="100%" />
+<p class="caption">
+Figure 1: Simulated Reaction Times After Related and Unrelated Primes.
+</p>
+</div>
 <p>The average priming effect is only part of the picture. The specification gives participants and items their own priming slopes, and trial-level noise adds to that variation, so some show a much larger difference than others. In about a third of each set, the difference runs the other way.</p>
-<p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unit-effects-1.png" alt="Dot plots of simulated priming effects for each item and participant, sorted within two panels and spread around zero" width="100%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unit-effects"></span>
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/unit-effects-1.png" alt="Dot plots of simulated priming effects for each item and participant, sorted within two panels and spread around zero" width="100%" />
+<p class="caption">
+Figure 2: Simulated Priming Effects for Each Item and Each Participant.
+</p>
+</div>
 </div>
 <div id="detection-is-not-estimation" class="section level3">
 <h3>Detection is not estimation</h3>
@@ -107,15 +126,30 @@ power_at_plan</code></pre>
 #&gt;        z_vocab -0.02 0.000 0.000 [0.000, 0.242]     0     NA     NA
 #&gt;  prime_z_vocab  0.02 0.167 0.108 [0.047, 0.448]     2      0  2.016</code></pre>
 <p>With twelve replicates, one simulated success moves a power figure by more than eight percentage points. A planning run would use the same code with several hundred replicates, enough to bring the Monte Carlo standard error in the <code>mcse</code> column down to an acceptable level. The power curve below comes from repeating the analysis at six sample sizes, from 16 to 96 participants.</p>
-<p><img src="{{< blogdown/postref >}}index.en_files/figure-html/power-curve-1.png" alt="Illustrative power estimates for the priming effect across sample sizes, with an 80 percent reference line" width="100%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:power-curve"></span>
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/power-curve-1.png" alt="Illustrative power estimates for the priming effect across sample sizes, with an 80 percent reference line" width="100%" />
+<p class="caption">
+Figure 3: Detection Probability for the Priming Effect Across Participant Counts. 12 replicates per design. All simulated designs contain 24 items.
+</p>
+</div>
 <p>Power asks whether an effect would clear a threshold. I also want to know whether its interval would exclude effects too small to matter. With a region of practical equivalence (ROPE; Kruschke, 2018) of plus or minus 0.02 on the log scale, about 8 ms here, precision becomes a separate design criterion. Across samples of 16 to 200 participants, the left panel below shows how often the 95% confidence interval excludes the ROPE and the right panel shows the interval’s mean width. The dashed line in the right panel marks a width of 0.06, below which an interval centred on the true effect of 0.05 would exclude the ROPE.</p>
-<p><img src="{{< blogdown/postref >}}index.en_files/figure-html/precision-curve-1.png" alt="Two panels of illustrative estimates showing the probability that an interval excludes negligible effects and its mean width as the number of participants increases" width="100%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:precision-curve"></span>
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/precision-curve-1.png" alt="Two panels of illustrative estimates showing the probability that an interval excludes negligible effects and its mean width as the number of participants increases" width="100%" />
+<p class="caption">
+Figure 4: Precision, as the Probability That an Interval Excludes a Negligible Effect and as the Mean Width of That Interval, Across Participant Counts. 12 replicates per design. All simulated designs contain 24 items.
+</p>
+</div>
 </div>
 <div id="the-significant-estimates-are-the-misleading-ones" class="section level3">
 <h3>The significant estimates are the misleading ones</h3>
 <p>A low-powered study misses real effects, and it also distorts the ones it finds. When power is low, only unusually large estimates pass the significance threshold, so significance selects for exaggeration. To see that selection directly, I varied the true effect with 30 participants and set the result beside the sample-size curve from above, in which the effect stays at 0.05.</p>
-<p><img src="{{< blogdown/postref >}}index.en_files/figure-html/type-m-plot-1.png" alt="Type M error falls towards one as power increases in both an effect-size sweep and a sample-size curve" width="100%" style="display: block; margin: auto;" /></p>
-<p>Type M error falls towards 1 as power rises in both series. Together, these diagnostics cover what a planning run has to examine: detection, precision, magnitude error and singular fits. The frequent singular fits in this example call for a second look at the random-effects structure before anyone is recruited. Keeping that structure maximal protects the Type I error rate (Barr et al., 2013), and trimming it when the data cannot support it protects power (Matuschek et al., 2017). A planning run lets me weigh that trade-off while the design can still change.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:type-m-plot"></span>
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/type-m-plot-1.png" alt="Type M error falls from about 1.4 and 1.2 at low power to about 1 at high power in both an effect-size sweep and a sample-size curve, crossing slightly below the no-exaggeration line" width="100%" />
+<p class="caption">
+Figure 5: Magnitude Exaggeration Among the Statistically Significant Estimates, Against Power. 12 replicates per design.
+</p>
+</div>
+<p>Type M error falls as power rises in both series, from about 1.2 and 1.4 at the lowest power to roughly 1 at the highest. With twelve replicates it also wanders below 1, which a planning run with several hundred replicates would not. Together, these diagnostics cover what a planning run has to examine: detection, precision, magnitude error and singular fits. The frequent singular fits in this example call for a second look at the random-effects structure before anyone is recruited. Keeping that structure maximal protects the Type I error rate (Barr et al., 2013), and trimming it when the data cannot support it protects power (Matuschek et al., 2017). A planning run lets me weigh that trade-off while the design can still change.</p>
 </div>
 </div>
 <div id="discussion" class="section level2">

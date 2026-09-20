@@ -1,0 +1,38 @@
+{{- /* A row of buttons at the foot of a package page or its companion post,
+       pointing at the package's own documentation sites. Driven by the
+       package_docs list in front matter, so the ten pages that need it do not
+       each carry a copy of the markup, and so a post's .Rmd and its knitted
+       .html cannot drift apart in the body.
+
+       The anchors carry the same Bootstrap classes as the buttons that
+       page_links.html renders at the head of a page, and the wrapper carries
+       btn-links as well, which is where their fill, border and hover colours
+       come from: custom.scss keys those on `.btn-links a`, so without the
+       class the row would render as a bare Bootstrap outline button and look
+       like nothing else on the site. The wrapper is the theme's own
+       article-widget, so the row sits under the same rule the page footer's
+       widgets use.
+
+       An entry missing a name or a url is skipped with a build warning rather
+       than rendered as an empty button, and the wrapper is not opened at all
+       when nothing survives, so a page cannot show a labelled but empty row.
+
+       The whitespace between two anchors is load-bearing: minify keeps one
+       character of it, and it is the only point at which the row can wrap.
+       Do not trim the end below. */ -}}
+{{- $valid := slice }}
+{{- range .Params.package_docs }}
+  {{- if and (.url | default "") (.name | default "") }}
+    {{- $valid = $valid | append . }}
+  {{- else }}
+    {{- warnf "%s: a package_docs entry lacks a name or a url; skipping it" $.File.Path }}
+  {{- end }}
+{{- end }}
+{{- with $valid }}
+<div class="article-widget content-widget-hr btn-links package-docs-links">
+  <h3>Documentation</h3>
+  {{- range . }}
+  <a class="btn btn-outline-primary my-1 mr-1" href="{{ .url | safeURL }}">{{ .name }}</a>
+  {{ end }}
+</div>
+{{- end -}}

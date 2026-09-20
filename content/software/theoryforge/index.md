@@ -1,12 +1,15 @@
 ---
 title: "theoryforge: Systematic theory development"
 type: software
-software_kind: package
+software_kind:
+  - package
+  - web-application
 aliases:
   - '/publication/theoryforge/'
 authors:
   - 'Bernabeu, P.'
 date: '2026-09-01'
+apa_captions: true
 slug: theoryforge
 publication: 'Version 0.6.0 [Computer software]. CRAN'
 doi: 10.32614/CRAN.package.theoryforge
@@ -37,6 +40,13 @@ links:
     url: https://pypi.org/project/theoryforge/
   - name: Blog post
     url: /2026/theoryforge-a-theory-you-can-check/
+package_docs:
+  - name: R documentation
+    url: https://pablobernabeu.github.io/theoryforge/r/
+  - name: Python documentation
+    url: https://pablobernabeu.github.io/theoryforge/python/
+  - name: Browser apps
+    url: https://pablobernabeu.github.io/theoryforge/
 image:
   caption: ''
   focal_point: 'Center'
@@ -48,13 +58,9 @@ projects: []
 
 theoryforge (Bernabeu, 2026) represents a scientific theory as a versioned, machine-checkable document. Constructs, propositions, predictions, alternatives and provenance are linked by identifiers, so the package can validate the specification, derive implications, compare amendments and export a reviewable dossier. The checks assess the completeness and internal coherence of a specification, which is a separate matter from whether the theory is true.
 
-## Illustrative workflow
-
-The diagram below traces the path from a theory file to a discriminating test, through validation, derived implications and a comparison with a rival theory.
-
 <figure>
 <img src="images/theoryforge-workflow.svg" alt="Workflow diagram: a structured theory file is validated, used to derive testable implications, compared with a rival theory and preserved as a versioned dossier" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
-<figcaption>From structured claims to an auditable theory dossier.</figcaption>
+<figcaption>The Dashed Return Path Carries an Amended Theory Back Through the Same Checks That the First Version Passed.</figcaption>
 </figure>
 
 ## Reproducible theory development

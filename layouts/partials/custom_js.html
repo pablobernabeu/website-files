@@ -52,3 +52,15 @@ document.addEventListener('DOMContentLoaded', function() {
 {{ with .Resources.GetMatch "related-references.html" }}
 <script src="{{ "js/related-references.js" | relURL }}" defer></script>
 {{ end }}
+
+<!-- APA 7 captions: the number and title move above the figure or table and
+     the note stays below it. Only where the front matter asks for it. -->
+{{ if .Params.apa_captions }}
+<script src="{{ "js/apa-captions.js" | relURL }}" defer></script>
+{{ end }}
+
+<!-- Editable R chunks. Deferred, so it runs after the theme bundle has moved
+     every classed <pre> inside its generated <details>. -->
+{{ if .Params.editable_r }}
+<script src="{{ "js/editable-r.js" | relURL }}" defer></script>
+{{ end }}

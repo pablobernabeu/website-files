@@ -40,3 +40,6 @@ content/software/**/date and time of previous retrieval of DOIs.txt
 .DS_Store
 Thumbs.db
 content/authors/admin/_index-PabloBernabeu.md
+# Claude Code working directory. Holds machine-specific paths and, under
+# worktrees/, whole checkouts of this repository.
+.claude/

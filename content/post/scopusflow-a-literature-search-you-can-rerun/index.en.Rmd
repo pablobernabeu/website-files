@@ -2,13 +2,17 @@
 title: 'scopusflow: A literature search you can rerun'
 author: ''
 date: '2026-09-01'
+apa_captions: true
 slug: scopusflow-a-literature-search-you-can-rerun
 code_folding: hide
+editable_r: true
 categories:
+  - R
   - bibliometrics
   - research methods
 tags:
   - s
+  - R
   - bibliometrics
   - literature review
   - reproducibility
@@ -26,6 +30,11 @@ image:
   caption: ''
   focal_point: ''
   preview_only: no
+package_docs:
+  - name: R documentation
+    url: https://pablobernabeu.github.io/scopusflow/
+  - name: Python documentation
+    url: https://pablobernabeu.github.io/scopusflow-py/
 projects: []
 ---
 
@@ -37,8 +46,6 @@ options(width = 90, cli.num_colors = 1, cli.hyperlink = FALSE,
 xaringanExtra::use_clipboard()
 ```
 
-## Introduction
-
 A spreadsheet exported from Scopus contains papers, but it does not contain the search that found them. The exact query, retrieval date, paging choices and number of records returned by each part of the search often end up in notes or browser history. When the search has to be updated, it can be difficult to tell whether a changed result reflects the literature or the method.
 
 I wrote [scopusflow](https://pablobernabeu.github.io/scopusflow/) (Bernabeu, 2026) to keep those decisions with the records. A search begins as a plan, each completed part is cached and the final object can write its own search record. Matching packages are available for R ([CRAN](https://CRAN.R-project.org/package=scopusflow), [GitHub](https://github.com/pablobernabeu/scopusflow)) and Python ([PyPI](https://pypi.org/project/scopusflow), [GitHub](https://github.com/pablobernabeu/scopusflow-py)).
@@ -47,7 +54,7 @@ The example below uses a small corpus bundled with the R package. A stand-in ser
 
 ## Development
 
-The workflow below separates planning, retrieval, inspection and reporting.
+The workflow below separates planning, retrieval, inspection and reporting. Only retrieval needs a key, so the other three stages run here against the corpus bundled with the package.
 
 ```{r}
 library(scopusflow)
@@ -106,7 +113,7 @@ The practical benefit is clearest after an interruption, since the completed cel
 
 The records carry their plan, retrieval time and package version, along with the count for each cell. That provenance later helps to tell a change in the literature apart from a change in the method. The plot below counts the bundled records for each year.
 
-```{r records-per-year, fig.width = 7.5, fig.height = 4.2, fig.alt = 'Line chart showing the number of graphene-supercapacitor records in the bundled corpus for each year from 2015 to 2024'}
+```{r records-per-year, fig.width = 7.5, fig.height = 4.2, fig.cap = 'Offline OpenAlex-Derived Demonstration Records, 2015 to 2024, From the Corpus Bundled With the Package. The counts show the workflow and say nothing about the Scopus literature on the topic.', fig.alt = 'Line chart showing the number of graphene-supercapacitor records in the bundled corpus for each year from 2015 to 2024'}
 httr2::with_mocked_responses(stand_in$handler, {
   trend <- scopus_trend('graphene supercapacitor', years = 2015:2024,
                         field = 'TITLE-ABS-KEY')
@@ -114,19 +121,14 @@ httr2::with_mocked_responses(stand_in$handler, {
 plot_scopus_trend(trend) +
   # Larger markers than the default, so that each yearly count stands out
   ggplot2::geom_point(colour = '#31688E', size = 2.6) +
-  ggplot2::labs(
-    title = 'Records per year in the demonstration corpus', y = NULL,
-    caption = 'Offline OpenAlex-derived demonstration records, 2015–2024'
-  ) +
-  ggplot2::theme(
-    plot.title = ggplot2::element_text(size = 13, face = 'bold',
-                                       margin = ggplot2::margin(b = 10)),
-    axis.text = ggplot2::element_text(size = 10.5),
-    plot.caption = ggplot2::element_text(size = 9.5, colour = 'grey35',
-                                         hjust = 0,
-                                         margin = ggplot2::margin(t = 8)),
-    plot.caption.position = 'plot'
-  )
+  # plot_scopus_trend() captions its own output "Source: 'Scopus' Search API",
+  # which is not where these records come from: the demonstration corpus is
+  # offline and OpenAlex-derived, as the caption below the figure says. It is
+  # dropped rather than corrected, because a note belongs under the figure. The
+  # title goes with it, since the caption now sits directly above the plot and
+  # said the same thing twice.
+  ggplot2::labs(caption = NULL, title = NULL, y = NULL) +
+  ggplot2::theme(axis.text = ggplot2::element_text(size = 10.5))
 ```
 
 Successive harvests can be compared by DOI. In this illustration, the baseline ends in 2023 and the later harvest adds the 2024 records.
@@ -143,7 +145,7 @@ The search record is generated from the object that holds the publications. It r
 
 ```{r report-summary, echo = FALSE}
 report <- scopus_search_report(records)
-knitr::kable(data.frame(
+knitr::kable(caption = 'What the Search Retrieved, as the PRISMA-S Record Reports It.', data.frame(
   Detail = c('Search expression', 'Years', 'Records in bundled corpus',
              'Records with a DOI', 'PRISMA-S checklist items'),
   Value = c(report$expression, report$years, report$n_records,
@@ -155,9 +157,7 @@ The same records can then leave R as a DOI list, BibTeX, RIS or a table for bibl
 
 ## Discussion
 
-The result that matters in this example is the provenance. A rerunnable search records enough of the method to explain why a later DOI set differs, although database coverage, query design and screening remain matters of judgement. Those decisions belong in the review protocol and should be reported with the generated search record. For a review, I would keep the plan under version control, save the native result object and archive the search record alongside the screening data.
-
-The [R reference](https://pablobernabeu.github.io/scopusflow/reference/) and the [Python documentation](https://pablobernabeu.github.io/scopusflow-py/) cover cursor paging, de-duplication, topic comparisons and authentication for live searches.
+The result that matters in this example is the provenance. A rerunnable search records enough of the method to explain why a later DOI set differs, although database coverage, query design and screening remain matters of judgement. Those decisions belong in the review protocol and should be reported with the generated search record. For a review, I would keep the plan under version control, save the native result object and archive the search record alongside the screening data. The [R reference](https://pablobernabeu.github.io/scopusflow/reference/) and the [Python documentation](https://pablobernabeu.github.io/scopusflow-py/) cover cursor paging, de-duplication, topic comparisons and authentication for live searches.
 
 ### Limits
 

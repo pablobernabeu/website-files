@@ -1,12 +1,15 @@
 ---
 title: "lexsync: Lexical optimisation and hardware-timed experiment generation"
 type: software
-software_kind: package
+software_kind:
+  - package
+  - web-application
 aliases:
   - '/publication/lexsync/'
 authors:
   - 'Bernabeu, P.'
 date: '2026-06-07'
+apa_captions: true
 slug: lexsync
 publication: 'Version 0.1.0 [Computer software]. GitHub'
 categories:
@@ -28,8 +31,17 @@ links:
     url: https://pablobernabeu.github.io/lexsync/r/
   - name: Python documentation
     url: https://pablobernabeu.github.io/lexsync/python/
+  - name: R app guide
+    url: https://pablobernabeu.github.io/lexsync/r/articles/the-app.html
+  - name: Python app guide
+    url: https://pablobernabeu.github.io/lexsync/python/the-app/
   - name: Blog post
     url: /2026/lexsync-from-corpus-to-eeg-ready-experiment/
+package_docs:
+  - name: R documentation
+    url: https://pablobernabeu.github.io/lexsync/r/
+  - name: Python documentation
+    url: https://pablobernabeu.github.io/lexsync/python/
 image:
   caption: ''
   focal_point: 'Center'
@@ -41,13 +53,13 @@ projects: []
 
 lexsync (Bernabeu, 2026) turns a lexical design into a checked set of stimuli and experiment files. It separates the candidate corpus from the design specification, reports whether matching and counterbalancing succeeded, and carries the resulting item table into PsychoPy, OpenSesame or jsPsych. The shared R/Python format makes the design inspectable before any presentation software is involved.
 
-## Illustrative output
+The repository also carries two browser front-ends over the same engines, a Shiny app for R and a Streamlit app for Python. Each assembles a design through the interface, runs the same pipeline as the packages and exports the code that reproduces it. Launch either one from the repository root, so that it finds the bundled corpora and the example item tables.
 
-The main quality-control question for a set of lexical materials is whether the conditions remain comparable on the control variables chosen by the researcher. The plot below comes from the matching report in the companion blog post. It shows the standardised difference between the low- and high-frequency conditions on each control, with a 90 per cent confidence interval and a prespecified equivalence region.
+The main quality-control question for a set of lexical materials is whether the conditions remain comparable on the control variables chosen by the researcher. lexsync answers it as a claim of equivalence, testing each control against a bound fixed before selection, so a control passes only when its interval stays inside that bound.
 
 <figure>
 <img src="images/balance-plot-1.png" alt="Standardised differences between low- and high-frequency conditions on word length, neighbourhood density and OLD20, with 90 per cent confidence intervals inside a shaded equivalence region from minus to plus 0.5" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
-<figcaption>Realised balance between the frequency conditions on the control variables.</figcaption>
+<figcaption>Each Control Tested Against the Schema's Default Equivalence Bound of Half a Standard Deviation, Chosen Before Selection Begins.</figcaption>
 </figure>
 
 ## Reproducible hand-off

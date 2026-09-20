@@ -2,13 +2,16 @@
 title: 'depictr: One visual language from first look to final figure'
 author: ''
 date: '2026-09-01'
+apa_captions: true
 slug: depictr-one-visual-language-from-first-look-to-final-figure
 code_folding: hide
 categories:
+  - R
   - data visualisation
   - statistics
 tags:
   - s
+  - R
   - visualisation
   - linear mixed-effects models
   - Bayesian statistics
@@ -26,6 +29,11 @@ image:
   caption: ''
   focal_point: ''
   preview_only: no
+package_docs:
+  - name: R documentation
+    url: https://pablobernabeu.github.io/depictr/
+  - name: Python documentation
+    url: https://pablobernabeu.github.io/depictr-py/
 projects: []
 ---
 
@@ -37,13 +45,9 @@ options(width = 92)
 xaringanExtra::use_clipboard()
 ```
 
-## Introduction
-
 The figures in an analysis are rarely made all at once. An exploratory density plot may survive into a talk, a model adds a forest plot and a reviewer asks for a diagnostic or a Bayesian comparison. When each stage uses different defaults, one analysis acquires several palettes, type sizes and conventions. Accessibility is then checked, if at all, after the visual decisions have already spread through the project.
 
-I wrote [depictr](https://github.com/pablobernabeu/depictr) (Bernabeu, 2026) to give those stages a shared visual language. It provides plotting functions for common statistical objects, and each function returns an ordinary ggplot2 object that remains open to further editing. It also measures the finished figure against explicit checks for contrast, text size and reliance on colour. The same conventions are available in the [R package](https://pablobernabeu.github.io/depictr/) and the [Python package](https://pablobernabeu.github.io/depictr-py/).
-
-The example data, bundled with the package, are simulated from a lexical-decision design in which participants respond to words preceded by semantically related or unrelated primes, presented visually or auditorily.
+I wrote [depictr](https://github.com/pablobernabeu/depictr) (Bernabeu, 2026) to give those stages a shared visual language. It provides plotting functions for common statistical objects, and each function returns an ordinary ggplot2 object that remains open to further editing. It also measures the finished figure against explicit checks for contrast, text size and reliance on colour. The same conventions are available in the [R package](https://pablobernabeu.github.io/depictr/) and the [Python package](https://pablobernabeu.github.io/depictr-py/). The example data, bundled with the package, are simulated from a lexical-decision design in which participants respond to words preceded by semantically related or unrelated primes, presented visually or auditorily.
 
 ## Development
 
@@ -74,7 +78,7 @@ c(participants = length(unique(lexical_decision$participant)),
 
 Reaction times are right-skewed, so a mean and a standard deviation do not show the whole pattern. An empirical cumulative distribution avoids a choice of bins and makes the quartiles directly visible.
 
-```{r distribution, fig.alt = 'Empirical cumulative distributions of lexical-decision reaction times for related and unrelated primes, with horizontal guides at the quartiles'}
+```{r distribution, fig.cap = 'Observed Reaction-Time Distributions After Related and Unrelated Primes, With the Quartiles Marked.', fig.alt = 'Empirical cumulative distributions of lexical-decision reaction times for related and unrelated primes, with horizontal guides at the quartiles'}
 ecdf_plot(
   lexical_decision,
   RT,
@@ -109,7 +113,7 @@ term_labels <- c(
 tidy_estimates(fit)
 ```
 
-```{r model-estimates, fig.height = 3.3, fig.alt = 'Forest plot of the fixed effects, each per standard deviation of its predictor, for unrelated priming, auditory presentation and word frequency, with 95 per cent confidence intervals'}
+```{r model-estimates, fig.height = 3.3, fig.cap = 'Fixed Effects on Reaction Time, Each per Standard Deviation of Its Predictor, With 95% Confidence Intervals.', fig.alt = 'Forest plot of the fixed effects, each per standard deviation of its predictor, for unrelated priming, auditory presentation and word frequency, with 95 per cent confidence intervals'}
 coefficient_plot(
   fit,
   standardise = TRUE,
@@ -124,7 +128,7 @@ coefficient_plot(
   web_theme
 ```
 
-The forest plot keeps the colours and typography of the distribution plot, so a reader moving from observations to estimates can concentrate on the result.
+The forest plot keeps the colours and typography of the distribution plot, so a reader moving from observations to estimates can concentrate on the result. That continuity is the point of a shared visual language, since nothing in the second figure has to be learned again.
 
 ### Audit the figure that will be published
 
@@ -146,7 +150,7 @@ check_figure(first_draft)
 
 The default density plot fails two checks. Its orange falls below the package's contrast threshold for graphical elements on a white panel, and colour is the only channel separating the conditions. The corrected plot replaces the orange with a darker vermilion and adds line type as a second channel. Both checks then pass, and neither change touches the data or the statistical display.
 
-```{r audited-figure, fig.alt = 'Corrected density curves of reaction times for related and unrelated primes, distinguished by both colour and line type'}
+```{r audited-figure, fig.cap = 'The Corrected Figure, in Which Colour and Line Type Both Separate the Priming Conditions.', fig.alt = 'Corrected density curves of reaction times for related and unrelated primes, distinguished by both colour and line type'}
 final_figure <- explore_distribution(
   lexical_decision,
   RT,
@@ -169,9 +173,7 @@ The default palette starts from the colours proposed by Okabe and Ito (2008), an
 
 ## Discussion
 
-The example supports a modest but useful claim: accessibility belongs in figure development from the first draft onwards. A stable visual grammar helps readers compare plots, while the audit identifies concrete properties to repair. The practical habit is to use one set of conventions throughout an analysis and to audit the exact figure that will leave the project. The result is a reproducible hand-off from analysis code to an editable, interpretable and checked figure.
-
-The [R reference](https://pablobernabeu.github.io/depictr/reference/) and [Python reference](https://pablobernabeu.github.io/depictr-py/api/) cover the rest of the package, including diagnostics, posterior plots, power curves, model comparisons and multi-panel composition.
+The example supports a modest but useful claim: accessibility belongs in figure development from the first draft onwards. A stable visual grammar helps readers compare plots, while the audit identifies concrete properties to repair. The practical habit is to use one set of conventions throughout an analysis and to audit the exact figure that will leave the project. The result is a reproducible hand-off from analysis code to an editable, interpretable and checked figure. The [R reference](https://pablobernabeu.github.io/depictr/reference/) and [Python reference](https://pablobernabeu.github.io/depictr-py/api/) cover the rest of the package, including diagnostics, posterior plots, power curves, model comparisons and multi-panel composition.
 
 ### Limits
 

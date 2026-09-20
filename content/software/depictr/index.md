@@ -1,12 +1,15 @@
 ---
 title: "depictr: A unified toolkit for visualising statistical models and data"
 type: software
-software_kind: package
+software_kind:
+  - package
+  - web-application
 aliases:
   - '/publication/depictr/'
 authors:
   - 'Bernabeu, P.'
 date: '2026-09-01'
+apa_captions: true
 slug: depictr
 publication: 'Version 0.3.0 [Computer software]. CRAN'
 doi: 10.32614/CRAN.package.depictr
@@ -29,12 +32,19 @@ links:
     url: https://pablobernabeu.github.io/depictr/
   - name: Python documentation
     url: https://pablobernabeu.github.io/depictr-py/
+  - name: Python app guide
+    url: https://pablobernabeu.github.io/depictr-py/app/
   - name: CRAN
     url: https://CRAN.R-project.org/package=depictr
   - name: PyPI
     url: https://pypi.org/project/depictr/
   - name: Blog post
     url: /2026/depictr-one-visual-language-from-first-look-to-final-figure/
+package_docs:
+  - name: R documentation
+    url: https://pablobernabeu.github.io/depictr/
+  - name: Python documentation
+    url: https://pablobernabeu.github.io/depictr-py/
 image:
   caption: ''
   focal_point: 'Center'
@@ -46,23 +56,25 @@ projects: []
 
 depictr (Bernabeu, 2026) provides a shared visual language for exploratory graphics, model estimates, diagnostics, uncertainty and power analyses. Its R and Python implementations use the same naming and colour conventions, and both return ordinary plot objects that can still be adapted to the needs of a study. The accessibility audit examines the rendered figure itself, since a colourblind-aware palette alone cannot guarantee an accessible figure.
 
-## Illustrative outputs
+## One set of conventions, audited at the end
 
-The figures below come from the companion blog post and follow a single analysis from an observed distribution to model estimates and then to an audited, publication-ready display.
+Colour, interval and labelling conventions carry from the observed distribution of a simulated lexical-decision experiment, through the model estimates, to the figure that will leave the project. The audit runs on that rendered figure, not on the palette alone.
+
+The Python twin also ships a Streamlit app, which gives the gallery a low-friction way in without writing any code.
 
 <figure>
 <img src="images/distribution-1.png" alt="Empirical cumulative distributions of lexical-decision reaction times for related and unrelated primes, with quartile guides" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
-<figcaption>Observed reaction-time distributions with directly readable quartiles.</figcaption>
+<figcaption>Observed Reaction-Time Distributions With Directly Readable Quartiles.</figcaption>
 </figure>
 
 <figure>
 <img src="images/model-estimates-1.png" alt="Forest plot of the fixed effects, each per standard deviation of its predictor, for priming condition, presentation modality and word frequency, with 95 per cent confidence intervals" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
-<figcaption>Model estimates presented with a consistent interval convention.</figcaption>
+<figcaption>Fixed Effects in Milliseconds per Standard Deviation of the Predictor, With 95 per cent Confidence Intervals.</figcaption>
 </figure>
 
 <figure>
 <img src="images/audited-figure-1.png" alt="Corrected density curves of lexical-decision reaction times, distinguished by colour and line type" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
-<figcaption>An audited figure that uses both colour and line type to separate conditions.</figcaption>
+<figcaption>The Corrected Version of the Priming Comparison, Where Line Type Repeats a Distinction That Colour Alone Would Have Carried.</figcaption>
 </figure>
 
 ## Reproducibility and accessibility

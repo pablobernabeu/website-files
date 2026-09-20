@@ -2,13 +2,17 @@
 title: 'theoryforge: A theory you can check'
 author: ''
 date: '2026-09-01'
+apa_captions: true
 slug: theoryforge-a-theory-you-can-check
 code_folding: hide
+editable_r: true
 categories:
+  - R
   - research methods
   - science
 tags:
   - s
+  - R
   - theory
   - philosophy of science
   - preregistration
@@ -28,6 +32,13 @@ image:
   caption: ''
   focal_point: ''
   preview_only: no
+package_docs:
+  - name: R documentation
+    url: https://pablobernabeu.github.io/theoryforge/r/
+  - name: Python documentation
+    url: https://pablobernabeu.github.io/theoryforge/python/
+  - name: Browser apps
+    url: https://pablobernabeu.github.io/theoryforge/
 projects: []
 ---
 
@@ -38,8 +49,6 @@ options(width = 92)
 xaringanExtra::use_clipboard()
 ```
 
-## Introduction
-
 A verbal theory can sound precise while leaving its structure uncertain. Its constructs may overlap, a prediction may not follow from any proposition and an amendment may protect the theory without adding a new risk. These are properties of the theory's specification, yet ordinary prose gives software nothing to inspect.
 
 I wrote [theoryforge](https://github.com/pablobernabeu/theoryforge) (Bernabeu, 2026) to store that specification as a small YAML or JSON document. The document records constructs, propositions, predictions, alternatives, versions and provenance under a published schema. The package can then check the cross-references between those parts, derive implications from the causal graph and produce a dossier for review. Its [R](https://pablobernabeu.github.io/theoryforge/r/) and [Python](https://pablobernabeu.github.io/theoryforge/python/) implementations share that format.
@@ -48,7 +57,7 @@ The example is a theory of modality switching in grounded conceptual processing.
 
 ## Development
 
-This section develops the theory in four stages: validate the document, read the causal graph, derive a discriminating test and preserve the resulting dossier.
+This section develops the theory in four stages: validate the document, read the causal graph, derive a discriminating test and preserve the resulting dossier. Every stage works on the same YAML file, and none of them asks the reader to take its structure on trust.
 
 ```{r}
 library(theoryforge)
@@ -107,6 +116,8 @@ mermaid_graph <- function(theory, wrap = 26) {
 ```{r theory-diagram, echo = FALSE, results = 'asis'}
 cat('```mermaid\n', mermaid_graph(switching), '```\n', sep = '')
 ```
+
+<p class="caption caption-diagram">Figure 1: The Constructs of the Theory and the Arrows It Asserts Between Them, as theoryforge Reads Them From the File.</p>
 
 An acyclic causal graph also implies conditional independencies. Each one names an association that should be absent if the graph is correct, either outright or once certain constructs are held constant. Together, these claims define what the theory forbids in observed data.
 
@@ -172,7 +183,7 @@ key_claim <- match(
 # A true minus sign, unlike a hyphen, is not a line-break opportunity, so
 # '<1e-99' cannot split across two lines in the narrow table on a phone
 minus <- function(x) gsub('-', '\u2212', x, fixed = TRUE)
-knitr::kable(data.frame(
+knitr::kable(caption = 'The Claim That Separates the Two Theories, Tested in Data Generated From Each.', data.frame(
   World = c('Data generated from the theory', 'Data generated from the rival'),
   Correlation = minus(sprintf('%.3f', round(c(theory_tests$estimate[key_claim],
                                               rival_tests$estimate[key_claim]), 3))),
@@ -192,7 +203,7 @@ The dossier gathers the rigour checklist, the severity of each prediction, the t
 ```{r dossier-summary, echo = FALSE}
 dossier <- tf_dossier(switching)
 fingerprint <- digest::digest(dossier, algo = 'sha256', serialize = FALSE)
-knitr::kable(data.frame(
+knitr::kable(caption = 'The Dossier That Preserves This Version of the Theory.', data.frame(
   Detail = c('Rigour score', 'Gate', 'SHA-256 prefix'),
   Value = c(sprintf('%.1f/100', check$aggregate_score), check$gate,
             substr(fingerprint, 1, 12))

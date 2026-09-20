@@ -9,7 +9,6 @@ categories:
 tags:
   - R
   - statistics
-  - rstats
   - brms
   - credible intervals
   - s

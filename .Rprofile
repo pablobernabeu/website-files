@@ -2,7 +2,7 @@ if (!nzchar(Sys.getenv("CI"))) {
   # Local-only: activate renv, load interactive helpers, download CV
   source("renv/activate.R")
 
-  options(blogdown.hugo.version = '0.61.0', 
+  options(blogdown.hugo.version = '0.62.0', 
           blogdown.server.timeout = 600,
           blogdown.knit.on_save = TRUE,
           blogdown.server.args = c('--disableFastRender'))

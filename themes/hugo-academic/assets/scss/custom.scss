@@ -1172,6 +1172,68 @@ textarea {
   margin-bottom: 1.5rem !important;
 }
 
+// The abstract panel on posts and software pages. Both layouts used to put an
+// "Abstract" heading above the paragraph and now put it inside .article-abstract
+// instead, so the panel has to do the heading's work and say that this paragraph
+// summarises the page rather than beginning it.
+//
+// The fill is a tint of the site's own accent, the same pair the fold control
+// uses, laid over the page background at about a sixth strength. Measured against
+// the page that is a 1.24:1 tint in either theme, which is the strength Bootstrap
+// gives alert-info on white, the box three posts already open with. Matching that
+// strength is what stops the abstract reading as a second kind of box, and keeping
+// the site's teal rather than Bootstrap's cyan is what stops it reading as an
+// alert.
+//
+// The tint stays gentle because the panel holds running prose. Measured in the
+// browser, the body text clears WCAG AA with room to spare, 10.9:1 in the light
+// theme and 9.6:1 in the dark one. Note that the dark figure is lower than the
+// declarations alone suggest, because the body text there is rgba(255,255,255,0.8)
+// and composites against the fill rather than landing on it opaque.
+//
+// The radius is in rem so that it tracks the root font size, which the navbar lets
+// the reader change and which drops from 21px to 16.17px below 58em. At 0.5rem it
+// is exactly a code block's radius, the other full width container inside an
+// article body, and twice an alert's 0.25rem, which reads as barely rounded at
+// this width.
+//
+// Only the post and software layouts wrap an abstract this way. Publication and
+// presentation pages keep their own heading and a bare .pub-abstract paragraph,
+// so nothing here reaches them.
+:root {
+  --abstract-bg: #dceae7;
+  --abstract-border: rgba(35, 122, 105, 0.25);
+}
+
+// theme-init.js paints the page dark through html.dark-theme-loading before
+// academic.js has put .dark on the body, and that class also forces the text to
+// #e2e8f0. Without the loading class here the first render of a dark-mode page
+// would put near-white text on the light fill, at about 1:1.
+body.dark,
+html.dark-theme-loading {
+  --abstract-bg: #16302b;
+  --abstract-border: rgba(55, 158, 138, 0.32);
+}
+
+.article-abstract {
+  background-color: var(--abstract-bg);
+  border: 1px solid var(--abstract-border);
+  border-radius: 0.5rem;
+  padding: 1.1rem 1.35rem;
+  // The blanket rule near the top of this file clips every <section> on both
+  // axes. A post's abstract has always been a section and nobody noticed, but a
+  // software page's is new, and a clipping panel would cut the focus ring off a
+  // link at the padding edge. Nothing in an abstract needs clipping.
+  overflow: visible !important;
+}
+
+// Without this the paragraph's own bottom margin opens a gap inside the panel.
+// .pub-abstract declares that margin with !important, so taking it off needs one
+// too.
+.article-abstract p {
+  margin-bottom: 0 !important;
+}
+
 // Increase gap above Abstract heading in publication pages
 .article-container > h3:first-child {
   margin-top: 6rem;
@@ -1592,14 +1654,19 @@ body.dark .btn-links a[title*="open science"] {
   line-height: 1.4 !important;
 }
 
-// Pub type badge and open science badges as inline-block
+// Pub type badge and open science badges as inline-block. The margins are not
+// here. They belong beside the padding and the corner radius in
+// static/css/publication-type-badges.css, which is linked after this file and so
+// carries them without an !important of its own. A 0.4em right margin declared
+// here used to shadow the 0.5em declared there, which meant neither file
+// described the page. Nothing else can reach a badge's margin: the only rule
+// that could, `.article-style img` in academic/_content.scss, applies to images
+// inside post and publication bodies, and no badge is ever rendered there.
 .pub-type-badge,
 .open-science-badge {
   display: inline-block !important;
   vertical-align: middle !important;
   white-space: nowrap !important;
-  margin-right: 0.4em !important;
-  margin-bottom: 0.2em !important;
 }
 
 #open-science-popup {
@@ -3340,12 +3407,12 @@ section.home-section:first-of-type {
 // that take it back off the containers after the header key off `#top > article` and
 // `#top > div.pub`, so they never reach the div.software-page wrapper of
 // layouts/software/single.html. The container holding the abstract therefore kept the
-// full padding, which with the 1rem margin under the link buttons put the Abstract
-// heading 65px below them on desktop and 55px on a phone, against 26px on a post. A
+// full padding, which with the 1rem margin under the link buttons put the abstract
+// 65px below them on desktop and 55px on a phone, against 26px on a post. A
 // featured image (on the pages that do not set image.preview_only) sits in a container
 // too: its 50px padding pushed the image down inside an inline max-height equal to the
 // image's stored height, while the 850px software column draws the image taller than
-// that, so the picture spilled out of its box and covered the Abstract heading.
+// that, so the picture spilled out of its box and covered the abstract.
 //
 // The body container's 0.75rem padding plus the collapsed 1rem margin above it gives
 // the post gap. A featured image sits the same distance below the buttons (its 1.75rem
@@ -5997,6 +6064,34 @@ textarea {
   margin-bottom: 2rem;
 }
 
+// academic/_content.scss gives every image in an article body a 2rem margin top
+// and bottom. Above a plot that is a second helping: the figure wrapper, or the
+// paragraph knitr puts an uncaptioned plot in, already carries the block margin
+// that separates it from the chunk above. The two added up, so a plot sat 49px
+// below an "Expand" link where a code block sits 19px below one, and the chunk
+// and the plot it produces read as unrelated.
+//
+// The wrapper keeps the block margin and the image gives up its own, which
+// brings a plot to the same 19px every other block gets.
+.article-style .figure > img,
+.article-style figure > img,
+.article-style p > img,
+.article-style .figure > video,
+.article-style p > video {
+  margin-top: 0;
+}
+
+// The same 2rem sat below a captioned figure, between the plot and its own
+// caption, which left the caption about as far from the figure it describes as
+// from the paragraph after it. A caption belongs to its figure, so it is
+// brought close; p.caption's own 2.5rem is what separates the pair from what
+// follows. An uncaptioned image keeps the 2rem, since there it is the only
+// thing holding the next block off.
+.article-style .figure > img,
+.article-style figure > img {
+  margin-bottom: 0.5rem;
+}
+
 // A captioned figure ends in small caption text, which can read as the start of the
 // next paragraph unless the gap below it is a little wider than below a bare plot.
 // The caption's own 1.65rem bottom margin (_root.scss) collapses into this one.
@@ -6010,6 +6105,108 @@ textarea {
 // margin cannot collapse, and the line box adds about 0.5rem below it.
 .article-style p.caption {
   margin-bottom: 2.5rem;
+}
+
+// One appearance for all three routes a caption takes. figcaption used to set
+// 0.76rem, which on a caption of one or two sentences of source and units read
+// as fine print rather than as text. It went to 0.82rem, and then to the 0.9rem
+// below: measured against the 15px body, that is 13.5px against 15px, where
+// 0.82rem gave 12.3px. Every caption on the site takes this one rule, so they
+// are all the same size; the complaint was the size itself, not the spread.
+//
+// Left, not centred. knitr wraps a captioned figure in a div that fig.align
+// centres, and figcaption centres itself, but a two-sentence caption set
+// centred breaks into ragged lines on both edges. A table caption was already
+// left, so left is also the setting that moves the fewest of them.
+//
+// The colour is inherited on purpose. A caption is small enough already, and a
+// muted grey on top of that is how captions end up under the contrast floor.
+.article-style p.caption,
+.article-style figcaption,
+.article-style table caption {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+// APA 7 puts a figure's or table's number on its own line, the title in italics
+// on the next, both above the object, and the note underneath. apa-captions.js
+// performs that rearrangement; these are the three parts it creates. They keep
+// the caption's own size, since the note is still caption text and a title set
+// at body size would compete with the section headings around it.
+.article-style .apa-caption-number,
+.article-style .apa-caption-title,
+.article-style .apa-caption-note {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.article-style p.apa-caption-number {
+  font-weight: 700;
+  margin: 0 0 0.15rem;
+}
+
+.article-style p.apa-caption-title {
+  font-style: italic;
+  margin: 0 0 0.75rem;
+}
+
+.article-style p.apa-caption-note {
+  margin-top: 0.5rem;
+}
+
+// A diagram is drawn in a full-bleed box wider than the prose column, so its
+// number and title have to leave that column to sit over it. Only while they
+// are naming one: mermaid-enhance.js adds this class when it measures the SVG
+// and takes it off again when the drawing fills its box and no narrowing is
+// wanted. The centring is the block's own, so the two axes agree.
+.article-style .apa-caption-number.apa-caption-wide,
+.article-style .apa-caption-title.apa-caption-wide {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+// A <caption> cannot be taken out of its table and a <p> cannot be put inside
+// one, so a table's number and title stay in the <caption> and it is moved to
+// the top. The two spans are blocks so they fall on separate lines.
+.article-style table > caption {
+  caption-side: top;
+  padding-bottom: 0.4rem;
+}
+
+.article-style caption .apa-caption-number,
+.article-style caption .apa-caption-title {
+  display: block;
+}
+
+.article-style caption .apa-caption-number { font-weight: 700; }
+.article-style caption .apa-caption-title { font-style: italic; }
+
+// A caption for the mermaid diagram, which cannot come from fig.cap because the
+// diagram is written out by a results='asis' chunk rather than produced as a
+// figure. custom_head.html gives the diagram a full-bleed box, 94vw wide up to
+// 960px and centred, so a caption at prose width would sit under one edge of it
+// instead of under the diagram.
+//
+// The width below is the fallback, matching that box, which is right only when
+// the drawing fills it. A drawing narrower than its box is centred inside it,
+// and a caption at the box's width then starts well to the left of the diagram,
+// so mermaid-enhance.js measures the finished SVG and narrows the caption to
+// it, on load and on resize. The centring here is what puts the narrowed box in
+// the right place: left/transform centre the element on its container's axis
+// whatever its width, which is the axis the diagram is centred on too.
+.article-style p.caption-diagram {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 94vw;
+  max-width: 960px;
+  margin: -1rem 0 2.5rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  text-align: left;
 }
 
 // in desktop view only
@@ -7103,12 +7300,36 @@ details summary {
   margin-top: 0;
 }
 
-// A closed chunk shows only its "Expand" link, whose 0.5rem margin left a plot,
-// paragraph or interactive widget straight after it crowded against the link, while
-// an output block kept its own 1.25rem. Matching that gap makes closed chunks, the
-// default on posts with `code_folding: hide`, read the same whatever follows them.
-.article-style details:not([open]):has(> pre) + :is(p, .html-widget, .figure, div) {
-  margin-top: 1.25rem;
+// A closed chunk shows only its "Expand" link, and what follows is the thing that
+// link produces: a plot, a table, an output block. They belong together, so the gap
+// is the small one that binds a caption to its figure rather than the 1.25rem that
+// separates unrelated blocks. `pre` and `table` are named as well as the widget and
+// figure wrappers, so every closed chunk reads the same way whatever it emits.
+.article-style details:not([open]):has(> pre) + :is(p, pre, table, .html-widget, .figure, div),
+.article-style details:not([open]):has(> pre) + style + :is(p, pre, table, .html-widget, .figure, div) {
+  margin-top: 0.5rem;
+}
+
+// A leaflet map is the exception where it meets the link directly: it is a
+// fixed-height viewport rather than a drawing that ends where its content does,
+// so it arrives as a hard edge. A captioned map no longer does meet it, because
+// the number and title sit between the two, and then the rule above applies to
+// those instead. Both selectors are kept for a map with no caption, the second
+// because htmlwidgets::prependContent leaves a <style> in between which draws
+// nothing but is still the adjacent sibling.
+.article-style details:not([open]):has(> pre) + .leaflet.html-widget,
+.article-style details:not([open]):has(> pre) + style + .leaflet {
+  margin-top: 0.9rem;
+}
+
+// That 1.25rem is the whole of the gap that was wanted, but the summary's own
+// 0.5rem sits inside the <details> and is added to it, so a collapsed chunk was
+// separated from what follows by 1.75rem rather than the 1.25rem intended.
+// Taking the inner margin off a closed chunk leaves exactly the rule above.
+// publication-type-badges.css sets it with !important on `details summary`, so
+// this has to answer in kind.
+.article-style details:not([open]) > summary {
+  margin-bottom: 0 !important;
 }
 
 // The "Expand" link's teal, set inline by academic.js through this variable: #237A69
@@ -7867,6 +8088,28 @@ div > div > div > table > thead > tr > th {
   white-space: nowrap;
 }
 
+// Let a column header keep the alignment its own column was given. Both
+// generators write that alignment as an align attribute on the cell, pandoc for
+// the knitted posts and goldmark for the markdown ones, but Bootstrap's reboot
+// sets `th { text-align: inherit }` in vendor/bootstrap/_reboot.scss, and an
+// author rule outranks a presentational attribute. So every header fell back to
+// the left while its own figures stayed on the right. It showed worst in the
+// HDI table of the greenhouse gas post, where "HDI 2023", "Per capita (t)",
+// "Expected (t)" and "Ratio" all sat to the left of the numbers they name.
+// Scoped exactly as the rule above, so the listing summaries and the home
+// widgets go on inheriting as they do now.
+.article-container .article-style table th[align="right"] {
+  text-align: right;
+}
+
+.article-container .article-style table th[align="center"] {
+  text-align: center;
+}
+
+.article-container .article-style table th[align="left"] {
+  text-align: left;
+}
+
 // Reduce bottom margin in embedded audio player
 #top > div.pub > div > div.article-style > iframe {
   margin-bottom: 10px !important;
@@ -8019,6 +8262,67 @@ body.dark #navbar-main .dropdown-item:focus-visible {
   word-break: normal;
 }
 
+// An output block is not code, and it should not be coloured as though it were.
+// highlight.js is handed these blocks with no language on them, so it guesses,
+// and it guesses badly: a tibble is detected as Objective-C and a printed
+// character vector as CSS. Every line then begins with what the guess takes for
+// a preprocessor directive, so the whole of the output is painted in the
+// stylesheet's comment colour. That is 3.1:1 against the dark background and
+// 2.7:1 against the light one, both under the 4.5:1 that WCAG asks for body
+// text, and it is applied to the one part of a chunk a reader most needs to
+// read. The Objective-C guess also turns some lines bold.
+//
+// Rather than recolour a wrong guess, the guess is discarded: every token inside
+// an unclassified block gives its colour, weight and slant back to the block,
+// which leaves the output as plain text at the 11.9:1 the code itself uses.
+.article-style pre:not([class]) > code span[class*="hljs-"] {
+  color: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  background-color: transparent;
+}
+
+// Comments inside a real code block are a different matter: they are genuinely
+// subordinate to the code, so they should stay dimmer, but not so dim that they
+// cannot be read. This repository keeps its reasoning in comments, so they are
+// often the most valuable lines in a chunk.
+//
+// Both replacements keep their stylesheet's own hue and lift it to clear WCAG
+// AA. Dracula's #6272a4 gives 3.1:1 on the dark block and becomes 5.4:1;
+// github's #998 gives 2.7:1 on the light block and becomes 4.9:1. Neither
+// approaches the 11.9:1 of the code around them, so the hierarchy survives.
+.article-style pre[class] .hljs-comment,
+.article-style pre[class] .hljs-quote {
+  color: #6e6e62;
+}
+
+body.dark .article-style pre[class] .hljs-comment,
+body.dark .article-style pre[class] .hljs-quote {
+  color: #8b9dc9;
+}
+
+// The same argument, one step smaller: github paints numbers and TRUE/FALSE in
+// #008080, which lands at 4.49:1 on the light block and so misses AA by a
+// hundredth. Two steps darker in the same teal clears it at 5.3:1, which no
+// reader will notice and a contrast checker will.
+.article-style pre[class] .hljs-number,
+.article-style pre[class] .hljs-literal {
+  color: #007373;
+}
+
+// The rule above is written without a theme guard so that it also covers the
+// moment before academic.js puts .dark on the body. The dark theme therefore has
+// to say what it had: a number that already inherited the block's own colour,
+// and dracula's cyan for TRUE and FALSE, which was 10.6:1 and never needed
+// changing.
+body.dark .article-style pre[class] .hljs-number {
+  color: inherit;
+}
+
+body.dark .article-style pre[class] .hljs-literal {
+  color: #8be9fd;
+}
+
 .article-style pre[class],
 .article-style pre:has(> code[class]) {
   overflow-x: auto;
@@ -8046,8 +8350,23 @@ body.dark .article-style pre .xaringanextra-clipboard-button {
 // paragraph or figure. Reset nested syntax-highlight tables and responsive
 // wrappers so the spacing is applied only once.
 .article-style table {
-  margin-top: 1.25rem;
+  margin-top: 0.75rem;
   margin-bottom: 2.25rem;
+}
+
+// A heading carries no top margin of its own here, so the space above it is
+// whatever the block that ended the previous section left behind: 14px after a
+// paragraph, 34px after a table or a code block. The 2.25rem those blocks take
+// is there to hold them off body text, and a heading brings weight and space of
+// its own, so it is more than the join needs. Trimmed to 1.5rem, which keeps a
+// table or figure better separated than a paragraph without the gap that made
+// the heading look detached from the section it opens.
+.article-style div.section > table:last-child,
+.article-style div.section > pre:last-child,
+.article-style div.section > figure:last-child,
+.article-style div.section > .table-responsive:last-child,
+.article-style div.section > .figure:last-child {
+  margin-bottom: 1.5rem;
 }
 
 .article-style .table-responsive {

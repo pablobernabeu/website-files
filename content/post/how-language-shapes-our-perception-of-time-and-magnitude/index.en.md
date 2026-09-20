@@ -2,6 +2,7 @@
 title: How language shapes our perception of time and magnitude
 author: ''
 date: '2026-09-01'
+apa_captions: true
 slug: how-language-shapes-our-perception-of-time-and-magnitude
 categories:
   - psycholinguistics
@@ -28,13 +29,11 @@ image:
 projects: []
 ---
 
-## Introduction
-
 Language does more than carry messages between people. Different languages express time and number in different ways, and that variation appears to affect how their speakers organise temporal and numerical concepts. Are we bound by the categories our language provides, or can we think beyond them? The question has a long history under the name of linguistic relativity, and the experiments of the last two decades give it a more precise answer than either the enthusiasts or the sceptics of earlier generations expected.
 
 ## Evidence and interpretation
 
-The evidence reviewed here concerns two domains, the spatial layout of time and the processing of number words.
+The evidence reviewed here concerns two domains, the spatial layout of time and the processing of number words. They are taken in that order, and each section moves from the linguistic difference to the experimental evidence for a cognitive one.
 
 ### Spatial words and the lexicalisation of time
 
@@ -42,7 +41,7 @@ One of the best-documented ways in which language influences thought is through 
 
 The Aymara language of the Andes provides one of the most cited cases of linguistic relativity, that is, of an influence of a language on other cognitive and perceptual domains. Núñez and Sweetser (2006) examined how Aymara speakers conceptualise time. Where English speakers, like the speakers of most languages studied, treat the future as ahead and the past as behind, Aymara speakers place the past in front of them and the future behind. The reversal appears in the language, where *nayra*, the word for eye, sight and front, also refers to the past. The same reversal shows in spontaneous gesture, as speakers point forward when talking about the past and over the shoulder when referring to the future. The interpretation Núñez and Sweetser favour is that the past has been seen and can be inspected, whereas the future is unknown and out of sight. The mapping would then encode a distinction between the known and the unknown, in a language whose grammar pays close attention to whether the speaker witnessed what they report. On this reading, linguistic structure and bodily experience are bound together in Aymara culture, each reinforcing the other.
 
-{{< figure src="images/aymara-ceremony-copacabana.jpg" alt="Aymara men carrying multicoloured Wiphala flags during a ceremony on a hillside near Copacabana, Bolivia, with a thatched hut and mountains behind them" caption="An Aymara ceremony near Copacabana, on Lake Titicaca, Bolivia. Photograph by Kilobug (2010), [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aymara_ceremony_copacabana_1.jpg), [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)." >}}
+{{< figure src="images/aymara-ceremony-copacabana.jpg" alt="Aymara men carrying multicoloured Wiphala flags during a ceremony on a hillside near Copacabana, Bolivia, with a thatched hut and mountains behind them" caption="Figure 1: An Aymara Ceremony Near Copacabana, on Lake Titicaca, Bolivia. Photograph by Kilobug (2010), [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aymara_ceremony_copacabana_1.jpg), [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)." >}}
 
 The Aymara case also shows how quickly a single language can become a stand-in for a whole explanation. A later line of work asked whether the past-in-front mapping might reflect a culture's attitude to time as much as its words. De la Fuente et al. (2014) compared Spaniards with Moroccans, whose culture places more value on tradition and the past. Moroccan participants were more likely to place past events in front of themselves, even though Arabic, like Spanish, describes the future as ahead and the past as behind. Older Spaniards, whose focus on the past lay between that of younger Spaniards and that of Moroccans, also placed past events in front more often than younger Spaniards did. When participants' attention was directed to their past or to their future, the mapping shifted with it. On this account, which the authors named the temporal-focus hypothesis, language is one of several influences on the spatial layout of time. De la Fuente et al. concluded that implicit mappings of time can change more readily than the spatial metaphors fixed in a language. People may therefore think about time in the opposite direction to the way they talk about it.
 

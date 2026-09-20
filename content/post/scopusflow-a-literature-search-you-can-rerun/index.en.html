@@ -2,13 +2,17 @@
 title: 'scopusflow: A literature search you can rerun'
 author: ''
 date: '2026-09-01'
+apa_captions: true
 slug: scopusflow-a-literature-search-you-can-rerun
 code_folding: hide
+editable_r: true
 categories:
+  - R
   - bibliometrics
   - research methods
 tags:
   - s
+  - R
   - bibliometrics
   - literature review
   - reproducibility
@@ -26,6 +30,11 @@ image:
   caption: ''
   focal_point: ''
   preview_only: no
+package_docs:
+  - name: R documentation
+    url: https://pablobernabeu.github.io/scopusflow/
+  - name: Python documentation
+    url: https://pablobernabeu.github.io/scopusflow-py/
 projects: []
 ---
 
@@ -35,15 +44,12 @@ projects: []
 <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
 
 
-<div id="introduction" class="section level2">
-<h2>Introduction</h2>
 <p>A spreadsheet exported from Scopus contains papers, but it does not contain the search that found them. The exact query, retrieval date, paging choices and number of records returned by each part of the search often end up in notes or browser history. When the search has to be updated, it can be difficult to tell whether a changed result reflects the literature or the method.</p>
 <p>I wrote <a href="https://pablobernabeu.github.io/scopusflow/">scopusflow</a> (Bernabeu, 2026) to keep those decisions with the records. A search begins as a plan, each completed part is cached and the final object can write its own search record. Matching packages are available for R (<a href="https://CRAN.R-project.org/package=scopusflow">CRAN</a>, <a href="https://github.com/pablobernabeu/scopusflow">GitHub</a>) and Python (<a href="https://pypi.org/project/scopusflow">PyPI</a>, <a href="https://github.com/pablobernabeu/scopusflow-py">GitHub</a>).</p>
 <p>The example below uses a small corpus bundled with the R package. A stand-in server, defined in <a href="https://github.com/pablobernabeu/website-files/blob/master/content/post/scopusflow-a-literature-search-you-can-rerun/stand_in.R">a short script</a>, answers the requests that would otherwise go to the Scopus API, so the code runs without an API key or any connection to Elsevier.</p>
-</div>
 <div id="development" class="section level2">
 <h2>Development</h2>
-<p>The workflow below separates planning, retrieval, inspection and reporting.</p>
+<p>The workflow below separates planning, retrieval, inspection and reporting. Only retrieval needs a key, so the other three stages run here against the corpus bundled with the package.</p>
 <pre class="r"><code>library(scopusflow)
 packageVersion(&#39;scopusflow&#39;)</code></pre>
 <pre><code>#&gt; [1] &#39;0.4.0&#39;</code></pre>
@@ -110,20 +116,20 @@ c(records = nrow(repeated),
 plot_scopus_trend(trend) +
   # Larger markers than the default, so that each yearly count stands out
   ggplot2::geom_point(colour = &#39;#31688E&#39;, size = 2.6) +
-  ggplot2::labs(
-    title = &#39;Records per year in the demonstration corpus&#39;, y = NULL,
-    caption = &#39;Offline OpenAlex-derived demonstration records, 2015–2024&#39;
-  ) +
-  ggplot2::theme(
-    plot.title = ggplot2::element_text(size = 13, face = &#39;bold&#39;,
-                                       margin = ggplot2::margin(b = 10)),
-    axis.text = ggplot2::element_text(size = 10.5),
-    plot.caption = ggplot2::element_text(size = 9.5, colour = &#39;grey35&#39;,
-                                         hjust = 0,
-                                         margin = ggplot2::margin(t = 8)),
-    plot.caption.position = &#39;plot&#39;
-  )</code></pre>
-<p><img src="{{< blogdown/postref >}}index.en_files/figure-html/records-per-year-1.png" alt="Line chart showing the number of graphene-supercapacitor records in the bundled corpus for each year from 2015 to 2024" width="720" style="display: block; margin: auto;" /></p>
+  # plot_scopus_trend() captions its own output &quot;Source: &#39;Scopus&#39; Search API&quot;,
+  # which is not where these records come from: the demonstration corpus is
+  # offline and OpenAlex-derived, as the caption below the figure says. It is
+  # dropped rather than corrected, because a note belongs under the figure. The
+  # title goes with it, since the caption now sits directly above the plot and
+  # said the same thing twice.
+  ggplot2::labs(caption = NULL, title = NULL, y = NULL) +
+  ggplot2::theme(axis.text = ggplot2::element_text(size = 10.5))</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:records-per-year"></span>
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/records-per-year-1.png" alt="Line chart showing the number of graphene-supercapacitor records in the bundled corpus for each year from 2015 to 2024" width="720" />
+<p class="caption">
+Figure 1: Offline OpenAlex-Derived Demonstration Records, 2015 to 2024, From the Corpus Bundled With the Package. The counts show the workflow and say nothing about the Scopus literature on the topic.
+</p>
+</div>
 <p>Successive harvests can be compared by DOI. In this illustration, the baseline ends in 2023 and the later harvest adds the 2024 records.</p>
 <pre class="r"><code>baseline &lt;- records[records$year &lt;= 2023, ]
 changes &lt;- scopus_diff_dois(old = baseline, new = records)
@@ -148,6 +154,7 @@ changes</code></pre>
 <h3>Let the result write the record</h3>
 <p>The search record is generated from the object that holds the publications. It reports what the software knows and identifies the PRISMA-S items that still require the review authors’ judgement, such as citation searching or peer review of the search strategy. As this run never reached Scopus, the summary below leaves out the database, platform and retrieval date that a live report would include.</p>
 <table>
+<caption><span id="tab:report-summary">Table 1: </span>What the Search Retrieved, as the PRISMA-S Record Reports It.</caption>
 <thead>
 <tr class="header">
 <th align="left">Detail</th>
@@ -182,8 +189,7 @@ changes</code></pre>
 </div>
 <div id="discussion" class="section level2">
 <h2>Discussion</h2>
-<p>The result that matters in this example is the provenance. A rerunnable search records enough of the method to explain why a later DOI set differs, although database coverage, query design and screening remain matters of judgement. Those decisions belong in the review protocol and should be reported with the generated search record. For a review, I would keep the plan under version control, save the native result object and archive the search record alongside the screening data.</p>
-<p>The <a href="https://pablobernabeu.github.io/scopusflow/reference/">R reference</a> and the <a href="https://pablobernabeu.github.io/scopusflow-py/">Python documentation</a> cover cursor paging, de-duplication, topic comparisons and authentication for live searches.</p>
+<p>The result that matters in this example is the provenance. A rerunnable search records enough of the method to explain why a later DOI set differs, although database coverage, query design and screening remain matters of judgement. Those decisions belong in the review protocol and should be reported with the generated search record. For a review, I would keep the plan under version control, save the native result object and archive the search record alongside the screening data. The <a href="https://pablobernabeu.github.io/scopusflow/reference/">R reference</a> and the <a href="https://pablobernabeu.github.io/scopusflow-py/">Python documentation</a> cover cursor paging, de-duplication, topic comparisons and authentication for live searches.</p>
 <div id="limits" class="section level3">
 <h3>Limits</h3>
 <p>The offline corpus only demonstrates the workflow, so its counts are not evidence about the contents of Scopus or about graphene research. Elsevier’s terms do not allow Scopus records to be redistributed, which is why the example uses 138 records retrieved from OpenAlex on 22 July 2026 and reshaped to the package’s return format. A live search still depends on Elsevier’s coverage, indexing and quota, and abstract retrieval draws on a separate allowance.</p>

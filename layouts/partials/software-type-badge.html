@@ -1,14 +1,23 @@
-{{- /* Badge naming the primary form of a Software page, set by software_kind in its front matter. Context: the page. Icon names follow Font Awesome 6, the version pinned in themes/hugo-academic/data/assets.toml. */ -}}
-{{- $kinds := dict "package" (dict "label" "Package" "icon" "fa-cube") "web-application" (dict "label" "Web application" "icon" "fa-globe") "pipeline" (dict "label" "Pipeline" "icon" "fa-diagram-project") -}}
-{{- $kind := .Params.software_kind | default "" -}}
-{{- $spec := index $kinds $kind -}}
-{{- if not $spec -}}
-  {{- /* A missing or misspelt kind should not blank the badge, but it should not pass unnoticed either. */ -}}
-  {{- $known := slice -}}
-  {{- range $name, $_ := $kinds -}}{{- $known = $known | append $name -}}{{- end -}}
-  {{- warnf "%s: software_kind %q is not one of %s; showing a generic Software badge" .File.Path $kind (delimit $known ", ") -}}
-  {{- $kind = "software" -}}
-  {{- $spec = dict "label" "Software" "icon" "fa-code" -}}
+{{- /* Badges naming the forms a Software page takes, set by software_kind in its front matter: one kind as a bare string, or several as a list with the primary kind first, so a package that ships a companion app reads "Package" then "Web application". Context: the page. Icon names follow Font Awesome 6, the version pinned in themes/hugo-academic/data/assets.toml. */ -}}
+{{- $specs := dict "package" (dict "label" "Package" "icon" "fa-cube") "web-application" (dict "label" "Web application" "icon" "fa-globe") "pipeline" (dict "label" "Pipeline" "icon" "fa-diagram-project") -}}
+{{- $known := slice -}}
+{{- range $name, $_ := $specs -}}{{- $known = $known | append $name -}}{{- end -}}
+{{- /* An absent key, an empty string and an empty list all arrive as "", because default counts a zero-length slice as unset; each then falls through to the warning below. Normalising the string form to a one-item list lets the rest of the partial walk a single shape. */ -}}
+{{- $raw := .Params.software_kind | default "" -}}
+{{- $kinds := cond (reflect.IsSlice $raw) $raw (slice $raw) -}}
+{{- $shown := slice -}}
+{{- range $kinds -}}
+  {{- $kind := printf "%v" . -}}
+  {{- $spec := index $specs $kind -}}
+  {{- if not $spec -}}
+    {{- /* A missing or misspelt kind should not blank the badge, but it should not pass unnoticed either. $.File.Path, not .File.Path: inside this range the dot is the kind, not the page. */ -}}
+    {{- warnf "%s: software_kind %q is not one of %s; showing a generic Software badge" $.File.Path $kind (delimit $known ", ") -}}
+    {{- $kind = "software" -}}
+    {{- $spec = dict "label" "Software" "icon" "fa-code" -}}
+  {{- end -}}
+  {{- if not (in $shown $kind) -}}
+    {{- $shown = $shown | append $kind -}}
+    {{- /* No space after the closing i tag: hugo --minify strips whitespace that follows an empty element, so the icon gap comes from its margin in software-type-badges.css. The newline after the closing span tag is the opposite case and is load-bearing: minify keeps one whitespace character between two non-empty sibling elements, and it is the only point at which a row of badges can wrap. Do not add a leading trim dash to the inner end below. */ -}}
+    <span class="software-type-badge software-type-{{ $kind }}"><i class="fa {{ $spec.icon }}" aria-hidden="true"></i>{{ $spec.label }}</span>
+  {{ end -}}
 {{- end -}}
-{{- /* No space after </i>: hugo --minify would strip it, so the gap comes from the icon's margin in software-type-badges.css. */ -}}
-<span class="software-type-badge software-type-{{ $kind }}"><i class="fa {{ $spec.icon }}" aria-hidden="true"></i>{{ $spec.label }}</span>

@@ -44,6 +44,7 @@ vor = "vor"             # German word
 ist = "ist"             # German/Dutch word
 auf = "auf"             # German word
 ser = "ser"             # Spanish word
+statuts = "statuts"     # French, the title of the 1866 statutes of the Societe de Linguistique de Paris
 hoc = "hoc"             # as in "ad hoc" or "post hoc"
 ful = "ful"             # suffix
 ned = "ned"             # past tense

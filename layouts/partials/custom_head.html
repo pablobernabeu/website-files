@@ -89,6 +89,15 @@
 <link rel="stylesheet" href="{{ "css/related-references.css" | relURL }}" />
 {{ end }}
 
+{{/* Editable R chunks, on a post whose front matter sets editable_r: true.
+     Nothing is fetched on page load: this stylesheet dresses a button, and the
+     R runtime is fetched only if a visitor presses it. No preconnect here for
+     the same reason, since the browser would report it unused on every visit
+     that never presses. */}}
+{{ if .Params.editable_r }}
+<link rel="stylesheet" href="{{ "css/editable-r.css" | relURL }}" />
+{{ end }}
+
 {{/* Mermaid diagrams (only loaded on pages with diagram:true):
      - the library is fetched here, from the <head>, instead of from the theme's
        site_js.html at the end of <body>. That starts the download while the page

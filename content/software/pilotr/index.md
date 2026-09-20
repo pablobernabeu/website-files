@@ -1,12 +1,15 @@
 ---
 title: "pilotr: Simulate experimental and behavioural data from a portable design specification"
 type: software
-software_kind: package
+software_kind:
+  - package
+  - web-application
 aliases:
   - '/publication/pilotr/'
 authors:
   - 'Bernabeu, P.'
 date: '2026-08-21'
+apa_captions: true
 slug: pilotr
 publication: 'Version 0.3.0 [Computer software]. CRAN'
 doi: 10.32614/CRAN.package.pilotr
@@ -37,6 +40,13 @@ links:
     url: https://pypi.org/project/pilotr/
   - name: Blog post
     url: /2026/pilotr-pilot-the-study-before-running-it/
+package_docs:
+  - name: R documentation
+    url: https://pablobernabeu.github.io/pilotr/r/
+  - name: Python documentation
+    url: https://pablobernabeu.github.io/pilotr/python/
+  - name: Browser app
+    url: https://pablobernabeu.github.io/pilotr/app/
 image:
   caption: ''
   focal_point: 'Center'
@@ -48,23 +58,23 @@ projects: []
 
 pilotr (Bernabeu, 2026) makes a planned study executable before any data are collected. A portable specification describes the units, predictors, response family, fixed effects and random-effects structure, and the same specification can then be simulated and analysed in R or Python. The main output is a design diagnosis that goes beyond a single power percentage to cover detection, precision, Type S and Type M errors, and model warnings.
 
-## Illustrative outputs
+## Detection, precision and exaggeration
 
-A simulation-based design analysis should establish how often the target effect is detected, how precisely it is estimated and how much the statistically significant estimates exaggerate it. The plots below address each of these questions in turn.
+A simulation-based design analysis should establish how often the target effect is detected, how precisely it is estimated and how much the statistically significant estimates exaggerate it.
 
 <figure>
 <img src="images/power-curve-1.png" alt="Illustrative power curve for a priming effect across sample sizes, with an 80 per cent reference line" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
-<figcaption>Detection probability across participant counts.</figcaption>
+<figcaption>Detection Probability Across Participant Counts. 12 replicates per design. All simulated designs contain 24 items.</figcaption>
 </figure>
 
 <figure>
 <img src="images/precision-curve-1.png" alt="Two-panel precision plot showing the probability of excluding a negligible effect and mean confidence-interval width as sample size increases" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
-<figcaption>Precision and the probability that an interval excludes a pre-specified negligible-effect region.</figcaption>
+<figcaption>Precision and the Probability That an Interval Excludes a Pre-Specified Negligible-Effect Region. 12 replicates per design. All simulated designs contain 24 items.</figcaption>
 </figure>
 
 <figure>
 <img src="images/type-m-plot-1.png" alt="Type M error declining towards one as power increases across effect-size and sample-size simulations" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
-<figcaption>Magnitude exaggeration among statistically significant estimates.</figcaption>
+<figcaption>Magnitude Exaggeration Among Statistically Significant Estimates. 12 replicates per design.</figcaption>
 </figure>
 
 ## Reproducible planning

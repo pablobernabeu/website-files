@@ -5,8 +5,15 @@
 
   <div class="article-container">
     {{ with .Params.abstract }}
+    {{/* The panel in custom.scss carries the meaning the heading used to, so the
+         heading is hidden rather than deleted. Seven of the twelve software pages
+         open their body at h3, and deleting the h2 would take those from h1
+         straight to h3. .sr-only is Bootstrap's own utility, compiled into this
+         theme and already used by its contact and slider widgets; it takes the
+         heading out of the flow, so the panel is laid out as though it were not
+         there. */}}
     <section class="article-abstract mb-4" aria-labelledby="article-abstract-heading">
-      <h2 id="article-abstract-heading">{{ i18n "abstract" }}</h2>
+      <h2 id="article-abstract-heading" class="sr-only">{{ i18n "abstract" }}</h2>
       <p>{{ . | markdownify }}</p>
     </section>
     {{ end }}
@@ -17,6 +24,8 @@
     <div class="article-style"{{ if eq (lower (printf "%v" .Params.code_folding)) "hide" }} data-code-folding="hide"{{ end }}>
       {{ .Content }}
     </div>
+
+    {{ partial "package-docs-links" . }}
 
     {{ partial "page_footer" . }}
   </div>
