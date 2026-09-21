@@ -6152,8 +6152,48 @@ textarea {
   margin: 0 0 0.75rem;
 }
 
-.article-style p.apa-caption-note {
+// The note closes the block. Below it sat the 2.5rem that p.caption carries on a
+// post written to the older convention, where the caption was the last line of a
+// figure and had the whole gap to itself. That is two and a half times the gap
+// between two paragraphs, while the block opens on that plain paragraph gap, so
+// a figure stood much further from the prose below it than from the prose above.
+// 1.5rem closes it instead, still wider than any gap inside the block.
+//
+// The same gap has to arrive when the caption is all title and there is no note:
+// apa-captions.js removes the caption element in that case, and the figure then
+// ended on the image's own 0.5rem, a third of the gap below a figure that did
+// have a note. So the closing gap goes on the figure itself and whichever part
+// happens to be last gives up its own, which makes the two cases identical.
+.article-style p.apa-caption-note,
+.article-style figcaption.apa-caption-note {
   margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.article-style .figure:has(.apa-caption-number),
+.article-style figure:has(.apa-caption-number) {
+  margin-bottom: 1.5rem;
+}
+
+.article-style .figure:has(.apa-caption-number) > :last-child,
+.article-style figure:has(.apa-caption-number) > :last-child {
+  margin-bottom: 0;
+}
+
+// A table under the same convention closes on the same 1.5rem as a figure. Its
+// own 2.25rem is what a table gets on a post written to the older convention,
+// where nothing above it announced where the table began.
+.article-style table:has(caption .apa-caption-number) {
+  margin-bottom: 1.5rem;
+}
+
+// A note belongs to the object above it, and that 2.25rem put a table's note
+// 33px away while the paragraph after the note was 14px away, so the note read
+// as the opening line of that paragraph. 0.5rem is the gap an image leaves above
+// its own note, so a table now leaves the same one and the 1.5rem moves below
+// the note, where it closes the block.
+.article-style table:has(+ p.apa-caption-note) {
+  margin-bottom: 0.5rem;
 }
 
 // A diagram is drawn in a full-bleed box wider than the prose column, so its

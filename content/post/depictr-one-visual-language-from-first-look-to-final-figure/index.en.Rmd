@@ -128,7 +128,7 @@ coefficient_plot(
   web_theme
 ```
 
-The forest plot keeps the colours and typography of the distribution plot, so a reader moving from observations to estimates can concentrate on the result. That continuity is the point of a shared visual language, since nothing in the second figure has to be learned again.
+The forest plot keeps the colours and typography of the distribution plot, so a reader moving from observations to estimates can concentrate on the result. That continuity is the point of a shared visual language, since nothing in Figure 2 has to be learned again.
 
 ### Audit the Figure That Will Be Published
 

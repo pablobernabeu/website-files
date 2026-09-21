@@ -55,7 +55,7 @@ lexsync (Bernabeu, 2026) turns a lexical design into a checked set of stimuli an
 
 The repository also carries two browser front-ends over the same engines, a Shiny app for R and a Streamlit app for Python. Each assembles a design through the interface, runs the same pipeline as the packages and exports the code that reproduces it. Launch either one from the repository root, so that it finds the bundled corpora and the example item tables.
 
-The main quality-control question for a set of lexical materials is whether the conditions remain comparable on the control variables chosen by the researcher. lexsync answers it as a claim of equivalence, testing each control against a bound fixed before selection, so a control passes only when its interval stays inside that bound.
+The main quality-control question for a set of lexical materials is whether the conditions remain comparable on the control variables chosen by the researcher. lexsync answers it as a claim of equivalence, testing each control against a bound fixed before selection, so a control passes only when its interval stays inside that bound. Figure 1 reports that test for the example design.
 
 <figure>
 <img src="images/balance-plot-1.png" alt="Standardised differences between low- and high-frequency conditions on word length, neighbourhood density and OLD20, with 90 per cent confidence intervals inside a shaded equivalence region from minus to plus 0.5" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">

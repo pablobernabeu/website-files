@@ -60,7 +60,7 @@ pilotr (Bernabeu, 2026) makes a planned study executable before any data are col
 
 ## Detection, precision and exaggeration
 
-A simulation-based design analysis should establish how often the target effect is detected, how precisely it is estimated and how much the statistically significant estimates exaggerate it.
+A simulation-based design analysis should establish how often the target effect is detected, how precisely it is estimated and how much the statistically significant estimates exaggerate it. Figure 1 reports detection across participant counts, Figure 2 precision at the same counts, and Figure 3 the exaggeration that survives a significance filter.
 
 <figure>
 <img src="images/power-curve-1.png" alt="Illustrative power curve for a priming effect across sample sizes, with an 80 per cent reference line" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">

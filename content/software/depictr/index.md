@@ -58,7 +58,7 @@ depictr (Bernabeu, 2026) provides a shared visual language for exploratory graph
 
 ## One set of conventions, audited at the end
 
-Colour, interval and labelling conventions carry from the observed distribution of a simulated lexical-decision experiment, through the model estimates, to the figure that will leave the project. The audit runs on that rendered figure, not on the palette alone.
+Colour, interval and labelling conventions carry from the observed distribution of a simulated lexical-decision experiment, through the model estimates, to the figure that will leave the project. Figure 1 shows the observed distributions, Figure 2 the model estimates drawn from the same data, and Figure 3 the version that the accessibility audit asked for. The audit runs on that rendered figure, not on the palette alone.
 
 The Python twin also ships a Streamlit app, which gives the gallery a low-friction way in without writing any code.
 

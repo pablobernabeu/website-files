@@ -60,7 +60,7 @@ projects: []
 
 scopusflow (Bernabeu, 2026) turns a bibliographic search from a one-off export into a versioned workflow. A plan records the query and can divide it into yearly cells. Completed cells can be cached so that an interrupted retrieval resumes where it stopped, and the resulting object retains the retrieval metadata, package version and DOI-level changes. The R and Python packages use the same workflow concepts while respecting the access and redistribution limits of the source database.
 
-Both packages also ship a code-free app that drives the same workflow through a browser tab. Each runs on the researcher's own machine and by default listens on 127.0.0.1 alone, so the Scopus key never leaves it. `run_app()` starts the R version and the `scopusflow-gui` command starts the Python one.
+Both packages also ship a code-free app that drives the same workflow through a browser tab. Each runs on the researcher's own machine and by default listens on 127.0.0.1 alone, so the Scopus key never leaves it. `run_app()` starts the R version and the `scopusflow-gui` command starts the Python one. Figure 1 shows the yearly counts that the bundled demonstration corpus returns, which exercise the whole workflow without an API key.
 
 <figure>
 <img src="images/records-per-year-1.png" alt="Line chart showing the number of graphene-supercapacitor records in an offline demonstration corpus from 2015 to 2024" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">

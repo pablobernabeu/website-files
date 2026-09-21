@@ -107,7 +107,7 @@ ordinal <- label_ordinal()
 edgar_caption <- 'Source: EDGAR 2025 (Crippa et al., 2025).'
 ```
 
-The next chunk reads the three files and separates EDGAR's own EU27 and world rows from the territories. It then gives an income group to Curaçao and to Serbia and Montenegro, two territories that EDGAR reports under legacy codes absent from the World Bank classification. For fiscal year 2026, the World Bank classified Curaçao as high income and both Serbia and Montenegro as upper middle income (World Bank, 2025). The chunk also lists the jointly reported territories with their members, so that the map in figure 6 can colour each member.
+The next chunk reads the three files and separates EDGAR's own EU27 and world rows from the territories. It then gives an income group to Curaçao and to Serbia and Montenegro, two territories that EDGAR reports under legacy codes absent from the World Bank classification. For fiscal year 2026, the World Bank classified Curaçao as high income and both Serbia and Montenegro as upper middle income (World Bank, 2025). The chunk also lists the jointly reported territories with their members, so that the map in Figure 6 can colour each member.
 
 ```{r data}
 ghg <- read.csv('data/ghg_long.csv', stringsAsFactors = FALSE)
@@ -469,7 +469,7 @@ Power generation is the largest sector for the world as a whole, at `r pct(secto
 
 ### Emissions Against Human Development
 
-Per-capita emissions rise with development, and the model in this section measures how far each country departs from the level that its development would predict. Figure 5 plots per-capita emissions on a logarithmic axis against the HDI for 2023. The emissions are averaged over 2015 to 2024 to smooth out the pandemic dip and other year-to-year variation, and each marker is scaled to the country's 2024 population and coloured by continent. The chunk below fits the linear model `log10(per_capita) ~ hdi`, whose line is drawn through the points, and stores each country's residual, the vertical distance from the line in log10 units, for the map in figure 6 and the table after it.
+Per-capita emissions rise with development, and the model in this section measures how far each country departs from the level that its development would predict. Figure 5 plots per-capita emissions on a logarithmic axis against the HDI for 2023. The emissions are averaged over 2015 to 2024 to smooth out the pandemic dip and other year-to-year variation, and each marker is scaled to the country's 2024 population and coloured by continent. The chunk below fits the linear model `log10(per_capita) ~ hdi`, whose line is drawn through the points, and stores each country's residual, the vertical distance from the line in log10 units, for the map in Figure 6 and the table after it.
 
 ```{r hdi-model}
 hdi_data <- countries %>%
@@ -670,7 +670,7 @@ hdi_data %>%
                         'Columns as in Table 1.'))
 ```
 
-Whereas a few recurring causes account for the first table, the second has no single cause and spans HDI values from `r fmt(min(hdi_data$hdi_2023[order(hdi_data$residual)][1:10]), 2)` to `r fmt(max(hdi_data$hdi_2023[order(hdi_data$residual)][1:10]), 2)`. Being far below the line is therefore not one phenomenon, and the countries there have little in common beyond the distance itself.
+Whereas a few recurring causes account for Table 1, Table 2 has no single cause and spans HDI values from `r fmt(min(hdi_data$hdi_2023[order(hdi_data$residual)][1:10]), 2)` to `r fmt(max(hdi_data$hdi_2023[order(hdi_data$residual)][1:10]), 2)`. Being far below the line is therefore not one phenomenon, and the countries there have little in common beyond the distance itself.
 
 
 ## Discussion
@@ -687,7 +687,7 @@ package_versions <- paste(packages_used, sapply(packages_used, function(p) as.ch
 package_text <- paste0(paste(head(package_versions, -1), collapse = ', '), ' and ', tail(package_versions, 1))
 ```
 
-The EDGAR sheets store years as columns, so each was reshaped to one row per territory and year before the totals and per-capita figures were joined by country code and year. Population-weighted means and population shares were computed from the derived population, and the world population is the sum over the territories that report a per-capita figure. Continents, income groups and the HDI were joined by ISO 3166 alpha-3 code. A few exceptions were handled by hand. Taiwan has no region in the ISO 3166 dataset. EDGAR has no row for Kosovo and files Curaçao under the code of the former Netherlands Antilles. The jointly reported territories keep the code under which EDGAR reports them. The model of figure 5 is an ordinary least-squares regression of log10 per-capita emissions, averaged over 2015 to 2024, on the HDI for 2023, fitted to `r hdi_n` countries. The document was rendered with `r R.version.string` and the packages `r package_text`.
+The EDGAR sheets store years as columns, so each was reshaped to one row per territory and year before the totals and per-capita figures were joined by country code and year. Population-weighted means and population shares were computed from the derived population, and the world population is the sum over the territories that report a per-capita figure. Continents, income groups and the HDI were joined by ISO 3166 alpha-3 code. A few exceptions were handled by hand. Taiwan has no region in the ISO 3166 dataset. EDGAR has no row for Kosovo and files Curaçao under the code of the former Netherlands Antilles. The jointly reported territories keep the code under which EDGAR reports them. The model of Figure 5 is an ordinary least-squares regression of log10 per-capita emissions, averaged over 2015 to 2024, on the HDI for 2023, fitted to `r hdi_n` countries. The document was rendered with `r R.version.string` and the packages `r package_text`.
 
 
 ## References
