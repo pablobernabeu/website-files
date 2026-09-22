@@ -11,7 +11,8 @@ authors:
 date: '2026-06-07'
 apa_captions: true
 slug: lexsync
-publication: 'Version 0.1.0 [Computer software]. GitHub'
+publication: 'Version 0.1.0 [Computer software]. CRAN'
+doi: 10.32614/CRAN.package.lexsync
 categories:
   - software
 tags:
@@ -35,6 +36,8 @@ links:
     url: https://pablobernabeu.github.io/lexsync/r/articles/the-app.html
   - name: Python app guide
     url: https://pablobernabeu.github.io/lexsync/python/the-app/
+  - name: CRAN
+    url: https://CRAN.R-project.org/package=lexsync
   - name: Blog post
     url: /2026/lexsync-from-corpus-to-eeg-ready-experiment/
 package_docs:
@@ -68,4 +71,4 @@ Save the design, the source lexicon, the matching report and the generated exper
 
 ## Reference
 
-Bernabeu, P. (2026). *lexsync: Lexical optimisation and hardware-timed experiment generation* (Version 0.1.0) [Computer software]. GitHub. https://github.com/pablobernabeu/lexsync
+Bernabeu, P. (2026). *lexsync: Lexical optimisation and hardware-timed experiment generation* (Version 0.1.0) [Computer software]. CRAN. https://doi.org/10.32614/CRAN.package.lexsync
