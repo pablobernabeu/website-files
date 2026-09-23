@@ -5,6 +5,12 @@ name: Update post searches
 # dispatched from and also publishes them as an artifact, so that the posts can
 # be rebuilt from fresh counts without holding the Scopus key locally.
 # Dispatch-only: nothing here runs on a schedule or on push.
+#
+# The commit is pushed with GITHUB_TOKEN, and GitHub starts no workflow run for
+# a push made with that token. The deploy workflow therefore does not run, and
+# nothing in CI re-knits the posts either, since Hugo reads the committed
+# index.en.html files. After a run, pull the new tables, re-knit the two posts
+# locally and commit the .Rmd and .html files, whose push then deploys them.
 
 on:
   workflow_dispatch:
@@ -22,20 +28,37 @@ on:
 permissions:
   contents: write
 
+# Two runs on one branch would both write the same files and race to push. A
+# second run waits for the first, which is never cancelled, as that would
+# discard Scopus quota already spent.
+concurrency:
+  group: update-post-searches-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   search:
-    runs-on: ubuntu-latest
+    # A named image, so that the system libraries and the Posit Package Manager
+    # binaries below (built for Ubuntu 24.04) do not move with ubuntu-latest.
+    runs-on: ubuntu-24.04
     timeout-minutes: 120
+
+    env:
+      # A dated snapshot of CRAN, so that a rerun installs the same package
+      # versions. It holds scopusflow 0.4.0, the version the posts cite.
+      PPM_SNAPSHOT: https://packagemanager.posit.co/cran/__linux__/noble/2026-09-22
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Full history, so that the commit step can rebase on the branch.
+          fetch-depth: 0
 
       - name: Set up R
         uses: r-lib/actions/setup-r@465b7d8e732ca3921382b1674c59bada9cbf3399 # v2.13.0
         with:
-          r-version: release
-          use-public-rspm: true
+          r-version: "4.6.1"
+          use-public-rspm: false
 
       - name: Install system dependencies
         run: |
@@ -43,18 +66,20 @@ jobs:
           sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
 
       - name: Install R packages
-        # Linux binaries from the Posit package manager where available, so that
-        # the run does not compile every dependency from source.
+        # The package manager serves Linux binaries only to a client that names
+        # its R version and platform in the user agent, and source packages
+        # otherwise, which would compile every dependency.
         run: |
-          repos <- c(RSPM = Sys.getenv("RSPM"), CRAN = "https://cloud.r-project.org")
-          install.packages(c("remotes", "httr2", "jsonlite"), repos = repos)
-          remotes::install_github(
-            "pablobernabeu/scopusflow@623649a2f4812da1a4850bf2c58d4fac4fc771f3",
-            repos = repos
-          )
+          options(HTTPUserAgent = sprintf(
+            "R/%s R (%s)", getRversion(),
+            paste(getRversion(), R.version$platform, R.version$arch, R.version$os)
+          ))
+          repos <- c(PPM = Sys.getenv("PPM_SNAPSHOT"))
+          install.packages(c("httr2", "jsonlite", "scopusflow"), repos = repos)
+          if (packageVersion("scopusflow") != "0.4.0")
+            stop("Expected scopusflow 0.4.0 but installed ", packageVersion("scopusflow"))
+          sessionInfo()
         shell: Rscript {0}
-        env:
-          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run searches
         run: Rscript scripts/update_post_searches.R "$TARGET"
@@ -74,7 +99,19 @@ jobs:
             exit 0
           fi
           git commit -m "Update post searches"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
+          # master receives bot commits daily, and a run takes long enough for
+          # the branch to move under it. Rebase the commit on whatever landed
+          # before pushing, and try again if the branch moves once more.
+          for attempt in 1 2 3; do
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            if git push origin "HEAD:${GITHUB_REF_NAME}"; then
+              exit 0
+            fi
+            echo "Push attempt ${attempt} was rejected; retrying."
+            sleep 15
+          done
+          echo "Could not push the search results; they remain in the artifact."
+          exit 1
 
       - name: Upload results
         # Also after a failure, so that the searches that did complete are kept.
