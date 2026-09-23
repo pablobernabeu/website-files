@@ -22,7 +22,7 @@ tags:
   - psycholinguistics
   - experimental stimuli
   - EEG
-abstract: 'Twin R and Python packages for selecting and matching lexical stimuli, counterbalancing lists, generating pseudowords, and writing PsychoPy, OpenSesame and jsPsych experiments with hardware-timed EEG triggers.'
+abstract: 'Twin R and Python packages for selecting and matching lexical stimuli, counterbalancing lists, generating pseudowords, and writing PsychoPy, OpenSesame and jsPsych experiments, the first two with hardware-timed electroencephalography (EEG) triggers.'
 summary: 'Lexical stimulus matching and experiment generation in R and Python.'
 featured: no
 open_materials: true
@@ -65,7 +65,7 @@ The main quality-control question for a set of lexical materials is whether the 
 <figcaption>Each Control Tested Against the Schema's Default Equivalence Bound of Half a Standard Deviation, Chosen Before Selection Begins.</figcaption>
 </figure>
 
-## Reproducible hand-off
+## Reproducible Hand-Off
 
 Save the design, the source lexicon, the matching report and the generated experiment together. Before recording EEG, verify the exported timing, trigger codes, trial order and counterbalancing in the target presentation framework. The [R documentation](https://pablobernabeu.github.io/lexsync/r/), [Python documentation](https://pablobernabeu.github.io/lexsync/python/) and [companion blog post](/2026/lexsync-from-corpus-to-eeg-ready-experiment/) provide the complete workflow.
 

@@ -55,7 +55,7 @@ I wrote [lexsync](https://github.com/pablobernabeu/lexsync) (Bernabeu, 2026) to 
 
 ## Development
 
-The workflow below keeps each design decision in view as it defines the candidate pool, checks the realised balance and passes the same specification on to the presentation software. Every step reads the same schema file, so a change to the design reaches the generated experiment without being retyped.
+The workflow below keeps each design decision in view as it defines the candidate pool, checks the realised balance and passes the same specification on to the presentation software. Every step works from the design, so a change to it reaches the generated experiment without being retyped.
 
 ```{r}
 library(lexsync)
@@ -70,7 +70,7 @@ lexicon <- load_lexicon(lexicon_path, schema, language = 'english')
 
 ### Put the Design in Data
 
-The design below asks for 40 words in each frequency condition, matched on length, neighbourhood density and OLD20. Those three controls and frequency itself are then balanced across two presentation lists. Frequency is expressed on the Zipf scale (van Heuven et al., 2014), and OLD20 measures orthographic similarity as the mean edit distance between a word and its 20 nearest neighbours (Yarkoni et al., 2008).
+The design below asks for 40 words in each frequency condition, matched on length, neighbourhood density and orthographic Levenshtein distance 20 (OLD20). Those three controls and frequency itself are then balanced across two presentation lists. Frequency is expressed on the Zipf scale (van Heuven et al., 2014), and OLD20 measures orthographic similarity as the mean edit distance between a word and its 20 nearest neighbours (Yarkoni et al., 2008).
 
 ```{r}
 design <- list(
@@ -104,7 +104,7 @@ The high-frequency band is the smaller candidate set, so it limits both the numb
 
 ### Select and Check the Words
 
-`match_stimuli()` spreads anchor words across the smaller frequency band and finds nearby words from the other condition in the standardised space of the control variables. Standardising first means that a given distance counts the same whichever control it falls on.
+`match_stimuli()` spreads anchor words evenly across the first condition in the design, here the smaller high-frequency band, and finds nearby words from the other condition in the standardised space of the control variables. Standardising first means that a given distance counts the same whichever control it falls on.
 
 ```{r}
 stimuli <- match_stimuli(pool, design, schema)
@@ -186,7 +186,7 @@ head(trials[, c('list', 'trial', 'condition', 'word', 'iti_ms',
 
 The imbalance cost sums each list's departure from its fair share on every balanced variable, scaled to that variable's mean. Each swap exchanged a matched word pair in one list for a pair in the other.
 
-All three exported files read from this trial table. In the PsychoPy script, `win.callOnFlip` sends the trigger on the refresh that presents the word.
+All three exported files read from this trial table. In the PsychoPy script, `win.callOnFlip` sends the trigger on the refresh that presents the word, and `TRIGGER_HOLD_MS` sets how long the trigger code is held before the port is reset to zero.
 
 ```{r}
 experiments <- export_experiments(trials, design, schema, output_dir)

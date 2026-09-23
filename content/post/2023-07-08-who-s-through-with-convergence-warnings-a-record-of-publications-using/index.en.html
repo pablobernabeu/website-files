@@ -4,6 +4,8 @@ author: ''
 date: '2026-09-02'
 apa_captions: true
 slug: publications-that-used-allfit-to-compare-optimisers
+aliases:
+  - /2023/who-s-through-with-convergence-warnings-a-list-of-papers-that-used-allfit-to-check-coefficients-across-optimizers/
 code_folding: hide
 editable_r: true
 categories:
@@ -20,7 +22,7 @@ tags:
   - bibliometrics
 subtitle: ''
 summary: 'A convergence warning from lme4 does not by itself show that a model is wrong. One check that the lme4 authors recommend is to refit the model with every available optimiser through allFit and compare the estimates that matter. This post records the candidate publications found by a reproducible search of Scopus, Europe PMC and OpenAlex, and explains why the list can only be a starting point for screening.'
-abstract: 'This reproducible bibliographic audit searches Scopus, Europe PMC and OpenAlex for publications whose indexed records or full text mention lme4::allFit. It separates full-text matches from those of a Scopus proxy query, deduplicates records by DOI and presents the result as a lower-bound screening set, since a listed study mentions allFit without necessarily having used it to resolve a convergence warning.'
+abstract: 'This reproducible bibliographic audit searches Scopus, Europe PMC and OpenAlex for publications whose indexed records or full text mention lme4::allFit. It separates full-text matches from those of a Scopus proxy query, deduplicates records by DOI and presents the result as an incomplete set of candidates for screening, since a listed study mentions allFit without necessarily having used it to resolve a convergence warning.'
 authors: []
 lastmod: ''
 featured: no
@@ -38,9 +40,9 @@ projects: []
 <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
 
 
-<p>Mixed-effects models with the random-effects structure that the design justifies (Barr et al., 2013) can end their fit with a warning from lme4 (Bates, Mächler, et al., 2015) that the optimiser may not have converged. The warning reports that a numerical check exceeded a tolerance, but that alone does not establish that the fitted model is wrong. According to the lme4 documentation, the check relies on approximate derivatives that are sometimes unreliable, and it can flag apparently well-behaved fits to large data sets. Even so, a warning calls for investigation before it is set aside. A model with too little information to estimate every variance and correlation may also show boundary estimates, such as a variance near zero or a correlation near one (Bates, Kliegl, et al., 2015; Matuschek et al., 2017; Singmann &amp; Kellen, 2019).</p>
-<p>Methods tutorials describe several corrective steps for convergence problems (Brauer &amp; Curtin, 2018; Singmann &amp; Kellen, 2019). Brauer and Curtin set twenty of them out in a single ordered list, on the principle that each step disturbs the parameter estimates more than the one above it, so that a step should be taken only once everything above it has failed. Two of the steps are preventive and belong to the design, namely as many subjects and items as the study can carry, and heterogeneous ones. Ten more are grouped as nonintrusive: checking the data and its distributional assumptions, looking for misspecification, centring the predictors, increasing the number of iterations, changing the optimiser, supplying better starting values, rescaling a variable, looking for cells with very few observations, and two mild simplifications that leave the effects of interest untouched. Only after those does the list begin to cut into the random effects that the hypothesis itself rests on.</p>
-<p>The remedies that are reached for most readily sit a good deal further down. Removing the correlations among random effects is the fifteenth step, in the group Brauer and Curtin call the classic remedies. Removing the random intercepts is the sixteenth, a position that the authors expect to surprise some readers, because simulations show that dropping the intercepts biases the estimates less than dropping the slopes for the predictor under test (Barr et al., 2013). Keeping the random intercepts but dropping the random slopes is the twentieth and last step of all, and Brauer and Curtin ask anyone who resorts to it to warn their readers that the Type I error rate may reach 80 per cent. The reasoning behind the whole ordering is that the test of a fixed effect holds its nominal error rate only while the corresponding random effect stays in the model, so the random slope for the predictor a study is about should be the last thing to go.</p>
+<p>Mixed-effects models with the random-effects structure that the design justifies (Barr et al., 2013) can end their fit with a warning from lme4 (Bates, Mächler, et al., 2015) that the optimiser may not have converged. The warning reports that a numerical check exceeded a tolerance, but that alone does not establish that the fitted model is wrong. According to the <a href="https://search.r-project.org/CRAN/refmans/lme4/html/convergence.html">lme4 documentation</a>, the check relies on approximate derivatives that are sometimes unreliable, and it can flag apparently well-behaved fits to large data sets. Even so, a warning calls for investigation before it is set aside. A model with too little information to estimate every variance and correlation may also show boundary estimates, such as a variance near zero or a correlation near one (Bates, Kliegl, et al., 2015; Matuschek et al., 2017; Singmann &amp; Kellen, 2019).</p>
+<p>Methods tutorials describe a range of steps for dealing with convergence problems (Brauer &amp; Curtin, 2018; Singmann &amp; Kellen, 2019). Brauer and Curtin (2018) set twenty of them out in a single ordered list, on the principle that each step disturbs the parameter estimates more than the one above it, so that a step should be taken only once everything above it has failed. Two of the steps are preventive and belong to the design, namely as many subjects and items as the study can carry, and heterogeneous ones. Ten more are grouped as nonintrusive: checking the data and its distributional assumptions, looking for misspecification, centring the predictors, increasing the number of iterations, changing the optimiser, supplying better starting values, rescaling a variable, looking for cells with very few observations, and two mild simplifications that leave the effects of interest untouched. Only after those does the list begin to cut into the random effects that the hypothesis itself rests on.</p>
+<p>The remedies that are reached for most readily sit a good deal further down. Removing the correlations among random effects is the fifteenth step, in the group Brauer and Curtin (2018) call the classic remedies. Removing the random intercepts is the sixteenth, a position that the authors expect to surprise some readers, because simulations show that dropping the intercepts inflates the Type I error rate far less than dropping the slopes for the predictor under test (Barr et al., 2013). Keeping the random intercepts but dropping the random slopes is the twentieth and last step of all, and Brauer and Curtin ask anyone who resorts to it to warn their readers that the Type I error rate may reach 80 per cent. The reasoning behind the final steps is that the test of a fixed effect holds its nominal error rate only while the corresponding random effect stays in the model. The random slope for the predictor a study is about should therefore be the last thing to go.</p>
 <p>Changing the optimiser is the seventh step, among the nonintrusive ones, and it leaves the random-effects structure exactly as the design justifies it. The lme4 documentation recommends a similar series of steps. Its authors describe one of them as the gold standard, namely refitting the model with every available optimiser through <code>allFit()</code> and comparing the estimates that matter for the conclusions. Practical agreement between the optimisers is consistent with a false-positive warning, although it does not show that the model is otherwise appropriate. Disagreement calls for a closer look at the data, the model specification and the optimisation settings. Some years ago, I wrote about the practice and published a <a href="/2023/a-new-function-to-plot-convergence-diagnostics-from-lme4-allfit/">plotting function for the comparison</a>. This post keeps a reproducible record of the candidate publications that a search can find, so that readers can inspect the evidence for themselves.</p>
 <div id="development" class="section level2">
 <h2>Development</h2>
@@ -52,7 +54,7 @@ scopus_proxy &lt;- scopus_fetch(
   paste(&#39;(&quot;lme4&quot; OR &quot;lmerTest&quot; OR &quot;brms&quot;) AND maximal AND &quot;random slopes&quot;&#39;,
         &#39;AND (convergence OR converge OR converged OR converging)&#39;),
   field = &#39;TITLE-ABS-KEY&#39;)</code></pre>
-<p>The two full-text queries are read from the files saved with the results, so they are exactly the queries that ran. A query retyped into a post can drift from the one that produced the counts, and this reads it back from disk instead.</p>
+<p>The two full-text queries are read from the files saved with the results, so they are exactly the queries that ran. A query retyped into the post could drift from the one that produced the counts.</p>
 <pre class="r"><code>cat(readLines(&#39;searches/europepmc_query.txt&#39;), sep = &#39;\n&#39;)</code></pre>
 <pre><code>&quot;allFit&quot; AND (lme4 OR &quot;mixed-effects&quot; OR &quot;mixed effects&quot; OR &quot;mixed model&quot; OR &quot;mixed models&quot; OR &quot;multilevel&quot;)</code></pre>
 <pre class="r"><code>cat(readLines(&#39;searches/openalex_filter.txt&#39;), sep = &#39;\n&#39;)</code></pre>
@@ -135,7 +137,7 @@ c(matched = nrow(used_allfit) + nrow(too_early),
 #&gt;                                         13                                         16 
 #&gt;                        OpenAlex, full text 
 #&gt;                                         47</code></pre>
-<p>Figure 1 shows how many of the kept publications appeared in each year. Only the two full-text sources contribute to it, because the Scopus queries search indexed fields rather than the body of an article.</p>
+<p>Figure 1 shows how many of the kept publications, all of them from the two full-text sources, appeared in each year.</p>
 <pre class="r"><code>per_year &lt;- used_allfit |&gt;
   filter(!is.na(year)) |&gt;
   count(year)
@@ -161,10 +163,10 @@ ggplot(per_year, aes(year, n)) +
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:publications-per-year"></span>
 <img src="{{< blogdown/postref >}}index.en_files/figure-html/publications-per-year-1.png" alt="Bar chart of the number of publications per year, from 2017 to 2026, whose full text mentions allFit, according to Europe PMC and OpenAlex" width="672" />
 <p class="caption">
-Figure 1: Publications per Year Whose Full Text Mentions allFit, According to Europe PMC and OpenAlex. The bar for the current year stops at the date of the search.
+Figure 1: Publications per Year Whose Full Text Mentions allFit, According to Europe PMC and OpenAlex. The last bar stops at the date of the search.
 </p>
 </div>
-<p>Table 1 lists the same publications, most recent first, with the sources in which each was found. Authors are given as the sources returned them. The two sources overlap in a minority of records, which says as much about their coverage as about the literature.</p>
+<p>Table 1 lists the same publications, most recent first, with the sources in which each was found. Authors are given as the sources returned them. The two sources overlap in a minority of records, which reflects how differently they cover the literature.</p>
 <pre class="r"><code>short_authors &lt;- function(a) {
   a &lt;- ifelse(is.na(a), &#39;&#39;, a)
   first &lt;- sub(&#39;[;,].*$&#39;, &#39;&#39;, a)
@@ -178,9 +180,9 @@ used_allfit |&gt;
             DOI = ifelse(is.na(doi) | doi == &#39;&#39;, &#39;&#39;,
                          sprintf(&#39;[%s](https://doi.org/%s)&#39;, doi, doi)),
             Sources = sources) |&gt;
-  knitr::kable(caption = &#39;Candidate Publications Whose Full Text Mentions allFit, Most Recent First, With the Source in Which Each Was Found.&#39;)</code></pre>
+  knitr::kable(caption = &#39;Candidate Publications Whose Full Text Mentions allFit, Most Recent First, With the Sources in Which Each Was Found.&#39;)</code></pre>
 <table>
-<caption><span id="tab:publications-table">Table 1: </span>Candidate Publications Whose Full Text Mentions allFit, Most Recent First, With the Source in Which Each Was Found.</caption>
+<caption><span id="tab:publications-table">Table 1: </span>Candidate Publications Whose Full Text Mentions allFit, Most Recent First, With the Sources in Which Each Was Found.</caption>
 <colgroup>
 <col width="1%" />
 <col width="9%" />
@@ -848,7 +850,7 @@ used_allfit |&gt;
 </div>
 <div id="discussion" class="section level2">
 <h2>Discussion</h2>
-<p>The count is a lower bound, because the searches miss part of the literature. Europe PMC holds full text mostly for open-access articles in journals within its scope, so a paywalled study in a linguistics or psychology journal is usually invisible to it unless a preprint or an accepted manuscript was deposited. OpenAlex holds the text of a subset of the literature that it does not fully document, and Scopus cannot see the methods section at all. None of the three can find a study that compared optimisers with its own loop or by calling the <code>optimx</code> package directly, or one that reported the comparison only in supplementary material. At the same time, a full-text match can be an article that uses the function for something other than a convergence check, or that mentions it only in a footnote. Records published before the function existed have been dropped, but the table has not otherwise been screened by hand, so some of the publications it lists may mention the function without having used it. The list is therefore a starting point for the reader who needs a precedent.</p>
+<p>The list is incomplete, because the searches miss part of the literature. Europe PMC holds full text mostly for open-access articles in journals within its scope, so a paywalled study in a linguistics or psychology journal is usually invisible to it unless a preprint or an accepted manuscript was deposited. OpenAlex holds the text of a subset of the literature that it does not fully document, and Scopus cannot see the methods section at all. None of the three can find a study that compared optimisers with its own loop or by calling the <code>optimx</code> package directly, or one that reported the comparison only in supplementary material. At the same time, a full-text match can be an article that uses the function for something other than a convergence check, or that mentions it only in a footnote. Records published before the function existed have been dropped, but the table has not otherwise been screened by hand, so some of the publications it lists may mention the function without having used it. A few studies also appear twice under different DOIs, usually as a preprint and as the published article. The list is therefore a starting point for the reader who needs a precedent.</p>
 </div>
 <div id="references" class="section level2">
 <h2>References</h2>

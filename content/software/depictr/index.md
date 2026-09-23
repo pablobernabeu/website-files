@@ -22,7 +22,7 @@ tags:
   - data visualisation
   - statistics
   - accessibility
-abstract: 'Twin R and Python packages for producing consistent, publication-ready statistical graphics from exploratory analysis through model estimates, diagnostics, uncertainty and power. The toolkit includes colourblind-aware palettes and measurable accessibility checks.'
+abstract: 'Twin R and Python packages for producing consistent, publication-ready statistical graphics from exploratory analysis to model estimates, diagnostics, uncertainty and power. The toolkit includes colourblind-aware palettes and measurable accessibility checks.'
 summary: 'A consistent, accessible visual language for statistical analysis in R and Python.'
 featured: no
 open_materials: true
@@ -56,11 +56,11 @@ projects: []
 
 depictr (Bernabeu, 2026) provides a shared visual language for exploratory graphics, model estimates, diagnostics, uncertainty and power analyses. Its R and Python implementations use the same naming and colour conventions, and both return ordinary plot objects that can still be adapted to the needs of a study. The accessibility audit examines the rendered figure itself, since a colourblind-aware palette alone cannot guarantee an accessible figure.
 
-## One set of conventions, audited at the end
+The Python implementation also has a Streamlit app, which offers a gallery of the plots and a way to try the package without writing any code. It runs locally from a clone of the [Python repository](https://github.com/pablobernabeu/depictr-py), as the [app guide](https://pablobernabeu.github.io/depictr-py/app/) explains.
 
-Colour, interval and labelling conventions carry from the observed distribution of a simulated lexical-decision experiment, through the model estimates, to the figure that will leave the project. Figure 1 shows the observed distributions, Figure 2 the model estimates drawn from the same data, and Figure 3 the version that the accessibility audit asked for. The audit runs on that rendered figure, not on the palette alone.
+## One Set of Conventions, Audited at the End
 
-The Python twin also ships a Streamlit app, which gives the gallery a low-friction way in without writing any code.
+Colour, interval and labelling conventions carry from the observed distribution of a simulated lexical-decision experiment, through the model estimates, to the figure that will leave the project. Figure 1 shows the observed distributions, Figure 2 the model estimates drawn from the same data, and Figure 3 the version that the accessibility audit asked for.
 
 <figure>
 <img src="images/distribution-1.png" alt="Empirical cumulative distributions of lexical-decision reaction times for related and unrelated primes, with quartile guides" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
@@ -69,15 +69,15 @@ The Python twin also ships a Streamlit app, which gives the gallery a low-fricti
 
 <figure>
 <img src="images/model-estimates-1.png" alt="Forest plot of the fixed effects, each per standard deviation of its predictor, for priming condition, presentation modality and word frequency, with 95 per cent confidence intervals" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
-<figcaption>Fixed Effects in Milliseconds per Standard Deviation of the Predictor, With 95 per cent Confidence Intervals.</figcaption>
+<figcaption>Fixed Effects in Milliseconds per Standard Deviation of the Predictor, With 95% Confidence Intervals.</figcaption>
 </figure>
 
 <figure>
 <img src="images/audited-figure-1.png" alt="Corrected density curves of lexical-decision reaction times, distinguished by colour and line type" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
-<figcaption>The Corrected Version of the Priming Comparison, Where Line Type Repeats a Distinction That Colour Alone Would Have Carried.</figcaption>
+<figcaption>The Corrected Figure, in Which Colour and Line Type Both Separate the Priming Conditions.</figcaption>
 </figure>
 
-## Reproducibility and accessibility
+## Reproducibility and Accessibility
 
 The recommended workflow is to keep the plotting code with the analysis, record the package version and run the audit on the exact figure that will be submitted or presented. Alt text and a meaningful caption remain part of the author's editorial responsibility. See the [R documentation](https://pablobernabeu.github.io/depictr/), [Python documentation](https://pablobernabeu.github.io/depictr-py/) and [companion blog post](/2026/depictr-one-visual-language-from-first-look-to-final-figure/) for runnable examples.
 

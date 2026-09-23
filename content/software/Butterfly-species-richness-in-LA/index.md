@@ -1,5 +1,5 @@
 ---
-abstract: 'Dashboard presenting open data from Prudic et al. (2018), who compared three ways of recording butterfly species richness in Los Angeles: Pollard walks by trained volunteers, Malaise traps with expert identification, and crowd-sourced iNaturalist observations. The coding involved reshaping the data to a long format, merging data sets and, as ever, wrangling with the layout of a table.'
+abstract: 'Dashboard presenting open data from Prudic et al. (2018), who compared three ways of recording butterfly species richness in Los Angeles: Pollard walks by trained volunteers, Malaise traps with expert identification and crowd-sourced iNaturalist observations. The coding involved reshaping the data to a long format, merging data sets and, as ever, wrangling with the layout of a table.'
 type: software
 software_kind: web-application
 aliases:
@@ -65,19 +65,21 @@ url_data: 'https://github.com/jcoliver/bioscan'
 <br>
 <br>
 
-### How it works
+### How It Works
 {{< diagram >}}
 graph TD
   A["Open data from<br/>Prudic et al. (2018)"] --> B["iNaturalist<br/>(crowd-sourced observations)"]
   A --> C["BioScan<br/>(Pollard walks and Malaise traps)"]
+  A --> W["Species data<br/>(wingspans)"]
   B --> D["Reshape, merge<br/>and wrangle in R"]
   C --> D
+  W --> D
   D --> E["Dashboard: butterfly species<br/>richness in Los Angeles"]
 {{< /diagram >}}
 
 This dashboard presents open data (<a href='https://github.com/jcoliver/bioscan/blob/master/data/iNaturalist-clean-reduced.csv'>iNaturalist</a> and <a href='https://github.com/jcoliver/bioscan/blob/master/data/BioScanDataComplete.csv'>BioScan</a>) from [Prudic et al. (2018)](https://doi.org/10.3390/insects9040186). The authors compared three ways of recording butterfly species richness in Los Angeles: Pollard walks by trained volunteers, Malaise traps with expert identification (both recorded in the BioScan data) and crowd-sourced iNaturalist observations.
 
-I developed this dashboard after reproducing the [analyses of the original study](https://github.com/jcoliver/bioscan) in a [ReproHack session](https://github.com/reprohack/reprohack-hq/blob/master/README.md).
+I developed this dashboard after reproducing the [analyses of the original study](https://github.com/jcoliver/bioscan) in a [ReproHack session](https://www.reprohack.org/).
 
 My coding tasks included transforming the data to a long format,
 
@@ -85,7 +87,7 @@ My coding tasks included transforming the data to a long format,
 # There are pseudovariables, that is, observations entered as variables. 
 # Since most R processes need the tidy format, convert below 
 # (see https://r4ds.had.co.nz/tidy-data.html). The specific numbers 
-# found through traps and crowdsourcing methods are preserved.
+# found through Pollard walks and Malaise traps are preserved.
 
 BioScan = BioScan %>% pivot_longer(
     cols = Anthocharis_sara:Vanessa_cardui, names_to = "Species",
@@ -125,4 +127,4 @@ Column {style="data-width:100%; position:static; height:1000px;"}
 
 ### Reference
 
-Prudic, K. L., Oliver, J. C., Brown, B. V., & Long, E. C. (2018). Comparisons of citizen science data-gathering approaches to evaluate urban butterfly diversity. *Insects, 9*(4), 186. https://doi.org/10.3390/insects9040186
+Prudic, K. L., Oliver, J. C., Brown, B. V., & Long, E. C. (2018). Comparisons of citizen science data-gathering approaches to evaluate urban butterfly diversity. *Insects, 9*(4), Article 186. https://doi.org/10.3390/insects9040186

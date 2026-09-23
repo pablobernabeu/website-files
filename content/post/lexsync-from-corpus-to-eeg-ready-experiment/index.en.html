@@ -49,7 +49,7 @@ projects: []
 <p>I wrote <a href="https://github.com/pablobernabeu/lexsync">lexsync</a> (Bernabeu, 2026) to keep those stages in one reproducible workflow. The package stores the design separately from the candidate corpus, reports the balance that was achieved, and exports runnable experiments for PsychoPy, OpenSesame and jsPsych. Its R and Python implementations read the same design format, and the examples below use R.</p>
 <div id="development" class="section level2">
 <h2>Development</h2>
-<p>The workflow below keeps each design decision in view as it defines the candidate pool, checks the realised balance and passes the same specification on to the presentation software. Every step reads the same schema file, so a change to the design reaches the generated experiment without being retyped.</p>
+<p>The workflow below keeps each design decision in view as it defines the candidate pool, checks the realised balance and passes the same specification on to the presentation software. Every step works from the design, so a change to it reaches the generated experiment without being retyped.</p>
 <pre class="r"><code>library(lexsync)
 library(ggplot2)
 packageVersion(&#39;lexsync&#39;)</code></pre>
@@ -60,7 +60,7 @@ schema &lt;- yaml::read_yaml(schema_path)
 lexicon &lt;- load_lexicon(lexicon_path, schema, language = &#39;english&#39;)</code></pre>
 <div id="put-the-design-in-data" class="section level3">
 <h3>Put the Design in Data</h3>
-<p>The design below asks for 40 words in each frequency condition, matched on length, neighbourhood density and OLD20. Those three controls and frequency itself are then balanced across two presentation lists. Frequency is expressed on the Zipf scale (van Heuven et al., 2014), and OLD20 measures orthographic similarity as the mean edit distance between a word and its 20 nearest neighbours (Yarkoni et al., 2008).</p>
+<p>The design below asks for 40 words in each frequency condition, matched on length, neighbourhood density and orthographic Levenshtein distance 20 (OLD20). Those three controls and frequency itself are then balanced across two presentation lists. Frequency is expressed on the Zipf scale (van Heuven et al., 2014), and OLD20 measures orthographic similarity as the mean edit distance between a word and its 20 nearest neighbours (Yarkoni et al., 2008).</p>
 <pre class="r"><code>design &lt;- list(
   name = &#39;frequency_eeg&#39;,
   language = &#39;english&#39;,
@@ -92,7 +92,7 @@ candidate_counts</code></pre>
 </div>
 <div id="select-and-check-the-words" class="section level3">
 <h3>Select and Check the Words</h3>
-<p><code>match_stimuli()</code> spreads anchor words across the smaller frequency band and finds nearby words from the other condition in the standardised space of the control variables. Standardising first means that a given distance counts the same whichever control it falls on.</p>
+<p><code>match_stimuli()</code> spreads anchor words evenly across the first condition in the design, here the smaller high-frequency band, and finds nearby words from the other condition in the standardised space of the control variables. Standardising first means that a given distance counts the same whichever control it falls on.</p>
 <pre class="r"><code>stimuli &lt;- match_stimuli(pool, design, schema)
 head(stimuli[, c(&#39;set&#39;, &#39;condition&#39;, &#39;word&#39;, &#39;frequency&#39;, &#39;length&#39;,
                   &#39;n_density&#39;, &#39;old20&#39;)])</code></pre>
@@ -190,7 +190,7 @@ c(cost_before = list_plan$report$cost_before,
 #&gt; 5    1     5 high_frequency    lost    489               102
 #&gt; 6    1     6  low_frequency   ghana    498               101</code></pre>
 <p>The imbalance cost sums each list’s departure from its fair share on every balanced variable, scaled to that variable’s mean. Each swap exchanged a matched word pair in one list for a pair in the other.</p>
-<p>All three exported files read from this trial table. In the PsychoPy script, <code>win.callOnFlip</code> sends the trigger on the refresh that presents the word.</p>
+<p>All three exported files read from this trial table. In the PsychoPy script, <code>win.callOnFlip</code> sends the trigger on the refresh that presents the word, and <code>TRIGGER_HOLD_MS</code> sets how long the trigger code is held before the port is reset to zero.</p>
 <pre class="r"><code>experiments &lt;- export_experiments(trials, design, schema, output_dir)
 basename(unlist(experiments))</code></pre>
 <pre><code>#&gt; [1] &quot;frequency_eeg_english_psychopy.py&quot; &quot;frequency_eeg_english.osexp&quot;      

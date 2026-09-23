@@ -35,7 +35,7 @@ publication: 'Version 1.0.0 [Computer software]. Zenodo'
 publication_short: ''
 diagram: true
 abstract: "Cloud-based speech-to-text services are convenient, but they often have file size limits, lack transparency for reproducible research and can pose privacy risks under regulations such as the General Data Protection Regulation (GDPR). This production-ready workflow runs OpenAI's Whisper models locally, so audio and transcripts stay on the user's own infrastructure. It scales to batch jobs on high-performance computing (HPC) clusters with GPU acceleration. For quality control and privacy, it can enhance the audio, attribute speech to speakers (diarisation), remove spurious repetitions produced by Whisper and mask personal names with context-aware filtering. Built around a single Python script, the workflow offers a reproducible and secure alternative for academic and enterprise transcription."
-summary: "A secure, local transcription workflow using OpenAI's Whisper, with batch processing on HPC clusters and built-in quality control. Designed for academic and enterprise use, it avoids the privacy and reproducibility limitations of cloud-based services."
+summary: "A secure, local transcription workflow using OpenAI's Whisper, with batch processing on high-performance computing (HPC) clusters and built-in quality control. Designed for academic and enterprise use, it avoids the privacy and reproducibility limitations of cloud-based services."
 featured: no
 url_code: https://github.com/pablobernabeu/secure_local_HPC_speech_transcription
 url_data: https://github.com/pablobernabeu/secure_local_HPC_speech_transcription/tree/main/example_output
@@ -48,7 +48,7 @@ links:
 - name: Documentation
   url: https://github.com/pablobernabeu/secure_local_HPC_speech_transcription/blob/main/README.md
 - name: Blog post
-  url: /2025/speech-transcription-python
+  url: /2025/speech-transcription-python/
 image:
   caption: ''
   focal_point: ''
@@ -70,7 +70,7 @@ xaringanExtra::use_clipboard()
 ```
 
 
-### How it works
+### How It Works
 
 ```{=html}
 <div class="mermaid">
@@ -90,7 +90,7 @@ graph TD
 ## Reference
 
 <div style="text-align: left;">
-<a href="https://doi.org/10.5281/zenodo.17624830"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.17624830.svg" alt="DOI" style="display: inline-block; margin: 0;"></a>
+<a href="https://doi.org/10.5281/zenodo.17624830"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.17624830.svg" alt="DOI: 10.5281/zenodo.17624830" style="display: inline-block; margin: 0;"></a>
 </div>
 
 If you use this workflow in your research, please cite:

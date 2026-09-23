@@ -50,7 +50,7 @@ open_materials: true
 open_data: true
 url_code: 'https://github.com/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing/tree/master/Shiny-app'
 url_data: 'https://github.com/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing/tree/master/Shiny-app'
-url_fulltext: 'https://psyarxiv.com/a5pcz'
+url_fulltext: 'https://doi.org/10.31234/osf.io/a5pcz'
 # url_poster: '#'
 # url_project: ""
 # url_slides: ""
@@ -66,7 +66,7 @@ url_fulltext: 'https://psyarxiv.com/a5pcz'
 <br>
 <br>
 
-### How it works
+### How It Works
 {{< diagram >}}
 graph TD
   A["EEG-ERP data from word<br/>comprehension experiment"] --> B["ERP plots spanning 800 ms<br/>of word processing"]
@@ -77,13 +77,13 @@ graph TD
   B --> G["Download HD plots, view<br/>95% confidence intervals"]
 {{< /diagram >}}
 
-The data come from a psychology experiment on word comprehension in which electroencephalographic (EEG) responses were measured. The plots span the first 800 milliseconds of word processing. The app is intended to help researchers and the public explore the data at four levels, from the broadest to the most specific: groups of participants, individual participants, brain areas and electrodes.
+The data come from a psychology experiment on word comprehension in which electroencephalographic (EEG) responses were measured. The plots span the first 800 milliseconds of word processing. The app (Bernabeu et al., 2017) is intended to help researchers and the public explore the data at four levels: groups of participants, individual participants, brain areas and electrodes.
 
 By creating this app, I tried to reach beyond the scope of open science at the time, which was often confined to files shared on data repositories. I made the case for using Shiny apps in science in a [blog post](/2017/the-case-for-data-dashboards-first-steps-in-r-shiny/) and in [slides](https://www.slideshare.net/PabloBernabeu/presenting-data-interactively-online-using-r-shiny-126064157).
 
-### Technical details
+### Technical Details
 
-I placed tabs at the top of the page to avoid cramming the sidebar with widgets. I adjusted the appearance of these tabs and used reactive conditions to change the inputs in the sidebar depending on the active tab.
+I placed tabs at the top of the page to avoid cramming the sidebar with widgets. I adjusted the appearance of these tabs and used reactive conditions to change the inputs in the sidebar depending on the active tab. The excerpts below come from an earlier version of the app, and the current scripts on GitHub differ in a few details. For instance, the tabs are coloured differently, a single EEG montage appears below the tabs and the plots are downloaded through links.
 
 ```
 mainPanel(
@@ -134,7 +134,7 @@ h5(a(strong('See plots with 95% Confidence Intervals'), href='https://osf.io/dvs
 
 The app links to the published paper, the raw data, and its own _server_ and _ui_ scripts. The scripts and the data used by the app are available [on GitHub](https://github.com/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing/tree/master/Shiny-app) and archived on Zenodo (Bernabeu, 2024).
 
-Each tab has a button to download the plot in high resolution, as shown below for the first tab.
+Each tab lets users download the plot in high resolution, as shown below for the first tab.
 
 
 ```
@@ -192,14 +192,14 @@ output$downloadPlot.1 <- downloadHandler(
 downloadButton('downloadPlot.1', 'Download HD plot')
 ```
 
-### Rising to the challenge
+### Rising to the Challenge
 
 In my first days with Shiny, I spent an eternity stuck on a single letter, "μ", which appeared in the labels of my plots (a micro-souvenir from hell, as I came to know it). The app ran perfectly on my laptop but could not be deployed online. Eventually, I read about UTF-8 encoding in a forum, and all I had to do was write "Âμ" instead of "μ". A better option I found later was `expression("\u03bc")`.
 
 Embedding images was also tricky, as I could not get the usual `www` folder to work. Instead, I uploaded the images to a website and entered their URLs in `img(src)`, which avoided folder paths altogether.
 
 ```
-img(src="https://preview.ibb.co/n7qiYR/EEG_montage.png 1", height=500, width=1000)
+img(src="https://preview.ibb.co/n7qiYR/EEG_montage.png", height=500, width=1000)
 ```
 
 Later, I added one more image in the same way: the _favicon_, the small icon shown on the browser tab.

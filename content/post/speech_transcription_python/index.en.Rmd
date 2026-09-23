@@ -166,7 +166,7 @@ This workflow is made available under the [Creative Commons 4.0 Attribution 4.0 
 ### Citation
 
 <div style="text-align: left;">
-<a href="https://doi.org/10.5281/zenodo.17624830"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.17624830.svg" alt="DOI" style="display: inline-block; margin: 0;"></a>
+<a href="https://doi.org/10.5281/zenodo.17624830"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.17624830.svg" alt="DOI: 10.5281/zenodo.17624830" style="display: inline-block; margin: 0;"></a>
 </div>
 
 If you use this workflow in your research, please cite:

@@ -5,7 +5,7 @@ software_kind: web-application
 aliases:
   - '/applications-and-dashboards/vtt-transcription-app/'
 diagram: true
-abstract: "This open-source, R-based web application converts video captions (subtitles) from the Web Video Text Tracks (WebVTT) Format into plain text. Users upload a WebVTT file with the extension 'vtt' or 'txt', and the application automatically removes metadata such as timestamps and formats the text."
+abstract: "This open-source, R-based web application converts video captions (subtitles) from the Web Video Text Tracks (WebVTT) Format into plain text. Users upload a WebVTT file with the extension .vtt or .txt, and the application automatically removes metadata such as timestamps and formats the text."
 authors:
 date: "2021-01-01"
 doi: "10.5281/zenodo.10615960"
@@ -58,7 +58,7 @@ url_code: 'https://github.com/pablobernabeu/VTT-Transcription-App/blob/main/inde
 
 
 <div id="how-it-works" class="section level3">
-<h3>How it works</h3>
+<h3>How It Works</h3>
 <div class="mermaid">
 graph TD
   A["User uploads WebVTT file<br/>(vtt or txt)"] --> B["Regular expressions remove<br/>metadata such as timestamps"]
@@ -66,13 +66,13 @@ graph TD
   C --> D["Result displayed<br/>on the website"]
   D --> E["Download as docx<br/>or txt document"]
 </div>
-<p>This open-source, R-based web application converts video captions (subtitles) from the <a href="https://www.w3.org/TR/webvtt1/">Web Video Text Tracks (WebVTT) Format</a> into plain text. Users upload a WebVTT file with the extension <code>.vtt</code> or <code>.txt</code>, such as <a href="https://github.com/pablobernabeu/VTT-Transcription-App/blob/main/assets/Example_subtitles_1.vtt">this example</a> or <a href="https://github.com/pablobernabeu/VTT-Transcription-App/blob/main/assets/Example_subtitles_2.txt">this one</a>.</p>
+<p>The application accepts caption files in the <a href="https://www.w3.org/TR/webvtt1/">Web Video Text Tracks (WebVTT) Format</a> with the extension <code>.vtt</code> or <code>.txt</code>, such as <a href="https://github.com/pablobernabeu/VTT-Transcription-App/blob/main/assets/Example_subtitles_1.vtt">this example</a> or <a href="https://github.com/pablobernabeu/VTT-Transcription-App/blob/main/assets/Example_subtitles_2.txt">this one</a>.</p>
 <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2FVTT-Transcription-App%2Fblob%2Fmain%2Fassets%2FExample_subtitles_1.vtt&style=a11y-dark&type=code&showLineNumbers=on&showFileMeta=on&showCopy=on&fetchFromJsDelivr=on"></script>
 <p><a href="https://osf.io/download/ustmx"><strong>Download VTT file</strong></a></p>
 <p>Once a caption file is uploaded, the application removes metadata such as timestamps and formats the text into a paragraph. The result is displayed on the page and can be downloaded as a <code>.docx</code> or <code>.txt</code> document. In this way, the application makes the content of video captions more accessible. The uploaded data are available only to the user and are deleted when the page is closed.</p>
 </div>
 <div id="web-application" class="section level2">
-<h2><i class="fa-solid fa-globe"></i> Web application</h2>
+<h2><i class="fa-solid fa-globe"></i> Web Application</h2>
 <p>The application can be used below or <a href="https://pablo-bernabeu.shinyapps.io/VTT-Transcription-App">opened in a separate window</a>.</p>
 <div style="margin-bottom: 25px;">
 <div style="position: relative; padding-top: 56.25%; height: 1100px;">
@@ -82,7 +82,7 @@ graph TD
 </div>
 </div>
 <div id="programming-details" class="section level2">
-<h2>Programming details</h2>
+<h2>Programming Details</h2>
 <p>The <a href="https://github.com/pablobernabeu/VTT-Transcription-App">source code is available on GitHub</a> under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a> licence, and the app can be extended through pull requests. The code is also archived on Zenodo (Bernabeu, 2024). Questions and suggestions can be submitted as <a href="https://github.com/pablobernabeu/VTT-Transcription-App/issues">issues</a> or emailed to <a href="mailto:pcbernabeu@gmail.com" class="email">pcbernabeu@gmail.com</a>.</p>
 <p>The core of the application is the <a href="https://github.com/pablobernabeu/VTT-Transcription-App/blob/main/index.Rmd">index.Rmd</a> script, which processes the VTT file with <a href="https://stringr.tidyverse.org/articles/regular-expressions.html">regular expressions</a>.</p>
 <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fpablobernabeu%2FVTT-Transcription-App%2Fblob%2Fmain%2Findex.Rmd%23L172-L188&style=a11y-dark&type=code&showLineNumbers=on&showFileMeta=on&showCopy=on&fetchFromJsDelivr=on"></script>

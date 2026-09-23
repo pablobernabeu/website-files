@@ -5,6 +5,7 @@ software_kind: web-application
 aliases:
   - '/applications-and-dashboards/experimental-data-simulation/'
 diagram: true
+apa_captions: true
 authors:
 - '**Bernabeu, P.**, & Lynott, D.'
 date: "2020-06-01"
@@ -64,7 +65,7 @@ url_code: 'https://github.com/pablobernabeu/Experimental-data-simulation/blob/ma
 </div>
 <p>This open-source, R-based web application is suitable for teaching and research in the experimental and quantitative sciences. It creates varied data sets with specified structures, such as between-group and within-participant variables that can be categorical or continuous. The parameters are set in the tabs (sections) of the top menu, and the data set can be downloaded from the last tab. The application saves time and offers flexible control over the parameters.</p>
 <div id="how-it-works" class="section level3">
-<h3>How it works</h3>
+<h3>How It Works</h3>
 <div class="mermaid">
 graph TD
   A["Set parameters across tabs"] --> B["Define between-group<br/>and within-participant<br/>variables"]
@@ -85,14 +86,17 @@ graph TD
 <li><p><strong>In numeric fields</strong> (e.g., ‘Mean’, ‘Standard deviation’, ‘Relative probability [0, 1]’), only numbers and decimal points are allowed.</p></li>
 <li><p><strong>As the data set grows</strong>, so does the processing time.</p></li>
 </ul>
-<p>More specific guidelines are available in each section.</p>
+<p>More specific guidelines are available in each tab.</p>
 </div>
-<div id="the-web-application-can-be-launched-here." class="section level3">
-<h3><i class="fa-solid fa-globe"></i> The web application can be <a href="https://pablo-bernabeu.shinyapps.io/experimental-data-simulation/">launched here</a>.</h3>
-<div style="padding-top:8px; padding-bottom:2px; margin-bottom:-20px; color:#665F5F;">
-Screenshot of the <em>Dependent</em> tab (<a href="https://github.com/pablobernabeu/Experimental-data-simulation/raw/master/Screenshot.png">view larger</a>)
-</div>
-<p><img style="max-width: 800px; width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto; padding-bottom: 15px;" src="https://github.com/pablobernabeu/Experimental-data-simulation/raw/master/Screenshot.png" alt="Screenshot of the Dependent tab in the experimental data simulation web app, showing parameter settings for the dependent variable" /></p>
+<div id="the-web-application-can-be-launched-here" class="section level3">
+<h3><i class="fa-solid fa-globe"></i> The Web Application Can Be <a href="https://pablo-bernabeu.shinyapps.io/experimental-data-simulation/">Launched Here</a></h3>
+<p>Figure 1 shows the <em>Dependent</em> tab, where the parameters of the dependent variables are set.</p>
+<figure>
+<img style="max-width: 800px; width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto; padding-bottom: 15px;" src="https://github.com/pablobernabeu/Experimental-data-simulation/raw/master/Screenshot.png" alt="Screenshot of the Dependent tab in the experimental data simulation web app, showing parameter settings for the dependent variable" />
+<figcaption>
+Figure 1: The <em>Dependent</em> Tab in Version 0.2 of the App. A <a href="https://github.com/pablobernabeu/Experimental-data-simulation/raw/master/Screenshot.png">larger version</a> is available on GitHub.
+</figcaption>
+</figure>
 </div>
 <div id="reference" class="section level3">
 <h3>Reference</h3>
@@ -100,12 +104,12 @@ Screenshot of the <em>Dependent</em> tab (<a href="https://github.com/pabloberna
 </div>
 <div id="code" class="section level3">
 <h3>Code</h3>
-<p>This web application was developed in <a href="https://www.r-project.org/about.html">R</a> (R Core Team, 2020). The code is <a href="https://github.com/pablobernabeu/Experimental-data-simulation/blob/master/index.Rmd">available on GitHub</a>, where contributions are welcome. A copy is archived on Zenodo (Bernabeu &amp; Lynott, 2024). The initial code drew on Section 5.7 (<a href="https://www.crumplab.com/programmingforpsych/simulating-and-analyzing-data-in-r.html#simulating-data-for-multi-factor-designs" target="_blank"><em>Simulating data for multi-factor designs</em></a>) of Crump (2017). The R packages used include dplyr (Wickham et al., 2020), DT (Xie et al., 2020), flexdashboard (Iannone et al., 2020), shiny (Chang et al., 2020) and stringr (Wickham, 2019).</p>
+<p>This web application was developed in <a href="https://www.r-project.org/about.html">R</a> (R Core Team, 2020). The code is <a href="https://github.com/pablobernabeu/Experimental-data-simulation/blob/master/index.Rmd">available on GitHub</a>, where contributions are welcome. A copy is archived on Zenodo (Bernabeu &amp; Lynott, 2024). The initial code drew on Section 5.7 (<a href="https://www.crumplab.com/programmingforpsych/simulating-and-analyzing-data-in-r.html#simulating-data-for-multi-factor-designs" target="_blank">‘Simulating Data for Multi-Factor Designs’</a>) of Crump (2017). The R packages used include dplyr (Wickham et al., 2020), DT (Xie et al., 2020), flexdashboard (Iannone et al., 2020), shiny (Chang et al., 2020) and stringr (Wickham, 2019).</p>
 </div>
 <div id="options-for-development-and-local-use-of-the-app" class="section level3">
-<h3>Options for development and local use of the app</h3>
-<div id="option-a-using-local-rrstudio-or-rstudio-cloud-project-or-binder-rstudio-environment" class="section level4">
-<h4>Option A) Using local R/RStudio or <a href="https://rstudio.cloud/project/1739958">RStudio Cloud project</a> or <a href="https://mybinder.org/v2/gh/pablobernabeu/Experimental-data-simulation/master?urlpath=rstudio">Binder RStudio environment</a></h4>
+<h3>Options for Development and Local Use of the App</h3>
+<div id="option-a-using-local-rrstudio-or-posit-cloud-project-or-binder-rstudio-environment" class="section level4">
+<h4>Option A) Using Local R/RStudio or <a href="https://posit.cloud/project/1739958">Posit Cloud Project</a> or <a href="https://mybinder.org/v2/gh/pablobernabeu/Experimental-data-simulation/master?urlpath=rstudio">Binder RStudio Environment</a></h4>
 <ol style="list-style-type: decimal">
 <li><p>[Only needed in local R/RStudio] Install the package versions used in the <a href="https://github.com/pablobernabeu/Experimental-data-simulation/releases">latest release of this application</a> by running:</p>
 <pre><code>install.packages(&#39;devtools&#39;)
@@ -121,12 +125,13 @@ install_version(&#39;shiny&#39;, &#39;1.5.0&#39;, &#39;http://cran.us.r-project.
 install_version(&#39;stringr&#39;, &#39;1.4.0&#39;, &#39;http://cran.us.r-project.org&#39;)
 install_version(&#39;tidyr&#39;, &#39;1.1.2&#39;, &#39;http://cran.us.r-project.org&#39;)</code></pre></li>
 <li><p>Open the <a href="https://github.com/pablobernabeu/Experimental-data-simulation/blob/master/index.Rmd">index.Rmd</a> script.</p></li>
-<li><p>Run the application by clicking <kbd>▶️ Run document</kbd> at the top left or by running <code>rmarkdown::run('index.Rmd')</code> in the console.</p></li>
+<li><p>Run the application by clicking <kbd>▶️ Run Document</kbd> at the top left or by running <code>rmarkdown::run('index.Rmd')</code> in the console.</p></li>
 <li><p>Click <kbd>Open in Browser</kbd> at the top left.</p></li>
 </ol>
 </div>
-<div id="option-b-using-dockerfile-see-instructions" class="section level4">
-<h4>Option B) Using Dockerfile (<a href="https://github.com/pablobernabeu/Experimental-data-simulation#option-b-using-dockerfile-vsochs-pull-request">see instructions</a>)</h4>
+<div id="option-b-using-dockerfile" class="section level4">
+<h4>Option B) Using Dockerfile</h4>
+<p>The <a href="https://github.com/pablobernabeu/Experimental-data-simulation#option-b-using-dockerfile-vsochs-pull-request">README of the GitHub repository</a> explains how to build and run the app with the Dockerfile.</p>
 </div>
 </div>
 <div id="acknowledgements" class="section level3">

@@ -95,7 +95,7 @@ The separation extends well beyond a handful of slow responses. Related trials r
 
 ### Keep the Same Language for the Model
 
-The model, fitted to correct trials, includes priming condition, presentation modality and word frequency, with crossed random intercepts for participants and items. `coefficient_plot()` reads the fitted object directly and puts the fixed effects on a common scale in Figure 2, expressing each as the change in reaction time per standard deviation of its predictor.
+The model, fitted to correct trials, includes priming condition, presentation modality and word frequency, with crossed random intercepts for participants and items. `coefficient_plot()` reads the fitted object directly and puts the fixed effects on a common scale in Figure 2, expressing each as the change in reaction time per standard deviation of its predictor. The two factors enter the model as 0/1 codes with a standard deviation near 0.5, so their plotted effects are about half the size of the estimates printed below.
 
 ```{r}
 fit <- lmerTest::lmer(
@@ -173,7 +173,7 @@ The default palette starts from the colours proposed by Okabe and Ito (2008), an
 
 ## Discussion
 
-The example supports a modest but useful claim: accessibility belongs in figure development from the first draft onwards. A stable visual grammar helps readers compare plots, while the audit identifies concrete properties to repair. The practical habit is to use one set of conventions throughout an analysis and to audit the exact figure that will leave the project. The result is a reproducible hand-off from analysis code to an editable, interpretable and checked figure. The [R reference](https://pablobernabeu.github.io/depictr/reference/) and [Python reference](https://pablobernabeu.github.io/depictr-py/api/) cover the rest of the package, including diagnostics, posterior plots, power curves, model comparisons and multi-panel composition.
+The example supports a modest but useful claim: accessibility belongs in figure development from the first draft onwards. A stable visual language helps readers compare plots, while the audit identifies concrete properties to repair. The practical habit is to use one set of conventions throughout an analysis and to audit the exact figure that will leave the project. The result is a reproducible hand-off from analysis code to an editable, interpretable and checked figure. The [R reference](https://pablobernabeu.github.io/depictr/reference/) and [Python reference](https://pablobernabeu.github.io/depictr-py/api/) cover the rest of the package, including diagnostics, posterior plots, power curves, model comparisons and multi-panel composition.
 
 ### Limits
 
@@ -185,4 +185,4 @@ Bernabeu, P. (2026). *depictr: A unified toolkit for visualising statistical mod
 
 Machado, G. M., Oliveira, M. M., & Fernandes, L. A. F. (2009). A physiologically-based model for simulation of color vision deficiency. *IEEE Transactions on Visualization and Computer Graphics*, *15*(6), 1291–1298. https://doi.org/10.1109/TVCG.2009.113
 
-Okabe, M., & Ito, K. (2008). *Color universal design (CUD): How to make figures and presentations that are friendly to colorblind people*. https://jfly.uni-koeln.de/color/ (Original work published 2002)
+Okabe, M., & Ito, K. (2008). *Color universal design (CUD): How to make figures and presentations that are friendly to colorblind people*. https://jfly.uni-koeln.de/color/

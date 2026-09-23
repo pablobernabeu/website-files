@@ -49,7 +49,7 @@ projects: []
 <p>The example below uses a small corpus bundled with the R package. A stand-in server, defined in <a href="https://github.com/pablobernabeu/website-files/blob/master/content/post/scopusflow-a-literature-search-you-can-rerun/stand_in.R">a short script</a>, answers the requests that would otherwise go to the Scopus API, so the code runs without an API key or any connection to Elsevier.</p>
 <div id="development" class="section level2">
 <h2>Development</h2>
-<p>The workflow below separates planning, retrieval, inspection and reporting. Only retrieval needs a key, so the other three stages run here against the corpus bundled with the package.</p>
+<p>The workflow below separates planning, retrieval, inspection and reporting. Only retrieval needs a key, and the stand-in server answers its requests here from the corpus bundled with the package.</p>
 <pre class="r"><code>library(scopusflow)
 packageVersion(&#39;scopusflow&#39;)</code></pre>
 <pre><code>#&gt; [1] &#39;0.4.0&#39;</code></pre>
@@ -121,7 +121,7 @@ plot_scopus_trend(trend) +
   # offline and OpenAlex-derived, as the caption below the figure says. It is
   # dropped rather than corrected, because a note belongs under the figure. The
   # title goes with it, since the caption now sits directly above the plot and
-  # said the same thing twice.
+  # the two would say the same thing.
   ggplot2::labs(caption = NULL, title = NULL, y = NULL) +
   ggplot2::theme(axis.text = ggplot2::element_text(size = 10.5))</code></pre>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:records-per-year"></span>

@@ -78,7 +78,7 @@ c(score = check$aggregate_score,
   blockers_failed = check$n_blockers_failed)</code></pre>
 <pre><code>#&gt;           score            gate blockers_failed 
 #&gt;          &quot;85.1&quot;          &quot;pass&quot;             &quot;0&quot;</code></pre>
-<p>The checklist has 12 items, each tied to a source in the methodological literature. They cover features that make a theory appraisable, such as whether it states what it prohibits, whether its predictions derive from stated propositions, and how precise and risky those predictions are (e.g., Meehl, 1990). The score measures how completely the theory is specified. A well-specified theory can still be wrong, while a promising informal account can score poorly because it is not yet explicit enough to test.</p>
+<p>The checklist has 12 items, each tied to a source in the methodological literature. They cover features that make a theory appraisable, such as whether it states what it prohibits, whether its predictions derive from stated propositions, and how precise and risky those predictions are (e.g., Meehl, 1990). Two of the items are blockers, and the gate passes only if neither fails. The score, a weighted total out of 100, measures how completely the theory is specified. A well-specified theory can still be wrong, while a promising informal account can score poorly because it is not yet explicit enough to test.</p>
 </div>
 <div id="read-the-graph" class="section level3">
 <h3>Read the Graph</h3>
@@ -128,7 +128,7 @@ Figure 1: The Constructs of the Theory and the Arrows It Asserts Between Them, a
 </div>
 <div id="preserve-the-result-with-the-theory" class="section level3">
 <h3>Preserve the Result With the Theory</h3>
-<p>The dossier gathers the rigour checklist, the severity of each prediction, the theory’s provenance and a preregistration of its hypotheses into one Markdown record. The R and Python packages produce the same dossier for the same theory, so a checksum of that record identifies the audited state of the theory in either language. Table 2 repeats the score and gate and shows the first characters of the SHA-256 checksum.</p>
+<p>The dossier gathers the rigour checklist, the severity of each prediction, the theory’s provenance and a preregistration of its hypotheses into one Markdown record. The R and Python packages produce the same dossier for the same theory, so a checksum of that record identifies the audited state of the theory in either language. Table 2 repeats the score and gate and shows the first 12 characters of the SHA-256 checksum.</p>
 <table>
 <caption><span id="tab:dossier-summary">Table 2: </span>The Dossier That Preserves This Version of the Theory.</caption>
 <thead>
@@ -157,7 +157,7 @@ Figure 1: The Constructs of the Theory and the Arrows It Asserts Between Them, a
 <div id="discussion" class="section level2">
 <h2>Discussion</h2>
 <p>Formalisation changes what can be criticised. A reader can go beyond asking whether a theory sounds plausible and inspect which constructs are linked, which observations would count against the graph and how an amendment changes those commitments.</p>
-<p>The package documentation covers structural equation model compilation, severity scoring, preregistration, amendment appraisal, version differences and deposits to the Open Science Framework. Those tools build on the step shown here, which is to write the theory in a form that states what it claims and what it forbids.</p>
+<p>The package documentation covers structural equation model compilation, severity scoring, preregistration, amendment appraisal and deposits to the Open Science Framework. Those tools build on the step shown here, which is to write the theory in a form that states what it claims and what it forbids.</p>
 <div id="limits" class="section level3">
 <h3>Limits</h3>
 <p>Formalisation moves judgement into the open without removing it. Researchers still decide which constructs and arrows belong in the graph, how the constructs are measured, and whether an observed departure matters scientifically. The theory document records where each of those judgements enters. The checklist screens the structure and wording of a specification, so it cannot tell whether the constructs themselves are well chosen. Theories with feedback loops also need methods beyond the conditional-independence analysis used here, because theoryforge derives implications only from acyclic graphs.</p>

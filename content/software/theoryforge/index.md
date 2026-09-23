@@ -60,10 +60,10 @@ theoryforge (Bernabeu, 2026) represents a scientific theory as a versioned, mach
 
 <figure>
 <img src="images/theoryforge-workflow.svg" alt="Workflow diagram: a structured theory file is validated, used to derive testable implications, compared with a rival theory and preserved as a versioned dossier" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
-<figcaption>The Dashed Return Path Carries an Amended Theory Back Through the Same Checks That the First Version Passed.</figcaption>
+<figcaption>The theoryforge Workflow, From Theory File to Dossier. The dashed return path carries an amended theory back through the same checks that the first version passed.</figcaption>
 </figure>
 
-## Reproducible theory development
+## Reproducible Theory Development
 
 Store the theory document, schema version, validation report, derived implications, data-generating assumptions and checksum together. The [R documentation](https://pablobernabeu.github.io/theoryforge/r/), [Python documentation](https://pablobernabeu.github.io/theoryforge/python/), [browser apps](https://pablobernabeu.github.io/theoryforge/) and [companion blog post](/2026/theoryforge-a-theory-you-can-check/) show how the same specification supports formalisation, testing and preregistration.
 

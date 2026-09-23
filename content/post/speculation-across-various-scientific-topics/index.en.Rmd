@@ -19,7 +19,7 @@ tags:
   - Scopus
   - research methods
 subtitle: ''
-summary: 'This reproducible descriptive analysis uses annual Scopus counts to compare how often records in nine query-defined literatures use a form of “speculate” in their titles, abstracts or keywords. The count is a proxy for explicit wording in indexed records and says little about the quality of the evidence.'
+summary: 'This reproducible descriptive analysis uses annual Scopus counts to compare how often records in nine query-defined literatures contain a form of “speculate” in their titles, abstracts or keywords. The count is a proxy for explicit wording in indexed records and says little about the quality of the evidence.'
 abstract: 'This descriptive bibliometric analysis compares, across nine query-defined literatures, the annual share of Scopus records that mention speculat* in the title, abstract or keywords. The percentage is treated as an indicator of explicit wording in indexed records. It is no direct measure of evidential quality, theoretical progress or the amount of speculation in the full literature. The queries and data are available for inspection.'
 authors: []
 lastmod: ''
@@ -39,9 +39,9 @@ options(width = 95)
 xaringanExtra::use_clipboard()
 ```
 
-Some research topics invite more explicit conjecture than others. Language evolution invited it for long enough that one of its learned societies closed the question down. The statutes that the Société de Linguistique de Paris adopted in 1866 declare, in their second article, that the society admits no communication concerning either the origin of language or the creation of a universal language (Société de Linguistique de Paris, 1866). Paul Vogt and I recounted that ban in a [review of the field](/publication/bernabeu_vogt2015/) (Bernabeu & Vogt, 2015).
+Some research topics invite more explicit conjecture than others. Language evolution invited it for long enough that a learned society of linguists closed the question down. The statutes that the Société de Linguistique de Paris adopted in 1866 declare, in their second article, that the society admits no communication concerning either the origin of language or the creation of a universal language (Société de Linguistique de Paris, 1866). Paul Vogt and I recounted that ban in a [review of the field](/publication/bernabeu_vogt2015/) (Bernabeu & Vogt, 2015).
 
-Early speech leaves no trace, so an account of it can rarely be settled against a record, and accounts accumulate. That review found the same condition, with little direct evidence to work with and a high degree of speculation. Comparing fields on this score is hard, and database counts cannot rank them by how much they speculate. They can, however, show how often authors use a particular family of words in the title, abstract and keyword fields that Scopus indexes.
+Early speech leaves no trace, so an account of it can rarely be settled against a record, and competing accounts accumulate. That review found the same condition, with little direct evidence to work with and a high degree of speculation. Comparing fields on this score is hard, and database counts cannot rank them by how much they speculate. They can, however, show how often authors use a particular family of words in the title, abstract and keyword fields that Scopus indexes.
 
 Authors who speculate in print sometimes say so, in phrases such as “we speculate that” or “it is tempting to speculate”. The share of records that contain a form of `speculat*` is therefore an indicator of explicit wording in indexed metadata. It is not a measure of how much speculation an article contains, how well supported its claims are or how mature a research area is. Conventions for hedging, abstract writing and indexing can all affect the count.
 
@@ -49,7 +49,7 @@ This post compares that share, year by year from 1980 to the present, across nin
 
 ## Development
 
-The searches use my [scopusflow](/2026/scopusflow-a-literature-search-you-can-rerun/) package (Bernabeu, 2026) and are run by a [script in the website's repository](https://github.com/pablobernabeu/website-files/blob/master/scripts/update_post_searches.R). The counts it returns are saved with the post, so the figures can be reproduced without a Scopus API key. The nine queries are as follows.
+The searches use my [scopusflow](/2026/scopusflow-a-literature-search-you-can-rerun/) package (Bernabeu, 2026) and are run by a [script in the website's repository](https://github.com/pablobernabeu/website-files/blob/master/scripts/update_post_searches.R). The counts it returns are [saved with the post](https://github.com/pablobernabeu/website-files/tree/master/content/post/speculation-across-various-scientific-topics/searches), so the figures can be reproduced without a Scopus API key. The nine queries are as follows.
 
 ```{r, eval = FALSE}
 library(scopusflow)
@@ -80,7 +80,7 @@ comparisons <- lapply(names(topics), function(label) {
 })
 ```
 
-For every year, `scopus_compare_topics()` counts the records that match the reference query and those that also match the comparison term. The nine comparisons therefore take `r local({cmp <- readRDS('searches/speculation_comparisons.rds'); length(cmp) * 2 * length(unique(cmp[[1]]$year))})` requests to the Scopus API. Each row of the result holds a year, the count for the reference literature, the count for the comparison and the comparison as a percentage of the reference.
+For every year, `scopus_compare_topics()` counts the records that match the reference query and those that also match the comparison term. The nine comparisons therefore take `r local({cmp <- readRDS('searches/speculation_comparisons.rds'); length(cmp) * 2 * length(unique(cmp[[1]]$year))})` requests to the Scopus API. The result has two rows per year, one for the reference query and one for the comparison. Each comparison row holds a year, the count for the reference literature, the count for the comparison and the comparison as a percentage of the reference. The code below keeps only those rows.
 
 ```{r}
 library(dplyr)
@@ -113,11 +113,11 @@ totals <- speculation |>
 totals
 ```
 
-Across the whole period, the literature on `r totals$topic[1]` has the highest share of records mentioning speculation, at `r sprintf('%.1f', totals$share[1])`%. The others run from `r sprintf('%.1f', totals$share[2])`% down to `r sprintf('%.1f', totals$share[nrow(totals)])`%, and neighbouring figures are not separated by the counts they rest on. The lowest belongs to `r totals$topic[nrow(totals)]`, whose `r totals$records[nrow(totals)]` records are too few to place it anywhere in that order.
+Across the whole period, the literature on `r totals$topic[1]` has the highest share of records mentioning speculation, at `r sprintf('%.1f', totals$share[1])`%. The others run from `r sprintf('%.1f', totals$share[2])`% down to `r sprintf('%.1f', totals$share[nrow(totals)])`%, and the counts they rest on are too small to separate neighbouring figures. The lowest belongs to `r totals$topic[nrow(totals)]`, whose `r totals$records[nrow(totals)]` records are too few to place it anywhere in that order.
 
-Figure 1 sets those sizes side by side. Its axis is logarithmic, which is the only way the four orders of magnitude between the largest literature and the smallest fit on one panel.
+Figure 1 sets those sizes side by side. Its axis is logarithmic, so that yearly counts more than three orders of magnitude apart fit on one panel.
 
-```{r records-per-year, fig.width = 8, fig.height = 4.5, fig.cap = 'Scopus Records per Year in Each of the Nine Reference Literatures. The axis is logarithmic, so equal vertical distances are equal ratios. A break in a line is a year in which that literature has no records.', fig.alt = 'Line chart on a logarithmic axis of the number of Scopus Records per Year in Each of the Nine Reference Literatures from 1980 onwards'}
+```{r records-per-year, fig.width = 8, fig.height = 4.5, fig.cap = 'Scopus Records per Year in Each of the Nine Reference Literatures. The axis is logarithmic, so equal vertical distances are equal ratios. A break in a line is a year in which that literature has no records.', fig.alt = 'Line chart on a logarithmic axis of the number of Scopus records per year in each of the nine reference literatures from 1980 onwards, with each line named at its end'}
 # Nine literatures against an eight-colour palette, so the Okabe-Ito set is
 # extended with one grey. Its yellow barely shows against the white background,
 # so it is replaced with a wine red, which also stays apart from the orange and
@@ -159,9 +159,9 @@ ggplot(sizes, aes(year, records, colour = topic)) +
 
 ### The Share of Records That Mention Speculation
 
-Each panel of Figure 2 shows one literature, and the panels are ordered by their overall share, from highest to lowest. The line is the yearly percentage of records that also match `speculat*`. The shaded band, drawn as a step for each year, is a 95% Wilson interval computed from the two yearly counts, and it shows how far the share would move with a handful of records. Every year with records carries one, so the band always surrounds the estimate it belongs to. The axis is cut at 15%, and where a year's interval runs past that cut, as it does in the early years of several literatures and in most years of the smallest ones, the band is drawn up to the cut and a triangle at the top of the panel marks it. In the sparsest years, a single abstract would move the share by tens of points. The line itself runs off the top of its panel at the highest share in the data, `r with(speculation[which.max(speculation$percentage), ], sprintf('the %.0f%% that %d of the %d records on %s in %d represent', percentage, n, reference_n, topic, year))`. Years in which a literature has no records break the line.
+Each panel of Figure 2 shows one literature, and the panels are ordered by their overall share, from highest to lowest. The line is the yearly percentage of records that also match `speculat*`. The shaded band, drawn as a step for each year, is a 95% Wilson interval computed from the two yearly counts, and it shows how far the share would move with a handful of records. Every year with records carries one, so the band always surrounds the estimate it belongs to. The axis is cut at 15%. Where a year's interval runs past that cut, the band is drawn up to the cut and a triangle at the top of the panel marks the year. This happens in the early years of several literatures and in most years of the smallest ones. In the sparsest years, a single abstract would move the share by tens of points. The line itself runs off the top of its panel at the highest share in the data, `r with(speculation[which.max(speculation$percentage), ], sprintf('the %.0f%% that %d of the %d records on %s in %d represent', percentage, n, reference_n, topic, year))`. Years in which a literature has no records break the line.
 
-```{r speculation-panels, fig.width = 9, fig.height = 8, fig.cap = 'The Yearly Percentage of Records That Also Match speculat*, One Panel per Literature, Ordered by Overall Share. The shaded band is a 95% Wilson interval for that year and a triangle marks a year whose interval runs past the 15% cut of the axis. Units: per cent of the records retrieved for that literature in that year.', fig.alt = 'Nine panels, one per literature, each showing the yearly percentage of Scopus records that mention speculation over the years in which that literature has records, with a shaded Wilson interval for each year and a triangle at the top of the panel wherever the interval runs past the 15 per cent cut of the axis'}
+```{r speculation-panels, fig.width = 9, fig.height = 8, fig.cap = 'The Yearly Percentage of Records That Also Match speculat*, One Panel per Literature, Ordered by Overall Share. The shaded band is a 95% Wilson interval for that year and a triangle marks a year whose interval runs past the 15% cut of the axis. Each percentage is out of all the records retrieved for that literature in that year.', fig.alt = 'Nine panels, one per literature, each showing the yearly percentage of Scopus records that mention speculation over the years in which that literature has records, with a shaded Wilson interval for each year and a triangle at the top of the panel wherever the interval runs past the 15 per cent cut of the axis'}
 wilson <- function(k, n, z = 1.96) {
   p <- k / n
   centre <- (p + z^2 / (2 * n)) / (1 + z^2 / n)
@@ -184,10 +184,10 @@ labeller_topic <- setNames(panel_labels$label, panel_labels$topic)
 # The axis stops at 15%, and coord_cartesian below zooms rather than filters,
 # so every year with records keeps its band and a band that runs past the cut
 # is simply drawn up to it. A triangle at the top marks those years. Dropping
-# such bands instead, which is what this figure used to do, left the sparsest
-# years showing a point and no band at all, and a reader could reasonably take
-# that for a band and an estimate that disagreed. Each band is a step one year
-# wide, which keeps a single year visible between its two neighbours.
+# such bands instead would leave the sparsest years showing a point and no band
+# at all, which a reader could reasonably take for a band and an estimate that
+# disagreed. Each band is a step one year wide, which keeps a single year
+# visible between its two neighbours.
 y_limit <- 15
 
 ggplot(panel_data, aes(year, percentage)) +
@@ -219,7 +219,7 @@ recent <- speculation |>
 recent
 ```
 
-Restricting the comparison to the complete years from 2016 onwards, which leaves between `r min(recent$records)` and `r format(max(recent$records), big.mark = ',')` records per literature, gives the ranking above. The literature on `r recent$topic[1]` still leads, with `r sprintf('%.1f', recent$share[1])`% of its records mentioning speculation. The `r sprintf('%.1f', recent$share[nrow(recent)])`% at the foot of the list again belongs to the smallest literature, `r recent$topic[nrow(recent)]`, at the bottom of that range.
+Restricting the comparison to the complete years from 2016 onwards, which leaves between `r min(recent$records)` and `r format(max(recent$records), big.mark = ',')` records per literature, gives the ranking above. The literature on `r recent$topic[1]` still leads, with `r sprintf('%.1f', recent$share[1])`% of its records mentioning speculation. The `r sprintf('%.1f', recent$share[nrow(recent)])`% at the foot of the list again belongs to the smallest literature, `r recent$topic[nrow(recent)]`.
 
 ## Discussion
 
@@ -235,4 +235,4 @@ Bernabeu, P. (2026). *scopusflow: A reproducible workflow layer for Scopus bibli
 
 Bernabeu, P., & Vogt, P. (2015, June 18). *Language evolution: Current status and future directions* [Paper presentation]. 10th Language at the University of Essex Postgraduate Conference (LangUE), Colchester, United Kingdom. https://eprints.lancs.ac.uk/id/eprint/130664/
 
-Société de Linguistique de Paris. (1866). *Statuts de 1866*. https://www.slp-paris.com/statuts1866.html
+Société de Linguistique de Paris. (1866). *Statuts de 1866* [Statutes of 1866]. https://www.slp-paris.com/statuts1866.html

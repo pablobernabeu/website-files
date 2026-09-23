@@ -54,7 +54,7 @@ The example below uses a small corpus bundled with the R package. A stand-in ser
 
 ## Development
 
-The workflow below separates planning, retrieval, inspection and reporting. Only retrieval needs a key, so the other three stages run here against the corpus bundled with the package.
+The workflow below separates planning, retrieval, inspection and reporting. Only retrieval needs a key, and the stand-in server answers its requests here from the corpus bundled with the package.
 
 ```{r}
 library(scopusflow)
@@ -126,7 +126,7 @@ plot_scopus_trend(trend) +
   # offline and OpenAlex-derived, as the caption below the figure says. It is
   # dropped rather than corrected, because a note belongs under the figure. The
   # title goes with it, since the caption now sits directly above the plot and
-  # said the same thing twice.
+  # the two would say the same thing.
   ggplot2::labs(caption = NULL, title = NULL, y = NULL) +
   ggplot2::theme(axis.text = ggplot2::element_text(size = 10.5))
 ```

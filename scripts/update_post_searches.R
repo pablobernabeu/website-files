@@ -174,7 +174,8 @@ if (target %in% c("all", "allfit")) {
 
   # 1. Scopus: the function name in any indexed field (title, abstract,
   #    keywords, references and others, but not the body of the article). If
-  #    the quoted ALL() query fails, two alternative forms are tried in turn.
+  #    the quoted ALL() query fails, the unquoted form is tried, and then a
+  #    narrower search of titles, abstracts, keywords and references only.
   #    Pages of 25 records are the most the API serves to a key used outside
   #    its institution's network, and larger pages are rejected as malformed.
   records_all <- NULL

@@ -5,6 +5,7 @@ software_kind: web-application
 aliases:
   - '/applications-and-dashboards/experimental-data-simulation/'
 diagram: true
+apa_captions: true
 authors:
 - '**Bernabeu, P.**, & Lynott, D.'
 date: "2020-06-01"
@@ -74,7 +75,7 @@ app_version =
 
 This open-source, R-based web application is suitable for teaching and research in the experimental and quantitative sciences. It creates varied data sets with specified structures, such as between-group and within-participant variables that can be categorical or continuous. The parameters are set in the tabs (sections) of the top menu, and the data set can be downloaded from the last tab. The application saves time and offers flexible control over the parameters.
 
-### How it works
+### How It Works
 
 ```{=html}
 <div class="mermaid">
@@ -100,13 +101,16 @@ General guidelines include the following:
 
 - **As the data set grows**, so does the processing time.
 
-More specific guidelines are available in each section.
+More specific guidelines are available in each tab.
 
-### <i class="fa-solid fa-globe"></i>&nbsp;The web application can be [launched here](https://pablo-bernabeu.shinyapps.io/experimental-data-simulation/).
+### <i class="fa-solid fa-globe"></i>&nbsp;The Web Application Can Be [Launched Here](https://pablo-bernabeu.shinyapps.io/experimental-data-simulation/)
 
-<div style='padding-top:8px; padding-bottom:2px; margin-bottom:-20px; color:#665F5F;'> Screenshot of the *Dependent* tab ([view larger](https://github.com/pablobernabeu/Experimental-data-simulation/raw/master/Screenshot.png)) </div>
+Figure 1 shows the *Dependent* tab, where the parameters of the dependent variables are set.
 
+<figure>
 <img style="max-width: 800px; width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto; padding-bottom: 15px;" src="https://github.com/pablobernabeu/Experimental-data-simulation/raw/master/Screenshot.png" alt="Screenshot of the Dependent tab in the experimental data simulation web app, showing parameter settings for the dependent variable" />
+<figcaption>Figure 1: The <em>Dependent</em> Tab in Version 0.2 of the App. A <a href="https://github.com/pablobernabeu/Experimental-data-simulation/raw/master/Screenshot.png">larger version</a> is available on GitHub.</figcaption>
+</figure>
 
 ### Reference
 
@@ -114,11 +118,11 @@ Bernabeu, P., & Lynott, D. (2020). *Web application for the simulation of experi
 
 ### Code
 
-This web application was developed in [R](https://www.r-project.org/about.html) (R Core Team, 2020). The code is [available on GitHub](https://github.com/pablobernabeu/Experimental-data-simulation/blob/master/index.Rmd), where contributions are welcome. A copy is archived on Zenodo (Bernabeu & Lynott, 2024). The initial code drew on Section 5.7 ([*Simulating data for multi-factor designs*](https://www.crumplab.com/programmingforpsych/simulating-and-analyzing-data-in-r.html#simulating-data-for-multi-factor-designs){target='_blank'}) of Crump (2017). The R packages used include dplyr (Wickham et al., 2020), DT (Xie et al., 2020), flexdashboard (Iannone et al., 2020), shiny (Chang et al., 2020) and stringr (Wickham, 2019).
+This web application was developed in [R](https://www.r-project.org/about.html) (R Core Team, 2020). The code is [available on GitHub](https://github.com/pablobernabeu/Experimental-data-simulation/blob/master/index.Rmd), where contributions are welcome. A copy is archived on Zenodo (Bernabeu & Lynott, 2024). The initial code drew on Section 5.7 (['Simulating Data for Multi-Factor Designs'](https://www.crumplab.com/programmingforpsych/simulating-and-analyzing-data-in-r.html#simulating-data-for-multi-factor-designs){target='_blank'}) of Crump (2017). The R packages used include dplyr (Wickham et al., 2020), DT (Xie et al., 2020), flexdashboard (Iannone et al., 2020), shiny (Chang et al., 2020) and stringr (Wickham, 2019).
 
-### Options for development and local use of the app
+### Options for Development and Local Use of the App
 
-#### Option A) Using local R/RStudio or [RStudio Cloud project](https://rstudio.cloud/project/1739958) or [Binder RStudio environment](https://mybinder.org/v2/gh/pablobernabeu/Experimental-data-simulation/master?urlpath=rstudio)
+#### Option A) Using Local R/RStudio or [Posit Cloud Project](https://posit.cloud/project/1739958) or [Binder RStudio Environment](https://mybinder.org/v2/gh/pablobernabeu/Experimental-data-simulation/master?urlpath=rstudio)
 
 1. [Only needed in local R/RStudio] Install the package versions used in the [latest release of this application](https://github.com/pablobernabeu/Experimental-data-simulation/releases) by running:
 
@@ -139,11 +143,13 @@ This web application was developed in [R](https://www.r-project.org/about.html) 
 
 2. Open the [index.Rmd](https://github.com/pablobernabeu/Experimental-data-simulation/blob/master/index.Rmd) script.
 
-3. Run the application by clicking <kbd>▶️ Run document</kbd> at the top left or by running `rmarkdown::run('index.Rmd')` in the console.
+3. Run the application by clicking <kbd>▶️ Run Document</kbd> at the top left or by running `rmarkdown::run('index.Rmd')` in the console.
 
 4. Click <kbd>Open in Browser</kbd> at the top left.
 
-#### Option B) Using Dockerfile ([see instructions](https://github.com/pablobernabeu/Experimental-data-simulation#option-b-using-dockerfile-vsochs-pull-request))
+#### Option B) Using Dockerfile
+
+The [README of the GitHub repository](https://github.com/pablobernabeu/Experimental-data-simulation#option-b-using-dockerfile-vsochs-pull-request) explains how to build and run the app with the Dockerfile.
 
 ### Acknowledgements
 
