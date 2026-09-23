@@ -58,10 +58,7 @@ url_fulltext: 'https://doi.org/10.31234/osf.io/a5pcz'
 # url_video: '#'
 ---
 
-<a href='https://pablobernabeu.shinyapps.io/ERP-waveform-visualization_CMS-experiment/'>
-      <button style = "background-color: white; color: black; border: 2px solid #4CAF50; border-radius: 12px;">
-      <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;"> 
-      <span style="color:#DBE6DA;"></span> Web application </h3></button></a> &nbsp;
+<div class="btn-links"><a class="btn btn-outline-primary" href="https://pablobernabeu.shinyapps.io/ERP-waveform-visualization_CMS-experiment/">Web application</a></div>
 
 <br>
 <br>
@@ -70,11 +67,12 @@ url_fulltext: 'https://doi.org/10.31234/osf.io/a5pcz'
 {{< diagram >}}
 graph TD
   A["EEG-ERP data from word<br/>comprehension experiment"] --> B["ERP plots spanning 800 ms<br/>of word processing"]
-  B --> C["Groups of participants"]
-  C --> D["Individual participants"]
-  D --> E["Brain areas"]
-  E --> F["Electrodes"]
-  B --> G["Download HD plots, view<br/>95% confidence intervals"]
+  B --> P["Whose data:<br/>a group of participants<br/>or an individual participant"]
+  B --> L["Where on the scalp:<br/>a brain area or<br/>a single electrode"]
+  P --> T["Four tabs crossing the two:<br/>group and electrode,<br/>participant and brain area,<br/>participant and electrode,<br/>original groups and electrode"]
+  L --> T
+  T --> D["Download each plot<br/>in high resolution"]
+  T -.-> CI["Links from three tabs to<br/>plots with 95% confidence<br/>intervals (PDF files on OSF)"]
 {{< /diagram >}}
 
 The data come from a psychology experiment on word comprehension in which electroencephalographic (EEG) responses were measured. The plots span the first 800 milliseconds of word processing. The app (Bernabeu et al., 2017) is intended to help researchers and the public explore the data at four levels: groups of participants, individual participants, brain areas and electrodes.
@@ -183,7 +181,7 @@ output$downloadPlot.1 <- downloadHandler(
       		print(plot_GroupAndElectrode)
       		dev.off()},
 	contentType = 'image/png')
-  } )
+  } )  # Closes output$plot_GroupAndElectrode <- renderPlot({, opened above this excerpt
 ```
 
 ```

@@ -73,7 +73,7 @@ c(id = switching$id,
 
 ### Treat the Theory as a Checked Document
 
-Structural validation checks required fields and allowed values. Full validation also follows identifiers across the document, so a prediction cannot claim to derive from a proposition that does not exist.
+Structural validation checks required fields and allowed values. Full validation also follows identifiers across the document, so a prediction cannot claim to derive from a proposition that does not exist. The function returns silently when the document passes and stops with a list of the errors when it fails.
 
 ```{r}
 tf_validate(switching, full = TRUE)

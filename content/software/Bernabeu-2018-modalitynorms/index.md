@@ -61,18 +61,7 @@ url_data: 'https://github.com/pablobernabeu/Dutch-modality-exclusivity-norms-Ber
 ---
 
 
-<a href='https://pablobernabeu.shinyapps.io/Dutch-modality-exclusivity-norms'>
-      <button style = "background-color: white; color: black; border: 2px solid #196F27; border-radius: 12px;">
-      <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;"> 
-      <span style="color:#DBE6DA;"></span> Complete web application <font style='font-size:60%;'><i>Flexdashboard-Shiny</i></font> </h3></button></a>
-      
-<br>
-<br>
-
-<a href='/dashboards/Dutch-modality-exclusivity-norms'>
-      <button style = "background-color: white; color: black; border: 2px solid #4CAF50; border-radius: 12px;">
-      <h3 style = "margin-top: 7px !important; margin-left: 9px !important; margin-right: 9px !important;"> 
-      <span style="color:#DBE6DA;"></span> Reduced dashboard <font style='font-size:60%;'><i>Flexdashboard</i></font> </h3></button></a> &nbsp; 
+<div class="btn-links"><a class="btn btn-outline-primary my-1 mr-1" href="https://pablobernabeu.shinyapps.io/Dutch-modality-exclusivity-norms">Complete web application <small class="ml-1"><em>Flexdashboard-Shiny</em></small></a> <a class="btn btn-outline-primary my-1 mr-1" href="/dashboards/Dutch-modality-exclusivity-norms">Reduced dashboard <small class="ml-1"><em>Flexdashboard</em></small></a></div>
 
 <br>
 <br>
@@ -135,72 +124,74 @@ This web application (Bernabeu, 2018) presents linguistic data over several tabs
    highlighted_properties = reactive(input$highlighted_properties)
    
    renderPlotly({
-    ggplotly(
-     ggplot( selected_props(), aes(RC1, RC2, label = as.character(word), color = main, 
-       # Html tags below used for format. Decimals rounded to two.
-       text = paste0(' ', '<span style="padding-top:3px; padding-bottom:3px; font-size:2.2em; color:#EEEEEE">', capitalize(word), '</span> ', '<br>',
-     	'</b><br><span style="color:#EEEEEE"> Dominant modality: </span><b style="color:#EEEEEE">', main, ' ',
-     	' ', '</b><br><span style="color:#EEEEEE"> Modality exclusivity: </span><b style="color:#EEEEEE">', sprintf("%.2f", round(Exclusivity, 2)), '% ',
-     	'</b><br><span style="color:#EEEEEE"> Perceptual strength: </span><b style="color:#EEEEEE">', sprintf("%.2f", round(Perceptualstrength, 2)),
-     	'</b><br><span style="color:#EEEEEE"> Auditory rating: </span><b style="color:#EEEEEE">', sprintf("%.2f", round(Auditory, 2)), ' ',
-     	'</b><br><span style="color:#EEEEEE"> Haptic rating: </span><b style="color:#EEEEEE">', sprintf("%.2f", round(Haptic, 2)), ' ',
-     	'</b><br><span style="color:#EEEEEE"> Visual rating: </span><b style="color:#EEEEEE">', sprintf("%.2f", round(Visual, 2)), ' ',
-     	'</b><br><span style="color:#EEEEEE"> Concreteness (Brysbaert et al., 2014): </span><b style="color:#EEEEEE">', 
-     	  sprintf("%.2f", round(concrete_Brysbaertetal2014, 2)), ' ',
-     	'</b><br><span style="color:#EEEEEE"> Number of letters: </span><b style="color:#EEEEEE">', letters, ' ',
-     	'</b><br><span style="color:#EEEEEE"> Number of phonemes (DutchPOND): </span><b style="color:#EEEEEE">', 
-     	round(phonemes_DUTCHPOND, 2), ' ',
-     	'</b><br><span style="color:#EEEEEE"> Contextual diversity (lg10CD SUBTLEX-NL): </span><b style="color:#EEEEEE">',
-     	  sprintf("%.2f", round(freq_lg10CD_SUBTLEXNL, 2)), ' ',
-     	'</b><br><span style="color:#EEEEEE"> Word frequency (lg10WF SUBTLEX-NL): </span><b style="color:#EEEEEE">',
-     	  sprintf("%.2f", round(freq_lg10WF_SUBTLEXNL, 2)), ' ',
-     	'</b><br><span style="color:#EEEEEE"> Lemma frequency (CELEX): </span><b style="color:#EEEEEE">', 
-     	  sprintf("%.2f", round(freq_CELEX_lem, 2)), ' ',
-     	'</b><br><span style="color:#EEEEEE"> Phonological neighbourhood size (DutchPOND): </span><b style="color:#EEEEEE">', 
-     	round(phon_neighbours_DUTCHPOND, 2), ' ',
-     	'</b><br><span style="color:#EEEEEE"> Orthographic neighbourhood size (DutchPOND): </span><b style="color:#EEEEEE">',
-     	round(orth_neighbours_DUTCHPOND, 2), ' ',
-     	'</b><br><span style="color:#EEEEEE"> Age of acquisition (Brysbaert et al., 2014): </span><b style="color:#EEEEEE">',
-     	sprintf("%.2f", round(AoA_Brysbaertetal2014, 2)), ' ', '<br> '
-     	) ) ) +
-     geom_text(size = ifelse(selected_props()$word %in% highlighted_properties(), 7,
-     		    ifelse(is.null(highlighted_properties()), 3, 2.8)),
-         fontface = ifelse(selected_props()$word %in% highlighted_properties(), 'bold', 'plain')) +
-   geom_point(alpha = 0) +  # This geom_point helps to colour the tooltip according to the dominant modality
-   scale_colour_manual(values = colours, drop = FALSE) + theme_bw() + ggtitle('Property words') +
-   labs(x = 'Varimax-rotated Principal Component 1', y = 'Varimax-rotated Principal Component 2') +
-   guides(color = guide_legend(title = 'Main<br>modality')) +
-   theme( plot.background = element_blank(), panel.grid.major = element_blank(),
-      panel.grid.minor = element_blank(), panel.border = element_blank(),
-      axis.line = element_line(color = 'black'), plot.title = element_text(size = 14, hjust = .5),
-      axis.title.x = element_text(colour = 'black', size = 12, margin = margin(15,15,0,15)),
-      axis.title.y = element_text(colour = 'black', size = 12, margin = margin(0,15,15,5)),
-      axis.text.x = element_text(size = 8), axis.text.y  = element_text(size = 8),
-      legend.background = element_rect(size = 2), legend.position = 'none',
-    legend.title = element_blank(),
-    legend.text = element_text(colour = colours, size = 13) ),
-   tooltip = 'text'
-   )
+     ggplotly(
+       ggplot( selected_props(), aes(RC1, RC2, label = as.character(word), color = main,
+                                     # Html tags below used for format. Decimals rounded to two.
+                                     text = paste0(' ', '<span style="padding-top:3px; padding-bottom:3px; font-size:2.2em; color:#EEEEEE">', capitalize(word), '</span> ', '<br>',
+                                                   '</b><br><span style="color:#EEEEEE"> Dominant modality: </span><b style="color:#EEEEEE">', main, ' ',
+                                                   ' ', '</b><br><span style="color:#EEEEEE"> Modality exclusivity: </span><b style="color:#EEEEEE">', sprintf("%.2f", round(Exclusivity, 2)), '% ',
+                                                   '</b><br><span style="color:#EEEEEE"> Perceptual strength: </span><b style="color:#EEEEEE">', sprintf("%.2f", round(Perceptualstrength, 2)),
+                                                   '</b><br><span style="color:#EEEEEE"> Auditory rating: </span><b style="color:#EEEEEE">', sprintf("%.2f", round(Auditory, 2)), ' ',
+                                                   '</b><br><span style="color:#EEEEEE"> Haptic rating: </span><b style="color:#EEEEEE">', sprintf("%.2f", round(Haptic, 2)), ' ',
+                                                   '</b><br><span style="color:#EEEEEE"> Visual rating: </span><b style="color:#EEEEEE">', sprintf("%.2f", round(Visual, 2)), ' ',
+                                                   '</b><br><span style="color:#EEEEEE"> Concreteness (Brysbaert et al., 2014): </span><b style="color:#EEEEEE">',
+                                                   sprintf("%.2f", round(concrete_Brysbaertetal2014, 2)), ' ',
+                                                   '</b><br><span style="color:#EEEEEE"> Number of letters: </span><b style="color:#EEEEEE">', letters, ' ',
+                                                   '</b><br><span style="color:#EEEEEE"> Number of phonemes (DutchPOND): </span><b style="color:#EEEEEE">',
+                                                   round(phonemes_DUTCHPOND, 2), ' ',
+                                                   '</b><br><span style="color:#EEEEEE"> Contextual diversity (lg10CD SUBTLEX-NL): </span><b style="color:#EEEEEE">',
+                                                   sprintf("%.2f", round(freq_lg10CD_SUBTLEXNL, 2)), ' ',
+                                                   '</b><br><span style="color:#EEEEEE"> Word frequency (lg10WF SUBTLEX-NL): </span><b style="color:#EEEEEE">',
+                                                   sprintf("%.2f", round(freq_lg10WF_SUBTLEXNL, 2)), ' ',
+                                                   '</b><br><span style="color:#EEEEEE"> Lemma frequency (CELEX): </span><b style="color:#EEEEEE">',
+                                                   sprintf("%.2f", round(freq_CELEX_lem, 2)), ' ',
+                                                   '</b><br><span style="color:#EEEEEE"> Phonological neighbourhood size (DutchPOND): </span><b style="color:#EEEEEE">',
+                                                   round(phon_neighbours_DUTCHPOND, 2), ' ',
+                                                   '</b><br><span style="color:#EEEEEE"> Orthographic neighbourhood size (DutchPOND): </span><b style="color:#EEEEEE">',
+                                                   round(orth_neighbours_DUTCHPOND, 2), ' ',
+                                                   '</b><br><span style="color:#EEEEEE"> Age of acquisition (Brysbaert et al., 2014): </span><b style="color:#EEEEEE">',
+                                                   sprintf("%.2f", round(AoA_Brysbaertetal2014, 2)), ' ', '<br> '
+                                     ) ) ) +
+         geom_text(size = ifelse(selected_props()$word %in% highlighted_properties(), 7,
+                                 ifelse(is.null(highlighted_properties()), 3, 2.8)),
+                   fontface = ifelse(selected_props()$word %in% highlighted_properties(), 'bold', 'plain')) +
+         geom_point(alpha = 0) +  # This geom_point helps to colour the tooltip according to the dominant modality
+         scale_colour_manual(values = colours, drop = FALSE, name = '') +
+         ggtitle('Property words') +
+         labs(x = 'Varimax-rotated Principal Component 1', y = 'Varimax-rotated Principal Component 2') +
+         theme_bw() +
+         theme( plot.background = element_blank(), panel.grid.major = element_blank(),
+                panel.grid.minor = element_blank(), panel.border = element_blank(),
+                axis.line = element_line(color = 'black'), plot.title = element_text(size = 14, hjust = .5),
+                axis.title.x = element_text(colour = 'black', size = 12, margin = margin(15,15,0,15)),
+                axis.title.y = element_text(colour = 'black', size = 12, margin = margin(0,15,15,5)),
+                axis.text.x = element_text(size = 8), axis.text.y = element_text(size = 8),
+                legend.background = element_rect(size = 2),
+                legend.title = element_blank(),
+                legend.text = element_text(colour = colours, size = 13) ),
+       tooltip = 'text'
+     )
    })
+   
    
    # For download, save plot without the interactive 'plotly' part
    
    properties_png = reactive({ ggplot(selected_props(), aes(RC1, RC2, color = main, label = as.character(word))) +
-   geom_text(show.legend = FALSE, size = ifelse(selected_props()$word %in% highlighted_properties(), 7,
-     	    ifelse(is.null(highlighted_properties()), 3, 2.8)),
-         fontface = ifelse(selected_props()$word %in% highlighted_properties(), 'bold', 'plain')) +
-   geom_point(alpha = 0) + scale_colour_manual(values = colours, drop = FALSE) + theme_bw() +
-   guides(color = guide_legend(title = 'Main<br>modality', override.aes = list(size = 7, alpha = 1))) +
-   ggtitle( paste0('Properties', ' (showing ', nrow(selected_props()), ' out of ', nrow(props), ')') ) + 
-   labs(x = 'Varimax-rotated Principal Component 1', y = 'Varimax-rotated Principal Component 2') +
-   theme( plot.background = element_blank(), panel.grid.major = element_blank(),
-      panel.grid.minor = element_blank(), panel.border = element_blank(),
-      axis.line = element_line(color = 'black'), plot.title = element_text(size = 17, hjust = .5, margin = margin(3,3,7,3)),
-      axis.title.x = element_text(colour = 'black', size = 12, margin = margin(10,10,2,10)),
-      axis.title.y = element_text(colour = 'black', size = 12, margin = margin(10,10,10,5)),
-      axis.text.x = element_text(size = 8), axis.text.y  = element_text(size = 8),
-      legend.background = element_rect(size = 2), legend.position = 'right',
-      legend.title = element_blank(), legend.text = element_text(size = 15))
+       geom_text(show.legend = FALSE, size = ifelse(selected_props()$word %in% highlighted_properties(), 7,
+                                                    ifelse(is.null(highlighted_properties()), 3, 2.8)),
+                 fontface = ifelse(selected_props()$word %in% highlighted_properties(), 'bold', 'plain')) +
+       geom_point(alpha = 0) + scale_colour_manual(values = colours, drop = FALSE) + theme_bw() +
+       guides(color = guide_legend(title = 'Main<br>modality', override.aes = list(size = 7, alpha = 1))) +
+       ggtitle( paste0('Properties', ' (showing ', nrow(selected_props()), ' out of ', nrow(props), ')') ) +
+       labs(x = 'Varimax-rotated Principal Component 1', y = 'Varimax-rotated Principal Component 2') +
+       theme( plot.background = element_blank(), panel.grid.major = element_blank(),
+              panel.grid.minor = element_blank(), panel.border = element_blank(),
+              axis.line = element_line(color = 'black'), plot.title = element_text(size = 17, hjust = .5, margin = margin(3,3,7,3)),
+              axis.title.x = element_text(colour = 'black', size = 12, margin = margin(10,10,2,10)),
+              axis.title.y = element_text(colour = 'black', size = 12, margin = margin(10,10,10,5)),
+              axis.text.x = element_text(size = 8), axis.text.y = element_text(size = 8),
+              legend.background = element_rect(size = 2), legend.position = 'right',
+              legend.title = element_blank(), legend.text = element_text(size = 15))
    })
    
    ```
