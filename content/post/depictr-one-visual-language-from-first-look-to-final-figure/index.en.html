@@ -72,7 +72,7 @@ c(participants = length(unique(lexical_decision$participant)),
 <h3>Begin With the Observed Distribution</h3>
 <p>Reaction times are right-skewed, so a mean and a standard deviation do not show the whole pattern. An empirical cumulative distribution avoids a choice of bins and makes the quartiles directly visible, as Figure 1 shows.</p>
 <pre class="r"><code>ecdf_plot(
-  lexical_decision,
+  correct,
   RT,
   group = condition,
   reference_quantiles = c(0.25, 0.5, 0.75),
@@ -91,7 +91,7 @@ Figure 1: Observed Reaction-Time Distributions After Related and Unrelated Prime
 </div>
 <div id="keep-the-same-language-for-the-model" class="section level3">
 <h3>Keep the Same Language for the Model</h3>
-<p>The model, fitted to correct trials, includes priming condition, presentation modality and word frequency, with crossed random intercepts for participants and items. <code>coefficient_plot()</code> reads the fitted object directly and puts the fixed effects on a common scale in Figure 2, expressing each as the change in reaction time per standard deviation of its predictor. The two factors enter the model as 0/1 codes with a standard deviation near 0.5, so their plotted effects are about half the size of the estimates printed below.</p>
+<p>The model, fitted to the same correct trials, includes priming condition, presentation modality and word frequency, with crossed random intercepts for participants and items. <code>coefficient_plot()</code> reads the fitted object directly and puts the fixed effects on a common scale in Figure 2, expressing each as the change in reaction time per standard deviation of its predictor. The two factors enter the model as 0/1 codes with a standard deviation near 0.5, so their plotted effects are about half the size of the estimates printed below.</p>
 <pre class="r"><code>fit &lt;- lmerTest::lmer(
   RT ~ condition + modality + word_frequency +
     (1 | participant) + (1 | item),
@@ -134,7 +134,7 @@ Figure 2: Fixed Effects on Reaction Time, Each per Standard Deviation of Its Pre
 <h3>Audit the Figure That Will Be Published</h3>
 <p>A colourblind-safe palette does not guarantee an accessible figure. Contrast against the background and the use of a second visual channel depend on the particular plot. The package therefore audits the whole built plot, including its palette.</p>
 <pre class="r"><code>first_draft &lt;- explore_distribution(
-  lexical_decision,
+  correct,
   RT,
   group = condition,
   type = &#39;density&#39;,
@@ -166,7 +166,7 @@ check_figure(first_draft)</code></pre>
 #&gt; 9                            Colour alone distinguishes the groups.</code></pre>
 <p>The default density plot fails two checks. Its orange falls below the package’s contrast threshold for graphical elements on a white panel, and colour is the only channel separating the conditions. The corrected plot in Figure 3 replaces the orange with a darker vermilion and adds line type as a second channel. Both checks then pass, and neither change touches the data or the statistical display.</p>
 <pre class="r"><code>final_figure &lt;- explore_distribution(
-  lexical_decision,
+  correct,
   RT,
   group = condition,
   type = &#39;density&#39;,

@@ -21,8 +21,8 @@ tags:
   - OpenSesame
   - jsPsych
 subtitle: ''
-summary: 'Selecting words is only the first step in preparing a psycholinguistic experiment. This post uses lexsync to match high- and low-frequency items, balance them across lists, and export presentation scripts with recorded timing and EEG triggers.'
-abstract: 'This tutorial shows how lexsync turns a lexical design into checked stimulus lists and experiment files. It separates candidate selection from matching, evaluates balance on the intended controls, and carries the resulting item table into PsychoPy, OpenSesame or jsPsych with recorded timing and EEG trigger information.'
+summary: 'Selecting words is only the first step in preparing a psycholinguistic experiment. This post uses lexsync to match high- and low-frequency items, balance them across lists, and export timed PsychoPy and OpenSesame scripts that send electroencephalography (EEG) triggers, plus a jsPsych version that logs event markers.'
+abstract: 'This tutorial shows how lexsync turns a lexical design into checked stimulus lists and experiment files. It separates candidate selection from matching, evaluates balance on the intended controls, and carries the resulting item table into PsychoPy and OpenSesame, which send electroencephalography (EEG) triggers, and into jsPsych, which records an event marker with every trial.'
 authors: []
 lastmod: ''
 featured: no
@@ -123,33 +123,29 @@ report <- match_report(
 report$comparisons
 ```
 
-```{r balance-plot, fig.width = 7.5, fig.height = 3.3, fig.cap = 'Realised Balance Between the Frequency Conditions on Each Control Variable, With 90% Confidence Intervals Against the Prespecified Equivalence Region.', fig.alt = 'Dot-and-whisker plot showing standardised differences and 90 per cent confidence intervals for word length, neighbourhood density and OLD20, with equivalence bounds at minus and plus 0.5'}
+```{r balance-plot, fig.width = 7.5, fig.height = 2.8, fig.cap = 'Realised Balance Between the Frequency Conditions on Each Control Variable, With 90% Confidence Intervals Against the Prespecified Equivalence Region. Shading marks the equivalence region set in the schema, from minus to plus half a standard deviation.', fig.alt = 'Dot-and-whisker plot of standardised differences, high minus low frequency, with 90 per cent confidence intervals for word length, neighbourhood density and OLD20. All three estimates lie near zero and all three intervals fall inside the shaded equivalence region from minus 0.5 to plus 0.5'}
 controls <- subset(report$comparisons, dimension != 'frequency')
 controls$dimension <- factor(
   controls$dimension,
   levels = rev(c('length', 'n_density', 'old20')),
   labels = rev(c('Word length', 'Neighbourhood density', 'OLD20'))
 )
+bound <- schema$equivalence$bound_d
 
 ggplot(controls, aes(cohens_d, dimension)) +
-  annotate('rect', xmin = -0.5, xmax = 0.5, ymin = -Inf, ymax = Inf,
+  annotate('rect', xmin = -bound, xmax = bound, ymin = -Inf, ymax = Inf,
            fill = '#E8F1F5') +
   geom_vline(xintercept = 0, colour = '#66747B', linewidth = 0.5) +
   geom_pointrange(aes(xmin = d_ci_low, xmax = d_ci_high),
                   colour = '#006D77', linewidth = 0.8, size = 0.7) +
   scale_x_continuous(
-    breaks = c(-0.5, 0, 0.5), expand = expansion(0),
+    breaks = c(-bound, 0, bound), expand = expansion(0),
     labels = scales::label_number(accuracy = 0.1, style_negative = 'minus')
   ) +
-  coord_cartesian(xlim = c(-0.56, 0.56)) +
-  labs(x = 'Standardised difference (low minus high), 90% CI', y = NULL,
-       title = 'Realised balance on the control variables',
-       subtitle = 'Shading marks the prespecified equivalence region') +
+  coord_cartesian(xlim = c(-1, 1) * bound * 1.12) +
+  labs(x = 'Standardised difference (high minus low), 90% CI', y = NULL) +
   theme_minimal(base_size = 12) +
   theme(panel.grid = element_blank(),
-        plot.title.position = 'plot',
-        plot.title = element_text(size = 13, face = 'bold'),
-        plot.subtitle = element_text(size = 11, margin = margin(b = 10)),
         axis.title.x = element_text(size = 10.5, margin = margin(t = 6)),
         axis.text.x = element_text(size = 10),
         axis.text.y = element_text(size = 11, hjust = 0, colour = 'grey20',

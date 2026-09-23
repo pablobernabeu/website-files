@@ -5324,7 +5324,7 @@
     "lexsync": {
       "Package": "lexsync",
       "Version": "0.1.0",
-      "Source": "GitHub",
+      "Source": "Repository",
       "Type": "Package",
       "Title": "Lexical Optimisation and Hardware-Timed Experiment Generation",
       "Authors@R": "person(\"Pablo\", \"Bernabeu\", email = \"pcbernabeu@gmail.com\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0003-1083-2460\"))",
@@ -5361,18 +5361,12 @@
       "VignetteBuilder": "knitr",
       "URL": "https://github.com/pablobernabeu/lexsync, https://pablobernabeu.github.io/lexsync/r/",
       "BugReports": "https://github.com/pablobernabeu/lexsync/issues",
-      "Roxygen": "list(markdown = TRUE)",
       "Config/testthat/edition": "3",
       "Config/roxygen2/version": "8.0.0",
+      "NeedsCompilation": "no",
       "Author": "Pablo Bernabeu [aut, cre] (ORCID: <https://orcid.org/0000-0003-1083-2460>)",
       "Maintainer": "Pablo Bernabeu <pcbernabeu@gmail.com>",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteUsername": "pablobernabeu",
-      "RemoteRepo": "lexsync",
-      "RemoteSubdir": "R_workflow",
-      "RemoteRef": "main",
-      "RemoteSha": "398eb5b5a40273c9f2a3289efbd674b9ba5f93cb"
+      "Repository": "CRAN"
     },
     "lgr": {
       "Package": "lgr",
@@ -6737,7 +6731,7 @@
     "pilotr": {
       "Package": "pilotr",
       "Version": "0.3.0",
-      "Source": "GitHub",
+      "Source": "Repository",
       "Title": "Simulate Experimental and Behavioural Data from a Portable Design Specification",
       "Authors@R": "person(\"Pablo\", \"Bernabeu\", role = c(\"aut\", \"cre\"), email = \"pcbernabeu@gmail.com\", comment = c(ORCID = \"0000-0003-1083-2460\"))",
       "Description": "Generative simulation of experimental and behavioural data sets from a portable JavaScript Object Notation (JSON) design specification shared with the 'Python' package of the same name. Supports user-specified fixed effect sizes, crossed by-subject and by-item random intercepts and slopes, predictors measured with error, realistic response families (Gaussian, lognormal, shifted lognormal, ex-Gaussian, Bernoulli, Poisson, ordinal and Beta), and simulation-based power and precision-based design analysis, including the Type S and Type M errors of Gelman and Carlin (2014) <doi:10.1177/1745691614551642> and a region of practical equivalence. A shared cross-language random-number generator means that, given the same specification and seed, the R and 'Python' implementations produce identical data: exactly for the Gaussian family and for any family with rounding set, and to within the last unit in the last place for families applying a transcendental function to the linear predictor, whose rounding the IEEE-754 standard does not fix.",
@@ -6768,18 +6762,11 @@
       ],
       "VignetteBuilder": "knitr",
       "Config/testthat/edition": "3",
-      "Roxygen": "list(markdown = TRUE)",
       "Config/roxygen2/version": "8.0.0",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "pilotr",
-      "RemoteUsername": "pablobernabeu",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "dfc1f54f0bdab61d7f0f25910509c19183c4c87b",
-      "RemoteSubdir": "r/pilotr",
       "NeedsCompilation": "no",
       "Author": "Pablo Bernabeu [aut, cre] (ORCID: <https://orcid.org/0000-0003-1083-2460>)",
-      "Maintainer": "Pablo Bernabeu <pcbernabeu@gmail.com>"
+      "Maintainer": "Pablo Bernabeu <pcbernabeu@gmail.com>",
+      "Repository": "CRAN"
     },
     "pkgbuild": {
       "Package": "pkgbuild",
@@ -8561,6 +8548,33 @@
       "RoxygenNote": "7.3.3",
       "NeedsCompilation": "no",
       "Author": "Philippe Massicotte [aut, cre] (ORCID: <https://orcid.org/0000-0002-5919-4116>), Andy South [aut], Koen Hufkens [ctb] (ORCID: <https://orcid.org/0000-0002-5070-8109>)",
+      "Maintainer": "Philippe Massicotte <pmassicotte@hotmail.com>",
+      "Repository": "CRAN"
+    },
+    "rnaturalearthdata": {
+      "Package": "rnaturalearthdata",
+      "Version": "1.0.0",
+      "Source": "Repository",
+      "Title": "World Vector Map Data from Natural Earth Used in 'rnaturalearth'",
+      "Authors@R": "c( person( family = \"South\", given = \"Andy\", email = \"southandy@gmail.com\", role = c(\"aut\"), comment = c(ORCID = \"0000-0003-4051-6135\") ), person( family = \"Michael\", given = \"Schramm\", email = \"mpschramm@gmail.com\", role = c(\"aut\") ), person( family = \"Massicotte\", given = \"Philippe\", email = \"pmassicotte@hotmail.com\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-5919-4116\") ))",
+      "Description": "Vector map data from <https://www.naturalearthdata.com/>. Access functions are provided in the accompanying package 'rnaturalearth'.",
+      "License": "CC0",
+      "LazyData": "true",
+      "LazyDataCompression": "xz",
+      "Encoding": "UTF-8",
+      "URL": "https://docs.ropensci.org/rnaturalearthdata/, https://github.com/ropensci/rnaturalearthdata",
+      "BugReports": "https://github.com/ropensci/rnaturalearthdata/issues",
+      "Depends": [
+        "R (>= 3.1.1)"
+      ],
+      "Imports": [],
+      "Suggests": [
+        "knitr (>= 1.12.3)",
+        "testthat (>= 0.9.1)"
+      ],
+      "RoxygenNote": "7.3.1",
+      "NeedsCompilation": "no",
+      "Author": "Andy South [aut] (<https://orcid.org/0000-0003-4051-6135>), Schramm Michael [aut], Philippe Massicotte [aut, cre] (<https://orcid.org/0000-0002-5919-4116>)",
       "Maintainer": "Philippe Massicotte <pmassicotte@hotmail.com>",
       "Repository": "CRAN"
     },

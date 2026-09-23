@@ -22,7 +22,7 @@ tags:
   - bibliometrics
 subtitle: ''
 summary: 'A convergence warning from lme4 does not by itself show that a model is wrong. One check that the lme4 authors recommend is to refit the model with every available optimiser through allFit and compare the estimates that matter. This post records the candidate publications found by a reproducible search of Scopus, Europe PMC and OpenAlex, and explains why the list can only be a starting point for screening.'
-abstract: 'This reproducible bibliographic audit searches Scopus, Europe PMC and OpenAlex for publications whose indexed records or full text mention lme4::allFit. It separates full-text matches from those of a Scopus proxy query, deduplicates records by DOI and presents the result as an incomplete set of candidates for screening, since a listed study mentions allFit without necessarily having used it to resolve a convergence warning.'
+abstract: 'This reproducible bibliographic audit searches Scopus, Europe PMC and OpenAlex for publications whose indexed records or full text mention lme4::allFit. It separates full-text matches from those of a Scopus proxy query, merges records of the same work by DOI and title and presents the result as an incomplete set of candidates for screening, since a listed study mentions allFit without necessarily having used it to resolve a convergence warning.'
 authors: []
 lastmod: ''
 featured: no
@@ -37,7 +37,7 @@ projects: []
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = TRUE,
                       fig.align = 'center', fig.retina = 2, comment = '#>')
-options(width = 95)
+options(width = 95, knitr.kable.NA = '')
 xaringanExtra::use_clipboard()
 ```
 
@@ -57,16 +57,17 @@ Scopus, which I queried through my [scopusflow](/2026/scopusflow-a-literature-se
 
 ```{r, eval = FALSE}
 library(scopusflow)   # reads the key from SCOPUS_API_KEY
-scopus_any_field <- scopus_fetch('ALL("allFit")')
+scopus_any_field <- scopus_fetch('ALL("allFit")', page_size = 25)
 scopus_proxy <- scopus_fetch(
   paste('("lme4" OR "lmerTest" OR "brms") AND maximal AND "random slopes"',
         'AND (convergence OR converge OR converged OR converging)'),
-  field = 'TITLE-ABS-KEY')
+  field = 'TITLE-ABS-KEY', page_size = 25)
 ```
 
-The two full-text queries are read from the files saved with the results, so they are exactly the queries that ran. A query retyped into the post could drift from the one that produced the counts.
+The Scopus any-field query and the two full-text queries are read from the files saved with the results, so they are exactly the queries that ran. A query retyped into the post could drift from the one that produced the counts. If Scopus rejects the quoted form of the any-field query, the script tries other forms, and the file records the one that ran.
 
 ```{r, comment = ''}
+cat(readLines('searches/scopus_allfit_any_field_query.txt'), sep = '\n')
 cat(readLines('searches/europepmc_query.txt'), sep = '\n')
 cat(readLines('searches/openalex_filter.txt'), sep = '\n')
 ```
@@ -86,12 +87,39 @@ read_if_present <- function(file, source) {
   x$source <- source
   x
 }
-retrieved <- readLines('searches/retrieved.txt')
 
 scopus_any   <- read_if_present('scopus_allfit_any_field.csv', 'Scopus, any indexed field')
 scopus_proxy <- read_if_present('scopus_convergence_proxy.csv', 'Scopus, convergence proxy')
 europepmc    <- read_if_present('europepmc_allfit_fulltext.csv', 'Europe PMC, full text')
 openalex     <- read_if_present('openalex_allfit_fulltext.csv', 'OpenAlex, full text')
+
+# Each table has a stamp beside it with the time of its search, named after it
+# with _retrieved.txt in place of .csv. Tables saved before those stamps
+# existed share the single one in retrieved.txt.
+retrieved_on <- function(file) {
+  stamp <- file.path('searches', sub('\\.csv$', '_retrieved.txt', file))
+  if (!file.exists(stamp)) stamp <- file.path('searches', 'retrieved.txt')
+  as.Date(substr(readLines(stamp, n = 1), 1, 10))
+}
+queried <- sapply(c('Scopus (any indexed field)' = 'scopus_allfit_any_field.csv',
+                    'Scopus (proxy query)' = 'scopus_convergence_proxy.csv',
+                    'Europe PMC' = 'europepmc_allfit_fulltext.csv',
+                    'OpenAlex' = 'openalex_allfit_fulltext.csv'),
+                  function(f) trimws(format(retrieved_on(f), '%e %B %Y')))
+
+# One sentence for all the sources if they were searched on the same day, and
+# otherwise one for each date.
+when_queried <- function(queried) {
+  if (queried[[1]] == queried[[2]])
+    queried <- c(Scopus = queried[[1]], queried[-(1:2)])
+  if (length(unique(queried)) == 1)
+    return(paste0('The three sources were queried on ', queried[[1]], '.'))
+  paste(sapply(unique(queried), function(d) {
+    who <- names(queried)[queried == d]
+    paste0(knitr::combine_words(who, oxford_comma = FALSE),
+           if (length(who) == 1) ' was' else ' were', ' queried on ', d, '.')
+  }), collapse = ' ')
+}
 
 standardise <- function(x) {
   if (is.null(x)) return(NULL)
@@ -112,7 +140,7 @@ sum(grepl(mixed_terms, scopus_any$title, ignore.case = TRUE))
 head(sort(table(scopus_any$publication), decreasing = TRUE), 4)
 ```
 
-The three sources were queried on `r format(as.Date(substr(retrieved, 1, 10)), '%e %B %Y') |> trimws()`. The Scopus search for the function name in any indexed field shows why a bare string makes a poor query. It returned `r if (is.null(scopus_any)) 0 else nrow(scopus_any)` records, the largest group of them in pharmacology and medicinal chemistry, and not one of their titles mentions a mixed model. Scopus appears to match the string loosely against unrelated text, so those records are left out of the list below. The proxy query returned `r if (is.null(scopus_proxy)) 'no records' else paste(nrow(scopus_proxy), if (nrow(scopus_proxy) == 1) 'record' else 'records')`, which shows how rarely an abstract describes the treatment of convergence in that much detail. The two full-text sources come closest to answering the question, because they reach the methods section, where the function name usually appears. Their results are merged on the DOI and screened once, by dropping any record published before allFit existed, as a match in such an article cannot be a use of the function.
+`r when_queried(queried)` The Scopus search for the function name in any indexed field shows why a bare string makes a poor query. It returned `r if (is.null(scopus_any)) 0 else nrow(scopus_any)` records, the largest group of them in pharmacology and medicinal chemistry, and not one of their titles mentions a mixed model. Scopus appears to match the string loosely against unrelated text, so those records are left out of the list below. The proxy query returned `r if (is.null(scopus_proxy)) 'no records' else paste(nrow(scopus_proxy), if (nrow(scopus_proxy) == 1) 'record' else 'records')`, which shows how rarely an abstract describes the treatment of convergence in that much detail. The two full-text sources come closest to answering the question, because they reach the methods section, where the function name usually appears. Their results are merged into one record per work. Records that share a DOI are merged, and so are records whose titles match once case and punctuation are set aside, since a preprint and the article published from it carry different DOIs. The merged record keeps the DOI of the published article. The merged list is then screened once, by dropping any record published before allFit existed, as a match in such an article cannot be a use of the function. The screen spares the records of R packages on CRAN, because OpenAlex dates them by the first release of the package. The record of afex, first released in 2012, would otherwise be dropped, although any of its text that mentions allFit must have been written in 2014 or later.
 
 ```{r}
 # allFit appeared in lme4's GitHub repository in April 2014 and first shipped
@@ -120,33 +148,60 @@ The three sources were queried on `r format(as.Date(substr(retrieved, 1, 10)), '
 # use of it, whatever matched the string.
 allfit_year <- 2014L
 
+# OpenAlex dates the record of a CRAN package by the package's first release,
+# not by the version whose text matched, so the screen leaves these alone.
+cran_package <- '^10\\.32614/cran\\.package\\.'
+
+# A preprint and its published article are one work under two DOIs. Records
+# are taken as one work when their titles match once case, markup and
+# punctuation are set aside, and the published DOI is kept over that of a
+# preprint server: PsyArXiv, bioRxiv and medRxiv, arXiv, OSF Preprints, SSRN.
+preprint <- '^10\\.(31234|1101|48550|31219|2139)/'
+same_title <- function(title) {
+  trimws(gsub('[^a-z0-9]+', ' ', tolower(gsub('<[^>]+>', '', title))))
+}
+
 used_allfit <- records |>
   filter(source %in% c('Europe PMC, full text', 'OpenAlex, full text')) |>
   mutate(key = ifelse(is.na(doi) | doi == '', paste(source, title), doi)) |>
   group_by(key) |>
+  mutate(work = same_title(first(title)),
+         work = ifelse(is.na(work) | work == '', key, work)) |>
+  group_by(work) |>
+  arrange(grepl(preprint, doi), .by_group = TRUE) |>
   summarise(year = first(na.omit(year)), authors = first(authors),
             title = first(title), venue = first(na.omit(venue)),
+            other_dois = paste(setdiff(na.omit(doi), c(first(doi), '')), collapse = ' '),
             doi = first(doi), sources = paste(sort(unique(source)), collapse = '; '),
             .groups = 'drop') |>
   arrange(desc(year), authors)
 
-too_early <- used_allfit |> filter(!is.na(year), year < allfit_year)
-used_allfit <- used_allfit |> filter(is.na(year) | year >= allfit_year)
+too_early <- used_allfit |>
+  filter(!is.na(year), year < allfit_year, !grepl(cran_package, doi))
+used_allfit <- used_allfit |> anti_join(too_early, by = 'work')
 c(matched = nrow(used_allfit) + nrow(too_early),
   before_allfit_existed = nrow(too_early), kept = nrow(used_allfit))
 table(used_allfit$sources)
+
+# The works found under more than one DOI, to be checked by eye.
+used_allfit |>
+  filter(other_dois != '') |>
+  transmute(year, doi, other_dois)
 ```
 
-Figure 1 shows how many of the kept publications, all of them from the two full-text sources, appeared in each year.
+Figure 1 shows how many of the kept publications, all of them from the two full-text sources, appeared in each year. It leaves out the CRAN packages in the list, since the year of a package record is that of its first release.
 
-```{r publications-per-year, fig.width = 7, fig.height = 3.4, fig.cap = 'Publications per Year Whose Full Text Mentions allFit, According to Europe PMC and OpenAlex. The last bar stops at the date of the search.', fig.alt = paste0('Bar chart of the number of publications per year, from ', min(used_allfit$year, na.rm = TRUE), ' to ', max(used_allfit$year, na.rm = TRUE), ', whose full text mentions allFit, according to Europe PMC and OpenAlex')}
+```{r publications-per-year, fig.width = 7, fig.height = 3.4, fig.cap = 'Publications per Year Whose Full Text Mentions allFit, According to Europe PMC and OpenAlex. The last bar stops at the date of the search.', fig.alt = paste0('Bar chart of the number of publications per year, from ', min(per_year$year), ' to ', max(per_year$year), ', whose full text mentions allFit, according to Europe PMC and OpenAlex. The first year, ', per_year$year[1], ', has ', per_year$n[1], if (per_year$n[1] == 1) ' publication' else ' publications', ', and the most, ', max(per_year$n), ', appeared in ', knitr::combine_words(per_year$year[per_year$n == max(per_year$n)]), '.')}
+# The year of a CRAN package is that of its first release, which says nothing
+# about when its text came to mention allFit.
 per_year <- used_allfit |>
-  filter(!is.na(year)) |>
+  filter(!is.na(year), !grepl(cran_package, doi)) |>
   count(year)
 
 # The year of the search was still under way, so its label says where the
-# count stops.
-searched <- as.Date(substr(retrieved, 1, 10))
+# count stops: at the later of the two full-text searches.
+searched <- max(retrieved_on('europepmc_allfit_fulltext.csv'),
+                retrieved_on('openalex_allfit_fulltext.csv'))
 year_label <- function(y) {
   ifelse(y == as.integer(format(searched, '%Y')),
          paste0(y, '\nto ', trimws(format(searched, '%e %b'))), y)
@@ -164,7 +219,7 @@ ggplot(per_year, aes(year, n)) +
         axis.text.y = element_blank(), panel.grid = element_blank())
 ```
 
-Table 1 lists the same publications, most recent first, with the sources in which each was found. Authors are given as the sources returned them. The two sources overlap in a minority of records, which reflects how differently they cover the literature.
+Table 1 lists all the kept publications, the CRAN packages included, most recent first, with the sources in which each was found. Authors are given as the sources returned them. The two sources overlap in a minority of records, which reflects how differently they cover the literature.
 
 ```{r publications-table}
 short_authors <- function(a) {
@@ -196,7 +251,7 @@ records |>
 
 ## Discussion
 
-The list is incomplete, because the searches miss part of the literature. Europe PMC holds full text mostly for open-access articles in journals within its scope, so a paywalled study in a linguistics or psychology journal is usually invisible to it unless a preprint or an accepted manuscript was deposited. OpenAlex holds the text of a subset of the literature that it does not fully document, and Scopus cannot see the methods section at all. None of the three can find a study that compared optimisers with its own loop or by calling the `optimx` package directly, or one that reported the comparison only in supplementary material. At the same time, a full-text match can be an article that uses the function for something other than a convergence check, or that mentions it only in a footnote. Records published before the function existed have been dropped, but the table has not otherwise been screened by hand, so some of the publications it lists may mention the function without having used it. A few studies also appear twice under different DOIs, usually as a preprint and as the published article. The list is therefore a starting point for the reader who needs a precedent.
+The list is incomplete, because the searches miss part of the literature. Europe PMC holds full text mostly for open-access articles in journals within its scope, so a paywalled study in a linguistics or psychology journal is usually invisible to it unless a preprint or an accepted manuscript was deposited. OpenAlex holds the text of a subset of the literature that it does not fully document, and Scopus cannot see the methods section at all. None of the three can find a study that compared optimisers with its own loop or by calling the `optimx` package directly, or one that reported the comparison only in supplementary material. At the same time, a full-text match can be an article that uses the function for something other than a convergence check, or that mentions it only in a footnote. Records published before the function existed have been dropped, but the table has not otherwise been screened by hand, so some of the publications it lists may mention the function without having used it. A preprint and its published article are merged only when their titles match, so a study whose title changed on publication can still appear twice. The list is therefore a starting point for the reader who needs a precedent.
 
 ## References
 

@@ -73,6 +73,8 @@ library(htmltools)
 library(leaflet)
 library(sf)
 library(rnaturalearth)
+# Holds the medium-scale boundaries that ne_countries() reads for Figure 6
+library(rnaturalearthdata)
 library(RColorBrewer)
 library(knitr)
 
@@ -147,8 +149,9 @@ combined <- tribble(
 
 # A row without a continent would otherwise vanish silently from figure 1
 stopifnot(!anyNA(countries$continent))
-c(territories = n_distinct(countries$iso3), years = n_distinct(ghg$year),
-  countries_with_hdi = nrow(hdi), sector_rows = nrow(sectors_2024))
+c(territories = n_distinct(setdiff(countries$iso3, c('AIR', 'SEA'))),
+  years = n_distinct(ghg$year), countries_with_hdi = sum(!is.na(hdi$hdi_2023)),
+  sector_rows = nrow(sectors_2024))
 
 # Derived here rather than beside the figures that draw them, because the
 # captions of those figures quote them and a chunk option is evaluated
@@ -296,6 +299,15 @@ income_value <- function(group, yr, variable) {
   by_income[[variable]][by_income$income_group == group & by_income$year == yr]
 }
 
+# The first year in which the upper-middle-income share of world emissions
+# exceeds the high-income share, with the two groups side by side in each year
+overtake_year <- by_income %>%
+  select(income_group, year, emission_share) %>%
+  pivot_wider(names_from = income_group, values_from = emission_share) %>%
+  filter(`Upper middle income` > `High income`) %>%
+  pull(year) %>%
+  min()
+
 p2a <- ggplot(by_income, aes(year, per_capita_t, colour = income_group)) +
   geom_line(linewidth = 1) +
   geom_text_repel(data = filter(by_income, year == max(year)),
@@ -339,7 +351,7 @@ p2a / p2b +
   plot_layout(heights = c(1, 1.25))
 ```
 
-In 2024, a resident of a high-income country emitted `r fmt(income_value('High income', 2024, 'per_capita_t'), 1)` t on average, `r fmt(income_value('High income', 2024, 'per_capita_t') / income_value('Low income', 2024, 'per_capita_t'), 1)` times the `r fmt(income_value('Low income', 2024, 'per_capita_t'), 1)` t of a resident of a low-income country. The high-income mean peaked at `r fmt(max(by_income$per_capita_t[by_income$income_group == 'High income']), 1)` t in `r by_income$year[by_income$income_group == 'High income'][which.max(by_income$per_capita_t[by_income$income_group == 'High income'])]`, changed little from the early 1980s to the late 2000s and has fallen since. The upper-middle-income mean, for a group that includes China, rose from `r fmt(income_value('Upper middle income', 2000, 'per_capita_t'), 1)` t in 2000 to `r fmt(income_value('Upper middle income', 2024, 'per_capita_t'), 1)` t in 2024. The group's share of world emissions overtook the high-income share in `r min(by_income$year[by_income$income_group == 'Upper middle income' & by_income$emission_share > by_income$emission_share[by_income$income_group == 'High income']])`. Panel B shows the imbalance between people and emissions: high-income countries hold `r pct(income_value('High income', 2024, 'population_share'))` of the world's population and emit `r pct(income_value('High income', 2024, 'emission_share'))` of the total. The lower-middle-income and low-income groups together hold `r pct(income_value('Lower middle income', 2024, 'population_share') + income_value('Low income', 2024, 'population_share'))` of the population and emit `r pct(income_value('Lower middle income', 2024, 'emission_share') + income_value('Low income', 2024, 'emission_share'))`. The `r nrow(no_income_group)` territories without an income group emitted `r pct(100 * sum(no_income_group$total_mt) / world_2024)` of the 2024 total between them. They include Ethiopia and Venezuela, both of which the World Bank left unclassified for fiscal year 2026, and small territories such as Guadeloupe and the Falkland Islands.
+In 2024, a resident of a high-income country emitted `r fmt(income_value('High income', 2024, 'per_capita_t'), 1)` t on average, `r fmt(income_value('High income', 2024, 'per_capita_t') / income_value('Low income', 2024, 'per_capita_t'), 1)` times the `r fmt(income_value('Low income', 2024, 'per_capita_t'), 1)` t of a resident of a low-income country. The high-income mean peaked at `r fmt(max(by_income$per_capita_t[by_income$income_group == 'High income']), 1)` t in `r by_income$year[by_income$income_group == 'High income'][which.max(by_income$per_capita_t[by_income$income_group == 'High income'])]`, changed little from the early 1980s to the late 2000s and has fallen since. The upper-middle-income mean, for a group that includes China, rose from `r fmt(income_value('Upper middle income', 2000, 'per_capita_t'), 1)` t in 2000 to `r fmt(income_value('Upper middle income', 2024, 'per_capita_t'), 1)` t in 2024. The group's share of world emissions overtook the high-income share in `r overtake_year`. Panel B shows the imbalance between people and emissions: high-income countries hold `r pct(income_value('High income', 2024, 'population_share'))` of the world's population and emit `r pct(income_value('High income', 2024, 'emission_share'))` of the total. The lower-middle-income and low-income groups together hold `r pct(income_value('Lower middle income', 2024, 'population_share') + income_value('Low income', 2024, 'population_share'))` of the population and emit `r pct(income_value('Lower middle income', 2024, 'emission_share') + income_value('Low income', 2024, 'emission_share'))`. The `r nrow(no_income_group)` territories without an income group emitted `r pct(100 * sum(no_income_group$total_mt) / world_2024)` of the 2024 total between them. They include Ethiopia and Venezuela, both of which the World Bank left unclassified for fiscal year 2026, and small territories such as Guadeloupe and the Falkland Islands.
 
 
 ### The Twenty Largest Emitters
@@ -390,7 +402,7 @@ China alone emitted `r pct(top_value('CHN', 'share'))` of the world total in 202
 
 ### What the Largest Emitters Emit
 
-Figure 4 breaks the 2024 emissions of the eight largest emitters and of the world down by EDGAR sector, summed over the four substances. The composition explains part of the per-capita differences above. Where power generation and industry dominate, emissions follow the fuel mix of the grid, whereas a large agricultural share reflects livestock and rice paddies, which no change of energy source removes.
+Figure 4 breaks the 2024 emissions of the eight largest emitters and of the world down by EDGAR sector, summed over the four substances. The composition explains part of the per-capita differences above. Where power generation dominates, emissions follow the fuel mix of the grid, whereas a large agricultural share reflects livestock and rice paddies, which no change of energy source removes.
 
 ```{r fig4-sectors, fig.height = 4.8, fig.cap = paste0('The 2024 Emissions of the World and the Eight Largest Emitters, by EDGAR Sector. ', edgar_caption, ' Sheet GHG_by_sector_and_country, 2024, summed over substances. Units: per cent of each emitter\'s total. Labels are shown for shares of 8% or more.'), fig.alt = 'Stacked horizontal bars showing the percentage of 2024 emissions in each of eight EDGAR sectors for the world and the eight largest emitters. Power industry is the largest sector for the world, China, India, Japan, Russia and Indonesia. Transport is the largest for the United States, agriculture makes up about half of the emissions of Brazil, and fuel exploitation is the largest sector in Iran.'}
 sector_order <- sectors_2024 %>%
@@ -547,7 +559,11 @@ htmlwidgets::onRender(fig5, 'function(el) {
   if (el.offsetWidth < 400) {
     Plotly.relayout(el, {"xaxis.title.font.size": 15, "yaxis.title.font.size": 15});
   }
-}')
+}') %>%
+  # knitr applies fig.alt to static images only, so the widget carries the
+  # chunk's alt text in a paragraph that screen readers announce and the
+  # page hides (.sr-only is Bootstrap's)
+  htmlwidgets::prependContent(tags$p(class = 'sr-only', knitr::opts_current$get('fig.alt')))
 ```
 
 <p class="caption">Figure 5: Per-Capita Emissions Against the Human Development Index, With the Fitted Line. Source: EDGAR 2025 (Crippa et al., 2025) and the Human Development Report 2025 (United Nations Development Programme, 2025). Units: tonnes of CO<sub>2</sub> equivalent per person per year, averaged over 2015 to 2024. Marker area proportional to 2024 population.</p>
@@ -559,7 +575,7 @@ The residual describes how a country compares with others at the same HDI, and f
 
 ### Mapping the Residuals
 
-Figure 6 maps the residuals of the model on a diverging scale centred on zero, red where a country emits more than expected at its HDI and blue where it emits less. Hovering shows the residual in log10 units and the ratio 10<sup>residual</sup>, which is easier to read. Countries without an HDI or without emissions data are shown in light grey. The members of a territory that EDGAR reports jointly carry the value of that territory, and their hover text says so.
+Figure 6 maps the residuals of the model on a diverging scale centred on zero, red where a country emits more than expected at its HDI and blue where it emits less. Hovering shows the residual in log10 units and the ratio 10<sup>residual</sup>, which is easier to read. Countries without an HDI or without emissions data are shown in light grey. The members of a territory that EDGAR reports jointly carry the value of that territory, and their hover text says so. Sudan and South Sudan, for example, both show the per-capita figure of the combined territory, compared with the HDI of Sudan.
 
 ```{r fig6-map, fig.alt = 'Interactive world map in which each country is coloured by its residual from the model of per-capita emissions against the Human Development Index, red for higher than expected and blue for lower than expected, with countries lacking data in light grey.'}
 # Natural Earth's medium geometry is about 3 MB of coordinates in the widget
@@ -571,8 +587,11 @@ Figure 6 maps the residuals of the model on a diverging scale centred on zero, r
 # is the tool for this; until the geometry can be checked under one, the map
 # ships at full fidelity.
 world_sf <- ne_countries(scale = 'medium', returnclass = 'sf') %>%
-  # France and Norway carry -99 as iso_a3 in Natural Earth; iso_a3_eh holds the code
-  mutate(iso_a3 = ifelse(iso_a3 == '-99', iso_a3_eh, iso_a3)) %>%
+  # France and Norway carry -99 as iso_a3 in Natural Earth, and iso_a3_eh holds
+  # their code. The recode is limited to those two, because iso_a3_eh also gives
+  # AUS to the Indian Ocean Territories and to the Ashmore and Cartier Islands,
+  # which would otherwise take on Australia's residual.
+  mutate(iso_a3 = ifelse(iso_a3 == '-99' & iso_a3_eh %in% c('FRA', 'NOR'), iso_a3_eh, iso_a3)) %>%
   filter(iso_a3 != 'ATA') %>%
   select(iso_a3, name_long) %>%
   mutate(edgar_iso3 = coalesce(combined$iso3[match(iso_a3, combined$member_iso3)], iso_a3),
@@ -630,12 +649,14 @@ leaflet(world_sf, width = '100%', height = 520, elementId = 'residual-map',
      #residual-map .info.legend > div:last-child { clear: both; padding-top: 4px; }
      #residual-map .leaflet-control a { color: #333 !important; -webkit-text-fill-color: #333 !important;
        text-decoration: none !important; }
-     @media (max-width: 600px) { #residual-map { height: 410px !important; } }')))
+     @media (max-width: 600px) { #residual-map { height: 410px !important; } }'))) %>%
+  # As for Figure 5, the alt text reaches screen readers in a hidden paragraph
+  htmlwidgets::prependContent(tags$p(class = 'sr-only', knitr::opts_current$get('fig.alt')))
 ```
 
 <p class="caption">Figure 6: The Residual of Each Country From the Fitted Line, Mapped. Source: EDGAR 2025 (Crippa et al., 2025), the Human Development Report 2025 (United Nations Development Programme, 2025) and Natural Earth boundaries via rnaturalearth. Units: residual of log10 per-capita emissions (2015 to 2024 mean) from the linear model on HDI 2023. The ratio of actual to expected emissions is 10<sup>residual</sup>. Boundaries carry no political meaning.</p>
 
-The largest positive residual belongs to `r hdi_data$country[which.max(hdi_data$residual)]`, at `r fmt(max(hdi_data$ratio), 1)` times its expected level, and the largest negative one to `r hdi_data$country[which.min(hdi_data$residual)]`, at `r fmt(min(hdi_data$ratio), 2)` times. Tables 1 and 2 list the ten countries at each end. Oil and gas exporters fill most of the positive end, together with small states whose per-capita figure is set by one power plant or one fleet, such as Palau, with `r fmt(hdi_data$population[hdi_data$iso3 == 'PLW'] / 1e3)` thousand inhabitants by EDGAR's count. Two pastoral economies also appear there: in Mongolia, fuel extraction and livestock account for `r pct(sum(sectors_2024$mt[sectors_2024$iso3 == 'MNG' & sectors_2024$sector %in% c('Fuel Exploitation', 'Agriculture')]) / sum(sectors_2024$mt[sectors_2024$iso3 == 'MNG']) * 100, 0)` of emissions, and in Chad, agriculture accounts for `r pct(sectors_2024$mt[sectors_2024$iso3 == 'TCD' & sectors_2024$sector == 'Agriculture'] / sum(sectors_2024$mt[sectors_2024$iso3 == 'TCD']) * 100, 0)`. Methane from herds enters the total in full, and the model expects little of it at a low HDI, so a country whose emissions are mostly livestock lands above the line. Neither the small-state route nor the pastoral one makes these countries large emitters. Chad emits `r fmt(hdi_data$total_mt[hdi_data$iso3 == 'TCD'], 1)` Mt a year and Palau `r fmt(hdi_data$total_mt[hdi_data$iso3 == 'PLW'], 1)` Mt, against `r fmt(sum(countries_2024$total_mt))` Mt for all countries together, so the ratio ranks departures from the model and not contributions to the problem. The total column is in the tables to keep that in view, and it is worth reading before the ratio. The negative end mixes small island states with countries of South Asia and Sub-Saharan Africa whose emissions are low for their HDI. At the top of the HDI range, it also holds Switzerland, whose electricity comes largely from hydropower and nuclear plants and which EDGAR reports together with Liechtenstein. Because EDGAR reports Sudan and South Sudan as one territory, their combined per-capita figure is compared with the HDI of Sudan and mapped onto both countries.
+The largest positive residual belongs to `r hdi_data$country[which.max(hdi_data$residual)]`, at `r fmt(max(hdi_data$ratio), 1)` times its expected level, and the largest negative one to `r hdi_data$country[which.min(hdi_data$residual)]`, at `r fmt(min(hdi_data$ratio), 2)` times. Tables 1 and 2 list the ten countries at each end. Oil and gas exporters fill most of the positive end, together with Palau, a small state of `r fmt(hdi_data$population[hdi_data$iso3 == 'PLW'] / 1e3)` thousand inhabitants by EDGAR's count, whose per-capita figure is set by one power plant or one fleet. Two pastoral economies also appear there: in Mongolia, fuel extraction and livestock account for `r pct(sum(sectors_2024$mt[sectors_2024$iso3 == 'MNG' & sectors_2024$sector %in% c('Fuel Exploitation', 'Agriculture')]) / sum(sectors_2024$mt[sectors_2024$iso3 == 'MNG']) * 100, 0)` of emissions, and in Chad, agriculture accounts for `r pct(sectors_2024$mt[sectors_2024$iso3 == 'TCD' & sectors_2024$sector == 'Agriculture'] / sum(sectors_2024$mt[sectors_2024$iso3 == 'TCD']) * 100, 0)`. Methane from herds enters the total in full, and the model expects little of it at a low HDI, so a country whose emissions are mostly livestock lands above the line. Neither the small-state route nor the pastoral one makes these countries large emitters. Chad emits `r fmt(hdi_data$total_mt[hdi_data$iso3 == 'TCD'], 1)` Mt a year and Palau `r fmt(hdi_data$total_mt[hdi_data$iso3 == 'PLW'], 1)` Mt, against `r fmt(sum(countries_2024$total_mt))` Mt for all countries together, so the ratio ranks departures from the model and not contributions to the problem. The total column is in the tables to keep that in view, and it is worth reading before the ratio. The negative end mixes small island states with countries of South Asia and Sub-Saharan Africa whose emissions are low for their HDI. At the top of the HDI range, it also holds Switzerland, whose electricity comes largely from hydropower and nuclear plants and which EDGAR reports together with Liechtenstein.
 
 ```{r residual-table-above}
 # One table for each end of the residual, rather than one table of twenty rows
@@ -653,8 +674,8 @@ hdi_data %>%
   residual_columns() %>%
   kable(align = 'llrrrrr',
         caption = paste('The Ten Countries Emitting Most Above the Level Expected at Their HDI.',
-                        'Total is the 2024 national figure in Mt CO2eq, per capita the 2015 to',
-                        '2024 mean in t CO2eq per person, expected the value fitted from the HDI',
+                        'Total is the 2024 national figure in Mt CO<sub>2</sub>eq, per capita the',
+                        '2015 to 2024 mean in t CO<sub>2</sub>eq per person, expected the value fitted from the HDI',
                         'and ratio the actual over the expected. The ratio measures distance from',
                         'the model, not size: at a low HDI the model expects very little, so a',
                         'small total can produce a large ratio.'))

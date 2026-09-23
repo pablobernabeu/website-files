@@ -80,7 +80,7 @@ Reaction times are right-skewed, so a mean and a standard deviation do not show 
 
 ```{r distribution, fig.cap = 'Observed Reaction-Time Distributions After Related and Unrelated Primes, With the Quartiles Marked.', fig.alt = 'Empirical cumulative distributions of lexical-decision reaction times for related and unrelated primes, with horizontal guides at the quartiles'}
 ecdf_plot(
-  lexical_decision,
+  correct,
   RT,
   group = condition,
   reference_quantiles = c(0.25, 0.5, 0.75),
@@ -95,7 +95,7 @@ The separation extends well beyond a handful of slow responses. Related trials r
 
 ### Keep the Same Language for the Model
 
-The model, fitted to correct trials, includes priming condition, presentation modality and word frequency, with crossed random intercepts for participants and items. `coefficient_plot()` reads the fitted object directly and puts the fixed effects on a common scale in Figure 2, expressing each as the change in reaction time per standard deviation of its predictor. The two factors enter the model as 0/1 codes with a standard deviation near 0.5, so their plotted effects are about half the size of the estimates printed below.
+The model, fitted to the same correct trials, includes priming condition, presentation modality and word frequency, with crossed random intercepts for participants and items. `coefficient_plot()` reads the fitted object directly and puts the fixed effects on a common scale in Figure 2, expressing each as the change in reaction time per standard deviation of its predictor. The two factors enter the model as 0/1 codes with a standard deviation near 0.5, so their plotted effects are about half the size of the estimates printed below.
 
 ```{r}
 fit <- lmerTest::lmer(
@@ -136,7 +136,7 @@ A colourblind-safe palette does not guarantee an accessible figure. Contrast aga
 
 ```{r}
 first_draft <- explore_distribution(
-  lexical_decision,
+  correct,
   RT,
   group = condition,
   type = 'density',
@@ -152,7 +152,7 @@ The default density plot fails two checks. Its orange falls below the package's 
 
 ```{r audited-figure, fig.cap = 'The Corrected Figure, in Which Colour and Line Type Both Separate the Priming Conditions.', fig.alt = 'Corrected density curves of reaction times for related and unrelated primes, distinguished by both colour and line type'}
 final_figure <- explore_distribution(
-  lexical_decision,
+  correct,
   RT,
   group = condition,
   type = 'density',
