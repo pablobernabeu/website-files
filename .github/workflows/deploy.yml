@@ -72,7 +72,11 @@ jobs:
             if [ ! -f "$html" ]; then
               reason="HTML output is missing"
             else
-              html_commit="$(git log -1 --format=%H -- "$html")"
+              # A knit can change only figures: when the edited chunk is not
+              # echoed, the regenerated .html is byte-identical and git records
+              # no commit for it. The knit's own _files folder is its output
+              # too, so a commit touching either counts as a knit.
+              html_commit="$(git log -1 --format=%H -- "$html" "${rmd%.Rmd}_files")"
               rmd_commit="$(git log -1 --format=%H -- "$rmd")"
               if [ -z "$html_commit" ] || [ -z "$rmd_commit" ]; then
                 reason="Rmd or HTML output has no Git history"
