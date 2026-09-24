@@ -11,8 +11,13 @@ authors:
 date: '2026-09-01'
 apa_captions: true
 slug: theoryforge
-publication: 'Version 0.6.0 [Computer software]. CRAN'
+publication: 'Version 0.6.0 [Computer software]. CRAN and PyPI'
 doi: 10.32614/CRAN.package.theoryforge
+citations:
+  - label: 'Citation (CRAN)'
+    file: cite-cran.bib
+  - label: 'Citation (PyPI)'
+    file: cite-pypi.bib
 categories:
   - software
 tags:
@@ -56,7 +61,7 @@ projects: []
 
 ## Overview
 
-theoryforge (Bernabeu, 2026) represents a scientific theory as a versioned, machine-checkable document. Constructs, propositions, predictions, alternatives and provenance are linked by identifiers, so the package can validate the specification, derive implications, compare amendments and export a reviewable dossier. The checks assess the completeness and internal coherence of a specification, which is a separate matter from whether the theory is true. Figure 1 sets out that workflow, from the theory file to the dossier.
+theoryforge (Bernabeu, 2026a, 2026b) represents a scientific theory as a versioned, machine-checkable document. Constructs, propositions, predictions, alternatives and provenance are linked by identifiers, so the package can validate the specification, derive implications, compare amendments and export a reviewable dossier. The checks assess the completeness and internal coherence of a specification, which is a separate matter from whether the theory is true. Figure 1 sets out that workflow, from the theory file to the dossier.
 
 <figure>
 <img src="images/theoryforge-workflow.svg" alt="Workflow diagram: a structured theory file is validated, used to derive testable implications, compared with a rival theory and preserved as a versioned dossier" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
@@ -67,6 +72,8 @@ theoryforge (Bernabeu, 2026) represents a scientific theory as a versioned, mach
 
 Store the theory document, schema version, validation report, derived implications, data-generating assumptions and checksum together. The [R documentation](https://pablobernabeu.github.io/theoryforge/r/), [Python documentation](https://pablobernabeu.github.io/theoryforge/python/), [browser apps](https://pablobernabeu.github.io/theoryforge/) and [companion blog post](/2026/theoryforge-a-theory-you-can-check/) show how the same specification supports formalisation, testing and preregistration.
 
-## Reference
+## References
 
-Bernabeu, P. (2026). *theoryforge: Systematic theory development* (Version 0.6.0) [Computer software]. CRAN. https://doi.org/10.32614/CRAN.package.theoryforge
+Bernabeu, P. (2026a). *theoryforge: Systematic theory development* (Version 0.6.0) [Computer software]. CRAN. https://doi.org/10.32614/CRAN.package.theoryforge
+
+Bernabeu, P. (2026b). *theoryforge: Systematic theory development* (Version 0.6.0) [Computer software]. PyPI. https://pypi.org/project/theoryforge/0.6.0/

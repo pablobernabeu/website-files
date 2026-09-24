@@ -10,9 +10,18 @@
   {{ $pdf_link = true }}
 {{ end }}
 
-{{ $resource := $page.Resources.GetMatch "cite.bib" }}
-{{ with $resource }}
-  {{ $cite_link = true }}
+{{/* The same test page_links uses: the files named under `citations` when the
+     page lists them, or else the single cite.bib. */}}
+{{ with $page.Params.citations }}
+  {{ range . }}
+    {{ if $page.Resources.GetMatch .file }}
+      {{ $cite_link = true }}
+    {{ end }}
+  {{ end }}
+{{ else }}
+  {{ with $page.Resources.GetMatch "cite.bib" }}
+    {{ $cite_link = true }}
+  {{ end }}
 {{ end }}
 
 {{ $scholar_titles_lc := slice }}

@@ -11,8 +11,13 @@ authors:
 date: '2026-09-01'
 apa_captions: true
 slug: depictr
-publication: 'Version 0.3.0 [Computer software]. CRAN'
+publication: 'Version 0.3.0 [Computer software]. CRAN and PyPI'
 doi: 10.32614/CRAN.package.depictr
+citations:
+  - label: 'Citation (CRAN)'
+    file: cite-cran.bib
+  - label: 'Citation (PyPI)'
+    file: cite-pypi.bib
 categories:
   - software
 tags:
@@ -54,7 +59,7 @@ projects: []
 
 ## Overview
 
-depictr (Bernabeu, 2026) provides a shared visual language for exploratory graphics, model estimates, diagnostics, uncertainty and power analyses. Its R and Python implementations use the same naming and colour conventions, and both return ordinary plot objects that can still be adapted to the needs of a study. The accessibility audit examines the rendered figure itself, since a colourblind-aware palette alone cannot guarantee an accessible figure.
+depictr (Bernabeu, 2026a, 2026b) provides a shared visual language for exploratory graphics, model estimates, diagnostics, uncertainty and power analyses. Its R and Python implementations use the same naming and colour conventions, and both return ordinary plot objects that can still be adapted to the needs of a study. The accessibility audit examines the rendered figure itself, since a colourblind-aware palette alone cannot guarantee an accessible figure.
 
 The Python implementation also has a Streamlit app, which offers a gallery of the plots and a way to try the package without writing any code. It runs locally from a clone of the [Python repository](https://github.com/pablobernabeu/depictr-py), as the [app guide](https://pablobernabeu.github.io/depictr-py/app/) explains.
 
@@ -68,7 +73,7 @@ Colour, interval and labelling conventions carry from the observed distribution 
 </figure>
 
 <figure>
-<img src="images/model-estimates-1.png" alt="Forest plot of the fixed effects, each per standard deviation of its predictor, for priming condition, presentation modality and word frequency, with 95 per cent confidence intervals" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
+<img src="images/model-estimates-1.png" alt="Forest plot of the fixed effects, each per standard deviation of its predictor, for priming condition, presentation modality and word frequency, with 95% confidence intervals" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
 <figcaption>Fixed Effects in Milliseconds per Standard Deviation of the Predictor, With 95% Confidence Intervals.</figcaption>
 </figure>
 
@@ -81,6 +86,8 @@ Colour, interval and labelling conventions carry from the observed distribution 
 
 The recommended workflow is to keep the plotting code with the analysis, record the package version and run the audit on the exact figure that will be submitted or presented. Alt text and a meaningful caption remain part of the author's editorial responsibility. See the [R documentation](https://pablobernabeu.github.io/depictr/), [Python documentation](https://pablobernabeu.github.io/depictr-py/) and [companion blog post](/2026/depictr-one-visual-language-from-first-look-to-final-figure/) for runnable examples.
 
-## Reference
+## References
 
-Bernabeu, P. (2026). *depictr: A unified toolkit for visualising statistical models and data* (Version 0.3.0) [Computer software]. CRAN. https://doi.org/10.32614/CRAN.package.depictr
+Bernabeu, P. (2026a). *depictr: A unified, colourblind-safe toolkit for publication-ready statistical visualisation* (Version 0.3.0) [Computer software]. PyPI. https://pypi.org/project/depictr/0.3.0/
+
+Bernabeu, P. (2026b). *depictr: A unified toolkit for visualising statistical models and data* (Version 0.3.0) [Computer software]. CRAN. https://doi.org/10.32614/CRAN.package.depictr

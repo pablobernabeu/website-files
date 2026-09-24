@@ -11,8 +11,13 @@ authors:
 date: '2026-08-21'
 apa_captions: true
 slug: pilotr
-publication: 'Version 0.3.1 [Computer software]. CRAN'
+publication: 'Version 0.3.1 on CRAN and Version 0.3.0 on PyPI [Computer software]'
 doi: 10.32614/CRAN.package.pilotr
+citations:
+  - label: 'Citation (CRAN)'
+    file: cite-cran.bib
+  - label: 'Citation (PyPI)'
+    file: cite-pypi.bib
 categories:
   - software
 tags:
@@ -56,14 +61,14 @@ projects: []
 
 ## Overview
 
-pilotr (Bernabeu, 2026) makes a planned study executable before any data are collected. A portable specification describes the units, predictors, response family, fixed effects and random-effects structure, and the same specification can then be simulated and analysed in R or Python. The main output is a design diagnosis that goes beyond a single power percentage to cover detection, precision, Type S (sign) and Type M (magnitude) errors, and model warnings.
+pilotr (Bernabeu, 2026a, 2026b) makes a planned study executable before any data are collected. A portable specification describes the units, predictors, response family, fixed effects and random-effects structure, and the same specification can then be simulated and analysed in R or Python. The main output is a design diagnosis that goes beyond a single power percentage to cover detection, precision, Type S (sign) and Type M (magnitude) errors, and model warnings.
 
 ## Detection, Precision and Exaggeration
 
 A simulation-based design analysis should establish how often the target effect is detected, how precisely it is estimated and how much the statistically significant estimates exaggerate it. Figure 1 reports detection across participant counts, Figure 2 precision over a wider range of counts, and Figure 3 the exaggeration that survives a significance filter.
 
 <figure>
-<img src="images/power-curve-1.png" alt="Illustrative power curve for a priming effect across sample sizes, with an 80 per cent reference line" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
+<img src="images/power-curve-1.png" alt="Illustrative power curve for a priming effect across sample sizes, with an 80% reference line" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
 <figcaption>Detection Probability Across Participant Counts. Each design uses 12 replicates. All simulated designs contain 24 items.</figcaption>
 </figure>
 
@@ -73,7 +78,7 @@ A simulation-based design analysis should establish how often the target effect 
 </figure>
 
 <figure>
-<img src="images/type-m-plot-1.png" alt="Type M error declining towards one as power increases across effect-size and sample-size simulations" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
+<img src="images/type-m-plot-1.png" alt="Type M error declining towards 1 as power increases across effect-size and sample-size simulations" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
 <figcaption>Magnitude Exaggeration Among Statistically Significant Estimates. Each design uses 12 replicates.</figcaption>
 </figure>
 
@@ -81,6 +86,8 @@ A simulation-based design analysis should establish how often the target effect 
 
 Treat the specification, simulation seed, package version, number of replicates and fitted model as part of the planning record. The [companion blog post](/2026/pilotr-pilot-the-study-before-running-it/) keeps its examples quick by running each analysis with a small number of replicates. A real design decision requires many more replicates and a sensitivity analysis over plausible assumptions. The [R documentation](https://pablobernabeu.github.io/pilotr/r/) and [Python documentation](https://pablobernabeu.github.io/pilotr/python/) cover the full workflow, and the [browser app](https://pablobernabeu.github.io/pilotr/app/), which needs no installation, builds and simulates a design and estimates power for a simple two-group comparison.
 
-## Reference
+## References
 
-Bernabeu, P. (2026). *pilotr: Simulate experimental and behavioural data from a portable design specification* (Version 0.3.1) [Computer software]. CRAN. https://doi.org/10.32614/CRAN.package.pilotr
+Bernabeu, P. (2026a). *pilotr: Simulate experimental and behavioural data from a portable design specification* (Version 0.3.1) [Computer software]. CRAN. https://doi.org/10.32614/CRAN.package.pilotr
+
+Bernabeu, P. (2026b). *pilotr: Simulate experimental and behavioural data from a portable design specification* (Version 0.3.0) [Computer software]. PyPI. https://pypi.org/project/pilotr/0.3.0/

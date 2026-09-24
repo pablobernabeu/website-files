@@ -29,12 +29,30 @@
   {{ i18n "btn_fulltext" | markdownify }}
 </a>
 {{ end }}
+{{/* A page with more than one citable release (an R package on CRAN and its
+     Python twin on PyPI, say) lists them in front matter as `citations`, each
+     entry a button label and the name of a .bib file in the page bundle. Each
+     file gets its own citation button, and because the modal's Download link is the
+     file's own URL, distinct file names give distinct downloads. Every other
+     page keeps the single button for its cite.bib. */}}
+{{ with $page.Params.citations }}
+  {{ range . }}
+    {{ $entry := . }}
+    {{ with $page.Resources.GetMatch $entry.file }}
+<button type="button" class="btn btn-outline-primary my-1 mr-1{{ if $is_list }} btn-sm{{end}} js-cite-modal"
+        data-filename="{{ .RelPermalink }}">
+  {{ $entry.label | default (i18n "btn_cite") }}
+</button>
+    {{ end }}
+  {{ end }}
+{{ else }}
 {{ $resource := $page.Resources.GetMatch "cite.bib" }}
 {{ with $resource }}
 <button type="button" class="btn btn-outline-primary my-1 mr-1{{ if $is_list }} btn-sm{{end}} js-cite-modal"
         data-filename="{{ .RelPermalink }}">
   {{ i18n "btn_cite" }}
 </button>
+{{ end }}
 {{ end }}
 {{ with $page.Params.url_code }}
   {{ $resource := $page.Resources.GetMatch . }}

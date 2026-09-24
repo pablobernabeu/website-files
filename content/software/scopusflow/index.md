@@ -11,8 +11,13 @@ authors:
 date: '2026-08-21'
 apa_captions: true
 slug: scopusflow
-publication: 'Version 0.4.0 [Computer software]. CRAN'
+publication: 'Version 0.4.0 on CRAN and Version 0.3.0 on PyPI [Computer software]'
 doi: 10.32614/CRAN.package.scopusflow
+citations:
+  - label: 'Citation (CRAN)'
+    file: cite-cran.bib
+  - label: 'Citation (PyPI)'
+    file: cite-pypi.bib
 categories:
   - software
 tags:
@@ -58,7 +63,7 @@ projects: []
 
 ## Overview
 
-scopusflow (Bernabeu, 2026) turns a bibliographic search from a one-off export into a versioned workflow. A plan records the query and can divide it into yearly cells. Completed cells can be cached so that an interrupted retrieval resumes where it stopped, and the resulting object retains the retrieval metadata and package version. Successive harvests can also be compared DOI by DOI. The R and Python packages use the same workflow concepts while respecting the access and redistribution limits of the source database.
+scopusflow (Bernabeu, 2026a, 2026b) turns a bibliographic search from a one-off export into a versioned workflow. A plan records the query and can divide it into yearly cells. Completed cells can be cached so that an interrupted retrieval resumes where it stopped, and the resulting object retains the retrieval metadata and package version. Successive harvests can also be compared DOI by DOI. The R and Python packages use the same workflow concepts while respecting the access and redistribution limits of the source database.
 
 Both packages also ship a code-free app that drives the same workflow through a browser tab. Each app runs on the researcher's own machine and by default listens on 127.0.0.1 alone, so the Scopus key never leaves it. `run_app()` starts the R version and the `scopusflow-gui` command starts the Python one. Figure 1 shows the yearly counts returned by the bundled demonstration corpus, which exercises the whole workflow without an API key.
 
@@ -73,6 +78,8 @@ Keep the plan, native result object, DOI comparison and generated PRISMA-S recor
 
 ## References
 
-Bernabeu, P. (2026). *scopusflow: A reproducible workflow layer for Scopus bibliographic searches* (Version 0.4.0) [Computer software]. CRAN. https://doi.org/10.32614/CRAN.package.scopusflow
+Bernabeu, P. (2026a). *scopusflow: A reproducible workflow layer for Scopus bibliographic searches* (Version 0.4.0) [Computer software]. CRAN. https://doi.org/10.32614/CRAN.package.scopusflow
+
+Bernabeu, P. (2026b). *scopusflow: A reproducible workflow layer over pybliometrics for Scopus searches* (Version 0.3.0) [Computer software]. PyPI. https://pypi.org/project/scopusflow/0.3.0/
 
 Rethlefsen, M. L., Kirtley, S., Waffenschmidt, S., Ayala, A. P., Moher, D., Page, M. J., Koffel, J. B., & PRISMA-S Group. (2021). PRISMA-S: An extension to the PRISMA statement for reporting literature searches in systematic reviews. *Systematic Reviews*, *10*(1), Article 39. https://doi.org/10.1186/s13643-020-01542-z
