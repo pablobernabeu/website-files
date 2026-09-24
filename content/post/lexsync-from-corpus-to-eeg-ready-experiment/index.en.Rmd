@@ -123,7 +123,7 @@ report <- match_report(
 report$comparisons
 ```
 
-```{r balance-plot, fig.width = 7.5, fig.height = 2.8, fig.cap = 'Realised Balance Between the Frequency Conditions on Each Control Variable, With 90% Confidence Intervals Against the Prespecified Equivalence Region. Shading marks the equivalence region set in the schema, from minus to plus half a standard deviation.', fig.alt = 'Dot-and-whisker plot of standardised differences, high minus low frequency, with 90 per cent confidence intervals for word length, neighbourhood density and OLD20. All three estimates lie near zero and all three intervals fall inside the shaded equivalence region from minus 0.5 to plus 0.5'}
+```{r balance-plot, fig.width = 7.5, fig.height = 2.8, fig.cap = 'Realised Balance Between the Frequency Conditions on Each Control Variable, With 90% Confidence Intervals Against the Prespecified Equivalence Region. Shading marks the equivalence region set in the schema, from minus to plus half a standard deviation. CI stands for confidence interval, and OLD20 for orthographic Levenshtein distance 20.', fig.alt = 'Dot-and-whisker plot of standardised differences, high minus low frequency, with 90% confidence intervals for word length, neighbourhood density and OLD20. All three estimates lie near zero and all three intervals fall inside the shaded equivalence region from minus 0.5 to plus 0.5'}
 controls <- subset(report$comparisons, dimension != 'frequency')
 controls$dimension <- factor(
   controls$dimension,

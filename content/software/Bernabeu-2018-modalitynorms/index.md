@@ -66,7 +66,11 @@ url_data: 'https://github.com/pablobernabeu/Dutch-modality-exclusivity-norms-Ber
 <br>
 <br>
 
-### How It Works
+This web application (Bernabeu, 2018) presents linguistic data over several tabs. The code combines a Flexdashboard front-end, based on R Markdown and offering an excellent user interface, with a Shiny back-end that lets users download the data they select as CSV files and the plots as PNG images. The data, the analysis code and the application code are archived on Zenodo (Bernabeu, 2024).
+
+## How It Works
+
+The diagram below shows how the data pass from the Flexdashboard front-end through the Shiny back-end to each tab, and how the static version branches off from the front-end.
 
 {{< diagram >}}
 graph TD
@@ -74,13 +78,13 @@ graph TD
   B --> C["Shiny back-end<br/>(reactive selection and download)"]
   C --> D["Info tab: HTML and CSS text<br/>plus rmarkdown output"]
   C --> E["Table tab: reactable<br/>(colours, bar charts)"]
-  C --> F["Properties and Concepts tabs: plotly<br/>(PCA scatter, tooltips)"]
+  C --> F["Properties and Concepts tabs: plotly<br/>(principal component scatter plots,<br/>tooltips)"]
   B --> G["Static Flexdashboard-only version<br/>on RPubs (Shiny removed)"]
 {{< /diagram >}}
 
-This web application (Bernabeu, 2018) presents linguistic data over several tabs. The code combines a Flexdashboard front-end, based on R Markdown and offering an excellent user interface, with a Shiny back-end that lets users download the data they select as CSV files and the plots as PNG images. The data, the analysis code and the application code are archived on Zenodo (Bernabeu, 2024).
+The notes below describe the main steps and difficulties in developing the app, with excerpts from the code.
 
-- A nice find was the `reactable` package, which uses JavaScript to add colours, bar charts and other features to tables.
+- A nice find was the reactable package, which uses JavaScript to add colours, bar charts and other features to tables.
 
    ```
    Auditory = colDef(header = with_tooltip('Auditory Rating',
@@ -104,7 +108,7 @@ This web application (Bernabeu, 2018) presents linguistic data over several tabs
       -----------------------------------------------------------------------
 
 
-   and the settings of `reactable`.
+   and the settings of reactable.
    
    ```
    renderReactable({
@@ -115,7 +119,7 @@ This web application (Bernabeu, 2018) presents linguistic data over several tabs
    ```
 
 
-- Flexdashboard is well suited to using different formats across tabs. The Info tab presents long text styled with HTML and CSS, along with the output of R Markdown code. The other tabs rely more on JavaScript features from R packages, with `shiny` and `shinyWidgets` providing modal dialogues (pop-ups), and `reactable` and `plotly` displaying information on hover (tooltips).
+- Flexdashboard is well suited to using different formats across tabs. The Info tab presents long text styled with HTML and CSS, along with the output of R Markdown code. The other tabs rely more on JavaScript features from R packages, with shiny and shinyWidgets providing modal dialogues (pop-ups), and reactable and plotly displaying information on hover (tooltips).
 
    ````
    ```{r}
@@ -218,7 +222,7 @@ This web application (Bernabeu, 2018) presents linguistic data over several tabs
 
 ## Static Version Published on RPubs
 
-A reduced, [*static* version](https://rpubs.com/pcbernabeu/Dutch-modality-exclusivity-norms) makes the content more widely available. Without some of the reactive features, the dashboard can be published as a standard website (e.g., on a personal website or on [RPubs](https://rpubs.com/)) with no need for a Shiny server. Although this type of website is called 'static', it can keep many interactive features through JavaScript-based R packages such as `leaflet` for maps, `DT` for tables and `plotly` for plots.
+A reduced, [*static* version](https://rpubs.com/pcbernabeu/Dutch-modality-exclusivity-norms) makes the content more widely available. Without some of the reactive features, the dashboard can be published as a standard website (e.g., on a personal website or on [RPubs](https://rpubs.com/)) with no need for a Shiny server. Although this type of website is called 'static', it can keep many interactive features through JavaScript-based R packages such as leaflet for maps, DT for tables and plotly for plots.
 
 To create the Flexdashboard-only version from the Flexdashboard-Shiny version, I deleted `runtime: shiny` from the YAML header and disabled the Shiny reactive inputs and objects, as shown below.
 
@@ -234,4 +238,4 @@ To create the Flexdashboard-only version from the Flexdashboard-Shiny version, I
 
 Bernabeu, P. (2018). *Dutch modality exclusivity norms for 336 properties and 411 concepts* [Web application]. https://pablobernabeu.shinyapps.io/Dutch-modality-exclusivity-norms/
 
-Bernabeu, P. (2024). *Dutch-modality-exclusivity-norms-Bernabeu-2018* (Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.10615943
+Bernabeu, P. (2024). *Dutch-modality-exclusivity-norms-Bernabeu-2018* (Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.10615944

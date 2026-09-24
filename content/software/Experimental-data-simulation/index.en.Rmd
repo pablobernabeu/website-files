@@ -59,23 +59,13 @@ url_code: 'https://github.com/pablobernabeu/Experimental-data-simulation/blob/ma
 ---
 
 
-```{r eval = TRUE, echo = FALSE, message=FALSE, warning=FALSE}
-
-# Save app version number, to be displayed below. It can be updated at: 
-# https://github.com/pablobernabeu/Experimental-data-simulation/blob/master/version_number
-
-app_version = 
-  read.delim('https://raw.githubusercontent.com/pablobernabeu/Experimental-data-simulation/master/version_number',
-             header = FALSE)[1,1]
-
-```
-
-
 <div style = 'font-size: 25px; color: #614064; padding-top: 15px; padding-bottom: 10px;'><i class="fas fa-chalkboard-teacher fa-xs" aria-hidden="true"></i>&nbsp;<i class="fas fa-university fa-xs" aria-hidden="true"></i>&nbsp;Purposes </div>
 
 This open-source, R-based web application is suitable for teaching and research in the experimental and quantitative sciences. It creates varied data sets with specified structures, such as between-group and within-participant variables that can be categorical or continuous. The parameters are set in the tabs (sections) of the top menu, and the data set can be downloaded from the last tab. The application saves time and offers flexible control over the parameters.
 
-### How It Works
+## How It Works
+
+The diagram below outlines the path from setting the parameters to downloading the simulated data set.
 
 ```{=html}
 <div class="mermaid">
@@ -89,7 +79,7 @@ graph TD
   F --> G["Download parameters and<br/>data set (last tab)"]
 </div>
 ```
-### Guidelines
+## Guidelines
 
 General guidelines include the following:
 
@@ -103,7 +93,7 @@ General guidelines include the following:
 
 More specific guidelines are available in each tab.
 
-### <i class="fa-solid fa-globe"></i>&nbsp;The Web Application Can Be [Launched Here](https://pablo-bernabeu.shinyapps.io/experimental-data-simulation/)
+## <i class="fa-solid fa-globe"></i>&nbsp;The Web Application Can Be [Launched Here](https://pablo-bernabeu.shinyapps.io/experimental-data-simulation/)
 
 Figure 1 shows the *Dependent* tab, where the parameters of the dependent variables are set.
 
@@ -112,17 +102,21 @@ Figure 1 shows the *Dependent* tab, where the parameters of the dependent variab
 <figcaption>Figure 1: The <em>Dependent</em> Tab in Version 0.2 of the App. A <a href="https://github.com/pablobernabeu/Experimental-data-simulation/raw/master/Screenshot.png">larger version</a> is available on GitHub.</figcaption>
 </figure>
 
-### Reference
+## How to Cite
 
-Bernabeu, P., & Lynott, D. (2021). *Web application for the simulation of experimental data* (Version `r sprintf("%.1f", app_version)`) [Web application]. [https://github.com/pablobernabeu/Experimental-data-simulation](https://github.com/pablobernabeu/Experimental-data-simulation)
+To cite this application, please use the Bernabeu and Lynott (2024) entry in the [References](#references) list below.
 
-### Code
+## Code
 
 This web application was developed in [R](https://www.r-project.org/about.html) (R Core Team, 2020). The code is [available on GitHub](https://github.com/pablobernabeu/Experimental-data-simulation/blob/master/index.Rmd), where contributions are welcome. A copy is archived on Zenodo (Bernabeu & Lynott, 2024). The initial code drew on Section 5.7 (['Simulating Data for Multi-Factor Designs'](https://www.crumplab.com/programmingforpsych/simulating-and-analyzing-data-in-r.html#simulating-data-for-multi-factor-designs){target='_blank'}) of Crump (2017). The R packages used include dplyr (Wickham et al., 2020), DT (Xie et al., 2020), flexdashboard (Iannone et al., 2020), shiny (Chang et al., 2020) and stringr (Wickham, 2019).
 
-### Options for Development and Local Use of the App
+## Options for Development and Local Use of the App
 
-#### Option A) Using Local R/RStudio or [Posit Cloud Project](https://posit.cloud/project/1739958) or [Binder RStudio Environment](https://mybinder.org/v2/gh/pablobernabeu/Experimental-data-simulation/master?urlpath=rstudio)
+The app can be developed or run locally in two ways.
+
+### Option A) Using Local R/RStudio or [Posit Cloud Project](https://posit.cloud/project/1739958) or [Binder RStudio Environment](https://mybinder.org/v2/gh/pablobernabeu/Experimental-data-simulation/master?urlpath=rstudio)
+
+This option involves four steps.
 
 1. [Only needed in local R/RStudio] Install the package versions used in the [latest release of this application](https://github.com/pablobernabeu/Experimental-data-simulation/releases) by running:
 
@@ -147,17 +141,17 @@ This web application was developed in [R](https://www.r-project.org/about.html) 
 
 4. Click <kbd>Open in Browser</kbd> at the top left.
 
-#### Option B) Using Dockerfile
+### Option B) Using Dockerfile
 
 The [README of the GitHub repository](https://github.com/pablobernabeu/Experimental-data-simulation#option-b-using-dockerfile-vsochs-pull-request) explains how to build and run the app with the Dockerfile.
 
-### Acknowledgements
+## Acknowledgements
 
 Thank you to RStudio (now Posit) for hosting this application free of charge on [shinyapps.io](https://www.shinyapps.io/).
 
-### References
+## References
 
-Bernabeu, P., & Lynott, D. (2024). *Experimental-data-simulation* (Version 1.4.0) [Computer software]. Zenodo. [https://doi.org/10.5281/zenodo.10615947](https://doi.org/10.5281/zenodo.10615947)
+Bernabeu, P., & Lynott, D. (2024). *Experimental-data-simulation* (Version 1.4.0) [Computer software]. Zenodo. [https://doi.org/10.5281/zenodo.10615953](https://doi.org/10.5281/zenodo.10615953)
 
 Chang, W., Cheng, J., Allaire, J. J., Xie, Y., & McPherson, J. (2020). *shiny: Web application framework for R* (Version 1.5.0) [Computer software]. CRAN. [https://doi.org/10.32614/CRAN.package.shiny](https://doi.org/10.32614/CRAN.package.shiny)
 
@@ -174,7 +168,7 @@ Wickham, H., François, R., Henry, L., & Müller, K. (2020). *dplyr: A grammar o
 Xie, Y., Cheng, J., & Tan, X. (2020). *DT: A wrapper of the JavaScript library 'DataTables'* (Version 0.15) [Computer software]. CRAN. [https://doi.org/10.32614/CRAN.package.DT](https://doi.org/10.32614/CRAN.package.DT)
 
 
-### Contact
+## Contact
 
 Questions and feedback can be posted as [an issue](https://github.com/pablobernabeu/Experimental-data-simulation/issues) or emailed to Pablo Bernabeu at [pcbernabeu@gmail.com](mailto:pcbernabeu@gmail.com).
 

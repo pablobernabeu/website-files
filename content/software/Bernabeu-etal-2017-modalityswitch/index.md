@@ -63,7 +63,14 @@ url_fulltext: 'https://doi.org/10.31234/osf.io/a5pcz'
 <br>
 <br>
 
-### How It Works
+The data come from a psychology experiment on word comprehension in which electroencephalographic (EEG) responses were measured. The plots show the event-related potentials (ERPs) over the first 800 milliseconds of word processing. The app (Bernabeu et al., 2017) is intended to help researchers and the public explore the data at four levels: groups of participants, individual participants, brain areas and electrodes.
+
+By creating this app, I tried to reach beyond the scope of open science at the time, which was often confined to files shared on data repositories. I made the case for using Shiny apps in science in a [blog post](/2017/the-case-for-data-dashboards-first-steps-in-r-shiny/) and in [slides](https://www.slideshare.net/PabloBernabeu/presenting-data-interactively-online-using-r-shiny-126064157).
+
+## How It Works
+
+The diagram below shows how the two choices in the app, whose data to plot and where on the scalp, combine into its four tabs.
+
 {{< diagram >}}
 graph TD
   A["EEG-ERP data from word<br/>comprehension experiment"] --> B["ERP plots spanning 800 ms<br/>of word processing"]
@@ -75,11 +82,7 @@ graph TD
   T -.-> CI["Links from three tabs to<br/>plots with 95% confidence<br/>intervals (PDF files on OSF)"]
 {{< /diagram >}}
 
-The data come from a psychology experiment on word comprehension in which electroencephalographic (EEG) responses were measured. The plots span the first 800 milliseconds of word processing. The app (Bernabeu et al., 2017) is intended to help researchers and the public explore the data at four levels: groups of participants, individual participants, brain areas and electrodes.
-
-By creating this app, I tried to reach beyond the scope of open science at the time, which was often confined to files shared on data repositories. I made the case for using Shiny apps in science in a [blog post](/2017/the-case-for-data-dashboards-first-steps-in-r-shiny/) and in [slides](https://www.slideshare.net/PabloBernabeu/presenting-data-interactively-online-using-r-shiny-126064157).
-
-### Technical Details
+## Technical Details
 
 I placed tabs at the top of the page to avoid cramming the sidebar with widgets. I adjusted the appearance of these tabs and used reactive conditions to change the inputs in the sidebar depending on the active tab. The excerpts below come from an earlier version of the app, and the current scripts on GitHub differ in a few details. For instance, the tabs are coloured differently, a single EEG montage appears below the tabs and the plots are downloaded through links.
 
@@ -130,7 +133,7 @@ h5(a(strong('See plots with 95% Confidence Intervals'), href='https://osf.io/dvs
 			target='_blank'), style='text-decoration: underline;'),
 ```
 
-The app links to the published paper, the raw data, and its own _server_ and _ui_ scripts. The scripts and the data used by the app are available [on GitHub](https://github.com/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing/tree/master/Shiny-app) and archived on Zenodo (Bernabeu, 2024).
+The app links to the published paper, the raw data, and its own `server.R` and `ui.R` scripts. The scripts and the data used by the app are available [on GitHub](https://github.com/pablobernabeu/Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing/tree/master/Shiny-app) and archived on Zenodo (Bernabeu, 2024).
 
 Each tab lets users download the plot in high resolution, as shown below for the first tab.
 
@@ -190,7 +193,7 @@ output$downloadPlot.1 <- downloadHandler(
 downloadButton('downloadPlot.1', 'Download HD plot')
 ```
 
-### Rising to the Challenge
+## Rising to the Challenge
 
 In my first days with Shiny, I spent an eternity stuck on a single letter, "μ", which appeared in the labels of my plots (a micro-souvenir from hell, as I came to know it). The app ran perfectly on my laptop but could not be deployed online. Eventually, I read about UTF-8 encoding in a forum, and all I had to do was write "Âμ" instead of "μ". A better option I found later was `expression("\u03bc")`.
 
@@ -206,8 +209,8 @@ Later, I added one more image in the same way: the _favicon_, the small icon sho
 tags$head(tags$link(rel="shortcut icon", href="https://image.ibb.co/fXUwzb/favic.png")),  # web favicon
 ```
 
-### References
+## References
 
-Bernabeu, P. (2024). *Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing* (Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.10616354
+Bernabeu, P. (2024). *Modality-switch-effects-emerge-early-and-increase-throughout-conceptual-processing* (Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.10616355
 
 Bernabeu, P., Willems, R. M., & Louwerse, M. M. (2017). *Modality switch effects emerge early and increase throughout conceptual processing: Evidence from ERPs* [Web application]. https://pablobernabeu.shinyapps.io/ERP-waveform-visualization_CMS-experiment/

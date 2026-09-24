@@ -131,7 +131,7 @@ Further details on the app and the workshop are available at https://pablobernab
 
 <div style="padding-left: 2em; text-indent: -2em;">
 
-Bernabeu, P. (2026). *Unlock the Lab: Your guide to reading science like a scientist* (Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.19153148
+Bernabeu, P. (2026). *Unlock the Lab: Your guide to reading science like a scientist* (Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.19153149
 
 Xie, Y., Wang, K., & Kong, Y. (2021). Prevalence of research misconduct and questionable research practices: A systematic review and meta-analysis. *Science and Engineering Ethics*, *27*(4), Article 41. https://doi.org/10.1007/s11948-021-00314-9
 

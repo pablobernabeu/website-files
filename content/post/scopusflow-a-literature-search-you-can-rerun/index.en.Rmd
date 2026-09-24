@@ -21,7 +21,7 @@ tags:
   - Scopus
 subtitle: ''
 summary: 'A literature-search export does not preserve the decisions that produced it. This post uses scopusflow to define a search in advance, resume it from checkpoints and generate a PRISMA-S search record from the resulting data.'
-abstract: 'This tutorial treats a Scopus search as a versioned, resumable workflow. It defines a query and a yearly plan, retrieves an offline demonstration corpus through checkpoints, compares DOI sets, and generates a PRISMA-S search record that names the items left for the review authors to report.'
+abstract: 'This tutorial treats a Scopus search as a versioned, resumable workflow. It defines a query and a yearly plan, retrieves an offline demonstration corpus through checkpoints, compares sets of digital object identifiers and generates a search record that follows PRISMA-S, the literature-search extension of the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) statement. The record names the items left for the review authors to report.'
 authors: []
 lastmod: ''
 featured: no
@@ -48,9 +48,9 @@ xaringanExtra::use_clipboard()
 
 A spreadsheet exported from Scopus contains papers, but it does not contain the search that found them. The exact query, retrieval date, paging choices and number of records returned by each part of the search often end up in notes or browser history. When the search has to be updated, it can be difficult to tell whether a changed result reflects the literature or the method.
 
-I wrote [scopusflow](https://pablobernabeu.github.io/scopusflow/) (Bernabeu, 2026) to keep those decisions with the records. A search begins as a plan, each completed part is cached and the final object can write its own search record. Matching packages are available for R ([CRAN](https://CRAN.R-project.org/package=scopusflow), [GitHub](https://github.com/pablobernabeu/scopusflow)) and Python ([PyPI](https://pypi.org/project/scopusflow), [GitHub](https://github.com/pablobernabeu/scopusflow-py)).
+I wrote [scopusflow](https://pablobernabeu.github.io/scopusflow/) (Bernabeu, 2026) to keep those decisions with the records. A search begins as a plan, each completed part is cached and the final object can write its own search record. Matching packages are available for R from the Comprehensive R Archive Network ([CRAN](https://CRAN.R-project.org/package=scopusflow)) and [GitHub](https://github.com/pablobernabeu/scopusflow), and for Python from the Python Package Index ([PyPI](https://pypi.org/project/scopusflow)) and [GitHub](https://github.com/pablobernabeu/scopusflow-py).
 
-The example below uses a small corpus bundled with the R package. A stand-in server, defined in [a short script](https://github.com/pablobernabeu/website-files/blob/master/content/post/scopusflow-a-literature-search-you-can-rerun/stand_in.R), answers the requests that would otherwise go to the Scopus API, so the code runs without an API key or any connection to Elsevier.
+The example below uses a small corpus bundled with the R package. A stand-in server, defined in [a short script](https://github.com/pablobernabeu/website-files/blob/master/content/post/scopusflow-a-literature-search-you-can-rerun/stand_in.R), answers the requests that would otherwise go to the Scopus application programming interface (API), so the code runs without an API key or any connection to Elsevier.
 
 ## Development
 
@@ -72,7 +72,7 @@ query
 plan
 ```
 
-The plan already yields a draft methods description, written to PRISMA-S, the extension of the PRISMA statement for reporting literature searches (Rethlefsen et al., 2021). The draft also flags the items that the review authors will have to report themselves.
+The plan already yields a draft methods description, written to PRISMA-S, the extension of the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) statement for reporting literature searches (Rethlefsen et al., 2021). The draft also flags the items that the review authors will have to report themselves.
 
 ```{r}
 cat(format(scopus_search_report(plan), style = 'paragraph'))
@@ -131,7 +131,7 @@ plot_scopus_trend(trend) +
   ggplot2::theme(axis.text = ggplot2::element_text(size = 10.5))
 ```
 
-Successive harvests can be compared by DOI. In this illustration, the baseline ends in 2023 and the later harvest adds the 2024 records.
+Successive harvests can be compared by digital object identifier (DOI). In this illustration, the baseline ends in 2023 and the later harvest adds the 2024 records.
 
 ```{r}
 baseline <- records[records$year <= 2023, ]

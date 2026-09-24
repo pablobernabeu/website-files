@@ -95,7 +95,7 @@ The separation extends well beyond a handful of slow responses. Related trials r
 
 ### Keep the Same Language for the Model
 
-The model, fitted to the same correct trials, includes priming condition, presentation modality and word frequency, with crossed random intercepts for participants and items. `coefficient_plot()` reads the fitted object directly and puts the fixed effects on a common scale in Figure 2, expressing each as the change in reaction time per standard deviation of its predictor. The two factors enter the model as 0/1 codes with a standard deviation near 0.5, so their plotted effects are about half the size of the estimates printed below.
+The model, fitted to the same correct trials, includes priming condition, presentation modality and word frequency, with crossed random intercepts for participants and items. The `coefficient_plot()` function reads the fitted object directly and puts the fixed effects on a common scale in Figure 2, expressing each as the change in reaction time per standard deviation of its predictor. The two factors enter the model as 0/1 codes with a standard deviation near 0.5, so their plotted effects are about half the size of the estimates printed below.
 
 ```{r}
 fit <- lmerTest::lmer(
@@ -113,7 +113,7 @@ term_labels <- c(
 tidy_estimates(fit)
 ```
 
-```{r model-estimates, fig.height = 3.3, fig.cap = 'Fixed Effects on Reaction Time, Each per Standard Deviation of Its Predictor, With 95% Confidence Intervals.', fig.alt = 'Forest plot of the fixed effects, each per standard deviation of its predictor, for unrelated priming, auditory presentation and word frequency, with 95 per cent confidence intervals'}
+```{r model-estimates, fig.height = 3.3, fig.cap = 'Fixed Effects on Reaction Time, Each per Standard Deviation of Its Predictor, With 95% Confidence Intervals.', fig.alt = 'Forest plot of the fixed effects, each per standard deviation of its predictor, for unrelated priming, auditory presentation and word frequency, with 95% confidence intervals'}
 coefficient_plot(
   fit,
   standardise = TRUE,
@@ -177,7 +177,7 @@ The example supports a modest but useful claim: accessibility belongs in figure 
 
 ### Limits
 
-depictr draws and checks figures, leaving decisions about the model, estimand, contrasts, prior, uncertainty and audience to the analyst. A polished plot can faithfully present a poor analysis. The checks also cover only measurable properties, so alt text, a meaningful caption and a sensible figure order remain editorial work.
+The depictr package draws and checks figures, leaving decisions about the model, estimand, contrasts, prior, uncertainty and audience to the analyst. A polished plot can faithfully present a poor analysis. The checks also cover only measurable properties, so alt text, a meaningful caption and a sensible figure order remain editorial work.
 
 ## References
 
@@ -185,4 +185,4 @@ Bernabeu, P. (2026). *depictr: A unified toolkit for visualising statistical mod
 
 Machado, G. M., Oliveira, M. M., & Fernandes, L. A. F. (2009). A physiologically-based model for simulation of color vision deficiency. *IEEE Transactions on Visualization and Computer Graphics*, *15*(6), 1291–1298. https://doi.org/10.1109/TVCG.2009.113
 
-Okabe, M., & Ito, K. (2008). *Color universal design (CUD): How to make figures and presentations that are friendly to colorblind people*. https://jfly.uni-koeln.de/color/
+Okabe, M., & Ito, K. (2008). *Color universal design (CUD): How to make figures and presentations that are friendly to colorblind people*. Jfly. https://jfly.uni-koeln.de/color/

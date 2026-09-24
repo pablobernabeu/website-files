@@ -180,16 +180,22 @@ key_claim <- match(
   'c_sensorimotor_experience _||_ c_lexical_familiarity',
   statements
 )
-# A true minus sign, unlike a hyphen, is not a line-break opportunity, so
-# '<1e-99' cannot split across two lines in the narrow table on a phone
+# APA 7 reports correlations and p values, which cannot exceed 1, without a
+# leading zero, and any p value below .001 as '< .001'. A true minus sign,
+# unlike a hyphen, is not a line-break opportunity, and a no-break space keeps
+# '< .001' on one line in the narrow table on a phone
 minus <- function(x) gsub('-', '\u2212', x, fixed = TRUE)
+drop_zero <- function(x) sub('^(-?)0\\.', '\\1.', x)
+apa_p <- function(p) {
+  ifelse(p < 0.001, '<\u00a0.001',
+         drop_zero(sprintf(ifelse(p < 0.01, '%.3f', '%.2f'), p)))
+}
 knitr::kable(caption = 'The Claim That Separates the Two Theories, Tested in Data Generated From Each.', data.frame(
   World = c('Data generated from the theory', 'Data generated from the rival'),
-  Correlation = minus(sprintf('%.3f', round(c(theory_tests$estimate[key_claim],
-                                              rival_tests$estimate[key_claim]), 3))),
-  `*p*` = minus(format.pval(c(theory_tests$p.value[key_claim],
-                              rival_tests$p.value[key_claim]),
-                            digits = 2, eps = 1e-99)),
+  Correlation = minus(drop_zero(sprintf('%.2f', c(theory_tests$estimate[key_claim],
+                                                   rival_tests$estimate[key_claim])))),
+  `*p*` = apa_p(c(theory_tests$p.value[key_claim],
+                  rival_tests$p.value[key_claim])),
   check.names = FALSE
 ), row.names = FALSE, align = c('l', 'r', 'l'))
 ```

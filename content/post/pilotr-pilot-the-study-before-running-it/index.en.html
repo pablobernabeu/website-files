@@ -53,7 +53,7 @@ projects: []
 <p>The example moves from a transparent design specification to simulated observations and then to a set of planning diagnostics. Each analysis uses only 12 replicates, which keeps the code quick to run. The results therefore show the shape of each diagnostic and the quantity to read from it, but they cannot settle a sample size.</p>
 <div id="a-study-that-does-not-exist-yet" class="section level3">
 <h3>A Study That Does Not Exist Yet</h3>
-<p>The imagined experiment is a lexical-decision task. Every participant sees every target word after both a related and an unrelated prime. Reaction times follow a shifted lognormal distribution, and the model includes item frequency, participant vocabulary, and an interaction between vocabulary and priming. The main assumptions are set out in Table 1.</p>
+<p>The imagined experiment is a lexical-decision task. Every participant sees every target word after both a related and an unrelated prime. Reaction times follow a shifted lognormal distribution, and the model includes item frequency, participant vocabulary and an interaction between vocabulary and priming. The main assumptions are set out in Table 1.</p>
 <table>
 <caption><span id="tab:design-assumptions">Table 1: </span>The Assumptions Behind the Imagined Study.</caption>
 <thead>
@@ -124,7 +124,7 @@ power_at_plan</code></pre>
 #&gt;         z_freq -0.03 0.250 0.125 [0.089, 0.532]     3      0  1.648
 #&gt;        z_vocab -0.02 0.000 0.000 [0.000, 0.242]     0     NA     NA
 #&gt;  prime_z_vocab  0.02 0.167 0.108 [0.047, 0.448]     2      0  2.016</code></pre>
-<p>With 12 replicates, one simulated success moves a power figure by more than 8 percentage points. A planning run would use the same code with several hundred replicates, enough to bring the Monte Carlo standard error in the <code>mcse</code> column down to an acceptable level. The power curve in Figure 3 comes from repeating the analysis at six sample sizes, from 16 to 96 participants.</p>
+<p>With 12 replicates, a single simulated success moves a power figure by more than 8 percentage points. A planning run would use the same code with several hundred replicates, enough to bring the Monte Carlo standard error in the <code>mcse</code> column down to an acceptable level. The power curve in Figure 3 comes from repeating the analysis at six sample sizes, from 16 to 96 participants.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:power-curve"></span>
 <img src="{{< blogdown/postref >}}index.en_files/figure-html/power-curve-1.png" alt="Illustrative power estimates for the priming effect, rising from about 17% with 16 participants to 100% with 96 and crossing the 80% reference line between 32 and 48 participants" width="100%" />
 <p class="caption">
@@ -135,7 +135,7 @@ Figure 3: Detection Probability for the Priming Effect Across Participant Counts
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:precision-curve"></span>
 <img src="{{< blogdown/postref >}}index.en_files/figure-html/precision-curve-1.png" alt="Two panels of illustrative estimates showing the probability that an interval excludes negligible effects and its mean width as the number of participants increases" width="100%" />
 <p class="caption">
-Figure 4: Precision, as the Probability That an Interval Excludes a Negligible Effect and as the Mean Width of That Interval, Across Participant Counts. Each design uses 12 replicates. All simulated designs contain 24 items.
+Figure 4: Precision, as the Probability That an Interval Excludes a Negligible Effect and as the Mean Width of That Interval, Across Participant Counts. Each design uses 12 replicates. All simulated designs contain 24 items. In the panel titles, CI stands for confidence interval, ROPE for region of practical equivalence and RT for reaction time.
 </p>
 </div>
 </div>
@@ -155,7 +155,7 @@ Figure 5: Magnitude Exaggeration Among the Statistically Significant Estimates, 
 <div id="discussion" class="section level2">
 <h2>Discussion</h2>
 <p>The plots should be read as a sensitivity analysis over assumptions that the real data may not bear out. Their practical purpose is to reveal which design feature limits the study: too few participants, too much unit-level variation, an interval that remains too wide or a model that frequently becomes singular. A defensible decision records those trade-offs and tests plausible alternatives, because the first design to cross an 80% power line may still estimate the effect imprecisely or exaggerate it.</p>
-<p>The R package is available from CRAN and the Python package from PyPI. The <a href="https://pablobernabeu.github.io/pilotr/r/">R documentation</a> and <a href="https://pablobernabeu.github.io/pilotr/python/">Python documentation</a> describe the complete specification format, response families and mixed-model options. For planning without code, the <a href="https://pablobernabeu.github.io/pilotr/app/">browser app</a> builds and simulates a design and estimates power for a simple two-group comparison, while the mixed-effects and precision analyses shown here run in the installed R package.</p>
+<p>The R package is available from the Comprehensive R Archive Network (CRAN) and the Python package from the Python Package Index (PyPI). The <a href="https://pablobernabeu.github.io/pilotr/r/">R documentation</a> and <a href="https://pablobernabeu.github.io/pilotr/python/">Python documentation</a> describe the complete specification format, response families and mixed-model options. For planning without code, the <a href="https://pablobernabeu.github.io/pilotr/app/">browser app</a> builds and simulates a design and estimates power for a simple two-group comparison, while the mixed-effects and precision analyses shown here run in the installed R package.</p>
 </div>
 <div id="references" class="section level2">
 <h2>References</h2>

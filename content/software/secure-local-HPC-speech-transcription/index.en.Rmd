@@ -70,7 +70,9 @@ xaringanExtra::use_clipboard()
 ```
 
 
-### How It Works
+## How It Works
+
+The diagram below outlines the workflow, from the audio input to the finished transcript.
 
 ```{=html}
 <div class="mermaid">
@@ -87,7 +89,7 @@ graph TD
 </div>
 ```
 
-## Reference
+## References
 
 <div style="text-align: left;">
 <a href="https://doi.org/10.5281/zenodo.17624830"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.17624830.svg" alt="DOI: 10.5281/zenodo.17624830" style="display: inline-block; margin: 0;"></a>

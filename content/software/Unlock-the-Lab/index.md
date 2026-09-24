@@ -54,7 +54,10 @@ The application is suitable for university workshops, open science training even
   </iframe>
 </div>
 
-### How It Works
+## How It Works
+
+The diagram below traces a participant's path through the application, from the educational introduction to the results.
+
 {{< diagram >}}
 graph TD
   A["Educational introduction:<br/>assessment concepts and<br/>21-term glossary"] --> B["Scenario evaluation:<br/>48 fictional research scenarios"]
@@ -144,11 +147,11 @@ At a larger scale, [Hao et al. (2026)](https://doi.org/10.1038/s41586-025-09922-
 
 ## Source Code and Contributions
 
-The application is written in HTML, CSS and JavaScript. Its charts are drawn with [Chart.js](https://www.chartjs.org/), and Firebase provides the real-time database and the anonymous authentication of participants. The [source code is available on GitHub](https://github.com/pablobernabeu/Unlock_the_Lab) under a [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) licence and archived on Zenodo ([Bernabeu, 2026](https://doi.org/10.5281/zenodo.19153148)). The application can be extended or adapted through pull requests. Feature requests, bug reports and other suggestions can be submitted as [issues](https://github.com/pablobernabeu/Unlock_the_Lab/issues).
+The application is written in HTML, CSS and JavaScript. Its charts are drawn with [Chart.js](https://www.chartjs.org/), and Firebase provides the real-time database and the anonymous authentication of participants. The [source code is available on GitHub](https://github.com/pablobernabeu/Unlock_the_Lab) under a [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) licence and archived on Zenodo ([Bernabeu, 2026](https://doi.org/10.5281/zenodo.19153149)). The application can be extended or adapted through pull requests. Feature requests, bug reports and other suggestions can be submitted as [issues](https://github.com/pablobernabeu/Unlock_the_Lab/issues).
 
 ## References
 
-Bernabeu, P. (2026). *Unlock the Lab: Your guide to reading science like a scientist* (Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.19153148
+Bernabeu, P. (2026). *Unlock the Lab: Your guide to reading science like a scientist* (Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.19153149
 
 Bruton, S. V., Medlin, M., Brown, M., & Sacco, D. F. (2020). Personal motivations and systemic incentives: Scientists on questionable research practices. *Science and Engineering Ethics, 26*(3), 1531–1547. https://doi.org/10.1007/s11948-020-00182-9
 

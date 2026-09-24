@@ -81,7 +81,7 @@ The example moves from a transparent design specification to simulated observati
 
 ### A Study That Does Not Exist Yet
 
-The imagined experiment is a lexical-decision task. Every participant sees every target word after both a related and an unrelated prime. Reaction times follow a shifted lognormal distribution, and the model includes item frequency, participant vocabulary, and an interaction between vocabulary and priming. The main assumptions are set out in Table 1.
+The imagined experiment is a lexical-decision task. Every participant sees every target word after both a related and an unrelated prime. Reaction times follow a shifted lognormal distribution, and the model includes item frequency, participant vocabulary and an interaction between vocabulary and priming. The main assumptions are set out in Table 1.
 
 ```{r design-assumptions}
 knitr::kable(caption = 'The Assumptions Behind the Imagined Study.', data.frame(
@@ -208,7 +208,7 @@ power_at_plan <- power_mixed(spec, n_sims = n_sims, workers = workers)
 power_at_plan
 ```
 
-With 12 replicates, one simulated success moves a power figure by more than 8 percentage points. A planning run would use the same code with several hundred replicates, enough to bring the Monte Carlo standard error in the `mcse` column down to an acceptable level. The power curve in Figure 3 comes from repeating the analysis at six sample sizes, from 16 to 96 participants.
+With 12 replicates, a single simulated success moves a power figure by more than 8 percentage points. A planning run would use the same code with several hundred replicates, enough to bring the Monte Carlo standard error in the `mcse` column down to an acceptable level. The power curve in Figure 3 comes from repeating the analysis at six sample sizes, from 16 to 96 participants.
 
 ```{r power-curve-data}
 power_curve <- power_curve_mixed(
@@ -247,7 +247,7 @@ precision <- precision_curve(
 )
 ```
 
-```{r precision-curve, fig.height = 3.8, fig.cap = sprintf('Precision, as the Probability That an Interval Excludes a Negligible Effect and as the Mean Width of That Interval, Across Participant Counts. Each design uses %s replicates. All simulated designs contain 24 items.', n_sims), fig.alt = 'Two panels of illustrative estimates showing the probability that an interval excludes negligible effects and its mean width as the number of participants increases'}
+```{r precision-curve, fig.height = 3.8, fig.cap = sprintf('Precision, as the Probability That an Interval Excludes a Negligible Effect and as the Mean Width of That Interval, Across Participant Counts. Each design uses %s replicates. All simulated designs contain 24 items. In the panel titles, CI stands for confidence interval, ROPE for region of practical equivalence and RT for reaction time.', n_sims), fig.alt = 'Two panels of illustrative estimates showing the probability that an interval excludes negligible effects and its mean width as the number of participants increases'}
 # Rotated beside panels this short, the long y-axis descriptions would run
 # the full panel height, so each becomes its panel's title instead. The
 # shared x-axis title is drawn once.
@@ -339,7 +339,7 @@ Together, these diagnostics cover what a planning run has to examine: detection,
 
 The plots should be read as a sensitivity analysis over assumptions that the real data may not bear out. Their practical purpose is to reveal which design feature limits the study: too few participants, too much unit-level variation, an interval that remains too wide or a model that frequently becomes singular. A defensible decision records those trade-offs and tests plausible alternatives, because the first design to cross an 80% power line may still estimate the effect imprecisely or exaggerate it.
 
-The R package is available from CRAN and the Python package from PyPI. The [R documentation](https://pablobernabeu.github.io/pilotr/r/) and [Python documentation](https://pablobernabeu.github.io/pilotr/python/) describe the complete specification format, response families and mixed-model options. For planning without code, the [browser app](https://pablobernabeu.github.io/pilotr/app/) builds and simulates a design and estimates power for a simple two-group comparison, while the mixed-effects and precision analyses shown here run in the installed R package.
+The R package is available from the Comprehensive R Archive Network (CRAN) and the Python package from the Python Package Index (PyPI). The [R documentation](https://pablobernabeu.github.io/pilotr/r/) and [Python documentation](https://pablobernabeu.github.io/pilotr/python/) describe the complete specification format, response families and mixed-model options. For planning without code, the [browser app](https://pablobernabeu.github.io/pilotr/app/) builds and simulates a design and estimates power for a simple two-group comparison, while the mixed-effects and precision analyses shown here run in the installed R package.
 
 ## References
 
