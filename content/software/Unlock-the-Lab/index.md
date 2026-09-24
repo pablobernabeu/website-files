@@ -107,7 +107,7 @@ A real-time leaderboard (Figure 3) ranks participants by their aggregate predict
 
 ## Analytics Dashboard
 
-A public [live analytics dashboard](https://unlock-the-lab.web.app/dashboard.html) visualises the data aggregated across all participants. Besides the leaderboard described above, it includes a criterion importance chart (Figure 4) showing the share of tokens that participants assigned to each of the six rubric criteria. A bar chart (Figure 5) also shows the mean quality rating of each of the 48 studies, with 95% confidence intervals. As in the scoring, these means and confidence intervals include the weighted expert rating of each study. The dashboard serves both participants reviewing their own results and facilitators or researchers interested in patterns across the whole group.
+A public [live analytics dashboard](https://unlock-the-lab.web.app/dashboard.html) visualises the data aggregated across all participants. Besides the leaderboard described above, it includes a criterion importance chart (Figure 4) showing the share of tokens that participants assigned to each of the six rubric criteria. A bar chart (Figure 5) also shows the mean quality rating that participants gave each of the 48 studies, with a 95% confidence interval computed from their ratings alone, and marks the expert rating of each study separately. The scoring, by contrast, counts the expert rating as if 100 participants had given it. The dashboard serves both participants reviewing their own results and facilitators or researchers interested in patterns across the whole group.
 
 <figure>
 <img loading="lazy" decoding="async" src="img/screenshot-dashboard-1.png" alt="Criterion importance chart showing the average percentage of tokens that participants assigned to each of the six rubric criteria, with 95% confidence intervals" style="max-width:100%; border-radius:6px; margin: 1em 0;">
@@ -115,8 +115,8 @@ A public [live analytics dashboard](https://unlock-the-lab.web.app/dashboard.htm
 </figure>
 
 <figure>
-<img loading="lazy" decoding="async" src="img/screenshot-dashboard-2.png" alt="Bar chart of the mean quality rating of each of the 48 studies on a 1–7 scale, with 95% confidence intervals and bars coloured red, orange or green from low to high ratings" style="max-width:100%; border-radius:6px; margin: 1em 0;">
-<figcaption>Mean Quality Rating of Each of the 48 Studies. Ratings are on a 1–7 scale, and error bars show 95% confidence intervals. Clicking a colour-coded bar opens detailed information on the study.</figcaption>
+<img loading="lazy" decoding="async" src="img/screenshot-dashboard-2.png" alt="Bar chart of the mean quality rating that participants gave each of the 48 studies on a 1–7 scale, with 95% confidence intervals, a diamond for each expert rating and bars coloured red, orange or green by the quality each study was written to have" style="max-width:100%; border-radius:6px; margin: 1em 0;">
+<figcaption>Mean Quality Rating of Each of the 48 Studies. Ratings are on a 1–7 scale. Error bars show 95% confidence intervals computed from participants' ratings, diamonds mark the expert ratings, and the colour of a bar gives the quality the study was written to have. Clicking a bar opens detailed information on the study.</figcaption>
 </figure>
 
 ## Broader Themes for Discussion
