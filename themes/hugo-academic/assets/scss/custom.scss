@@ -349,21 +349,26 @@ body.dark .article-header .article-header-caption a {
   }
 }
 
+// The dark-theme counterpart of the widget subtitle links above, whose black text is
+// not limited to the light theme. `body.dark#top` has no space because #top is the
+// <body> itself. Spelt `body.dark #top`, these selectors never matched, which left
+// the link buttons on the software list black on their dark grey fill (2.0:1) and a
+// link in a presentation summary black on the page (1.2:1).
 body.dark .home-section .col-lg-12 > p a,
 body.dark .home-section .section-heading > p a,
 body.dark .home-section .col-12 > p a,
 body.dark .home-section .col-lg-12 > p div a,
 body.dark .home-section .section-heading > p div a,
 body.dark .home-section .col-12 > p div a,
-body.dark #top > div:nth-child(4) > div:nth-child(1) > h2 > a,
-body.dark #top > div > div > h2 > a,
+body.dark#top > div:nth-child(4) > div:nth-child(1) > h2 > a,
+body.dark#top > div > div > h2 > a,
 body.dark #blog > div > div > div.col-12.section-heading > p > span a,
 body.dark #software > div > div > div.col-12.section-heading > p a,
 body.dark #skills > div > div > div > table > tbody a,
 body.dark #multimedia > div > div > div > div:nth-child(3) > div:nth-child(2) a,
 body.dark #multimedia > div > div > div > div > div > a,
-body.dark #top > div.universal-wrapper.pt-3 a,
-body.dark #top div.universal-wrapper a {
+body.dark#top > div.universal-wrapper.pt-3 a,
+body.dark#top div.universal-wrapper a {
   color: #fff;
   text-decoration: underline;
   text-decoration-color: #bbf7d0;
@@ -704,7 +709,10 @@ body.dark #tags .tag-cloud a::after {
   }
 }
 
-body.dark #top > div > div > h2 a {
+// A lighter green for the dark theme: on the dark hover highlight #34d399 reaches
+// 6.6:1, where #059669 manages 3.3:1. Written `body.dark#top`, with no space,
+// because #top is the <body> itself.
+body.dark#top > div > div > h2 a {
   &:hover {
     color: #34d399 !important;
     text-decoration-color: #10b981 !important;
