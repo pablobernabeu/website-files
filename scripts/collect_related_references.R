@@ -825,6 +825,14 @@ read_ref_metadata <- function(index_path) {
 #' and over a real connection the gap is however long it takes to fetch 2.6 MB
 #' of gzipped JSON rather than milliseconds. The reader's JavaScript finds the
 #' block by class, so moving it costs nothing.
+#'
+#' The site build keeps the block out of the page:
+#' layouts/partials/related-references.html publishes it beside the page as
+#' related-references.json and leaves the element empty, with the file's
+#' address in data-src. Position therefore matters only where the block is
+#' still inlined. The partial finds the block with the pattern that
+#' scripts/prune_reference_abstracts.py uses, so a change to the tag written
+#' below needs matching in both.
 #' @param index_path Path to the bundle's related-references.html, rewritten in
 #'   place.
 #' @param metadata Named list (DOI -> entry) to store. An empty list writes

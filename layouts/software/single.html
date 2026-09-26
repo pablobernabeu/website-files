@@ -23,7 +23,7 @@
     </section>
     {{ end }}
 
-    <div class="article-style">{{ .Content }}{{ with .Resources.GetMatch "related-references.html" }}{{ .Content | safeHTML }}{{ end }}</div>
+    <div class="article-style">{{ .Content }}{{ partial "related-references.html" . }}</div>
 
     {{ partial "package-docs-links" . }}
 
