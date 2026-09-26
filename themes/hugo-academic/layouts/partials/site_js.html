@@ -56,7 +56,9 @@
     {{ $min_length := site.Params.search.academic.min_length | default 1 }}
     {{ $threshold := site.Params.search.academic.threshold | default 0.3 }}
     {{ $search_i18n := dict "placeholder" (i18n "search_placeholder") "results" (i18n "search_results") "no_results" (i18n "search_no_results") }}
-    {{ $search_config := dict "indexURI" ("/index.json" | relLangURL) "threshold" $threshold "minLength" $min_length }}
+    {{/* The index's URL is not passed here: getSearchIndex(), in the site's
+         layouts/partials/custom_head.html, fetches it for every script that reads it. */}}
+    {{ $search_config := dict "threshold" $threshold "minLength" $min_length }}
     <script>
       const search_config = {{ $search_config | jsonify | safeJS }};
       const i18n = {{ $search_i18n | jsonify | safeJS }};

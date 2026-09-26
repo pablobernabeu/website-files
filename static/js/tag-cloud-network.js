@@ -174,9 +174,9 @@
    */
   async function fetchTagCooccurrences(tags) {
     try {
-      const response = await fetch('/index.json');
-      if (!response.ok) throw new Error('Failed to fetch search index');
-      const searchIndex = await response.json();
+      // Shared with the site search, so that the index is downloaded only once
+      // (see getSearchIndex() in layouts/partials/custom_head.html).
+      const searchIndex = await window.getSearchIndex();
       // Debug: Show sample of tag data from index
       if (searchIndex.length > 0) {
         const samplePage = searchIndex[0];
