@@ -25,6 +25,22 @@
       {{ .Content }}
     </div>
 
+    {{/* A post knitted from R Markdown ends with a link to its source. blogdown writes
+         the page beside the source under the same name, with .html in place of .Rmd,
+         and Hugo is told to ignore .Rmd files (ignoreFiles in config.toml), so the
+         source is looked for on disk rather than among the site's pages. A post written
+         in Markdown, or one whose source has gone, gets no link. The path is given
+         forward slashes for a build on Windows, and the spaces that one post folder has
+         in its name are percent-encoded for the URL. */}}
+    {{ with .File }}
+    {{ if eq .Ext "html" }}
+    {{ $rmd := printf "content/%s.Rmd" (strings.TrimSuffix ".html" (replace .Path "\\" "/")) }}
+    {{ if fileExists $rmd }}
+    <p class="rmd-source"><a href="https://github.com/pablobernabeu/website-files/blob/master/{{ replace $rmd " " "%20" }}">R Markdown source of this post</a></p>
+    {{ end }}
+    {{ end }}
+    {{ end }}
+
     {{ partial "package-docs-links" . }}
 
     {{ partial "page_footer" . }}
