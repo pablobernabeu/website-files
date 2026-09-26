@@ -1841,6 +1841,19 @@
       d.appendChild(summary);
       pre.before(d);
       d.append(pre);
+
+      // Mark a knitr chunk and the output blocks printed after it, so that
+      // custom.scss can tell them apart by border and label and hold each output
+      // close to its code. knitr writes an output block as a <pre> with no class,
+      // and a chunk that prints a result and then a warning writes two in a row.
+      if (pre.matches(".r, .python")) {
+        pre.dataset.chunk = "input";
+        let out = d.nextElementSibling;
+        while (out && out.tagName === "PRE" && !out.hasAttribute("class")) {
+          out.dataset.chunk = "output";
+          out = out.nextElementSibling;
+        }
+      }
     });
 
   // Only summaries that exceed the collapsed height need a fade or an expand
