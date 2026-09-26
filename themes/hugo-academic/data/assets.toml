@@ -4,6 +4,9 @@
 # How to update the SRI for an entry:
 #   echo -n "sha512-" && curl --silent "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML" | openssl dgst -sha512 -binary | openssl enc -base64 -A
 # Or, the SRI for the appropriate asset can be copied from https://cdnjs.com/ .
+# A wrong SRI makes browsers refuse the file without any other sign, so before each deploy
+# .github/scripts/verify_cdn_sri.py downloads every cdnjs file the built pages pin and stops
+# the deploy if one does not match.
 
 # JavaScript
 
