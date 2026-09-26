@@ -1845,8 +1845,10 @@
       // Mark a knitr chunk and the output blocks printed after it, so that
       // custom.scss can tell them apart by border and label and hold each output
       // close to its code. knitr writes an output block as a <pre> with no class,
-      // and a chunk that prints a result and then a warning writes two in a row.
-      if (pre.matches(".r, .python")) {
+      // and a chunk that prints a result and then a warning writes two in a row. A
+      // block that interleaves printed lines (prefixed #>) with its code, as reprex
+      // and `collapse = TRUE` write it, is both at once and is left unmarked.
+      if (pre.matches(".r, .python") && !/^#>/m.test(pre.textContent)) {
         pre.dataset.chunk = "input";
         let out = d.nextElementSibling;
         while (out && out.tagName === "PRE" && !out.hasAttribute("class")) {

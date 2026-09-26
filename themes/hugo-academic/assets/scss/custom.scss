@@ -6031,20 +6031,21 @@ textarea {
   scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
 
-// Keep rendered output visually attached to the code that produced it. The selectors
-// have to key off the <details>, not the <pre>: the "Fold code chunks" pass in
-// academic.js moves every <pre class="..."> inside a generated <details> at DOM-ready,
-// so on the rendered page the code block has no next sibling at all and a
-// `pre.r + pre` rule silently matches nothing. The <details> carries no border or
-// padding, so the code block's bottom margin collapses through it and meets the top
-// margin of the output, and the gap is the larger of the two.
+// Keep rendered output visually attached to the code that produced it. The "Fold code
+// chunks" pass in academic.js moves every <pre class="..."> inside a generated
+// <details> at DOM-ready, so on the rendered page the code block has no next sibling
+// at all and a `pre.r + pre` rule silently matches nothing. A rule that reaches the
+// output from its code therefore has to key off the <details>.
 //
 // A text output block, marked by the same pass (see the data-chunk rules further
-// down), sits 0.5rem below its code, so both margins are set to that. A second output
-// block, such as a warning printed after a result, sits as close to the first.
+// down), sits 0.5rem below its code. The code block gives up its bottom margin and the
+// output takes the whole gap as its top margin, which comes to the same 0.5rem whether
+// or not the browser collapses the code block's margin through the <details>. A
+// second output block, such as a warning printed after a result, sits as close to the
+// first.
 .article-style details:has(+ pre[data-chunk="output"]) > pre,
 .article-style pre[data-chunk="output"]:has(+ pre[data-chunk="output"]) {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
 }
 
 .article-style pre[data-chunk="output"] {
@@ -6052,10 +6053,11 @@ textarea {
 }
 
 // A plot, which blogdown emits as a bare paragraph wrapping the figure, keeps a wider
-// gap: this negative top margin nets 1.5rem against the code block's 2.25rem bottom
-// margin. The [open] guard matters because a collapsed chunk hides the <pre>, leaving
-// no margin to collapse through, and the negative value would then drag the plot up
-// over the "Expand" summary.
+// gap. The <details> carries no border or padding, so the code block's 2.25rem bottom
+// margin collapses through it, and this negative top margin nets 1.5rem. The [open]
+// guard matters because a collapsed chunk hides the <pre>, leaving no margin to
+// collapse through, and the negative value would then drag the plot up over the
+// "Expand" summary.
 .article-style details[open]:has(> pre.r) + p:has(> img:only-child),
 .article-style details[open]:has(> pre.python) + p:has(> img:only-child) {
   margin-top: -0.75rem;
@@ -8400,12 +8402,14 @@ body.dark .article-style pre .xaringanextra-clipboard-button {
 
 // A chunk's code and its text output are told apart by border colour and by a small
 // label in the top right-hand corner, keyed to the data-chunk marks that academic.js
-// sets. The code takes the teal of the fold control and the output a neutral grey.
-// The border colours need !important to answer the dark theme's `code, pre` rule.
-// Against their block, the labels reach 4.9:1 (input) and 5.1:1 (output) on the light
-// theme, and 6.5:1 and 5.7:1 on the dark one. A label is generated content, so the
-// copy button leaves it out of what it copies, and it gives way to that button, which
-// appears in the same corner on hover.
+// sets. The code is marked in teal, as the fold control is, and the output in a
+// neutral grey. The border colours need !important to answer the dark theme's
+// `code, pre` rule. Against their block, the labels reach 4.9:1 (input) and 5.1:1
+// (output) on the light theme, and 6.5:1 and 5.7:1 on the dark one. A label is
+// generated content, so the copy button leaves it out of what it copies. On a post
+// that has that button, the label gives way to it in the corner they share: on hover,
+// and for the 2.5 seconds after a copy during which the clipboard script holds the
+// button on screen with an inline `display: block`.
 :root {
   --chunk-input-border: #6fa99d;
   --chunk-input-label: #237A69;
@@ -8451,7 +8455,8 @@ body.dark {
   color: var(--chunk-output-label);
 }
 
-.article-style pre[data-chunk]:hover::before {
+.article-style pre[data-chunk]:hover:has(> .xaringanextra-clipboard-button)::before,
+.article-style pre[data-chunk]:has(> .xaringanextra-clipboard-button[style*="display: block"])::before {
   visibility: hidden;
 }
 
