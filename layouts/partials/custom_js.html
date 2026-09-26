@@ -65,7 +65,8 @@ document.addEventListener('DOMContentLoaded', function() {
 {{ end }}
 
 <!-- Section links: a "#" link beside each h2 and h3 of a post, software page or
-     publication page. Only where the body has such a heading; a software or
+     publication page, and the list of contents that layouts/post/single.html asks
+     for on a long post. Only where the body has such a heading; a software or
      publication page adds its related references below the content, and those
      open with an h2. -->
 {{ if and .IsPage (in (slice "post" "software" "publication") .Type) }}
