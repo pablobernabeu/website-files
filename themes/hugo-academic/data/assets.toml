@@ -18,6 +18,14 @@
   version = "9.15.10"
   sri = "sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0="
   url = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/%s/highlight.min.js"
+[js.highlight.languages]
+  # One SRI per language in `highlight_languages` (config/_default/params.toml), for
+  # https://cdnjs.cloudflare.com/ajax/libs/highlight.js/<version>/languages/<language>.min.js
+  # A language missing here still loads, but without an integrity check.
+  r = "sha512-UABEhyZqgDb0DgXwnQJpCB9kbjied2Hq2I9whoKMhqv8SgpMNmtmNMK/Xs7Th2moV2qBe1OrGk0lXL4yvmX93A=="
+  htmlbars = "sha512-YP7rdkoe+MalqddIbVifdo2ki7YQ8MZlfa6JuDvZiu1L4/uuDtbqDpySqAt5RLaaKVPfKDku7mfU3ZgdBfwP+g=="
+  css = "sha512-6yTtzuEj/TX0jT78puEd7vlxY4+Z4TKLmH2WWzibIK8mKM9ADyvenFTVNlgVohdoVxlRPS3ZI+T1xZIr8sYUGA=="
+  javascript = "sha512-rPFx5PaM3S0B6gB1Zj+bCd+PvF3Od2RDVB72JbIuXEc4NKUy7+BxVYFBA0msda0l/aYZ1EpR/J9prVhFPURbtg=="
 [js.mathJax]
   version = "3"
   sri = ""  # No SRI as dynamically generated.
@@ -101,8 +109,13 @@
   url = "https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/%s/instantsearch-theme-algolia.min.css"
 [css.highlight]
   version = "9.15.10"
-  sri = ""  # No SRI as highlight style is determined at run time.
+  sri = ""  # Unused: the URL names a style, so each style has its own SRI below.
   url = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/%s/styles/%s.min.css"
+[css.highlight.styles]
+  # github and dracula are the light and dark defaults; a `highlight_style` set in
+  # config/_default/params.toml needs its own entry here, or it loads without an integrity check.
+  github = "sha512-FwY1WVsm4UQgrOXt6kaQ53w83cOHa8fSvjFn/BvVOCYVPmkSR39k/xnU+8hht3zW6JL1TBd4C/aVQIAV58Cg6A=="
+  dracula = "sha512-+1fKl2OrwYvsbtL8RwJMcow9kyV/FWIomw0OOSfMpprBHHAZRTvfLTSr8NBwAQ20AA+39xRwo8tkEv787Ykorg=="
 [css.cookieconsent]
   version = "3.1.1"
   sri = "sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q="

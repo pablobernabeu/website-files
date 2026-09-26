@@ -94,16 +94,27 @@
     {{ end }}
     {{ if ($scr.Get "highlight_enabled") }}
       {{ $v := $css.highlight.version }}
+      {{/* Each style has its own SRI in assets.toml. A style with no entry there
+           gets an empty integrity attribute, which browsers treat as no check at
+           all, so it still loads; for a `highlight_style` set in params.toml the
+           build also warns about it. */}}
+      {{ $styles_sri := $css.highlight.styles | default dict }}
       {{ with site.Params.highlight_style }}
-        {{ printf "<link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" title=\"hl-light\">" (printf $css.highlight.url $css.highlight.version .) | safeHTML }}
-        {{ printf "<link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" title=\"hl-dark\" disabled>" (printf $css.highlight.url $css.highlight.version .) | safeHTML }}
+        {{ $sri := index $styles_sri . | default "" }}
+        {{ if not $sri }}
+          {{ warnf "No SRI for highlight.js style %q in themes/hugo-academic/data/assets.toml: it loads without an integrity check." . }}
+        {{ end }}
+        {{ printf "<link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" title=\"hl-light\">" (printf $css.highlight.url $css.highlight.version .) $sri | safeHTML }}
+        {{ printf "<link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" title=\"hl-dark\" disabled>" (printf $css.highlight.url $css.highlight.version .) $sri | safeHTML }}
       {{ else }}
+        {{ $light_sri := index $styles_sri "github" | default "" }}
+        {{ $dark_sri := index $styles_sri "dracula" | default "" }}
         {{ if eq ($scr.Get "light") true }}
-          {{ printf "<link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" title=\"hl-light\">" (printf $css.highlight.url $css.highlight.version "github") | safeHTML }}
-          {{ printf "<link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" title=\"hl-dark\" disabled>" (printf $css.highlight.url $css.highlight.version "dracula") | safeHTML }}
+          {{ printf "<link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" title=\"hl-light\">" (printf $css.highlight.url $css.highlight.version "github") $light_sri | safeHTML }}
+          {{ printf "<link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" title=\"hl-dark\" disabled>" (printf $css.highlight.url $css.highlight.version "dracula") $dark_sri | safeHTML }}
         {{ else }}
-          {{ printf "<link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" title=\"hl-light\" disabled>" (printf $css.highlight.url $css.highlight.version "github") | safeHTML }}
-          {{ printf "<link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" title=\"hl-dark\">" (printf $css.highlight.url $css.highlight.version "dracula") | safeHTML }}
+          {{ printf "<link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" title=\"hl-light\" disabled>" (printf $css.highlight.url $css.highlight.version "github") $light_sri | safeHTML }}
+          {{ printf "<link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" title=\"hl-dark\">" (printf $css.highlight.url $css.highlight.version "dracula") $dark_sri | safeHTML }}
         {{ end }}
       {{ end }}
     {{ end }}
