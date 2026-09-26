@@ -11,8 +11,13 @@ authors:
 date: '2026-06-07'
 apa_captions: true
 slug: lexsync
-publication: 'Version 0.1.0 [Computer software]. CRAN'
+publication: 'Versions 0.1.0 (CRAN) and 0.1.1 (PyPI) [Computer software]'
 doi: 10.32614/CRAN.package.lexsync
+citations:
+  - label: 'Citation (CRAN)'
+    file: cite-cran.bib
+  - label: 'Citation (PyPI)'
+    file: cite-pypi.bib
 categories:
   - software
 tags:
@@ -38,6 +43,8 @@ links:
     url: https://pablobernabeu.github.io/lexsync/python/the-app/
   - name: CRAN
     url: https://CRAN.R-project.org/package=lexsync
+  - name: PyPI
+    url: https://pypi.org/project/lexsync/
   - name: Blog post
     url: /2026/lexsync-from-corpus-to-eeg-ready-experiment/
 package_docs:
@@ -54,7 +61,7 @@ projects: []
 
 ## Overview
 
-lexsync (Bernabeu, 2026) turns a lexical design into a checked set of stimuli and experiment files. It separates the candidate corpus from the design specification, reports whether matching and counterbalancing succeeded, and carries the resulting item table into PsychoPy, OpenSesame or jsPsych. The shared R/Python format makes the design inspectable before any presentation software is involved.
+lexsync (Bernabeu, 2026a, 2026b) turns a lexical design into a checked set of stimuli and experiment files. It separates the candidate corpus from the design specification, reports whether matching and counterbalancing succeeded, and carries the resulting item table into PsychoPy, OpenSesame or jsPsych. The shared R/Python format makes the design inspectable before any presentation software is involved.
 
 The repository also carries two browser front-ends over the same engines, a Shiny app for R and a Streamlit app for Python. Each assembles a design through the interface, runs the same pipeline as the packages and exports the code that reproduces it. Launch either one from the repository root, so that it finds the bundled corpora and the example item tables.
 
@@ -71,4 +78,6 @@ Save the design, the source lexicon, the matching report and the generated exper
 
 ## References
 
-Bernabeu, P. (2026). *lexsync: Lexical optimisation and hardware-timed experiment generation* (Version 0.1.0) [Computer software]. CRAN. https://doi.org/10.32614/CRAN.package.lexsync
+Bernabeu, P. (2026a). *lexsync: Lexical optimisation and hardware-timed experiment generation* (Version 0.1.0) [Computer software]. CRAN. https://doi.org/10.32614/CRAN.package.lexsync
+
+Bernabeu, P. (2026b). *lexsync: Lexical optimisation and hardware-timed experiment generation* (Version 0.1.1) [Computer software]. PyPI. https://pypi.org/project/lexsync/0.1.1/
