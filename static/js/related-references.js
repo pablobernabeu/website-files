@@ -1,8 +1,9 @@
 // Related References Interactive Enhancement
 // Search, year filter, type filter, result count, abstract toggle, copy,
 // export, sort.
-// Pre-embedded metadata is read from <script class="ref-metadata"> when
-// available; otherwise abstracts are fetched on-demand from CrossRef.
+// Pre-embedded metadata is read from <script class="ref-metadata">, or from
+// the file named by its data-src, when available; otherwise abstracts are
+// fetched on-demand from CrossRef.
 (function () {
   'use strict';
 
@@ -82,6 +83,22 @@
     if (!sections.length) return;
 
     if ('IntersectionObserver' in window) {
+      // A section whose metadata is published as a file of its own asks for
+      // it well before the section is enhanced, so that it has usually
+      // arrived by then, but not unconditionally with the page: the file runs
+      // past a megabyte compressed on the largest pages, and a visitor who
+      // never scrolls towards the references has no use for it. Two viewport
+      // heights ahead gives the request a head start of two screens of
+      // scrolling, and on most pages it covers the section as the page opens.
+      var prefetcher = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            prefetcher.unobserve(entry.target);
+            var src = metadataFileUrl(entry.target);
+            if (src) requestMetadataFile(src, function () {});
+          }
+        });
+      }, { rootMargin: '200% 0px' });
       var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
@@ -90,7 +107,10 @@
           }
         });
       }, { rootMargin: '300px' });
-      sections.forEach(function (s) { observer.observe(s); });
+      sections.forEach(function (s) {
+        prefetcher.observe(s);
+        observer.observe(s);
+      });
     } else {
       sections.forEach(enhanceSection);
     }
@@ -191,11 +211,173 @@
     return title;
   }
 
-  function enhanceSection(section) {
-    // Tag the heading above this section for extra top-margin
+  /** The heading above a section, skipping past non-heading elements (e.g. <p>, <script>). */
+  function findSectionHeading(section) {
     var prev = section.previousElementSibling;
-    // Skip past non-heading elements (e.g. <p>, <script>) to find the heading
     while (prev && !/^H[1-6]$/.test(prev.tagName)) prev = prev.previousElementSibling;
+    return prev;
+  }
+
+  // =========================================================================
+  //  METADATA
+  // =========================================================================
+
+  // Metadata files by URL. An entry holds the parsed file once it has arrived
+  // and, until then, the callbacks waiting for it, so a file is requested
+  // once however many callers ask for it. A request that fails is forgotten,
+  // so that a later caller can try again.
+  var metadataFiles = {};
+
+  // How long a metadata file may take before the section is built without
+  // it. Generous, because going without costs the reader more than waiting:
+  // every type and abstract on screen then comes from CrossRef, request by
+  // request.
+  var METADATA_TIMEOUT = 60000;
+
+  /**
+   * The <script class="ref-metadata"> for a section. For Rmd publications the
+   * script may be in a parent wrapper div, not inside .related-references.
+   */
+  function findMetadataScript(section) {
+    var script = section.querySelector('script.ref-metadata');
+    if (!script && section.parentNode) {
+      script = section.parentNode.querySelector('script.ref-metadata');
+    }
+    return script;
+  }
+
+  /**
+   * The address of the file a section's metadata was published to, or null
+   * when the metadata is inline or absent.
+   */
+  function metadataFileUrl(section) {
+    var script = findMetadataScript(section);
+    return script ? script.getAttribute('data-src') || null : null;
+  }
+
+  /**
+   * Hand a section's metadata, an object keyed by DOI, to done.
+   *
+   * The block is either inline, as bundle files still write it, or empty with
+   * a data-src naming the file the build published it to (see
+   * layouts/partials/related-references.html). Inline metadata, and a file
+   * that has already arrived, are handed over before this returns.
+   *
+   * @param {Element} section
+   * @param {function(Object)} done
+   */
+  function loadMetadata(section, done) {
+    var src = metadataFileUrl(section);
+    if (src) {
+      requestMetadataFile(src, done);
+      return;
+    }
+    var metadata = {};
+    var script = findMetadataScript(section);
+    if (script) {
+      try { metadata = JSON.parse(script.textContent) || {}; } catch (e) { /* ignore */ }
+    }
+    done(metadata);
+  }
+
+  /**
+   * Hand the parsed metadata file at src to done, requesting it only if no
+   * earlier call already has. A file that cannot be fetched or parsed is
+   * handed over as an empty object: that is the state of a section that never
+   * had any metadata, which the rest of this file already handles by asking
+   * CrossRef.
+   *
+   * @param {string} src
+   * @param {function(Object)} done
+   */
+  function requestMetadataFile(src, done) {
+    var entry = metadataFiles[src];
+    if (entry && entry.data) { done(entry.data); return; }
+    if (entry) { entry.waiting.push(done); return; }
+    entry = metadataFiles[src] = { data: null, waiting: [done] };
+
+    var settled = false;
+    function settle(data) {
+      if (settled) return;
+      settled = true;
+      if (data) {
+        entry.data = data;
+      } else {
+        delete metadataFiles[src];
+        if (typeof console !== 'undefined' && console.warn) {
+          console.warn('[related-refs] metadata unavailable, falling back to CrossRef:', src);
+        }
+      }
+      var waiting = entry.waiting;
+      entry.waiting = [];
+      // One caller's failure must not leave the others waiting for good.
+      for (var i = 0; i < waiting.length; i++) {
+        try {
+          waiting[i](data || {});
+        } catch (err) {
+          if (typeof console !== 'undefined' && console.error) {
+            console.error('[related-refs] enhancement error:', err);
+          }
+        }
+      }
+    }
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', src, true);
+    xhr.timeout = METADATA_TIMEOUT;
+    xhr.onload = function () {
+      var data = null;
+      if (xhr.status === 200) {
+        try { data = JSON.parse(xhr.responseText); } catch (e) { /* settled as a failure */ }
+      }
+      settle(data && typeof data === 'object' ? data : null);
+    };
+    xhr.onerror = xhr.ontimeout = xhr.onabort = function () { settle(null); };
+    xhr.send();
+  }
+
+  /**
+   * A line in the toolbar's place for as long as the section's metadata is on
+   * its way. It is not a live region: it usually appears while the section is
+   * still off screen, and announcing it then would interrupt whatever the
+   * reader is doing further up the page.
+   */
+  function showMetadataStatus(section) {
+    // Tagged now rather than when the toolbar is built. The rule in
+    // related-references.css that spaces the heading before scripts run
+    // matches only while the section follows it directly, which this line
+    // interrupts.
+    var heading = findSectionHeading(section);
+    if (heading) heading.classList.add('ref-section-heading');
+    var status = document.createElement('div');
+    status.className = 'ref-metadata-status ref-loading';
+    status.textContent = 'Loading search, filters and abstracts\u2026';
+    section.parentNode.insertBefore(status, section);
+    return status;
+  }
+
+  /**
+   * Build the section once its metadata is in. The type filter, the overlap
+   * ranking and every reference's Abstract button are all built from the
+   * metadata, so nothing is built before it: until it arrives the list stays
+   * as the page delivered it, with nothing on it to act on too early.
+   */
+  function enhanceSection(section) {
+    var status = null;
+    var arrived = false;
+    loadMetadata(section, function (metadata) {
+      arrived = true;
+      if (status && status.parentNode) status.parentNode.removeChild(status);
+      buildSection(section, metadata);
+    });
+    if (!arrived) status = showMetadataStatus(section);
+  }
+
+  function buildSection(section, metadata) {
+    sectionsBuilt++;
+
+    // Tag the heading above this section for extra top-margin
+    var prev = findSectionHeading(section);
     if (prev) prev.classList.add('ref-section-heading');
 
     var hangingIndent = section.querySelector('.hanging-indent');
@@ -232,17 +414,6 @@
       if (!paragraphs[ai].querySelector('em, i')) {
         paragraphs[ai].innerHTML = applyApaItalics(paragraphs[ai].innerHTML);
       }
-    }
-
-    // Read pre-embedded metadata from <script class="ref-metadata"> JSON block
-    // For Rmd publications the script may be in a parent wrapper div, not inside .related-references
-    var metadata = {};
-    var metaScript = section.querySelector('script.ref-metadata');
-    if (!metaScript && section.parentNode) {
-      metaScript = section.parentNode.querySelector('script.ref-metadata');
-    }
-    if (metaScript) {
-      try { metadata = JSON.parse(metaScript.textContent) || {}; } catch (e) { /* ignore */ }
     }
 
     // Read Scopus query info from <script class="scopus-queries"> JSON block
@@ -1676,8 +1847,14 @@
     } catch (e) { console.warn('[related-refs] getExpandedState error:', e); return []; }
   }
 
-  // Safety-net: persist expanded state on page unload
-  window.addEventListener('beforeunload', saveExpandedState);
+  // Safety-net: persist expanded state on page unload, once a section has been
+  // built. Before that no abstract can be open, and saving would replace what
+  // a returning reader left open with an empty list, which takes no more than
+  // leaving again while the metadata file is still on its way.
+  var sectionsBuilt = 0;
+  window.addEventListener('beforeunload', function () {
+    if (sectionsBuilt) saveExpandedState();
+  });
 
   // =========================================================================
   //  ABSTRACT TOGGLE

@@ -37,11 +37,13 @@ h4:has(+ .related-references) {
    its own token and borders keep the theme's.
    The dark-mode value is the theme's own, which already passes at 6.96:1. */
 .ref-toolbar,
+.ref-metadata-status,
 .related-references {
   --ref-muted: #5a6678;
 }
 
 body.dark .ref-toolbar,
+body.dark .ref-metadata-status,
 body.dark .related-references {
   --ref-muted: #94a3b8;
 }
@@ -56,6 +58,26 @@ body.dark .related-references {
   border-left: thin solid var(--anim-start, aquamarine);
   overflow-anchor: none;
   background: transparent;
+}
+
+/* Stands in for the toolbar while a section's metadata file is on its way,
+   with the toolbar's inset and rule so that one reads as becoming the other.
+   The muted italic comes from .ref-loading, the class the script also gives
+   it, as for an abstract that is still loading. */
+.ref-metadata-status {
+  margin-bottom: 0.75em;
+  margin-left: -0.7em;
+  padding: 0.6em 0.7em;
+  font-size: 90%;
+  border-left: thin solid var(--anim-start, aquamarine);
+}
+
+/* Printed before the file arrives, the page would otherwise keep a line saying
+   that something is still loading. */
+@media print {
+  .ref-metadata-status {
+    display: none;
+  }
 }
 
 .ref-toolbar-row {
@@ -979,6 +1001,11 @@ body.dark .ref-btn.ref-btn.ref-reset-filters.active {
   .ref-toolbar {
     margin-left: -0.4em;
     padding: 0.5em 0.4em 0.35em;
+  }
+
+  .ref-metadata-status {
+    margin-left: -0.4em;
+    padding: 0.5em 0.4em;
   }
 
   .ref-filters-row {
