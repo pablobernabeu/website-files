@@ -20,7 +20,8 @@ a small tablet at twice.
 
 The width and height attributes give the browser the photo's shape before it
 arrives, so the page does not move as the photos load. The script prints them
-for each copy.
+for each copy. Image budget (.github/workflows/image-budget.yml) counts a file
+named in data-full as loaded on request, not with the page.
 
 A copy is named after its original, with spaces turned into hyphens because
 srcset separates its candidates with whitespace. Colours are converted to sRGB
