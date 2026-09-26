@@ -27,42 +27,42 @@ Say, you need to set up a makeshift EEG lab in an office? Easy-peasy---only, try
 <div class='image-gallery'>
 
 <div class='imageContainer'>
-  <img src='images/1.webp' alt='makeshift EEG lab in an office'>
+  <img src='images/1-800w.webp' srcset='images/1-800w.webp 800w, images/1-1200w.webp 1200w, images/1-1600w.webp 1600w' sizes='(max-width: 700px) calc(100vw - 40px), 346px' width='800' height='1778' data-full='images/1.webp' alt='makeshift EEG lab in an office'>
   <i class='expand-icon fas fa-expand-alt'></i>
 </div>
 
 <div class='imageContainer'>
-  <img loading="lazy" decoding="async" src='images/2.webp' alt='makeshift EEG lab in an office'>
+  <img loading="lazy" decoding="async" src='images/2-800w.webp' srcset='images/2-800w.webp 800w, images/2-1200w.webp 1200w, images/2-1600w.webp 1600w' sizes='(max-width: 700px) calc(100vw - 40px), 346px' width='800' height='1778' data-full='images/2.webp' alt='makeshift EEG lab in an office'>
   <i class='expand-icon fas fa-expand-alt'></i>
 </div>
 
 <div class='imageContainer'>
-  <img loading="lazy" decoding="async" src='images/3.webp' alt='makeshift EEG lab in an office'>
+  <img loading="lazy" decoding="async" src='images/3-800w.webp' srcset='images/3-800w.webp 800w, images/3-1200w.webp 1200w, images/3-1600w.webp 1600w' sizes='(max-width: 700px) calc(100vw - 40px), 346px' width='800' height='360' data-full='images/3.webp' alt='makeshift EEG lab in an office'>
   <i class='expand-icon fas fa-expand-alt'></i>
 </div>
 
 <div class='imageContainer'>
-  <img loading="lazy" decoding="async" src='images/3a.webp' alt='makeshift EEG lab in an office'>
+  <img loading="lazy" decoding="async" src='images/3a-800w.webp' srcset='images/3a-800w.webp 800w, images/3a-1200w.webp 1200w, images/3a-1600w.webp 1600w' sizes='(max-width: 700px) calc(100vw - 40px), 346px' width='800' height='360' data-full='images/3a.webp' alt='makeshift EEG lab in an office'>
   <i class='expand-icon fas fa-expand-alt'></i>
 </div>
 
 <div class='imageContainer'>
-  <img loading="lazy" decoding="async" src='images/4.webp' alt='makeshift EEG lab in an office'>
+  <img loading="lazy" decoding="async" src='images/4-800w.webp' srcset='images/4-800w.webp 800w, images/4-1200w.webp 1200w, images/4-1600w.webp 1600w' sizes='(max-width: 700px) calc(100vw - 40px), 346px' width='800' height='360' data-full='images/4.webp' alt='makeshift EEG lab in an office'>
   <i class='expand-icon fas fa-expand-alt'></i>
 </div>
 
 <div class='imageContainer'>
-  <img loading="lazy" decoding="async" src='images/5.webp' alt='makeshift EEG lab in an office'>
+  <img loading="lazy" decoding="async" src='images/5-800w.webp' srcset='images/5-800w.webp 800w, images/5-1200w.webp 1200w, images/5-1600w.webp 1600w' sizes='(max-width: 700px) calc(100vw - 40px), 346px' width='800' height='360' data-full='images/5.webp' alt='makeshift EEG lab in an office'>
   <i class='expand-icon fas fa-expand-alt'></i>
 </div>
 
 <div class='imageContainer'>
-  <img loading="lazy" decoding="async" src='images/6.webp' alt='makeshift EEG lab in an office'>
+  <img loading="lazy" decoding="async" src='images/6-800w.webp' srcset='images/6-800w.webp 800w, images/6-1200w.webp 1200w, images/6-1600w.webp 1600w' sizes='(max-width: 700px) calc(100vw - 40px), 346px' width='800' height='360' data-full='images/6.webp' alt='makeshift EEG lab in an office'>
   <i class='expand-icon fas fa-expand-alt'></i>
 </div>
 
 <div class='imageContainer'>
-  <img loading="lazy" decoding="async" src='images/7.webp' alt='makeshift EEG lab in an office'>
+  <img loading="lazy" decoding="async" src='images/7-800w.webp' srcset='images/7-800w.webp 800w, images/7-1200w.webp 1200w, images/7-1600w.webp 1600w' sizes='(max-width: 700px) calc(100vw - 40px), 346px' width='800' height='360' data-full='images/7.webp' alt='makeshift EEG lab in an office'>
   <i class='expand-icon fas fa-expand-alt'></i>
 </div>
 
@@ -78,77 +78,77 @@ Say, you need to set up a makeshift EEG lab in an office? Easy-peasy---only, try
 <div class='image-gallery'>
 
 <div class='imageContainer'>
-  <img loading="lazy" decoding="async" src='images/8.webp' alt='makeshift EEG lab in an office'>
+  <img loading="lazy" decoding="async" src='images/8-800w.webp' srcset='images/8-800w.webp 800w, images/8-1200w.webp 1200w, images/8-1600w.webp 1600w' sizes='(max-width: 700px) calc(100vw - 40px), 346px' width='800' height='360' data-full='images/8.webp' alt='makeshift EEG lab in an office'>
   <i class='expand-icon fas fa-expand-alt'></i>
 </div>
 
 <div class='imageContainer'>
-  <img loading="lazy" decoding="async" src='images/8a.webp' alt='makeshift EEG lab in an office'>
+  <img loading="lazy" decoding="async" src='images/8a-800w.webp' srcset='images/8a-800w.webp 800w, images/8a-1200w.webp 1200w, images/8a-1600w.webp 1600w' sizes='(max-width: 700px) calc(100vw - 40px), 346px' width='800' height='1778' data-full='images/8a.webp' alt='makeshift EEG lab in an office'>
   <i class='expand-icon fas fa-expand-alt'></i>
 </div>
 
 <div class='imageContainer'>
-  <img loading="lazy" decoding="async" src='images/9.webp' alt='makeshift EEG lab in an office'>
+  <img loading="lazy" decoding="async" src='images/9-800w.webp' srcset='images/9-800w.webp 800w, images/9-1200w.webp 1200w, images/9-1600w.webp 1600w' sizes='(max-width: 700px) calc(100vw - 40px), 346px' width='800' height='360' data-full='images/9.webp' alt='makeshift EEG lab in an office'>
   <i class='expand-icon fas fa-expand-alt'></i>
 </div>
 
 <div class='imageContainer'>
-  <img loading="lazy" decoding="async" src='images/10.webp' alt='makeshift EEG lab in an office'>
+  <img loading="lazy" decoding="async" src='images/10-800w.webp' srcset='images/10-800w.webp 800w, images/10-1200w.webp 1200w, images/10-1600w.webp 1600w' sizes='(max-width: 700px) calc(100vw - 40px), 346px' width='800' height='1778' data-full='images/10.webp' alt='makeshift EEG lab in an office'>
   <i class='expand-icon fas fa-expand-alt'></i>
 </div>
 
 <div class='imageContainer'>
-  <img loading="lazy" decoding="async" src='images/10a.webp' alt='makeshift EEG lab in an office'>
+  <img loading="lazy" decoding="async" src='images/10a-800w.webp' srcset='images/10a-800w.webp 800w, images/10a-1200w.webp 1200w, images/10a-1600w.webp 1600w' sizes='(max-width: 700px) calc(100vw - 40px), 346px' width='800' height='360' data-full='images/10a.webp' alt='makeshift EEG lab in an office'>
   <i class='expand-icon fas fa-expand-alt'></i>
 </div>
 
 <div class='imageContainer'>
-  <img loading="lazy" decoding="async" src='images/11.webp' alt='makeshift EEG lab in an office'>
+  <img loading="lazy" decoding="async" src='images/11-800w.webp' srcset='images/11-800w.webp 800w, images/11-1200w.webp 1200w, images/11-1600w.webp 1600w' sizes='(max-width: 700px) calc(100vw - 40px), 346px' width='800' height='1778' data-full='images/11.webp' alt='makeshift EEG lab in an office'>
   <i class='expand-icon fas fa-expand-alt'></i>
 </div>
 
 <div class='imageContainer'>
-  <img loading="lazy" decoding="async" src='images/12.webp' alt='makeshift EEG lab in an office'>
+  <img loading="lazy" decoding="async" src='images/12-800w.webp' srcset='images/12-800w.webp 800w, images/12-1200w.webp 1200w, images/12-1600w.webp 1600w' sizes='(max-width: 700px) calc(100vw - 40px), 346px' width='800' height='360' data-full='images/12.webp' alt='makeshift EEG lab in an office'>
   <i class='expand-icon fas fa-expand-alt'></i>
 </div>
 
 <div class='imageContainer'>
-  <img loading="lazy" decoding="async" src='images/13.webp' alt='makeshift EEG lab in an office'>
+  <img loading="lazy" decoding="async" src='images/13-800w.webp' srcset='images/13-800w.webp 800w, images/13-1200w.webp 1200w, images/13-1600w.webp 1600w' sizes='(max-width: 700px) calc(100vw - 40px), 346px' width='800' height='360' data-full='images/13.webp' alt='makeshift EEG lab in an office'>
   <i class='expand-icon fas fa-expand-alt'></i>
 </div>
 
 <div class='imageContainer'>
-  <img loading="lazy" decoding="async" src='images/14.webp' alt='makeshift EEG lab in an office'>
+  <img loading="lazy" decoding="async" src='images/14-800w.webp' srcset='images/14-800w.webp 800w, images/14-1200w.webp 1200w, images/14-1600w.webp 1600w' sizes='(max-width: 700px) calc(100vw - 40px), 346px' width='800' height='360' data-full='images/14.webp' alt='makeshift EEG lab in an office'>
   <i class='expand-icon fas fa-expand-alt'></i>
 </div>
 
 <div class='imageContainer'>
-  <img loading="lazy" decoding="async" src='images/15.webp' alt='makeshift EEG lab in an office'>
+  <img loading="lazy" decoding="async" src='images/15-800w.webp' srcset='images/15-800w.webp 800w, images/15-1200w.webp 1200w, images/15-1600w.webp 1600w' sizes='(max-width: 700px) calc(100vw - 40px), 346px' width='800' height='360' data-full='images/15.webp' alt='makeshift EEG lab in an office'>
   <i class='expand-icon fas fa-expand-alt'></i>
 </div>
 
 <div class='imageContainer'>
-  <img loading="lazy" decoding="async" src='images/16.webp' alt='makeshift EEG lab in an office'>
+  <img loading="lazy" decoding="async" src='images/16-800w.webp' srcset='images/16-800w.webp 800w, images/16-1200w.webp 1200w, images/16-1600w.webp 1600w' sizes='(max-width: 700px) calc(100vw - 40px), 346px' width='800' height='360' data-full='images/16.webp' alt='makeshift EEG lab in an office'>
   <i class='expand-icon fas fa-expand-alt'></i>
 </div>
 
 <div class='imageContainer'>
-  <img loading="lazy" decoding="async" src='images/17.webp' alt='makeshift EEG lab in an office'>
+  <img loading="lazy" decoding="async" src='images/17-800w.webp' srcset='images/17-800w.webp 800w, images/17-1200w.webp 1200w, images/17-1600w.webp 1600w' sizes='(max-width: 700px) calc(100vw - 40px), 346px' width='800' height='360' data-full='images/17.webp' alt='makeshift EEG lab in an office'>
   <i class='expand-icon fas fa-expand-alt'></i>
 </div>
 
 <div class='imageContainer'>
-  <img loading="lazy" decoding="async" src='images/18.webp' alt='makeshift EEG lab in an office'>
+  <img loading="lazy" decoding="async" src='images/18-800w.webp' srcset='images/18-800w.webp 800w, images/18-1200w.webp 1200w, images/18-1600w.webp 1600w' sizes='(max-width: 700px) calc(100vw - 40px), 346px' width='800' height='1778' data-full='images/18.webp' alt='makeshift EEG lab in an office'>
   <i class='expand-icon fas fa-expand-alt'></i>
 </div>
 
 <div class='imageContainer'>
-  <img loading="lazy" decoding="async" src='images/19.webp' alt='makeshift EEG lab in an office'>
+  <img loading="lazy" decoding="async" src='images/19-800w.webp' srcset='images/19-800w.webp 800w, images/19-1200w.webp 1200w, images/19-1600w.webp 1600w' sizes='(max-width: 700px) calc(100vw - 40px), 346px' width='800' height='360' data-full='images/19.webp' alt='makeshift EEG lab in an office'>
   <i class='expand-icon fas fa-expand-alt'></i>
 </div>
 
 <div class='imageContainer'>
-  <img loading="lazy" decoding="async" src='images/20.webp' alt='makeshift EEG lab in an office'>
+  <img loading="lazy" decoding="async" src='images/20-800w.webp' srcset='images/20-800w.webp 800w, images/20-1200w.webp 1200w, images/20-1600w.webp 1600w' sizes='(max-width: 700px) calc(100vw - 40px), 346px' width='800' height='360' data-full='images/20.webp' alt='makeshift EEG lab in an office'>
   <i class='expand-icon fas fa-expand-alt'></i>
 </div>
 
@@ -172,7 +172,7 @@ makeshift_lab %>%
 ```
 
 <div class='imageContainer'>
-  <img loading="lazy" decoding="async" src='images/cosy EEG booth.jpg' alt='cosy EEG booth'>
+  <img loading="lazy" decoding="async" src='images/cosy-EEG-booth-800w.webp' srcset='images/cosy-EEG-booth-800w.webp 800w, images/cosy-EEG-booth-1200w.webp 1200w, images/cosy-EEG-booth-1600w.webp 1600w' sizes='(max-width: 700px) calc(100vw - 40px), 346px' width='800' height='360' data-full='images/cosy EEG booth.jpg' alt='cosy EEG booth'>
   <i class='expand-icon fas fa-expand-alt'></i>
 </div>
 
