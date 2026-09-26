@@ -1904,6 +1904,14 @@ div:has(> img.featured-image) {
   margin-top: -5%;
 }
 
+// A featured image carries its width and height (layouts/partials/page_header.html),
+// which hold its space open while it loads. The height is auto so that they set only
+// its shape: the width is the column's, and on a narrower screen the height they give
+// in pixels would squash the image.
+.featured-image {
+  height: auto;
+}
+
 @media (max-width: 991px) {
   .pub div:has(> img.featured-image) {
     margin-top: 0;
