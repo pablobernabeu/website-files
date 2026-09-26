@@ -8598,6 +8598,61 @@ body.dark {
   margin: 0;
 }
 
+// The "#" link beside each h2 and h3 of an article, written by
+// static/js/section-links.js.
+:root {
+  --heading-anchor-hover: #237A69;
+}
+
+body.dark {
+  --heading-anchor-hover: #5fe0d0;
+}
+
+// The link is taken out of the flow, so the heading lays out and wraps exactly as
+// it would without it. With no offsets it stays where it would have been in the
+// line, just after the heading's last word, and on the same baseline. It shows on
+// hover and on keyboard focus only, in the muted text colour, which is 4.95:1 on
+// the light page and 6.96:1 on the dark one. The #top prefix and !important answer
+// the rules that give a link in a heading its underline and the light theme's
+// highlight gradient and hover fill, or in the dark theme a teal colour set through
+// -webkit-text-fill-color. Leaving it out of a selection keeps the "#" out of a
+// heading copied as text.
+#top .article-style h2 > a.heading-anchor,
+#top .article-style h3 > a.heading-anchor {
+  position: absolute;
+  margin-left: 0.3em;
+  font-weight: 400;
+  opacity: 0;
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: currentColor !important;
+  text-decoration: none !important;
+  background: none !important;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#top .article-style h2:hover > a.heading-anchor,
+#top .article-style h3:hover > a.heading-anchor {
+  opacity: 1;
+}
+
+#top .article-style h2 > a.heading-anchor:focus-visible,
+#top .article-style h3 > a.heading-anchor:focus-visible {
+  opacity: 1;
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+// The teal of the code chunks' "Expand" control, 5.2:1 on white, and in the dark
+// theme the colour of a link in a heading.
+#top .article-style h2 > a.heading-anchor:hover,
+#top .article-style h3 > a.heading-anchor:hover,
+#top .article-style h2 > a.heading-anchor:focus-visible,
+#top .article-style h3 > a.heading-anchor:focus-visible {
+  color: var(--heading-anchor-hover) !important;
+}
+
 // Printing. academic.js opens folded code and switches to the light theme for the
 // print, since the dark theme's pale text would be close to invisible on paper, where
 // browsers leave out backgrounds by default. What only works on screen is left out,
@@ -8625,7 +8680,8 @@ html.is-printing *::after {
   .article-style details > summary,
   .xaringanextra-clipboard-button,
   .code-copy-button,
-  .editable-r {
+  .editable-r,
+  .heading-anchor {
     display: none !important;
   }
 
