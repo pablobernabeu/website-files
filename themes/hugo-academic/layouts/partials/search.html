@@ -1,5 +1,6 @@
-<aside class="search-results" id="search" role="dialog" aria-modal="true" aria-label="{{ i18n "search" }}">
-  <div class="container">
+<aside class="search-results" id="search">
+  {{/* The dialog role goes on the inner container, because <aside> may not take it. */}}
+  <div class="container" role="dialog" aria-modal="true" aria-label="{{ i18n "search" }}">
     <section class="search-header">
 
       <div class="row no-gutters justify-content-between mb-3">

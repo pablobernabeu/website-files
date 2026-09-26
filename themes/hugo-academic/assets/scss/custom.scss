@@ -2821,6 +2821,13 @@ a.dsq-brlink {
   text-underline-offset: 2px;
 }
 
+// The category list and the CV button are exempt here, as in the dark theme.
+.article-categories a,
+.cv-btn,
+.cv-btn a {
+  text-decoration: none !important;
+}
+
 // background colour for links (excluding view-complete-content buttons)
 p a:link:not(.view-complete-content-btn), 
 td a:link:not(.view-complete-content-btn), 
@@ -4852,7 +4859,7 @@ div > div > div > table > tbody > tr > td,
   &::before {
     display: var(--home-abstract-overlay, none);
     content: '▼▼▼▼▼▼▼';
-    content: '▼▼▼▼▼▼▼' / ''; // decoration: academic.js gives the summary aria-expanded
+    content: '▼▼▼▼▼▼▼' / ''; // decoration; the keyboard's control is a real button (academic.js)
     position: absolute;
     bottom: 12px;
     left: 50%;
@@ -4872,8 +4879,7 @@ div > div > div > table > tbody > tr > td,
   
   // Hover effect for the entire abstract - show button and arrows. Only a marked
   // summary expands on click, so a pending one does not offer it on hover.
-  &.is-collapsible:hover::before,
-  &.is-collapsible:focus-visible::before {
+  &.is-collapsible:hover::before {
     content: '▼▼▼      Expand summary      ▼▼▼';
     content: '▼▼▼      Expand summary      ▼▼▼' / '';
     opacity: 1;
@@ -4882,6 +4888,26 @@ div > div > div > table > tbody > tr > td,
     transform: translateX(-50%) scale(1.03);
   }
   
+}
+
+// The keyboard's "Expand summary" button (academic.js) stays visually hidden, through
+// Bootstrap's .sr-only-focusable, until it has focus, and then looks like the cue
+// that hovering the summary shows.
+.home-abstract-expand:focus {
+  display: block;
+  margin: 0.25rem auto 0.75rem;
+  padding: 0 8px;
+  font-size: 0.8em;
+  background-color: #444;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 3px;
+}
+
+body.dark .home-abstract-expand:focus {
+  background-color: #ddd;
+  color: #333;
+  border-color: #ccc;
 }
 
 // Dark theme: invert Expand button colours
@@ -8574,7 +8600,8 @@ body.dark {
 
 // Printing. academic.js opens folded code and switches to the light theme for the
 // print, since the dark theme's pale text would be close to invisible on paper, where
-// browsers leave out backgrounds by default. What only works on screen is left out.
+// browsers leave out backgrounds by default. What only works on screen is left out,
+// while the footer stays for its licence line.
 html.is-printing *,
 html.is-printing *::before,
 html.is-printing *::after {
@@ -8590,7 +8617,7 @@ html.is-printing *::after {
   .search-results,
   #navbar-main,
   .skip-link,
-  .site-footer,
+  .site-footer .back-to-top,
   #comments,
   #modal,
   #open-science-popup,

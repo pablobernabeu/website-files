@@ -800,8 +800,9 @@
   // `searching` class on <body>. Watching that class keeps what follows true
   // whichever of them acts. A closed overlay is hidden, because toggleSearchDialog
   // leaves an inline `visibility: visible` that kept its controls in the tab order.
-  // Focus goes back to where it was before the overlay opened, and while it is open
-  // Tab and Shift+Tab cycle through its own controls.
+  // Focus goes back to where it was before the overlay opened (unless it had already
+  // left for the page itself, as after a click on plain text), without scrolling to
+  // it, and while the overlay is open Tab and Shift+Tab cycle through its controls.
   function manageSearchOverlayFocus() {
     const overlay = document.querySelector(".search-results");
     if (!overlay || !window.MutationObserver) return;
@@ -810,6 +811,9 @@
 
     document.addEventListener("focusin", function (e) {
       if (!overlay.contains(e.target)) lastFocusOutside = e.target;
+    });
+    document.addEventListener("focusout", function (e) {
+      if (!overlay.contains(e.target) && !e.relatedTarget) lastFocusOutside = null;
     });
 
     new MutationObserver(function () {
@@ -821,7 +825,7 @@
       const focusLost = !document.activeElement || document.activeElement === document.body ||
         overlay.contains(document.activeElement);
       if (focusLost && lastFocusOutside && document.contains(lastFocusOutside)) {
-        lastFocusOutside.focus();
+        lastFocusOutside.focus({ preventScroll: true });
       }
     }).observe(document.body, { attributes: true, attributeFilter: ["class"] });
 
@@ -1983,12 +1987,20 @@
       $(item.el)
         .toggleClass("is-collapsible", item.hasOverflow)
         .toggleClass("is-short", !item.hasOverflow);
-      // A summary that expands on click can be reached and expanded from the
-      // keyboard too (Enter or Space, below).
-      if (item.hasOverflow) {
-        $(item.el).attr({ tabindex: "0", role: "button", "aria-expanded": "false" });
-      } else {
-        $(item.el).removeAttr("tabindex role aria-expanded");
+      // A summary that expands on click also gets a real button after it, hidden
+      // until it has keyboard focus. The summary itself stays text, since some hold
+      // links of their own.
+      const $button = $(item.el).next(".home-abstract-expand");
+      if (item.hasOverflow && !$button.length) {
+        $(item.el).after(
+          $("<button>", {
+            type: "button",
+            class: "home-abstract-expand sr-only sr-only-focusable",
+            text: "Expand summary",
+          })
+        );
+      } else if (!item.hasOverflow) {
+        $button.remove();
       }
     });
   }
@@ -2017,11 +2029,10 @@
         return;
       }
 
-      // Mark as expanded. The summary stops being a control, so a keyboard user's
-      // focus moves on to the link that follows it.
-      const hadFocus = this === document.activeElement;
+      // Mark as expanded
       $mediaBody.addClass("is-expanded");
-      $abstract.removeClass("is-collapsible").removeAttr("tabindex role aria-expanded");
+      $abstract.removeClass("is-collapsible");
+      $abstract.next(".home-abstract-expand").remove();
 
       // Add "View complete content" button after expansion
       const $title = $mediaBody.find(".article-title a");
@@ -2036,23 +2047,17 @@
 
         $abstract.after($viewCompleteContentBtn);
       }
-      if (hadFocus) {
-        const $next = $abstract.next(".view-complete-content-btn");
-        if ($next.length) $next[0].focus();
-      }
     }
   );
 
-  $(document).on(
-    "keydown",
-    "#publication .media-body .article-style.is-collapsible, #software .media-body .article-style.is-collapsible, #blog .media-body .article-style.is-collapsible",
-    function (e) {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        $(this).trigger("click");
-      }
-    }
-  );
+  // The keyboard's way in: expanding removes the button, so focus moves on to the
+  // "View complete content" link that takes its place.
+  $(document).on("click", ".home-abstract-expand", function () {
+    const $abstract = $(this).prev(".article-style.is-collapsible");
+    $abstract.trigger("click");
+    const $link = $abstract.next(".view-complete-content-btn");
+    if ($link.length) $link[0].focus();
+  });
 
   // Document Viewer Controls
   $(document).ready(function () {
