@@ -5103,6 +5103,14 @@ body.dark .document-viewer-toolbar {
   margin-bottom: -0.3rem !important;
 }
 
+// A post's page gives its dates in full (page_metadata.html). Each is kept whole, and
+// "Last updated" with its date, so a phone wraps the row between them rather than
+// leaving a day and month at the end of one line and the year on the next.
+.article-metadata time,
+.article-metadata .article-updated {
+  white-space: nowrap;
+}
+
 // Reduce margin under article-metadata in web applications section
 #software .article-metadata > div {
   margin-bottom: -0.3rem !important;

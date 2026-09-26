@@ -1,5 +1,12 @@
 {{ $is_list := .is_list }}
 {{ $page := .page }}
+{{- /* A page counts as updated when it was last modified on a later calendar day than
+     the one it was published on. Hugo has resolved both dates by now: a lastmod left
+     empty takes the date, and a post written with `date: ~` takes its date from
+     lastmod, so neither reads as an update. The comparison is by day rather than by
+     instant, as lastmod can carry a time of day, and a correction made on the day of
+     publication is no news to a reader. */}}
+{{- $updated := gt ($page.Lastmod.Format "2006-01-02") ($page.Date.Format "2006-01-02") }}
 
 {{ if not $page.Params.hide_metadata }}
 <div class="article-metadata">
@@ -34,7 +41,7 @@
     {{ if eq $page.Type "publication" }}
       {{ $date = $page.Date.Format (site.Params.publications.date_format | default "January, 2006") }}
     {{ else }}
-      {{ if ne $page.Params.Lastmod $page.Params.Date }}
+      {{ if $updated }}
           {{ i18n "last_updated" }}
       {{ end }}
     {{ end }}
@@ -46,19 +53,40 @@
     {{ if eq $page.Type "publication" }}
       {{ $date = $page.Date.Format (site.Params.publications.date_format | default "January, 2006") }}
     {{ else }}
-      {{ if ne $page.Params.Lastmod $page.Params.Date }}
+      {{ if $updated }}
           {{ i18n "last_updated" }}
       {{ end }}
     {{ end }}
     <span class="middot-divider"></span>
     {{ $date }}
   </span>
+  {{ else if and (eq $page.Type "post") (not $is_list) }}
+    {{/* A post's own page gives the day it was published, and the day it was last
+         updated when that came later. Lists and the other sections keep the year alone,
+         as date_format in params.toml sets it. Several early posts were dated 1 January
+         as a stand-in for a date known only to the year, so a post dated 1 January
+         keeps the year alone here too, rather than claim a day that was never
+         recorded. */}}
+    {{ with $page.Date }}{{ if not .IsZero }}
+    {{ $yearOnly := eq (.Format "01-02") "01-01" }}
+    <span class="article-date"{{ if $page.Params.authors }} style='font-size:105%;'{{ end }}>
+      {{- if $page.Params.authors }}({{ end -}}
+      <time datetime="{{ .Format (cond $yearOnly "2006" "2006-01-02") }}">{{ .Format (cond $yearOnly "2006" "2 January 2006") }}</time>
+      {{- if $page.Params.authors }}){{ end -}}
+    </span>
+    {{ end }}{{ end }}
+    {{ if $updated }}
+    <span class="middot-divider"></span>
+    <span class="article-updated">
+      Last updated <time datetime="{{ $page.Lastmod.Format "2006-01-02" }}">{{ $page.Lastmod.Format "2 January 2006" }}</time>
+    </span>
+    {{ end }}
   {{ else }}
     {{ $date := $page.Lastmod.Format site.Params.date_format }}
     {{ if eq $page.Type "publication" }}
       {{ $date = $page.Date.Format (site.Params.publications.date_format | default "January, 2006") }}
     {{ else }}
-      {{ if ne $page.Params.Lastmod $page.Params.Date }}
+      {{ if $updated }}
           {{ i18n "last_updated" }}
       {{ end }}
     {{ end }}
