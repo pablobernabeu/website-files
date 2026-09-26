@@ -1,0 +1,15 @@
+{{/* Function to return a page's content prepared for a full-content RSS item.
+
+     Feed readers, R-bloggers among them, never run scripts, so the <script> elements
+     that htmlwidgets and the clipboard helper leave in a post are dropped. They made up
+     most of each feed's weight: the greenhouse-gas post alone put 3.2 MB of widget
+     JSON into every feed that carries it. Links and images are made absolute, because
+     a reader resolves a relative URL against the feed or not at all. A root-relative
+     URL gets the site's base, and a bare one (an image in the post's own bundle) gets
+     the page's permalink. Values holding a colon are left alone, as they carry a
+     scheme (https:, mailto:, data:). */}}
+{{ $base := strings.TrimSuffix "/" site.BaseURL }}
+{{ $content := .Content | replaceRE `(?s)<script\b.*?</script>` "" }}
+{{ $content = $content | replaceRE `(src|href)="/([^/"][^"]*)"` (printf `${1}="%s/${2}"` $base) }}
+{{ $content = $content | replaceRE `(src|href)="([^"/#?:][^":]*)"` (printf `${1}="%s${2}"` .Permalink) }}
+{{ return $content }}

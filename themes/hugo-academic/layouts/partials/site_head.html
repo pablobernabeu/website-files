@@ -157,8 +157,11 @@
   {{ partial "marketing/google_analytics" . }}
   {{ partial "marketing/google_tag_manager" . }}
 
+  {{/* A list page advertises its own feed, and any other page the site-wide one. */}}
   {{ with .OutputFormats.Get "RSS" }}
   <link rel="alternate" href="{{.RelPermalink}}" type="application/rss+xml" title="{{site.Title}}">
+  {{ else }}
+  <link rel="alternate" href="{{ "index.xml" | relURL }}" type="application/rss+xml" title="{{site.Title}}">
   {{ end }}
 
   <link rel="manifest" href="{{ "index.webmanifest" | relLangURL }}">
@@ -166,6 +169,11 @@
   <link rel="apple-touch-icon" type="image/png" href="{{(partial "functions/get_icon" 192).RelPermalink}}">
 
   <link rel="canonical" href="{{ .Permalink }}">
+  {{/* The "s" tag only selects the posts listed on the blog page, so its term page
+       duplicates that list under a meaningless name. */}}
+  {{ if and (eq .Kind "taxonomy") (eq .Data.Term "s") }}
+  <meta name="robots" content="noindex">
+  {{ end }}
 
   {{ $featured_image := (.Resources.ByType "image").GetMatch "*featured*" }}
   {{ $has_logo := fileExists "assets/images/logo.png" | or (fileExists "assets/images/logo.svg") }}
@@ -195,7 +203,8 @@
   {{ end }}
   <meta property="og:site_name" content="{{ site.Title | markdownify | emojify }}">
   <meta property="og:url" content="{{ .Permalink }}">
-  <meta property="og:title" content="{{ if not .IsHome }}{{ .Params.name | default .Title | markdownify | emojify }} | {{ end }}{{ site.Title | markdownify | emojify }}">
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+  <meta property="og:title" content="{{ if not .IsHome }}{{ .Params.name | default .Title | markdownify | emojify | plainify | htmlUnescape }} | {{ end }}{{ site.Title | markdownify | emojify }}">
   <meta property="og:description" content="{{ $desc }}">
   {{- with $og_image -}}
   <meta property="og:image" content="{{.}}">
@@ -219,6 +228,7 @@
 
   {{ partial "custom_head" . }}
 
-  <title>{{ if not .IsHome }}{{ .Params.name | default .Title | markdownify | emojify }} | {{ end }}{{ site.Title | markdownify | emojify }}</title>
+  {{/* Plain text, because a title with inline code otherwise shows its <code> tags. */}}
+  <title>{{ if not .IsHome }}{{ .Params.name | default .Title | markdownify | emojify | plainify | htmlUnescape }} | {{ end }}{{ site.Title | markdownify | emojify }}</title>
 
 </head>

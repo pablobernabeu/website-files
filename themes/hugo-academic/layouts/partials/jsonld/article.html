@@ -1,14 +1,30 @@
 {{- $page := .page }}
-{{ $summary := .summary | markdownify | emojify }}
+{{ $summary := .summary | markdownify | emojify | plainify | htmlUnescape }}
 {{ $featured_image := ($page.Resources.ByType "image").GetMatch "*featured*" }}
 
 {{/* Get schema type. */}}
 {{ $schema := "Article" }}
 {{ if eq $page.Type "post" }}
   {{ $schema = "BlogPosting" }}
+{{ else if eq $page.Type "publication" }}
+  {{ $schema = cond (in $page.Params.publication_types "7") "Thesis" "ScholarlyArticle" }}
 {{ end }}
 
 {{ $author := partial "functions/get_author_name" $page }}
+
+{{/* A publication keeps its whole author list as one APA-formatted string, such as
+     "**Bernabeu, P.**, Lynott, D., & Connell, L.", so each "Surname, I. I." in it is
+     taken as one author. Should nothing match, the single author above stands. */}}
+{{ $authors := slice }}
+{{ if eq $page.Type "publication" }}
+  {{ with $page.Params.authors }}
+    {{ $authors = findRE `[\p{L}][\p{L}'’-]*(?: [\p{L}][\p{L}'’-]*)*, \p{Lu}\.(?:[- ]?\p{Lu}\.)*` (index . 0 | replaceRE `\*\*` "") }}
+  {{ end }}
+{{ end }}
+
+{{/* Posts dated only through lastmod have no publish date of their own. */}}
+{{ $published := $page.PublishDate }}
+{{ if $published.IsZero }}{{ $published = $page.Date }}{{ end }}
 {{ $publisher := site.Params.org_name | default site.Title | markdownify | emojify }}
 {{ $logo_url := partial "functions/get_logo_url" $page -}}
 
@@ -20,20 +36,38 @@
     "@type": "WebPage",
     "@id": {{$page.Permalink}}
   },
-  "headline": {{$page.Title}},
+  "headline": {{ $page.Title | markdownify | plainify | htmlUnescape }},
   {{ if $featured_image }}
   "image": [
     {{$featured_image.Permalink}}
   ],
   {{end}}
-  "datePublished": {{ $page.PublishDate.Format "2006-01-02T15:04:05Z07:00" }},
+  {{ if not $published.IsZero }}
+  "datePublished": {{ $published.Format "2006-01-02T15:04:05Z07:00" }},
+  {{ end }}
   "dateModified": {{ $page.Lastmod.Format "2006-01-02T15:04:05Z07:00" }},
-  {{with $author}}
+  {{ if $authors }}
+  "author": [
+    {{ range $i, $name := $authors }}{{ if $i }},{{ end }}
+    {
+      "@type": "Person",
+      "name": {{ $name }}
+    }{{ end }}
+  ],
+  {{ else }}{{ with $author }}
   "author": {
     "@type": "Person",
     "name": {{.}}
   },
-  {{end}}
+  {{ end }}{{ end }}
+  {{ with $page.Params.doi }}
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "DOI",
+    "value": {{ . }}
+  },
+  "sameAs": {{ printf "https://doi.org/%s" . }},
+  {{ end }}
   "publisher": {
     "@type": "Organization",
     "name": {{$publisher}},
