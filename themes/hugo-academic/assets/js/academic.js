@@ -795,6 +795,55 @@
     }
   }
 
+  // The overlay is opened and closed from three places (toggleSearchDialog above,
+  // lazy-search.js and its result links), and all of them agree only on the
+  // `searching` class on <body>. Watching that class keeps what follows true
+  // whichever of them acts. A closed overlay is hidden, because toggleSearchDialog
+  // leaves an inline `visibility: visible` that kept its controls in the tab order.
+  // Focus goes back to where it was before the overlay opened, and while it is open
+  // Tab and Shift+Tab cycle through its own controls.
+  function manageSearchOverlayFocus() {
+    const overlay = document.querySelector(".search-results");
+    if (!overlay || !window.MutationObserver) return;
+    let isOpen = document.body.classList.contains("searching");
+    let lastFocusOutside = null;
+
+    document.addEventListener("focusin", function (e) {
+      if (!overlay.contains(e.target)) lastFocusOutside = e.target;
+    });
+
+    new MutationObserver(function () {
+      const nowOpen = document.body.classList.contains("searching");
+      if (nowOpen === isOpen) return;
+      isOpen = nowOpen;
+      if (nowOpen) return;
+      overlay.style.visibility = "hidden";
+      const focusLost = !document.activeElement || document.activeElement === document.body ||
+        overlay.contains(document.activeElement);
+      if (focusLost && lastFocusOutside && document.contains(lastFocusOutside)) {
+        lastFocusOutside.focus();
+      }
+    }).observe(document.body, { attributes: true, attributeFilter: ["class"] });
+
+    overlay.addEventListener("keydown", function (e) {
+      if (e.key !== "Tab" || !isOpen) return;
+      const focusable = Array.prototype.filter.call(
+        overlay.querySelectorAll("a[href], button, input, [tabindex]:not([tabindex='-1'])"),
+        function (el) { return el.offsetWidth > 0 || el.offsetHeight > 0; }
+      );
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
+  }
+
   /* ---------------------------------------------------------------------------
    * Change Theme Mode (0: Day, 1: Night, 2: Auto).
    * --------------------------------------------------------------------------- */
@@ -1115,6 +1164,8 @@
       $(".theme-menu").removeClass("show");
       return false;
     });
+
+    manageSearchOverlayFocus();
 
     // Search trigger from menu
     $(document).on("click", ".js-search-trigger", function (e) {
@@ -1808,7 +1859,8 @@
       summary.textContent = "Collapse";
       summary.style.fontWeight = "normal";
       summary.style.fontSize = "90%";
-      summary.style.color = "darkgrey";
+      // Theme-dependent (custom.scss), as darkgrey reached only 2.35:1 on white.
+      summary.style.color = "var(--code-fold-collapse, #6b6b6b)";
     } else {
       summary.textContent = "Expand";
       summary.style.fontWeight = "bold";
@@ -1884,6 +1936,13 @@
       $(item.el)
         .toggleClass("is-collapsible", item.hasOverflow)
         .toggleClass("is-short", !item.hasOverflow);
+      // A summary that expands on click can be reached and expanded from the
+      // keyboard too (Enter or Space, below).
+      if (item.hasOverflow) {
+        $(item.el).attr({ tabindex: "0", role: "button", "aria-expanded": "false" });
+      } else {
+        $(item.el).removeAttr("tabindex role aria-expanded");
+      }
     });
   }
 
@@ -1911,9 +1970,11 @@
         return;
       }
 
-      // Mark as expanded
+      // Mark as expanded. The summary stops being a control, so a keyboard user's
+      // focus moves on to the link that follows it.
+      const hadFocus = this === document.activeElement;
       $mediaBody.addClass("is-expanded");
-      $abstract.removeClass("is-collapsible");
+      $abstract.removeClass("is-collapsible").removeAttr("tabindex role aria-expanded");
 
       // Add "View complete content" button after expansion
       const $title = $mediaBody.find(".article-title a");
@@ -1927,6 +1988,21 @@
         });
 
         $abstract.after($viewCompleteContentBtn);
+      }
+      if (hadFocus) {
+        const $next = $abstract.next(".view-complete-content-btn");
+        if ($next.length) $next[0].focus();
+      }
+    }
+  );
+
+  $(document).on(
+    "keydown",
+    "#publication .media-body .article-style.is-collapsible, #software .media-body .article-style.is-collapsible, #blog .media-body .article-style.is-collapsible",
+    function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        $(this).trigger("click");
       }
     }
   );

@@ -87,7 +87,9 @@
     {{ $resource := ($item.Resources.ByType "image").GetMatch "*featured*" }}
     {{ with $resource }}
     {{ $image := .Resize "150x" }}
-    <a href="{{$link}}" {{ $target | safeHTMLAttr }}>
+    {{/* The title above links to the same place, so this duplicate is kept out of the
+         tab order and the accessibility tree rather than announced as an empty link. */}}
+    <a href="{{$link}}" {{ $target | safeHTMLAttr }} tabindex="-1" aria-hidden="true">
       <img loading="lazy" decoding="async" src="{{ $image.RelPermalink }}" alt="">
     </a>
     {{end}}

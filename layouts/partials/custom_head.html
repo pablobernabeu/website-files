@@ -66,10 +66,22 @@
       document.documentElement.setAttribute("data-theme", "dark");
       document.documentElement.style.backgroundColor = "#0f172a";
       document.documentElement.style.color = "#e2e8f0";
-      // Critical: Add dark class to body to match academic.js expectations
-      document.addEventListener("DOMContentLoaded", function() {
+      // academic.js expects .dark on <body>, and until it is there the page paints in
+      // the light theme and then fades across (custom.scss animates the change), which
+      // showed as a white flash on every load. The class is added the moment <body>
+      // exists, before anything is painted. A script inside <body> could do the same,
+      // but custom.scss positions many rules by <body>'s children (see baseof.html).
+      function markBodyDark() {
+        if (!document.body) return false;
         document.body.classList.add("dark");
-      });
+        return true;
+      }
+      if (!markBodyDark() && window.MutationObserver) {
+        new MutationObserver(function (records, observer) {
+          if (markBodyDark()) observer.disconnect();
+        }).observe(document.documentElement, { childList: true });
+      }
+      document.addEventListener("DOMContentLoaded", markBodyDark);
     }
   })();
 </script>

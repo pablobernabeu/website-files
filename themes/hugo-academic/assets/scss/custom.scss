@@ -27,6 +27,19 @@ body:not(.dark) {
   color: rgba(0,0,0,0.8) !important;
 }
 
+// Inline greys on the light page fall short of 4.5:1: grey reaches 3.95:1 and
+// darkgrey, despite its name the paler of the two, 2.35:1. Both are darkened.
+body:not(.dark) {
+  [style*="color: grey" i], [style*="color: gray" i],
+  [style*="color:grey" i], [style*="color:gray" i] {
+    color: #707070 !important;
+  }
+  [style*="color: darkgrey" i], [style*="color: darkgray" i],
+  [style*="color:darkgrey" i], [style*="color:darkgray" i] {
+    color: #6b6b6b !important;
+  }
+}
+
 // Override text color for dark theme
 body.dark {
   color: rgba(255,255,255,0.8) !important;
@@ -892,16 +905,17 @@ body.dark .modal-footer .btn-outline-primary:not(:hover):not(:active) {
   background-image: none !important;
 }
 
-body.dark #top > div > div > div.media-body > h3 > a,
-body.dark #top > div.universal-wrapper.pt-3 > p > a,
+// `body.dark#top`, with no space, because #top is the <body> itself.
+body.dark#top > div > div > div.media-body > h3 > a,
+body.dark#top > div.universal-wrapper.pt-3 > p > a,
 body.dark #presentation_list > div.col-lg-10 > div > div.media-body > h3 > a {
   color: #63b3ed !important;
   background-color: transparent !important;
   background-image: none !important;
 }
 
-body.dark #top > div > div > div.media-body > h3 > a:hover,
-body.dark #top > div.universal-wrapper.pt-3 > p > a:hover,
+body.dark#top > div > div > div.media-body > h3 > a:hover,
+body.dark#top > div.universal-wrapper.pt-3 > p > a:hover,
 body.dark #presentation_list > div.col-lg-10 > div > div.media-body > h3 > a:hover {
   color: #90cdf4 !important;
   background-color: transparent !important;
@@ -1990,7 +2004,7 @@ body.dark {
   --color-white: white;
   --color-black: black;
   --text-warning: #4A4D10;
-  --related-references: #787878;
+  --related-references: #737373; // 4.74:1 on white; #787878 was 4.42:1
   --scrollbar-thumb: #57a292;
   --scrollbar-track: #edf5f4;
 }
@@ -2024,10 +2038,10 @@ body.dark {
   
   // Navigation colors for dark theme (INVERTED - uses light theme colors)
   --nav-text: #475569;
-  --nav-hover: #0f766e; // Dark teal underline. The dark-theme navbar bg is LIGHT (#e2e8f0), so the hover accent must be DARK; mint #A5D9C5 was only ~1.3:1 here.
-  --nav-active: #0f766e; // Teal, matches --nav-hover for a consistent active/hover set (4.44:1 on the LIGHT dark-theme navbar; was #0d9488 ≈ 3:1)
+  --nav-hover: #0e7169; // Dark teal underline. The dark-theme navbar bg is LIGHT (#e2e8f0), so the hover accent must be DARK; mint #A5D9C5 was only ~1.3:1 here.
+  --nav-active: #0e7169; // Teal, matches --nav-hover for a consistent active/hover set (4.75:1 on the LIGHT dark-theme navbar; #0f766e was 4.44:1 and #0d9488 ≈ 3:1)
   --nav-link: #79A990; // Muted teal (from light theme)
-  --nav-hover-text: #0f766e; // Dark teal hover text, 4.44:1 on the LIGHT dark-theme navbar (#e2e8f0). Mint #A5D9C5 was ~1.3:1 (near-invisible), the reported bug.
+  --nav-hover-text: #0e7169; // Dark teal hover text, 4.75:1 on the LIGHT dark-theme navbar (#e2e8f0). Mint #A5D9C5 was ~1.3:1 (near-invisible), the reported bug.
   
   // Background colors for dark theme (converted for dark mode)
   --bg-highlight: rgba(72, 187, 120, 0.2); // Green highlight with low opacity for dark
@@ -2100,11 +2114,13 @@ body.dark {
     &[style*="color: black"] {
       color: #f1f5f9 !important;
     }
-    &[style*="color: grey"], &[style*="color: gray"] {
+    // Markup often omits the space after the colon, and colour names are
+    // case-insensitive, so every spelling is matched.
+    &[style*="color: grey" i], &[style*="color: gray" i],
+    &[style*="color:grey" i], &[style*="color:gray" i],
+    &[style*="color: darkgrey" i], &[style*="color: darkgray" i],
+    &[style*="color:darkgrey" i], &[style*="color:darkgray" i] {
       color: #94a3b8 !important;
-    }
-    &[style*="color: darkgrey"], &[style*="color: darkgray"] {
-      color: #64748b !important;
     }
     
     // Override BACKGROUND colors for nesting elements.
@@ -2779,6 +2795,30 @@ p a:hover:not(.view-complete-content-btn), ul a:hover:not(.view-complete-content
 // active link
 h3 a:active, div a:active, p a:active, ul a:active, li a:active, .article-container a:active, td a:active, a.dsq-brlink:active {
   color: var(--text-active); 
+}
+
+// In the light theme a content link differed from the text around it only by colour
+// and a faint highlight, which WCAG 1.4.1 does not accept as a cue. It gets the
+// underline the dark theme already draws (the dark rule, being more specific, keeps
+// its own colour).
+.article-container p a:link,
+.article-container ul a:link,
+.article-container li a:link,
+.article-container div a:link:not(.btn):not(.badge),
+.article-container td a:link,
+.article-style a:link,
+.pub-abstract a:link,
+.hanging-indent a:link,
+.related-references a:link,
+section p a:link,
+section ul a:link,
+section li a:link,
+section div a:link:not(.btn):not(.badge),
+a.dsq-brlink {
+  text-decoration: underline;
+  text-decoration-color: #16a34a;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
 }
 
 // background colour for links (excluding view-complete-content buttons)
@@ -4812,6 +4852,7 @@ div > div > div > table > tbody > tr > td,
   &::before {
     display: var(--home-abstract-overlay, none);
     content: '▼▼▼▼▼▼▼';
+    content: '▼▼▼▼▼▼▼' / ''; // decoration: academic.js gives the summary aria-expanded
     position: absolute;
     bottom: 12px;
     left: 50%;
@@ -4831,8 +4872,10 @@ div > div > div > table > tbody > tr > td,
   
   // Hover effect for the entire abstract - show button and arrows. Only a marked
   // summary expands on click, so a pending one does not offer it on hover.
-  &.is-collapsible:hover::before {
+  &.is-collapsible:hover::before,
+  &.is-collapsible:focus-visible::before {
     content: '▼▼▼      Expand summary      ▼▼▼';
+    content: '▼▼▼      Expand summary      ▼▼▼' / '';
     opacity: 1;
     background-color: #444;
     color: #fff;
@@ -5127,7 +5170,7 @@ body.dark .document-viewer-toolbar {
   .home-section .article-metadata *,
   .home-section .article-metadata > div {
     margin-bottom: 0rem !important;
-    color: rgba(0,0,0,0.54) !important;
+    color: rgba(0,0,0,0.6) !important; // 0.54 fell to 4.49:1 on the tinted sections
   }
   
   body.dark .home-section .article-metadata,
@@ -5147,7 +5190,7 @@ body.dark .document-viewer-toolbar {
   .home-section .article-metadata *,
   .home-section .article-metadata > div {
     margin-bottom: 0.7rem !important;
-    color: rgba(0,0,0,0.54) !important;
+    color: rgba(0,0,0,0.6) !important; // 0.54 fell to 4.49:1 on the tinted sections
   }
   
   body.dark .home-section .article-metadata,
@@ -5615,19 +5658,19 @@ body.dark .article-tags a[data-count]::after,
 .article-tags a.ancillary-tag:link {
   font-weight: 400;
   font-size: 0.85rem;
-  opacity: 0.6;
+  opacity: 0.7; // 4.95:1 on the light page; 0.6 gave 3.69:1
 }
 
 #top > div.pub > div > div.article-tags > a.ancillary-tag:visited,
 #top > article > div > div.article-tags > a.ancillary-tag:visited,
 .article-tags a.ancillary-tag:visited {
   font-weight: 400;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 // Dark theme: ancillary tags inherit body.dark's text colour, which already carries its
 // own 0.8 alpha (e.g. rgba(255,255,255,0.8)). The 0.6 resting opacity above COMPOUNDS with
-// that (effective alpha 0.8*0.6 = 0.48), leaving only ~4.92:1 contrast against the dark
+// that (at 0.6 the effective alpha was 0.8*0.6 = 0.48), leaving only ~4.92:1 contrast against the dark
 // background - technically passes WCAG AA (4.5:1) but with almost no margin, and reads as
 // too dark/washed out at these small (0.85rem, 400-weight) sizes. 0.75 keeps ancillary tags
 // visibly de-emphasised relative to primary tags (opacity 1) while restoring a safe ~7:1.
@@ -5972,6 +6015,7 @@ div.lds-ring:after {
 #reference > p, #references > p, .hanging-indent {
   text-indent: -2em;
   margin-left: 2em;
+  overflow-wrap: anywhere; // a long DOI otherwise runs past a phone's edge
 }
 
 // Sibling rule for Hugo/Goldmark-rendered plain-Markdown reference sections
@@ -5979,6 +6023,7 @@ h2#references ~ p, h3#references ~ p, h4#references ~ p,
 h2#reference  ~ p, h3#reference  ~ p, h4#reference  ~ p {
   text-indent: -2em;
   margin-left: 2em;
+  overflow-wrap: anywhere;
 }
 
 // Newer Pandoc emits the bibliography as nested divs rather than paragraphs:
@@ -5997,6 +6042,7 @@ h2#reference  ~ p, h3#reference  ~ p, h4#reference  ~ p {
 .csl-bib-body .csl-entry {
   text-indent: -2em;
   margin-left: 2em;
+  overflow-wrap: anywhere;
   margin-bottom: 2%;
 }
 
@@ -6621,6 +6667,7 @@ body.dark .full-text-btn a:focus,
   // Faded by default, fully visible on hover
   &::before {
     content: '▼▼▼▼▼▼▼';
+    content: '▼▼▼▼▼▼▼' / '';
     position: absolute;
     bottom: 12px;
     left: 50%;
@@ -6641,6 +6688,7 @@ body.dark .full-text-btn a:focus,
   // Hover effect - show button
   &:hover::before {
     content: '▼▼▼      Expand summary      ▼▼▼';
+    content: '▼▼▼      Expand summary      ▼▼▼' / '';
     opacity: 1;
     background-color: #444;
     color: #fff;
@@ -6755,7 +6803,7 @@ body.dark .multimedia-entry.bg-alt .multimedia-summary::after {
 .dark .navbar-nav .nav-item .nav-link.active,
 body.dark .navbar-nav .nav-link.active,
 body.dark .navbar-nav .nav-item .nav-link.active {
-  color: #0f766e !important; // Match hover teal — dark-theme navbar is LIGHT (#e2e8f0)
+  color: #0e7169 !important; // Match hover teal — dark-theme navbar is LIGHT (#e2e8f0)
   font-weight: normal !important; // Remove bold in dark theme
 }
 
@@ -6911,7 +6959,7 @@ html body.dark .navbar .navbar-nav .nav-link.active,
 html body.dark nav .navbar-nav .nav-link.active,
 html:not(.light) body.dark .navbar-nav .nav-link.active,
 .dark html body .navbar-nav .nav-link.active {
-  color: #0f766e !important; // Match hover teal for a consistent active/hover set
+  color: #0e7169 !important; // Match hover teal for a consistent active/hover set
   font-weight: 600 !important;
   text-shadow: none !important; // was an aquamarine glow — blurred the text on the light dark-theme navbar
 }
@@ -7387,13 +7435,16 @@ details summary {
 }
 
 // The "Expand" link's teal, set inline by academic.js through this variable: #237A69
-// reaches 5.2:1 on the white page, and the lighter #379E8A 5.5:1 on the dark one.
+// reaches 5.2:1 on the white page, and the lighter #379E8A 5.5:1 on the dark one. The
+// quieter "Collapse" grey is set the same way, at 5.3:1 and 7.0:1.
 :root {
   --code-fold-expand: #237A69;
+  --code-fold-collapse: #6b6b6b;
 }
 
 body.dark {
   --code-fold-expand: #379E8A;
+  --code-fold-collapse: #94a3b8;
 }
 
 // Left-align only summary elements that contain code blocks (pre elements)
@@ -8268,7 +8319,7 @@ body.dark #navbar-main .dropdown-item:focus-visible {
   z-index: 2000;
   padding: 0.6rem 1rem;
   border-radius: 0 0 6px 6px;
-  background-color: #12263f;
+  background-color: #12263f !important; // `#navbar-main a:link` would otherwise clear it
   color: #ffffff !important;
   background-image: none !important;
   text-decoration: none !important;
