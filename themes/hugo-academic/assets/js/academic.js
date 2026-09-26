@@ -1858,6 +1858,8 @@
   // closed with `code_folding: hide` in its front matter, which layouts/post/single.html
   // exposes as data-code-folding="hide" on the post body.
 
+  const codeChunks = [];
+
   function styleCodeFoldSummary(summary, open) {
     if (open) {
       summary.textContent = "Collapse";
@@ -1897,6 +1899,7 @@
       d.appendChild(summary);
       pre.before(d);
       d.append(pre);
+      codeChunks.push(d);
 
       // Mark a knitr chunk and the output blocks printed after it, so that
       // custom.scss can tell them apart by border and label and hold each output
@@ -1913,6 +1916,45 @@
         }
       }
     });
+
+  // A post with two or more code chunks gets one button, just before the first of
+  // them, that opens or closes them all. Its label says what a press will do: "Show
+  // all code" while any chunk is closed, and "Hide all code" once none is. A chunk
+  // fires "toggle" however it opens or closes, whether from its own summary, from
+  // this button, from the print handler below or from a script in the post itself,
+  // so the label is worked out afresh on every toggle rather than tracked. A chunk
+  // here is a <details> made above that still holds its <pre>. layouts/post/single.html
+  // writes data-code-folding on every post body and on nothing else, which keeps the
+  // button to posts. The wrapper takes no height (custom.scss), so nothing moves.
+  document.querySelectorAll(".article-style[data-code-folding]").forEach((body) => {
+    const chunks = codeChunks.filter(
+      (d) => body.contains(d) && d.querySelector(":scope > pre")
+    );
+    if (chunks.length < 2) return;
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "code-fold-all";
+    const button = document.createElement("button");
+    button.type = "button";
+    wrapper.appendChild(button);
+
+    const anyClosed = () => chunks.some((d) => !d.open);
+    const label = () => {
+      button.textContent = anyClosed() ? "Show all code" : "Hide all code";
+    };
+
+    button.addEventListener("click", () => {
+      const open = anyClosed();
+      chunks.forEach((d) => {
+        d.open = open;
+      });
+      label();
+    });
+    chunks.forEach((d) => d.addEventListener("toggle", label));
+
+    label();
+    chunks[0].before(wrapper);
+  });
 
   // Printing. Folded code chunks print open, and the page prints in the light theme,
   // because the dark theme's pale text would be close to invisible on paper, where

@@ -20,8 +20,11 @@
 
     {{/* `code_folding: hide` in a post's front matter makes academic.js fold its code
          chunks closed on load, each behind an "Expand" link. Without the parameter they
-         start open, as on every other page. */}}
-    <div class="article-style"{{ if eq (lower (printf "%v" .Params.code_folding)) "hide" }} data-code-folding="hide"{{ end }}>
+         start open, as on every other page. The attribute is written on every post, as
+         "show" when chunks start open, because academic.js also reads its presence as
+         the mark of a post body, where two or more chunks earn a control that opens or
+         closes them all. */}}
+    <div class="article-style" data-code-folding="{{ if eq (lower (printf "%v" .Params.code_folding)) "hide" }}hide{{ else }}show{{ end }}">
       {{ .Content }}
     </div>
 

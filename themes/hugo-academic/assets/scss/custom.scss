@@ -7488,6 +7488,40 @@ body.dark {
   --code-fold-collapse: #94a3b8;
 }
 
+// The "Show all code" / "Hide all code" button that academic.js puts before the first
+// code chunk of a post with two or more. Its wrapper has no in-flow content once the
+// button is positioned, so it takes no height and the margins on either side collapse
+// through it: nothing on the page moves. The button is laid over the right-hand end of
+// the first chunk's summary line, which the short, left-aligned "Expand" or "Collapse"
+// leaves empty. At 12px text, 1.4 line height, padding and border, it is 21px tall,
+// against the 25px of a closed summary and the 27px between an open one and its code.
+// The grey is the "Collapse" link's, at 5.3:1 on the light theme and 7.0:1 on the
+// dark one, and the z-index keeps it clear of any positioned element after it.
+.article-style .code-fold-all {
+  position: relative;
+}
+
+.article-style .code-fold-all > button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  padding: 0.1em 0.6em;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--code-fold-collapse);
+  font-size: 0.8em;
+  line-height: 1.4;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.article-style .code-fold-all > button:focus-visible {
+  outline: 2px solid var(--code-fold-expand);
+  outline-offset: 2px;
+}
+
 // Left-align only summary elements that contain code blocks (pre elements)
 details:has(pre) summary {
   text-align: left !important;
@@ -8638,6 +8672,7 @@ html.is-printing *::after {
   #open-science-popup,
   #pub-type-popup,
   .article-style details > summary,
+  .article-style .code-fold-all,
   .xaringanextra-clipboard-button,
   .code-copy-button,
   .editable-r {
