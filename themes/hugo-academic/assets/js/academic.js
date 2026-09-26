@@ -1910,6 +1910,53 @@
       }
     });
 
+  // Printing. Folded code chunks print open, and the page prints in the light theme,
+  // because the dark theme's pale text would be close to invisible on paper, where
+  // browsers leave out backgrounds by default. renderThemeVariation(_, true) switches
+  // without the fade and without storing a choice, and the pre-paint script in
+  // custom_head.html also marks <html> as dark, so that is undone and put back too.
+  // Links fade their colour over 0.6s, and a print taken at the switch caught them
+  // still pale, so .is-printing suspends every transition until the page is back.
+  let restoreAfterPrint = null;
+
+  window.addEventListener("beforeprint", function () {
+    if (restoreAfterPrint) return;
+    const folded = Array.prototype.filter.call(
+      document.querySelectorAll(".article-style details:not([open])"),
+      function (d) { return d.querySelector(":scope > pre"); }
+    );
+    folded.forEach(function (d) { d.open = true; });
+
+    const root = document.documentElement;
+    root.classList.add("is-printing");
+    const wasDark = document.body.classList.contains("dark");
+    const rootTheme = root.getAttribute("data-theme");
+    const rootStyle = root.getAttribute("style");
+    if (wasDark) {
+      renderThemeVariation(0, true);
+      root.removeAttribute("data-theme");
+      root.removeAttribute("style");
+    }
+
+    restoreAfterPrint = function () {
+      folded.forEach(function (d) { d.open = false; });
+      if (wasDark) {
+        renderThemeVariation(1, true);
+        if (rootTheme !== null) root.setAttribute("data-theme", rootTheme);
+        if (rootStyle !== null) root.setAttribute("style", rootStyle);
+      }
+      requestAnimationFrame(function () {
+        root.classList.remove("is-printing");
+      });
+    };
+  });
+
+  window.addEventListener("afterprint", function () {
+    if (!restoreAfterPrint) return;
+    restoreAfterPrint();
+    restoreAfterPrint = null;
+  });
+
   // Only summaries that exceed the collapsed height need a fade or an expand
   // affordance. In particular, short software abstracts should remain wholly
   // visible instead of having the overlay drawn across their only line. Until a

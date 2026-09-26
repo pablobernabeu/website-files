@@ -64,7 +64,7 @@ projects: []
 theoryforge (Bernabeu, 2026a, 2026b) represents a scientific theory as a versioned, machine-checkable document. Constructs, propositions, predictions, alternatives and provenance are linked by identifiers, so the package can validate the specification, derive implications, compare amendments and export a reviewable dossier. The checks assess the completeness and internal coherence of a specification, which is a separate matter from whether the theory is true. Figure 1 sets out that workflow, from the theory file to the dossier.
 
 <figure>
-<img src="images/theoryforge-workflow.svg" alt="Workflow diagram: a structured theory file is validated, used to derive testable implications, compared with a rival theory and preserved as a versioned dossier" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
+<img src="images/theoryforge-workflow.svg" alt="Workflow diagram: a structured theory file is validated, used to derive testable implications, compared with a rival theory and preserved as a versioned dossier" width="1200" height="470" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;">
 <figcaption>The theoryforge Workflow, From Theory File to Dossier. The dashed return path carries an amended theory back through the same checks that the first version passed.</figcaption>
 </figure>
 

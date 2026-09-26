@@ -90,7 +90,7 @@
     {{/* The title above links to the same place, so this duplicate is kept out of the
          tab order and the accessibility tree rather than announced as an empty link. */}}
     <a href="{{$link}}" {{ $target | safeHTMLAttr }} tabindex="-1" aria-hidden="true">
-      <img loading="lazy" decoding="async" src="{{ $image.RelPermalink }}" alt="">
+      <img loading="lazy" decoding="async" src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="">
     </a>
     {{end}}
   </div>

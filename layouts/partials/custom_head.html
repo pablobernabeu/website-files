@@ -325,6 +325,9 @@
         a.setAttribute('href', '#search');
         a.setAttribute('role', 'button');
         a.setAttribute('aria-label', 'Search');
+        // academic.js opens search on "/" as well; say so to the pointer and to AT.
+        a.setAttribute('aria-keyshortcuts', '/');
+        a.setAttribute('title', 'Search (press /)');
       }
     }
   }

@@ -59,6 +59,11 @@ document.addEventListener('DOMContentLoaded', function() {
 <script src="{{ "js/apa-captions.js" | relURL }}" defer></script>
 {{ end }}
 
+<!-- Copy buttons for code blocks on pages that do not load xaringanExtra's. -->
+{{ if .IsPage }}
+<script src="{{ "js/code-copy.js" | relURL }}" defer></script>
+{{ end }}
+
 <!-- Editable R chunks. Deferred, so it runs after the theme bundle has moved
      every classed <pre> inside its generated <details>. -->
 {{ if .Params.editable_r }}

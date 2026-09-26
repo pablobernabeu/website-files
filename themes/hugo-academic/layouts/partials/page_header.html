@@ -54,7 +54,9 @@ $image = $featured.Resize "720x" }} {{ end }} {{end}}
   style="max-width: {{$image.Width}}px; max-height: {{$image.Height}}px;"
 >
   <div style="position: relative">
-    <img src="{{ $image.RelPermalink }}" alt="" class="featured-image" />
+    {{/* The dimensions reserve the image's space before it loads, so the text below
+         does not jump down when it arrives. */}}
+    <img src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="" class="featured-image" />
     {{ with $.Params.image.caption }}<span class="article-header-caption"
       >{{ . | markdownify | emojify }}</span
     >

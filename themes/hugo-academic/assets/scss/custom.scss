@@ -8438,7 +8438,24 @@ body.dark .article-style pre {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
 }
 
-.article-style pre .xaringanextra-clipboard-button {
+// Copy buttons: xaringanExtra's on the posts that load it, and static/js/code-copy.js's
+// on every other page. xaringanExtra hides its button with display: none until the
+// block is hovered, which also put it out of reach of the keyboard, so both are kept
+// rendered and only faded out until the block is hovered or the button focused. The
+// first block of declarations repeats xaringanExtra's own stylesheet, which the pages
+// with code-copy.js do not load.
+.article-style pre .xaringanextra-clipboard-button,
+.article-style pre .code-copy-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 0.8em;
+  line-height: 1.2;
+  cursor: pointer;
+
+  display: block !important;
+  opacity: 0;
+  transition: opacity 0.15s ease;
   z-index: 1;
   padding: 0.35rem 0.55rem !important;
   border: 1px solid currentColor !important;
@@ -8447,7 +8464,17 @@ body.dark .article-style pre {
   color: inherit !important;
 }
 
-body.dark .article-style pre .xaringanextra-clipboard-button {
+.article-style pre:hover > .xaringanextra-clipboard-button,
+.article-style pre:hover > .code-copy-button,
+.article-style pre .xaringanextra-clipboard-button:focus-visible,
+.article-style pre .code-copy-button:focus-visible,
+.article-style pre .xaringanextra-clipboard-button[style*="display: block"],
+.article-style pre .code-copy-button.is-copied {
+  opacity: 1;
+}
+
+body.dark .article-style pre .xaringanextra-clipboard-button,
+body.dark .article-style pre .code-copy-button {
   background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
@@ -8457,10 +8484,11 @@ body.dark .article-style pre .xaringanextra-clipboard-button {
 // neutral grey. The border colours need !important to answer the dark theme's
 // `code, pre` rule. Against their block, the labels reach 4.9:1 (input) and 5.1:1
 // (output) on the light theme, and 6.5:1 and 5.7:1 on the dark one. A label is
-// generated content, so the copy button leaves it out of what it copies. On a post
-// that has that button, the label gives way to it in the corner they share: on hover,
-// and for the 2.5 seconds after a copy during which the clipboard script holds the
-// button on screen with an inline `display: block`.
+// generated content, so the copy button leaves it out of what it copies. The label
+// gives way to that button in the corner they share whenever the button shows: on
+// hover, while it has focus, and for the 2.5 seconds after a copy during which it
+// holds "Copied!" (an inline `display: block` from xaringanExtra, a class from
+// code-copy.js).
 :root {
   --chunk-input-border: #6fa99d;
   --chunk-input-label: #237A69;
@@ -8506,8 +8534,9 @@ body.dark {
   color: var(--chunk-output-label);
 }
 
-.article-style pre[data-chunk]:hover:has(> .xaringanextra-clipboard-button)::before,
-.article-style pre[data-chunk]:has(> .xaringanextra-clipboard-button[style*="display: block"])::before {
+.article-style pre[data-chunk]:hover:has(> .xaringanextra-clipboard-button, > .code-copy-button)::before,
+.article-style pre[data-chunk]:focus-within::before,
+.article-style pre[data-chunk]:has(> .xaringanextra-clipboard-button[style*="display: block"], > .code-copy-button.is-copied)::before {
   visibility: hidden;
 }
 
@@ -8541,4 +8570,39 @@ body.dark {
 .article-style .table-responsive > table,
 .article-style pre table {
   margin: 0;
+}
+
+// Printing. academic.js opens folded code and switches to the light theme for the
+// print, since the dark theme's pale text would be close to invisible on paper, where
+// browsers leave out backgrounds by default. What only works on screen is left out.
+html.is-printing *,
+html.is-printing *::before,
+html.is-printing *::after {
+  transition: none !important;
+}
+
+@media print {
+  html,
+  body {
+    transition: none !important;
+  }
+
+  .search-results,
+  #navbar-main,
+  .skip-link,
+  .site-footer,
+  #comments,
+  #modal,
+  #open-science-popup,
+  #pub-type-popup,
+  .article-style details > summary,
+  .xaringanextra-clipboard-button,
+  .code-copy-button,
+  .editable-r {
+    display: none !important;
+  }
+
+  .article-style pre {
+    box-shadow: none;
+  }
 }
