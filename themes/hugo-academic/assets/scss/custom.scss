@@ -5092,6 +5092,22 @@ body.dark .document-viewer-toolbar {
   margin-bottom: -0.3rem !important;
 }
 
+// A post's page gives its dates in full (page_metadata.html). Each is kept whole, and
+// "Last updated" with its date, so a phone wraps the row between them rather than
+// leaving a day and month at the end of one line and the year on the next.
+.article-metadata time,
+.article-metadata .article-updated {
+  white-space: nowrap;
+}
+
+// The link to a post's R Markdown source, after the post body (layouts/post/single.html).
+// Set small, and further from the text above than from what follows, so that it reads
+// as a note at the foot of the post rather than as the last line of its text.
+.rmd-source {
+  margin-top: 1.5rem;
+  font-size: 0.85em;
+}
+
 // Reduce margin under article-metadata in web applications section
 #software .article-metadata > div {
   margin-bottom: -0.3rem !important;
@@ -7458,6 +7474,56 @@ body.dark {
   --code-fold-collapse: #94a3b8;
 }
 
+// The "Show all code" / "Hide all code" button that academic.js puts before the first
+// code chunk of a post with two or more. Its wrapper has no in-flow content once the
+// button is positioned, so it takes no height and the margins on either side collapse
+// through it: nothing on the page moves. The button is laid over the right-hand end of
+// the first chunk's summary line, which the short, left-aligned "Expand" or "Collapse"
+// leaves empty. Lying on another target, it cannot count on spacing to meet the 24px
+// minimum target size of WCAG 2.2 (2.5.8), so it meets it by its own height: at the
+// default 12px text, with 1.4 line height, padding and border, it is 25px tall,
+// within the 25.5px of a closed summary and the 27px between an open one and its
+// code. The padding is in em rather than the height in px, so that the button
+// shrinks with the text when a reader picks a smaller size, and still clears the
+// code. The grey is the "Collapse" link's, at 5.3:1 on the light theme and 7.0:1 on
+// the dark one, and the z-index keeps it clear of any positioned element after it.
+.article-style .code-fold-all {
+  position: relative;
+}
+
+.article-style .code-fold-all > button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  padding: 0.25em 0.6em;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--code-fold-collapse);
+  font-size: 0.8em;
+  line-height: 1.4;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.article-style .code-fold-all > button:focus-visible {
+  outline: 2px solid var(--code-fold-expand);
+  outline-offset: 2px;
+}
+
+// Where the first chunk sits in a box that scrolls on its own, academic.js puts the
+// button before the box instead, and there it takes a line of its own, at the right
+// as elsewhere, a little clear of the box's border.
+.article-style .code-fold-all.is-own-line {
+  margin-bottom: 0.5rem;
+  text-align: right;
+}
+
+.article-style .code-fold-all.is-own-line > button {
+  position: static;
+}
+
 // Left-align only summary elements that contain code blocks (pre elements)
 details:has(pre) summary {
   text-align: left !important;
@@ -8758,6 +8824,7 @@ html.is-printing *::after {
   #open-science-popup,
   #pub-type-popup,
   .article-style details > summary,
+  .article-style .code-fold-all,
   .xaringanextra-clipboard-button,
   .code-copy-button,
   .editable-r,
