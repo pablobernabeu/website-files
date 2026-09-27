@@ -35,8 +35,10 @@ jobs:
           # local file as an error unless it has a root directory to resolve it
           # against, so these links are resolved against a root that does not
           # exist and excluded there; lychee warns that the root is missing.
-          # The job below checks them against the built site.
+          # The job below checks them against the built site. lychee reads
+          # only lychee.toml by itself, so the configuration is named.
           args: >-
+            --config .lychee.toml
             --cache
             --max-cache-age 7d
             --max-retries 3
@@ -56,7 +58,20 @@ jobs:
           path: lychee/out.md
           retention-days: 30
 
-      - name: Create issue if broken links found
+      # A dead link usually stays dead for weeks, so a run updates the issue that
+      # is still open rather than opening another one each Monday.
+      - name: Find the open broken-links issue
+        id: open-issue
+        if: steps.lychee.outputs.exit_code != 0
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          number="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --label automated \
+            --search 'in:title "Broken links detected"' --json number,title \
+            --jq '[.[] | select(.title == "Broken links detected")][0].number // empty')"
+          echo "number=$number" >> "$GITHUB_OUTPUT"
+
+      - name: Create or update the broken-links issue
         # lychee-action v2 passes lychee's exit code on as a step output; it no
         # longer sets an environment variable.
         if: steps.lychee.outputs.exit_code != 0
@@ -64,6 +79,7 @@ jobs:
         with:
           title: "Broken links detected"
           content-filepath: lychee/out.md
+          issue-number: ${{ steps.open-issue.outputs.number }}
           labels: maintenance, automated
 
   # The job above reads the Markdown sources, where it leaves root-relative
@@ -153,6 +169,11 @@ jobs:
           # that the theme does not include. Fragments in links into the
           # dashboards are skipped (see the step above).
           #
+          # A protocol-relative URL (//host/path, common in pasted embed codes)
+          # comes out as a file URL with a host, file://host/path, which an
+          # offline check cannot test; a real local file URL has no host, so
+          # those are skipped.
+          #
           # lychee does not follow a meta refresh, so a redirect page is checked
           # only through the links it also carries, such as the rel="canonical"
           # link of each alias page that Hugo writes.
@@ -167,6 +188,7 @@ jobs:
             --preprocess .github/scripts/blank_inline_scripts.py
             --exclude-path '/(vendor|libs|rmarkdown-libs)/'
             --exclude '${{ steps.site-urls.outputs.dashboard-fragments }}'
+            --exclude '^file://[^/]'
             'public/**/*.html'
           output: lychee/built-site.md
           fail: false
@@ -179,10 +201,22 @@ jobs:
           path: lychee/built-site.md
           retention-days: 30
 
-      - name: Create issue if broken links found
+      - name: Find the open internal-links issue
+        id: open-issue
+        if: steps.lychee.outputs.exit_code != 0
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          number="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --label automated \
+            --search 'in:title "Broken internal links detected"' --json number,title \
+            --jq '[.[] | select(.title == "Broken internal links detected")][0].number // empty')"
+          echo "number=$number" >> "$GITHUB_OUTPUT"
+
+      - name: Create or update the internal-links issue
         if: steps.lychee.outputs.exit_code != 0
         uses: peter-evans/create-issue-from-file@fca9117c27cdc29c6c4db3b86c48e4115a786710 # v6.0.0
         with:
           title: "Broken internal links detected"
           content-filepath: lychee/built-site.md
+          issue-number: ${{ steps.open-issue.outputs.number }}
           labels: maintenance, automated

@@ -11,17 +11,20 @@ exclude = [
   "example\\.com",
   # Shiny apps may be sleeping (503 on first hit)
   "shinyapps\\.io",
-  # Twitter/X rate-limits aggressively
+  # Twitter/X rate-limits aggressively. Anchored, as a bare "x\\.com" also
+  # matched any host ending in x.com, such as ivoox.com and mapbox.com.
   "twitter\\.com",
-  "x\\.com",
+  "^https?://(www\\.)?x\\.com",
   # Mail links
   "^mailto:",
   # Apple podcast embeds (require auth)
   "embed\\.podcasts\\.apple\\.com"
 ]
 
-# Accept these status codes as valid (some DOI resolvers return 403 to bots)
-accept = [200, 301, 302, 403, 429]
+# Accept these status codes as valid (some DOI resolvers return 403 to bots).
+# Listing codes replaces lychee's default of any 2xx, so the range is kept.
+# Redirects are followed, so 301 and 302 never reach this check.
+accept = ["200..=299", 403, 429]
 
 # Include only these file types
 include_mail = false
