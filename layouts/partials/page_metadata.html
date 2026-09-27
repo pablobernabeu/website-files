@@ -79,8 +79,9 @@
     </span>
     {{ end }}{{ end }}
     {{ if $updated }}
-    <span class="middot-divider"></span>
-    <span class="article-updated">
+    {{/* The divider sits inside the unbreakable span, so a narrow screen that moves
+         "Last updated" to its own line does not leave a lone divider behind. */}}
+    <span class="article-updated"><span class="middot-divider"></span>
       Last updated <time datetime="{{ $page.Lastmod.Format "2006-01-02" }}">{{ $page.Lastmod.Format "2 January 2006" }}</time>
     </span>
     {{ end }}
@@ -132,11 +133,14 @@
   {{ $taxonomy := "categories" }}
   {{ with $page.Param $taxonomy }}
   <span class="middot-divider"></span>
+  {{/* The folder icon and the first category are kept on one line, as a narrow
+       screen could otherwise break between them and strand the icon. */}}
   <span class="article-categories">
-    <i class="fas fa-folder mr-1"></i>
     {{- range $index, $value := . -}}
       {{- if gt $index 0 }}, {{ end -}}
+      {{- if eq $index 0 }}<span class="article-categories-first"><i class="fas fa-folder mr-1"></i>{{ end -}}
       <a href="{{ (site.GetPage (printf "/%s/%s" $taxonomy (. | urlize))).RelPermalink }}">{{ . }}</a>
+      {{- if eq $index 0 }}</span>{{ end -}}
     {{- end -}}
   </span>
   {{ end }}

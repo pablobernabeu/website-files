@@ -12,10 +12,14 @@
      srcset is dropped, together with the sizes that go with it: its candidates
      are relative URLs in a comma-separated list, which these patterns cannot
      reach, and a reader that preferred them to src would resolve them against
-     the feed. The reader is left with src, made absolute below. */}}
+     the feed. The reader is left with src, made absolute below. An image's height
+     goes too: a feed carries none of the site's CSS, so a reader that only caps an
+     image's width would keep its height and stretch it, while width alone keeps the
+     proportions. Other elements keep theirs. */}}
 {{ $base := strings.TrimSuffix "/" site.BaseURL }}
 {{ $content := .Content | replaceRE `(?s)<script\b.*?</script>` "" }}
 {{ $content = $content | replaceRE `\s(srcset|sizes)=("[^"]*"|'[^']*')` "" }}
+{{ $content = $content | replaceRE `(<img\b[^>]*?)\sheight=("[^"]*"|'[^']*')` "${1}" }}
 {{ $content = $content | replaceRE `(src|href)="/([^/"][^"]*)"` (printf `${1}="%s/${2}"` $base) }}
 {{ $content = $content | replaceRE `(src|href)="([^"/#?:][^":]*)"` (printf `${1}="%s${2}"` .Permalink) }}
 {{ $content = $content | replaceRE `(src|href)='/([^/'][^']*)'` (printf `${1}='%s/${2}'` $base) }}

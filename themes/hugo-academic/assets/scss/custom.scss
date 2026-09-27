@@ -384,6 +384,16 @@ body.dark#top div.universal-wrapper a {
   }
 }
 
+// The citation buttons on the software list are <button>s, which the rule above
+// (written for links) does not reach, so in the dark theme they kept Bootstrap's
+// blue outline on the page (3.6:1). They take the look of the link buttons
+// beside them, white on #374151 (10.3:1).
+body.dark#top div.universal-wrapper .btn.js-cite-modal:not(:hover):not(:active) {
+  color: #fff !important;
+  background-color: #374151 !important;
+  border-color: #4b5563 !important;
+}
+
 // Increase bottom margin for blog section heading paragraph
 #blog > div > div > div.col-12.section-heading > p {
   margin-bottom: 1rem !important;
@@ -3522,10 +3532,18 @@ section.home-section:first-of-type {
   margin-right: 0.5rem !important;
 }
 
+// The image shows at its natural size within the column and at most 400px tall.
+// With both dimensions auto the browser reserves nothing until the file arrives,
+// and the text below jumped down by the image's height. The width is therefore
+// worked out ahead, as the smallest of the column, the natural width (--w) and
+// the width that a 400px height implies (from the proportions in --ar), both of
+// which the page header puts on the image; the height then follows from the width
+// and height attributes. Without them the width falls back to auto, as before.
 .pub .featured-image-wrapper img {
   max-width: 100% !important;
   max-height: 400px !important;
   width: auto !important;
+  width: #{"min(100%, var(--w), calc(400px * var(--ar)))"} !important;
   height: auto !important;
   object-fit: contain !important;
   display: block !important;
@@ -4407,7 +4425,9 @@ body.dark .nav-link:hover:not(.active) span {
   color: var(--text-secondary);
 }
 
-#top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories > a, #profile > div > div > ul > div > a:link, #top > article > div.article-container.pt-3 > div.article-metadata > span.article-categories > a:link, code {
+#top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories > a, #profile > div > div > ul > div > a:link, #top > article > div.article-container.pt-3 > div.article-metadata > span.article-categories > a:link, code,
+#top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories > .article-categories-first > a,
+#top > article > div.article-container.pt-3 > div.article-metadata > span.article-categories > .article-categories-first > a:link {
   background-color: transparent;
 }
 
@@ -4454,7 +4474,8 @@ body.dark h3 a:hover, body.dark div a:hover {
   white-space: normal;
 }
 
-.article-categories a {
+.article-categories a,
+.article-categories-first {
   white-space: nowrap;
 }
 
@@ -5882,7 +5903,8 @@ body.dark .article-tags a.ancillary-tag:visited {
 }
 
 // Folder icon for categories
-span.article-categories > i {
+span.article-categories > i,
+span.article-categories > .article-categories-first > i {
   color: var(--border-color);
   background-color: transparent;
   background-image: none;
@@ -8829,7 +8851,8 @@ html.is-printing *::after {
   .code-copy-button,
   .editable-r,
   .article-toc,
-  .heading-anchor {
+  .heading-anchor,
+  .rmd-source {
     display: none !important;
   }
 

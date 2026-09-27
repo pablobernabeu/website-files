@@ -11,7 +11,7 @@ authors:
 date: '2026-06-07'
 apa_captions: true
 slug: lexsync
-publication: 'Versions 0.1.0 (CRAN) and 0.1.1 (PyPI) [Computer software]'
+publication: 'Version 0.1.0 on CRAN and Version 0.1.1 on PyPI [Computer software]'
 doi: 10.32614/CRAN.package.lexsync
 citations:
   - label: 'Citation (CRAN)'
