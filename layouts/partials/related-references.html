@@ -16,18 +16,24 @@
        The pattern is the one prune_reference_abstracts.py uses to find the
        block. It stops at the first closing tag, as the browser did when the
        block was inline, so the published file holds the text the page used to
-       parse. A bundle file without a block is inlined unchanged. */ -}}
+       parse. A bundle file without a block is inlined unchanged.
+
+       Only finding the block takes a pattern over the whole file. Its opening
+       tag is then matched at the start of the block alone, and the rest is
+       plain string work: each further pattern pass over several megabytes of
+       JSON added seconds to every build. */ -}}
 {{- $page := . -}}
 {{- with .Resources.GetMatch "related-references.html" -}}
   {{- $html := string .Content -}}
-  {{- $block := `(?s)<script[^>]*class="ref-metadata"[^>]*>.*?</script>` -}}
-  {{- with findRE $block $html 1 -}}
-    {{- $json := replaceRE `(?s)^<script[^>]*>(.*)</script>$` "$1" (index . 0) -}}
+  {{- with findRE `(?s)<script[^>]*class="ref-metadata"[^>]*>.*?</script>` $html 1 -}}
+    {{- $block := index . 0 -}}
+    {{- $open := index (findRE `^<script[^>]*>` $block 1) 0 -}}
+    {{- $json := strings.TrimSuffix "</script>" (strings.TrimPrefix $open $block) -}}
     {{- $json = trim $json " \t\r\n" -}}
     {{- $path := printf "%srelated-references.json" (strings.TrimPrefix "/" $page.RelPermalink) -}}
     {{- $file := resources.FromString $path $json -}}
     {{- $placeholder := printf `<script type="application/json" class="ref-metadata" data-src="%s"></script>` $file.RelPermalink -}}
-    {{- $html = replaceRE $block $placeholder $html -}}
+    {{- $html = replace $html $block $placeholder -}}
   {{- end -}}
   {{- $html | safeHTML -}}
 {{- end -}}
