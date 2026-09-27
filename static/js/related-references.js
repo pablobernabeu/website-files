@@ -423,6 +423,41 @@
     if (!arrived) status = showMetadataStatus(section);
   }
 
+  /**
+   * Whether the reader reached el, which has focus, from the keyboard. The
+   * browser has already answered that in deciding whether to draw el's focus
+   * ring. An engine without :focus-visible is taken to mean yes: a reader who
+   * cannot see where focus went pays more for a wrong guess than one who
+   * clicked.
+   */
+  function hasKeyboardFocus(el) {
+    try {
+      return el.matches(':focus-visible');
+    } catch (e) {
+      return true;
+    }
+  }
+
+  /**
+   * Give focus to a section's search field, where a reader coming to the
+   * section from above begins, and show the reader where it went. A section
+   * of one reference has no search row, and the section itself takes focus
+   * instead. "nearest" leaves the page alone while the target is in view, and
+   * the scroll-padding on html clears the fixed navbar.
+   *
+   * @param {Element} toolbar
+   * @param {Element} section
+   */
+  function focusSearchField(toolbar, section) {
+    var target = toolbar.querySelector('.ref-search');
+    if (!target || !target.getClientRects().length) {
+      section.setAttribute('tabindex', '-1');
+      target = section;
+    }
+    target.focus({ preventScroll: true });
+    target.scrollIntoView({ block: 'nearest' });
+  }
+
   function buildSection(section, metadata) {
     sectionsBuilt++;
 
@@ -432,6 +467,17 @@
 
     var hangingIndent = section.querySelector('.hanging-indent');
     if (!hangingIndent) return;
+
+    // A keyboard reader can reach the list before its metadata file arrives,
+    // and so before this runs. Below, the list is taken out of the document,
+    // which drops their focus to <body>, and it is then cut to a page and
+    // re-sorted, so the place they had in it is gone. Once the section is
+    // built, focus goes to its search field instead, which is where Tab would
+    // have taken them had the section been ready when they reached it. Focus
+    // that a click left on a link is let fall as before, since moving it into
+    // a text field could raise a phone's keyboard.
+    var activeBefore = document.activeElement;
+    var focusWasInList = hangingIndent.contains(activeBefore) && hasKeyboardFocus(activeBefore);
 
     // Hide self-citations: remove references whose DOI matches the page's own DOI
     var pageDoi = getPageDoi();
@@ -763,6 +809,8 @@
         ctrl.applyFilters();
       }
     } catch (e) { console.warn('[related-refs] restore error:', e); }
+
+    if (focusWasInList) focusSearchField(toolbar, section);
 
     // Background-fetch metadata for DOIs missing embedded data (types +
     // abstracts), then re-score once the batch is settled so the ranking rests
