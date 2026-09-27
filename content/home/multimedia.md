@@ -509,7 +509,7 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
-### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Demonstration of procedure for bundled PSA Studies [002](/publication/chen-etal-inprep) and [003](/publication/multi-region-investigation-of-man-as-default-in-attitudes)
+### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Demonstration of procedure for bundled PSA Studies [002](/publication/investigating-object-orientation-effects-across-18-languages) and [003](/publication/multi-region-investigation-of-man-as-default-in-attitudes)
 
 <iframe title="Document: Demonstration of procedure for bundled PSA Studies 002 and 003" loading="lazy" src="https://mfr.de-1.osf.io/render?url=https://osf.io/download/h36wr/?direct%26mode=render"
     style="margin-top:10px"

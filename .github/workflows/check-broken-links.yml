@@ -27,14 +27,23 @@ jobs:
           restore-keys: cache-lychee-
 
       - name: Check links
+        id: lychee
         uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2
         with:
+          # A root-relative link (/publication/..., /#bio) points into the built
+          # site rather than at a source file. lychee reports each one in a
+          # local file as an error unless it has a root directory to resolve it
+          # against, so these links are resolved against a root that does not
+          # exist and excluded there; lychee warns that the root is missing.
+          # The job below checks them against the built site.
           args: >-
             --cache
             --max-cache-age 7d
             --max-retries 3
             --timeout 30
             --no-progress
+            --root-dir /site-root
+            --exclude '^file:///site-root([/?#]|$)'
             "content/**/*.md"
             "content/**/*.Rmd"
           fail: false
@@ -48,9 +57,132 @@ jobs:
           retention-days: 30
 
       - name: Create issue if broken links found
-        if: env.lychee_exit_code != 0
+        # lychee-action v2 passes lychee's exit code on as a step output; it no
+        # longer sets an environment variable.
+        if: steps.lychee.outputs.exit_code != 0
         uses: peter-evans/create-issue-from-file@fca9117c27cdc29c6c4db3b86c48e4115a786710 # v6.0.0
         with:
           title: "Broken links detected"
           content-filepath: lychee/out.md
+          labels: maintenance, automated
+
+  # The job above reads the Markdown sources, where it leaves root-relative
+  # links unchecked, and never sees the links that the templates write:
+  # navigation, listings, taxonomy pages, stylesheets, scripts and images. This
+  # job builds the site as deploy.yml does and checks, offline, every link that
+  # stays within it.
+  check-built-site:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Hugo
+        run: |
+          wget -q https://github.com/gohugoio/hugo/releases/download/v0.62.0/hugo_extended_0.62.0_Linux-64bit.tar.gz
+          tar -xzf hugo_extended_0.62.0_Linux-64bit.tar.gz
+          sudo mv hugo /usr/local/bin/
+          hugo version
+
+      # Built as the deploy builds it, from the committed HTML of each R
+      # Markdown post. The deploy first re-knits any post whose source is newer
+      # than its HTML; that needs R and is left to the deploy.
+      - name: Build site
+        run: hugo --minify
+
+      - name: Match the site's own URLs
+        id: site-urls
+        run: |
+          # Other repositories publish their GitHub Pages sites on this domain,
+          # each at /<repository>/, so a URL on it belongs to this build only if
+          # its first path segment is a name at the top of ./public or a year,
+          # with which the address of every post begins. A name is matched
+          # regardless of case, because GitHub Pages matches paths
+          # case-sensitively: /Post/ is a broken link to this site rather than
+          # a link to another. The first pattern matches those URLs, and the
+          # bare domain, for lychee to remap onto the build. Offline, lychee
+          # skips every other URL, as it skips links to other sites; those
+          # written in the content are tested over the network by the source
+          # check.
+          names="$(find public -mindepth 1 -maxdepth 1 -printf '%f\n' | LC_ALL=C sort)"
+          # Names with other characters are left out: a URL may percent-encode
+          # them, and the pattern reaches lychee inside single quotes.
+          safe='^[A-Za-z0-9._-]+$'
+          while IFS= read -r name; do
+            echo "::warning::Links to /${name} are not checked: the name has characters that the URL pattern does not cover."
+          done < <(grep -vE "$safe" <<< "$names" || true)
+          alternation="$(grep -E "$safe" <<< "$names" | sed 's/\./\\./g' | paste -sd '|' -)"
+          echo "pattern=^https?://pablobernabeu\\.github\\.io/((?i:${alternation}|[0-9]{4})(?:[/?#].*)?|[?#].*)?\$" >> "$GITHUB_OUTPUT"
+
+          # flexdashboard renames its page anchors in the browser (the page with
+          # id "cf.-lc-english-norms" is reached at #cf-lc-english-norms), so a
+          # fragment in a link into a dashboard cannot be checked against the
+          # file. The second pattern matches those links for lychee to skip. It
+          # names the dashboards in the build, so that a link to a dashboard
+          # that does not exist is still reported; with no dashboards it is ^$,
+          # which matches no URL.
+          dashboards="$(find public -mindepth 3 -maxdepth 3 -path 'public/dashboards/*/index.html' -printf '%h\n' \
+            | sed 's#^public/dashboards/##' | { grep -E "$safe" || true; } \
+            | LC_ALL=C sort | sed 's/\./\\./g' | paste -sd '|' -)"
+          if [ -n "$dashboards" ]; then
+            echo "dashboard-fragments=^file://.*/public/dashboards/(?:${dashboards})(?:/(?:index\\.html)?)?#" >> "$GITHUB_OUTPUT"
+          else
+            echo 'dashboard-fragments=^$' >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check links in the built site
+        id: lychee
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2
+        with:
+          # Root-relative links resolve against ./public and the site's absolute
+          # URLs are remapped onto it. A directory resolves only through its
+          # index.html, as on GitHub Pages, and a fragment only to an id in the
+          # target page. --include-verbatim adds the files that <script src>
+          # loads and the links inside <pre>, <code>, <noscript> and <textarea>.
+          #
+          # The preprocessor blanks out the contents of scripts, in which
+          # --include-verbatim would otherwise take a template placeholder
+          # ({{relpermalink}}) and the escaped URLs in JSON strings for broken
+          # links (see the script). Dependency folders hold third-party files
+          # whose references are not the site's to fix: the reveal.js speaker
+          # notes page in js/vendor loads a marked.js from a reveal.js plugin
+          # that the theme does not include. Fragments in links into the
+          # dashboards are skipped (see the step above).
+          #
+          # lychee does not follow a meta refresh, so a redirect page is checked
+          # only through the links it also carries, such as the rel="canonical"
+          # link of each alias page that Hugo writes.
+          args: >-
+            --offline
+            --no-progress
+            --root-dir '${{ github.workspace }}/public'
+            --remap '${{ steps.site-urls.outputs.pattern }} file://${{ github.workspace }}/public/$1'
+            --index-files index.html
+            --include-fragments
+            --include-verbatim
+            --preprocess .github/scripts/blank_inline_scripts.py
+            --exclude-path '/(vendor|libs|rmarkdown-libs)/'
+            --exclude '${{ steps.site-urls.outputs.dashboard-fragments }}'
+            'public/**/*.html'
+          output: lychee/built-site.md
+          fail: false
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: built-site-links-report
+          path: lychee/built-site.md
+          retention-days: 30
+
+      - name: Create issue if broken links found
+        if: steps.lychee.outputs.exit_code != 0
+        uses: peter-evans/create-issue-from-file@fca9117c27cdc29c6c4db3b86c48e4115a786710 # v6.0.0
+        with:
+          title: "Broken internal links detected"
+          content-filepath: lychee/built-site.md
           labels: maintenance, automated
