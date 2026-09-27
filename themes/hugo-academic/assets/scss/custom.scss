@@ -4757,6 +4757,26 @@ body.dark #software > div > div > div.col-12 > div > div.media-body > div.btn-li
   vertical-align: middle !important;
 }
 
+// A link button's icon keeps, from the first paint, the width it will have once
+// Font Awesome has loaded. Until then the icon is drawn in a fallback font, which
+// is narrower, and on a first visit the row of buttons could fit on one line at
+// first and then, a moment later, wrap its last button and push the page down (a
+// layout shift of up to 0.4 on a publication page). Most Font Awesome 6 icons are
+// 1em wide; the two in these buttons are given their own widths, and a wider icon
+// added to a link needs its width here too.
+.btn-links i {
+  min-width: 1em;
+  flex-shrink: 0;
+}
+
+.btn-links .fa-file-pdf {
+  width: 1em;
+}
+
+.btn-links .fa-lock-open {
+  width: 1.125em;
+}
+
 @media (max-width: 991px) {
   :is(#publication, #software, #blog) .btn-links {
     margin-top: -4%;
