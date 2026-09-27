@@ -96,9 +96,10 @@
 <link rel="stylesheet" href="{{ "css/tag-cloud-height.css" | relURL }}" />
 {{ end }}
 
-{{/* Related references interactive toolbar */}}
+{{/* Related references interactive toolbar, addressed by its own checksum for
+     the reason given beside its script in custom_js.html. */}}
 {{ with .Resources.GetMatch "related-references.html" }}
-<link rel="stylesheet" href="{{ "css/related-references.css" | relURL }}" />
+<link rel="stylesheet" href="{{ "css/related-references.css" | relURL }}?v={{ substr (readFile "static/css/related-references.css" | md5) 0 10 }}" />
 {{ end }}
 
 {{/* Editable R chunks, on a post whose front matter sets editable_r: true.
