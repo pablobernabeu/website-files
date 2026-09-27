@@ -63,13 +63,30 @@ body.dark .related-references {
 /* Stands in for the toolbar while a section's metadata file is on its way,
    with the toolbar's inset and rule so that one reads as becoming the other.
    The muted italic comes from .ref-loading, the class the script also gives
-   it, as for an abstract that is still loading. */
+   it, as for an abstract that is still loading.
+
+   It also stands at about the toolbar's height, so that the list below stays
+   where it is when the file arrives with the section on screen. One line high,
+   it let the list drop by 130px on a wide screen and 290px on a phone under a
+   reader who had got there first. The heights are the toolbar's as first
+   built, in ems of the same font size, and come within about 25px of it at
+   every width their rules cover but the narrowest phones'. The toolbar's rows
+   wrap at widths of their own rather than at these breakpoints, which is why
+   the match is not exact, and a toolbar that gains or loses a row wants them
+   measured again. */
 .ref-metadata-status {
+  min-height: 14em;
   margin-bottom: 0.75em;
   margin-left: -0.7em;
   padding: 0.6em 0.7em;
   font-size: 90%;
   border-left: thin solid var(--anim-start, aquamarine);
+}
+
+@media (max-width: 799px) {
+  .ref-metadata-status {
+    min-height: 18.3em;
+  }
 }
 
 /* Printed before the file arrives, the page would otherwise keep a line saying
@@ -1004,6 +1021,7 @@ body.dark .ref-btn.ref-btn.ref-reset-filters.active {
   }
 
   .ref-metadata-status {
+    min-height: 24em;
     margin-left: -0.4em;
     padding: 0.5em 0.4em;
   }
