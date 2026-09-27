@@ -18,6 +18,13 @@ name: Image budget
 # an original is kept on purpose, and compressing it would defeat that purpose,
 # so it draws no warning and is left out of its bundle's total, which is meant
 # to reflect what the page loads. The hard per-file limit still applies to it.
+# For the same reason, the display copies that a srcset offers count once: a
+# browser loads one width of each photo, so only the largest width of each set
+# enters the total.
+#
+# Warnings name the images that the pull request or push changed. Images that
+# were already over the soft cap are listed in the log instead, so that every
+# run does not repeat the same annotations; a manual run annotates them all.
 
 on:
   pull_request:
@@ -59,6 +66,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
+      - name: List the files this change touches
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          # Without a base to compare with (a manual run, a new branch, or a base
+          # that cannot be fetched), every image is treated as changed.
+          if [ -n "${BASE_SHA:-}" ] && [ "$BASE_SHA" != "0000000000000000000000000000000000000000" ] \
+             && git fetch --quiet --depth=1 origin "$BASE_SHA"; then
+            git diff --name-only "$BASE_SHA" HEAD > "$RUNNER_TEMP/changed-files.txt"
+            echo "CHANGED_FILES=$RUNNER_TEMP/changed-files.txt" >> "$GITHUB_ENV"
+          fi
+
       - name: Enforce image size budget
         run: |
           set -euo pipefail
@@ -91,6 +110,47 @@ jobs:
             done < <(grep -oE "data-full=(\"[^\"]+\"|'[^']+')" "$page" || true)
           done < <(find content -type f \( -name '*.md' -o -name '*.Rmd' -o -name '*.html' \) -print0)
 
+          # The display copies each srcset offers. All but the largest of a set are
+          # left out of the page totals, as a browser loads one width per photo.
+          declare -A alternate=()
+          while IFS= read -r -d '' page; do
+            while IFS= read -r set; do
+              set="${set#srcset=?}"
+              set="${set%?}"
+              largest=""
+              largest_bytes=-1
+              members=()
+              IFS=, read -r -a candidates <<< "$set"
+              for candidate in "${candidates[@]}"; do
+                read -r ref _ <<< "$candidate"
+                [ -n "$ref" ] || continue
+                ref="$(printf '%b' "${ref//%/\\x}")"
+                case "$ref" in
+                  /*) ref="static$ref" ;;
+                  *) ref="${page%/*}/$ref" ;;
+                esac
+                ref="$(realpath -ms --relative-to=. "$ref")"
+                [ -f "$ref" ] || continue
+                members+=("$ref")
+                size=$(stat -c%s "$ref")
+                if [ "$size" -gt "$largest_bytes" ]; then
+                  largest="$ref"
+                  largest_bytes=$size
+                fi
+              done
+              for member in "${members[@]}"; do
+                [ "$member" = "$largest" ] || alternate["$member"]=1
+              done
+            done < <(grep -oE "srcset=(\"[^\"]+\"|'[^']+')" "$page" || true)
+          done < <(find content -type f \( -name '*.md' -o -name '*.Rmd' -o -name '*.html' \) -print0)
+
+          # Images this change touches (all of them when there is no base).
+          declare -A changed=()
+          if [ -n "${CHANGED_FILES:-}" ]; then
+            while IFS= read -r f; do changed["$f"]=1; done < "$CHANGED_FILES"
+          fi
+          earlier=()
+
           declare -A page_bytes=()
           kept=0
           kept_bytes=0
@@ -107,8 +167,13 @@ jobs:
               continue
             fi
             if [ "$kb" -le "$PER_FILE_FAIL_KB" ] && [ "$kb" -gt "$PER_FILE_WARN_KB" ]; then
-              echo "::warning file=$f::$f is ${kb} KB (over ${PER_FILE_WARN_KB} KB soft cap — consider compressing)"
+              if [ -z "${CHANGED_FILES:-}" ] || [ -n "${changed[$f]:-}" ]; then
+                echo "::warning file=$f::$f is ${kb} KB (over ${PER_FILE_WARN_KB} KB soft cap — consider compressing)"
+              else
+                earlier+=("${kb} KB  $f")
+              fi
             fi
+            [ -z "${alternate[$f]:-}" ] || continue
             # A page bundle is a directory directly inside a content section,
             # such as content/post/<name>, with everything beneath it.
             case "$f" in
@@ -120,6 +185,11 @@ jobs:
                 ;;
             esac
           done < <(find $IMAGE_DIRS content -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.gif' -o -iname '*.webp' -o -iname '*.svg' \) -print0)
+
+          if [ "${#earlier[@]}" -gt 0 ]; then
+            echo "Images this change does not touch that are over the ${PER_FILE_WARN_KB} KB soft cap:"
+            printf '  %s\n' "${earlier[@]}"
+          fi
 
           total_kb=$(( ( $(du -scb $IMAGE_DIRS | tail -1 | cut -f1) + 1023 ) / 1024 ))
           echo "Total ${IMAGE_DIRS}: ${total_kb} KB"
