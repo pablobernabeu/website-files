@@ -74,7 +74,8 @@ jobs:
           # that cannot be fetched), every image is treated as changed.
           if [ -n "${BASE_SHA:-}" ] && [ "$BASE_SHA" != "0000000000000000000000000000000000000000" ] \
              && git fetch --quiet --depth=1 origin "$BASE_SHA"; then
-            git diff --name-only "$BASE_SHA" HEAD > "$RUNNER_TEMP/changed-files.txt"
+            # NUL-delimited, as git would otherwise quote a non-ASCII path.
+            git diff -z --name-only "$BASE_SHA" HEAD > "$RUNNER_TEMP/changed-files.txt"
             echo "CHANGED_FILES=$RUNNER_TEMP/changed-files.txt" >> "$GITHUB_ENV"
           fi
 
@@ -147,7 +148,7 @@ jobs:
           # Images this change touches (all of them when there is no base).
           declare -A changed=()
           if [ -n "${CHANGED_FILES:-}" ]; then
-            while IFS= read -r f; do changed["$f"]=1; done < "$CHANGED_FILES"
+            while IFS= read -r -d '' f; do changed["$f"]=1; done < "$CHANGED_FILES"
           fi
           earlier=()
 

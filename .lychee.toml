@@ -11,10 +11,10 @@ exclude = [
   "example\\.com",
   # Shiny apps may be sleeping (503 on first hit)
   "shinyapps\\.io",
-  # Twitter/X rate-limits aggressively. Anchored, as a bare "x\\.com" also
-  # matched any host ending in x.com, such as ivoox.com and mapbox.com.
+  # Twitter/X rate-limits aggressively. Anchored at both ends of the host, as a
+  # bare "x\\.com" also matched hosts such as ivoox.com and mapbox.com.
   "twitter\\.com",
-  "^https?://(www\\.)?x\\.com",
+  "^https?://(www\\.)?x\\.com([/?#:]|$)",
   # Mail links
   "^mailto:",
   # Apple podcast embeds (require auth)

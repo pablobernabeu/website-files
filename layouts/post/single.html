@@ -42,13 +42,14 @@
          source is looked for on disk rather than among the site's pages. A post written
          in Markdown, or one whose source has gone, gets no link. The path is given
          forward slashes for a build on Windows, and the spaces that one post folder has
-         in its name are percent-encoded for the URL. A post that only points elsewhere
-         (external_link) has an empty body and an .Rmd of front matter alone, so it gets
-         no link either. `$` reaches the page from inside `with .File`. */}}
+         in its name are percent-encoded for the URL. A post with nothing in its body, such
+         as one that only points elsewhere through external_link and whose .Rmd holds
+         front matter alone, gets no link either. `$` reaches the page from inside
+         `with .File`. */}}
     {{ with .File }}
     {{ if eq .Ext "html" }}
     {{ $rmd := printf "content/%s.Rmd" (strings.TrimSuffix ".html" (replace .Path "\\" "/")) }}
-    {{ if and (fileExists $rmd) (not $.Params.external_link) (ne (trim (string $.Content) " \t\r\n") "") }}
+    {{ if and (fileExists $rmd) (ne (trim (string $.Content) " \t\r\n") "") }}
     <p class="rmd-source"><a href="https://github.com/pablobernabeu/website-files/blob/master/{{ replace $rmd " " "%20" }}">R Markdown source of this post</a></p>
     {{ end }}
     {{ end }}

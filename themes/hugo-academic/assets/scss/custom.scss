@@ -387,10 +387,15 @@ body.dark#top div.universal-wrapper a {
 // The citation buttons on the software list are <button>s, which the rule above
 // (written for links) does not reach, so in the dark theme they kept Bootstrap's
 // blue outline on the page (3.6:1). They take the look of the link buttons
-// beside them, white on #374151 (10.3:1).
-body.dark#top div.universal-wrapper .btn.js-cite-modal:not(:hover):not(:active) {
+// beside them, white on #374151 (10.3:1), and their border on hover. The
+// publication list styles its buttons alike already.
+body.dark#top div.universal-wrapper.software-archive .btn.js-cite-modal:not(:hover):not(:active) {
   color: #fff !important;
   background-color: #374151 !important;
+  border-color: #4b5563 !important;
+}
+
+body.dark#top div.universal-wrapper.software-archive .btn.js-cite-modal:hover {
   border-color: #4b5563 !important;
 }
 
@@ -1738,8 +1743,10 @@ body.page-wrapper #top > div.pub > div.article-container.pt-3 > div.article-meta
   font-size: 1.15rem !important;
 }
 
-// Hide middot dividers in publication metadata
-#top > div.pub > div.article-container.pt-3 > div.article-metadata > span.middot-divider {
+// Hide middot dividers in publication metadata, including the one that
+// page_metadata.html keeps inside the categories with the folder icon
+#top > div.pub > div.article-container.pt-3 > div.article-metadata > span.middot-divider,
+#top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories .middot-divider {
   display: none !important;
 }
 
@@ -3549,6 +3556,14 @@ section.home-section:first-of-type {
   display: block !important;
   margin-left: auto !important;
   margin-right: auto !important;
+}
+
+// The dark theme gives every image 2px of padding inside its border box, which
+// the width above would take out of the picture itself, drawing it 4px narrower
+// than its natural size and so resampling it. The padding is added back, and the
+// 400px cap applies to the picture as it did before.
+body.dark .pub .featured-image-wrapper img {
+  width: #{"min(100%, calc(var(--w) + 4px), calc((400px - 4px) * var(--ar) + 4px))"} !important;
 }
 
 // Override margin-bottom for presentation pages

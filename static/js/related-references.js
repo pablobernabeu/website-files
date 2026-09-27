@@ -419,10 +419,12 @@
       arrived = true;
       // Read before the loading line leaves the page: once the reader has
       // scrolled past the heading, removing it makes the browser shift the
-      // view, and an offset taken afterwards would keep that shift.
+      // view, and an offset taken afterwards would keep that shift. Where the
+      // section's top then sat on screen is kept too, for the same reader.
       var scrollAtArrival = window.pageYOffset;
+      var sectionTopAtArrival = section.getBoundingClientRect().top;
       if (status && status.parentNode) status.parentNode.removeChild(status);
-      buildSection(section, metadata, scrollAtArrival);
+      buildSection(section, metadata, scrollAtArrival, sectionTopAtArrival);
     });
     if (!arrived) status = showMetadataStatus(section);
   }
@@ -462,7 +464,7 @@
     target.scrollIntoView({ block: 'nearest' });
   }
 
-  function buildSection(section, metadata, scrollAtArrival) {
+  function buildSection(section, metadata, scrollAtArrival, sectionTopAtArrival) {
     sectionsBuilt++;
 
     // Tag the heading above this section for extra top-margin
@@ -813,6 +815,13 @@
         ctrl.applyFilters();
       }
     } catch (e) { console.warn('[related-refs] restore error:', e); }
+
+    // For a reader already past the heading, restoring the scroll offset is not
+    // enough: scroll anchoring moves the view again while the list is paged and
+    // sorted, so the list is put back where it was on screen instead.
+    if (sectionTopAtArrival != null && sectionTopAtArrival < 0) {
+      window.scrollBy(0, section.getBoundingClientRect().top - sectionTopAtArrival);
+    }
 
     if (focusWasInList) focusSearchField(toolbar, section);
 
