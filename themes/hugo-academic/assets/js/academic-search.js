@@ -79,6 +79,13 @@ function initSearch(force, fuse) {
   // Do search.
   $("#search-hits").empty();
   searchAcademic(query, fuse);
+
+  // A query typed just before the overlay closed can still be searched
+  // afterwards, when the index arrives, and by then toggleSearchDialog() has
+  // taken the query out of the URL. Only an open overlay puts it back.
+  if (!$("body").hasClass("searching")) {
+    return;
+  }
   let newURL =
     window.location.protocol +
     "//" +
@@ -245,42 +252,99 @@ function render(template, data) {
 
 // If Academic's in-built search is enabled and Fuse loaded, then initialize it.
 if (typeof Fuse === "function") {
-  // Wait for Fuse to initialize.
-  $.getJSON(search_config.indexURI, function (search_index) {
-    let fuse = new Fuse(search_index, fuseOptions);
+  // The index is fetched when it is first needed rather than with every page:
+  // when the overlay opens, when the page arrives with a query in its URL or
+  // when a query is typed. getSearchIndex(), in layouts/partials/custom_head.html,
+  // shares a single download with the other scripts that read the index.
+  let fuse = null;
+  let fuseRequest = null;
 
-    // On page load, check for search query in URL.
-    if ((query = getSearchQuery("q"))) {
+  const loadFuse = function () {
+    if (!fuseRequest) {
+      fuseRequest = getSearchIndex().then(function (search_index) {
+        fuse = new Fuse(search_index, fuseOptions);
+        return fuse;
+      });
+      // Forget a failed download, so that the next attempt makes a fresh one.
+      fuseRequest.catch(function () {
+        fuseRequest = null;
+      });
+    }
+    return fuseRequest;
+  };
+
+  // A query typed while the index is still on its way is searched once it
+  // arrives. Only the latest request is kept, since initSearch() reads the
+  // query from the box at that point.
+  let searchPending = false;
+  let pendingForce = false;
+  const search = function (force) {
+    if (fuse) {
+      initSearch(force, fuse);
+      return;
+    }
+    pendingForce = force;
+    if (searchPending) return;
+    searchPending = true;
+    loadFuse().then(
+      function (fuse) {
+        searchPending = false;
+        initSearch(pendingForce, fuse);
+      },
+      function () {
+        searchPending = false;
+      }
+    );
+  };
+
+  // Every control that opens the overlay adds the `searching` class to <body>
+  // (see manageSearchOverlayFocus in academic.js), so watching for that class
+  // starts the download whichever of them was used, before a key is typed.
+  if (window.MutationObserver) {
+    const overlayWatcher = new MutationObserver(function () {
+      if (fuse) {
+        overlayWatcher.disconnect();
+      } else if (document.body.classList.contains("searching")) {
+        loadFuse().catch(function () {});
+      }
+    });
+    overlayWatcher.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+  }
+
+  // On page load, check for search query in URL.
+  const initialQuery = getSearchQuery("q");
+  if (initialQuery) {
+    loadFuse().then(function (fuse) {
       $("body").addClass("searching");
       $(".search-results")
         .css({ opacity: 0, visibility: "visible" })
         .animate({ opacity: 1 }, 200);
-      $("#search-query").val(query);
+      $("#search-query").val(initialQuery);
       $("#search-query").focus();
       initSearch(true, fuse);
+    }, function () {});
+  }
+
+  // On search box key up, process query.
+  $("#search-query").keyup(function (e) {
+    clearTimeout($.data(this, "searchTimer")); // Ensure only one timer runs!
+
+    // Check if query is empty - clear immediately without timer
+    let query = $(this).val();
+    if (query.length < 1) {
+      $("#search-hits").empty();
+      return;
     }
 
-    // On search box key up, process query.
-    $("#search-query").keyup(function (e) {
-      clearTimeout($.data(this, "searchTimer")); // Ensure only one timer runs!
-      
-      // Check if query is empty - clear immediately without timer
-      let query = $(this).val();
-      if (query.length < 1) {
-        $("#search-hits").empty();
-        return;
-      }
-      
-      if (e.keyCode == 13) {
-        initSearch(true, fuse);
-      } else {
-        $(this).data(
-          "searchTimer",
-          setTimeout(function () {
-            initSearch(false, fuse);
-          }, 250)
-        );
-      }
-    });
+    if (e.keyCode == 13) {
+      search(true);
+    } else {
+      $(this).data(
+        "searchTimer",
+        setTimeout(function () {
+          search(false);
+        }, 250)
+      );
+    }
   });
 }

@@ -1,5 +1,6 @@
 {{/* Custom <head> additions: dark-theme flash prevention, search-modal CSS/JS,
-     tag-cloud network, search query/results persistence, and IndexNow. */}}
+     the shared search-index loader, tag-cloud network, search query/results
+     persistence and IndexNow. */}}
 
 {{/* The theme's Google Fonts stylesheet is emitted earlier in site_head.html,
      but the font files themselves live on a second host that nothing warms up.
@@ -90,6 +91,32 @@
 
 {{/* Search modal styling */}}
 <link rel="stylesheet" href="{{ "css/search-modal.css" | relURL }}" />
+
+{{/* The search index (/index.json, over 200 KB) is read by the site search, by
+     the topic tags that article-ancillary-tags.js adds to a page and by the tag
+     network on the home page. None of them needs it to draw the page, so each
+     asks for it through getSearchIndex() only when it comes to need it, and all
+     of them share the first request. The file is therefore downloaded at most
+     once on a page, and not at all on a page where nothing asks for it. A failed
+     request is forgotten, so that the next call makes a fresh one. */}}
+<script>
+  window.getSearchIndex = (function () {
+    "use strict";
+    var request = null;
+    return function () {
+      if (!request) {
+        request = fetch({{ "/index.json" | relLangURL }}).then(function (response) {
+          if (!response.ok) throw new Error("Search index: HTTP " + response.status);
+          return response.json();
+        });
+        request.catch(function () {
+          request = null;
+        });
+      }
+      return request;
+    };
+  })();
+</script>
 
 {{/* Tag cloud height constraint */}}
 {{ if .IsHome }}
