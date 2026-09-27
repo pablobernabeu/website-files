@@ -20,8 +20,16 @@
       {{ if $.Scratch.Get "highlight_enabled" }}
         {{ $v := $js.highlight.version }}
         {{ printf "<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\"></script>" (printf $js.highlight.url $v) $js.highlight.sri | safeHTML }}
-        {{ range site.Params.highlight_languages }}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/{{ $v }}/languages/{{ . }}.min.js"></script>
+        {{/* Each language pack has its own SRI in assets.toml. A language with no
+             entry there gets an empty integrity attribute, which browsers treat as
+             no check at all, so it still loads, and the build warns about it. */}}
+        {{ $languages_sri := $js.highlight.languages | default dict }}
+        {{ range $lang := site.Params.highlight_languages }}
+          {{ $sri := index $languages_sri $lang | default "" }}
+          {{ if not $sri }}
+            {{ warnf "No SRI for highlight.js language %q in themes/hugo-academic/data/assets.toml: it loads without an integrity check." $lang }}
+          {{ end }}
+          {{ printf "<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\"></script>" (printf "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/%s/languages/%s.min.js" $v $lang) $sri | safeHTML }}
         {{ end }}
       {{ end }}
 
