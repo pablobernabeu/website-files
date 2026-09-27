@@ -27,14 +27,22 @@ jobs:
           restore-keys: cache-lychee-
 
       - name: Check links
+        id: lychee
         uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2
         with:
+          # A root-relative link (/publication/..., /#bio) points into the built
+          # site rather than at a source file. lychee reports each one in a
+          # local file as an error unless it has a root directory to resolve it
+          # against, so these links are resolved against a root that does not
+          # exist and excluded there; lychee warns that the root is missing.
           args: >-
             --cache
             --max-cache-age 7d
             --max-retries 3
             --timeout 30
             --no-progress
+            --root-dir /site-root
+            --exclude '^file:///site-root([/?#]|$)'
             "content/**/*.md"
             "content/**/*.Rmd"
           fail: false
@@ -48,7 +56,9 @@ jobs:
           retention-days: 30
 
       - name: Create issue if broken links found
-        if: env.lychee_exit_code != 0
+        # lychee-action v2 passes lychee's exit code on as a step output; it no
+        # longer sets an environment variable.
+        if: steps.lychee.outputs.exit_code != 0
         uses: peter-evans/create-issue-from-file@fca9117c27cdc29c6c4db3b86c48e4115a786710 # v6.0.0
         with:
           title: "Broken links detected"
