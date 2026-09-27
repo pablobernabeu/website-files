@@ -8583,6 +8583,156 @@ body.dark {
   margin: 0;
 }
 
+// The list of contents that opens a long post, and the "#" link beside each h2 and
+// h3 of an article, both written by static/js/section-links.js.
+//
+// The list is a box in the manner of the abstract panel and the code blocks, the
+// other full-width containers of an article body, with their 0.5rem radius. It has
+// no fill and a neutral grey border, so that it reads as an aid to the post rather
+// than a part of it. Folded, it shows only the label "Contents" in the muted text
+// colour, behind a chevron drawn in CSS: the triangles that the code chunks' fold
+// controls use would make it look like one of them.
+:root {
+  --article-toc-border: #d5dae0;
+  --heading-anchor-hover: #237A69;
+}
+
+body.dark {
+  --article-toc-border: #3b4658;
+  --heading-anchor-hover: #5fe0d0;
+}
+
+.article-style nav.article-toc {
+  margin: 0 0 1.5rem;
+  border: 1px solid var(--article-toc-border);
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+}
+
+// Every summary on the site is centred, full-width and unmarked, with margins that
+// publication-type-badges.css sets with !important, and that stylesheet loads after
+// this one. Naming the nav and the <details> makes these selectors outrank both it
+// and the code chunks' rules on `.article-style details > summary`.
+.article-style nav.article-toc > details > summary {
+  display: flex !important;
+  align-items: center;
+  margin: 0 !important;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.5rem;
+  text-align: left !important;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.article-style nav.article-toc > details > summary::before {
+  content: "";
+  flex: none;
+  width: 0.45em;
+  height: 0.45em;
+  margin: 0 0.7em 0 0.1em;
+  border-right: 0.14em solid currentColor;
+  border-bottom: 0.14em solid currentColor;
+  transform: rotate(-45deg);
+}
+
+.article-style nav.article-toc > details[open] > summary::before {
+  transform: rotate(45deg);
+}
+
+.article-style nav.article-toc > details > summary:hover {
+  color: var(--text-primary);
+}
+
+// The browser's own ring would lie over the box's border. This one is drawn just
+// inside it.
+.article-style nav.article-toc > details > summary:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -2px;
+}
+
+// The entries start under the label, past the chevron. Their spacing is closer than
+// the 0.55em that list items take in the body, as each is a title to scan rather
+// than a sentence to read.
+.article-style nav.article-toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.article-style nav.article-toc > details > ul {
+  padding: 0 0.9rem 0.7rem 2rem;
+}
+
+.article-style nav.article-toc ul ul {
+  margin-top: 0.3rem;
+  padding-left: 1.1rem;
+}
+
+.article-style nav.article-toc li {
+  margin: 0 0 0.3rem;
+}
+
+// Room for the folded list, held from the first paint until the script puts the
+// list in its place and removes data-contents, so that the text below does not
+// move down when it arrives. The height is the folded list's: the summary's line
+// (1.5 x 0.95rem), its padding (2 x 0.5rem) and the border (2 x 1px). Without
+// scripting nothing would fill the room, so none is held.
+@media (scripting: enabled) {
+  .article-style[data-contents]::before {
+    content: "";
+    display: block;
+    height: calc(2.425rem + 2px);
+    margin-bottom: 1.5rem;
+  }
+}
+
+// The link is taken out of the flow, so the heading lays out and wraps exactly as
+// it would without it. With no offsets it stays where it would have been in the
+// line, just after the heading's last word, and on the same baseline. It shows on
+// hover and on keyboard focus only, in the muted text colour, which is 4.95:1 on
+// the light page and 6.96:1 on the dark one. The #top prefix and !important answer
+// the rules that give a link in a heading its underline and the light theme's
+// highlight gradient and hover fill, or in the dark theme a teal colour set through
+// -webkit-text-fill-color. Leaving it out of a selection keeps the "#" out of a
+// heading copied as text.
+#top .article-style h2 > a.heading-anchor,
+#top .article-style h3 > a.heading-anchor {
+  position: absolute;
+  margin-left: 0.3em;
+  font-weight: 400;
+  opacity: 0;
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: currentColor !important;
+  text-decoration: none !important;
+  background: none !important;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#top .article-style h2:hover > a.heading-anchor,
+#top .article-style h3:hover > a.heading-anchor {
+  opacity: 1;
+}
+
+#top .article-style h2 > a.heading-anchor:focus-visible,
+#top .article-style h3 > a.heading-anchor:focus-visible {
+  opacity: 1;
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+// The teal of the code chunks' "Expand" control, 5.2:1 on white, and in the dark
+// theme the colour of a link in a heading.
+#top .article-style h2 > a.heading-anchor:hover,
+#top .article-style h3 > a.heading-anchor:hover,
+#top .article-style h2 > a.heading-anchor:focus-visible,
+#top .article-style h3 > a.heading-anchor:focus-visible {
+  color: var(--heading-anchor-hover) !important;
+}
+
 // Printing. academic.js opens folded code and switches to the light theme for the
 // print, since the dark theme's pale text would be close to invisible on paper, where
 // browsers leave out backgrounds by default. What only works on screen is left out,
@@ -8610,7 +8760,9 @@ html.is-printing *::after {
   .article-style details > summary,
   .xaringanextra-clipboard-button,
   .code-copy-button,
-  .editable-r {
+  .editable-r,
+  .article-toc,
+  .heading-anchor {
     display: none !important;
   }
 

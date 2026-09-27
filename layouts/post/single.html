@@ -20,8 +20,16 @@
 
     {{/* `code_folding: hide` in a post's front matter makes academic.js fold its code
          chunks closed on load, each behind an "Expand" link. Without the parameter they
-         start open, as on every other page. */}}
-    <div class="article-style"{{ if eq (lower (printf "%v" .Params.code_folding)) "hide" }} data-code-folding="hide"{{ end }}>
+         start open, as on every other page.
+
+         A post with four sections or more opens with a folded list of them, which
+         static/js/section-links.js builds. data-contents asks for that list, and
+         custom.scss holds the room its folded line takes, so that the text does not
+         move down when the list arrives. This counts every h2 in the content. The
+         script counts again without the headings it leaves out, and gives the room
+         back if fewer than four remain. */}}
+    {{ $sections := len (findRE `<h2[\s>]` .Content) }}
+    <div class="article-style"{{ if eq (lower (printf "%v" .Params.code_folding)) "hide" }} data-code-folding="hide"{{ end }}{{ if ge $sections 4 }} data-contents{{ end }}>
       {{ .Content }}
     </div>
 
