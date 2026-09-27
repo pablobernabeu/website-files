@@ -5112,9 +5112,10 @@ body.dark .document-viewer-toolbar {
 }
 
 // The link to a post's R Markdown source, after the post body (layouts/post/single.html).
-// Set small, so that it reads as a note at the foot of the post rather than as the
-// last line of its text.
+// Set small, and further from the text above than from what follows, so that it reads
+// as a note at the foot of the post rather than as the last line of its text.
 .rmd-source {
+  margin-top: 1.5rem;
   font-size: 0.85em;
 }
 
