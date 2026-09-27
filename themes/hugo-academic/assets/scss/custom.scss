@@ -290,9 +290,6 @@ body.dark .article-header-caption a:link,
 body.dark .article-header-caption a:visited,
 body.dark .article-header-caption a:hover,
 body.dark .article-header-caption a:active,
-body.dark #top > article > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 > div > span > a,
-body.dark #top > article > div.article-header > div > span > a,
-body.dark #top > div.pub > div.article-header > div > span > a,
 body.dark .featured-image-wrapper .article-header-caption a,
 body.dark .article-header .article-header-caption a {
   color: #fff !important;
@@ -352,22 +349,26 @@ body.dark .article-header .article-header-caption a {
   }
 }
 
+// The dark-theme counterpart of the widget subtitle links above, whose black text is
+// not limited to the light theme. `body.dark#top` has no space because #top is the
+// <body> itself. Spelt `body.dark #top`, these selectors never matched, which left
+// the link buttons on the software list black on their dark grey fill (2.0:1) and a
+// link in a presentation summary black on the page (1.2:1).
 body.dark .home-section .col-lg-12 > p a,
 body.dark .home-section .section-heading > p a,
 body.dark .home-section .col-12 > p a,
 body.dark .home-section .col-lg-12 > p div a,
 body.dark .home-section .section-heading > p div a,
 body.dark .home-section .col-12 > p div a,
-body.dark #top > div:nth-child(4) > div:nth-child(1) > h2 > a,
-body.dark #top > div:nth-child(4) > div > div.media-body > h3 > a,
-body.dark #top > div > div > h2 > a,
+body.dark#top > div:nth-child(4) > div:nth-child(1) > h2 > a,
+body.dark#top > div > div > h2 > a,
 body.dark #blog > div > div > div.col-12.section-heading > p > span a,
 body.dark #software > div > div > div.col-12.section-heading > p a,
 body.dark #skills > div > div > div > table > tbody a,
 body.dark #multimedia > div > div > div > div:nth-child(3) > div:nth-child(2) a,
 body.dark #multimedia > div > div > div > div > div > a,
-body.dark #top > div.universal-wrapper.pt-3 a,
-body.dark #top div.universal-wrapper a {
+body.dark#top > div.universal-wrapper.pt-3 a,
+body.dark#top div.universal-wrapper a {
   color: #fff;
   text-decoration: underline;
   text-decoration-color: #bbf7d0;
@@ -405,10 +406,6 @@ body.dark #top div.universal-wrapper a {
   font-size: 0.9em;
 }
 
-body.dark #top > div > div > h2 > a {
-  font-size: 0.9em;
-}
-
 // Make all text in pub-list-item white in dark theme
 .dark .pub-list-item,
 .dark .pub-list-item * {
@@ -419,9 +416,7 @@ body.dark #top > div > div > h2 > a {
   color: #e2e8f0 !important;
 }
 
-// Dark theme: light font for media-body h3 links and article-metadata
-.dark #top > div > div > div.media-body > h3,
-.dark #top > div > div > div.media-body > h3 > a,
+// Dark theme: light font for article metadata
 .dark .article-metadata,
 .dark .article-metadata * {
   color: #e2e8f0 !important;
@@ -714,7 +709,10 @@ body.dark #tags .tag-cloud a::after {
   }
 }
 
-body.dark #top > div > div > h2 a {
+// A lighter green for the dark theme: on the dark hover highlight #34d399 reaches
+// 6.6:1, where #059669 manages 3.3:1. Written `body.dark#top`, with no space,
+// because #top is the <body> itself.
+body.dark#top > div > div > h2 a {
   &:hover {
     color: #34d399 !important;
     text-decoration-color: #10b981 !important;
@@ -1144,20 +1142,6 @@ h3#related-podcasts ~ p .fa-wand-magic-sparkles {
   }
 }
 
-// Prevent white flash on dark theme load
-html {
-  // Immediate dark theme application (used by theme-init.js)
-  &.dark-theme-loading {
-    background-color: #0f172a !important;
-    color: #e2e8f0 !important;
-    
-    body {
-      background-color: #0f172a !important;
-      color: #e2e8f0 !important;
-    }
-  }
-}
-
 // Smooth transition for theme switching
 body {
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -1219,12 +1203,9 @@ textarea {
   --abstract-border: rgba(35, 122, 105, 0.25);
 }
 
-// theme-init.js paints the page dark through html.dark-theme-loading before
-// academic.js has put .dark on the body, and that class also forces the text to
-// #e2e8f0. Without the loading class here the first render of a dark-mode page
-// would put near-white text on the light fill, at about 1:1.
-body.dark,
-html.dark-theme-loading {
+// The pre-paint script in custom_head.html adds .dark to <body> before the first
+// render, so the near-white text of a dark-mode page never meets the light fill.
+body.dark {
   --abstract-bg: #16302b;
   --abstract-border: rgba(55, 158, 138, 0.32);
 }
@@ -6983,8 +6964,7 @@ html body.dark #navbar-main .navbar-nav .nav-item .nav-link.active,
 html body.dark .navbar .navbar-nav .nav-item .nav-link.active,
 html body.dark .navbar .navbar-nav .nav-link.active,
 html body.dark nav .navbar-nav .nav-link.active,
-html:not(.light) body.dark .navbar-nav .nav-link.active,
-.dark html body .navbar-nav .nav-link.active {
+html:not(.light) body.dark .navbar-nav .nav-link.active {
   color: #0e7169 !important; // Match hover teal for a consistent active/hover set
   font-weight: 600 !important;
   text-shadow: none !important; // was an aquamarine glow — blurred the text on the light dark-theme navbar
@@ -6994,8 +6974,7 @@ html body.dark #navbar-main .navbar-nav .nav-item .nav-link.active::after,
 html body.dark .navbar .navbar-nav .nav-item .nav-link.active::after,
 html body.dark .navbar .navbar-nav .nav-link.active::after,
 html body.dark nav .navbar-nav .nav-link.active::after,
-html:not(.light) body.dark .navbar-nav .nav-link.active::after,
-.dark html body .navbar-nav .nav-link.active::after {
+html:not(.light) body.dark .navbar-nav .nav-link.active::after {
   background: #0f766e !important;
   box-shadow: none !important;
 }
@@ -7257,9 +7236,6 @@ html body.dark .search-hit a h6 {
   }
   
   // Dark theme specific: Make ONLY active item underline thinner and darker
-  html.dark body.dark .navbar-nav .nav-link.active::after,
-  html.dark body.dark #navbar-content > ul > li > a.active::after,
-  html.dark body.dark .nav-link.active::after,
   body.dark .navbar-nav .nav-link.active::after,
   body.dark #navbar-content > ul > li > a.active::after,
   body.dark .nav-link.active::after {
@@ -7275,9 +7251,6 @@ html body.dark .search-hit a h6 {
   }
   
   // Remove glow from active navbar text in dark theme
-  html.dark body.dark .navbar-nav .nav-link.active,
-  html.dark body.dark #navbar-content > ul > li > a.active,
-  html.dark body.dark .nav-link.active,
   body.dark .navbar-nav .nav-link.active,
   body.dark #navbar-content > ul > li > a.active,
   body.dark .nav-link.active {
