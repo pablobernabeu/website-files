@@ -127,7 +127,7 @@
   // container adds a heading and further tags, which pushes down whatever follows
   // it. Nobody sees that happen while the container is well below the viewport, so
   // the download and the work wait until the page has loaded and the browser is
-  // idle. A container that is already within a screen of the viewport, as on a
+  // idle. A container that is on screen or less than a screen below it, as on a
   // short page, or that comes that close before then, is built straight away.
   function tagsWanted() {
     return new Promise(resolve => {

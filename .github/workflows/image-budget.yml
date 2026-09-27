@@ -1,9 +1,10 @@
 name: Image budget
 
 # Guardrail against oversized images creeping back into the repo (e.g. the
-# multi-MB GIF/PNG assets that previously bloated the deploy). Oversized files
-# are reported as warnings; the job only hard-fails if the total image payload
-# blows past a generous cap. Tighten PER_FILE_FAIL once known orphans are gone.
+# multi-MB GIF/PNG assets that previously bloated the deploy). Files above the
+# soft cap are reported as warnings. The job fails only on a file above the hard
+# per-file limit, or when the shared directories' total or a page bundle's images
+# exceed their budgets. Tighten PER_FILE_FAIL_KB once known orphans are gone.
 #
 # Page bundles under content/ hold most of the site's images, so they are
 # measured too: each file against the same per-file limits, and each bundle's

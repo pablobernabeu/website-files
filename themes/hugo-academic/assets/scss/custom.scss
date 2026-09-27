@@ -351,9 +351,8 @@ body.dark .article-header .article-header-caption a {
 
 // The dark-theme counterpart of the widget subtitle links above, whose black text is
 // not limited to the light theme. `body.dark#top` has no space because #top is the
-// <body> itself. Spelt `body.dark #top`, these selectors never matched, which left
-// the link buttons on the software list black on their dark grey fill (2.0:1) and a
-// link in a presentation summary black on the page (1.2:1).
+// <body> itself: written with a space, a selector looks for #top inside the body and
+// matches nothing.
 body.dark .home-section .col-lg-12 > p a,
 body.dark .home-section .section-heading > p a,
 body.dark .home-section .col-12 > p a,
@@ -8251,13 +8250,9 @@ body.page-wrapper #top > div.pub > div.article-container.pt-3 > div.btn-links.mb
   text-decoration: none !important;
 }
 
-// Dark-mode hover for the "Online book" button.
-// NOTE: `#top` is the <body> itself (<body id="top" class="dark">), so the old
-// `body.dark #top > …` (descendant combinator) could NEVER match — it looked for a
-// #top *inside* body.dark, but #top IS body.dark. That left the light-theme hover
-// (#fee2e2, light pink) winning in dark mode, making the near-white label invisible.
-// Fix: `body.dark#top` (compound, no space) matches the body and wins specificity,
-// giving the intended dark-red hover with a light label (~11:1). Label colour still
+// Dark-theme hover for the 'Online book' button: a dark red behind the light label
+// (~11:1), in place of the light pink above, on which that label is unreadable.
+// `body.dark#top` has no space because #top is the <body> itself. The label colour
 // comes from the theme-aware `var(--text-hover)` rule above.
 body.dark#top > div.pub > div:nth-child(3) > div.article-style > a > button:hover,
 body.dark#top > div.pub > div:nth-child(3) > div.article-style > a > button:focus {

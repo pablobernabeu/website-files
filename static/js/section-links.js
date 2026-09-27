@@ -61,7 +61,8 @@
   }
 
   // A heading written as raw HTML may have no id at all, so one is made from its
-  // text in the form pandoc uses. It starts with a letter, which keeps it a valid
+  // text: accents removed, lower case, and each run of other characters turned
+  // into a hyphen. It starts with a letter, which keeps it a valid
   // CSS identifier for the scripts that look targets up by selector, and it is
   // numbered if the page already holds the same id.
   function newId(heading, text) {
