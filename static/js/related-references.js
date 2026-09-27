@@ -1134,7 +1134,7 @@
       // so focusing it carried the viewport past most of what the press had
       // revealed in the engines that do not focus a button on mousedown.
       // Putting the offset back afterwards settles that, as it does for the
-      // toolbar insertion in enhanceSection. The two-argument form of scrollTo
+      // toolbar insertion in buildSection. The two-argument form of scrollTo
       // is used rather than the options dictionary because an unrecognised
       // behaviour throws, and a throw here would cost the page both its saved
       // depth and the metadata prefetch for everything the press had revealed.
@@ -1399,7 +1399,7 @@
       // Re-ordering moves every row in the document, and the re-score that a
       // press of "show more" sets off calls this again seconds later, by which
       // time the reader has started reading. Holding the offset keeps the
-      // ground still, as the toolbar insertion in enhanceSection does.
+      // ground still, as the toolbar insertion in buildSection does.
       var scrollBefore = window.pageYOffset;
       var sorted = references.slice();
       if (currentSort === 'alpha') {
@@ -1776,7 +1776,7 @@
       }
     }
 
-    // Return controller for external callers (enhanceSection)
+    // Return controller for external callers (buildSection)
     return {
       applySort: applySort,
       applyFilters: applyFilters,
