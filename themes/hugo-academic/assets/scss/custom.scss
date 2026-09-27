@@ -875,7 +875,10 @@ body.dark #other-work [style*="5a826f" i] {
 // :hover / :active fill (white on blue) to Bootstrap. Scoped to .modal-footer so
 // it does NOT touch the section link buttons (#publication etc.), which already
 // have their own neutral grey styling and must stay consistent across sections.
-body.dark .modal-footer .btn-outline-primary:not(:hover):not(:active) {
+// The 'Load comments from Disqus' button below posts has the same class and the
+// same problem (~3.6:1 on the dark page), so it shares the rule.
+body.dark .modal-footer .btn-outline-primary:not(:hover):not(:active),
+body.dark #disqus_thread .btn-outline-primary:not(:hover):not(:active) {
   color: #63b3ed !important;
   border-color: #63b3ed !important;
 }
@@ -1988,7 +1991,7 @@ body.dark {
   // Accent colors
   --accent-primary: #379E8A;
   --accent-secondary: #57a292;
-  --accent-tertiary: #8AA3CD;
+  --accent-tertiary: #4b70af; // 5:1 on white, for the home page's role, affiliation, email and social icons
   --accent-quaternary: #96666f;
   --accent-visited-categories: #9E84B0;
   

@@ -53,7 +53,7 @@ css_class = ""
 
 <div style = "margin-bottom: 3%;"></div>
 
-<button id="toggle-all-summaries" style="padding: 8px 16px; margin-bottom: 1rem; background-color: #059669; color: #ffffff; border: 1px solid #047857; border-radius: 4px; cursor: pointer; font-size: 0.9em; transition: all 0.2s ease;">
+<button id="toggle-all-summaries" style="padding: 8px 16px; margin-bottom: 1rem; background-color: #047857; color: #ffffff; border: 1px solid #065f46; border-radius: 4px; cursor: pointer; font-size: 0.9em; transition: all 0.2s ease;">
   <i class="fas fa-chevron-down"></i>&nbsp;Expand all video descriptions
 </button>
 
@@ -65,12 +65,12 @@ document.addEventListener('DOMContentLoaded', function() {
   // Add theme-aware hover effect
   toggleButton.addEventListener('mouseenter', function() {
     const isDark = document.body.classList.contains('dark');
-    this.style.backgroundColor = isDark ? '#047857' : '#d1fae5';
+    this.style.backgroundColor = isDark ? '#065f46' : '#d1fae5';
     this.style.color = isDark ? '#ffffff' : '#000000';
   });
   
   toggleButton.addEventListener('mouseleave', function() {
-    this.style.backgroundColor = '#059669';
+    this.style.backgroundColor = '#047857';
     this.style.color = '#ffffff';
   });
   
