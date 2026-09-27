@@ -169,7 +169,10 @@ jobs:
       # themes/hugo-academic/data/assets.toml would strip, say, the R
       # highlighting from every post. Each cdnjs file the built pages pin is
       # downloaded and checked here: a mismatch or a missing file stops the
-      # deploy, while an unreachable CDN only warns.
+      # deploy, while an unreachable CDN only warns. The script stops
+      # downloading after TIME_BUDGET (180 s), so even a CDN that hangs
+      # leaves it well inside this timeout, which would otherwise fail the
+      # job and block the deploy.
       - name: Verify Subresource Integrity of CDN files
         timeout-minutes: 5
         run: python3 .github/scripts/verify_cdn_sri.py public

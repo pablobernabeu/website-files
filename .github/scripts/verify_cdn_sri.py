@@ -10,16 +10,20 @@ themes/hugo-academic/data/assets.toml, so this runs before each deploy.
 
 Every <script src> and every <link rel="stylesheet|preload|modulepreload" href>
 on cdnjs.cloudflare.com in the built pages is collected with its integrity
-attribute. Each distinct file is downloaded once with curl, as in the recipe at
-the top of assets.toml, hashed, and compared with the attribute the way a
+attribute. Each distinct file is downloaded once with curl (as in the recipe at
+the top of assets.toml), hashed and compared with the attribute the way a
 browser compares it (the strongest algorithm listed decides).
 
 Exit status 1, which stops the deploy, when a file does not match its
-integrity attribute, or when cdnjs has no such file (404 or 410). A download
-that fails for any other reason after curl's retries is only a warning, since a
-CDN outage says nothing about the hashes. A cdnjs file loaded with no
-integrity attribute is a warning too, which gives the hash cdnjs serves today;
-check it against https://cdnjs.com/ before recording it.
+integrity attribute or cdnjs has no such file (404 or 410).
+
+A download that fails for any other reason after curl's retries is only a
+warning, since a CDN outage says nothing about the hashes. So is a file left
+unchecked once the downloads have taken TIME_BUDGET seconds in all, which
+keeps a CDN that hangs, rather than refusing connections, from holding the
+deploy past the step's timeout. A cdnjs file loaded with no integrity attribute
+is a warning too, which gives the hash cdnjs serves today; check it against
+https://cdnjs.com/ before recording it.
 
 Usage: verify_cdn_sri.py [SITE_DIR]   (default: public)
 """
@@ -29,6 +33,7 @@ import os
 import subprocess
 import sys
 import tempfile
+import time
 from html.parser import HTMLParser
 from urllib.parse import urlsplit
 
@@ -39,6 +44,10 @@ SRI_LINK_TYPES = {"stylesheet", "preload", "modulepreload"}
 # Weakest first. A browser checks only the hashes of the strongest algorithm an
 # integrity attribute lists, and ignores the rest.
 ALGORITHMS = ("sha256", "sha384", "sha512")
+# Seconds allowed for all the downloads together. The deploy step's
+# timeout-minutes (5) must stay above this plus the time needed to read the
+# built pages (a few seconds), or a hanging CDN fails the job after all.
+TIME_BUDGET = 180
 IN_CI = os.environ.get("GITHUB_ACTIONS") == "true"
 
 
@@ -96,13 +105,23 @@ def parse_integrity(value):
     return None, set()
 
 
-def download(url, dest):
-    """Fetches url into dest with curl. Returns the HTTP status, or None if no response came."""
-    result = subprocess.run(
-        ["curl", "--silent", "--show-error", "--location", "--max-time", "60",
-         "--retry", "3", "--retry-delay", "5",
-         "--output", dest, "--write-out", "%{http_code}", url],
-        capture_output=True, text=True)
+def download(url, dest, seconds):
+    """Fetches url into dest with curl, stopping it after `seconds` at most.
+
+    Returns the HTTP status, or None if no response came in time. Each attempt
+    gives up after 10 s without a connection or 30 s in all, and curl starts no
+    retry more than 60 s after the first attempt began, so one file takes about
+    65 s at worst."""
+    try:
+        result = subprocess.run(
+            ["curl", "--silent", "--show-error", "--location",
+             "--connect-timeout", "10", "--max-time", "30",
+             "--retry", "2", "--retry-delay", "3", "--retry-max-time", "60",
+             "--output", dest, "--write-out", "%{http_code}", url],
+            capture_output=True, text=True, timeout=seconds)
+    except subprocess.TimeoutExpired:
+        print(f"    curl stopped after {seconds:.0f} s, when the time budget ran out")
+        return None
     if result.returncode != 0:
         print(f"    {result.stderr.strip()}")
         return None
@@ -131,11 +150,18 @@ def main():
         return 0
 
     verified = failures = warnings = 0
+    deadline = time.monotonic() + TIME_BUDGET
     with tempfile.TemporaryDirectory() as tmp:
         dest = os.path.join(tmp, "file")
         for url in sorted(refs):
             print(url)
-            status = download(url, dest)
+            seconds_left = deadline - time.monotonic()
+            if seconds_left <= 0:
+                annotate("warning", f"Could not verify {url} (the {TIME_BUDGET} s time budget "
+                                    f"for downloads is spent).")
+                warnings += 1
+                continue
+            status = download(url, dest, seconds_left)
             if status in (404, 410):
                 annotate("error", f"{url} does not exist on {CDN_HOST} (HTTP {status}); "
                                   f"referenced by {where(sum(refs[url].values(), []))}.")
