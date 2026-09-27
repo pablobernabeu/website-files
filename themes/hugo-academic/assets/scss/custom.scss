@@ -7493,10 +7493,14 @@ body.dark {
 // button is positioned, so it takes no height and the margins on either side collapse
 // through it: nothing on the page moves. The button is laid over the right-hand end of
 // the first chunk's summary line, which the short, left-aligned "Expand" or "Collapse"
-// leaves empty. At 12px text, 1.4 line height, padding and border, it is 21px tall,
-// against the 25px of a closed summary and the 27px between an open one and its code.
-// The grey is the "Collapse" link's, at 5.3:1 on the light theme and 7.0:1 on the
-// dark one, and the z-index keeps it clear of any positioned element after it.
+// leaves empty. Lying on another target, it cannot count on spacing to meet the 24px
+// minimum target size of WCAG 2.2 (2.5.8), so it meets it by its own height: at the
+// default 12px text, with 1.4 line height, padding and border, it is 25px tall,
+// within the 25.5px of a closed summary and the 27px between an open one and its
+// code. The padding is in em rather than the height in px, so that the button
+// shrinks with the text when a reader picks a smaller size, and still clears the
+// code. The grey is the "Collapse" link's, at 5.3:1 on the light theme and 7.0:1 on
+// the dark one, and the z-index keeps it clear of any positioned element after it.
 .article-style .code-fold-all {
   position: relative;
 }
@@ -7506,7 +7510,7 @@ body.dark {
   top: 0;
   right: 0;
   z-index: 1;
-  padding: 0.1em 0.6em;
+  padding: 0.25em 0.6em;
   border: 1px solid currentColor;
   border-radius: 3px;
   background: transparent;
