@@ -1729,9 +1729,9 @@
     function initializeModalImages() {
       if (modalImages.length === 0) {
         // Check if modal images are already initialized
-        images.forEach((img, index) => {
+        images.forEach((img) => {
           const modalImg = document.createElement("img");
-          modalImg.src = img.src;
+          modalImg.alt = img.alt;
           modalImg.classList.add("imageModal-content");
           modalImg.style.display = "none"; // Hide all modal images initially
           modalImageWrapper.appendChild(modalImg);
@@ -1740,9 +1740,26 @@
       }
     }
 
-    // Function to display the clicked image in the modal
+    // The modal shows a photo at full resolution. Where the page shows a
+    // display-size copy, the original is named in data-full; otherwise the page's
+    // own image is the original. An original can weigh a megabyte or more, so a
+    // modal image only gets its source when it is about to be shown, rather than
+    // the whole gallery downloading the first time the modal opens.
+    function loadModalImage(index) {
+      const modalImg = modalImages[index];
+      if (!modalImg.hasAttribute("src")) {
+        modalImg.src = images[index].dataset.full || images[index].src;
+      }
+    }
+
+    // Function to display the clicked image in the modal. The neighbours on either
+    // side are fetched as well, so that stepping through does not wait on them.
     function showImage(index) {
       currentIndex = index;
+      const count = modalImages.length;
+      loadModalImage(currentIndex);
+      loadModalImage((currentIndex + 1) % count);
+      loadModalImage((currentIndex - 1 + count) % count);
       modalImages.forEach((img) => {
         img.style.display = "none"; // Hide all images
       });

@@ -4,17 +4,48 @@ name: Image budget
 # multi-MB GIF/PNG assets that previously bloated the deploy). Oversized files
 # are reported as warnings; the job only hard-fails if the total image payload
 # blows past a generous cap. Tighten PER_FILE_FAIL once known orphans are gone.
+#
+# Page bundles under content/ hold most of the site's images, so they are
+# measured too: each file against the same per-file limits, and each bundle's
+# images against the same cap as the shared directories' total. A bundle's
+# images all appear on its one page, so a gallery of camera originals can be
+# heavy without any single file reaching the hard limit. A site-wide total
+# would not suit content/, which grows with every post.
+#
+# A page may show display-size copies of a photo and name the full-resolution
+# original in data-full, which academic.js loads only when a reader opens the
+# photo in the lightbox (scripts/make_display_copies.py writes the copies). Such
+# an original is kept on purpose, and compressing it would defeat that purpose,
+# so it draws no warning and is left out of its bundle's total, which is meant
+# to reflect what the page loads. The hard per-file limit still applies to it.
 
 on:
   pull_request:
     paths:
       - "static/img/**"
       - "assets/images/**"
+      # Bracketed letters match either case, as find -iname does below. Page
+      # sources are not listed, so that the nightly related-references pull
+      # requests do not start the job.
+      - "content/**/*.[pP][nN][gG]"
+      - "content/**/*.[jJ][pP][gG]"
+      - "content/**/*.[jJ][pP][eE][gG]"
+      - "content/**/*.[gG][iI][fF]"
+      - "content/**/*.[wW][eE][bB][pP]"
+      - "content/**/*.[sS][vV][gG]"
+      - ".github/workflows/image-budget.yml"
   push:
     branches: [master]
     paths:
       - "static/img/**"
       - "assets/images/**"
+      - "content/**/*.[pP][nN][gG]"
+      - "content/**/*.[jJ][pP][gG]"
+      - "content/**/*.[jJ][pP][eE][gG]"
+      - "content/**/*.[gG][iI][fF]"
+      - "content/**/*.[wW][eE][bB][pP]"
+      - "content/**/*.[sS][vV][gG]"
+      - ".github/workflows/image-budget.yml"
   workflow_dispatch:
 
 # Reads the checked-out tree and reports through job annotations only.
@@ -34,25 +65,81 @@ jobs:
           PER_FILE_WARN_KB=500       # warn above this (non-blocking)
           PER_FILE_FAIL_KB=6000      # hard-fail any single file above this
           TOTAL_BUDGET_KB=10000      # hard-fail if the measured total exceeds this
+          PAGE_BUDGET_KB=10000       # hard-fail a page bundle whose images exceed this
           # Both trigger path filters above list assets/images/**, so measure it
           # too; otherwise a change there wakes the job and it reports on a
           # directory the change could not have touched.
           IMAGE_DIRS="static/img assets/images"
           fail=0
-          echo "Per-file warn: ${PER_FILE_WARN_KB} KB | per-file fail: ${PER_FILE_FAIL_KB} KB | total budget: ${TOTAL_BUDGET_KB} KB"
+          echo "Per-file warn: ${PER_FILE_WARN_KB} KB | per-file fail: ${PER_FILE_FAIL_KB} KB | total budget: ${TOTAL_BUDGET_KB} KB | page budget: ${PAGE_BUDGET_KB} KB"
+
+          # Originals that pages load only on request, from every data-full in a
+          # page source. A relative value is resolved against the page's own
+          # directory, as the browser does for a page bundle, a root-relative one
+          # against static/, and percent-escapes such as %20 are decoded.
+          declare -A on_request=()
+          while IFS= read -r -d '' page; do
+            while IFS= read -r ref; do
+              ref="${ref#data-full=?}"
+              ref="${ref%?}"
+              ref="$(printf '%b' "${ref//%/\\x}")"
+              case "$ref" in
+                /*) ref="static$ref" ;;
+                *) ref="${page%/*}/$ref" ;;
+              esac
+              on_request["$(realpath -ms --relative-to=. "$ref")"]=1
+            done < <(grep -oE "data-full=(\"[^\"]+\"|'[^']+')" "$page" || true)
+          done < <(find content -type f \( -name '*.md' -o -name '*.Rmd' -o -name '*.html' \) -print0)
+
+          declare -A page_bytes=()
+          kept=0
+          kept_bytes=0
           while IFS= read -r -d '' f; do
-            kb=$(( ( $(stat -c%s "$f") + 1023 ) / 1024 ))
+            bytes=$(stat -c%s "$f")
+            kb=$(( ( bytes + 1023 ) / 1024 ))
             if [ "$kb" -gt "$PER_FILE_FAIL_KB" ]; then
               echo "::error file=$f::$f is ${kb} KB (exceeds ${PER_FILE_FAIL_KB} KB hard limit)"
               fail=1
-            elif [ "$kb" -gt "$PER_FILE_WARN_KB" ]; then
+            fi
+            if [ -n "${on_request[$f]:-}" ]; then
+              kept=$(( kept + 1 ))
+              kept_bytes=$(( kept_bytes + bytes ))
+              continue
+            fi
+            if [ "$kb" -le "$PER_FILE_FAIL_KB" ] && [ "$kb" -gt "$PER_FILE_WARN_KB" ]; then
               echo "::warning file=$f::$f is ${kb} KB (over ${PER_FILE_WARN_KB} KB soft cap — consider compressing)"
             fi
-          done < <(find $IMAGE_DIRS -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.gif' -o -iname '*.webp' -o -iname '*.svg' \) -print0)
+            # A page bundle is a directory directly inside a content section,
+            # such as content/post/<name>, with everything beneath it.
+            case "$f" in
+              content/*)
+                IFS=/ read -r _ section name _ <<< "$f"
+                bundle="content/$section/$name"
+                sum="${page_bytes[$bundle]:-0}"
+                page_bytes["$bundle"]=$(( sum + bytes ))
+                ;;
+            esac
+          done < <(find $IMAGE_DIRS content -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.gif' -o -iname '*.webp' -o -iname '*.svg' \) -print0)
+
           total_kb=$(( ( $(du -scb $IMAGE_DIRS | tail -1 | cut -f1) + 1023 ) / 1024 ))
           echo "Total ${IMAGE_DIRS}: ${total_kb} KB"
           if [ "$total_kb" -gt "$TOTAL_BUDGET_KB" ]; then
             echo "::error::${IMAGE_DIRS} total ${total_kb} KB exceeds ${TOTAL_BUDGET_KB} KB budget"
             fail=1
           fi
+
+          echo "Full-resolution originals loaded on request, left out of page totals: ${kept} ($(( ( kept_bytes + 1023 ) / 1024 )) KB)"
+          echo "Heaviest page bundles:"
+          for bundle in "${!page_bytes[@]}"; do
+            sum="${page_bytes[$bundle]}"
+            printf '%s KB  %s\n' "$(( ( sum + 1023 ) / 1024 ))" "$bundle"
+          done | sort -rn | sed -n '1,5s/^/  /p'
+          for bundle in "${!page_bytes[@]}"; do
+            sum="${page_bytes[$bundle]}"
+            kb=$(( ( sum + 1023 ) / 1024 ))
+            if [ "$kb" -gt "$PAGE_BUDGET_KB" ]; then
+              echo "::error::${bundle} holds ${kb} KB of page images (exceeds ${PAGE_BUDGET_KB} KB page budget)"
+              fail=1
+            fi
+          done
           exit $fail

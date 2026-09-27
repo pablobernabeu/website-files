@@ -1885,6 +1885,14 @@ div:has(> img.featured-image) {
   margin-top: -5%;
 }
 
+// A featured image carries its width and height (layouts/partials/page_header.html),
+// which hold its space open while it loads. The height is auto so that they set only
+// its shape: the width is the column's, and on a narrower screen the height they give
+// in pixels would squash the image.
+.featured-image {
+  height: auto;
+}
+
 @media (max-width: 991px) {
   .pub div:has(> img.featured-image) {
     margin-top: 0;
@@ -6373,8 +6381,12 @@ textarea {
     margin-bottom: -4%; /* Reduced margin above the container */
 }
 
+// The height is auto so that an image's width and height attributes only set
+// its shape, which holds its space open while it loads; left to them, it
+// would be drawn at the height they give in pixels.
 .imageContainer img {
     width: 100%; 
+    height: auto;
     border-radius: 4px;
     cursor: pointer;
     display: block;
