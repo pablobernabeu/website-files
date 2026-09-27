@@ -14,8 +14,10 @@ slug: lexsync
 publication: 'Version 0.1.0 on CRAN and Version 0.1.1 on PyPI [Computer software]'
 doi: 10.32614/CRAN.package.lexsync
 citations:
+  # The CRAN entry keeps the file name cite.bib, the address it was published
+  # at before the PyPI entry was added.
   - label: 'Citation (CRAN)'
-    file: cite-cran.bib
+    file: cite.bib
   - label: 'Citation (PyPI)'
     file: cite-pypi.bib
 categories:
