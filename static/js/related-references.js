@@ -95,7 +95,7 @@
           if (entry.isIntersecting) {
             prefetcher.unobserve(entry.target);
             var src = metadataFileUrl(entry.target);
-            if (src) requestMetadataFile(src, function () {});
+            if (src) requestMetadataFile(src);
           }
         });
       }, { rootMargin: '200% 0px' });
@@ -228,11 +228,16 @@
   // so that a later caller can try again.
   var metadataFiles = {};
 
-  // How long a metadata file may take before the section is built without
-  // it. Generous, because going without costs the reader more than waiting:
-  // every type and abstract on screen then comes from CrossRef, request by
-  // request.
+  // How long a request for a metadata file may take before it is given up
+  // and the section is built without it. Generous, because going without
+  // costs the reader more than waiting: every type and abstract on screen
+  // then comes from CrossRef, request by request.
   var METADATA_TIMEOUT = 60000;
+
+  // The pause before a request that broke off is made again: time for a
+  // momentary drop in the connection to pass, and short against the wait
+  // already allowed for the file itself.
+  var METADATA_RETRY_DELAY = 1000;
 
   /**
    * The <script class="ref-metadata"> for a section. For Rmd publications the
@@ -282,38 +287,94 @@
 
   /**
    * Hand the parsed metadata file at src to done, requesting it only if no
-   * earlier call already has. A file that cannot be fetched or parsed is
-   * handed over as an empty object: that is the state of a section that never
-   * had any metadata, which the rest of this file already handles by asking
+   * earlier call already has. Without done, the call only starts the request,
+   * ahead of the section needing it.
+   *
+   * A request that breaks off, on a network or server error or because the
+   * reader stopped the page loading, is made once more while a section is
+   * waiting for it: the file is all the section's types and abstracts, and
+   * going without costs it them for the rest of the visit. A file that is
+   * missing or cannot be parsed would come back the same, and one that ran
+   * past METADATA_TIMEOUT has kept the reader waiting long enough, so neither
+   * is asked for again. Once nothing more will be tried, the waiting sections
+   * are handed an empty object: that is the state of a section that never had
+   * any metadata, which the rest of this file already handles by asking
    * CrossRef.
    *
+   * A request made ahead of need that fails is simply forgotten, and the
+   * section asks afresh when it is enhanced.
+   *
    * @param {string} src
-   * @param {function(Object)} done
+   * @param {function(Object)} [done]
    */
   function requestMetadataFile(src, done) {
     var entry = metadataFiles[src];
-    if (entry && entry.data) { done(entry.data); return; }
-    if (entry) { entry.waiting.push(done); return; }
-    entry = metadataFiles[src] = { data: null, waiting: [done] };
+    if (entry && entry.data) {
+      if (done) done(entry.data);
+      return;
+    }
+    if (!entry) {
+      entry = metadataFiles[src] = { data: null, waiting: [], retried: false };
+      fetchMetadataFile(src, entry);
+    }
+    if (done) entry.waiting.push(done);
+  }
 
-    var settled = false;
-    function settle(data) {
-      if (settled) return;
-      settled = true;
-      if (data) {
-        entry.data = data;
-      } else {
-        delete metadataFiles[src];
-        if (typeof console !== 'undefined' && console.warn) {
-          console.warn('[related-refs] metadata unavailable, falling back to CrossRef:', src);
+  /**
+   * Request the file for an entry of metadataFiles and see the entry through
+   * to its end, as requestMetadataFile describes.
+   *
+   * @param {string} src
+   * @param {{data: ?Object, waiting: Array<function(Object)>, retried: boolean}} entry
+   */
+  function fetchMetadataFile(src, entry) {
+    function send() {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', src, true);
+      xhr.timeout = METADATA_TIMEOUT;
+      xhr.onload = function () {
+        if (xhr.status !== 200) {
+          fail(xhr.status === 0 || xhr.status >= 500);
+          return;
         }
+        var data = null;
+        try { data = JSON.parse(xhr.responseText); } catch (e) { /* not usable */ }
+        if (data && typeof data === 'object') {
+          entry.data = data;
+          settle(data);
+        } else {
+          fail(false);
+        }
+      };
+      xhr.onerror = xhr.onabort = function () { fail(true); };
+      xhr.ontimeout = function () { fail(false); };
+      xhr.send();
+    }
+
+    function fail(brokeOff) {
+      if (!entry.waiting.length) {
+        delete metadataFiles[src];
+        return;
       }
+      if (brokeOff && !entry.retried) {
+        entry.retried = true;
+        setTimeout(send, METADATA_RETRY_DELAY);
+        return;
+      }
+      delete metadataFiles[src];
+      if (typeof console !== 'undefined' && console.warn) {
+        console.warn('[related-refs] metadata unavailable, falling back to CrossRef:', src);
+      }
+      settle({});
+    }
+
+    function settle(data) {
       var waiting = entry.waiting;
       entry.waiting = [];
       // One caller's failure must not leave the others waiting for good.
       for (var i = 0; i < waiting.length; i++) {
         try {
-          waiting[i](data || {});
+          waiting[i](data);
         } catch (err) {
           if (typeof console !== 'undefined' && console.error) {
             console.error('[related-refs] enhancement error:', err);
@@ -322,18 +383,7 @@
       }
     }
 
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', src, true);
-    xhr.timeout = METADATA_TIMEOUT;
-    xhr.onload = function () {
-      var data = null;
-      if (xhr.status === 200) {
-        try { data = JSON.parse(xhr.responseText); } catch (e) { /* settled as a failure */ }
-      }
-      settle(data && typeof data === 'object' ? data : null);
-    };
-    xhr.onerror = xhr.ontimeout = xhr.onabort = function () { settle(null); };
-    xhr.send();
+    send();
   }
 
   /**
