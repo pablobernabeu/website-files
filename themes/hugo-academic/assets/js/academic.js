@@ -1926,6 +1926,12 @@
   // here is a <details> made above that still holds its <pre>. layouts/post/single.html
   // writes data-code-folding on every post body and on nothing else, which keeps the
   // button to posts. The wrapper takes no height (custom.scss), so nothing moves.
+  //
+  // Some posts hold a long listing in a fixed-height box that scrolls on its own, and
+  // a first chunk inside one would take the button with it, as though it belonged to
+  // that listing alone and not to the whole post. The button then goes before the
+  // outermost such box, on a line of its own, as there is no summary line there to
+  // lie over.
   document.querySelectorAll(".article-style[data-code-folding]").forEach((body) => {
     const chunks = codeChunks.filter(
       (d) => body.contains(d) && d.querySelector(":scope > pre")
@@ -1952,8 +1958,15 @@
     });
     chunks.forEach((d) => d.addEventListener("toggle", label));
 
+    let anchor = chunks[0];
+    for (let el = anchor.parentElement; el !== body; el = el.parentElement) {
+      const style = getComputedStyle(el);
+      if (style.overflowX !== "visible" || style.overflowY !== "visible") anchor = el;
+    }
+    if (anchor !== chunks[0]) wrapper.classList.add("is-own-line");
+
     label();
-    chunks[0].before(wrapper);
+    anchor.before(wrapper);
   });
 
   // Printing. Folded code chunks print open, and the page prints in the light theme,

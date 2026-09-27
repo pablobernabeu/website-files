@@ -7526,6 +7526,18 @@ body.dark {
   outline-offset: 2px;
 }
 
+// Where the first chunk sits in a box that scrolls on its own, academic.js puts the
+// button before the box instead, and there it takes a line of its own, at the right
+// as elsewhere, a little clear of the box's border.
+.article-style .code-fold-all.is-own-line {
+  margin-bottom: 0.5rem;
+  text-align: right;
+}
+
+.article-style .code-fold-all.is-own-line > button {
+  position: static;
+}
+
 // Left-align only summary elements that contain code blocks (pre elements)
 details:has(pre) summary {
   text-align: left !important;
