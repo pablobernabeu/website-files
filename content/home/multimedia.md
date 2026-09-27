@@ -62,15 +62,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const toggleButton = document.getElementById('toggle-all-summaries');
   const summaries = document.querySelectorAll('#multimedia .multimedia-summary');
   
-  // Add theme-aware hover effect
+  // On hover the site-wide button:hover rule gives the button a pale green fill
+  // on the light theme, so the label turns black there.
   toggleButton.addEventListener('mouseenter', function() {
     const isDark = document.body.classList.contains('dark');
-    this.style.backgroundColor = isDark ? '#065f46' : '#d1fae5';
     this.style.color = isDark ? '#ffffff' : '#000000';
   });
   
   toggleButton.addEventListener('mouseleave', function() {
-    this.style.backgroundColor = '#047857';
     this.style.color = '#ffffff';
   });
   
