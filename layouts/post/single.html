@@ -32,8 +32,13 @@
          script counts again without the headings it leaves out, and gives the room
          back if fewer than four remain. */}}
     {{ $sections := len (findRE `<h2[\s>]` .Content) }}
+    {{/* kableExtra adds kePrint.js to every post with one of its tables. The script
+         calls jQuery the moment it loads, which in the post body is before the theme
+         loads jQuery, so it only ever threw "$ is not defined". Its one purpose is to
+         start Bootstrap tooltips and popovers, which this site does not run (see
+         custom_js.html), so the tag is dropped here, where a re-knit cannot restore it. */}}
     <div class="article-style" data-code-folding="{{ if eq (lower (printf "%v" .Params.code_folding)) "hide" }}hide{{ else }}show{{ end }}"{{ if ge $sections 4 }} data-contents{{ end }}>
-      {{ .Content }}
+      {{ .Content | replaceRE `<script src="[^"]*/kePrint/kePrint\.js"></script>\s*` "" | safeHTML }}
     </div>
 
     {{/* A post knitted from R Markdown ends with a link to its source. blogdown writes
