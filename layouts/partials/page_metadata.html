@@ -66,12 +66,12 @@
   {{ else if and (eq $page.Type "post") (not $is_list) }}
     {{/* A post's own page gives the day it was published, and the day it was last
          updated when that came later. Lists and the other sections keep the year alone,
-         as date_format in params.toml sets it. Several early posts were dated 1 January
-         as a stand-in for a date known only to the year, so a post dated 1 January
-         keeps the year alone here too, rather than claim a day that was never
-         recorded. */}}
+         as date_format in params.toml sets it. Posts from 2016 to 2020 whose day went
+         unrecorded were dated 1 January as a stand-in, so a post dated 1 January before
+         2021 keeps the year alone here too, rather than claim a day that was never
+         recorded. A post genuinely published on a later 1 January keeps its day. */}}
     {{ with $page.Date }}{{ if not .IsZero }}
-    {{ $yearOnly := eq (.Format "01-02") "01-01" }}
+    {{ $yearOnly := and (lt .Year 2021) (eq (.Format "01-02") "01-01") }}
     <span class="article-date"{{ if $page.Params.authors }} style='font-size:105%;'{{ end }}>
       {{- if $page.Params.authors }}({{ end -}}
       <time datetime="{{ .Format (cond $yearOnly "2006" "2006-01-02") }}">{{ .Format (cond $yearOnly "2006" "2 January 2006") }}</time>
