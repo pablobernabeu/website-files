@@ -99,11 +99,15 @@ jobs:
         run: |
           # Other repositories publish their GitHub Pages sites on this domain,
           # each at /<repository>/, so a URL on it belongs to this build only if
-          # its first path segment is a name at the top of ./public. The first
-          # pattern matches those URLs, and the bare domain, for lychee to remap
-          # onto the build. Offline, lychee skips every other URL, as it skips
-          # links to other sites; those written in the content are tested over
-          # the network by the source check.
+          # its first path segment is a name at the top of ./public or a year,
+          # with which the address of every post begins. A name is matched
+          # regardless of case, because GitHub Pages matches paths
+          # case-sensitively: /Post/ is a broken link to this site rather than
+          # a link to another. The first pattern matches those URLs, and the
+          # bare domain, for lychee to remap onto the build. Offline, lychee
+          # skips every other URL, as it skips links to other sites; those
+          # written in the content are tested over the network by the source
+          # check.
           names="$(find public -mindepth 1 -maxdepth 1 -printf '%f\n' | LC_ALL=C sort)"
           # Names with other characters are left out: a URL may percent-encode
           # them, and the pattern reaches lychee inside single quotes.
@@ -112,7 +116,7 @@ jobs:
             echo "::warning::Links to /${name} are not checked: the name has characters that the URL pattern does not cover."
           done < <(grep -vE "$safe" <<< "$names" || true)
           alternation="$(grep -E "$safe" <<< "$names" | sed 's/\./\\./g' | paste -sd '|' -)"
-          echo "pattern=^https?://pablobernabeu\\.github\\.io/((?:${alternation})(?:[/?#].*)?|[?#].*)?\$" >> "$GITHUB_OUTPUT"
+          echo "pattern=^https?://pablobernabeu\\.github\\.io/((?i:${alternation}|[0-9]{4})(?:[/?#].*)?|[?#].*)?\$" >> "$GITHUB_OUTPUT"
 
           # flexdashboard renames its page anchors in the browser (the page with
           # id "cf.-lc-english-norms" is reached at #cf-lc-english-norms), so a
