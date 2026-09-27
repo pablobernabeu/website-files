@@ -15,7 +15,10 @@ the top of assets.toml), hashed and compared with the attribute the way a
 browser compares it (the strongest algorithm listed decides).
 
 Exit status 1, which stops the deploy, when a file does not match its
-integrity attribute or cdnjs has no such file (404 or 410).
+integrity attribute or cdnjs has no such file (404 or 410). The same happens
+when a tag has a hash in its integrity attribute but no crossorigin attribute:
+a browser cannot check a cross-origin file fetched without CORS, so it refuses
+the file.
 
 A download that fails for any other reason after curl's retries is only a
 warning, since a CDN outage says nothing about the hashes. So is a file left
@@ -52,7 +55,7 @@ IN_CI = os.environ.get("GITHUB_ACTIONS") == "true"
 
 
 class CdnReferences(HTMLParser):
-    """Collects (url, integrity) for every cdnjs script and stylesheet in a page."""
+    """Collects (url, integrity, has_crossorigin) for each cdnjs script and stylesheet."""
 
     def __init__(self):
         super().__init__(convert_charrefs=True)
@@ -69,13 +72,18 @@ class CdnReferences(HTMLParser):
         if url and url.startswith("//"):
             url = "https:" + url
         if url and urlsplit(url).hostname == CDN_HOST:
-            # A bare `integrity` (as the minifier writes an empty one) parses as None.
-            self.found.append((url, (attrs.get("integrity") or "").strip()))
+            # A bare `integrity` (as the minifier writes an empty one) parses as
+            # None. A bare `crossorigin` means anonymous, so only its absence counts.
+            self.found.append((url, (attrs.get("integrity") or "").strip(),
+                               "crossorigin" in attrs))
 
 
 def collect(site_dir):
-    """Returns {url: {integrity: [pages]}} over every HTML file under site_dir."""
+    """Returns ({url: {integrity: [pages]}}, {url: [pages]}) over every HTML file under
+    site_dir. The second dict lists the pages whose tag for url carries an integrity
+    check but no crossorigin attribute."""
     refs = {}
+    no_cors = {}
     for dirpath, _dirs, filenames in os.walk(site_dir):
         for fn in filenames:
             if not fn.endswith(".html"):
@@ -84,10 +92,12 @@ def collect(site_dir):
             parser = CdnReferences()
             with open(path, encoding="utf-8", errors="replace") as fh:
                 parser.feed(fh.read())
-            for url, integrity in parser.found:
-                pages = refs.setdefault(url, {}).setdefault(integrity, [])
-                pages.append(os.path.relpath(path, site_dir))
-    return refs
+            page = os.path.relpath(path, site_dir)
+            for url, integrity, has_crossorigin in parser.found:
+                refs.setdefault(url, {}).setdefault(integrity, []).append(page)
+                if parse_integrity(integrity)[0] and not has_crossorigin:
+                    no_cors.setdefault(url, []).append(page)
+    return refs, no_cors
 
 
 def parse_integrity(value):
@@ -144,12 +154,20 @@ def main():
     site_dir = sys.argv[1] if len(sys.argv) > 1 else "public"
     if not os.path.isdir(site_dir):
         sys.exit(f"{site_dir} is not a directory; build the site first.")
-    refs = collect(site_dir)
+    refs, no_cors = collect(site_dir)
     if not refs:
         print(f"No {CDN_HOST} files are referenced under {site_dir}.")
         return 0
 
     verified = failures = warnings = 0
+    # Chromium, for one, blocks such a file outright ("the resource requires the
+    # request to be CORS enabled to check the integrity"), whatever its hash.
+    for url, pages in sorted(no_cors.items()):
+        annotate("error", f"{url} has an integrity attribute but no crossorigin attribute on "
+                          f"{where(pages)}. Browsers refuse a cross-origin file whose integrity "
+                          f"they cannot check without CORS; add crossorigin=\"anonymous\".")
+        failures += 1
+
     deadline = time.monotonic() + TIME_BUDGET
     with tempfile.TemporaryDirectory() as tmp:
         dest = os.path.join(tmp, "file")
