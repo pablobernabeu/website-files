@@ -3,10 +3,13 @@
 {{- /* A page counts as updated when it was last modified on a later calendar day than
      the one it was published on. Hugo has resolved both dates by now: a lastmod left
      empty takes the date, and a post written with `date: ~` takes its date from
-     lastmod, so neither reads as an update. The comparison is by day rather than by
-     instant, as lastmod can carry a time of day, and a correction made on the day of
-     publication is no news to a reader. */}}
-{{- $updated := gt ($page.Lastmod.Format "2006-01-02") ($page.Date.Format "2006-01-02") }}
+     lastmod, so neither reads as an update. The days are compared rather than the
+     instants, as lastmod can carry a time of day, and a correction made on the day of
+     publication is no news to a reader. Each day is read in its date's own UTC
+     offset, as the page displays it, so lastmod must also be the later instant: one
+     written in an offset further east can fall on the next day and still be the
+     earlier moment. */}}
+{{- $updated := and ($page.Lastmod.After $page.Date) (gt ($page.Lastmod.Format "2006-01-02") ($page.Date.Format "2006-01-02")) }}
 
 {{ if not $page.Params.hide_metadata }}
 <div class="article-metadata">
