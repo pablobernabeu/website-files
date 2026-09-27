@@ -153,8 +153,19 @@
   // Find all related tags for existing article tags
   const relatedTagsMap = new Map();
   // Fetch tag co-occurrence data
+  // A related-references block occupies the main thread for seconds around load,
+  // so on such a page the index is requested now, to arrive before that work
+  // starts; only the rebuild below waits until the tags are wanted.
+  if (document.querySelector('.related-references') && typeof window.getSearchIndex === 'function') {
+    window.getSearchIndex().catch(() => {});
+  }
+  // A page cached from before getSearchIndex() existed can still receive this
+  // script, as GitHub Pages ignores the query string that versions it, so the
+  // index is fetched directly when the page does not offer the shared request.
   tagsWanted()
-    .then(() => window.getSearchIndex())
+    .then(() => (typeof window.getSearchIndex === 'function'
+      ? window.getSearchIndex()
+      : fetch('/index.json').then(response => response.json())))
     .then(data => {
       // Use accurate tag counts from the __tag-counts__ entry (based on Hugo's full taxonomy,
       // which includes ALL pages, not just those indexed for search).

@@ -417,8 +417,12 @@
     var arrived = false;
     loadMetadata(section, function (metadata) {
       arrived = true;
+      // Read before the loading line leaves the page: once the reader has
+      // scrolled past the heading, removing it makes the browser shift the
+      // view, and an offset taken afterwards would keep that shift.
+      var scrollAtArrival = window.pageYOffset;
       if (status && status.parentNode) status.parentNode.removeChild(status);
-      buildSection(section, metadata);
+      buildSection(section, metadata, scrollAtArrival);
     });
     if (!arrived) status = showMetadataStatus(section);
   }
@@ -458,7 +462,7 @@
     target.scrollIntoView({ block: 'nearest' });
   }
 
-  function buildSection(section, metadata) {
+  function buildSection(section, metadata, scrollAtArrival) {
     sectionsBuilt++;
 
     // Tag the heading above this section for extra top-margin
@@ -707,7 +711,7 @@
 
     // Build toolbar — save/restore scroll so DOM insertion doesn't
     // pull the viewport when the section is below the current view.
-    var scrollBefore = window.pageYOffset;
+    var scrollBefore = scrollAtArrival == null ? window.pageYOffset : scrollAtArrival;
     var toolbar = createToolbar(minYear, maxYear, types, hasAnyDoi, scopusQueries);
     section.parentNode.insertBefore(toolbar, section);
     window.scrollTo({ top: scrollBefore, left: 0, behavior: 'instant' });
@@ -861,6 +865,15 @@
         ctrl.applySort();
         if (typeof console !== 'undefined' && console.error) {
           console.error('[related-refs] relevance scoring error:', badgeErr);
+        }
+      }
+      // The re-sort restores a scroll offset that the browser's scroll
+      // anchoring may already have moved, which can carry a search field that
+      // a keyboard reader was just given out of view, so it is brought back.
+      if (focusWasInList) {
+        var focused = document.activeElement;
+        if (focused && (focused === toolbar.querySelector('.ref-search') || focused === section)) {
+          focused.scrollIntoView({ block: 'nearest' });
         }
       }
       // Either way the displayed set is now final, so the prefetch can be

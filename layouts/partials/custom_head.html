@@ -335,7 +335,7 @@
 
 {{/* Tag cloud network visualization */}}
 {{ if .IsHome }}
-<script defer src="{{ "js/tag-cloud-network.js" | relURL }}"></script>
+<script defer src="{{ "js/tag-cloud-network.js" | relURL }}?v={{ substr (readFile "static/js/tag-cloud-network.js" | md5) 0 10 }}"></script>
 {{ end }}
 
 {{/* Basic performance optimization */}}

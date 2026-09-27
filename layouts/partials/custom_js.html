@@ -45,7 +45,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- Article ancillary tags script -->
 {{ if .IsPage }}{{ with .Params.tags }}
-<script src="{{ "js/article-ancillary-tags.js" | relURL }}" defer></script>
+{{- /* Versioned like related-references.js below: the script now relies on the
+       page's getSearchIndex(), so a new page should not run a cached old copy. */}}
+<script src="{{ "js/article-ancillary-tags.js" | relURL }}?v={{ substr (readFile "static/js/article-ancillary-tags.js" | md5) 0 10 }}" defer></script>
 {{ end }}{{ end }}
 
 <!-- Related references interactive enhancement -->

@@ -47,11 +47,16 @@
         ? decodeURIComponent(window.location.hash)
         : target;
 
+    if (typeof target !== "string" || target.length < 2 || target.charAt(0) !== "#") return;
+
+    // Escape special chars from IDs, such as colons found in Markdown footnote links and
+    // the dots of pandoc's section ids, before the id is used as a selector at all: an
+    // unescaped id ending in "." made jQuery throw, and one with a dot inside matched
+    // nothing.
+    target = "#" + $.escapeSelector(target.substring(1));
+
     // If target element exists, scroll to it taking into account fixed navigation bar offset.
     if ($(target).length) {
-      // Escape special chars from IDs, such as colons found in Markdown footnote links.
-      target = "#" + $.escapeSelector(target.substring(1)); // Previously, `target = target.replace(/:/g, '\\:');`
-
       let elementOffset = Math.ceil($(target).offset().top - getNavBarHeight()); // Round up to highlight right ID!
       $("body").addClass("scrolling");
       $("html, body").animate(

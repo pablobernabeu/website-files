@@ -175,8 +175,11 @@
   async function fetchTagCooccurrences(tags) {
     try {
       // Shared with the site search, so that the index is downloaded only once
-      // (see getSearchIndex() in layouts/partials/custom_head.html).
-      const searchIndex = await window.getSearchIndex();
+      // (see getSearchIndex() in layouts/partials/custom_head.html). A page cached
+      // from before that function existed fetches the index directly instead.
+      const searchIndex = await (typeof window.getSearchIndex === 'function'
+        ? window.getSearchIndex()
+        : fetch('/index.json').then(response => response.json()));
       // Debug: Show sample of tag data from index
       if (searchIndex.length > 0) {
         const samplePage = searchIndex[0];
