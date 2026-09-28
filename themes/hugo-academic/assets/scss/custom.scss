@@ -2500,7 +2500,7 @@ body.dark {
   .navbar-nav a,
   #navbar-main a,
   #navbar-content a,
-  .section-heading a,
+  .section-heading h1 a, // not the links in a section's subtitle, which stay underlined
   .portrait-title a,
   .social-icon a,
   .btn-outline-primary,
@@ -2525,7 +2525,7 @@ body.dark {
   .navbar-nav a:hover,
   #navbar-main a:hover,
   #navbar-content a:hover,
-  .section-heading a:hover,
+  .section-heading h1 a:hover,
   .portrait-title a:hover,
   .social-icon a:hover,
   .btn-outline-primary:hover,
