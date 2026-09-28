@@ -4,7 +4,7 @@ author: ''
 date: '2023-11-24'
 slug: motivating-a-preregistration-especially-in-experimental-linguistics
 categories:
-  - research-methods
+  - research methods
 tags:
   - prereg
   - preregistration

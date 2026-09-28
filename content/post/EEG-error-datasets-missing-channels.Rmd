@@ -3,7 +3,7 @@ title: 'EEG error: Datasets missing channels'
 authors: ''
 date: '2016-08-16'
 slug: eeg-error-datasets-missing-channels
-categories: [research-methods]
+categories: [research methods]
 tags:
   - event-related potentials
   - electroencephalography
