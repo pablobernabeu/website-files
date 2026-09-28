@@ -134,13 +134,13 @@
     };
     // The colours above are for the light theme's near-white tag-cloud background
     // (#f7f7f7), on which each reaches about 5.4:1, and 4.8:1 on the tint a hovered
-    // tag takes. For the dark theme's background
-    // (~rgb(35,37,47)) the hues are lightened in HSL space until each reaches about 7:1.
+    // tag takes. Those below are for the dark theme's background (~rgb(35,37,47)),
+    // lighter shades of each category's colour at about 7:1.
     const darkColors = {
       syntax: '#89b4fa',
       semantics: '#bfa4fa',
       methods: '#12cc8e',
-      cognition: '#f59e0b',   // already ~7:1 against the dark background; unchanged
+      cognition: '#f59e0b',
       programming: '#f69999',
       language: '#06c3e3',
       other: '#acb0ba'

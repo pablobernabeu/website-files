@@ -693,8 +693,8 @@ a[href$="/tags/s/"] {
 
 /* Frequency count subscripts. A count takes its tag's colour (getCategoryColor in
    tag-cloud-network.js). The light palette reaches about 5.4:1, which leaves no room
-   to fade the count; the dark one reaches about 7:1, so there the count can be faded
-   to 0.8 and stay above 5:1. */
+   to fade the count. The dark one reaches about 7:1, so there the count is faded to
+   0.8 at rest (5.0:1 or more), but not on the tint of a hovered or focused tag. */
 #tags .tag-cloud a::after {
   content: attr(data-count);
   font-size: 0.6em;
@@ -705,6 +705,11 @@ a[href$="/tags/s/"] {
 
 body.dark #tags .tag-cloud a::after {
   opacity: 0.8;
+}
+
+body.dark #tags .tag-cloud a:hover::after,
+body.dark #tags .tag-cloud a:focus::after {
+  opacity: 1;
 }
 
 /* Tag page heading links - match home page styling */
@@ -5760,7 +5765,7 @@ body.dark .article-tags a[data-count]::after {
   color: #34d399;
 }
 
-// On the focus fill of the software pages' tags, the green above falls to 3.4:1.
+// On the focus fill of the software pages' tags, the green above falls to 3.5:1.
 body.dark .article-tags a[data-count]:focus::after {
   color: #a7f3d0;
 }
