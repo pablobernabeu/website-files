@@ -1983,6 +1983,7 @@ body.dark {
   --text-quaternary: #24494F;
   --text-visited: purple;
   --text-hover: black;
+  --heading-link-underline: #22c55e; // the hover underline of heading links
   --text-active: #24494F;
   
   // Navigation colors (INVERTED - light theme uses dark theme colors)
@@ -2071,6 +2072,7 @@ body.dark {
   --text-quaternary: #cbd5e1;
   --text-visited: #d8b4fe;
   --text-hover: #f1f5f9;
+  --heading-link-underline: #10b981;
   --text-active: #cbd5e1;
   
   // Navigation colors for dark theme (INVERTED - uses light theme colors)
@@ -5376,15 +5378,22 @@ body.dark .document-viewer-toolbar {
 #software .media-body h3 a:active,
 #software div.media-body > h3 > a:hover,
 #software div.media-body > h3 > a:active,
-.home-section h3 a:hover,
-.home-section h3 a:active,
-.home-section .media-body h3 a:hover,
-.home-section .media-body h3 a:active {
+body .home-section h3 a:hover,
+body .home-section h3 a:active,
+body .home-section .media-body h3 a:hover,
+body .home-section .media-body h3 a:active {
   background: none !important;
   background-image: none !important;
   background-color: transparent !important;
-  text-decoration: none !important;
   border-bottom: none !important;
+  // On hover a title changes colour but hardly in lightness (slate blue to teal on
+  // the light theme), so it is also underlined, as the list pages' headings are.
+  // The class-only selectors start with 'body' to outrank the dark theme's
+  // 'h3 a:hover' rule, which removes underlines.
+  text-decoration: underline !important;
+  text-decoration-color: var(--heading-link-underline) !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 3px !important;
 }
 
 /* Increase font size for home page h3 headings with links */
