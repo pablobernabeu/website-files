@@ -586,6 +586,12 @@ body.dark .ref-rel-sparkline .spark-threshold {
   background: rgba(127, 127, 127, 0.06);
 }
 
+/* On the dark theme's green hover fill, which every button takes, the muted
+   grey falls to 3.9:1. */
+body.dark .ref-show-more:hover .ref-more-remaining {
+  color: #cbd5e1;
+}
+
 body.dark .ref-show-more {
   color: var(--text-primary, #e2e8f0);
 }

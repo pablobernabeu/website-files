@@ -715,7 +715,7 @@ body.dark #tags .tag-cloud a::after {
   text-decoration: none !important;
   
   &:hover {
-    color: #059669 !important;
+    color: #047857 !important; // 5.2:1 on the pale green hover fill
     text-decoration: underline !important;
     text-decoration-color: #22c55e !important;
     text-decoration-thickness: 2px !important;
@@ -868,18 +868,31 @@ body.dark #other-work [style*="5a826f" i] {
   color: #82bba1 !important;
 }
 
-// The citation modal's Copy / Download buttons (.btn-outline-primary) show their
-// text + border in the brand blue (#2962ff), only ~3:1 on the dark theme.
-// Lighten to the dark-mode link blue for the resting/focus state; leave the
-// :hover / :active fill (white on blue) to Bootstrap. Scoped to .modal-footer so
-// it does NOT touch the section link buttons (#publication etc.), which already
-// have their own neutral grey styling and must stay consistent across sections.
-// The 'Load comments from Disqus' button below posts has the same class and the
-// same problem (~3.6:1 on the dark page), so it shares the rule.
-body.dark .modal-footer .btn-outline-primary:not(:hover):not(:active),
+// The 'Load comments from Disqus' button below posts is brand blue (#2962ff), only
+// 3.6:1 on the dark page, so on the dark theme it takes the dark-mode link blue at
+// rest (7.8:1).
 body.dark #disqus_thread .btn-outline-primary:not(:hover):not(:active) {
   color: #63b3ed !important;
   border-color: #63b3ed !important;
+}
+
+// The citation modal keeps its white panel on the dark theme (only the code block
+// turns dark), so its Copy / Download links keep the light theme's brand blue at
+// rest (4.9:1), and on hover a dark teal (5.6:1 on the pale green hover fill) in
+// place of the dark theme's light aqua. The close button keeps its dark fill on
+// hover rather than the pale green that every button takes.
+body.dark .modal-footer .btn-outline-primary:not(:hover):not(:active) {
+  color: #2962ff !important;
+  border-color: #2962ff !important;
+}
+
+body.dark .modal-content a:hover,
+body.dark .modal-content a:hover i {
+  color: #00695C !important;
+}
+
+body.dark .modal button.close:hover {
+  background-color: #282a36 !important;
 }
 
 // On hover, every button takes the pale green fill of the site-wide button:hover
@@ -1694,7 +1707,13 @@ body.dark .btn-links a[title*="open science"] {
 
 // Override dark theme link hover color in open science popups (white background needs dark hover color)
 body.dark #open-science-popup a:hover {
-  color: #00796B !important; // 5.3:1 on the white popup; #009688 gave 3.7:1
+  color: #00695C !important; // 5.6:1 on the pale green hover fill of the white popup
+}
+
+// The popup stays white on the dark theme, so the dark theme's lightening of inline
+// greys (below) would leave its external-link icon at 2.2:1 there.
+body.dark #open-science-popup [style*="#666"] {
+  color: #666666 !important;
 }
 
 // Reduce margin above separator in open science popups
@@ -2358,7 +2377,6 @@ body.dark {
     font-weight: bold !important;
     
     &:hover {
-      opacity: 0.8 !important;
       text-decoration: none !important;
     }
   }
@@ -2779,7 +2797,7 @@ body.dark {
 }
 
 // unvisited link
-p a:link, ul a:link, li a:link, .article-container a:link, td a:link, a.dsq-brlink, div.grid-sizer > div > a {
+p a:link, ul a:link, li a:link, .article-container a:link, .home-section .article-style a:link, td a:link, a.dsq-brlink, div.grid-sizer > div > a {
   color: var(--text-primary);
 }
 
@@ -4172,7 +4190,7 @@ body.dark .theme-menu .dropdown-item:hover {
 }
 
 body.dark .navbar-brand:hover {
-  color: #5f9ea0 !important; // Dark aquamarine
+  color: #0e7169 !important; // The dark theme's navbar hover teal, 4.8:1 on its light bar
   background-color: transparent !important;
   background: none !important;
 }
@@ -4470,9 +4488,11 @@ body.dark h3 a:visited {
   color: #fff !important;
 }
 
-// active link - use aquamarine for hover
+// Link hover colour. The light theme's teal is #00796B, which keeps the hue of the
+// earlier #009688 and reaches 5.0:1 or more on white and on the pale green fills
+// (--bg-highlight, --bg-button-hover) that hovered links sit on; #009688 gave 3.5:1.
 h3 a:hover, div a:hover {
-  color: #009688 !important; 
+  color: #00796B !important;
 }
 
 body.dark h3 a:hover, body.dark div a:hover {
@@ -5735,13 +5755,19 @@ article .article-container.pt-3 > div > .btn-links:has(a.scholar-icon-link)::bef
   opacity: 0.85;
   margin-left: 0.1em;
   font-weight: 400;
-  color: #059669;
+  color: #065f46; // 7.7:1 on white; at 0.6em the count needs the full 4.5:1
+  opacity: 1;
 }
 
 body.dark .article-tags a[data-count]::after,
 [data-theme="dark"] .article-tags a[data-count]::after {
-  opacity: 0.85;
+  opacity: 1;
   color: #34d399;
+}
+
+// An ancillary tag is drawn at 0.7 opacity, which fades its count with it.
+.article-tags a.ancillary-tag[data-count]::after {
+  color: #044a37;
 }
 
 // ancillary tag links within main container
@@ -5776,6 +5802,14 @@ body.dark .article-tags a.ancillary-tag:visited {
 .article-tags a.ancillary-tag:hover {
   font-weight: 400;
   opacity: 0.85;
+}
+
+// A focused ancillary tag sits on the focus fill, on which its faded text falls
+// short (4.3:1 light, 3.1:1 dark), so it is drawn at full strength. The selector
+// outranks the dark theme's !important resting opacity above.
+html body .article-tags a.ancillary-tag:focus:link,
+html body .article-tags a.ancillary-tag:focus:visited {
+  opacity: 1 !important;
 }
 
 // visited tag and category links
@@ -6726,6 +6760,7 @@ body.dark .full-text-btn a:focus,
 }
 .cv-btn:hover,
 .cv-btn:focus {
+  color: var(--text-hover);
   background-color: var(--bg-cv-hover);
   border-color: var(--border-cv-hover);
   box-shadow: 0 0 0 2px var(--bg-button-hover);
@@ -7226,7 +7261,7 @@ html body #search-results .search-hit h3,
 html body #search-results .search-hit h4,
 html body #search-results .search-hit h5,
 html body #search-results .search-hit h6 {
-  color: #009688 !important; /* Force aquamarine */
+  color: #00796B !important; /* The hover teal, 5.3:1 on white */
 }
 
 /* Target any link in search results */
@@ -7239,7 +7274,7 @@ html body .search-hit a h3,
 html body .search-hit a h4,
 html body .search-hit a h5,
 html body .search-hit a h6 {
-  color: #009688 !important; /* Force aquamarine */
+  color: #00796B !important; /* The hover teal, 5.3:1 on white */
   text-decoration: none !important;
 }
 
@@ -7572,6 +7607,11 @@ body.dark {
 .article-style .code-fold-all > button:focus-visible {
   outline: 2px solid var(--code-fold-expand);
   outline-offset: 2px;
+}
+
+// On the dark theme's green hover fill the grey falls to 3.9:1.
+body.dark .article-style .code-fold-all > button:hover {
+  color: #cbd5e1;
 }
 
 // Where the first chunk sits in a box that scrolls on its own, academic.js puts the

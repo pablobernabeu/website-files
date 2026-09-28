@@ -124,22 +124,19 @@
 
   function getCategoryColor(category) {
     const colors = {
-      syntax: '#3b82f6',      // Blue
-      semantics: '#8b5cf6',   // Purple
-      methods: '#10b981',     // Green
-      cognition: '#f59e0b',   // Orange
-      programming: '#ef4444', // Red
-      language: '#06b6d4',    // Cyan
-      other: '#6b7280'        // Gray
+      syntax: '#0a5bdf',      // Blue
+      semantics: '#7239f4',   // Purple
+      methods: '#0a7451',     // Green
+      cognition: '#8d5b06',   // Orange
+      programming: '#c71111', // Red
+      language: '#046f81',    // Cyan
+      other: '#606673'        // Gray
     };
-    // The colours above are tuned for the light theme's near-white tag-cloud background.
-    // Against the dark theme's background (~rgb(35,37,47)), several of them (notably
-    // 'other' grey at 3.15:1, plus semantics/programming/syntax) fall below the WCAG AA
-    // minimum of 4.5:1 for normal-size text even at full opacity - e.g. "machine learning"
-    // (uncategorised -> grey) and "web video text tracks format" (language -> cyan, but
-    // still too dim once also dimmed - see setupTagHoverEffects). Same hues, lightened in
-    // HSL space until each reaches ~7:1 against that background (verified with the WCAG
-    // relative-luminance formula), so dark theme stays legible while light theme is untouched.
+    // Each category keeps its hue in both themes. The colours above are for the light
+    // theme's near-white tag-cloud background (#f7f7f7), on which each reaches about
+    // 5.4:1, and 4.8:1 on the tint a hovered tag takes. For the dark theme's background
+    // (~rgb(35,37,47)) the same hues are lightened in HSL space until each reaches
+    // about 7:1.
     const darkColors = {
       syntax: '#89b4fa',
       semantics: '#bfa4fa',

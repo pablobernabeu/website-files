@@ -130,7 +130,7 @@ body.dark,
 
 .dark a.badge:focus,
 .dark a.badge:hover {
-  color: rgba(255, 255, 255, .68);
+  color: #e2e8f0; // 5.4:1 on the hover and focus fill; the earlier 68% white gave 3.9:1
 }
 
 .dark .btn-primary,
