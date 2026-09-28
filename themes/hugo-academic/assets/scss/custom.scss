@@ -2151,6 +2151,10 @@ body.dark {
     &[style*="color: black"] {
       color: #f1f5f9 !important;
     }
+    // A green used for icons in content, 2.2:1 on the dark theme's buttons.
+    &[style*="3f8344" i] {
+      color: #6cc474 !important;
+    }
     // Markup often omits the space after the colon, and colour names are
     // case-insensitive, so every spelling is matched.
     &[style*="color: grey" i], &[style*="color: gray" i],
