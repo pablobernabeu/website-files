@@ -45,18 +45,44 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- Article ancillary tags script -->
 {{ if .IsPage }}{{ with .Params.tags }}
-<script src="{{ "js/article-ancillary-tags.js" | relURL }}" defer></script>
+{{- /* Versioned like related-references.js below: the script now relies on the
+       page's getSearchIndex(), so a new page should not run a cached old copy. */}}
+<script src="{{ "js/article-ancillary-tags.js" | relURL }}?v={{ substr (readFile "static/js/article-ancillary-tags.js" | md5) 0 10 }}" defer></script>
 {{ end }}{{ end }}
 
 <!-- Related references interactive enhancement -->
 {{ with .Resources.GetMatch "related-references.html" }}
-<script src="{{ "js/related-references.js" | relURL }}" defer></script>
+{{- /* Addressed by its own checksum, as is its stylesheet in custom_head.html.
+       GitHub Pages lets a browser keep a file for ten minutes, so under a
+       fixed address a page from one deploy could run the script from the
+       deploy before, and a script older than the page's markup can misread
+       it: one from before the metadata moved out of the page takes the empty
+       placeholder for a page with no metadata at all. */}}
+<script src="{{ "js/related-references.js" | relURL }}?v={{ substr (readFile "static/js/related-references.js" | md5) 0 10 }}" defer></script>
 {{ end }}
 
 <!-- APA 7 captions: the number and title move above the figure or table and
      the note stays below it. Only where the front matter asks for it. -->
 {{ if .Params.apa_captions }}
 <script src="{{ "js/apa-captions.js" | relURL }}" defer></script>
+{{ end }}
+
+<!-- Copy buttons for code blocks on pages that do not load xaringanExtra's. -->
+{{ if .IsPage }}
+<script src="{{ "js/code-copy.js" | relURL }}" defer></script>
+{{ end }}
+
+<!-- Section links: a "#" link beside each h2 and h3 of a post, software page or
+     publication page, and the list of contents that layouts/post/single.html asks
+     for on a long post. Only where the body has such a heading; a software or
+     publication page adds its related references below the content, and those
+     open with an h2. -->
+{{ if and .IsPage (in (slice "post" "software" "publication") .Type) }}
+{{ $html := .Content }}
+{{ if ne .Type "post" }}{{ with .Resources.GetMatch "related-references.html" }}{{ $html = print $html .Content }}{{ end }}{{ end }}
+{{ if findRE `<h[23][\s>]` $html 1 }}
+<script src="{{ "js/section-links.js" | relURL }}" defer></script>
+{{ end }}
 {{ end }}
 
 <!-- Editable R chunks. Deferred, so it runs after the theme bundle has moved

@@ -12,6 +12,7 @@ on:
       - "layouts/**"
       - "config/**"
       - "config.toml"
+      - ".github/scripts/verify_cdn_sri.py"
   workflow_run:
     # The nightly collection merges its own pull request with GITHUB_TOKEN, and
     # GitHub deliberately raises no `push` event for token-authored commits.
@@ -162,6 +163,19 @@ jobs:
 
       - name: Build site
         run: hugo --minify
+
+      # A browser silently refuses a CDN file whose hash differs from the
+      # integrity attribute on its tag, so a wrong hash in
+      # themes/hugo-academic/data/assets.toml would strip, say, the R
+      # highlighting from every post. Each cdnjs file the built pages pin is
+      # downloaded and checked here: a mismatch, a missing file or a pinned
+      # tag without crossorigin stops the deploy, while an unreachable CDN
+      # only warns. The script stops downloading after TIME_BUDGET (180 s),
+      # so even a CDN that hangs leaves it well inside this timeout, which
+      # would otherwise fail the job and block the deploy.
+      - name: Verify Subresource Integrity of CDN files
+        timeout-minutes: 5
+        run: python3 .github/scripts/verify_cdn_sri.py public
 
       - name: Remove generated and secret files from published output
         run: |

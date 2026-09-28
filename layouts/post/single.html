@@ -20,10 +20,45 @@
 
     {{/* `code_folding: hide` in a post's front matter makes academic.js fold its code
          chunks closed on load, each behind an "Expand" link. Without the parameter they
-         start open, as on every other page. */}}
-    <div class="article-style"{{ if eq (lower (printf "%v" .Params.code_folding)) "hide" }} data-code-folding="hide"{{ end }}>
-      {{ .Content }}
+         start open, as on every other page. The attribute is written on every post, as
+         "show" when chunks start open, because academic.js also reads its presence as
+         the mark of a post body, where two or more chunks earn a control that opens or
+         closes them all.
+
+         A post with four sections or more opens with a folded list of them, which
+         static/js/section-links.js builds. data-contents asks for that list, and
+         custom.scss holds the room its folded line takes, so that the text does not
+         move down when the list arrives. This counts every h2 in the content. The
+         script counts again without the headings it leaves out, and gives the room
+         back if fewer than four remain. */}}
+    {{ $sections := len (findRE `<h2[\s>]` .Content) }}
+    {{/* kableExtra adds kePrint.js to every post with one of its tables. The script
+         calls jQuery the moment it loads, which in the post body is before the theme
+         loads jQuery, so it only ever threw "$ is not defined". Its one purpose is to
+         start Bootstrap tooltips and popovers, which this site does not run (see
+         custom_js.html), so the tag is dropped here, where a re-knit cannot restore it. */}}
+    <div class="article-style" data-code-folding="{{ if eq (lower (printf "%v" .Params.code_folding)) "hide" }}hide{{ else }}show{{ end }}"{{ if ge $sections 4 }} data-contents{{ end }}>
+      {{ .Content | replaceRE `<script src="[^"]*/kePrint/kePrint\.js"></script>\s*` "" | safeHTML }}
     </div>
+
+    {{/* A post knitted from R Markdown ends with a link to its source. blogdown writes
+         the page beside the source under the same name, with .html in place of .Rmd,
+         and Hugo is told to ignore .Rmd files (ignoreFiles in config.toml), so the
+         source is looked for on disk rather than among the site's pages. A post written
+         in Markdown, or one whose source has gone, gets no link. The path is given
+         forward slashes for a build on Windows, and the spaces that one post folder has
+         in its name are percent-encoded for the URL. A post with nothing in its body, such
+         as one that only points elsewhere through external_link and whose .Rmd holds
+         front matter alone, gets no link either. `$` reaches the page from inside
+         `with .File`. */}}
+    {{ with .File }}
+    {{ if eq .Ext "html" }}
+    {{ $rmd := printf "content/%s.Rmd" (strings.TrimSuffix ".html" (replace .Path "\\" "/")) }}
+    {{ if and (fileExists $rmd) (ne (trim (string $.Content) " \t\r\n") "") }}
+    <p class="rmd-source"><a href="https://github.com/pablobernabeu/website-files/blob/master/{{ replace $rmd " " "%20" }}">R Markdown source of this post</a></p>
+    {{ end }}
+    {{ end }}
+    {{ end }}
 
     {{ partial "package-docs-links" . }}
 

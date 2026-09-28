@@ -68,7 +68,12 @@
 
 <div class="article-header {{$image_container}} featured-image-wrapper mt-4 mb-4" style="max-width: {{$image.Width}}px; max-height: {{$image.Height}}px;">
   <div style="position: relative">
-    <img src="{{ $image.RelPermalink }}" alt="" class="featured-image">
+    {{/* The dimensions reserve the image's space before it loads, so the text below
+         does not jump down when it arrives. This partial overrides the theme's, whose
+         copy of the attributes therefore never reaches the page. --w and --ar carry the
+         same size to custom.scss, which sizes publication and presentation images
+         without the attributes (see .pub .featured-image-wrapper img). */}}
+    <img src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" style="--w: {{ $image.Width }}px; --ar: {{ $image.Width }} / {{ $image.Height }};" alt="" class="featured-image">
     {{ with $.Params.image.caption }}
     <span class="article-header-caption">{{ . | markdownify | emojify }}</span>
     {{ end }}

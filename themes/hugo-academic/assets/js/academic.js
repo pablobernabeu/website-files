@@ -47,11 +47,16 @@
         ? decodeURIComponent(window.location.hash)
         : target;
 
+    if (typeof target !== "string" || target.length < 2 || target.charAt(0) !== "#") return;
+
+    // Escape special chars from IDs, such as colons found in Markdown footnote links and
+    // the dots of pandoc's section ids, before the id is used as a selector at all: an
+    // unescaped id ending in "." made jQuery throw, and one with a dot inside matched
+    // nothing.
+    target = "#" + $.escapeSelector(target.substring(1));
+
     // If target element exists, scroll to it taking into account fixed navigation bar offset.
     if ($(target).length) {
-      // Escape special chars from IDs, such as colons found in Markdown footnote links.
-      target = "#" + $.escapeSelector(target.substring(1)); // Previously, `target = target.replace(/:/g, '\\:');`
-
       let elementOffset = Math.ceil($(target).offset().top - getNavBarHeight()); // Round up to highlight right ID!
       $("body").addClass("scrolling");
       $("html, body").animate(
@@ -795,6 +800,59 @@
     }
   }
 
+  // The overlay is opened and closed from three places (toggleSearchDialog above,
+  // lazy-search.js and its result links), and all of them agree only on the
+  // `searching` class on <body>. Watching that class keeps what follows true
+  // whichever of them acts. A closed overlay is hidden, because toggleSearchDialog
+  // leaves an inline `visibility: visible` that kept its controls in the tab order.
+  // Focus goes back to where it was before the overlay opened (unless it had already
+  // left for the page itself, as after a click on plain text), without scrolling to
+  // it, and while the overlay is open Tab and Shift+Tab cycle through its controls.
+  function manageSearchOverlayFocus() {
+    const overlay = document.querySelector(".search-results");
+    if (!overlay || !window.MutationObserver) return;
+    let isOpen = document.body.classList.contains("searching");
+    let lastFocusOutside = null;
+
+    document.addEventListener("focusin", function (e) {
+      if (!overlay.contains(e.target)) lastFocusOutside = e.target;
+    });
+    document.addEventListener("focusout", function (e) {
+      if (!overlay.contains(e.target) && !e.relatedTarget) lastFocusOutside = null;
+    });
+
+    new MutationObserver(function () {
+      const nowOpen = document.body.classList.contains("searching");
+      if (nowOpen === isOpen) return;
+      isOpen = nowOpen;
+      if (nowOpen) return;
+      overlay.style.visibility = "hidden";
+      const focusLost = !document.activeElement || document.activeElement === document.body ||
+        overlay.contains(document.activeElement);
+      if (focusLost && lastFocusOutside && document.contains(lastFocusOutside)) {
+        lastFocusOutside.focus({ preventScroll: true });
+      }
+    }).observe(document.body, { attributes: true, attributeFilter: ["class"] });
+
+    overlay.addEventListener("keydown", function (e) {
+      if (e.key !== "Tab" || !isOpen) return;
+      const focusable = Array.prototype.filter.call(
+        overlay.querySelectorAll("a[href], button, input, [tabindex]:not([tabindex='-1'])"),
+        function (el) { return el.offsetWidth > 0 || el.offsetHeight > 0; }
+      );
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
+  }
+
   /* ---------------------------------------------------------------------------
    * Change Theme Mode (0: Day, 1: Night, 2: Auto).
    * --------------------------------------------------------------------------- */
@@ -1115,6 +1173,8 @@
       $(".theme-menu").removeClass("show");
       return false;
     });
+
+    manageSearchOverlayFocus();
 
     // Search trigger from menu
     $(document).on("click", ".js-search-trigger", function (e) {
@@ -1674,9 +1734,9 @@
     function initializeModalImages() {
       if (modalImages.length === 0) {
         // Check if modal images are already initialized
-        images.forEach((img, index) => {
+        images.forEach((img) => {
           const modalImg = document.createElement("img");
-          modalImg.src = img.src;
+          modalImg.alt = img.alt;
           modalImg.classList.add("imageModal-content");
           modalImg.style.display = "none"; // Hide all modal images initially
           modalImageWrapper.appendChild(modalImg);
@@ -1685,9 +1745,26 @@
       }
     }
 
-    // Function to display the clicked image in the modal
+    // The modal shows a photo at full resolution. Where the page shows a
+    // display-size copy, the original is named in data-full; otherwise the page's
+    // own image is the original. An original can weigh a megabyte or more, so a
+    // modal image only gets its source when it is about to be shown, rather than
+    // the whole gallery downloading the first time the modal opens.
+    function loadModalImage(index) {
+      const modalImg = modalImages[index];
+      if (!modalImg.hasAttribute("src")) {
+        modalImg.src = images[index].dataset.full || images[index].src;
+      }
+    }
+
+    // Function to display the clicked image in the modal. The neighbours on either
+    // side are fetched as well, so that stepping through does not wait on them.
     function showImage(index) {
       currentIndex = index;
+      const count = modalImages.length;
+      loadModalImage(currentIndex);
+      loadModalImage((currentIndex + 1) % count);
+      loadModalImage((currentIndex - 1 + count) % count);
       modalImages.forEach((img) => {
         img.style.display = "none"; // Hide all images
       });
@@ -1803,12 +1880,15 @@
   // closed with `code_folding: hide` in its front matter, which layouts/post/single.html
   // exposes as data-code-folding="hide" on the post body.
 
+  const codeChunks = [];
+
   function styleCodeFoldSummary(summary, open) {
     if (open) {
       summary.textContent = "Collapse";
       summary.style.fontWeight = "normal";
       summary.style.fontSize = "90%";
-      summary.style.color = "darkgrey";
+      // Theme-dependent (custom.scss), as darkgrey reached only 2.35:1 on white.
+      summary.style.color = "var(--code-fold-collapse, #6b6b6b)";
     } else {
       summary.textContent = "Expand";
       summary.style.fontWeight = "bold";
@@ -1841,7 +1921,122 @@
       d.appendChild(summary);
       pre.before(d);
       d.append(pre);
+      codeChunks.push(d);
+
+      // Mark a knitr chunk and the output blocks printed after it, so that
+      // custom.scss can tell them apart by border and label and hold each output
+      // close to its code. knitr writes an output block as a <pre> with no class,
+      // and a chunk that prints a result and then a warning writes two in a row. A
+      // block that interleaves printed lines (prefixed #>) with its code, as reprex
+      // and `collapse = TRUE` write it, is both at once and is left unmarked.
+      if (pre.matches(".r, .python") && !/^#>/m.test(pre.textContent)) {
+        pre.dataset.chunk = "input";
+        let out = d.nextElementSibling;
+        while (out && out.tagName === "PRE" && !out.hasAttribute("class")) {
+          out.dataset.chunk = "output";
+          out = out.nextElementSibling;
+        }
+      }
     });
+
+  // A post with two or more code chunks gets one button, just before the first of
+  // them, that opens or closes them all. Its label says what a press will do: "Show
+  // all code" while any chunk is closed, and "Hide all code" once none is. A chunk
+  // fires "toggle" however it opens or closes, whether from its own summary, from
+  // this button, from the print handler below or from a script in the post itself,
+  // so the label is worked out afresh on every toggle rather than tracked. A chunk
+  // here is a <details> made above that still holds its <pre>. layouts/post/single.html
+  // writes data-code-folding on every post body and on nothing else, which keeps the
+  // button to posts. The wrapper takes no height (custom.scss), so nothing moves.
+  //
+  // Some posts hold a long listing in a fixed-height box that scrolls on its own, and
+  // a first chunk inside one would take the button with it, as though it belonged to
+  // that listing alone and not to the whole post. The button then goes before the
+  // outermost such box, on a line of its own, as there is no summary line there to
+  // lie over.
+  document.querySelectorAll(".article-style[data-code-folding]").forEach((body) => {
+    const chunks = codeChunks.filter(
+      (d) => body.contains(d) && d.querySelector(":scope > pre")
+    );
+    if (chunks.length < 2) return;
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "code-fold-all";
+    const button = document.createElement("button");
+    button.type = "button";
+    wrapper.appendChild(button);
+
+    const anyClosed = () => chunks.some((d) => !d.open);
+    const label = () => {
+      button.textContent = anyClosed() ? "Show all code" : "Hide all code";
+    };
+
+    button.addEventListener("click", () => {
+      const open = anyClosed();
+      chunks.forEach((d) => {
+        d.open = open;
+      });
+      label();
+    });
+    chunks.forEach((d) => d.addEventListener("toggle", label));
+
+    let anchor = chunks[0];
+    for (let el = anchor.parentElement; el !== body; el = el.parentElement) {
+      const style = getComputedStyle(el);
+      if (style.overflowX !== "visible" || style.overflowY !== "visible") anchor = el;
+    }
+    if (anchor !== chunks[0]) wrapper.classList.add("is-own-line");
+
+    label();
+    anchor.before(wrapper);
+  });
+
+  // Printing. Folded code chunks print open, and the page prints in the light theme,
+  // because the dark theme's pale text would be close to invisible on paper, where
+  // browsers leave out backgrounds by default. renderThemeVariation(_, true) switches
+  // without the fade and without storing a choice, and the pre-paint script in
+  // custom_head.html also marks <html> as dark, so that is undone and put back too.
+  // Links fade their colour over 0.6s, and a print taken at the switch caught them
+  // still pale, so .is-printing suspends every transition until the page is back.
+  let restoreAfterPrint = null;
+
+  window.addEventListener("beforeprint", function () {
+    if (restoreAfterPrint) return;
+    const folded = Array.prototype.filter.call(
+      document.querySelectorAll(".article-style details:not([open])"),
+      function (d) { return d.querySelector(":scope > pre"); }
+    );
+    folded.forEach(function (d) { d.open = true; });
+
+    const root = document.documentElement;
+    root.classList.add("is-printing");
+    const wasDark = document.body.classList.contains("dark");
+    const rootTheme = root.getAttribute("data-theme");
+    const rootStyle = root.getAttribute("style");
+    if (wasDark) {
+      renderThemeVariation(0, true);
+      root.removeAttribute("data-theme");
+      root.removeAttribute("style");
+    }
+
+    restoreAfterPrint = function () {
+      folded.forEach(function (d) { d.open = false; });
+      if (wasDark) {
+        renderThemeVariation(1, true);
+        if (rootTheme !== null) root.setAttribute("data-theme", rootTheme);
+        if (rootStyle !== null) root.setAttribute("style", rootStyle);
+      }
+      requestAnimationFrame(function () {
+        root.classList.remove("is-printing");
+      });
+    };
+  });
+
+  window.addEventListener("afterprint", function () {
+    if (!restoreAfterPrint) return;
+    restoreAfterPrint();
+    restoreAfterPrint = null;
+  });
 
   // Only summaries that exceed the collapsed height need a fade or an expand
   // affordance. In particular, short software abstracts should remain wholly
@@ -1869,6 +2064,21 @@
       $(item.el)
         .toggleClass("is-collapsible", item.hasOverflow)
         .toggleClass("is-short", !item.hasOverflow);
+      // A summary that expands on click also gets a real button after it, hidden
+      // until it has keyboard focus. The summary itself stays text, since some hold
+      // links of their own.
+      const $button = $(item.el).next(".home-abstract-expand");
+      if (item.hasOverflow && !$button.length) {
+        $(item.el).after(
+          $("<button>", {
+            type: "button",
+            class: "home-abstract-expand sr-only sr-only-focusable",
+            text: "Expand summary",
+          })
+        );
+      } else if (!item.hasOverflow) {
+        $button.remove();
+      }
     });
   }
 
@@ -1899,6 +2109,7 @@
       // Mark as expanded
       $mediaBody.addClass("is-expanded");
       $abstract.removeClass("is-collapsible");
+      $abstract.next(".home-abstract-expand").remove();
 
       // Add "View complete content" button after expansion
       const $title = $mediaBody.find(".article-title a");
@@ -1915,6 +2126,15 @@
       }
     }
   );
+
+  // The keyboard's way in: expanding removes the button, so focus moves on to the
+  // "View complete content" link that takes its place.
+  $(document).on("click", ".home-abstract-expand", function () {
+    const $abstract = $(this).prev(".article-style.is-collapsible");
+    $abstract.trigger("click");
+    const $link = $abstract.next(".view-complete-content-btn");
+    if ($link.length) $link[0].focus();
+  });
 
   // Document Viewer Controls
   $(document).ready(function () {

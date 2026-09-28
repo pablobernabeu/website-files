@@ -27,6 +27,19 @@ body:not(.dark) {
   color: rgba(0,0,0,0.8) !important;
 }
 
+// Inline greys on the light page fall short of 4.5:1: grey reaches 3.95:1 and
+// darkgrey, despite its name the paler of the two, 2.35:1. Both are darkened.
+body:not(.dark) {
+  [style*="color: grey" i], [style*="color: gray" i],
+  [style*="color:grey" i], [style*="color:gray" i] {
+    color: #707070 !important;
+  }
+  [style*="color: darkgrey" i], [style*="color: darkgray" i],
+  [style*="color:darkgrey" i], [style*="color:darkgray" i] {
+    color: #6b6b6b !important;
+  }
+}
+
 // Override text color for dark theme
 body.dark {
   color: rgba(255,255,255,0.8) !important;
@@ -277,9 +290,6 @@ body.dark .article-header-caption a:link,
 body.dark .article-header-caption a:visited,
 body.dark .article-header-caption a:hover,
 body.dark .article-header-caption a:active,
-body.dark #top > article > div.article-header.article-container.featured-image-wrapper.mt-4.mb-4 > div > span > a,
-body.dark #top > article > div.article-header > div > span > a,
-body.dark #top > div.pub > div.article-header > div > span > a,
 body.dark .featured-image-wrapper .article-header-caption a,
 body.dark .article-header .article-header-caption a {
   color: #fff !important;
@@ -339,22 +349,25 @@ body.dark .article-header .article-header-caption a {
   }
 }
 
+// The dark-theme counterpart of the widget subtitle links above, whose black text is
+// not limited to the light theme. `body.dark#top` has no space because #top is the
+// <body> itself: written with a space, a selector looks for #top inside the body and
+// matches nothing.
 body.dark .home-section .col-lg-12 > p a,
 body.dark .home-section .section-heading > p a,
 body.dark .home-section .col-12 > p a,
 body.dark .home-section .col-lg-12 > p div a,
 body.dark .home-section .section-heading > p div a,
 body.dark .home-section .col-12 > p div a,
-body.dark #top > div:nth-child(4) > div:nth-child(1) > h2 > a,
-body.dark #top > div:nth-child(4) > div > div.media-body > h3 > a,
-body.dark #top > div > div > h2 > a,
+body.dark#top > div:nth-child(4) > div:nth-child(1) > h2 > a,
+body.dark#top > div > div > h2 > a,
 body.dark #blog > div > div > div.col-12.section-heading > p > span a,
 body.dark #software > div > div > div.col-12.section-heading > p a,
 body.dark #skills > div > div > div > table > tbody a,
 body.dark #multimedia > div > div > div > div:nth-child(3) > div:nth-child(2) a,
 body.dark #multimedia > div > div > div > div > div > a,
-body.dark #top > div.universal-wrapper.pt-3 a,
-body.dark #top div.universal-wrapper a {
+body.dark#top > div.universal-wrapper.pt-3 a,
+body.dark#top div.universal-wrapper a {
   color: #fff;
   text-decoration: underline;
   text-decoration-color: #bbf7d0;
@@ -368,6 +381,21 @@ body.dark #top div.universal-wrapper a {
     text-underline-offset: 2px;
     background-color: var(--bg-highlight);
   }
+}
+
+// The citation buttons on the software list are <button>s, which the rule above
+// (written for links) does not reach, so in the dark theme they kept Bootstrap's
+// blue outline on the page (3.6:1). They take the look of the link buttons
+// beside them, white on #374151 (10.3:1), and their border on hover. The
+// publication list styles its buttons alike already.
+body.dark#top div.universal-wrapper.software-archive .btn.js-cite-modal:not(:hover):not(:active) {
+  color: #fff !important;
+  background-color: #374151 !important;
+  border-color: #4b5563 !important;
+}
+
+body.dark#top div.universal-wrapper.software-archive .btn.js-cite-modal:hover {
+  border-color: #4b5563 !important;
 }
 
 // Increase bottom margin for blog section heading paragraph
@@ -392,10 +420,6 @@ body.dark #top div.universal-wrapper a {
   font-size: 0.9em;
 }
 
-body.dark #top > div > div > h2 > a {
-  font-size: 0.9em;
-}
-
 // Make all text in pub-list-item white in dark theme
 .dark .pub-list-item,
 .dark .pub-list-item * {
@@ -406,9 +430,7 @@ body.dark #top > div > div > h2 > a {
   color: #e2e8f0 !important;
 }
 
-// Dark theme: light font for media-body h3 links and article-metadata
-.dark #top > div > div > div.media-body > h3,
-.dark #top > div > div > div.media-body > h3 > a,
+// Dark theme: light font for article metadata
 .dark .article-metadata,
 .dark .article-metadata * {
   color: #e2e8f0 !important;
@@ -669,22 +691,25 @@ a[href$="/tags/s/"] {
   display: none !important;
 }
 
-/* Frequency count subscripts */
+/* Frequency count subscripts. A count takes its tag's colour (getCategoryColor in
+   tag-cloud-network.js). The light palette reaches about 5.4:1, which leaves no room
+   to fade the count. The dark one reaches about 7:1, so there the count is faded to
+   0.8 at rest (5.0:1 or more), but not on the tint of a hovered or focused tag. */
 #tags .tag-cloud a::after {
   content: attr(data-count);
   font-size: 0.6em;
   vertical-align: sub;
-  opacity: 0.5;
   margin-left: 0.15em;
   font-weight: 400;
 }
 
-// Dark theme: this subscript inherits the tag's own colour (the dark-theme palette in
-// tag-cloud-network.js's getCategoryColor, ~7:1 against #tags's background), then
-// multiplies it by the 0.5 opacity above - e.g. methods green ends up at only ~2.85:1,
-// well under WCAG AA (4.5:1). 0.8 keeps every category's count subscript above ~5:1.
 body.dark #tags .tag-cloud a::after {
   opacity: 0.8;
+}
+
+body.dark #tags .tag-cloud a:hover::after,
+body.dark #tags .tag-cloud a:focus::after {
+  opacity: 1;
 }
 
 /* Tag page heading links - match home page styling */
@@ -693,18 +718,20 @@ body.dark #tags .tag-cloud a::after {
   text-decoration: none !important;
   
   &:hover {
-    color: #059669 !important;
+    color: #047857 !important; // 5.2:1 on the pale green hover fill
     text-decoration: underline !important;
-    text-decoration-color: #22c55e !important;
+    text-decoration-color: var(--heading-link-underline) !important;
     text-decoration-thickness: 2px !important;
     text-underline-offset: 3px !important;
   }
 }
 
-body.dark #top > div > div > h2 a {
+// A lighter green for the dark theme: on the dark hover highlight #34d399 reaches
+// 6.5:1, where the light theme's #047857 manages 2.3:1. Written `body.dark#top`,
+// with no space, because #top is the <body> itself.
+body.dark#top > div > div > h2 a {
   &:hover {
     color: #34d399 !important;
-    text-decoration-color: #10b981 !important;
   }
 }
 
@@ -843,15 +870,38 @@ body.dark #other-work [style*="5a826f" i] {
   color: #82bba1 !important;
 }
 
-// The citation modal's Copy / Download buttons (.btn-outline-primary) show their
-// text + border in the brand blue (#2962ff), only ~3:1 on the dark theme.
-// Lighten to the dark-mode link blue for the resting/focus state; leave the
-// :hover / :active fill (white on blue) to Bootstrap. Scoped to .modal-footer so
-// it does NOT touch the section link buttons (#publication etc.), which already
-// have their own neutral grey styling and must stay consistent across sections.
-body.dark .modal-footer .btn-outline-primary:not(:hover):not(:active) {
+// The 'Load comments from Disqus' button below posts is brand blue (#2962ff), only
+// 3.6:1 on the dark page, so on the dark theme it takes the dark-mode link blue at
+// rest (7.8:1).
+body.dark #disqus_thread .btn-outline-primary:not(:hover):not(:active) {
   color: #63b3ed !important;
   border-color: #63b3ed !important;
+}
+
+// The citation modal keeps its white panel on the dark theme (only the code block
+// turns dark), so its Copy / Download links keep the light theme's brand blue at
+// rest (4.9:1), and on hover a dark teal (5.6:1 on the pale green hover fill) in
+// place of the dark theme's light aqua. The close button keeps its dark fill on
+// hover rather than the pale green that every button takes.
+body.dark .modal-footer .btn-outline-primary:not(:hover):not(:active) {
+  color: #2962ff !important;
+  border-color: #2962ff !important;
+}
+
+body.dark .modal-content a:hover,
+body.dark .modal-content a:hover i {
+  color: #00695C !important;
+}
+
+body.dark .modal button.close:hover {
+  background-color: #282a36 !important;
+}
+
+// On hover, every button takes the pale green fill of the site-wide button:hover
+// rule, on which Bootstrap's white hover label for this button cannot be read on the
+// light theme. The label takes the colour the site gives other buttons on hover.
+#disqus_thread .btn-outline-primary:hover {
+  color: var(--text-hover) !important;
 }
 
 // Reduce bottom margin in section headings
@@ -892,16 +942,17 @@ body.dark .modal-footer .btn-outline-primary:not(:hover):not(:active) {
   background-image: none !important;
 }
 
-body.dark #top > div > div > div.media-body > h3 > a,
-body.dark #top > div.universal-wrapper.pt-3 > p > a,
+// `body.dark#top`, with no space, because #top is the <body> itself.
+body.dark#top > div > div > div.media-body > h3 > a,
+body.dark#top > div.universal-wrapper.pt-3 > p > a,
 body.dark #presentation_list > div.col-lg-10 > div > div.media-body > h3 > a {
   color: #63b3ed !important;
   background-color: transparent !important;
   background-image: none !important;
 }
 
-body.dark #top > div > div > div.media-body > h3 > a:hover,
-body.dark #top > div.universal-wrapper.pt-3 > p > a:hover,
+body.dark#top > div > div > div.media-body > h3 > a:hover,
+body.dark#top > div.universal-wrapper.pt-3 > p > a:hover,
 body.dark #presentation_list > div.col-lg-10 > div > div.media-body > h3 > a:hover {
   color: #90cdf4 !important;
   background-color: transparent !important;
@@ -1130,20 +1181,6 @@ h3#related-podcasts ~ p .fa-wand-magic-sparkles {
   }
 }
 
-// Prevent white flash on dark theme load
-html {
-  // Immediate dark theme application (used by theme-init.js)
-  &.dark-theme-loading {
-    background-color: #0f172a !important;
-    color: #e2e8f0 !important;
-    
-    body {
-      background-color: #0f172a !important;
-      color: #e2e8f0 !important;
-    }
-  }
-}
-
 // Smooth transition for theme switching
 body {
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -1205,12 +1242,9 @@ textarea {
   --abstract-border: rgba(35, 122, 105, 0.25);
 }
 
-// theme-init.js paints the page dark through html.dark-theme-loading before
-// academic.js has put .dark on the body, and that class also forces the text to
-// #e2e8f0. Without the loading class here the first render of a dark-mode page
-// would put near-white text on the light fill, at about 1:1.
-body.dark,
-html.dark-theme-loading {
+// The pre-paint script in custom_head.html adds .dark to <body> before the first
+// render, so the near-white text of a dark-mode page never meets the light fill.
+body.dark {
   --abstract-bg: #16302b;
   --abstract-border: rgba(55, 158, 138, 0.32);
 }
@@ -1675,7 +1709,13 @@ body.dark .btn-links a[title*="open science"] {
 
 // Override dark theme link hover color in open science popups (white background needs dark hover color)
 body.dark #open-science-popup a:hover {
-  color: #00796B !important; // 5.3:1 on the white popup; #009688 gave 3.7:1
+  color: #00695C !important; // 5.6:1 on the pale green hover fill of the white popup
+}
+
+// The popup stays white on the dark theme, so the dark theme's lightening of inline
+// greys (below) would leave its external-link icon at 2.2:1 there.
+body.dark #open-science-popup [style*="#666"] {
+  color: #666666 !important;
 }
 
 // Reduce margin above separator in open science popups
@@ -1733,8 +1773,10 @@ body.page-wrapper #top > div.pub > div.article-container.pt-3 > div.article-meta
   font-size: 1.15rem !important;
 }
 
-// Hide middot dividers in publication metadata
-#top > div.pub > div.article-container.pt-3 > div.article-metadata > span.middot-divider {
+// Hide middot dividers in publication metadata, including the one that
+// page_metadata.html keeps inside the categories with the folder icon
+#top > div.pub > div.article-container.pt-3 > div.article-metadata > span.middot-divider,
+#top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories .middot-divider {
   display: none !important;
 }
 
@@ -1890,6 +1932,14 @@ div:has(> img.featured-image) {
   margin-top: -5%;
 }
 
+// A featured image carries its width and height (layouts/partials/page_header.html),
+// which hold its space open while it loads. The height is auto so that they set only
+// its shape: the width is the column's, and on a narrower screen the height they give
+// in pixels would squash the image.
+.featured-image {
+  height: auto;
+}
+
 @media (max-width: 991px) {
   .pub div:has(> img.featured-image) {
     margin-top: 0;
@@ -1932,6 +1982,7 @@ body.dark {
   --text-quaternary: #24494F;
   --text-visited: purple;
   --text-hover: black;
+  --heading-link-underline: #22c55e; // the hover underline of heading links
   --text-active: #24494F;
   
   // Navigation colors (INVERTED - light theme uses dark theme colors)
@@ -1968,7 +2019,7 @@ body.dark {
   // Accent colors
   --accent-primary: #379E8A;
   --accent-secondary: #57a292;
-  --accent-tertiary: #8AA3CD;
+  --accent-tertiary: #4b70af; // 5:1 on white, for the home page's role, affiliation, email and social icons
   --accent-quaternary: #96666f;
   --accent-visited-categories: #9E84B0;
   
@@ -1990,7 +2041,7 @@ body.dark {
   --color-white: white;
   --color-black: black;
   --text-warning: #4A4D10;
-  --related-references: #787878;
+  --related-references: #737373; // 4.74:1 on white; #787878 was 4.42:1
   --scrollbar-thumb: #57a292;
   --scrollbar-track: #edf5f4;
 }
@@ -2020,14 +2071,15 @@ body.dark {
   --text-quaternary: #cbd5e1;
   --text-visited: #d8b4fe;
   --text-hover: #f1f5f9;
+  --heading-link-underline: #10b981;
   --text-active: #cbd5e1;
   
   // Navigation colors for dark theme (INVERTED - uses light theme colors)
   --nav-text: #475569;
-  --nav-hover: #0f766e; // Dark teal underline. The dark-theme navbar bg is LIGHT (#e2e8f0), so the hover accent must be DARK; mint #A5D9C5 was only ~1.3:1 here.
-  --nav-active: #0f766e; // Teal, matches --nav-hover for a consistent active/hover set (4.44:1 on the LIGHT dark-theme navbar; was #0d9488 ≈ 3:1)
+  --nav-hover: #0e7169; // Dark teal underline. The dark-theme navbar bg is LIGHT (#e2e8f0), so the hover accent must be DARK; mint #A5D9C5 was only ~1.3:1 here.
+  --nav-active: #0e7169; // Teal, matches --nav-hover for a consistent active/hover set (4.75:1 on the LIGHT dark-theme navbar; #0f766e was 4.44:1 and #0d9488 ≈ 3:1)
   --nav-link: #79A990; // Muted teal (from light theme)
-  --nav-hover-text: #0f766e; // Dark teal hover text, 4.44:1 on the LIGHT dark-theme navbar (#e2e8f0). Mint #A5D9C5 was ~1.3:1 (near-invisible), the reported bug.
+  --nav-hover-text: #0e7169; // Dark teal hover text, 4.75:1 on the LIGHT dark-theme navbar (#e2e8f0). Mint #A5D9C5 was ~1.3:1 (near-invisible), the reported bug.
   
   // Background colors for dark theme (converted for dark mode)
   --bg-highlight: rgba(72, 187, 120, 0.2); // Green highlight with low opacity for dark
@@ -2100,11 +2152,17 @@ body.dark {
     &[style*="color: black"] {
       color: #f1f5f9 !important;
     }
-    &[style*="color: grey"], &[style*="color: gray"] {
-      color: #94a3b8 !important;
+    // A green used for icons in content, 2.2:1 on the dark theme's grey full-text button.
+    &[style*="3f8344" i] {
+      color: #6cc474 !important;
     }
-    &[style*="color: darkgrey"], &[style*="color: darkgray"] {
-      color: #64748b !important;
+    // Markup often omits the space after the colon, and colour names are
+    // case-insensitive, so every spelling is matched.
+    &[style*="color: grey" i], &[style*="color: gray" i],
+    &[style*="color:grey" i], &[style*="color:gray" i],
+    &[style*="color: darkgrey" i], &[style*="color: darkgray" i],
+    &[style*="color:darkgrey" i], &[style*="color:darkgray" i] {
+      color: #94a3b8 !important;
     }
     
     // Override BACKGROUND colors for nesting elements.
@@ -2264,7 +2322,6 @@ body.dark {
     
     &:hover {
       color: #dbeafe !important;
-      opacity: 0.9;
       text-decoration: none;
     }
     
@@ -2327,7 +2384,6 @@ body.dark {
     font-weight: bold !important;
     
     &:hover {
-      opacity: 0.8 !important;
       text-decoration: none !important;
     }
   }
@@ -2444,7 +2500,7 @@ body.dark {
   .navbar-nav a,
   #navbar-main a,
   #navbar-content a,
-  .section-heading a,
+  .section-heading h1 a, // not the links in a section's subtitle, which stay underlined
   .portrait-title a,
   .social-icon a,
   .btn-outline-primary,
@@ -2469,7 +2525,7 @@ body.dark {
   .navbar-nav a:hover,
   #navbar-main a:hover,
   #navbar-content a:hover,
-  .section-heading a:hover,
+  .section-heading h1 a:hover,
   .portrait-title a:hover,
   .social-icon a:hover,
   .btn-outline-primary:hover,
@@ -2748,7 +2804,7 @@ body.dark {
 }
 
 // unvisited link
-p a:link, ul a:link, li a:link, .article-container a:link, td a:link, a.dsq-brlink, div.grid-sizer > div > a {
+p a:link, ul a:link, li a:link, .article-container a:link, .home-section .article-style a:link, td a:link, a.dsq-brlink, div.grid-sizer > div > a {
   color: var(--text-primary);
 }
 
@@ -2779,6 +2835,37 @@ p a:hover:not(.view-complete-content-btn), ul a:hover:not(.view-complete-content
 // active link
 h3 a:active, div a:active, p a:active, ul a:active, li a:active, .article-container a:active, td a:active, a.dsq-brlink:active {
   color: var(--text-active); 
+}
+
+// In the light theme a content link differed from the text around it only by colour
+// and a faint highlight, which WCAG 1.4.1 does not accept as a cue. It gets the
+// underline the dark theme already draws (the dark rule, being more specific, keeps
+// its own colour).
+.article-container p a:link,
+.article-container ul a:link,
+.article-container li a:link,
+.article-container div a:link:not(.btn):not(.badge),
+.article-container td a:link,
+.article-style a:link,
+.pub-abstract a:link,
+.hanging-indent a:link,
+.related-references a:link,
+section p a:link,
+section ul a:link,
+section li a:link,
+section div a:link:not(.btn):not(.badge),
+a.dsq-brlink {
+  text-decoration: underline;
+  text-decoration-color: #16a34a;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+// The category list and the CV button are exempt here, as in the dark theme.
+.article-categories a,
+.cv-btn,
+.cv-btn a {
+  text-decoration: none !important;
 }
 
 // background colour for links (excluding view-complete-content buttons)
@@ -3486,15 +3573,31 @@ section.home-section:first-of-type {
   margin-right: 0.5rem !important;
 }
 
+// The image shows at its natural size within the column and at most 400px tall.
+// With both dimensions auto the browser reserves nothing until the file arrives,
+// and the text below jumped down by the image's height. The width is therefore
+// worked out ahead, as the smallest of the column, the natural width (--w) and
+// the width that a 400px height implies (from the proportions in --ar), both of
+// which the page header puts on the image; the height then follows from the width
+// and height attributes. Without them the width falls back to auto, as before.
 .pub .featured-image-wrapper img {
   max-width: 100% !important;
   max-height: 400px !important;
   width: auto !important;
+  width: #{"min(100%, var(--w), calc(400px * var(--ar)))"} !important;
   height: auto !important;
   object-fit: contain !important;
   display: block !important;
   margin-left: auto !important;
   margin-right: auto !important;
+}
+
+// The dark theme gives every image 2px of padding inside its border box, which
+// the width above would take out of the picture itself, drawing it 4px narrower
+// than its natural size and so resampling it. The padding is added back, and the
+// 400px cap applies to the picture as it did before.
+body.dark .pub .featured-image-wrapper img {
+  width: #{"min(100%, calc(var(--w) + 4px), calc((400px - 4px) * var(--ar) + 4px))"} !important;
 }
 
 // Override margin-bottom for presentation pages
@@ -4094,7 +4197,7 @@ body.dark .theme-menu .dropdown-item:hover {
 }
 
 body.dark .navbar-brand:hover {
-  color: #5f9ea0 !important; // Dark aquamarine
+  color: #0e7169 !important; // The dark theme's navbar hover teal, 4.8:1 on its light bar
   background-color: transparent !important;
   background: none !important;
 }
@@ -4371,7 +4474,9 @@ body.dark .nav-link:hover:not(.active) span {
   color: var(--text-secondary);
 }
 
-#top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories > a, #profile > div > div > ul > div > a:link, #top > article > div.article-container.pt-3 > div.article-metadata > span.article-categories > a:link, code {
+#top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories > a, #profile > div > div > ul > div > a:link, #top > article > div.article-container.pt-3 > div.article-metadata > span.article-categories > a:link, code,
+#top > div.pub > div.article-container.pt-3 > div.article-metadata > span.article-categories > .article-categories-first > a,
+#top > article > div.article-container.pt-3 > div.article-metadata > span.article-categories > .article-categories-first > a:link {
   background-color: transparent;
 }
 
@@ -4390,9 +4495,10 @@ body.dark h3 a:visited {
   color: #fff !important;
 }
 
-// active link - use aquamarine for hover
+// Link hover colour: on the light theme a teal at 5.0:1 or more on white and on the
+// pale green fills (--bg-highlight, --bg-button-hover) that hovered links sit on.
 h3 a:hover, div a:hover {
-  color: #009688 !important; 
+  color: #00796B !important;
 }
 
 body.dark h3 a:hover, body.dark div a:hover {
@@ -4418,7 +4524,8 @@ body.dark h3 a:hover, body.dark div a:hover {
   white-space: normal;
 }
 
-.article-categories a {
+.article-categories a,
+.article-categories-first {
   white-space: nowrap;
 }
 
@@ -4685,6 +4792,22 @@ body.dark #software > div > div > div.col-12 > div > div.media-body > div.btn-li
   vertical-align: middle !important;
 }
 
+// Until Font Awesome has loaded, a link button's icon is drawn in a narrower
+// fallback font. On a first visit the row of buttons could then fit on one line
+// and, a moment later, wrap its last button and push the page down (a layout shift
+// of up to 0.4 on a publication page). The two icons these buttons use are given
+// their Font Awesome 6 widths from the first paint. Font Awesome icons differ in
+// width, so an icon added to a link button needs its own width here.
+.btn-links .fa-file-pdf {
+  width: 1em;
+  flex-shrink: 0;
+}
+
+.btn-links .fa-lock-open {
+  width: 1.125em;
+  flex-shrink: 0;
+}
+
 @media (max-width: 991px) {
   :is(#publication, #software, #blog) .btn-links {
     margin-top: -4%;
@@ -4812,6 +4935,7 @@ div > div > div > table > tbody > tr > td,
   &::before {
     display: var(--home-abstract-overlay, none);
     content: '▼▼▼▼▼▼▼';
+    content: '▼▼▼▼▼▼▼' / ''; // decoration; the keyboard's control is a real button (academic.js)
     position: absolute;
     bottom: 12px;
     left: 50%;
@@ -4833,12 +4957,33 @@ div > div > div > table > tbody > tr > td,
   // summary expands on click, so a pending one does not offer it on hover.
   &.is-collapsible:hover::before {
     content: '▼▼▼      Expand summary      ▼▼▼';
+    content: '▼▼▼      Expand summary      ▼▼▼' / '';
     opacity: 1;
     background-color: #444;
     color: #fff;
     transform: translateX(-50%) scale(1.03);
   }
   
+}
+
+// The keyboard's "Expand summary" button (academic.js) stays visually hidden, through
+// Bootstrap's .sr-only-focusable, until it has focus, and then looks like the cue
+// that hovering the summary shows.
+.home-abstract-expand:focus {
+  display: block;
+  margin: 0.25rem auto 0.75rem;
+  padding: 0 8px;
+  font-size: 0.8em;
+  background-color: #444;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 3px;
+}
+
+body.dark .home-abstract-expand:focus {
+  background-color: #ddd;
+  color: #333;
+  border-color: #ccc;
 }
 
 // Dark theme: invert Expand button colours
@@ -5034,6 +5179,22 @@ body.dark .document-viewer-toolbar {
   margin-bottom: -0.3rem !important;
 }
 
+// A post's page gives its dates in full (page_metadata.html). Each is kept whole, and
+// "Last updated" with its date, so a phone wraps the row between them rather than
+// leaving a day and month at the end of one line and the year on the next.
+.article-metadata time,
+.article-metadata .article-updated {
+  white-space: nowrap;
+}
+
+// The link to a post's R Markdown source, after the post body (layouts/post/single.html).
+// Set small, and further from the text above than from what follows, so that it reads
+// as a note at the foot of the post rather than as the last line of its text.
+.rmd-source {
+  margin-top: 1.5rem;
+  font-size: 0.85em;
+}
+
 // Reduce margin under article-metadata in web applications section
 #software .article-metadata > div {
   margin-bottom: -0.3rem !important;
@@ -5127,7 +5288,7 @@ body.dark .document-viewer-toolbar {
   .home-section .article-metadata *,
   .home-section .article-metadata > div {
     margin-bottom: 0rem !important;
-    color: rgba(0,0,0,0.54) !important;
+    color: rgba(0,0,0,0.6) !important; // 0.54 fell to 4.49:1 on the tinted sections
   }
   
   body.dark .home-section .article-metadata,
@@ -5147,7 +5308,7 @@ body.dark .document-viewer-toolbar {
   .home-section .article-metadata *,
   .home-section .article-metadata > div {
     margin-bottom: 0.7rem !important;
-    color: rgba(0,0,0,0.54) !important;
+    color: rgba(0,0,0,0.6) !important; // 0.54 fell to 4.49:1 on the tinted sections
   }
   
   body.dark .home-section .article-metadata,
@@ -5216,15 +5377,31 @@ body.dark .document-viewer-toolbar {
 #software .media-body h3 a:active,
 #software div.media-body > h3 > a:hover,
 #software div.media-body > h3 > a:active,
-.home-section h3 a:hover,
-.home-section h3 a:active,
-.home-section .media-body h3 a:hover,
-.home-section .media-body h3 a:active {
+html body .home-section h3 a:hover,
+html body .home-section h3 a:active,
+html body .home-section .media-body h3 a:hover,
+html body .home-section .media-body h3 a:active {
   background: none !important;
   background-image: none !important;
   background-color: transparent !important;
-  text-decoration: none !important;
   border-bottom: none !important;
+  // On hover a title changes colour but hardly in lightness (slate blue to teal on
+  // the light theme), so it is also underlined, as the list pages' headings are.
+  // The class-only selectors start with 'html body' to outrank the dark theme's
+  // 'body.dark h3 a:hover' rule, which removes underlines.
+  text-decoration: underline !important;
+  text-decoration-color: var(--heading-link-underline) !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 3px !important;
+}
+
+// The email links under the portrait are not titles, and keep no underline. A
+// title's code keeps no underline of its own either, as the dark theme would draw
+// a second, offset line under it.
+html body .home-section h3.profile-email a:hover,
+html body .home-section h3.profile-email a:active,
+html body .home-section h3 a:hover > code {
+  text-decoration: none !important;
 }
 
 /* Increase font size for home page h3 headings with links */
@@ -5600,13 +5777,23 @@ article .article-container.pt-3 > div > .btn-links:has(a.scholar-icon-link)::bef
   opacity: 0.85;
   margin-left: 0.1em;
   font-weight: 400;
-  color: #059669;
+  color: #065f46; // 7.7:1 on white; at 0.6em the count needs the full 4.5:1
+  opacity: 1;
 }
 
-body.dark .article-tags a[data-count]::after,
-[data-theme="dark"] .article-tags a[data-count]::after {
-  opacity: 0.85;
+body.dark .article-tags a[data-count]::after {
+  opacity: 1;
   color: #34d399;
+}
+
+// On the focus fill of the software pages' tags, the green above falls to 3.5:1.
+body.dark .article-tags a[data-count]:focus::after {
+  color: #a7f3d0;
+}
+
+// An ancillary tag is drawn at 0.7 opacity, which fades its count with it (4.9:1).
+.article-tags a.ancillary-tag[data-count]::after {
+  color: #033f2f;
 }
 
 // ancillary tag links within main container
@@ -5615,19 +5802,19 @@ body.dark .article-tags a[data-count]::after,
 .article-tags a.ancillary-tag:link {
   font-weight: 400;
   font-size: 0.85rem;
-  opacity: 0.6;
+  opacity: 0.7; // 4.95:1 on the light page; 0.6 gave 3.69:1
 }
 
 #top > div.pub > div > div.article-tags > a.ancillary-tag:visited,
 #top > article > div > div.article-tags > a.ancillary-tag:visited,
 .article-tags a.ancillary-tag:visited {
   font-weight: 400;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 // Dark theme: ancillary tags inherit body.dark's text colour, which already carries its
 // own 0.8 alpha (e.g. rgba(255,255,255,0.8)). The 0.6 resting opacity above COMPOUNDS with
-// that (effective alpha 0.8*0.6 = 0.48), leaving only ~4.92:1 contrast against the dark
+// that (at 0.6 the effective alpha was 0.8*0.6 = 0.48), leaving only ~4.92:1 contrast against the dark
 // background - technically passes WCAG AA (4.5:1) but with almost no margin, and reads as
 // too dark/washed out at these small (0.85rem, 400-weight) sizes. 0.75 keeps ancillary tags
 // visibly de-emphasised relative to primary tags (opacity 1) while restoring a safe ~7:1.
@@ -5641,6 +5828,14 @@ body.dark .article-tags a.ancillary-tag:visited {
 .article-tags a.ancillary-tag:hover {
   font-weight: 400;
   opacity: 0.85;
+}
+
+// A focused ancillary tag sits on the focus fill, on which its faded text falls
+// short (4.3:1 light, 3.1:1 dark), so it is drawn at full strength. The selector
+// outranks the dark theme's !important resting opacity above.
+html body .article-tags a.ancillary-tag:focus:link,
+html body .article-tags a.ancillary-tag:focus:visited {
+  opacity: 1 !important;
 }
 
 // visited tag and category links
@@ -5808,7 +6003,8 @@ body.dark .article-tags a.ancillary-tag:visited {
 }
 
 // Folder icon for categories
-span.article-categories > i {
+span.article-categories > i,
+span.article-categories > .article-categories-first > i {
   color: var(--border-color);
   background-color: transparent;
   background-image: none;
@@ -5972,6 +6168,7 @@ div.lds-ring:after {
 #reference > p, #references > p, .hanging-indent {
   text-indent: -2em;
   margin-left: 2em;
+  overflow-wrap: anywhere; // a long DOI otherwise runs past a phone's edge
 }
 
 // Sibling rule for Hugo/Goldmark-rendered plain-Markdown reference sections
@@ -5979,6 +6176,7 @@ h2#references ~ p, h3#references ~ p, h4#references ~ p,
 h2#reference  ~ p, h3#reference  ~ p, h4#reference  ~ p {
   text-indent: -2em;
   margin-left: 2em;
+  overflow-wrap: anywhere;
 }
 
 // Newer Pandoc emits the bibliography as nested divs rather than paragraphs:
@@ -5997,6 +6195,7 @@ h2#reference  ~ p, h3#reference  ~ p, h4#reference  ~ p {
 .csl-bib-body .csl-entry {
   text-indent: -2em;
   margin-left: 2em;
+  overflow-wrap: anywhere;
   margin-bottom: 2%;
 }
 
@@ -6031,19 +6230,33 @@ textarea {
   scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
 
-// Keep rendered output visually attached to the code that produced it. The selector
-// has to key off the <details>, not the <pre>: the "Fold code chunks" pass in
-// academic.js moves every <pre class="..."> inside a generated <details> at DOM-ready,
-// so on the rendered page the code block has no next sibling at all and a
-// `pre.r + pre` rule silently matches nothing. The <details> carries no border or
-// padding, so the code block's own 2.25rem bottom margin collapses through it and this
-// negative top margin nets 1.5rem, closer than the 2.25rem that separates a chunk from
-// the prose after it. The [open] guard matters because a collapsed chunk hides the
-// <pre>, leaving no margin to collapse through, and the negative value would then drag
-// the output up over the "Expand" summary. The paragraph arms cover plot output, which
-// blogdown emits as a bare paragraph wrapping the figure rather than as a second <pre>.
-.article-style details[open]:has(> pre.r) + pre,
-.article-style details[open]:has(> pre.python) + pre,
+// Keep rendered output visually attached to the code that produced it. The "Fold code
+// chunks" pass in academic.js moves every <pre class="..."> inside a generated
+// <details> at DOM-ready, so on the rendered page the code block has no next sibling
+// at all and a `pre.r + pre` rule silently matches nothing. A rule that reaches the
+// output from its code therefore has to key off the <details>.
+//
+// A text output block, marked by the same pass (see the data-chunk rules further
+// down), sits 0.5rem below its code. The code block gives up its bottom margin and the
+// output takes the whole gap as its top margin, which comes to the same 0.5rem whether
+// or not the browser collapses the code block's margin through the <details>. A
+// second output block, such as a warning printed after a result, sits as close to the
+// first.
+.article-style details:has(+ pre[data-chunk="output"]) > pre,
+.article-style pre[data-chunk="output"]:has(+ pre[data-chunk="output"]) {
+  margin-bottom: 0;
+}
+
+.article-style pre[data-chunk="output"] {
+  margin-top: 0.5rem;
+}
+
+// A plot, which blogdown emits as a bare paragraph wrapping the figure, keeps a wider
+// gap. The <details> carries no border or padding, so the code block's 2.25rem bottom
+// margin collapses through it, and this negative top margin nets 1.5rem. The [open]
+// guard matters because a collapsed chunk hides the <pre>, leaving no margin to
+// collapse through, and the negative value would then drag the plot up over the
+// "Expand" summary.
 .article-style details[open]:has(> pre.r) + p:has(> img:only-child),
 .article-style details[open]:has(> pre.python) + p:has(> img:only-child) {
   margin-top: -0.75rem;
@@ -6297,7 +6510,6 @@ textarea {
     justify-content: space-between; /* Adds space between columns */
     max-width: 100%;
     margin: 0 auto;
-    margin-top: -4%;
 }
 
 .imageContainer {
@@ -6306,8 +6518,12 @@ textarea {
     margin-bottom: -4%; /* Reduced margin above the container */
 }
 
+// The height is auto so that an image's width and height attributes only set
+// its shape, which holds its space open while it loads; left to them, it
+// would be drawn at the height they give in pixels.
 .imageContainer img {
     width: 100%; 
+    height: auto;
     border-radius: 4px;
     cursor: pointer;
     display: block;
@@ -6569,6 +6785,7 @@ body.dark .full-text-btn a:focus,
 }
 .cv-btn:hover,
 .cv-btn:focus {
+  color: var(--text-hover);
   background-color: var(--bg-cv-hover);
   border-color: var(--border-cv-hover);
   box-shadow: 0 0 0 2px var(--bg-button-hover);
@@ -6607,6 +6824,7 @@ body.dark .full-text-btn a:focus,
   // Faded by default, fully visible on hover
   &::before {
     content: '▼▼▼▼▼▼▼';
+    content: '▼▼▼▼▼▼▼' / '';
     position: absolute;
     bottom: 12px;
     left: 50%;
@@ -6627,6 +6845,7 @@ body.dark .full-text-btn a:focus,
   // Hover effect - show button
   &:hover::before {
     content: '▼▼▼      Expand summary      ▼▼▼';
+    content: '▼▼▼      Expand summary      ▼▼▼' / '';
     opacity: 1;
     background-color: #444;
     color: #fff;
@@ -6741,7 +6960,7 @@ body.dark .multimedia-entry.bg-alt .multimedia-summary::after {
 .dark .navbar-nav .nav-item .nav-link.active,
 body.dark .navbar-nav .nav-link.active,
 body.dark .navbar-nav .nav-item .nav-link.active {
-  color: #0f766e !important; // Match hover teal — dark-theme navbar is LIGHT (#e2e8f0)
+  color: #0e7169 !important; // Match hover teal — dark-theme navbar is LIGHT (#e2e8f0)
   font-weight: normal !important; // Remove bold in dark theme
 }
 
@@ -6895,9 +7114,8 @@ html body.dark #navbar-main .navbar-nav .nav-item .nav-link.active,
 html body.dark .navbar .navbar-nav .nav-item .nav-link.active,
 html body.dark .navbar .navbar-nav .nav-link.active,
 html body.dark nav .navbar-nav .nav-link.active,
-html:not(.light) body.dark .navbar-nav .nav-link.active,
-.dark html body .navbar-nav .nav-link.active {
-  color: #0f766e !important; // Match hover teal for a consistent active/hover set
+html:not(.light) body.dark .navbar-nav .nav-link.active {
+  color: #0e7169 !important; // Match hover teal for a consistent active/hover set
   font-weight: 600 !important;
   text-shadow: none !important; // was an aquamarine glow — blurred the text on the light dark-theme navbar
 }
@@ -6906,8 +7124,7 @@ html body.dark #navbar-main .navbar-nav .nav-item .nav-link.active::after,
 html body.dark .navbar .navbar-nav .nav-item .nav-link.active::after,
 html body.dark .navbar .navbar-nav .nav-link.active::after,
 html body.dark nav .navbar-nav .nav-link.active::after,
-html:not(.light) body.dark .navbar-nav .nav-link.active::after,
-.dark html body .navbar-nav .nav-link.active::after {
+html:not(.light) body.dark .navbar-nav .nav-link.active::after {
   background: #0f766e !important;
   box-shadow: none !important;
 }
@@ -7069,7 +7286,7 @@ html body #search-results .search-hit h3,
 html body #search-results .search-hit h4,
 html body #search-results .search-hit h5,
 html body #search-results .search-hit h6 {
-  color: #009688 !important; /* Force aquamarine */
+  color: #00796B !important; /* The hover teal, 5.3:1 on white */
 }
 
 /* Target any link in search results */
@@ -7082,7 +7299,7 @@ html body .search-hit a h3,
 html body .search-hit a h4,
 html body .search-hit a h5,
 html body .search-hit a h6 {
-  color: #009688 !important; /* Force aquamarine */
+  color: #00796B !important; /* The hover teal, 5.3:1 on white */
   text-decoration: none !important;
 }
 
@@ -7169,9 +7386,6 @@ html body.dark .search-hit a h6 {
   }
   
   // Dark theme specific: Make ONLY active item underline thinner and darker
-  html.dark body.dark .navbar-nav .nav-link.active::after,
-  html.dark body.dark #navbar-content > ul > li > a.active::after,
-  html.dark body.dark .nav-link.active::after,
   body.dark .navbar-nav .nav-link.active::after,
   body.dark #navbar-content > ul > li > a.active::after,
   body.dark .nav-link.active::after {
@@ -7187,9 +7401,6 @@ html body.dark .search-hit a h6 {
   }
   
   // Remove glow from active navbar text in dark theme
-  html.dark body.dark .navbar-nav .nav-link.active,
-  html.dark body.dark #navbar-content > ul > li > a.active,
-  html.dark body.dark .nav-link.active,
   body.dark .navbar-nav .nav-link.active,
   body.dark #navbar-content > ul > li > a.active,
   body.dark .nav-link.active {
@@ -7373,13 +7584,71 @@ details summary {
 }
 
 // The "Expand" link's teal, set inline by academic.js through this variable: #237A69
-// reaches 5.2:1 on the white page, and the lighter #379E8A 5.5:1 on the dark one.
+// reaches 5.2:1 on the white page, and the lighter #379E8A 5.5:1 on the dark one. The
+// quieter "Collapse" grey is set the same way, at 5.3:1 and 7.0:1.
 :root {
   --code-fold-expand: #237A69;
+  --code-fold-collapse: #6b6b6b;
 }
 
 body.dark {
   --code-fold-expand: #379E8A;
+  --code-fold-collapse: #94a3b8;
+}
+
+// The "Show all code" / "Hide all code" button that academic.js puts before the first
+// code chunk of a post with two or more. Its wrapper has no in-flow content once the
+// button is positioned, so it takes no height and the margins on either side collapse
+// through it: nothing on the page moves. The button is laid over the right-hand end of
+// the first chunk's summary line, which the short, left-aligned "Expand" or "Collapse"
+// leaves empty. Lying on another target, it cannot count on spacing to meet the 24px
+// minimum target size of WCAG 2.2 (2.5.8), so it meets it by its own height: at the
+// default 12px text, with 1.4 line height, padding and border, it is 25px tall,
+// within the 25.5px of a closed summary and the 27px between an open one and its
+// code. The padding is in em rather than the height in px, so that the button
+// shrinks with the text when a reader picks a smaller size, and still clears the
+// code. The grey is the "Collapse" link's, at 5.3:1 on the light theme and 7.0:1 on
+// the dark one, and the z-index keeps it clear of any positioned element after it.
+.article-style .code-fold-all {
+  position: relative;
+}
+
+.article-style .code-fold-all > button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  padding: 0.25em 0.6em;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--code-fold-collapse);
+  font-size: 0.8em;
+  line-height: 1.4;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.article-style .code-fold-all > button:focus-visible {
+  outline: 2px solid var(--code-fold-expand);
+  outline-offset: 2px;
+}
+
+// On the dark theme's green hover fill the grey falls below 4:1.
+body.dark .article-style .code-fold-all > button:hover {
+  color: #cbd5e1;
+}
+
+// Where the first chunk sits in a box that scrolls on its own, academic.js puts the
+// button before the box instead, and there it takes a line of its own, at the right
+// as elsewhere, a little clear of the box's border.
+.article-style .code-fold-all.is-own-line {
+  margin-bottom: 0.5rem;
+  text-align: right;
+}
+
+.article-style .code-fold-all.is-own-line > button {
+  position: static;
 }
 
 // Left-align only summary elements that contain code blocks (pre elements)
@@ -8049,13 +8318,9 @@ body.page-wrapper #top > div.pub > div.article-container.pt-3 > div.btn-links.mb
   text-decoration: none !important;
 }
 
-// Dark-mode hover for the "Online book" button.
-// NOTE: `#top` is the <body> itself (<body id="top" class="dark">), so the old
-// `body.dark #top > …` (descendant combinator) could NEVER match — it looked for a
-// #top *inside* body.dark, but #top IS body.dark. That left the light-theme hover
-// (#fee2e2, light pink) winning in dark mode, making the near-white label invisible.
-// Fix: `body.dark#top` (compound, no space) matches the body and wins specificity,
-// giving the intended dark-red hover with a light label (~11:1). Label colour still
+// Dark-theme hover for the 'Online book' button: a dark red behind the light label
+// (~11:1), in place of the light pink above, on which that label is unreadable.
+// `body.dark#top` has no space because #top is the <body> itself. The label colour
 // comes from the theme-aware `var(--text-hover)` rule above.
 body.dark#top > div.pub > div:nth-child(3) > div.article-style > a > button:hover,
 body.dark#top > div.pub > div:nth-child(3) > div.article-style > a > button:focus {
@@ -8254,7 +8519,7 @@ body.dark #navbar-main .dropdown-item:focus-visible {
   z-index: 2000;
   padding: 0.6rem 1rem;
   border-radius: 0 0 6px 6px;
-  background-color: #12263f;
+  background-color: #12263f !important; // `#navbar-main a:link` would otherwise clear it
   color: #ffffff !important;
   background-image: none !important;
   text-decoration: none !important;
@@ -8373,17 +8638,107 @@ body.dark .article-style pre {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
 }
 
-.article-style pre .xaringanextra-clipboard-button {
+// Copy buttons: xaringanExtra's on the posts that load it, and static/js/code-copy.js's
+// on every other page. xaringanExtra hides its button with display: none until the
+// block is hovered, which also put it out of reach of the keyboard, so both are kept
+// rendered and only faded out until the block is hovered or the button focused. The
+// first block of declarations repeats xaringanExtra's own stylesheet, which the pages
+// with code-copy.js do not load.
+.article-style pre .xaringanextra-clipboard-button,
+.article-style pre .code-copy-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 0.8em;
+  line-height: 1.2;
+  cursor: pointer;
+
+  display: block !important;
+  opacity: 0;
+  transition: opacity 0.15s ease;
   z-index: 1;
   padding: 0.35rem 0.55rem !important;
   border: 1px solid currentColor !important;
   border-radius: 0.25rem !important;
   background-color: rgba(15, 23, 42, 0.1) !important;
+  color: #b01f45 !important; // the code's own red, darkened to 5.2:1 on the button's grey
+}
+
+.article-style pre:hover > .xaringanextra-clipboard-button,
+.article-style pre:hover > .code-copy-button,
+.article-style pre .xaringanextra-clipboard-button:focus-visible,
+.article-style pre .code-copy-button:focus-visible,
+.article-style pre .xaringanextra-clipboard-button[style*="display: block"],
+.article-style pre .code-copy-button.is-copied {
+  opacity: 1;
+}
+
+body.dark .article-style pre .xaringanextra-clipboard-button,
+body.dark .article-style pre .code-copy-button {
+  background-color: rgba(255, 255, 255, 0.1) !important;
   color: inherit !important;
 }
 
-body.dark .article-style pre .xaringanextra-clipboard-button {
-  background-color: rgba(255, 255, 255, 0.1) !important;
+// A chunk's code and its text output are told apart by border colour and by a small
+// label in the top right-hand corner, keyed to the data-chunk marks that academic.js
+// sets. The code is marked in teal, as the fold control is, and the output in a
+// neutral grey. The border colours need !important to answer the dark theme's
+// `code, pre` rule. Against their block, the labels reach 4.9:1 (input) and 5.1:1
+// (output) on the light theme, and 6.5:1 and 5.7:1 on the dark one. A label is
+// generated content, so the copy button leaves it out of what it copies. The label
+// gives way to that button in the corner they share whenever the button shows: on
+// hover, while it has focus, and for the 2.5 seconds after a copy during which it
+// holds "Copied!" (an inline `display: block` from xaringanExtra, a class from
+// code-copy.js).
+:root {
+  --chunk-input-border: #6fa99d;
+  --chunk-input-label: #237A69;
+  --chunk-output-border: #cbcfd5;
+  --chunk-output-label: #5f6b7c;
+}
+
+body.dark {
+  --chunk-input-border: #2f8377;
+  --chunk-input-label: #4fbfa8;
+  --chunk-output-border: #4b5563;
+  --chunk-output-label: #94a3b8;
+}
+
+.article-style pre[data-chunk="input"] {
+  border-color: var(--chunk-input-border) !important;
+}
+
+.article-style pre[data-chunk="output"] {
+  border-color: var(--chunk-output-border) !important;
+}
+
+.article-style pre[data-chunk]::before {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.6rem;
+  font-family: $sta-font-body, sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.article-style pre[data-chunk="input"]::before {
+  content: "Input";
+  color: var(--chunk-input-label);
+}
+
+.article-style pre[data-chunk="output"]::before {
+  content: "Output";
+  color: var(--chunk-output-label);
+}
+
+.article-style pre[data-chunk]:hover:has(> .xaringanextra-clipboard-button, > .code-copy-button)::before,
+.article-style pre[data-chunk]:focus-within::before,
+.article-style pre[data-chunk]:has(> .xaringanextra-clipboard-button[style*="display: block"], > .code-copy-button.is-copied)::before {
+  visibility: hidden;
 }
 
 // Tables are data displays, so leave a clear visual boundary before the next
@@ -8416,4 +8771,194 @@ body.dark .article-style pre .xaringanextra-clipboard-button {
 .article-style .table-responsive > table,
 .article-style pre table {
   margin: 0;
+}
+
+// The list of contents that opens a long post, and the "#" link beside each h2 and
+// h3 of an article, both written by static/js/section-links.js.
+//
+// The list is a box in the manner of the abstract panel and the code blocks, the
+// other full-width containers of an article body, with their 0.5rem radius. It has
+// no fill and a neutral grey border, so that it reads as an aid to the post rather
+// than a part of it. Folded, it shows only the label "Contents" in the muted text
+// colour, behind a chevron drawn in CSS: the triangles that the code chunks' fold
+// controls use would make it look like one of them.
+:root {
+  --article-toc-border: #d5dae0;
+  --heading-anchor-hover: #237A69;
+}
+
+body.dark {
+  --article-toc-border: #3b4658;
+  --heading-anchor-hover: #5fe0d0;
+}
+
+.article-style nav.article-toc {
+  margin: 0 0 1.5rem;
+  border: 1px solid var(--article-toc-border);
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+}
+
+// Every summary on the site is centred, full-width and unmarked, with margins that
+// publication-type-badges.css sets with !important, and that stylesheet loads after
+// this one. Naming the nav and the <details> makes these selectors outrank both it
+// and the code chunks' rules on `.article-style details > summary`.
+.article-style nav.article-toc > details > summary {
+  display: flex !important;
+  align-items: center;
+  margin: 0 !important;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.5rem;
+  text-align: left !important;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.article-style nav.article-toc > details > summary::before {
+  content: "";
+  flex: none;
+  width: 0.45em;
+  height: 0.45em;
+  margin: 0 0.7em 0 0.1em;
+  border-right: 0.14em solid currentColor;
+  border-bottom: 0.14em solid currentColor;
+  transform: rotate(-45deg);
+}
+
+.article-style nav.article-toc > details[open] > summary::before {
+  transform: rotate(45deg);
+}
+
+.article-style nav.article-toc > details > summary:hover {
+  color: var(--text-primary);
+}
+
+// The browser's own ring would lie over the box's border. This one is drawn just
+// inside it.
+.article-style nav.article-toc > details > summary:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -2px;
+}
+
+// The entries start under the label, past the chevron. Their spacing is closer than
+// the 0.55em that list items take in the body, as each is a title to scan rather
+// than a sentence to read.
+.article-style nav.article-toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.article-style nav.article-toc > details > ul {
+  padding: 0 0.9rem 0.7rem 2rem;
+}
+
+.article-style nav.article-toc ul ul {
+  margin-top: 0.3rem;
+  padding-left: 1.1rem;
+}
+
+.article-style nav.article-toc li {
+  margin: 0 0 0.3rem;
+}
+
+// Room for the folded list, held from the first paint until the script puts the
+// list in its place and removes data-contents, so that the text below does not
+// move down when it arrives. The height is the folded list's: the summary's line
+// (1.5 x 0.95rem), its padding (2 x 0.5rem) and the border (2 x 1px). Without
+// scripting nothing would fill the room, so none is held.
+@media (scripting: enabled) {
+  .article-style[data-contents]::before {
+    content: "";
+    display: block;
+    height: calc(2.425rem + 2px);
+    margin-bottom: 1.5rem;
+  }
+}
+
+// The link is taken out of the flow, so the heading lays out and wraps exactly as
+// it would without it. With no offsets it stays where it would have been in the
+// line, just after the heading's last word, and on the same baseline. It shows on
+// hover and on keyboard focus only, in the muted text colour, which is 4.95:1 on
+// the light page and 6.96:1 on the dark one. The #top prefix and !important answer
+// the rules that give a link in a heading its underline and the light theme's
+// highlight gradient and hover fill, or in the dark theme a teal colour set through
+// -webkit-text-fill-color. Leaving it out of a selection keeps the "#" out of a
+// heading copied as text.
+#top .article-style h2 > a.heading-anchor,
+#top .article-style h3 > a.heading-anchor {
+  position: absolute;
+  margin-left: 0.3em;
+  font-weight: 400;
+  opacity: 0;
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: currentColor !important;
+  text-decoration: none !important;
+  background: none !important;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#top .article-style h2:hover > a.heading-anchor,
+#top .article-style h3:hover > a.heading-anchor {
+  opacity: 1;
+}
+
+#top .article-style h2 > a.heading-anchor:focus-visible,
+#top .article-style h3 > a.heading-anchor:focus-visible {
+  opacity: 1;
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+// The teal of the code chunks' "Expand" control, 5.2:1 on white, and in the dark
+// theme the colour of a link in a heading.
+#top .article-style h2 > a.heading-anchor:hover,
+#top .article-style h3 > a.heading-anchor:hover,
+#top .article-style h2 > a.heading-anchor:focus-visible,
+#top .article-style h3 > a.heading-anchor:focus-visible {
+  color: var(--heading-anchor-hover) !important;
+}
+
+// Printing. academic.js opens folded code and switches to the light theme for the
+// print, since the dark theme's pale text would be close to invisible on paper, where
+// browsers leave out backgrounds by default. What only works on screen is left out,
+// while the footer stays for its licence line.
+html.is-printing *,
+html.is-printing *::before,
+html.is-printing *::after {
+  transition: none !important;
+}
+
+@media print {
+  html,
+  body {
+    transition: none !important;
+  }
+
+  .search-results,
+  #navbar-main,
+  .skip-link,
+  .site-footer .back-to-top,
+  #comments,
+  #modal,
+  #open-science-popup,
+  #pub-type-popup,
+  .article-style details > summary,
+  .article-style .code-fold-all,
+  .xaringanextra-clipboard-button,
+  .code-copy-button,
+  .editable-r,
+  .article-toc,
+  .heading-anchor,
+  .rmd-source {
+    display: none !important;
+  }
+
+  .article-style pre {
+    box-shadow: none;
+  }
 }

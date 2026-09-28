@@ -20,8 +20,16 @@
       {{ if $.Scratch.Get "highlight_enabled" }}
         {{ $v := $js.highlight.version }}
         {{ printf "<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\"></script>" (printf $js.highlight.url $v) $js.highlight.sri | safeHTML }}
-        {{ range site.Params.highlight_languages }}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/{{ $v }}/languages/{{ . }}.min.js"></script>
+        {{/* Each language pack has its own SRI in assets.toml. A language with no
+             entry there gets an empty integrity attribute, which browsers treat as
+             no check at all, so it still loads, and the build warns about it. */}}
+        {{ $languages_sri := $js.highlight.languages | default dict }}
+        {{ range $lang := site.Params.highlight_languages }}
+          {{ $sri := index $languages_sri $lang | default "" }}
+          {{ if not $sri }}
+            {{ warnf "No SRI for highlight.js language %q in themes/hugo-academic/data/assets.toml: it loads without an integrity check." $lang }}
+          {{ end }}
+          {{ printf "<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\"></script>" (printf "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/%s/languages/%s.min.js" $v $lang) $sri | safeHTML }}
         {{ end }}
       {{ end }}
 
@@ -56,7 +64,9 @@
     {{ $min_length := site.Params.search.academic.min_length | default 1 }}
     {{ $threshold := site.Params.search.academic.threshold | default 0.3 }}
     {{ $search_i18n := dict "placeholder" (i18n "search_placeholder") "results" (i18n "search_results") "no_results" (i18n "search_no_results") }}
-    {{ $search_config := dict "indexURI" ("/index.json" | relLangURL) "threshold" $threshold "minLength" $min_length }}
+    {{/* The index's URL is not passed here: getSearchIndex(), in the site's
+         layouts/partials/custom_head.html, fetches it for every script that reads it. */}}
+    {{ $search_config := dict "threshold" $threshold "minLength" $min_length }}
     <script>
       const search_config = {{ $search_config | jsonify | safeJS }};
       const i18n = {{ $search_i18n | jsonify | safeJS }};

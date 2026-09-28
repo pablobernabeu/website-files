@@ -1,0 +1,39 @@
+{{- /* The related references a publication or software bundle keeps in its
+       related-references.html, which scripts/collect_related_references.R
+       writes. That file ends in a <script class="ref-metadata"> block holding
+       each reference's abstract and type as JSON, and the block is most of the
+       file: two thirds of it on the thesis page. Inlined, it made every
+       visitor download all of it before the page had finished parsing,
+       whether or not they ever scrolled down to the references.
+
+       So the block is taken out here, at build time, and published beside the
+       page as related-references.json. What stays in the page is the same
+       element, empty, with the file's address in data-src, which is where
+       static/js/related-references.js looks for it. The bundle file itself is
+       untouched, because the collector and scripts/prune_reference_abstracts.py
+       both read the block back from it.
+
+       The pattern is the one prune_reference_abstracts.py uses to find the
+       block. It stops at the first closing tag, as the browser did when the
+       block was inline, so the published file holds the text the page used to
+       parse. A bundle file without a block is inlined unchanged.
+
+       Only finding the block takes a pattern over the whole file. Its opening
+       tag is then matched at the start of the block alone, and the rest is
+       plain string work: each further pattern pass over several megabytes of
+       JSON added seconds to every build. */ -}}
+{{- $page := . -}}
+{{- with .Resources.GetMatch "related-references.html" -}}
+  {{- $html := string .Content -}}
+  {{- with findRE `(?s)<script[^>]*class="ref-metadata"[^>]*>.*?</script>` $html 1 -}}
+    {{- $block := index . 0 -}}
+    {{- $open := index (findRE `^<script[^>]*>` $block 1) 0 -}}
+    {{- $json := strings.TrimSuffix "</script>" (strings.TrimPrefix $open $block) -}}
+    {{- $json = trim $json " \t\r\n" -}}
+    {{- $path := printf "%srelated-references.json" (strings.TrimPrefix "/" $page.RelPermalink) -}}
+    {{- $file := resources.FromString $path $json -}}
+    {{- $placeholder := printf `<script type="application/json" class="ref-metadata" data-src="%s"></script>` $file.RelPermalink -}}
+    {{- $html = replace $html $block $placeholder -}}
+  {{- end -}}
+  {{- $html | safeHTML -}}
+{{- end -}}

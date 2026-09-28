@@ -1,5 +1,6 @@
 {{/* Custom <head> additions: dark-theme flash prevention, search-modal CSS/JS,
-     tag-cloud network, search query/results persistence, and IndexNow. */}}
+     the shared search-index loader, tag-cloud network, search query/results
+     persistence and IndexNow. */}}
 
 {{/* The theme's Google Fonts stylesheet is emitted earlier in site_head.html,
      but the font files themselves live on a second host that nothing warms up.
@@ -66,10 +67,22 @@
       document.documentElement.setAttribute("data-theme", "dark");
       document.documentElement.style.backgroundColor = "#0f172a";
       document.documentElement.style.color = "#e2e8f0";
-      // Critical: Add dark class to body to match academic.js expectations
-      document.addEventListener("DOMContentLoaded", function() {
+      // academic.js expects .dark on <body>, and until it is there the page paints in
+      // the light theme and then fades across (custom.scss animates the change), which
+      // showed as a white flash on every load. The class is added the moment <body>
+      // exists, before anything is painted. A script inside <body> could do the same,
+      // but custom.scss positions many rules by <body>'s children (see baseof.html).
+      function markBodyDark() {
+        if (!document.body) return false;
         document.body.classList.add("dark");
-      });
+        return true;
+      }
+      if (!markBodyDark() && window.MutationObserver) {
+        new MutationObserver(function (records, observer) {
+          if (markBodyDark()) observer.disconnect();
+        }).observe(document.documentElement, { childList: true });
+      }
+      document.addEventListener("DOMContentLoaded", markBodyDark);
     }
   })();
 </script>
@@ -79,14 +92,41 @@
 {{/* Search modal styling */}}
 <link rel="stylesheet" href="{{ "css/search-modal.css" | relURL }}" />
 
+{{/* The search index (/index.json, over 200 KB) is read by the site search, by
+     the topic tags that article-ancillary-tags.js adds to a page and by the tag
+     network on the home page. None of them needs it to draw the page, so each
+     asks for it through getSearchIndex() only when it comes to need it, and all
+     of them share the first request. The file is therefore downloaded at most
+     once on a page, and not at all on a page where nothing asks for it. A failed
+     request is forgotten, so that the next call makes a fresh one. */}}
+<script>
+  window.getSearchIndex = (function () {
+    "use strict";
+    var request = null;
+    return function () {
+      if (!request) {
+        request = fetch({{ "/index.json" | relLangURL }}).then(function (response) {
+          if (!response.ok) throw new Error("Search index: HTTP " + response.status);
+          return response.json();
+        });
+        request.catch(function () {
+          request = null;
+        });
+      }
+      return request;
+    };
+  })();
+</script>
+
 {{/* Tag cloud height constraint */}}
 {{ if .IsHome }}
 <link rel="stylesheet" href="{{ "css/tag-cloud-height.css" | relURL }}" />
 {{ end }}
 
-{{/* Related references interactive toolbar */}}
+{{/* Related references interactive toolbar, addressed by its own checksum for
+     the reason given beside its script in custom_js.html. */}}
 {{ with .Resources.GetMatch "related-references.html" }}
-<link rel="stylesheet" href="{{ "css/related-references.css" | relURL }}" />
+<link rel="stylesheet" href="{{ "css/related-references.css" | relURL }}?v={{ substr (readFile "static/css/related-references.css" | md5) 0 10 }}" />
 {{ end }}
 
 {{/* Editable R chunks, on a post whose front matter sets editable_r: true.
@@ -295,7 +335,7 @@
 
 {{/* Tag cloud network visualization */}}
 {{ if .IsHome }}
-<script defer src="{{ "js/tag-cloud-network.js" | relURL }}"></script>
+<script defer src="{{ "js/tag-cloud-network.js" | relURL }}?v={{ substr (readFile "static/js/tag-cloud-network.js" | md5) 0 10 }}"></script>
 {{ end }}
 
 {{/* Basic performance optimization */}}
@@ -313,6 +353,9 @@
         a.setAttribute('href', '#search');
         a.setAttribute('role', 'button');
         a.setAttribute('aria-label', 'Search');
+        // academic.js opens search on "/" as well; say so to the pointer and to AT.
+        a.setAttribute('aria-keyshortcuts', '/');
+        a.setAttribute('title', 'Search (press /)');
       }
     }
   }

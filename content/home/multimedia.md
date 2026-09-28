@@ -53,7 +53,7 @@ css_class = ""
 
 <div style = "margin-bottom: 3%;"></div>
 
-<button id="toggle-all-summaries" style="padding: 8px 16px; margin-bottom: 1rem; background-color: #059669; color: #ffffff; border: 1px solid #047857; border-radius: 4px; cursor: pointer; font-size: 0.9em; transition: all 0.2s ease;">
+<button id="toggle-all-summaries" style="padding: 8px 16px; margin-bottom: 1rem; background-color: #047857; color: #ffffff; border: 1px solid #065f46; border-radius: 4px; cursor: pointer; font-size: 0.9em; transition: all 0.2s ease;">
   <i class="fas fa-chevron-down"></i>&nbsp;Expand all video descriptions
 </button>
 
@@ -62,15 +62,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const toggleButton = document.getElementById('toggle-all-summaries');
   const summaries = document.querySelectorAll('#multimedia .multimedia-summary');
   
-  // Add theme-aware hover effect
+  // On hover the site-wide button:hover rule gives the button a pale green fill
+  // on the light theme, so the label turns black there.
   toggleButton.addEventListener('mouseenter', function() {
     const isDark = document.body.classList.contains('dark');
-    this.style.backgroundColor = isDark ? '#047857' : '#d1fae5';
     this.style.color = isDark ? '#ffffff' : '#000000';
   });
   
   toggleButton.addEventListener('mouseleave', function() {
-    this.style.backgroundColor = '#059669';
     this.style.color = '#ffffff';
   });
   
@@ -509,7 +508,7 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
-### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Demonstration of procedure for bundled PSA Studies [002](/publication/chen-etal-inprep) and [003](/publication/multi-region-investigation-of-man-as-default-in-attitudes)
+### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Demonstration of procedure for bundled PSA Studies [002](/publication/investigating-object-orientation-effects-across-18-languages/) and [003](/publication/multi-region-investigation-of-man-as-default-in-attitudes/)
 
 <iframe title="Document: Demonstration of procedure for bundled PSA Studies 002 and 003" loading="lazy" src="https://mfr.de-1.osf.io/render?url=https://osf.io/download/h36wr/?direct%26mode=render"
     style="margin-top:10px"

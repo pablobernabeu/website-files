@@ -1,5 +1,15 @@
 {{ $is_list := .is_list }}
 {{ $page := .page }}
+{{- /* A page counts as updated when it was last modified on a later calendar day than
+     the one it was published on. Hugo has resolved both dates by now: a lastmod left
+     empty takes the date, and a post written with `date: ~` takes its date from
+     lastmod, so neither reads as an update. The days are compared rather than the
+     instants, as lastmod can carry a time of day, and a correction made on the day of
+     publication is no news to a reader. Each day is read in its date's own UTC
+     offset, as the page displays it, so lastmod must also be the later instant: one
+     written in an offset further east can fall on the next day and still be the
+     earlier moment. */}}
+{{- $updated := and ($page.Lastmod.After $page.Date) (gt ($page.Lastmod.Format "2006-01-02") ($page.Date.Format "2006-01-02")) }}
 
 {{ if not $page.Params.hide_metadata }}
 <div class="article-metadata">
@@ -34,7 +44,7 @@
     {{ if eq $page.Type "publication" }}
       {{ $date = $page.Date.Format (site.Params.publications.date_format | default "January, 2006") }}
     {{ else }}
-      {{ if ne $page.Params.Lastmod $page.Params.Date }}
+      {{ if $updated }}
           {{ i18n "last_updated" }}
       {{ end }}
     {{ end }}
@@ -46,19 +56,41 @@
     {{ if eq $page.Type "publication" }}
       {{ $date = $page.Date.Format (site.Params.publications.date_format | default "January, 2006") }}
     {{ else }}
-      {{ if ne $page.Params.Lastmod $page.Params.Date }}
+      {{ if $updated }}
           {{ i18n "last_updated" }}
       {{ end }}
     {{ end }}
     <span class="middot-divider"></span>
     {{ $date }}
   </span>
+  {{ else if and (eq $page.Type "post") (not $is_list) }}
+    {{/* A post's own page gives the day it was published, and the day it was last
+         updated when that came later. Lists and the other sections keep the year alone,
+         as date_format in params.toml sets it. Posts from 2016 to 2020 whose day went
+         unrecorded were dated 1 January as a stand-in, so a post dated 1 January before
+         2021 keeps the year alone here too, rather than claim a day that was never
+         recorded. A post genuinely published on a later 1 January keeps its day. */}}
+    {{ with $page.Date }}{{ if not .IsZero }}
+    {{ $yearOnly := and (lt .Year 2021) (eq (.Format "01-02") "01-01") }}
+    <span class="article-date"{{ if $page.Params.authors }} style='font-size:105%;'{{ end }}>
+      {{- if $page.Params.authors }}({{ end -}}
+      <time datetime="{{ .Format (cond $yearOnly "2006" "2006-01-02") }}">{{ .Format (cond $yearOnly "2006" "2 January 2006") }}</time>
+      {{- if $page.Params.authors }}){{ end -}}
+    </span>
+    {{ end }}{{ end }}
+    {{ if $updated }}
+    {{/* The divider sits inside the unbreakable span, so a narrow screen that moves
+         "Last updated" to its own line does not leave a lone divider behind. */}}
+    <span class="article-updated"><span class="middot-divider"></span>
+      Last updated <time datetime="{{ $page.Lastmod.Format "2006-01-02" }}">{{ $page.Lastmod.Format "2 January 2006" }}</time>
+    </span>
+    {{ end }}
   {{ else }}
     {{ $date := $page.Lastmod.Format site.Params.date_format }}
     {{ if eq $page.Type "publication" }}
       {{ $date = $page.Date.Format (site.Params.publications.date_format | default "January, 2006") }}
     {{ else }}
-      {{ if ne $page.Params.Lastmod $page.Params.Date }}
+      {{ if $updated }}
           {{ i18n "last_updated" }}
       {{ end }}
     {{ end }}
@@ -100,12 +132,15 @@
 
   {{ $taxonomy := "categories" }}
   {{ with $page.Param $taxonomy }}
-  <span class="middot-divider"></span>
+  {{/* The divider, the folder icon and the first category are kept on one line, as
+       a narrow screen could otherwise break between them and strand the divider or
+       the icon at the end of a line. */}}
   <span class="article-categories">
-    <i class="fas fa-folder mr-1"></i>
     {{- range $index, $value := . -}}
       {{- if gt $index 0 }}, {{ end -}}
+      {{- if eq $index 0 }}<span class="article-categories-first"><span class="middot-divider"></span><i class="fas fa-folder mr-1"></i>{{ end -}}
       <a href="{{ (site.GetPage (printf "/%s/%s" $taxonomy (. | urlize))).RelPermalink }}">{{ . }}</a>
+      {{- if eq $index 0 }}</span>{{ end -}}
     {{- end -}}
   </span>
   {{ end }}

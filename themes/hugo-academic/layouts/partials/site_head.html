@@ -94,16 +94,27 @@
     {{ end }}
     {{ if ($scr.Get "highlight_enabled") }}
       {{ $v := $css.highlight.version }}
+      {{/* Each style has its own SRI in assets.toml. A style with no entry there
+           gets an empty integrity attribute, which browsers treat as no check at
+           all, so it still loads; for a `highlight_style` set in params.toml the
+           build also warns about it. */}}
+      {{ $styles_sri := $css.highlight.styles | default dict }}
       {{ with site.Params.highlight_style }}
-        {{ printf "<link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" title=\"hl-light\">" (printf $css.highlight.url $css.highlight.version .) | safeHTML }}
-        {{ printf "<link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" title=\"hl-dark\" disabled>" (printf $css.highlight.url $css.highlight.version .) | safeHTML }}
+        {{ $sri := index $styles_sri . | default "" }}
+        {{ if not $sri }}
+          {{ warnf "No SRI for highlight.js style %q in themes/hugo-academic/data/assets.toml: it loads without an integrity check." . }}
+        {{ end }}
+        {{ printf "<link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" title=\"hl-light\">" (printf $css.highlight.url $css.highlight.version .) $sri | safeHTML }}
+        {{ printf "<link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" title=\"hl-dark\" disabled>" (printf $css.highlight.url $css.highlight.version .) $sri | safeHTML }}
       {{ else }}
+        {{ $light_sri := index $styles_sri "github" | default "" }}
+        {{ $dark_sri := index $styles_sri "dracula" | default "" }}
         {{ if eq ($scr.Get "light") true }}
-          {{ printf "<link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" title=\"hl-light\">" (printf $css.highlight.url $css.highlight.version "github") | safeHTML }}
-          {{ printf "<link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" title=\"hl-dark\" disabled>" (printf $css.highlight.url $css.highlight.version "dracula") | safeHTML }}
+          {{ printf "<link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" title=\"hl-light\">" (printf $css.highlight.url $css.highlight.version "github") $light_sri | safeHTML }}
+          {{ printf "<link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" title=\"hl-dark\" disabled>" (printf $css.highlight.url $css.highlight.version "dracula") $dark_sri | safeHTML }}
         {{ else }}
-          {{ printf "<link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" title=\"hl-light\" disabled>" (printf $css.highlight.url $css.highlight.version "github") | safeHTML }}
-          {{ printf "<link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" title=\"hl-dark\">" (printf $css.highlight.url $css.highlight.version "dracula") | safeHTML }}
+          {{ printf "<link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" title=\"hl-light\" disabled>" (printf $css.highlight.url $css.highlight.version "github") $light_sri | safeHTML }}
+          {{ printf "<link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" title=\"hl-dark\">" (printf $css.highlight.url $css.highlight.version "dracula") $dark_sri | safeHTML }}
         {{ end }}
       {{ end }}
     {{ end }}
@@ -157,8 +168,11 @@
   {{ partial "marketing/google_analytics" . }}
   {{ partial "marketing/google_tag_manager" . }}
 
+  {{/* A list page advertises its own feed, and any other page the site-wide one. */}}
   {{ with .OutputFormats.Get "RSS" }}
   <link rel="alternate" href="{{.RelPermalink}}" type="application/rss+xml" title="{{site.Title}}">
+  {{ else }}
+  <link rel="alternate" href="{{ "index.xml" | relURL }}" type="application/rss+xml" title="{{site.Title}}">
   {{ end }}
 
   <link rel="manifest" href="{{ "index.webmanifest" | relLangURL }}">
@@ -166,6 +180,11 @@
   <link rel="apple-touch-icon" type="image/png" href="{{(partial "functions/get_icon" 192).RelPermalink}}">
 
   <link rel="canonical" href="{{ .Permalink }}">
+  {{/* The "s" tag only selects the posts listed on the blog page, so its term page
+       duplicates that list under a meaningless name. */}}
+  {{ if and (eq .Kind "taxonomy") (eq .Data.Term "s") }}
+  <meta name="robots" content="noindex">
+  {{ end }}
 
   {{ $featured_image := (.Resources.ByType "image").GetMatch "*featured*" }}
   {{ $has_logo := fileExists "assets/images/logo.png" | or (fileExists "assets/images/logo.svg") }}
@@ -195,7 +214,8 @@
   {{ end }}
   <meta property="og:site_name" content="{{ site.Title | markdownify | emojify }}">
   <meta property="og:url" content="{{ .Permalink }}">
-  <meta property="og:title" content="{{ if not .IsHome }}{{ .Params.name | default .Title | markdownify | emojify }} | {{ end }}{{ site.Title | markdownify | emojify }}">
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+  <meta property="og:title" content="{{ if not .IsHome }}{{ .Params.name | default .Title | markdownify | emojify | plainify | htmlUnescape }} | {{ end }}{{ site.Title | markdownify | emojify }}">
   <meta property="og:description" content="{{ $desc }}">
   {{- with $og_image -}}
   <meta property="og:image" content="{{.}}">
@@ -219,6 +239,7 @@
 
   {{ partial "custom_head" . }}
 
-  <title>{{ if not .IsHome }}{{ .Params.name | default .Title | markdownify | emojify }} | {{ end }}{{ site.Title | markdownify | emojify }}</title>
+  {{/* Plain text, because a title with inline code otherwise shows its <code> tags. */}}
+  <title>{{ if not .IsHome }}{{ .Params.name | default .Title | markdownify | emojify | plainify | htmlUnescape }} | {{ end }}{{ site.Title | markdownify | emojify }}</title>
 
 </head>
