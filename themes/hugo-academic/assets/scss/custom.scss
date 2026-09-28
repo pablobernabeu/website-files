@@ -691,20 +691,18 @@ a[href$="/tags/s/"] {
   display: none !important;
 }
 
-/* Frequency count subscripts */
+/* Frequency count subscripts. A count takes its tag's colour (getCategoryColor in
+   tag-cloud-network.js). The light palette reaches about 5.4:1, which leaves no room
+   to fade the count; the dark one reaches about 7:1, so there the count can be faded
+   to 0.8 and stay above 5:1. */
 #tags .tag-cloud a::after {
   content: attr(data-count);
   font-size: 0.6em;
   vertical-align: sub;
-  opacity: 0.5;
   margin-left: 0.15em;
   font-weight: 400;
 }
 
-// Dark theme: this subscript inherits the tag's own colour (the dark-theme palette in
-// tag-cloud-network.js's getCategoryColor, ~7:1 against #tags's background), then
-// multiplies it by the 0.5 opacity above - e.g. methods green ends up at only ~2.85:1,
-// well under WCAG AA (4.5:1). 0.8 keeps every category's count subscript above ~5:1.
 body.dark #tags .tag-cloud a::after {
   opacity: 0.8;
 }
@@ -2314,7 +2312,6 @@ body.dark {
     
     &:hover {
       color: #dbeafe !important;
-      opacity: 0.9;
       text-decoration: none;
     }
     
@@ -4488,9 +4485,8 @@ body.dark h3 a:visited {
   color: #fff !important;
 }
 
-// Link hover colour. The light theme's teal is #00796B, which keeps the hue of the
-// earlier #009688 and reaches 5.0:1 or more on white and on the pale green fills
-// (--bg-highlight, --bg-button-hover) that hovered links sit on; #009688 gave 3.5:1.
+// Link hover colour: on the light theme a teal at 5.0:1 or more on white and on the
+// pale green fills (--bg-highlight, --bg-button-hover) that hovered links sit on.
 h3 a:hover, div a:hover {
   color: #00796B !important;
 }
@@ -5759,15 +5755,19 @@ article .article-container.pt-3 > div > .btn-links:has(a.scholar-icon-link)::bef
   opacity: 1;
 }
 
-body.dark .article-tags a[data-count]::after,
-[data-theme="dark"] .article-tags a[data-count]::after {
+body.dark .article-tags a[data-count]::after {
   opacity: 1;
   color: #34d399;
 }
 
-// An ancillary tag is drawn at 0.7 opacity, which fades its count with it.
+// On the focus fill of the software pages' tags, the green above falls to 3.4:1.
+body.dark .article-tags a[data-count]:focus::after {
+  color: #a7f3d0;
+}
+
+// An ancillary tag is drawn at 0.7 opacity, which fades its count with it (4.9:1).
 .article-tags a.ancillary-tag[data-count]::after {
-  color: #044a37;
+  color: #033f2f;
 }
 
 // ancillary tag links within main container
@@ -7609,7 +7609,7 @@ body.dark {
   outline-offset: 2px;
 }
 
-// On the dark theme's green hover fill the grey falls to 3.9:1.
+// On the dark theme's green hover fill the grey falls below 4:1.
 body.dark .article-style .code-fold-all > button:hover {
   color: #cbd5e1;
 }
@@ -8636,7 +8636,7 @@ body.dark .article-style pre {
   border: 1px solid currentColor !important;
   border-radius: 0.25rem !important;
   background-color: rgba(15, 23, 42, 0.1) !important;
-  color: inherit !important;
+  color: #b01f45 !important; // the code's own red, darkened to 5.2:1 on the button's grey
 }
 
 .article-style pre:hover > .xaringanextra-clipboard-button,
@@ -8651,6 +8651,7 @@ body.dark .article-style pre {
 body.dark .article-style pre .xaringanextra-clipboard-button,
 body.dark .article-style pre .code-copy-button {
   background-color: rgba(255, 255, 255, 0.1) !important;
+  color: inherit !important;
 }
 
 // A chunk's code and its text output are told apart by border colour and by a small

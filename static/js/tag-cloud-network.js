@@ -127,16 +127,15 @@
       syntax: '#0a5bdf',      // Blue
       semantics: '#7239f4',   // Purple
       methods: '#0a7451',     // Green
-      cognition: '#8d5b06',   // Orange
+      cognition: '#a34c00',   // Orange
       programming: '#c71111', // Red
       language: '#046f81',    // Cyan
-      other: '#606673'        // Gray
+      other: '#606673'        // Grey
     };
-    // Each category keeps its hue in both themes. The colours above are for the light
-    // theme's near-white tag-cloud background (#f7f7f7), on which each reaches about
-    // 5.4:1, and 4.8:1 on the tint a hovered tag takes. For the dark theme's background
-    // (~rgb(35,37,47)) the same hues are lightened in HSL space until each reaches
-    // about 7:1.
+    // The colours above are for the light theme's near-white tag-cloud background
+    // (#f7f7f7), on which each reaches about 5.4:1, and 4.8:1 on the tint a hovered
+    // tag takes. For the dark theme's background
+    // (~rgb(35,37,47)) the hues are lightened in HSL space until each reaches about 7:1.
     const darkColors = {
       syntax: '#89b4fa',
       semantics: '#bfa4fa',
