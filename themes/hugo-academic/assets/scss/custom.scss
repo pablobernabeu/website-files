@@ -720,19 +720,18 @@ body.dark #tags .tag-cloud a:focus::after {
   &:hover {
     color: #047857 !important; // 5.2:1 on the pale green hover fill
     text-decoration: underline !important;
-    text-decoration-color: #22c55e !important;
+    text-decoration-color: var(--heading-link-underline) !important;
     text-decoration-thickness: 2px !important;
     text-underline-offset: 3px !important;
   }
 }
 
 // A lighter green for the dark theme: on the dark hover highlight #34d399 reaches
-// 6.6:1, where #059669 manages 3.3:1. Written `body.dark#top`, with no space,
-// because #top is the <body> itself.
+// 6.5:1, where the light theme's #047857 manages 2.3:1. Written `body.dark#top`,
+// with no space, because #top is the <body> itself.
 body.dark#top > div > div > h2 a {
   &:hover {
     color: #34d399 !important;
-    text-decoration-color: #10b981 !important;
   }
 }
 
@@ -2153,7 +2152,7 @@ body.dark {
     &[style*="color: black"] {
       color: #f1f5f9 !important;
     }
-    // A green used for icons in content, 2.2:1 on the dark theme's buttons.
+    // A green used for icons in content, 2.2:1 on the dark theme's grey full-text button.
     &[style*="3f8344" i] {
       color: #6cc474 !important;
     }
@@ -5378,22 +5377,31 @@ body.dark .document-viewer-toolbar {
 #software .media-body h3 a:active,
 #software div.media-body > h3 > a:hover,
 #software div.media-body > h3 > a:active,
-body .home-section h3 a:hover,
-body .home-section h3 a:active,
-body .home-section .media-body h3 a:hover,
-body .home-section .media-body h3 a:active {
+html body .home-section h3 a:hover,
+html body .home-section h3 a:active,
+html body .home-section .media-body h3 a:hover,
+html body .home-section .media-body h3 a:active {
   background: none !important;
   background-image: none !important;
   background-color: transparent !important;
   border-bottom: none !important;
   // On hover a title changes colour but hardly in lightness (slate blue to teal on
   // the light theme), so it is also underlined, as the list pages' headings are.
-  // The class-only selectors start with 'body' to outrank the dark theme's
-  // 'h3 a:hover' rule, which removes underlines.
+  // The class-only selectors start with 'html body' to outrank the dark theme's
+  // 'body.dark h3 a:hover' rule, which removes underlines.
   text-decoration: underline !important;
   text-decoration-color: var(--heading-link-underline) !important;
   text-decoration-thickness: 2px !important;
   text-underline-offset: 3px !important;
+}
+
+// The email links under the portrait are not titles, and keep no underline. A
+// title's code keeps no underline of its own either, as the dark theme would draw
+// a second, offset line under it.
+html body .home-section h3.profile-email a:hover,
+html body .home-section h3.profile-email a:active,
+html body .home-section h3 a:hover > code {
+  text-decoration: none !important;
 }
 
 /* Increase font size for home page h3 headings with links */
