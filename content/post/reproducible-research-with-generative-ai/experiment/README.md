@@ -17,18 +17,23 @@ files and re-executes every agent-written script when it is built.
 - `prompts/`: the request texts and the instructions for each route.
 - `make_runs.R` and `make_runs_followup.R` lay out the 48 runs in `design.csv`,
   in a random launch order, and write each run's prompt to `runs/<run_id>/prompt.txt`.
-- Each agent worked in its own directory holding only the data file. Its final
-  reply and a log of its tool calls, extracted from its transcript with
-  `extract_transcripts.py`, are in `runs/<run_id>/response.txt` and
-  `tool_calls.json`. Script runs also have `analysis.R`.
+- Each agent worked in its own directory holding only the data file (the post
+  describes three exceptions). Its final
+  reply, and a log of its tool calls with its starting directory and times,
+  were extracted from its transcript with `extract_transcripts.py` into
+  `runs/<run_id>/response.txt` and `tool_calls.json`. The transcripts are not
+  kept, since they also hold the launching session's context. Script runs also
+  have `analysis.R`.
 - `claude_code_version.txt`: the version of Claude Code that ran the agents.
 
 ## Analysis
 
-- `run_script.R` executes one agent script in a fresh R process.
+- `run_script.R` executes one agent script in a fresh R process in the C
+  locale, and reports the environment of that process.
 - `execute_scripts.R` executes every script three times and writes
   `executions.csv`, with `executions_session_info.txt`.
 - `collect_results.R` combines the design, replies, executions and tool logs
-  into `results.csv`.
+  into `results.csv`, and flags every run that touched a path outside its own
+  directory.
 - `choices_open_scripts.csv` records, from reading each script, the analytic
   choices of the eight scripts written for the open request.

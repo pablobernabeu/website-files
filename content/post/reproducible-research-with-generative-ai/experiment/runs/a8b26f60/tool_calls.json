@@ -1,6 +1,7 @@
 {
  "started": "2026-09-29T12:09:11.106Z",
  "finished": "2026-09-29T12:15:27.703Z",
+ "starting_directory": "/home/user/neutral_cwd",
  "calls": [
   {
    "tool": "Read",

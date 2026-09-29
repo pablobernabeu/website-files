@@ -1,6 +1,7 @@
 {
  "started": "2026-09-29T12:02:50.326Z",
  "finished": "2026-09-29T12:08:53.470Z",
+ "starting_directory": "/home/user/website-files/content/post/reproducible-research-with-generative-ai/experiment",
  "calls": [
   {
    "tool": "Read",

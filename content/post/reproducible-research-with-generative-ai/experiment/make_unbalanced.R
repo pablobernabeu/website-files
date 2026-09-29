@@ -7,5 +7,9 @@ data <- read.csv('data.csv')
 set.seed(2026)
 errors <- sort(sample(nrow(data), round(0.06 * nrow(data))))
 unbalanced <- data[-errors, ]
-write.csv(unbalanced, 'data_unbalanced.csv', row.names = FALSE, quote = FALSE)
+# A binary connection keeps the line endings '\n' on every operating system,
+# so that the checksum does not depend on where the file is written.
+connection <- file('data_unbalanced.csv', 'wb')
+write.csv(unbalanced, connection, row.names = FALSE, quote = FALSE)
+close(connection)
 digest::digest(file = 'data_unbalanced.csv', algo = 'sha256')

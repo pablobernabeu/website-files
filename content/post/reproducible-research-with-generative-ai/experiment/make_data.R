@@ -16,5 +16,9 @@ agent_data <- data.frame(
   frequency = round(simulated$frequency, 2),
   rt = simulated$rt
 )
-write.csv(agent_data, 'data.csv', row.names = FALSE, quote = FALSE)
+# A binary connection keeps the line endings '\n' on every operating system,
+# so that the checksum does not depend on where the file is written.
+connection <- file('data.csv', 'wb')
+write.csv(agent_data, connection, row.names = FALSE, quote = FALSE)
+close(connection)
 digest::digest(file = 'data.csv', algo = 'sha256')

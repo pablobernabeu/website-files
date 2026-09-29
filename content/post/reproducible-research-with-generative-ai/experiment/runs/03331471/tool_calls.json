@@ -1,6 +1,7 @@
 {
  "started": "2026-09-29T12:05:40.663Z",
  "finished": "2026-09-29T12:07:44.365Z",
+ "starting_directory": "/home/user/neutral_cwd",
  "calls": [
   {
    "tool": "Bash",

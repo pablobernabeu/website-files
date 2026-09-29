@@ -1,5 +1,6 @@
-"""Extracts, from each agent's transcript, its final reply and a log of its tool
-calls, and writes them to runs/<run_id>/response.txt and tool_calls.json.
+"""Extracts, from each agent's transcript, its final reply, the directory it
+started in and a log of its tool calls, and writes them to
+runs/<run_id>/response.txt and tool_calls.json.
 
 The transcripts are the JSON Lines files that Claude Code writes for each agent.
 They also hold the session's system context, so they are not kept here. This
@@ -19,11 +20,13 @@ for run_id, agent in mapping.items():
     path = os.path.join(transcript_dir, agent + '.output')
     if not os.path.exists(path):
         continue
-    calls, texts, stamps = [], [], []
+    calls, texts, stamps, directories = [], [], [], []
     for line in open(path):
         record = json.loads(line)
         if 'timestamp' in record:
             stamps.append(record['timestamp'])
+        if record.get('cwd'):
+            directories.append(record['cwd'])
         message = record.get('message')
         if not isinstance(message, dict) or message.get('role') != 'assistant':
             continue
@@ -43,4 +46,5 @@ for run_id, agent in mapping.items():
         f.write(final.rstrip('\n') + '\n')
     with open(os.path.join(out, 'tool_calls.json'), 'w') as f:
         json.dump({'started': min(stamps), 'finished': max(stamps),
+                   'starting_directory': directories[0] if directories else None,
                    'calls': [c for c in calls if c['tool'] != 'SubagentHandback']}, f, indent=1)

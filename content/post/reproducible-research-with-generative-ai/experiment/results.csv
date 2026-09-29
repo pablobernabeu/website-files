@@ -6,7 +6,7 @@
 5,"437afbd0","script","specified","balanced","RESULT estimate=18.52 lower=-0.74 upper=37.78",18.52,-0.74,37.78,TRUE,0.81,5,TRUE,"",316
 6,"2d6442b4","script","open","balanced","RESULT estimate=18.52 lower=-1.53 upper=38.57",18.52,-1.53,38.57,TRUE,5.45,9,TRUE,"",340
 7,"cdc86c2c","prose","open","balanced","RESULT estimate=18.5 lower=-1.5 upper=38.6",18.5,-1.5,38.6,NA,6.22,1,TRUE,"",391
-8,"b6a65ec1","script","open","balanced","RESULT estimate=18.52 lower=-1.53 upper=38.57",18.52,-1.53,38.57,TRUE,6.96,11,TRUE,"",427
+8,"b6a65ec1","script","open","balanced","RESULT estimate=18.52 lower=-1.53 upper=38.57",18.52,-1.53,38.57,TRUE,6.96,11,FALSE,"/tmp/claude-0/-home-user/460e7b0a-d4ba-5184-8f38-1101a88d2dab/scratchpad/explore.R /tmp/claude-0/-home-user/460e7b0a-d4ba-5184-8f38-1101a88d2dab/scratchpad/explore2.R /tmp/claude-0/-home-user/460e7b0a-d4ba-5184-8f38-1101a88d2dab/scratchpad/explore3.R /tmp/claude-0/-home-user/460e7b0a-d4ba-5184-8f38-1101a88d2dab/scratchpad/explore4.R /tmp/claude-0/-home-user/460e7b0a-d4ba-5184-8f38-1101a88d2dab/tasks/bn18o45v8.output /tmp/claude-0/-home-user/460e7b0a-d4ba-5184-8f38-1101a88d2dab/scratchpad/timing.R",427
 9,"9c608c52","prose","specified","balanced","RESULT estimate=18.52 lower=-0.74 upper=37.78",18.52,-0.74,37.78,NA,14.04,1,TRUE,"",374
 10,"9d94880d","script","open","balanced","RESULT estimate=18.52 lower=-1.53 upper=38.57",18.52,-1.53,38.57,TRUE,4.23,8,TRUE,"",409
 11,"03331471","script","open","balanced","RESULT estimate=18.52 lower=-1.53 upper=38.57",18.52,-1.53,38.57,TRUE,2.06,8,TRUE,"",404
@@ -20,7 +20,7 @@
 19,"66384367","script","specified","balanced","RESULT estimate=18.52 lower=-0.74 upper=37.78",18.52,-0.74,37.78,TRUE,0.76,5,TRUE,"",296
 20,"469f84cf","prose","open","balanced","RESULT estimate=18.5 lower=-1.5 upper=38.6",18.5,-1.5,38.6,NA,5.86,1,TRUE,"",409
 21,"823cd1c3","script","specified","balanced","RESULT estimate=18.52 lower=-0.74 upper=37.78",18.52,-0.74,37.78,TRUE,0.56,4,TRUE,"",344
-22,"687a7fa6","script","open","balanced","RESULT estimate=18.52 lower=-1.53 upper=38.57",18.52,-1.53,38.57,TRUE,4.14,9,TRUE,"",438
+22,"687a7fa6","script","open","balanced","RESULT estimate=18.52 lower=-1.53 upper=38.57",18.52,-1.53,38.57,TRUE,4.14,9,FALSE,"/tmp/claude-0/-home-user/460e7b0a-d4ba-5184-8f38-1101a88d2dab/scratchpad/explore.R /tmp/claude-0/-home-user/460e7b0a-d4ba-5184-8f38-1101a88d2dab/scratchpad/models.R /tmp/claude-0/-home-user/460e7b0a-d4ba-5184-8f38-1101a88d2dab/scratchpad/models2.R /tmp/claude-0/-home-user/460e7b0a-d4ba-5184-8f38-1101a88d2dab/scratchpad/models3.R",438
 23,"f9e8703b","prose","open","balanced","RESULT estimate=18.5 lower=-1.5 upper=38.6",18.5,-1.5,38.6,NA,6.23,1,TRUE,"",408
 24,"1258be37","prose","specified","balanced","RESULT estimate=18.52 lower=-0.74 upper=37.78",18.52,-0.74,37.78,NA,15.12,1,TRUE,"",258
 25,"201fc3ff","script","specified","balanced","RESULT estimate=18.52 lower=-0.74 upper=37.78",18.52,-0.74,37.78,TRUE,0.58,4,TRUE,"",299
@@ -30,7 +30,7 @@
 29,"6ef745cd","script","specified","balanced","RESULT estimate=18.52 lower=-0.74 upper=37.78",18.52,-0.74,37.78,TRUE,0.81,5,TRUE,"",322
 30,"e806a4ac","script","specified","balanced","RESULT estimate=18.52 lower=-0.74 upper=37.78",18.52,-0.74,37.78,TRUE,0.7,5,TRUE,"",277
 31,"73da3681","prose","specified","balanced","RESULT estimate=18.52 lower=-0.74 upper=37.78",18.52,-0.74,37.78,NA,11.81,1,TRUE,"",282
-32,"c8710529","script","open","balanced","RESULT estimate=18.52 lower=-1.53 upper=38.57",18.52,-1.53,38.57,TRUE,2.25,7,TRUE,"",351
+32,"c8710529","script","open","balanced","RESULT estimate=18.52 lower=-1.53 upper=38.57",18.52,-1.53,38.57,TRUE,2.25,7,FALSE,"/tmp/claude-0/-home-user/460e7b0a-d4ba-5184-8f38-1101a88d2dab/scratchpad/explore.R /tmp/claude-0/-home-user/460e7b0a-d4ba-5184-8f38-1101a88d2dab/scratchpad/explore2.R",351
 33,"d66126c2","script","specified","unbalanced","RESULT estimate=21.79 lower=0.58 upper=43.00",21.79,0.58,43,TRUE,0.66,5,TRUE,"",277
 34,"4c5d33cc","script","specified","unbalanced","RESULT estimate=21.79 lower=0.58 upper=43.00",21.79,0.58,43,TRUE,0.58,5,TRUE,"",302
 35,"05596854","script","specified","unbalanced","RESULT estimate=21.79 lower=0.58 upper=43.00",21.79,0.58,43,TRUE,0.7,5,TRUE,"",288

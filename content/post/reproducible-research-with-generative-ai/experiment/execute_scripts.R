@@ -13,10 +13,13 @@ if (is.na(executions)) executions <- 3L
 design <- read.csv('design.csv')
 scripts <- design[design$route == 'script', ]
 
-# Copy each finished script into the post bundle, where it is kept.
-for (id in scripts$run_id) {
-  file.copy(file.path('/home/user/agent_runs', id, 'analysis.R'), file.path('runs', id),
-            overwrite = TRUE)
+# Copy each finished script from the agents' directories into the post bundle,
+# where it is kept. Where those directories no longer exist, the stored copies
+# are executed as they are.
+agent_dirs <- file.path('/home/user/agent_runs', scripts$run_id)
+if (all(dir.exists(agent_dirs))) {
+  stopifnot(file.copy(file.path(agent_dirs, 'analysis.R'), file.path('runs', scripts$run_id, 'analysis.R'),
+                      overwrite = TRUE))
 }
 
 results <- do.call(rbind, lapply(seq_len(nrow(scripts)), function(i) {
@@ -25,7 +28,7 @@ results <- do.call(rbind, lapply(seq_len(nrow(scripts)), function(i) {
           execution = k)
   }))
 }))
-results$environment <- sprintf('R %s, lme4 %s', getRversion(), packageVersion('lme4'))
+results$environment <- child_environment()
 write.csv(results, 'executions.csv', row.names = FALSE)
 writeLines(capture.output(sessionInfo()), 'executions_session_info.txt')
 print(results[, c('run_id', 'execution', 'status', 'result')])
