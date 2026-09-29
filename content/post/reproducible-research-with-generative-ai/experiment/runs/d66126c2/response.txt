@@ -1,0 +1,14 @@
+Responses were about 22 ms slower after unrelated primes than after related primes: estimate 21.79 ms, 95% Wald CI [0.58, 43.00]. The script `analysis.R` is written and runs cleanly.
+
+The interval only just excludes zero (t = 2.01), so the effect is positive but its size is not pinned down well.
+
+What the script does (`/home/user/agent_runs/d66126c2/analysis.R`):
+- Reads `data.csv` and uses all 1,354 rows with raw RT. No rows are excluded and RT is not transformed. The data had no missing values, no duplicates and only the two prime labels. 671 rows are related and 683 unrelated, across 30 participants and 24 items.
+- Checks that the columns and prime labels are as expected, then creates `prime_c` (related = -0.5, unrelated = +0.5).
+- Fits `lmer(rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c | item))` with REML and the default optimiser, and prints the model summary.
+- Prints any convergence messages and whether the fit is singular.
+- Takes the estimate from `fixef(fit)["prime_c"]` and the interval from `confint(fit, parm = "prime_c", method = "Wald")`.
+- Its last line is:
+  `RESULT estimate=21.79 lower=0.58 upper=43.00`
+
+The fit is singular: participants barely differ in their priming effect (SD 6.7 ms), so lme4 estimates that random slope's correlation with the intercept as exactly 1.00. This doesn't change the answer. I refitted the model outside the script in three ways: with the default settings but the bobyqa optimiser, without that correlation term, and with random intercepts only for participants. All gave 21.8–21.9 ms with intervals of about [0.6–0.8, 43] ms. The simple mean of per-participant differences is 22.0 ms. I kept the model exactly as you specified.

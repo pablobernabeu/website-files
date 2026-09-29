@@ -1,0 +1,26 @@
+Responses after unrelated primes were about 18.5 ms slower than after related primes, with a 95% CI of -1.5 to 38.6 ms (t(23) = 1.91, p = .069). The best estimate is a moderate priming effect, but the interval includes zero, so this set of 24 words does not show clearly that the effect generalises to other words.
+
+The script is `/home/user/agent_runs/687a7fa6/analysis.R`. It runs cleanly with `Rscript analysis.R`, and its last line is:
+`RESULT estimate=18.52 lower=-1.53 upper=38.57`
+
+**What the script does:**
+1. **Reads and checks the data.** It finds 1,440 rows (30 participants × 24 words × 2 prime types), fully balanced, with no missing values or duplicates. Response times run from 377 to 1,580 ms, so nothing is trimmed.
+2. **Sets up the variables.** Prime is coded as +0.5 for unrelated and -0.5 for related, so its coefficient is the unrelated minus related difference in ms. Word frequency is centred and included as a word-level covariate. Every word appears after both prime types, so frequency cannot shift the priming estimate.
+3. **Fits a mixed model on raw response times** that lets baseline speed and the priming effect vary across both participants and words.
+   - The full model hit a boundary because the priming effect barely varies across participants.
+   - I dropped that participant-level term, which gives the final model `rt ~ prime + freq + (1 | participant) + (1 + prime | item)`. It has no fitting problems and the same estimate.
+4. **Reports the effect with a 95% CI** based on a t distribution with Satterthwaite degrees of freedom (df = 23). The Kenward-Roger method gives the same result.
+
+**Key finding: the priming effect varies a lot between words.**
+- Its standard deviation across words is about 30 ms, which is larger than the average effect. A boundary-corrected likelihood-ratio test supports keeping this term (p = .034).
+- Leaving it out treats the 24 words as fixed and makes the CI too narrow:
+  - A model without it gives [3.6, 33.4] ms.
+  - A t-test on participant means gives [5.6, 31.5] ms.
+- Both of those would wrongly call the effect significant.
+
+**Checks printed by the script:**
+- **Other CI methods:** a profile-likelihood CI gives [-0.8, 37.9] ms. I also ran a parametric bootstrap CI (1,000 simulations) outside the script, which gives [-0.4, 36.6] ms. Both agree with the main result.
+- **Frequency:** there is no sign that priming depends on word frequency (2.7 ms per Zipf unit, p = .84).
+- **Log response times:** the same model on log RT gives about 17.3 ms, 95% CI [-0.9, 35.4].
+
+I created only `analysis.R`, in `/home/user/agent_runs/687a7fa6`.

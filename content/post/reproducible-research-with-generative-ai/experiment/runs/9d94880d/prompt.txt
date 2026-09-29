@@ -1,0 +1,7 @@
+The file data.csv holds the correct responses from a lexical decision experiment on semantic priming. Each of 30 participants judged 24 target words, and each target appeared once after a semantically related prime and once after an unrelated prime. The columns are participant, item, prime (related or unrelated), frequency (the Zipf frequency of the target word) and rt (the response time in milliseconds).
+
+How large is the priming effect, that is, how much slower are responses after unrelated primes than after related primes? Give the estimate in milliseconds with a 95% confidence interval.
+
+Your working directory for this task is /home/user/agent_runs/9d94880d, which contains data.csv. Write an R script named analysis.R in that directory that reads data.csv and carries out the analysis. You can run R there (Rscript analysis.R) to check the script. R 4.3 is installed with packages that include lme4, lmerTest, emmeans and dplyr, and there is no internet access. Work only inside that directory and do not look at other directories. The last line the script prints must have exactly this form, with numbers in milliseconds:
+RESULT estimate=<number> lower=<number> upper=<number>
+When the script is finished, reply with a brief summary of what it does.

@@ -1,0 +1,12 @@
+**The priming effect is about 18.5 ms: responses after unrelated primes are that much slower than after related primes. The 95% Wald CI runs from about −0.7 to 37.8 ms, so it just includes zero.** I worked this out by hand from the file without running lmer, so the confidence limits are close estimates rather than lme4's printed output.
+
+**The estimate.** The data are fully balanced: 30 participants × 24 items × 2 primes, with no missing cells. In that case the lmer fixed effect for `prime_c` is exactly the mean of the unrelated-minus-related differences. The differences sum to 13,334 over 720 participant-item pairs, so the estimate is 13,334 / 720 = 18.52 ms. I checked all 30 participants' difference sums against separate row totals, and they match.
+
+**The standard error.** Balance also lets the REML fit be worked out in closed form from sums of squares:
+- **By-item slope part:** the mean square of the item-level priming effects is 67,640. That contributes 67,640 / 720 = 93.94 to the squared SE.
+- **By-participant slope part:** the participant mean square (28,810) is smaller than the residual mean square (41,047). So the by-participant covariance matrix sits on the boundary: the intercept–slope correlation is +1 and the fit would be reported as singular. The slope variance comes out at about 79.5 ms² (SD about 8.9 ms), which adds 79.5 / 30 = 2.65.
+- **Total:** the squared SE is about 96.60, so the SE is about 9.83 ms. This hardly depends on the residual-variance estimate, so the uncertainty from working by hand is in the second decimal place.
+
+**The interval.** 18.52 ± 1.96 × 9.83 gives −0.74 to 37.78 ms.
+
+RESULT estimate=18.52 lower=-0.74 upper=37.78

@@ -1,0 +1,20 @@
+The priming effect is about 18.5 ms: responses were 18.52 ms slower after unrelated primes than after related primes, with a 95% Wald CI of -0.74 to 37.78 ms. The interval includes zero, so the effect is positive but not reliably different from zero at the 5% level (t = 1.88, SE = 9.83).
+
+The script ran cleanly and its last line is:
+`RESULT estimate=18.52 lower=-0.74 upper=37.78`
+
+**What analysis.R does:**
+1. Reads `data.csv` and checks that the columns are there, `rt` has no missing values, and `prime` has only the levels related and unrelated. The data passed: 1440 rows, 30 participants, 24 items, each participant-item pair seen once per prime, no missing values.
+2. Adds `prime_c`, coded -0.5 for related and +0.5 for unrelated. It keeps every row and leaves `rt` untransformed.
+3. Prints the mean RT for each condition (related 698.73 ms, unrelated 717.25 ms).
+4. Fits `lmer(rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c | item))` with REML and the default optimiser, prints the model summary, and reports any convergence or singular-fit messages.
+5. Takes the fixed effect of `prime_c` and its 95% interval from `confint(fit, parm = "prime_c", method = "Wald")`, then prints the RESULT line.
+
+**The model fit is singular.** lme4 warns about a boundary fit because the by-participant intercept and prime slope are estimated as perfectly correlated (r = 1.00). The prime slope varies very little across participants (SD ≈ 8.9 ms). I kept the model exactly as specified. In a separate check outside the script, the estimate stayed at 18.52 ms and the interval barely moved when I:
+- switched to the bobyqa optimiser: CI -0.74 to 37.78
+- removed the correlation for participants: CI -0.48 to 37.52
+- dropped the participant prime slope: CI -0.48 to 37.52
+
+Because the design is balanced, the estimate equals the raw difference between the condition means.
+
+**File:** `/home/user/agent_runs/437afbd0/analysis.R`

@@ -1,0 +1,17 @@
+Responses after unrelated primes were about 18.5 ms slower than after related primes. The 95% Wald confidence interval runs from about −0.7 to 37.8 ms. Because the interval just crosses zero, the data are consistent with no priming effect at the 5% level. I could not run lmer(), so the estimate is exact but the interval is a hand calculation.
+
+**The estimate (exact).** Every participant saw every item once in each prime condition, so the design is fully balanced. In that case the fixed effect of prime_c from the specified model equals the plain mean of the unrelated-minus-related differences, whatever the variance components are. The 720 differences sum to 13,334, so the estimate is 13,334 / 720 = 18.519 ms. I checked all 720 differences against the file. The participant totals and the item totals both add up to 13,334.
+
+**The confidence interval (hand-derived).** With balanced data, the model's REML fit splits into separate participant, item and residual parts, which can be worked out by hand:
+- **Standard error:** about 9.83 ms.
+- **Items:** the item-level estimates are well inside the allowed range. Their share of the squared standard error is the variance of the item mean differences divided by 24, which is 67,640.2 / 720 = 93.94.
+- **Participants:**
+  - The participant-level mean differences vary less than residual noise alone would produce.
+  - lmer should therefore report a singular fit ("boundary (singular) fit") for the participant random effects. The participant intercept and slope come out perfectly correlated (+1), because participants' average speed is positively correlated with their priming effect (r ≈ 0.25).
+  - The participant slope variance comes out small, about 79.6 (SD about 8.9 ms). It adds 79.6 / 30 = 2.65 to the squared standard error.
+- **Residual variance:** about 20,500, so the residual SD is about 143 ms. Its exact value barely affects the standard error.
+- **Calculation:** SE = √(93.94 + 2.65) ≈ 9.828. Then 18.519 ± 1.959964 × 9.828 gives [−0.74, 37.78].
+
+The interval depends on the optimiser actually reaching that singular optimum. If lmer instead set the participant slope variance to exactly zero, the standard error would be about 9.69 and the interval about [−0.48, 37.52].
+
+RESULT estimate=18.52 lower=-0.74 upper=37.78

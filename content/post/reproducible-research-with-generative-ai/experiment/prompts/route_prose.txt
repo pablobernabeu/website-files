@@ -1,0 +1,2 @@
+Read the file {DIR}/data.csv with your file-reading tool, and use no other tool: do not run code or commands, do not write files and do not search. Answer from what you have read, in your reply, as you would in a chat conversation without a code interpreter. If you cannot compute the answer exactly, give your best estimate. End your reply with one line in exactly this form, with numbers in milliseconds:
+RESULT estimate=<number> lower=<number> upper=<number>

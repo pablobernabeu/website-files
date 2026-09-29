@@ -1,0 +1,21 @@
+Responses after unrelated primes were about **18.5 ms slower** than after related primes, **95% CI [-1.5, 38.6] ms** (t(23) = 1.91, p = 0.069). The estimate points to priming, but the interval includes zero, so the effect is not reliable in this sample. The uncertainty comes mainly from the items: the priming effect varies a lot from word to word (SD about 30 ms), and there are only 24 words.
+
+The script runs cleanly with `Rscript analysis.R`, and its last line is:
+`RESULT estimate=18.52 lower=-1.53 upper=38.57`
+
+**What the script does:**
+1. **Reads and checks `data.csv`.** The data are complete and balanced: 30 participants x 24 words x 2 primes, 1,440 trials, no missing values. RTs run from 377 to 1580 ms, so nothing was trimmed. It also prints the condition means: 698.7 ms related vs 717.2 ms unrelated.
+2. **Fits a mixed model on raw RT**, so the effect comes out directly in ms. Participants and words are both random factors, and prime is coded -0.5 for related and +0.5 for unrelated, so the prime coefficient is the unrelated minus related difference.
+3. **Simplifies the random-effects structure.** The fullest model, with a separate priming effect for every participant and every word, doesn't fit properly: the variation in the effect across participants is essentially zero. The script drops that term after a likelihood-ratio test shows it costs nothing (chi-square = 0, p = 1). The final model is `rt ~ prime + (1 | participant) + (1 + prime | item)`, and it fits without problems.
+4. **Reports the estimate and 95% CI** using lmerTest's Satterthwaite degrees of freedom.
+5. **Prints checks that don't change the conclusion.** None of these alternatives moves the answer much:
+
+| Check | Estimate (ms) | 95% CI (ms) |
+|---|---|---|
+| Final model | 18.52 | -1.53 to 38.57 |
+| Fullest model (fit problems) | 18.52 | -1.78 to 38.82 |
+| Adding word frequency | 18.52 | -1.53 to 38.57 |
+| Profile-likelihood interval | — | -0.85 to 37.89 |
+| Log-RT model | about 17.0 (2.5% slower) | — |
+
+File: `/home/user/agent_runs/c8710529/analysis.R`

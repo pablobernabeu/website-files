@@ -1,0 +1,15 @@
+Responses after unrelated primes were **21.79 ms** slower than after related primes, with a **95% Wald CI of [0.58, 43.00] ms**. The interval barely excludes zero, so there is a priming effect but its size is uncertain.
+
+The script is `/home/user/agent_runs/39711b2d/analysis.R`. Running it with `Rscript analysis.R` prints this as its last line:
+`RESULT estimate=21.79 lower=0.58 upper=43.00`
+
+**What the script does:**
+- Reads `data.csv` and uses all 1354 rows (671 related, 683 unrelated), with no exclusions and rt left untransformed. It first checks that `prime` has only the two expected values and that there are no missing values.
+- Creates `prime_c` (related = -0.5, unrelated = +0.5), so its coefficient is the unrelated minus related difference.
+- Fits `lmer(rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c | item))` with REML and the default optimiser.
+- Prints the mean RT per condition (698.8 vs 720.2 ms), the model summary, and any convergence warnings.
+- Takes the `prime_c` fixed effect and its interval from `confint(fit, parm = "prime_c", method = "Wald")`, then prints the RESULT line.
+
+**The fit is singular.** lme4 reports "boundary (singular) fit". The optimiser itself converged (code 0). The cause is the participant part of the model: participants barely differ in their priming effect (SD about 6.7 ms), and the correlation between their overall speed and their priming effect hits the limit of 1.00. The script still reports the model exactly as you specified it.
+
+I checked separately, outside the script, whether the singular fit changes the answer. Removing that correlation, or dropping the participant priming term altogether, gives 21.85 ms [0.77, 42.93], which is essentially the same. The part that matters is that the priming effect varies a lot between words (SD about 36.5 ms). That variation is why the interval is so wide.

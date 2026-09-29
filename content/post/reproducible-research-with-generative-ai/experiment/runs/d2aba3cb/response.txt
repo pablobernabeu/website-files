@@ -1,0 +1,21 @@
+Responses after unrelated primes were about **18.5 ms** slower than after related primes (95% CI **−1.5 to 38.6 ms**). The interval just includes zero, so on these data the priming effect is not reliably different from zero once item variability is counted. I worked this out by hand from the file, with no code run, so treat the second decimal as approximate.
+
+**How I got it**
+- The design is fully balanced: 30 participants × 24 items, each seen once per prime condition, giving 720 unrelated − related difference scores. I computed all 720 by hand and checked that the participant totals and item totals both come to 13,334 ms.
+- **Estimate:** 13,334 / 720 = 18.52 ms. With balanced data, a mixed model gives exactly this mean difference.
+- **Interval:** participants and items are both random samples, so I treated them as crossed random effects (a variance decomposition of the difference scores, as in an `lmer` model with random prime slopes for both):
+  - Participant mean square: 28,810 (df 29).
+  - Item mean square: 67,640 (df 23).
+  - Residual mean square: 41,047 (df 667).
+  - The participant mean square is smaller than the residual, so participants' priming effects vary no more than noise would produce. That variance is estimated at zero.
+  - The priming effect does differ across words (SD about 30 ms). For example, W08 is about +85 ms and W11 about −85 ms.
+  - Standard error = √(67,640 / 720) = 9.69 ms. With t(23) = 2.069, the interval is 18.5 ± 20.1.
+- **Frequency:** it doesn't change the answer. Frequency belongs to the word, so it is identical in both prime conditions and cancels out of each difference. The words' priming effects are also essentially unrelated to frequency (about 3 ms per Zipf unit).
+
+**Why other analyses disagree**
+- A by-participant paired t-test gives 18.5 ms [5.6, 31.5].
+- Treating all 720 pairs as independent gives [3.7, 33.4].
+- Both intervals are too narrow because they ignore variation between words, and both wrongly exclude zero.
+- An `lmer` fit on the raw response times may differ slightly from my figures, for example if it pools residual variance differently, but it should be very close.
+
+RESULT estimate=18.5 lower=-1.5 upper=38.6

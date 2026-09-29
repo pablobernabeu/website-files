@@ -1,0 +1,20 @@
+**The priming effect is about 18.5 ms: responses after unrelated primes are that much slower on average. The 95% confidence interval runs from about −1.5 to +38.6 ms, so it just includes zero.** I worked this out by hand from the file, without running any code.
+
+**How I got it**
+- All 720 participant-by-target pairs are complete. I took the difference unrelated − related for each pair. These differences add up to 13,334 ms, so the mean is 13,334 / 720 = **18.52 ms**.
+- The design is fully balanced, so the estimate comes out the same in any of the usual analyses. Adding frequency to the model doesn't change it either, because frequency belongs to the target word and every word appears once in each prime condition.
+- For the uncertainty, I split the variation in these differences into three parts. This is what a mixed-effects model with both participants and items as random factors, and a priming slope for each, does with balanced data. The mean squares were:
+  - **Participants:** 28,810 (29 degrees of freedom). This is smaller than the leftover variation, so the model would estimate that the priming effect doesn't vary between participants.
+  - **Items:** 67,640 (23 degrees of freedom). This is larger than the leftover variation (F ≈ 1.65, p ≈ .03), so the priming effect does seem to vary from word to word. The standard deviation of that variation is about 30 ms.
+  - **Leftover:** about 41,000 (667 degrees of freedom).
+- That gives a standard error of about 9.7 ms. Using a t value with 23 degrees of freedom (2.07), the interval is 18.5 ± 20.0, which is −1.5 to 38.6 ms. A plain normal approximation gives nearly the same result, −0.5 to 37.5.
+
+**Narrower intervals you might see elsewhere, and why I didn't use them**
+- **Paired t-test on participant means:** 5.6 to 31.5 ms, with t(29) = 2.93. This treats the 24 words as fixed and ignores how much priming differs between words, so it is too narrow.
+- **Mixed model with random intercepts only (no priming slopes):** roughly 3.6 to 33.4 ms. This also understates the uncertainty.
+
+When word-to-word variation is taken into account, the evidence for priming is weak: an average of around 18 ms, but the data can't rule out an effect of zero.
+
+**Caveats:** Response times are right-skewed, with a few very slow responses over 1,400 ms, and some items' priming differences depend on a single outlier. With this many hand calculations, small arithmetic slips are possible. I checked that the per-participant and per-item totals of the differences both come to 13,334, and spot-checked individual differences against the raw data.
+
+RESULT estimate=18.5 lower=-1.5 upper=38.6

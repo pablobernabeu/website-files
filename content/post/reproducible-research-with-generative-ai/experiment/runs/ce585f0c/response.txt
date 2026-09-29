@@ -1,0 +1,24 @@
+I couldn't fit the model: I was limited to reading the file, so I worked the numbers out by hand. The priming effect is about 22 ms, with a 95% CI of roughly 1 to 43 ms. This is an approximation of what lmer would return, not its exact output.
+
+**What the data show** (all 1354 rows):
+- **Related primes:** 671 responses, total 468,868 ms, mean 698.8 ms.
+- **Unrelated primes:** 683 responses, total 491,893 ms, mean 720.2 ms.
+- **Raw difference:** 21.4 ms.
+- **Complete pairs:** 635 participant-word combinations have both conditions. Their mean difference (unrelated minus related) is 23.0 ms.
+- **Missing data:** 48 combinations have only the unrelated response, 36 have only the related one, and one (P24, W11) has neither.
+- I checked every participant and item total against the grand totals, and they all match.
+
+**How I approximated the model:**
+- **Point estimate:** I adjusted each word's unrelated-minus-related difference for which participants were missing, using participant means shrunk by about 0.92. I then took a weighted mean of those differences, with weights of 1 / (item slope variance + sampling variance). That gives about 21.9 ms. Simpler versions land close by: the unweighted participant average is 22.0, and a two-way fixed-effects adjustment gives about 22.0–22.1.
+- **Variance components** (method-of-moments estimates, which should be close to what REML gives here):
+  - The variance of the paired differences is about 42,560, so the residual SD is about 144 ms.
+  - Items differ in their priming effect with an SD of about 35 ms (variance about 1,250).
+  - The participant slope variance comes out negative (about −620), so lmer would most likely estimate it at or near zero and report a singular fit.
+- **Standard error:** about 10.7 ms, giving a Wald interval of 21.9 ± 1.96 × 10.7.
+
+**How far to trust it:**
+- The point estimate is probably within about ±0.5 ms of lmer's value.
+- The interval bounds could be off by 1–3 ms, mainly because the REML estimate of the item slope variance may differ from mine. If the item slope SD were 30 ms instead of 35, the SE would be about 10.0; if it were 40, about 11.4.
+- The lower bound sits close to zero, so the effect is only borderline significant at the 5% level. That conclusion depends on the exact variance estimates.
+
+RESULT estimate=21.9 lower=0.9 upper=42.9

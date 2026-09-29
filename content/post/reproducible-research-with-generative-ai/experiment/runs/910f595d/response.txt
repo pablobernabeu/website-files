@@ -1,0 +1,19 @@
+I couldn't fit the model itself because I was limited to reading the file, so these numbers are a hand approximation of what `lmer()` should return, not its output. My best estimate is that responses after unrelated primes are about **22 ms slower** than after related primes, with a 95% Wald interval of roughly **1 to 43 ms**. The effect is positive, but the interval is wide and its lower end is close to zero. Expect the true output to differ by a few tenths of a millisecond on the estimate and slightly more on the bounds.
+
+**What the file contains**
+- 1,354 rows, 30 participants and 24 items.
+- 635 participant-item combinations have both conditions.
+- 84 have only one condition: 48 unrelated and 36 related.
+- One combination has no rows at all (P24, W11).
+
+**How I got there**
+1. **Paired differences.** For every combination with both conditions I took unrelated minus related. The 635 differences sum to 14,594, a mean of 22.98 ms. Totals computed by participant and by item match, as a check on the arithmetic.
+2. **Variance components.** I ran a two-way (participant by item) breakdown of the differences:
+   - Residual variance of a difference is about 41,900, so the model's residual SD should be about 145 ms.
+   - Between-participant variation in the effect is smaller than noise alone would produce. The participant random-slope variance should therefore come out at or near zero, possibly with a singular-fit warning.
+   - The item random-slope variance is about 1,260, an SD of about 35 ms.
+   - Comparing the sums and the differences of the paired responses for two participants showed no sign of extra participant-by-item variance. So the model's residual variance should be about half the difference variance, roughly 20,900.
+3. **Single-condition rows.** Each of the 84 rows counts as about half a pair. I scored each one against its participant and item means, with small corrections for the uneven condition counts. As a group they show a smaller effect, which pulls the estimate down by about 0.5 ms.
+4. **Weighting like the model.** Because the item slopes vary, the model weights items nearly equally rather than by how many observations each has. With the half-pair counting and that weighting, the estimate is about 21.9 ms (range 21.8 to 22.2) and the standard error about 10.7 ms. The interval is 21.9 ± 1.96 × 10.7.
+
+RESULT estimate=21.9 lower=0.9 upper=42.9

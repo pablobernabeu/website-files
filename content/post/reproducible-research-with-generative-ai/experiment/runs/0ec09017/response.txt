@@ -1,0 +1,19 @@
+Responses were about **21.8 ms slower after unrelated primes than after related primes (95% Wald CI 0.58 to 43.00 ms)**. The interval only just excludes zero, so the effect is probably real, but its size is quite uncertain.
+
+The script is `/home/user/agent_runs/0ec09017/analysis.R` and runs cleanly with `Rscript analysis.R`. Its last line is:
+```
+RESULT estimate=21.79 lower=0.58 upper=43.00
+```
+
+**What the script does**
+1. It reads `data.csv` and keeps all 1354 rows, with `rt` left as it is.
+2. It adds `prime_c` = -0.5 for related and +0.5 for unrelated, so the `prime_c` coefficient is the unrelated minus related difference in ms. It also checks that `prime` has only those two values and that `rt` has no missing values.
+3. It prints how many rows, participants (30) and items (24) there are, and the mean RT per condition: 698.8 ms related, 720.2 ms unrelated.
+4. It fits `lmer(rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c | item), REML = TRUE)` with the default optimiser, prints the model summary, and says whether the fit had any convergence or singularity messages.
+5. It takes the `prime_c` fixed effect (SE 10.82, t = 2.01) and `confint(fit, parm = "prime_c", method = "Wald")`, and prints the RESULT line last.
+
+**Singular fit:** lme4 flags this model as singular. The per-participant variation in the priming effect is almost zero (SD about 6.7 ms) and correlates +1.00 with participants' average speed. I kept the model as you specified. I also refitted it separately, outside the script, to see whether this matters:
+- **Without the correlation, or without the per-participant slope:** 21.85 ms [0.77, 42.92], so the estimate barely changes.
+- **Without the per-item slope as well:** 22.07 ms [6.75, 37.38]. The interval is much narrower.
+
+The interval is wide mainly because the priming effect varies a lot between target words (SD about 36.5 ms), not because of the singular part of the model.

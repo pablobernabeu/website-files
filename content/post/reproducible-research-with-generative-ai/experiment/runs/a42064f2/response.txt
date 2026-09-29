@@ -1,0 +1,15 @@
+The priming effect is about 22 ms: responses after unrelated primes were roughly 22 ms slower than after related primes, with a 95% Wald CI of about 0.8 to 43 ms. The interval only just excludes zero.
+
+These are hand calculations, not lmer output. I read the file but ran no code, so treat the estimate as ±0.5 ms. The lower bound carries the same uncertainty, so "just above zero" is itself approximate.
+
+**What is in the file.** There are 1,354 rows. 635 participant-by-word cells have both conditions, 84 cells have only one condition (48 unrelated-only, 36 related-only), and one cell (P24 W11) has neither.
+
+**How I got the estimate.**
+- **Paired differences.** The mean unrelated-minus-related difference over the 635 complete cells is 14,594 / 635 = 23.0 ms.
+- **Single-condition cells.** The model also uses these rows, through the participant and word intercepts. I took each one's deviation from its participant-plus-word expected mean and counted it as half a pair. On that basis they point to a smaller effect (about 9–11 ms), which pulls the estimate down slightly.
+- **Weighting across words.** The between-word variation in priming is well above chance, while the between-participant variation is below chance. So the model should estimate participant slope variance at about zero (probably a singular fit) and word slope variance at about 1,250–1,300 ms² (SD about 35 ms).
+- **Result.** Weighting words by 1/(word slope variance + noise variance) and adjusting for intercept shrinkage gives an estimate of about 21.9 ms.
+
+**How I got the standard error.** With participant slope variance near zero, the standard error is roughly the between-word spread of priming effects divided by the square root of the number of words: √(2,776/24) ≈ 10.8 ms. The Wald interval is 21.9 ± 1.96 × 10.8, which gives 0.8 to 43.0 ms.
+
+RESULT estimate=21.9 lower=0.8 upper=43.0

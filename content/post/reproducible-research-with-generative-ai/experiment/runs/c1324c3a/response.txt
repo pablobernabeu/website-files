@@ -1,0 +1,29 @@
+**Answer:** responses after unrelated primes are about **18.5 ms slower** than after related primes. The 95% Wald confidence interval runs from about **−0.7 to 37.8 ms**, so it only just includes zero.
+
+I worked this out by hand from the file, not by running lme4, so the interval bounds could be off by a few hundredths of a millisecond.
+
+**How I got there**
+
+The design is fully balanced: each of the 720 participant × item cells has one related and one unrelated trial. In that case the generalised least-squares estimate of `prime_c` is exactly the ordinary least-squares one. That is the mean of the 720 within-cell differences (unrelated − related) = 13334 / 720 = **18.519 ms**. This number holds whatever the variance estimates are.
+
+For the standard error, I split the REML likelihood into participant, item and residual parts, each built on per-cell sums and differences:
+- **Items:** the mean square of the differences is 67,640. This part of the fit is not at a boundary, so it carries over directly as the item slope variance plus residual.
+- **Participants:** the mean square of the differences is only 28,810, well below twice the residual variance (about 41,000). REML therefore ends up on a boundary: the participant slope is perfectly correlated (+1) with the participant intercept. lmer would warn "boundary (singular) fit".
+- **Residual:** twice the residual variance comes out at 41,005 once the leftover participant direction is pooled in, giving a residual SD of about 143 ms.
+
+The variance components come out as:
+
+| Source | SD |
+|---|---|
+| Participant intercept | ≈ 71.5 ms |
+| Participant slope | ≈ 8.9 ms (correlation with intercept +1) |
+| Item intercept | ≈ 40 ms |
+| Item slope | ≈ 29.8 ms (correlation with intercept ≈ −0.02) |
+| Residual | ≈ 143 ms |
+
+- Var(β̂) = (67,640 + 1,909) / 720 = 96.60, so SE ≈ 9.83 ms.
+- Wald interval: 18.52 ± 1.95996 × 9.83 = [−0.74, 37.78].
+
+The SE depends almost entirely on the item-level spread of priming effects, which I checked against the raw data. The lmer optimiser may stop slightly short of the boundary, but that would move the bounds by at most a few hundredths of a millisecond. The estimate itself would not change.
+
+RESULT estimate=18.52 lower=-0.74 upper=37.78

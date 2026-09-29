@@ -1,0 +1,21 @@
+**The priming effect is about 18.5 ms, with a 95% Wald CI of about −0.7 to 37.8 ms.** Responses after unrelated primes were slower on average, but the interval just includes zero. I read the file but could not run code, so I worked the model out by hand. The estimate is exact; the interval is my best derivation and should be close, but it is not an lme4 output.
+
+**Estimate (exact).** Every participant saw every item in both conditions, so the design is fully balanced. In that case the fixed effect of prime_c from this model equals the plain difference between the two condition means.
+- There are 720 pairs. Total RT is 503,085 ms after related primes and 516,419 ms after unrelated primes.
+- The means are 698.73 ms (related) and 717.25 ms (unrelated).
+- The difference is 13,334 / 720 = **18.519 ms**.
+
+I checked the per-participant and per-item totals two independent ways and they agree.
+
+**Standard error (derived by hand).** Because the design is balanced, REML can be solved in closed form from sums of squares at the participant, item and residual levels.
+- **Residual:** the within-cell variance of the unrelated-minus-related differences is 41,047 (df 667).
+- **Items:** the item-level mean square of the differences is 67,640 (df 23). The by-item slope variance is positive, about 886 (SD about 30 ms), and its correlation with the item intercept is about zero.
+- **Participants:** the participant-level mean square of the differences is only 28,810 (df 29). That is below the residual value, so the participant slope variance has no room to be positive on its own. The fit is therefore singular: lmer would report "boundary (singular) fit".
+- **At that boundary:** the participant intercept and slope have correlation +1. The slope variance is about 80 (SD about 9 ms), because priming effects rise slightly with participants' overall RT (r ≈ .25).
+- **Result:** Var(β̂) = 67,640 / 720 + 79.6 / 30 = 93.94 + 2.65 = 96.60, so **SE ≈ 9.83 ms**.
+
+**Wald 95% CI:** 18.52 ± 1.96 × 9.83 = **[−0.74, 37.78] ms**.
+
+Because the fit is singular, R's optimiser may stop slightly off this solution and give an SE a little different from 9.83. At the extreme, if it set the participant slope variance to exactly zero, the SE would be 9.69 and the CI [−0.48, 37.52]. Either way the lower bound is just below zero.
+
+RESULT estimate=18.52 lower=-0.74 upper=37.78

@@ -1,0 +1,12 @@
+{
+ "started": "2026-09-29T12:09:11.106Z",
+ "finished": "2026-09-29T12:15:27.703Z",
+ "calls": [
+  {
+   "tool": "Read",
+   "input": {
+    "file_path": "/home/user/agent_runs/a8b26f60/data.csv"
+   }
+  }
+ ]
+}

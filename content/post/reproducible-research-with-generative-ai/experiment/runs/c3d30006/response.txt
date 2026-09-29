@@ -1,0 +1,17 @@
+**Priming effect: about 22 ms, 95% CI about 1 to 43 ms.** Responses after unrelated primes were roughly 22 ms slower than after related primes. The interval only just stays above zero, so the effect is marginal. These figures are a hand-worked approximation of the specified `lmer` fit, because I was not allowed to run code, so expect them to be off by up to about 0.5 ms.
+
+**The data.** There are 1,354 rows. That gives 635 participant–word combinations with both conditions, 84 with only one (48 unrelated, 36 related), and one with neither (P24, W11).
+
+**How I approximated the fit:**
+1. **Raw difference.** Across the 635 complete pairs, the mean of unrelated minus related is 14,594 / 635 = 22.98 ms. I got the same total summing by participant and by word.
+2. **Unpaired rows.** Each single observation still carries information once each participant's and word's average speed is removed. On that basis, each counts about half as much as a pair. Their implied effect averages about 10.6 ms, which brings the pooled estimate down to about 22.2 ms.
+3. **Variance components:**
+   - The by-participant variance of the priming effect comes out at zero or slightly below. `lmer` will therefore most likely report a singular fit, with that slope variance at or near 0.
+   - The by-word variance of the priming effect is about 1,500 ms² (SD about 39 ms).
+   - The residual variance is about 18,000 ms² (SD about 134 ms).
+4. **Final estimate.** Letting word-level variation weight the words more evenly moves the estimate to about 21.8 ms. Allowing for the model pulling participant and word averages toward the overall mean changes it by less than 0.2 ms.
+5. **Standard error.** This comes to about 10.75 ms, so the Wald interval is 21.8 ± 1.96 × 10.75, which is 0.7 to 42.9 ms.
+
+If the fitted model gives the by-participant slope a small positive variance instead of zero, the standard error would rise to about 11 ms and the interval would widen slightly.
+
+RESULT estimate=21.8 lower=0.7 upper=42.9

@@ -1,0 +1,13 @@
+Responses after unrelated primes were about 22 ms slower than after related primes. The 95% Wald confidence interval runs from about 1 ms to 43 ms. The interval only just excludes zero, so the effect is positive but not estimated precisely. These are hand approximations: as instructed I only read the file and did not run lmer, so the exact lmer output could differ by a few tenths of a millisecond in the estimate and a little more in the interval bounds.
+
+**How I got there.** I read all 1,354 rows: 671 related and 683 unrelated. I added up the response times for each participant, and separately for each item. The two sets of totals agree exactly (468,868 ms for related and 491,893 ms for unrelated), which checks the working.
+
+- **Simple difference:** the unrelated mean is 720.19 ms and the related mean is 698.76 ms, a gap of 21.4 ms.
+- **Adjusting for missing responses:** removing each participant's overall speed and each word's overall speed stops the missing responses from biasing the comparison. The per-participant and per-word versions of this both come to about 22.2 ms, so the arithmetic is consistent.
+- **Spread of the random effects:**
+  - The residual variance is about 20,900 (an SD of about 145 ms).
+  - The per-word priming effects vary for real, with a variance of about 1,280 (an SD of about 36 ms).
+  - The per-participant priming effects vary less than chance alone would produce. lmer will probably estimate this variance at or near zero and may report a singular fit.
+- **Weighting the words:** weighting each word by how precise its own priming effect is gives an estimate of about 22.0 ms. Its variance is about 115, so the standard error is about 10.7 ms. The 95% interval is 22.0 ± 1.96 × 10.7, which is about 1.0 to 43.0 ms.
+
+RESULT estimate=22.0 lower=1.0 upper=43.0

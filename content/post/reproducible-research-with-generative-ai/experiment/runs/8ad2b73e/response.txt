@@ -1,0 +1,17 @@
+Responses after unrelated primes were about **21.8 ms slower** than after related primes, **95% Wald CI [0.58, 43.00] ms**. The script `/home/user/agent_runs/8ad2b73e/analysis.R` runs cleanly with `Rscript analysis.R`, and its last line is:
+
+```
+RESULT estimate=21.79 lower=0.58 upper=43.00
+```
+
+**What the script does**
+- Reads `data.csv` and uses all 1,354 rows (30 participants, 24 items, 671 related and 683 unrelated), with no exclusions and rt left as it is.
+- Creates `prime_c` (related = -0.5, unrelated = +0.5) and stops with an error if any prime value is something other than those two.
+- Fits `lmer(rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c | item), REML = TRUE)` with the default optimiser.
+- Prints the model summary and any convergence or singular-fit messages.
+- Takes the fixed effect of `prime_c` and its interval from `confint(fit, parm = "prime_c", method = "Wald")`, prints a readable line, then prints the `RESULT` line.
+
+**Things to know about the result**
+- **The fit is singular.** The participants barely differ in how much priming helps them: that variation is estimated at a standard deviation of about 6.7 ms, and it correlates 1.00 with their overall speed. The optimiser reports no other problem, the default optimiser and bobyqa give the same estimate, and the script uses the model exactly as you specified.
+- **Simpler models give the same answer.** I checked this separately; these fits are not in the script. With the random-effect correlations dropped, or with the participant slope removed, the estimate is 21.85 ms with CI [0.77, 42.93]. That second fit is not singular. The raw difference between the condition means is 21.4 ms (720.2 vs 698.8).
+- **The interval only just excludes zero** (t = 2.01). A large part of its width comes from priming varying between items (standard deviation about 36.5 ms). So the evidence for a priming effect is modest, and the size of the effect is not precisely pinned down.

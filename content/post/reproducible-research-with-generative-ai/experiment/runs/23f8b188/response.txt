@@ -1,0 +1,13 @@
+The priming effect is about 22 ms, with a 95% CI of 0.58 to 43.00 ms. Responses after unrelated primes were slower than after related primes. The interval only just excludes zero, so the effect is imprecisely estimated.
+
+The script is `/home/user/agent_runs/23f8b188/analysis.R`. I ran it with `Rscript analysis.R` and its last line is:
+`RESULT estimate=21.79 lower=0.58 upper=43.00`
+
+**What the script does**
+- Reads `data.csv` and uses all 1,354 rows (30 participants, 24 items) with rt untransformed. It stops with an error if any prime value other than related/unrelated appears, or if any rt is missing. Neither happens in this data, and there are no duplicate participant-item-prime rows.
+- Adds `prime_c`, coded -0.5 for related and +0.5 for unrelated, so its coefficient is the unrelated minus related difference in ms.
+- Prints the row, participant and item counts, the mean rt per condition (698.8 related, 720.2 unrelated) and the full model summary.
+- Fits `lmer(rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c | item))` with REML and the default optimiser.
+- Takes the `prime_c` fixed effect (SE 10.82, t = 2.01) and its interval from `confint(fit, parm = "prime_c", method = "Wald")`, then prints the RESULT line to two decimals.
+
+**The model fit is singular.** lme4 reports "boundary (singular) fit". The by-participant priming slope is close to zero (SD about 6.7 ms) and its correlation with the intercept is 1.00. The optimiser itself converged normally. I kept the model as you specified it, and the singular fit barely changes the answer. I checked two simpler random-effects structures separately, without changing the script. Dropping that correlation, or dropping the by-participant slope, gives 21.85 ms (CI 0.77 to 42.9).

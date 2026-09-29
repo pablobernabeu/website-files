@@ -1,0 +1,23 @@
+Responses after unrelated primes were about **18.5 ms** slower than after related primes. The 95% confidence interval runs from about **−1.5 to 38.6 ms**, so it only just includes zero. I worked this out by hand from the file, without running any code.
+
+**Estimate.** Every participant saw every target once in each prime condition, so I paired the two responses and took unrelated minus related. That gives 720 paired differences. They add up to 13,334 ms, which is a mean of 18.5 ms. Because the design is fully balanced, this is also what a mixed model would give. Adding word frequency as a covariate would not change it, because each target has the same frequency in both conditions. To check the arithmetic I summed the differences by participant and by item, and both totals came to 13,334. I also re-summed the raw times for five participants separately, and they matched.
+
+**Confidence interval.** Both participants and target words are random samples, so the interval has to allow for how much the priming effect varies across each. I split the variance of the paired differences into three parts:
+
+| Source | Mean square | Degrees of freedom |
+|---|---|---|
+| Participants | ≈ 28,800 | 29 |
+| Items | ≈ 67,600 | 23 |
+| Residual | ≈ 41,000 | 667 |
+
+- **Participants:** the effect varies no more across participants than noise alone would produce, so that variance comes out at about zero.
+- **Items:** the effect does vary across words, with a standard deviation of about 30 ms. The frequency of a word did not explain this; the correlation was about 0.04.
+- **Result:** the standard error of the priming effect is about 9.7 ms. With a t critical value on about 23 degrees of freedom, that gives 18.5 ± 20 ms, or [−1.5, 38.6]. A normal (z-based) interval gives about [−0.5, 37.5].
+
+If you analyse by participant only, which ignores variation between items, the interval is [5.6, 31.5]. That is too narrow, because the variation between words is the main source of uncertainty here.
+
+The data have a few very slow responses (up to about 1,580 ms). The large positive and negative differences they create roughly cancel out, so they barely move the estimate, but they do make the interval wider.
+
+The effect is probably positive and around 20 ms, but a crossed-random-effects analysis cannot rule out zero at the 5% level.
+
+RESULT estimate=18.5 lower=-1.5 upper=38.6

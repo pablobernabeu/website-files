@@ -1,0 +1,13 @@
+Responses after unrelated primes were about 18.5 ms slower than after related primes, with a 95% Wald confidence interval of about −0.7 to 37.8 ms. The interval only just includes zero. I worked this out by hand, not by running lme4, so the last decimal of the interval may differ slightly from what R prints.
+
+**Estimate.** Every participant saw every target once in each prime condition, so the design is fully balanced. In that case the fixed effect of prime_c from this model equals the plain mean of the 720 paired differences (unrelated minus related). Those differences sum to 13,334 ms, which gives 13,334 / 720 = 18.52 ms.
+
+**Standard error.** I took this from the variance components that REML estimates in a balanced design:
+- **Participants:** there is less spread in the priming effect across participants than the trial-level noise alone would produce (mean square 28,810 against a residual of about 41,000). REML therefore puts this term on the boundary. The fitted by-participant slope SD is about 8.9 ms, perfectly correlated with the intercept (r = +1). In R this should show up as a "boundary (singular) fit" message.
+- **Items:** the by-item slope term is not on the boundary. Its mean square is 67,640, giving a slope SD of about 29.8 ms, with an intercept–slope correlation near 0.
+- **Residual:** σ is about 143 ms.
+- **Result:** SE² = (67,640 + 1,909) / 720 = 96.6, so SE ≈ 9.83 ms.
+
+**Interval.** 18.52 ± 1.96 × 9.83 gives −0.74 to 37.78 ms.
+
+RESULT estimate=18.52 lower=-0.74 upper=37.78

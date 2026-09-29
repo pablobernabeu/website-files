@@ -1,0 +1,26 @@
+Responses were about 18.5 ms slower after unrelated primes than after related primes (95% CI −1.5 to 38.6 ms). The interval includes zero (p = .069), so the effect is positive but not statistically reliable in these data. `analysis.R` runs without errors, and its last line is:
+
+`RESULT estimate=18.52 lower=-1.53 upper=38.57`
+
+**What the script does** (`/home/user/agent_runs/03331471/analysis.R`):
+- **Checks the data:** it reads `data.csv` and confirms the design is complete: 30 participants × 24 words × 2 primes, one response each, 1440 in total. Nothing is missing or duplicated. RTs run from 377 to 1580 ms, so nothing was trimmed.
+- **Prints the raw means:** 698.7 ms after related primes and 717.2 ms after unrelated primes.
+- **Fits a mixed model:** the effect comes from a linear mixed model on RT in ms, with participants and words as crossed random factors. Prime is coded so its coefficient equals unrelated minus related.
+  - The full model, where the priming effect may vary across both participants and words, gave a degenerate fit. The variation across participants came out as essentially zero, so the script drops that term.
+  - Variation across words is kept, because the effect differs a lot between words (SD about 30 ms). A likelihood-ratio test gave p = .19, which passes the usual p < .20 rule for keeping such a term.
+  - Final model: `rt ~ prime + (1 | participant) + (1 + prime | item)`.
+- **Reports the effect:** 18.52 ms, SE 9.69, t(23.0) = 1.91, p = .069. The CI is estimate ± t × SE with Satterthwaite degrees of freedom.
+
+**Other checks** (printed by the script, not used for the RESULT line):
+
+| Check | Estimate (ms) | 95% CI |
+|---|---|---|
+| Profile-likelihood CI, same model | 18.52 | −0.85 to 37.89 |
+| Full model (degenerate fit) | 18.52 | −1.78 to 38.82 |
+| Adding word frequency and prime × frequency | 18.52 | −2.01 to 39.05 |
+| Log RT | about 17.3 at the average RT (2.5% slower, p = .061) | not given |
+| Paired t-test on participant means | 18.52 | 5.58 to 31.46 |
+
+Word frequency did not change the priming effect (interaction p = .84).
+
+The paired t-test is the only version whose interval excludes zero. It ignores how much the effect varies between words, so its interval is too narrow. The mixed-model interval is the one to report.

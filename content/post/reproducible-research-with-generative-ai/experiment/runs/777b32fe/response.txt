@@ -1,0 +1,19 @@
+**Priming effect: about 22 ms, 95% CI roughly 1 to 43 ms.** Responses after unrelated primes are slower than after related primes. This is a hand calculation, not a fitted model: I only read the file and could not run `lmer()`. The estimate should be within about ±0.5 ms of what `lmer` reports, and each CI bound within about ±2 ms.
+
+**What the data contain.** There are 1354 rows: 671 related and 683 unrelated. Of the 720 participant×item cells, 635 have both conditions, 36 have only the related trial, 48 have only the unrelated trial, and one (P24, W11) has neither.
+
+**Simple summaries I checked the estimate against:**
+- **Raw condition means:** 698.76 ms related and 720.20 ms unrelated, a difference of 21.4 ms. This ignores participants and items.
+- **Complete pairs only:** the mean within-pair difference is 14594 / 635 = 23.0 ms. I checked this sum by participant and again by item, and both give the same total.
+- **Adding the 84 single-condition trials:** these are compared with their participant and item baseline. This pulls the estimate that treats participants and items as fixed down to about 22.2 ms.
+
+**What the model's variance components would look like:**
+- **Residual SD:** about 145 ms. I got this from a two-way ANOVA of the within-pair differences, where the residual mean square is about 41,900, which is 2σ².
+- **By-participant slope variance:** about zero. Participants' priming effects vary less than residual noise alone would predict (mean-square ratio about 0.73), so REML will most likely put this at the boundary. Expect `lmer` to report a singular fit.
+- **By-item slope SD:** about 35 ms, a variance of about 1,300. Item W11, at about −93 ms, is the most extreme item.
+
+**Estimate.** I weighted each item's priming estimate by 1/(σ²_item slope + σ²_residual / item information). That gives about 22.0 ms. Treating the intercepts as random instead of fixed changes this by less than 0.1 ms.
+
+**Standard error and interval.** The SE is 1/√(sum of those item weights), about 10.7 ms. The Wald interval is 22.0 ± 1.96 × 10.75, which is about [0.9, 43.1]. If the item slope variance is between 1,000 and 1,500, the SE falls between about 10.2 and 11.2 ms.
+
+RESULT estimate=22.0 lower=0.9 upper=43.1

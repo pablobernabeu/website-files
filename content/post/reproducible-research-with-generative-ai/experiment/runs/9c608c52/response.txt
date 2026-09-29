@@ -1,0 +1,17 @@
+Responses after unrelated primes were about **18.5 ms slower** than after related primes, with a 95% Wald CI of roughly **−0.7 to 37.8 ms**. The interval only just includes zero. I could not run R, so these figures come from exact hand computation plus a closed-form solution of the REML fit, not from lme4 itself.
+
+**How I got there**
+- The data are fully balanced: 30 participants × 24 items × 2 primes, 1,440 rows, no missing cells. With that design, the fixed effect of prime_c equals the plain difference in condition means, whatever the variance components are.
+- I computed all 720 unrelated − related differences. They sum to 13,334, so the estimate is 13,334 / 720 = **18.52 ms**. The mean RT is 698.7 ms after related primes and 717.3 ms after unrelated primes.
+- **Checks:** the participant and item totals agree (13,334 for differences, 1,019,504 for RT). For every one of the 24 items, the related-prime RT total implied by my computed values matched a direct re-sum from the raw file.
+- **Standard error:** in a balanced crossed design, the REML likelihood splits into independent participant, item and residual parts, so the SE can be worked out exactly. The inputs:
+  - Item-level mean square of the priming differences: 67,640.
+  - Participant-level mean-square matrix (RT sum, difference): [[532,209, 31,501], [31,501, 28,810]]. Its smaller eigenvalue is 26,846.
+  - Residual variance of the differences (2σ²): about 41,000, so the residual SD is about 143 ms.
+- Because 2σ² is larger than 26,846, the by-participant covariance for this model sits on the boundary. lme4 should report a singular fit: the participant slope SD is about 9 ms and its correlation with the intercept is ±1. The item slope SD is about 30 ms.
+- At that boundary, Var(β̂) = (67,640 + ~1,909) / 720 ≈ 96.60, so **SE ≈ 9.83 ms**.
+- Wald CI: 18.52 ± 1.96 × 9.83, which gives **−0.74 to 37.78 ms**.
+
+The point estimate is exact. The interval limits could differ from lme4's by a few hundredths of a millisecond, because its optimiser may not land exactly on the singular boundary. Either way, the effect is positive in direction, but its 95% CI does not exclude zero.
+
+RESULT estimate=18.52 lower=-0.74 upper=37.78
