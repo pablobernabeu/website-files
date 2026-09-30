@@ -23,7 +23,7 @@ tags:
   - Python
 subtitle: ''
 summary: 'In 48 runs of one analysis request, Claude Code agents never produced the same text twice. The R scripts they wrote printed identical output each time they were executed, including in a rebuild of their recorded environment, and the same results under newer versions of R and lme4. Their prose replies matched the scripts only when the data were balanced, and took far longer whenever the analysis was specified. The post discusses what executing code adds to AI-assisted research and why researchers need direct experience with R and an IDE to specify, read and check the code that agents write.'
-abstract: 'This post examines the reproducibility of research conducted with generative AI through an experiment. Forty-eight Claude Code agents received one analysis request about a semantic-priming data set simulated with pilotr. Half answered in prose without running code, and half wrote an R script that was then executed. No two texts were identical, but the scripts in each condition printed one and the same result. Prose replies were as consistent as the scripts on balanced data, where the mixed model reduces to a few mean squares, but took far longer when the analysis was specified, and on unbalanced data they gave approximations that none of them could make exact. Every script printed identical output each time it was executed, including in a rebuild of its recorded environment on another machine. Under newer versions of R and its packages, the scripts printed the same results, and the recorded versions traced the only change, in the formatting of the output, to an update of lme4. The discussion draws on research on nondeterminism in language models, many-analysts studies and human interaction with automation. It argues that executed code supplies the exactness and the checkable record of an AI-assisted analysis, whereas its consistency depends on the model and on how precisely the analysis is specified, and that researchers need to be able to specify, read and check the code that agents write.'
+abstract: 'This post examines the reproducibility of research conducted with generative AI through an experiment. Forty-eight Claude Code agents running Claude Opus 5.5 received one analysis request about a semantic-priming data set simulated with pilotr. Half answered in prose without running code, and half wrote an R script that was then executed. No two texts were identical, but the scripts in each condition printed one and the same result. Prose replies were as consistent as the scripts on balanced data, where the mixed model reduces to a few mean squares, but took far longer when the analysis was specified, and on unbalanced data they gave approximations that none of them could make exact. Every script printed identical output each time it was executed, including in a rebuild of its recorded environment on another machine. Under newer versions of R and its packages, the scripts printed the same results, and the recorded versions traced the only change, in the formatting of the output, to an update of lme4. The discussion draws on research on nondeterminism in language models, many-analysts studies and human interaction with automation. It argues that executed code supplies the exactness and the checkable record of an AI-assisted analysis, whereas its consistency depends on the model and on how precisely the analysis is specified, and that researchers need to be able to specify, read and check the code that agents write.'
 authors: []
 lastmod: ''
 featured: no
@@ -56,6 +56,10 @@ runs_per_cell <- unique(as.vector(table(design$data, design$request, design$rout
 runs_per_cell <- runs_per_cell[runs_per_cell > 0]
 stopifnot(nrow(design) == 48, length(runs_per_cell) == 1,
           spec_file$response$round == 0)  # the text says the times are whole milliseconds
+
+# The model the agents ran, which the abstract also names
+agent_model <- readLines(file.path(experiment, 'claude_model.txt'))
+stopifnot(agent_model[1] == 'Claude Opus 5.5')
 
 # Links to the experiment's files point to the last commit that changed them,
 # so that a reader sees the files this page was built from. While they have
@@ -221,7 +225,7 @@ cat(strwrap(readLines(file.path(experiment, 'runs', example_run, 'prompt.txt')),
     sep = '\n')
 ```
 
-The design has `r count_text(runs_per_cell)` runs in each combination of condition and route, `r count_text(nrow(design))` in total, all run on `r sprintf('%d %s %s', as.integer(format(started, '%d')), month.name[as.integer(format(started, '%m'))], format(started, '%Y'))` with Claude Code `r readLines(file.path(experiment, 'claude_code_version.txt'))`. The `r count_text(sum(main_runs))` runs on the balanced data were launched `r count_text(batch_size)` at a time, in a random order across conditions. I designed the follow-up with unbalanced data after seeing the first results, and its `r count_text(sum(!main_runs))` runs were launched `r if (followup_after_main) 'afterwards' else 'alongside them'`, also in a random order. Each run was a separate agent, started by the session in the background with the session's model and reasoning settings, and given its own directory holding only the data file. The logs of their tool calls show that every prose run used no tool other than reading its data file. Of the `r count_text(sum(script_runs))` script runs, `r count_text(sum(results$compliant[script_runs]), sum(script_runs))` touched no file outside their own directory. The other `r count_text(sum(!results$compliant[script_runs]))` wrote exploratory R files to the session's scratch folder, which Claude Code designates for temporary files, under shared names such as explore.R. They were therefore not fully isolated, but each wrote and ran such a file within a single command and read only its own data, so none of them appears to have run another's code. The first `r count_text(in_experiment_folder)` agents also started in the experiment's own folder, which holds the specification, and their logs show no access to it. The session then executed each final script `r count_text(max(executions$execution))` times, each time in a fresh R process and a fresh copy of its directory, and recorded the versions of R, lme4, lmerTest and Matrix under which it did so. The Results also report executions of the same scripts in a rebuild of that environment and in newer ones.
+The design has `r count_text(runs_per_cell)` runs in each combination of condition and route, `r count_text(nrow(design))` in total, all run on `r sprintf('%d %s %s', as.integer(format(started, '%d')), month.name[as.integer(format(started, '%m'))], format(started, '%Y'))` with Claude Code `r readLines(file.path(experiment, 'claude_code_version.txt'))` and the model `r agent_model[1]` (`r agent_model[2]`). The `r count_text(sum(main_runs))` runs on the balanced data were launched `r count_text(batch_size)` at a time, in a random order across conditions. I designed the follow-up with unbalanced data after seeing the first results, and its `r count_text(sum(!main_runs))` runs were launched `r if (followup_after_main) 'afterwards' else 'alongside them'`, also in a random order. Each run was a separate agent, started by the session in the background with the session's model and reasoning settings, and given its own directory holding only the data file. The logs of their tool calls show that every prose run used no tool other than reading its data file. Of the `r count_text(sum(script_runs))` script runs, `r count_text(sum(results$compliant[script_runs]), sum(script_runs))` touched no file outside their own directory. The other `r count_text(sum(!results$compliant[script_runs]))` wrote exploratory R files to the session's scratch folder, which Claude Code designates for temporary files, under shared names such as explore.R. They were therefore not fully isolated, but each wrote and ran such a file within a single command and read only its own data, so none of them appears to have run another's code. The first `r count_text(in_experiment_folder)` agents also started in the experiment's own folder, which holds the specification, and their logs show no access to it. The session then executed each final script `r count_text(max(executions$execution))` times, each time in a fresh R process and a fresh copy of its directory, and recorded the versions of R, lme4, lmerTest and Matrix under which it did so. The Results also report executions of the same scripts in a rebuild of that environment and in newer ones.
 
 ## Results
 
@@ -372,25 +376,50 @@ stopifnot(sd(participant_means) < sd(word_means), paired_ci[1] > 0,
           open_script$lower < 0, specified_script$lower < 0, unbalanced_script$lower > 0,
           minutes_of(condition_levels[1], 'script') > minutes_of(condition_levels[2], 'script'))
 
+# How far each of the three numbers that ended a run lay from those of the
+# executed scripts in the same condition, at the precision the run wrote it: the
+# scripts' number is rounded to the decimals of the run's, as in agrees() above
+number_levels <- c('Estimate', 'Lower bound', 'Upper bound')
+deviations <- bind_rows(lapply(seq_len(nrow(runs)), function(i) {
+  written <- result_numbers(runs$result_line[i])
+  script <- first_of(runs$condition[i], 'script')
+  executed <- round(c(script$estimate, script$lower, script$upper), decimals(written))
+  data.frame(run_id = runs$run_id[i], condition = runs$condition[i], route_label = runs$route_label[i],
+             number = factor(number_levels, levels = number_levels),
+             deviation = round(as.numeric(written) - executed, 6))
+}))
+unbalanced_prose_deviations <- deviations$deviation[deviations$condition == condition_levels[3] &
+                                                      deviations$route_label == route_levels[1]]
+# Figure 1 and the text describe this pattern: every number of every script, and
+# every reply to the balanced data, agrees at its precision, and the replies to
+# the unbalanced data do not
+stopifnot(all(deviations$deviation[deviations$route_label == route_levels[2]] == 0),
+          all(deviations$deviation[deviations$condition != condition_levels[3]] == 0),
+          any(unbalanced_prose_deviations != 0))
+
 # The captions of the figures, from the same data
+executed_result <- function(script) {
+  sprintf('%s %s ms', ms(script$estimate), interval(script$lower, script$upper))
+}
 cap_estimates <- sprintf(paste(
-  'Estimates and 95%% Confidence Intervals Reported by the %d Runs. Each row is one run, with its',
-  'estimate as a point and its interval as a line. The solid vertical line marks zero and the dashed line the',
-  'priming effect in the simulated population, %s ms. Under the open request, the intervals use Satterthwaite',
-  'degrees of freedom in a model without by-participant slopes, and under the specified analysis, they are Wald',
-  'intervals of the maximal model.'), nrow(runs), ms(population_effect, 1))
+  'How Far the Numbers Reported by Each of the %d Runs Lay From Those of the Executed Scripts. Each row',
+  'is one run, and each column one of the three numbers in its last line. A number is compared with that of',
+  'the executed scripts in the same condition, rounded to the decimals the run wrote. The executed scripts',
+  'reported %s for the open request, %s for the specified analysis and %s for the unbalanced data.'),
+  nrow(runs), executed_result(open_script), executed_result(specified_script), executed_result(unbalanced_script))
 cap_minutes <- sprintf(paste(
   'Minutes From Request to Final Reply in Each of the %d Runs. Each point is one run, spread vertically',
   'within its condition so that runs with similar times stay visible.'), nrow(runs))
 
 # Alternative text for the figures, from the same data
 alt_estimates <- sprintf(paste(
-  'Three panels of horizontal intervals, one row per run, for balanced data with an open request,',
-  'balanced data with a specified analysis and unbalanced data with a specified analysis. Within each',
-  'panel, %s rows show executed scripts and %s show prose replies. A dashed vertical line marks',
-  'the population effect of %.1f ms. On balanced data every row in a panel shows the same interval,',
-  'whereas on unbalanced data the prose intervals differ slightly from the scripts and mostly from',
-  'each other'), count_text(runs_per_cell), count_text(runs_per_cell), population_effect)
+  'Nine panels, in three rows for balanced data with an open request, balanced data with a specified',
+  'analysis and unbalanced data with a specified analysis, and in three columns for the estimate, the lower',
+  'bound and the upper bound. In each panel, %s rows show executed scripts and %s show prose replies,',
+  'with a vertical line at zero difference from the executed scripts. On balanced data every point lies on',
+  'that line. On unbalanced data the scripts lie on it and the prose replies lie between %.1f and %.1f ms',
+  'from it'), count_text(runs_per_cell), count_text(runs_per_cell),
+  min(unbalanced_prose_deviations), max(unbalanced_prose_deviations))
 range_of <- function(rte) range(runs$minutes[runs$route == rte])
 alt_minutes <- sprintf(paste(
   'Dot plot of the minutes each run took, on a logarithmic axis, for the three conditions, with prose',
@@ -413,9 +442,9 @@ knitr::kable(
   align = c('l', 'l', 'r', 'r', 'r', 'l', 'r'))
 ```
 
-All `r count_text(nrow(runs))` texts were different, which is to be expected of long generated texts, but the results agreed far more closely. On the balanced data, the `r count_text(runs_per_cell)` runs of each route in each condition reported one and the same result, and the prose replies agreed with the executed scripts to the precision in which they were written. On the unbalanced data, the `r count_text(runs_per_cell)` scripts again printed a single result, but the prose replies gave `r count_text(n_distinct(unbalanced_prose$result_line))` different results, none of which matched the scripts. Figure 1, drawn with the theme and colours of my [depictr](/2026/depictr-one-visual-language-from-first-look-to-final-figure/) package (Bernabeu, 2026a), shows the same results run by run.
+All `r count_text(nrow(runs))` texts were different, which is to be expected of long generated texts, but the results agreed far more closely. On the balanced data, the `r count_text(runs_per_cell)` runs of each route in each condition reported one and the same result, and the prose replies agreed with the executed scripts to the precision in which they were written. On the unbalanced data, the `r count_text(runs_per_cell)` scripts again printed a single result, but the prose replies gave `r count_text(n_distinct(unbalanced_prose$result_line))` different results, none of which matched the scripts. Figure 1, drawn with the theme and colours of my [depictr](/2026/depictr-one-visual-language-from-first-look-to-final-figure/) package (Bernabeu, 2026a), shows run by run how far each reported number lay from that of the executed scripts.
 
-```{r estimates, fig.width = 8, fig.height = 7.6, fig.cap = cap_estimates, fig.alt = alt_estimates}
+```{r estimates, fig.width = 8, fig.height = 6.4, fig.cap = cap_estimates, fig.alt = alt_estimates}
 # The first and fourth colours of the depictr palette. Its second colour, an
 # orange, has a contrast of 2.2:1 with the white background, below the 3:1 that
 # WCAG asks of graphical marks, whereas this vermilion clears it.
@@ -423,7 +452,7 @@ route_colours <- setNames(depictr_palette(4)[c(1, 4)], route_levels)
 
 # Both figures share one legend: titled like the column of Table 1, listing the
 # routes in the order of the rows of Figure 1 and aligned with the plot, with
-# no frame and a key wide enough to show an interval around its estimate
+# no frame
 route_scales <- list(
   scale_colour_manual(values = route_colours, breaks = rev(route_levels), name = 'Route'),
   scale_shape_manual(values = setNames(c(21, 15), route_levels), breaks = rev(route_levels),
@@ -432,34 +461,33 @@ route_legend <- theme(legend.position = 'top', legend.justification = 'left',
                       legend.location = 'plot', legend.background = element_blank(),
                       legend.title = element_text(face = 'bold', size = rel(0.95)),
                       legend.text = element_text(size = rel(0.95), margin = margin(r = 14)),
-                      legend.key.width = unit(2.2, 'lines'), legend.margin = margin(0, 0, 4, 0))
+                      legend.margin = margin(0, 0, 4, 0))
 
-plot_runs <- runs |>
+# One row per run, scripts above replies, in each condition
+plot_deviations <- runs |>
   arrange(condition, route_label, order) |>
   group_by(condition, route_label) |>
-  mutate(row = row_number() + ifelse(route_label == route_levels[2], 0, 9)) |>
-  ungroup()
-population_label <- data.frame(condition = factor(condition_levels[1], levels = condition_levels),
-                               x = population_effect, y = 0,
-                               label = 'Effect in the simulated population')
+  mutate(row = row_number() + ifelse(route_label == route_levels[2], 0, runs_per_cell + 1)) |>
+  ungroup() |>
+  select(run_id, row) |>
+  right_join(deviations, by = 'run_id')
 
-ggplot(plot_runs, aes(y = row, colour = route_label, shape = route_label)) +
+ggplot(plot_deviations, aes(deviation, row, colour = route_label, shape = route_label)) +
   geom_vline(xintercept = 0, colour = 'grey55', linewidth = 0.4) +
-  geom_vline(xintercept = population_effect, colour = 'grey35', linewidth = 0.5,
-             linetype = 'dashed') +
-  geom_linerange(aes(xmin = lower, xmax = upper), linewidth = 0.7) +
-  geom_point(aes(x = estimate), size = 2, fill = 'white', stroke = 0.9) +
-  geom_text(aes(x = x, y = y, label = label), data = population_label, inherit.aes = FALSE,
-            hjust = -0.04, vjust = 0.4, size = 3.6, colour = 'grey25') +
-  facet_wrap(~ condition, ncol = 1) +
+  geom_point(size = 1.9, fill = 'white', stroke = 0.8) +
+  facet_grid(condition ~ number, labeller = labeller(condition = label_wrap_gen(18))) +
   route_scales +
-  scale_y_reverse(breaks = c(4.5, 13.5), labels = c('Executed\nscripts', 'Prose\nreplies'),
-                  expand = expansion(add = c(0.8, 1.2))) +
-  labs(x = 'Priming effect (ms), with 95% interval', y = NULL) +
-  theme_depictr(base_size = 13, grid = 'x') +
+  scale_x_continuous(breaks = seq(-0.2, 0.4, 0.2),
+                     labels = function(x) sub('-', '−', sprintf('%.1f', x), fixed = TRUE)) +
+  scale_y_reverse(breaks = (runs_per_cell + 1) / 2 + c(0, runs_per_cell + 1),
+                  labels = c('Executed\nscripts', 'Prose\nreplies'), expand = expansion(add = 0.8)) +
+  labs(x = 'Difference from the executed scripts (ms)', y = NULL) +
+  theme_depictr(base_size = 12, grid = 'x') +
   route_legend +
-  theme(strip.text = element_text(hjust = 0, face = 'bold'),
-        axis.text.y = element_text(size = rel(0.95)))
+  theme(strip.text.x = element_text(face = 'bold'),
+        strip.text.y = element_text(angle = 0, hjust = 0, face = 'bold'),
+        strip.background.y = element_blank(),
+        panel.spacing.x = unit(2, 'lines'), axis.text.y = element_text(size = rel(0.95)))
 ```
 
 The open request left every analytic decision to the agents, and the `r count_text(nrow(choices))` scripts converged on one analysis. Each fitted a linear mixed-effects model to the untransformed reaction times, with crossed random effects for participants and words. Each found that the maximal model was singular, because in this sample the priming effect appeared to vary little across participants, so that the estimated by-participant slope was perfectly correlated with the intercept, and dropped that slope. All `r count_text(nrow(choices))` then computed the interval from a *t* distribution with Satterthwaite degrees of freedom. `r stringr::str_to_sentence(count_text(sum(choices$frequency_covariate)))` of them also included word frequency as a covariate, which cannot change the estimate in a balanced design, since every word appears in both conditions. The prose replies reached the same interval by another path. They decomposed the `r count_text(nrow(paired))` paired differences into participant, item and residual components, and in a balanced design that decomposition gives the same standard error as the reduced model. Some of these replies equated their decomposition with the maximal model, although the scripts' fit of that model gives a slightly wider interval. With the specified request, both routes returned the Wald interval of the maximal model.
@@ -546,7 +574,7 @@ knitr::kable(
   caption = 'Results for the Unbalanced Data, as Each Run Wrote Them.', align = c('l', 'r'))
 ```
 
-Their estimates ranged from `r ms(min(unbalanced_prose$estimate), 1)` to `r ms(max(unbalanced_prose$estimate), 1)` ms, and no reply reproduced the executed result. At the precision each reply used, `r count_text(sum(unbalanced_signs[, 1] > 0))` of the `r count_text(nrow(unbalanced_prose))` estimates and all `r count_text(nrow(unbalanced_prose))` lower bounds lay above the executed values, and the upper bounds fell on either side of the executed one or matched it. The largest discrepancy in any of the three numbers was `r ms(max(deviation), 2)` ms. Every reply said that its numbers were approximations and stated how far off they might be, and the discrepancies fell within those margins. The replies were therefore well calibrated. Their margins were still wide for this analysis, since the executed lower bound lies only `r ms(unbalanced_script$lower, 2)` ms above zero, and the largest discrepancy amounts to `r sprintf('%.0f%%', 100 * max(deviation) / unbalanced_script$lower)` of that distance. Only an executed model could show which side of zero the exact interval fell on.
+Their estimates ranged from `r ms(min(unbalanced_prose$estimate), 1)` to `r ms(max(unbalanced_prose$estimate), 1)` ms, and no reply reproduced the executed result. At the precision each reply used, `r count_text(sum(unbalanced_signs[, 1] > 0))` of the `r count_text(nrow(unbalanced_prose))` estimates and all `r count_text(nrow(unbalanced_prose))` lower bounds lay above the executed values, and the upper bounds fell on either side of the executed one or matched it (Figure 1). The largest discrepancy in any of the three numbers was `r ms(max(deviation), 2)` ms. Every reply said that its numbers were approximations and stated how far off they might be, and the discrepancies fell within those margins. The replies were therefore well calibrated. Their margins were still wide for this analysis, since the executed lower bound lies only `r ms(unbalanced_script$lower, 2)` ms above zero, and the largest discrepancy amounts to `r sprintf('%.0f%%', 100 * max(deviation) / unbalanced_script$lower)` of that distance. Only an executed model could show which side of zero the exact interval fell on.
 
 ### Time Taken
 
@@ -859,7 +887,7 @@ The experiment suggests a workflow in which the project lives under version cont
 
 ### Limitations
 
-The experiment used one model, one version of Claude Code and one day, with one simulated data set whose interval sat close to zero. The agents ran concurrently as background agents of a single session, and interactive use of the same tool may differ. Their model is not named here, and its reasoning was not retained in the transcripts, so the hand calculations are known only from the replies. As described above, `r count_text(sum(!results$compliant[script_runs]))` script runs used a shared scratch folder and the first `r count_text(in_experiment_folder)` runs started in the folder that holds the specification. The stored executions recorded the versions of R, lme4, lmerTest and Matrix only, and their rebuild took the other packages from the same release of Ubuntu. The scripts printed the same output with other versions of `r knitr::combine_words(other_changed, and = ' and ', oxford_comma = FALSE)`, and the newer environments were tested on one `r newer_system` machine. The follow-up was designed after the first results and run later than the main runs. The specified request contained the model formula and the function for the interval, so the agreement among its scripts tested implementation more than analysis. The prose route imitated a chat without a code interpreter, but its replies drew on far longer deliberation than a chat usually gives. Commercial chat assistants often run code in a sandbox, which narrows the contrast, although the code and its environment are seldom kept with the result. The analytic choices of the open-request scripts were coded by the same session that ran the experiment, and they can be checked against the scripts in the repository. Finally, with `r count_text(runs_per_cell)` runs in each cell, the counts describe these runs and do not estimate rates.
+The experiment used one model, one version of Claude Code and one day, with one simulated data set whose interval sat close to zero. The agents ran concurrently as background agents of a single session, and interactive use of the same tool may differ. The session's setting for the model's reasoning was not recorded, and the reasoning itself was not retained in the transcripts, so the hand calculations are known only from the replies. As described above, `r count_text(sum(!results$compliant[script_runs]))` script runs used a shared scratch folder and the first `r count_text(in_experiment_folder)` runs started in the folder that holds the specification. The stored executions recorded the versions of R, lme4, lmerTest and Matrix only, and their rebuild took the other packages from the same release of Ubuntu. The scripts printed the same output with other versions of `r knitr::combine_words(other_changed, and = ' and ', oxford_comma = FALSE)`, and the newer environments were tested on one `r newer_system` machine. The follow-up was designed after the first results and run later than the main runs. The specified request contained the model formula and the function for the interval, so the agreement among its scripts tested implementation more than analysis. The prose route imitated a chat without a code interpreter, but its replies drew on far longer deliberation than a chat usually gives. Commercial chat assistants often run code in a sandbox, which narrows the contrast, although the code and its environment are seldom kept with the result. The analytic choices of the open-request scripts were coded by the same session that ran the experiment, and they can be checked against the scripts in the repository. Finally, with `r count_text(runs_per_cell)` runs in each cell, the counts describe these runs and do not estimate rates.
 
 ## References
 
