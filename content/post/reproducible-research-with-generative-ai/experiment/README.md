@@ -52,6 +52,11 @@ Scripts in Other Environments*.
   The transcripts are not kept, since they also hold the launching session's
   context. Script runs also have `analysis.R`.
 - `claude_code_version.txt`: the version of Claude Code that ran the agents.
+- `claude_model.txt`: the model the agents ran, Claude Opus 5.5 (`claude-opus-5-5`).
+  Each agent ran with the model of the session that launched it, and that session's
+  commits of the experiment (b91841796 and a554ab4b0) name the model in their
+  attribution lines. The session's setting for the model's reasoning was not
+  recorded.
 
 ## Executions
 
