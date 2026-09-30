@@ -1,7 +1,10 @@
 # Executes one agent's analysis.R in a fresh R process started by the running
 # R installation, inside a fresh copy of its directory that holds only the
 # script and the data file the agent saw. It returns the printed RESULT line,
-# the exit status and a SHA-256 hash of the full output. The child runs in the
+# the exit status and a SHA-256 hash of the full output (stdout and stderr).
+# The hash is taken over the lines as readLines() returns them, joined by '\n'
+# with no final newline, so it does not depend on the line endings a platform
+# writes, and it differs from a checksum of the output file. The child runs in the
 # C locale, because the locale changes some printed characters (the quotation
 # marks in lmerTest's significance codes, for one) and so the bytes of the
 # output. It loads no R profile either, since a project profile can reset the
@@ -34,6 +37,21 @@ run_script <- function(run_id, data_file, experiment_dir = '.', label = 1L,
     stdout_sha256 = digest::digest(paste(output, collapse = '\n'), algo = 'sha256',
                                    serialize = FALSE)
   )
+}
+
+# Executes a script with run_script() and, if its R process crashes (any exit
+# status other than 0, or 1 for an R error), executes it again, up to three
+# times in all. On Windows the child process occasionally ends with an access
+# violation that a second attempt does not repeat. One row per attempt.
+run_script_with_retries <- function(..., label = 1L, attempts = 3L) {
+  rows <- list()
+  repeat {
+    k <- length(rows) + 1
+    row <- run_script(..., label = paste(label, k, sep = '_'))
+    rows[[k]] <- cbind(row, attempt = k)
+    if (row$status %in% c(0, 1) || k == attempts) break
+  }
+  do.call(rbind, rows)
 }
 
 # The environment the child processes run in, as they report it themselves
