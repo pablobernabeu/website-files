@@ -28,5 +28,18 @@ jobs:
       - name: Build the environment of the stored executions
         run: docker build -t genai-experiment .
 
+      # The comparison is kept as an artifact; the post reads a committed copy
+      # of it, verification.csv, which records the address of this run.
       - name: Execute every script and compare with the stored hashes
-        run: docker run --rm genai-experiment
+        run: |
+          mkdir -p verification
+          docker run --rm -v "$PWD/verification:/out" \
+            -e GITHUB_SERVER_URL -e GITHUB_REPOSITORY -e GITHUB_RUN_ID \
+            genai-experiment Rscript verify_executions.R /out/verification.csv
+
+      - name: Keep the comparison
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: verification
+          path: content/post/reproducible-research-with-generative-ai/experiment/verification/verification.csv
