@@ -23,8 +23,8 @@ tags:
   - research methods
   - Python
 subtitle: ''
-summary: 'In 48 runs of one analysis request, Claude Code agents never produced the same text twice. The R scripts they wrote printed identical results on every execution, whereas their prose replies matched the scripts only when the data were balanced, and took far longer whenever the analysis was specified. The post discusses what executing code adds to AI-assisted research and why researchers need direct experience with R and an IDE to specify, read and check the code that agents write.'
-abstract: 'This post examines the reproducibility of research conducted with generative AI through an experiment. Forty-eight Claude Code agents received one analysis request about a semantic-priming data set simulated with pilotr. Half answered in prose without running code, and half wrote an R script that was then executed. No two texts were identical. Every script printed identical output on repeated execution, and scripts written to a specified analysis agreed exactly with each other. Prose replies were as consistent as the scripts on balanced data, where the mixed model reduces to a few mean squares, but took far longer when the analysis was specified, and on unbalanced data they gave approximations that none of them could make exact. The discussion draws on research on nondeterminism in language models, many-analysts studies and human interaction with automation. It argues that executed code supplies the exactness and the checkable record of an AI-assisted analysis, whereas its consistency depends on the model and on how precisely the analysis is specified, and that researchers need to be able to specify, read and check the code that agents write.'
+summary: 'In 48 runs of one analysis request, Claude Code agents never produced the same text twice. The R scripts they wrote printed identical output each time they were executed in one environment, whereas their prose replies matched the scripts only when the data were balanced, and took far longer whenever the analysis was specified. The post discusses what executing code adds to AI-assisted research and why researchers need direct experience with R and an IDE to specify, read and check the code that agents write.'
+abstract: 'This post examines the reproducibility of research conducted with generative AI through an experiment. Forty-eight Claude Code agents received one analysis request about a semantic-priming data set simulated with pilotr. Half answered in prose without running code, and half wrote an R script that was then executed. No two texts were identical. Every script printed identical output when executed repeatedly in one environment, and scripts written to a specified analysis agreed exactly with each other. Prose replies were as consistent as the scripts on balanced data, where the mixed model reduces to a few mean squares, but took far longer when the analysis was specified, and on unbalanced data they gave approximations that none of them could make exact. The discussion draws on research on nondeterminism in language models, many-analysts studies and human interaction with automation. It argues that executed code supplies the exactness and the checkable record of an AI-assisted analysis, whereas its consistency depends on the model and on how precisely the analysis is specified, and that researchers need to be able to specify, read and check the code that agents write.'
 authors: []
 lastmod: ''
 featured: no
@@ -486,29 +486,105 @@ page_environment <- child_environment()
 
 stored <- executions |> filter(execution == 1)
 matched <- match(rerun$run_id, stored$run_id)
-rerun$same_result <- rerun$status == 0 & !is.na(rerun$result) & rerun$result == stored$result[matched]
-rerun$same_output <- rerun$status == 0 & rerun$stdout_sha256 == stored$stdout_sha256[matched]
+# Rscript exits with status 1 when a script stops with an error. Any other
+# nonzero status means that the R process itself ended abnormally, as when it
+# crashes, which says nothing about the script.
+rerun$outcome <- ifelse(rerun$status == 0, 'completed', ifelse(rerun$status == 1, 'error', 'crash'))
+rerun$same_result <- rerun$outcome == 'completed' & !is.na(rerun$result) &
+  rerun$result == stored$result[matched]
+rerun$same_output <- rerun$outcome == 'completed' & rerun$stdout_sha256 == stored$stdout_sha256[matched]
+same_environment <- page_environment == unique(executions$environment)
 
 script_texts <- runs$text[runs$route == 'script']
 packages_loaded <- sort(unique(unlist(regmatches(script_texts,
   gregexpr('(?<=library\\()[A-Za-z0-9.]+(?=\\))|[A-Za-z][A-Za-z0-9.]*(?=::)', script_texts, perl = TRUE)))))
 packages_loaded <- setdiff(packages_loaded, c('base', 'stats', 'utils', 'methods'))
 
-rerun_text <- if (all(rerun$same_output)) {
-  sprintf('all %s scripts printed output byte-identical to that of the stored executions',
-          count_text(nrow(rerun)))
-} else {
-  sprintf('%s of the %s scripts ran without error, %s printed the same result line as before and %s printed byte-identical output',
-          count_text(sum(rerun$status == 0), nrow(rerun)), count_text(nrow(rerun)),
-          count_text(sum(rerun$same_result), nrow(rerun)), count_text(sum(rerun$same_output), nrow(rerun)))
-}
+n_scripts <- nrow(rerun)
+n_completed <- sum(rerun$outcome == 'completed')
+n_error <- sum(rerun$outcome == 'error')
+n_crash <- sum(rerun$outcome == 'crash')
+n_same_result <- sum(rerun$same_result)
+n_same_output <- sum(rerun$same_output)
 
-c(stored_executions = nrow(executions), scripts = nrow(rerun),
-  ran_without_error_now = sum(rerun$status == 0),
-  same_result_now = sum(rerun$same_result), same_output_now = sum(rerun$same_output))
+c(stored_executions = nrow(executions), scripts = n_scripts, completed_now = n_completed,
+  stopped_with_error_now = n_error, crashed_now = n_crash,
+  same_result_now = n_same_result, same_output_now = n_same_output)
 ```
 
-Each script ran in the C locale, because the locale changes some printed characters, such as the quotation marks in the significance codes of lmerTest, and with them the bytes of the output. Across the `r count_text(nrow(executions))` stored executions, run under `r unique(executions$environment)`, every script printed byte-identical output each time, including its model summaries and warnings. When this page was built, under `r page_environment`, `r rerun_text`. The scripts use `r knitr::combine_words(packages_loaded, and = ' and ', oxford_comma = FALSE)`, so rebuilding the page elsewhere requires those packages. A different operating system or version of a package could change the output of some scripts, for instance through a change in how a singular fit is reached, which is why the environment belongs in the record together with the scripts. A rebuild in the same environment checks determinism, whereas a rebuild in another checks reproducibility.
+```{r rerun-text, include = FALSE}
+# The wording of the paragraph below and of the discussion, from the counts above
+
+# How a crashed process ended. Windows reports an access violation as status
+# -1073741819 (0xC0000005), and processx reports a Unix signal as its negative.
+crash_kind <- function(status) {
+  if (status == -1073741819) 'an access violation'
+  else if (.Platform$OS.type == 'unix' && status < 0) sprintf('signal %d', -status)
+  else sprintf('exit status %d', status)
+}
+crash_kinds <- knitr::combine_words(unique(vapply(rerun$status[rerun$outcome == 'crash'],
+                                                  crash_kind, character(1))), and = ' or ')
+
+completed_text <- if (n_completed == n_scripts) {
+  sprintf('all %s scripts ran to completion', count_text(n_scripts))
+} else {
+  sprintf('%s of the %s scripts ran to completion', count_text(n_completed, n_scripts),
+          count_text(n_scripts))
+}
+rerun_text <- if (n_same_output == n_scripts) {
+  sprintf('all %s scripts printed output byte-identical to that of the stored executions',
+          count_text(n_scripts))
+} else if (n_completed == 0) {
+  sprintf('none of the %s scripts ran to completion', count_text(n_scripts))
+} else if (n_same_output == n_completed) {
+  sprintf('%s and printed output byte-identical to that of the stored executions', completed_text)
+} else if (n_same_result == n_completed) {
+  sprintf('%s and printed the same result line as the stored executions, although %s printed byte-identical output',
+          completed_text, if (n_same_output == 0) 'none of them' else
+            sprintf('only %s', count_text(n_same_output, n_scripts)))
+} else {
+  sprintf('%s, %s of them printed the same result line as the stored executions and %s printed byte-identical output',
+          completed_text, if (n_same_result == 0) 'none' else count_text(n_same_result, n_scripts),
+          if (n_same_output == 0) 'none' else count_text(n_same_output, n_scripts))
+}
+
+# The scripts that did not run to completion, told apart by how they stopped
+error_part <- sprintf('%s stopped with an error', count_text(n_error))
+crash_part <- sprintf('%s did not finish because %s crashed with %s', count_text(n_crash),
+                      if (n_crash == 1) 'its R process' else 'their R processes', crash_kinds)
+failure_text <- if (n_error + n_crash == 0) {
+  ''
+} else if (n_completed == 0) {
+  sprintf(' Of these, %s.', paste(c(if (n_error > 0) error_part, if (n_crash > 0) crash_part),
+                                  collapse = ' and '))
+} else if (n_crash == 0) {
+  sprintf(' The other %s.', error_part)
+} else if (n_error == 0) {
+  sprintf(' The other %s, not because %s raised an error.', crash_part,
+          if (n_crash == 1) 'the script' else 'the scripts')
+} else {
+  sprintf(' Of the other %s, %s and %s.', count_text(n_error + n_crash), error_part, crash_part)
+}
+
+# The same comparison, summarised for the discussion
+where_built <- if (same_environment) 'in the same environment' else 'in another environment'
+rerun_discussion <- if (n_same_output == n_scripts) {
+  sprintf('When this page was built %s, the output was byte-identical again.', where_built)
+} else if (n_completed == 0) {
+  sprintf('When this page was built %s, no script ran to completion.', where_built)
+} else {
+  sprintf('When this page was built %s, %s printed the same result line%s.', where_built,
+          if (n_same_result == n_completed) {
+            if (n_completed == n_scripts) 'every script' else 'every script that ran to completion'
+          } else sprintf('%s of the %s scripts that ran to completion', count_text(n_same_result, n_scripts),
+                         count_text(n_completed, n_scripts)),
+          if (n_same_output == n_completed) ' and byte-identical output' else
+            if (n_same_output == 0) ', but none printed byte-identical output' else
+              sprintf(', but only %s printed byte-identical output', count_text(n_same_output, n_scripts)))
+}
+```
+
+Each script ran in the C locale, because the locale changes some printed characters, such as the quotation marks in the significance codes of lmerTest, and with them the bytes of the output. Across the `r count_text(nrow(executions))` stored executions, run under `r unique(executions$environment)`, every script printed byte-identical output each time, including its model summaries and warnings. When this page was built, under `r page_environment`, `r rerun_text`.`r failure_text` The scripts use `r knitr::combine_words(packages_loaded, and = ' and ', oxford_comma = FALSE)`, so rebuilding the page elsewhere requires those packages. A different operating system or version of a package can change the printed output of a script and could change its results, for instance through a change in how a singular fit is reached. That is why the environment belongs in the record together with the scripts. A rebuild in the same environment checks determinism, whereas a rebuild in another checks reproducibility.
 
 ### Time Taken
 
@@ -533,7 +609,7 @@ The discussion considers what executing code contributed and what the researcher
 
 ### What Executing Code Contributed
 
-No text in this experiment was repeated, and every executed script gave the same output each time it ran. That second fact follows from executing saved code in a fixed environment. The agreement between runs is a separate matter. On balanced data, the prose replies were as consistent as the scripts, so the consistency came from the model and from how precisely the request specified the analysis. What the executed scripts added was exactness and a record that can be checked. On unbalanced data, where the model has to be fitted numerically, every script returned the exact result, whereas each prose reply returned an approximation. Even where the prose replies were exact, only code could show it. Without recomputing their quantities in R, a correct reply could not be told apart from a confident error.
+No text in this experiment was repeated, and every executed script gave the same output each time the session ran it. That second fact follows from executing saved code in a fixed environment. `r rerun_discussion` The agreement between runs is a separate matter. On balanced data, the prose replies were as consistent as the scripts, so the consistency came from the model and from how precisely the request specified the analysis. What the executed scripts added was exactness and a record that can be checked. On unbalanced data, where the model has to be fitted numerically, every script returned the exact result, whereas each prose reply returned an approximation. Even where the prose replies were exact, only code could show it. Without recomputing their quantities in R, a correct reply could not be told apart from a confident error.
 
 The results also qualify the studies reviewed above. Those found large variation from one request to the next in code generation and in benchmark accuracy (Atıl et al., 2025; Ouyang et al., 2025). Here, on balanced data, the agents converged on the same analysis and the same numbers, and the variation lay in the wording and in secondary choices such as a covariate that could not affect the estimate. On unbalanced data, the scripts still converged, whereas the prose replies did not. Bertran et al. (2026) propose deploying AI analysts against a published specification to reveal how much disagreement comes from underspecified design choices. In this experiment, the open request produced little disagreement to reveal, and the specification mattered mainly because it fixed which interval was computed. The consistency observed belongs to one model on one structured task on one day, and the reproducibility of a study cannot rest on it. A script can be checked, whereas the consistency of a model can only be observed, and it may not survive the next update (Chen et al., 2024).
 

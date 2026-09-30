@@ -23,8 +23,8 @@ tags:
   - research methods
   - Python
 subtitle: ''
-summary: 'In 48 runs of one analysis request, Claude Code agents never produced the same text twice. The R scripts they wrote printed identical results on every execution, whereas their prose replies matched the scripts only when the data were balanced, and took far longer whenever the analysis was specified. The post discusses what executing code adds to AI-assisted research and why researchers need direct experience with R and an IDE to specify, read and check the code that agents write.'
-abstract: 'This post examines the reproducibility of research conducted with generative AI through an experiment. Forty-eight Claude Code agents received one analysis request about a semantic-priming data set simulated with pilotr. Half answered in prose without running code, and half wrote an R script that was then executed. No two texts were identical. Every script printed identical output on repeated execution, and scripts written to a specified analysis agreed exactly with each other. Prose replies were as consistent as the scripts on balanced data, where the mixed model reduces to a few mean squares, but took far longer when the analysis was specified, and on unbalanced data they gave approximations that none of them could make exact. The discussion draws on research on nondeterminism in language models, many-analysts studies and human interaction with automation. It argues that executed code supplies the exactness and the checkable record of an AI-assisted analysis, whereas its consistency depends on the model and on how precisely the analysis is specified, and that researchers need to be able to specify, read and check the code that agents write.'
+summary: 'In 48 runs of one analysis request, Claude Code agents never produced the same text twice. The R scripts they wrote printed identical output each time they were executed in one environment, whereas their prose replies matched the scripts only when the data were balanced, and took far longer whenever the analysis was specified. The post discusses what executing code adds to AI-assisted research and why researchers need direct experience with R and an IDE to specify, read and check the code that agents write.'
+abstract: 'This post examines the reproducibility of research conducted with generative AI through an experiment. Forty-eight Claude Code agents received one analysis request about a semantic-priming data set simulated with pilotr. Half answered in prose without running code, and half wrote an R script that was then executed. No two texts were identical. Every script printed identical output when executed repeatedly in one environment, and scripts written to a specified analysis agreed exactly with each other. Prose replies were as consistent as the scripts on balanced data, where the mixed model reduces to a few mean squares, but took far longer when the analysis was specified, and on unbalanced data they gave approximations that none of them could make exact. The discussion draws on research on nondeterminism in language models, many-analysts studies and human interaction with automation. It argues that executed code supplies the exactness and the checkable record of an AI-assisted analysis, whereas its consistency depends on the model and on how precisely the analysis is specified, and that researchers need to be able to specify, read and check the code that agents write.'
 authors: []
 lastmod: ''
 featured: no
@@ -580,31 +580,35 @@ page_environment &lt;- child_environment()
 
 stored &lt;- executions |&gt; filter(execution == 1)
 matched &lt;- match(rerun$run_id, stored$run_id)
-rerun$same_result &lt;- rerun$status == 0 &amp; !is.na(rerun$result) &amp; rerun$result == stored$result[matched]
-rerun$same_output &lt;- rerun$status == 0 &amp; rerun$stdout_sha256 == stored$stdout_sha256[matched]
+# Rscript exits with status 1 when a script stops with an error. Any other
+# nonzero status means that the R process itself ended abnormally, as when it
+# crashes, which says nothing about the script.
+rerun$outcome &lt;- ifelse(rerun$status == 0, &#39;completed&#39;, ifelse(rerun$status == 1, &#39;error&#39;, &#39;crash&#39;))
+rerun$same_result &lt;- rerun$outcome == &#39;completed&#39; &amp; !is.na(rerun$result) &amp;
+  rerun$result == stored$result[matched]
+rerun$same_output &lt;- rerun$outcome == &#39;completed&#39; &amp; rerun$stdout_sha256 == stored$stdout_sha256[matched]
+same_environment &lt;- page_environment == unique(executions$environment)
 
 script_texts &lt;- runs$text[runs$route == &#39;script&#39;]
 packages_loaded &lt;- sort(unique(unlist(regmatches(script_texts,
   gregexpr(&#39;(?&lt;=library\\()[A-Za-z0-9.]+(?=\\))|[A-Za-z][A-Za-z0-9.]*(?=::)&#39;, script_texts, perl = TRUE)))))
 packages_loaded &lt;- setdiff(packages_loaded, c(&#39;base&#39;, &#39;stats&#39;, &#39;utils&#39;, &#39;methods&#39;))
 
-rerun_text &lt;- if (all(rerun$same_output)) {
-  sprintf(&#39;all %s scripts printed output byte-identical to that of the stored executions&#39;,
-          count_text(nrow(rerun)))
-} else {
-  sprintf(&#39;%s of the %s scripts ran without error, %s printed the same result line as before and %s printed byte-identical output&#39;,
-          count_text(sum(rerun$status == 0), nrow(rerun)), count_text(nrow(rerun)),
-          count_text(sum(rerun$same_result), nrow(rerun)), count_text(sum(rerun$same_output), nrow(rerun)))
-}
+n_scripts &lt;- nrow(rerun)
+n_completed &lt;- sum(rerun$outcome == &#39;completed&#39;)
+n_error &lt;- sum(rerun$outcome == &#39;error&#39;)
+n_crash &lt;- sum(rerun$outcome == &#39;crash&#39;)
+n_same_result &lt;- sum(rerun$same_result)
+n_same_output &lt;- sum(rerun$same_output)
 
-c(stored_executions = nrow(executions), scripts = nrow(rerun),
-  ran_without_error_now = sum(rerun$status == 0),
-  same_result_now = sum(rerun$same_result), same_output_now = sum(rerun$same_output))</code></pre>
-<pre><code>#&gt;     stored_executions               scripts ran_without_error_now       same_result_now 
-#&gt;                    72                    24                    21                    21 
-#&gt;       same_output_now 
-#&gt;                     0</code></pre>
-<p>Each script ran in the C locale, because the locale changes some printed characters, such as the quotation marks in the significance codes of lmerTest, and with them the bytes of the output. Across the 72 stored executions, run under R 4.3.3 (x86_64-pc-linux-gnu, C locale) with lme4 1.1.35.1, lmerTest 3.1.3 and Matrix 1.6.5, every script printed byte-identical output each time, including its model summaries and warnings. When this page was built, under R 4.6.1 (x86_64-w64-mingw32, C locale) with lme4 2.0.6, lmerTest 3.2.1 and Matrix 1.7.6, 21 of the 24 scripts ran without error, 21 printed the same result line as before and 0 printed byte-identical output. The scripts use dplyr, emmeans, lme4, lmerTest and tidyr, so rebuilding the page elsewhere requires those packages. A different operating system or version of a package could change the output of some scripts, for instance through a change in how a singular fit is reached, which is why the environment belongs in the record together with the scripts. A rebuild in the same environment checks determinism, whereas a rebuild in another checks reproducibility.</p>
+c(stored_executions = nrow(executions), scripts = n_scripts, completed_now = n_completed,
+  stopped_with_error_now = n_error, crashed_now = n_crash,
+  same_result_now = n_same_result, same_output_now = n_same_output)</code></pre>
+<pre><code>#&gt;      stored_executions                scripts          completed_now stopped_with_error_now 
+#&gt;                     72                     24                     24                      0 
+#&gt;            crashed_now        same_result_now        same_output_now 
+#&gt;                      0                     24                      0</code></pre>
+<p>Each script ran in the C locale, because the locale changes some printed characters, such as the quotation marks in the significance codes of lmerTest, and with them the bytes of the output. Across the 72 stored executions, run under R 4.3.3 (x86_64-pc-linux-gnu, C locale) with lme4 1.1.35.1, lmerTest 3.1.3 and Matrix 1.6.5, every script printed byte-identical output each time, including its model summaries and warnings. When this page was built, under R 4.6.1 (x86_64-w64-mingw32, C locale) with lme4 2.0.6, lmerTest 3.2.1 and Matrix 1.7.6, all 24 scripts ran to completion and printed the same result line as the stored executions, although none of them printed byte-identical output. The scripts use dplyr, emmeans, lme4, lmerTest and tidyr, so rebuilding the page elsewhere requires those packages. A different operating system or version of a package can change the printed output of a script and could change its results, for instance through a change in how a singular fit is reached. That is why the environment belongs in the record together with the scripts. A rebuild in the same environment checks determinism, whereas a rebuild in another checks reproducibility.</p>
 </div>
 <div id="time-taken" class="section level3">
 <h3>Time Taken</h3>
@@ -632,7 +636,7 @@ Figure 2: Minutes From Request to Final Answer in Each Run. The horizontal axis 
 <p>The discussion considers what executing code contributed and what the researcher contributes, and outlines a workflow that follows from the results before turning to the limits of the experiment.</p>
 <div id="what-executing-code-contributed" class="section level3">
 <h3>What Executing Code Contributed</h3>
-<p>No text in this experiment was repeated, and every executed script gave the same output each time it ran. That second fact follows from executing saved code in a fixed environment. The agreement between runs is a separate matter. On balanced data, the prose replies were as consistent as the scripts, so the consistency came from the model and from how precisely the request specified the analysis. What the executed scripts added was exactness and a record that can be checked. On unbalanced data, where the model has to be fitted numerically, every script returned the exact result, whereas each prose reply returned an approximation. Even where the prose replies were exact, only code could show it. Without recomputing their quantities in R, a correct reply could not be told apart from a confident error.</p>
+<p>No text in this experiment was repeated, and every executed script gave the same output each time the session ran it. That second fact follows from executing saved code in a fixed environment. When this page was built in another environment, every script printed the same result line, but none printed byte-identical output. The agreement between runs is a separate matter. On balanced data, the prose replies were as consistent as the scripts, so the consistency came from the model and from how precisely the request specified the analysis. What the executed scripts added was exactness and a record that can be checked. On unbalanced data, where the model has to be fitted numerically, every script returned the exact result, whereas each prose reply returned an approximation. Even where the prose replies were exact, only code could show it. Without recomputing their quantities in R, a correct reply could not be told apart from a confident error.</p>
 <p>The results also qualify the studies reviewed above. Those found large variation from one request to the next in code generation and in benchmark accuracy (Atıl et al., 2025; Ouyang et al., 2025). Here, on balanced data, the agents converged on the same analysis and the same numbers, and the variation lay in the wording and in secondary choices such as a covariate that could not affect the estimate. On unbalanced data, the scripts still converged, whereas the prose replies did not. Bertran et al. (2026) propose deploying AI analysts against a published specification to reveal how much disagreement comes from underspecified design choices. In this experiment, the open request produced little disagreement to reveal, and the specification mattered mainly because it fixed which interval was computed. The consistency observed belongs to one model on one structured task on one day, and the reproducibility of a study cannot rest on it. A script can be checked, whereas the consistency of a model can only be observed, and it may not survive the next update (Chen et al., 2024).</p>
 </div>
 <div id="why-direct-experience-with-r-and-an-ide-matters" class="section level3">
