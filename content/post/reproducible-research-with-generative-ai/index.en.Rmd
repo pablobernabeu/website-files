@@ -5,7 +5,6 @@ date: '2026-09-29'
 apa_captions: true
 slug: reproducible-research-with-generative-ai
 code_folding: hide
-editable_r: true
 categories:
   - R
   - large language models
@@ -23,8 +22,8 @@ tags:
   - research methods
   - Python
 subtitle: ''
-summary: 'In 48 runs of one analysis request, Claude Code agents never produced the same text twice. The R scripts they wrote printed identical output each time they were executed in one environment, whereas their prose replies matched the scripts only when the data were balanced, and took far longer whenever the analysis was specified. The post discusses what executing code adds to AI-assisted research and why researchers need direct experience with R and an IDE to specify, read and check the code that agents write.'
-abstract: 'This post examines the reproducibility of research conducted with generative AI through an experiment. Forty-eight Claude Code agents received one analysis request about a semantic-priming data set simulated with pilotr. Half answered in prose without running code, and half wrote an R script that was then executed. No two texts were identical. Every script printed identical output when executed repeatedly in one environment, and scripts written to a specified analysis agreed exactly with each other. Prose replies were as consistent as the scripts on balanced data, where the mixed model reduces to a few mean squares, but took far longer when the analysis was specified, and on unbalanced data they gave approximations that none of them could make exact. The discussion draws on research on nondeterminism in language models, many-analysts studies and human interaction with automation. It argues that executed code supplies the exactness and the checkable record of an AI-assisted analysis, whereas its consistency depends on the model and on how precisely the analysis is specified, and that researchers need to be able to specify, read and check the code that agents write.'
+summary: 'In 48 runs of one analysis request, Claude Code agents never produced the same text twice. The R scripts they wrote printed identical output each time they were executed, including in a rebuild of their recorded environment, and the same results under newer versions of R and lme4. Their prose replies matched the scripts only when the data were balanced, and took far longer whenever the analysis was specified. The post discusses what executing code adds to AI-assisted research and why researchers need direct experience with R and an IDE to specify, read and check the code that agents write.'
+abstract: 'This post examines the reproducibility of research conducted with generative AI through an experiment. Forty-eight Claude Code agents received one analysis request about a semantic-priming data set simulated with pilotr. Half answered in prose without running code, and half wrote an R script that was then executed. No two texts were identical, but the scripts in each condition printed one and the same result. Prose replies were as consistent as the scripts on balanced data, where the mixed model reduces to a few mean squares, but took far longer when the analysis was specified, and on unbalanced data they gave approximations that none of them could make exact. Every script printed identical output each time it was executed, including in a rebuild of its recorded environment on another machine. Under newer versions of R and its packages, the scripts printed the same results, and the recorded versions traced the only change, in the formatting of the output, to an update of lme4. The discussion draws on research on nondeterminism in language models, many-analysts studies and human interaction with automation. It argues that executed code supplies the exactness and the checkable record of an AI-assisted analysis, whereas its consistency depends on the model and on how precisely the analysis is specified, and that researchers need to be able to specify, read and check the code that agents write.'
 authors: []
 lastmod: ''
 featured: no
@@ -48,6 +47,29 @@ library(depictr)
 
 experiment <- 'experiment'
 
+# The design and the specification of the experiment, read before the text so
+# that its counts can be computed from them. The title and summary, which
+# cannot run code, name the number of runs, so it is checked here.
+design <- read.csv(file.path(experiment, 'design.csv'))
+spec_file <- jsonlite::fromJSON(file.path(experiment, 'spec.json'))
+runs_per_cell <- unique(as.vector(table(design$data, design$request, design$route)))
+runs_per_cell <- runs_per_cell[runs_per_cell > 0]
+stopifnot(nrow(design) == 48, length(runs_per_cell) == 1,
+          spec_file$response$round == 0)  # the text says the times are whole milliseconds
+
+# Links to the experiment's files point to the last commit that changed them,
+# so that a reader sees the files this page was built from. While they have
+# uncommitted changes, or outside a git repository, the links point to master.
+experiment_ref <- tryCatch({
+  changed <- system2('git', c('status', '--porcelain', '--', experiment), stdout = TRUE)
+  commit <- system2('git', c('log', '-1', '--format=%H', '--', experiment), stdout = TRUE)
+  if (length(changed) == 0 && length(commit) == 1) commit else 'master'
+}, error = function(e) 'master', warning = function(w) 'master')
+experiment_url <- function(path = '', type = 'blob') {
+  sprintf('https://github.com/pablobernabeu/website-files/%s/%s/content/post/reproducible-research-with-generative-ai/experiment/%s',
+          type, experiment_ref, path)
+}
+
 # Counts in the prose follow APA style: words for zero to nine, numerals from
 # 10 and numerals for a count set beside one of 10 or more ('3 of 16').
 count_text <- function(x, compared_with = NULL) {
@@ -65,9 +87,9 @@ interval <- function(lower, upper, digits = 2) sprintf('[%s, %s]', ms(lower, dig
 
 Generative AI now takes part in most stages of research, from reading the literature to writing and analysing. Each of its replies is a sample. A language model builds a reply by drawing one token at a time from a probability distribution, so the same request can return a different reply (Holtzman et al., 2020). The model behind a product name is also updated over time (Chen et al., 2024). Reproducibility, in the sense set out by the National Academies of Sciences, Engineering, and Medicine (2019, p. 46), means obtaining consistent results from the same input data, computational steps, methods, code and conditions of analysis. A reply in a chat window meets few of those conditions. Its computations happen out of view, the settings that shaped it are rarely shown and the next reply to the same request may differ.
 
-Agentic tools work differently. Claude Code reads a project, edits its files and runs commands, whether on the researcher's own computer or in a cloud session (Anthropic, n.d.-b). ChatGPT Work acts across a user's apps and files and turns a goal into finished documents, spreadsheets and web apps (OpenAI, 2026). When such a tool writes an R or Python script, the variability of the model enters while the script is being written. Once the script is saved, the analysis is as deterministic as any other code. It can be read, tested, kept under version control and executed again.
+Agentic tools work differently. Claude Code, which runs on the researcher's own computer or in a cloud session, reads a project, edits its files and runs commands (Anthropic, n.d.-b). ChatGPT Work acts across a user's apps and files and turns a goal into finished documents, spreadsheets and web apps (OpenAI, 2026). When such a tool writes an R or Python script, the variability of the model enters while the script is being written. Once the script is saved, the analysis is as deterministic as any other code. It can be read, tested, kept under version control and executed again.
 
-This post examines that division of labour with an experiment that I ran from a Claude Code session. The session gave one analysis request, about a simulated semantic-priming data set, to 48 Claude Code agents. Half of them answered in prose, as a chat assistant without a code interpreter would, and half wrote an R script that was then executed. The data come from my [pilotr](/2026/pilotr-pilot-the-study-before-running-it/) package (Bernabeu, 2026b), which simulates data in R and in Python from a portable design specification. The results bear on two questions: what executing code adds to an AI-assisted analysis, and what the researcher needs to know of R and of an integrated development environment (IDE) to make use of it.
+This post examines that division of labour with an experiment that I ran from a Claude Code session. The session gave one analysis request, about a simulated semantic-priming data set, to `r count_text(nrow(design))` Claude Code agents. Half of them answered in prose, as a chat assistant without a code interpreter would, and half wrote an R script that was then executed. The data come from my [pilotr](/2026/pilotr-pilot-the-study-before-running-it/) package (Bernabeu, 2026b), which simulates data in R and in Python from a portable design specification. The results bear on two questions: what executing code adds to an AI-assisted analysis, and what the researcher needs to know of R and of an integrated development environment (IDE) to make use of it.
 
 ## Development
 
@@ -81,15 +103,15 @@ Sampling is one source of variation among several. Chen et al. (2024) compared t
 
 ### Moving the Computation Into Code
 
-The practices of reproducible computational research ask that every result be traceable to the steps that produced it and that manual data manipulation be avoided. They also ask that scripts be kept under version control, that the versions of external programs be archived and that random seeds be recorded (Sandve et al., 2013; see also Peng, 2011; Wilson et al., 2017). A script written by an agent into a project under version control is such a record. The variability of the model does not disappear, since a second request would yield a different script, but it is confined to the writing of the script, where the researcher can inspect it. The software environment still has to be kept. When Trisovic et al. (2022) re-executed R files deposited with published research data, 75% of the files that finished within the time limit stopped with an error, and 60% still did after automatic code cleaning. A lockfile from renv (Ushey & Wickham, 2026) and a record of the R session reduce that risk.
+The practices of reproducible computational research ask that every result be traceable to the steps that produced it and that manual data manipulation be avoided. They also ask that scripts be kept under version control, that the versions of external programs be archived and that random seeds be recorded (Sandve et al., 2013; see also Peng, 2011; Wilson et al., 2017). A script written by an agent into a project under version control is such a record. The variability of the model does not disappear, since a second request would yield a different script, but it is confined to the writing of the script, where the researcher can inspect it. The software environment still has to be kept. Trisovic et al. (2022) re-executed R files deposited with published research data, allowing each a fixed time. Of the files that finished within it, 75% stopped with an error, and 60% still did after automatic code cleaning. A lockfile from renv (Ushey & Wickham, 2026) and a record of the R session reduce that risk, and they show what has changed when a script behaves differently elsewhere.
 
-The data set used in the experiment illustrates the same principle on a small scale. pilotr stores a design as a portable specification and draws its random numbers from its own generator. When the responses are rounded, as they are here, the same specification and seed therefore produce identical data in R and in Python (Bernabeu, 2026b). The specification describes 30 participants who each respond to 24 words, once after a related prime and once after an unrelated one. Reaction times follow a shifted lognormal distribution, with by-participant and by-item random intercepts and priming slopes and a word-frequency covariate.
+The data set used in the experiment illustrates the same principle on a small scale. pilotr stores a design as a portable specification and draws its random numbers from its own generator. Because this specification also rounds the reaction times to whole milliseconds, the same specification and seed produce identical data in R and in Python (Bernabeu, 2026b). The specification describes `r spec_file$units$subject$n` participants who each respond to `r spec_file$units$item$n` words, once after a related prime and once after an unrelated one. Reaction times follow a shifted lognormal distribution, with by-participant and by-item random intercepts and priming slopes and a word-frequency covariate.
 
 ```{r}
 cat(readLines(file.path(experiment, 'spec.json')), sep = '\n')
 ```
 
-The code below regenerates the data from the specification in R and writes them in the format the agents received. It then compares the checksum of the regenerated data with that of the file the agents analysed and with the checksum recorded when the same data were generated by [the Python implementation](https://github.com/pablobernabeu/website-files/blob/master/content/post/reproducible-research-with-generative-ai/experiment/make_data.py).
+The code below regenerates the data from the specification in R and writes them in the format the agents received. It then compares the checksum of the regenerated data with that of the file the agents analysed and with the checksum recorded when the same data were generated by [the Python implementation](`r experiment_url('make_data.py')`).
 
 ```{r}
 library(pilotr)
@@ -114,10 +136,11 @@ checksums <- c(
   `given to the agents` = digest::digest(file = file.path(experiment, 'data.csv'), algo = 'sha256'),
   `recorded from Python` = readLines(file.path(experiment, 'python_sha256.txt'))[2]
 )
+stopifnot(n_distinct(checksums) == 1)
 checksums
 ```
 
-The three checksums are `r if (length(unique(checksums)) == 1) 'identical' else 'not identical'`, so the data set can be rebuilt byte for byte in either language from a few lines of JavaScript Object Notation (JSON). Because the data are simulated, the population they come from is also known. For a shifted lognormal response, the mean reaction time in each condition follows from the parameters of the specification, which gives the size of the priming effect in the population. The same parameters determine how much the effect varies from one participant, or one word, to the next, which the code below estimates by drawing a million participants and a million words.
+The `r count_text(length(checksums))` checksums are identical, so the data set can be rebuilt byte for byte in either language from a few lines of JavaScript Object Notation (JSON). Because the data are simulated, the population they come from is also known. For a shifted lognormal response, the mean reaction time in each condition follows from the parameters of the specification, which gives the size of the priming effect in the population. The same parameters determine how much the effect varies from one participant, or one word, to the next, which the code below estimates by drawing a million participants and a million words.
 
 ```{r}
 fixed <- spec$fixed; random <- spec$random; frequency <- spec$predictors[[1]]
@@ -155,6 +178,7 @@ set.seed(2026)
 effect_sds <- c(participants = effect_sd(random$subject, random$item),
                 words = effect_sd(random$item, random$subject))
 sample_effect <- with(regenerated, mean(rt[prime == 'unrelated']) - mean(rt[prime == 'related']))
+stopifnot(effect_sds[['participants']] > effect_sds[['words']])  # as the text below says
 
 c(population_effect = population_effect, sample_effect = sample_effect,
   sd_across_participants = effect_sds[['participants']], sd_across_words = effect_sds[['words']])
@@ -165,7 +189,6 @@ In the population, responses after unrelated primes are `r ms(population_effect,
 ### Forty-Eight Runs of One Request
 
 ```{r}
-design <- read.csv(file.path(experiment, 'design.csv'))
 results <- read.csv(file.path(experiment, 'results.csv'), encoding = 'UTF-8')
 executions <- read.csv(file.path(experiment, 'executions.csv'))
 
@@ -176,8 +199,11 @@ results$started <- as.POSIXct(vapply(logs, `[[`, character(1), 'started'),
 results$starting_directory <- vapply(logs, `[[`, character(1), 'starting_directory')
 
 started <- as.Date(min(results$started))
-runs_per_cell <- unique(as.vector(table(design$data, design$request, design$route)))
-runs_per_cell <- runs_per_cell[runs_per_cell > 0]
+# Runs launched together started within a second of each other, and the
+# batches were minutes apart
+launch_batch <- cumsum(c(TRUE, diff(sort(as.numeric(results$started))) > 10))
+batch_size <- unique(as.vector(table(launch_batch)))
+stopifnot(length(batch_size) == 1, n_distinct(as.Date(results$started)) == 1)
 main_runs <- results$data == 'balanced'
 followup_after_main <- min(results$started[!main_runs]) > max(results$started[main_runs])
 in_experiment_folder <- sum(grepl('/experiment$', results$starting_directory))
@@ -186,7 +212,7 @@ script_runs <- results$route == 'script'
 
 Every run received the same description of the data and the same question: 'How large is the priming effect, that is, how much slower are responses after unrelated primes than after related primes? Give the estimate in milliseconds with a 95% confidence interval.' The runs differed in three respects. The request was either open, leaving the analysis to the agent, or specified, naming the model, the coding of the predictor and the function that computes the interval. The route was either prose or a script. In the prose route, the agent could read the data file but was told to run no code and to answer in its reply, as it would in a chat without a code interpreter. In the script route, the agent wrote an R script and could run it to check its work. Every run had to end with a line in a fixed format giving the estimate and the interval, so that the answers could be compared by code. Most runs analysed the balanced data set described above. A follow-up gave the specified request with an unbalanced version of the data, described in the Results, together with one added sentence saying that incorrect responses had been removed.
 
-The prompts, like everything else in the experiment, are [stored with this post](https://github.com/pablobernabeu/website-files/tree/master/content/post/reproducible-research-with-generative-ai/experiment). The specified request, as one of the script runs received it, reads as follows. The open request lacks the paragraph that begins 'Analyse the data as follows'.
+The prompts, like everything else in the experiment, are [stored with this post](`r experiment_url(type = 'tree')`). The specified request, as one of the script runs received it, reads as follows. The open request lacks the paragraph that begins 'Analyse the data as follows'.
 
 ```{r}
 example_run <- design$run_id[design$route == 'script' & design$request == 'specified' &
@@ -195,11 +221,11 @@ cat(strwrap(readLines(file.path(experiment, 'runs', example_run, 'prompt.txt')),
     sep = '\n')
 ```
 
-The design has `r count_text(runs_per_cell)` runs in each combination of condition and route, `r count_text(nrow(design))` in total, all run on `r sprintf('%d %s %s', as.integer(format(started, '%d')), month.name[as.integer(format(started, '%m'))], format(started, '%Y'))` with Claude Code `r readLines(file.path(experiment, 'claude_code_version.txt'))`. The `r count_text(sum(main_runs))` runs on the balanced data were launched eight at a time, in a random order across conditions. I designed the follow-up with unbalanced data after seeing the first results, and its `r count_text(sum(!main_runs))` runs were launched `r if (followup_after_main) 'afterwards' else 'alongside them'`, also in a random order. Each run was a separate agent, started by the session in the background with the session's model and reasoning settings, and given its own directory holding only the data file. The logs of their tool calls show that every prose run used no tool other than reading its data file. Of the `r count_text(sum(script_runs))` script runs, `r count_text(sum(results$compliant[script_runs]), sum(script_runs))` touched no file outside their own directory. The other `r count_text(sum(!results$compliant[script_runs]))` wrote exploratory R files to the session's scratch folder, which Claude Code designates for temporary files, under shared names such as explore.R. Each wrote and ran such a file within a single command and read only its own data, so none of them appears to have run another's code, although they were not fully isolated. The first `r count_text(in_experiment_folder)` agents also started in the experiment's own folder, which holds the specification, and their logs show no access to it. The session then executed each final script `r count_text(max(executions$execution))` times, each time in a fresh R process and a fresh copy of its directory, and this page executes every script once more when it is built.
+The design has `r count_text(runs_per_cell)` runs in each combination of condition and route, `r count_text(nrow(design))` in total, all run on `r sprintf('%d %s %s', as.integer(format(started, '%d')), month.name[as.integer(format(started, '%m'))], format(started, '%Y'))` with Claude Code `r readLines(file.path(experiment, 'claude_code_version.txt'))`. The `r count_text(sum(main_runs))` runs on the balanced data were launched `r count_text(batch_size)` at a time, in a random order across conditions. I designed the follow-up with unbalanced data after seeing the first results, and its `r count_text(sum(!main_runs))` runs were launched `r if (followup_after_main) 'afterwards' else 'alongside them'`, also in a random order. Each run was a separate agent, started by the session in the background with the session's model and reasoning settings, and given its own directory holding only the data file. The logs of their tool calls show that every prose run used no tool other than reading its data file. Of the `r count_text(sum(script_runs))` script runs, `r count_text(sum(results$compliant[script_runs]), sum(script_runs))` touched no file outside their own directory. The other `r count_text(sum(!results$compliant[script_runs]))` wrote exploratory R files to the session's scratch folder, which Claude Code designates for temporary files, under shared names such as explore.R. They were therefore not fully isolated, but each wrote and ran such a file within a single command and read only its own data, so none of them appears to have run another's code. The first `r count_text(in_experiment_folder)` agents also started in the experiment's own folder, which holds the specification, and their logs show no access to it. The session then executed each final script `r count_text(max(executions$execution))` times, each time in a fresh R process and a fresh copy of its directory, and recorded the versions of R, lme4, lmerTest and Matrix under which it did so. The Results also report executions of the same scripts in a rebuild of that environment and in newer ones.
 
 ## Results
 
-The results cover the agreement between runs, the accuracy of the prose replies, the follow-up with unbalanced data, the re-execution of the scripts and the time each route took.
+The results cover the agreement between runs, the accuracy of the prose replies, the follow-up with unbalanced data, the time each route took and the execution of the scripts in their recorded environment and in newer ones.
 
 ### Agreement Between Runs
 
@@ -234,8 +260,8 @@ runs$result_text <- vapply(runs$result_line, function(line) {
   sprintf('%s [%s, %s]', minus(n[1]), minus(n[2]), minus(n[3]))
 }, character(1))
 
-# The 720 paired differences (unrelated minus related) in the balanced data,
-# and each participant's and each word's mean difference
+# The paired differences (unrelated minus related) in the balanced data, and
+# each participant's and each word's mean difference
 balanced <- read.csv(file.path(experiment, 'data.csv'))
 paired <- reshape(balanced[, c('participant', 'item', 'prime', 'rt')],
                   idvar = c('participant', 'item'), timevar = 'prime', direction = 'wide')
@@ -301,7 +327,18 @@ choices <- read.csv(file.path(experiment, 'choices_open_scripts.csv'))
 stopifnot(setequal(choices$run_id, runs$run_id[runs$condition == condition_levels[1] &
                                                   runs$route == 'script']),
           n_distinct(choices$final_random_effects) == 1,
-          n_distinct(choices$interval_method) == 1)
+          n_distinct(choices$interval_method) == 1,
+          # as the text and Figure 1 describe them: no by-participant slope,
+          # Satterthwaite intervals, untransformed times and every trial kept
+          unique(choices$final_random_effects) == '(1 | participant) + (1 + prime | item)',
+          unique(choices$interval_method) == 'Satterthwaite t',
+          all(choices$transformation == 'none'), all(choices$exclusions == 'none'))
+
+# The packages the agents' scripts load, named in the text
+script_texts <- runs$text[runs$route == 'script']
+packages_loaded <- sort(unique(unlist(regmatches(script_texts,
+  gregexpr('(?<=library\\()[A-Za-z0-9.]+(?=\\))|[A-Za-z][A-Za-z0-9.]*(?=::)', script_texts, perl = TRUE)))))
+packages_loaded <- setdiff(packages_loaded, c('base', 'stats', 'utils', 'methods'))
 
 script_lines <- vapply(runs$text[runs$route == 'script'],
                        function(text) length(strsplit(text, '\n')[[1]]), integer(1))
@@ -327,18 +364,38 @@ paired_ci <- t.test(participant_means)$conf.int
 open_runs <- runs |> filter(condition == condition_levels[1])
 noted_paired <- sum(mentions(paired_ci[1], open_runs$reply) & mentions(paired_ci[2], open_runs$reply))
 
+# The contrasts the text draws: the effect varies less across participants than
+# across words in the sample, the by-participant interval excludes zero while
+# the mixed models' intervals include it until trials are removed, and the
+# open request took the scripts longer than the specified one
+stopifnot(sd(participant_means) < sd(word_means), paired_ci[1] > 0,
+          open_script$lower < 0, specified_script$lower < 0, unbalanced_script$lower > 0,
+          minutes_of(condition_levels[1], 'script') > minutes_of(condition_levels[2], 'script'))
+
+# The captions of the figures, from the same data
+cap_estimates <- sprintf(paste(
+  'Estimates and 95%% Confidence Intervals Reported by the %d Runs. Each row is one run, with its',
+  'estimate as a point and its interval as a line. The solid vertical line marks zero and the dashed line the',
+  'priming effect in the simulated population, %s ms. Under the open request, the intervals use Satterthwaite',
+  'degrees of freedom in a model without by-participant slopes, and under the specified analysis, they are Wald',
+  'intervals of the maximal model.'), nrow(runs), ms(population_effect, 1))
+cap_minutes <- sprintf(paste(
+  'Minutes From Request to Final Reply in Each of the %d Runs. Each point is one run, spread vertically',
+  'within its condition so that runs with similar times stay visible.'), nrow(runs))
+
 # Alternative text for the figures, from the same data
 alt_estimates <- sprintf(paste(
   'Three panels of horizontal intervals, one row per run, for balanced data with an open request,',
   'balanced data with a specified analysis and unbalanced data with a specified analysis. Within each',
-  'panel, eight rows show executed scripts and eight show prose replies. A dashed vertical line marks',
+  'panel, %s rows show executed scripts and %s show prose replies. A dashed vertical line marks',
   'the population effect of %.1f ms. On balanced data every row in a panel shows the same interval,',
   'whereas on unbalanced data the prose intervals differ slightly from the scripts and mostly from',
-  'each other'), population_effect)
+  'each other'), count_text(runs_per_cell), count_text(runs_per_cell), population_effect)
 range_of <- function(rte) range(runs$minutes[runs$route == rte])
 alt_minutes <- sprintf(paste(
   'Dot plot of the minutes each run took, on a logarithmic axis, for the three conditions, with prose',
-  'replies and executed scripts in different colours and shapes. Prose replies took between %.0f and',
+  'replies and executed scripts in different colours and shapes, and the two clusters of the balanced',
+  'data with a specified analysis labelled. Prose replies took between %.0f and',
   '%.0f minutes and scripts between %.1f and %.0f minutes'),
   range_of('prose')[1], range_of('prose')[2], range_of('script')[1], range_of('script')[2])
 ```
@@ -356,13 +413,26 @@ knitr::kable(
   align = c('l', 'l', 'r', 'r', 'r', 'l', 'r'))
 ```
 
-All `r count_text(nrow(runs))` texts were different, which is to be expected of long generated texts, but the results agreed far more closely. On the balanced data, the eight runs of each route in each condition reported one and the same result, and the prose replies agreed with the executed scripts to the precision in which they were written. On the unbalanced data, the eight scripts again printed a single result, whereas the prose replies gave `r count_text(n_distinct(unbalanced_prose$result_line))` different results, none of which matched the scripts. Figure 1, drawn with the theme and colours of my [depictr](/2026/depictr-one-visual-language-from-first-look-to-final-figure/) package (Bernabeu, 2026a), shows the same results run by run.
+All `r count_text(nrow(runs))` texts were different, which is to be expected of long generated texts, but the results agreed far more closely. On the balanced data, the `r count_text(runs_per_cell)` runs of each route in each condition reported one and the same result, and the prose replies agreed with the executed scripts to the precision in which they were written. On the unbalanced data, the `r count_text(runs_per_cell)` scripts again printed a single result, but the prose replies gave `r count_text(n_distinct(unbalanced_prose$result_line))` different results, none of which matched the scripts. Figure 1, drawn with the theme and colours of my [depictr](/2026/depictr-one-visual-language-from-first-look-to-final-figure/) package (Bernabeu, 2026a), shows the same results run by run.
 
-```{r estimates, fig.width = 8, fig.height = 7.6, fig.cap = 'The Estimate and 95% Interval Reported by Each of the 48 Runs. Each row is one run. The dashed line marks the priming effect in the simulated population.', fig.alt = alt_estimates}
+```{r estimates, fig.width = 8, fig.height = 7.6, fig.cap = cap_estimates, fig.alt = alt_estimates}
 # The first and fourth colours of the depictr palette. Its second colour, an
 # orange, has a contrast of 2.2:1 with the white background, below the 3:1 that
 # WCAG asks of graphical marks, whereas this vermilion clears it.
 route_colours <- setNames(depictr_palette(4)[c(1, 4)], route_levels)
+
+# Both figures share one legend: titled like the column of Table 1, listing the
+# routes in the order of the rows of Figure 1 and aligned with the plot, with
+# no frame and a key wide enough to show an interval around its estimate
+route_scales <- list(
+  scale_colour_manual(values = route_colours, breaks = rev(route_levels), name = 'Route'),
+  scale_shape_manual(values = setNames(c(21, 15), route_levels), breaks = rev(route_levels),
+                     name = 'Route'))
+route_legend <- theme(legend.position = 'top', legend.justification = 'left',
+                      legend.location = 'plot', legend.background = element_blank(),
+                      legend.title = element_text(face = 'bold', size = rel(0.95)),
+                      legend.text = element_text(size = rel(0.95), margin = margin(r = 14)),
+                      legend.key.width = unit(2.2, 'lines'), legend.margin = margin(0, 0, 4, 0))
 
 plot_runs <- runs |>
   arrange(condition, route_label, order) |>
@@ -382,23 +452,23 @@ ggplot(plot_runs, aes(y = row, colour = route_label, shape = route_label)) +
   geom_text(aes(x = x, y = y, label = label), data = population_label, inherit.aes = FALSE,
             hjust = -0.04, vjust = 0.4, size = 3.6, colour = 'grey25') +
   facet_wrap(~ condition, ncol = 1) +
-  scale_colour_manual(values = route_colours, name = NULL) +
-  scale_shape_manual(values = c(21, 15), name = NULL) +
-  scale_y_reverse(breaks = c(4.5, 13.5), labels = c('Scripts', 'Replies'),
+  route_scales +
+  scale_y_reverse(breaks = c(4.5, 13.5), labels = c('Executed\nscripts', 'Prose\nreplies'),
                   expand = expansion(add = c(0.8, 1.2))) +
   labs(x = 'Priming effect (ms), with 95% interval', y = NULL) +
   theme_depictr(base_size = 13, grid = 'x') +
-  theme(legend.position = 'top', strip.text = element_text(hjust = 0, face = 'bold'),
+  route_legend +
+  theme(strip.text = element_text(hjust = 0, face = 'bold'),
         axis.text.y = element_text(size = rel(0.95)))
 ```
 
-The open request left every analytic decision to the agents, and the eight scripts converged on one analysis. Each fitted a linear mixed-effects model to the untransformed reaction times, with crossed random effects for participants and words. Each found that the maximal model was singular, because in this sample the priming effect appeared to vary little across participants, so that the estimated by-participant slope was perfectly correlated with the intercept, and dropped that slope. All eight then computed the interval from a *t* distribution with Satterthwaite degrees of freedom. `r stringr::str_to_sentence(count_text(sum(choices$frequency_covariate)))` of them also included word frequency as a covariate, which cannot change the estimate in a balanced design, since every word appears in both conditions. The prose replies reached the same interval by another path. They decomposed the 720 paired differences into participant, item and residual components, and in a balanced design that decomposition gives the same standard error as the reduced model. Some of these replies equated their decomposition with the maximal model, although the scripts' fit of that model gives a slightly wider interval. With the specified request, both routes returned the Wald interval of the maximal model.
+The open request left every analytic decision to the agents, and the `r count_text(nrow(choices))` scripts converged on one analysis. Each fitted a linear mixed-effects model to the untransformed reaction times, with crossed random effects for participants and words. Each found that the maximal model was singular, because in this sample the priming effect appeared to vary little across participants, so that the estimated by-participant slope was perfectly correlated with the intercept, and dropped that slope. All `r count_text(nrow(choices))` then computed the interval from a *t* distribution with Satterthwaite degrees of freedom. `r stringr::str_to_sentence(count_text(sum(choices$frequency_covariate)))` of them also included word frequency as a covariate, which cannot change the estimate in a balanced design, since every word appears in both conditions. The prose replies reached the same interval by another path. They decomposed the `r count_text(nrow(paired))` paired differences into participant, item and residual components, and in a balanced design that decomposition gives the same standard error as the reduced model. Some of these replies equated their decomposition with the maximal model, although the scripts' fit of that model gives a slightly wider interval. With the specified request, both routes returned the Wald interval of the maximal model.
 
 The simplification the agents chose is the parsimonious strategy that Matuschek et al. (2017) defend on the grounds of power, and it sits uneasily with the maximal structure that Barr et al. (2013) recommend. Here the population is known, and it shows what the choice rested on. In this sample, the effect appeared to vary little across participants and a great deal across words, whereas in the population it varies more across participants than across words. The agents followed the sample, as any analyst of real data would have to.
 
-Of the `r count_text(nrow(open_runs))` agents given the open request, `r count_text(noted_paired, nrow(open_runs))` mentioned in their replies the narrower interval of a by-participant analysis. A paired *t* test over the participants' mean differences gives an interval of `r interval(paired_ci[1], paired_ci[2])` ms, which excludes zero, whereas the same test over the words' mean differences reproduces the interval of the open-request scripts, `r do.call(interval, as.list(t.test(word_means)$conf.int))` ms. The agents set the by-participant analysis aside because it ignores how the effect varies across words, which overstates the evidence for generalising beyond the words sampled. In this simulation the effect is real, so the by-participant test reached the right conclusion by an analysis too liberal for the purpose, and the mixed models, whose intervals include zero, missed it. The data set was small, and the conclusion sat on a boundary that the choice of analysis could move.
+Of the `r count_text(nrow(open_runs))` agents given the open request, `r count_text(noted_paired, nrow(open_runs))` mentioned in their replies the narrower interval of a by-participant analysis. A paired *t* test over the participants' mean differences gives an interval of `r interval(paired_ci[1], paired_ci[2])` ms, which excludes zero. The same test over the words' mean differences reproduces the interval of the open-request scripts, `r do.call(interval, as.list(t.test(word_means)$conf.int))` ms. The agents set the by-participant analysis aside because it ignores how the effect varies across words, which overstates the evidence for generalising beyond the words sampled. In this simulation the effect is real, so the by-participant test reached the right conclusion by an analysis too liberal for the purpose, and the mixed models, whose intervals include zero, missed it. The data set was small, and the conclusion sat on a boundary that the choice of analysis could move.
 
-The agents need not have agreed so closely with one another. When 29 teams analysed one data set to answer one question, their odds ratios ranged from 0.89 to 2.93, and 20 of the 29 teams found a statistically significant effect (Silberzahn et al., 2018). When 70 teams tested the same hypotheses on one neuroimaging data set, no two of them chose the same workflow (Botvinik-Nezer et al., 2020). Coding agents can show the same diversity. Autonomous AI analysts given one data set and one hypothesis reached divergent verdicts in three domains, and their conclusions shifted with the model and the prompt (Bertran et al., 2026). Alizadeh et al. (2026) ran Claude Code and Codex 20 times each on a many-analysts study of immigration and social policy. The agents varied their model specifications at least as much as the human teams had, and their estimates stayed broadly in line with the human consensus. The authors located the agents' vulnerability in the interpretation of estimates, and less in the estimates themselves. The task in this post was far simpler, with two conditions, a balanced design and one obvious family of models, and one model in one session made the same choices eight times out of eight. A different model, version or wording could choose differently, and the interval would move with the choice.
+The agents need not have agreed so closely with one another. When 29 teams analysed one data set to answer one question, their odds ratios ranged from 0.89 to 2.93, and 20 of the 29 teams found a statistically significant effect (Silberzahn et al., 2018). When 70 teams tested the same hypotheses on one neuroimaging data set, no two of them chose the same workflow (Botvinik-Nezer et al., 2020). Coding agents can show the same diversity. Autonomous AI analysts given one data set and one hypothesis reached divergent verdicts in three domains, and their conclusions shifted with the model and the prompt (Bertran et al., 2026). Alizadeh et al. (2026) ran Claude Code and Codex 20 times each on a many-analysts study of immigration and social policy. The agents varied their model specifications at least as much as the human teams had, and their estimates stayed broadly in line with the human consensus. The authors located the agents' vulnerability in the interpretation of estimates, and less in the estimates themselves. The task in this post was far simpler, with two conditions, a balanced design and one obvious family of models, and one model in one session made the same choices `r count_text(nrow(choices))` times out of `r count_text(nrow(choices))`. A different model, version or wording could choose differently, and the interval would move with the choice.
 
 ### Checking the Hand Calculations
 
@@ -415,7 +485,7 @@ specified_fit <- lmer(rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c 
 comma <- function(x) format(round(x), big.mark = ',', trim = TRUE)
 quantities <- tibble::tribble(
   ~quantity, ~value,
-  'Sum of the 720 paired differences (ms)', comma(sum(paired$difference)),
+  sprintf('Sum of the %s paired differences (ms)', comma(nrow(paired))), comma(sum(paired$difference)),
   'Mean square of the differences, participants', comma(decomposition['participant', 'Mean Sq']),
   'Mean square of the differences, items', comma(decomposition['item', 'Mean Sq']),
   'Mean square of the differences, residual', comma(decomposition['Residuals', 'Mean Sq']),
@@ -448,72 +518,230 @@ knitr::kable(
 
 ```{r, include = FALSE}
 basics <- quantities[1:3, ]
-of_eight <- function(k) if (k == 8) 'all eight' else if (k == 0) 'none' else count_text(k)
+# How many of a request's replies state a value, in words
+of_all <- function(k, n = runs_per_cell) {
+  if (k == n) sprintf('all %s', count_text(n)) else if (k == 0) 'none' else count_text(k)
+}
 positive_one <- grepl('\\+ ?1(\\.00)?\\b|\\(\\+1\\)|perfectly correlated|r = \\+?1', specified_replies, perl = TRUE)
 boundary <- positive_one | grepl('\u00b1 ?1\\b', specified_replies, perl = TRUE)
 slope_nine <- grepl('8\\.9|about 9 ms|SD about 9|\u2248 ?9', specified_replies, perl = TRUE)
 stopifnot(all(boundary & slope_nine), sum(!positive_one) == 1)
 ```
 
-The sum of the differences and the mean squares for participants and items appear in at least `r count_text(min(c(basics$open, basics$specified)))` of the eight replies to each request, since the replies built their answers on them. As each request would lead one to expect, the paired interval appears in `r of_eight(quantities$open[7])` of the replies to the open request and in `r of_eight(quantities$specified[7])` of those to the specified one. The standard error of the specified model appears in `r of_eight(quantities$specified[6])` of the replies to the specified request and in `r of_eight(quantities$open[6])` of those to the open one. The balance of the design is what made this arithmetic tractable. With every participant seeing every word in both conditions, the restricted maximum likelihood (REML) fit of the model reduces to a few mean squares of the paired differences and of their sums. Every reply to the specified request worked from those quantities to the key features of the fit that lme4 reports (Bates et al., 2015). Each gave a by-participant slope with a standard deviation of about 9 ms and a correlation between the by-participant intercepts and slopes at the boundary, stated as +1 in `r count_text(sum(positive_one))` replies and as ±1 in the other. The cost of that route shows in Figure 2 below.
+The sum of the differences and the mean squares for participants and items appear in at least `r count_text(min(c(basics$open, basics$specified)))` of the `r count_text(runs_per_cell)` replies to each request, since the replies built their answers on them. As each request would lead one to expect, the paired interval appears in `r of_all(quantities$open[7])` of the replies to the open request and in `r of_all(quantities$specified[7])` of those to the specified one. The standard error of the specified model appears in `r of_all(quantities$specified[6])` of the replies to the specified request and in `r of_all(quantities$open[6])` of those to the open one. The balance of the design made this arithmetic tractable. With every participant seeing every word in both conditions, the restricted maximum likelihood (REML) fit of the model reduces to a few mean squares of the paired differences and of their sums. Every reply to the specified request worked from those quantities to the key features of the fit that lme4 reports (Bates et al., 2015). Each gave a by-participant slope with a standard deviation of about 9 ms and a correlation between the by-participant intercepts and slopes at the boundary, stated as +1 in `r count_text(sum(positive_one))` replies and as ±1 in the other. Figure 2, in the section after next, shows the cost of that route.
 
 ### When the Design Is Unbalanced
 
-The follow-up removed `r count_text(nrow(balanced) - nrow(unbalanced))` of the `r count_text(nrow(balanced))` trials at random, as if they had been errors, which leaves some participant-word pairs with one condition or none. Without balance, the estimate of the mixed model no longer equals the difference between the condition means, which is `r ms(unbalanced_raw_difference)` ms, and the REML fit has to be found numerically. The eight scripts printed the same result, an estimate of `r ms(unbalanced_script$estimate)` ms with an interval of `r interval(unbalanced_script$lower, unbalanced_script$upper)` ms. Removing these trials moved the lower bound of the specified model's interval from `r ms(specified_script$lower)` to `r ms(unbalanced_script$lower)` ms, and with it the conclusion.
+The follow-up removed `r count_text(nrow(balanced) - nrow(unbalanced))` of the `r count_text(nrow(balanced))` trials at random, as if they had been errors, which leaves some participant-word pairs with one condition or none. Without balance, the estimate of the mixed model no longer equals the difference between the condition means, which is `r ms(unbalanced_raw_difference)` ms, and the REML fit has to be found numerically. The `r count_text(runs_per_cell)` scripts printed the same result, an estimate of `r ms(unbalanced_script$estimate)` ms with an interval of `r interval(unbalanced_script$lower, unbalanced_script$upper)` ms. Removing these trials moved the lower bound of the specified model's interval from `r ms(specified_script$lower)` to `r ms(unbalanced_script$lower)` ms, and with it the conclusion.
 
 The prose replies approximated the model with weighted averages of the per-word effects and estimates of the variance components from the observed mean squares. Table 3 sets their results beside the executed one.
 
 ```{r}
 knitr::kable(
   bind_rows(
-    unbalanced_script |> transmute(Source = 'Executed scripts (all eight)', result_text),
+    unbalanced_script |> transmute(Source = sprintf('Executed scripts (all %s)', count_text(runs_per_cell)),
+                                   result_text),
     unbalanced_prose |> transmute(Source = sprintf('Prose reply %d', row_number()), result_text)
   ) |> rename(`Estimate [95% interval] (ms)` = result_text),
   caption = 'Results for the Unbalanced Data, as Each Run Wrote Them.', align = c('l', 'r'))
 ```
 
-Their estimates ranged from `r ms(min(unbalanced_prose$estimate), 1)` to `r ms(max(unbalanced_prose$estimate), 1)` ms, and no reply reproduced the executed result. At the precision each reply used, `r count_text(sum(unbalanced_signs[, 1] > 0))` of the `r count_text(nrow(unbalanced_prose))` estimates and all `r count_text(nrow(unbalanced_prose))` lower bounds lay above the executed values, whereas the upper bounds fell on either side of the executed one or matched it. The largest discrepancy in any of the three numbers was `r ms(max(deviation), 2)` ms. Every reply said that its numbers were approximations and stated how far off they might be, and the discrepancies fell within those margins. The replies were therefore well calibrated. Their margins were still wide for this analysis, since the executed lower bound lies only `r ms(unbalanced_script$lower, 2)` ms above zero, and the largest discrepancy amounts to `r sprintf('%.0f%%', 100 * max(deviation) / unbalanced_script$lower)` of that distance. Only an executed model could show which side of zero the exact interval fell on.
+Their estimates ranged from `r ms(min(unbalanced_prose$estimate), 1)` to `r ms(max(unbalanced_prose$estimate), 1)` ms, and no reply reproduced the executed result. At the precision each reply used, `r count_text(sum(unbalanced_signs[, 1] > 0))` of the `r count_text(nrow(unbalanced_prose))` estimates and all `r count_text(nrow(unbalanced_prose))` lower bounds lay above the executed values, and the upper bounds fell on either side of the executed one or matched it. The largest discrepancy in any of the three numbers was `r ms(max(deviation), 2)` ms. Every reply said that its numbers were approximations and stated how far off they might be, and the discrepancies fell within those margins. The replies were therefore well calibrated. Their margins were still wide for this analysis, since the executed lower bound lies only `r ms(unbalanced_script$lower, 2)` ms above zero, and the largest discrepancy amounts to `r sprintf('%.0f%%', 100 * max(deviation) / unbalanced_script$lower)` of that distance. Only an executed model could show which side of zero the exact interval fell on.
+
+### Time Taken
+
+Figure 2 shows how long each run took, from the request to the final reply. With the specified request, a script took a median of `r sprintf('%.1f', minutes_of(condition_levels[2], 'script'))` minutes, and a prose reply took `r sprintf('%.1f', minutes_of(condition_levels[2], 'prose'))` minutes on the balanced data and `r sprintf('%.1f', minutes_of(condition_levels[3], 'prose'))` on the unbalanced data. The difference is the work of computing by hand what R computes in a fraction of a second, and it is far more deliberation than a reply in a chat window usually receives. The open request took the scripts longer than the specified one, because the agents compared several random-effects structures and ran checks of their own. The runs shared one service and overlapped in time, and the follow-up ran later than the main runs, so the durations include some waiting and are best read as orders of magnitude.
+
+```{r minutes, fig.width = 8, fig.height = 3.6, fig.cap = cap_minutes, fig.alt = alt_minutes}
+# In the specified conditions the two routes form separate clusters, which are
+# labelled above those of the balanced data, at the geometric mean of each
+cluster_labels <- runs |>
+  filter(condition == condition_levels[2]) |>
+  group_by(route_label) |>
+  summarise(minutes = exp(mean(log(minutes))), .groups = 'drop') |>
+  mutate(label = ifelse(route_label == route_levels[1], 'Prose replies', 'Executed scripts'),
+         condition = factor(condition_levels[2], levels = condition_levels))
+
+ggplot(runs, aes(minutes, condition, colour = route_label, shape = route_label)) +
+  geom_point(size = 2.2, fill = 'white', stroke = 0.9,
+             position = position_jitter(width = 0, height = 0.12, seed = 1)) +
+  geom_text(aes(minutes, condition, label = label), data = cluster_labels, inherit.aes = FALSE,
+            nudge_y = 0.36, size = 3.4, colour = 'grey30') +
+  scale_x_log10(breaks = c(0.5, 1, 2, 5, 10, 20), labels = c('0.5', '1', '2', '5', '10', '20')) +
+  scale_y_discrete(limits = rev(condition_levels), labels = function(x) sub(', ', ',\n', x)) +
+  route_scales +
+  labs(x = 'Minutes (log scale)', y = NULL) +
+  theme_depictr(base_size = 13, grid = 'x') +
+  route_legend
+```
 
 ### Executing the Scripts Again
 
-```{r rerun}
+Executing a script again in the environment in which it first ran tests whether the script is deterministic. Executing it in another environment tests whether its output depends on that environment. Every execution below ran in a fresh R process in the C locale. The locale changes some printed characters, such as the quotation marks around the significance codes of a model summary, and with them the bytes of the output. Outputs are compared line by line, so that the line endings that Windows writes do not count as a difference. Between them, the scripts load `r knitr::combine_words(packages_loaded, and = ' and ', oxford_comma = FALSE)`, and lme4 relies on Matrix for its computations.
+
+```{r environment-record, include = FALSE}
 source(file.path(experiment, 'run_script.R'))
 scripts <- design |> filter(route == 'script')
-rerun <- bind_rows(lapply(seq_len(nrow(scripts)), function(i)
-  run_script(scripts$run_id[i], data_file_for(scripts$data[i]),
-             experiment_dir = normalizePath(experiment), label = 'page')))
+n_scripts <- nrow(scripts)
+stored <- executions |> filter(execution == 1)
+stored_of <- function(run_id, column) stored[[column]][match(run_id, stored$run_id)]
+
+# The versions an environment string records. packageVersion() writes a CRAN
+# version such as 1.1-35.1 as 1.1.35.1, so the hyphen is restored.
+cran <- function(version) sub('^([0-9]+\\.[0-9]+)\\.', '\\1-', version)
+versions_of <- function(environment) {
+  parts <- regmatches(environment, regexec(
+    '^R ([^ ]+) \\(([^,]+), [^)]*\\) with lme4 ([^,]+), lmerTest ([^ ]+) and Matrix (.+)$',
+    environment))[[1]]
+  data.frame(System = ifelse(grepl('linux', parts[3]), 'Linux',
+                             ifelse(grepl('mingw', parts[3]), 'Windows', parts[3])),
+             R = parts[2], lme4 = cran(parts[4]), lmerTest = cran(parts[5]), Matrix = cran(parts[6]))
+}
+running_under <- function(file) {
+  sub('^Running under: ', '', grep('^Running under:', readLines(file.path(experiment, file)),
+                                   value = TRUE)[1])
+}
+stored_versions <- versions_of(unique(stored$environment))
+stored_system <- running_under('executions_session_info.txt')
+stored_release <- sub('^(Ubuntu [0-9]+\\.[0-9]+).*$', '\\1', stored_system)
+
+# The stored environment rebuilt from its record by the Dockerfile, where
+# verify_executions.R executed every script on GitHub Actions and listed the
+# versions of the Ubuntu packages
+verification <- read.csv(file.path(experiment, 'verification.csv'))
+rebuild_record <- readLines(file.path(experiment, 'verification_session_info.txt'))
+rebuild_release <- sub('^(Ubuntu [0-9]+\\.[0-9]+).*$', '\\1', running_under('verification_session_info.txt'))
+rebuild_version <- function(package) {
+  listed <- grep(sprintf('^r-cran-%s ', tolower(package)), rebuild_record, value = TRUE)
+  sub('\\+.*$', '', sub('-[^-]+$', '', sub('^\\S+ ', '', listed)))
+}
+
+# The check on one machine with three package libraries that differ only in
+# the versions of lme4 and lmerTest (check_versions.R), keeping the last
+# attempt at each script
+version_check <- read.csv(file.path(experiment, 'version_check.csv'))
+checked <- version_check |>
+  group_by(library, run_id) |> filter(attempt == max(attempt)) |> ungroup() |>
+  mutate(same_output = status == 0 & stdout_sha256 == stored_of(run_id, 'stdout_sha256'),
+         same_result = status == 0 & result == stored_of(run_id, 'result'))
+library_rows <- function(library) checked[checked$library == library, ]
+library_versions <- function(library) versions_of(unique(library_rows(library)$environment))
+newer_versions <- library_versions('renv.lock')
+newer_system <- sub('^(Windows [0-9]+).*$', '\\1', running_under('version_check_session_info.txt'))
+
+# The versions of the other packages the scripts load, in the rebuild and in the
+# library with the earlier lme4, and those that differ
+library_version <- function(package, library) {
+  listed <- unique(library_rows(library)$packages)
+  sub(sprintf('^(.*, )?%s ([^,]+).*$', package), '\\2', listed)
+}
+other_packages <- c('emmeans', 'pbkrtest', 'dplyr', 'tidyr')
+other_changed <- other_packages[vapply(other_packages, function(p)
+  numeric_version(rebuild_version(p)) != numeric_version(library_version(p, 'lme4 1.1-35.1')),
+  logical(1))]
+
+# What the newer lme4 changed, from the kept outputs of the two libraries that
+# differ only in its version. A printed table of random effects runs from its
+# 'Groups' header to its 'Residual' row, and a likelihood-ratio table from its
+# header to the next blank line.
+read_output <- function(folder, id) {
+  readLines(file.path(experiment, 'outputs', folder, paste0(id, '.txt')), warn = FALSE)
+}
+numbers_in <- function(lines) sort(unlist(regmatches(lines, gregexpr('-?[0-9]+(\\.[0-9]+)?', lines))))
+trailing_spaces <- function(lines) nchar(lines) - nchar(sub(' +$', '', lines))
+changes <- bind_rows(lapply(scripts$run_id, function(id) {
+  earlier <- read_output('stored-lme4', id)
+  newer <- read_output('renv-lock', id)
+  stopifnot(length(earlier) == length(newer))
+  residual_rows <- grep('^ Residual ', newer)
+  tables <- lapply(grep('^ Groups ', newer), function(start)
+    start:min(residual_rows[residual_rows >= start]))
+  correlated <- vapply(tables, function(rows) grepl('Corr', newer[rows[1]]), logical(1))
+  renamed <- grep('-2*log(L)', newer, fixed = TRUE)
+  renamed <- renamed[grepl('deviance', earlier[renamed])]
+  blank <- which(trimws(newer) == '')
+  ratio_tables <- unlist(lapply(renamed, function(start) start:(min(blank[blank > start]) - 1)))
+  data.frame(
+    run_id = id,
+    correlated_tables = sum(correlated),
+    one_more_space = all(vapply(tables[correlated], function(rows)
+      all(trailing_spaces(newer[rows]) == trailing_spaces(earlier[rows]) + 1), logical(1))),
+    uncorrelated_unchanged = all(vapply(tables[!correlated], function(rows)
+      all(earlier[rows] == newer[rows]), logical(1))),
+    reordered = sum(vapply(tables[correlated], function(rows)
+      grepl('Std.Dev. Variance', earlier[rows[1]], fixed = TRUE) &&
+        grepl('Variance +Std.Dev.', newer[rows[1]]), logical(1))),
+    renamed = length(renamed),
+    # every changed line lies in one of those tables
+    explained = all(which(earlier != newer) %in% c(unlist(tables[correlated]), ratio_tables)),
+    same_numbers = identical(numbers_in(earlier), numbers_in(sub('-2*log(L)', 'deviance', newer, fixed = TRUE))))
+}))
+
+# The claims of this section, of the discussion and of the summary and the
+# abstract rest on these
+libraries <- c('renv.lock', 'lme4 1.1-35.1', 'lme4 1.1-35.1 and lmerTest 3.1-3')
+earlier_lme4 <- library_versions('lme4 1.1-35.1')
+stopifnot(
+  # the records are complete
+  setequal(verification$run_id, scripts$run_id), setequal(unique(checked$library), libraries),
+  all(table(checked$library)[libraries] == n_scripts),
+  # the rebuild matches the stored environment and reproduced its output
+  unique(verification$environment) == unique(stored$environment), rebuild_release == stored_release,
+  all(verification$identical),
+  # the libraries differ only in lme4 and lmerTest, as the text says
+  n_distinct(gsub('(lme4|lmerTest) [^,]+, ', '', version_check$packages)) == 1,
+  earlier_lme4$lme4 == stored_versions$lme4, earlier_lme4$lmerTest == newer_versions$lmerTest,
+  library_versions(libraries[3])$lmerTest == stored_versions$lmerTest,
+  n_distinct(vapply(libraries, function(l) library_versions(l)$Matrix, character(1))) == 1,
+  # with the earlier lme4 the output is the stored one, and with the newer lme4
+  # only its formatting differs
+  all(library_rows(libraries[2])$same_output), all(library_rows(libraries[3])$same_output),
+  !any(library_rows('renv.lock')$same_output), all(library_rows('renv.lock')$same_result),
+  all(changes$correlated_tables > 0), all(changes$one_more_space), all(changes$uncorrelated_unchanged),
+  all(changes$explained), all(changes$same_numbers), any(changes$renamed > 0), any(changes$reordered > 0),
+  # and the rest of the environment differed
+  earlier_lme4$System != stored_versions$System, earlier_lme4$R != stored_versions$R,
+  earlier_lme4$Matrix != stored_versions$Matrix, earlier_lme4$lmerTest != stored_versions$lmerTest,
+  length(other_changed) > 0,
+  numeric_version(newer_versions$lme4) > numeric_version(stored_versions$lme4))
+```
+
+The session's `r count_text(nrow(executions))` stored executions, `r count_text(max(executions$execution))` of each script, ran under R `r stored_versions$R` on `r stored_system` with lme4 `r stored_versions$lme4`, lmerTest `r stored_versions$lmerTest` and Matrix `r stored_versions$Matrix`. Every script printed identical output each time, including its model summaries and warnings. `r stored_release` still distributes those versions, and [a Dockerfile](`r experiment_url('Dockerfile')`) rebuilds the environment from them, taking the other packages from the same release. Executed in that rebuild on a GitHub Actions runner, all `r count_text(nrow(verification))` scripts printed output identical to the stored executions, as [verification.csv](`r experiment_url('verification.csv')`) records.
+
+```{r rerun}
+# Every script executed once more, and again if its R process crashes, which
+# happens occasionally on Windows
+rerun_attempts <- bind_rows(lapply(seq_len(n_scripts), function(i)
+  run_script_with_retries(scripts$run_id[i], data_file_for(scripts$data[i]),
+                          experiment_dir = normalizePath(experiment), label = 'page')))
+rerun <- rerun_attempts |> group_by(run_id) |> filter(attempt == max(attempt)) |> ungroup()
+rerun <- rerun[match(scripts$run_id, rerun$run_id), ]
 page_environment <- child_environment()
 
-stored <- executions |> filter(execution == 1)
-matched <- match(rerun$run_id, stored$run_id)
 # Rscript exits with status 1 when a script stops with an error. Any other
 # nonzero status means that the R process itself ended abnormally, as when it
 # crashes, which says nothing about the script.
 rerun$outcome <- ifelse(rerun$status == 0, 'completed', ifelse(rerun$status == 1, 'error', 'crash'))
 rerun$same_result <- rerun$outcome == 'completed' & !is.na(rerun$result) &
-  rerun$result == stored$result[matched]
-rerun$same_output <- rerun$outcome == 'completed' & rerun$stdout_sha256 == stored$stdout_sha256[matched]
-same_environment <- page_environment == unique(executions$environment)
+  rerun$result == stored_of(rerun$run_id, 'result')
+rerun$same_output <- rerun$outcome == 'completed' &
+  rerun$stdout_sha256 == stored_of(rerun$run_id, 'stdout_sha256')
 
-script_texts <- runs$text[runs$route == 'script']
-packages_loaded <- sort(unique(unlist(regmatches(script_texts,
-  gregexpr('(?<=library\\()[A-Za-z0-9.]+(?=\\))|[A-Za-z][A-Za-z0-9.]*(?=::)', script_texts, perl = TRUE)))))
-packages_loaded <- setdiff(packages_loaded, c('base', 'stats', 'utils', 'methods'))
-
-n_scripts <- nrow(rerun)
-n_completed <- sum(rerun$outcome == 'completed')
-n_error <- sum(rerun$outcome == 'error')
-n_crash <- sum(rerun$outcome == 'crash')
-n_same_result <- sum(rerun$same_result)
-n_same_output <- sum(rerun$same_output)
-
-c(stored_executions = nrow(executions), scripts = n_scripts, completed_now = n_completed,
-  stopped_with_error_now = n_error, crashed_now = n_crash,
-  same_result_now = n_same_result, same_output_now = n_same_output)
+c(stored_executions = nrow(executions), scripts = n_scripts,
+  completed_now = sum(rerun$outcome == 'completed'),
+  completed_after_a_crash = sum(rerun$outcome == 'completed' & rerun$attempt > 1),
+  stopped_with_error_now = sum(rerun$outcome == 'error'), crashed_now = sum(rerun$outcome == 'crash'),
+  same_result_now = sum(rerun$same_result), same_output_now = sum(rerun$same_output))
 ```
 
 ```{r rerun-text, include = FALSE}
-# The wording of the paragraph below and of the discussion, from the counts above
+# The wording of the paragraph below, from the counts above
+n_completed <- sum(rerun$outcome == 'completed')
+n_error <- sum(rerun$outcome == 'error')
+n_crash <- sum(rerun$outcome == 'crash')
+n_retried <- sum(rerun$outcome == 'completed' & rerun$attempt > 1)
+n_same_result <- sum(rerun$same_result)
+n_same_output <- sum(rerun$same_output)
 
 # How a crashed process ended. Windows reports an access violation as status
 # -1073741819 (0xC0000005), and processx reports a Unix signal as its negative.
@@ -526,81 +754,85 @@ crash_kinds <- knitr::combine_words(unique(vapply(rerun$status[rerun$outcome == 
                                                   crash_kind, character(1))), and = ' or ')
 
 completed_text <- if (n_completed == n_scripts) {
-  sprintf('all %s scripts ran to completion', count_text(n_scripts))
+  sprintf('All %s scripts ran to completion', count_text(n_scripts))
 } else {
-  sprintf('%s of the %s scripts ran to completion', count_text(n_completed, n_scripts),
-          count_text(n_scripts))
+  sprintf('Of the %s scripts, %s ran to completion', count_text(n_scripts), count_text(n_completed, n_scripts))
 }
 rerun_text <- if (n_same_output == n_scripts) {
-  sprintf('all %s scripts printed output byte-identical to that of the stored executions',
-          count_text(n_scripts))
+  sprintf('All %s scripts printed output identical to that of the stored executions.', count_text(n_scripts))
 } else if (n_completed == 0) {
-  sprintf('none of the %s scripts ran to completion', count_text(n_scripts))
+  sprintf('None of the %s scripts ran to completion.', count_text(n_scripts))
 } else if (n_same_output == n_completed) {
-  sprintf('%s and printed output byte-identical to that of the stored executions', completed_text)
+  sprintf('%s and printed output identical to that of the stored executions.', completed_text)
 } else if (n_same_result == n_completed) {
-  sprintf('%s and printed the same result line as the stored executions, although %s printed byte-identical output',
-          completed_text, if (n_same_output == 0) 'none of them' else
-            sprintf('only %s', count_text(n_same_output, n_scripts)))
+  sprintf('%s and printed the same result line as the stored executions, but %s printed identical output.',
+          completed_text, if (n_same_output == 0) 'none' else sprintf('only %s', count_text(n_same_output, n_scripts)))
 } else {
-  sprintf('%s, %s of them printed the same result line as the stored executions and %s printed byte-identical output',
+  sprintf('%s, %s of them printed the same result line as the stored executions and %s printed identical output.',
           completed_text, if (n_same_result == 0) 'none' else count_text(n_same_result, n_scripts),
           if (n_same_output == 0) 'none' else count_text(n_same_output, n_scripts))
 }
-
-# The scripts that did not run to completion, told apart by how they stopped
-error_part <- sprintf('%s stopped with an error', count_text(n_error))
-crash_part <- sprintf('%s did not finish because %s crashed with %s', count_text(n_crash),
-                      if (n_crash == 1) 'its R process' else 'their R processes', crash_kinds)
+retry_text <- if (n_retried == 0) '' else {
+  sprintf(' In %s of them, the R process crashed at first and the script completed when executed again.',
+          count_text(n_retried, n_scripts))
+}
 failure_text <- if (n_error + n_crash == 0) {
   ''
-} else if (n_completed == 0) {
-  sprintf(' Of these, %s.', paste(c(if (n_error > 0) error_part, if (n_crash > 0) crash_part),
-                                  collapse = ' and '))
 } else if (n_crash == 0) {
-  sprintf(' The other %s.', error_part)
+  sprintf(' The other %s stopped with an error.', count_text(n_error))
 } else if (n_error == 0) {
-  sprintf(' The other %s, not because %s raised an error.', crash_part,
-          if (n_crash == 1) 'the script' else 'the scripts')
+  sprintf(' In the other %s, the R process itself crashed with %s on every attempt.', count_text(n_crash), crash_kinds)
 } else {
-  sprintf(' Of the other %s, %s and %s.', count_text(n_error + n_crash), error_part, crash_part)
+  sprintf(' Of the other %s, %s stopped with an error, and in %s the R process itself crashed with %s on every attempt.',
+          count_text(n_error + n_crash), count_text(n_error), count_text(n_crash), crash_kinds)
 }
 
-# The same comparison, summarised for the discussion
-where_built <- if (same_environment) 'in the same environment' else 'in another environment'
-rerun_discussion <- if (n_same_output == n_scripts) {
-  sprintf('When this page was built %s, the output was byte-identical again.', where_built)
-} else if (n_completed == 0) {
-  sprintf('When this page was built %s, no script ran to completion.', where_built)
-} else {
-  sprintf('When this page was built %s, %s printed the same result line%s.', where_built,
-          if (n_same_result == n_completed) {
-            if (n_completed == n_scripts) 'every script' else 'every script that ran to completion'
-          } else sprintf('%s of the %s scripts that ran to completion', count_text(n_same_result, n_scripts),
-                         count_text(n_completed, n_scripts)),
-          if (n_same_output == n_completed) ' and byte-identical output' else
-            if (n_same_output == 0) ', but none printed byte-identical output' else
-              sprintf(', but only %s printed byte-identical output', count_text(n_same_output, n_scripts)))
-}
+# The page is knitted with the version of R and the packages that renv.lock
+# pins, and the text calls them newer than those of the stored executions
+page_versions <- versions_of(page_environment)
+lock <- jsonlite::read_json(file.path('..', '..', '..', 'renv.lock'))
+stopifnot(page_versions$R == lock$R$Version,
+          vapply(c('lme4', 'lmerTest', 'Matrix'), function(p)
+            page_versions[[p]] == lock$Packages[[p]]$Version, logical(1)),
+          numeric_version(page_versions$R) > numeric_version(stored_versions$R),
+          numeric_version(page_versions$lme4) > numeric_version(stored_versions$lme4))
 ```
 
-Each script ran in the C locale, because the locale changes some printed characters, such as the quotation marks in the significance codes of lmerTest, and with them the bytes of the output. Across the `r count_text(nrow(executions))` stored executions, run under `r unique(executions$environment)`, every script printed byte-identical output each time, including its model summaries and warnings. When this page was built, under `r page_environment`, `r rerun_text`.`r failure_text` The scripts use `r knitr::combine_words(packages_loaded, and = ' and ', oxford_comma = FALSE)`, so rebuilding the page elsewhere requires those packages. A different operating system or version of a package can change the printed output of a script and could change its results, for instance through a change in how a singular fit is reached. That is why the environment belongs in the record together with the scripts. A rebuild in the same environment checks determinism, whereas a rebuild in another checks reproducibility.
+This page executes every script once more whenever it is knitted, under the version of R and with the packages that the site's [renv.lock](`r sprintf('https://github.com/pablobernabeu/website-files/blob/%s/renv.lock', experiment_ref)`) pins, which are newer than those of the stored executions. When the page was last knitted, the scripts ran on `r page_versions$System` under R `r page_versions$R`, with lme4 `r page_versions$lme4`, lmerTest `r page_versions$lmerTest` and Matrix `r page_versions$Matrix`. `r rerun_text``r retry_text``r failure_text`
 
-### Time Taken
+To locate the difference, every script was executed on one `r newer_system` machine with three libraries of packages that differ only in the versions of lme4 and lmerTest. The first is the library of renv.lock, with which this page executes the scripts, the second has lme4 `r stored_versions$lme4`, the version of the stored executions, and the third has lmerTest `r stored_versions$lmerTest` as well. Matrix stayed at version `r newer_versions$Matrix` in all three, since version `r stored_versions$Matrix` did not compile under R `r newer_versions$R` on that machine. With the earlier lme4 and either version of lmerTest, all `r count_text(n_scripts)` scripts printed output identical to the stored executions (Table 4). The rebuild of the stored environment and the library with the earlier lme4 differed in the operating system and in the versions of `r knitr::combine_words(c('R', 'Matrix', 'lmerTest', other_changed), and = ' and ', oxford_comma = FALSE)`. Since both printed the stored output, none of those differences changed it. The update of lme4 changed the formatting of every script's output and none of its numbers. In every printed table of random effects with a column of correlations, each line ended in one more space. The newer lme4 also renamed the `deviance` column of its likelihood-ratio tests to `-2*log(L)` in `r count_text(sum(changes$renamed > 0))` scripts, and in `r count_text(sum(changes$reordered > 0))` it printed the variances of the random effects before their standard deviations.
 
-Figure 2 shows how long each run took, from the request to the final reply. With the specified request, a script took a median of `r sprintf('%.1f', minutes_of(condition_levels[2], 'script'))` minutes, whereas a prose reply took `r sprintf('%.1f', minutes_of(condition_levels[2], 'prose'))` minutes on the balanced data and `r sprintf('%.1f', minutes_of(condition_levels[3], 'prose'))` on the unbalanced data. The difference is the work of computing by hand what R computes in a fraction of a second, and it is far more deliberation than a reply in a chat window usually receives. The open request took the scripts longer than the specified one, because the agents compared several random-effects structures and ran checks of their own. The runs shared one service and overlapped in time, and the follow-up ran later than the main runs, so the durations include some waiting and are best read as orders of magnitude.
+```{r environments}
+labels <- c(`renv.lock` = 'Newer (renv.lock)', `lme4 1.1-35.1` = 'Newer, with lme4 as stored',
+            `lme4 1.1-35.1 and lmerTest 3.1-3` = 'Newer, with lme4 and lmerTest as stored')
+count_of <- function(k, n) sprintf('%d of %d', k, n)
+row_of <- function(label, system, versions, same_output, same_result) {
+  data.frame(Environment = label, `Operating system` = system, versions[, c('R', 'lme4', 'lmerTest', 'Matrix')],
+             `Identical output` = count_of(sum(same_output), length(same_output)),
+             `Same result line` = count_of(sum(same_result), length(same_result)), check.names = FALSE)
+}
+environment_table <- bind_rows(
+  row_of('Stored, rebuilt with Docker', rebuild_release, versions_of(unique(verification$environment)),
+         verification$identical, verification$result == stored_of(verification$run_id, 'result')),
+  bind_rows(lapply(names(labels), function(library) {
+    rows <- library_rows(library)
+    row_of(labels[[library]], newer_system, library_versions(library), rows$same_output, rows$same_result)
+  })))
 
-```{r minutes, fig.width = 8, fig.height = 3.6, fig.cap = 'Minutes From Request to Final Answer in Each Run. The horizontal axis is logarithmic.', fig.alt = alt_minutes}
-ggplot(runs, aes(minutes, condition, colour = route_label, shape = route_label)) +
-  geom_point(size = 2.2, fill = 'white', stroke = 0.9,
-             position = position_jitter(width = 0, height = 0.12, seed = 1)) +
-  scale_x_log10(breaks = c(0.5, 1, 2, 5, 10, 20), labels = c('0.5', '1', '2', '5', '10', '20')) +
-  scale_y_discrete(limits = rev(condition_levels), labels = function(x) sub(', ', ',\n', x)) +
-  scale_colour_manual(values = route_colours, name = NULL) +
-  scale_shape_manual(values = c(21, 15), name = NULL) +
-  labs(x = 'Minutes (log scale)', y = NULL) +
-  theme_depictr(base_size = 13, grid = 'x') +
-  theme(legend.position = 'top')
+knitr::kable(environment_table,
+  caption = sprintf(paste(
+    'Output of the Agents\' Scripts in %s Environments, Compared With the Stored Executions.',
+    'Each script was executed once in each environment. Identical output counts the scripts whose',
+    'output matched the stored output line for line, and same result line those whose final line,',
+    'giving the estimate and the interval, matched.'),
+    stringr::str_to_title(count_text(nrow(environment_table)))),
+  align = c('l', 'l', 'r', 'r', 'r', 'r', 'r', 'r'))
+```
+
+The R session that last knitted this page is shown below. The scripts ran in separate R processes, each in the C locale, whatever the locale of this session.
+
+```{r session-info}
+sessionInfo()
 ```
 
 ## Discussion
@@ -609,9 +841,9 @@ The discussion considers what executing code contributed and what the researcher
 
 ### What Executing Code Contributed
 
-No text in this experiment was repeated, and every executed script gave the same output each time the session ran it. That second fact follows from executing saved code in a fixed environment. `r rerun_discussion` The agreement between runs is a separate matter. On balanced data, the prose replies were as consistent as the scripts, so the consistency came from the model and from how precisely the request specified the analysis. What the executed scripts added was exactness and a record that can be checked. On unbalanced data, where the model has to be fitted numerically, every script returned the exact result, whereas each prose reply returned an approximation. Even where the prose replies were exact, only code could show it. Without recomputing their quantities in R, a correct reply could not be told apart from a confident error.
+No text in this experiment was repeated, yet every executed script printed the same output each time the session ran it, as saved code executed in a fixed environment should. Because the versions of R and of the modelling packages were recorded and can still be installed, that environment could be rebuilt on another machine, where the scripts printed the same output again. The agreement between runs is a separate matter. On balanced data, the prose replies were as consistent as the scripts, so the consistency came from the model and from how precisely the request specified the analysis. What the executed scripts added was exactness and a record that can be checked. On unbalanced data, where the model has to be fitted numerically, every script returned the exact result, whereas each prose reply returned an approximation. Even where the prose replies were exact, only code could show it. Without recomputing their quantities in R, a correct reply could not be told apart from a confident error.
 
-The results also qualify the studies reviewed above. Those found large variation from one request to the next in code generation and in benchmark accuracy (Atıl et al., 2025; Ouyang et al., 2025). Here, on balanced data, the agents converged on the same analysis and the same numbers, and the variation lay in the wording and in secondary choices such as a covariate that could not affect the estimate. On unbalanced data, the scripts still converged, whereas the prose replies did not. Bertran et al. (2026) propose deploying AI analysts against a published specification to reveal how much disagreement comes from underspecified design choices. In this experiment, the open request produced little disagreement to reveal, and the specification mattered mainly because it fixed which interval was computed. The consistency observed belongs to one model on one structured task on one day, and the reproducibility of a study cannot rest on it. A script can be checked, whereas the consistency of a model can only be observed, and it may not survive the next update (Chen et al., 2024).
+The results also qualify the studies reviewed above. Those found large variation from one request to the next in code generation and in benchmark accuracy (Atıl et al., 2025; Ouyang et al., 2025). Here, on balanced data, the agents converged on the same analysis and the same numbers, and the variation lay in the wording and in secondary choices such as a covariate that could not affect the estimate. On unbalanced data, the scripts still converged, but the prose replies did not. Bertran et al. (2026) propose deploying AI analysts against a published specification to reveal how much disagreement comes from underspecified design choices. In this experiment, the open request produced little disagreement to reveal, and the specification mattered mainly because it fixed which interval was computed. The consistency observed belongs to one model on one structured task on one day, and the reproducibility of a study cannot rest on it. A script can be checked, and it can be executed again with the versions of R and of the packages it first ran with, as long as those versions were recorded and can still be installed. When an update changes what a script prints, as that of lme4 did here without changing any number, the recorded versions show which package was responsible. The consistency of a model, by contrast, can only be observed, and it may not survive the next update (Chen et al., 2024).
 
 ### Why Direct Experience With R and an IDE Matters
 
@@ -627,7 +859,7 @@ The experiment suggests a workflow in which the project lives under version cont
 
 ### Limitations
 
-The experiment used one model, one version of Claude Code and one day, with one simulated data set whose interval sat close to zero. The agents ran concurrently as background agents of a single session, and interactive use of the same tool may differ. Their model is not named here, and its reasoning was not retained in the transcripts, so the hand calculations are known only from the replies. As described above, three script runs used a shared scratch folder and the first eight runs started in the folder that holds the specification. The follow-up was designed after the first results and run later than the main runs. The specified request contained the model formula and the function for the interval, so the agreement among its scripts tested implementation more than analysis. The prose route imitated a chat without a code interpreter, but its replies drew on far longer deliberation than a chat usually gives. Commercial chat assistants often run code in a sandbox, which narrows the contrast, although the code and its environment are seldom kept with the result. The analytic choices of the open-request scripts were coded by the same session that ran the experiment, and they can be checked against the scripts in the repository. Finally, with eight runs in each cell, the counts describe these runs and do not estimate rates.
+The experiment used one model, one version of Claude Code and one day, with one simulated data set whose interval sat close to zero. The agents ran concurrently as background agents of a single session, and interactive use of the same tool may differ. Their model is not named here, and its reasoning was not retained in the transcripts, so the hand calculations are known only from the replies. As described above, `r count_text(sum(!results$compliant[script_runs]))` script runs used a shared scratch folder and the first `r count_text(in_experiment_folder)` runs started in the folder that holds the specification. The stored executions recorded the versions of R, lme4, lmerTest and Matrix only, and their rebuild took the other packages from the same release of Ubuntu. The scripts printed the same output with other versions of `r knitr::combine_words(other_changed, and = ' and ', oxford_comma = FALSE)`, and the newer environments were tested on one `r newer_system` machine. The follow-up was designed after the first results and run later than the main runs. The specified request contained the model formula and the function for the interval, so the agreement among its scripts tested implementation more than analysis. The prose route imitated a chat without a code interpreter, but its replies drew on far longer deliberation than a chat usually gives. Commercial chat assistants often run code in a sandbox, which narrows the contrast, although the code and its environment are seldom kept with the result. The analytic choices of the open-request scripts were coded by the same session that ran the experiment, and they can be checked against the scripts in the repository. Finally, with `r count_text(runs_per_cell)` runs in each cell, the counts describe these runs and do not estimate rates.
 
 ## References
 
