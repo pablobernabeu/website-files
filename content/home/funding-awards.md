@@ -53,6 +53,7 @@ subtitle = ""
 
 | Year | Grant / Award            | Purpose / Reason         |
 | ---- | ---------------------- | ---------------------- |
+| 2026 -- 2027 | Fellows Further Development Fund, Software Sustainability Institute, UK | Supports my professional development in bringing the readsync toolkit and a secure transcription tool to peer-reviewed standard, with Claude Code as a coding assistant under human review. |
 | 2026 | Pump-priming grant, [John Fell Fund, Oxford University Press](https://www.socsci.ox.ac.uk/john-fell-oup-research-fund) | Grounded in a complex dynamic systems framework, our approach conceptualises reading not as a simple outcome, but as an emergent property of the interactions between a text’s demands and a reader’s diverse knowledge base. Thus, the project will investigate how specific, computationally-derived text features—e.g., word frequency, concreteness, semantic coherence, lexical and syntactic complexity, and sentiment—interact with key individual differences in children’s skills and their family context. |
 | 2021 | Joint second place in the [Open Scholarship Prize Competition](https://osc-galway.ie/competition/) organised by [Open Scholarship Community Galway](https://osc-galway.ie/) | Prize obtained after [a final series of presentations](/presentation/towards-reproducibility-and-maximally-open-data/). |
 | 2020 | [RepliCATS Grant](https://replicats.research.unimelb.edu.au), University of Melbourne | Obtained for completing 20 [RepliCATS research assessments](https://replicats.research.unimelb.edu.au). |
