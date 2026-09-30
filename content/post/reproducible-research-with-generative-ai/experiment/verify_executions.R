@@ -37,8 +37,14 @@ if (!is.na(output_file)) {
                         'environment', 'run_url')], output_file, row.names = FALSE)
   # The session of a child process, where the scripts ran, and the versions of
   # the system packages that provide R, its packages and the BLAS
-  packages <- tryCatch(system2('dpkg-query', c('-W', "'r-base-core'", "'r-cran-*'", 'libblas3', 'liblapack3'),
-                               stdout = TRUE), error = function(e) 'dpkg-query is not available')
+  # The installed ones only ('ii'), since the pattern also matches packages
+  # that dpkg knows of but that are not installed
+  packages <- tryCatch({
+    listed <- system2('dpkg-query', c('-W', "-f='${db:Status-Abbrev}${Package} ${Version}\\n'",
+                                      "'r-base-core'", "'r-cran-*'", 'libblas3', 'liblapack3'),
+                      stdout = TRUE)
+    sub('^ii +', '', grep('^ii', listed, value = TRUE))
+  }, error = function(e) 'dpkg-query is not available')
   writeLines(c(callr::r(function() capture.output(sessionInfo()), env = child_env, user_profile = FALSE),
                '', 'System packages (dpkg-query -W):', packages),
              sub('\\.csv$', '_session_info.txt', output_file))
