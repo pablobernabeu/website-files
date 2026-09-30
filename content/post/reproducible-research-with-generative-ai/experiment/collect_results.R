@@ -59,7 +59,11 @@ rows <- lapply(seq_len(nrow(design)), function(i) {
 results <- do.call(rbind, rows)
 if (anyNA(results$result_line)) stop('No valid RESULT line for: ',
   paste(results$run_id[is.na(results$result_line)], collapse = ', '))
-write.csv(results, 'results.csv', row.names = FALSE)
+# A binary connection keeps the line endings '\n' on every operating system,
+# so that the file is the same bytes wherever it is written
+connection <- file('results.csv', 'wb')
+write.csv(results, connection, row.names = FALSE)
+close(connection)
 print(results[order(results$data, results$request, results$route),
               c('run_id', 'data', 'request', 'route', 'result_line', 'minutes', 'tool_calls',
                 'compliant', 'matches_reply')])

@@ -1,0 +1,3 @@
+# The Python implementation of pilotr that generated the checksum in
+# python_sha256.txt, for make_data.py
+pilotr==0.3.0

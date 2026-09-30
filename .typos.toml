@@ -20,6 +20,8 @@ extend-exclude = [
   "*.css",
   "*.R",
   "*.html",
+  # Raw R output kept as a record (model tables with npar, logLik and the like)
+  "content/**/experiment/outputs/**",
 ]
 
 [default]

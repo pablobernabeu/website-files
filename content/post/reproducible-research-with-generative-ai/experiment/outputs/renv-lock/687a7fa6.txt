@@ -1,0 +1,65 @@
+Rows: 1440  participants: 30  items: 24 
+Trials per participant x prime cell (range): 24 24 
+Duplicate participant/item/prime rows: 0 
+RT range (ms): 377 1580 
+
+Condition means (ms):
+# A tibble: 2 x 4
+  prime         n mean_rt sd_rt
+  <chr>     <int>   <dbl> <dbl>
+1 related     720    699.  161.
+2 unrelated   720    717.  168.
+boundary (singular) fit: see help('isSingular')
+
+Maximal model random effects:
+ Groups      Name        Variance  Std.Dev. Corr   
+ participant (Intercept)  5117.285  71.5352        
+             prime_c        79.534   8.9182 1.000  
+ item        (Intercept)  1595.547  39.9443        
+             prime_c       887.849  29.7968 -0.008 
+ Residual                20502.383 143.1865        
+Singular fit: TRUE 
+
+Final model:
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: rt ~ prime_c + freq_c + (1 | participant) + (1 + prime_c | item)
+   Data: d
+Control: ctl
+
+REML criterion at convergence: 18490.3
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-2.0902 -0.6680 -0.1285  0.5100  5.7876 
+
+Random effects:
+ Groups      Name        Variance Std.Dev. Corr  
+ participant (Intercept)  5116.3   71.53         
+ item        (Intercept)  1595.2   39.94         
+             prime_c       886.5   29.77   -0.01 
+ Residual                20523.3  143.26         
+Number of obs: 1440, groups:  participant, 30; item, 24
+
+Fixed effects:
+            Estimate Std. Error      df t value Pr(>|t|)    
+(Intercept)  707.989     15.851  42.835  44.665   <2e-16 ***
+prime_c       18.519      9.693  23.000   1.911   0.0686 .  
+freq_c       -12.139     11.969  22.000  -1.014   0.3215    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+        (Intr) prim_c
+prime_c -0.003       
+freq_c   0.000  0.000
+Singular fit: FALSE 
+
+By-item prime-slope variance: LRT chi2 = 3.33, boundary-corrected p = 0.034
+
+Priming effect (unrelated - related): 18.52 ms, SE = 9.69, df = 23.0, t = 1.91, p = 0.0686
+95% CI (Satterthwaite): [-1.53, 38.57] ms
+Profile-likelihood 95% CI: [-0.85, 37.89] ms
+Prime x frequency interaction: 2.72 ms per Zipf unit (p = 0.839)
+Log-RT model: effect = 17.26 ms at typical RT, 95% CI [-0.89, 35.42] ms (p = 0.0613)
+RESULT estimate=18.52 lower=-1.53 upper=38.57

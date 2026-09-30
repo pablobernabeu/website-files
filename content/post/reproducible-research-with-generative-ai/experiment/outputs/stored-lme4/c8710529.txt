@@ -1,0 +1,70 @@
+Observations: 1440 | participants: 30 | items: 24 
+RT range: 377 - 1580 ms
+
+Condition means (ms):
+      prime   n  mean_rt    sd_rt
+1   related 720 698.7292 161.4088
+2 unrelated 720 717.2486 168.4962
+
+boundary (singular) fit: see help('isSingular')
+Maximal model: singular fit = TRUE 
+ Groups      Name        Std.Dev. Corr  
+ participant (Intercept)  71.5352       
+             prime_c       8.9182 1.000 
+ item        (Intercept)  39.9766       
+             prime_c      29.7968 -0.024
+ Residual                143.1865       
+
+boundary (singular) fit: see help('isSingular')
+By-participant slope SD without correlation: 0 
+LRT, by-participant priming slope:
+Data: d
+Models:
+m_fin: rt ~ prime_c + (1 | participant) + (1 + prime_c | item)
+m_zcp: rt ~ prime_c + (1 + prime_c || participant) + (1 + prime_c | item)
+      npar   AIC   BIC logLik deviance Chisq Df Pr(>Chisq)
+m_fin    7 18512 18549  -9249    18498                    
+m_zcp    8 18514 18556  -9249    18498     0  1          1
+
+Final model: singular fit = FALSE 
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: rt ~ prime_c + (1 | participant) + (1 + prime_c | item)
+   Data: d
+Control: ctrl
+
+REML criterion at convergence: 18498.1
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-2.0779 -0.6683 -0.1297  0.5198  5.7877 
+
+Random effects:
+ Groups      Name        Variance Std.Dev. Corr 
+ participant (Intercept)  5116.3   71.53        
+ item        (Intercept)  1597.8   39.97        
+             prime_c       886.5   29.77   -0.02
+ Residual                20523.3  143.26        
+Number of obs: 1440, groups:  participant, 30; item, 24
+
+Fixed effects:
+            Estimate Std. Error      df t value Pr(>|t|)    
+(Intercept)  707.989     15.855  43.227  44.655   <2e-16 ***
+prime_c       18.519      9.693  23.000   1.911   0.0686 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+        (Intr)
+prime_c -0.008
+
+Sensitivity checks for the priming effect (ms):
+                                 estimate   se    df lower upper
+final: (1|subj) + (1+prime|item)    18.52 9.69 23.00 -1.53 38.57
+maximal (singular)                  18.52 9.83 23.63 -1.78 38.82
+final + word frequency covariate    18.52 9.69 23.00 -1.53 38.57
+Profile-likelihood 95% CI, final model: -0.85 to 37.89 
+Log-RT model: unrelated/related RT ratio = 1.025 (about 17.0 ms at the median RT)
+
+Priming effect (unrelated - related): 18.52 ms, 95% CI [-1.53, 38.57], SE = 9.69, t(23.0) = 1.91, p = 0.0686
+RESULT estimate=18.52 lower=-1.53 upper=38.57

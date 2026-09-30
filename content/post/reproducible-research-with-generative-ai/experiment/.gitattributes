@@ -1,3 +1,6 @@
 # The checksums of the data files are part of the analysis, so their line
 # endings must not be converted on checkout.
 *.csv -text
+# The kept outputs of the scripts are written with '\n' line endings, and they
+# stay the same bytes on every system.
+outputs/** -text

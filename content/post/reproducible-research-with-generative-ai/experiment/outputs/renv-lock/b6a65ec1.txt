@@ -1,0 +1,53 @@
+Observations: 1440 | participants: 30 | items: 24 
+Trials per participant x item cell:
+
+  2 
+720 
+
+Condition means (ms):
+      prime   n  mean_rt median_rt    sd_rt
+1   related 720 698.7292       673 161.4088
+2 unrelated 720 717.2486       697 168.4962
+
+Raw mean priming effect (unrelated - related): 18.52 ms
+SD of by-item priming effects: 47.5 ms | SD of by-participant priming effects: 34.6 ms
+
+Model 'maximal': singular or not converged -> simplify
+ Groups      Name        Std.Dev. Corr   
+ participant (Intercept)  71.5352        
+             prime_c       8.9182 1.000  
+ item        (Intercept)  39.9443        
+             prime_c      29.7968 -0.008 
+ Residual                143.1865        
+
+Model 'no_subj_corr': singular or not converged -> simplify
+ Groups        Name        Std.Dev. Corr   
+ participant   (Intercept)  71.528         
+ participant.1 prime_c       0.000         
+ item          (Intercept)  39.940         
+               prime_c      29.773  -0.008 
+ Residual                  143.259         
+
+Model 'no_subj_slope': converged, non-singular -> selected
+
+Selected model: no_subj_slope 
+rt ~ prime_c + freq_c + (1 | participant) + (1 + prime_c | item)
+ Groups      Name        Variance Std.Dev. Corr   
+ participant (Intercept)  5116.28  71.528         
+ item        (Intercept)  1595.20  39.940         
+             prime_c       886.46  29.773  -0.008 
+ Residual                20523.27 143.259         
+
+Fixed effects (Satterthwaite df):
+            Estimate Std. Error      df t value Pr(>|t|)
+(Intercept) 707.9889    15.8512 42.8345 44.6646   0.0000
+prime_c      18.5194     9.6925 23.0000  1.9107   0.0686
+freq_c      -12.1389    11.9685 22.0000 -1.0142   0.3215
+
+Priming effect (unrelated - related): 18.52 ms, SE = 9.69, df = 23.0, 95% CI [-1.53, 38.57], p = 0.0686
+
+--- Sensitivity checks (not the reported result) ---
+Profile-likelihood 95% CI: [-0.85, 37.89]
+Log-RT model: ratio = 1.0253 (2.5% slower), approx. 17.3 ms at the typical RT, p = 0.0613
+Intercepts-only model (ignores item variability in priming; anti-conservative): 18.52 ms, 95% CI [3.63, 33.41]
+RESULT estimate=18.52 lower=-1.53 upper=38.57
