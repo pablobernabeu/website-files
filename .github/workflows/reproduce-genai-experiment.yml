@@ -1,0 +1,32 @@
+name: Reproduce the generative AI experiment
+
+# Rebuilds the environment of the stored executions of the post
+# 'Forty-eight answers to one question' from its Dockerfile and executes every
+# agent script in it, failing if any output differs from executions.csv.
+
+on:
+  push:
+    paths:
+      - "content/post/reproducible-research-with-generative-ai/experiment/**"
+      - ".github/workflows/reproduce-genai-experiment.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: content/post/reproducible-research-with-generative-ai/experiment
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Build the environment of the stored executions
+        run: docker build -t genai-experiment .
+
+      - name: Execute every script and compare with the stored hashes
+        run: docker run --rm genai-experiment
