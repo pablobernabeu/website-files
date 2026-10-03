@@ -59,7 +59,7 @@ subtitle = ""
 | 2020 | [RepliCATS Grant](https://replicats.research.unimelb.edu.au), University of Melbourne | Obtained for completing 20 [RepliCATS research assessments](https://replicats.research.unimelb.edu.au). |
 | 2020 | Gorilla Grant from [Gorilla](https://gorilla.sc/) and [Prolific](https://prolific.co/) | Conducting a large-sample experiment on the internet. |
 | 2020 | [Software Sustainability Institute Fellowship](https://www.software.ac.uk/programmes-and-events/fellowship-programme) | Organising [training and practice activities in research software](/2020/data-is-present-workshops-and-datathons/), focussed on data presentation using R. |
-| Apr 2019 | Travel grant, UK Open Science Working Group. Aston University | Attendance at first meeting of the UK Open Science Working Group. |
+| Apr 2019 | Travel grant, UK Open Science Working Group, Aston University | Attendance at first meeting of the UK Open Science Working Group. |
 | 2018 -- 2022 | Scholarship for PhD and graduate teaching assistantship, Lancaster University | See details about [PhD](/#education) and [teaching assistantship](/#teaching-supervision). |
 | Nov 2017 | [Psychonomic Society Graduate Travel Award for 58th Annual Meeting](https://www.psychonomic.org/page/2017GraduateTravelRecipients) | Presenting a poster on [research from my master's degree](/publication/bernabeu-etal-2017/). |
 | July 2017 | [Student Volunteer, Cognitive Science Society Conference](https://cognitivesciencesociety.org/wp-content/uploads/2019/01/cogsci17_proceedings.pdf) | Presenting a poster on [research from my master's degree](/publication/bernabeu-etal-2017/). |

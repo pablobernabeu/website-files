@@ -172,7 +172,7 @@ Collins, J., Pecher, D., Zeelenberg, R., & Coulson, S. (2011). Modality switchin
 
 Hald, L. A., Marshall, J.-A., Janssen, D. P., & Garnham, A. (2011). Switching modalities in a sentence verification task: ERP evidence for embodied language processing. *Frontiers in Psychology*, *2*, Article 45. https://doi.org/10.3389/fpsyg.2011.00045
 
-Bernabeu, P., Willems, R. M., & Louwerse, M. M. (2017). Modality switch effects emerge early and increase throughout conceptual processing: Evidence from ERPs. In G. Gunzelmann, A. Howes, T. Tenbrink, & E. J. Davelaar (Eds.), *Proceedings of the 39th Annual Conference of the Cognitive Science Society* (pp. 1629-1634). Austin, TX: Cognitive Science Society. https://doi.org/10.31234/osf.io/a5pcz
+Bernabeu, P., Willems, R. M., & Louwerse, M. M. (2017). Modality switch effects emerge early and increase throughout conceptual processing: Evidence from ERPs. In G. Gunzelmann, A. Howes, T. Tenbrink, & E. J. Davelaar (Eds.), *Proceedings of the 39th Annual Conference of the Cognitive Science Society* (pp. 1629–1634). Austin, TX: Cognitive Science Society. https://doi.org/10.31234/osf.io/a5pcz
 
 Platonova, O., & Miklashevsky, A. (2025). Warm and fuzzy: Perceptual semantics can be activated even during shallow lexical processing. *Journal of Experimental Psychology: Learning, Memory, and Cognition*, *51*(9), 1471–1496. https://dx.doi.org/10.1037/xlm0001429
 
@@ -210,7 +210,7 @@ Bennett, C. M., Miller, M. B., & Wolford, G. L. (2009). Neural correlates of int
 
 Cumming, G. (2014). The new statistics: Why and how. *Psychological Science*, *25*(1), 7–29. https://doi.org/10.1177/0956797613504966
 
-Frane, A. V. (2021). Experiment-wise type I error control: A focus on 2× 2 designs. *Advances in Methods and Practices in Psychological Science*, *4*(1), 2515245920985137. https://doi.org/10.1177/2515245920985137
+Frane, A. V. (2021). Experiment-wise type I error control: A focus on 2 × 2 designs. *Advances in Methods and Practices in Psychological Science*, *4*(1), 2515245920985137. https://doi.org/10.1177/2515245920985137
 
 García-Pérez, M. A. (2023). Use and misuse of corrections for multiple testing. *Methods in Psychology*, *8*, 100120. https://doi.org/10.1016/j.metip.2023.100120
 
@@ -250,7 +250,7 @@ Join us as we determine if LLMs are a new theory of the mind or simply the sharp
 
 <div style="padding-left: 2em; text-indent: -2em;">
 
-Chomsky, N. (1980). *Rules and representations*. MIT Press. https://doi.org/10.1111/cogs.13256
+Chomsky, N. (1980). *Rules and representations*. Columbia University Press.
 
 Contreras Kallens, P., Kristensen-McLachlan, R. D., & Christiansen, M. H. (2023). Large language models demonstrate the potential of statistical learning in language. *Cognitive Science*, *47*(3), e13256. https://doi.org/10.1111/cogs.13256
 
@@ -262,10 +262,10 @@ Tinbergen, N. (1963). On aims and methods of ethology. *Zeitschrift für Tierpsy
 
 Schrimpf, M., Blank, I. A., Tuckute, G., Kauf, C., Hosseini, E. A., Kanwisher, N., Tenenbaum, J. B., & Fedorenko, E. (2021). The neural architecture of language: Integrative modeling converges on predictive processing. *Proceedings of the National Academy of Sciences*, *118*(45), e2105646118. https://doi.org/10.1073/pnas.2105646118
 
-Goldstein, A., Zada, Z., Buchnik, E., Schain, M., Price, A., Aubrey, B., Nastase, S. A., Feder, A., Emanuel, D., Cohen, A., Jansen, A., Gazula, H., Choe, G., Rao, A., Kim, C., Casto, C., Fanda, L., Doyle, W., Friedman, D. … Hasson, U. (2022). Shared computational principles for language processing in humans and deep language models. *Nature Neuroscience*, *25*, 369–380. https://psycnet.apa.org/doi/10.1038/s41593-022-01026-4
+Goldstein, A., Zada, Z., Buchnik, E., Schain, M., Price, A., Aubrey, B., Nastase, S. A., Feder, A., Emanuel, D., Cohen, A., Jansen, A., Gazula, H., Choe, G., Rao, A., Kim, C., Casto, C., Fanda, L., Doyle, W., Friedman, D., … Hasson, U. (2022). Shared computational principles for language processing in humans and deep language models. *Nature Neuroscience*, *25*, 369–380. https://doi.org/10.1038/s41593-022-01026-4
 
 
-Bender, E. M., & Koller, A. (2020). Climbing towards NLU: On meaning, form, and understanding in the age of data. In *Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics* (pp. 5185–5198). https://psycnet.apa.org/doi/10.1038/s41593-022-01026-4
+Bender, E. M., & Koller, A. (2020). Climbing towards NLU: On meaning, form, and understanding in the age of data. In *Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics* (pp. 5185–5198). https://doi.org/10.18653/v1/2020.acl-main.463
 
 Mahowald, K., Ivanova, A. A., Blank, I. A., Kanwisher, N., Tenenbaum, J. B., & Fedorenko, E. (2024). Dissociating language and thought in large language models. *Trends in Cognitive Sciences*, *28*(6), 517–540. https://doi.org/10.1016/j.tics.2024.01.011
 
@@ -476,7 +476,7 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 ### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; Workshop on <i class="fa-brands fa-r-project" aria-label="R"></i>&nbsp;Markdown, dashboards and Binder (see [programme and materials](https://github.com/pablobernabeu/CarpentryCon-2020-workshop-Open-Data-Reproducibility))
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
-<iframe title="Video: Workshop on Markdown, dashboards and Binder (see programme and materials)" loading="lazy" src="https://www.youtube-nocookie.com/embed/wZsPD7CgJC0" frameborder="0" allowfullscreen
+<iframe title="Video: Workshop on R Markdown, dashboards and Binder" loading="lazy" src="https://www.youtube-nocookie.com/embed/wZsPD7CgJC0" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
