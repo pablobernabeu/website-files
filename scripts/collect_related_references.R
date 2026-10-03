@@ -1978,6 +1978,26 @@ for (lf in lint_files) {
   if (any(new_lines != lines)) { changed_lint <- TRUE }
   lines <- new_lines
 
+  # 11. Typeset the ASCII dashes that older citations carry ("1013--1032",
+  #     "Body--object", "---"). They were written for a Markdown typographer,
+  #     but this file is inlined into the page as raw HTML, so no typographer
+  #     ever reads it and they reached readers as typed. Tags and URLs are
+  #     left alone, because some DOIs contain "--" (10.18260/1-2--57145).
+  fix_dashes_line <- function(ln) {
+    if (!is_citation_line(ln) || !grepl("--", ln, fixed = TRUE)) return(ln)
+    guarded <- gregexpr("<[^>]*>|https?://[^\\s<\"]+", ln, perl = TRUE)
+    kept <- regmatches(ln, guarded)[[1L]]
+    text <- regmatches(ln, guarded, invert = TRUE)[[1L]]
+    text <- gsub("---", "—", text, fixed = TRUE)
+    text <- gsub("--", "–", text, fixed = TRUE)
+    out <- text[1L]
+    for (k in seq_along(kept)) out <- paste0(out, kept[k], text[k + 1L])
+    out
+  }
+  new_lines <- vapply(lines, fix_dashes_line, character(1L), USE.NAMES = FALSE)
+  if (any(new_lines != lines)) { changed_lint <- TRUE }
+  lines <- new_lines
+
   if (changed_lint) {
     writeLines(lines, lf, useBytes = TRUE)
     any_changes <- TRUE
