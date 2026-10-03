@@ -10,7 +10,7 @@ categories:
   - statistics
 tags:
   - visualisation
-  - linear-mixed effects models
+  - linear mixed-effects models
   - interactions
   - binning
   - sjPlot

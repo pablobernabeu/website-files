@@ -8,7 +8,7 @@ categories:
 tags: 
   - statistics
   - Bayesian statistics
-  - linear-mixed effects models
+  - linear mixed-effects models
   - brms
   - plotting
   - data visualisation

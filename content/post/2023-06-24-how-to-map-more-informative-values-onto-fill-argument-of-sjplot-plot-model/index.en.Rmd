@@ -6,7 +6,7 @@ categories:
   - R
   - statistics
 tags:
-  - linear-mixed effects models
+  - linear mixed-effects models
   - interactions
   - sjPlot
   - alias

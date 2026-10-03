@@ -7,7 +7,7 @@ categories:
   - linear mixed-effects models
   - R
 tags:
-  - linear-mixed effects models
+  - linear mixed-effects models
   - R
   - research methods
   - s
