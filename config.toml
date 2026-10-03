@@ -94,7 +94,11 @@ buildDrafts = false
   defaultMarkdownHandler = "goldmark"
   [markup.goldmark]
     [markup.goldmark.extensions]
-      typographer = false
+      # Keep this on. The Markdown sources write en and em dashes as -- and ---,
+      # and quotes as straight ' and ", trusting the typographer to convert them;
+      # with it off they reach the page literally (as they did from March to
+      # October 2026).
+      typographer = true
     [markup.goldmark.parser]
       autoHeadingID = true
       autoHeadingIDType = "github"

@@ -29,9 +29,9 @@
       {{ end }}
       <div class="article-style">
         {{ if .Params.summary }}
-          {{ .Params.summary | plainify | emojify }}
+          {{ .Params.summary | markdownify | plainify | emojify }}
         {{ else if .Params.abstract }}
-          {{ .Params.abstract | plainify | emojify | truncate 250 }}
+          {{ .Params.abstract | markdownify | plainify | emojify | truncate 250 }}
         {{ else if .Summary }}
           {{ .Summary | plainify | emojify }}
         {{ end }}
