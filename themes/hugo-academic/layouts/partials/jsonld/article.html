@@ -1,5 +1,5 @@
 {{- $page := .page }}
-{{ $summary := .summary | markdownify | emojify | plainify | htmlUnescape }}
+{{ $summary := .summary | plainify | htmlUnescape }}
 {{ $featured_image := ($page.Resources.ByType "image").GetMatch "*featured*" }}
 
 {{/* Get schema type. */}}
@@ -10,7 +10,7 @@
   {{ $schema = cond (in $page.Params.publication_types "7") "Thesis" "ScholarlyArticle" }}
 {{ end }}
 
-{{ $author := partial "functions/get_author_name" $page }}
+{{ $author := partial "functions/get_author_name" $page | plainify | htmlUnescape }}
 
 {{/* A publication keeps its whole author list as one APA-formatted string, such as
      "**Bernabeu, P.**, Lynott, D., & Connell, L.", so each "Surname, I. I." in it is
