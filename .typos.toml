@@ -106,6 +106,7 @@ Ture = "Ture"             # Ferhan Ture
 # R code and code-reading patterns in the stored experiment transcripts
 parm = "parm"             # the parm argument of confint()
 approximat = "approximat" # regex stem matching approximate and approximation
+ignor = "ignor"           # regex stem matching ignore, ignores and ignoring
 # Academic terms and British-English variants
 nonsignificant = "nonsignificant"  # standard stats term (non-significant)
 focusses = "focusses"     # British-English variant of "focuses"
