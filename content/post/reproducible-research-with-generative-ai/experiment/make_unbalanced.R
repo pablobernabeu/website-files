@@ -12,4 +12,4 @@ unbalanced <- data[-errors, ]
 connection <- file('data_unbalanced.csv', 'wb')
 write.csv(unbalanced, connection, row.names = FALSE, quote = FALSE)
 close(connection)
-digest::digest(file = 'data_unbalanced.csv', algo = 'sha256')
+writeLines(digest::digest(file = 'data_unbalanced.csv', algo = 'sha256'))

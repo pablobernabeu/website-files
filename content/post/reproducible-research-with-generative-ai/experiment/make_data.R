@@ -21,4 +21,4 @@ agent_data <- data.frame(
 connection <- file('data.csv', 'wb')
 write.csv(agent_data, connection, row.names = FALSE, quote = FALSE)
 close(connection)
-digest::digest(file = 'data.csv', algo = 'sha256')
+writeLines(digest::digest(file = 'data.csv', algo = 'sha256'))

@@ -23,14 +23,14 @@ of the repository.
    Hugo 0.62.0 then builds the site from the knitted `index.en.html`.
 
 The page prints its own `sessionInfo()` at the end of the section *Executing the
-Scripts in Other Environments*.
+Scripts Again*.
 
 ## Data (can be run again)
 
 - `spec.json`: the pilotr design specification.
-- `make_data.R` writes `data.csv` from it. Run it from this folder in an R session
-  started in the root of the repository, so that renv's pilotr is used, for
-  instance `Rscript -e "setwd('content/post/reproducible-research-with-generative-ai/experiment'); source('make_data.R')"`.
+- `make_data.R` writes `data.csv` from it and prints its checksum. Run it from this
+  folder in an R session started in the root of the repository, so that renv's
+  pilotr is used, for instance `Rscript -e "setwd('content/post/reproducible-research-with-generative-ai/experiment'); source('make_data.R')"`.
 - `make_data.py` generates the same data with pilotr for Python and prints the
   checksum kept in `python_sha256.txt`. Install the version it used with
   `python -m pip install -r requirements.txt`, then run `python make_data.py` from
@@ -45,10 +45,14 @@ Scripts in Other Environments*.
   a random launch order, and wrote each run's prompt to `runs/<run_id>/prompt.txt`.
   They also wrote the agents' working directories under `/home/user/agent_runs`, a
   path that exists only on the machine that ran the experiment.
-- Each agent worked in its own directory holding only the data file (the post
-  describes three exceptions). Its final reply, and a log of its tool calls with
-  its starting directory and times, were extracted from its transcript with
-  `extract_transcripts.py` into `runs/<run_id>/response.txt` and `tool_calls.json`.
+- Each agent worked in its own directory holding only the data file. The post
+  describes the departures. Three script runs wrote exploratory files to the
+  session's scratch folder, and one of them also read the output of a background
+  command from the session's task folder. The first eight runs started in this
+  folder, and their logs show no access to its files. Each agent's final reply,
+  and a log of its tool calls with its starting directory and times, were
+  extracted from its transcript with `extract_transcripts.py` into
+  `runs/<run_id>/response.txt` and `tool_calls.json`.
   The transcripts are not kept, since they also hold the launching session's
   context. Script runs also have `analysis.R`.
 - `claude_code_version.txt`: the version of Claude Code that ran the agents.
@@ -73,8 +77,8 @@ Scripts in Other Environments*.
   current environment. To check the stored executions, use `verify_executions.R`.
 - `collect_results.R` combines the design, replies, executions and tool logs into
   `results.csv`, and flags every run that touched a path outside its own directory.
-- `choices_open_scripts.csv` records, from reading each script, the analytic choices
-  of the eight scripts written for the open request.
+- `choices_open_scripts.csv` records the analytic choices of the eight scripts
+  written for the open request.
 
 ## Rebuilding the environment of the stored executions
 
@@ -101,8 +105,11 @@ lmerTest 3.1-3 and Matrix 1.6-5, and Ubuntu 24.04 still provides these versions.
   holds them. Run it from the root of the repository:
   `Rscript content/post/reproducible-research-with-generative-ai/experiment/check_versions.R`.
 - It writes `version_check.csv`, with one row per execution and the versions of the
-  packages the scripts load, `version_check_session_info.txt`, with the session of a
-  child process in each library, and the full output of every script in
+  packages the scripts load. For the last attempt at each script, its column
+  `trimmed_sha256` holds a hash of the output with the spaces at the ends of lines
+  removed, which the post does not use. It also writes
+  `version_check_session_info.txt`, with the session of a child process in each
+  library, and the full output of every script in
   `outputs/<library>/<run_id>.txt`. The outputs in `outputs/stored-lme4/` and
   `outputs/stored-lme4-lmertest/` reproduce the hashes in `executions.csv`, so they
   are also the text of the stored executions.
