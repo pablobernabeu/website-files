@@ -3,7 +3,8 @@
 # the post is built. Every script is executed on one machine with three package
 # libraries that differ only in the versions of lme4 and lmerTest:
 #
-#   renv.lock           the site's renv library (lme4 2.0-6, lmerTest 3.2-1)
+#   renv.lock           the site's renv library (lme4 2.0-6 and lmerTest 3.2-1
+#                       in version_check.csv)
 #   lme4 1.1-35.1       the same, with lme4 returned to the version of the
 #                       stored executions
 #   lme4 1.1-35.1 and   the same, with lmerTest also returned (3.1-3)
@@ -29,6 +30,11 @@ experiment_dir <- normalizePath(dirname(script_file))
 source(file.path(experiment_dir, 'run_script.R'))
 
 stored_versions <- c(lme4 = '1.1-35.1', lmerTest = '3.1-3')
+# The stored executions record their versions in packageVersion()'s dotted form
+stored_environment <- unique(read.csv(file.path(experiment_dir, 'executions.csv'))$environment)
+stopifnot(length(stored_environment) == 1,
+          grepl(sprintf('lme4 %s, lmerTest %s ', chartr('-', '.', stored_versions[['lme4']]),
+                        chartr('-', '.', stored_versions[['lmerTest']])), stored_environment, fixed = TRUE))
 stored_root <- Sys.getenv('STORED_LIBS', file.path(tools::R_user_dir('genai-post-check', 'cache'),
                                                     'stored-versions'))
 stored_libs <- setNames(file.path(stored_root, paste(names(stored_versions), stored_versions, sep = '-')),

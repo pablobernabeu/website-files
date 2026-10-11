@@ -4,6 +4,9 @@
 # difference between the condition means and its REML fit has no closed form.
 
 data <- read.csv('data.csv')
+# The RNG kind of R 3.6.0 onwards, fixed so that sample() draws the same rows
+# in any version
+RNGkind('Mersenne-Twister', 'Inversion', 'Rejection')
 set.seed(2026)
 errors <- sort(sample(nrow(data), round(0.06 * nrow(data))))
 unbalanced <- data[-errors, ]

@@ -3,8 +3,8 @@
 # their numbers in the reply. Script runs are credited with the line their
 # script prints when executed (executions.csv), which is also checked against
 # the line quoted in the agent's reply. Tool calls are checked for compliance:
-# a prose run may only read its data file, and a script run may only touch its
-# own directory. The paths outside it are listed in outside_paths.
+# a prose run may call no tool but Read, and a script run may name no path
+# outside its own directory. The paths outside it are listed in outside_paths.
 
 library(jsonlite)
 

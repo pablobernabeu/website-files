@@ -8,6 +8,28 @@ is knitted.
 The files fall into three groups: scripts that can be run again, scripts kept as a
 record of how the stored files were made, and the records themselves.
 
+## Order of the steps
+
+The stored files were made in this order, by the scripts named, by the agents
+and, in step 10, by hand.
+
+1. `make_data.R` wrote `data.csv`.
+2. `make_runs.R` wrote the first 32 runs to `design.csv` and each run's prompt to
+   `runs/<run_id>/prompt.txt`.
+3. The agents made those 32 runs on the balanced data.
+4. `make_unbalanced.R` wrote `data_unbalanced.csv`, and `make_runs_followup.R`
+   added 16 runs on it to `design.csv`. The agents then made those runs.
+5. `extract_transcripts.py` wrote each run's `response.txt` and `tool_calls.json`.
+6. `execute_scripts.R` wrote `executions.csv`.
+7. `collect_results.R` wrote `results.csv`.
+8. `choices_open_scripts.csv` records the analytic choices of the scripts written
+   for the open request. No script writes it.
+9. `check_versions.R` wrote `version_check.csv` and `outputs/`.
+10. The workflow `.github/workflows/reproduce-genai-experiment.yml` wrote the
+    artifact `verification`, whose two files were copied by hand into
+    `verification.csv` and `verification_session_info.txt`.
+11. The second round followed, in `rerun/`, as described at the end of this file.
+
 ## Rebuilding the page
 
 The page is knitted with R 4.6.1 and the packages pinned in `renv.lock` at the root
@@ -16,7 +38,7 @@ of the repository.
 1. Start R in the root of the repository, which activates renv through `.Rprofile`
    (not with `--vanilla`, which skips it), and run `renv::restore()`.
 2. Make pandoc available to rmarkdown. The page was last knitted with pandoc 3.10,
-   the version that RStudio ships; outside RStudio, point the environment variable
+   the version that RStudio ships. Outside RStudio, point the environment variable
    `RSTUDIO_PANDOC` at the folder that holds `pandoc`.
 3. Knit the post from the root of the repository:
    `blogdown::build_site(run_hugo = FALSE, build_rmd = 'content/post/reproducible-research-with-generative-ai/index.en.Rmd')`.
@@ -39,6 +61,12 @@ Scripts Again*.
   this folder.
 - `make_unbalanced.R` writes `data_unbalanced.csv`, the follow-up data set with 6%
   of the trials removed, in the same way as `make_data.R`.
+- Run in this folder, `make_data.R` and `make_unbalanced.R` replace the stored
+  files. To check them, run them in a copy of the folder and compare the results
+  with `cmp`. Under R 4.6.1 and the pinned pilotr, both data files are regenerated
+  byte for byte.
+- `SHA256SUMS` lists the SHA-256 checksums of `spec.json`, `data.csv` and
+  `data_unbalanced.csv`, which `sha256sum -c SHA256SUMS` checks from this folder.
 
 ## Runs of the first round (a record of how they were made)
 
@@ -57,7 +85,8 @@ Scripts Again*.
   `runs/<run_id>/response.txt` and `tool_calls.json`.
   The transcripts are not kept, since they also hold the launching session's
   context. Script runs also have `analysis.R`.
-- `claude_code_version.txt`: the version of Claude Code that ran the agents.
+- `claude_code_version.txt`: the version of Claude Code that ran the agents of the
+  first round.
 - `claude_model.txt`: the model the agents ran, Claude Opus 5.5 (`claude-opus-5-5`).
   Each agent ran with the model and effort level of the session that launched it,
   and that session's commits of the experiment (b91841796 and a554ab4b0) name the
@@ -70,32 +99,48 @@ Scripts Again*.
   the RESULT line and a SHA-256 hash of the full output. The hash is taken over the
   lines of the output as `readLines()` returns them, joined by `\n` with no final
   newline, so it does not depend on the line endings a system writes and differs
-  from a checksum of the output file. `run_script_with_retries()` executes a script
+  from a checksum of the output file. A script still running after ten minutes
+  stops the execution with an error. `run_script_with_retries()` executes a script
   again when its R process crashes, which on Windows happens occasionally.
 - `execute_scripts.R` executed every script of the first round three times in the
   environment of that round and wrote `executions.csv`, with
-  `executions_session_info.txt`. It is
-  kept as a record: running it again replaces both files with the executions of the
-  current environment. To check the stored executions, use `verify_executions.R`.
+  `executions_session_info.txt`. It is kept as a record, since running it again
+  replaces both files with the executions of the current environment. To check the
+  stored executions, use `verify_executions.R`.
+- `executions_session_info.txt` describes the R session that launched the
+  executions. The scripts themselves ran in the C locale, as the `environment`
+  column of `executions.csv` records.
+- The stored executions were made with `run_script.R` as of commit a554ab4b0. Its
+  version of 30 September 2026, which adds the choice of library, skips the R
+  profile and executes a crashed script again, reproduced the same hashes in the
+  rebuilt environment (`verification.csv`).
 - `collect_results.R` combines the design, replies, executions and tool logs into
   `results.csv`, and flags every run that touched a path outside its own directory.
-- `choices_open_scripts.csv` records the analytic choices of the eight scripts
-  written for the open request.
+- `choices_open_scripts.csv` records, for each of the eight scripts written for the
+  open request, the random effects of the model whose result the script prints,
+  whether that model includes word frequency as a covariate, the interval method,
+  any transformation of the response times and any exclusions. No script writes it.
 
 ## Rebuilding the environment of the first round's executions
 
 The first round's stored executions ran under R 4.3.3 on Ubuntu 24.04, with lme4 1.1-35.1,
 lmerTest 3.1-3 and Matrix 1.6-5, and Ubuntu 24.04 still provides these versions.
 
-- `Dockerfile` rebuilds that environment from the Ubuntu packages, with every
-  version pinned. `docker build -t genai-experiment .` followed by
-  `docker run --rm genai-experiment` executes every script in it and compares each
-  output with `executions.csv`, through `verify_executions.R`.
+- `Dockerfile` rebuilds that environment from the Ubuntu packages, pinning R and
+  the packages that the scripts and `verify_executions.R` load. Their dependencies
+  come from the archive at build time, and `verification_session_info.txt` lists
+  the versions of the recorded build. `docker build -t genai-experiment .`
+  followed by `docker run --rm genai-experiment` executes every script in it and
+  compares each output with `executions.csv`, through `verify_executions.R`.
+- Given a file name, `verify_executions.R` also writes the comparison there, and
+  the session to the same name with `_session_info.txt` in place of `.csv`. When
+  the variables `GITHUB_SERVER_URL`, `GITHUB_REPOSITORY` and `GITHUB_RUN_ID` are
+  set, it records the address of the workflow run too.
 - The workflow `.github/workflows/reproduce-genai-experiment.yml` does the same on
-  GitHub Actions whenever these files change. `verification.csv` is the comparison
-  from one of its runs, whose address it records, and
-  `verification_session_info.txt` holds the session and the Ubuntu package versions
-  of the rebuilt environment.
+  GitHub Actions whenever these files change and on the first day of each month.
+  It takes about two minutes. `verification.csv` is the comparison from one of its
+  runs, whose address it records, and `verification_session_info.txt` holds the
+  session and the Ubuntu package versions of the rebuilt environment.
 
 ## Locating what changed the output
 
@@ -103,9 +148,12 @@ lmerTest 3.1-3 and Matrix 1.6-5, and Ubuntu 24.04 still provides these versions.
   libraries that differ only in the versions of lme4 and lmerTest: the site's renv
   library, the same with lme4 1.1-35.1, and the same with lmerTest 3.1-3 as well.
   It builds those two versions from the CRAN archive, which needs a compiler (Rtools
-  on Windows); the environment variable `STORED_LIBS` can name a folder that already
-  holds them. Run it from the root of the repository:
+  on Windows). The environment variable `STORED_LIBS` can name a folder that
+  already holds them. Run it from the root of the repository:
   `Rscript content/post/reproducible-research-with-generative-ai/experiment/check_versions.R`.
+  It deletes and replaces `outputs/`, `version_check.csv` and
+  `version_check_session_info.txt` in the folder that holds it, so to compare its
+  results with the stored ones, run it from a copy of this folder.
 - It writes `version_check.csv`, with one row per execution and the versions of the
   packages the scripts load. For the last attempt at each script, its column
   `trimmed_sha256` holds a hash of the output with the spaces at the ends of lines
@@ -142,19 +190,38 @@ The folder `rerun/` holds the second round, in which the 48 runs were made again
   and version of Claude Code that its transcript records, its start and finish
   times, its minutes from request to final reply and seconds of thinking, its
   number of tool calls, whether it stayed in its folder, the tokens of its last
-  request and its result line.
+  request and its result line. Its minutes run from the first to the last time
+  stamp of its transcript, and its seconds of thinking (`thinking_seconds`) add up
+  the thinking times that the transcript records. A run stayed in its folder
+  (`compliant`) when every tool call's input named that folder. The tokens of its
+  last request (`total_tokens_last_request`) are the total that the launching
+  session recorded for the agent when it finished.
+- No script in this folder writes `rerun/results.csv` or `rerun/runs/`. They were
+  extracted from the transcripts by scripts that are not kept here.
 - `rerun/runs/<round>/<run_id>/` holds the prompt as sent (`prompt.txt`), the final
   reply (`response.txt`), every tool call's input with the run's start and finish
   times (`tool_calls.json`) and, for script runs, `analysis.R`.
-- The transcripts are not kept, since they hold the launching session's context.
-  In the stored files, each run's own folder is written as `<run folder>` and the
-  Windows user name in any other path as `<user>`.
+- As in the first round, the transcripts are not kept, since they hold the
+  launching session's context. In the stored files, each run's own folder is
+  written as `<run folder>` and the Windows user name in any other path as
+  `<user>`. In `tool_calls.json`, every backslash is also written as `/`, so
+  escapes such as `\n` in commands appear as `/n`.
 - `rerun/execute_rerun.R` executes each of the 25 scripts twice with
   `run_script.R`, each time in a fresh R process in the C locale and a fresh copy
   of its folder, and writes `rerun/executions.csv` and
-  `rerun/executions_session_info.txt`. The stored executions ran in the R library
-  the agents used, that of R 4.6.1 started without a project profile. To execute
-  the scripts again in the same way, run `Rscript --no-init-file execute_rerun.R`
-  from `rerun/`, which replaces both files. In the stored executions, every script
-  printed identical output both times, ending with the result line its agent
-  reported.
+  `rerun/executions_session_info.txt`. A script whose R process crashed would have
+  been executed again, with only its last attempt kept, but none crashed.
+- `rerun/executions_session_info.txt` describes the R session that launched the
+  executions. The scripts themselves ran in the C locale, as the `environment`
+  column of `rerun/executions.csv` records.
+- The stored executions ran in the R library the agents used, that of R 4.6.1
+  started without a project profile. `rerun/library.lock`, taken from that library
+  on 11 October 2026, records the versions of R, of the packages that the scripts
+  and `run_script.R` load, and of their dependencies. It is an renv lockfile, from
+  which `renv::restore()`, given its `lockfile` and `library` arguments, can
+  rebuild those versions in a library of their own.
+- To execute the scripts again in the same way, run
+  `Rscript --no-init-file execute_rerun.R` from `rerun/` in a copy of the whole
+  experiment folder, since it replaces both files. In the stored executions, every
+  script printed identical output both times, ending with the result line its
+  agent reported.

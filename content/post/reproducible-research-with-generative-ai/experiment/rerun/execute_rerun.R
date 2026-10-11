@@ -3,8 +3,12 @@
 # and writes executions.csv and executions_session_info.txt next to this file.
 #
 # The scripts were executed in the R library the agents themselves used, that
-# of R 4.6.1 started without a project profile, from this folder:
+# of R 4.6.1 started without a project profile, whose versions library.lock
+# records. They were executed from this folder with
 #   Rscript --no-init-file execute_rerun.R
+# which replaces executions.csv and executions_session_info.txt, so a check
+# runs in a copy of the whole experiment folder. A script whose R process
+# crashes is executed again, and only its last attempt is kept.
 
 source('../run_script.R')
 
@@ -13,9 +17,10 @@ source('../run_script.R')
 results <- read.csv('results.csv')
 scripts <- results[results$route == 'script', ]
 exec_dir <- file.path(tempdir(), 'rerun_exec')
-for (effort in unique(scripts$round)) {
-  dir.create(file.path(exec_dir, effort, 'runs'), recursive = TRUE, showWarnings = FALSE)
-  file.copy(file.path('..', c('data.csv', 'data_unbalanced.csv')), file.path(exec_dir, effort), overwrite = TRUE)
+for (round_name in unique(scripts$round)) {
+  dir.create(file.path(exec_dir, round_name, 'runs'), recursive = TRUE, showWarnings = FALSE)
+  stopifnot(file.copy(file.path('..', c('data.csv', 'data_unbalanced.csv')),
+                      file.path(exec_dir, round_name), overwrite = TRUE))
 }
 for (i in seq_len(nrow(scripts))) {
   dir.create(file.path(exec_dir, scripts$round[i], 'runs', scripts$run_id[i]), showWarnings = FALSE)

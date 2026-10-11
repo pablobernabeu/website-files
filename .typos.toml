@@ -16,6 +16,8 @@ extend-exclude = [
   "*.bib",
   "*.csv",
   "*.json",
+  # Generated lockfiles, which copy each package's own description (renv)
+  "*.lock",
   "*.js",
   "*.css",
   "*.R",

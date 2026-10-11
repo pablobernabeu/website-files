@@ -10,6 +10,10 @@ on:
       - "content/post/reproducible-research-with-generative-ai/experiment/**"
       - ".github/workflows/reproduce-genai-experiment.yml"
   workflow_dispatch:
+  # Once a month as well, since the build takes the dependencies of the pinned
+  # packages from the Ubuntu archive as it is on the day
+  schedule:
+    - cron: '0 6 1 * *'
 
 permissions:
   contents: read
@@ -17,6 +21,7 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-24.04
+    timeout-minutes: 30
     defaults:
       run:
         working-directory: content/post/reproducible-research-with-generative-ai/experiment
@@ -24,11 +29,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Build the environment of the stored executions
         run: docker build -t genai-experiment .
 
-      # The comparison is kept as an artifact; the post reads a committed copy
+      # The comparison is kept as an artifact. The post reads a committed copy
       # of it, verification.csv, which records the address of this run.
       - name: Execute every script and compare with the stored hashes
         run: |

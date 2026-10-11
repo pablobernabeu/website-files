@@ -6,7 +6,8 @@
 # environment and, when it runs on GitHub Actions, the address of the run.
 # Unlike execute_scripts.R, it never changes the stored executions.
 #
-# Usage, from this directory:  Rscript verify_executions.R [verification.csv]
+# Usage, from this directory:  Rscript verify_executions.R [output.csv]
+# (naming verification.csv here would replace the committed record)
 
 source('run_script.R')
 
@@ -14,6 +15,8 @@ design <- read.csv('design.csv')
 scripts <- design[design$route == 'script', ]
 stored <- read.csv('executions.csv')
 stored <- stored[stored$execution == 1, ]
+# Every script has exactly one stored execution to compare with
+stopifnot(setequal(stored$run_id, scripts$run_id), !anyDuplicated(stored$run_id))
 
 results <- do.call(rbind, lapply(seq_len(nrow(scripts)), function(i)
   run_script(scripts$run_id[i], data_file_for(scripts$data[i]), label = 'verify')))
@@ -36,9 +39,9 @@ if (!is.na(output_file)) {
   write.csv(results[, c('run_id', 'status', 'result', 'stdout_sha256', 'identical',
                         'environment', 'run_url')], output_file, row.names = FALSE)
   # The session of a child process, where the scripts ran, and the versions of
-  # the system packages that provide R, its packages and the BLAS
-  # The installed ones only ('ii'), since the pattern also matches packages
-  # that dpkg knows of but that are not installed
+  # the installed system packages that provide R, its packages and the BLAS.
+  # Only those marked 'ii' are kept, since the pattern also matches packages
+  # that dpkg knows of but has not installed.
   packages <- tryCatch({
     listed <- system2('dpkg-query', c('-W', "-f='${db:Status-Abbrev}${Package} ${Version}\\n'",
                                       "'r-base-core'", "'r-cran-*'", 'libblas3', 'liblapack3'),

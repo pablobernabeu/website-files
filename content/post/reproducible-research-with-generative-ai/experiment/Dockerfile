@@ -1,11 +1,26 @@
 # The environment of the stored executions: R 4.3.3 and the R packages of
 # Ubuntu 24.04, whose archive keeps these versions, with the reference BLAS.
-# The versions are pinned so that a change in the archive fails the build
-# instead of changing the environment. Building the image and running it
-# executes every agent script and compares its output with executions.csv:
+# R and the packages that the scripts and verify_executions.R load are pinned,
+# so that a change in the archive fails the build instead of changing them.
+# Their dependencies, the BLAS and LAPACK among them, come from the archive at
+# build time, and verification_session_info.txt lists the versions of the
+# recorded build. Building the image and running it executes every agent
+# script and compares its output with executions.csv:
 #
 #   docker build -t genai-experiment .
 #   docker run --rm genai-experiment
+#
+# The base image is docker.io/library/ubuntu:24.04 at the digest below, which
+# was recorded when this file was written on 30 September 2026. Build it from
+# this folder. To keep the comparison, as
+# .github/workflows/reproduce-genai-experiment.yml does:
+#
+#   docker run --rm -v "$PWD/verification:/out" genai-experiment \
+#     Rscript verify_executions.R /out/verification.csv
+#
+# The workflow also passes GITHUB_SERVER_URL, GITHUB_REPOSITORY and
+# GITHUB_RUN_ID with -e, so that the comparison records the address of its run.
+# The build and check take about two minutes on GitHub Actions.
 
 FROM ubuntu:24.04@sha256:008173c23f95b170204355c12626cb5a965d779a7e1283b09e9cffbb1bf33ca3
 
