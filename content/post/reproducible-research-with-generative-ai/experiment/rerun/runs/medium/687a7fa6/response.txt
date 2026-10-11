@@ -1,0 +1,11 @@
+Responses after unrelated primes were about 18.5 ms slower than after related primes, with a 95% CI of 3.6 to 33.4 ms (p = .015). The script runs without errors, and its last line is:
+
+RESULT estimate=18.52 lower=3.63 upper=33.41
+
+**What the script does** (`<run folder>/analysis.R`):
+1. **Data:** It reads `data.csv` and checks it: 1,440 trials, 30 participants and 24 items, with no missing values. It prints the raw means, which are 698.7 ms after related primes and 717.2 ms after unrelated primes.
+2. **Model:** It fits a linear mixed model to raw RT in milliseconds using lme4/lmerTest. The fixed effects are prime and target frequency. Prime is coded +0.5 for unrelated and −0.5 for related, so its coefficient is directly the unrelated-minus-related difference. Frequency is centred.
+3. **Random effects:** It starts with random intercepts and prime slopes for both participants and items, which the design supports. Those fits were singular, so it simplifies one step at a time: first it drops the correlations, then the item slope, then the participant slope. It ends with random intercepts for participants and items. The participant slope variance was estimated at exactly 0, so the estimate is the same across these models.
+4. **Estimate and CI:** It takes the prime coefficient as the priming effect and builds the 95% CI from the Satterthwaite t distribution (SE = 7.6, df ≈ 1386).
+
+**Caveat:** The RTs are right-skewed (largest scaled residual is 5.7). I modelled raw RT so the effect would be in milliseconds, as asked, and did not trim outliers or transform the data.

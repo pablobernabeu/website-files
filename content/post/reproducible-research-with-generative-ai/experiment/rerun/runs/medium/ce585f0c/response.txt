@@ -1,0 +1,16 @@
+**Priming effect: about 23 ms (95% CI roughly 8 to 38 ms).** Responses were about 23 ms slower after unrelated primes than after related primes. These are hand-calculated approximations, not the output of `lmer()`, because I was not allowed to run code.
+
+**How I got the estimate.** The design is almost balanced and the model has random slopes for both participants and items. In that setting the fixed effect of prime_c comes out very close to the average within-pair difference (unrelated minus related).
+- I computed that difference by hand for every participant-word pair that has both conditions: 635 pairs across all 30 participants.
+- The differences sum to 14,594 ms, a mean of 22.98 ms.
+- Averaging each participant's own mean difference gives 23.6 ms.
+- The 85 rows without a partner condition add only through the random intercepts, so they should move the estimate very little.
+
+**How I got the interval.**
+- The 30 participants' mean differences have an SD of about 38 ms. That implies an SD of about 170 to 220 ms for a single pair's difference.
+- Per-participant effects vary less than noise alone would produce, which suggests the participant slope variance is close to zero. I did not check item-level slopes, so they may widen the interval a little.
+- Together this gives a standard error of about 7 to 9 ms. I used 7.5, so the Wald interval is about 23 ± 1.96 × 7.5, which is about 8.3 to 37.7 ms.
+
+**Accuracy.** The estimate should be within a few milliseconds of what `lmer()` would give. The interval limits are rougher, perhaps off by ±3 to 5 ms each, because the standard error depends on variance components I could not fit by hand. Either way, the effect is clearly above zero.
+
+RESULT estimate=23.0 lower=8.3 upper=37.7

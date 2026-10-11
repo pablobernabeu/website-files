@@ -1,0 +1,27 @@
+{
+ "started": "2026-10-11T14:25:56.782Z",
+ "finished": "2026-10-11T14:26:35.118Z",
+ "calls": [
+  {
+   "tool": "Bash",
+   "input": {
+    "command": "cd <run folder> && ls && head -5 data.csv && wc -l data.csv",
+    "description": "Inspect the data file"
+   }
+  },
+  {
+   "tool": "Write",
+   "input": {
+    "file_path": "<run folder>/analysis.R",
+    "content": "# Priming effect in a lexical decision task: linear mixed-effects model.\n# Uses every row of data.csv, untransformed rt, and the pre-specified model.\n\nsuppressPackageStartupMessages(library(lme4))\n\ndat <- read.csv(\"data.csv\", stringsAsFactors = FALSE)\n\nstopifnot(all(dat$prime %in% c(\"related\", \"unrelated\")))\ndat$participant <- factor(dat$participant)\ndat$item <- factor(dat$item)\n# Deviation coding: the fixed effect equals unrelated minus related.\ndat$prime_c <- ifelse(dat$prime == \"related\", -0.5, 0.5)\n\ncat(\"Rows:\", nrow(dat), \" Participants:\", nlevels(dat$participant),\n    \" Items:\", nlevels(dat$item), \"/n\")\nprint(aggregate(rt ~ prime, data = dat, FUN = mean))\n\nfit <- lmer(rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c | item),\n            data = dat, REML = TRUE)\nprint(summary(fit))\n\nmsgs <- fit@optinfo$conv$lme4$messages\nif (!is.null(msgs)) cat(\"Convergence messages:\", msgs, sep = \"/n\")\ncat(\"Singular fit:\", isSingular(fit), \"/n\")\n\nest <- unname(fixef(fit)[\"prime_c\"])\nci <- confint(fit, parm = \"prime_c\", method = \"Wald\")\n\ncat(sprintf(\"RESULT estimate=%.2f lower=%.2f upper=%.2f/n\",\n            est, ci[1, 1], ci[1, 2]))\n"
+   }
+  },
+  {
+   "tool": "Bash",
+   "input": {
+    "command": "cd <run folder> && \"C:/Program Files/R/R-4.6.1/bin/Rscript.exe\" analysis.R 2>&1",
+    "description": "Run the analysis script"
+   }
+  }
+ ]
+}

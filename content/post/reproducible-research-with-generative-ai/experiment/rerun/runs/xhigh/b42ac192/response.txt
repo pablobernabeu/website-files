@@ -1,0 +1,15 @@
+I computed this by hand from the file, without running any code. The priming effect is about **18.5 ms**: responses after unrelated primes were slower than after related primes. The 95% Wald interval is about **[−0.7, 37.8] ms**. It only just includes zero, so on these data the effect is not significant at the .05 level.
+
+**How I got there**
+- **Data:** all 1,440 rows, 30 participants by 24 items. Every participant–item pair appears once in each prime condition, so the design is fully balanced.
+- **Estimate:** in a balanced design like this, the lmer fixed effect for prime_c equals the mean of the 720 unrelated-minus-related differences. Those differences sum to 13,334, giving 13,334 / 720 = 18.519 ms. Two checks agree: the sum by participant equals the sum by item, and each participant's unrelated total equals their related total plus their difference total.
+- **Standard error:** with balanced data, the REML variance components can be worked out from the mean squares of the sums and differences.
+  - Items: the mean square for priming differences between items is 67,640. Item random effects stay inside the allowed range, so this enters the SE directly. The implied item slope SD is about 30 ms.
+  - Participants: the mean square for priming differences between participants (28,810) is below the residual level (about 41,000). REML therefore stops at a boundary, and the model would report a singular fit. The participant slope SD comes out at about 9 ms, perfectly correlated with the participant intercept. This adds about 1,910 to the variance numerator.
+  - Residual SD is about 143 ms.
+  - SE² = (67,640 + 1,910) / 720 = 96.6, so SE ≈ 9.83 ms.
+- **Interval:** 18.52 ± 1.96 × 9.83 gives [−0.74, 37.78] ms.
+
+The estimate itself is exact. The interval limits should be right to within a few hundredths of a millisecond, but lmer's optimiser may not land exactly on the boundary in a singular fit, which could shift them slightly. One assumption sits behind the residual variance: I didn't compute the residual for the condition sums and assumed it matches the one for the differences. Changing it has almost no effect on the SE.
+
+RESULT estimate=18.52 lower=-0.74 upper=37.78

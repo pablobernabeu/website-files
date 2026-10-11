@@ -1,0 +1,11 @@
+Responses after unrelated primes were **18.5 ms slower** than after related primes, with a 95% CI of [3.6, 33.4] ms (t(1386) = 2.44, p = .015). The raw cell means agree: 698.7 ms after related primes and 717.2 ms after unrelated primes. The script runs cleanly and its last line is:
+
+`RESULT estimate=18.52 lower=3.63 upper=33.41`
+
+The script is `<run folder>/analysis.R`. It does the following:
+- **Data check:** it reads `data.csv` and checks the columns, the prime labels and that no response times are missing. The design is complete: 30 participants × 24 items × 2 primes = 1,440 trials.
+- **Model:** a linear mixed-effects model on raw RT, so the effect comes out in milliseconds. Participants and items are crossed random effects. Prime is coded −0.5/+0.5, so its coefficient is the unrelated-minus-related difference. Word frequency (Zipf, centred) is included as an item-level covariate; on its own it was not significant (−12.2 ms per Zipf unit, p = .32).
+- **Random-effects structure:** it starts with by-participant and by-item random slopes for prime. If a fit is singular or fails to converge, it drops the slope correlations, and then the slopes. Both models with slopes were singular, because the slope variances were estimated at zero. The model actually used therefore has random intercepts only.
+- **Confidence interval:** a t-based interval using Satterthwaite degrees of freedom from lmerTest. The script prints the model summary, then the `RESULT` line last.
+
+Because the random slopes collapsed to zero, the narrow interval rests on the data showing no detectable variation in priming across participants or items.

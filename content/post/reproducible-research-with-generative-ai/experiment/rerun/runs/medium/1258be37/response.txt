@@ -1,0 +1,13 @@
+I estimate the priming effect at about **18.5 ms**: responses after unrelated primes were slower than after related primes. The 95% Wald confidence interval runs from roughly **−0.5 to 37.5 ms**, so it just includes zero. I could not run code, so I worked this out by hand from the 1,440 rows. The point estimate is exact, but the interval is approximate.
+
+**Estimate.** Every participant saw every item once in each prime condition, and nothing is missing. In a design this balanced, the fixed effect of prime_c from the lmer model equals the mean of the 720 paired differences (unrelated minus related). Those differences sum to 13,334 ms, which gives 13,334 / 720 = 18.52 ms. I checked this sum twice, once grouped by participant and once grouped by item, and both gave the same total.
+
+**Standard error.** I approximated this with a two-way breakdown of the paired differences:
+- **Participants:** the 30 participants' mean differences ranged from about −57 to +77 ms. Their spread was smaller than the trial-level noise alone would predict, so the participant random slope is probably estimated at or near zero.
+- **Items:** the 24 items' mean differences ranged from about −85 to +85 ms. This is clearly more spread than the noise accounts for, so the item random slope is non-zero.
+- **Result:** in that case the standard error is about √(67,612 / 720) ≈ 9.7 ms, where 67,612 is the mean square for items. This figure barely depends on my rough estimate of the residual variance.
+- **Interval:** 18.52 ± 1.96 × 9.7 gives about −0.5 to 37.5 ms.
+
+**Reliability.** The interval could be off by roughly a millisecond at each end. That error would come from the hand approximation of the variance components, how lme4 handles the correlations in the random effects, and any singular fit. Because the lower bound sits so close to zero, the exact lmer output could fall on either side of it.
+
+RESULT estimate=18.52 lower=-0.47 upper=37.51

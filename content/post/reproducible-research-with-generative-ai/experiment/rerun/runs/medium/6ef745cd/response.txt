@@ -1,0 +1,13 @@
+I've written `<run folder>/analysis.R` and run it. **Responses after unrelated primes are about 18.5 ms slower, with a 95% Wald CI from −0.74 to 37.78 ms.** Because the interval includes zero, the effect is not significant at the .05 level.
+
+The fit converged, but lme4 reported it as singular. The cause is the participant-level correlation between intercept and priming slope, which hit 1.00 because the participant slope variance is very small (SD of about 8.9 ms). This doesn't stop the estimate or interval from being produced, but that part of the random-effects structure is poorly estimated. I kept the model exactly as you specified.
+
+What the script does:
+1. It reads `data.csv` and keeps all 1,440 rows from 30 participants and 24 items, with no exclusions and no transformation of rt.
+2. It checks that `prime` only takes the values related and unrelated and that rt has no missing values. It also prints the mean rt for each condition: 698.7 ms for related and 717.2 ms for unrelated.
+3. It codes `prime_c` as −0.5 for related and +0.5 for unrelated.
+4. It fits `lmer(rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c | item))` with REML and the default optimiser, and prints the model summary.
+5. It takes the fixed effect of `prime_c` and its interval from `confint(fit, parm = "prime_c", method = "Wald")`.
+
+The last line it prints is:
+`RESULT estimate=18.52 lower=-0.74 upper=37.78`

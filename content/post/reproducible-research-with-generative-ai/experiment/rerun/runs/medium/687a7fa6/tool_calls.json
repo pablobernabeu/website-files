@@ -1,0 +1,50 @@
+{
+ "started": "2026-10-11T14:21:38.495Z",
+ "finished": "2026-10-11T14:23:01.491Z",
+ "calls": [
+  {
+   "tool": "Bash",
+   "input": {
+    "command": "cd <run folder> && ls && head -5 data.csv && wc -l data.csv",
+    "description": "Inspect data file"
+   }
+  },
+  {
+   "tool": "Bash",
+   "input": {
+    "command": "cd <run folder> && \"C:/Program Files/R/R-4.6.1/bin/Rscript.exe\" -e 'd<-read.csv(\"data.csv\");str(d);print(summary(d$rt));print(table(table(d$participant)));print(tapply(d$rt,d$prime,mean));print(table(d$frequency))'",
+    "description": "Summarise data"
+   }
+  },
+  {
+   "tool": "Write",
+   "input": {
+    "file_path": "<run folder>/analysis.R",
+    "content": "# Semantic priming effect in lexical decision (correct responses only).\n# Priming effect = mean RT after unrelated primes minus mean RT after related\n# primes, estimated with a linear mixed-effects model on raw RT (ms) with\n# crossed random effects for participants and items.\n\nsuppressPackageStartupMessages({\n  library(lme4)\n  library(lmerTest)\n  library(emmeans)\n})\n\nd <- read.csv(\"data.csv\", stringsAsFactors = FALSE)\n\nstopifnot(all(c(\"participant\", \"item\", \"prime\", \"frequency\", \"rt\") %in% names(d)))\nd <- d[!is.na(d$rt), ]\nd$participant <- factor(d$participant)\nd$item <- factor(d$item)\nd$prime <- factor(d$prime, levels = c(\"related\", \"unrelated\"))\n\ncat(\"Observations:\", nrow(d), \" participants:\", nlevels(d$participant),\n    \" items:\", nlevels(d$item), \"/n\")\nprint(aggregate(rt ~ prime, data = d, FUN = mean))\n\n# Sum-code prime (+0.5 unrelated, -0.5 related) so the coefficient is the\n# unrelated - related difference and the intercept is the grand mean.\n# Frequency is centred; it is a property of the target and varies between\n# items only, so it accounts for item variability but not the prime contrast.\nd$prime_c <- ifelse(d$prime == \"unrelated\", 0.5, -0.5)\nd$freq_c <- d$frequency - mean(d$frequency)\n\n# Maximal random-effects structure justified by the design: prime varies\n# within participants and within items.\nm <- lmer(rt ~ prime_c + freq_c +\n            (1 + prime_c | participant) + (1 + prime_c | item),\n          data = d, REML = TRUE,\n          control = lmerControl(optimizer = \"bobyqa\",\n                                optCtrl = list(maxfun = 2e5)))\n\n# If the maximal model is singular, simplify by dropping the random\n# correlations, then the item slope, as needed.\nif (isSingular(m)) {\n  cat(\"Maximal model singular; dropping random correlations./n\")\n  m <- update(m, . ~ prime_c + freq_c +\n                (1 + prime_c || participant) + (1 + prime_c || item))\n}\nif (isSingular(m)) {\n  cat(\"Still singular; dropping the by-item prime slope./n\")\n  m <- update(m, . ~ prime_c + freq_c +\n                (1 + prime_c || participant) + (1 | item))\n}\n\nprint(summary(m))\n\n# Estimate and 95% CI for the priming effect, Satterthwaite degrees of freedom.\nco <- summary(m, ddf = \"Satterthwaite\")$coefficients[\"prime_c\", ]\nest <- unname(co[\"Estimate\"])\nse <- unname(co[\"Std. Error\"])\ndf <- unname(co[\"df\"])\ncrit <- qt(0.975, df)\nlower <- est - crit * se\nupper <- est + crit * se\n\ncat(sprintf(\"Priming effect (unrelated - related): %.1f ms, SE = %.1f, df = %.1f, 95%% CI [%.1f, %.1f], p = %.3g/n\",\n            est, se, df, lower, upper, co[\"Pr(>|t|)\"]))\n\ncat(sprintf(\"RESULT estimate=%.2f lower=%.2f upper=%.2f/n\", est, lower, upper))\n"
+   }
+  },
+  {
+   "tool": "Bash",
+   "input": {
+    "command": "cd <run folder> && \"C:/Program Files/R/R-4.6.1/bin/Rscript.exe\" analysis.R",
+    "description": "Run the analysis script"
+   }
+  },
+  {
+   "tool": "Edit",
+   "input": {
+    "replace_all": false,
+    "file_path": "<run folder>/analysis.R",
+    "old_string": "print(summary(m))",
+    "new_string": "if (isSingular(m)) {\n  cat(\"Still singular; dropping the by-participant prime slope./n\")\n  m <- update(m, . ~ prime_c + freq_c + (1 | participant) + (1 | item))\n}\n\nprint(summary(m))"
+   }
+  },
+  {
+   "tool": "Bash",
+   "input": {
+    "command": "cd <run folder> && \"C:/Program Files/R/R-4.6.1/bin/Rscript.exe\" analysis.R 2>&1 | tail -8",
+    "description": "Rerun the analysis script"
+   }
+  }
+ ]
+}

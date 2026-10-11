@@ -1,0 +1,11 @@
+**Estimated priming effect: about 23 ms, 95% CI roughly 8 to 38 ms.** Responses after unrelated primes were about 23 ms slower than after related primes. These are hand-worked approximations, not the output of `lmer()`. I was told not to run code, so I did not fit the model.
+
+How I got there:
+- **Estimate.** I took every participant–word pair that had both conditions (635 pairs across the 30 participants). For each pair I computed the unrelated RT minus the related RT. The differences add up to 14,594 ms, which gives a mean of 22.98 ms.
+- **Rows I left out.** The mixed model would also use the rows whose partner condition is missing. I left those out, and the REML estimate weights participants and items in its own way. So the real fixed effect of `prime_c` could differ from 23 by a few milliseconds.
+- **Standard error.** The 30 participant mean differences range from about −60 to +99 ms, with an SD of about 38 ms. That gives a standard error of about 6.9 ms. A rough residual-based check gives about 8 ms. I took about 7.5 ms as a compromise, which allows for the item-level random slopes.
+- **Interval.** The Wald interval is the estimate ± 1.96 × SE, so 23 ± 14.7, which gives about 8.3 to 37.7 ms.
+
+The effect is positive and its interval does not include zero, but the exact limits from `confint(fit, parm = "prime_c", method = "Wald")` will differ somewhat.
+
+RESULT estimate=23.0 lower=8.3 upper=37.7

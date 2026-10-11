@@ -1,0 +1,17 @@
+Responses after unrelated primes were about 18.5 ms slower than after related primes, with a 95% CI of roughly 5.6 to 31.5 ms.
+
+**How I got it.** I read all 1,440 rows (30 participants × 24 items × 2 prime conditions). For every participant-by-item pair I subtracted the related RT from the unrelated RT, then summed those 24 differences for each participant. All of this was done by hand, with no code.
+
+- **Grand total of the 720 paired differences:** 13,334 ms. Divided by 720, that gives a mean priming effect of 18.52 ms.
+- **Spread across participants:** the participant mean effects run from −57.2 ms (P12) to +77.1 ms (P21). 21 of the 30 participants are positive.
+  - Their standard deviation is about 34.7 ms.
+  - The standard error is 34.7 / √30 ≈ 6.33 ms.
+- **Confidence interval:** with t(29) = 2.045, the 95% CI is 18.5 ± 12.9 ms, which is about [5.6, 31.5] ms.
+
+**Caveats**
+- This is a by-participant paired analysis. A mixed-effects model with random intercepts and priming slopes for both participants and items would probably give a somewhat wider interval, because items also vary in how much priming they show.
+- RTs are right-skewed, with single trials up to about 1,580 ms. Several large single-trial differences of 500 to 1,000 ms move individual participant means a lot.
+- Frequency doesn't affect the estimate, because each item appears in both conditions, so it cancels out of the paired differences.
+- Because the sums were done by hand, small arithmetic slips are possible. I'd expect them to move the estimate by no more than about 1 ms.
+
+RESULT estimate=18.5 lower=5.6 upper=31.5

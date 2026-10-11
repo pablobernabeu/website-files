@@ -1,0 +1,18 @@
+{
+ "started": "2026-10-11T14:26:44.874Z",
+ "finished": "2026-10-11T14:27:27.158Z",
+ "calls": [
+  {
+   "tool": "Bash",
+   "input": {
+    "command": "cd <run folder> && ls && head -5 data.csv && wc -l data.csv"
+   }
+  },
+  {
+   "tool": "Bash",
+   "input": {
+    "command": "cd <run folder> && cat > analysis.R <<'EOF'\n# Priming effect in a lexical decision task, estimated with a linear\n# mixed-effects model (lme4, REML, default optimiser).\nsuppressPackageStartupMessages(library(lme4))\n\nd <- read.csv(\"data.csv\", stringsAsFactors = FALSE)\n\n# Basic checks on the input: every row is used, with no exclusions.\nstopifnot(all(c(\"participant\", \"item\", \"prime\", \"frequency\", \"rt\") %in% names(d)))\nstopifnot(all(d$prime %in% c(\"related\", \"unrelated\")), !anyNA(d$rt))\ncat(\"Rows:\", nrow(d), \" Participants:\", length(unique(d$participant)),\n    \" Items:\", length(unique(d$item)), \"/n\")\nprint(aggregate(rt ~ prime, data = d, FUN = mean))\n\n# Contrast coding: related = -0.5, unrelated = +0.5, so the fixed effect of\n# prime_c is the unrelated-minus-related difference in ms.\nd$prime_c <- ifelse(d$prime == \"unrelated\", 0.5, -0.5)\nd$participant <- factor(d$participant)\nd$item <- factor(d$item)\n\nfit <- lmer(rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c | item),\n            data = d, REML = TRUE)\nprint(summary(fit))\nmsgs <- fit@optinfo$conv$lme4$messages\nif (!is.null(msgs)) cat(\"Convergence messages:\", msgs, sep = \"/n\")\ncat(\"Singular fit:\", isSingular(fit), \"/n\")\n\nest <- unname(fixef(fit)[\"prime_c\"])\nci <- confint(fit, parm = \"prime_c\", method = \"Wald\")\n\ncat(sprintf(\"RESULT estimate=%.4f lower=%.4f upper=%.4f/n\",\n            est, ci[1, 1], ci[1, 2]))\nEOF\n\"C:/Program Files/R/R-4.6.1/bin/Rscript.exe\" analysis.R"
+   }
+  }
+ ]
+}

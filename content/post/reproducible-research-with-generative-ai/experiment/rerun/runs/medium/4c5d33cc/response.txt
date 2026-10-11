@@ -1,0 +1,15 @@
+I wrote `analysis.R` and ran it. Responses after unrelated primes were about **21.8 ms slower** than after related primes, with a 95% Wald CI of **0.58 to 43.00 ms**.
+
+The script is at <run folder>/analysis.R and does the following:
+- **Data:** it reads `data.csv` and uses all 1,354 rows (30 participants, 24 items), with no exclusions and rt left untransformed. It stops with an error if any prime label is something other than "related" or "unrelated".
+- **Coding:** it sets `prime_c` to -0.5 for related and +0.5 for unrelated.
+- **Model:** it fits `lmer(rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c | item))` with REML and the default optimiser.
+- **Printed output:** the row counts, the raw mean rt per condition (698.8 ms related, 720.2 ms unrelated), the model summary and any convergence messages.
+- **Estimate and interval:** the fixed effect of `prime_c` with SE 10.82 and t = 2.01, and the interval from `confint(fit, parm = "prime_c", method = "Wald")`.
+
+The last line it prints is:
+`RESULT estimate=21.79 lower=0.58 upper=43.00`
+
+The lower bound is barely above zero, so the data only just rule out no priming effect.
+
+The fit is singular. The participant-level random slope is close to zero (SD 6.7) and its correlation with the participant intercept is +1.00. lme4 issues a boundary warning, but the optimiser reports convergence code 0 (OK). I kept the specified model unchanged.

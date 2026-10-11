@@ -1,0 +1,14 @@
+I wrote `analysis.R` and it runs cleanly. Responses after unrelated primes are about 18.5 ms slower than after related primes, 95% CI [-1.5, 38.6]. The interval includes zero (p = .069), so the data are consistent with a small positive priming effect but do not establish one at the .05 level.
+
+The script's last line is:
+`RESULT estimate=18.52 lower=-1.53 upper=38.57`
+
+**What the script does:**
+1. **Reads the data.** It loads `data.csv`: 1,440 correct responses from 30 participants on 24 items. It prints the mean response time for each prime condition: 698.7 ms related and 717.2 ms unrelated.
+2. **Fits a mixed model.** Response time stays in raw milliseconds so the estimate is directly in ms. Prime is coded −0.5 for related and +0.5 for unrelated, so its coefficient is the unrelated minus related difference. Centred word frequency is included as a covariate. Participants and items are both random effects, each starting with a random intercept and a random prime slope.
+3. **Simplifies the model when the fit fails.** If the full model has a singular fit (some variance estimated at its boundary) or does not converge, the script drops the slope–intercept correlations. If it is still singular, it removes any random slope whose variance is estimated at zero (Matuschek et al., 2017). With this data it ends with random intercepts for participants and items, plus a by-item prime slope. The by-participant slope variance was about zero.
+4. **Computes the interval.** The 95% CI is a t-interval with Satterthwaite degrees of freedom (df = 23). As a check, it also prints the simple average of each participant's unrelated minus related difference, which is also 18.5 ms.
+
+The residuals are right-skewed, which is usual for response times. I kept the raw ms scale because the question asks for the effect in milliseconds.
+
+File: `<run folder>/analysis.R`

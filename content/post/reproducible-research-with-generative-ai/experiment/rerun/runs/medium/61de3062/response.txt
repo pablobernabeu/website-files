@@ -1,0 +1,11 @@
+The priming effect is about **18.5 ms**: responses after unrelated primes were slower than after related primes, with a 95% CI of 3.6 to 33.4 ms. The script runs without errors, and its last line is:
+`RESULT estimate=18.52 lower=3.63 upper=33.41`
+
+What `<run folder>/analysis.R` does:
+- **Reads the data:** loads `data.csv` and checks that the columns are there. It has 1,440 trials from 30 participants and 24 items. It prints the mean RT for each prime condition: 698.7 ms after related primes and 717.2 ms after unrelated primes.
+- **Model:** a linear mixed model on raw RT, fitted with `lme4`/`lmerTest`. The prime is coded −0.5 for related and +0.5 for unrelated, so its coefficient is the unrelated minus related difference in ms. Centred Zipf frequency is included as a covariate.
+- **Random effects:** it first tries the full structure, with random intercepts and prime slopes for both participants and items. If a fit is singular or fails to converge, it drops to simpler structures. All the structures with slopes were singular, so the model it kept has random intercepts only: `(1|participant) + (1|item)`.
+- **Confidence interval:** the CI uses Satterthwaite degrees of freedom.
+- **Cross-check:** a paired t-test on the per-participant condition means gives a similar 95% CI of 5.6 to 31.5 ms.
+
+The residuals are right-skewed, as RTs usually are. I kept the model on raw RT so the effect is reported directly in milliseconds.

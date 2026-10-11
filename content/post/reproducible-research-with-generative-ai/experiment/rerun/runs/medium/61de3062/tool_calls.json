@@ -1,0 +1,20 @@
+{
+ "started": "2026-10-11T14:20:19.341Z",
+ "finished": "2026-10-11T14:21:31.700Z",
+ "calls": [
+  {
+   "tool": "Bash",
+   "input": {
+    "command": "cd <run folder> && ls && head -5 data.csv && wc -l data.csv",
+    "description": "Inspect data file"
+   }
+  },
+  {
+   "tool": "Bash",
+   "input": {
+    "command": "cd <run folder> && cat > analysis.R <<'EOF'\n# Semantic priming effect in lexical decision (correct responses only).\n# Priming effect = RT(unrelated) - RT(related), in milliseconds.\nsuppressPackageStartupMessages({\n  library(lme4)\n  library(lmerTest)\n})\n\nd <- read.csv(\"data.csv\", stringsAsFactors = FALSE)\nstopifnot(all(c(\"participant\", \"item\", \"prime\", \"frequency\", \"rt\") %in% names(d)))\nd <- d[!is.na(d$rt), ]\nd$participant <- factor(d$participant)\nd$item <- factor(d$item)\nd$prime <- factor(d$prime, levels = c(\"related\", \"unrelated\"))\n\ncat(\"Observations:\", nrow(d), \" participants:\", nlevels(d$participant),\n    \" items:\", nlevels(d$item), \"/n\")\nprint(aggregate(rt ~ prime, d, function(x) c(mean = mean(x), sd = sd(x))))\n\n# Sum-coded prime (+0.5 unrelated, -0.5 related), so the coefficient is the\n# unrelated - related difference in ms; frequency is centred.\nd$prime_c <- ifelse(d$prime == \"unrelated\", 0.5, -0.5)\nd$freq_c <- d$frequency - mean(d$frequency)\n\n# Maximal random-effects structure justified by the design: prime varies\n# within participants and within items. Fall back to simpler structures if\n# the fit is singular or fails to converge.\nforms <- list(\n  rt ~ prime_c + freq_c + (1 + prime_c | participant) + (1 + prime_c | item),\n  rt ~ prime_c + freq_c + (1 + prime_c || participant) + (1 + prime_c || item),\n  rt ~ prime_c + freq_c + (1 + prime_c | participant) + (1 | item),\n  rt ~ prime_c + freq_c + (1 | participant) + (1 | item)\n)\nctrl <- lmerControl(optimizer = \"bobyqa\", optCtrl = list(maxfun = 1e5))\nfit <- NULL\nfor (f in forms) {\n  m <- tryCatch(lmer(f, data = d, REML = TRUE, control = ctrl),\n                error = function(e) NULL)\n  if (is.null(m)) next\n  conv_ok <- length(m@optinfo$conv$lme4$messages) == 0\n  if (!isSingular(m) && conv_ok) { fit <- m; break }\n  if (is.null(fit)) fit <- m\n}\ncat(\"/nSelected model:/n\"); print(formula(fit))\nprint(summary(fit))\n\n# Satterthwaite-based 95% CI for the priming effect.\nco <- summary(fit, ddf = \"Satterthwaite\")$coefficients[\"prime_c\", ]\ntcrit <- qt(0.975, co[\"df\"])\nest <- unname(co[\"Estimate\"])\nlower <- unname(est - tcrit * co[\"Std. Error\"])\nupper <- unname(est + tcrit * co[\"Std. Error\"])\n\n# Sanity check: by-participant paired difference.\npm <- with(d, tapply(rt, list(participant, prime), mean))\ncat(\"/nBy-participant mean difference (paired t):/n\")\nprint(t.test(pm[, \"unrelated\"], pm[, \"related\"], paired = TRUE)$conf.int)\n\ncat(sprintf(\"/nPriming effect: %.1f ms, 95%% CI [%.1f, %.1f]/n\", est, lower, upper))\ncat(sprintf(\"RESULT estimate=%.2f lower=%.2f upper=%.2f/n\", est, lower, upper))\nEOF\n\"C:/Program Files/R/R-4.6.1/bin/Rscript.exe\" analysis.R",
+    "description": "Write and run analysis script"
+   }
+  }
+ ]
+}

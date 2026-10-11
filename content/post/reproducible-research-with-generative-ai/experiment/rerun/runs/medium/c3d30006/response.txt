@@ -1,0 +1,13 @@
+I couldn't fit the model, because I had no code interpreter. The numbers below are worked out by hand from the file, so they are approximate.
+
+**Data.** There are 1,354 rows. 635 participant-word pairs have both conditions, and 84 have only one.
+
+**Point estimate.** For each of the 635 complete pairs I subtracted the related RT from the unrelated RT. The differences add up to 14,594 ms, so the mean is about 23.0 ms. Responses after unrelated primes are slower, which is the expected direction. For a near-balanced design like this one, the REML fixed effect of prime_c should be close to this mean. The 84 single-condition rows would move it only slightly.
+
+**Uncertainty.** The mean difference varies from participant to participant, from about -60 ms (P12) to about +99 ms (P21). Their SD is about 38 ms, which is roughly what trial-level noise alone would produce. That suggests the participant random slope variance is small.
+
+The paired differences have an SD of roughly 200 to 230 ms. With about 635 pairs, plus the extra rows, the Wald SE of prime_c should be around 9 ms. That gives a 95% interval of about 23 ± 1.96 × 9, or roughly 5 to 41 ms.
+
+So the priming effect is about 23 ms, 95% CI roughly 5 to 41 ms. The interval excludes zero, but that conclusion depends on my rough SE estimate. The exact lmer output would probably differ by a few milliseconds.
+
+RESULT estimate=23 lower=5.4 upper=40.6

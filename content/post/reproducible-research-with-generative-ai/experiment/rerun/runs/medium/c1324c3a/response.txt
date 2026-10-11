@@ -1,0 +1,20 @@
+I estimate the priming effect at about **18.5 ms**, with a 95% Wald confidence interval of roughly **−0.5 to 37.5 ms**. Responses after unrelated primes were about 18.5 ms slower, but the interval only just includes zero. I could not fit the model with `lmer()` because I was not allowed to run code, so these numbers come from hand arithmetic. The estimate is exact. The interval is an approximation that should be close.
+
+**How I got the estimate.** The design is fully balanced: every participant saw every item once after each prime. In that case the fixed effect of `prime_c` (coded −0.5 / +0.5) equals the mean of the 720 paired differences (unrelated minus related). Those differences sum to 13,334 ms, and 13,334 / 720 = 18.52 ms. I checked the total by adding the differences two ways, by participant and by item, and both gave 13,334.
+
+**How I got the interval.** I treated the per-pair differences as a two-way crossed ANOVA (participants by items):
+
+| Source | Degrees of freedom | Sum of squares | Mean square |
+|---|---|---|---|
+| Participants | 29 | 0.835 M | ≈ 28,800 |
+| Items | 23 | 1.556 M | ≈ 67,600 |
+| Residual | 667 | 27.01 M | ≈ 40,500 |
+
+- **By-participant slope:** its mean square is smaller than the residual, so this variance is estimated at zero. The fit will most likely be singular.
+- **By-item slope:** its variance comes out at about (67,600 − 40,000) / 30 ≈ 920, so a standard deviation of about 30 ms.
+- **Standard error:** this gives a variance for the mean difference of about 67,600 / 720 ≈ 93.9, so the standard error is about 9.7 ms.
+- **Interval:** 18.52 ± 1.96 × 9.69 ≈ 18.5 ± 19.0, which gives −0.5 to 37.5 ms.
+
+The full `lmer()` model also estimates the random intercepts and their correlations with the slopes. Its REML estimates can differ a little from this approximation, so the interval limits could shift by a few tenths of a millisecond or so.
+
+RESULT estimate=18.52 lower=-0.48 upper=37.52

@@ -1,0 +1,41 @@
+{
+ "started": "2026-10-11T14:20:19.291Z",
+ "finished": "2026-10-11T14:22:13.092Z",
+ "calls": [
+  {
+   "tool": "Bash",
+   "input": {
+    "command": "cd <run folder> && ls && head -5 data.csv && wc -l data.csv",
+    "description": "Inspect data file"
+   }
+  },
+  {
+   "tool": "Bash",
+   "input": {
+    "command": "cd <run folder> && \"C:/Program Files/R/R-4.6.1/bin/Rscript.exe\" -e 'd<-read.csv(\"data.csv\");str(d);print(summary(d$rt));print(quantile(d$rt,c(0,.01,.05,.5,.95,.99,1)));print(table(table(d$participant,d$item)));print(tapply(d$rt,d$prime,mean));print(sort(d$rt,decreasing=TRUE)[1:15]);print(sort(d$rt)[1:10]);print(sum(is.na(d)))'",
+    "description": "Explore data in R"
+   }
+  },
+  {
+   "tool": "Write",
+   "input": {
+    "file_path": "<run folder>/analysis.R",
+    "content": "# Semantic priming effect in lexical decision (correct responses only).\n# Estimates how much slower responses are after unrelated primes than after\n# related primes, in milliseconds, with a 95% confidence interval.\n#\n# Design: 30 participants x 24 targets x 2 prime conditions, fully crossed,\n# so prime varies within participants and within items. A linear mixed model\n# with crossed random intercepts and by-participant and by-item random slopes\n# for prime (Barr et al., 2013) gives an estimate in the original ms scale\n# that generalises over both participants and items.\n\nsuppressPackageStartupMessages({\n  library(lme4)\n  library(lmerTest)\n})\n\nd <- read.csv(\"data.csv\", stringsAsFactors = FALSE)\n\n# Basic checks on the design\nstopifnot(!anyNA(d),\n          setequal(unique(d$prime), c(\"related\", \"unrelated\")))\ncat(\"Rows:\", nrow(d), \" Participants:\", length(unique(d$participant)),\n    \" Items:\", length(unique(d$item)), \"/n\")\ncells <- table(d$participant, d$item, d$prime)\ncat(\"Observations per participant x item x prime cell:\",\n    paste(unique(as.vector(cells)), collapse = \", \"), \"/n\")\n\n# Descriptive condition means\ncat(\"/nMean RT by prime (ms):/n\")\nprint(round(tapply(d$rt, d$prime, mean), 1))\n\n# Prime coded as a sum-to-zero contrast scaled so that its coefficient is\n# the unrelated minus related difference: -0.5 related, +0.5 unrelated.\nd$prime_c <- ifelse(d$prime == \"unrelated\", 0.5, -0.5)\nd$participant <- factor(d$participant)\nd$item <- factor(d$item)\n\n# Frequency is constant within item and balanced across prime conditions,\n# so it cannot confound the within-item priming contrast; it is left out.\nfit <- lmer(rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c | item),\n            data = d, REML = TRUE,\n            control = lmerControl(optimizer = \"bobyqa\"))\n\n# Fall back to uncorrelated slopes if the maximal model is singular\nif (isSingular(fit)) {\n  cat(\"/nMaximal model singular; refitting with uncorrelated random effects./n\")\n  fit <- lmer(rt ~ prime_c + (1 + prime_c || participant) +\n                (1 + prime_c || item),\n              data = d, REML = TRUE,\n              control = lmerControl(optimizer = \"bobyqa\"))\n}\n\ncat(\"/nModel summary:/n\")\nprint(summary(fit))\n\n# Satterthwaite-based t interval for the priming coefficient\nco <- summary(fit)$coefficients[\"prime_c\", ]\nest <- unname(co[\"Estimate\"])\nse  <- unname(co[\"Std. Error\"])\ndf  <- unname(co[\"df\"])\ntcrit <- qt(0.975, df)\nlower <- est - tcrit * se\nupper <- est + tcrit * se\n\ncat(sprintf(\"/nPriming effect (unrelated - related): %.1f ms, SE = %.1f, df = %.1f, p = %.3g/n\",\n            est, se, df, unname(co[\"Pr(>|t|)\"])))\ncat(sprintf(\"95%% CI (Satterthwaite): [%.1f, %.1f] ms/n\", lower, upper))\n\ncat(sprintf(\"RESULT estimate=%.2f lower=%.2f upper=%.2f/n\", est, lower, upper))\n"
+   }
+  },
+  {
+   "tool": "Bash",
+   "input": {
+    "command": "cd <run folder> && \"C:/Program Files/R/R-4.6.1/bin/Rscript.exe\" analysis.R",
+    "description": "Run the analysis script"
+   }
+  },
+  {
+   "tool": "Bash",
+   "input": {
+    "command": "cd <run folder> && \"C:/Program Files/R/R-4.6.1/bin/Rscript.exe\" -e 'suppressMessages({library(lmerTest)});d<-read.csv(\"data.csv\");d$p<-ifelse(d$prime==\"unrelated\",.5,-.5);d$f<-d$frequency-mean(d$frequency);m<-lmer(rt~p*f+(1|participant)+(1+p||item),d);print(summary(m)$coef);print(VarCorr(m));it<-aggregate(rt~item+prime+frequency,d,mean);w<-reshape(it,idvar=c(\"item\",\"frequency\"),timevar=\"prime\",direction=\"wide\");w$e<-w$rt.unrelated-w$rt.related;print(w[order(w$frequency),]);print(t.test(w$e))'",
+    "description": "Check frequency moderation of priming"
+   }
+  }
+ ]
+}

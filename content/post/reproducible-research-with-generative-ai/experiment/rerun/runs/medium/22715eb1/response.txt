@@ -1,0 +1,16 @@
+**Priming effect (unrelated minus related): about 18.5 ms, 95% Wald CI roughly −0.5 to 37.5 ms.**
+
+I had only the file-reading tool, so this is a hand calculation, not an lme4 fit.
+
+**Point estimate.** The design is fully balanced: every one of the 30 participants saw all 24 items once in each prime condition. In that case the fixed effect of prime_c from this model equals the mean of the 720 within-pair differences (unrelated rt minus related rt). Those differences sum to 13,334 ms, so the estimate is 13,334 / 720 = 18.52 ms. I checked this sum two ways, by adding up the participant totals and the item totals, and both give 13,334. I am confident in this figure.
+
+**Interval.** This part is approximate. I ran a crossed participant × item ANOVA on the differences:
+- **Participant mean square:** about 28,800. This is smaller than the residual, so the participant random-slope variance should come out at or near zero.
+- **Item mean square:** about 67,600. This is clearly larger than the residual, giving an item slope variance of about 900. Item W11 alone contributes a total difference of −2,538 ms.
+- **Residual mean square:** about 41,000. This comes from a sum of squares I calculated with rounded values.
+
+With the participant slope variance at zero, the standard error is about √(67,640 / 720) ≈ 9.7 ms. That gives 18.5 ± 1.96 × 9.7, or about −0.5 to 37.5 ms. If lmer instead estimates a small positive participant slope variance, for example through the intercept–slope correlation, the interval would be slightly wider.
+
+In short, unrelated primes slow responses by about 18.5 ms on average. The interval only just includes zero, so this estimate does not settle whether there is a priming effect.
+
+RESULT estimate=18.52 lower=-0.48 upper=37.52

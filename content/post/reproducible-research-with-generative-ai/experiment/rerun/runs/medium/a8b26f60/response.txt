@@ -1,0 +1,16 @@
+Responses after unrelated primes were about **18.5 ms slower** than after related primes, with a 95% confidence interval of roughly **5.6 to 31.5 ms**. I worked this out by hand from the file, without running any code.
+
+**Method.** The design is fully within-participant: each participant saw each target once after each prime type. For every participant × item pair I took the difference, unrelated RT minus related RT. That gives 720 differences, which I summed within each participant.
+
+- **Overall effect.** The 720 differences sum to 13,334 ms, so the mean is 13,334 / 720 ≈ **18.5 ms**.
+- **Spread across participants.** Per-participant mean effects range from about −57 ms (P12) to +77 ms (P21). Their standard deviation is about 34.7 ms (n = 30).
+- **Confidence interval.** The standard error is 34.7 / √30 ≈ 6.33 ms. With t(29) = 2.045, the margin is ±12.9 ms, giving a 95% interval of about [5.6, 31.5] ms. That is equivalent to a paired t test on participant means: t(29) ≈ 2.9, p ≈ .007.
+
+**Caveats.**
+- **Hand arithmetic.** Expect small errors, on the order of a millisecond in the estimate.
+- **Participants only.** The interval treats participants as the only random factor. A mixed model with crossed random effects for participants and items, and by-item random slopes for prime, would probably give a somewhat wider interval. The 24 items vary too, though the large trial-level noise suggests that extra variance is modest. Word frequency is balanced across conditions within each item, so it does not bias the estimate.
+- **Skewed RTs.** RTs are right-skewed, with occasional values above 1,200 ms. An analysis on log RT, or one that trims outliers, could shift the estimate a little.
+
+**Conclusion.** There is a reliable but small priming effect of about 18–19 ms.
+
+RESULT estimate=18.5 lower=5.6 upper=31.5

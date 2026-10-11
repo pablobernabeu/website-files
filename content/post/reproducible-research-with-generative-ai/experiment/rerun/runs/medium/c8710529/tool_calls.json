@@ -1,0 +1,24 @@
+{
+ "started": "2026-10-11T14:22:41.725Z",
+ "finished": "2026-10-11T14:23:32.770Z",
+ "calls": [
+  {
+   "tool": "Bash",
+   "input": {
+    "command": "cd <run folder> && ls && head -5 data.csv && wc -l data.csv"
+   }
+  },
+  {
+   "tool": "Bash",
+   "input": {
+    "command": "cd <run folder> && cat > explore.R <<'EOF'\nd <- read.csv(\"data.csv\"); str(d); print(summary(d)); print(table(table(d$participant))); print(tapply(d$rt,d$prime,mean)); print(table(d$frequency))\nEOF\n\"C:/Program Files/R/R-4.6.1/bin/Rscript.exe\" explore.R; rm explore.R"
+   }
+  },
+  {
+   "tool": "Bash",
+   "input": {
+    "command": "cd <run folder> && cat > analysis.R <<'EOF'\n# Semantic priming effect in lexical decision (correct responses only).\n# Estimate: unrelated minus related RT, in ms, with a 95% CI, from a linear\n# mixed-effects model with crossed random effects for participants and items.\n\nsuppressPackageStartupMessages({\n  library(lme4)\n  library(lmerTest)\n})\n\nd <- read.csv(\"data.csv\", stringsAsFactors = FALSE)\n\nstopifnot(all(c(\"participant\", \"item\", \"prime\", \"frequency\", \"rt\") %in% names(d)),\n          all(d$prime %in% c(\"related\", \"unrelated\")),\n          !anyNA(d$rt))\n\nd$participant <- factor(d$participant)\nd$item        <- factor(d$item)\nd$prime       <- factor(d$prime, levels = c(\"related\", \"unrelated\"))\n\n# Sum-to-zero (+0.5 / -0.5) coding: the prime coefficient is the\n# unrelated - related difference and is estimated at the grand mean.\nd$prime_c <- ifelse(d$prime == \"unrelated\", 0.5, -0.5)\n# Word frequency is an item-level covariate; centred so it does not shift\n# the intercept. It soaks up item variance but is not the effect of interest.\nd$freq_c  <- d$frequency - mean(d$frequency)\n\ncat(\"Design:\", nlevels(d$participant), \"participants x\", nlevels(d$item),\n    \"items,\", nrow(d), \"trials/n\")\ncat(\"Cell means (ms):/n\")\nprint(round(tapply(d$rt, d$prime, mean), 1))\n\n# Maximal random-effects structure justified by the design (Barr et al., 2013):\n# prime varies within participants and within items. Simplify only if the\n# fit is singular or fails to converge.\nctrl <- lmerControl(optimizer = \"bobyqa\", optCtrl = list(maxfun = 2e5))\nforms <- list(\n  maximal     = rt ~ prime_c + freq_c + (1 + prime_c | participant) + (1 + prime_c | item),\n  no_corr     = rt ~ prime_c + freq_c + (1 + prime_c || participant) + (1 + prime_c || item),\n  intercepts  = rt ~ prime_c + freq_c + (1 | participant) + (1 | item)\n)\n\nfit <- NULL\nfor (nm in names(forms)) {\n  m <- lmer(forms[[nm]], data = d, REML = TRUE, control = ctrl)\n  conv_msgs <- m@optinfo$conv$lme4$messages\n  if (!isSingular(m) && is.null(conv_msgs)) {\n    fit <- m; chosen <- nm; break\n  }\n  cat(\"Model '\", nm, \"' singular or not converged; simplifying./n\", sep = \"\")\n}\nif (is.null(fit)) { fit <- m; chosen <- nm }\ncat(\"Random-effects structure used:\", chosen, \"/n/n\")\nprint(summary(fit, ddf = \"Satterthwaite\"))\n\n# Wald-type CI with Satterthwaite degrees of freedom for the prime effect.\nco  <- summary(fit, ddf = \"Satterthwaite\")$coefficients[\"prime_c\", ]\nest <- unname(co[\"Estimate\"])\nse  <- unname(co[\"Std. Error\"])\ndf  <- unname(co[\"df\"])\nci  <- est + c(-1, 1) * qt(0.975, df) * se\n\ncat(sprintf(\"/nPriming effect (unrelated - related): %.1f ms, 95%% CI [%.1f, %.1f], t(%.1f) = %.2f, p = %.3g/n\",\n            est, ci[1], ci[2], df, est / se, unname(co[\"Pr(>|t|)\"])))\n\ncat(sprintf(\"RESULT estimate=%.2f lower=%.2f upper=%.2f/n\", est, ci[1], ci[2]))\nEOF\n\"C:/Program Files/R/R-4.6.1/bin/Rscript.exe\" analysis.R"
+   }
+  }
+ ]
+}
