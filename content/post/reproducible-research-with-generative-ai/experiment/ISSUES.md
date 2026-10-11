@@ -1,10 +1,56 @@
 # Open issues
 
 These are the findings of the code audit of 11 October 2026 that were not
-applied. Each heading gives the finding's severity and says whether it is
-high-risk, that is, whether it touches code or records behind the published
-results and so needs the maintainer's sign-off. The applied findings are in the
-commits of that date.
+applied, and the checks of its changes that have still to run. Each heading
+gives the finding's severity and says whether it is high-risk, that is, whether
+it touches code or records behind the published results and so needs the
+maintainer's sign-off.
+
+The applied findings are in four commits of that date. They are named here by
+their subject lines, which `git log --grep` finds even if the commits are
+rebased:
+
+- Library commit: 'Record the R library of the second round's executions'
+- Scripts commit: 'Harden the experiment's scripts and document how its records
+  were made' (the scripts, README, Dockerfile and workflow)
+- Guards commit: 'Strengthen the generative-AI post's guards and remove
+  duplicated code' (the post's code chunks only)
+- Lint commit: 'Record the experiment's lint settings and fix the lints of its
+  shared scripts'
+
+Where a heading says 'optional part' or 'remaining part', the line 'Applied in'
+names the commit that made the rest of the change.
+
+## Checks still to run
+
+### V1 (major): the rebuilt environment has not executed the current scripts
+
+The workflow `reproduce-genai-experiment` last ran, successfully, on the
+`run_script.R` and `verify_executions.R` of the commit 'Report the experiment's
+second round, at medium effort'. The scripts commit then made a timeout stop
+the execution with an error (it was recorded and retried as a crash before) and
+added a check of the stored executions to `verify_executions.R`, and the lint
+commit restyled both files. None of this has run in the rebuilt R 4.3.3 image.
+Under R 4.6.1 with callr 3.8.0, a 1-second timeout stopped as intended, a
+60-second one returned the normal row, and `verify_executions.R` executed all
+24 scripts and wrote both of its files, reporting 0 of 24 identical, as
+expected under lme4 2.0-1.
+
+Before merging, push the branch or start the workflow by hand
+(`workflow_dispatch`), and confirm that it reports 24 of 24 scripts printing
+byte-identical output and that the spell check passes. The README's paragraph
+on the `run_script.R` of 30 September can then name the run that verified the
+current one. `verification.csv` stays as the record of its own run.
+
+### V2 (minor): restoring a library from `rerun/library.lock` is untested
+
+The lockfile matches the user library of R 4.6.1 package by package (69
+packages from CRAN, lme4 2.0-1, lmerTest 3.2-1 and Matrix 1.7-5), and
+`rerun/execute_rerun.R` regenerates `rerun/executions.csv` from that library in
+every column but `seconds`. Restoring it with
+`renv::restore(lockfile = 'rerun/library.lock', library = <new folder>, prompt = FALSE)`
+has not been tried, so the README says only that the lockfile records the
+versions. Older versions without Windows binaries would need Rtools.
 
 ## Major findings
 
@@ -53,11 +99,15 @@ the README now says to run them in a copy. Giving each an output-folder
 argument would change scripts that are records of how the stored files were
 made.
 
+Applied in: the scripts commit.
+
 ### M4, optional part (major, high-risk): the compliance check of the prose runs in `collect_results.R`
 
 Line 42 checks only that a prose run called no tool but Read, as the comment
 now says. Requiring that it read only its own `data.csv` would change a record
 script, and the post already checks the stricter condition.
+
+Applied in: the scripts commit.
 
 ### M8, optional part (major, high-risk): session records from a child process
 
@@ -68,11 +118,15 @@ records a child session with lme4, lmerTest, Matrix, emmeans and pbkrtest
 attached, where installed, would make future regenerations consistent. It would
 also change what a regeneration writes.
 
+Applied in: the scripts commit.
+
 ### M9, remaining part (major): who coded `choices_open_scripts.csv`, and how
 
 The README now describes the file's columns and says that no script writes it.
 Whether it was coded by hand, by whom and from what is not on record, so the
 maintainer should add it there.
+
+Applied in: the scripts commit.
 
 ## Minor findings
 
@@ -99,16 +153,22 @@ local Python installation of pilotr is an editable copy of its source, so it
 cannot confirm which Python version reproduces `python_sha256.txt` with the
 released package.
 
+Applied in: the scripts commit.
+
 ### m6, remaining part (minor): the seed and the 6% of `make_unbalanced.R`
 
 The RNG kind is now fixed. Whether reusing the seed of `spec.json` (2026) was
 deliberate, and why 6% of the trials were removed, is not on record, so the
 maintainer should give the reasons in the script's comments.
 
+Applied in: the scripts commit.
+
 ### m8, remaining part (minor): four workers in `check_versions.R`
 
 `parallel::makeCluster(4, ...)` has no stated reason, which the maintainer
 should add to the comment above it.
+
+Applied in: the scripts commit.
 
 ### m10 (minor, high-risk): `extract_transcripts.py`, a record
 
@@ -145,6 +205,8 @@ lint clean. The brace, indentation and length lints in `check_versions.R` and
 `collect_results.R` are left, since those files are records of how the stored
 files were made.
 
+Applied in: the lint commit.
+
 ### m18 (minor): no changelog
 
 This is a one-off experiment folder, and git history records every change.
@@ -157,14 +219,18 @@ The batch logic appears in the visible chunk that loads the runs and again in a
 hidden chunk. A helper would hide the derivation of the batch size that the
 prose reports, so the visible code was kept explicit.
 
+Applied in: the guards commit.
+
 ### CH-08, remaining part (minor): a number typed into the prose
 
 The sentence on the replies to the specified request types 'about 9 ms'. It
 would render the same with
 `` `r sprintf('%.0f', attr(participant_effects, 'stddev')[['prime_c']])` `` in
-place of the 9, but that edit is to the prose, which another pass owns. Until
-then, the guard `round(attr(participant_effects, 'stddev')[['prime_c']]) == 9`
-protects the typed value.
+place of the 9, but that is an edit to the post's text. Until then, the guard
+`round(attr(participant_effects, 'stddev')[['prime_c']]) == 9` protects the
+typed value.
+
+Applied in: the guards commit.
 
 ### CH-19 (minor, high-risk): links to commits that may not be on master
 
@@ -189,18 +255,24 @@ the chunk's printed output and the sentence that says the code draws a million
 of each, though not the one-decimal values in the text. Why the seed is 2026,
 the seed of `spec.json`, is not on record.
 
+Applied in: the guards commit.
+
 ### CH-21, remaining part (minor, high-risk): one rule for writing minutes
 
 Ranges of run times drop the decimal from 10 minutes, while medians and single
 times keep one, as the comment now says. Harmonising them would change rendered
 numbers and Table 4. The Limitations could use
 `` `r minutes_text(range_in('prose')[2])` ``, which renders the same '29', but
-that is a prose edit.
+that is an edit to the post's text.
+
+Applied in: the guards commit.
 
 ### CH-25, remaining part (minor): renames that reach the prose
 
 Renaming `started` to `first_date`, the objects ending in `_2` to the prefix
 `second_`, and `minutes_of_thinking()` would change inline code in the prose,
-so they wait for the prose pass. The renames of `labels`, `frequency` and the
-argument `round` were not made, since none of them masks a function that the
-code calls.
+so they wait for an edit to the post's text. The renames of `labels`,
+`frequency` and the argument `round` were not made, since none of them masks a
+function that the code calls.
+
+Applied in: the guards commit.

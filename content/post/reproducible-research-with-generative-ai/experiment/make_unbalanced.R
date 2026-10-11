@@ -5,7 +5,8 @@
 
 data <- read.csv('data.csv')
 # The RNG kind of R 3.6.0 onwards, fixed so that sample() draws the same rows
-# in any version
+# in every version from R 3.6.0. Earlier versions, whose RNGkind() lacks the
+# third argument, stop here.
 RNGkind('Mersenne-Twister', 'Inversion', 'Rejection')
 set.seed(2026)
 errors <- sort(sample(nrow(data), round(0.06 * nrow(data))))

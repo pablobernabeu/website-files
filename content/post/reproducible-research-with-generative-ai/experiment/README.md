@@ -11,7 +11,7 @@ record of how the stored files were made, and the records themselves.
 ## Order of the steps
 
 The stored files were made in this order, by the scripts named, by the agents
-and, in step 10, by hand.
+and, in steps 8 and 10, without a script.
 
 1. `make_data.R` wrote `data.csv`.
 2. `make_runs.R` wrote the first 32 runs to `design.csv` and each run's prompt to
@@ -20,11 +20,12 @@ and, in step 10, by hand.
 4. `make_unbalanced.R` wrote `data_unbalanced.csv`, and `make_runs_followup.R`
    added 16 runs on it to `design.csv`. The agents then made those runs.
 5. `extract_transcripts.py` wrote each run's `response.txt` and `tool_calls.json`.
-6. `execute_scripts.R` wrote `executions.csv`.
+6. `execute_scripts.R` wrote `executions.csv` and `executions_session_info.txt`.
 7. `collect_results.R` wrote `results.csv`.
 8. `choices_open_scripts.csv` records the analytic choices of the scripts written
    for the open request. No script writes it.
-9. `check_versions.R` wrote `version_check.csv` and `outputs/`.
+9. `check_versions.R` wrote `version_check.csv`, `version_check_session_info.txt`
+   and `outputs/`.
 10. The workflow `.github/workflows/reproduce-genai-experiment.yml` wrote the
     artifact `verification`, whose two files were copied by hand into
     `verification.csv` and `verification_session_info.txt`.
@@ -152,8 +153,9 @@ lmerTest 3.1-3 and Matrix 1.6-5, and Ubuntu 24.04 still provides these versions.
   already holds them. Run it from the root of the repository:
   `Rscript content/post/reproducible-research-with-generative-ai/experiment/check_versions.R`.
   It deletes and replaces `outputs/`, `version_check.csv` and
-  `version_check_session_info.txt` in the folder that holds it, so to compare its
-  results with the stored ones, run it from a copy of this folder.
+  `version_check_session_info.txt` in the folder that holds it. To compare its
+  results with the stored ones, copy this folder elsewhere and, from the root of
+  the repository, run `Rscript <copy>/check_versions.R`.
 - It writes `version_check.csv`, with one row per execution and the versions of the
   packages the scripts load. For the last attempt at each script, its column
   `trimmed_sha256` holds a hash of the output with the spaces at the ends of lines
@@ -217,9 +219,9 @@ The folder `rerun/` holds the second round, in which the 48 runs were made again
 - The stored executions ran in the R library the agents used, that of R 4.6.1
   started without a project profile. `rerun/library.lock`, taken from that library
   on 11 October 2026, records the versions of R, of the packages that the scripts
-  and `run_script.R` load, and of their dependencies. It is an renv lockfile, from
-  which `renv::restore()`, given its `lockfile` and `library` arguments, can
-  rebuild those versions in a library of their own.
+  and `run_script.R` load, and of their dependencies. It is an renv lockfile, which
+  `renv::restore()` takes as its `lockfile` argument, with a new folder as
+  `library`. Restoring a library from it has not been tested.
 - To execute the scripts again in the same way, run
   `Rscript --no-init-file execute_rerun.R` from `rerun/` in a copy of the whole
   experiment folder, since it replaces both files. In the stored executions, every
