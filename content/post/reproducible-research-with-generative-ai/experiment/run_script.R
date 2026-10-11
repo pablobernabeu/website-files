@@ -67,8 +67,9 @@ run_script_with_retries <- function(..., label = 1L, attempts = 3L) {
 # The environment the child processes run in, as they report it themselves
 child_environment <- function(libpath = .libPaths()) {
   callr::r(function() {
-    versions <- vapply(c('lme4', 'lmerTest', 'Matrix'), function(p)
-      as.character(utils::packageVersion(p)), character(1))
+    versions <- vapply(c('lme4', 'lmerTest', 'Matrix'), function(p) {
+      as.character(utils::packageVersion(p))
+    }, character(1))
     sprintf('R %s (%s, %s locale) with %s', getRversion(), R.version$platform,
             Sys.getlocale('LC_CTYPE'),
             sub(', ([^,]*)$', ' and \\1', paste(names(versions), versions, collapse = ', ')))

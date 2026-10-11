@@ -18,15 +18,18 @@ stored <- stored[stored$execution == 1, ]
 # Every script has exactly one stored execution to compare with
 stopifnot(setequal(stored$run_id, scripts$run_id), !anyDuplicated(stored$run_id))
 
-results <- do.call(rbind, lapply(seq_len(nrow(scripts)), function(i)
-  run_script(scripts$run_id[i], data_file_for(scripts$data[i]), label = 'verify')))
+results <- do.call(rbind, lapply(seq_len(nrow(scripts)), function(i) {
+  run_script(scripts$run_id[i], data_file_for(scripts$data[i]), label = 'verify')
+}))
 results$identical <- results$status == 0 &
   results$stdout_sha256 == stored$stdout_sha256[match(results$run_id, stored$run_id)]
 results$environment <- child_environment()
 results$run_url <- if (nzchar(Sys.getenv('GITHUB_RUN_ID'))) {
   with(as.list(Sys.getenv(c('GITHUB_SERVER_URL', 'GITHUB_REPOSITORY', 'GITHUB_RUN_ID'))),
        sprintf('%s/%s/actions/runs/%s', GITHUB_SERVER_URL, GITHUB_REPOSITORY, GITHUB_RUN_ID))
-} else NA
+} else {
+  NA
+}
 
 cat('Environment:', unique(results$environment), '\n')
 cat('Stored executions:', unique(stored$environment), '\n\n')
