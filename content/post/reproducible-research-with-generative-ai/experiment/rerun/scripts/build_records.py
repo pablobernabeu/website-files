@@ -312,18 +312,15 @@ def build_run(round_name, design_row, transcript_path, run_folder, prompt, total
            'started': times[first].isoformat(), 'finished': times[last].isoformat(),
            'minutes': round((times[last] - times[first]).total_seconds() / 60, 2),
            'thinking_seconds': round(transcript['thinking_ms'] / 1000, 1),
-           'tool_calls': len(calls), 'compliant': compliant,
+           # R's spelling of a logical value, so that read.csv() reads the column as one
+           'tool_calls': len(calls), 'compliant': 'TRUE' if compliant else 'FALSE',
            'total_tokens_last_request': total_tokens,
            'result_line': result_lines[-1], 'estimate': estimate, 'lower': lower, 'upper': upper}
     return files, row
 
 
 def results_csv(rows):
-    r"""Return results.csv as bytes, with \n line endings on every system.
-
-    The csv module writes Python's own text of each value, so that the
-    column compliant reads True or False.
-    """
+    r"""Return results.csv as bytes, with \n line endings on every system."""
     out = io.StringIO()
     writer = csv.DictWriter(out, fieldnames=FIELDS, lineterminator='\n')
     writer.writeheader()
