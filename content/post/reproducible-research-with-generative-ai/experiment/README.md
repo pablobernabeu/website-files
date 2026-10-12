@@ -42,7 +42,8 @@ of the repository.
    the version that RStudio ships. Outside RStudio, point the environment variable
    `RSTUDIO_PANDOC` at the folder that holds `pandoc`.
 3. Knit the post from the root of the repository:
-   `blogdown::build_site(run_hugo = FALSE, build_rmd = 'content/post/reproducible-research-with-generative-ai/index.en.Rmd')`.
+   `blogdown::build_site(run_hugo = FALSE, build_rmd =
+   'content/post/reproducible-research-with-generative-ai/index.en.Rmd')`.
    This takes several minutes, most of them spent executing the first round's 24
    agent scripts.
    Hugo 0.62.0 then builds the site from the knitted `index.en.html`.
@@ -124,7 +125,8 @@ Scripts Again*.
 
 ## Rebuilding the environment of the first round's executions
 
-The first round's stored executions ran under R 4.3.3 on Ubuntu 24.04, with lme4 1.1-35.1,
+The first round's stored executions ran under R 4.3.3 on Ubuntu 24.04, with lme4
+1.1-35.1,
 lmerTest 3.1-3 and Matrix 1.6-5, and Ubuntu 24.04 still provides these versions.
 
 - `Dockerfile` rebuilds that environment from the Ubuntu packages, resolving every
@@ -200,8 +202,62 @@ The folder `rerun/` holds the second round, in which the 48 runs were made again
   (`compliant`) when every tool call's input named that folder. The tokens of its
   last request (`total_tokens_last_request`) are the total that the launching
   session recorded for the agent when it finished.
-- No script in this folder writes `rerun/results.csv` or `rerun/runs/`. They were
-  extracted from the transcripts by scripts that are not kept here.
+- `rerun/scripts/` holds two scripts that rebuild the second round's records. They
+  were rewritten from the working scripts of 11 October 2026 so that every private
+  input is a command-line argument. The docstring of `build_records.py` lists where
+  it differs from those scripts, and none of the differences changes a stored byte.
+  The scripts need Python 3.11 or later and only its standard library, and were run
+  with `python -I`. Neither overwrites a file. `build_records.py` writes only into a
+  new or empty folder, and `prepare_runs.py` only into new or empty run and prompt
+  folders, so neither can replace the stored files.
+- `rerun/scripts/prepare_runs.py` makes each run's folder, holding only its data
+  file saved as `data.csv`. It writes the run's prompt, with the three substitutions
+  above, to `<prompts>/<run_id>/prompt.txt`. It lists each run's order, condition,
+  data file and folder in `<prompts>/plan.csv`. Its arguments are:
+  - the experiment folder (`--experiment`);
+  - the folder in which to make the run folders (`--runs`);
+  - the folder for the prompts (`--prompts`), which must lie outside the runs folder;
+  - the version of R and the full path of `Rscript` that the script prompts name
+    (`--r-version`, `--rscript`);
+  - optionally, a suffix for the folders' names (`--suffix`) and the runs to prepare
+    (`--run-ids`).
+
+  The second round used R 4.6.1 and `C:/Program Files/R/R-4.6.1/bin/Rscript.exe`.
+  Its run folders, and those of the two runs at xhigh effort (`--run-ids b42ac192
+  9d94880d`, with a suffix of their own), were in the Windows user's temporary
+  folder.
+- `rerun/scripts/build_records.py` writes `results.csv` and `runs/` into a new or
+  empty folder (`--output`). It reads these private records:
+  - the medium-effort agents' transcripts (`--transcripts`);
+  - a CSV that pairs each run with its agent (`--agents`);
+  - a CSV of the token totals that the launching session reported (`--token-totals`);
+  - the records of the two xhigh runs, each with its transcript and a `summary.json`
+    that holds its token total (`--xhigh-records`);
+  - the folders in which each round's agents worked, given as the agents saw them
+    (`--medium-runs`, `--xhigh-runs`), and the suffix of the xhigh runs' folders
+    (`--xhigh-suffix`).
+
+  It rebuilds each prompt with the code of `prepare_runs.py`, from `--experiment`,
+  `--r-version` and `--rscript`. It stops unless that prompt is the first message of
+  the agent's transcript. It takes the final reply from the agent's last hand-back.
+  The tool calls, times, thinking time, effort, model and Claude Code version come
+  from the transcript, and `analysis.R` is copied unchanged from the run's folder.
+  The outputs are redacted as described below. If an output still names the user,
+  another Windows user's folder or a run folder other than the run's own, the script
+  stops without writing anything. `--home` names the home folder whose name is
+  redacted, and defaults to that of the user running the script.
+- Run with the private records on 12 October 2026, `build_records.py` wrote
+  `results.csv` and the 175 files under `runs/` byte for byte as they are stored.
+  `prepare_runs.py`, run into a scratch folder, wrote prompts equal to the stored
+  `prompt.txt` of all 50 runs once their folder was written as `<run folder>`. To
+  repeat the check, run `build_records.py` into a new folder and compare it with
+  `rerun/`, for instance with `diff -r` and `cmp`. On Windows, keep the new folder's
+  path short. The longest file the script writes adds 37 characters to it, and
+  Windows refuses a path of 260 characters or more unless long paths are enabled.
+  The files under `runs/` are stored with `\n` line endings. Unlike the CSV files,
+  they have no `-text` rule in `.gitattributes`, so a Windows checkout with
+  `core.autocrlf` set turns them into `\r\n`. On Windows, therefore, compare with
+  the committed files or in a checkout without that conversion.
 - `rerun/runs/<round>/<run_id>/` holds the prompt as sent (`prompt.txt`), the final
   reply (`response.txt`), every tool call's input with the run's start and finish
   times (`tool_calls.json`) and, for script runs, `analysis.R`.

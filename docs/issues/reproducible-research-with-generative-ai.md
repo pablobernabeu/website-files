@@ -26,24 +26,14 @@ names the commit that made the rest of the change.
 
 ## Checks still to run
 
-### V1 (major): the rebuilt environment has not executed the current scripts
+### V1 (major), resolved: the rebuilt environment executes the current scripts
 
-The workflow `reproduce-genai-experiment` last ran, successfully, on the
-`run_script.R` and `verify_executions.R` of the commit 'Report the experiment's
-second round, at medium effort'. The scripts commit then made a timeout stop
-the execution with an error (it was recorded and retried as a crash before) and
-added a check of the stored executions to `verify_executions.R`, and the lint
-commit restyled both files. None of this has run in the rebuilt R 4.3.3 image.
-Under R 4.6.1 with callr 3.8.0, a 1-second timeout stopped as intended, a
-60-second one returned the normal row, and `verify_executions.R` executed all
-24 scripts and wrote both of its files, reporting 0 of 24 identical, as
-expected under lme4 2.0-1.
-
-Before merging, push the branch or start the workflow by hand
-(`workflow_dispatch`), and confirm that it reports 24 of 24 scripts printing
-byte-identical output and that the spell check passes. The README's paragraph
-on the `run_script.R` of 30 September can then name the run that verified the
-current one. `verification.csv` stays as the record of its own run.
+The workflow `reproduce-genai-experiment` ran on commit 98fb72323 (run
+38233561634, 12 October 2026), which carries the current `run_script.R` and
+`verify_executions.R` and the Dockerfile resolved against the Ubuntu snapshot
+(M2b). All 24 scripts printed byte-identical output, and the run's session
+record, with every package version, equals `verification_session_info.txt`
+line for line. `verification.csv` stays as the record of its own run.
 
 ### V2 (minor): restoring a library from `rerun/library.lock` is untested
 
@@ -57,41 +47,21 @@ versions. Older versions without Windows binaries would need Rtools.
 
 ## Major findings
 
-### M1 (major, high-risk): the scripts that built `rerun/results.csv` and `rerun/runs/` are not committed
+### M1 (major, high-risk), resolved with the maintainer's sign-off: the scripts that built `rerun/results.csv` and `rerun/runs/`
 
-Three Python scripts prepared the second round's prompts, collected each run's
-settings, times and tool calls from its transcript and wrote the cleaned
-records. Two more ran and summarised the xhigh runs. None of them is in the
-repository; the maintainer keeps copies outside it. They hard-code
-absolute paths that contain the Windows user name and the session ID, and the
-script that writes the records deletes its output folder (`shutil.rmtree`),
-which is `rerun/` itself. The README now defines the columns of
-`rerun/results.csv` and says that no script here writes it.
+`rerun/scripts/prepare_runs.py` and `rerun/scripts/build_records.py` are
+parameterised, redacted versions of the working scripts, with every private
+input given as an argument. Run on 12 October 2026 with the private records,
+`build_records.py` rewrote all 176 files of `results.csv` and `runs/` byte for
+byte, and `prepare_runs.py` rewrote the 50 prompts. The README describes them.
+m15 (`True` in `compliant`) stays open, since a change would alter a stored file.
 
-The maintainer first chooses between redacted verbatim copies and parameterised
-ones. They would then be committed as `rerun/prepare_runs.py`,
-`rerun/collect_records.py` and `rerun/build_records.py`, with the paths and the
-session ID as command-line arguments and with a check that stops if the output
-folder already holds files in place of `shutil.rmtree`. The summary of the
-xhigh runs would be folded in without its token weighting. Before committing,
-run them into a scratch folder and compare the result with `rerun/results.csv`
-and `rerun/runs/`. The column `compliant` is written as Python's `True`, which R
-reads as text (see m15).
+### M2b (major, high-risk), resolved with the maintainer's sign-off: the Docker build resolves against a dated snapshot
 
-### M2b (major, high-risk): the Docker build takes the dependencies of the pinned packages from the live archive
-
-`apt-get update` resolves every dependency, from the BLAS and LAPACK to nloptr
-and RcppEigen, against the Ubuntu archive of the build day. An update to one of
-them would therefore change the rebuilt environment without failing the build.
-The monthly scheduled run of the workflow now shows such a change as a failed
-comparison, but cannot prevent it.
-
-The fix is to resolve against Ubuntu's snapshot service, for instance with
-`apt-get update --snapshot 20260930T200000Z` and the same option on
-`apt-get install`, installing `ca-certificates` first if the snapshot server
-cannot be verified without it. The workflow must then report 24 of 24
-identical, with a package list equal to `verification_session_info.txt`.
-`verification.csv` stays as it is unless the maintainer chooses to refresh it.
+The Dockerfile now resolves every package against Ubuntu's snapshot of the
+archive at 20:00 UTC on 30 September 2026, just before the recorded build, and
+keeps the named packages pinned by version. Verified by run 38233561634 (see
+V1): 24 of 24 identical, and an identical package list.
 
 ### M3, optional part (major, high-risk): an output folder for the scripts that replace stored files
 
