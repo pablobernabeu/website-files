@@ -13,7 +13,8 @@ design <- read.csv('design.csv')
 # The last line of a reply or output that has the RESULT form, after removing
 # Markdown emphasis and code marks and reading a true minus sign as a hyphen.
 # A line that does not match the form exactly counts as missing.
-result_pattern <- '^RESULT estimate=(-?[0-9]+(?:\\.[0-9]+)?) lower=(-?[0-9]+(?:\\.[0-9]+)?) upper=(-?[0-9]+(?:\\.[0-9]+)?)$'
+result_pattern <- paste0('^RESULT estimate=(-?[0-9]+(?:\\.[0-9]+)?) lower=(-?[0-9]+(?:\\.[0-9]+)?) ',
+                         'upper=(-?[0-9]+(?:\\.[0-9]+)?)$')
 parse_result <- function(text) {
   lines <- trimws(gsub('[`*]', '', gsub('\u2212', '-', strsplit(text, '\n')[[1]], fixed = TRUE)))
   line <- tail(c(NA, grep(result_pattern, lines, perl = TRUE, value = TRUE)), 1)
@@ -26,7 +27,8 @@ executions <- read.csv('executions.csv')
 rows <- lapply(seq_len(nrow(design)), function(i) {
   run <- design[i, ]
   folder <- file.path('runs', run$run_id)
-  response <- paste(readLines(file.path(folder, 'response.txt'), warn = FALSE, encoding = 'UTF-8'), collapse = '\n')
+  response <- paste(readLines(file.path(folder, 'response.txt'), warn = FALSE, encoding = 'UTF-8'),
+                    collapse = '\n')
   log <- fromJSON(file.path(folder, 'tool_calls.json'), simplifyVector = FALSE)
   tools <- vapply(log$calls, `[[`, character(1), 'tool')
   inputs <- vapply(log$calls, function(call) toJSON(call$input, auto_unbox = TRUE), character(1))
@@ -57,8 +59,9 @@ rows <- lapply(seq_len(nrow(design)), function(i) {
         reply_words = length(strsplit(response, '\\s+')[[1]]))
 })
 results <- do.call(rbind, rows)
-if (anyNA(results$result_line)) stop('No valid RESULT line for: ',
-  paste(results$run_id[is.na(results$result_line)], collapse = ', '))
+if (anyNA(results$result_line)) {
+  stop('No valid RESULT line for: ', paste(results$run_id[is.na(results$result_line)], collapse = ', '))
+}
 # A binary connection keeps the line endings '\n' on every operating system,
 # so that the file is the same bytes wherever it is written
 connection <- file('results.csv', 'wb')

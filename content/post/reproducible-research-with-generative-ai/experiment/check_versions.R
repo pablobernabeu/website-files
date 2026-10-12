@@ -36,7 +36,7 @@ stopifnot(length(stored_environment) == 1,
           grepl(sprintf('lme4 %s, lmerTest %s ', chartr('-', '.', stored_versions[['lme4']]),
                         chartr('-', '.', stored_versions[['lmerTest']])), stored_environment, fixed = TRUE))
 stored_root <- Sys.getenv('STORED_LIBS', file.path(tools::R_user_dir('genai-post-check', 'cache'),
-                                                    'stored-versions'))
+                                                   'stored-versions'))
 stored_libs <- setNames(file.path(stored_root, paste(names(stored_versions), stored_versions, sep = '-')),
                         names(stored_versions))
 for (package in names(stored_versions)) {
@@ -58,7 +58,8 @@ for (package in names(stored_versions)) {
 libraries <- list(
   `renv.lock` = .libPaths(),
   `lme4 1.1-35.1` = c(stored_libs[['lme4']], .libPaths()),
-  `lme4 1.1-35.1 and lmerTest 3.1-3` = c(stored_libs[['lme4']], stored_libs[['lmerTest']], .libPaths()))
+  `lme4 1.1-35.1 and lmerTest 3.1-3` = c(stored_libs[['lme4']], stored_libs[['lmerTest']], .libPaths())
+)
 folders <- setNames(c('renv-lock', 'stored-lme4', 'stored-lme4-lmertest'), names(libraries))
 unlink(file.path(experiment_dir, 'outputs'), recursive = TRUE)
 for (folder in folders) dir.create(file.path(experiment_dir, 'outputs', folder), recursive = TRUE)
@@ -74,13 +75,16 @@ tasks <- expand.grid(i = seq_len(nrow(scripts)), library = names(libraries),
 execute <- function(task) {
   run_id <- scripts$run_id[task$i]
   keep <- file.path(experiment_dir, 'outputs', folders[[task$library]], paste0(run_id, '.txt'))
+  # Both functions are defined in run_script.R, sourced above
+  # nolint start: object_usage_linter.
   attempts <- run_script_with_retries(run_id, data_file_for(scripts$data[task$i]), experiment_dir,
                                       label = folders[[task$library]],
                                       libpath = libraries[[task$library]], output_copy = keep)
+  # nolint end
   output <- readLines(keep, warn = FALSE)
   attempts$trimmed_sha256 <- NA
-  attempts$trimmed_sha256[nrow(attempts)] <- digest::digest(
-    paste(sub('[ \t]+$', '', output), collapse = '\n'), algo = 'sha256', serialize = FALSE)
+  attempts$trimmed_sha256[nrow(attempts)] <-
+    digest::digest(paste(sub('[ \t]+$', '', output), collapse = '\n'), algo = 'sha256', serialize = FALSE)
   cbind(library = task$library, attempts)
 }
 cluster <- parallel::makeCluster(4, rscript_args = '--no-init-file')
@@ -93,12 +97,15 @@ parallel::stopCluster(cluster)
 # The environment as the stored executions recorded it, and the versions of
 # every package the scripts load, as each library provides them
 environments <- vapply(libraries, child_environment, character(1))
-versions <- vapply(libraries, function(lib) callr::r(function() {
-  packages <- c('lme4', 'lmerTest', 'Matrix', 'reformulas', 'emmeans', 'pbkrtest', 'dplyr', 'tidyr')
-  found <- vapply(packages, function(p) tryCatch(utils::packageDescription(p)$Version,
-                                                 warning = function(w) NA_character_), character(1))
-  paste(names(found)[!is.na(found)], found[!is.na(found)], collapse = ', ')
-}, libpath = lib, user_profile = FALSE), character(1))
+versions <- vapply(libraries, function(lib) {
+  callr::r(function() {
+    packages <- c('lme4', 'lmerTest', 'Matrix', 'reformulas', 'emmeans', 'pbkrtest', 'dplyr', 'tidyr')
+    found <- vapply(packages, function(p) {
+      tryCatch(utils::packageDescription(p)$Version, warning = function(w) NA_character_)
+    }, character(1))
+    paste(names(found)[!is.na(found)], found[!is.na(found)], collapse = ', ')
+  }, libpath = lib, user_profile = FALSE)
+}, character(1))
 results$environment <- environments[results$library]
 results$packages <- versions[results$library]
 results <- results[order(match(results$library, names(libraries)), match(results$run_id, scripts$run_id),
@@ -116,9 +123,10 @@ for (file in list.files(file.path(experiment_dir, 'outputs'), recursive = TRUE, 
 }
 
 # The session of a child process in each library, which is where the scripts ran
-sessions <- unlist(lapply(names(libraries), function(name) c(
-  sprintf('==== %s', name), '',
-  callr::r(function() capture.output(sessionInfo()), libpath = libraries[[name]],
-           env = child_env, user_profile = FALSE), '')))
+sessions <- unlist(lapply(names(libraries), function(name) {
+  c(sprintf('==== %s', name), '',
+    callr::r(function() capture.output(sessionInfo()), libpath = libraries[[name]],
+             env = child_env, user_profile = FALSE), '')
+}))
 writeLines(sessions, file.path(experiment_dir, 'version_check_session_info.txt'))
 print(results[, c('library', 'run_id', 'attempt', 'status', 'result')], row.names = FALSE)
