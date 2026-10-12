@@ -21,15 +21,23 @@
 # attempt, with the versions of the packages the scripts load.
 #
 # Usage, from the root of the repository so that renv is active:
-#   Rscript content/post/reproducible-research-with-generative-ai/experiment/check_versions.R
-# The environment variable STORED_LIBS may name a folder that already holds the
-# libraries lme4-1.1-35.1 and lmerTest-3.1-3, which saves building them.
+#   Rscript content/post/reproducible-research-with-generative-ai/experiment/check_versions.R [output folder]
+# The output folder defaults to this folder, whose stored files the script
+# replaces. The environment variable STORED_LIBS may name a folder that already
+# holds the libraries lme4-1.1-35.1 and lmerTest-3.1-3, which saves building them.
 
 script_file <- sub('^--file=', '', grep('^--file=', commandArgs(), value = TRUE))
 experiment_dir <- normalizePath(dirname(script_file))
 source(file.path(experiment_dir, 'run_script.R'))
+output_dir <- commandArgs(trailingOnly = TRUE)[1]
+if (is.na(output_dir)) output_dir <- experiment_dir
+output_dir <- normalizePath(output_dir, mustWork = TRUE)
 
 stored_versions <- c(lme4 = '1.1-35.1', lmerTest = '3.1-3')
+# The SHA-256 checksums of their sources in the CRAN archive, taken on 12
+# October 2026 from two CRAN mirrors
+source_sha256 <- c(lme4 = 'e4a411396f68bf93751dfd01c8cd431e2d4658340186c47d164ebb2b840afb5b',
+                   lmerTest = '35aa75e9f5f2871398ff56a482b013e6828135ef04916ced7d1d7e35257ea8fd')
 # The stored executions record their versions in packageVersion()'s dotted form
 stored_environment <- unique(read.csv(file.path(experiment_dir, 'executions.csv'))$environment)
 stopifnot(length(stored_environment) == 1,
@@ -49,6 +57,7 @@ for (package in names(stored_versions)) {
     local <- file.path(tempdir(), tarball)
     download.file(sprintf('https://cran.r-project.org/src/contrib/Archive/%s/%s', package, tarball),
                   local, mode = 'wb', quiet = TRUE)
+    stopifnot(identical(digest::digest(file = local, algo = 'sha256'), source_sha256[[package]]))
     install.packages(local, lib = lib, repos = NULL, type = 'source')
   }
   stopifnot(identical(utils::packageDescription(package, lib.loc = lib)$Version,
@@ -61,20 +70,21 @@ libraries <- list(
   `lme4 1.1-35.1 and lmerTest 3.1-3` = c(stored_libs[['lme4']], stored_libs[['lmerTest']], .libPaths())
 )
 folders <- setNames(c('renv-lock', 'stored-lme4', 'stored-lme4-lmertest'), names(libraries))
-unlink(file.path(experiment_dir, 'outputs'), recursive = TRUE)
-for (folder in folders) dir.create(file.path(experiment_dir, 'outputs', folder), recursive = TRUE)
+unlink(file.path(output_dir, 'outputs'), recursive = TRUE)
+for (folder in folders) dir.create(file.path(output_dir, 'outputs', folder), recursive = TRUE)
 
 design <- read.csv(file.path(experiment_dir, 'design.csv'))
 scripts <- design[design$route == 'script', ]
 tasks <- expand.grid(i = seq_len(nrow(scripts)), library = names(libraries),
                      stringsAsFactors = FALSE)
 
-# The executions run four at a time, each in its own R process as before. The
-# workers skip the R profile, which in a project with renv can take longer to
+# The executions run four at a time, each in its own R process as before, so
+# the number of workers sets only how many run at once and cannot change an
+# output. The workers skip the R profile, which in a project with renv can take longer to
 # run than the cluster waits for a worker, and receive the library paths below.
 execute <- function(task) {
   run_id <- scripts$run_id[task$i]
-  keep <- file.path(experiment_dir, 'outputs', folders[[task$library]], paste0(run_id, '.txt'))
+  keep <- file.path(output_dir, 'outputs', folders[[task$library]], paste0(run_id, '.txt'))
   # Both functions are defined in run_script.R, sourced above
   # nolint start: object_usage_linter.
   attempts <- run_script_with_retries(run_id, data_file_for(scripts$data[task$i]), experiment_dir,
@@ -89,8 +99,8 @@ execute <- function(task) {
 }
 cluster <- parallel::makeCluster(4, rscript_args = '--no-init-file')
 invisible(parallel::clusterCall(cluster, function(paths) .libPaths(paths), .libPaths()))
-parallel::clusterExport(cluster, c('experiment_dir', 'scripts', 'libraries', 'folders', 'run_script',
-                                   'run_script_with_retries', 'child_env', 'data_file_for'))
+parallel::clusterExport(cluster, c('experiment_dir', 'output_dir', 'scripts', 'libraries', 'folders',
+                                   'run_script', 'run_script_with_retries', 'child_env', 'data_file_for'))
 results <- do.call(rbind, parallel::parLapply(cluster, split(tasks, seq_len(nrow(tasks))), execute))
 parallel::stopCluster(cluster)
 
@@ -110,12 +120,12 @@ results$environment <- environments[results$library]
 results$packages <- versions[results$library]
 results <- results[order(match(results$library, names(libraries)), match(results$run_id, scripts$run_id),
                          results$attempt), ]
-write.csv(results, file.path(experiment_dir, 'version_check.csv'), row.names = FALSE)
+write.csv(results, file.path(output_dir, 'version_check.csv'), row.names = FALSE)
 
 # The kept outputs are rewritten with the line ending '\n', which Windows does
 # not write, so that they are the same bytes on every system (the hashes, taken
 # over lines, are unaffected)
-for (file in list.files(file.path(experiment_dir, 'outputs'), recursive = TRUE, full.names = TRUE)) {
+for (file in list.files(file.path(output_dir, 'outputs'), recursive = TRUE, full.names = TRUE)) {
   lines <- readLines(file, warn = FALSE)
   connection <- file(file, 'wb')
   writeLines(lines, connection)
@@ -128,5 +138,5 @@ sessions <- unlist(lapply(names(libraries), function(name) {
     callr::r(function() capture.output(sessionInfo()), libpath = libraries[[name]],
              env = child_env, user_profile = FALSE), '')
 }))
-writeLines(sessions, file.path(experiment_dir, 'version_check_session_info.txt'))
+writeLines(sessions, file.path(output_dir, 'version_check_session_info.txt'))
 print(results[, c('library', 'run_id', 'attempt', 'status', 'result')], row.names = FALSE)

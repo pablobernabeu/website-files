@@ -1,3 +1,7 @@
 # The Python implementation of pilotr that generated the checksum in
-# python_sha256.txt, for make_data.py
-pilotr==0.3.0
+# python_sha256.txt, for make_data.py, with the SHA-256 hashes of its wheel and
+# source archive on PyPI. The wheel reproduced the checksum under Python 3.13.7
+# on 12 October 2026. pilotr 0.3.0 needs Python 3.9 or later.
+pilotr==0.3.0 \
+    --hash=sha256:49cec8a76c03420dade1370136cfe32e45acb98271580d9589b046d88630da14 \
+    --hash=sha256:14a16f3521b76c9b0a8210d004636f5ff1c450ad792b822e3213c89eff24f653

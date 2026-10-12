@@ -3,10 +3,18 @@
 # their numbers in the reply. Script runs are credited with the line their
 # script prints when executed (executions.csv), which is also checked against
 # the line quoted in the agent's reply. Tool calls are checked for compliance:
-# a prose run may call no tool but Read, and a script run may name no path
-# outside its own directory. The paths outside it are listed in outside_paths.
+# a prose run may only read its own data.csv, and a script run may name no
+# path outside its own directory. The paths outside it are listed in
+# outside_paths.
+#
+# Usage, from this directory:  Rscript collect_results.R [output folder]
 
 library(jsonlite)
+
+# The folder to write into: the first argument, or this folder, whose stored
+# file the script replaces
+output_dir <- commandArgs(trailingOnly = TRUE)[1]
+if (is.na(output_dir)) output_dir <- '.'
 
 design <- read.csv('design.csv')
 
@@ -41,7 +49,12 @@ rows <- lapply(seq_len(nrow(design)), function(i) {
   paths <- unlist(regmatches(inputs, gregexpr(sprintf('(?<![\\w.-])/(?:%s)(?:/[\\w.-]+)*', roots),
                                               inputs, perl = TRUE)))
   outside <- paths[!(paths == own_dir | startsWith(paths, paste0(own_dir, '/')) | paths == '/dev/null')]
-  compliant <- if (run$route == 'prose') all(tools == 'Read') else length(outside) == 0
+  files_read <- vapply(log$calls, function(call) paste(call$input$file_path, collapse = ''), character(1))
+  compliant <- if (run$route == 'prose') {
+    all(tools == 'Read' & files_read == file.path(own_dir, 'data.csv'))
+  } else {
+    length(outside) == 0
+  }
 
   reported <- parse_result(response)
   if (run$route == 'script') {
@@ -64,7 +77,7 @@ if (anyNA(results$result_line)) {
 }
 # A binary connection keeps the line endings '\n' on every operating system,
 # so that the file is the same bytes wherever it is written
-connection <- file('results.csv', 'wb')
+connection <- file(file.path(output_dir, 'results.csv'), 'wb')
 write.csv(results, connection, row.names = FALSE)
 close(connection)
 print(results[order(results$data, results$request, results$route),

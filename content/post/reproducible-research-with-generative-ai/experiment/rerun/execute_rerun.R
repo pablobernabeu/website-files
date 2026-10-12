@@ -5,12 +5,14 @@
 # The scripts were executed in the R library the agents themselves used, that
 # of R 4.6.1 started without a project profile, whose versions library.lock
 # records. They were executed from this folder with
-#   Rscript --no-init-file execute_rerun.R
-# which replaces executions.csv and executions_session_info.txt, so a check
-# runs in a copy of the whole experiment folder. A script whose R process
-# crashes is executed again, and only its last attempt is kept.
+#   Rscript --no-init-file execute_rerun.R [output folder]
+# which, without an output folder, replaces executions.csv and
+# executions_session_info.txt. A script whose R process crashes is executed
+# again, and only its last attempt is kept.
 
 source('../run_script.R')
+output_dir <- commandArgs(trailingOnly = TRUE)[1]
+if (is.na(output_dir)) output_dir <- '.'
 
 # run_script() expects the data files at the top of a folder and each script in
 # runs/<run_id>/, so the two rounds are laid out that way in a temporary folder
@@ -38,5 +40,5 @@ for (execution in 1:2) for (i in seq_len(nrow(scripts))) {
 }
 executions <- do.call(rbind, rows)
 executions$environment <- child_environment()
-write.csv(executions, 'executions.csv', row.names = FALSE)
-writeLines(capture.output(sessionInfo()), 'executions_session_info.txt')
+write.csv(executions, file.path(output_dir, 'executions.csv'), row.names = FALSE)
+writeLines(capture.output(sessionInfo()), file.path(output_dir, 'executions_session_info.txt'))

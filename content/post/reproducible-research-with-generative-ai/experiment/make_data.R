@@ -3,8 +3,15 @@
 # pilotr's own random-number generator makes the result identical on any
 # machine and in its Python implementation, so the checksum printed at the end
 # identifies the file the agents analysed.
+#
+# Usage, from this directory:  Rscript make_data.R [output folder]
 
 library(pilotr)
+
+# The folder to write into: the first argument, or this folder, whose stored
+# file the script replaces
+output_dir <- commandArgs(trailingOnly = TRUE)[1]
+if (is.na(output_dir)) output_dir <- '.'
 
 spec <- load_spec('spec.json')
 simulated <- simulate_design(spec)
@@ -18,7 +25,7 @@ agent_data <- data.frame(
 )
 # A binary connection keeps the line endings '\n' on every operating system,
 # so that the checksum does not depend on where the file is written.
-connection <- file('data.csv', 'wb')
+connection <- file(file.path(output_dir, 'data.csv'), 'wb')
 write.csv(agent_data, connection, row.names = FALSE, quote = FALSE)
 close(connection)
-writeLines(digest::digest(file = 'data.csv', algo = 'sha256'))
+writeLines(digest::digest(file = file.path(output_dir, 'data.csv'), algo = 'sha256'))
