@@ -1,4 +1,7 @@
-# Open issues
+# Open issues: reproducible-research-with-generative-ai
+
+The code audit of the post `content/post/reproducible-research-with-generative-ai/`
+and its `experiment/` folder. Paths below are relative to that folder.
 
 These are the findings of the code audit of 11 October 2026 that were not
 applied, and the checks of its changes that have still to run. Each heading
@@ -59,8 +62,7 @@ versions. Older versions without Windows binaries would need Rtools.
 Three Python scripts prepared the second round's prompts, collected each run's
 settings, times and tool calls from its transcript and wrote the cleaned
 records. Two more ran and summarised the xhigh runs. None of them is in the
-repository, and copies are kept outside it, in
-`%LOCALAPPDATA%\genai-experiment-preserved\2026-10-11\`. They hard-code
+repository; the maintainer keeps copies outside it. They hard-code
 absolute paths that contain the Windows user name and the session ID, and the
 script that writes the records deletes its output folder (`shutil.rmtree`),
 which is `rerun/` itself. The README now defines the columns of
