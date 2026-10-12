@@ -70,12 +70,15 @@ stopifnot(agent_model[1] == 'Claude Opus 5.5')
 
 # Links to the experiment's files, and to the site's renv.lock, point to the
 # last commit that changed them, so that a reader sees the files this page was
-# built from. While they have uncommitted changes, or outside a git repository,
-# the links point to master.
+# built from. While they have uncommitted changes, or while that commit is on
+# no branch of the remote (a rebase before pushing would give it a hash that
+# GitHub never receives), or outside a git repository, the links point to master.
 last_commit <- function(path) tryCatch({
   changed <- system2('git', c('status', '--porcelain', '--', path), stdout = TRUE)
   commit <- system2('git', c('log', '-1', '--format=%H', '--', path), stdout = TRUE)
-  if (length(changed) == 0 && length(commit) == 1) commit else 'master'
+  pushed <- length(commit) == 1 &&
+    length(system2('git', c('branch', '--remotes', '--contains', commit), stdout = TRUE)) > 0
+  if (length(changed) == 0 && pushed) commit else 'master'
 }, error = function(e) 'master', warning = function(w) 'master')
 experiment_ref <- last_commit(experiment)
 experiment_url <- function(path = '', type = 'blob') {
@@ -211,9 +214,9 @@ effect_sd <- function(unit, other, word = FALSE) {
     (unit_variance(other, prime_code) + averaged) / 2)
   sd(unit_mean(0.5) - unit_mean(-0.5))
 }
-# The seed makes the printed standard deviations reproducible. Other seeds move
-# them by a few hundredths of a millisecond, which leaves the one-decimal values
-# in the text unchanged.
+# The seed, that of spec.json, makes the printed standard deviations
+# reproducible. Other seeds move them by a few hundredths of a millisecond,
+# which leaves the one-decimal values in the text unchanged (checked below).
 set.seed(2026)
 effect_sds <- c(participants = effect_sd(random$subject, random$item),
                 words = effect_sd(random$item, random$subject, word = TRUE))
@@ -222,6 +225,27 @@ stopifnot(effect_sds[['participants']] > effect_sds[['words']])  # as the text b
 
 c(population_effect = population_effect, sample_effect = sample_effect,
   sd_across_participants = effect_sds[['participants']], sd_across_words = effect_sds[['words']])
+```
+
+```{r effect-sd-closed-form, include = FALSE}
+# The same standard deviations in closed form. A unit's mean after either type
+# of prime is lognormal, and the two exponents are jointly normal, so the
+# variance of the difference follows from the variances and the covariance of
+# two lognormal variables. The simulated values must round to the same decimal.
+effect_sd_exact <- function(unit, other, word = FALSE) {
+  frequency_variance <- if (word) (fixed$coefficients$frequency * frequency$sd)^2 else 0
+  averaged <- if (word) spec$response$sigma^2 else residual_variance
+  codes <- c(0.5, -0.5)
+  location <- mu + codes * fixed$coefficients$prime_c + (unit_variance(other, codes) + averaged) / 2
+  spread <- unit_variance(unit, codes) + frequency_variance
+  covariance <- unit$intercept_sd^2 + frequency_variance - unit$slopes$prime_c^2 / 4
+  variances <- exp(2 * location + spread) * (exp(spread) - 1)
+  cross <- exp(sum(location) + sum(spread) / 2) * (exp(covariance) - 1)
+  sqrt(sum(variances) - 2 * cross)
+}
+effect_sds_exact <- c(participants = effect_sd_exact(random$subject, random$item),
+                      words = effect_sd_exact(random$item, random$subject, word = TRUE))
+stopifnot(round(effect_sds, 1) == round(effect_sds_exact, 1))
 ```
 
 In the population, responses after unrelated primes are `r ms(population_effect, 1)` ms slower than after related primes, and the effect varies more across participants (standard deviation `r ms(effect_sds[['participants']], 1)` ms) than across words (`r ms(effect_sds[['words']], 1)` ms). In the sample of `r count_text(nrow(regenerated))` trials, the difference between the mean reaction times is `r ms(sample_effect, 2)` ms.
@@ -244,15 +268,18 @@ logs <- lapply(results$run_id, function(id)
 results$started <- utc_time(vapply(logs, `[[`, character(1), 'started'))
 results$starting_directory <- vapply(logs, `[[`, character(1), 'starting_directory')
 
-started <- as.Date(min(results$started))
+first_date <- as.Date(min(results$started))
 # Runs launched together started within a second of one another, and each
 # batch at least 40 seconds after the one before, so a gap of more than 10
-# seconds marks a new batch
-launch_gaps <- diff(sort(as.numeric(results$started)))
-stopifnot(all(launch_gaps < 1 | launch_gaps > 40))
-launch_batch <- cumsum(c(TRUE, launch_gaps > 10))
-batch_size <- unique(as.vector(table(launch_batch)))
-stopifnot(length(batch_size) == 1, n_distinct(as.Date(results$started)) == 1)
+# seconds marks a new batch. Every batch of a round had the same size.
+batch_size_of <- function(started) {
+  gaps <- diff(sort(as.numeric(started)))
+  size <- unique(as.vector(table(cumsum(c(TRUE, gaps > 10)))))
+  stopifnot(all(gaps < 1 | gaps > 40), length(size) == 1)
+  size
+}
+batch_size <- batch_size_of(results$started)
+stopifnot(n_distinct(as.Date(results$started)) == 1)
 main_runs <- results$data == 'balanced'
 in_folder <- grepl('/experiment$', results$starting_directory)
 in_experiment_folder <- sum(in_folder)
@@ -274,7 +301,7 @@ date_text <- function(date) {
   sprintf('%d %s %s', as.integer(format(date, '%d')), month.name[as.integer(format(date, '%m'))],
           format(date, '%Y'))
 }
-second_started <- as.Date(min(second$started))
+second_date <- as.Date(min(second$started))
 second_text <- function(round, run_id, file) {
   paste(readLines(file.path(experiment, 'rerun', 'runs', round, run_id, file), warn = FALSE,
                   encoding = 'UTF-8'), collapse = '\n')
@@ -284,14 +311,12 @@ second_prompts <- mapply(second_text, second$round, second$run_id, 'prompt.txt',
 # The second round's runs were launched in the first round's order and, like
 # those of the first, in batches that started within a second of one another,
 # those on the unbalanced data once most on the balanced data had finished
-medium_gaps <- diff(sort(as.numeric(medium$started)))
-second_batch_size <- unique(as.vector(table(cumsum(c(TRUE, medium_gaps > 10)))))
+second_batch_size <- batch_size_of(medium$started)
 medium_balanced <- medium$data == 'balanced'
 balanced_done <- sum(medium$finished[medium_balanced] < min(medium$started[!medium_balanced]))
 stopifnot(setequal(medium$run_id, results$run_id), nrow(medium) == nrow(results),
           medium$order == results$order[match(medium$run_id, results$run_id)],
           !is.unsorted(medium$started[order(medium$order)]),
-          all(medium_gaps < 1 | medium_gaps > 40), length(second_batch_size) == 1,
           balanced_done > sum(medium_balanced) / 2,
           # the same day, model and version of Claude Code for every run, and the
           # effort level of its round
@@ -331,7 +356,7 @@ second_logs <- mapply(function(round, id) {
   jsonlite::fromJSON(file.path(experiment, 'rerun', 'runs', round, id, 'tool_calls.json'))
 }, second$round, second$run_id, SIMPLIFY = FALSE, USE.NAMES = FALSE)
 or_none <- function(x) if (is.null(x)) character(0) else as.vector(na.omit(x))
-stopifnot(all(as.logical(second$compliant)), vapply(second_logs, function(log) {
+stopifnot(is.logical(second$compliant), all(second$compliant), vapply(second_logs, function(log) {
   commands <- or_none(log$calls$input$command)
   named <- c(or_none(log$calls$input$file_path),
              unlist(regmatches(commands, gregexpr('C:/[^ "\'`;|&)]*', commands))))
@@ -348,8 +373,8 @@ running_under <- function(file) {
 }
 second_system <- sub('^(Windows [0-9]+).*$', '\\1',
                      running_under(file.path('rerun', 'executions_session_info.txt')))
-stopifnot(second_started != started,
-          !'effort' %in% names(results),  # the first round's effort level was not recorded, as the text says
+stopifnot(second_date != first_date,
+          !'effort' %in% names(results),  # the first round recorded no effort level, so the text names none
           unique(second$claude_code_version) != readLines(file.path(experiment, 'claude_code_version.txt')),
           grepl('/home/user/agent_runs/', prompt_texts, fixed = TRUE),
           !grepl('/home/user/', second_prompts, fixed = TRUE), grepl('^Windows', second_system))
@@ -368,13 +393,13 @@ cat(strwrap(readLines(file.path(experiment, 'runs', example_run, 'prompt.txt')),
     sep = '\n')
 ```
 
-Both rounds used the language model `r agent_model[1]` (identifier `r agent_model[2]`), with `r count_text(runs_per_cell)` runs in each combination of condition and route. The first round ran on `r date_text(started)` with Claude Code `r readLines(file.path(experiment, 'claude_code_version.txt'))`. Its `r count_text(sum(main_runs))` runs on the balanced data were launched `r count_text(batch_size)` at a time, in a random order across conditions. The `r count_text(sum(!main_runs))` runs of the follow-up were launched afterwards, also in a random order.
+Both rounds used the language model `r agent_model[1]` (identifier `r agent_model[2]`), with `r count_text(runs_per_cell)` runs in each combination of condition and route. The first round ran on `r date_text(first_date)` with Claude Code `r readLines(file.path(experiment, 'claude_code_version.txt'))`. Its `r count_text(sum(main_runs))` runs on the balanced data were launched `r count_text(batch_size)` at a time, in a random order across conditions. The `r count_text(sum(!main_runs))` runs of the follow-up were launched afterwards, also in a random order.
 
 In the first round, each agent ran in the background, alongside others, and was pointed to a folder of its own that held only the data file. It ran with the model of the session that launched it and at that session's effort level. The logs show that each prose run used tools only to read its data file. Of the `r count_text(sum(script_runs))` script runs, `r count_text(sum(results$compliant[script_runs]), sum(script_runs))` touched no file outside their own folder. The other `r count_text(sum(!results$compliant[script_runs]))` wrote exploratory R files under shared names such as explore.R to a temporary folder open to all the session's agents. Each wrote and ran such a file within one command and read only its own data, so none appears to have run another's code. One of them also read the output of an R command run in the background, from the folder where the session keeps such output. The first `r count_text(in_experiment_folder)` agents were launched from the experiment's own folder, which holds the pilotr specification, and their logs show no access to it.
 
 The session then executed each final script `r count_text(max(executions$execution))` times, each time in a fresh R process (as after restarting R) and a fresh copy of its folder. It also recorded the versions of R, lme4, lmerTest and Matrix, the package that lme4 uses for its matrix computations.
 
-The second round ran on `r date_text(second_started)` with Claude Code `r unique(second$claude_code_version)`, from one session in the Claude desktop app on `r second_system`. Its `r count_text(nrow(medium))` runs were launched in the order of the first round, `r count_text(second_batch_size)` at a time, with those on the unbalanced data once `r count_text(balanced_done, sum(medium_balanced))` of the `r count_text(sum(medium_balanced))` on the balanced data had finished. Their prompts were those of the first round, except for the path of each run's folder and, in the script route, the version of R (`r unique(second_r)` in place of `r unique(first_r)`) and the full path of the Rscript program. Every agent's effort level was set to medium, as the transcripts record. `r stringr::str_to_sentence(count_text(nrow(xhigh)))` runs on the balanced data, a prose reply to the specified request and a script for the open request, were also run at xhigh effort, the level above high, under the same conditions on the same day. No agent of the second round touched a file outside its own folder. The Results report the first round except where they name the second.
+The second round ran on `r date_text(second_date)` with Claude Code `r unique(second$claude_code_version)`, from one session in the Claude desktop app on `r second_system`. Its `r count_text(nrow(medium))` runs were launched in the order of the first round, `r count_text(second_batch_size)` at a time, with those on the unbalanced data once `r count_text(balanced_done, sum(medium_balanced))` of the `r count_text(sum(medium_balanced))` on the balanced data had finished. Their prompts were those of the first round, except for the path of each run's folder and, in the script route, the version of R (`r unique(second_r)` in place of `r unique(first_r)`) and the full path of the Rscript program. Every agent's effort level was set to medium, as the transcripts record. `r stringr::str_to_sentence(count_text(nrow(xhigh)))` runs on the balanced data, a prose reply to the specified request and a script for the open request, were also run at xhigh effort, the level above high, under the same conditions on the same day. No agent of the second round touched a file outside its own folder. The Results report the first round except where they name the second.
 
 ## Results
 
@@ -1078,11 +1103,13 @@ stopifnot(all(slope_nine), all(positive_one | either_sign_one),
 
 # The fit these replies reconstructed, and that the open-request scripts found
 # singular: the by-participant slope sits at the boundary, perfectly correlated
-# with the intercept, with a standard deviation of about 9 ms
+# with the intercept
 participant_effects <- VarCorr(specified_fit)$participant
+participant_slope_sd <- attr(participant_effects, 'stddev')[['prime_c']]
 stopifnot(isSingular(specified_fit),
           round(attr(participant_effects, 'correlation')[1, 2], 3) == 1,
-          round(attr(participant_effects, 'stddev')[['prime_c']]) == 9)
+          # 'about 9 ms', as the replies put it (slope_nine)
+          round(participant_slope_sd) == 9)
 
 # The decomposition of the paired differences gives the standard error of the
 # model without by-participant slopes, as the text says, and the maximal model
@@ -1093,7 +1120,7 @@ stopifnot(abs(sqrt(vcov(reduced_fit)[2, 2]) - reduced_se) < 1e-3,
           sqrt(vcov(specified_fit)[2, 2]) > reduced_se)
 ```
 
-From these quantities, every reply to the specified request recovered the main features of lme4's fit. Each found a by-participant slope with a standard deviation of about 9 ms, whose correlation with the intercepts lay at the boundary (+1 in `r count_text(sum(positive_one))` replies and ±1 in the other).
+From these quantities, every reply to the specified request recovered the main features of lme4's fit. Each found a by-participant slope with a standard deviation of about `r sprintf('%.0f', participant_slope_sd)` ms, whose correlation with the intercepts lay at the boundary (+1 in `r count_text(sum(positive_one))` replies and ±1 in the other).
 
 ### When the Design Is Unbalanced
 
@@ -1175,14 +1202,14 @@ stopifnot(n_distinct(c(runs$text, medium_runs$text, xhigh_runs$text)) ==
 
 # Every script given the specified request returned the first round's numbers,
 # which some wrote to four decimals
-specified_scripts_2 <- medium_runs[medium_runs$route == 'script' & medium_runs$request == 'specified', ]
+second_specified_scripts <- medium_runs[medium_runs$route == 'script' & medium_runs$request == 'specified', ]
 same_numbers <- function(row, script) {
   all(round(round(c(row$estimate, row$lower, row$upper), 2) - c(script$estimate, script$lower, script$upper), 6) == 0)
 }
-four_decimals <- sum(decimals(vapply(specified_scripts_2$result_line, function(line) result_numbers(line)[1],
+four_decimals <- sum(decimals(vapply(second_specified_scripts$result_line, function(line) result_numbers(line)[1],
                                      character(1))) == 4)
-stopifnot(vapply(seq_len(nrow(specified_scripts_2)), function(i)
-            same_numbers(specified_scripts_2[i, ], first_of(specified_scripts_2$condition[i], 'script')), logical(1)),
+stopifnot(vapply(seq_len(nrow(second_specified_scripts)), function(i)
+            same_numbers(second_specified_scripts[i, ], first_of(second_specified_scripts$condition[i], 'script')), logical(1)),
           four_decimals > 0)
 
 # Given the open request, each script either kept the by-word slope, with the
@@ -1190,14 +1217,14 @@ stopifnot(vapply(seq_len(nrow(specified_scripts_2)), function(i)
 # interval of the model with random intercepts only. None of the latter fitted
 # the model with only the by-word slope (reduced_fit, fitted for Table 2's
 # checks), which is not singular.
-open_scripts_2 <- cell_of(medium_runs, condition_levels[1], 'script')
+second_open_scripts <- cell_of(medium_runs, condition_levels[1], 'script')
 intercepts_fit <- lmerTest::lmer(rt ~ prime_c + (1 | participant) + (1 | item), data = balanced)
 intercepts_ci <- satterthwaite_ci(intercepts_fit)
-kept_slope <- open_scripts_2$result_line == open_script$result_line
-dropped_both <- vapply(open_scripts_2$result_line, function(line)
+kept_slope <- second_open_scripts$result_line == open_script$result_line
+dropped_both <- vapply(second_open_scripts$result_line, function(line)
   all(result_numbers(line)[2:3] == sprintf('%.2f', intercepts_ci)), logical(1), USE.NAMES = FALSE)
 by_word_sd <- attr(VarCorr(reduced_fit)$item, 'stddev')[['prime_c']]
-dropped_texts <- open_scripts_2$text[dropped_both]
+dropped_texts <- second_open_scripts$text[dropped_both]
 # The random-effects structures a script writes, each with its terms sorted,
 # so that neither the order of the terms nor spacing matters
 random_term <- '\\(1(\\+prime_c)?\\|\\|?(participant|item)\\)'
@@ -1228,34 +1255,34 @@ stopifnot(all(kept_slope | dropped_both), any(kept_slope), any(dropped_both),
             all(with_word_slope %in% found) && '(1|item)+(1|participant)' %in% found &&
               all(found[grepl('prime_c\\|\\|?item', found)] %in% with_word_slope)
           }, logical(1)),
-          grepl('singular', open_scripts_2$reply[dropped_both], ignore.case = TRUE),
+          grepl('singular', second_open_scripts$reply[dropped_both], ignore.case = TRUE),
           # the summary and the abstract, which cannot run code, give these counts
-          sum(dropped_both) == 5, nrow(open_scripts_2) == 8)
+          sum(dropped_both) == 5, nrow(second_open_scripts) == 8)
 # The summaries of three of them stated that both slope variances were at or
 # near zero, as the discussion says
 zero_claims <- c(`2d6442b4` = 'because the slope variances were estimated at zero',
                  c8710529 = 'because the slope variances were estimated at zero',
                  `9d94880d` = 'essentially no variation in the priming effect across participants or items')
-stopifnot(names(zero_claims) %in% open_scripts_2$run_id[dropped_both],
-          mapply(grepl, zero_claims, open_scripts_2$reply[match(names(zero_claims), open_scripts_2$run_id)],
+stopifnot(names(zero_claims) %in% second_open_scripts$run_id[dropped_both],
+          mapply(grepl, zero_claims, second_open_scripts$reply[match(names(zero_claims), second_open_scripts$run_id)],
                  fixed = TRUE))
 # A check on wording only: no other summary of these scripts uses 'zero' or 'no
 # variation'. One of them says that the participant slope variance was
 # estimated at exactly 0, which concerns one variance, not both, and passes
 # only because it writes the digit.
 stopifnot(!any(grepl('zero|no variation',
-                     open_scripts_2$reply[dropped_both & !open_scripts_2$run_id %in% names(zero_claims)])))
+                     second_open_scripts$reply[dropped_both & !second_open_scripts$run_id %in% names(zero_claims)])))
 
 # Every prose reply to the open request divided by the root of the number of
 # participants, and all but one gave the by-participant paired interval. The
 # other based a slightly different interval on the participants' means. Every
 # reply of the first round had set that analysis aside, as the checks on
 # noted_by_route and set_aside confirm.
-open_prose_2 <- cell_of(medium_runs, condition_levels[1], 'prose')
-gave_paired <- vapply(open_prose_2$result_line, function(line)
+second_open_prose <- cell_of(medium_runs, condition_levels[1], 'prose')
+gave_paired <- vapply(second_open_prose$result_line, function(line)
   all(result_numbers(line)[2:3] == sprintf('%.1f', paired_ci)), logical(1), USE.NAMES = FALSE)
-other_paired <- open_prose_2[!gave_paired, ]
-stopifnot(all(grepl(paste0('√', spec_file$units$subject$n), open_prose_2$reply, fixed = TRUE)),
+other_paired <- second_open_prose[!gave_paired, ]
+stopifnot(all(grepl(paste0('√', spec_file$units$subject$n), second_open_prose$reply, fixed = TRUE)),
           sum(!gave_paired) == 1,
           grepl('based it on participant-level means', other_paired$reply, fixed = TRUE),
           other_paired$lower != round(paired_ci[1], 1))
@@ -1264,7 +1291,7 @@ stopifnot(all(grepl(paste0('√', spec_file$units$subject$n), open_prose_2$reply
 # variance at or near zero. Most then gave about the Wald interval of the
 # model without by-participant slopes, and the others, which also left out the
 # by-word slope variance (in the phrases quoted), that of random intercepts only.
-specified_prose_2 <- cell_of(medium_runs, condition_levels[2], 'prose')
+second_specified_prose <- cell_of(medium_runs, condition_levels[2], 'prose')
 reduced_wald <- confint(reduced_fit, parm = 'prime_c', method = 'Wald')
 intercepts_wald <- confint(intercepts_fit, parm = 'prime_c', method = 'Wald')
 near_interval <- function(rows, target, tolerance) {
@@ -1273,45 +1300,45 @@ near_interval <- function(rows, target, tolerance) {
 # The tolerances admit the replies' rounding. Those near the first interval lie
 # within 0.023 ms of its bounds, and the two near the second, written to one
 # decimal, within 0.2 ms.
-about_reduced <- near_interval(specified_prose_2, reduced_wald, 0.05)
-about_intercepts <- near_interval(specified_prose_2, intercepts_wald, 0.25)
+about_reduced <- near_interval(second_specified_prose, reduced_wald, 0.05)
+about_intercepts <- near_interval(second_specified_prose, intercepts_wald, 0.25)
 left_out <- c(`79c3e2a0` = 'I assumed the item slope variance is also small',
               b42ac192 = 'I did not compute the item slope variance')
 stopifnot(all(about_reduced | about_intercepts), !any(about_reduced & about_intercepts),
           sum(about_reduced) > sum(about_intercepts),
-          grepl('participant[^.]{0,120}(at|near|about) zero', specified_prose_2$reply),
-          setequal(names(left_out), specified_prose_2$run_id[about_intercepts]),
-          mapply(grepl, left_out, specified_prose_2$reply[match(names(left_out), specified_prose_2$run_id)],
+          grepl('participant[^.]{0,120}(at|near|about) zero', second_specified_prose$reply),
+          setequal(names(left_out), second_specified_prose$run_id[about_intercepts]),
+          mapply(grepl, left_out, second_specified_prose$reply[match(names(left_out), second_specified_prose$run_id)],
                  fixed = TRUE))
 
 # On the unbalanced data, the replies' estimates lie near the mean difference
 # of the complete participant-word pairs, which each reply counted, and their
 # lower bounds well above the executed one. The estimates lie within 0.5 ms of
 # that mean, and the lowest lower bound 4.8 ms above the executed one.
-unbalanced_prose_2 <- cell_of(medium_runs, condition_levels[3], 'prose')
+second_unbalanced_prose <- cell_of(medium_runs, condition_levels[3], 'prose')
 complete_pairs <- reshape(unbalanced[, c('participant', 'item', 'prime', 'rt')],
                           idvar = c('participant', 'item'), timevar = 'prime', direction = 'wide')
 complete_pairs <- complete_pairs[complete.cases(complete_pairs), ]
 complete_pair_mean <- mean(complete_pairs$rt.unrelated - complete_pairs$rt.related)
-stopifnot(abs(unbalanced_prose_2$estimate - complete_pair_mean) < 0.6,
-          unbalanced_prose_2$lower > unbalanced_script$lower + 4,
-          grepl(nrow(complete_pairs), unbalanced_prose_2$reply, fixed = TRUE))
+stopifnot(abs(second_unbalanced_prose$estimate - complete_pair_mean) < 0.6,
+          second_unbalanced_prose$lower > unbalanced_script$lower + 4,
+          grepl(nrow(complete_pairs), second_unbalanced_prose$reply, fixed = TRUE))
 
 # No prose reply of the second round agreed, at its precision, with a script
 # of either round in its condition, and none returned a result of the first
 # round, as the summary, the abstract and the discussion say
-prose_2 <- medium_runs[medium_runs$route == 'prose', ]
+second_prose <- medium_runs[medium_runs$route == 'prose', ]
 scripts_both <- bind_rows(runs[runs$route == 'script', c('condition', 'estimate', 'lower', 'upper')],
                           medium_runs[medium_runs$route == 'script', c('condition', 'estimate', 'lower', 'upper')])
 # As for the first round, rounding a script's number to the one or two
 # decimals of a reply must not fall on a .5 boundary
 script_numbers <- abs(unlist(scripts_both[c('estimate', 'lower', 'upper')]))
 stopifnot(vapply(1:2, function(d) all(abs((script_numbers * 10^d) %% 1 - 0.5) > 1e-6), logical(1)))
-matched_script <- vapply(seq_len(nrow(prose_2)), function(i) {
-  candidates <- scripts_both[scripts_both$condition == prose_2$condition[i], ]
-  any(vapply(seq_len(nrow(candidates)), function(j) agrees(prose_2[i, ], candidates[j, ]), logical(1)))
+matched_script <- vapply(seq_len(nrow(second_prose)), function(i) {
+  candidates <- scripts_both[scripts_both$condition == second_prose$condition[i], ]
+  any(vapply(seq_len(nrow(candidates)), function(j) agrees(second_prose[i, ], candidates[j, ]), logical(1)))
 }, logical(1))
-stopifnot(!any(matched_script), !(prose_2$result_line %in% runs$result_line[runs$route == 'prose']))
+stopifnot(!any(matched_script), !(second_prose$result_line %in% runs$result_line[runs$route == 'prose']))
 
 # The prose replies were faster in every condition than in the first round
 prose_minutes <- function(rows) {
@@ -1328,13 +1355,13 @@ stopifnot(max(second_prose_minutes) < min(first_prose_minutes))
 # correlated with the intercepts), and the script kept the by-word slope.
 xhigh_prose <- xhigh_runs[xhigh_runs$route == 'prose', ]
 xhigh_script <- xhigh_runs[xhigh_runs$route == 'script', ]
-minutes_of_thinking <- function(seconds) sprintf('%.1f', seconds / 60)
+minutes_from_seconds <- function(seconds) sprintf('%.1f', seconds / 60)
 stopifnot(xhigh_runs$result_line == runs$result_line[match(xhigh_runs$run_id, runs$run_id)],
           medium_runs$result_line[match(xhigh_runs$run_id, medium_runs$run_id)] !=
             runs$result_line[match(xhigh_runs$run_id, runs$run_id)],
           grepl('slope SD comes out at about 9 ms, perfectly correlated', xhigh_prose$reply, fixed = TRUE),
           xhigh_script$result_line == open_script$result_line,
-          xhigh_prose$thinking_seconds > max(specified_prose_2$thinking_seconds))
+          xhigh_prose$thinking_seconds > max(second_specified_prose$thinking_seconds))
 
 # Each script of the second round was executed twice, as the text says, and
 # printed identical output both times, ending with the result line its agent
@@ -1362,7 +1389,7 @@ all_script_lines <- vapply(c(runs$text[runs$route == 'script'], medium_runs$text
                            function(text) length(strsplit(text, '\n')[[1]]), integer(1), USE.NAMES = FALSE)
 ```
 
-Given the specified request, all `r count_text(nrow(specified_scripts_2))` scripts of the second round returned the first round's results, `r count_text(four_decimals, nrow(specified_scripts_2))` of them to four decimals (Table 4). Given the open request, `r count_text(sum(kept_slope))` scripts kept the by-word priming slope and returned the first round's interval, and `r count_text(sum(dropped_both))` dropped both random slopes after singular fits, keeping random intercepts only. Their Satterthwaite interval, `r interval(intercepts_ci[1], intercepts_ci[2])` ms, excludes zero. None of the `r count_text(sum(dropped_both))` fitted the model that drops only the by-participant slope. In that model, lme4 puts the standard deviation of the by-word slope at `r ms(by_word_sd, 1)` ms, away from the boundary, so the fit did not require dropping it.
+Given the specified request, all `r count_text(nrow(second_specified_scripts))` scripts of the second round returned the first round's results, `r count_text(four_decimals, nrow(second_specified_scripts))` of them to four decimals (Table 4). Given the open request, `r count_text(sum(kept_slope))` scripts kept the by-word priming slope and returned the first round's interval, and `r count_text(sum(dropped_both))` dropped both random slopes after singular fits, keeping random intercepts only. Their Satterthwaite interval, `r interval(intercepts_ci[1], intercepts_ci[2])` ms, excludes zero. None of the `r count_text(sum(dropped_both))` fitted the model that drops only the by-participant slope. In that model, lme4 puts the standard deviation of the by-word slope at `r ms(by_word_sd, 1)` ms, away from the boundary, so the fit did not require dropping it.
 
 ```{r}
 # runs holds the first round's runs and medium_runs the second's, built with
@@ -1429,7 +1456,7 @@ column_shares(knitr::kable(
 
 No prose reply returned a result of the first round. `r stringr::str_to_sentence(count_text(sum(gave_paired)))` replies to the open request gave the by-participant paired interval, `r interval(paired_ci[1], paired_ci[2], 1)` ms, and the other a slightly different by-participant interval, `r interval(other_paired$lower, other_paired$upper, 1)` ms. In the first round, every reply had set that analysis aside. Given the specified request on the balanced data, `r count_text(sum(about_reduced))` replies set the by-participant slope variance at or near zero and gave about the Wald interval of the model without by-participant slopes, `r interval(reduced_wald[1], reduced_wald[2])` ms. The other `r count_text(sum(about_intercepts))` also left the by-word slope variance out of the standard error, giving about `r interval(intercepts_wald[1], intercepts_wald[2], 1)` ms. On the unbalanced data, the estimates lay near the mean difference over the `r count_text(nrow(complete_pairs))` complete participant-word pairs, `r ms(complete_pair_mean)` ms, and the lower bounds well above the executed `r ms(unbalanced_script$lower)` ms. In every condition, the prose replies were faster than in the first round.
 
-The `r count_text(nrow(xhigh_runs))` runs at xhigh effort returned the first round's results, the script after `r sprintf('%.1f', xhigh_script$minutes)` minutes and the prose reply after `r sprintf('%.1f', xhigh_prose$minutes)`. The prose reply reconstructed lme4's boundary fit and spent `r minutes_of_thinking(xhigh_prose$thinking_seconds)` minutes reasoning, against a median of `r minutes_of_thinking(median(specified_prose_2$thinking_seconds))` for the replies in its condition at medium effort.
+The `r count_text(nrow(xhigh_runs))` runs at xhigh effort returned the first round's results, the script after `r sprintf('%.1f', xhigh_script$minutes)` minutes and the prose reply after `r sprintf('%.1f', xhigh_prose$minutes)`. The prose reply reconstructed lme4's boundary fit and spent `r minutes_from_seconds(xhigh_prose$thinking_seconds)` minutes reasoning, against a median of `r minutes_from_seconds(median(second_specified_prose$thinking_seconds))` for the replies in its condition at medium effort.
 
 ### Executing the Scripts Again
 
@@ -1702,7 +1729,7 @@ stopifnot(page_versions$R == lock$R$Version,
           unlist(page_versions[version_columns]) == unlist(newer_versions[version_columns]))
 ```
 
-This page executes each of the first round's scripts once more whenever it is knitted, under the versions of R and its packages recorded in the site's lockfile, [renv.lock](`r sprintf('https://github.com/pablobernabeu/website-files/blob/%s/renv.lock', last_commit(file.path('..', '..', '..', 'renv.lock')))`), which are newer than the first round's. `r rerun_text``r retry_text``r failure_text`
+This page executes each of the first round's scripts once more whenever it is knitted, under the versions of R and its packages recorded in the site's lockfile, [renv.lock](`r sprintf('%s/blob/%s/renv.lock', repo_url, last_commit(lock_file))`), which are newer than the first round's. `r rerun_text``r retry_text``r failure_text`
 
 To locate the difference, every script was executed on one `r newer_system` machine with three package libraries (folders of installed packages) that differ only in the versions of lme4 and lmerTest (Table 5). Matrix stayed at `r newer_versions$Matrix` in all three, since `r stored_versions$Matrix` could not be installed under R `r newer_versions$R` on that machine. With the earlier lme4 and either version of lmerTest, all `r count_text(n_scripts)` scripts printed the stored output. The library with lme4 alone as stored and the rebuild of the stored environment differed in the operating system and in the routines for matrix algebra that R itself calls, separate from the Matrix package. They also had different versions of `r knitr::combine_words(c('R', 'Matrix', 'lmerTest', other_changed), and = ' and ', oxford_comma = FALSE)`, and of nloptr and other packages that lme4 depends on. Since both printed the stored output, the difference came from the update of lme4.
 
@@ -1747,7 +1774,7 @@ sessionInfo()
 
 No text in this experiment was repeated, yet every executed script printed the same output each time it ran. Because the versions of R, lme4, lmerTest and Matrix were recorded and can still be installed, the first round's scripts printed that output on another machine too. Under newer versions, their output changed only in formatting, and the changes could be traced to lme4. The scripts also added exactness and a record that can be checked. On unbalanced data, which call for a numerical fit, every script returned the exact result and each prose reply an approximation. Even where the replies matched the scripts, only recomputing their quantities in R could tell a correct reply from a confident error.
 
-The agreement between runs is a separate matter. On balanced data, it was complete in the first round. In the second, at medium effort, the prose replies to the balanced data gave `r count_text(n_distinct(prose_2$result_line[prose_2$data == 'balanced']))` different results and the open-request scripts `r count_text(n_distinct(open_scripts_2$result_line))`, whereas every script given the specified request returned the result of the first round. The close agreement of the first round contrasts with the studies reviewed above, which found large variation between runs of the same request in code generation and in accuracy (Atıl et al., 2025; Ouyang et al., 2025).
+The agreement between runs is a separate matter. On balanced data, it was complete in the first round. In the second, at medium effort, the prose replies to the balanced data gave `r count_text(n_distinct(second_prose$result_line[second_prose$data == 'balanced']))` different results and the open-request scripts `r count_text(n_distinct(second_open_scripts$result_line))`, whereas every script given the specified request returned the result of the first round. The close agreement of the first round contrasts with the studies reviewed above, which found large variation between runs of the same request in code generation and in accuracy (Atıl et al., 2025; Ouyang et al., 2025).
 
 Many-analysts studies, which give one data set and one question to many teams, find wide variation among human analysts too. In one, the odds ratios of 29 teams ranged from 0.89 to 2.93, and 20 teams found a statistically significant effect (Silberzahn et al., 2018). Autonomous AI analysts given one data set and one hypothesis also reached divergent verdicts in three domains, and their conclusions shifted with the language model and the prompt (Bertran et al., 2026). Alizadeh et al. (2026) ran Claude Code and Codex 20 times each on a many-analysts study of immigration and social policy. The agents varied their model specifications at least as much as the human teams had, but their estimates stayed broadly in line with the human consensus. The authors located the agents' vulnerability in interpretation more than in estimation.
 
@@ -1777,7 +1804,7 @@ The record should follow the reporting guidelines reviewed above (Baltes et al.,
 
 ### Limitations
 
-The experiment used one language model and one simulated data set, on which the lower bound of the interval for the priming effect lay close to zero. Its two rounds differed in date, in the version of Claude Code and in the system and the versions of R and lme4 that the agents worked with. Only `r count_text(nrow(xhigh_runs))` runs at xhigh link the differences between the rounds to the effort level, a link they suggest without establishing. With `r count_text(runs_per_cell)` runs in each combination of condition and route, the counts describe these runs and do not estimate rates. The follow-up was designed after the first results on the balanced data. The specified request contained the model formula and the function for the interval, so the agreement among its scripts tested implementation more than analysis. The prose route imitated a chat without a code interpreter, although many chat assistants now have one. Its agents had no time limit and took up to `r sprintf('%.0f', range_in('prose')[2])` minutes per reply, so the route shows what prose replies can achieve with ample time.
+The experiment used one language model and one simulated data set, on which the lower bound of the interval for the priming effect lay close to zero. Its two rounds differed in date, in the version of Claude Code and in the system and the versions of R and lme4 that the agents worked with. Only `r count_text(nrow(xhigh_runs))` runs at xhigh link the differences between the rounds to the effort level, a link they suggest without establishing. With `r count_text(runs_per_cell)` runs in each combination of condition and route, the counts describe these runs and do not estimate rates. The follow-up was designed after the first results on the balanced data. The specified request contained the model formula and the function for the interval, so the agreement among its scripts tested implementation more than analysis. The prose route imitated a chat without a code interpreter, although many chat assistants now have one. Its agents had no time limit and took up to `r minutes_text(range_in('prose')[2])` minutes per reply, so the route shows what prose replies can achieve with ample time.
 
 ## References
 
