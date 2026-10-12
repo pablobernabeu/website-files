@@ -1,250 +1,128 @@
-# Open issues: reproducible-research-with-generative-ai
+# Issues: reproducible-research-with-generative-ai
 
 The code audit of the post `content/post/reproducible-research-with-generative-ai/`
-and its `experiment/` folder. Paths below are relative to that folder.
+and its `experiment/` folder, made on 11 October 2026, and the resolution of its
+findings on 12 October 2026. Paths below are relative to `experiment/`. Each
+heading gives a finding's severity and says whether it was high-risk, that is,
+whether it touched code or records behind the published results and so needed
+the maintainer's sign-off. The maintainer signed off every change made on 12
+October 2026.
 
-These are the findings of the code audit of 11 October 2026 that were not
-applied, and the checks of its changes that have still to run. Each heading
-gives the finding's severity and says whether it is high-risk, that is, whether
-it touches code or records behind the published results and so needs the
-maintainer's sign-off.
+Commits are named by their subject lines, which `git log --grep` finds even if
+the commits are rebased.
 
-The applied findings are in four commits of that date. They are named here by
-their subject lines, which `git log --grep` finds even if the commits are
-rebased:
-
-- Library commit: 'Record the R library of the second round's executions'
-- Scripts commit: 'Harden the experiment's scripts and document how its records
-  were made' (the scripts, README, Dockerfile and workflow)
-- Guards commit: 'Strengthen the generative-AI post's guards and remove
-  duplicated code' (the post's code chunks only)
-- Lint commit: 'Record the experiment's lint settings and fix the lints of its
-  shared scripts'
-
-Where a heading says 'optional part' or 'remaining part', the line 'Applied in'
-names the commit that made the rest of the change.
-
-## Checks still to run
-
-### V1 (major), resolved: the rebuilt environment executes the current scripts
-
-The workflow `reproduce-genai-experiment` ran on commit 98fb72323 (run
-38233561634, 12 October 2026), which carries the current `run_script.R` and
-`verify_executions.R` and the Dockerfile resolved against the Ubuntu snapshot
-(M2b). All 24 scripts printed byte-identical output, and the run's session
-record, with every package version, equals `verification_session_info.txt`
-line for line. `verification.csv` stays as the record of its own run.
-
-### V2 (minor): restoring a library from `rerun/library.lock` is untested
-
-The lockfile matches the user library of R 4.6.1 package by package (69
-packages from CRAN, lme4 2.0-1, lmerTest 3.2-1 and Matrix 1.7-5), and
-`rerun/execute_rerun.R` regenerates `rerun/executions.csv` from that library in
-every column but `seconds`. Restoring it with
-`renv::restore(lockfile = 'rerun/library.lock', library = <new folder>, prompt = FALSE)`
-has not been tried, so the README says only that the lockfile records the
-versions. Older versions without Windows binaries would need Rtools.
-
-## Major findings
-
-### M1 (major, high-risk), resolved with the maintainer's sign-off: the scripts that built `rerun/results.csv` and `rerun/runs/`
-
-`rerun/scripts/prepare_runs.py` and `rerun/scripts/build_records.py` are
-parameterised, redacted versions of the working scripts, with every private
-input given as an argument. Run on 12 October 2026 with the private records,
-`build_records.py` rewrote all 176 files of `results.csv` and `runs/` byte for
-byte, and `prepare_runs.py` rewrote the 50 prompts. The README describes them.
-m15 (`True` in `compliant`) stays open, since a change would alter a stored file.
-
-### M2b (major, high-risk), resolved with the maintainer's sign-off: the Docker build resolves against a dated snapshot
-
-The Dockerfile now resolves every package against Ubuntu's snapshot of the
-archive at 20:00 UTC on 30 September 2026, just before the recorded build, and
-keeps the named packages pinned by version. Verified by run 38233561634 (see
-V1): 24 of 24 identical, and an identical package list.
-
-### M3, optional part (major, high-risk): an output folder for the scripts that replace stored files
-
-`make_data.R`, `make_unbalanced.R`, `check_versions.R` and
-`rerun/execute_rerun.R` write into the folder that holds the stored files, and
-the README now says to run them in a copy. Giving each an output-folder
-argument would change scripts that are records of how the stored files were
-made.
-
-Applied in: the scripts commit.
-
-### M4, optional part (major, high-risk): the compliance check of the prose runs in `collect_results.R`
-
-Line 42 checks only that a prose run called no tool but Read, as the comment
-now says. Requiring that it read only its own `data.csv` would change a record
-script, and the post already checks the stricter condition.
-
-Applied in: the scripts commit.
-
-### M8, optional part (major, high-risk): session records from a child process
-
-`executions_session_info.txt` and `rerun/executions_session_info.txt` describe
-the parent R session, while `verify_executions.R` and `check_versions.R` record
-a child session, as the README now explains. A helper in `run_script.R` that
-records a child session with lme4, lmerTest, Matrix, emmeans and pbkrtest
-attached, where installed, would make future regenerations consistent. It would
-also change what a regeneration writes.
-
-Applied in: the scripts commit.
-
-### M9, remaining part (major): who coded `choices_open_scripts.csv`, and how
-
-The README now describes the file's columns and says that no script writes it.
-Whether it was coded by hand, by whom and from what is not on record, so the
-maintainer should add it there.
-
-Applied in: the scripts commit.
-
-## Minor findings
-
-### m2 (minor): line endings of the prompts, replies, tool logs and scripts
-
-With `core.autocrlf=true`, the working copies of `prompts/` and `runs/` are
-written with CRLF, so their bytes depend on the platform, unlike those of
-`rerun/runs/`. The fix is to add `prompts/** -text`, `runs/** -text` and
-`rerun/** -text` to `.gitattributes` and then rewrite the working copies from
-the repository by deleting them and running `git checkout -- prompts runs
-rerun`. That second step overwrites the working copies of stored records, so it
-was left to the maintainer, and adding the attributes without it could make git
-report those files as changed. Afterwards, `git status` must be clean and the
-dry knit of the post unchanged.
-
-### m5, remaining parts (minor): checksums of downloaded inputs
-
-`check_versions.R` installs `lme4_1.1-35.1.tar.gz` and `lmerTest_3.1-3.tar.gz`
-from the CRAN archive without checking them, and `requirements.txt` pins
-pilotr 0.3.0 with neither a hash nor a Python version. Recording the tarballs'
-SHA-256 checksums, and the hashes of pilotr's wheel and source archive on PyPI,
-needs those files downloaded and checked, which this audit did not do. The
-local Python installation of pilotr is an editable copy of its source, so it
-cannot confirm which Python version reproduces `python_sha256.txt` with the
-released package.
-
-Applied in: the scripts commit.
-
-### m6, remaining part (minor): the seed and the 6% of `make_unbalanced.R`
-
-The RNG kind is now fixed. Whether reusing the seed of `spec.json` (2026) was
-deliberate, and why 6% of the trials were removed, is not on record, so the
-maintainer should give the reasons in the script's comments.
-
-Applied in: the scripts commit.
-
-### m8, remaining part (minor): four workers in `check_versions.R`
-
-`parallel::makeCluster(4, ...)` has no stated reason, which the maintainer
-should add to the comment above it.
-
-Applied in: the scripts commit.
-
-### m10 (minor, high-risk): `extract_transcripts.py`, a record
-
-The script opens files without an explicit encoding, leaves two read handles
-open and skips a missing transcript silently. It ran on Linux, so the stored
-replies are unaffected. If it is ever run again, it should use
-`open(..., encoding='utf-8')` in `with` blocks and stop on a missing
-transcript.
-
-### m11 (minor, high-risk): `make_runs.R` and `make_runs_followup.R`, records
-
-Neither checks the uniqueness of the run IDs within a layout or the result of
-`file.copy()`, and both type the path `/home/user/agent_runs`. `design.csv`
-holds 48 unique IDs. If the scripts are reused, they should add
-`stopifnot(!anyDuplicated(design$run_id))` and wrap each `file.copy()` in
-`stopifnot()`.
+## Open
 
 ### m14 (minor, high-risk): the unused column `trimmed_sha256`
 
-`check_versions.R` writes this column, and the post does not read it. Removing
-it changes the schema of `version_check.csv`, so it waits for the next
-regeneration of that file.
+`check_versions.R` writes this column of `version_check.csv`, and the post does not
+read it. The README documents it as unused. Removing it would change the schema of
+a stored record, so the maintainer chose to wait for the next regeneration of that
+file rather than edit it by hand.
 
-### m15 (minor, high-risk): `compliant` is written as `True` in `rerun/results.csv`
+## Resolved
 
-R reads the value as text, so the post converts it with `as.logical()`. The
-stored file stays as it is, and a committed generator (M1) should write `TRUE`
-and `FALSE`.
+### Checks
 
-### m16, remaining part (minor): lints in the record scripts
+- **V1 (major).** The workflow `reproduce-genai-experiment` ran on commit 98fb72323
+  (run 38233561634, 12 October 2026) with the current `run_script.R`,
+  `verify_executions.R` and the Dockerfile resolved against the Ubuntu snapshot.
+  All 24 scripts printed byte-identical output, and the run's session record
+  equals `verification_session_info.txt` line for line. It passed again on
+  1c274cfff (run 38317272520), with the record scripts as hardened that day.
+- **V2 (minor).** A library restored from `rerun/library.lock` into an empty
+  folder (renv 1.2.3 with its cache off, R 4.6.1 on Windows), together with R's
+  recommended packages, held all 69 locked versions. `rerun/execute_rerun.R`, run
+  with only those libraries, rewrote `rerun/executions.csv` in every column but
+  the seconds and its session file byte for byte. stringi 1.8.7 had to be
+  installed first with `R CMD INSTALL`, since its source build outlasted renv's
+  time limit, as the README now says.
 
-`.lintr` records the house style, and `run_script.R` and `verify_executions.R`
-lint clean. The brace, indentation and length lints in `check_versions.R` and
-`collect_results.R` are left, since those files are records of how the stored
-files were made.
+### Major findings
 
-Applied in: the lint commit.
+- **M1 (high-risk).** `rerun/scripts/prepare_runs.py` and `build_records.py`
+  rebuild the second round's records from the private transcripts, byte for byte.
+  Commit: 'Commit the scripts that built the second round's records'.
+- **M2b (high-risk).** The Docker build resolves every package against Ubuntu's
+  snapshot of 30 September 2026, verified by run 38233561634. Commit: 'Resolve the
+  Docker rebuild against a dated Ubuntu snapshot'.
+- **M3 (high-risk).** `make_data.R`, `make_unbalanced.R`, `collect_results.R`,
+  `check_versions.R` and `rerun/execute_rerun.R` take an optional output folder and
+  replace the stored files only without one. Run into a scratch folder,
+  `make_data.R`, `make_unbalanced.R` and `collect_results.R` rewrote their files
+  byte for byte. `check_versions.R` rewrote its 72 outputs byte for byte and
+  `version_check.csv` in every column but the seconds, and `execute_rerun.R`
+  rewrote `rerun/executions.csv` in the same way. Commit: 'Harden the
+  experiment's record scripts and list the changes since the records'.
+- **M4 (high-risk).** `collect_results.R` now counts a prose run as compliant only
+  when every call read its own `data.csv`, the condition the post checks. It still
+  writes `results.csv` byte for byte.
+- **M8 (high-risk), closed without a change.** The session records of
+  `execute_scripts.R` and `rerun/execute_rerun.R` describe the parent R session,
+  as the README says, and the `environment` column of each `executions.csv`
+  records the versions in the child processes that ran the scripts. Recording a
+  child session instead would make any regeneration differ from the stored
+  records without adding information.
+- **M9.** The reasons for the coding of `choices_open_scripts.csv` are not on
+  record. All 40 of its values were checked against the scripts and their stored
+  outputs, and the README says so, with the one judgement call (a script that
+  drops rows with missing values, of which the data have none).
 
-### m18 (minor): no changelog
+### Minor findings
 
-This is a one-off experiment folder, and git history records every change.
-None of the applied findings changed a stored record. The README should gain a
-section on changes with the first change that does, such as M2b.
+- **m2.** `.gitattributes` keeps the prompts, runs, the second round's lockfile and
+  every text record as stored, with LF, on every checkout. Commit: 'Keep the
+  experiment's records byte for byte on every checkout'.
+- **m5.** `check_versions.R` stops unless the archived sources of lme4 1.1-35.1
+  and lmerTest 3.1-3 have the SHA-256 checksums taken from two CRAN mirrors.
+  `requirements.txt` gives the hashes of pilotr 0.3.0's wheel and source archive
+  on PyPI. With them, `pip install -r requirements.txt` installed the released
+  wheel, which reproduced `python_sha256.txt` under Python 3.13.7.
+- **m6.** The reasons for the seed and the 6% are not on record. The comments of
+  `make_unbalanced.R` now say what the values do: any proportion unbalances the
+  design, 6% removes 86 of the 1,440 trials and keeps every participant and word,
+  and the seed, that of `spec.json`, feeds R's generator rather than pilotr's.
+- **m8.** The reason for four workers is not on record. The comment in
+  `check_versions.R` now says that the number sets only how many scripts run at
+  once and cannot change an output.
+- **m10 (high-risk).** `extract_transcripts.py` reads and writes UTF-8 with LF in
+  `with` blocks and stops on a missing transcript. Its transcripts are not kept,
+  so the old and new versions were compared on a synthetic transcript with
+  non-ASCII text: their outputs were identical.
+- **m11 (high-risk).** `make_runs.R` and `make_runs_followup.R` take the folder for
+  the runs as an argument, check that run IDs are unique and that every copy
+  succeeds, fix the RNG kind and write through binary connections. Run in a copy
+  with a scratch folder, they rewrote `design.csv` byte for byte and all 48 prompts
+  with only the folder's path changed.
+- **m15 (high-risk).** `build_records.py` writes `compliant` as `TRUE` or `FALSE`,
+  and `rerun/results.csv` was rebuilt with it. Commit: 'Write the compliance column
+  of the second round as R's TRUE and FALSE'.
+- **m16.** `check_versions.R` and `collect_results.R` lint clean. Each parses to
+  the same code as before. Commit: 'Fix the remaining lints of two record scripts'.
+- **m18.** The README ends with a list of changes to the stored files and to the
+  scripts kept as records.
 
-### CH-06, remaining part (minor): a helper for the launch batches
+### The post's code
 
-The batch logic appears in the visible chunk that loads the runs and again in a
-hidden chunk. A helper would hide the derivation of the batch size that the
-prose reports, so the visible code was kept explicit.
+- **CH-06.** One helper, `batch_size_of()`, derives the size of the launch batches
+  of both rounds, in the visible chunk that loads the runs.
+- **CH-08.** The by-participant slope of about 9 ms is computed in the text, and a
+  guard ties it to the value the replies state.
+- **CH-19 (high-risk).** `last_commit()` links to a commit only when a branch of the
+  remote contains it, and to master otherwise. The renv.lock link uses `repo_url`
+  and `lock_file`.
+- **CH-20 (high-risk).** A hidden chunk computes the standard deviations of the
+  effect in closed form (18.303 and 12.893 ms, against the simulated 18.284 and
+  12.894) and checks that both round to the decimal the text prints. The comment
+  on the seed says that it is that of `spec.json`.
+- **CH-21 (high-risk).** The Limitations write the longest prose run with
+  `minutes_text()`. The two rules for minutes, one decimal for medians and single
+  times and none from 10 minutes in ranges, are kept and documented.
+- **CH-25.** `started` is now `first_date`, the second round's objects take the
+  prefix `second_`, and `minutes_of_thinking()` is `minutes_from_seconds()`.
 
-Applied in: the guards commit.
-
-### CH-08, remaining part (minor): a number typed into the prose
-
-The sentence on the replies to the specified request types 'about 9 ms'. It
-would render the same with
-`` `r sprintf('%.0f', attr(participant_effects, 'stddev')[['prime_c']])` `` in
-place of the 9, but that is an edit to the post's text. Until then, the guard
-`round(attr(participant_effects, 'stddev')[['prime_c']]) == 9` protects the
-typed value.
-
-Applied in: the guards commit.
-
-### CH-19 (minor, high-risk): links to commits that may not be on master
-
-`last_commit()` links to the last commit that changed a path, whether or not
-GitHub's master contains it. A knit made before the experiment commit is
-pushed, followed by `git pull --rebase`, would link to a hash that GitHub never
-receives. The proposed fix keeps a hash only if `git branch -r --contains
-<hash>` is not empty and falls back to master otherwise, which then requires
-pushing the experiment commit before knitting. Since it changes the page's link
-addresses, it needs sign-off and a real knit.
-
-In the same section of the prose, the renv.lock link still types the
-repository's address and the lockfile's path. The setup chunk now holds them as
-`repo_url` and `lock_file`, so the link can become
-`` `r sprintf('%s/blob/%s/renv.lock', repo_url, last_commit(lock_file))` ``.
-
-### CH-20, remaining part (minor, high-risk): a closed form for the standard deviations of the effect
-
-The lognormal standard deviations have a closed form, 18.303 and 12.893 ms
-against the simulated 18.284 and 12.894. Replacing the simulation would change
-the chunk's printed output and the sentence that says the code draws a million
-of each, though not the one-decimal values in the text. Why the seed is 2026,
-the seed of `spec.json`, is not on record.
-
-Applied in: the guards commit.
-
-### CH-21, remaining part (minor, high-risk): one rule for writing minutes
-
-Ranges of run times drop the decimal from 10 minutes, while medians and single
-times keep one, as the comment now says. Harmonising them would change rendered
-numbers and Table 4. The Limitations could use
-`` `r minutes_text(range_in('prose')[2])` ``, which renders the same '29', but
-that is an edit to the post's text.
-
-Applied in: the guards commit.
-
-### CH-25, remaining part (minor): renames that reach the prose
-
-Renaming `started` to `first_date`, the objects ending in `_2` to the prefix
-`second_`, and `minutes_of_thinking()` would change inline code in the prose,
-so they wait for an edit to the post's text. The renames of `labels`,
-`frequency` and the argument `round` were not made, since none of them masks a
-function that the code calls.
-
-Applied in: the guards commit.
+The rest of the findings were resolved on 11 October 2026 in the commits 'Record
+the R library of the second round's executions', 'Harden the experiment's scripts
+and document how its records were made', 'Strengthen the generative-AI post's
+guards and remove duplicated code' and 'Record the experiment's lint settings and
+fix the lints of its shared scripts'.

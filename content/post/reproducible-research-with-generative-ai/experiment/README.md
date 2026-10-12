@@ -283,7 +283,13 @@ The folder `rerun/` holds the second round, in which the 48 runs were made again
   on 11 October 2026, records the versions of R, of the packages that the scripts
   and `run_script.R` load, and of their dependencies. It is an renv lockfile, which
   `renv::restore()` takes as its `lockfile` argument, with a new folder as
-  `library`. Restoring a library from it has not been tested.
+  `library`. On 13 October 2026, a library restored from it into an empty folder,
+  together with the recommended packages of R 4.6.1, held all 69 versions, and
+  `execute_rerun.R`, run with only those two libraries, rewrote
+  `rerun/executions.csv` in every column but the seconds. On Windows, renv builds
+  the versions that CRAN no longer offers as binaries from source, which needs
+  Rtools. The build of stringi outlasted renv's time limit, so stringi 1.8.7 was
+  installed first from the CRAN archive with `R CMD INSTALL`.
 - To execute the scripts again in the same way, run
   `Rscript --no-init-file execute_rerun.R <folder>` from `rerun/`, which writes
   both files into that folder. Without one, it replaces the stored files. In the
