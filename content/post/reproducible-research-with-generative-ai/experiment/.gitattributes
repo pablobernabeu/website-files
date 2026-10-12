@@ -7,3 +7,11 @@ SHA256SUMS -text
 # The kept outputs of the scripts are written with '\n' line endings, and they
 # stay the same bytes on every system.
 outputs/** -text
+# The records of the runs (prompts, replies, tool logs and scripts), the
+# second round's lockfile and the text records of the sessions keep the bytes
+# they were written with, so that every checkout gives the same files.
+prompts/** -text
+runs/** -text
+rerun/runs/** -text
+rerun/library.lock -text
+*.txt -text
