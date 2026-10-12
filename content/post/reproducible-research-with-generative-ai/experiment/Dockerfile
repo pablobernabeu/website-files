@@ -1,11 +1,17 @@
 # The environment of the stored executions: R 4.3.3 and the R packages of
 # Ubuntu 24.04, whose archive keeps these versions, with the reference BLAS.
-# R and the packages that the scripts and verify_executions.R load are pinned,
-# so that a change in the archive fails the build instead of changing them.
-# Their dependencies, the BLAS and LAPACK among them, come from the archive at
-# build time, and verification_session_info.txt lists the versions of the
-# recorded build. Building the image and running it executes every agent
-# script and compares its output with executions.csv:
+# Every package, dependencies included, is resolved against Ubuntu's snapshot
+# of the archive at 20:00 UTC on 30 September 2026, just before the recorded
+# build whose package versions verification_session_info.txt lists, so that
+# later updates to the archive cannot change the environment. R and the
+# packages that the scripts and verify_executions.R load are also pinned by
+# version, so that a snapshot without them fails the build. The base image has
+# no CA certificates, and installing them from the archive of the build day
+# would also bring that day's openssl libraries, so apt reaches the snapshot
+# service without checking its TLS certificate. Integrity does not depend on
+# it: apt verifies every index and package against Ubuntu's signing keys.
+# Building the image and running it executes every agent script and compares
+# its output with executions.csv:
 #
 #   docker build -t genai-experiment .
 #   docker run --rm genai-experiment
@@ -25,8 +31,11 @@
 FROM ubuntu:24.04@sha256:008173c23f95b170204355c12626cb5a965d779a7e1283b09e9cffbb1bf33ca3
 
 ENV DEBIAN_FRONTEND=noninteractive LC_ALL=C LANG=C
+ARG UBUNTU_SNAPSHOT=20260930T200000Z
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get -o Acquire::https::Verify-Peer=false update --snapshot "$UBUNTU_SNAPSHOT" \
+    && apt-get -o Acquire::https::Verify-Peer=false install -y --no-install-recommends \
+      --snapshot "$UBUNTU_SNAPSHOT" \
       r-base-core=4.3.3-2build2 \
       r-cran-lme4=1.1-35.1-4 \
       r-cran-lmertest=3.1-3-2 \

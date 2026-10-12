@@ -127,10 +127,12 @@ Scripts Again*.
 The first round's stored executions ran under R 4.3.3 on Ubuntu 24.04, with lme4 1.1-35.1,
 lmerTest 3.1-3 and Matrix 1.6-5, and Ubuntu 24.04 still provides these versions.
 
-- `Dockerfile` rebuilds that environment from the Ubuntu packages, pinning R and
-  the packages that the scripts and `verify_executions.R` load. Their dependencies
-  come from the archive at build time, and `verification_session_info.txt` lists
-  the versions of the recorded build. `docker build -t genai-experiment .`
+- `Dockerfile` rebuilds that environment from the Ubuntu packages, resolving every
+  package against Ubuntu's snapshot of the archive at 20:00 UTC on 30 September
+  2026, just before the recorded build, and pinning R and the packages that the
+  scripts and `verify_executions.R` load by version as well.
+  `verification_session_info.txt` lists the package versions of the recorded
+  build. `docker build -t genai-experiment .`
   followed by `docker run --rm genai-experiment` executes every script in it and
   compares each output with `executions.csv`, through `verify_executions.R`.
 - Given a file name, `verify_executions.R` also writes the comparison there, and
