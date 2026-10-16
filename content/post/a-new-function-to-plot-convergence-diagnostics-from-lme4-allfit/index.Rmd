@@ -512,7 +512,7 @@ plot_fit_convergence
 
 ## References
 
-Bates, D., Maechler, M., Bolker, B., Walker, S., Christensen, R. H. B., Singmann, H., Dai, B., Scheipl, F., Grothendieck, G., Green, P., Fox, J., Bauer, A., & Krivitsky, P. N. (2022). *Package 'lme4'.* CRAN. https://cran.r-project.org/web/packages/lme4/lme4.pdf
+Bates, D., Maechler, M., Bolker, B., Walker, S., Christensen, R. H. B., Singmann, H., Dai, B., Scheipl, F., Grothendieck, G., Green, P., Fox, J., Bauer, A., & Krivitsky, P. N. (2022). *Package 'lme4'.* Comprehensive R Archive Network (CRAN). https://cran.r-project.org/web/packages/lme4/lme4.pdf
 
 Bernabeu, P. (2022). Language and sensorimotor simulation in conceptual processing: Multilevel analysis and statistical power. Lancaster University. https://doi.org/10.17635/lancaster/thesis/1795
 
