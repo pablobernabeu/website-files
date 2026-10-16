@@ -507,7 +507,7 @@ Firth's insight about words applies equally to prompts: you shall know an answer
 
 ## References
 
-Arnold, T. B. (2022). *sotu: United States presidential State of the Union addresses* (Version 1.0.4) [Computer software]. CRAN. https://doi.org/10.32614/CRAN.package.sotu
+Arnold, T. B. (2022). *sotu: United States presidential State of the Union addresses* (Version 1.0.4) [Computer software]. Comprehensive R Archive Network (CRAN). https://doi.org/10.32614/CRAN.package.sotu
 
 Bernabeu, P. (2022). *Language and sensorimotor simulation in conceptual processing: Multilevel analysis and statistical power* [Doctoral thesis, Lancaster University]. https://doi.org/10.17635/lancaster/thesis/1795
 
@@ -547,7 +547,7 @@ Radford, A., Wu, J., Child, R., Luan, D., Amodei, D., & Sutskever, I. (2019). *L
 
 Sclar, M., Choi, Y., Tsvetkov, Y., & Suhr, A. (2024). Quantifying language models’ sensitivity to spurious features in prompt design or: How I learned to start worrying about prompt formatting. In *Proceedings of ICLR 2024*. https://doi.org/10.48550/arXiv.2310.11324
 
-Selivanov, D., Bickel, M., & Wang, Q. (2025). *text2vec: Modern text mining framework for R* (Version 0.6.6) [Computer software]. CRAN. https://doi.org/10.32614/CRAN.package.text2vec
+Selivanov, D., Bickel, M., & Wang, Q. (2025). *text2vec: Modern text mining framework for R* (Version 0.6.6) [Computer software]. Comprehensive R Archive Network (CRAN). https://doi.org/10.32614/CRAN.package.text2vec
 
 Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). Attention is all you need. In *Advances in Neural Information Processing Systems* (Vol. 30). https://doi.org/10.48550/arXiv.1706.03762
 

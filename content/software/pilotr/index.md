@@ -11,7 +11,7 @@ authors:
 date: '2026-08-21'
 apa_captions: true
 slug: pilotr
-publication: 'Version 0.3.1 on CRAN and Version 0.3.0 on PyPI [Computer software]'
+publication: 'Version 0.3.1 on the Comprehensive R Archive Network (CRAN) and Version 0.3.0 on PyPI [Computer software]'
 doi: 10.32614/CRAN.package.pilotr
 citations:
   - label: 'Citation (CRAN)'
@@ -88,6 +88,6 @@ Treat the specification, simulation seed, package version, number of replicates 
 
 ## References
 
-Bernabeu, P. (2026a). *pilotr: Simulate experimental and behavioural data from a portable design specification* (Version 0.3.1) [Computer software]. CRAN. https://doi.org/10.32614/CRAN.package.pilotr
+Bernabeu, P. (2026a). *pilotr: Simulate experimental and behavioural data from a portable design specification* (Version 0.3.1) [Computer software]. Comprehensive R Archive Network (CRAN). https://doi.org/10.32614/CRAN.package.pilotr
 
 Bernabeu, P. (2026b). *pilotr: Simulate experimental and behavioural data from a portable design specification* (Version 0.3.0) [Computer software]. PyPI. https://pypi.org/project/pilotr/0.3.0/
