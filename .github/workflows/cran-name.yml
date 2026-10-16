@@ -1,0 +1,49 @@
+name: CRAN name check
+
+# Every reference that gives CRAN as its source names it "Comprehensive R Archive
+# Network (CRAN)", as the R packages' citations and pkgdown sites do. The script
+# lists anything that names it otherwise, as annotations on the commit or pull
+# request, and fails the job. See .github/scripts/check_cran_name.py for what it
+# reads and what it leaves alone (labels, prose, the auto-collected reference
+# lists).
+#
+# The auto-collected related-references.html files are left out of both triggers.
+# The script skips them, and the collect-related-references workflow opens its
+# pull requests with GITHUB_TOKEN, on which GitHub runs no workflow without manual
+# approval, so a run would only sit at "action required".
+
+on:
+  push:
+    paths:
+      - "content/**/*.md"
+      - "content/**/*.Rmd"
+      - "content/**/*.html"
+      - "content/**/*.bib"
+      - "!content/**/related-references.html"
+      - ".github/scripts/check_cran_name.py"
+      - ".github/workflows/cran-name.yml"
+  pull_request:
+    paths:
+      - "content/**/*.md"
+      - "content/**/*.Rmd"
+      - "content/**/*.html"
+      - "content/**/*.bib"
+      - "!content/**/related-references.html"
+      - ".github/scripts/check_cran_name.py"
+      - ".github/workflows/cran-name.yml"
+  workflow_dispatch:
+
+# Reads the checked-out tree and reports through annotations and the job log only.
+permissions:
+  contents: read
+
+jobs:
+  cran-name:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Check how references name CRAN
+        run: python3 .github/scripts/check_cran_name.py
