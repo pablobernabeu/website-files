@@ -240,7 +240,7 @@ With those limits in mind, the differences describe how the records retrieved by
 
 ## References
 
-Bernabeu, P. (2026). *scopusflow: A reproducible workflow layer for Scopus bibliographic searches* (Version 0.4.0) [Computer software]. CRAN. https://doi.org/10.32614/CRAN.package.scopusflow
+Bernabeu, P. (2026). *scopusflow: A reproducible workflow layer for Scopus bibliographic searches* (Version 0.4.0) [Computer software]. Comprehensive R Archive Network (CRAN). https://doi.org/10.32614/CRAN.package.scopusflow
 
 Bernabeu, P., & Vogt, P. (2015, June 18). *Language evolution: Current status and future directions* [Paper presentation]. 10th Language at the University of Essex Postgraduate Conference (LangUE), Colchester, United Kingdom. https://eprints.lancs.ac.uk/id/eprint/130664/
 

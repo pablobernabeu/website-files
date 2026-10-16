@@ -11,7 +11,7 @@ authors:
 date: '2026-09-01'
 apa_captions: true
 slug: depictr
-publication: 'Version 0.3.0 [Computer software]. CRAN and PyPI'
+publication: 'Version 0.3.0 [Computer software]. Comprehensive R Archive Network (CRAN) and PyPI'
 doi: 10.32614/CRAN.package.depictr
 citations:
   - label: 'Citation (CRAN)'
@@ -90,4 +90,4 @@ The recommended workflow is to keep the plotting code with the analysis, record 
 
 Bernabeu, P. (2026a). *depictr: A unified, colourblind-safe toolkit for publication-ready statistical visualisation* (Version 0.3.0) [Computer software]. PyPI. https://pypi.org/project/depictr/0.3.0/
 
-Bernabeu, P. (2026b). *depictr: A unified toolkit for visualising statistical models and data* (Version 0.3.0) [Computer software]. CRAN. https://doi.org/10.32614/CRAN.package.depictr
+Bernabeu, P. (2026b). *depictr: A unified toolkit for visualising statistical models and data* (Version 0.3.0) [Computer software]. Comprehensive R Archive Network (CRAN). https://doi.org/10.32614/CRAN.package.depictr

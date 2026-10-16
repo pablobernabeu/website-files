@@ -75,8 +75,8 @@ Below, we'll use these functions with models fitted using [`lmerTest`](https://c
 
 Bernabeu, P. (2022). *Language and sensorimotor simulation in conceptual processing: Multilevel analysis and statistical power*. Lancaster University. https://doi.org/10.17635/lancaster/thesis/1795
 
-Kuznetsova, A., Brockhoff, P. B., & Christensen, R. H. B. (2022). *Package ‘lmerTest’*. CRAN. https://cran.r-project.org/web/packages/lmerTest/lmerTest.pdf
+Kuznetsova, A., Brockhoff, P. B., & Christensen, R. H. B. (2022). *Package ‘lmerTest’*. Comprehensive R Archive Network (CRAN). https://cran.r-project.org/web/packages/lmerTest/lmerTest.pdf
 
-Lüdecke, D. (2022). *Package ‘sjPlot’*. CRAN. https://cran.r-project.org/web/packages/sjPlot/sjPlot.pdf
+Lüdecke, D. (2022). *Package ‘sjPlot’*. Comprehensive R Archive Network (CRAN). https://cran.r-project.org/web/packages/sjPlot/sjPlot.pdf
 
 

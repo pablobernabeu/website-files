@@ -11,7 +11,7 @@ authors:
 date: '2026-09-01'
 apa_captions: true
 slug: theoryforge
-publication: 'Version 0.6.0 [Computer software]. CRAN and PyPI'
+publication: 'Version 0.6.0 [Computer software]. Comprehensive R Archive Network (CRAN) and PyPI'
 doi: 10.32614/CRAN.package.theoryforge
 citations:
   - label: 'Citation (CRAN)'
@@ -74,6 +74,6 @@ Store the theory document, schema version, validation report, derived implicatio
 
 ## References
 
-Bernabeu, P. (2026a). *theoryforge: Systematic theory development* (Version 0.6.0) [Computer software]. CRAN. https://doi.org/10.32614/CRAN.package.theoryforge
+Bernabeu, P. (2026a). *theoryforge: Systematic theory development* (Version 0.6.0) [Computer software]. Comprehensive R Archive Network (CRAN). https://doi.org/10.32614/CRAN.package.theoryforge
 
 Bernabeu, P. (2026b). *theoryforge: Systematic theory development* (Version 0.6.0) [Computer software]. PyPI. https://pypi.org/project/theoryforge/0.6.0/

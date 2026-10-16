@@ -11,7 +11,7 @@ authors:
 date: '2026-08-21'
 apa_captions: true
 slug: scopusflow
-publication: 'Version 0.4.0 on CRAN and Version 0.3.0 on PyPI [Computer software]'
+publication: 'Version 0.4.0 on the Comprehensive R Archive Network (CRAN) and Version 0.3.0 on PyPI [Computer software]'
 doi: 10.32614/CRAN.package.scopusflow
 citations:
   - label: 'Citation (CRAN)'
@@ -78,7 +78,7 @@ Keep the plan, native result object, DOI comparison and generated PRISMA-S recor
 
 ## References
 
-Bernabeu, P. (2026a). *scopusflow: A reproducible workflow layer for Scopus bibliographic searches* (Version 0.4.0) [Computer software]. CRAN. https://doi.org/10.32614/CRAN.package.scopusflow
+Bernabeu, P. (2026a). *scopusflow: A reproducible workflow layer for Scopus bibliographic searches* (Version 0.4.0) [Computer software]. Comprehensive R Archive Network (CRAN). https://doi.org/10.32614/CRAN.package.scopusflow
 
 Bernabeu, P. (2026b). *scopusflow: A reproducible workflow layer over pybliometrics for Scopus searches* (Version 0.3.0) [Computer software]. PyPI. https://pypi.org/project/scopusflow/0.3.0/
 

@@ -153,19 +153,19 @@ Thank you to RStudio (now Posit) for hosting this application free of charge on 
 
 Bernabeu, P., & Lynott, D. (2024). *Experimental-data-simulation* (Version 1.4.0) [Computer software]. Zenodo. [https://doi.org/10.5281/zenodo.10615953](https://doi.org/10.5281/zenodo.10615953)
 
-Chang, W., Cheng, J., Allaire, J. J., Xie, Y., & McPherson, J. (2020). *shiny: Web application framework for R* (Version 1.5.0) [Computer software]. CRAN. [https://doi.org/10.32614/CRAN.package.shiny](https://doi.org/10.32614/CRAN.package.shiny)
+Chang, W., Cheng, J., Allaire, J. J., Xie, Y., & McPherson, J. (2020). *shiny: Web application framework for R* (Version 1.5.0) [Computer software]. Comprehensive R Archive Network (CRAN). [https://doi.org/10.32614/CRAN.package.shiny](https://doi.org/10.32614/CRAN.package.shiny)
 
 Crump, M. J. C. (2017). *Programming for psychologists: Data creation and analysis* (Version 1.1). [https://www.crumplab.com/programmingforpsych/](https://www.crumplab.com/programmingforpsych/)
 
-Iannone, R., Allaire, J. J., & Borges, B. (2020). *flexdashboard: R Markdown format for flexible dashboards* (Version 0.5.2) [Computer software]. CRAN. [https://doi.org/10.32614/CRAN.package.flexdashboard](https://doi.org/10.32614/CRAN.package.flexdashboard)
+Iannone, R., Allaire, J. J., & Borges, B. (2020). *flexdashboard: R Markdown format for flexible dashboards* (Version 0.5.2) [Computer software]. Comprehensive R Archive Network (CRAN). [https://doi.org/10.32614/CRAN.package.flexdashboard](https://doi.org/10.32614/CRAN.package.flexdashboard)
 
 R Core Team. (2020). *R: A language and environment for statistical computing* [Computer software]. R Foundation for Statistical Computing. [https://www.R-project.org/](https://www.R-project.org/)
 
-Wickham, H. (2019). *stringr: Simple, consistent wrappers for common string operations* (Version 1.4.0) [Computer software]. CRAN. [https://doi.org/10.32614/CRAN.package.stringr](https://doi.org/10.32614/CRAN.package.stringr)
+Wickham, H. (2019). *stringr: Simple, consistent wrappers for common string operations* (Version 1.4.0) [Computer software]. Comprehensive R Archive Network (CRAN). [https://doi.org/10.32614/CRAN.package.stringr](https://doi.org/10.32614/CRAN.package.stringr)
 
-Wickham, H., François, R., Henry, L., & Müller, K. (2020). *dplyr: A grammar of data manipulation* (Version 1.0.2) [Computer software]. CRAN. [https://doi.org/10.32614/CRAN.package.dplyr](https://doi.org/10.32614/CRAN.package.dplyr)
+Wickham, H., François, R., Henry, L., & Müller, K. (2020). *dplyr: A grammar of data manipulation* (Version 1.0.2) [Computer software]. Comprehensive R Archive Network (CRAN). [https://doi.org/10.32614/CRAN.package.dplyr](https://doi.org/10.32614/CRAN.package.dplyr)
 
-Xie, Y., Cheng, J., & Tan, X. (2020). *DT: A wrapper of the JavaScript library 'DataTables'* (Version 0.15) [Computer software]. CRAN. [https://doi.org/10.32614/CRAN.package.DT](https://doi.org/10.32614/CRAN.package.DT)
+Xie, Y., Cheng, J., & Tan, X. (2020). *DT: A wrapper of the JavaScript library 'DataTables'* (Version 0.15) [Computer software]. Comprehensive R Archive Network (CRAN). [https://doi.org/10.32614/CRAN.package.DT](https://doi.org/10.32614/CRAN.package.DT)
 
 
 ## Contact

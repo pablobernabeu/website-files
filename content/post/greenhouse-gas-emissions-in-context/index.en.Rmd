@@ -719,7 +719,7 @@ Crippa, M., Guizzardi, D., Pagani, F., Banja, M., Muntean, M., Schaaf, E., Quadr
 
 Duncalfe, L. (2024). *ISO-3166-Countries-with-Regional-Codes* (Version 10.0) [Data set]. GitHub. https://github.com/lukes/ISO-3166-Countries-with-Regional-Codes
 
-Massicotte, P., & South, A. (2026). *rnaturalearth: World map data from Natural Earth* (Version 1.2.0) [Computer software]. CRAN. https://doi.org/10.32614/CRAN.package.rnaturalearth
+Massicotte, P., & South, A. (2026). *rnaturalearth: World map data from Natural Earth* (Version 1.2.0) [Computer software]. Comprehensive R Archive Network (CRAN). https://doi.org/10.32614/CRAN.package.rnaturalearth
 
 Myhre, G., Shindell, D., Bréon, F.-M., Collins, W., Fuglestvedt, J., Huang, J., Koch, D., Lamarque, J.-F., Lee, D., Mendoza, B., Nakajima, T., Robock, A., Stephens, G., Takemura, T., & Zhang, H. (2013). Anthropogenic and natural radiative forcing. In T. F. Stocker, D. Qin, G.-K. Plattner, M. Tignor, S. K. Allen, J. Boschung, A. Nauels, Y. Xia, V. Bex, & P. M. Midgley (Eds.), *Climate change 2013: The physical science basis. Contribution of Working Group I to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change* (pp. 659–740). Cambridge University Press. https://doi.org/10.1017/CBO9781107415324.018
 
@@ -727,7 +727,7 @@ Natural Earth. (n.d.). *Admin 0 – countries* (1:50m cultural vectors) [Data se
 
 Okabe, M., & Ito, K. (2008). *Color universal design (CUD): How to make figures and presentations that are friendly to colorblind people*. Jfly. https://jfly.uni-koeln.de/color/
 
-South, A., Schramm, M., & Massicotte, P. (2024). *rnaturalearthdata: World vector map data from Natural Earth used in 'rnaturalearth'* (Version 1.0.0) [Computer software]. CRAN. https://doi.org/10.32614/CRAN.package.rnaturalearthdata
+South, A., Schramm, M., & Massicotte, P. (2024). *rnaturalearthdata: World vector map data from Natural Earth used in 'rnaturalearth'* (Version 1.0.0) [Computer software]. Comprehensive R Archive Network (CRAN). https://doi.org/10.32614/CRAN.package.rnaturalearthdata
 
 United Nations Development Programme. (2025). *Human development report 2025: A matter of choice: People and possibilities in the age of AI*. United Nations. https://doi.org/10.18356/9789211542639
 

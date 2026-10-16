@@ -11,7 +11,7 @@ authors:
 date: '2026-06-07'
 apa_captions: true
 slug: lexsync
-publication: 'Version 0.1.0 on CRAN and Version 0.1.1 on PyPI [Computer software]'
+publication: 'Version 0.1.0 on the Comprehensive R Archive Network (CRAN) and Version 0.1.1 on PyPI [Computer software]'
 doi: 10.32614/CRAN.package.lexsync
 citations:
   # The CRAN entry keeps the file name cite.bib, the address it was published
@@ -80,6 +80,6 @@ Save the design, the source lexicon, the matching report and the generated exper
 
 ## References
 
-Bernabeu, P. (2026a). *lexsync: Lexical optimisation and hardware-timed experiment generation* (Version 0.1.0) [Computer software]. CRAN. https://doi.org/10.32614/CRAN.package.lexsync
+Bernabeu, P. (2026a). *lexsync: Lexical optimisation and hardware-timed experiment generation* (Version 0.1.0) [Computer software]. Comprehensive R Archive Network (CRAN). https://doi.org/10.32614/CRAN.package.lexsync
 
 Bernabeu, P. (2026b). *lexsync: Lexical optimisation and hardware-timed experiment generation* (Version 0.1.1) [Computer software]. PyPI. https://pypi.org/project/lexsync/0.1.1/
