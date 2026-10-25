@@ -3,7 +3,20 @@
 The data, prompts, agent outputs, scripts and records behind the post *Forty-eight
 answers to one question: Reproducible research with generative AI*. The post reads
 these files, and it executes every script written in the first round again when it
-is knitted.
+is knitted. The folder is kept in this repository and is not copied into the built
+site, which links here.
+
+## Getting the files
+
+The repository holds the whole website and its history. To download only the
+post's folder, which contains this one, and the files at the root of the
+repository, among them `renv.lock`:
+
+```
+git clone --depth 1 --filter=blob:none --sparse https://github.com/pablobernabeu/website-files
+cd website-files
+git sparse-checkout set content/post/reproducible-research-with-generative-ai
+```
 
 The files fall into three groups: scripts that can be run again, scripts kept as a
 record of how the stored files were made, and the records themselves.
@@ -149,7 +162,7 @@ lmerTest 3.1-3 and Matrix 1.6-5, and Ubuntu 24.04 still provides these versions.
   set, it records the address of the workflow run too.
 - The workflow `.github/workflows/reproduce-genai-experiment.yml` does the same on
   GitHub Actions whenever these files change and on the first day of each month.
-  It takes about two minutes. `verification.csv` is the comparison from one of its
+  It takes about five minutes. `verification.csv` is the comparison from one of its
   runs, whose address it records, and `verification_session_info.txt` holds the
   session and the Ubuntu package versions of the rebuilt environment.
 

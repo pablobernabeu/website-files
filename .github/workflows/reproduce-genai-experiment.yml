@@ -10,8 +10,8 @@ on:
       - "content/post/reproducible-research-with-generative-ai/experiment/**"
       - ".github/workflows/reproduce-genai-experiment.yml"
   workflow_dispatch:
-  # Once a month as well, since the build takes the dependencies of the pinned
-  # packages from the Ubuntu archive as it is on the day
+  # Once a month as well, to confirm that the pinned base image and Ubuntu
+  # snapshot can still be fetched and still reproduce the stored output
   schedule:
     - cron: '0 6 1 * *'
 
