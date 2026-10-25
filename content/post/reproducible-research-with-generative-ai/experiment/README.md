@@ -57,8 +57,8 @@ of the repository.
 3. Knit the post from the root of the repository:
    `blogdown::build_site(run_hugo = FALSE, build_rmd =
    'content/post/reproducible-research-with-generative-ai/index.en.Rmd')`.
-   This took about 25 minutes on a Windows machine, most of it spent executing the
-   first round's 24 agent scripts.
+   On a Windows machine this has taken between 7 and 25 minutes, most of it spent
+   executing the first round's 24 agent scripts.
    Hugo 0.62.0 then builds the site from the knitted `index.en.html`.
 
 The page prints its own `sessionInfo()` at the end of the section *Executing the
