@@ -352,7 +352,22 @@ summary_table &lt;- runs |&gt;
 <p>All 48 texts differed, as expected of long generated texts, but the results agreed far more closely (Table 1). On the balanced data, the eight runs of each route in each condition reported the same result, and the prose replies agreed with the executed scripts to the precision they wrote. On the unbalanced data, the eight scripts again printed a single result, but the prose replies gave seven different results, none of which matched the scripts. Figure 1, drawn with the theme and colours of my <a href="/2026/depictr-one-visual-language-from-first-look-to-final-figure/">depictr</a> package (Bernabeu, 2026a), shows how far each reported number lay from that of the executed scripts.</p>
 <pre class="r"><code># The result is shown where every run in the row reported the same one. The
 # checks above allow more than one only in the prose replies to the unbalanced data
-knitr::kable(
+
+# Pandoc sizes the columns of a wide table in proportion to the dashes under
+# its header, which kable counts from the longest cell, markup included. Where
+# that misjudges a column, the dashes are set to fixed percentages of the
+# width instead. Here the six characters of each &amp;nbsp; would widen the
+# column of routes, so the shares are those pandoc gave this table without them.
+column_shares &lt;- function(table, shares) {
+  separator &lt;- grep(&#39;^\\|[-:|]+\\|$&#39;, table)
+  cells &lt;- strsplit(sub(&#39;^\\|(.*)\\|$&#39;, &#39;\\1&#39;, table[separator]), &#39;|&#39;, fixed = TRUE)[[1]]
+  stopifnot(length(separator) == 1, length(cells) == length(shares), sum(shares) == 100)
+  table[separator] &lt;- paste0(&#39;|&#39;, paste0(ifelse(startsWith(cells, &#39;:&#39;), &#39;:&#39;, &#39;&#39;), strrep(&#39;-&#39;, shares),
+                                         ifelse(endsWith(cells, &#39;:&#39;), &#39;:&#39;, &#39;&#39;), collapse = &#39;|&#39;), &#39;|&#39;)
+  table
+}
+
+column_shares(knitr::kable(
   summary_table |&gt;
     arrange(condition, desc(route_label)) |&gt;
     # A route&#39;s two words stay together, so that both routes take one line
@@ -364,15 +379,15 @@ knitr::kable(
     &#39;replies in the prose route and the scripts in the script route. A result is the estimate and interval&#39;,
     &#39;in a run\&#39;s result line, as the run wrote it, and is shown when every run in the row reported the&#39;,
     &#39;same one.&#39;), count_text(runs_per_cell)),
-  align = c(&#39;l&#39;, &#39;l&#39;, &#39;r&#39;, &#39;r&#39;, &#39;r&#39;))</code></pre>
+  align = c(&#39;l&#39;, &#39;l&#39;, &#39;r&#39;, &#39;r&#39;, &#39;r&#39;)), shares = c(32, 14, 13, 15, 26))</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-8">Table 1: </span>Texts and Results of the First Round in Each Condition and Route. Each row covers eight runs. The texts are the replies in the prose route and the scripts in the script route. A result is the estimate and interval in a run’s result line, as the run wrote it, and is shown when every run in the row reported the same one.</caption>
 <colgroup>
-<col width="29%" />
-<col width="17%" />
-<col width="12%" />
+<col width="31%" />
 <col width="14%" />
-<col width="24%" />
+<col width="13%" />
+<col width="15%" />
+<col width="25%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -762,22 +777,11 @@ by_cell &lt;- function(rows) {
 }
 first_cells &lt;- by_cell(runs) |&gt; mutate(results = if_else(distinct == 1, results, &#39;See Table 3&#39;))
 
-# Pandoc sizes the columns of a wide table in proportion to the dashes under
-# its header, which kable counts from the longest cell, markup included. The
-# stacked results would leave the first round&#39;s column too narrow for one
-# interval, so the dashes are set to fixed percentages of the width instead.
-# The headers break at a &lt;br&gt; and nowhere else, since the site keeps a
-# header on one line, and the shares fit the table in the 720-pixel column of
-# a desktop page.
-column_shares &lt;- function(table, shares) {
-  separator &lt;- grep(&#39;^\\|[-:|]+\\|$&#39;, table)
-  cells &lt;- strsplit(sub(&#39;^\\|(.*)\\|$&#39;, &#39;\\1&#39;, table[separator]), &#39;|&#39;, fixed = TRUE)[[1]]
-  stopifnot(length(separator) == 1, length(cells) == length(shares), sum(shares) == 100)
-  table[separator] &lt;- paste0(&#39;|&#39;, paste0(ifelse(startsWith(cells, &#39;:&#39;), &#39;:&#39;, &#39;&#39;), strrep(&#39;-&#39;, shares),
-                                         ifelse(endsWith(cells, &#39;:&#39;), &#39;:&#39;, &#39;&#39;), collapse = &#39;|&#39;), &#39;|&#39;)
-  table
-}
-
+# The stacked results would leave the first round&#39;s column too narrow for one
+# interval, so this table&#39;s shares are fixed too (column_shares() is defined
+# before Table 1). The headers break at a &lt;br&gt; and nowhere else, since the
+# site keeps a header on one line, and the shares fit the table in the
+# 720-pixel column of a desktop page.
 column_shares(knitr::kable(
   inner_join(first_cells, by_cell(medium_runs), by = c(&#39;condition&#39;, &#39;route_label&#39;),
              suffix = c(&#39;_first&#39;, &#39;_second&#39;)) |&gt;
