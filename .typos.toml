@@ -49,6 +49,7 @@ ist = "ist"             # German/Dutch word
 auf = "auf"             # German word
 ser = "ser"             # Spanish word
 statuts = "statuts"     # French, the title of the 1866 statutes of the Societe de Linguistique de Paris
+mor = "mor"             # the given name of Mor Naaman, an author in the generative-AI post's references.yaml
 hoc = "hoc"             # as in "ad hoc" or "post hoc"
 ful = "ful"             # suffix
 ned = "ned"             # past tense
