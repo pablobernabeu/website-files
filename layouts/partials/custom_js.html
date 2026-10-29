@@ -85,6 +85,16 @@ document.addEventListener('DOMContentLoaded', function() {
 {{ end }}
 {{ end }}
 
+<!-- Back-links from a reference list to the places that cite each entry, where
+     pandoc's citeproc has linked the citations to the list (link-citations: true
+     in a post's front matter). Only where the body holds such a citation, a link
+     to an entry's id (#ref-<key>), since blogdown's HTML4 carries no
+     role="doc-biblioref". Loaded after section-links.js, so that a section's name
+     is read without its "#". -->
+{{ if and .IsPage (findRE `href="#ref-` .Content 1) }}
+<script src="{{ "js/citation-backlinks.js" | relURL }}" defer></script>
+{{ end }}
+
 <!-- Editable R chunks. Deferred, so it runs after the theme bundle has moved
      every classed <pre> inside its generated <details>. -->
 {{ if .Params.editable_r }}

@@ -6199,6 +6199,29 @@ h2#reference  ~ p, h3#reference  ~ p, h4#reference  ~ p {
   margin-bottom: 2%;
 }
 
+// The back-links that static/js/citation-backlinks.js adds to the end of an
+// entry, set a step smaller than the entry and kept on its last line together.
+.csl-bib-body .csl-backlinks {
+  font-size: 0.85em;
+  white-space: nowrap;
+}
+
+// Arriving at an entry from a citation, or at a citation from a back-link,
+// marks the place, which would otherwise be one line among many. The green is
+// that of the site's link underlines, faint enough to keep text contrast. A
+// citation is matched by its target, since blogdown's HTML4 has no
+// role="doc-biblioref".
+.csl-bib-body .csl-entry:target,
+.article-style a[href^="#ref-"]:target {
+  background-color: rgba(22, 163, 74, 0.14);
+  border-radius: 0.2rem;
+}
+
+.dark .csl-bib-body .csl-entry:target,
+.dark .article-style a[href^="#ref-"]:target {
+  background-color: rgba(34, 197, 94, 0.2);
+}
+
 // Related references heading styled via inline style in the HTML files
 
 // Related references 

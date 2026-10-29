@@ -39,7 +39,10 @@ jobs:
           # or simply dead upstream. Validating them produced unactionable
           # noise and, once the collection grew, made this job run for 6h and
           # get cancelled. Restricting to *.md / *.Rmd cuts that to ~200 DOIs
-          # the author can actually fix.
+          # the author can actually fix. A post whose citations pandoc's
+          # citeproc renders keeps its reference list in a CSL YAML file
+          # beside it (references.yaml), whose entries write `DOI: 10....`,
+          # so *.yaml and that spelling are read as well.
           # ---------------------------------------------------------------
 
           # 1. Collect unique "DOI<TAB>file" pairs (first file wins per DOI).
@@ -68,7 +71,7 @@ jobs:
               SEEN[$doi]=1
               printf '%s\t%s\n' "$doi" "$file" >> dois.tsv
             fi
-          done < <(grep -rn 'doi:\|doi\.org/' content/ --include="*.md" --include="*.Rmd")
+          done < <(grep -rn 'doi:\|DOI:\|doi\.org/' content/ --include="*.md" --include="*.Rmd" --include="*.yaml")
 
           TOTAL=$(wc -l < dois.tsv | tr -d ' ')
           echo "Collected $TOTAL unique DOIs to check."
@@ -116,7 +119,7 @@ jobs:
           echo "" >> doi-report.md
           echo "Checked: $(date -u +'%Y-%m-%d %H:%M UTC')" >> doi-report.md
           echo "" >> doi-report.md
-          echo "Scope: DOIs authored in \`content/**/*.md\` and \`*.Rmd\` (publication front matter, citations, badges, reference lists). Auto-collected related-reference DOIs are excluded." >> doi-report.md
+          echo "Scope: DOIs authored in \`content/**/*.md\`, \`*.Rmd\` and \`*.yaml\` (publication front matter, citations, badges, reference lists). Auto-collected related-reference DOIs are excluded." >> doi-report.md
           echo "" >> doi-report.md
 
           FAILED=$(grep -c '^FAIL' results.tsv || true)
