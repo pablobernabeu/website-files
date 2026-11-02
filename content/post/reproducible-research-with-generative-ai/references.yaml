@@ -29,7 +29,7 @@ references:
   title: Effort
   container-title: Claude Platform Docs
   URL: https://platform.claude.com/docs/en/build-with-claude/effort
-  accessed: 2026-10-10
+  accessed: 2026-11-02
 
 - id: anthropic-glossary
   type: webpage
@@ -38,7 +38,7 @@ references:
   title: Glossary
   container-title: Claude Platform Docs
   URL: https://platform.claude.com/docs/en/about-claude/glossary
-  accessed: 2026-09-29
+  accessed: 2026-11-02
 
 - id: anthropic-overview
   type: webpage
@@ -47,7 +47,7 @@ references:
   title: Overview
   container-title: Claude Code Docs
   URL: https://code.claude.com/docs/en/overview
-  accessed: 2026-09-29
+  accessed: 2026-11-02
 
 - id: anthropic-thinking
   type: webpage
@@ -56,7 +56,7 @@ references:
   title: Thinking
   container-title: Claude Platform Docs
   URL: https://platform.claude.com/docs/en/build-with-claude/thinking
-  accessed: 2026-09-29
+  accessed: 2026-11-02
 
 - id: atil2025
   type: paper-conference

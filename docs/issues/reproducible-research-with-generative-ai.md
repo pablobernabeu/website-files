@@ -13,12 +13,7 @@ the commits are rebased.
 
 ## Open
 
-### m14 (minor, high-risk): the unused column `trimmed_sha256`
-
-`check_versions.R` writes this column of `version_check.csv`, and the post does not
-read it. The README documents it as unused. Removing it would change the schema of
-a stored record, so the maintainer chose to wait for the next regeneration of that
-file rather than edit it by hand.
+No finding is open. m14, the last, was closed without a change on 2 November 2026.
 
 ## Resolved
 
@@ -94,6 +89,14 @@ file rather than edit it by hand.
   succeeds, fix the RNG kind and write through binary connections. Run in a copy
   with a scratch folder, they rewrote `design.csv` byte for byte and all 48 prompts
   with only the folder's path changed.
+- **m14 (high-risk), closed without a change.** `check_versions.R` writes the
+  column `trimmed_sha256` of `version_check.csv`, a hash of each output with the
+  spaces at the ends of lines removed, which the post does not read and the README
+  documents as unused. It could not locate the change in the output either, since
+  the newer lme4 also renamed and reordered columns, which the post finds by
+  comparing the kept outputs. Removing it would mean editing a stored record by
+  hand or regenerating it, which rebuilds the archived lme4 and lmerTest and
+  rewrites the record's seconds, so the maintainer closed it on 2 November 2026.
 - **m15 (high-risk).** `build_records.py` writes `compliant` as `TRUE` or `FALSE`,
   and `rerun/results.csv` was rebuilt with it. Commit: 'Write the compliance column
   of the second round as R's TRUE and FALSE'.
