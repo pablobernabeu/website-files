@@ -6199,6 +6199,16 @@ h2#reference  ~ p, h3#reference  ~ p, h4#reference  ~ p {
   margin-bottom: 2%;
 }
 
+// A style that asks for a hanging indent, as csl/apa.csl does, makes pandoc add
+// .hanging-indent to the list itself, and the .hanging-indent rule above then
+// moved the whole list 2em to the right of the text, on top of each entry's own
+// indent. The rule above stays for the hand-written <div> and <p> of that class
+// on publication and presentation pages, and the entries keep theirs.
+.csl-bib-body.hanging-indent {
+  margin-left: 0;
+  text-indent: 0;
+}
+
 // The back-links that static/js/citation-backlinks.js adds to the end of an
 // entry, set a step smaller than the entry and kept on its last line together.
 .csl-bib-body .csl-backlinks {
