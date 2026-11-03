@@ -16,8 +16,8 @@ tags:
   - time
   - cognitive science
 subtitle: ''
-summary: 'Languages lay time out along different spatial axes and build number words in different orders. Studies with speakers of Turkish, Aymara, Mandarin, German, English and other languages examine associations between these habits and temporal or numerical tasks. The review finds effects that are context-sensitive or developmental, and no evidence that language rigidly determines thought.'
-abstract: 'This narrative review examines evidence that linguistic and cultural practices can influence how speakers map time onto space and learn numerical forms. The cited studies report context-sensitive and developmental effects, but they do not establish that language rigidly determines non-linguistic thought.'
+summary: 'Languages lay time out along different spatial axes and build number words in different orders. Studies with speakers of Turkish, Aymara, Mandarin, German, English and other languages examine associations between these habits and temporal or numerical tasks. The effects they find are context-sensitive or developmental, and none shows that language rigidly determines thought.'
+abstract: 'Linguistic and cultural practices can influence how speakers map time onto space and learn numerical forms. The studies reviewed report context-sensitive and developmental effects, but they do not establish that language rigidly determines non-linguistic thought.'
 authors: []
 lastmod: ''
 featured: no

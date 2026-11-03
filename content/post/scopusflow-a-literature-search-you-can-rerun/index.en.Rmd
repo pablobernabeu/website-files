@@ -20,8 +20,8 @@ tags:
   - Python
   - Scopus
 subtitle: ''
-summary: 'A literature-search export does not preserve the decisions that produced it. This post uses scopusflow to define a search in advance, resume it from checkpoints and generate a PRISMA-S search record from the resulting data.'
-abstract: 'This tutorial treats a Scopus search as a versioned, resumable workflow. It defines a query and a yearly plan, retrieves an offline demonstration corpus through checkpoints, compares sets of digital object identifiers and generates a search record that follows PRISMA-S, the literature-search extension of the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) statement. The record names the items left for the review authors to report.'
+summary: 'A literature-search export does not preserve the decisions that produced it. With scopusflow, a search is defined in advance, resumed from checkpoints and documented in a PRISMA-S search record generated from the resulting data.'
+abstract: 'A Scopus search can be run as a versioned, resumable workflow. With scopusflow, a query and a yearly plan are defined in advance, an offline demonstration corpus is retrieved through checkpoints and sets of digital object identifiers are compared. The search record it generates follows PRISMA-S, the literature-search extension of the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) statement, and names the items left for the review authors to report.'
 authors: []
 lastmod: ''
 featured: no

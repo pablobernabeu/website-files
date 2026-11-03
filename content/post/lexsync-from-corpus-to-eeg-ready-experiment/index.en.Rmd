@@ -21,8 +21,8 @@ tags:
   - OpenSesame
   - jsPsych
 subtitle: ''
-summary: 'Selecting words is only the first step in preparing a psycholinguistic experiment. This post uses lexsync to match high- and low-frequency items, balance them across lists, and export timed PsychoPy and OpenSesame scripts that send electroencephalography (EEG) triggers, plus a jsPsych version that logs event markers.'
-abstract: 'This tutorial shows how lexsync turns a lexical design into checked stimulus lists and experiment files. It separates candidate selection from matching, evaluates balance on the intended controls, and carries the resulting item table into PsychoPy and OpenSesame, which send electroencephalography (EEG) triggers, and into jsPsych, which records an event marker with every trial.'
+summary: 'Selecting words is only the first step in preparing a psycholinguistic experiment. With lexsync, high- and low-frequency items are matched, balanced across lists and exported as timed PsychoPy and OpenSesame scripts that send electroencephalography (EEG) triggers, along with a jsPsych version that logs event markers.'
+abstract: 'The lexsync package turns a lexical design into checked stimulus lists and experiment files. It separates candidate selection from matching, evaluates balance on the intended controls and carries the resulting item table into PsychoPy and OpenSesame, which send electroencephalography (EEG) triggers, and into jsPsych, which records an event marker with every trial.'
 authors: []
 lastmod: ''
 featured: no

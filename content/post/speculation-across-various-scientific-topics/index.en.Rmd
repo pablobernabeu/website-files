@@ -19,8 +19,8 @@ tags:
   - Scopus
   - research methods
 subtitle: ''
-summary: 'This reproducible descriptive analysis uses annual Scopus counts to compare how often records in nine query-defined literatures contain a form of “speculate” in their titles, abstracts or keywords. The count is a proxy for explicit wording in indexed records and says little about the quality of the evidence.'
-abstract: 'This descriptive bibliometric analysis compares, across nine query-defined literatures, the annual share of Scopus records that mention speculat* in the title, abstract or keywords. The percentage is treated as an indicator of explicit wording in indexed records. It is no direct measure of evidential quality, theoretical progress or the amount of speculation in the full literature. The queries and data are available for inspection.'
+summary: 'Annual Scopus counts show how often records in nine query-defined literatures contain a form of “speculate” in their titles, abstracts or keywords. The count is a proxy for explicit wording in indexed records and says little about the quality of the evidence.'
+abstract: 'The annual share of Scopus records that mention speculat* in the title, abstract or keywords is compared across nine query-defined literatures, as an indicator of explicit wording in indexed records. It is no direct measure of evidential quality, theoretical progress or the amount of speculation in the full literature. The queries and data are available for inspection.'
 authors: []
 lastmod: ''
 featured: no
@@ -54,7 +54,7 @@ Early speech leaves no trace, so an account of it can rarely be settled against 
 
 Authors who speculate in print sometimes say so, in phrases such as “we speculate that” or “it is tempting to speculate”. The share of records that contain a form of `speculat*` is therefore an indicator of explicit wording in indexed metadata. It is not a measure of how much speculation an article contains, how well supported its claims are or how mature a research area is. Conventions for hedging, abstract writing and indexing can all affect the count.
 
-This post compares that share, year by year from 1980 to the present, across nine reference literatures. Six of them concern language: language evolution, language comprehension, language disorders, linguistic relativity, language teaching and the bilingual advantage. A seventh, sensorimotor simulation, is the topic of my own doctoral work on conceptual processing. The last two, artificial general intelligence and the hadron collider, lie outside the language sciences and serve as points of comparison. Speculation might be expected in the first, whereas the second is a field of large instruments and large collaborations. Each reference literature is defined by a query on the title, abstract and keywords. Within each year, the comparison counts the records that also match `speculat*` in those fields.
+I compare that share, year by year from 1980 to the present, across nine reference literatures. Six of them concern language: language evolution, language comprehension, language disorders, linguistic relativity, language teaching and the bilingual advantage. A seventh, sensorimotor simulation, is the topic of my own doctoral work on conceptual processing. The last two, artificial general intelligence and the hadron collider, lie outside the language sciences and serve as points of comparison. Speculation might be expected in the first, whereas the second is a field of large instruments and large collaborations. Each reference literature is defined by a query on the title, abstract and keywords. Within each year, the comparison counts the records that also match `speculat*` in those fields.
 
 ## Development
 
