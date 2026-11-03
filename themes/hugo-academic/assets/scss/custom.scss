@@ -6192,9 +6192,12 @@ h2#reference  ~ p, h3#reference  ~ p, h4#reference  ~ p {
 // paragraph rule uses, and a percentage margin resolves against the container's
 // width: any fixed value would match the other reference lists at one viewport
 // and drift from them at every other.
+// The hanging indent is padding rather than margin so that the entry's box
+// starts where its first line does. With a margin, the box began 2em in, and
+// the highlight below left the first line's opening words outside it.
 .csl-bib-body .csl-entry {
   text-indent: -2em;
-  margin-left: 2em;
+  padding-left: 2em;
   overflow-wrap: anywhere;
   margin-bottom: 2%;
 }
@@ -6220,16 +6223,38 @@ h2#reference  ~ p, h3#reference  ~ p, h4#reference  ~ p {
 // marks the place, which would otherwise be one line among many. The green is
 // that of the site's link underlines, faint enough to keep text contrast. A
 // citation is matched by its target, since blogdown's HTML4 has no
-// role="doc-biblioref".
+// role="doc-biblioref". A shadow of the same colour widens the mark a little
+// beyond the text without moving it, and a citation that wraps onto a second
+// line is marked on each line separately. The shadow is set in pixels because
+// scrollToAnchor() in academic.js stops a target 60px from the top, 5px below
+// the navbar, and a shadow in em would outgrow that gap at larger font sizes.
 .csl-bib-body .csl-entry:target,
 .article-style a[href^="#ref-"]:target {
   background-color: rgba(22, 163, 74, 0.14);
   border-radius: 0.2rem;
 }
 
+.csl-bib-body .csl-entry:target {
+  box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.14);
+}
+
+.article-style a[href^="#ref-"]:target {
+  box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.14);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
 .dark .csl-bib-body .csl-entry:target,
 .dark .article-style a[href^="#ref-"]:target {
   background-color: rgba(34, 197, 94, 0.2);
+}
+
+.dark .csl-bib-body .csl-entry:target {
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2);
+}
+
+.dark .article-style a[href^="#ref-"]:target {
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
 }
 
 // Related references heading styled via inline style in the HTML files
