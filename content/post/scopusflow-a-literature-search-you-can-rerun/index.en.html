@@ -21,7 +21,7 @@ tags:
   - Scopus
 subtitle: ''
 summary: 'A literature-search export does not preserve the decisions that produced it. With scopusflow, a search is defined in advance, resumed from checkpoints and documented in a PRISMA-S search record generated from the resulting data.'
-abstract: 'A Scopus search can be run as a versioned, resumable workflow. With scopusflow, a query and a yearly plan are defined in advance, an offline demonstration corpus is retrieved through checkpoints and sets of digital object identifiers are compared. The search record it generates follows PRISMA-S, the literature-search extension of the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) statement, and names the items left for the review authors to report.'
+abstract: 'A Scopus search can be run as a versioned, resumable workflow. With scopusflow, a query and a yearly plan are defined in advance, an offline demonstration corpus is retrieved through checkpoints and sets of digital object identifiers are compared. The generated search record follows PRISMA-S, the literature-search extension of the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) statement, and names the items left for the review authors to report.'
 authors: []
 lastmod: ''
 featured: no
@@ -46,10 +46,10 @@ projects: []
 
 <p>A spreadsheet exported from Scopus contains papers, but it does not contain the search that found them. The exact query, retrieval date, paging choices and number of records returned by each part of the search often end up in notes or browser history. When the search has to be updated, it can be difficult to tell whether a changed result reflects the literature or the method.</p>
 <p>I wrote <a href="https://pablobernabeu.github.io/scopusflow/">scopusflow</a> (Bernabeu, 2026) to keep those decisions with the records. A search begins as a plan, each completed part is cached and the final object can write its own search record. Matching packages are available for R from the Comprehensive R Archive Network (<a href="https://CRAN.R-project.org/package=scopusflow">CRAN</a>) and <a href="https://github.com/pablobernabeu/scopusflow">GitHub</a>, and for Python from the Python Package Index (<a href="https://pypi.org/project/scopusflow">PyPI</a>) and <a href="https://github.com/pablobernabeu/scopusflow-py">GitHub</a>.</p>
-<p>The example below uses a small corpus bundled with the R package. A stand-in server, defined in <a href="https://github.com/pablobernabeu/website-files/blob/master/content/post/scopusflow-a-literature-search-you-can-rerun/stand_in.R">a short script</a>, answers the requests that would otherwise go to the Scopus application programming interface (API), so the code runs without an API key or any connection to Elsevier.</p>
+<p>The example below uses a small corpus bundled with the R package. A stand-in server, defined in <a href="https://github.com/pablobernabeu/website-files/blob/master/content/post/scopusflow-a-literature-search-you-can-rerun/stand_in.R">a short script</a>, answers the requests that would otherwise go to the Scopus application programming interface (API). The code therefore runs without an API key or any connection to Elsevier.</p>
 <div id="development" class="section level2">
 <h2>Development</h2>
-<p>The workflow below separates planning, retrieval, inspection and reporting. Only retrieval needs a key, and the stand-in server answers its requests here from the corpus bundled with the package.</p>
+<p>The workflow separates planning, retrieval, inspection and reporting. Only retrieval needs a key, and here the stand-in server answers its requests.</p>
 <pre class="r"><code>library(scopusflow)
 packageVersion(&#39;scopusflow&#39;)</code></pre>
 <pre><code>#&gt; [1] &#39;0.4.0&#39;</code></pre>
@@ -152,7 +152,7 @@ changes</code></pre>
 </div>
 <div id="let-the-result-write-the-record" class="section level3">
 <h3>Let the Result Write the Record</h3>
-<p>The search record in Table 1 is generated from the object that holds the publications. It reports what the software knows and identifies the PRISMA-S items that still require the review authors’ judgement, such as citation searching or peer review of the search strategy. As this run never reached Scopus, the summary below leaves out the database, platform and retrieval date that a live report would include.</p>
+<p>The search record in Table 1 is generated from the object that holds the publications. It reports what the software knows and identifies the PRISMA-S items that still require the review authors’ judgement, such as citation searching or peer review of the search strategy. Because this run never reached Scopus, the summary below leaves out the database, platform and retrieval date that a live report would include.</p>
 <table>
 <caption><span id="tab:report-summary">Table 1: </span>What the Search Retrieved, as the PRISMA-S Record Reports It.</caption>
 <thead>
@@ -189,10 +189,11 @@ changes</code></pre>
 </div>
 <div id="discussion" class="section level2">
 <h2>Discussion</h2>
-<p>The result that matters in this example is the provenance. A rerunnable search records enough of the method to explain why a later DOI set differs, although database coverage, query design and screening remain matters of judgement. Those decisions belong in the review protocol and should be reported with the generated search record. For a review, I would keep the plan under version control, save the native result object and archive the search record alongside the screening data. The <a href="https://pablobernabeu.github.io/scopusflow/reference/">R reference</a> and the <a href="https://pablobernabeu.github.io/scopusflow-py/">Python documentation</a> cover cursor paging, de-duplication, topic comparisons and authentication for live searches.</p>
+<p>The main result of this example is the provenance attached to the records. A rerunnable search records enough of the method to explain why a later DOI set differs, although database coverage, query design and screening remain matters of judgement. Those decisions belong in the review protocol and should be reported with the generated search record. For a review, I would keep the plan under version control, save the native result object and archive the search record alongside the screening data.</p>
+<p>The <a href="https://pablobernabeu.github.io/scopusflow/reference/">R reference</a> and the <a href="https://pablobernabeu.github.io/scopusflow-py/">Python documentation</a> cover cursor paging, de-duplication, topic comparisons and authentication for live searches.</p>
 <div id="limits" class="section level3">
 <h3>Limits</h3>
-<p>The offline corpus only demonstrates the workflow, so its counts are not evidence about the contents of Scopus or about graphene research. Elsevier’s terms do not allow Scopus records to be redistributed, which is why the example uses 138 records retrieved from OpenAlex on 22 July 2026 and reshaped to the package’s return format. A live search still depends on Elsevier’s coverage, indexing and quota, and abstract retrieval draws on a separate allowance.</p>
+<p>Elsevier’s terms do not allow Scopus records to be redistributed, which is why the example uses 138 records retrieved from OpenAlex on 22 July 2026 and reshaped to the package’s return format. This offline corpus only demonstrates the workflow, so its counts are not evidence about the contents of Scopus or about graphene research. A live search still depends on Elsevier’s coverage, indexing and quota, and abstract retrieval draws on a separate allowance.</p>
 </div>
 </div>
 <div id="references" class="section level2">

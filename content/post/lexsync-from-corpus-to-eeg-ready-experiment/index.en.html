@@ -22,7 +22,7 @@ tags:
   - jsPsych
 subtitle: ''
 summary: 'Selecting words is only the first step in preparing a psycholinguistic experiment. With lexsync, high- and low-frequency items are matched, balanced across lists and exported as timed PsychoPy and OpenSesame scripts that send electroencephalography (EEG) triggers, along with a jsPsych version that logs event markers.'
-abstract: 'The lexsync package turns a lexical design into checked stimulus lists and experiment files. It separates candidate selection from matching, evaluates balance on the intended controls and carries the resulting item table into PsychoPy and OpenSesame, which send electroencephalography (EEG) triggers, and into jsPsych, which records an event marker with every trial.'
+abstract: 'The lexsync package turns a lexical design into checked stimulus lists and experiment files. It separates candidate selection from matching and evaluates balance on the intended controls. It then carries the resulting item table into PsychoPy and OpenSesame, which send electroencephalography (EEG) triggers, and into jsPsych, which records an event marker with every trial.'
 authors: []
 lastmod: ''
 featured: no
@@ -46,7 +46,7 @@ projects: []
 
 
 <p>A high- versus low-frequency word experiment sounds simple until the materials are assembled. The frequency bands must differ, while length and orthographic similarity should not. The selected words then need to be divided across presentation lists without creating a new imbalance. Finally, the same item table must reach the experiment software with its trial order, timing and electroencephalography (EEG) triggers intact.</p>
-<p>I wrote <a href="https://github.com/pablobernabeu/lexsync">lexsync</a> (Bernabeu, 2026) to keep those stages in one reproducible workflow. The package stores the design separately from the candidate corpus, reports the balance that was achieved, and exports runnable experiments for PsychoPy, OpenSesame and jsPsych. Its R and Python implementations read the same design format, and the examples below use R.</p>
+<p>I wrote <a href="https://github.com/pablobernabeu/lexsync">lexsync</a> (Bernabeu, 2026) to keep those stages in one reproducible workflow. The package stores the design separately from the candidate corpus, reports the balance achieved and exports runnable experiments for PsychoPy, OpenSesame and jsPsych. Its R and Python implementations read the same design format, and the examples below use R.</p>
 <div id="development" class="section level2">
 <h2>Development</h2>
 <p>The workflow below keeps each design decision in view as it defines the candidate pool, checks the realised balance and passes the same specification on to the presentation software. Every step works from the design, so a change to it reaches the generated experiment without being retyped.</p>
@@ -92,7 +92,7 @@ candidate_counts</code></pre>
 </div>
 <div id="select-and-check-the-words" class="section level3">
 <h3>Select and Check the Words</h3>
-<p><code>match_stimuli()</code> spreads anchor words evenly across the first condition in the design, here the smaller high-frequency band, and finds nearby words from the other condition in the standardised space of the control variables. Standardising first means that a given distance counts the same whichever control it falls on.</p>
+<p><code>match_stimuli()</code> spreads anchor words evenly across the first condition in the design, here the smaller high-frequency band. It then finds nearby words from the other condition in the standardised space of the control variables. Standardising first means that a given distance counts the same whichever control it falls on.</p>
 <pre class="r"><code>stimuli &lt;- match_stimuli(pool, design, schema)
 head(stimuli[, c(&#39;set&#39;, &#39;condition&#39;, &#39;word&#39;, &#39;frequency&#39;, &#39;length&#39;,
                   &#39;n_density&#39;, &#39;old20&#39;)])</code></pre>
@@ -103,7 +103,7 @@ head(stimuli[, c(&#39;set&#39;, &#39;condition&#39;, &#39;word&#39;, &#39;freque
 #&gt; 4   4 high_frequency  points      5.23      6         5  1.65
 #&gt; 5   5 high_frequency running      5.23      7         3  1.80
 #&gt; 6   6 high_frequency    term      5.23      4         4  1.65</code></pre>
-<p>The report treats matching as a claim of equivalence. For each control, it gives Cohen’s <span class="math inline">\(d\)</span> with a 90% confidence interval and applies the two one-sided tests (TOST) procedure against the schema’s bound of half a standard deviation (Lakens, 2017). The frequency row reflects the intended manipulation, so Figure 1 leaves it out.</p>
+<p>The match report treats matching as a claim of equivalence. For each control, it gives Cohen’s <span class="math inline">\(d\)</span> with a 90% confidence interval and applies the two one-sided tests (TOST) procedure against the schema’s bound of half a standard deviation (Lakens, 2017). The frequency row reflects the intended manipulation, so Figure 1 leaves it out.</p>
 <pre class="r"><code>report &lt;- match_report(
   stimuli,
   c(&#39;frequency&#39;, &#39;length&#39;, &#39;n_density&#39;, &#39;old20&#39;),
@@ -204,11 +204,12 @@ grep(&#39;^\\s*(TRIGGER_HOLD_MS\\s*=|win\\.callOnFlip\\()&#39;, psychopy_code,
 </div>
 <div id="discussion" class="section level2">
 <h2>Discussion</h2>
-<p>As a diagnostic, the balance plot cannot show that the materials are theoretically adequate. A successful match can still leave a weak manipulation, a confounded norm or an implausible trial sequence. The workflow’s value lies in making those choices visible before data collection, so that they can be reviewed alongside the exported files. In an EEG study, that review should extend to the trigger stream and hardware timing measured on the recording computer.</p>
+<p>The balance plot is only a diagnostic and cannot show that the materials are theoretically adequate. A successful match can still leave a weak manipulation, a confounded norm or an implausible trial sequence. The workflow’s value lies in making the choices behind the materials visible before data collection, so that they can be reviewed alongside the exported files. In an EEG study, that review should extend to the trigger stream and hardware timing measured on the recording computer.</p>
+<p>The <a href="https://pablobernabeu.github.io/lexsync/r/">R documentation</a> and <a href="https://pablobernabeu.github.io/lexsync/python/">Python documentation</a> cover pseudoword generation, semantic norms, continuous designs, Latin-square counterbalancing and the full file-based pipeline. Across the package, the design records the experiment as intended, while the generated tables and reports record it as realised.</p>
 <div id="limits" class="section level3">
 <h3>Limits</h3>
-<p>Matching can only draw on what the candidate corpus contains. The bundled English lexicon takes its words and Zipf frequencies from wordfreq (Speer, 2022). It serves this demonstration, but it includes proper nouns, estimates syllables from spelling and has no part-of-speech information. A study should therefore supply its own exclusions and whatever norms it needs. Equivalence also depends on the bound chosen before selection, and the default of half a standard deviation is only a starting point. Each study should derive its own bound from the smallest difference that would matter for its research question (Lakens, 2017).</p>
-<p>The <a href="https://pablobernabeu.github.io/lexsync/r/">R documentation</a> and <a href="https://pablobernabeu.github.io/lexsync/python/">Python documentation</a> cover pseudoword generation, semantic norms, continuous designs, Latin-square counterbalancing and the full file-based pipeline. Across the package, the design records the experiment as intended, while the generated tables and reports record it as realised.</p>
+<p>Matching can only draw on what the candidate corpus contains. The bundled English lexicon takes its words and Zipf frequencies from wordfreq (Speer, 2022). It serves this demonstration, but it includes proper nouns, estimates syllables from spelling and has no part-of-speech information. A study should therefore supply its own exclusions and whatever norms it needs.</p>
+<p>Equivalence also depends on the bound chosen before selection, and the default of half a standard deviation is only a starting point. Each study should derive its own bound from the smallest difference that would matter for its research question (Lakens, 2017).</p>
 </div>
 </div>
 <div id="references" class="section level2">

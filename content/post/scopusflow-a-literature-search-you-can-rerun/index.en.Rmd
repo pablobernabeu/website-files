@@ -21,7 +21,7 @@ tags:
   - Scopus
 subtitle: ''
 summary: 'A literature-search export does not preserve the decisions that produced it. With scopusflow, a search is defined in advance, resumed from checkpoints and documented in a PRISMA-S search record generated from the resulting data.'
-abstract: 'A Scopus search can be run as a versioned, resumable workflow. With scopusflow, a query and a yearly plan are defined in advance, an offline demonstration corpus is retrieved through checkpoints and sets of digital object identifiers are compared. The search record it generates follows PRISMA-S, the literature-search extension of the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) statement, and names the items left for the review authors to report.'
+abstract: 'A Scopus search can be run as a versioned, resumable workflow. With scopusflow, a query and a yearly plan are defined in advance, an offline demonstration corpus is retrieved through checkpoints and sets of digital object identifiers are compared. The generated search record follows PRISMA-S, the literature-search extension of the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) statement, and names the items left for the review authors to report.'
 authors: []
 lastmod: ''
 featured: no
@@ -50,11 +50,11 @@ A spreadsheet exported from Scopus contains papers, but it does not contain the 
 
 I wrote [scopusflow](https://pablobernabeu.github.io/scopusflow/) (Bernabeu, 2026) to keep those decisions with the records. A search begins as a plan, each completed part is cached and the final object can write its own search record. Matching packages are available for R from the Comprehensive R Archive Network ([CRAN](https://CRAN.R-project.org/package=scopusflow)) and [GitHub](https://github.com/pablobernabeu/scopusflow), and for Python from the Python Package Index ([PyPI](https://pypi.org/project/scopusflow)) and [GitHub](https://github.com/pablobernabeu/scopusflow-py).
 
-The example below uses a small corpus bundled with the R package. A stand-in server, defined in [a short script](https://github.com/pablobernabeu/website-files/blob/master/content/post/scopusflow-a-literature-search-you-can-rerun/stand_in.R), answers the requests that would otherwise go to the Scopus application programming interface (API), so the code runs without an API key or any connection to Elsevier.
+The example below uses a small corpus bundled with the R package. A stand-in server, defined in [a short script](https://github.com/pablobernabeu/website-files/blob/master/content/post/scopusflow-a-literature-search-you-can-rerun/stand_in.R), answers the requests that would otherwise go to the Scopus application programming interface (API). The code therefore runs without an API key or any connection to Elsevier.
 
 ## Development
 
-The workflow below separates planning, retrieval, inspection and reporting. Only retrieval needs a key, and the stand-in server answers its requests here from the corpus bundled with the package.
+The workflow separates planning, retrieval, inspection and reporting. Only retrieval needs a key, and here the stand-in server answers its requests.
 
 ```{r}
 library(scopusflow)
@@ -141,7 +141,7 @@ changes
 
 ### Let the Result Write the Record
 
-The search record in Table 1 is generated from the object that holds the publications. It reports what the software knows and identifies the PRISMA-S items that still require the review authors' judgement, such as citation searching or peer review of the search strategy. As this run never reached Scopus, the summary below leaves out the database, platform and retrieval date that a live report would include.
+The search record in Table 1 is generated from the object that holds the publications. It reports what the software knows and identifies the PRISMA-S items that still require the review authors' judgement, such as citation searching or peer review of the search strategy. Because this run never reached Scopus, the summary below leaves out the database, platform and retrieval date that a live report would include.
 
 ```{r report-summary, echo = FALSE}
 report <- scopus_search_report(records)
@@ -157,11 +157,13 @@ The same records can then leave R as a DOI list, BibTeX, RIS or a table for bibl
 
 ## Discussion
 
-The result that matters in this example is the provenance. A rerunnable search records enough of the method to explain why a later DOI set differs, although database coverage, query design and screening remain matters of judgement. Those decisions belong in the review protocol and should be reported with the generated search record. For a review, I would keep the plan under version control, save the native result object and archive the search record alongside the screening data. The [R reference](https://pablobernabeu.github.io/scopusflow/reference/) and the [Python documentation](https://pablobernabeu.github.io/scopusflow-py/) cover cursor paging, de-duplication, topic comparisons and authentication for live searches.
+The main result of this example is the provenance attached to the records. A rerunnable search records enough of the method to explain why a later DOI set differs, although database coverage, query design and screening remain matters of judgement. Those decisions belong in the review protocol and should be reported with the generated search record. For a review, I would keep the plan under version control, save the native result object and archive the search record alongside the screening data.
+
+The [R reference](https://pablobernabeu.github.io/scopusflow/reference/) and the [Python documentation](https://pablobernabeu.github.io/scopusflow-py/) cover cursor paging, de-duplication, topic comparisons and authentication for live searches.
 
 ### Limits
 
-The offline corpus only demonstrates the workflow, so its counts are not evidence about the contents of Scopus or about graphene research. Elsevier's terms do not allow Scopus records to be redistributed, which is why the example uses 138 records retrieved from OpenAlex on 22 July 2026 and reshaped to the package's return format. A live search still depends on Elsevier's coverage, indexing and quota, and abstract retrieval draws on a separate allowance.
+Elsevier's terms do not allow Scopus records to be redistributed, which is why the example uses 138 records retrieved from OpenAlex on 22 July 2026 and reshaped to the package's return format. This offline corpus only demonstrates the workflow, so its counts are not evidence about the contents of Scopus or about graphene research. A live search still depends on Elsevier's coverage, indexing and quota, and abstract retrieval draws on a separate allowance.
 
 ```{r cleanup, include = FALSE}
 options(scopusflow.api_key = NULL)

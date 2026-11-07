@@ -33,7 +33,7 @@ Over the past decade, research has moved from a culture in which findings were t
 
 ## The Mechanics of Transparency
 
-Two practices are central: preregistration and the open sharing of data and materials. Preregistration means publicly archiving the theoretical background, methods and hypotheses of a study before data collection begins. It guards against questionable research practices such as '*p*-hacking' (adjusting analyses until a result is significant) and 'HARKing' (hypothesising after the results are known), and it separates planned confirmatory research from exploratory work.
+Two practices are central: preregistration and the open sharing of data and materials. Preregistration means publicly archiving the theoretical background, methods and hypotheses of a study before data collection begins. It guards against questionable research practices such as '*p*-hacking' (adjusting analyses until a result is significant) and 'HARKing' (hypothesising after the results are known). It also separates planned confirmatory research from exploratory work.
 
 Both practices benefit each party to a project. For funders, openly shared data and materials go on yielding value long after the final report is filed. Funders can also show a commitment to corporate social responsibility by having the data they fund shared under a suitable licence. The [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License (CC BY-NC-ND 4.0)](https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.en), for example, protects intellectual credit by requiring attribution, and it rules out commercial use and the sharing of adapted versions. Other licences strike a different balance. [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode.en) allows any use, commercial use included, provided the authors are credited. A repository on the Open Science Framework (OSF) can name its funders prominently and link to them, documenting their role, as in this [example repository](https://osf.io/fajne).
 
@@ -41,9 +41,9 @@ For the project itself, these practices make its rigour visible. They set the wo
 
 For researchers, especially early in their careers, sharing data and code on platforms such as the OSF builds a public, citable portfolio of technical work. The portfolio shows a capacity for careful, transparent research and can lead to recognition and collaboration that a CV alone would not bring.
 
-Finally, for the wider scientific community, a dataset shared with the analyses behind it allows others to verify the findings independently and to reuse the data for new questions, which extends the reach of the original funding.
+Finally, for the wider scientific community, a dataset shared with the analyses behind it allows others to verify the findings independently. Reuse of the data for new questions also extends the reach of the original funding.
 
 
 ## A Commitment to Integrity
 
-Open science is a commitment to the idea that the best science is done in the light. Transparency makes published findings permanent and verifiable, and at a time of widespread misinformation, findings that anyone can check carry particular weight. The aim is research that remains sound, reusable and trustworthy long after publication.
+Open science is a commitment to the idea that the best science is done in the light. Transparency makes published findings permanent and verifiable. At a time of widespread misinformation, findings that anyone can check carry particular weight. The aim is research that remains sound, reusable and trustworthy long after publication.

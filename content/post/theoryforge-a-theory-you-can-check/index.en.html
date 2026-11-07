@@ -22,7 +22,7 @@ tags:
   - conceptual processing
 subtitle: ''
 summary: 'A theory written only in prose cannot be checked mechanically. Represented as structured data with theoryforge, a theory of modality switching yields the conditional independencies it implies, which are tested against data simulated from the theory and from a rival account.'
-abstract: 'The theoryforge package opens the claims and revisions of a theory to inspection without treating a structural score as evidence of truth. A theory of modality switching is represented as structured data, its constructs and propositions are validated and the conditional independencies derived from its causal graph are tested against data simulated from the theory and from a rival account.'
+abstract: 'The theoryforge package opens the claims and revisions of a theory to inspection without treating a structural score as evidence of truth. A theory of modality switching is represented as structured data, and its constructs and propositions are validated. The conditional independencies derived from its causal graph are then tested against data simulated from the theory and from a rival account.'
 authors: []
 lastmod: ''
 featured: no
@@ -69,7 +69,7 @@ c(id = switching$id,
 #&gt;                       &quot;4&quot;                       &quot;4&quot;</code></pre>
 <div id="treat-the-theory-as-a-checked-document" class="section level3">
 <h3>Treat the Theory as a Checked Document</h3>
-<p>Structural validation checks required fields and allowed values. Full validation also follows identifiers across the document, so a prediction cannot claim to derive from a proposition that does not exist. The function returns silently when the document passes and stops with a list of the errors when it fails.</p>
+<p>Structural validation checks required fields and allowed values. Full validation also follows identifiers across the document, so a prediction cannot claim to derive from a proposition that does not exist. <code>tf_validate()</code> returns silently when the document passes and stops with a list of the errors when it fails.</p>
 <pre class="r"><code>tf_validate(switching, full = TRUE)
 
 check &lt;- tf_check(switching)
@@ -78,7 +78,7 @@ c(score = check$aggregate_score,
   blockers_failed = check$n_blockers_failed)</code></pre>
 <pre><code>#&gt;           score            gate blockers_failed 
 #&gt;          &quot;85.1&quot;          &quot;pass&quot;             &quot;0&quot;</code></pre>
-<p>The checklist has 12 items, each tied to a source in the methodological literature. They cover features that make a theory appraisable, such as whether it states what it prohibits, whether its predictions derive from stated propositions, and how precise and risky those predictions are (e.g., Meehl, 1990). Two of the items are blockers, and the gate passes only if neither fails. The score, a weighted total out of 100, measures how completely the theory is specified. A well-specified theory can still be wrong, while a promising informal account can score poorly because it is not yet explicit enough to test.</p>
+<p>The rigour checklist applied by <code>tf_check()</code> has 12 items, each tied to a source in the methodological literature. They cover features that make a theory appraisable, such as whether it states what it prohibits, whether its predictions derive from stated propositions, and how precise and risky those predictions are (e.g., Meehl, 1990). Two of the items are blockers, and the gate passes only if neither fails. The score, a weighted total out of 100, measures how completely the theory is specified. A well-specified theory can still be wrong, while a promising informal account can score poorly because it is not yet explicit enough to test.</p>
 </div>
 <div id="read-the-graph" class="section level3">
 <h3>Read the Graph</h3>
@@ -156,7 +156,7 @@ Figure 1: The Constructs of the Theory and the Arrows It Asserts Between Them, a
 </div>
 <div id="discussion" class="section level2">
 <h2>Discussion</h2>
-<p>Formalisation changes what can be criticised. A reader can go beyond asking whether a theory sounds plausible and inspect which constructs are linked, which observations would count against the graph and how an amendment changes those commitments.</p>
+<p>Formalisation changes what can be criticised. Besides asking whether a theory sounds plausible, a reader can inspect which constructs are linked, which observations would count against the graph and how an amendment changes those commitments.</p>
 <p>The package documentation covers structural equation model compilation, severity scoring, preregistration, amendment appraisal and deposits to the Open Science Framework. Those tools build on the step shown here, which is to write the theory in a form that states what it claims and what it forbids.</p>
 <div id="limits" class="section level3">
 <h3>Limits</h3>
