@@ -22,6 +22,42 @@ references:
   publisher: arXiv
   DOI: 10.48550/arXiv.2606.11456
 
+- id: andersen2025
+  type: article-journal
+  author:
+  - {family: Andersen, given: J. P.}
+  - {family: Degn, given: L.}
+  - {family: Fishberg, given: R.}
+  - {family: Graversen, given: E. K.}
+  - {family: Horbach, given: S. P. J. M.}
+  - {family: Kalpazidou Schmidt, given: E.}
+  - {family: Schneider, given: J. W.}
+  - {family: Sørensen, given: M. P.}
+  issued: 2025
+  title: 'Generative artificial intelligence (GenAI) in the research process: A survey of researchers'' practices and perceptions'
+  container-title: Technology in Society
+  volume: 81
+  number: 102813
+  DOI: 10.1016/j.techsoc.2025.102813
+
+- id: anthropic-best-practices
+  type: webpage
+  author:
+  - literal: Anthropic
+  title: Best practices for Claude Code
+  container-title: Claude Code Docs
+  URL: https://code.claude.com/docs/en/best-practices
+  accessed: 2026-11-07
+
+- id: anthropic-deprecations
+  type: webpage
+  author:
+  - literal: Anthropic
+  title: Model deprecations
+  container-title: Claude Platform Docs
+  URL: https://platform.claude.com/docs/en/about-claude/model-deprecations
+  accessed: 2026-11-07
+
 - id: anthropic-effort
   type: webpage
   author:
@@ -29,7 +65,7 @@ references:
   title: Effort
   container-title: Claude Platform Docs
   URL: https://platform.claude.com/docs/en/build-with-claude/effort
-  accessed: 2026-11-02
+  accessed: 2026-11-07
 
 - id: anthropic-glossary
   type: webpage
@@ -38,7 +74,7 @@ references:
   title: Glossary
   container-title: Claude Platform Docs
   URL: https://platform.claude.com/docs/en/about-claude/glossary
-  accessed: 2026-11-02
+  accessed: 2026-11-07
 
 - id: anthropic-overview
   type: webpage
@@ -47,7 +83,16 @@ references:
   title: Overview
   container-title: Claude Code Docs
   URL: https://code.claude.com/docs/en/overview
-  accessed: 2026-11-02
+  accessed: 2026-11-07
+
+- id: anthropic-prompting
+  type: webpage
+  author:
+  - literal: Anthropic
+  title: Prompting best practices
+  container-title: Claude Platform Docs
+  URL: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices
+  accessed: 2026-11-07
 
 - id: anthropic-thinking
   type: webpage
@@ -56,7 +101,7 @@ references:
   title: Thinking
   container-title: Claude Platform Docs
   URL: https://platform.claude.com/docs/en/build-with-claude/thinking
-  accessed: 2026-11-02
+  accessed: 2026-11-07
 
 - id: atil2025
   type: paper-conference
@@ -101,7 +146,7 @@ references:
   DOI: 10.1016/0005-1098(83)90046-8
 
 - id: baltes2026
-  type: article
+  type: article-journal
   author:
   - {family: Baltes, given: Sebastian}
   - {family: Angermeir, given: Florian}
@@ -127,9 +172,11 @@ references:
   - {family: Wagner, given: Stefan}
   issued: 2026
   title: Guidelines for empirical studies in software engineering involving large language models
-  number: arXiv:2508.15503
-  publisher: arXiv
-  DOI: 10.48550/arXiv.2508.15503
+  container-title: Empirical Software Engineering
+  volume: 32
+  issue: 2
+  number: 64
+  DOI: 10.1007/s10664-026-10922-3
 
 - id: barr2013
   type: article-journal
@@ -195,6 +242,183 @@ references:
   number: e2606495123
   DOI: 10.1073/pnas.2606495123
 
+- id: breznau2022
+  type: article-journal
+  author:
+  - {family: Breznau, given: N.}
+  - {family: Rinke, given: E. M.}
+  - {family: Wuttke, given: A.}
+  - {family: Nguyen, given: H. H. V.}
+  - {family: Adem, given: M.}
+  - {family: Adriaans, given: J.}
+  - {family: Alvarez-Benjumea, given: A.}
+  - {family: Andersen, given: H. K.}
+  - {family: Auer, given: D.}
+  - {family: Azevedo, given: F.}
+  - {family: Bahnsen, given: O.}
+  - {family: Balzer, given: D.}
+  - {family: Bauer, given: G.}
+  - {family: Bauer, given: P. C.}
+  - {family: Baumann, given: M.}
+  - {family: Baute, given: S.}
+  - {family: Benoit, given: V.}
+  - {family: Bernauer, given: J.}
+  - {family: Berning, given: C.}
+  - {family: Berthold, given: A.}
+  - {family: Bethke, given: F. S.}
+  - {family: Biegert, given: T.}
+  - {family: Blinzler, given: K.}
+  - {family: Blumenberg, given: J. N.}
+  - {family: Bobzien, given: L.}
+  - {family: Bohman, given: A.}
+  - {family: Bol, given: T.}
+  - {family: Bostic, given: A.}
+  - {family: Brzozowska, given: Z.}
+  - {family: Burgdorf, given: K.}
+  - {family: Burger, given: K.}
+  - {family: Busch, given: K. B.}
+  - {family: Carlos-Castillo, given: J.}
+  - {family: Chan, given: N.}
+  - {family: Christmann, given: P.}
+  - {family: Connelly, given: R.}
+  - {family: Czymara, given: C. S.}
+  - {family: Damian, given: E.}
+  - {family: Ecker, given: A.}
+  - {family: Edelmann, given: A.}
+  - {family: Eger, given: M. A.}
+  - {family: Ellerbrock, given: S.}
+  - {family: Forke, given: A.}
+  - {family: Forster, given: A.}
+  - {family: Gaasendam, given: C.}
+  - {family: Gavras, given: K.}
+  - {family: Gayle, given: V.}
+  - {family: Gessler, given: T.}
+  - {family: Gnambs, given: T.}
+  - {family: Godefroidt, given: A.}
+  - {family: Grömping, given: M.}
+  - {family: Groß, given: M.}
+  - {family: Gruber, given: S.}
+  - {family: Gummer, given: T.}
+  - {family: Hadjar, given: A.}
+  - {family: Heisig, given: J. P.}
+  - {family: Hellmeier, given: S.}
+  - {family: Heyne, given: S.}
+  - {family: Hirsch, given: M.}
+  - {family: Hjerm, given: M.}
+  - {family: Hochman, given: O.}
+  - {family: Hövermann, given: A.}
+  - {family: Hunger, given: S.}
+  - {family: Hunkler, given: C.}
+  - {family: Huth, given: N.}
+  - {family: Ignácz, given: Z. S.}
+  - {family: Jacobs, given: L.}
+  - {family: Jacobsen, given: J.}
+  - {family: Jaeger, given: B.}
+  - {family: Jungkunz, given: S.}
+  - {family: Jungmann, given: N.}
+  - {family: Kauff, given: M.}
+  - {family: Kleinert, given: M.}
+  - {family: Klinger, given: J.}
+  - {family: Kolb, given: J.-P.}
+  - {family: Kołczyńska, given: M.}
+  - {family: Kuk, given: J.}
+  - {family: Kunißen, given: K.}
+  - {family: Kurti Sinatra, given: D.}
+  - {family: Langenkamp, given: A.}
+  - {family: Lersch, given: P. M.}
+  - {family: Löbel, given: L.-M.}
+  - {family: Lutscher, given: P.}
+  - {family: Mader, given: M.}
+  - {family: Madia, given: J. E.}
+  - {family: Malancu, given: N.}
+  - {family: Maldonado, given: L.}
+  - {family: Marahrens, given: H.}
+  - {family: Martin, given: N.}
+  - {family: Martinez, given: P.}
+  - {family: Mayerl, given: J.}
+  - {family: Mayorga, given: O. J.}
+  - {family: McManus, given: P.}
+  - {family: McWagner, given: K.}
+  - {family: Meeusen, given: C.}
+  - {family: Meierrieks, given: D.}
+  - {family: Mellon, given: J.}
+  - {family: Merhout, given: F.}
+  - {family: Merk, given: S.}
+  - {family: Meyer, given: D.}
+  - {family: Micheli, given: L.}
+  - {family: Mijs, given: J.}
+  - {family: Moya, given: C.}
+  - {family: Neunhoeffer, given: M.}
+  - {family: Nüst, given: D.}
+  - {family: Nygård, given: O.}
+  - {family: Ochsenfeld, given: F.}
+  - {family: Otte, given: G.}
+  - {family: Pechenkina, given: A. O.}
+  - {family: Prosser, given: C.}
+  - {family: Raes, given: L.}
+  - {family: Ralston, given: K.}
+  - {family: Ramos, given: M. R.}
+  - {family: Roets, given: A.}
+  - {family: Rogers, given: J.}
+  - {family: Ropers, given: G.}
+  - {family: Samuel, given: R.}
+  - {family: Sand, given: G.}
+  - {family: Schachter, given: A.}
+  - {family: Schaeffer, given: M.}
+  - {family: Schieferdecker, given: D.}
+  - {family: Schlueter, given: E.}
+  - {family: Schmidt, given: R.}
+  - {family: Schmidt, given: K. M.}
+  - {family: Schmidt-Catran, given: A.}
+  - {family: Schmiedeberg, given: C.}
+  - {family: Schneider, given: J.}
+  - {family: Schoonvelde, given: M.}
+  - {family: Schulte-Cloos, given: J.}
+  - {family: Schumann, given: S.}
+  - {family: Schunck, given: R.}
+  - {family: Schupp, given: J.}
+  - {family: Seuring, given: J.}
+  - {family: Silber, given: H.}
+  - {family: Sleegers, given: W.}
+  - {family: Sonntag, given: N.}
+  - {family: Staudt, given: A.}
+  - {family: Steiber, given: N.}
+  - {family: Steiner, given: N.}
+  - {family: Sternberg, given: S.}
+  - {family: Stiers, given: D.}
+  - {family: Stojmenovska, given: D.}
+  - {family: Storz, given: N.}
+  - {family: Striessnig, given: E.}
+  - {family: Stroppe, given: A.-K.}
+  - {family: Teltemann, given: J.}
+  - {family: Tibajev, given: A.}
+  - {family: Tung, given: B.}
+  - {family: Vagni, given: G.}
+  - {family: Van Assche, given: J.}
+  - {family: van der Linden, given: M.}
+  - {family: van der Noll, given: J.}
+  - {family: Van Hootegem, given: A.}
+  - {family: Vogtenhuber, given: S.}
+  - {family: Voicu, given: B.}
+  - {family: Wagemans, given: F.}
+  - {family: Wehl, given: N.}
+  - {family: Werner, given: H.}
+  - {family: Wiernik, given: B. M.}
+  - {family: Winter, given: F.}
+  - {family: Wolf, given: C.}
+  - {family: Yamada, given: Y.}
+  - {family: Zhang, given: N.}
+  - {family: Ziller, given: C.}
+  - {family: Zins, given: S.}
+  - {family: Żółtak, given: T.}
+  issued: 2022
+  title: Observing many researchers using the same data and hypothesis reveals a hidden universe of uncertainty
+  container-title: Proceedings of the National Academy of Sciences
+  volume: 119
+  issue: 44
+  number: e2203150119
+  DOI: 10.1073/pnas.2203150119
+
 - id: bridgeford2026
   type: article-journal
   author:
@@ -212,6 +436,15 @@ references:
   issue: 7
   number: e1014428
   DOI: 10.1371/journal.pcbi.1014428
+
+- id: carlini2026
+  type: webpage
+  author:
+  - {family: Carlini, given: N.}
+  issued: 2026-02-05
+  title: Building a C compiler with a team of parallel Claudes
+  container-title: Anthropic
+  URL: https://www.anthropic.com/research/building-c-compiler
 
 - id: chen2024
   type: article-journal
@@ -339,6 +572,46 @@ references:
   container-title: 'Thinking Machines Lab: Connectionism'
   DOI: 10.64434/tml.20250910
 
+- id: he2026
+  type: chapter
+  author:
+  - {family: He, given: H.}
+  - {family: Miller, given: C.}
+  - {family: Agarwal, given: S.}
+  - {family: Kästner, given: C.}
+  - {family: Vasilescu, given: B.}
+  issued: 2026
+  title: 'Speed at the cost of quality: How Cursor AI increases short-term velocity and long-term complexity in open-source projects'
+  container-title: Proceedings of the 23rd International Conference on Mining Software Repositories
+  page: 181-193
+  publisher: Association for Computing Machinery
+  DOI: 10.1145/3793302.3793349
+
+- id: herdagdelen2026
+  type: webpage
+  author:
+  - {family: Herdağdelen, given: A.}
+  - {family: Joren, given: H.}
+  - {family: Tamkin, given: A.}
+  issued: 2026-10-27
+  title: How AI agents shape experts’ judgment calls
+  container-title: Anthropic
+  URL: https://www.anthropic.com/research/agents-judgment-calls
+
+- id: hitzig2026
+  type: webpage
+  author:
+  - {family: Hitzig, given: Z.}
+  - {family: Massenkoff, given: M.}
+  - {family: Lyubich, given: E.}
+  - {family: Zhang, given: S.}
+  - {family: Heller, given: R.}
+  - {family: McCrory, given: P.}
+  issued: 2026-06-16
+  title: Agentic coding and persistent returns to expertise
+  container-title: Anthropic
+  URL: https://www.anthropic.com/research/claude-code-expertise
+
 - id: holtzman2020
   type: chapter
   author:
@@ -351,6 +624,39 @@ references:
   title: The curious case of neural text degeneration
   container-title: The Eighth International Conference on Learning Representations
   URL: https://openreview.net/forum?id=rygGQyrFvH
+
+- id: hughes2026
+  type: webpage
+  author:
+  - {family: Hughes, given: J.}
+  issued: 2026-03-25
+  title: 'How we built Claude Code auto mode: A safer way to skip permissions'
+  container-title: Anthropic
+  URL: https://www.anthropic.com/research/claude-code-auto-mode
+
+- id: kim2025
+  type: paper-conference
+  author:
+  - {family: Kim, given: E. M.}
+  - {family: Garg, given: A.}
+  - {family: Peng, given: K.}
+  - {family: Garg, given: N.}
+  editor:
+  - {family: Singh, given: A.}
+  - {family: Fazel, given: M.}
+  - {family: Hsu, given: D.}
+  - {family: Lacoste-Julien, given: S.}
+  - {family: Berkenkamp, given: F.}
+  - {family: Maharaj, given: T.}
+  - {family: Wagstaff, given: K.}
+  - {family: Zhu, given: J.}
+  issued: 2025
+  title: Correlated errors in large language models
+  container-title: Proceedings of the 42nd International Conference on Machine Learning
+  volume: 267
+  page: 30038-30066
+  publisher: PMLR
+  URL: https://proceedings.mlr.press/v267/kim25e.html
 
 - id: kuznetsova2017
   type: article-journal
@@ -365,6 +671,42 @@ references:
   issue: 13
   page: 1-26
   DOI: 10.18637/jss.v082.i13
+
+- id: kwa2025
+  type: chapter
+  author:
+  - {family: Kwa, given: T.}
+  - {family: West, given: B.}
+  - {family: Becker, given: J.}
+  - {family: Deng, given: A.}
+  - {family: Garcia, given: K.}
+  - {family: Hasin, given: M.}
+  - {family: Jawhar, given: S.}
+  - {family: Kinniment, given: M.}
+  - {family: Rush, given: N.}
+  - {family: Von Arx, given: S.}
+  - {family: Bloom, given: R.}
+  - {family: Broadley, given: T.}
+  - {family: Du, given: H.}
+  - {family: Goodrich, given: B.}
+  - {family: Jurkovic, given: N.}
+  - {family: Miles, given: L. H.}
+  - {family: Nix, given: S.}
+  - {family: Lin, given: T.}
+  - {family: Parikh, given: N.}
+  - {family: Rein, given: D.}
+  - {family: Koba Sato, given: L. J.}
+  - {family: Wijk, given: H.}
+  - {family: Ziegler, given: D. M.}
+  - {family: Barnes, given: E.}
+  - {family: Chan, given: L.}
+  issued: 2025
+  title: Measuring AI ability to complete long software tasks
+  container-title: Advances in Neural Information Processing Systems
+  volume: 38
+  page: 102382-102435
+  publisher: Neural Information Processing Systems Foundation
+  DOI: 10.52202/085713-3086
 
 - id: lee2025
   type: chapter
@@ -382,6 +724,19 @@ references:
   number: Article 1121
   publisher: Association for Computing Machinery
   DOI: 10.1145/3706598.3713778
+
+- id: leek2015
+  type: article-journal
+  author:
+  - {family: Leek, given: J. T.}
+  - {family: Peng, given: R. D.}
+  issued: 2015
+  title: 'Reproducible research can still be wrong: Adopting a prevention approach'
+  container-title: Proceedings of the National Academy of Sciences
+  volume: 112
+  issue: 6
+  page: 1645-1646
+  DOI: 10.1073/pnas.1421412111
 
 - id: lo2015
   type: article-journal
@@ -406,6 +761,16 @@ references:
   issue: 4
   page: 1494-1502
   DOI: 10.3758/s13428-016-0809-y
+
+- id: maccallum2025
+  type: webpage
+  author:
+  - {family: MacCallum, given: N.}
+  - {family: Lee, given: J.}
+  issued: 2025-04-14
+  title: GPT-4.1 prompting guide
+  container-title: OpenAI Cookbook
+  URL: https://developers.openai.com/cookbook/examples/gpt4-1_prompting_guide
 
 - id: matuschek2017
   type: article-journal
@@ -450,6 +815,36 @@ references:
   page: 49-58
   DOI: 10.1038/s41586-024-07146-0
 
+- id: metr-time-horizons
+  type: webpage
+  author:
+  - literal: METR
+  issued: 2026-09-08
+  title: Task-completion time horizons of frontier AI models
+  URL: https://metr.org/time-horizons/
+
+- id: metr2026
+  type: webpage
+  author:
+  - literal: METR
+  issued: 2026-01-29
+  title: Time Horizon 1.1
+  URL: https://metr.org/blog/2026-01-29-time-horizon-1-1/
+
+- id: morris2019
+  type: article-journal
+  author:
+  - {family: Morris, given: T. P.}
+  - {family: White, given: I. R.}
+  - {family: Crowther, given: M. J.}
+  issued: 2019
+  title: Using simulation studies to evaluate statistical methods
+  container-title: Statistics in Medicine
+  volume: 38
+  issue: 11
+  page: 2074-2102
+  DOI: 10.1002/sim.8086
+
 - id: nadgir2026
   type: article
   author:
@@ -473,6 +868,16 @@ references:
   publisher: arXiv
   DOI: 10.48550/arXiv.2606.26158
 
+- id: narayanan2025
+  type: report
+  author:
+  - {family: Narayanan, given: A.}
+  - {family: Kapoor, given: S.}
+  issued: 2025
+  title: 'AI as normal technology: An alternative to the vision of AI as a potential superintelligence'
+  publisher: Knight First Amendment Institute
+  URL: https://knightcolumbia.org/content/ai-as-normal-technology
+
 - id: nasem2019
   type: book
   author:
@@ -481,6 +886,51 @@ references:
   title: Reproducibility and replicability in science
   publisher: The National Academies Press
   DOI: 10.17226/25303
+
+- id: nature2023
+  type: article-journal
+  issued: 2023
+  title: Tools such as ChatGPT threaten transparent science; here are our ground rules for their use
+  title-short: Tools such as ChatGPT
+  container-title: Nature
+  volume: 613
+  issue: 7945
+  page: 612
+  DOI: 10.1038/d41586-023-00191-1
+
+- id: onnasch2014
+  type: article-journal
+  author:
+  - {family: Onnasch, given: L.}
+  - {family: Wickens, given: C. D.}
+  - {family: Li, given: H.}
+  - {family: Manzey, given: D.}
+  issued: 2014
+  title: 'Human performance consequences of stages and levels of automation: An integrated meta-analysis'
+  container-title: Human Factors
+  volume: 56
+  issue: 3
+  page: 476-488
+  DOI: 10.1177/0018720813501549
+
+- id: orlanski2026
+  type: article
+  author:
+  - {family: Orlanski, given: G.}
+  - {family: Roy, given: D.}
+  - {family: Yun, given: A.}
+  - {family: Shin, given: C.}
+  - {family: Gu, given: A.}
+  - {family: Ge, given: A.}
+  - {family: Adila, given: D.}
+  - {family: Roberts, given: N.}
+  - {family: Sala, given: F.}
+  - {family: Albarghouthi, given: A.}
+  issued: 2026
+  title: 'SlopCodeBench: Benchmarking how coding agents degrade over long-horizon iterative tasks'
+  number: arXiv:2603.24755
+  publisher: arXiv
+  DOI: 10.48550/arXiv.2603.24755
 
 - id: ouyang2025
   type: article-journal
@@ -700,6 +1150,35 @@ references:
   publisher: Association for Computing Machinery
   DOI: 10.1145/3820002.3828581
 
+- id: whitfill2026
+  type: webpage
+  author:
+  - {family: Whitfill, given: P.}
+  - {family: Wu, given: C.}
+  - {family: Becker, given: J.}
+  - {family: Rush, given: N.}
+  issued: 2026-03-10
+  title: Many SWE-bench-passing PRs would not be merged into main
+  container-title: METR
+  URL: https://metr.org/notes/2026-03-10-many-swe-bench-passing-prs-would-not-be-merged-into-main/
+
+- id: wiles2026
+  type: article-journal
+  author:
+  - {family: Wiles, given: E.}
+  - {family: Krayer, given: L.}
+  - {family: Abbadi, given: M.}
+  - {family: Awasthi, given: U.}
+  - {family: Kennedy, given: R.}
+  - {family: Mishkin, given: P.}
+  - {family: Sack, given: D.}
+  - {family: Candelon, given: F.}
+  issued: 2026
+  title: Generative AI and the temporary upskilling of knowledge workers
+  container-title: Nature Human Behaviour
+  status: Advance online publication
+  DOI: 10.1038/s41562-026-02566-6
+
 - id: wilson2017
   type: article-journal
   author:
@@ -716,3 +1195,24 @@ references:
   issue: 6
   number: e1005510
   DOI: 10.1371/journal.pcbi.1005510
+
+- id: yuan2025
+  type: chapter
+  author:
+  - {family: Yuan, given: J.}
+  - {family: Li, given: H.}
+  - {family: Ding, given: X.}
+  - {family: Xie, given: W.}
+  - {family: Li, given: Y.-J.}
+  - {family: Zhao, given: W.}
+  - {family: Wan, given: K.}
+  - {family: Shi, given: J.}
+  - {family: Hu, given: X.}
+  - {family: Liu, given: Z.}
+  issued: 2025
+  title: Understanding and mitigating numerical sources of nondeterminism in LLM inference
+  container-title: Advances in Neural Information Processing Systems
+  volume: 38
+  page: 188045-188077
+  publisher: Neural Information Processing Systems Foundation
+  DOI: 10.52202/085713-5653
