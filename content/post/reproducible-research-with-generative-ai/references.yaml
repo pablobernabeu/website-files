@@ -145,6 +145,21 @@ references:
   page: 775-779
   DOI: 10.1016/0005-1098(83)90046-8
 
+- id: balepur2026
+  type: article
+  author:
+  - {family: Balepur, given: N.}
+  - {family: Baumler, given: C.}
+  - {family: Chen, given: V.}
+  - {family: Choi, given: E.}
+  - {family: Rudinger, given: R.}
+  - {family: Boyd-Graber, given: J. L.}
+  issued: 2026
+  title: '(Im)paired programming: Coding agents improve productivity but harm understanding'
+  number: arXiv:2607.26375
+  publisher: arXiv
+  DOI: 10.48550/arXiv.2607.26375
+
 - id: baltes2026
   type: article-journal
   author:
@@ -459,6 +474,20 @@ references:
   issue: 2
   DOI: 10.1162/99608f92.5317da47
 
+- id: chen2026
+  type: article
+  author:
+  - {family: Chen, given: J.}
+  - {family: Xu, given: X.}
+  - {family: Wei, given: H.}
+  - {family: Chen, given: C.}
+  - {family: Zhao, given: B.}
+  issued: 2026
+  title: 'SWE-CI: Evaluating agent capabilities in maintaining codebases via continuous integration'
+  number: arXiv:2603.03823
+  publisher: arXiv
+  DOI: 10.48550/arXiv.2603.03823
+
 - id: feuerriegel2026
   type: article-journal
   author:
@@ -551,6 +580,15 @@ references:
   page: 1182-1186
   DOI: 10.1038/s41562-026-02492-7
 
+- id: fri2026
+  type: webpage
+  author:
+  - literal: Forecasting Research Institute
+  issued: 2026-06-01
+  title: 'Wave 8: Timelines'
+  container-title: Longitudinal Expert AI Panel
+  URL: https://leap.forecastingresearch.org/reports/wave8
+
 - id: gao2025
   type: chapter
   author:
@@ -561,6 +599,20 @@ references:
   title: 'Model equality testing: Which model is this API serving?'
   container-title: The Thirteenth International Conference on Learning Representations
   URL: https://proceedings.iclr.cc/paper_files/paper/2025/hash/d73234a13815fc1f9779dd17d89be9b4-Abstract-Conference.html
+
+- id: gloaguen2026
+  type: article
+  author:
+  - {family: Gloaguen, given: T.}
+  - {family: Mündler-Sasahara, given: N.}
+  - {family: Müller, given: M. N.}
+  - {family: Raychev, given: V.}
+  - {family: Vechev, given: M.}
+  issued: 2026
+  title: 'Evaluating AGENTS.md: Are repository-level context files helpful for coding agents?'
+  number: arXiv:2602.11988
+  publisher: arXiv
+  DOI: 10.48550/arXiv.2602.11988
 
 - id: he2025
   type: post-weblog
@@ -772,6 +824,20 @@ references:
   container-title: OpenAI Cookbook
   URL: https://developers.openai.com/cookbook/examples/gpt4-1_prompting_guide
 
+- id: maier2026
+  type: article
+  author:
+  - {family: Maier, given: S.}
+  - {family: Gunzenhäuser, given: M.}
+  - {family: Schweisthal, given: J.}
+  - {family: Schneider, given: M.}
+  - {family: Feuerriegel, given: S.}
+  issued: 2026
+  title: A meta-analysis of the effect of generative AI on productivity and learning in programming
+  number: arXiv:2605.04779
+  publisher: arXiv
+  DOI: 10.48550/arXiv.2605.04779
+
 - id: matuschek2017
   type: article-journal
   author:
@@ -974,6 +1040,23 @@ references:
   page: 381-410
   DOI: 10.1177/0018720810376055
 
+- id: patel2026
+  type: chapter
+  author:
+  - {family: Patel, given: S. P.}
+  - {family: Hou, given: B. L.}
+  - {family: Purohit, given: A.}
+  - {family: Xu, given: K.}
+  - {family: Pan, given: J.}
+  - {family: He, given: H.}
+  - {family: Chen, given: V.}
+  issued: 2026
+  title: Is agent code less maintainable than human code?
+  container-title: Proceedings of the 2026 Conference on Empirical Methods in Natural Language Processing
+  page: 57491-57514
+  publisher: Association for Computational Linguistics
+  DOI: 10.18653/2026.emnlp-main.2528
+
 - id: peng2011
   type: article-journal
   author:
@@ -985,6 +1068,18 @@ references:
   issue: 6060
   page: 1226-1227
   DOI: 10.1126/science.1213847
+
+- id: rosenberg2026
+  type: post-weblog
+  author:
+  - {family: Rosenberg, given: J.}
+  - {family: Reynolds, given: M.}
+  - {family: Flechner, given: N.}
+  - {family: Devlin-Foltz, given: Z.}
+  issued: 2026-09-23
+  title: How accurate have AI progress forecasts been so far?
+  container-title: Forecasting Research Institute
+  URL: https://forecastingresearch.substack.com/p/ai-progress-forecasts-accuracy
 
 - id: sandve2013
   type: article-journal
