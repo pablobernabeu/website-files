@@ -5181,9 +5181,11 @@ body.dark .document-viewer-toolbar {
 
 // A post's page gives its dates in full (page_metadata.html). Each is kept whole, and
 // "Last updated" with its date, so a phone wraps the row between them rather than
-// leaving a day and month at the end of one line and the year on the next.
+// leaving a day and month at the end of one line and the year on the next. The author's
+// name stays whole in the same way.
 .article-metadata time,
-.article-metadata .article-updated {
+.article-metadata .article-updated,
+.article-metadata .article-byline {
   white-space: nowrap;
 }
 

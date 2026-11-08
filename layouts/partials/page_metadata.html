@@ -64,6 +64,15 @@
     {{ $date }}
   </span>
   {{ else if and (eq $page.Type "post") (not $is_list) }}
+    {{/* A post's own page names its author beside the date, since Scholar looks for
+         authors on the line below the title (see citation_meta.html). Lists, the home
+         page among them, take a later branch, and a post with listed authors shows them
+         above, so neither repeats the name. A post that only points elsewhere through
+         external_link holds no work to credit here. The divider sits inside the
+         unbreakable span, so a wrapped line does not begin with it. */}}
+    {{ if not (or $page.Params.authors $page.Params.external_link) }}
+    <span class="article-byline">{{ partial "functions/get_author_name" $page | plainify }} <span class="middot-divider"></span></span>
+    {{ end }}
     {{/* A post's own page gives the day it was published, and the day it was last
          updated when that came later. Lists and the other sections keep the year alone,
          as date_format in params.toml sets it. Posts from 2016 to 2020 whose day went

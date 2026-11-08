@@ -1,0 +1,30 @@
+{{/* Bibliographic tags for a post's own page, which Google Scholar reads in preference
+     to guessing from the page's text (scholar.google.com/intl/en/scholar/inclusion.html).
+     Without them, its parser credited posts to items of the navbar, such as "W Apps" and
+     "L Dark". Only the fields a blog post has are given: a journal, volume or pages would
+     present it as a journal article. A post that only points elsewhere through
+     external_link gets no tags, since its page holds no work.
+
+     Solo posts leave their authors blank, so the name comes from the same fallback as
+     the JSON-LD. A post with co-authors lists them in one string, which may hold markup,
+     joined with "and", and Scholar wants a tag for each. A post dated 1 January before
+     2021 gives the year alone, as that day was a stand-in (see page_metadata.html). */}}
+{{ if and .IsPage (eq .Type "post") (not .Params.external_link) }}
+  {{ $authors := slice }}
+  {{ with .Params.authors }}
+    {{ range . }}
+      {{ range split (. | plainify | htmlUnescape) " and " }}
+        {{ $authors = $authors | append (trim . " ") }}
+      {{ end }}
+    {{ end }}
+  {{ else }}
+    {{ $authors = slice (partial "functions/get_author_name" . | plainify | htmlUnescape) }}
+  {{ end }}
+  <meta name="citation_title" content="{{ .Title | markdownify | plainify | htmlUnescape }}">
+  {{ range $authors }}
+  <meta name="citation_author" content="{{ . }}">
+  {{ end }}
+  {{ with .Date }}{{ if not .IsZero }}
+  <meta name="citation_publication_date" content="{{ .Format (cond (and (lt .Year 2021) (eq (.Format "01-02") "01-01")) "2006" "2006/01/02") }}">
+  {{ end }}{{ end }}
+{{ end }}
