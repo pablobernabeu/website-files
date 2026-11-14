@@ -40,15 +40,6 @@ references:
   number: 102813
   DOI: 10.1016/j.techsoc.2025.102813
 
-- id: anthropic-best-practices
-  type: webpage
-  author:
-  - literal: Anthropic
-  title: Best practices for Claude Code
-  container-title: Claude Code Docs
-  URL: https://code.claude.com/docs/en/best-practices
-  accessed: 2026-11-07
-
 - id: anthropic-deprecations
   type: webpage
   author:
@@ -67,15 +58,6 @@ references:
   URL: https://platform.claude.com/docs/en/build-with-claude/effort
   accessed: 2026-11-07
 
-- id: anthropic-glossary
-  type: webpage
-  author:
-  - literal: Anthropic
-  title: Glossary
-  container-title: Claude Platform Docs
-  URL: https://platform.claude.com/docs/en/about-claude/glossary
-  accessed: 2026-11-07
-
 - id: anthropic-overview
   type: webpage
   author:
@@ -83,24 +65,6 @@ references:
   title: Overview
   container-title: Claude Code Docs
   URL: https://code.claude.com/docs/en/overview
-  accessed: 2026-11-07
-
-- id: anthropic-prompting
-  type: webpage
-  author:
-  - literal: Anthropic
-  title: Prompting best practices
-  container-title: Claude Platform Docs
-  URL: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices
-  accessed: 2026-11-07
-
-- id: anthropic-thinking
-  type: webpage
-  author:
-  - literal: Anthropic
-  title: Thinking
-  container-title: Claude Platform Docs
-  URL: https://platform.claude.com/docs/en/build-with-claude/thinking
   accessed: 2026-11-07
 
 - id: atil2025
@@ -580,14 +544,16 @@ references:
   page: 1182-1186
   DOI: 10.1038/s41562-026-02492-7
 
-- id: fri2026
+- id: fri2026tasks
   type: webpage
   author:
   - literal: Forecasting Research Institute
-  issued: 2026-06-01
-  title: 'Wave 8: Timelines'
+  # The page identifies this as its update date, used for the version cited.
+  issued: 2026-08-11
+  accessed: 2026-11-14
+  title: Year AI masters 8-hour expert tasks
   container-title: Longitudinal Expert AI Panel
-  URL: https://leap.forecastingresearch.org/reports/wave8
+  URL: https://leap.forecastingresearch.org/forecasts/80-8-hour-task-horizon-2
 
 - id: gao2025
   type: chapter
@@ -599,20 +565,6 @@ references:
   title: 'Model equality testing: Which model is this API serving?'
   container-title: The Thirteenth International Conference on Learning Representations
   URL: https://proceedings.iclr.cc/paper_files/paper/2025/hash/d73234a13815fc1f9779dd17d89be9b4-Abstract-Conference.html
-
-- id: gloaguen2026
-  type: article
-  author:
-  - {family: Gloaguen, given: T.}
-  - {family: Mündler-Sasahara, given: N.}
-  - {family: Müller, given: M. N.}
-  - {family: Raychev, given: V.}
-  - {family: Vechev, given: M.}
-  issued: 2026
-  title: 'Evaluating AGENTS.md: Are repository-level context files helpful for coding agents?'
-  number: arXiv:2602.11988
-  publisher: arXiv
-  DOI: 10.48550/arXiv.2602.11988
 
 - id: he2025
   type: post-weblog
@@ -813,16 +765,6 @@ references:
   issue: 4
   page: 1494-1502
   DOI: 10.3758/s13428-016-0809-y
-
-- id: maccallum2025
-  type: webpage
-  author:
-  - {family: MacCallum, given: N.}
-  - {family: Lee, given: J.}
-  issued: 2025-04-14
-  title: GPT-4.1 prompting guide
-  container-title: OpenAI Cookbook
-  URL: https://developers.openai.com/cookbook/examples/gpt4-1_prompting_guide
 
 - id: maier2026
   type: article
@@ -1068,18 +1010,6 @@ references:
   issue: 6060
   page: 1226-1227
   DOI: 10.1126/science.1213847
-
-- id: rosenberg2026
-  type: post-weblog
-  author:
-  - {family: Rosenberg, given: J.}
-  - {family: Reynolds, given: M.}
-  - {family: Flechner, given: N.}
-  - {family: Devlin-Foltz, given: Z.}
-  issued: 2026-09-23
-  title: How accurate have AI progress forecasts been so far?
-  container-title: Forecasting Research Institute
-  URL: https://forecastingresearch.substack.com/p/ai-progress-forecasts-accuracy
 
 - id: sandve2013
   type: article-journal
