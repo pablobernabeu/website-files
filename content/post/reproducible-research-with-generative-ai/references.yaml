@@ -544,6 +544,15 @@ references:
   page: 1182-1186
   DOI: 10.1038/s41562-026-02492-7
 
+- id: fri2025leap
+  type: post-weblog
+  author:
+  - literal: Forecasting Research Institute
+  issued: 2025-11-10
+  title: 'Introducing LEAP: The Longitudinal Expert AI Panel'
+  container-title: Forecasting Research Institute
+  URL: https://forecastingresearch.substack.com/p/introducing-leap
+
 - id: fri2026tasks
   type: webpage
   author:
