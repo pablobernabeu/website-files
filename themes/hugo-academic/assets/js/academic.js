@@ -1882,6 +1882,46 @@
 
   const codeChunks = [];
 
+  // knitr starts every line of printed output with a comment marker, `#>` or its
+  // default `##`, so that output pasted back into R together with its code does
+  // nothing. On this site, output sits in a block of its own, whose border and label
+  // already say what it is, and the marker only gets in the way of copying it: JSON
+  // copied from an output block would not parse. The marker is therefore removed
+  // from a block marked as output, when every line carries the same one. The text
+  // is edited where it lies, which keeps any highlighting. Should a marker span two
+  // highlighted tokens, the block is left as plain text, without the markers.
+  function stripOutputMarkers(pre) {
+    const code = pre.querySelector(":scope > code") || pre;
+    const lines = code.textContent.split("\n");
+    const marker = ["#>", "##"].find(
+      (m) =>
+        lines.some((line) => line.startsWith(m)) &&
+        lines.every((line) => line === "" || line === m || line.startsWith(m + " "))
+    );
+    if (!marker) return;
+
+    const plain = lines
+      .map((line) => (line.startsWith(marker) ? line.slice(marker.length).replace(/^ /, "") : line))
+      .join("\n");
+    const walker = document.createTreeWalker(code, NodeFilter.SHOW_TEXT);
+    let lineStart = true;
+    for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+      const text = node.nodeValue;
+      let kept = "";
+      for (let i = 0; i < text.length; i++) {
+        if (lineStart && text.startsWith(marker, i)) {
+          i += marker.length;
+          if (text[i] === " ") i += 1;
+          if (i >= text.length) break;
+        }
+        kept += text[i];
+        lineStart = text[i] === "\n";
+      }
+      node.nodeValue = kept;
+    }
+    if (code.textContent !== plain) code.textContent = plain;
+  }
+
   function styleCodeFoldSummary(summary, open) {
     if (open) {
       summary.textContent = "Collapse";
@@ -1934,6 +1974,7 @@
         let out = d.nextElementSibling;
         while (out && out.tagName === "PRE" && !out.hasAttribute("class")) {
           out.dataset.chunk = "output";
+          stripOutputMarkers(out);
           out = out.nextElementSibling;
         }
       }
