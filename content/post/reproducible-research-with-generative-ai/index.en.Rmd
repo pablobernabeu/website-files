@@ -207,7 +207,10 @@ theme_figure <- function(base_size = 12) {
           panel.background = element_blank(), plot.background = element_blank(),
           strip.background = element_blank(),
           strip.text = element_text(colour = fig_roles[['ink']], face = 'bold', hjust = 0,
-                                    size = rel(0.95), margin = margin(b = 4)),
+                                    size = rel(0.95), margin = margin(t = 3, b = 4)),
+          # The page draws text in its own font, whose letters can stand a little taller than
+          # those of the font the layout was measured in, so strips do not clip their text
+          strip.clip = 'off',
           legend.key = element_blank(), legend.background = element_blank(),
           legend.position = 'none', plot.margin = margin(6, 12, 6, 6))
 }
@@ -2131,7 +2134,7 @@ cap_forecasts <- sprintf(paste(
   tolower(forecast_dates$panel[rounded]), sprintf('%.0f%%', 100 * forecast_dates$probability[rounded]),
   format(forecast_dates$year[rounded], nsmall = 2))
 alt_forecasts <- sprintf(paste(
-  'Two rows of three dots on a time axis from 2026 to 2036. For a 25%%, 50%% and 75%% chance of the milestone,',
+  'Two rows of three dots, spaced in proportion to the years they mark. For a 25%%, 50%% and 75%% chance of the milestone,',
   'the experts\' median forecasts fall in %s, %s and %s, and the superforecasters\' in %s, %s and %s.'),
   year_of('Experts', 0.25), year_of('Experts', 0.5), year_of('Experts', 0.75),
   year_of('Superforecasters', 0.25), year_of('Superforecasters', 0.5), year_of('Superforecasters', 0.75))
@@ -2143,10 +2146,11 @@ The upkeep is improving, if unevenly. In SWE-CI, a benchmark in which agents mai
 
 Experts have not forecast how long researchers will need to read code to check an agent's work, but their forecasts speak to a narrower milestone (Figure 4). In spring 2026, the Forecasting Research Institute asked its panels when a model would first succeed 80% of the time at tasks that take a human expert at least eight hours. The experts' median forecast gave that milestone an even chance by `r even_chance[['Experts']]`, and the superforecasters' by `r even_chance[['Superforecasters']]` [@fri2026tasks]. Those dates concern completing tasks, however, and say nothing directly about when agents will keep a codebase healthy without supervision, or when researchers can stop reading code.
 
-```{r expert-forecasts, fig.width = 8, fig.height = 2.2, fig.cap = cap_forecasts, fig.alt = alt_forecasts}
+```{r expert-forecasts, fig.width = 8, fig.height = 1.8, fig.cap = cap_forecasts, fig.alt = alt_forecasts}
 # forecast_dates, read before the section's text, holds each panel's year for each
 # probability. The bar joins a panel's years for a 25% and a 75% chance, which are
-# group summaries, not a range of respondents' forecasts.
+# group summaries, not a range of respondents' forecasts. Every dot carries its year, so
+# the figure needs no axis for them.
 fig_forecasts <- function(narrow = FALSE, base_size = if (narrow) 12 else 11) {
   dates <- forecast_dates |>
     mutate(panel = factor(panel, levels = c('Superforecasters', 'Experts')),
@@ -2164,16 +2168,15 @@ fig_forecasts <- function(narrow = FALSE, base_size = if (narrow) 12 else 11) {
     geom_text(aes(label = probability_label), data = filter(dates, panel == 'Experts'), nudge_y = 0.3,
               colour = fig_roles[['ink']], size = label_size(base_size)) +
     scale_size_manual(values = c(`FALSE` = 2.2, `TRUE` = 3.6)) +
-    scale_x_continuous(breaks = seq(2026, 2036, 2), limits = c(2026, 2036.4), expand = expansion(0)) +
+    scale_x_continuous(breaks = NULL, limits = c(2026, 2036.4), expand = expansion(0)) +
     scale_y_discrete(expand = expansion(add = c(0.55, 0.7))) +
-    labs(x = if (narrow) 'Year'
-             else 'Year by which the milestone has that probability of having been reached', y = NULL) +
+    labs(x = NULL, y = NULL) +
     theme_figure(base_size) +
     theme(axis.text.y = element_text(colour = fig_roles[['ink']], size = rel(0.92)))
 }
 stopifnot(range(forecast_dates$year) >= 2026, range(forecast_dates$year) <= 2036)
 
-draw_narrow(fig_forecasts(narrow = TRUE), width = 4.4, height = 2.7)
+draw_narrow(fig_forecasts(narrow = TRUE), width = 4.4, height = 2.3)
 fig_forecasts()
 ```
 
