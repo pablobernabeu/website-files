@@ -1,0 +1,14 @@
+I read all 1,440 rows. Every participant saw every item under both primes, so I worked from the 720 paired differences (unrelated minus related).
+
+**Estimate.** The differences add up to 13,334 ms, which gives a mean of 13,334 / 720 = 18.5 ms. Because the design is fully balanced and nothing is missing, the lmer fixed effect of prime_c (coded -0.5/+0.5) should equal this mean difference, or come very close to it.
+
+**Confidence interval (approximate).** I can't compute the REML variance components exactly by hand, so the interval is an estimate:
+- **Spread between participants:** each participant's mean priming effect ranges from about -57 to +77 ms, and those means have a variance of about 1,200 ms².
+- **Spread within participants:** I checked a few participants and their paired differences have standard deviations of about 105 to 270 ms, with a typical value near 200 ms.
+- **Expected noise:** noise alone would give a participant-mean variance of about 40,000 / 24 ≈ 1,670 ms². That is more than the 1,200 ms² observed, so the participant random slope is probably estimated near zero, and the fit may be singular. I assumed the item slope variance is also small.
+- **Resulting error:** the standard error is then about √(σ_d² / 720) ≈ √(42,000 / 720) ≈ 7.6 ms.
+- **Interval:** 18.5 ± 1.96 × 7.6 gives roughly 3.6 to 33.4 ms.
+
+Responses after unrelated primes are about 18.5 ms slower than after related primes. The estimate itself should be close to exact. The interval limits could be off by a few milliseconds.
+
+RESULT estimate=18.52 lower=3.6 upper=33.4

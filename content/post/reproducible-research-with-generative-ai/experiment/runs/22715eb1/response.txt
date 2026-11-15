@@ -1,0 +1,14 @@
+**The priming effect is about 18.5 ms, 95% Wald CI roughly −0.7 to 37.8 ms.** Responses after unrelated primes were about 18.5 ms slower than after related primes. The interval just includes zero, so the effect is not significant at the 5% level. I did this by hand, because I was told to only read the file and not run code. The estimate should match lme4 to about 0.01 ms. The interval limits are my best reconstruction and could differ from R by a few tenths of a millisecond.
+
+**Why this can be done without R.** The design is fully balanced: 30 participants × 24 items, each seen once per prime condition, and all 1440 rows were used. In that case the fixed effect of prime_c from the specified `lmer()` model is exactly the grand mean of the 720 within-pair differences (unrelated rt − related rt). Its variance is (τ²_participant-slope/30 + τ²_item-slope/24 + 2σ²/720). The REML variance estimates can be recovered from the mean squares of those differences, split by participant, by item and residual.
+
+**What the numbers were:**
+- **Estimate:** the differences sum to 13,334 ms, so the estimate is 13,334 / 720 = 18.52 ms.
+- **Participant slopes:** the participant mean square of the differences (28,810) is smaller than the residual mean square (41,047). So the participant random slope collapses to the boundary and R should warn about a singular fit. The participant intercept–slope correlation will show as about +1. The small leftover slope variance comes from the participant intercept–slope covariance: 24·τ² ≈ 1,910, which is a slope SD of about 9 ms.
+- **Item slopes:** the item mean square of the differences is 67,640. The item intercept–slope correlation is about −0.01, so the item slope variance is an ordinary estimate, not on the boundary.
+- **Standard error:** Var = (1,910 + 67,640) / 720 = 96.6, so SE ≈ 9.83 ms.
+- **Interval:** 18.52 ± 1.96 × 9.83 gives −0.74 to 37.78 ms.
+
+**Checks and the main assumption.** Participant and item sums of the differences and of the related-prime RTs added up to the same totals both ways. I also re-summed a few participants' unrelated RTs directly (P01, P12, P21, and item W11) and they matched. I did not compute the residual variance of the pairwise RT sums (related + unrelated), which feeds into σ². The SE would only move noticeably if that were far larger than the residual variance of the differences, which I don't expect here.
+
+RESULT estimate=18.52 lower=-0.74 upper=37.78

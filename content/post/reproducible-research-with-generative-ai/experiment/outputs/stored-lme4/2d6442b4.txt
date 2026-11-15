@@ -1,0 +1,33 @@
+Observations: 1440 | participants: 30 | items: 24
+Every participant x item x prime cell has exactly one trial: TRUE
+RT range: 377-1580 ms (data are correct responses; no further trimming)
+
+Condition means (ms):
+      prime   n  mean_rt    sd_rt median_rt
+1   related 720 698.7292 161.4088       673
+2 unrelated 720 717.2486 168.4962       697
+
+Random effects 'maximal': singular = TRUE, converged = TRUE
+Random effects 'no participant slope-intercept r': singular = TRUE, converged = TRUE
+Random effects 'no participant slope': singular = FALSE, converged = TRUE
+
+Selected model (no participant slope):
+rt ~ prime_c + (1 | participant) + (1 + prime_c | item)
+ Groups      Name        Std.Dev. Corr  
+ participant (Intercept)  71.528        
+ item        (Intercept)  39.972        
+             prime_c      29.773  -0.024
+ Residual                143.259        
+
+Priming effect (unrelated - related): 18.52 ms, SE = 9.69, df = 23.0, p = 0.0686
+95% CI (Satterthwaite): [-1.53, 38.57] ms
+
+Sensitivity checks:
+  Kenward-Roger 95% CI:             [-1.53, 38.57] ms
+  Profile-likelihood 95% CI:        [-0.85, 37.89] ms
+  With frequency covariate:         18.52 ms, SE = 9.69
+  By-participant paired t (F1):     18.52 ms [5.58, 31.46]  (ignores item variability)
+  By-item paired t (F2):            18.52 ms [-1.53, 38.57]
+  Log-RT model: unrelated/related = 1.025 [0.999, 1.053], p = 0.0613
+
+RESULT estimate=18.52 lower=-1.53 upper=38.57

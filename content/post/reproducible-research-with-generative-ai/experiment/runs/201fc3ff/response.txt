@@ -1,0 +1,18 @@
+Responses after unrelated primes were **18.52 ms** slower than after related primes, with a 95% Wald CI of **[-0.74, 37.78] ms**. The interval includes zero, so the effect is not significant at the .05 level (t = 1.88, SE = 9.83).
+
+I wrote the script to `/home/user/agent_runs/201fc3ff/analysis.R` and ran it with `Rscript analysis.R`. It finishes cleanly and its last line is:
+```
+RESULT estimate=18.52 lower=-0.74 upper=37.78
+```
+
+**What the script does:**
+- Reads `data.csv` and uses all 1440 rows (30 participants × 24 items × 2 primes), with no exclusions and rt left untransformed. The data were complete and balanced.
+- Codes `prime_c` as -0.5 for related and +0.5 for unrelated, so its coefficient is the unrelated minus related difference.
+- Fits `lmer(rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c | item))` with REML and the default optimiser.
+- Prints the cell means, the model summary, any convergence messages and whether the fit is singular.
+- Takes the estimate from `fixef` and the interval from `confint(fit, parm = "prime_c", method = "Wald")`, printing the RESULT line last.
+
+**Caveats:**
+- **Singular fit:** lme4 reports a boundary (singular) fit. The participant random slope is small (SD about 8.9 ms) and its correlation with the intercept is estimated at +1.00, so the participant random-effects structure is over-specified for these data. The optimiser still converged (code 0), and I kept the model exactly as specified.
+- **Estimate matches the raw means:** because the design is fully balanced, the fixed effect equals the raw difference in means (717.25 − 698.73 ms). The random effects widen the confidence interval but don't change the point estimate.
+- **Skewed residuals:** rt was left untransformed as instructed, and the residuals are right-skewed (largest scaled residual about 5.8). This is typical for response times.

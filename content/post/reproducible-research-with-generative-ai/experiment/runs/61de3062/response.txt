@@ -1,0 +1,13 @@
+Responses were about 18.5 ms slower after unrelated primes than after related primes, with a 95% CI of -1.5 to 38.6 ms. The effect is positive, but the interval includes zero (p = .069), so at the usual 5% level it is not reliably different from zero.
+
+The script is `/home/user/agent_runs/61de3062/analysis.R`. It runs cleanly with `Rscript analysis.R`, and its last line is:
+`RESULT estimate=18.52 lower=-1.53 upper=38.57`
+
+**What the script does:**
+- **Reads and checks the data.** It loads `data.csv` and confirms there are no missing values and that `prime` only takes the two expected values. It codes prime as -0.5 for related and +0.5 for unrelated, so the model coefficient is the unrelated-minus-related difference in ms. It also centres Zipf frequency and prints the mean RT for each prime condition.
+- **Fits a mixed model on raw RT** (in ms) with random effects for participants and items. That model is `rt ~ prime + frequency`, with a random intercept for participants and a random intercept and prime slope for items. The CI uses Satterthwaite degrees of freedom (23), which suits having only 24 items.
+- **Chooses the random effects from the data.** The script first fits the fullest model, with prime slopes for both participants and items. That fit fails to settle properly, because participants hardly differ in their priming effect: that variance comes out at about zero. So the participant slope is dropped.
+- **Keeps the item slope.** The priming effect differs a lot between words (SD about 30 ms). A model that ignores this would report a falsely narrow CI (standard error 7.6 instead of 9.7).
+- **Prints two robustness checks** that do not feed into the result. Modelling log RT and converting back to ms gives 17.3 ms (-0.9 to 35.4). Removing 13 extreme responses (residuals beyond 3 SD) gives 17.7 ms (0.0 to 35.3).
+
+The data are complete and balanced (30 participants × 24 words × 2 primes, 1440 trials), so the estimate equals the raw difference in means: 717.2 − 698.7 ms. A parametric bootstrap I ran while exploring (not in the script) gave -0.2 to 36.6 ms. Frequency did not change the size of the priming effect (interaction p = .84).

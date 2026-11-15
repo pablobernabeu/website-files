@@ -1,0 +1,25 @@
+**Priming effect: about 22 ms, 95% CI about 1 to 43 ms.** Responses were roughly 22 ms slower after unrelated primes than after related primes. This is an approximation: I had no code interpreter, so I worked it out by hand from the file rather than running `lmer()`. Expect each number to be off by up to about 0.5 ms for the estimate and 1–2 ms for the interval ends.
+
+**What the data contain.** There are 1,354 correct responses: 671 related and 683 unrelated. Of the 720 participant-by-word cells, 635 have both conditions, 84 have only one (36 related only, 48 unrelated only), and 1 has neither (P24–W11).
+
+**Simple summaries, for comparison:**
+- Raw difference between the condition means: 720.19 − 698.76 = 21.4 ms.
+- Mean of the 635 within-cell differences (unrelated minus related): 14594 / 635 = 23.0 ms.
+- Unweighted mean across participants: 23.6 ms. Unweighted mean across items: 22.2 ms.
+
+**Variance components, estimated by hand from the paired differences:**
+- Residual SD (σ): about 145 ms.
+- By-participant slope variance: about 0. The spread of participant priming effects (mean square about 30,700) is smaller than chance alone would give (about 41,900). So `lmer` will almost certainly put the participant slope SD near zero, and may report a singular fit.
+- By-item slope SD: about 35 ms (variance about 1,240).
+- By-participant intercept SD: about 73 ms. By-item intercept SD: about 39 ms.
+
+**How I approximated the `prime_c` estimate.** With these components, the model's estimate is close to a weighted average of the 24 per-item effects:
+- Each item is weighted by 1/(τ² + 2σ²/n), where τ² is the item slope variance and n is that item's number of pairs.
+- Words with only one condition count as half a pair each. Their residuals are taken from the participant and item intercepts, shrunk toward the mean as a mixed model does.
+- Using the pairs alone gives about 22.7 ms. The one-condition words pull it down slightly, to about 21.9 ms.
+
+**Standard error.** About 10.7 ms, which is sqrt(1 / Σ over items of 1/(τ² + 2σ²/n)), with n here counting each one-condition word as half a pair. The interval is 21.9 ± 1.96 × 10.7, which is roughly 1.0 to 42.8 ms.
+
+The interval only just excludes zero. The effect is positive, but the data fit anything from a negligible effect to about 40 ms. Most of the uncertainty comes from differences between the words, because the size of the priming effect varies a lot from item to item.
+
+RESULT estimate=21.9 lower=1.0 upper=42.8

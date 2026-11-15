@@ -1,0 +1,18 @@
+Responses after unrelated primes were about 21.8 ms slower than after related primes (95% Wald CI 0.58 to 43.00 ms). The model fit is singular, which you should know before relying on the interval.
+
+The script is `/home/user/agent_runs/4c5d33cc/analysis.R`. It runs cleanly with `Rscript analysis.R`, and its last line is:
+```
+RESULT estimate=21.79 lower=0.58 upper=43.00
+```
+
+**What the script does:**
+1. Reads `data.csv` and checks that the columns are present, `prime` has only "related"/"unrelated", and `rt` has no NAs. It prints the row counts: 1354 rows, 30 participants, 24 items, with 671 related and 683 unrelated trials.
+2. Makes participant and item factors, then creates `prime_c` (related = -0.5, unrelated = +0.5).
+3. Fits `lmer(rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c | item), REML = TRUE)` with the default optimiser, on every row and untransformed `rt`.
+4. Prints the model summary and any convergence or singularity messages. It then takes the fixed effect of `prime_c` as the estimate and uses `confint(fit, parm = "prime_c", method = "Wald")` for the interval.
+
+**Findings:**
+- The fixed effect is 21.79 ms (SE 10.82, t = 2.01).
+- **Singular fit:** the optimiser converged (code 0), but it reports a boundary fit. The by-participant random slope for prime is very small (SD about 6.7 ms) and perfectly correlated (r = 1.00) with the by-participant intercept. So the participant random-effects structure is more than these data can support. I kept the model exactly as you specified.
+- The lower bound of the interval is only just above zero, so the data show a priming effect but pin down its size poorly.
+- As a check, the raw condition means differ by 21.4 ms (698.8 vs 720.2), and the mean of the per-participant differences is 22.0 ms. Both are close to the model estimate.

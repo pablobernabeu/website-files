@@ -1,0 +1,20 @@
+Responses after unrelated primes are **18.5 ms slower** than after related primes (95% CI −1.5 to 38.6 ms). The interval includes zero (p = 0.069), so the effect is positive but not reliably different from zero once you account for how much it varies from word to word.
+
+I wrote `/home/user/agent_runs/b6a65ec1/analysis.R` and ran it with `Rscript analysis.R`. It takes about 4 seconds, and its last line is:
+```
+RESULT estimate=18.52 lower=-1.53 upper=38.57
+```
+
+**What the script does:**
+1. **Reads and checks the data.** There are 1440 trials from 30 participants and 24 words, with each participant–word pair seen once per prime type and nothing missing.
+2. **Summarises the conditions.** Mean RT is 698.7 ms after related primes and 717.2 ms after unrelated primes.
+3. **Fits a mixed-effects model on raw RT.** Using raw RT puts the effect straight into milliseconds. The prime variable is coded so its coefficient is unrelated minus related. The model allows participants and words to vary, and word frequency (centred) is included as a covariate; it doesn't change the priming estimate.
+4. **Simplifies the model only as far as needed.** It starts with the full model, where the priming effect can vary across both participants and words. That fit is degenerate: the estimated variation in priming across participants is essentially zero. So the script steps down to the first version that fits cleanly. That version keeps priming variation across words (SD about 30 ms) and drops it across participants.
+5. **Computes the confidence interval** from the estimate, its standard error (9.69) and Satterthwaite degrees of freedom (23). The slower Kenward-Roger method gives the same numbers here.
+6. **Prints checks before the result line** (none of these is the reported answer):
+   - A profile-likelihood interval gives −0.85 to 37.89 ms.
+   - A model on log RT gives 2.5% slower responses, about 17.3 ms at a typical RT (p = 0.061).
+   - A model that ignores word-to-word variation in priming gives a narrower 3.6 to 33.4 ms. That interval is too optimistic.
+   - A separate bootstrap check I ran while exploring gave about −0.3 to 37.4 ms; it is too slow to include in the script.
+
+**Why the interval is wide:** the size of the priming effect differs a lot between words. Measured word by word, it ranges from about −85 ms to +85 ms. A per-participant paired t-test would give 5.6 to 31.5 ms and suggest a clear effect, but only because it treats the 24 words as if they were the only ones that matter. The model's interval matches a per-word t-test exactly.

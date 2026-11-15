@@ -1,0 +1,15 @@
+I estimate the priming effect at about 18.5 ms: responses were that much slower after unrelated primes than after related ones. The approximate 95% CI is [4, 33] ms. The point estimate comes from hand arithmetic on the data, but the interval is a rough estimate, because I could not run code.
+
+Estimate: the design is fully balanced, with 30 participants x 24 items, and each participant saw each item once in each prime condition. In that case the REML fixed effect of prime_c from rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c | item) equals the mean of the 720 within-pair differences (unrelated minus related). I worked out every difference by hand and summed them by participant:
+- P01-P10: 282, 586, 452, 273, 71, -131, 204, 1083, 1379, 211
+- P11-P20: -142, -1372, 106, 229, -628, 1425, -159, 1758, 1148, 644
+- P21-P30: 1850, 122, 1516, 1273, 468, -985, -1094, 1431, 372, 962
+The grand total is 13,334 ms over 720 pairs, which gives 18.52 ms.
+
+Confidence interval: the Wald interval depends on variance components that I could only approximate.
+- The 30 participant mean differences have an SD of about 34.6 ms. That spread is smaller than residual noise alone would produce, so the by-participant slope variance is probably estimated near zero.
+- Single pair differences have a variance of roughly 40,000 ms^2 (SD about 200 ms), which gives a standard error of about sqrt(40000/720) = 7.5 ms.
+- I did not compute the item slope variance, which could widen the interval a little.
+Using a standard error of about 7.5 ms, the interval is about 18.5 +/- 1.96 x 7.5, which is roughly [3.8, 33.2] ms. The bounds could be off by a few milliseconds. The interval excludes zero, so the effect looks reliable, if modest.
+
+RESULT estimate=18.52 lower=3.8 upper=33.2

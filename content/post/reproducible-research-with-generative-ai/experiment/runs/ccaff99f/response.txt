@@ -1,0 +1,25 @@
+**Priming effect: about 18.5 ms, 95% CI about −1.5 to 38.6 ms.** Responses after unrelated primes were on average 18.5 ms slower than after related primes. The interval runs from about 1.5 ms of speed-up to about 38.6 ms of slow-down. It includes zero, so the effect is positive but not reliably different from zero once differences between words are taken into account.
+
+I read the file and did all the arithmetic by hand; nothing was run. The data are complete: 30 participants × 24 targets × 2 prime types = 1,440 rows, all participant–target pairs balanced.
+
+**How I got there**
+1. For each participant–target pair I took the difference: unrelated RT minus related RT (720 differences).
+2. The differences add up to 13,334 ms, both when totalled by participant and when totalled by target, which cross-checks the sums. The mean is 13,334 / 720 = **18.52 ms**. I also re-summed one participant's raw RTs directly and it matched. Because the design is fully balanced, a mixed model gives this same estimate, and adding target frequency as a covariate doesn't change it.
+3. To get the uncertainty I split the variation in those 720 differences into three parts:
+   - **Participants:** 28,810 (29 degrees of freedom).
+   - **Targets:** 67,640 (23 degrees of freedom).
+   - **Leftover noise:** 41,047 (667 degrees of freedom).
+4. Participants' priming effects vary no more than noise alone would produce, so their variance comes out as zero. Targets do differ in how much priming they show: the standard deviation of the priming effect across targets is about 30 ms. That is roughly the model `rt ~ prime (+ frequency) + (1 + prime | participant) + (1 + prime | item)`, which counts both participants and targets as random samples.
+5. Under that model the standard error is √(67,640 / 720) = **9.69 ms**. With 23 degrees of freedom, t = 2.069, so the interval is 18.5 ± 20.1 → **[−1.5, 38.6]**. Using the normal approximation instead gives [−0.5, 37.5].
+
+**Why narrower answers would be too optimistic**
+- **Averaging over targets within each participant** (a paired t-test across participants) gives 18.5 [5.6, 31.5]. This ignores that the targets are a sample too.
+- **Letting only average speed vary** (random intercepts for participants and targets, no per-target priming effect) gives about 18.5 [3.6, 33.4].
+
+Both of those intervals exclude zero, but only because they leave out the target-to-target differences in priming. Those differences are real, and a test of that variation comes out at p ≈ .03.
+
+**Things to keep in mind**
+- A mixed-model program's exact bounds could differ from mine by about 1 ms. That would come from how it estimates the correlations between random effects and the noise term.
+- The response times are right-skewed, with several above 1,400 ms. Analysing them on a log scale would give a somewhat different result.
+
+RESULT estimate=18.5 lower=-1.5 upper=38.6

@@ -16,10 +16,14 @@ extend-exclude = [
   "*.bib",
   "*.csv",
   "*.json",
+  # Generated lockfiles, which copy each package's own description (renv)
+  "*.lock",
   "*.js",
   "*.css",
   "*.R",
   "*.html",
+  # Raw R output kept as a record (model tables with npar, logLik and the like)
+  "content/**/experiment/outputs/**",
 ]
 
 [default]
@@ -45,6 +49,9 @@ ist = "ist"             # German/Dutch word
 auf = "auf"             # German word
 ser = "ser"             # Spanish word
 statuts = "statuts"     # French, the title of the 1866 statutes of the Societe de Linguistique de Paris
+mor = "mor"             # the given name of Mor Naaman, an author in the generative-AI post's references.yaml
+broadley = "broadley"   # the surname of Thomas Broadley, an author in the same references.yaml
+tung = "tung"           # the surname of Brian Tung, an author in the same references.yaml
 hoc = "hoc"             # as in "ad hoc" or "post hoc"
 ful = "ful"             # suffix
 ned = "ned"             # past tense
@@ -100,6 +107,11 @@ Perfors = "Perfors"       # Amy Perfors
 Smeesters = "Smeesters"   # Dirk Smeesters
 Frane = "Frane"           # Andrew V. Frane
 Vally = "Vally"           # D. Z. Vally
+Ture = "Ture"             # Ferhan Ture
+# R code and code-reading patterns in the stored experiment transcripts
+parm = "parm"             # the parm argument of confint()
+approximat = "approximat" # regex stem matching approximate and approximation
+ignor = "ignor"           # regex stem matching ignore, ignores and ignoring
 # Academic terms and British-English variants
 nonsignificant = "nonsignificant"  # standard stats term (non-significant)
 focusses = "focusses"     # British-English variant of "focuses"

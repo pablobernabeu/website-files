@@ -1,0 +1,65 @@
+Observations: 1440 | participants: 30 | items: 24 
+
+Cell means (ms):
+      prime   n  mean_rt    sd_rt
+1   related 720 698.7292 161.4088
+2 unrelated 720 717.2486 168.4962
+
+Maximal model singular: TRUE 
+ Groups      Name        Std.Dev. Corr   
+ participant (Intercept)  71.5352        
+             prime_c       8.9156 1.000  
+ item        (Intercept)  39.9434        
+             prime_c      29.7965 -0.008 
+ Residual                143.1866        
+
+Zero-correlation model singular: TRUE 
+ Groups        Name        Std.Dev.  
+ participant   (Intercept) 7.1532e+01
+ participant.1 prime_c     1.5079e-03
+ item          (Intercept) 3.9941e+01
+ item.1        prime_c     2.9773e+01
+ Residual                  1.4326e+02
+-> by-participant prime slope variance is ~0; dropped from final model.
+
+Final model singular: FALSE 
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: rt ~ prime_c + freq_c + (1 | participant) + (1 + prime_c | item)
+   Data: d
+
+REML criterion at convergence: 18490.3
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-2.0902 -0.6680 -0.1285  0.5100  5.7876 
+
+Random effects:
+ Groups      Name        Variance Std.Dev. Corr  
+ participant (Intercept)  5116.3   71.53         
+ item        (Intercept)  1595.2   39.94         
+             prime_c       886.5   29.77   -0.01 
+ Residual                20523.3  143.26         
+Number of obs: 1440, groups:  participant, 30; item, 24
+
+Fixed effects:
+            Estimate Std. Error      df t value Pr(>|t|)    
+(Intercept)  707.989     15.851  42.834  44.664   <2e-16 ***
+prime_c       18.519      9.693  23.000   1.911   0.0686 .  
+freq_c       -12.139     11.969  21.999  -1.014   0.3215    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+        (Intr) prim_c
+prime_c -0.003       
+freq_c   0.000  0.000
+
+Priming effect (unrelated - related), Satterthwaite 95% CI:
+  Estimate Std. Error       df  t value     lower    upper   Pr(>|t|)
+1 18.51944   9.692533 22.99992 1.910692 -1.531091 38.56998 0.06858838
+
+Sensitivity, log-RT model (ms): 17.26 [-0.89, 35.42]
+Sensitivity, 13 residual outliers removed (ms): 17.65 [-0.00, 35.31]
+
+RESULT estimate=18.52 lower=-1.53 upper=38.57

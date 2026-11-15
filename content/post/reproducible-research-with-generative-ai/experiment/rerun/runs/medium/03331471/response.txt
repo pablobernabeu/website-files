@@ -1,0 +1,16 @@
+I wrote the script and it runs cleanly. It estimates the priming effect at **18.5 ms, 95% CI [-1.5, 38.6]** (SE 9.7, df 23, p = .069). So unrelated primes slow responses by about 18 ms on average, but the interval includes zero.
+
+The script's last line is:
+`RESULT estimate=18.52 lower=-1.53 upper=38.57`
+
+**What `analysis.R` does** (in `<run folder>/analysis.R`):
+1. Reads `data.csv` and checks the columns, missing values and the two prime levels. The data were clean: 1,440 trials, 30 participants by 24 items, each pair seen once per prime condition, no missing values.
+2. Prints the raw means: 698.7 ms after related primes and 717.2 ms after unrelated primes.
+3. Fits a mixed-effects model on raw RTs, so the estimate stays in milliseconds. Prime is coded ±0.5, which makes its coefficient the unrelated-minus-related difference. Centred Zipf frequency is a covariate. Participants and items are crossed random effects, each with an intercept and a prime slope.
+4. The full model was singular, so the script drops the random-effect correlations and refits.
+5. Takes the prime coefficient and builds a t-based 95% CI using Satterthwaite degrees of freedom (`lmerTest`), then prints the RESULT line.
+
+**Things to know about the fit:**
+- **Still singular:** the refitted model is also flagged singular, because the by-participant priming slope comes out at zero variance. Keeping that zero-variance term does not change the estimate.
+- **Variation between items:** the priming effect varies noticeably across items (slope SD about 30 ms). That is the main reason the interval is wide.
+- **Skewed residuals:** the residuals are right-skewed, which is typical for RTs. I kept raw RTs because you asked for the effect in milliseconds and did not run a log-RT check.

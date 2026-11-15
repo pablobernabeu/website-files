@@ -1,0 +1,22 @@
+The priming effect is about **18.5 ms**: responses were that much slower after unrelated primes than after related ones. The 95% confidence interval is about **−1.5 to 38.6 ms**. Because the interval includes zero, the data are consistent with a real facilitation of roughly 0 to 40 ms, but they don't clearly rule out no effect.
+
+I worked this out by hand from the file, with no code run. The data are complete: 30 participants × 24 items × 2 prime conditions = 1440 responses, so the 720 unrelated-minus-related differences are all paired and balanced.
+
+**Estimate.** The 720 differences add up to 13,334 ms, which gives a mean of 13,334 / 720 = **18.52 ms**. The file's sum-of-differences check agrees whether I add them up by participant or by item.
+
+**Confidence interval.** The interval has to treat both participants and items as random samples, which is what a mixed model with crossed random effects and prime slopes for both does.
+- Breaking down the 720 differences:
+  - Variation between participants: mean square about 28,810 on 29 degrees of freedom.
+  - Variation between items: mean square about 67,640 on 23 degrees of freedom.
+  - Leftover variation: mean square about 41,047 on 667 degrees of freedom. The spread of single differences is about 203 ms.
+- Participants differ in their priming effect by no more than chance alone would produce, so that variance is estimated as zero.
+- Items do differ in how much priming they show, by about 30 ms (standard deviation).
+- That makes the standard error sqrt(67,640 / 720) = **9.69 ms**. With a t value of 2.069 on 23 degrees of freedom, the interval is 18.5 ± 20.1, giving **[−1.5, 38.6]**. Using the normal value 1.96 instead gives about [−0.5, 37.5].
+
+**Why the interval is wide.** If you analyse by participants only, averaging each person's effect over items, the interval is narrower: 18.5 ± 12.9, or [5.6, 31.5]. That version ignores how much the effect varies across the 24 words, so it is too narrow. Analysing by items gives the same wide interval as the full model.
+
+**Word frequency** does not change the estimate. Every word appears under both prime types, so frequency cancels out of the differences. It also barely relates to how much priming each word shows (correlation about 0.04), so leaving it out does not change the interval either.
+
+These figures come from raw times in milliseconds. A few very slow responses (up to about 1580 ms) make the data skewed. An analysis on log-transformed times could give a slightly different result, but you asked for milliseconds.
+
+RESULT estimate=18.5 lower=-1.5 upper=38.6

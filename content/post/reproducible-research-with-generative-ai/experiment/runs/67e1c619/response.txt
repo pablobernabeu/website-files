@@ -1,0 +1,13 @@
+Responses after unrelated primes were about **21.8 ms slower** than after related primes, with a 95% Wald CI of **0.6 to 43.0 ms**. The script's last line is:
+
+`RESULT estimate=21.79 lower=0.58 upper=43.00`
+
+The interval only just excludes zero, so there is a priming effect, but its size is poorly pinned down: anywhere from about 1 ms to 43 ms fits the data.
+
+**What `/home/user/agent_runs/67e1c619/analysis.R` does:** It reads `data.csv` and keeps all 1354 rows (30 participants, 24 items, 671 related and 683 unrelated), with no exclusions and raw `rt`. It adds `prime_c` (related = -0.5, unrelated = +0.5) and fits the model you specified with `lmer()`, using REML and the default optimiser. It prints the model summary and any convergence messages. It then takes the `prime_c` fixed effect and its interval from `confint(fit, parm = "prime_c", method = "Wald")`, and prints the RESULT line last. It runs cleanly with `Rscript analysis.R`.
+
+**The fit is singular.** lme4 flags a "boundary (singular) fit": the participant intercept and priming effect are estimated as perfectly correlated (+1.00). The participant variation in the priming effect is also very small (SD about 7 ms), while items vary a lot in how much priming they show (SD about 37 ms). I kept the model exactly as specified, and the script prints this warning. I checked outside the script whether it matters, and it barely does:
+- **Participant slope and intercept left uncorrelated:** 21.85 ms, CI [0.77, 42.93].
+- **Participant priming effect removed (the only version that is not singular):** 21.85 ms, CI [0.77, 42.92].
+- **bobyqa optimiser:** 21.79 ms, the same as the main fit.
+- **Simple difference of the two condition means:** 21.4 ms.

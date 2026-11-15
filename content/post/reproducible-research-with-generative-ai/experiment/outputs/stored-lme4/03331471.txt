@@ -1,0 +1,64 @@
+Observations: 1440 | participants: 30 | items: 24 
+Cells per participant x item x prime: 1 
+RT range: 377 - 1580 ms
+RTs < 200 ms or > 2500 ms: 0 
+
+Condition means (ms):
+      prime  mean_rt median_rt   n
+1   related 698.7292       673 720
+2 unrelated 717.2486       697 720
+
+boundary (singular) fit: see help('isSingular')
+Maximal model singular: TRUE 
+ Groups      Name        Std.Dev. Corr  
+ participant (Intercept)  71.5360       
+             primeC        8.9182 1.000 
+ item        (Intercept)  39.9766       
+             primeC       29.7957 -0.024
+ Residual                143.1865       
+
+LRT, by-participant slope (+ correlation): chisq = 1.281, p = 0.527 
+LRT, by-item slope (+ correlation): chisq = 3.338, p = 0.188 
+
+Final model: rt ~ prime + (1 | participant) + (1 + prime | item) 
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: rt ~ primeC + (1 | participant) + (1 + primeC | item)
+   Data: d
+
+REML criterion at convergence: 18498.1
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-2.0779 -0.6683 -0.1297  0.5198  5.7877 
+
+Random effects:
+ Groups      Name        Variance Std.Dev. Corr 
+ participant (Intercept)  5116.3   71.53        
+ item        (Intercept)  1597.8   39.97        
+             primeC        886.4   29.77   -0.02
+ Residual                20523.3  143.26        
+Number of obs: 1440, groups:  participant, 30; item, 24
+
+Fixed effects:
+            Estimate Std. Error      df t value Pr(>|t|)    
+(Intercept)  707.989     15.855  43.227  44.655   <2e-16 ***
+primeC        18.519      9.692  23.000   1.911   0.0686 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+       (Intr)
+primeC -0.008
+
+Priming effect (unrelated - related): 18.52 ms, SE = 9.69, df = 23.0, t = 1.91, p = 0.0686
+95% CI (Satterthwaite): [-1.53, 38.57] ms
+
+Sensitivity checks:
+  Profile-likelihood 95% CI, final model:       [-0.85, 37.89]
+  Maximal (singular) model:                     18.52 [-1.78, 38.82]
+  + word frequency (centred) and interaction:   18.52 [-2.01, 39.05]; prime x freq = 2.72 (p = 0.84)
+  log-RT model: ratio = 1.025 (p = 0.061), ~17.3 ms at the geometric mean RT
+  By-participant paired t-test (ignores item variability): 18.52 [5.58, 31.46]
+
+RESULT estimate=18.52 lower=-1.53 upper=38.57

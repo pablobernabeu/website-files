@@ -1,0 +1,25 @@
+Responses after unrelated primes are about 18.5 ms slower than after related primes. The 95% CI is −1.5 to 38.6 ms, so the data do not rule out a zero effect.
+
+The script is `<run folder>/analysis.R`. It runs cleanly, and its last line is:
+`RESULT estimate=18.52 lower=-1.53 upper=38.57`
+
+**What the script does:**
+1. **Checks the data.** It reads `data.csv` and confirms the design is fully crossed: 30 participants × 24 items, with exactly one related and one unrelated trial in each pair. It also confirms there are no missing values, that frequency is constant within each item, and that every RT is between 200 and 3000 ms. All RTs fall in 377–1580 ms, so no trials are excluded. It prints the condition means: 698.7 ms related, 717.2 ms unrelated.
+2. **Fits a mixed-effects model on raw RT.** This puts the prime coefficient directly in milliseconds. Prime is coded −0.5/+0.5, so the coefficient is unrelated minus related. Centred Zipf frequency is included as an item-level covariate. Participants and items are both crossed random factors, because prime varies within each.
+3. **Chooses the random effects by a fixed rule.** The full model, with by-participant and by-item slopes for prime, came out singular: the participant slope variance is near zero and its correlation is +1. The script then drops the correlations, and after that any variance component estimated at zero. The model it ends up with is `(1 | participant) + (1 + prime_c || item)`, which fits without problems.
+4. **Reports the estimate and CI.** The CI uses Satterthwaite degrees of freedom: SE = 9.69, df = 23, p = .069.
+5. **Prints sensitivity checks.** None of them is used for the result.
+
+| Check | Estimate (ms) | 95% CI |
+|---|---|---|
+| Full model, despite the singular fit | 18.52 | −1.78 to 38.82 |
+| Kenward–Roger degrees of freedom | 18.52 | −1.53 to 38.57 |
+| Log-RT model, converted to ms at 690 ms | 17.26 | −0.89 to 35.42 |
+| Participants-only paired t-test | 18.52 | 5.58 to 31.46 |
+| Items-only paired t-test | 18.52 | −1.53 to 38.57 |
+
+Frequency does not change the priming effect (interaction p = .84).
+
+The CI is wide because the priming effect varies a lot from word to word (item slope SD ≈ 30 ms). A test that averages over participants only treats the words as fixed and gives a misleadingly narrow interval, 5.6 to 31.5 ms, that excludes zero.
+
+I wrote only `analysis.R` in that directory. One note: running `Rscript -e` from Git Bash crashed (exit 139), so I ran R from PowerShell.

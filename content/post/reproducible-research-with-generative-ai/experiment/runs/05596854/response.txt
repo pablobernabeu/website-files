@@ -1,0 +1,20 @@
+The priming effect is **21.79 ms, 95% Wald CI [0.58, 43.00]**. Responses after unrelated primes are about 22 ms slower than after related primes. The lower bound is only just above zero, so the effect is real but small and not precisely estimated.
+
+The script is `/home/user/agent_runs/05596854/analysis.R`. It runs cleanly with `Rscript analysis.R`, and its last line is:
+```
+RESULT estimate=21.79 lower=0.58 upper=43.00
+```
+
+**What the script does:**
+1. Reads `data.csv` and checks it: the expected columns are there, `prime` is only related or unrelated, and no `rt` values are missing. It uses all 1,354 rows (30 participants, 24 items), with no exclusions and `rt` left in milliseconds.
+2. Creates `prime_c`, with related coded as -0.5 and unrelated as +0.5.
+3. Fits `lmer(rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c | item))` with REML and the default optimiser.
+4. Prints the raw means for each condition (related 698.76 ms, unrelated 720.19 ms), the model summary and any warnings from the fit.
+5. Takes the fixed effect of `prime_c` and its interval from `confint(fit, parm = "prime_c", method = "Wald")`, then prints the RESULT line.
+
+**The fit is singular.** lme4 reports a boundary (singular) fit. The participant random slope for prime is tiny (SD about 6.7 ms) and is estimated as perfectly correlated with the participant intercept. The optimiser itself finished normally. I kept the model exactly as you specified it. Separately, I checked whether the singularity matters by refitting three other ways:
+- dropping the participant slope-intercept correlation;
+- dropping the participant slope;
+- using the bobyqa optimiser.
+
+In all three the result stayed at about 21.8 ms, with an interval of about [0.6–0.8, 43.0]. So the singularity does not change the answer.

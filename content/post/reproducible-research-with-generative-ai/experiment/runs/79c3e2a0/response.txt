@@ -1,0 +1,17 @@
+**Priming effect: about 18.5 ms, 95% Wald CI about −0.7 to 37.8 ms.** Responses after unrelated primes were about 18.5 ms slower than after related primes. The interval only just includes zero, so the effect is not reliably different from zero at the 5% level.
+
+I did not run code, as instructed, so I did not actually fit `lmer()`. These numbers are worked out by hand from the file, using the algebra that holds for fully balanced designs. The estimate should be exact. The interval ends could be off by a few tenths of a millisecond, and a tiny difference could move the lower end to the other side of zero.
+
+**Data check:** The file has 1,440 rows: 30 participants × 24 items × 2 prime conditions, with no missing cells. Every participant saw every item once in each condition.
+
+**The estimate:** Because the design is perfectly balanced, the fixed effect of `prime_c` equals the plain mean of the 720 paired differences (unrelated minus related). Their sum is 13,334, so the estimate is 13,334 / 720 = **18.52 ms**. I checked every difference against the raw rows, and the participant totals and item totals both add up to 13,334.
+
+**The standard error:** In this design the variance of the estimate is (participant slope variance)/30 + (item slope variance)/24 + (residual variance)/360. I estimated each piece from an analysis-of-variance breakdown of the paired differences:
+- **Items:** the mean square across items is 67,640 on 23 df, which gives an item slope SD of about 30 ms. The item and residual terms together contribute 67,640 / 720 = 93.9.
+- **Residual:** the residual mean square is about 41,050 on 667 df, so the residual SD is about 143 ms.
+- **Participants:** participants' priming effects vary less than noise alone would produce (mean square 28,810, below the residual 41,050). The best fit therefore puts the by-participant random effects at the boundary: the intercept–slope correlation hits +1 and the slope SD is only about 9 ms. It adds about 2.65 to the variance, a minor term. `lmer()` will very likely report "boundary (singular) fit" for this model.
+- **Total:** the variance is about 96.6, so the SE is about **9.83 ms**.
+
+**The interval:** 18.52 ± 1.96 × 9.83 gives **−0.74 to 37.78 ms**.
+
+RESULT estimate=18.52 lower=-0.74 upper=37.78

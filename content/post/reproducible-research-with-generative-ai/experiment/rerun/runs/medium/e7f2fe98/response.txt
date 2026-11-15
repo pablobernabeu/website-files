@@ -1,0 +1,24 @@
+**Answer:** the priming effect is about **18.5 ms**. Responses are slower after unrelated primes than after related ones, with a 95% Wald CI of roughly **−0.5 to 37.5 ms**. The interval just includes zero, so the effect is borderline. The estimate is exact, but the interval is a hand-computed approximation, not lmer output.
+
+I read all 720 rows: 30 participants × 24 items × 2 prime conditions, with no exclusions and rt left untransformed. I ran no code, so I worked it out by hand from the structure of the design.
+
+**Estimate.** The design is fully balanced: every participant saw every item once in each condition. In that case the fixed effect of prime_c with the ±0.5 coding equals the overall mean of the unrelated-minus-related differences.
+- The 720 within-participant, within-item differences sum to 13,334 ms.
+- 13,334 / 720 = **18.52 ms**.
+- I checked this total two ways, by summing per participant and per item, and both gave 13,334.
+
+**Standard error.** I worked from the mean squares of the 720 difference scores:
+- **Participants:** MS = 28,810 on 29 df.
+- **Items:** MS = 67,640 on 23 df.
+- **Participant × item (residual):** MS = 41,047 on 667 df.
+
+The participant mean square is smaller than the residual one, so the by-participant slope variance would be estimated at or near zero, which is a boundary fit. The by-item slope variance comes out at about (67,640 − 41,047) / 30 ≈ 890 in difference units.
+
+That gives a variance for the estimate of about 890/24 + 41,000/720 ≈ 94, so the SE is about 9.7 ms. The Wald interval is 18.52 ± 1.96 × 9.7, which is about [−0.5, 37.5].
+
+**How exact this is:**
+- **Estimate:** should match lmer exactly, because the design is balanced.
+- **Interval:** approximate, probably within about ±1 ms of what `confint(..., method = "Wald")` would give. lmer pools the residual variance with the participant-and-item sum scores as well, and I assumed that part behaves like the difference scores.
+- **Singular fit:** lmer will probably report a singular or boundary fit for the participant random slope.
+
+RESULT estimate=18.52 lower=-0.47 upper=37.51

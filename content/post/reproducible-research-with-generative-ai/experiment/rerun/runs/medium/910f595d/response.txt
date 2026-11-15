@@ -1,0 +1,10 @@
+I couldn't fit the model, because I wasn't allowed to run code. These figures are a hand-calculated approximation of what `lmer` would give, not its exact output.
+
+**How I got there:**
+- **Estimate.** I took the 635 participant-word pairs that have both a related and an unrelated response. Responses after unrelated primes averaged about **23 ms slower** across those pairs. The mixed model also uses the rows that are missing their partner, so its fixed effect for `prime_c` should be close to this but may differ by a few ms.
+- **Spread across participants.** The mean priming effect for each of the 30 participants ranged from about -60 to +99 ms, with a standard deviation of about 38 ms. That is about what residual noise alone would produce, given roughly 21 pairs per participant and very noisy single trials. So the model's by-participant random slope variance is probably near zero, and the fit may be singular.
+- **Interval.** The pairwise differences in RT vary by roughly 210 ms. With about 1,354 observations, that puts the standard error of the `prime_c` effect at roughly 8 ms. The 95% Wald interval would then be about 23 ± 16 ms.
+
+So the priming effect is about 23 ms (95% CI roughly 7 to 39 ms). The interval excludes zero, but the exact bounds could be off by a few ms.
+
+RESULT estimate=23 lower=6.5 upper=39.5

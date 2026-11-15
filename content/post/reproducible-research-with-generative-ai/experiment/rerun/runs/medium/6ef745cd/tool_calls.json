@@ -1,0 +1,20 @@
+{
+ "started": "2026-10-11T14:22:41.620Z",
+ "finished": "2026-10-11T14:23:18.811Z",
+ "calls": [
+  {
+   "tool": "Bash",
+   "input": {
+    "command": "cd <run folder> && ls && head -5 data.csv && wc -l data.csv",
+    "description": "Inspect data file"
+   }
+  },
+  {
+   "tool": "Bash",
+   "input": {
+    "command": "cd <run folder> && cat > analysis.R <<'EOF'\n# Priming effect in lexical decision: linear mixed-effects model on raw RTs.\nsuppressPackageStartupMessages(library(lme4))\n\ndat <- read.csv(\"data.csv\", stringsAsFactors = FALSE)\n\n# Basic checks: every row is kept, no exclusions or transformations.\nstopifnot(all(dat$prime %in% c(\"related\", \"unrelated\")), !anyNA(dat$rt))\ncat(\"Rows:\", nrow(dat), \" Participants:\", length(unique(dat$participant)),\n    \" Items:\", length(unique(dat$item)), \"/n\")\nprint(aggregate(rt ~ prime, data = dat, FUN = mean))\n\n# Deviation coding: related = -0.5, unrelated = +0.5, so the slope is the\n# unrelated-minus-related difference in ms.\ndat$prime_c <- ifelse(dat$prime == \"related\", -0.5, 0.5)\n\nfit <- lmer(rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c | item),\n            data = dat, REML = TRUE)\nprint(summary(fit))\n\nest <- unname(fixef(fit)[\"prime_c\"])\nci  <- confint(fit, parm = \"prime_c\", method = \"Wald\")\n\ncat(sprintf(\"RESULT estimate=%.2f lower=%.2f upper=%.2f/n\",\n            est, ci[\"prime_c\", 1], ci[\"prime_c\", 2]))\nEOF\n\"C:/Program Files/R/R-4.6.1/bin/Rscript.exe\" analysis.R",
+    "description": "Write and run analysis script"
+   }
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "started": "2026-10-11T14:21:38.454Z",
+ "finished": "2026-10-11T14:22:15.326Z",
+ "calls": [
+  {
+   "tool": "Bash",
+   "input": {
+    "command": "cd <run folder> && ls && head -5 data.csv && wc -l data.csv",
+    "description": "Inspect data file"
+   }
+  },
+  {
+   "tool": "Bash",
+   "input": {
+    "command": "cd <run folder> && cat > analysis.R <<'EOF'\n# Priming effect in a lexical decision task, estimated with a linear\n# mixed-effects model (all rows, untransformed rt).\nsuppressPackageStartupMessages(library(lme4))\n\nd <- read.csv(\"data.csv\", stringsAsFactors = FALSE)\nstopifnot(all(d$prime %in% c(\"related\", \"unrelated\")), !anyNA(d$rt))\n\nd$prime_c <- ifelse(d$prime == \"unrelated\", 0.5, -0.5)\nd$participant <- factor(d$participant)\nd$item <- factor(d$item)\n\ncat(\"Rows:\", nrow(d), \" participants:\", nlevels(d$participant),\n    \" items:\", nlevels(d$item), \"/n\")\nprint(aggregate(rt ~ prime, data = d, FUN = mean))\n\nfit <- lmer(rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c | item),\n            data = d, REML = TRUE)\nprint(summary(fit))\nif (isSingular(fit)) cat(\"Note: the fit is singular./n\")\n\nest <- unname(fixef(fit)[\"prime_c\"])\nci <- confint(fit, parm = \"prime_c\", method = \"Wald\")\n\ncat(sprintf(\"RESULT estimate=%.2f lower=%.2f upper=%.2f/n\",\n            est, ci[1, 1], ci[1, 2]))\nEOF\n\"C:/Program Files/R/R-4.6.1/bin/Rscript.exe\" analysis.R",
+    "description": "Write and run the analysis script"
+   }
+  }
+ ]
+}

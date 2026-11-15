@@ -1,0 +1,16 @@
+Responses were about 18.5 ms slower after unrelated primes than after related primes, 95% Wald CI [-0.74, 37.78] ms. The interval includes zero, so the data point to a priming effect but don't clearly rule out none.
+
+The script is `/home/user/agent_runs/6ef745cd/analysis.R`. It runs without errors, and its last line is:
+```
+RESULT estimate=18.52 lower=-0.74 upper=37.78
+```
+
+**What the script does:**
+- Reads `data.csv` and uses all 1,440 rows (30 participants x 24 items x 2 prime conditions), with no exclusions and raw rt. I checked the file first: there are no missing values, only the labels "related" and "unrelated", and every participant-item pair appears exactly twice.
+- Creates `prime_c` as -0.5 for related and +0.5 for unrelated. It stops with an error if any other label appears.
+- Fits `lmer(rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c | item))` with REML and the default optimiser.
+- Prints the condition means, the model summary and any fit warnings. The estimate is `fixef(fit)["prime_c"]` and the interval comes from `confint(fit, parm = "prime_c", method = "Wald")`.
+
+**The model reports a singular fit.** The correlation between participants' baseline speed and their priming effect is estimated at exactly 1.00. This is a warning, not an error. The script fits the model as you specified and prints the warning. To see whether it matters, I refitted two simpler versions outside the script: one without that correlation, and one without the per-participant priming term. Both gave the same estimate, 18.52, with a 95% CI of [-0.48, 37.52]. So the warning doesn't change the answer.
+
+**Why the interval is wide:** the size of the priming effect varies a lot between target words (SD about 30 ms by item). An analysis that averages over items and compares participants' condition means with a paired t-test gives a narrower CI of [5.6, 31.5]. That ignores the item variation, and the mixed model is the more appropriate interval here.

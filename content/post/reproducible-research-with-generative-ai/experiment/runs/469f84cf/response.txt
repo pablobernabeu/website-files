@@ -1,0 +1,20 @@
+Responses after unrelated primes were about 18.5 ms slower than after related primes. The 95% confidence interval is roughly -1.5 to 38.6 ms. It only just includes zero, so the effect is not clearly reliable once you allow for variation between items.
+
+I did the arithmetic by hand from the file (no code was run), so small rounding differences are possible. As a check, the 720 differences added up by participant and by item give the same total (13,334), and one participant's result matched a separate check from that participant's condition totals.
+
+**How I got it**
+- Every participant saw every target once in each condition, so I took the unrelated-minus-related difference for all 720 participant × item pairs. Their mean is 13,334 / 720 = **18.52 ms**.
+- Participants and items both vary, so I split the variance of those differences (variance components estimated from a two-way ANOVA table, no replication):
+  - Mean square for participants: about 28,810 (29 df).
+  - Mean square for items: about 67,640 (23 df).
+  - Residual mean square: about 41,047 (667 df), a trial-level SD of the difference of about 203 ms.
+- The participant mean square is smaller than the residual, so there is no detectable variation between participants in how large their priming effect is; that variance is estimated as 0.
+- There is real variation between items: the item-level SD of the priming effect is about 30 ms. Per-item effects range from about -85 ms (W11) to +85 ms (W08).
+- This is the result a mixed model with crossed random participant and item effects on the priming effect would give. With the participant variance at 0, the standard error is √(67,640 / 720) ≈ 9.69 ms. Using t with 23 df (2.069), the interval is 18.5 ± 20.0 ms, which gives [-1.5, 38.6].
+
+**Things to be aware of**
+- **Participants only:** a paired analysis on the 30 participant means gives a narrower interval of about [5.6, 31.5] ms (SE 6.33, t with 29 df). That ignores item variability and overstates precision, so I would not report it.
+- **Normal approximation:** using 1.96 instead of the t value gives about [-0.5, 37.5] ms.
+- **Word frequency:** every item appears equally often in both conditions, so adding frequency as a covariate does not change the estimate. Frequency is also essentially uncorrelated with the item-level priming effects (r ≈ 0.04), so it does not narrow the interval either.
+
+RESULT estimate=18.5 lower=-1.5 upper=38.6

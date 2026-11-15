@@ -1,0 +1,9 @@
+run_id,final_random_effects,frequency_covariate,interval_method,transformation,exclusions
+2d6442b4,(1 | participant) + (1 + prime | item),FALSE,Satterthwaite t,none,none
+b6a65ec1,(1 | participant) + (1 + prime | item),TRUE,Satterthwaite t,none,none
+9d94880d,(1 | participant) + (1 + prime | item),FALSE,Satterthwaite t,none,none
+03331471,(1 | participant) + (1 + prime | item),FALSE,Satterthwaite t,none,none
+5d6c3ffd,(1 | participant) + (1 + prime | item),TRUE,Satterthwaite t,none,none
+61de3062,(1 | participant) + (1 + prime | item),TRUE,Satterthwaite t,none,none
+687a7fa6,(1 | participant) + (1 + prime | item),TRUE,Satterthwaite t,none,none
+c8710529,(1 | participant) + (1 + prime | item),FALSE,Satterthwaite t,none,none

@@ -1,0 +1,12 @@
+Responses after unrelated primes are about 23 ms slower than after related primes. My best estimate of the 95% interval is roughly 6 to 40 ms. I could not fit the model with lmer, so all three figures are hand approximations.
+
+How I got there, using only the file:
+
+- **Pairs used:** I took every participant-word combination that has both conditions. There are 635 such pairs. In the other 84 rows, only one condition survived.
+- **Average difference:** Unrelated minus related averages 22.98 ms across those pairs. Averaging each participant's mean difference instead gives 23.6 ms.
+- **Spread across participants:** Participant means run from about −60 ms (P12) to about +99 ms (P21). Their SD is about 38 ms, so the standard error is about 6.9 ms. That spread is about what you would expect from trial noise alone, which suggests the participants barely differ in how strongly they are primed.
+- **Trial-level noise:** The individual pair differences have an SD of roughly 220 ms. That gives a standard error for the effect of roughly 8.5 to 9 ms. I widened it slightly to allow for the item random slope and the unpaired rows.
+
+The mixed model uses all 1,354 rows and weights them a little differently, so its exact estimate will differ slightly from 23 ms. With a standard error of about 8.8 ms, the Wald interval is about ±17 ms around the estimate. It excludes zero, so the priming effect is reliably positive, though modest.
+
+RESULT estimate=23.1 lower=5.8 upper=40.4

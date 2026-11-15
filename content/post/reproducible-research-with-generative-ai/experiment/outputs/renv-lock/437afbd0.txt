@@ -1,0 +1,41 @@
+Rows: 1440 | participants: 30 | items: 24 
+Cell means (ms):
+  related unrelated 
+   698.73    717.25 
+boundary (singular) fit: see help('isSingular')
+Linear mixed model fit by REML ['lmerMod']
+Formula: rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c | item)
+   Data: d
+
+REML criterion at convergence: 18496.8
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-2.1382 -0.6720 -0.1276  0.5300  5.7769 
+
+Random effects:
+ Groups      Name        Variance Std.Dev. Corr  
+ participant (Intercept)  5117.40  71.536        
+             prime_c        79.53   8.918  1.00  
+ item        (Intercept)  1598.13  39.977        
+             prime_c       887.79  29.796  -0.02 
+ Residual                20502.38 143.187        
+Number of obs: 1440, groups:  participant, 30; item, 24
+
+Fixed effects:
+            Estimate Std. Error t value
+(Intercept)  707.989     15.856  44.652
+prime_c       18.519      9.828   1.884
+
+Correlation of Fixed Effects:
+        (Intr)
+prime_c 0.129 
+optimizer (nloptwrap) convergence code: 0 (OK)
+boundary (singular) fit: see help('isSingular')
+
+Convergence messages:
+  boundary (singular) fit: see help('isSingular') 
+Singular fit: TRUE 
+
+Priming effect (unrelated - related): 18.52 ms, 95% Wald CI [-0.74, 37.78]
+RESULT estimate=18.52 lower=-0.74 upper=37.78

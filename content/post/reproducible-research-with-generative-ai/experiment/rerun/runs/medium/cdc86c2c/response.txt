@@ -1,0 +1,15 @@
+Responses after unrelated primes were about 18.5 ms slower than after related primes, with a 95% CI of roughly 5.6 to 31.5 ms. The effect is positive and its interval excludes zero, but it is small and imprecise.
+
+**How I got it:** I worked everything out by hand from the file, without running any code.
+1. For each of the 720 participant-by-item pairs, I took the unrelated RT minus the related RT.
+2. These differences add up to 13,334 ms. Dividing by 720 gives a mean priming effect of 18.52 ms.
+3. I then averaged the differences within each participant, giving 30 participant means. They range from about −57 ms (P12) to +77 ms (P21), and 23 of the 30 are positive.
+4. The SD of those 30 means is about 34.7 ms, so the standard error is 34.7 / √30 ≈ 6.33 ms.
+5. With t(29) = 2.045, the 95% CI is 18.5 ± 12.9 ms, which is about 5.6 to 31.5 ms.
+
+**Caveats:**
+- This is a by-participant paired analysis. A mixed-effects model with crossed random effects for participants and items would also count variability across items, and would probably give a somewhat wider interval.
+- Word frequency doesn't change the estimate. Each target appears in both prime conditions, so frequency cancels out in the paired differences.
+- The arithmetic was done by hand, so small slips are possible.
+
+RESULT estimate=18.5 lower=5.6 upper=31.5

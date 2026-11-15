@@ -1,0 +1,14 @@
+I wrote `<run folder>/analysis.R` and ran it. The estimated priming effect is **18.52 ms** (95% Wald CI **-0.74 to 37.78 ms**). The interval includes zero, so the effect is not clearly different from zero at the .05 level.
+
+What the script does:
+1. Reads `data.csv` and keeps all 1,440 rows (30 participants × 24 items × 2 primes), with no exclusions and raw rt.
+2. Checks that prime has only the two expected values and that rt has no missing values.
+3. Adds `prime_c`, coded -0.5 for related and +0.5 for unrelated.
+4. Prints the mean rt for each prime: 698.7 ms related, 717.2 ms unrelated.
+5. Fits `lmer(rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c | item))` with REML and the default optimiser, then prints the model summary.
+6. Prints any convergence messages and whether the fit is singular.
+7. Takes the fixed effect of `prime_c` and its interval from `confint(fit, parm = "prime_c", method = "Wald")`.
+8. Prints the result as its last line:
+   `RESULT estimate=18.52 lower=-0.74 upper=37.78`
+
+The model reports a singular fit. The participant random slope for `prime_c` is small (SD 8.9 ms) and correlates 1.00 with the participant intercept. The optimiser returned code 0 with no other warnings. I kept the model exactly as specified, but this estimate of the random-effects structure is at its boundary.

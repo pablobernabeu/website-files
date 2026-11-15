@@ -1,0 +1,12 @@
+I estimated the priming effect by hand from paired differences, so it is an approximation, not the exact lmer() fixed effect. My best estimate is that responses after unrelated primes are about 23 ms slower than after related primes, with a 95% interval of roughly 7 to 39 ms.
+
+How I got there: for every participant-word pair that had both conditions, I took the unrelated RT minus the related RT. That gave 635 complete pairs; the remaining 84 rows have only one condition.
+- Mean of all pair differences: 14,594 / 635 ≈ 23.0 ms.
+- Average of the 30 per-participant mean differences: ≈ 23.6 ms. These run from about −60 ms (P12) to about +99 ms (P21).
+- Spread between participants: the per-participant means have an SD of about 38 ms. That is less than measurement noise alone would produce (paired-difference SD of about 200 ms over about 21 pairs each, roughly 43 ms). So the by-participant random slope is probably estimated near zero, and the by-item slope probably is too.
+
+Standard error: with slope variances near zero, it is driven mainly by the residual variance and comes to about 200 / √635 ≈ 8 ms. The single-condition rows add a little information through the random intercepts. I allowed for some slope variance and used about 8.2 ms.
+
+The Wald interval is therefore about 23 ± 1.96 × 8.2. The file has 1,354 rows in total, and the gaps (removed incorrect responses) affect both conditions. Running the model in R would give the exact figures, which I would expect to land close to these.
+
+RESULT estimate=23 lower=7 upper=39

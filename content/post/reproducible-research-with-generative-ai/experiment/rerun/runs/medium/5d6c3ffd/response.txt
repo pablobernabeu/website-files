@@ -1,0 +1,19 @@
+The priming effect is about **18.5 ms** (95% CI -1.5 to 38.6 ms), so responses after unrelated primes were slower by that much on average. The interval includes zero (p = .069), so the effect is not statistically reliable.
+
+The script is `<run folder>/analysis.R`. I ran it and its last line is:
+`RESULT estimate=18.52 lower=-1.53 upper=38.57`
+
+**What the script does:**
+1. It reads `data.csv` and checks the design: 1,440 rows, 30 participants × 24 items × 2 prime conditions, one observation per cell and no missing values.
+2. It prints the mean response time for each prime condition: 698.7 ms after related primes and 717.2 ms after unrelated primes.
+3. It codes prime as -0.5 for related and +0.5 for unrelated, so the coefficient is the unrelated-minus-related difference in ms.
+4. It fits a linear mixed model with `lmer` (REML, bobyqa optimiser). The model has crossed random intercepts and random prime slopes for both participants and items.
+   - The full model with correlated random effects did not fit cleanly, so the script refits with uncorrelated random effects.
+   - That model still reports a fit warning because the participant slope variance comes out at about zero. This does not change the estimate.
+5. It builds the 95% CI from the prime coefficient's standard error, using lmerTest's Satterthwaite degrees of freedom (df = 23). It then prints the RESULT line.
+
+- **Effect varies by item:** most of the uncertainty comes from item-to-item variation in priming (SD of about 30 ms), not from participants.
+- **Frequency is not in the model:** each word's frequency is the same in both prime conditions, so it cannot bias the priming difference. In a side check, adding frequency and a prime × frequency interaction changed nothing (interaction p = .84).
+- **Cross-check:** a simple t-test on the per-item priming effects gives exactly the same estimate and interval.
+
+I did not remove any outliers. The response times range from 377 to 1,580 ms with no extreme values, and the analysis stays in milliseconds as the question asks.

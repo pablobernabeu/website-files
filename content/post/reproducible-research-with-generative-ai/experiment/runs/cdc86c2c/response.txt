@@ -1,0 +1,26 @@
+**Unrelated primes are about 18.5 ms slower than related primes. The 95% confidence interval runs from about −1.5 to 38.6 ms.** The effect is positive, but the interval only just includes zero once variation between words is taken into account.
+
+I read the whole file and worked this out by hand, with no code run. All 720 participant-by-word pairs are present, so I took the difference for each pair (unrelated minus related).
+
+**Estimate.** The differences add up to 13,334 ms over 720 pairs, which gives a mean of **18.52 ms**. I added them up once by participant and once by word, and both totals came to 13,334. Because the design is fully balanced, the standard mixed model (random intercepts and prime slopes for participants and words) gives this same estimate. Adding word frequency as a centred covariate would not change it either.
+
+**How much the effect varies.** I split the 720 differences into participant, word and residual parts:
+
+| Source | df | Mean square |
+|---|---|---|
+| Participants | 29 | 28,810 |
+| Words | 23 | 67,640 |
+| Residual | 667 | 41,047 |
+
+- **Words:** the priming effect differs between words more than chance would predict (F(23, 667) ≈ 1.65, p ≈ .03). Word averages range from about −85 ms (W11) to +85 ms (W08). Their standard deviation is roughly 30 ms.
+- **Participants:** there is no sign that the effect differs between people (F ≈ 0.70), so that variance estimate is zero.
+
+**Confidence interval.** Since words are a sample from all possible words, most of the uncertainty comes from them. The standard error is √(67,640 / 720) ≈ **9.7 ms**.
+- With a t distribution on 23 degrees of freedom: 18.5 ± 20.1, giving **[−1.5, 38.6] ms**.
+- With a normal (z) interval, the kind a mixed model's summary often prints: [−0.5, 37.5] ms.
+
+A paired t-test across participants alone gives [5.6, 31.5] ms (SE 6.3). That interval is too narrow, because it treats the 24 words as the only words that matter.
+
+**Caveat.** Response times are skewed and a few extreme trials pull the estimate around. For example, participant P11 on word W23 has a difference of +1,005 ms, and P04 on W11 has −914 ms. Removing outliers or analysing log response times could move the estimate by several milliseconds.
+
+RESULT estimate=18.5 lower=-1.5 upper=38.6

@@ -1,0 +1,11 @@
+I wrote `<run folder>/analysis.R` and ran it. The priming effect is **21.79 ms, 95% CI [0.58, 43.00]**: responses after unrelated primes were about 22 ms slower than after related primes. The interval only just excludes zero, so the effect is imprecisely estimated.
+
+**What the script does:**
+- Reads all 1,354 rows of `data.csv` (30 participants, 24 items) with no exclusions and rt left untransformed.
+- Codes `prime_c` as -0.5 for related and +0.5 for unrelated.
+- Fits `lmer(rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c | item))` with REML and the default optimiser.
+- Prints the raw condition means (698.8 ms related, 720.2 ms unrelated) and the model summary.
+- Takes the fixed effect of `prime_c` and its Wald interval from `confint(fit, parm = "prime_c", method = "Wald")`.
+- Its last line is `RESULT estimate=21.79 lower=0.58 upper=43.00`.
+
+**Singular fit:** the optimiser reports convergence as OK, but lme4 flags the fit as singular. The by-participant random slope for `prime_c` is tiny (SD 6.7 ms) and perfectly correlated (1.00) with the participant intercept. The script prints a note about this. As instructed, it does not simplify the model, so the reported estimate comes from the full specified structure.

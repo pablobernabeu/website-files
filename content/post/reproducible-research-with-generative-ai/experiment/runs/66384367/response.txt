@@ -1,0 +1,14 @@
+Responses after unrelated primes were about 18.5 ms slower than after related primes (95% Wald CI −0.74 to 37.78 ms). The interval includes zero, so this model does not clearly show a priming effect at the 5% level. The script runs without errors and its last line is:
+
+`RESULT estimate=18.52 lower=-0.74 upper=37.78`
+
+**What the script does** (`/home/user/agent_runs/66384367/analysis.R`):
+- Reads `data.csv` and uses all 1440 rows with raw `rt`: 30 participants × 24 items × 2 prime conditions, no missing values.
+- Stops if `prime` contains anything other than "related" or "unrelated", and otherwise codes `prime_c` as −0.5 for related and +0.5 for unrelated.
+- Fits `lmer(rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c | item))` with REML and the default optimiser.
+- Prints the rows and group counts, the mean RT per condition (698.7 ms related, 717.2 ms unrelated), the model summary, and any convergence or singular-fit messages.
+- Takes the estimate from `fixef(fit)["prime_c"]` and the interval from `confint(fit, parm = "prime_c", method = "Wald")`, and prints the RESULT line last, rounded to 2 decimals.
+
+**Things to be aware of:**
+- **Singular fit:** lme4 reports a singular fit because the correlation between participant intercepts and prime slopes is estimated at +1.00. The by-participant slope variance is also small (SD about 8.9 ms, against about 29.8 ms for items). The optimiser still converged normally. As a one-off check that I did not add to the script, I refitted with uncorrelated random effects, and again with a participant intercept only. Both gave the same estimate (18.52) and nearly the same interval (−0.48 to 37.52). So the singular fit does not change the answer.
+- **Skewed RTs:** because `rt` was left untransformed as you asked, the residuals are right-skewed (largest scaled residual about 5.8).

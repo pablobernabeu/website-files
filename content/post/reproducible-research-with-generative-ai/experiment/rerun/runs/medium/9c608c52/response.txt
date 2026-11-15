@@ -1,0 +1,20 @@
+**Priming effect: about 18.5 ms, 95% CI roughly -0.5 to 37.5 ms**
+
+Responses after unrelated primes were about 18.5 ms slower than after related primes. The interval just reaches zero, so the effect is borderline. The estimate is exact. The interval is a hand approximation and could be off by a few milliseconds.
+
+I could only read the file, so I did not fit the model. I worked both numbers out by hand from all 1,440 rows.
+
+**Estimate.** The design is fully balanced: every participant saw every item once in each prime condition. In that case the fixed effect of prime_c (coded -0.5/+0.5) equals the mean of the 720 paired differences (unrelated minus related). Those differences sum to 13,334 ms. I checked that total two ways, by participant and by item, and both gave the same figure. So the estimate is 13,334 / 720 = 18.52 ms.
+
+**Interval.** I estimated the Wald standard error with a two-way decomposition (participant by item) of the paired differences:
+- **Residual spread:** the variance of the differences left after removing participant and item effects is about 41,000 ms² (667 degrees of freedom).
+- **Participants:** participants vary less in their effect (variance of the 30 participants' mean effects × 24 ≈ 28,800) than residual noise alone would produce. The by-participant slope variance would therefore come out at or near zero, and the fit would likely be flagged as singular.
+- **Items:** items vary more than that (variance of the 24 items' mean effects × 30 ≈ 67,600). This gives a by-item slope variance of about 890 ms².
+- **Standard error:** about √(67,600 / 720) ≈ 9.7 ms. The interval is 18.52 ± 1.96 × 9.7.
+
+The interval is approximate for three reasons:
+- I squared the differences after rounding them to the nearest 10 ms.
+- lmer pools the residual variance with the participant-by-item variation in overall speed, which I did not compute.
+- I ignored the intercept–slope correlations.
+
+RESULT estimate=18.5 lower=-0.5 upper=37.5

@@ -1,0 +1,11 @@
+Responses after unrelated primes were 18.5 ms slower than after related primes, 95% CI -1.5 to 38.6 ms. The interval includes zero (p = .069), so the effect is not reliably different from zero. The script is written, runs cleanly with `Rscript analysis.R`, and ends with:
+
+`RESULT estimate=18.52 lower=-1.53 upper=38.57`
+
+**What `/home/user/agent_runs/2d6442b4/analysis.R` does:**
+1. **Reads and checks `data.csv`.** There are 1440 trials. Every participant × item × prime combination has exactly one trial, and there are no missing RTs. RTs run from 377 to 1580 ms, so I did no further trimming. The condition means are 698.7 ms (related) and 717.2 ms (unrelated).
+2. **Fits a mixed model on raw RT in ms.** Participants and items both enter as random effects, because every target was seen with both prime types. Prime is coded -0.5/+0.5, so its coefficient is the unrelated minus related difference. The script starts with random slopes for prime for both participants and items. It drops terms only when a variance is estimated at zero or a correlation at ±1. Both richer models hit that problem on the participant side, with the participant slope variance estimated at about zero. The model it uses is `rt ~ prime_c + (1 | participant) + (1 + prime_c | item)`.
+3. **Reports the effect** with a 95% CI using Satterthwaite degrees of freedom (SE 9.69, df 23).
+4. **Runs checks that do not feed into the result.** Kenward-Roger degrees of freedom give the same interval. A profile-likelihood interval is -0.85 to 37.89. Adding word frequency as a covariate leaves the estimate unchanged, because every item appears after both prime types. A log-RT model gives a ratio of 1.025 (0.999 to 1.053).
+
+**The interval is wide because items differ in how much they are primed** (SD about 30 ms). Participants barely differ. A paired t-test on participant means gives a much narrower interval, 5.6 to 31.5 ms, but it ignores the item differences and so overstates the precision. The chosen model gives the same interval as a paired analysis on item means.

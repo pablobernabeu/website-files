@@ -1,0 +1,3 @@
+The file data.csv holds the correct responses from a lexical decision experiment on semantic priming. Each of 30 participants judged 24 target words, and each target appeared once after a semantically related prime and once after an unrelated prime. The columns are participant, item, prime (related or unrelated), frequency (the Zipf frequency of the target word) and rt (the response time in milliseconds).
+
+How large is the priming effect, that is, how much slower are responses after unrelated primes than after related primes? Give the estimate in milliseconds with a 95% confidence interval.

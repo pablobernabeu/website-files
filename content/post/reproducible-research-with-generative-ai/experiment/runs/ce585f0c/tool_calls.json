@@ -1,0 +1,13 @@
+{
+ "started": "2026-09-29T12:21:14.482Z",
+ "finished": "2026-09-29T12:33:36.221Z",
+ "starting_directory": "/home/user/neutral_cwd",
+ "calls": [
+  {
+   "tool": "Read",
+   "input": {
+    "file_path": "/home/user/agent_runs/ce585f0c/data.csv"
+   }
+  }
+ ]
+}

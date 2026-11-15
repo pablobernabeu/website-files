@@ -1,0 +1,13 @@
+I wrote and ran `analysis.R`. It estimates the priming effect at **18.5 ms, 95% CI [3.6, 33.4]**. Responses after unrelated primes were slower, and the effect is reliable (p = .015). The raw means agree: 698.7 ms after related primes and 717.2 ms after unrelated primes. The last line it prints is:
+
+`RESULT estimate=18.52 lower=3.63 upper=33.41`
+
+**What the script does:**
+1. It reads `data.csv` and checks that the columns are present, there are no missing values, and `prime` has only the two levels. It then prints the counts (1,440 trials, 30 participants, 24 items) and the mean response time for each prime condition.
+2. It fits a mixed-effects model (lme4/lmerTest) to raw response times, so the estimate comes out in milliseconds. Participants and items are random effects. Prime is coded −0.5 for related and +0.5 for unrelated, so its coefficient is the unrelated minus related difference. Zipf frequency, centred, is a covariate. It only explains differences between items, so it doesn't bias the priming estimate.
+3. It tries the full model first, with the priming effect allowed to vary by participant and by item. If a model gives a warning or a singular fit, it drops to a simpler one. Every richer model was singular here: the data show essentially no variation in the priming effect across participants or items. So the model kept has only random intercepts for participants and items.
+4. It takes the 95% CI from a t distribution with Satterthwaite degrees of freedom (SE = 7.6, df ≈ 1386), prints the model summary and a readable result line, and ends with the `RESULT` line.
+
+The model's residuals are right-skewed, as usual for response times. I kept raw milliseconds because the question asks for the effect in ms, so the CI rests on a normality assumption that the residuals only roughly meet.
+
+File: <run folder>/analysis.R

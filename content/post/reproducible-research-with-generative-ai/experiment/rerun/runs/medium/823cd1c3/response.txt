@@ -1,0 +1,13 @@
+I wrote and ran `<run folder>/analysis.R`. It finished without errors, but the fit is singular.
+
+**Result:** responses after unrelated primes are about 18.5 ms slower than after related primes, 95% Wald CI [-0.74, 37.78] ms. The interval includes zero, so the effect is not clearly different from zero at the .05 level. The last line printed is:
+`RESULT estimate=18.52 lower=-0.74 upper=37.78`
+
+**What the script does:**
+- Reads `data.csv` and uses all 1,440 rows (30 participants × 24 items × 2 prime conditions), with no exclusions and rt left untransformed. It stops if any prime label is unexpected or any rt is missing.
+- Creates `prime_c`, with related = -0.5 and unrelated = +0.5.
+- Prints the mean rt for each prime condition: 698.7 ms related and 717.2 ms unrelated.
+- Fits `rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c | item)` with `lmer()`, using REML and the default optimiser, and prints the model summary.
+- Takes the estimate from the fixed effect of `prime_c` and the interval from `confint(fit, parm = "prime_c", method = "Wald")`, then prints the RESULT line rounded to 2 decimals.
+
+**Singular fit:** lme4 reports a singular fit because the participant random slope for prime is small (SD ≈ 8.9 ms) and correlates exactly 1.00 with the participant intercept. The optimiser still converged, and the script prints a note about the singularity. As the task specified, I kept the full random-effects structure.

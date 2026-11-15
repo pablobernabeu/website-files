@@ -1,0 +1,17 @@
+I estimate the priming effect at about **18.5 ms** (responses are that much slower after unrelated primes), with a 95% CI of roughly **−0.5 to 37.5 ms**. The CI is a hand approximation, not the output of `lmer()`. I could not run code, so I worked everything out by hand from the full file. The interval just includes zero, so I would read this as a borderline effect.
+
+**Estimate.** All 720 participant-by-item pairs are complete and balanced. In that case the fixed effect of prime_c equals the mean of the unrelated-minus-related differences: 13,334 / 720 = 18.52 ms. This figure should match the `lmer()` estimate exactly, apart from any slip in my arithmetic.
+
+**Standard error.** I approximated it with a two-way ANOVA on the 720 difference scores (participant × item):
+- **Participants:** MS ≈ 28,810. This is below the residual MS, so the by-participant slope variance would be estimated at about zero.
+- **Items:** MS ≈ 67,640, so the by-item slope variance is about (67,640 − 40,530) / 30 ≈ 900.
+- **Residual:** MS ≈ 41,040, or about 40,530 when pooled with the participant term.
+
+That gives an SE of sqrt(67,640 / 720) ≈ 9.69 ms. The 95% Wald CI is 18.52 ± 1.96 × 9.69, which is −0.48 to 37.52.
+
+**Caveats.**
+- I summed the squared differences to the nearest 100 ms², so the SE could be off slightly.
+- The by-participant slope variance comes out at zero, so the real fit may give a singular-fit warning.
+- The correlated intercept terms and the pooling of the residual variance in the full model could shift the SE a little.
+
+RESULT estimate=18.52 lower=-0.48 upper=37.52

@@ -1,0 +1,18 @@
+After unrelated primes, responses were about **18.5 ms slower** than after related primes, with a **95% Wald CI of −0.7 to 37.8 ms**. The interval just includes zero, so the facilitation is in the expected direction but not reliably different from zero with this model.
+
+Last line of the script's output:
+```
+RESULT estimate=18.52 lower=-0.74 upper=37.78
+```
+
+**What the script does** (`/home/user/agent_runs/823cd1c3/analysis.R`; it ran cleanly with `Rscript analysis.R`):
+- Reads `data.csv` and uses all 1,440 rows (30 participants, 24 items, 2 prime conditions each) with no exclusions and raw `rt`. It first checks that `prime` has only the two expected values and that `rt` has no missing values, then prints the condition means: 698.7 ms related, 717.2 ms unrelated.
+- Creates `prime_c` (related = −0.5, unrelated = +0.5), so its coefficient is the unrelated minus related difference in ms.
+- Fits `lme4::lmer(rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c | item))` with REML and the default optimiser, and prints the model summary.
+- Takes the `prime_c` fixed effect and its interval from `confint(fit, parm = "prime_c", method = "Wald")`, then prints the `RESULT` line last.
+
+**Things to know about the fit:**
+- **The fit is singular.** The optimiser converged without error, but the participant-level random slope for `prime_c` is small (SD about 8.9 ms) and perfectly correlated with the random intercept (r = 1.00). So the specified random-effects structure is more complex than the data support for participants. I kept the model exactly as specified; the script prints the singular-fit message and `isSingular()` = TRUE. Simplifying that structure, for example by dropping the correlation or the participant slope, could change the interval somewhat.
+- **The residuals are right-skewed** (largest scaled residual is 5.8), as is usual for untransformed RTs. As instructed, nothing was excluded and `rt` was not transformed.
+- **The estimate equals the raw difference in means** (18.52 ms), as expected with a fully balanced design; the model mainly changes the width of the interval.
+- **`frequency` is not used**, because it is not in the specified formula.

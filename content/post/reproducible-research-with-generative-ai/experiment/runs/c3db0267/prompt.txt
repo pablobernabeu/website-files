@@ -1,0 +1,8 @@
+The file data.csv holds the correct responses from a lexical decision experiment on semantic priming. Each of 30 participants judged 24 target words, and each target appeared once after a semantically related prime and once after an unrelated prime. Incorrect responses have been removed, so some participant-word combinations are missing a condition. The columns are participant, item, prime (related or unrelated), frequency (the Zipf frequency of the target word) and rt (the response time in milliseconds).
+
+How large is the priming effect, that is, how much slower are responses after unrelated primes than after related primes? Give the estimate in milliseconds with a 95% confidence interval.
+
+Analyse the data as follows. Use every row, with no exclusions and no transformation of rt. Code prime as -0.5 for related and +0.5 for unrelated, in a column named prime_c. Fit a linear mixed-effects model with lme4::lmer(), using REML and the default optimiser, with the formula rt ~ prime_c + (1 + prime_c | participant) + (1 + prime_c | item). The estimate is the fixed effect of prime_c, and the interval is its 95% Wald confidence interval from confint(fit, parm = "prime_c", method = "Wald").
+
+Read the file /home/user/agent_runs/c3db0267/data.csv with your file-reading tool, and use no other tool: do not run code or commands, do not write files and do not search. Answer from what you have read, in your reply, as you would in a chat conversation without a code interpreter. If you cannot compute the answer exactly, give your best estimate. End your reply with one line in exactly this form, with numbers in milliseconds:
+RESULT estimate=<number> lower=<number> upper=<number>

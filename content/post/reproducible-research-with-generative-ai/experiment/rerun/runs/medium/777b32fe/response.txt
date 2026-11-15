@@ -1,0 +1,12 @@
+This is an approximation. I couldn't fit `lmer()` because I was only allowed to read the file, so the numbers are hand estimates of what the specified model would return.
+
+**How I got there.** For each of the 30 participants I took every word that has both conditions (635 pairs) and computed unrelated minus related.
+- Pooled over all 635 pairs, the mean difference is 14,090 / 635 ≈ 22.2 ms.
+- The average of the 30 participants' own mean differences is ≈ 23.6 ms. These range widely, from about −60 ms (P12) to about +99 ms (P21), with an SD of about 38 ms.
+- That spread is no larger than you would expect from trial-level noise alone. Each pair difference has an SD of roughly 200 ms, and each participant mean rests on about 21 pairs. So the by-participant random slope is probably estimated near zero, and the fit may be singular.
+- The 84 unpaired rows mostly inform the random intercepts, so they should move the fixed effect only slightly.
+- I put the model's fixed effect for `prime_c` at about 22–23 ms. Its standard error should be about 7–8 ms: the noise-based value is 200/√635 ≈ 7.9, the participant-based value is about 6.9, plus some allowance for item slope variance. That gives a Wald 95% interval of about 22.5 ± 1.96 × 7.5.
+
+**Answer.** Responses after unrelated primes are about 22 ms slower than after related primes, 95% CI roughly 8 to 37 ms. The interval excludes zero, so there is a reliable but small priming effect. The estimate is probably good to within a millisecond or two. The interval limits are less certain, because I estimated the standard error instead of computing it.
+
+RESULT estimate=22.5 lower=7.8 upper=37.2

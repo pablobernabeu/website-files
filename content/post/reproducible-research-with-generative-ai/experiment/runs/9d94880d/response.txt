@@ -1,0 +1,26 @@
+The priming effect is about **18.5 ms, 95% CI [-1.5, 38.6] ms**. Responses after unrelated primes are slower on average (717 ms vs 699 ms), but the interval includes zero (p = .069). So the data point towards priming without firmly establishing it once you account for the fact that the 24 words are only a sample of possible words.
+
+The script is `/home/user/agent_runs/9d94880d/analysis.R`. It runs without errors, and its last line is:
+`RESULT estimate=18.52 lower=-1.53 upper=38.57`
+
+**What the script does:**
+1. **Reads and checks the data.** It confirms there are no missing values and that the design is fully crossed: every participant saw every word once after each prime type.
+2. **Fits a mixed model on raw RT in ms.** It starts with the fullest model the design supports: participants and words each get their own baseline speed and their own priming effect. That fit is degenerate (singular): participants hardly differ in how much priming they show, so that part is estimated as essentially zero. The script drops it and keeps word-to-word differences in priming. The final model is `rt ~ prime + (1 | participant) + (1 + prime | item)`, and the fit is not singular.
+3. **Extracts the effect.** It takes unrelated minus related with `emmeans`, using Satterthwaite degrees of freedom (≈23), and prints that as the RESULT line.
+
+**Other ways of computing it (the script prints these too):**
+
+| Method | Estimate (ms) | 95% CI (ms) |
+|---|---|---|
+| Kenward-Roger degrees of freedom | 18.5 | [-1.5, 38.6] |
+| Profile-likelihood interval | 18.5 | [-0.8, 37.9] |
+| Fullest (singular) model | 18.5 | [-1.8, 38.8] |
+| Adding word frequency and its interaction with prime | 18.5 | [-2.0, 39.1] |
+| Log-RT model, converted back to ms | 17.3 | [-0.9, 35.4] |
+
+- **Word frequency** does not change how much priming there is (2.7 ms per Zipf unit, p = .84). Each word appears in both conditions, so frequency can't bias the comparison.
+- **Why the interval includes zero:** words vary a lot in how much priming they show, with a standard deviation of about 30 ms. Two simpler analyses ignore that variation and give intervals that are too narrow and exclude zero:
+  - averaging over words and running a paired t-test across participants gives [5.6, 31.5];
+  - a mixed model without word-specific priming effects gives [3.6, 33.4].
+
+  So the choice of analysis decides whether the effect looks significant.

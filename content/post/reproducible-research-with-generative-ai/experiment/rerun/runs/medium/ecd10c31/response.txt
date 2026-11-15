@@ -1,0 +1,14 @@
+Responses after unrelated primes were about 18.5 ms slower than after related primes, with a 95% CI of roughly 5.6 to 31.5 ms. I worked this out by hand from the file, since I had no code interpreter.
+
+How I got there:
+
+1. **Differences:** For each participant and target, I subtracted the related RT from the unrelated RT. That gives 720 paired differences.
+2. **Overall estimate:** The differences sum to 13,334 ms. Divided by 720, that gives a mean priming effect of about 18.5 ms.
+3. **Participant means:** Averaging each participant's 24 differences gives 30 means, ranging from about −57 ms (P12) to +77 ms (P21). Their SD is about 34.6 ms, so the standard error is 34.6 / √30 ≈ 6.3 ms.
+4. **Confidence interval:** With t(29) = 2.045, the margin is about ±12.9 ms, so the 95% CI is roughly 5.6 to 31.5 ms.
+
+Two things limit how exact this is:
+- **Items are not a random effect here.** This is a by-participant analysis. A mixed-effects model with crossed random effects for participants and items, with frequency as a covariate, would give a similar estimate. Its interval might be slightly wider.
+- **Mental arithmetic.** The differences and sums were all computed mentally, so small arithmetic slips are possible.
+
+RESULT estimate=18.5 lower=5.6 upper=31.5

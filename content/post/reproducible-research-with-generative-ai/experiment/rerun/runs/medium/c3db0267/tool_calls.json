@@ -1,0 +1,12 @@
+{
+ "started": "2026-10-11T14:26:44.847Z",
+ "finished": "2026-10-11T14:28:07.771Z",
+ "calls": [
+  {
+   "tool": "Read",
+   "input": {
+    "file_path": "<run folder>/data.csv"
+   }
+  }
+ ]
+}

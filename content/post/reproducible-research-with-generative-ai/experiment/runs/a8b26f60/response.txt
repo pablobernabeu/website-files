@@ -1,0 +1,18 @@
+Responses after unrelated primes were about 18.5 ms slower than after related primes. The 95% CI runs from about -1.5 to +38.6 ms, so it just includes zero. I worked this out by hand from the file, without running code, so the interval is a close estimate and not an exact model fit.
+
+**How I got the estimate**
+- For each of the 720 participant-by-word pairs, I subtracted the related RT from the unrelated RT.
+- Those differences add up to 13,334 ms, which gives a mean of 13,334 / 720 = **18.52 ms**.
+- The design is fully balanced: every word appears once in each condition for every participant. So this mean is also what a mixed model gives, with or without frequency as a covariate.
+- Adding frequency makes almost no difference to the effect: across words, frequency and the size of each word's priming effect are nearly uncorrelated (r ≈ 0.04).
+
+**Why the interval is wide**
+Both participants and words are random samples, so the confidence interval has to allow for variation across both. I split the variation in the differences into three parts: participants, words, and what is left over.
+- **Words:** each word's average priming effect varies a lot, from about -85 ms to +85 ms (SD about 47.5 ms across the 24 words). This is well above what leftover noise alone would produce (mean square 67,640 against 41,047 for the leftover part), so there is real variation in priming from word to word.
+- **Participants:** each person's average effect ranges from about -57 ms to +77 ms (SD about 34.7 ms). That is no more than leftover noise would produce (mean square 28,810 against 41,047), so the participant part of the variation comes out at about zero.
+- **Standard error:** with the participant part at zero, the standard error is about √(67,640 / 720) ≈ 9.7 ms, with about 23 degrees of freedom.
+- **Interval:** 18.52 ± 2.07 × 9.69 gives about -1.5 to 38.6 ms. With a plain normal-approximation interval instead, it is about -0.5 to 37.5 ms.
+
+A paired analysis that averages over participants only gives a narrower interval, about 5.6 to 31.5 ms. That version ignores the variation between words, so it overstates how precise the estimate is. The data point to priming of roughly 20 ms, but they don't clearly rule out a zero effect for words in general.
+
+RESULT estimate=18.5 lower=-1.5 upper=38.6

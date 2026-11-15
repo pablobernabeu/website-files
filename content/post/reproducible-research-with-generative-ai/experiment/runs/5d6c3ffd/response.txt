@@ -1,0 +1,11 @@
+Responses after unrelated primes were **18.5 ms slower** than after related primes, **95% CI [−1.5, 38.6] ms**. The interval includes zero (p = .069), so the data point to a priming effect but don't pin down its size well: it could be anywhere from nothing to about 39 ms.
+
+The script `/home/user/agent_runs/5d6c3ffd/analysis.R` runs cleanly with `Rscript analysis.R`. It ends with:
+`RESULT estimate=18.52 lower=-1.53 upper=38.57`
+
+**What the script does:**
+1. **Reads and checks the data.** There are 1440 trials: 30 participants × 24 words × 2 prime types, with no missing cells and no duplicates. Response times run from 377 to 1580 ms, and none were removed as outliers.
+2. **Fits a mixed model on raw response times,** so the effect comes out in milliseconds. Prime type is coded so that its coefficient is "unrelated minus related". Word frequency (centred) is included as a word-level control; because every word appears under both prime types, it doesn't change the priming estimate. Participants and words are both treated as random samples.
+3. **Chooses how much the effect may vary between participants and between words.** The fullest model, which lets the effect vary by both, didn't fit properly. The data show essentially no participant-to-participant variation in the priming effect, so that term was dropped. Word-to-word variation is large (SD about 30 ms per word) and stays in. The final model fits without problems.
+4. **Builds the 95% CI** from the model's standard error of 9.7 ms, using a t-distribution with Satterthwaite degrees of freedom (df = 23). The Kenward-Roger method gives the same interval.
+5. **Prints alternative analyses for comparison.** The fullest model gives [−1.8, 38.8], and averaging over participants for each word gives [−1.5, 38.6], both close to the main result. Averaging over words for each participant gives a much narrower [5.6, 31.5], but that is too narrow: it ignores how much the effect varies between words, which is the main source of uncertainty here.

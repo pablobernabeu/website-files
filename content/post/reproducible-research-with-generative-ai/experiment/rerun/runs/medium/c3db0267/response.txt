@@ -1,0 +1,12 @@
+I can only estimate this. I read the file but was not allowed to run code, so I could not fit the model.
+
+**Estimate: about 23 ms (95% CI roughly 6 to 40 ms).** Responses after unrelated primes were about 23 ms slower than after related primes.
+
+How I got there:
+
+- **Point estimate.** I worked through all 635 participant-item pairs that have both conditions by hand. The mean difference (unrelated minus related) was 14,594 / 635 ≈ 23.0 ms. Taking each participant's mean difference and averaging those 30 values gives 23.6 ms. The 30 participant means range from about -60 ms (P12) to +99 ms (P21). The model with random intercepts and slopes should land close to these averages. The few unpaired rows (items with only one correct response) add little information about the prime effect.
+- **Interval.** The pairwise differences have a standard deviation of roughly 230 ms. The residual SD is about 160 ms over about 1,350 rows, which puts the standard error of the prime_c effect at roughly 8.5 ms. Variability across participants and items in the effect should add only a little to that. A Wald interval of ±1.96 × 8.5 gives roughly 6 to 40 ms.
+
+Running lmer() itself would give slightly different figures, particularly for the interval bounds.
+
+RESULT estimate=23 lower=6.3 upper=39.7

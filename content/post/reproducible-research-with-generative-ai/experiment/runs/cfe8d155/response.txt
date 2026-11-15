@@ -1,0 +1,20 @@
+**Answer:** responses after unrelated primes were about **22 ms slower** than after related primes, with a 95% Wald CI of about **0.9 to 43 ms**. These figures are my best hand estimate, not an exact lmer() fit. I was told not to run code, so I read all 1,354 rows and worked the numbers out by hand.
+
+**What I computed exactly from the data**
+- **Missing data:** 1,354 rows. There are 635 complete participant-by-word pairs, 84 pairs missing one condition (36 related-only, 48 unrelated-only), and one pair missing entirely (P24, W11).
+- **Raw condition means:** related 698.76 ms (n = 671) and unrelated 720.19 ms (n = 683), a raw difference of 21.4 ms.
+- **Complete pairs only:** the mean unrelated-minus-related difference is 22.98 ms.
+- **Per-participant effects:** after adjusting for which words each person was missing, the mean is 22.5 ms and the variance is about 1,519.
+- **Per-word effects:** after adjusting for which participants were missing, the mean is 21.7 ms and the variance is about 2,769. Word effects range from about −93 ms (W11) to +93 ms (W08).
+- **Residual variance:** from the variance of the within-pair differences, about 20,600, so the residual SD is about 144 ms.
+
+**How these approximate the model**
+- **Participant slope:** with that residual variance, chance noise alone should make the per-participant effects vary by about 1,830. The observed 1,519 is lower, so REML should put the by-participant slope variance at or near zero, which would give a singular fit.
+- **Word slope:** the by-word slope variance comes out at about 2,769 − 1,465 ≈ 1,300, an SD of about 36 ms.
+- **Estimate:** the fixed effect is then a precision-weighted average of the per-word effects. It falls between 21.7 (equal weights) and 22.2 (the two-way fixed-effects value) and comes out at about 21.96 ms.
+- **Standard error:** about √(2,769 / 24) ≈ 10.7 ms. This barely changes for any residual variance between about 17,000 and 39,000.
+- **CI:** 21.96 ± 1.96 × 10.74 gives about 0.9 to 43.0 ms.
+
+The point estimate is probably right to within a few tenths of a millisecond and the SE to within a few percent. The lower bound sits close to zero, so the sign of the lower limit depends on that precision. Running the specified `lmer()` call would give the exact figures.
+
+RESULT estimate=21.96 lower=0.91 upper=43.01

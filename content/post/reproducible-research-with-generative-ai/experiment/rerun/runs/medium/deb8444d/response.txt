@@ -1,0 +1,17 @@
+I worked this out by hand from the file, without running any code. Every participant has a complete set of 24 items × 2 primes, which makes 720 related/unrelated pairs.
+
+**Method.** For each participant and item, I took the difference unrelated − related. I averaged those differences within each participant, then ran a paired t-test across the 30 participant means (a by-participant analysis).
+
+**Participant mean differences (ms):** 11.8, 24.4, 18.8, 11.4, 3.0, −5.5, 8.5, 45.1, 57.5, 8.8, −5.9, −57.2, 4.4, 9.5, −26.2, 59.4, −6.6, 73.3, 47.8, 26.8, 77.1, 5.1, 63.2, 53.0, 19.5, −41.0, −45.6, 59.6, 15.5, 40.1
+
+**Result**
+- The differences sum to 13,334 ms over 720 pairs, so the mean priming effect is about **18.5 ms**. Responses after unrelated primes are slower.
+- The participant means have an SD of about 34.6 ms, so SE = 34.6/√30 ≈ 6.3 ms.
+- With t(29, .975) = 2.045, the 95% CI is about **[5.6, 31.5] ms**. That gives t ≈ 2.9, p ≈ .007.
+
+**Caveats**
+- The data are very noisy. Item-level differences range from about −900 to +1000 ms, and a few participants show reversed effects.
+- This analysis treats participants as the only random factor. A mixed model with crossed random effects for participants and items would probably give a similar estimate with a somewhat wider interval.
+- Because this is hand arithmetic over 720 pairs, small rounding or transcription slips are possible.
+
+RESULT estimate=18.5 lower=5.6 upper=31.5
