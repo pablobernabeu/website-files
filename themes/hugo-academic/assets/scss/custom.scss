@@ -6322,6 +6322,21 @@ textarea {
   margin-top: -0.75rem;
 }
 
+// A captioned figure or a table that a chunk produces sits 0.5rem below the chunk's
+// code once it is open, as it does below the 'Expand' link while it is closed and as a
+// text output does. Without this, the code block's 2.25rem bottom margin stood between
+// them, so a caption sat 34px below its own code but 8px below the closed link, and
+// opening a chunk pushed its figure away from it.
+.article-style details[open]:has(> pre):has(+ :is(table, .figure, figure, .html-widget)) > pre,
+.article-style details[open]:has(> pre):has(+ style + :is(table, .figure, figure, .html-widget)) > pre {
+  margin-bottom: 0;
+}
+
+.article-style details[open]:has(> pre) + :is(table, .figure, figure, .html-widget),
+.article-style details[open]:has(> pre) + style + :is(table, .figure, figure, .html-widget) {
+  margin-top: 0.5rem;
+}
+
 // Give a plot clear space before the prose that follows, so the next paragraph does
 // not read as its caption. _content.scss gives article images a 2rem bottom margin,
 // but knitr centres a plot (fig.align = "center") with an inline `margin: auto`,
@@ -6376,7 +6391,13 @@ textarea {
 // chunk with fig.cap and which some posts write by hand under an interactive figure.
 // Inside knitr's <div class="figure">, which Bootstrap displays as inline-block, this
 // margin cannot collapse, and the line box adds about 0.5rem below it.
+//
+// Above it, the caption had the site-wide 2% (p.caption, further down), a share of the
+// column's width, which put it 14px under its figure on a desktop and about 7px on a
+// phone, while a note under the APA convention sits 0.5rem under its object at every
+// width. The caption now leaves that same 0.5rem.
 .article-style p.caption {
+  margin-top: 0.5rem;
   margin-bottom: 2.5rem;
 }
 
@@ -6420,9 +6441,12 @@ textarea {
   margin: 0 0 0.15rem;
 }
 
+// The title sits 0.4rem above its object, the same gap a table's caption leaves above
+// its header row (see `table > caption` below). It used to be 0.75rem, which put a
+// figure noticeably further from its title than a table from its own.
 .article-style p.apa-caption-title {
   font-style: italic;
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.4rem;
 }
 
 // The note closes the block. Below it sat the 2.5rem that p.caption carries on a
@@ -6481,12 +6505,33 @@ textarea {
   transform: translateX(-50%);
 }
 
+// The diagram's box opens with a 1rem margin (custom_head.html), which swallowed the
+// title's 0.4rem and left the drawing 15px under its title where a figure or a table
+// sits 6px under its own. Under a title, the title's margin alone sets the gap.
+.article-style p.apa-caption-title + .mermaid {
+  margin-top: 0;
+}
+
 // A <caption> cannot be taken out of its table and a <p> cannot be put inside
 // one, so a table's number and title stay in the <caption> and it is moved to
 // the top. The two spans are blocks so they fall on separate lines.
 .article-style table > caption {
   caption-side: top;
   padding-bottom: 0.4rem;
+}
+
+// A table wider than the column scrolls sideways inside its own box, and its caption
+// takes the table's whole width, so on a phone the title ran off the screen and could
+// only be read by scrolling the table. The caption is held to the column instead, which
+// is 720px wide, or the viewport less its two 20px margins below 760px.
+.article-style table > caption {
+  max-width: 720px;
+}
+
+@media (max-width: 759.98px) {
+  .article-style table > caption {
+    max-width: calc(100vw - 40px);
+  }
 }
 
 .article-style caption .apa-caption-number,
@@ -6496,6 +6541,76 @@ textarea {
 
 .article-style caption .apa-caption-number { font-weight: 700; }
 .article-style caption .apa-caption-title { font-style: italic; }
+
+// A long table on a page whose front matter sets `table_preview: true` opens as a
+// preview: static/js/table-preview.js hides the rows after the first ten, fades the last
+// one shown and puts a button in the table's foot that shows the rest. Its text is set a
+// step below the site's table text, at the size of the captions' notes, since a table
+// long enough to need a preview is read by scanning more than line by line. A link in a
+// cell, such as a DOI, may break anywhere, so that it does not push the last columns out
+// of the column. Its cell keeps at least 6.5em, as otherwise the table's layout squeezed
+// that column on a phone until each DOI ran to a dozen lines and stretched its row.
+.article-style table.table-preview th,
+.article-style table.table-preview td {
+  font-size: 0.85rem !important;
+  line-height: 1.4;
+}
+
+.article-style table.table-preview td a {
+  overflow-wrap: anywhere;
+}
+
+.article-style table.table-preview td:has(> a) {
+  min-width: 6.5em;
+}
+
+.article-style table.table-preview tr.table-preview-hidden {
+  display: none;
+}
+
+.article-style table.table-preview tr.table-preview-edge > td {
+  -webkit-mask-image: linear-gradient(to bottom, #000 15%, transparent 95%);
+  mask-image: linear-gradient(to bottom, #000 15%, transparent 95%);
+}
+
+.article-style table.table-preview > tfoot td {
+  border: 0;
+  padding: 0.6rem 0 0;
+  text-align: center;
+  background: transparent;
+}
+
+.article-style .table-preview-toggle {
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--code-fold-expand, #237A69);
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 0.3rem 1rem;
+  cursor: pointer;
+}
+
+.article-style .table-preview-toggle:hover,
+.article-style .table-preview-toggle:focus-visible {
+  background: rgba(55, 158, 138, 0.12);
+}
+
+@media print {
+  .article-style table.table-preview tr.table-preview-hidden {
+    display: table-row;
+  }
+
+  .article-style table.table-preview tr.table-preview-edge > td {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .article-style table.table-preview > tfoot {
+    display: none;
+  }
+}
 
 // A caption for the mermaid diagram, which cannot come from fig.cap because the
 // diagram is written out by a results='asis' chunk rather than produced as a

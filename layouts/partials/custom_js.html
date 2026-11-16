@@ -67,6 +67,12 @@ document.addEventListener('DOMContentLoaded', function() {
 <script src="{{ "js/apa-captions.js" | relURL }}" defer></script>
 {{ end }}
 
+<!-- Long tables open as a preview of their first rows, with a button that shows the
+     rest. Only where the front matter asks for it. -->
+{{ if .Params.table_preview }}
+<script src="{{ "js/table-preview.js" | relURL }}?v={{ substr (readFile "static/js/table-preview.js" | md5) 0 10 }}" defer></script>
+{{ end }}
+
 <!-- Copy buttons for code blocks on pages that do not load xaringanExtra's. -->
 {{ if .IsPage }}
 <script src="{{ "js/code-copy.js" | relURL }}" defer></script>
