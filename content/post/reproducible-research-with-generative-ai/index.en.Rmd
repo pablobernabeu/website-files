@@ -212,7 +212,7 @@ theme_figure <- function(base_size = 12) {
           # those of the font the layout was measured in, so strips do not clip their text
           strip.clip = 'off',
           legend.key = element_blank(), legend.background = element_blank(),
-          legend.position = 'none', plot.margin = margin(6, 12, 6, 6))
+          legend.position = 'none', plot.margin = margin(2, 12, 2, 6))
 }
 
 svg_text <- function(plot, width, height) {
@@ -289,7 +289,7 @@ I wanted to see how well that division of labour holds up, so I ran an experimen
 
 ## Setting Up the Experiment
 
-Before the experiment itself, it helps to see where the variation in a model's replies comes from and which of its sources a researcher can control. The next two sections review both, and the two after them describe the data and the runs. The code behind every step is folded throughout the post and can be unfolded to inspect or reproduce it.
+Before the experiment itself, it helps to see where the variation in a model's replies comes from and which of its sources a researcher can control. The next two sections review both, and the two after them describe the data and the runs. The code behind every step is folded throughout the post, and three appendices at the end hold the technical detail: the checks on the data, how a mixed model can be fitted by hand and what happened when the scripts were executed again.
 
 ### Why the Same Request Gets Different Replies
 
@@ -313,15 +313,9 @@ Reporting guidelines set out the rest of the record. The GUIDE-LLM checklist ask
 
 ### A Data Set With a Known Answer
 
-I simulated the data so that the population effect would be known. From the same specification and seed, pilotr produces identical files in R and in Python, at least for a specification such as this one, which rounds reaction times to whole milliseconds [@bernabeu2026pilotr]. In this data set, `r spec_file$units$subject$n` participants each respond to `r spec_file$units$item$n` words, once after a related prime and once after an unrelated one. The specification below sets a shifted lognormal distribution for the reaction times, a word-frequency covariate, and random intercepts and priming slopes for both participants and words.
+I simulated the data so that the population effect would be known. From the same specification and seed, pilotr produces identical files in R and in Python, at least for a specification such as this one, which rounds reaction times to whole milliseconds [@bernabeu2026pilotr]. In this data set, `r spec_file$units$subject$n` participants each respond to `r spec_file$units$item$n` words, once after a related prime and once after an unrelated one. The specification sets a shifted lognormal distribution for the reaction times, a word-frequency covariate, and random intercepts and priming slopes for both participants and words. [Appendix A](#appendix-a) prints it in full and shows that the files generated in R and Python are identical.
 
-```{r}
-cat(readLines(file.path(experiment, 'spec.json')), sep = '\n')
-```
-
-The code below regenerates the data in R and compares its SHA-256 checksum, a fingerprint of the file's contents, with those of the file given to the agents and of the [file generated in Python](`r experiment_url('make_data.py')`).
-
-```{r}
+```{r regenerate, include = FALSE}
 library(pilotr)
 
 spec <- load_spec(file.path(experiment, 'spec.json'))
@@ -349,9 +343,7 @@ stopifnot(n_distinct(checksums) == 1)
 checksums
 ```
 
-All `r count_text(length(checksums))` checksums match, so the three files are identical. The next calculation draws a million participants and a million words to estimate how much the priming effect varies across each in the population.
-
-```{r}
+```{r population-effect, include = FALSE}
 fixed <- spec$fixed; random <- spec$random; frequency <- spec$predictors[[1]]
 # effect_sd() below moves frequency with the word, so it must vary by word
 stopifnot(frequency$name == 'frequency', frequency$varies_by == 'item')
@@ -562,24 +554,15 @@ Each run received a description of the data and this question: 'How large is the
 
 The request was either open, leaving the analysis to the agent, or specified, naming the model, the contrast coding and the function for the interval. Both came with the balanced data. A follow-up gave the specified request with an unbalanced version of the data, from which `r count_text(nrow(regenerated) - nrow(unbalanced))` of the `r count_text(nrow(regenerated))` trials had been removed at random. Its prompt described them as incorrect responses that had been excluded. These make up the experiment's `r count_text(nrow(unique(design[c('data', 'request')])))` conditions.
 
-Each condition had two routes. The prose agents could read the data but were told to run no code and to approximate where necessary, as a chat assistant without a code interpreter (a tool for running code) would have to. The script agents wrote an R script, could execute it to check their work and replied with a brief summary. Their instructions named lme4 [@bates2015], lmerTest [@kuznetsova2017], emmeans and dplyr among the installed packages.
+Each condition had two routes. The prose agents could read the data but were told to run no code and to approximate where necessary, as a chat assistant without a code interpreter (a tool for running code) would have to. The script agents wrote an R script, could execute it to check their work and replied with a brief summary.^[Their instructions named lme4 [@bates2015], lmerTest [@kuznetsova2017], emmeans and dplyr among the installed packages.]
 
-The [experiment folder](`r experiment_url(type = 'tree')`) holds the prompts, the data, the scripts, the final replies and the logs of the agents' tool calls, with a README for repeating the work, although not the agents' full transcripts. Below is the specified request as one script run received it. The open request lacks only the paragraph beginning 'Analyse the data as follows'.
+The [experiment folder](`r experiment_url(type = 'tree')`) holds the prompts, the data, the scripts, the final replies and the logs of the agents' tool calls, with a README for repeating the work, although not the agents' full transcripts. [Appendix A](#appendix-a) reproduces the specified request as one script run received it.
 
-```{r}
-example_run <- design$run_id[design$route == 'script' & design$request == 'specified' &
-                               design$data == 'balanced'][1]
-cat(strwrap(readLines(file.path(experiment, 'runs', example_run, 'prompt.txt')), width = 90),
-    sep = '\n')
-```
+Both rounds used the language model `r agent_model[1]` (identifier `r agent_model[2]`), with `r count_text(runs_per_cell)` runs in each combination of condition and route. The first round ran on `r date_text(first_date)` with Claude Code `r readLines(file.path(experiment, 'claude_code_version.txt'))`.^[Its `r count_text(sum(main_runs))` runs on the balanced data were launched `r count_text(batch_size)` at a time, in a random order across conditions, and the `r count_text(sum(!main_runs))` runs of the follow-up afterwards, also in a random order.]
 
-Both rounds used the language model `r agent_model[1]` (identifier `r agent_model[2]`), with `r count_text(runs_per_cell)` runs in each combination of condition and route. The first round ran on `r date_text(first_date)` with Claude Code `r readLines(file.path(experiment, 'claude_code_version.txt'))`. Its `r count_text(sum(main_runs))` runs on the balanced data were launched `r count_text(batch_size)` at a time, in a random order across conditions. The `r count_text(sum(!main_runs))` runs of the follow-up were launched afterwards, also in a random order.
+Each agent started in a folder of its own that held only its data file.^[The logs show that the prose agents read nothing else. In the first round, however, `r count_text(sum(!results$compliant[script_runs]), sum(script_runs))` of the `r count_text(sum(script_runs))` script agents also wrote exploratory files outside their folders, although their commands show no sign of executing another agent's code. Shared temporary folders, and for some agents the experiment folder itself, were within reach, so the isolation was imperfect, and the logs and the hidden checks on this page document each exception.] Each final script was then executed `r count_text(max(executions$execution))` times, each time in a fresh R process and a fresh copy of its folder, with a record of the versions of R and its packages.
 
-Each agent started in a folder of its own that held only its data file, and the logs show that the prose agents read nothing else. In the first round, however, `r count_text(sum(!results$compliant[script_runs]), sum(script_runs))` of the `r count_text(sum(script_runs))` script agents also wrote exploratory files outside their folders, although their commands show no sign of executing another agent's code. Shared temporary folders, and for some agents the experiment folder itself, were within reach, so the isolation was imperfect, and the logs and the hidden checks on this page document each exception.
-
-Each final script was then executed `r count_text(max(executions$execution))` times, each time in a fresh R process and a fresh copy of its folder. A record kept the versions of R, lme4, lmerTest and Matrix, the package that lme4 uses for matrix computations.
-
-The second round ran on `r date_text(second_date)` with Claude Code `r unique(second$claude_code_version)` on `r second_system`. Its `r count_text(nrow(medium))` main runs used medium effort and followed the first round's launch order, `r count_text(second_batch_size)` at a time. Their prompts changed only the folder and, for the scripts, the version of R and the path to it. I added two runs on the balanced data at xhigh effort, a prose reply to the specified request and a script for the open request. That level lies between high and the maximum, and @anthropic-effort recommends it for long-running agentic and coding work. No agent of the second round touched a file outside its folder.
+The second round ran on `r date_text(second_date)`, with its `r count_text(nrow(medium))` main runs at medium effort.^[It used Claude Code `r unique(second$claude_code_version)` on `r second_system`. Its runs followed the first round's launch order, `r count_text(second_batch_size)` at a time, and their prompts changed only the folder and, for the scripts, the version of R and the path to it. No agent of the second round touched a file outside its folder.] I added two runs on the balanced data at xhigh effort, a prose reply to the specified request and a script for the open request. That level lies between high and the maximum, and @anthropic-effort recommends it for long-running agentic and coding work.
 
 ## Results
 
@@ -652,7 +635,7 @@ open_script <- first_of(condition_levels[1], 'script')
 specified_script <- first_of(condition_levels[2], 'script')
 unbalanced_script <- first_of(condition_levels[3], 'script')
 unbalanced_prose <- runs |> filter(condition == condition_levels[3], route == 'prose') |> arrange(order)
-stopifnot(!is.unsorted(unbalanced_prose$started))  # Table 3 numbers the replies in launch order
+stopifnot(!is.unsorted(unbalanced_prose$started))  # Table 2 numbers the replies in launch order
 
 # A prose number agrees with a script's when the script's number, rounded to
 # the decimals the prose wrote, equals it. The decimals are counted in the text
@@ -1074,7 +1057,7 @@ stopifnot(all(unbalanced_lower_deviations > 0))  # 'every lower bound lies above
 
 # The range of the minutes of a route, in all conditions or in some. Ranges of
 # run times are written with one decimal below 10 minutes and none above.
-# Medians and single-run times keep one decimal, as in Table 4.
+# Medians and single-run times keep one decimal, as in Table 3.
 range_in <- function(rte, conditions = condition_levels) {
   range(runs$minutes[runs$route == rte & runs$condition %in% conditions])
 }
@@ -1120,7 +1103,7 @@ column_shares(knitr::kable(
     # A route's two words stay together, so that both routes take one line
     transmute(Condition = condition, Route = gsub(' ', '&nbsp;', route_label, fixed = TRUE),
               `Distinct texts` = distinct_texts, `Distinct results` = distinct_results,
-              `Estimate [95% interval] (ms)` = if_else(distinct_results == 1, result, 'See Table 3')),
+              `Estimate [95% interval] (ms)` = if_else(distinct_results == 1, result, 'See Table 2')),
   caption = sprintf(paste(
     'Texts and Results of the First Round in Each Condition and Route. Each row covers %s runs. The texts are the',
     'replies in the prose route and the scripts in the script route. A result is the estimate and interval',
@@ -1188,15 +1171,13 @@ Given the open request, the `r count_text(nrow(choices))` scripts converged on o
 
 Dropping that slope follows the parsimonious strategy of @matuschek2017 but sits uneasily with the maximal structure recommended by @barr2013. The sample suggested less variation across participants than across words, the reverse of the population pattern, so the agents faced the decision as an analyst would with real data, without the population values to go by.
 
-The prose replies to the open request reached the same interval as the scripts by decomposing the `r count_text(nrow(paired))` paired differences into participant, word and residual components. In a balanced design, this decomposition gives the same standard error as the scripts' model without by-participant slopes. `r stringr::str_to_sentence(count_text(nrow(equated_maximal)))` of these replies equated their decomposition with the maximal model, although that model keeps a small by-participant slope and gives a slightly wider Satterthwaite interval, `r interval(maximal_ci[1], maximal_ci[2])` ms. With the specified request, both routes returned the Wald interval of the maximal model, which is narrower than either Satterthwaite interval because it takes its critical value from the normal distribution.
+The prose replies to the open request reached the same interval as the scripts by decomposing the `r count_text(nrow(paired))` paired differences into participant, word and residual components. In a balanced design, this decomposition gives the same standard error as the scripts' model without by-participant slopes.^[`r stringr::str_to_sentence(count_text(nrow(equated_maximal)))` of these replies equated their decomposition with the maximal model, although that model keeps a small by-participant slope and gives a slightly wider Satterthwaite interval, `r interval(maximal_ci[1], maximal_ci[2])` ms.] With the specified request, both routes returned the Wald interval of the maximal model, which is narrower than either Satterthwaite interval because it takes its critical value from the normal distribution.
 
 Every prose reply to the open request, and `r count_text(noted_by_route[['script']])` of the script summaries, also considered a paired *t* test over participants, whose interval, `r interval(paired_ci[1], paired_ci[2])` ms, excludes zero. They set it aside because it ignores the variation across words and so overstates the evidence for generalising beyond the words sampled. The effect is real here, so that test would have reached the right conclusion, but through an analysis too liberal for the purpose. The mixed-model intervals include zero, and they also contain the population effect of `r ms(population_effect, 1)` ms.
 
 ### Mixed Models by Hand
 
-An agent that ran no code could still fit a mixed model, and the prose replies to the balanced data showed how. Because every participant saw every word after both types of prime, the restricted maximum likelihood (REML) fit of the mixed model reduces to a few mean squares and cross-products of the paired differences and of their sums. Cross-products are the counterparts of mean squares for covariances. Table 2 recomputes in R the intermediate quantities that recur across the replies. Where a reply does not state the residual mean square as R gives it, it rounds the value or gives the residual variance, which is half of it.
-
-```{r}
+```{r quantities, include = FALSE}
 library(lme4)
 
 decomposition <- anova(lm(difference ~ participant + item, data = paired))
@@ -1236,7 +1217,7 @@ quantities$open <- vapply(quantities$value, states, integer(1), texts = open_rep
 quantities$specified <- vapply(quantities$value, states, integer(1), texts = specified_replies)
 
 count_of <- function(k, n) sprintf('%d of %d', k, n)
-knitr::kable(
+quantities_table <- knitr::kable(
   quantities |> transmute(Quantity = quantity, `Value in R` = value,
                           `Open request` = count_of(open, length(open_replies)),
                           `Specified request` = count_of(specified, length(specified_replies))),
@@ -1259,7 +1240,7 @@ stopifnot(round(residual_ms, -2) == 41000, round(residual_ms / 2, -2) == 20500,
 replies_stating <- function(key, request) quantities[[request]][match(key, quantities$key)]
 # The paired interval appears only in replies to the open request and the
 # standard error of the maximal model only in replies to the specified one,
-# as Table 2 shows
+# as Table 4 shows
 stopifnot(replies_stating('paired_interval', 'open') > 0, replies_stating('paired_interval', 'specified') == 0,
           replies_stating('se_specified', 'specified') > 0, replies_stating('se_specified', 'open') == 0)
 
@@ -1290,18 +1271,18 @@ stopifnot(isSingular(specified_fit),
 # model without by-participant slopes, as the text says, and the maximal model
 # a larger one
 reduced_fit <- lmer(rt ~ prime_c + (1 | participant) + (1 + prime_c | item), data = balanced)
-# The two agree well within the second decimal, which Table 2 prints
+# The two agree well within the second decimal, which Table 4 prints
 stopifnot(abs(sqrt(vcov(reduced_fit)[2, 2]) - reduced_se) < 1e-3,
           sqrt(vcov(specified_fit)[2, 2]) > reduced_se)
 ```
 
-From these quantities, every reply to the specified request recovered the main features of lme4's fit. Each found a by-participant slope with a standard deviation of about `r sprintf('%.0f', participant_slope_sd)` ms, whose correlation with the intercepts lay at the boundary (+1 in `r count_text(sum(positive_one))` replies and ±1 in the other).
+An agent that ran no code could still fit a mixed model to the balanced data. Because every participant saw every word after both types of prime, the fit reduces to a few sums of squares that can be worked out by hand, and the prose replies did just that. Every reply to the specified request recovered the main features of lme4's fit, including a by-participant slope with a standard deviation of about `r sprintf('%.0f', participant_slope_sd)` ms whose correlation with the intercepts lay at the boundary. [Appendix B](#appendix-b) sets out the quantities the replies worked from.
 
 ### Where Hand Calculation Runs Out
 
 Removing trials takes that shortcut away. Some participant-word pairs lose one observation or both, and the REML fit then has to be found iteratively. All `r count_text(runs_per_cell)` scripts estimated a priming effect of `r ms(unbalanced_script$estimate)` ms, which differs from the raw difference in means of `r ms(unbalanced_raw_difference)` ms. The specified Wald interval now excludes zero, with a lower bound of `r ms(unbalanced_script$lower)` ms, whereas with Satterthwaite degrees of freedom, the same model's interval still includes it.
 
-The prose replies worked from weighted per-word effects and from variances estimated from the observed mean squares. Each put the by-participant slope variance at or near zero, whereas the numerical fit kept that slope, with a standard deviation of `r ms(attr(unbalanced_participant, 'stddev')[['prime_c']], 1)` ms, perfectly correlated with the intercepts. The replies therefore lay closer to the model without that slope than to the executed result (Table 3).
+The prose replies approximated that fit by hand, and each put the by-participant slope variance at or near zero.^[They worked from weighted per-word effects and from variances estimated from the observed mean squares. The numerical fit kept the by-participant slope, with a standard deviation of `r ms(attr(unbalanced_participant, 'stddev')[['prime_c']], 1)` ms, perfectly correlated with the intercepts.] The replies therefore lay closer to the model without that slope than to the executed result (Table 2).
 
 ```{r}
 # unbalanced_script (the executed result, which every script printed) and
@@ -1401,7 +1382,7 @@ stopifnot(vapply(seq_len(nrow(second_specified_scripts)), function(i)
 # Given the open request, each script either kept the by-word slope, with the
 # first round's result, or dropped both slopes, with the Satterthwaite
 # interval of the model with random intercepts only. None of the latter fitted
-# the model with only the by-word slope (reduced_fit, fitted for Table 2's
+# the model with only the by-word slope (reduced_fit, fitted for Table 4's
 # checks), which is not singular.
 second_open_scripts <- cell_of(medium_runs, condition_levels[1], 'script')
 intercepts_fit <- lmerTest::lmer(rt ~ prime_c + (1 | participant) + (1 | item), data = balanced)
@@ -1603,7 +1584,7 @@ alt_results <- sprintf(paste(
   sprintf('%.2f', unbalanced_script$lower))
 ```
 
-Specifying the analysis kept the scripts on course. Given the specified request, all `r count_text(nrow(second_specified_scripts))` scripts of the second round returned the first round's results, `r count_text(four_decimals, nrow(second_specified_scripts))` of them to four decimals (Table 4). The open request split them. `r stringr::str_to_sentence(count_text(sum(kept_slope)))` scripts kept the by-word priming slope and returned the first round's interval, whereas `r count_text(sum(dropped_both))` dropped both random slopes after singular fits and kept random intercepts only. Their Satterthwaite interval, `r interval(intercepts_ci[1], intercepts_ci[2])` ms, excludes zero. None of those `r count_text(sum(dropped_both))` tried the model that drops only the by-participant slope. That model gives no singular fit, and lme4 puts the standard deviation of its by-word slope at `r ms(by_word_sd, 1)` ms, well away from the boundary.
+Specifying the analysis kept the scripts on course. Given the specified request, all `r count_text(nrow(second_specified_scripts))` scripts of the second round returned the first round's results, `r count_text(four_decimals, nrow(second_specified_scripts))` of them to four decimals (Table 3). The open request split them. `r stringr::str_to_sentence(count_text(sum(kept_slope)))` scripts kept the by-word priming slope and returned the first round's interval, whereas `r count_text(sum(dropped_both))` dropped both random slopes after singular fits and kept random intercepts only. Their Satterthwaite interval, `r interval(intercepts_ci[1], intercepts_ci[2])` ms, excludes zero. None of those `r count_text(sum(dropped_both))` tried the model that drops only the by-participant slope. That model gives no singular fit, and lme4 puts the standard deviation of its by-word slope at `r ms(by_word_sd, 1)` ms, well away from the boundary.
 
 ```{r}
 # runs holds the first round's runs and medium_runs the second's, built with
@@ -1611,7 +1592,7 @@ Specifying the analysis kept the scripts on course. Given the specified request,
 # lists each result as the runs wrote it, with the number of runs that gave
 # it, or, with more than max_listed results, the range of each of the three
 # numbers. As in Table 1, the first round's replies to the unbalanced data,
-# which gave several results, are left to Table 3. The result columns are
+# which gave several results, are left to Table 2. The result columns are
 # left-aligned, unlike those of Tables 1 and 3, because their cells stack
 # several results. Each result, and each range, is joined with non-breaking
 # spaces, so that a line break can fall only between them.
@@ -1638,7 +1619,7 @@ by_cell <- function(rows) {
     summarise(distinct = n_distinct(result_line), results = results_cell(result_line),
               minutes = sprintf('%.1f', median(minutes)), .groups = 'drop')
 }
-first_cells <- by_cell(runs) |> mutate(results = if_else(distinct == 1, results, 'See Table 3'))
+first_cells <- by_cell(runs) |> mutate(results = if_else(distinct == 1, results, 'See Table 2'))
 
 # The stacked results would leave the first round's column too narrow for one
 # interval, so this table's shares are fixed too (column_shares() is defined
@@ -1662,7 +1643,7 @@ column_shares(knitr::kable(
   align = c('l', 'l', 'l', 'l', 'r', 'r')), shares = c(17, 10, 23, 28, 11, 11))
 ```
 
-None of the second round's prose replies reproduced a result of the first. All but one of the replies to the open request fell back on the by-participant paired interval, which every reply of the first round had set aside. Given the specified request on the balanced data, most approximated a model without by-participant slopes, and the others left out the by-word slope variance as well. On the unbalanced data, the replies put their estimates near the mean difference over complete participant-word pairs, with lower bounds well above the executed one (Table 4). They were also quicker in every condition than the replies of the first round.
+None of the second round's prose replies reproduced a result of the first. All but one of the replies to the open request fell back on the by-participant paired interval, which every reply of the first round had set aside. Given the specified request on the balanced data, most approximated a model without by-participant slopes, and the others left out the by-word slope variance as well. On the unbalanced data, the replies put their estimates near the mean difference over complete participant-word pairs, with lower bounds well above the executed one (Table 3). They were also quicker in every condition than the replies of the first round.
 
 Both runs repeated at xhigh effort returned the first round's results. The script kept the by-word slope, and the prose reply reconstructed lme4's boundary fit after `r minutes_from_seconds(xhigh_prose$thinking_seconds)` minutes of reasoning. Two runs cannot establish an effect of the effort level, but they show that the answers at medium effort were not the only ones this model would give.
 
@@ -1757,7 +1738,7 @@ fig_results <- function(narrow = FALSE, base_size = if (narrow) 14 else 12.5) {
             strip.text.y.left = element_text(angle = 0, hjust = 0, vjust = 1, face = 'bold',
                                              colour = fig_roles[['ink']], size = rel(0.92)),
             panel.spacing.x = unit(1.2, 'lines'), panel.spacing.y = unit(0.8, 'lines'),
-            plot.margin = margin(6, 92, 6, 6))
+            plot.margin = margin(2, 92, 2, 6))
   }
 }
 stopifnot(min(results_both$lower) > -4, max(results_both$upper) < 50)  # within the axis
@@ -1768,7 +1749,7 @@ fig_results()
 
 ### Executing the Scripts Again
 
-Executing a script again in the same environment tests whether it is repeatable, and executing it elsewhere tests whether it travels. Every execution below used a fresh R process in the C locale, a standard set of language and character conventions. Checksums compared the output line by line, allowing for the different line endings of Windows and Linux. The scripts use `r knitr::combine_words(packages_loaded, and = ' and ', oxford_comma = FALSE)`, and some also call pbkrtest for the Kenward–Roger method, which adjusts the standard error as well as the degrees of freedom.
+Every executed script printed identical output each time it ran, in both rounds. The first round's scripts also travelled well. On a fresh machine, an environment rebuilt from their record reproduced their stored output exactly, and under the newer versions of R and its packages recorded in this site's lockfile, they printed the same results, with changes only in the formatting of the tables that lme4 prints. [Appendix C](#appendix-c) sets out the environments and executes each script once more whenever this page is knitted.
 
 ```{r environment-record, include = FALSE}
 scripts <- design |> filter(route == 'script')
@@ -1925,155 +1906,6 @@ stopifnot(
   numeric_version(newer_versions$lme4) > numeric_version(stored_versions$lme4))
 ```
 
-The first round's `r count_text(nrow(executions))` stored executions used R `r stored_versions$R` on `r sub(' LTS$', '', stored_system)`, with lme4 `r stored_versions$lme4`, lmerTest `r stored_versions$lmerTest` and Matrix `r stored_versions$Matrix`, and every script printed identical output each time. A [Dockerfile](`r experiment_url('Dockerfile')`) rebuilds that environment from a dated snapshot of the software, and on a fresh machine on GitHub, all `r count_text(nrow(verification))` scripts reproduced their stored output, as [verification.csv](`r experiment_url('verification.csv')`) records.
-
-The second round's `r count_text(n_distinct(execution_key))` scripts were each executed twice in the library their agents had used, under R `r second_versions$R` on `r second_versions$System`. They too printed identical output, ending with the result each agent had reported.
-
-```{r rerun}
-# run_script_with_retries(), data_file_for() and child_environment() come from
-# experiment/run_script.R. The list of scripts (scripts, n_scripts) and their
-# stored executions (stored_of()) are read from design.csv and executions.csv
-# earlier on the page.
-source(file.path(experiment, 'run_script.R'))
-
-# Every script executed once more, and again if its R process crashes, which
-# happens occasionally on Windows
-rerun_attempts <- bind_rows(lapply(seq_len(n_scripts), function(i)
-  run_script_with_retries(scripts$run_id[i], data_file_for(scripts$data[i]),
-                          experiment_dir = normalizePath(experiment), label = 'page')))
-rerun <- rerun_attempts |> group_by(run_id) |> filter(attempt == max(attempt)) |> ungroup()
-rerun <- rerun[match(scripts$run_id, rerun$run_id), ]
-page_environment <- child_environment()
-
-# Rscript exits with status 1 when a script stops with an error. Any other
-# nonzero status means that the R process itself ended abnormally, as when it
-# crashes, which says nothing about the script.
-rerun$outcome <- ifelse(rerun$status == 0, 'completed', ifelse(rerun$status == 1, 'error', 'crash'))
-rerun$same_result <- rerun$outcome == 'completed' & !is.na(rerun$result) &
-  rerun$result == stored_of(rerun$run_id, 'result')
-rerun$same_output <- rerun$outcome == 'completed' &
-  rerun$stdout_sha256 == stored_of(rerun$run_id, 'stdout_sha256')
-
-c(stored_executions = nrow(executions), scripts = n_scripts,
-  completed_now = sum(rerun$outcome == 'completed'),
-  completed_after_a_crash = sum(rerun$outcome == 'completed' & rerun$attempt > 1),
-  stopped_with_error_now = sum(rerun$outcome == 'error'), crashed_now = sum(rerun$outcome == 'crash'),
-  same_result_now = sum(rerun$same_result), same_output_now = sum(rerun$same_output))
-```
-
-```{r rerun-text, include = FALSE}
-# The wording of the paragraph below, from the counts above
-n_completed <- sum(rerun$outcome == 'completed')
-n_error <- sum(rerun$outcome == 'error')
-n_crash <- sum(rerun$outcome == 'crash')
-n_retried <- sum(rerun$outcome == 'completed' & rerun$attempt > 1)
-n_same_result <- sum(rerun$same_result)
-n_same_output <- sum(rerun$same_output)
-# The abstract says that under newer versions the output changed only in its
-# formatting, so every execution that completes must print the stored result
-# line, whatever its output otherwise
-stopifnot(n_same_result == n_completed)
-
-# How a crashed process ended. Windows reports an access violation as status
-# -1073741819 (0xC0000005), and processx reports a Unix signal as its negative.
-crash_kind <- function(status) {
-  if (status == -1073741819) 'an access violation'
-  else if (.Platform$OS.type == 'unix' && status < 0) sprintf('signal %d', -status)
-  else sprintf('exit status %d', status)
-}
-crash_kinds <- knitr::combine_words(unique(vapply(rerun$status[rerun$outcome == 'crash'],
-                                                  crash_kind, character(1))), and = ' or ')
-
-completed_text <- if (n_completed == n_scripts) {
-  sprintf('All %s scripts ran to completion', count_text(n_scripts))
-} else {
-  sprintf('Of the %s scripts, %s ran to completion', count_text(n_scripts), count_text(n_completed, n_scripts))
-}
-rerun_text <- if (n_same_output == n_scripts) {
-  sprintf('All %s scripts printed the same output as the stored executions.', count_text(n_scripts))
-} else if (n_completed == 0) {
-  sprintf('None of the %s scripts ran to completion.', count_text(n_scripts))
-} else if (n_same_output == n_completed) {
-  sprintf('%s and printed the same output as the stored executions.', completed_text)
-} else {
-  sprintf('%s and printed the same result line as the stored executions, but %s printed identical output.',
-          completed_text, if (n_same_output == 0) 'none' else sprintf('only %s', count_text(n_same_output, n_scripts)))
-}
-retry_text <- if (n_retried == 0) '' else {
-  sprintf(' In %s of them, the R process crashed at first and the script completed when executed again.',
-          count_text(n_retried, n_scripts))
-}
-# The scripts that did not complete are 'the other' ones only if some did
-failure_text <- if (n_error + n_crash == 0) {
-  ''
-} else if (n_completed == 0 && n_crash == 0) {
-  ' All of them stopped with an error.'
-} else if (n_completed == 0 && n_error == 0) {
-  sprintf(' In all of them, the R process itself crashed with %s on every attempt.', crash_kinds)
-} else if (n_completed == 0) {
-  sprintf(' Of these, %s stopped with an error, and in %s the R process itself crashed with %s on every attempt.',
-          count_text(n_error), count_text(n_crash), crash_kinds)
-} else if (n_crash == 0) {
-  sprintf(' The other %s stopped with an error.', count_text(n_error))
-} else if (n_error == 0) {
-  sprintf(' In the other %s, the R process itself crashed with %s on every attempt.', count_text(n_crash), crash_kinds)
-} else {
-  sprintf(' Of the other %s, %s stopped with an error, and in %s the R process itself crashed with %s on every attempt.',
-          count_text(n_error + n_crash), count_text(n_error), count_text(n_crash), crash_kinds)
-}
-
-# The page is knitted with the version of R and the packages that renv.lock
-# (read above) pins, and the text calls them newer than those of the stored
-# executions
-page_versions <- versions_of(page_environment)
-version_columns <- c('R', 'lme4', 'lmerTest', 'Matrix')
-stopifnot(page_versions$R == lock$R$Version,
-          vapply(c('lme4', 'lmerTest', 'Matrix'), function(p)
-            page_versions[[p]] == lock$Packages[[p]]$Version, logical(1)),
-          numeric_version(page_versions$R) > numeric_version(stored_versions$R),
-          numeric_version(page_versions$lme4) > numeric_version(stored_versions$lme4),
-          # the page runs in the library that check_versions.R recorded as
-          # renv.lock, as the text and Table 5 say
-          unlist(page_versions[version_columns]) == unlist(newer_versions[version_columns]))
-```
-
-This page executes each of the first round's scripts once more whenever it is knitted, under the versions of R and its packages recorded in the site's lockfile, [renv.lock](`r sprintf('%s/blob/%s/renv.lock', repo_url, last_commit(lock_file))`), which are newer than the first round's. `r rerun_text``r retry_text``r failure_text`
-
-To find the source of the difference, I also executed each script on one `r newer_system` machine with three libraries that differed only in their versions of lme4 and lmerTest (Table 5). Matrix stayed at `r newer_versions$Matrix` in all three, since the stored version could not be installed under the newer R. With the earlier lme4, both versions of lmerTest reproduced the stored output, as the Docker rebuild had. The newer lme4 changed only the formatting. It added a trailing space to the lines of some random-effects tables, renamed a column from `deviance` to `-2*log(L)` and, in some tables, swapped the columns of variances and standard deviations. None of the numbers changed.
-
-```{r environments}
-labels <- c(`renv.lock` = 'Newer (renv.lock)', `lme4 1.1-35.1` = 'Newer, with lme4 as stored',
-            `lme4 1.1-35.1 and lmerTest 3.1-3` = 'Newer, with lme4 and lmerTest as stored')
-# count_of() writes 'k of n', as in Table 2
-row_of <- function(label, system, versions, same_output, same_result) {
-  data.frame(Environment = label, `Operating system` = system, versions[, c('R', 'lme4', 'lmerTest', 'Matrix')],
-             `Identical output` = count_of(sum(same_output), length(same_output)),
-             `Same result line` = count_of(sum(same_result), length(same_result)), check.names = FALSE)
-}
-environment_table <- bind_rows(
-  row_of('Stored, rebuilt with Docker', rebuild_release, versions_of(unique(verification$environment)),
-         verification$identical, verification$result == stored_of(verification$run_id, 'result')),
-  bind_rows(lapply(names(labels), function(library) {
-    rows <- library_rows(library)
-    row_of(labels[[library]], newer_system, library_versions(library), rows$same_output, rows$same_result)
-  })))
-
-knitr::kable(environment_table,
-  caption = sprintf(paste(
-    'Output of the First Round\'s Scripts in %s Environments, Compared With Their Stored Executions.',
-    'Each script was executed once in each environment. \'Identical output\' counts the scripts whose',
-    'output matched the stored output line for line, and \'Same result line\' counts those whose result',
-    'line matched.'),
-    stringr::str_to_title(count_text(nrow(environment_table)))),
-  align = c('l', 'l', 'r', 'r', 'r', 'r', 'r', 'r'))
-```
-
-The R session that last knitted this page is shown below, although the scripts ran in separate R processes in the C locale.
-
-```{r session-info}
-sessionInfo()
-```
-
 ### What These Runs Can Establish
 
 The experiment used one language model and one simulated data set, clean and fully described in the prompt, on which the lower bound of the interval lay close to zero. Real data bring exclusions, coding errors and gaps in documentation that these agents never faced. I designed the follow-up after seeing the results on the balanced data. The specified request also supplied the model formula and the function for the interval, so the agreement among its scripts tested implementation more than analysis. The prose route imitated a chat without a code interpreter, although many chat assistants now have one. An assistant that runs code and lets the researcher keep it could close much of the gap with a coding agent.
@@ -2193,7 +2025,7 @@ draw_narrow(fig_forecasts(narrow = TRUE), width = 4.4, height = 1.75)
 fig_forecasts()
 ```
 
-Measurements of past progress point the same way. By METR's measure, the length of software task that frontier models, the most capable of their day, can complete half the time doubled about every seven months between 2019 and 2025 [@kwa2025], and its update of January 2026 puts the doubling time since 2023 at about four months [@metr2026]. That measure has limits of its own. It rests on self-contained tasks 'with clear success criteria that can be automatically evaluated' [@metr-time-horizons], and by METR's account, relatively few of its tasks remain beyond the latest models [@metr2026]. The health of a codebase, by contrast, can be scored only in part. Agents resolved fewer tasks when they built on code written by other agents than on code written by people, and many traditional measures of maintainability did not explain the difference [@patel2026].
+Measurements of past progress point the same way. By METR's measure, the length of software task that frontier models, the most capable of their day, can complete half the time doubled about every seven months between 2019 and 2025 [@kwa2025]. Its update of January 2026 puts the doubling time since 2023 at about four months [@metr2026]. That measure has limits of its own. It rests on self-contained tasks 'with clear success criteria that can be automatically evaluated' [@metr-time-horizons], and by METR's account, relatively few of its tasks remain beyond the latest models [@metr2026]. The health of a codebase, by contrast, can be scored only in part. Agents resolved fewer tasks when they built on code written by other agents than on code written by people, and many traditional measures of maintainability did not explain the difference [@patel2026].
 
 Capability need not turn into use, either. The computer scientists Arvind Narayanan and Sayash Kapoor [-@narayanan2025] distinguish gains in capability from the development and adoption of reliable applications. They expect diffusion to stay slow in consequential settings, held back by institutions, tacit knowledge and the need for validation, and a growing share of people's work to go into controlling AI. Upkeep illustrates their point, since whether a file is stale may depend on what its owner intends. Asked to 'clean up old branches', one agent issued a command to delete the branches on the remote server, although the user may have meant only those on their own computer [@hughes2026].
 
@@ -2219,3 +2051,206 @@ Used in this way, coding agents can make an AI-assisted analysis far more reprod
 
 ::: {#refs}
 :::
+
+
+## Appendix A: The Data and the Request {#appendix-a}
+
+The specification from which pilotr simulated the data is below.
+
+```{r spec-file}
+cat(readLines(file.path(experiment, 'spec.json')), sep = '\n')
+```
+
+The code below regenerates the data in R and compares its SHA-256 checksum, a fingerprint of the file's contents, with those of the file given to the agents and of the [file generated in Python](`r experiment_url('make_data.py')`). All `r count_text(length(checksums))` checksums match, so the three files are identical.
+
+```{r, ref.label = 'regenerate', eval = FALSE}
+```
+
+```{r regenerate-output, echo = FALSE}
+checksums
+```
+
+The next calculation draws a million participants and a million words to estimate how much the priming effect varies across each in the population, which gives the values in the main text.
+
+```{r, ref.label = 'population-effect', eval = FALSE}
+```
+
+```{r population-effect-output, echo = FALSE}
+c(population_effect = population_effect, sample_effect = sample_effect,
+  sd_across_participants = effect_sds[['participants']], sd_across_words = effect_sds[['words']])
+```
+
+Below is the specified request as one script run received it. The open request lacks only the paragraph beginning 'Analyse the data as follows'.
+
+```{r example-prompt}
+example_run <- design$run_id[design$route == 'script' & design$request == 'specified' &
+                               design$data == 'balanced'][1]
+cat(strwrap(readLines(file.path(experiment, 'runs', example_run, 'prompt.txt')), width = 90),
+    sep = '\n')
+```
+
+## Appendix B: Fitting a Mixed Model by Hand {#appendix-b}
+
+Because every participant saw every word after both types of prime, the restricted maximum likelihood (REML) fit of the mixed model reduces to a few mean squares and cross-products of the paired differences and of their sums. Cross-products are the counterparts of mean squares for covariances. Table 4 recomputes in R the intermediate quantities that recur across the prose replies to the balanced data. Where a reply does not state the residual mean square as R gives it, it rounds the value or gives the residual variance, which is half of it.
+
+```{r, ref.label = 'quantities', eval = FALSE}
+```
+
+```{r quantities-table, echo = FALSE}
+quantities_table
+```
+
+From these quantities, every reply to the specified request recovered the main features of lme4's fit. Each found a by-participant slope with a standard deviation of about `r sprintf('%.0f', participant_slope_sd)` ms, whose correlation with the intercepts lay at the boundary (+1 in `r count_text(sum(positive_one))` replies and ±1 in the other).
+
+## Appendix C: Executing the Scripts Again {#appendix-c}
+
+Executing a script again in the same environment tests whether it is repeatable, and executing it elsewhere tests whether it travels. Every execution below used a fresh R process in the C locale, a standard set of language and character conventions. Checksums compared the output line by line, allowing for the different line endings of Windows and Linux. The scripts use `r knitr::combine_words(packages_loaded, and = ' and ', oxford_comma = FALSE)`, and some also call pbkrtest for the Kenward–Roger method, which adjusts the standard error as well as the degrees of freedom.
+
+The first round's `r count_text(nrow(executions))` stored executions used R `r stored_versions$R` on `r sub(' LTS$', '', stored_system)`, with lme4 `r stored_versions$lme4`, lmerTest `r stored_versions$lmerTest` and Matrix `r stored_versions$Matrix`, and every script printed identical output each time. A [Dockerfile](`r experiment_url('Dockerfile')`) rebuilds that environment from a dated snapshot of the software, and on a fresh machine on GitHub, all `r count_text(nrow(verification))` scripts reproduced their stored output, as [verification.csv](`r experiment_url('verification.csv')`) records.
+
+The second round's `r count_text(n_distinct(execution_key))` scripts were each executed twice in the library their agents had used, under R `r second_versions$R` on `r second_versions$System`. They too printed identical output, ending with the result each agent had reported.
+
+```{r rerun}
+# run_script_with_retries(), data_file_for() and child_environment() come from
+# experiment/run_script.R. The list of scripts (scripts, n_scripts) and their
+# stored executions (stored_of()) are read from design.csv and executions.csv
+# earlier on the page.
+source(file.path(experiment, 'run_script.R'))
+
+# Every script executed once more, and again if its R process crashes, which
+# happens occasionally on Windows
+rerun_attempts <- bind_rows(lapply(seq_len(n_scripts), function(i)
+  run_script_with_retries(scripts$run_id[i], data_file_for(scripts$data[i]),
+                          experiment_dir = normalizePath(experiment), label = 'page')))
+rerun <- rerun_attempts |> group_by(run_id) |> filter(attempt == max(attempt)) |> ungroup()
+rerun <- rerun[match(scripts$run_id, rerun$run_id), ]
+page_environment <- child_environment()
+
+# Rscript exits with status 1 when a script stops with an error. Any other
+# nonzero status means that the R process itself ended abnormally, as when it
+# crashes, which says nothing about the script.
+rerun$outcome <- ifelse(rerun$status == 0, 'completed', ifelse(rerun$status == 1, 'error', 'crash'))
+rerun$same_result <- rerun$outcome == 'completed' & !is.na(rerun$result) &
+  rerun$result == stored_of(rerun$run_id, 'result')
+rerun$same_output <- rerun$outcome == 'completed' &
+  rerun$stdout_sha256 == stored_of(rerun$run_id, 'stdout_sha256')
+
+c(stored_executions = nrow(executions), scripts = n_scripts,
+  completed_now = sum(rerun$outcome == 'completed'),
+  completed_after_a_crash = sum(rerun$outcome == 'completed' & rerun$attempt > 1),
+  stopped_with_error_now = sum(rerun$outcome == 'error'), crashed_now = sum(rerun$outcome == 'crash'),
+  same_result_now = sum(rerun$same_result), same_output_now = sum(rerun$same_output))
+```
+
+```{r rerun-text, include = FALSE}
+# The wording of the paragraph below, from the counts above
+n_completed <- sum(rerun$outcome == 'completed')
+n_error <- sum(rerun$outcome == 'error')
+n_crash <- sum(rerun$outcome == 'crash')
+n_retried <- sum(rerun$outcome == 'completed' & rerun$attempt > 1)
+n_same_result <- sum(rerun$same_result)
+n_same_output <- sum(rerun$same_output)
+# The abstract says that under newer versions the output changed only in its
+# formatting, so every execution that completes must print the stored result
+# line, whatever its output otherwise
+stopifnot(n_same_result == n_completed)
+
+# How a crashed process ended. Windows reports an access violation as status
+# -1073741819 (0xC0000005), and processx reports a Unix signal as its negative.
+crash_kind <- function(status) {
+  if (status == -1073741819) 'an access violation'
+  else if (.Platform$OS.type == 'unix' && status < 0) sprintf('signal %d', -status)
+  else sprintf('exit status %d', status)
+}
+crash_kinds <- knitr::combine_words(unique(vapply(rerun$status[rerun$outcome == 'crash'],
+                                                  crash_kind, character(1))), and = ' or ')
+
+completed_text <- if (n_completed == n_scripts) {
+  sprintf('All %s scripts ran to completion', count_text(n_scripts))
+} else {
+  sprintf('Of the %s scripts, %s ran to completion', count_text(n_scripts), count_text(n_completed, n_scripts))
+}
+rerun_text <- if (n_same_output == n_scripts) {
+  sprintf('All %s scripts printed the same output as the stored executions.', count_text(n_scripts))
+} else if (n_completed == 0) {
+  sprintf('None of the %s scripts ran to completion.', count_text(n_scripts))
+} else if (n_same_output == n_completed) {
+  sprintf('%s and printed the same output as the stored executions.', completed_text)
+} else {
+  sprintf('%s and printed the same result line as the stored executions, but %s printed identical output.',
+          completed_text, if (n_same_output == 0) 'none' else sprintf('only %s', count_text(n_same_output, n_scripts)))
+}
+retry_text <- if (n_retried == 0) '' else {
+  sprintf(' In %s of them, the R process crashed at first and the script completed when executed again.',
+          count_text(n_retried, n_scripts))
+}
+# The scripts that did not complete are 'the other' ones only if some did
+failure_text <- if (n_error + n_crash == 0) {
+  ''
+} else if (n_completed == 0 && n_crash == 0) {
+  ' All of them stopped with an error.'
+} else if (n_completed == 0 && n_error == 0) {
+  sprintf(' In all of them, the R process itself crashed with %s on every attempt.', crash_kinds)
+} else if (n_completed == 0) {
+  sprintf(' Of these, %s stopped with an error, and in %s the R process itself crashed with %s on every attempt.',
+          count_text(n_error), count_text(n_crash), crash_kinds)
+} else if (n_crash == 0) {
+  sprintf(' The other %s stopped with an error.', count_text(n_error))
+} else if (n_error == 0) {
+  sprintf(' In the other %s, the R process itself crashed with %s on every attempt.', count_text(n_crash), crash_kinds)
+} else {
+  sprintf(' Of the other %s, %s stopped with an error, and in %s the R process itself crashed with %s on every attempt.',
+          count_text(n_error + n_crash), count_text(n_error), count_text(n_crash), crash_kinds)
+}
+
+# The page is knitted with the version of R and the packages that renv.lock
+# (read above) pins, and the text calls them newer than those of the stored
+# executions
+page_versions <- versions_of(page_environment)
+version_columns <- c('R', 'lme4', 'lmerTest', 'Matrix')
+stopifnot(page_versions$R == lock$R$Version,
+          vapply(c('lme4', 'lmerTest', 'Matrix'), function(p)
+            page_versions[[p]] == lock$Packages[[p]]$Version, logical(1)),
+          numeric_version(page_versions$R) > numeric_version(stored_versions$R),
+          numeric_version(page_versions$lme4) > numeric_version(stored_versions$lme4),
+          # the page runs in the library that check_versions.R recorded as
+          # renv.lock, as the text and Table 5 say
+          unlist(page_versions[version_columns]) == unlist(newer_versions[version_columns]))
+```
+
+This page executes each of the first round's scripts once more whenever it is knitted, under the versions of R and its packages recorded in the site's lockfile, [renv.lock](`r sprintf('%s/blob/%s/renv.lock', repo_url, last_commit(lock_file))`), which are newer than the first round's. `r rerun_text``r retry_text``r failure_text`
+
+To find the source of the difference, I also executed each script on one `r newer_system` machine with three libraries that differed only in their versions of lme4 and lmerTest (Table 5). Matrix stayed at `r newer_versions$Matrix` in all three, since the stored version could not be installed under the newer R. With the earlier lme4, both versions of lmerTest reproduced the stored output, as the Docker rebuild had. The newer lme4 changed only the formatting. It added a trailing space to the lines of some random-effects tables, renamed a column from `deviance` to `-2*log(L)` and, in some tables, swapped the columns of variances and standard deviations. None of the numbers changed.
+
+```{r environments}
+labels <- c(`renv.lock` = 'Newer (renv.lock)', `lme4 1.1-35.1` = 'Newer, with lme4 as stored',
+            `lme4 1.1-35.1 and lmerTest 3.1-3` = 'Newer, with lme4 and lmerTest as stored')
+# count_of() writes 'k of n', as in Table 4
+row_of <- function(label, system, versions, same_output, same_result) {
+  data.frame(Environment = label, `Operating system` = system, versions[, c('R', 'lme4', 'lmerTest', 'Matrix')],
+             `Identical output` = count_of(sum(same_output), length(same_output)),
+             `Same result line` = count_of(sum(same_result), length(same_result)), check.names = FALSE)
+}
+environment_table <- bind_rows(
+  row_of('Stored, rebuilt with Docker', rebuild_release, versions_of(unique(verification$environment)),
+         verification$identical, verification$result == stored_of(verification$run_id, 'result')),
+  bind_rows(lapply(names(labels), function(library) {
+    rows <- library_rows(library)
+    row_of(labels[[library]], newer_system, library_versions(library), rows$same_output, rows$same_result)
+  })))
+
+knitr::kable(environment_table,
+  caption = sprintf(paste(
+    'Output of the First Round\'s Scripts in %s Environments, Compared With Their Stored Executions.',
+    'Each script was executed once in each environment. \'Identical output\' counts the scripts whose',
+    'output matched the stored output line for line, and \'Same result line\' counts those whose result',
+    'line matched.'),
+    stringr::str_to_title(count_text(nrow(environment_table)))),
+  align = c('l', 'l', 'r', 'r', 'r', 'r', 'r', 'r'))
+```
+
+The R session that last knitted this page is shown below, although the scripts ran in separate R processes in the C locale.
+
+```{r session-info}
+sessionInfo()
+```
