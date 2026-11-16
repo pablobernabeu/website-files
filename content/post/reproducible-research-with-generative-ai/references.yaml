@@ -67,6 +67,14 @@ references:
   URL: https://code.claude.com/docs/en/overview
   accessed: 2026-11-07
 
+- id: anthropic-science
+  type: webpage
+  author:
+  - literal: Anthropic
+  issued: 2026-06-30
+  title: Claude Science, an AI workbench for scientists
+  URL: https://www.anthropic.com/news/claude-science-ai-workbench
+
 - id: atil2025
   type: paper-conference
   author:
