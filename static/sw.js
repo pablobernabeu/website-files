@@ -6,6 +6,23 @@
 const CACHE_NAME = "website-cache-v1";
 const SEARCH_CACHE = "search-cache-v1";
 
+// Other sites on this domain (GitHub Pages projects from their own repositories, such as package
+// documentation and web applications) manage their own files and caches, so this worker leaves
+// their requests and caches alone. Add a project here when it is published under this domain.
+const PROJECT_SITES = [
+  "/depictr/",
+  "/depictr-py/",
+  "/genai-research-teaching/",
+  "/language-sensorimotor-simulation-PhD-thesis/",
+  "/lexsync/",
+  "/pilotr/",
+  "/read-my-mind/",
+  "/scopusflow/",
+  "/scopusflow-py/",
+  "/theoryforge/",
+];
+const isOwnCache = (name) => name.startsWith("website-cache-") || name.startsWith("search-cache-");
+
 // Assets to cache immediately
 const STATIC_ASSETS = [
   "/",
@@ -54,7 +71,7 @@ self.addEventListener("activate", (event) => {
       .then((cacheNames) => {
         return Promise.all(
           cacheNames.map((cacheName) => {
-            if (cacheName !== CACHE_NAME && cacheName !== SEARCH_CACHE) {
+            if (isOwnCache(cacheName) && cacheName !== CACHE_NAME && cacheName !== SEARCH_CACHE) {
               console.log("[SW] Deleting old cache:", cacheName);
               return caches.delete(cacheName);
             }
@@ -80,6 +97,11 @@ self.addEventListener("fetch", (event) => {
 
   // Skip external requests
   if (url.origin !== location.origin) {
+    return;
+  }
+
+  // Skip the other sites on this domain
+  if (PROJECT_SITES.some((path) => url.pathname.startsWith(path))) {
     return;
   }
 
@@ -199,7 +221,7 @@ self.addEventListener("quotaexceeded", (event) => {
   caches.keys().then((cacheNames) => {
     // Keep only the latest caches
     const cachesToDelete = cacheNames.filter(
-      (name) => name !== CACHE_NAME && name !== SEARCH_CACHE
+      (name) => isOwnCache(name) && name !== CACHE_NAME && name !== SEARCH_CACHE
     );
 
     return Promise.all(cachesToDelete.map((name) => caches.delete(name)));
