@@ -6,7 +6,7 @@
 widget = "software"
 headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 60  # Order that this section will appear.
+weight = 90  # After Workshops (70) and Presentations (80).
 
 title = "Software"
 subtitle = ""

@@ -123,14 +123,10 @@ education:
 </a>
 </div>
 
-I conduct research and data analysis on digitally-enhanced childhood learning as part of the [Learning in Families through Technology (LiFT) project](https://www.education.ox.ac.uk/project/lift-learning-in-families-through-technology) at the Department of Education at the University of Oxford.
+I conduct research and data analysis on digitally enhanced learning in childhood as part of the [Learning in Families through Technology (LiFT) project](https://www.education.ox.ac.uk/project/lift-learning-in-families-through-technology), at the Department of Education, University of Oxford. My current work examines children's reading comprehension in digital formats, and how the demands of a text interact with children's skills and family context.
 
-Previously, I held a postdoctoral fellowship at UiT The Arctic University of Norway, contributing to a project on language learning, crosslinguistic influence and executive functions. Prior to that, I completed a PhD in Psychology at Lancaster University, having previously earned a research master’s in Language and Communication from Tilburg University.
+Before joining Oxford, I held a postdoctoral fellowship at UiT The Arctic University of Norway, where I was the local manager of a longitudinal study on how bilingual people learn an additional language, and on the roles of crosslinguistic influence and executive functions in this learning. Earlier, I completed a PhD in Psychology at Lancaster University and a research master's in Language and Communication at Tilburg University.
 
-Beyond education and digital technologies, my interests include cognitive psychology and neuroscience, linguistics, data science, research methods and open science.
+My interests span cognitive psychology and neuroscience, linguistics, education, data science, research methods and open science. I have used behavioural and EEG experiments, corpus analysis and computational modelling, and I share materials from my research at [osf.io/25u3x](https://osf.io/25u3x).
 
-I have worked with a wide range of research methods, including behavioural and EEG experiments, corpus analysis and computational modelling.
-
-Materials from my research are available at [osf.io/25u3x](https://osf.io/25u3x).
-
-Want to find out more? Please drop me an [email](mailto:pcbernabeu@gmail.com).
+If you would like to know more, please [email me](mailto:pcbernabeu@gmail.com).

@@ -31,6 +31,10 @@
         };
       })
       .filter(tag => {
+        // A hidden tag (such as "s", which only selects the posts listed on the
+        // blog) has an empty box at the viewport's origin. The distance test below
+        // excluded it only while the page was scrolled far from the cloud.
+        if (tag.rect.width === 0 && tag.rect.height === 0) return false;
         // Filter out tags that are positioned far from the tag cloud container
         // This prevents errant connections to hidden or mispositioned elements
         const verticalDistance = Math.abs(tag.rect.top - tagCloudRect.top);
@@ -1001,10 +1005,28 @@
   });
   themeObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
 
-  // Initialize when page is fully loaded (CSS applied, layout stable)
+  // The network reads the search index (over 200 KB) and the tag cloud sits at
+  // the foot of the home page, so it is drawn only once a visitor comes within
+  // about a screen of it, and not at all on a visit that never gets that far.
+  // Waiting for "load" as well keeps the layout stable when the tags are measured.
+  function initWhenNear() {
+    const section = document.getElementById('tags');
+    if (!section || !('IntersectionObserver' in window)) {
+      initTagNetwork();
+      return;
+    }
+    const observer = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) {
+        observer.disconnect();
+        initTagNetwork();
+      }
+    }, { rootMargin: '1000px 0px' });
+    observer.observe(section);
+  }
+
   if (document.readyState === 'complete') {
-    initTagNetwork();
+    initWhenNear();
   } else {
-    window.addEventListener('load', initTagNetwork);
+    window.addEventListener('load', initWhenNear);
   }
 })();

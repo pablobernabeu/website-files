@@ -2,7 +2,9 @@
 header:
   caption: ""
   image: ""
-title: Details on some presentations
-subtitle: '[See all workshops and presentations](/#workshops)'
+title: Presentations
+subtitle: Abstracts and materials from selected talks and posters.
 view: 2
 ---
+
+All presentations and workshops are [listed on the home page](/#workshops).

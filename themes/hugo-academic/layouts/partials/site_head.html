@@ -28,6 +28,9 @@
     {{ $desc = .Params.abstract | markdownify | emojify }}
   {{ else if .IsPage }}
     {{ $desc = .Summary | markdownify | emojify }}
+  {{ else if and .Params.subtitle (not .IsHome) }}
+    {{/* A section page with its own subtitle (e.g. /publication/) is described by it. */}}
+    {{ $desc = .Params.subtitle | markdownify | plainify | htmlUnescape }}
   {{ else if and site.Params.description (not .IsHome) }}
     {{/* List/section/taxonomy pages (categories, tags, /post/, /publication/, etc.) have no
          page-specific summary, so they all fell back to the exact same site-wide description —

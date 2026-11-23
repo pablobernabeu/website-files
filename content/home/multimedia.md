@@ -87,34 +87,15 @@ document.addEventListener('DOMContentLoaded', function() {
     this.innerHTML = isExpanding ? '<i class="fas fa-chevron-up"></i>&nbsp;Collapse all video descriptions' : '<i class="fas fa-chevron-down"></i>&nbsp;Expand all video descriptions';
   });
 
-  // Alternating backgrounds: wrap each video entry (h3 + content) in a div
-  const h3s = document.querySelectorAll('#multimedia h3');
-  if (h3s.length > 0) {
-    const container = h3s[0].parentElement;
-    const children = Array.from(container.children);
-    const entries = [];
-    let currentGroup = null;
-
-    for (const child of children) {
-      if (child.tagName === 'H3') {
-        if (currentGroup) entries.push(currentGroup);
-        currentGroup = [child];
-      } else if (currentGroup) {
-        currentGroup.push(child);
-      }
-    }
-    if (currentGroup) entries.push(currentGroup);
-
-    entries.forEach(function(group, i) {
-      const wrapper = document.createElement('div');
-      wrapper.className = 'multimedia-entry' + (i % 2 === 0 ? ' bg-alt' : '');
-      group[0].parentNode.insertBefore(wrapper, group[0]);
-      group.forEach(function(el) { wrapper.appendChild(el); });
-    });
-  }
+  // The alternating backgrounds come from the .multimedia-entry wrappers written
+  // around each entry below. They used to be added here, but moving an iframe
+  // in the document makes the browser load it at once, so all the videos were
+  // downloaded with the page despite loading="lazy".
 });
 </script>
 
+
+<div class="multimedia-entry bg-alt">
 
 ### <span style='color:grey; font-size:70%;'>2026 ·</span>&nbsp; Unlock the Lab: Your guide to reading science like a scientist
 
@@ -151,6 +132,9 @@ Hao, Q., Xu, F., Li, Y., & Evans, J. (2026). Artificial intelligence tools expan
 style = "position:absolute; top:0; left:2.5%; width:95%; height:95%;"></iframe>
 </div>
 
+</div>
+
+<div class="multimedia-entry">
 
 ### <span style='color:grey; font-size:70%;'>2026 ·</span>&nbsp; Modality switch effects: The brain friction of switching senses
 
@@ -187,6 +171,9 @@ Wentura, D., Shi, E., & Degner, J. (2024). Examining modal and amodal language p
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
+</div>
+
+<div class="multimedia-entry bg-alt">
 
 ### <span style='color:grey; font-size:70%;'>2026 ·</span>&nbsp; The dead salmon problem: Multiple tests, minimality and data driven alternatives
 
@@ -229,6 +216,9 @@ Rubin, M. (2021). When to adjust alpha during multiple testing: A consideration 
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
+</div>
+
+<div class="multimedia-entry">
 
 ### <span style='color:grey; font-size:70%;'>2026 ·</span>&nbsp; The digital parrot or the universal machine? Debating the mind in the model
 
@@ -280,6 +270,9 @@ Warstadt, A., Mueller, A., Choshen, L., Wilcox, E., Zhuang, C., Ciro, J., Mosque
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
+</div>
+
+<div class="multimedia-entry bg-alt">
 
 ### <span style='color:grey; font-size:70%;'>2026 ·</span>&nbsp; Beyond the cloud: Reclaiming data sovereignty in speech transcription
 
@@ -298,6 +291,9 @@ View [sources and related content](/2025/speech-transcription-python).
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
+</div>
+
+<div class="multimedia-entry">
 
 ### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; The modular mini-grammar: Building testable and reproducible artificial languages using FAIR principles
 
@@ -336,6 +332,9 @@ View [sources and related content](/presentation/making-research-materials-finda
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
+</div>
+
+<div class="multimedia-entry bg-alt">
 
 ### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; Third language learning and morphosyntactic transfer
 
@@ -356,6 +355,9 @@ View [sources and related content](/publication/third-language-longitudinal-data
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
+</div>
+
+<div class="multimedia-entry">
 
 ### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; Behind the curtains: Methods used to investigate conceptual processing
 
@@ -380,6 +382,9 @@ View [sources and related content](/publication/pablo-bernabeu-2022-phd-thesis).
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
+</div>
+
+<div class="multimedia-entry bg-alt">
 
 ### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; The architecture of meaning: Inside the words we use
 
@@ -418,6 +423,10 @@ View [sources and related content](/publication/pablo-bernabeu-2022-phd-thesis).
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
+</div>
+
+<div class="multimedia-entry">
+
 ### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; Segmentation of ERPs involving several markers and time adjustments in BrainVision Analyzer
 
 This live demonstration guides you through the process of segmenting event-related potentials (ERPs) in BrainVision Analyzer. The events of interest are represented by several markers, requiring some thought to time-lock each segmentation to the event onset.
@@ -426,6 +435,10 @@ This live demonstration guides you through the process of segmenting event-relat
 <iframe title="Video: Segmentation of ERPs involving several markers and time adjustments in BrainVision Analyzer" loading="lazy" src="https://www.youtube-nocookie.com/embed/QXOpa-uOBVc" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
+
+</div>
+
+<div class="multimedia-entry bg-alt">
 
 ### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; Visualising EEG effects with topographic mapping in BrainVision Analyzer
 
@@ -436,12 +449,20 @@ This tutorial walks through the key steps: creating grand averages across partic
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
+</div>
+
+<div class="multimedia-entry">
+
 ### <span style='color:grey; font-size:70%;'>2025 ·</span>&nbsp; Naming results files exported from Gorilla Experiment Builder
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
 <iframe title="Video: Naming results files exported from Gorilla Experiment Builder" loading="lazy" src="https://www.youtube-nocookie.com/embed/nVidNO8xcxE" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
+
+</div>
+
+<div class="multimedia-entry bg-alt">
 
 ### <span style='color:grey; font-size:70%;'>2024 ·</span>&nbsp; [Reducing the impedance in electroencephalography using a blunt needle, electrolyte gel and wiggling](/2024/lowering-impedance-in-electroencephalography-using-a-blunt-needle-electrolyte-gel-and-wiggling)
 
@@ -450,6 +471,10 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
+</div>
+
+<div class="multimedia-entry">
+
 ### <span style='color:grey; font-size:70%;'>2024 ·</span>&nbsp; [Briefing participants to prevent muscle artifacts in electroencephalography sessions](/2024/preventing-muscle-artifacts-in-electroencephalography-sessions)
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
@@ -457,14 +482,22 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
+</div>
+
+<div class="multimedia-entry bg-alt">
+
 ### <span style='color:grey; font-size:70%;'>2021 ·</span>&nbsp; [Linguistic and embodied systems in conceptual processing: Variation across individuals and items](/presentation/linguistic-and-embodied-systems-in-conceptual-processing-variation-across-individuals-and-items)
 
 <div class="multimedia-thumbnail" style="margin-top: 10px;">
 <a href='https://www.youtube.com/watch?v=y2bopgYWYvE&ab_channel=LancasterPsychology'>
-<img src='/presentation/linguistic-and-embodied-systems-in-conceptual-processing-variation-across-individuals-and-items/img/thumbnail.png' alt="Video thumbnail: talk title slide and presenter webcam for Pablo Bernabeu's 2021 Lancaster University presentation"></a>
+<img loading="lazy" decoding="async" src='/presentation/linguistic-and-embodied-systems-in-conceptual-processing-variation-across-individuals-and-items/img/thumbnail.png' alt="Video thumbnail: talk title slide and presenter webcam for Pablo Bernabeu's 2021 Lancaster University presentation"></a>
 </div>
 
 <div style = 'padding-bottom: 3.5%;'></div>
+
+</div>
+
+<div class="multimedia-entry">
 
 ### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; [Reproducibilidad en torno a una aplicación web](/presentation/2020-10-08-reproducibilidad-en-torno-a-una-aplicacion-web)
 
@@ -473,12 +506,20 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
+</div>
+
+<div class="multimedia-entry bg-alt">
+
 ### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; Workshop on <i class="fa-brands fa-r-project" aria-label="R"></i>&nbsp;Markdown, dashboards and Binder (see [programme and materials](https://github.com/pablobernabeu/CarpentryCon-2020-workshop-Open-Data-Reproducibility))
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
 <iframe title="Video: Workshop on R Markdown, dashboards and Binder" loading="lazy" src="https://www.youtube-nocookie.com/embed/wZsPD7CgJC0" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
+
+</div>
+
+<div class="multimedia-entry">
 
 ### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; Personal profile and experience at Lancaster University Department of Psychology
 
@@ -487,12 +528,20 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
+</div>
+
+<div class="multimedia-entry bg-alt">
+
 ### <span style='color:grey; font-size:70%;'>2020 ·</span>&nbsp; Embedding open research and reproducibility in the UG and PGT curricula
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
 <iframe title="Video: Embedding open research and reproducibility in the UG and PGT curricula" loading="lazy" src="https://www.youtube-nocookie.com/embed/vzkDBZ1qWfY" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
+
+</div>
+
+<div class="multimedia-entry">
 
 ### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Part of application for [Gorilla Grant](#funding-awards)
 
@@ -501,12 +550,20 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
 
+</div>
+
+<div class="multimedia-entry bg-alt">
+
 ### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Part of application for [Software Sustainability Institute Fellowship](#funding-awards)
 
 <div style = "position: relative; margin-top: 10px; padding-top: 56.25%;">
 <iframe title="Video: Part of application for Software Sustainability Institute Fellowship" loading="lazy" src="https://www.youtube-nocookie.com/embed/F-MQ8BYwLn4" frameborder="0" allowfullscreen
 style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
 </div>
+
+</div>
+
+<div class="multimedia-entry">
 
 ### <span style='color:grey; font-size:70%;'>2019 ·</span>&nbsp; Demonstration of procedure for bundled PSA Studies [002](/publication/investigating-object-orientation-effects-across-18-languages/) and [003](/publication/multi-region-investigation-of-man-as-default-in-attitudes/)
 
@@ -520,3 +577,5 @@ style = "position:absolute; top:0; left:0; width:95%; height:95%;"></iframe>
     allowfullscreen
     webkitallowfullscreen>
 </iframe>
+
+</div>

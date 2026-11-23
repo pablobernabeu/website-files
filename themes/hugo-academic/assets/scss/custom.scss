@@ -5197,13 +5197,11 @@ body.dark .document-viewer-toolbar {
   font-size: 0.85em;
 }
 
-// Reduce margin under article-metadata in web applications section
-#software .article-metadata > div {
-  margin-bottom: -0.3rem !important;
-}
-// Blog: don't pull the inner div up — the negative margin shrinks the metadata
-// box below one line-height and (with the inherited overflow:hidden) clips the
-// bottom of the year glyphs.
+// Software and blog: don't pull the inner div up. A negative margin shrinks the
+// metadata box below its content, and with the inherited overflow:hidden it
+// clipped the bottom of the last line (the year on the blog, "(CRAN) and PyPI"
+// in the software citations).
+#software .article-metadata > div,
 #blog .article-metadata > div {
   margin-bottom: 0 !important;
 }

@@ -10,7 +10,8 @@
       {{ end }}
 
       <div id="container-software">
-        {{ range .Pages.ByDate.Reverse }}
+        {{/* Same order as the home-page widget, which breaks ties in date by title. */}}
+        {{ range sort .Pages "Date" "desc" }}
         <div class="software-item">
           {{ partial "li_compact" . }}
         </div>

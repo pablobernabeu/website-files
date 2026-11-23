@@ -9,13 +9,13 @@
   weight = 10
 
 [[main]]
-  name = '<span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Packages, web applications and pipelines &nbsp; ">Software</span>'
-  url = '#software'
-  weight = 20
-  
-[[main]]
   name = '<span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Presentations and workshops &nbsp; ">Presentations</span>'
   url = '#workshops'
+  weight = 20
+
+[[main]]
+  name = '<span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Packages, web applications and pipelines &nbsp; ">Software</span>'
+  url = '#software'
   weight = 30
 
 [[main]]
@@ -29,7 +29,7 @@
    weight = 50
   
 [[main]]
-   name = '<span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Short essays &nbsp; | &nbsp; Tutorials &nbsp; | &nbsp; Inquiries &nbsp; | &nbsp; Functions for the implementation of experiments, data analysis and other purposes &nbsp; ">Resources</span>'
+   name = '<span data-toggle="tooltip1" data-placement="bottom" title=" &nbsp; Short essays &nbsp; | &nbsp; Tutorials &nbsp; | &nbsp; Inquiries &nbsp; | &nbsp; Functions for experiments, data analysis and other purposes &nbsp; ">Resources</span>'
    url = '#blog'
    weight = 60
 

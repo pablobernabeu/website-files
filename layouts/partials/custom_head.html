@@ -600,6 +600,16 @@
     "@type": "Organization",
     "name": "University of Oxford"
   },
+  {{- with site.GetPage "/authors/admin" }}{{ with (.Resources.ByType "image").GetMatch "*avatar*" }}
+  "image": "{{ (.Fill "270x270 Center").Permalink }}",
+  {{- end }}{{ end }}
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "Lancaster University" },
+    { "@type": "CollegeOrUniversity", "name": "Tilburg University" },
+    { "@type": "CollegeOrUniversity", "name": "Radboud University" },
+    { "@type": "CollegeOrUniversity", "name": "Autonomous University of Madrid" }
+  ],
+  "knowsAbout": ["Education and digital technologies", "Cognitive psychology", "Cognitive neuroscience", "Linguistics", "Data science", "Research methods", "Open science"],
   "sameAs": [
     "https://orcid.org/0000-0003-1083-2460",
     "https://scholar.google.com/citations?user=DxD0QDoAAAAJ&hl=en",
