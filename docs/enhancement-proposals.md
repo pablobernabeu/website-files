@@ -14,6 +14,8 @@ The largest gain in loading time came from the Videos section. A script wrapped 
 
 One CSS rule changed. In the home Software section, a negative margin clipped the second line of each citation ('(CRAN) and PyPI'). The same defect had been fixed for the blog list, and the software rule now shares that fix. The /software/ list now uses the same order as the home widget, which differed for items released on the same day. The Person structured data gains the avatar, the universities attended and the research areas.
 
+`static/sw.js` now retires itself. It was a service worker, registered by `static/js/deferred-loader.js` when that script was in use, which served scripts, stylesheets and pages under /post/ and /publication/ from a cache that it never refreshed. No page has loaded the registering script since, but a browser that registered the worker in the past would keep it, and with it a frozen copy of those files, for as long as the file on the server stayed the same. The shallow history in the repository does not show whether the worker was ever live. The new version deletes the old caches and unregisters itself in any browser that still holds it, and it has no effect on any other browser. A test that registered the old worker, replaced it and triggered an update confirmed that the caches and the registration were removed.
+
 ## Proposals
 
 ### A grounded assistant for reading the research
@@ -43,6 +45,10 @@ The site's main stylesheet (`academic.css`, compiled from the theme and `custom.
 Font Awesome loads its full stylesheet and two font files (about 350 KB together before compression) for a few dozen icons. A subset served from the site, or inline SVG icons, would remove most of that. Serving Montserrat and Roboto from the site instead of Google Fonts would remove a third-party connection and the transfer of visitors' IP addresses to Google.
 
 The 248 KB PNG video thumbnail would take 50 KB as a JPEG or 29 KB as WebP (both at quality 80). The featured images in the lists are produced at 150 pixels wide, so they look soft on high-density screens. Adding a 300-pixel version through `srcset` would sharpen them at a small cost.
+
+### Unused files
+
+`static/js/deferred-loader.js`, `performance-monitor.js`, `search-optimizer.js`, `ultra-performance.js`, `lazy-search.js` and `static/css/lazy-search.css` are referenced by no page, only by one another, and `PERFORMANCE_OPTIMIZATION.md` describes them as if they were in use. Removing them, and the note, would leave the repository's account of its performance work accurate. `static/sw.js` should stay at its address (see above).
 
 ### Robustness and accessibility
 
