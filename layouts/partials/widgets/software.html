@@ -3,8 +3,9 @@
      suggest a truncated list (the Publications and Blog widgets likewise only show their
      "See all" link when they hold back entries). */}}
 {{ $st := .page }}
+{{/* Hugo's default order (weight, then date from newest, then title), which the
+     /software/ list also uses. Software pages set no weight. */}}
 {{ $items := where site.RegularPages "Section" "software" }}
-{{ $items = sort $items "Date" "desc" }}
 
 <span id="applications-and-dashboards" class="software-legacy-anchor" aria-hidden="true"></span>
 

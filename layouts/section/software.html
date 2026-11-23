@@ -10,8 +10,10 @@
       {{ end }}
 
       <div id="container-software">
-        {{/* Same order as the home-page widget, which breaks ties in date by title. */}}
-        {{ range sort .Pages "Date" "desc" }}
+        {{/* Hugo's default order (weight, then date from newest, then title), as in
+             the home-page widget. Hugo's sort function is not stable, so sorting
+             by date alone could shuffle items released on the same day. */}}
+        {{ range .Pages }}
         <div class="software-item">
           {{ partial "li_compact" . }}
         </div>

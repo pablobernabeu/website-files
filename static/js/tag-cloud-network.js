@@ -998,8 +998,12 @@
   let lastIsDarkTheme = document.body.classList.contains('dark');
   const themeObserver = new MutationObserver(() => {
     const isDarkTheme = document.body.classList.contains('dark');
-    if (isDarkTheme === lastIsDarkTheme || tags.length === 0) return;
+    if (isDarkTheme === lastIsDarkTheme) return;
+    // Recorded even before the network is drawn, which now waits until the
+    // visitor nears the tag cloud, so that a later switch is not mistaken for
+    // no change.
     lastIsDarkTheme = isDarkTheme;
+    if (tags.length === 0) return;
     tags.forEach(tag => { tag.cachedColor = getCategoryColor(tag.category); });
     applyThematicColors(tags);
   });

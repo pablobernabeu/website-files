@@ -40,7 +40,7 @@
          that returns template.HTML, which printf then flattens to a plain string, stripping the
          "already safe" marker — the attribute's normal auto-escaping then escapes it a second
          time (e.g. "Applications & dashboards" became "&amp;amp;"). Plain .Title auto-escapes once. */}}
-    {{ $desc = printf "%s: %s" .Title site.Params.description }}
+    {{ $desc = cond (ne .Title "") (printf "%s: %s" .Title site.Params.description) site.Params.description }}
   {{ else if site.Params.description }}
     {{ $desc = site.Params.description }}
   {{ else }}
