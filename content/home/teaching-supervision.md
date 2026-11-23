@@ -77,12 +77,12 @@ During my PhD, I held a graduate teaching assistantship that involved 180 hours 
 <div style="margin-top: 40px;"></div>
 
 
-I have also created software for educational use. [Unlock the Lab](/software/unlock-the-lab) helps people develop science literacy, a [data simulation app](/software/experimental-data-simulation) supports the teaching of statistical principles and a [caption transcription app](/software/vtt-transcription-app) turns video captions into plain text for use in multimedia learning materials.
+I have also created software for educational use. [Unlock the Lab](/software/unlock-the-lab) helps people develop science literacy. A [data simulation app](/software/experimental-data-simulation) supports the teaching of statistical principles, and a [caption transcription app](/software/vtt-transcription-app) turns video captions into plain text for use in multimedia learning materials.
 
 
 ## **Teaching Philosophy**
 
-I aim to create a collaborative learning environment in which students think critically and apply what they learn. Alongside foundational knowledge, I want students to develop skills that will serve them in further study and at work. To encourage participation and collaboration, I use applications such as Microsoft Teams, Google Docs, GitHub, Mentimeter, Vevox and Miro.
+I aim to create a collaborative learning environment in which students think critically and apply what they learn. I want students to gain both foundational knowledge and skills that will serve them in further study and at work. To encourage participation and collaboration, I use applications such as Microsoft Teams, Google Docs, GitHub, Mentimeter, Vevox and Miro.
 
 Three principles guide my teaching.
 
@@ -92,22 +92,22 @@ I present concepts in the contexts that give them meaning. Language, for instanc
 
 ### Connecting Theory to Practice
 
-I connect theoretical concepts to the methods used to study them. This helps students avoid a disconnect that academics sometimes experience too, in which a method is learnt without its theory or a theory without its method.
+I connect theoretical concepts to the methods used to study them. This helps students avoid a disconnect that academics sometimes experience too, in which a method is studied without theory or a theory without method.
 
 ### Promoting Scientific Rigour and Reproducibility
 
-Open science and reproducibility inform my teaching. When these principles are built into research workflows from the start, students produce work that others can check and build on. In practical terms, these standards (1) improve the quality of research, (2) make better use of academic resources over time by facilitating access to research materials and their reuse and (3) improve students' professional prospects by giving them skills that transfer to many settings.
+Open science and reproducibility inform my teaching. I help students build these principles into their research workflows from the start, so that others can check and extend their work. In practical terms, these principles are meant to (1) improve the quality of research, (2) make better use of academic resources over time by making research materials easier to access and reuse, and (3) improve students' professional prospects by giving them skills that transfer to many settings.
 
-I continue to refine these principles with the advice of more experienced colleagues and the regular feedback of students.
+I continue to refine these principles with advice from more experienced colleagues and regular feedback from students.
 
 
 ## **Some Possible Courses**
 
-Below are some courses that I would like to teach. They combine interdisciplinary perspectives with methodological training, and range from the psychology and neurobiology of language to research methods, electroencephalography, reproducibility, data visualisation and statistics.
+Below are some courses that I would like to teach. They combine interdisciplinary perspectives with methodological training and cover the psychology and neurobiology of language, research methods, electroencephalography, reproducibility, data visualisation and statistics.
 
 ### 1. Introduction to the Psychology and Neurobiology of Language
 
-This course introduces the relationship between language, cognition and neurobiology, focusing on how language is processed and represented in the mind and brain. Topics include the history and evolution of language and the mechanisms of comprehension and production, as well as the cognitive processes involved in bilingualism and multilingualism. The course also examines how language interacts with other cognitive functions, such as executive control and sensorimotor simulation, and closes with a discussion of linguistic relativity.
+This course introduces students to the relationship between language, cognition and neurobiology, focusing on how language is processed and represented in the mind and brain. Topics include the history and evolution of language and the mechanisms of comprehension and production, as well as the cognitive processes involved in bilingualism and multilingualism. The course also examines how language interacts with other cognitive functions, such as executive control and sensorimotor simulation, and closes with a discussion of linguistic relativity.
 
 ### 2. Research Methods in the Psychology and Neurobiology of Language
 
@@ -115,23 +115,23 @@ This course addresses the methodological challenges of studying language and cog
 
 ### 3. Electroencephalography
 
-This course covers the theory and application of electroencephalography (EEG) in the study of cognitive processes, with a focus on language and decision-making. It traces the history of EEG research and its use in psychology and linguistics. Key topics include event-related potentials, time-frequency analysis and experimental design. Through lectures and laboratory sessions, students will acquire the theoretical and technical skills needed to design and conduct EEG studies. They will also practise searching for solutions reliably and responsibly, drawing on community forums, manufacturers' support services and artificial intelligence applications.
+This course covers the theory and application of electroencephalography (EEG) in the study of cognitive processes, with a focus on language and decision-making. Students will learn about the history of EEG research and gain a practical understanding of how EEG is used in psychology and linguistics. Key topics include event-related potentials, time-frequency analysis and experimental design. Through lectures and laboratory sessions, they will acquire the theoretical and technical skills needed to design and conduct EEG studies. They will also practise searching for solutions reliably and responsibly, drawing on community forums, manufacturers' support services and artificial intelligence applications.
 
 ### 4. Increasing Reproducibility Throughout the Workflow of a Study
 
-This course shows students how to build reproducible practices into each stage of a study. Drawing on open science principles, students will examine the role of psychology in the replication crisis and become familiar with frameworks such as FAIR, which makes data more Findable, Accessible, Interoperable and Reusable. Practical sessions will use tools such as the Open Science Framework and R Markdown, and provide training in reproducible experimental design, data analysis and manuscript preparation. Students will also practise searching for solutions reliably and responsibly, drawing on community forums and artificial intelligence applications. By the end of the course, students will be able to produce transparent and replicable research.
+This course shows students how to build reproducible practices into each stage of a study. Drawing on open science principles, students will examine the role of psychology in the replication crisis and become familiar with frameworks such as FAIR, which aims to make data more Findable, Accessible, Interoperable and Reusable. Practical sessions will use tools such as the Open Science Framework and R Markdown, and provide training in reproducible experimental design, data analysis and manuscript preparation. Students will also practise searching for solutions reliably and responsibly, drawing on community forums and artificial intelligence applications. By the end of the course, students will be able to produce transparent and replicable research.
 
 ### 5. Data Visualisation
 
-Data visualisation is central to interpreting and communicating research, and this course teaches it using R. With an emphasis on clarity and accessibility, students will learn to create a range of visualisations, from static plots to interactive web applications. The course covers good practice in summarising data, combining plots and integrating tables into reports, and its practical sessions introduce more advanced techniques for presenting complex data. Students will also practise searching for solutions reliably and responsibly, drawing on community forums and artificial intelligence applications.
+Data visualisation is central to interpreting and communicating research, and this course teaches it using R. Students will learn to create a range of visualisations, from static plots to interactive web applications, with an emphasis on clarity and accessibility. The course covers good practice in summarising data, combining plots and integrating tables into reports, and its practical sessions introduce more advanced techniques for presenting complex data. Students will also practise searching for solutions reliably and responsibly, drawing on community forums and artificial intelligence applications.
 
 ### 6. Introduction to Statistical Analysis
 
-This course introduces statistical reasoning and methods, with an emphasis on transparent and defensible research practices. Using R, students will learn about descriptive statistics, probability, hypothesis testing, correlation and basic linear models. Statistical considerations are brought into the early stages of research design, so that the methods suit the research questions and the structure of the data. Through lectures and practical exercises, students will learn to justify their analytical choices and to interpret statistical results with care.
+This course introduces statistical reasoning and methods, with an emphasis on transparent and defensible research practices. Using R, students will learn about descriptive statistics, probability, hypothesis testing, correlation and basic linear models. Students will learn to consider statistics from the early stages of research design, so that their methods suit their research questions and the structure of their data. Through lectures and practical exercises, students will learn to justify their analytical choices and to interpret statistical results with care.
 
 ### 7. Advanced Statistical Modelling
 
-Building on introductory statistics, this course teaches more advanced analyses in R. It covers generalised linear models, multilevel (mixed-effects) models and the analysis of non-normal and hierarchical data. It also covers model selection and comparison, as well as dimensionality reduction techniques such as principal component analysis and factor analysis. Students will treat statistical design and analysis as part of the whole research workflow, making principled decisions that suit their data and hypotheses. The course also addresses overfitting, multicollinearity and multiple comparisons, with a focus on the transparent reporting and justification of analyses. Practical sessions involve real data and complex experimental designs.
+Building on introductory statistics, this course teaches more advanced analyses in R. It covers generalised linear models, multilevel (mixed-effects) models and the analysis of non-normal and hierarchical data. It also covers model selection and comparison, as well as dimensionality reduction techniques such as principal component analysis and factor analysis. Students will treat statistical design and analysis as part of the whole research workflow, making principled decisions that suit their data and hypotheses. Further topics include overfitting, multicollinearity and multiple comparisons, with a focus on the transparent reporting and justification of analyses. Practical sessions involve real data and complex experimental designs.
 
-Across these courses, theory is linked to practice and reproducibility is treated as part of good method. Their design draws on my experience in linguistics, psychology, statistics and research methods.
+In all these courses, I link theory to practice and treat reproducibility as part of sound methodology. The design of the courses draws on my experience in linguistics, psychology, statistics and research methods.
 

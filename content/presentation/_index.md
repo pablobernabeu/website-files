@@ -3,7 +3,7 @@ header:
   caption: ""
   image: ""
 title: Presentations
-subtitle: Abstracts and materials from selected talks and posters.
+subtitle: Abstracts and materials from selected presentations.
 view: 2
 ---
 

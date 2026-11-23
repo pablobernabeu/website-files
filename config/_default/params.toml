@@ -44,7 +44,7 @@ local_business_type = ''
 org_name = ''
 
 # Description for social sharing and search engines. If undefined, superuser role is used in place.
-description = 'Publications, software, presentations and tutorials on language, cognition, education, digital technologies, statistics and open science.'
+description = 'Publications, software, presentations and tutorials on language, cognition, neuroscience, education, digital technologies, statistics and open science.'
 
 ############################
 ## Site Features

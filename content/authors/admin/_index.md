@@ -123,10 +123,10 @@ education:
 </a>
 </div>
 
-I conduct research and data analysis on digitally enhanced learning in childhood as part of the [Learning in Families through Technology (LiFT) project](https://www.education.ox.ac.uk/project/lift-learning-in-families-through-technology), at the Department of Education, University of Oxford. My current work examines children's reading comprehension in digital formats, and how the demands of a text interact with children's skills and family context.
+I conduct research and data analysis on digitally enhanced learning in childhood at the Department of Education, University of Oxford, as part of the [Learning in Families through Technology (LiFT) project](https://www.education.ox.ac.uk/project/lift-learning-in-families-through-technology). Part of my current work examines children's reading comprehension in digital formats and how the demands of a text interact with their skills and family context.
 
-Before joining Oxford, I held a postdoctoral fellowship at UiT The Arctic University of Norway, where I was the local manager of a longitudinal study on how bilingual people learn an additional language, and on the roles of crosslinguistic influence and executive functions in this learning. Earlier, I completed a PhD in Psychology at Lancaster University and a research master's in Language and Communication at Tilburg University.
+Before joining Oxford, I held a postdoctoral fellowship at UiT The Arctic University of Norway, where I was the local manager of the [LESS project](https://nva.sikt.no/projects/2559611). Its longitudinal study used behavioural and EEG measures to investigate how bilingual people acquire an additional language and how this process is influenced by the languages they already know and by their executive functions. Earlier, I completed a PhD in Psychology at Lancaster University and a research master's in Language and Communication at Tilburg University.
 
-My interests span cognitive psychology and neuroscience, linguistics, education, data science, research methods and open science. I have used behavioural and EEG experiments, corpus analysis and computational modelling, and I share materials from my research at [osf.io/25u3x](https://osf.io/25u3x).
+My interests span cognitive psychology and neuroscience, linguistics, education and digital technologies, data science, research methods and open science. My research has involved behavioural and EEG experiments, corpus analysis and computational modelling. Materials from my research are available at [osf.io/25u3x](https://osf.io/25u3x).
 
 If you would like to know more, please [email me](mailto:pcbernabeu@gmail.com).
